@@ -4,6 +4,8 @@ import os
 import re
 import time
 import logging
+import shutil
+import tempfile
 import warnings
 from pathlib import Path
 from urllib.parse import urljoin, urlparse
@@ -38,6 +40,12 @@ HEADERS = {
 }
 
 logger = logging.getLogger(__name__)
+PRIMO_CIRCULATION_URL = (
+    "https://ncku.primo.exlibrisgroup.com/discovery/fulldisplay"
+    "?docid=alma991011715469707978&context=L&vid=886NCKU_INST:886NCKU_INST"
+    "&lang=zh-tw&search_scope=MyInst_and_CI&adaptor=Local%20Search%20Engine"
+    "&tab=Everything&query=any,contains,circulation&offset=0"
+)
 
 
 def _get(url: str, **kwargs) -> requests.Response:
@@ -61,6 +69,22 @@ def _pdf_filename(article: dict) -> str:
 
 def _is_eurointervention_journal(journal: str) -> bool:
     return "eurointervention" in journal.lower()
+
+
+def _is_jacc_article(article: dict) -> bool:
+    journal = article.get("journal", "").lower()
+    doi = article.get("doi", "").lower()
+    return (
+        "jacc" in journal
+        or "am coll cardiol" in journal
+        or "american college of cardiology" in journal
+        or doi.startswith("10.1016/j.jacc.")
+    )
+
+
+def _is_circulation_article(article: dict) -> bool:
+    journal = article.get("journal", "").lower()
+    return "circulation" in journal
 
 
 def _direct_pdf_urls(doi: str, journal: str) -> list[str]:
@@ -102,6 +126,95 @@ def _try_direct(doi: str, journal: str) -> bytes | None:
         except Exception as e:
             logger.debug(f"Direct PDF failed ({url}): {e}")
     return None
+
+
+def _fill_sso_credentials(page) -> bool:
+    primo_user = os.getenv("PRIMO_USER", "")
+    primo_pass = os.getenv("PRIMO_PASS", "")
+    if not primo_user or not primo_pass:
+        return False
+
+    selectors = [
+        ('input[placeholder="帳號:"]', 'input[placeholder="密碼:"]'),
+        ('input[placeholder*="帳號"]', 'input[placeholder*="密碼"]'),
+        ('input[name="UserName"]', 'input[name="Password"]'),
+        ('input[name="username"]', 'input[name="password"]'),
+        ('input[id*="user"]', 'input[id*="pass"]'),
+        ('input[name*="user"]', 'input[name*="pass"]'),
+        ('input[type="email"]', 'input[type="password"]'),
+        ('input[type="text"]', 'input[type="password"]'),
+    ]
+
+    try:
+        page.wait_for_load_state("domcontentloaded", timeout=30000)
+    except Exception:
+        pass
+
+    for user_selector, pass_selector in selectors:
+        try:
+            page.wait_for_selector(user_selector, state="visible", timeout=10000)
+            page.wait_for_selector(pass_selector, state="visible", timeout=10000)
+            page.fill(user_selector, primo_user)
+            page.fill(pass_selector, primo_pass)
+            _submit_login_form(page)
+            _dismiss_post_login_notice(page)
+            return True
+        except Exception:
+            continue
+
+    try:
+        user_input = page.locator("input").filter(has_not=page.locator('input[type="hidden"]')).first
+        password_input = page.locator('input[type="password"]').first
+        if user_input.count() and password_input.count():
+            user_input.fill(primo_user)
+            password_input.fill(primo_pass)
+            _submit_login_form(page)
+            _dismiss_post_login_notice(page)
+            return True
+    except Exception as e:
+        logger.debug(f"SSO credential fill failed: {e}")
+    return False
+
+
+def _submit_login_form(page):
+    button_patterns = [
+        re.compile("登入"),
+        re.compile("login", re.I),
+        re.compile("sign in", re.I),
+    ]
+    for pattern in button_patterns:
+        try:
+            button = page.get_by_role("button", name=pattern).first
+            if button.count() and button.is_visible():
+                button.click()
+                return
+        except Exception:
+            continue
+    page.keyboard.press("Enter")
+
+
+def _dismiss_post_login_notice(page):
+    patterns = [
+        re.compile(r"^OK$", re.I),
+        re.compile("提醒"),
+    ]
+    deadline = time.time() + 15
+    while time.time() < deadline:
+        try:
+            for pattern in patterns:
+                button = page.get_by_role("button", name=pattern).first
+                if button.count() and button.is_visible():
+                    button.click()
+                    time.sleep(1)
+                    return
+            ok_text = page.get_by_text(re.compile(r"^OK$", re.I)).first
+            if ok_text.count() and ok_text.is_visible():
+                ok_text.click()
+                time.sleep(1)
+                return
+        except Exception:
+            pass
+        time.sleep(0.5)
 
 
 def _primo_login(page) -> bool:
@@ -153,6 +266,353 @@ def _primo_login(page) -> bool:
     except Exception as e:
         logger.debug(f"Primo login error: {e}")
         return False
+
+
+def _page_has_pdf_full_text(page) -> bool:
+    try:
+        locator = page.get_by_text("PDF Full Text", exact=False)
+        return locator.count() > 0 and locator.first.is_visible()
+    except Exception:
+        return False
+
+
+def _click_ovid_link(page):
+    link = page.get_by_role("link", name=re.compile("ovid", re.I)).first
+    context = page.context
+    existing_pages = len(context.pages)
+    try:
+        with context.expect_page(timeout=10000) as popup_info:
+            link.click()
+        popup = popup_info.value
+        popup.wait_for_load_state("domcontentloaded", timeout=30000)
+        return popup
+    except Exception:
+        pass
+
+    try:
+        with page.expect_popup(timeout=5000) as popup_info:
+            link.click()
+        popup = popup_info.value
+        popup.wait_for_load_state("domcontentloaded", timeout=30000)
+        return popup
+    except Exception:
+        try:
+            link.click()
+        except Exception:
+            pass
+        deadline = time.time() + 10
+        while time.time() < deadline:
+            if len(context.pages) > existing_pages:
+                popup = context.pages[-1]
+                try:
+                    popup.wait_for_load_state("domcontentloaded", timeout=30000)
+                except Exception:
+                    pass
+                return popup
+            time.sleep(0.5)
+        page.wait_for_load_state("domcontentloaded", timeout=30000)
+        return page
+
+
+def _find_search_input(page):
+    preferred_selectors = [
+        "#jb-search-keywords-textbox",
+        'input[name="jb-search-keywords-textbox"]',
+        'input[placeholder="Enter Keywords"]',
+    ]
+    for selector in preferred_selectors:
+        try:
+            candidate = page.locator(selector).first
+            if candidate.count() and candidate.is_visible() and candidate.is_enabled():
+                return candidate
+        except Exception:
+            continue
+
+    inputs = page.locator("input")
+    for i in range(inputs.count()):
+        candidate = inputs.nth(i)
+        try:
+            if not candidate.is_visible() or not candidate.is_enabled():
+                continue
+            attrs = " ".join(
+                filter(
+                    None,
+                    [
+                        candidate.get_attribute("type"),
+                        candidate.get_attribute("name"),
+                        candidate.get_attribute("id"),
+                        candidate.get_attribute("placeholder"),
+                        candidate.get_attribute("aria-label"),
+                    ],
+                )
+            ).lower()
+            if any(token in attrs for token in ["search", "query", "keyword"]):
+                return candidate
+            if (candidate.get_attribute("type") or "").lower() in {"search", "text", ""}:
+                return candidate
+        except Exception:
+            continue
+    return None
+
+
+def _search_ovid_advanced_title(page, title: str) -> bool:
+    if not title:
+        return False
+
+    title_input = page.locator("#jb-search-title-textbox").first
+    submit_button = page.locator('input[name="submit:Journal Browse Perform Search|1"]').first
+    all_issues_radio = page.locator('input[name="search_area"][value="ai"]').first
+
+    if not title_input.count() or not title_input.is_visible():
+        return False
+
+    try:
+        advanced_radio = page.locator("#advance").first
+        if advanced_radio.count() and advanced_radio.is_visible():
+            advanced_radio.check(force=True)
+            time.sleep(1)
+        if all_issues_radio.count() and all_issues_radio.is_visible():
+            all_issues_radio.check(force=True)
+        title_input.click()
+        title_input.fill("")
+        title_input.fill(title)
+        if submit_button.count() and submit_button.is_visible():
+            submit_button.click()
+        else:
+            title_input.press("Enter")
+        page.wait_for_load_state("domcontentloaded", timeout=30000)
+        time.sleep(3)
+        return True
+    except Exception as e:
+        logger.debug(f"Ovid advanced title search failed for {title}: {e}")
+        return False
+
+
+def _search_ovid_article(page, article: dict) -> bool:
+    title = article.get("title", "").strip()
+    search_titles = _ovid_title_queries(title)
+
+    for candidate_title in search_titles:
+        if _open_ovid_article_pdf(page, candidate_title):
+            return True
+        if _open_ovid_article_link(page, candidate_title):
+            return _page_has_pdf_full_text(page)
+
+    for query in search_titles:
+        if not _search_ovid_advanced_title(page, query):
+            continue
+
+        for candidate_title in search_titles:
+            if _open_ovid_article_pdf(page, candidate_title):
+                return True
+            if _open_ovid_article_link(page, candidate_title):
+                return _page_has_pdf_full_text(page)
+
+    return False
+
+
+def _ovid_title_queries(title: str) -> list[str]:
+    if not title:
+        return []
+    queries = [title]
+    normalized = re.sub(r"[^A-Za-z0-9\\s-]", " ", title)
+    normalized = re.sub(r"\\s+", " ", normalized).strip()
+    if normalized and normalized != title:
+        queries.append(normalized)
+    words = normalized.split() if normalized else title.split()
+    if len(words) >= 8:
+        queries.append(" ".join(words[:8]))
+    if len(words) >= 5:
+        queries.append(" ".join(words[:5]))
+    deduped = []
+    for query in queries:
+        if query and query not in deduped:
+            deduped.append(query)
+    return deduped
+
+
+def _open_ovid_article_link(page, title: str) -> bool:
+    if not title:
+        return False
+
+    title_patterns = [title]
+    words = title.split()
+    if len(words) >= 6:
+        title_patterns.append(" ".join(words[:6]))
+    if len(words) >= 10:
+        title_patterns.append(" ".join(words[:10]))
+
+    for pattern in title_patterns:
+        try:
+            link = page.get_by_role("link", name=re.compile(re.escape(pattern), re.I)).first
+            if link.count() and link.is_visible():
+                link.click()
+                page.wait_for_load_state("domcontentloaded", timeout=30000)
+                time.sleep(2)
+                return True
+        except Exception as e:
+            logger.debug(f"Ovid title link click failed for {pattern}: {e}")
+            continue
+
+    return False
+
+
+def _open_ovid_article_pdf(page, title: str) -> bool:
+    if not title:
+        return False
+
+    try:
+        result_checkbox = page.locator('input[name="R"]').filter(
+            has=page.locator(f'xpath=following::*[contains(normalize-space(.), "{title[:40]}")]')
+        ).first
+        if result_checkbox.count():
+            article_row = result_checkbox.locator(
+                'xpath=ancestor::*[self::tr or self::li or self::div][1]'
+            )
+            pdf_link = article_row.get_by_role("link", name=re.compile("PDF Full Text", re.I)).first
+            if pdf_link.count() and pdf_link.is_visible():
+                pdf_link.click()
+                page.wait_for_load_state("domcontentloaded", timeout=30000)
+                time.sleep(3)
+                return True
+    except Exception as e:
+        logger.debug(f"Ovid row PDF click failed: {e}")
+
+    try:
+        article_link = page.get_by_role("link", name=re.compile(re.escape(title[:40]), re.I)).first
+        if article_link.count() and article_link.is_visible():
+            article_row = article_link.locator('xpath=ancestor::*[self::tr or self::li or self::div][1]')
+            pdf_link = article_row.get_by_role("link", name=re.compile("PDF Full Text", re.I)).first
+            if pdf_link.count() and pdf_link.is_visible():
+                pdf_link.click()
+                page.wait_for_load_state("domcontentloaded", timeout=30000)
+                time.sleep(3)
+                return True
+    except Exception as e:
+        logger.debug(f"Ovid article-title row PDF click failed: {e}")
+
+    return False
+
+
+def _try_ovid_pdf_link(page) -> bytes | None:
+    try:
+        download_buttons = [
+            'button[aria-label*="Download" i]',
+            'cr-icon-button[aria-label*="Download" i]',
+            '#download',
+            '#download-button',
+        ]
+        for selector in download_buttons:
+            button = page.locator(selector).first
+            if button.count() and button.is_visible():
+                with page.expect_download(timeout=15000) as download_info:
+                    button.click()
+                download = download_info.value
+                with tempfile.NamedTemporaryFile(suffix=".pdf", delete=False) as tmp:
+                    tmp_path = Path(tmp.name)
+                download.save_as(str(tmp_path))
+                content = tmp_path.read_bytes()
+                tmp_path.unlink(missing_ok=True)
+                if _is_pdf(content):
+                    return content
+    except Exception as e:
+        logger.debug(f"Ovid viewer download button failed: {e}")
+
+    try:
+        content_type = page.evaluate("document.contentType")
+        if content_type == "application/pdf":
+            pdf_url = page.url
+            cookies = {cookie["name"]: cookie["value"] for cookie in page.context.cookies([pdf_url])}
+            resp = _get(pdf_url, allow_redirects=True, cookies=cookies)
+            if resp.status_code == 200 and _is_pdf(resp.content):
+                return resp.content
+    except Exception as e:
+        logger.debug(f"Ovid current-page PDF fetch failed: {e}")
+
+    try:
+        pdf_link = page.get_by_role("link", name=re.compile("PDF Full Text", re.I)).first
+        href = pdf_link.get_attribute("href")
+        if href:
+            pdf_url = urljoin(page.url, href)
+            cookies = {cookie["name"]: cookie["value"] for cookie in page.context.cookies([pdf_url])}
+            resp = _get(pdf_url, allow_redirects=True, cookies=cookies)
+            if resp.status_code == 200 and _is_pdf(resp.content):
+                return resp.content
+    except Exception as e:
+        logger.debug(f"Ovid PDF href fetch failed: {e}")
+
+    try:
+        pdf_link = page.get_by_role("link", name=re.compile("PDF Full Text", re.I)).first
+        with page.expect_download(timeout=15000) as download_info:
+            pdf_link.click()
+        download = download_info.value
+        with tempfile.NamedTemporaryFile(suffix=".pdf", delete=False) as tmp:
+            tmp_path = Path(tmp.name)
+        download.save_as(str(tmp_path))
+        content = tmp_path.read_bytes()
+        tmp_path.unlink(missing_ok=True)
+        if _is_pdf(content):
+            return content
+    except Exception as e:
+        logger.debug(f"Ovid PDF click download failed: {e}")
+    return None
+
+
+def _try_circulation_via_primo(article: dict) -> bytes | None:
+    try:
+        from playwright.sync_api import sync_playwright
+    except ImportError:
+        logger.debug("playwright not installed, skipping Circulation Ovid flow")
+        return None
+
+    primo_user = os.getenv("PRIMO_USER", "")
+    primo_pass = os.getenv("PRIMO_PASS", "")
+    if not primo_user or not primo_pass:
+        logger.debug("Primo credentials not set for Circulation Ovid flow")
+        return None
+
+    user_data = tempfile.mkdtemp(prefix="pw_circulation_")
+    try:
+        with sync_playwright() as p:
+            context = p.chromium.launch_persistent_context(
+                user_data,
+                headless=False,
+                channel="chrome",
+                accept_downloads=True,
+                args=["--disable-blink-features=AutomationControlled"],
+            )
+            page = context.pages[0] if context.pages else context.new_page()
+            page.goto(PRIMO_CIRCULATION_URL, timeout=60000)
+            page.wait_for_load_state("domcontentloaded", timeout=30000)
+
+            target_page = _click_ovid_link(page)
+            time.sleep(2)
+
+            if _fill_sso_credentials(target_page):
+                try:
+                    target_page.wait_for_load_state("domcontentloaded", timeout=30000)
+                    time.sleep(3)
+                except Exception:
+                    pass
+
+            if "primo.exlibrisgroup.com" in target_page.url and not _primo_login(target_page):
+                logger.debug("Circulation flow: Primo login failed")
+                context.close()
+                return None
+
+            if not _search_ovid_article(target_page, article):
+                logger.debug("Circulation flow: article not found in Ovid")
+                context.close()
+                return None
+
+            content = _try_ovid_pdf_link(target_page)
+            context.close()
+            return content
+    except Exception as e:
+        logger.debug(f"Circulation Primo/Ovid flow failed: {e}")
+        return None
+    finally:
+        shutil.rmtree(user_data, ignore_errors=True)
 
 
 def _resolve_pii(doi: str) -> str | None:
@@ -598,13 +1058,9 @@ def _try_unpaywall(doi: str) -> bytes | None:
 def download_pdf(article: dict, out_dir: Path = PDF_DIR) -> Path | None:
     """
     Download PDF for one article. Returns path if successful, None otherwise.
-    Strategy: 1) Direct PDF URL  2) DOI redirect  3) nodriver  4) Elsevier API  5) Unpaywall OA
-    nodriver uses real Chrome (visible) to bypass Cloudflare on ScienceDirect/JACC.
+    Strategy: JACC uses Elsevier API first; other journals use the existing direct/redirect flow.
     """
     doi = article.get("doi", "")
-    if not doi:
-        _log_failure(article, "No DOI")
-        return None
 
     out_dir.mkdir(parents=True, exist_ok=True)
     dest = out_dir / _pdf_filename(article)
@@ -615,8 +1071,44 @@ def download_pdf(article: dict, out_dir: Path = PDF_DIR) -> Path | None:
 
     journal = article.get("journal", "")
     is_eurointervention = _is_eurointervention_journal(journal)
+    is_jacc = _is_jacc_article(article)
+    is_circulation = _is_circulation_article(article)
+    if not doi and not is_circulation:
+        _log_failure(article, "No DOI")
+        return None
     is_elsevier = doi.startswith("10.1016/")
     content = None
+
+    if is_circulation:
+        print("  [1] Primo/Ovid (Circulation)...")
+        content = _try_circulation_via_primo(article)
+        if content:
+            dest.write_bytes(content)
+            print(f"  [OK] {dest.name} ({len(content)//1024} KB)")
+            return dest
+        _log_failure(article, "Circulation PDF not found via Primo/Ovid")
+        print(f"  [FAIL] {doi or article.get('title', '')} (Circulation Primo/Ovid)")
+        return None
+
+    if is_jacc:
+        print("  [1] Elsevier API (JACC)...")
+        content = _try_elsevier_api(doi)
+
+        if not content:
+            print("  [2] DOI redirect...")
+            content = _try_doi_redirect(doi)
+
+        if not content:
+            content = _try_unpaywall(doi)
+
+        if content:
+            dest.write_bytes(content)
+            print(f"  [OK] {dest.name} ({len(content)//1024} KB)")
+            return dest
+
+        _log_failure(article, "JACC PDF not found via Elsevier API")
+        print(f"  [FAIL] {doi} (JACC Elsevier API)")
+        return None
 
     print(f"  [1] Direct PDF URL ({journal[:30]})...")
     content = _try_direct(doi, journal)
@@ -660,9 +1152,9 @@ def _log_failure(article: dict, reason: str):
 def download_articles(articles: list[dict], out_dir: Path = PDF_DIR) -> dict[str, Path | None]:
     """Download PDFs for multiple articles. Returns {pmid: path_or_None}.
 
-    Elsevier articles (DOI 10.1016/*) that fail direct/DOI-redirect download
-    are batched into a single nodriver Chrome session to avoid Cloudflare
-    rate-limiting from opening multiple browser instances.
+    JACC articles use Elsevier API directly. Other Elsevier articles that fail
+    direct/DOI-redirect download are batched into a single nodriver Chrome
+    session to avoid Cloudflare rate-limiting.
     """
     out_dir.mkdir(parents=True, exist_ok=True)
     results = {}
@@ -685,7 +1177,45 @@ def download_articles(articles: list[dict], out_dir: Path = PDF_DIR) -> dict[str
 
         journal = article.get("journal", "")
         is_eurointervention = _is_eurointervention_journal(journal)
+        is_jacc = _is_jacc_article(article)
+        is_circulation = _is_circulation_article(article)
         content = None
+
+        if is_circulation:
+            print("  [1] Primo/Ovid (Circulation)...")
+            content = _try_circulation_via_primo(article)
+            if content:
+                dest.write_bytes(content)
+                print(f"  [OK] {dest.name} ({len(content)//1024} KB)")
+                results[pmid] = dest
+            else:
+                _log_failure(article, "Circulation PDF not found via Primo/Ovid")
+                print(f"  [FAIL] {doi or title} (Circulation Primo/Ovid)")
+                results[pmid] = None
+            time.sleep(1)
+            continue
+
+        if is_jacc:
+            print("  [1] Elsevier API (JACC)...")
+            content = _try_elsevier_api(doi)
+
+            if not content:
+                print("  [2] DOI redirect...")
+                content = _try_doi_redirect(doi)
+
+            if not content:
+                content = _try_unpaywall(doi)
+
+            if content:
+                dest.write_bytes(content)
+                print(f"  [OK] {dest.name} ({len(content)//1024} KB)")
+                results[pmid] = dest
+            else:
+                _log_failure(article, "JACC PDF not found via Elsevier API")
+                print(f"  [FAIL] {doi} (JACC Elsevier API)")
+                results[pmid] = None
+            time.sleep(1)
+            continue
 
         print(f"  [1] Direct PDF URL ({journal[:30]})...")
         content = _try_direct(doi, journal)
