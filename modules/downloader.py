@@ -703,8 +703,19 @@ def download_articles(articles: list[dict], out_dir: Path = PDF_DIR) -> dict[str
             print(f"  [FAIL] {doi} (EuroIntervention subscription wall)")
             results[pmid] = None
         elif doi.startswith("10.1016/"):
-            print(f"  [pending] queued for nodriver batch (Elsevier)")
-            elsevier_pending.append(article)
+            if ELSEVIER_API_KEY:
+                print(f"  [3] Elsevier API...")
+                content = _try_elsevier_api(doi)
+            if not content:
+                print(f"  [4] Unpaywall...")
+                content = _try_unpaywall(doi)
+            if content:
+                dest.write_bytes(content)
+                print(f"  [OK] {dest.name} ({len(content)//1024} KB)")
+                results[pmid] = dest
+            else:
+                print(f"  [pending] queued for nodriver batch (Elsevier, last resort)")
+                elsevier_pending.append(article)
         elif doi.startswith("10.1093/"):
             print(f"  [pending] queued for Playwright batch (OUP)")
             oup_pending.append(article)
@@ -770,19 +781,9 @@ def download_articles(articles: list[dict], out_dir: Path = PDF_DIR) -> dict[str
                 print(f"  [OK] {dest.name} ({len(content)//1024} KB)")
                 results[pmid] = dest
             else:
-                # Last resort: Elsevier API / Unpaywall
-                if ELSEVIER_API_KEY and doi.startswith("10.1016/"):
-                    content = _try_elsevier_api(doi)
-                if not content:
-                    content = _try_unpaywall(doi)
-                if content:
-                    dest.write_bytes(content)
-                    print(f"  [OK] {dest.name} ({len(content)//1024} KB)")
-                    results[pmid] = dest
-                else:
-                    _log_failure(article, "PDF not found via all methods")
-                    print(f"  [FAIL] {doi}")
-                    results[pmid] = None
+                _log_failure(article, "PDF not found via all methods")
+                print(f"  [FAIL] {doi}")
+                results[pmid] = None
 
     return results
 
