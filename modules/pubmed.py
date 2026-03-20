@@ -14,6 +14,7 @@ JOURNAL_QUERIES = {
     "JACC": '"J Am Coll Cardiol"[Journal]',
     "EHJ": '"Eur Heart J"[Journal]',
     "EuroIntervention": '"EuroIntervention"[Journal]',
+    "Circulation": '"Circulation"[Journal]',
 }
 
 
@@ -94,12 +95,15 @@ def _parse_single(node: ET.Element) -> dict:
         if last:
             authors.append(f"{last} {fore}".strip())
 
-    # Publication year
+    # Publication year, volume, issue, pages
     year = (
         article.findtext(".//Journal/JournalIssue/PubDate/Year")
         or article.findtext(".//Journal/JournalIssue/PubDate/MedlineDate", "")[:4]
         or ""
     )
+    volume = article.findtext(".//Journal/JournalIssue/Volume", "")
+    issue = article.findtext(".//Journal/JournalIssue/Issue", "")
+    pages = article.findtext(".//Pagination/MedlinePgn", "")
 
     return {
         "pmid": pmid,
@@ -109,6 +113,9 @@ def _parse_single(node: ET.Element) -> dict:
         "journal": journal,
         "authors": authors,
         "year": year,
+        "volume": volume,
+        "issue": issue,
+        "pages": pages,
     }
 
 

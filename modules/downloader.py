@@ -107,6 +107,10 @@ def _direct_pdf_urls(doi: str, journal: str) -> list[str]:
         return [
             f"https://www.jacc.org/doi/pdf/{doi}",
         ]
+    if "circulation" in j:
+        return [
+            f"https://www.ahajournals.org/doi/pdf/{doi}",
+        ]
     if "eurointervention" in j:
         return [
             f"https://eurointervention.pcronline.com/doi/{doi}/pdf",
@@ -355,37 +359,187 @@ def _find_search_input(page):
     return None
 
 
-def _search_ovid_advanced_title(page, title: str) -> bool:
-    if not title:
-        return False
+def _switch_to_ovid_advanced(page) -> bool:
+    """Switch the Ovid search panel from Keyword to Advanced mode.
+    Returns True if Advanced fields are now visible."""
+    for selector in [
+        'label[for="advance"]',
+        'label:has(#advance)',
+        '.wk-segmented-control-item:has(#advance)',
+    ]:
+        try:
+            el = page.locator(selector).first
+            if el.count() and el.is_visible():
+                print(f"    [debug] Clicking Advanced via: {selector}")
+                el.click()
+                time.sleep(2)
+                return True
+        except Exception:
+            continue
 
-    title_input = page.locator("#jb-search-title-textbox").first
-    submit_button = page.locator('input[name="submit:Journal Browse Perform Search|1"]').first
-    all_issues_radio = page.locator('input[name="search_area"][value="ai"]').first
+    # Fallback: click visible "Advanced" text
+    try:
+        adv_text = page.get_by_text("Advanced", exact=True).first
+        if adv_text.count() and adv_text.is_visible():
+            print(f"    [debug] Clicking 'Advanced' text...")
+            adv_text.click()
+            time.sleep(2)
+            return True
+    except Exception:
+        pass
 
-    if not title_input.count() or not title_input.is_visible():
-        return False
+    print(f"    [debug] Could not find Advanced tab to click")
+    return False
+
+
+def _find_ovid_field(page, field_name: str):
+    """Find an input field in the Ovid Advanced search panel by label text."""
+    # Try common ID patterns
+    field_lower = field_name.lower().replace(".", "").strip()
+    for sel in [
+        f"#jb-search-{field_lower}-textbox",
+        f'input[name*="{field_lower}" i]',
+        f'input[id*="{field_lower}" i]',
+    ]:
+        try:
+            candidate = page.locator(sel).first
+            if candidate.count() and candidate.is_visible():
+                return candidate
+        except Exception:
+            continue
+
+    # Find by label text -> next input
+    try:
+        label = page.get_by_text(field_name, exact=True).first
+        if label.count() and label.is_visible():
+            sibling_input = label.locator("xpath=following::input[1]")
+            if sibling_input.count() and sibling_input.is_visible():
+                return sibling_input
+    except Exception:
+        pass
+
+    return None
+
+
+def _submit_ovid_search(page):
+    """Click Search/submit button on Ovid search panel."""
+    for sel in [
+        'input[name="submit:Journal Browse Perform Search|1"]',
+        'input[value="Search"]',
+    ]:
+        try:
+            btn = page.locator(sel).first
+            if btn.count() and btn.is_visible():
+                print(f"    [debug] Clicking submit: {sel}")
+                btn.click()
+                page.wait_for_load_state("domcontentloaded", timeout=30000)
+                time.sleep(3)
+                return
+        except Exception:
+            continue
 
     try:
-        advanced_radio = page.locator("#advance").first
-        if advanced_radio.count() and advanced_radio.is_visible():
-            advanced_radio.check(force=True)
-            time.sleep(1)
-        if all_issues_radio.count() and all_issues_radio.is_visible():
-            all_issues_radio.check(force=True)
-        title_input.click()
-        title_input.fill("")
-        title_input.fill(title)
-        if submit_button.count() and submit_button.is_visible():
-            submit_button.click()
-        else:
-            title_input.press("Enter")
-        page.wait_for_load_state("domcontentloaded", timeout=30000)
-        time.sleep(3)
-        return True
-    except Exception as e:
-        logger.debug(f"Ovid advanced title search failed for {title}: {e}")
+        search_btn = page.get_by_role("button", name="Search").first
+        if search_btn.count() and search_btn.is_visible():
+            print(f"    [debug] Clicking Search button")
+            search_btn.click()
+            page.wait_for_load_state("domcontentloaded", timeout=30000)
+            time.sleep(3)
+            return
+    except Exception:
+        pass
+
+    print(f"    [debug] No submit button found, pressing Enter")
+    page.keyboard.press("Enter")
+    page.wait_for_load_state("domcontentloaded", timeout=30000)
+    time.sleep(3)
+
+
+def _search_ovid_advanced(page, article: dict) -> bool:
+    """Search Ovid Advanced using article metadata (volume/issue/page/year).
+    Falls back to title search if those fields aren't available."""
+
+    if not _switch_to_ovid_advanced(page):
         return False
+
+    volume = article.get("volume", "")
+    issue = article.get("issue", "")
+    pages = article.get("pages", "")
+    year = article.get("year", "")
+    title = article.get("title", "").strip()
+
+    # Extract first page number from range like "795-797" or "e936-e970"
+    first_page = pages.split("-")[0].strip() if pages else ""
+
+    print(f"    [debug] Advanced fields: vol={volume} issue={issue} page={first_page} year={year}")
+
+    try:
+        # Select "All Issues" to search across all volumes
+        all_issues_radio = page.locator('input[name="search_area"][value="ai"]').first
+        if all_issues_radio.count() and all_issues_radio.is_visible():
+            all_issues_radio.click(force=True)
+            print(f"    [debug] Selected 'All Issues'")
+
+        # Strategy 1: Search by volume + page (most precise)
+        if volume and first_page:
+            vol_input = _find_ovid_field(page, "Vol.")
+            page_input = _find_ovid_field(page, "Page")
+            if vol_input and page_input:
+                print(f"    [debug] Filling Vol={volume}, Page={first_page}")
+                vol_input.fill(volume)
+                page_input.fill(first_page)
+
+                # Also fill issue and year if available
+                if issue:
+                    issue_input = _find_ovid_field(page, "Issue")
+                    if issue_input:
+                        issue_input.fill(issue)
+                if year:
+                    year_input = _find_ovid_field(page, "Year")
+                    if year_input:
+                        year_input.fill(year)
+
+                _submit_ovid_search(page)
+                print(f"    [debug] Search done, URL: {page.url[:120]}")
+                return True
+
+        # Strategy 2: Search by title (shorter queries)
+        title_input = _find_ovid_field(page, "Title")
+        if title_input and title:
+            # Use first few words to avoid mismatch
+            words = title.split()
+            short_title = " ".join(words[:6]) if len(words) > 6 else title
+            print(f"    [debug] Filling Title='{short_title[:50]}'")
+            title_input.fill(short_title)
+
+            if year:
+                year_input = _find_ovid_field(page, "Year")
+                if year_input:
+                    year_input.fill(year)
+
+            _submit_ovid_search(page)
+            print(f"    [debug] Search done, URL: {page.url[:120]}")
+            return True
+
+        # Dump what's visible for debugging
+        print(f"    [debug] Could not find Vol/Page or Title fields")
+        try:
+            inputs = page.locator("input:visible").all()
+            for inp in inputs[:15]:
+                attrs = {k: inp.get_attribute(k) for k in ["id", "name", "type", "placeholder", "class"] if inp.get_attribute(k)}
+                print(f"    [debug]   visible input: {attrs}")
+        except Exception:
+            pass
+        return False
+
+    except Exception as e:
+        print(f"    [debug] Advanced search exception: {e}")
+        return False
+
+
+def _search_ovid_advanced_title(page, title: str) -> bool:
+    """Legacy wrapper — search by title only."""
+    return _search_ovid_advanced(page, {"title": title})
 
 
 def _search_ovid_article(page, article: dict) -> bool:
@@ -411,12 +565,499 @@ def _search_ovid_article(page, article: dict) -> bool:
     return False
 
 
+def _click_ovid_fulltext_and_get_pdf(page, title: str) -> bytes | None:
+    """
+    From Ovid search results or issue listing page, find the article
+    and download its PDF. Priorities:
+      1. Find "PDF Full Text" link on the page (directly available in search results)
+      2. Find "Ovid Full Text" → navigate to article page → get PDF there
+    """
+    title_words = title.split()
+
+    # ── Strategy 1: Find "PDF Full Text" directly on this page ────────
+    # After Advanced search, the results page shows "PDF Full Text" inline
+    pdf_ft = None
+    try:
+        pdf_ft_links = page.get_by_text("PDF Full Text", exact=True)
+        count = pdf_ft_links.count()
+        print(f"    [debug] 'PDF Full Text' text elements on page: {count}")
+        if count == 1:
+            pdf_ft = pdf_ft_links.first
+        elif count > 1:
+            # Multiple results — ONLY use the one near our article title
+            for n in [min(len(title_words), 10), 6, 3]:
+                partial = " ".join(title_words[:n])
+                try:
+                    title_el = page.get_by_text(re.compile(re.escape(partial), re.I)).first
+                    if title_el.count() and title_el.is_visible():
+                        container = title_el.locator("xpath=ancestor::*[position() <= 5]")
+                        nearby_pdf = container.get_by_text("PDF Full Text", exact=True).first
+                        if nearby_pdf.count() and nearby_pdf.is_visible():
+                            pdf_ft = nearby_pdf
+                            print(f"    [debug] Matched 'PDF Full Text' near title: '{partial[:40]}'")
+                            break
+                except Exception:
+                    continue
+            if not pdf_ft:
+                print(f"    [debug] {count} 'PDF Full Text' links but none matched our title — skipping")
+    except Exception as e:
+        print(f"    [debug] PDF Full Text search exception: {e}")
+
+    if pdf_ft:
+        try:
+            if pdf_ft.count() and pdf_ft.is_visible():
+                # Check if it's a link with href
+                tag = pdf_ft.evaluate("el => el.tagName")
+                href = pdf_ft.get_attribute("href") if tag.upper() == "A" else None
+
+                # If not a link, try to find the parent <a>
+                if not href:
+                    try:
+                        parent_a = pdf_ft.locator("xpath=ancestor::a[1]")
+                        if parent_a.count():
+                            href = parent_a.get_attribute("href")
+                            pdf_ft = parent_a  # use the link element instead
+                    except Exception:
+                        pass
+
+                print(f"    [debug] Found 'PDF Full Text' (tag={tag}, href={href[:80] if href else 'None'})")
+                return _click_pdf_fulltext_link(page, pdf_ft)
+        except Exception as e:
+            print(f"    [debug] PDF Full Text click exception: {e}")
+
+    # ── Strategy 2: Find article title → click "Ovid Full Text" → article page ──
+    for n in [len(title_words), 10, 6, 3]:
+        if n > len(title_words):
+            continue
+        partial = " ".join(title_words[:n])
+        try:
+            title_link = page.get_by_role(
+                "link", name=re.compile(re.escape(partial), re.I)
+            ).first
+            if not title_link.count() or not title_link.is_visible():
+                continue
+            print(f"    [debug] Found title link for: '{partial[:50]}'")
+
+            # Click "Ovid Full Text" in the same row
+            row = title_link.locator(
+                'xpath=ancestor::*[self::tr or self::div[contains(@class,"row")'
+                ' or contains(@class,"result")]'
+                " or self::li][1]"
+            )
+            ovid_ft = row.get_by_role(
+                "link", name=re.compile("Ovid Full Text", re.I)
+            ).first
+            if ovid_ft.count() and ovid_ft.is_visible():
+                href = ovid_ft.get_attribute("href")
+                print(f"    [debug] Clicking 'Ovid Full Text', href: {href[:80] if href else 'None'}")
+                if href:
+                    page.goto(urljoin(page.url, href), timeout=30000)
+                else:
+                    ovid_ft.click()
+                page.wait_for_load_state("domcontentloaded", timeout=30000)
+                time.sleep(5)
+                return _try_ovid_pdf_link(page)
+        except Exception as e:
+            print(f"    [debug] Row search exception: {e}")
+            continue
+
+    print(f"    [debug] No PDF Full Text or Ovid Full Text found")
+    return None
+
+
+def _click_pdf_fulltext_link(page, pdf_link) -> bytes | None:
+    """Click a PDF link, handling popup/new-tab/frameset/download cases."""
+    context = page.context
+    href = None
+    try:
+        href = pdf_link.get_attribute("href")
+    except Exception:
+        pass
+
+    # Navigate to the PDF link URL (Ovid uses framesets, not direct PDF)
+    if href:
+        pdf_url = urljoin(page.url, href)
+        print(f"    [debug] Navigating to PDF link: {pdf_url[:120]}")
+        page.goto(pdf_url, timeout=60000)
+        page.wait_for_load_state("domcontentloaded", timeout=30000)
+        time.sleep(5)
+
+        # Check if we got a frameset with embedded PDF
+        content = _extract_pdf_from_frameset(page)
+        if content:
+            return content
+
+        # Check if page itself is PDF
+        content = _extract_pdf_from_page(page)
+        if content:
+            return content
+
+    # Try clicking instead (for non-href or JS-driven links)
+    try:
+        with context.expect_page(timeout=10000) as popup_info:
+            pdf_link.click()
+        popup = popup_info.value
+        popup.wait_for_load_state("domcontentloaded", timeout=30000)
+        time.sleep(5)
+        content = _extract_pdf_from_frameset(popup)
+        if not content:
+            content = _extract_pdf_from_page(popup)
+        if content:
+            try:
+                popup.close()
+            except Exception:
+                pass
+            return content
+    except Exception:
+        pass
+
+    # Try expect_download
+    try:
+        with page.expect_download(timeout=15000) as download_info:
+            pdf_link.click()
+        download = download_info.value
+        with tempfile.NamedTemporaryFile(suffix=".pdf", delete=False) as tmp:
+            tmp_path = Path(tmp.name)
+        download.save_as(str(tmp_path))
+        content = tmp_path.read_bytes()
+        tmp_path.unlink(missing_ok=True)
+        if _is_pdf(content):
+            return content
+    except Exception:
+        pass
+
+    return None
+
+
+def _extract_pdf_from_frameset(page) -> bytes | None:
+    """Extract PDF bytes from an Ovid frameset page (PDF embedded in iframe)."""
+    frames = page.frames
+    print(f"    [debug] Page has {len(frames)} frame(s)")
+
+    for frame in frames:
+        frame_url = frame.url
+        if not frame_url or frame_url == "about:blank":
+            continue
+        print(f"    [debug]   frame: {frame_url[:120]}")
+
+        # Check if frame content is PDF
+        try:
+            ct = frame.evaluate("document.contentType")
+            if ct == "application/pdf":
+                print(f"    [debug]   -> frame is PDF! Downloading...")
+                cookies = {
+                    c["name"]: c["value"]
+                    for c in page.context.cookies([frame_url])
+                }
+                resp = _get(frame_url, allow_redirects=True, cookies=cookies)
+                if resp.status_code == 200 and _is_pdf(resp.content):
+                    print(f"    [debug]   -> got PDF via cookies ({len(resp.content)} bytes)")
+                    return resp.content
+
+                # Try XHR inside the frame
+                import base64
+                pdf_b64 = frame.evaluate("""
+                    (() => {
+                        const xhr = new XMLHttpRequest();
+                        xhr.open('GET', window.location.href, false);
+                        xhr.overrideMimeType('text/plain; charset=x-user-defined');
+                        xhr.send(null);
+                        if (xhr.status === 200) {
+                            let binary = '';
+                            const text = xhr.responseText;
+                            for (let i = 0; i < text.length; i++) {
+                                binary += String.fromCharCode(text.charCodeAt(i) & 0xff);
+                            }
+                            return btoa(binary);
+                        }
+                        return null;
+                    })()
+                """)
+                if pdf_b64 and isinstance(pdf_b64, str):
+                    content = base64.b64decode(pdf_b64)
+                    if _is_pdf(content):
+                        print(f"    [debug]   -> got PDF via XHR ({len(content)} bytes)")
+                        return content
+        except Exception as e:
+            logger.debug(f"Frame PDF check failed: {e}")
+
+    # Also check for embed/object/iframe with PDF src
+    for sel in ['embed[type="application/pdf"]', 'embed[src*=".pdf"]',
+                'iframe[src*="pdf"]', 'object[data*="pdf"]']:
+        try:
+            el = page.locator(sel).first
+            if el.count():
+                src = el.get_attribute("src") or el.get_attribute("data")
+                if src:
+                    pdf_url = urljoin(page.url, src)
+                    print(f"    [debug] Found embedded PDF element: {pdf_url[:120]}")
+                    cookies = {
+                        c["name"]: c["value"]
+                        for c in page.context.cookies([pdf_url])
+                    }
+                    resp = _get(pdf_url, allow_redirects=True, cookies=cookies)
+                    if resp.status_code == 200 and _is_pdf(resp.content):
+                        return resp.content
+        except Exception:
+            continue
+
+    # Try the Chrome PDF viewer download button inside any frame
+    for frame in frames:
+        try:
+            for btn_sel in [
+                'button[aria-label*="Download" i]',
+                'cr-icon-button[aria-label*="Download" i]',
+                '#download', '#download-button',
+            ]:
+                button = frame.locator(btn_sel).first
+                if button.count() and button.is_visible():
+                    print(f"    [debug] Found download button in frame: {btn_sel}")
+                    with page.expect_download(timeout=15000) as dl_info:
+                        button.click()
+                    download = dl_info.value
+                    with tempfile.NamedTemporaryFile(suffix=".pdf", delete=False) as tmp:
+                        tmp_path = Path(tmp.name)
+                    download.save_as(str(tmp_path))
+                    content = tmp_path.read_bytes()
+                    tmp_path.unlink(missing_ok=True)
+                    if _is_pdf(content):
+                        return content
+        except Exception:
+            continue
+
+    return None
+
+
+def _extract_pdf_from_page(page) -> bytes | None:
+    """Extract PDF bytes from a page that is displaying a PDF."""
+    # Check if the page content is directly a PDF
+    try:
+        ct = page.evaluate("document.contentType")
+        if ct == "application/pdf":
+            pdf_url = page.url
+            cookies = {
+                c["name"]: c["value"] for c in page.context.cookies([pdf_url])
+            }
+            resp = _get(pdf_url, allow_redirects=True, cookies=cookies)
+            if resp.status_code == 200 and _is_pdf(resp.content):
+                return resp.content
+    except Exception:
+        pass
+
+    # Try XHR fetch on same-origin PDF
+    try:
+        pdf_b64 = page.evaluate(
+            """
+            (() => {
+                const xhr = new XMLHttpRequest();
+                xhr.open('GET', window.location.href, false);
+                xhr.overrideMimeType('text/plain; charset=x-user-defined');
+                xhr.send(null);
+                if (xhr.status === 200) {
+                    let binary = '';
+                    const text = xhr.responseText;
+                    for (let i = 0; i < text.length; i++) {
+                        binary += String.fromCharCode(text.charCodeAt(i) & 0xff);
+                    }
+                    return btoa(binary);
+                }
+                return null;
+            })()
+            """
+        )
+        if pdf_b64 and isinstance(pdf_b64, str):
+            import base64
+            content = base64.b64decode(pdf_b64)
+            if _is_pdf(content):
+                return content
+    except Exception:
+        pass
+
+    # Try Chrome PDF viewer download button
+    try:
+        for selector in [
+            'button[aria-label*="Download" i]',
+            'cr-icon-button[aria-label*="Download" i]',
+            "#download",
+            "#download-button",
+        ]:
+            button = page.locator(selector).first
+            if button.count() and button.is_visible():
+                with page.expect_download(timeout=15000) as download_info:
+                    button.click()
+                download = download_info.value
+                with tempfile.NamedTemporaryFile(suffix=".pdf", delete=False) as tmp:
+                    tmp_path = Path(tmp.name)
+                download.save_as(str(tmp_path))
+                content = tmp_path.read_bytes()
+                tmp_path.unlink(missing_ok=True)
+                if _is_pdf(content):
+                    return content
+    except Exception:
+        pass
+
+    return None
+
+
+def _ovid_download_article_pdf(page, article: dict, browse_url: str) -> bytes | None:
+    """
+    From the Ovid journal browse page, search for the article using
+    Advanced search (vol/issue/page), navigate to it, and download the PDF.
+    Navigates back to browse_url when done.
+    """
+    title = article.get("title", "").strip()
+    if not title:
+        return None
+
+    volume = article.get("volume", "")
+    issue = article.get("issue", "")
+    pages = article.get("pages", "")
+    year = article.get("year", "")
+    print(f"    [debug] Article: vol={volume} issue={issue} pages={pages} year={year}")
+
+    # Always use Advanced search to find the exact article first
+    _navigate_back(page, browse_url)
+    if _search_ovid_advanced(page, article):
+        # After search, try to find and download the PDF
+        content = _click_ovid_fulltext_and_get_pdf(page, title)
+        if content:
+            print(f"    [debug] Got PDF after search! Size: {len(content)}")
+            _navigate_back(page, browse_url)
+            return content
+        print(f"    [debug] Could not get PDF from search results")
+    else:
+        print(f"    [debug] Advanced search failed")
+
+    _navigate_back(page, browse_url)
+    return None
+
+
+def _navigate_back(page, url: str):
+    """Navigate back to the given URL."""
+    try:
+        if url and url != page.url:
+            page.goto(url, timeout=30000)
+            page.wait_for_load_state("domcontentloaded", timeout=15000)
+            time.sleep(2)
+    except Exception as e:
+        logger.debug(f"Navigate back failed: {e}")
+
+
+def playwright_circulation_batch_download(
+    articles: list[dict], out_dir: Path = PDF_DIR
+) -> dict[str, bytes]:
+    """
+    Download multiple Circulation PDFs using a SINGLE Playwright browser session
+    via NCKU Primo -> Ovid.
+    Returns {doi: pdf_bytes} for successful downloads.
+    """
+    try:
+        from playwright.sync_api import sync_playwright
+    except ImportError:
+        logger.debug("playwright not installed, skipping Circulation batch")
+        return {}
+
+    primo_user = os.getenv("PRIMO_USER", "")
+    primo_pass = os.getenv("PRIMO_PASS", "")
+    if not primo_user or not primo_pass:
+        logger.debug("Primo credentials not set for Circulation batch")
+        return {}
+
+    # Filter articles that still need downloading
+    to_download = []
+    for article in articles:
+        dest = out_dir / _pdf_filename(article)
+        if dest.exists() and dest.stat().st_size > 10_000:
+            continue
+        to_download.append(article)
+
+    if not to_download:
+        return {}
+
+    user_data = tempfile.mkdtemp(prefix="pw_circulation_batch_")
+    results: dict[str, bytes] = {}
+    try:
+        with sync_playwright() as p:
+            context = p.chromium.launch_persistent_context(
+                user_data,
+                headless=False,
+                channel="chrome",
+                accept_downloads=True,
+                args=["--disable-blink-features=AutomationControlled"],
+            )
+            page = context.pages[0] if context.pages else context.new_page()
+
+            # Step 1: Navigate to Primo Circulation page
+            print(f"    [debug] Navigating to Primo: {PRIMO_CIRCULATION_URL[:80]}...")
+            page.goto(PRIMO_CIRCULATION_URL, timeout=60000)
+            page.wait_for_load_state("domcontentloaded", timeout=30000)
+            print(f"    [debug] Primo loaded, URL: {page.url[:100]}")
+
+            # Step 2: Click Ovid link (may open new tab)
+            print(f"    [debug] Clicking Ovid link...")
+            ovid_page = _click_ovid_link(page)
+            time.sleep(2)
+            print(f"    [debug] After Ovid click, URL: {ovid_page.url[:100]}")
+
+            # Step 3: Handle SSO login if needed
+            sso_filled = _fill_sso_credentials(ovid_page)
+            print(f"    [debug] SSO credentials filled: {sso_filled}")
+            if sso_filled:
+                try:
+                    ovid_page.wait_for_load_state("domcontentloaded", timeout=30000)
+                    time.sleep(3)
+                except Exception:
+                    pass
+                print(f"    [debug] After SSO login, URL: {ovid_page.url[:100]}")
+
+            # Dismiss any post-login notices
+            _dismiss_post_login_notice(ovid_page)
+
+            # Check if still on Primo (login redirect failed)
+            if "primo.exlibrisgroup.com" in ovid_page.url:
+                print(f"    [debug] Still on Primo, attempting login...")
+                if not _primo_login(ovid_page):
+                    print(f"    [debug] Primo login FAILED")
+                    context.close()
+                    return {}
+
+            # Wait for Ovid page to fully load
+            time.sleep(3)
+            browse_url = ovid_page.url
+            print(f"    [debug] Ovid browse page: {browse_url[:120]}")
+
+            # Step 4: Download each article
+            for i, article in enumerate(to_download):
+                title = article.get("title", "")[:60]
+                doi = article.get("doi", "")
+                print(f"  Ovid [{i+1}/{len(to_download)}]: {title}...")
+
+                content = _ovid_download_article_pdf(ovid_page, article, browse_url)
+                if content:
+                    results[doi] = content
+                    print(f"    -> PDF downloaded ({len(content)//1024} KB)")
+                else:
+                    print(f"    -> PDF not found")
+
+                time.sleep(2)
+
+            context.close()
+    except Exception as e:
+        logger.debug(f"Circulation batch failed: {e}")
+        import traceback
+        logger.debug(traceback.format_exc())
+    finally:
+        shutil.rmtree(user_data, ignore_errors=True)
+
+    return results
+
+
 def _ovid_title_queries(title: str) -> list[str]:
     if not title:
         return []
     queries = [title]
-    normalized = re.sub(r"[^A-Za-z0-9\\s-]", " ", title)
-    normalized = re.sub(r"\\s+", " ", normalized).strip()
+    normalized = re.sub(r"[^A-Za-z0-9\s-]", " ", title)
+    normalized = re.sub(r"\s+", " ", normalized).strip()
     if normalized and normalized != title:
         queries.append(normalized)
     words = normalized.split() if normalized else title.split()
@@ -495,66 +1136,93 @@ def _open_ovid_article_pdf(page, title: str) -> bool:
 
 
 def _try_ovid_pdf_link(page) -> bytes | None:
-    try:
-        download_buttons = [
-            'button[aria-label*="Download" i]',
-            'cr-icon-button[aria-label*="Download" i]',
-            '#download',
-            '#download-button',
-        ]
-        for selector in download_buttons:
-            button = page.locator(selector).first
-            if button.count() and button.is_visible():
-                with page.expect_download(timeout=15000) as download_info:
-                    button.click()
-                download = download_info.value
-                with tempfile.NamedTemporaryFile(suffix=".pdf", delete=False) as tmp:
-                    tmp_path = Path(tmp.name)
-                download.save_as(str(tmp_path))
-                content = tmp_path.read_bytes()
-                tmp_path.unlink(missing_ok=True)
-                if _is_pdf(content):
-                    return content
-    except Exception as e:
-        logger.debug(f"Ovid viewer download button failed: {e}")
+    """Try to get PDF bytes from the current Ovid page (article full-text page)."""
+    print(f"    [debug] _try_ovid_pdf_link called, URL: {page.url[:120]}")
 
+    # 1. Check if current page is already a PDF
     try:
         content_type = page.evaluate("document.contentType")
+        print(f"    [debug] Page content-type: {content_type}")
         if content_type == "application/pdf":
-            pdf_url = page.url
-            cookies = {cookie["name"]: cookie["value"] for cookie in page.context.cookies([pdf_url])}
-            resp = _get(pdf_url, allow_redirects=True, cookies=cookies)
-            if resp.status_code == 200 and _is_pdf(resp.content):
-                return resp.content
+            content = _extract_pdf_from_page(page)
+            if content:
+                return content
     except Exception as e:
-        logger.debug(f"Ovid current-page PDF fetch failed: {e}")
+        logger.debug(f"Ovid current-page PDF check failed: {e}")
 
+    # 2. Scroll down to make sure bottom toolbar is visible, then wait
     try:
-        pdf_link = page.get_by_role("link", name=re.compile("PDF Full Text", re.I)).first
-        href = pdf_link.get_attribute("href")
-        if href:
-            pdf_url = urljoin(page.url, href)
-            cookies = {cookie["name"]: cookie["value"] for cookie in page.context.cookies([pdf_url])}
-            resp = _get(pdf_url, allow_redirects=True, cookies=cookies)
-            if resp.status_code == 200 and _is_pdf(resp.content):
-                return resp.content
-    except Exception as e:
-        logger.debug(f"Ovid PDF href fetch failed: {e}")
+        page.evaluate("window.scrollTo(0, document.body.scrollHeight)")
+        time.sleep(1)
+        page.evaluate("window.scrollTo(0, 0)")
+        time.sleep(1)
+    except Exception:
+        pass
 
+    # 3. Find "PDF Full Text" link — try multiple strategies
+    pdf_link = None
+
+    # 3a. By role + name
     try:
-        pdf_link = page.get_by_role("link", name=re.compile("PDF Full Text", re.I)).first
-        with page.expect_download(timeout=15000) as download_info:
-            pdf_link.click()
-        download = download_info.value
-        with tempfile.NamedTemporaryFile(suffix=".pdf", delete=False) as tmp:
-            tmp_path = Path(tmp.name)
-        download.save_as(str(tmp_path))
-        content = tmp_path.read_bytes()
-        tmp_path.unlink(missing_ok=True)
-        if _is_pdf(content):
-            return content
-    except Exception as e:
-        logger.debug(f"Ovid PDF click download failed: {e}")
+        candidate = page.get_by_role("link", name=re.compile("PDF Full Text", re.I)).first
+        if candidate.count() and candidate.is_visible():
+            pdf_link = candidate
+            print(f"    [debug] Found 'PDF Full Text' via role+name")
+    except Exception:
+        pass
+
+    # 3b. By text content (handles non-<a> or differently accessible elements)
+    if not pdf_link:
+        try:
+            candidate = page.get_by_text("PDF Full Text", exact=False).first
+            if candidate.count() and candidate.is_visible():
+                tag = candidate.evaluate("el => el.tagName")
+                print(f"    [debug] Found 'PDF Full Text' via text, tag={tag}")
+                pdf_link = candidate
+        except Exception:
+            pass
+
+    # 3c. By CSS selectors common on Ovid
+    if not pdf_link:
+        for sel in [
+            'a[href*="pdf" i]',
+            'a:has-text("PDF Full Text")',
+            'a:has-text("PDF")',
+            '.fulltext-pdf a',
+            '#pdf-link',
+        ]:
+            try:
+                candidate = page.locator(sel).first
+                if candidate.count() and candidate.is_visible():
+                    txt = candidate.inner_text()[:40]
+                    print(f"    [debug] Found PDF element via '{sel}': '{txt}'")
+                    pdf_link = candidate
+                    break
+            except Exception:
+                continue
+
+    if not pdf_link:
+        print(f"    [debug] 'PDF Full Text' NOT found on page")
+        # Dump visible links for debugging
+        try:
+            links = page.locator("a:visible").all()
+            for lnk in links[:20]:
+                txt = lnk.inner_text().strip()[:60]
+                href = (lnk.get_attribute("href") or "")[:60]
+                if txt:
+                    print(f"    [debug]   link: '{txt}' -> {href}")
+        except Exception:
+            pass
+        return None
+
+    # 4. Try to get the PDF via the found link
+    href = pdf_link.get_attribute("href") if pdf_link else None
+    print(f"    [debug] PDF link href: {href[:120] if href else 'None'}")
+    content = _click_pdf_fulltext_link(page, pdf_link)
+    if content:
+        return content
+    print(f"    [debug] _click_pdf_fulltext_link returned None")
+
     return None
 
 
@@ -1073,21 +1741,28 @@ def download_pdf(article: dict, out_dir: Path = PDF_DIR) -> Path | None:
     is_eurointervention = _is_eurointervention_journal(journal)
     is_jacc = _is_jacc_article(article)
     is_circulation = _is_circulation_article(article)
-    if not doi and not is_circulation:
+    if not doi:
         _log_failure(article, "No DOI")
         return None
     is_elsevier = doi.startswith("10.1016/")
     content = None
 
     if is_circulation:
-        print("  [1] Primo/Ovid (Circulation)...")
-        content = _try_circulation_via_primo(article)
+        print("  [1] Direct PDF (Circulation)...")
+        content = _try_direct(doi, journal)
         if content:
             dest.write_bytes(content)
             print(f"  [OK] {dest.name} ({len(content)//1024} KB)")
             return dest
-        _log_failure(article, "Circulation PDF not found via Primo/Ovid")
-        print(f"  [FAIL] {doi or article.get('title', '')} (Circulation Primo/Ovid)")
+        print("  [2] Primo/Ovid fallback (Circulation)...")
+        circ_results = playwright_circulation_batch_download([article], out_dir)
+        content = circ_results.get(doi)
+        if content:
+            dest.write_bytes(content)
+            print(f"  [OK] {dest.name} ({len(content)//1024} KB)")
+            return dest
+        _log_failure(article, "Circulation PDF not found")
+        print(f"  [FAIL] {doi or article.get('title', '')} (Circulation)")
         return None
 
     if is_jacc:
@@ -1162,6 +1837,7 @@ def download_articles(articles: list[dict], out_dir: Path = PDF_DIR) -> dict[str
     # ── Pass 1: try non-browser methods for all articles ──────────────
     elsevier_pending: list[dict] = []
     oup_pending: list[dict] = []
+    circulation_pending: list[dict] = []
 
     for i, article in enumerate(articles, 1):
         title = article.get("title", "")[:60]
@@ -1182,17 +1858,16 @@ def download_articles(articles: list[dict], out_dir: Path = PDF_DIR) -> dict[str
         content = None
 
         if is_circulation:
-            print("  [1] Primo/Ovid (Circulation)...")
-            content = _try_circulation_via_primo(article)
+            print(f"  [1] Direct PDF URL (Circulation)...")
+            content = _try_direct(doi, journal)
             if content:
                 dest.write_bytes(content)
                 print(f"  [OK] {dest.name} ({len(content)//1024} KB)")
                 results[pmid] = dest
-            else:
-                _log_failure(article, "Circulation PDF not found via Primo/Ovid")
-                print(f"  [FAIL] {doi or title} (Circulation Primo/Ovid)")
-                results[pmid] = None
-            time.sleep(1)
+                time.sleep(1)
+                continue
+            print(f"  [pending] queued for Playwright batch (Circulation/Ovid fallback)")
+            circulation_pending.append(article)
             continue
 
         if is_jacc:
@@ -1252,7 +1927,30 @@ def download_articles(articles: list[dict], out_dir: Path = PDF_DIR) -> dict[str
 
         time.sleep(1)
 
-    # ── Pass 2a: batch download OUP articles via Playwright ────────────
+    # ── Pass 2: batch download Circulation articles via Playwright/Ovid ─
+    if circulation_pending:
+        print(f"\n{'─'*50}")
+        print(f"  Playwright batch: downloading {len(circulation_pending)} Circulation PDF(s) via Ovid...")
+        print(f"  (opening Chrome → Primo → Ovid, please wait)\n")
+
+        circ_results = playwright_circulation_batch_download(circulation_pending, out_dir)
+
+        for article in circulation_pending:
+            pmid = article.get("pmid", "?")
+            doi = article.get("doi", "")
+            dest = out_dir / _pdf_filename(article)
+            content = circ_results.get(doi)
+
+            if content:
+                dest.write_bytes(content)
+                print(f"  [OK] {dest.name} ({len(content)//1024} KB)")
+                results[pmid] = dest
+            else:
+                _log_failure(article, "Circulation PDF not found via Primo/Ovid")
+                print(f"  [FAIL] {doi or article.get('title', '')} (Circulation Primo/Ovid)")
+                results[pmid] = None
+
+    # ── Pass 3a: batch download OUP articles via Playwright ────────────
     if oup_pending:
         print(f"\n{'─'*50}")
         print(f"  Playwright batch: downloading {len(oup_pending)} OUP PDF(s)...")
@@ -1281,7 +1979,7 @@ def download_articles(articles: list[dict], out_dir: Path = PDF_DIR) -> dict[str
                     print(f"  [FAIL] {doi}")
                     results[pmid] = None
 
-    # ── Pass 2b: batch download Elsevier articles via nodriver ─────────
+    # ── Pass 3b: batch download Elsevier articles via nodriver ─────────
     if elsevier_pending:
         print(f"\n{'─'*50}")
         print(f"  nodriver batch: downloading {len(elsevier_pending)} Elsevier PDF(s)...")

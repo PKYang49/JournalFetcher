@@ -29,7 +29,7 @@ from modules.selector import select_articles
 from modules.downloader import download_articles
 
 # ── 設定 ──────────────────────────────────────────────────────────────────────
-ALL_JOURNALS = ["NEJM", "Lancet", "JAMA", "JACC", "EHJ", "EuroIntervention"]
+ALL_JOURNALS = ["NEJM", "Lancet", "JAMA", "JACC", "EHJ", "EuroIntervention", "Circulation"]
 JOURNAL_NAME_MAP = {journal.lower(): journal for journal in ALL_JOURNALS}
 DEFAULT_COUNT = 20
 OUTPUT_ROOT = Path("output")
