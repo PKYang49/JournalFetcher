@@ -5,10 +5,27 @@ import questionary
 from questionary import Choice
 
 
+JOURNAL_SHORT_NAMES = {
+    "new england journal of medicine": "NEJM",
+    "n engl j med": "NEJM",
+    "lancet": "Lancet",
+    "the lancet": "Lancet",
+    "jama": "JAMA",
+    "journal of the american medical association": "JAMA",
+    "j am coll cardiol": "JACC",
+    "journal of the american college of cardiology": "JACC",
+    "eur heart j": "EHJ",
+    "european heart journal": "EHJ",
+    "eurointervention": "EuroIntervention",
+    "circulation": "Circulation",
+}
+
+
 def _display_journal_name(journal: str) -> str:
     lower = journal.lower()
-    if "eurointervention" in lower:
-        return "EuroIntervention"
+    for key, short in JOURNAL_SHORT_NAMES.items():
+        if key in lower:
+            return short
     return journal
 
 
@@ -29,18 +46,35 @@ def _build_choices(articles: list[dict]) -> list[Choice]:
     return choices
 
 
-def select_for_summary(articles: list[dict]) -> list[dict]:
-    """Checkbox: pick which articles to generate summaries for."""
+def select_for_summary(articles: list[dict]) -> tuple[list[dict], bool]:
+    """Checkbox: pick which articles to generate summaries for.
+
+    Returns (selected_articles, skip_all).
+    skip_all=True means the user chose [不摘要也不下載].
+    """
     if not articles:
         print("沒有文章可供選擇。")
-        return []
+        return [], True
 
     choices = _build_choices(articles)
+    choices.append(Choice(
+        title="── [不摘要也不下載] ──",
+        value=_SENTINEL_SKIP_ALL,
+    ))
+
     selected = questionary.checkbox(
         "請勾選要產生摘要的文章（空白鍵勾選，Enter 確認）：",
         choices=choices,
     ).ask()
-    return selected if selected else []
+
+    if not selected:
+        return [], False
+
+    if _SENTINEL_SKIP_ALL in selected:
+        return [], True
+
+    real = [a for a in selected if not isinstance(a, str)]
+    return real, False
 
 
 def print_summaries(articles: list[dict]) -> None:
@@ -57,8 +91,13 @@ def print_summaries(articles: list[dict]) -> None:
     print("\n" + "─" * 60)
 
 
-def select_for_download(articles: list[dict]) -> list[dict]:
-    """Checkbox: pick which articles to download."""
+_SENTINEL_SKIP_ALL = "__skip_all__"
+_SENTINEL_DOWNLOAD_OTHERS = "__download_others__"
+_SENTINEL_NO_DOWNLOAD = "__no_download__"
+
+
+def select_for_download_simple(articles: list[dict]) -> list[dict]:
+    """Simple checkbox: pick which articles to download (no special options)."""
     if not articles:
         print("沒有文章可供選擇。")
         return []
@@ -69,6 +108,64 @@ def select_for_download(articles: list[dict]) -> list[dict]:
         choices=choices,
     ).ask()
     return selected if selected else []
+
+
+def select_for_download(summarized: list[dict], others: list[dict]) -> list[dict]:
+    """Two-stage download selection.
+
+    First shows summarized articles plus two special options:
+      [下載其他文章]  — opens a second checkbox with non-summarized articles
+      [不下載文章]    — exits with empty list
+
+    Returns the combined list of articles selected for download.
+    """
+    # ── Stage 1: summarized articles ──────────────────────────────────
+    if not summarized and not others:
+        print("沒有文章可供選擇。")
+        return []
+
+    choices = _build_choices(summarized) if summarized else []
+    choices.append(Choice(
+        title="── [下載其他文章] ──",
+        value=_SENTINEL_DOWNLOAD_OTHERS,
+    ))
+    choices.append(Choice(
+        title="── [不下載文章] ──",
+        value=_SENTINEL_NO_DOWNLOAD,
+    ))
+
+    selected = questionary.checkbox(
+        "請勾選要下載的文章（空白鍵勾選，Enter 確認）：",
+        choices=choices,
+    ).ask()
+
+    if not selected:
+        return []
+
+    # Check sentinel values
+    want_others = _SENTINEL_DOWNLOAD_OTHERS in selected
+    want_none = _SENTINEL_NO_DOWNLOAD in selected
+
+    # Remove sentinels, keep real articles
+    to_download = [a for a in selected if not isinstance(a, str)]
+
+    if want_none and not to_download and not want_others:
+        return []
+
+    # ── Stage 2: other (non-summarized) articles ──────────────────────
+    if want_others and others:
+        print("\n請從其他文章中勾選要下載的：\n")
+        other_choices = _build_choices(others)
+        other_selected = questionary.checkbox(
+            "請勾選要下載的文章（空白鍵勾選，Enter 確認）：",
+            choices=other_choices,
+        ).ask()
+        if other_selected:
+            to_download.extend(other_selected)
+    elif want_others and not others:
+        print("\n沒有其他未摘要的文章。")
+
+    return to_download
 
 
 if __name__ == "__main__":

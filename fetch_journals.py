@@ -25,7 +25,7 @@ from pathlib import Path
 import modules.downloader as downloader_module
 from modules.pubmed import fetch_journal_articles
 from modules.summarize import summarize_articles
-from modules.selector import select_for_summary, print_summaries, select_for_download
+from modules.selector import select_for_summary, print_summaries, select_for_download, select_for_download_simple
 from modules.downloader import download_articles
 
 # ── 設定 ──────────────────────────────────────────────────────────────────────
@@ -137,42 +137,59 @@ def main():
     else:
         print("\n【Phase 2a】請選擇要產生摘要的文章...\n")
         try:
-            to_summarize = select_for_summary(all_articles)
+            to_summarize, skip_all = select_for_summary(all_articles)
         except Exception as e:
             print(f"  [ERROR] 選擇介面失敗：{e}")
             logging.error(f"Phase 2a select: {e}", exc_info=True)
-            to_summarize = []
+            to_summarize, skip_all = [], False
 
-        if not to_summarize:
-            print("\n未選擇任何文章，結束。")
+        if skip_all:
+            print("\n結束。")
             return
 
-        print(f"\n已選擇 {len(to_summarize)} 篇，生成繁體中文摘要...\n")
-        try:
-            summarized = summarize_articles(to_summarize)
-        except Exception as e:
-            print(f"  [ERROR] 摘要生成失敗：{e}")
-            logging.error(f"Phase 2a summarize: {e}", exc_info=True)
-            for a in to_summarize:
-                if "summary" not in a:
-                    a["summary"] = a.get("abstract", "")[:150] + "..."
-            summarized = to_summarize
+        summarized = []
+        if to_summarize:
+            print(f"\n已選擇 {len(to_summarize)} 篇，生成繁體中文摘要...\n")
+            try:
+                summarized = summarize_articles(to_summarize)
+            except Exception as e:
+                print(f"  [ERROR] 摘要生成失敗：{e}")
+                logging.error(f"Phase 2a summarize: {e}", exc_info=True)
+                for a in to_summarize:
+                    if "summary" not in a:
+                        a["summary"] = a.get("abstract", "")[:150] + "..."
+                summarized = to_summarize
 
     # ── Phase 2b：顯示完整摘要 ──────────────────────────────────────────────
-    print_summaries(summarized)
+    if summarized:
+        print_summaries(summarized)
 
     # ── Phase 2c：選擇要下載的文章 ──────────────────────────────────────────
     if args.no_download:
         print("\n[--no-download] 略過下載。")
         return
 
-    print("\n【Phase 2c】請選擇要下載的文章...\n")
-    try:
-        selected = select_for_download(all_articles)
-    except Exception as e:
-        print(f"  [ERROR] 選擇介面失敗：{e}")
-        logging.error(f"Phase 2c: {e}", exc_info=True)
-        selected = []
+    # 分出已摘要 vs 未摘要的文章
+    summarized_pmids = {a["pmid"] for a in summarized}
+    others = [a for a in all_articles if a["pmid"] not in summarized_pmids]
+
+    if not summarized:
+        # 沒有摘要文章，直接列全部文章問要下載哪些
+        print("\n【Phase 2c】請選擇要下載的文章...\n")
+        try:
+            selected = select_for_download_simple(all_articles)
+        except Exception as e:
+            print(f"  [ERROR] 選擇介面失敗：{e}")
+            logging.error(f"Phase 2c: {e}", exc_info=True)
+            selected = []
+    else:
+        print("\n【Phase 2c】請選擇要下載的文章...\n")
+        try:
+            selected = select_for_download(summarized, others)
+        except Exception as e:
+            print(f"  [ERROR] 選擇介面失敗：{e}")
+            logging.error(f"Phase 2c: {e}", exc_info=True)
+            selected = []
 
     if not selected:
         print("\n未選擇任何文章，結束。")

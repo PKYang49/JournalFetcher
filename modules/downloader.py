@@ -1624,6 +1624,7 @@ def playwright_oup_batch_download(
                 user_data,
                 headless=False,
                 channel="chrome",
+                accept_downloads=True,
                 args=["--disable-blink-features=AutomationControlled"],
             )
             page = context.pages[0] if context.pages else context.new_page()
@@ -1633,47 +1634,95 @@ def playwright_oup_batch_download(
             page.goto(f"https://doi.org/{first_doi}", timeout=30000)
             page.wait_for_load_state("domcontentloaded", timeout=15000)
             time.sleep(3)
-            logger.debug(f"OUP session established: {page.title()[:60]}")
+            print(f"  OUP session established: {page.title()[:60]}")
 
             for i, (doi, pdf_url) in enumerate(doi_pdf_url.items()):
-                logger.debug(f"OUP batch [{i+1}/{len(doi_pdf_url)}]: {doi}")
+                print(f"  [{i+1}/{len(doi_pdf_url)}] {doi}...")
                 try:
-                    page.goto(pdf_url, timeout=60000, wait_until="commit")
-                    time.sleep(5)
-
-                    ct = page.evaluate("document.contentType")
-                    if ct != "application/pdf":
-                        logger.debug(f"OUP: not PDF (ct={ct}) for {doi}")
+                    # Strategy 1: intercept response directly
+                    content = None
+                    print(f"    [1] API request: {pdf_url[:80]}...")
+                    resp = page.request.get(pdf_url)
+                    body = resp.body()
+                    is_pdf = _is_pdf(body)
+                    print(f"    status={resp.status}, size={len(body)//1024}KB, is_pdf={is_pdf}")
+                    if resp.ok and is_pdf:
+                        content = body
+                        print(f"    [OK] via API request ({len(content)//1024} KB)")
+                        results[doi] = content
+                        time.sleep(1)
                         continue
 
-                    pdf_b64 = page.evaluate("""
-                        (() => {
-                            const xhr = new XMLHttpRequest();
-                            xhr.open('GET', window.location.href, false);
-                            xhr.overrideMimeType('text/plain; charset=x-user-defined');
-                            xhr.send(null);
-                            if (xhr.status === 200) {
-                                let binary = '';
-                                const text = xhr.responseText;
-                                for (let i = 0; i < text.length; i++) {
-                                    binary += String.fromCharCode(text.charCodeAt(i) & 0xff);
-                                }
-                                return btoa(binary);
-                            }
-                            return null;
-                        })()
-                    """)
-                    if pdf_b64 and isinstance(pdf_b64, str):
-                        content = base64.b64decode(pdf_b64)
-                        if _is_pdf(content):
-                            results[doi] = content
-                            logger.debug(f"OUP: got PDF ({len(content)} bytes)")
+                    # Strategy 2: navigate to PDF URL, use download trigger
+                    download_dir = tempfile.mkdtemp(prefix="pw_dl_")
+                    try:
+                        page.goto(pdf_url, timeout=60000, wait_until="commit")
+                        time.sleep(5)
+
+                        # Check if browser shows PDF directly
+                        ct = page.evaluate("document.contentType")
+                        print(f"    [2] Navigate contentType={ct}, url={page.url[:80]}")
+                        if ct == "application/pdf":
+                            pdf_b64 = page.evaluate("""
+                                (() => {
+                                    const xhr = new XMLHttpRequest();
+                                    xhr.open('GET', window.location.href, false);
+                                    xhr.overrideMimeType('text/plain; charset=x-user-defined');
+                                    xhr.send(null);
+                                    if (xhr.status === 200) {
+                                        let binary = '';
+                                        const text = xhr.responseText;
+                                        for (let i = 0; i < text.length; i++) {
+                                            binary += String.fromCharCode(text.charCodeAt(i) & 0xff);
+                                        }
+                                        return btoa(binary);
+                                    }
+                                    return null;
+                                })()
+                            """)
+                            if pdf_b64 and isinstance(pdf_b64, str):
+                                content = base64.b64decode(pdf_b64)
+                                if _is_pdf(content):
+                                    print(f"    [OK] via inline PDF ({len(content)//1024} KB)")
+                                    results[doi] = content
+                                    continue
+
+                        # Strategy 3: navigate to article page, find and click PDF link
+                        article_url = f"https://doi.org/{doi}"
+                        page.goto(article_url, timeout=30000)
+                        page.wait_for_load_state("domcontentloaded", timeout=15000)
+                        time.sleep(3)
+
+                        # Look for PDF download link on the article page
+                        pdf_link = page.locator(
+                            'a[href*="article-pdf"], '
+                            'a.article-pdfLink, '
+                            'a[data-article-url*="pdf"]'
+                        ).first
+                        print(f"    [3] Article page, pdf_link found={pdf_link.count()}")
+                        if pdf_link.count():
+                            href = pdf_link.get_attribute("href")
+                            if href:
+                                if not href.startswith("http"):
+                                    href = f"https://academic.oup.com{href}"
+                                resp2 = page.request.get(href)
+                                if resp2.ok and _is_pdf(resp2.body()):
+                                    content = resp2.body()
+                                    print(f"    [OK] via article page link ({len(content)//1024} KB)")
+                                    results[doi] = content
+                                    continue
+
+                        print(f"    [FAIL] could not retrieve PDF")
+                    finally:
+                        shutil.rmtree(download_dir, ignore_errors=True)
                 except Exception as e:
+                    print(f"    [FAIL] {e}")
                     logger.debug(f"OUP batch failed for {doi}: {e}")
                 time.sleep(2)
 
             context.close()
     except Exception as e:
+        print(f"  [ERROR] Playwright OUP batch failed: {e}")
         logger.debug(f"Playwright OUP batch failed: {e}")
     finally:
         shutil.rmtree(user_data, ignore_errors=True)
