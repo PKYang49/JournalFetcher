@@ -1,5 +1,6 @@
 """Phase 2b: Terminal checkbox UI for article selection."""
 
+import shutil
 import questionary
 from questionary import Choice
 
@@ -11,28 +12,62 @@ def _display_journal_name(journal: str) -> str:
     return journal
 
 
-def select_articles(articles: list[dict]) -> list[dict]:
-    """
-    Show interactive checkbox list; return selected articles.
-    Each article dict should have: title, journal, summary.
-    """
+def _build_choices(articles: list[dict]) -> list[Choice]:
+    """Build checkbox choices with truncated titles that fit terminal width."""
+    term_width = shutil.get_terminal_size().columns
+    max_title_len = term_width - 25  # reserve space for "  ○ XX. [JOURNAL] "
+
+    choices = []
+    for idx, a in enumerate(articles, 1):
+        journal = _display_journal_name(a.get("journal", "Unknown"))
+        title = a.get("title", "(無標題)")
+        tag = f"[{journal}]"
+        avail = max_title_len - len(tag) - 1
+        short_title = title if len(title) <= avail else title[: avail - 1] + "…"
+        label = f"{idx:>2}. {tag} {short_title}"
+        choices.append(Choice(title=label, value=a))
+    return choices
+
+
+def select_for_summary(articles: list[dict]) -> list[dict]:
+    """Checkbox: pick which articles to generate summaries for."""
     if not articles:
         print("沒有文章可供選擇。")
         return []
 
-    choices = []
-    for a in articles:
-        journal = _display_journal_name(a.get("journal", "Unknown"))
-        title = a.get("title", "(無標題)")
-        summary = a.get("summary", "")
-        label = f"[{journal}] {title}" + (f"\n  {summary}" if summary else "")
-        choices.append(Choice(title=label, value=a))
-
+    choices = _build_choices(articles)
     selected = questionary.checkbox(
-        "請勾選要下載並評讀的文章（空白鍵勾選，Enter 確認）：",
+        "請勾選要產生摘要的文章（空白鍵勾選，Enter 確認）：",
         choices=choices,
     ).ask()
+    return selected if selected else []
 
+
+def print_summaries(articles: list[dict]) -> None:
+    """Print full summaries (not truncated)."""
+    print("\n" + "─" * 60)
+    print("摘要：")
+    print("─" * 60)
+    for idx, a in enumerate(articles, 1):
+        journal = _display_journal_name(a.get("journal", "Unknown"))
+        title = a.get("title", "(無標題)")
+        summary = a.get("summary", "（無摘要）")
+        print(f"\n  {idx:>2}. [{journal}] {title}")
+        print(f"      {summary}")
+    print("\n" + "─" * 60)
+
+
+def select_for_download(articles: list[dict]) -> list[dict]:
+    """Checkbox: pick which articles to download."""
+    if not articles:
+        print("沒有文章可供選擇。")
+        return []
+
+    choices = _build_choices(articles)
+    selected = questionary.checkbox(
+        "請勾選要下載的文章（空白鍵勾選，Enter 確認）：",
+        choices=choices,
+    ).ask()
     return selected if selected else []
 
 
