@@ -1745,6 +1745,22 @@ def _resolve_pmcid(doi: str) -> str | None:
     return None
 
 
+def _try_pmc(doi: str) -> bytes | None:
+    """Try downloading PDF from PubMed Central via PMCID."""
+    pmcid = _resolve_pmcid(doi)
+    if not pmcid:
+        return None
+    pdf_url = f"https://www.ncbi.nlm.nih.gov/pmc/articles/{pmcid}/pdf/"
+    try:
+        resp = _get(pdf_url, allow_redirects=True)
+        resp.raise_for_status()
+        if _is_pdf(resp.content):
+            return resp.content
+    except Exception as e:
+        logger.debug(f"PMC PDF download failed for {pmcid}: {e}")
+    return None
+
+
 
 def _try_unpaywall(doi: str) -> bytes | None:
     """Try Unpaywall OA PDF locations."""
@@ -1876,14 +1892,15 @@ def _log_failure(article: dict, reason: str):
 def download_articles(articles: list[dict], out_dir: Path = PDF_DIR) -> dict[str, Path | None]:
     """Download PDFs for multiple articles. Returns {pmid: path_or_None}.
 
-    JACC articles use Elsevier API directly. Other Elsevier articles that fail
-    direct/DOI-redirect download are batched into a single nodriver Chrome
-    session to avoid Cloudflare rate-limiting.
+    Pass 1: non-browser methods (direct URL, DOI redirect, Elsevier API, Unpaywall, PMC)
+    Pass 2: Elsevier nodriver batch
+    Pass 3: Circulation Playwright batch (Primo/Ovid)
+    Pass 4: OUP Playwright batch (EHJ etc.)
     """
     out_dir.mkdir(parents=True, exist_ok=True)
     results = {}
 
-    # ── Pass 1: try non-browser methods for all articles ──────────────
+    # ── Pass 1: non-browser methods ──────────────────────────────────
     elsevier_pending: list[dict] = []
     oup_pending: list[dict] = []
     circulation_pending: list[dict] = []
@@ -1904,78 +1921,79 @@ def download_articles(articles: list[dict], out_dir: Path = PDF_DIR) -> dict[str
         is_eurointervention = _is_eurointervention_journal(journal)
         is_jacc = _is_jacc_article(article)
         is_circulation = _is_circulation_article(article)
+        is_oup = doi.startswith("10.1093/")
+        is_elsevier = doi.startswith("10.1016/")
         content = None
+        step = 1
 
-        if is_circulation:
-            print(f"  [1] Direct PDF URL (Circulation)...")
-            content = _try_direct(doi, journal)
-            if content:
-                dest.write_bytes(content)
-                print(f"  [OK] {dest.name} ({len(content)//1024} KB)")
-                results[pmid] = dest
-                time.sleep(1)
-                continue
-            print(f"  [pending] queued for Playwright batch (Circulation/Ovid fallback)")
-            circulation_pending.append(article)
-            continue
-
-        if is_jacc:
-            print("  [1] Elsevier API (JACC)...")
-            content = _try_elsevier_api(doi)
-
-            if not content:
-                print("  [2] DOI redirect...")
-                content = _try_doi_redirect(doi)
-
-            if not content:
-                content = _try_unpaywall(doi)
-
-            if content:
-                dest.write_bytes(content)
-                print(f"  [OK] {dest.name} ({len(content)//1024} KB)")
-                results[pmid] = dest
-            else:
-                _log_failure(article, "JACC PDF not found via Elsevier API")
-                print(f"  [FAIL] {doi} (JACC Elsevier API)")
-                results[pmid] = None
-            time.sleep(1)
-            continue
-
-        print(f"  [1] Direct PDF URL ({journal[:30]})...")
+        # [1] Direct PDF URL
+        print(f"  [{step}] Direct PDF URL...")
         content = _try_direct(doi, journal)
+        step += 1
 
+        # [2] DOI redirect
         if not content:
-            print(f"  [2] DOI redirect...")
+            print(f"  [{step}] DOI redirect...")
             content = _try_doi_redirect(doi)
+            step += 1
 
+        # [3] Elsevier API (JACC and other Elsevier)
+        if not content and is_elsevier and ELSEVIER_API_KEY:
+            print(f"  [{step}] Elsevier API...")
+            content = _try_elsevier_api(doi)
+            step += 1
+
+        # [4] Unpaywall
+        if not content:
+            print(f"  [{step}] Unpaywall...")
+            content = _try_unpaywall(doi)
+            step += 1
+
+        # [5] PMC
+        if not content:
+            print(f"  [{step}] PMC...")
+            content = _try_pmc(doi)
+            step += 1
+
+        # 成功 → 儲存
         if content:
             dest.write_bytes(content)
             print(f"  [OK] {dest.name} ({len(content)//1024} KB)")
             results[pmid] = dest
-        elif is_eurointervention:
-            _log_failure(article, "EuroIntervention blocked by subscription wall")
-            print(f"  [FAIL] {doi} (EuroIntervention subscription wall)")
-            results[pmid] = None
-        elif doi.startswith("10.1016/"):
-            if ELSEVIER_API_KEY:
-                print(f"  [3] Elsevier API...")
-                content = _try_elsevier_api(doi)
-            if not content:
-                print(f"  [4] Unpaywall...")
-                content = _try_unpaywall(doi)
-            if content:
-                dest.write_bytes(content)
-                print(f"  [OK] {dest.name} ({len(content)//1024} KB)")
-                results[pmid] = dest
-            else:
-                print(f"  [pending] queued for nodriver batch (Elsevier, last resort)")
-                elsevier_pending.append(article)
-        elif doi.startswith("10.1093/"):
+            time.sleep(1)
+            continue
+
+        # 失敗 → 依出版社決定是否排入 Playwright/nodriver batch
+        if is_circulation:
+            print(f"  [pending] queued for Playwright batch (Circulation/Ovid)")
+            circulation_pending.append(article)
+        elif is_oup:
             print(f"  [pending] queued for Playwright batch (OUP)")
             oup_pending.append(article)
+        elif is_elsevier and not is_jacc:
+            print(f"  [pending] queued for nodriver batch (Elsevier)")
+            elsevier_pending.append(article)
         else:
-            # Other publishers: try Unpaywall as last resort
-            content = _try_unpaywall(doi)
+            _log_failure(article, "PDF not found via all methods")
+            print(f"  [FAIL] {doi}")
+            results[pmid] = None
+
+        time.sleep(1)
+
+    # ── Pass 2: Elsevier nodriver batch ──────────────────────────────
+    if elsevier_pending:
+        print(f"\n{'─'*50}")
+        print(f"  nodriver batch: downloading {len(elsevier_pending)} Elsevier PDF(s)...")
+        print(f"  (opening one Chrome window, please wait)\n")
+
+        batch_results = nodriver_batch_download(elsevier_pending, out_dir)
+
+        for article in elsevier_pending:
+            pmid = article.get("pmid", "?")
+            doi = article.get("doi", "")
+            dest = out_dir / _pdf_filename(article)
+            content = batch_results.get(doi)
+
             if content:
                 dest.write_bytes(content)
                 print(f"  [OK] {dest.name} ({len(content)//1024} KB)")
@@ -1985,9 +2003,7 @@ def download_articles(articles: list[dict], out_dir: Path = PDF_DIR) -> dict[str
                 print(f"  [FAIL] {doi}")
                 results[pmid] = None
 
-        time.sleep(1)
-
-    # ── Pass 2: batch download Circulation articles via Playwright/Ovid ─
+    # ── Pass 3: Circulation Playwright batch (Primo/Ovid) ────────────
     if circulation_pending:
         print(f"\n{'─'*50}")
         print(f"  Playwright batch: downloading {len(circulation_pending)} Circulation PDF(s) via Ovid...")
@@ -2010,7 +2026,7 @@ def download_articles(articles: list[dict], out_dir: Path = PDF_DIR) -> dict[str
                 print(f"  [FAIL] {doi or article.get('title', '')} (Circulation Primo/Ovid)")
                 results[pmid] = None
 
-    # ── Pass 3a: batch download OUP articles via Playwright ────────────
+    # ── Pass 4: OUP Playwright batch (EHJ etc.) ─────────────────────
     if oup_pending:
         print(f"\n{'─'*50}")
         print(f"  Playwright batch: downloading {len(oup_pending)} OUP PDF(s)...")
@@ -2023,35 +2039,6 @@ def download_articles(articles: list[dict], out_dir: Path = PDF_DIR) -> dict[str
             doi = article.get("doi", "")
             dest = out_dir / _pdf_filename(article)
             content = oup_results.get(doi)
-
-            if content:
-                dest.write_bytes(content)
-                print(f"  [OK] {dest.name} ({len(content)//1024} KB)")
-                results[pmid] = dest
-            else:
-                content = _try_unpaywall(doi)
-                if content:
-                    dest.write_bytes(content)
-                    print(f"  [OK] {dest.name} ({len(content)//1024} KB)")
-                    results[pmid] = dest
-                else:
-                    _log_failure(article, "PDF not found via all methods")
-                    print(f"  [FAIL] {doi}")
-                    results[pmid] = None
-
-    # ── Pass 3b: batch download Elsevier articles via nodriver ─────────
-    if elsevier_pending:
-        print(f"\n{'─'*50}")
-        print(f"  nodriver batch: downloading {len(elsevier_pending)} Elsevier PDF(s)...")
-        print(f"  (opening one Chrome window, please wait)\n")
-
-        batch_results = nodriver_batch_download(elsevier_pending, out_dir)
-
-        for article in elsevier_pending:
-            pmid = article.get("pmid", "?")
-            doi = article.get("doi", "")
-            dest = out_dir / _pdf_filename(article)
-            content = batch_results.get(doi)
 
             if content:
                 dest.write_bytes(content)
