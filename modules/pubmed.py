@@ -18,10 +18,10 @@ JOURNAL_QUERIES = {
 }
 
 
-def search_pmids(journal: str, year: str = "2026", count: int = 20) -> list[str]:
+def search_pmids(journal: str, days: int = 30, count: int = 20) -> list[str]:
     """Search PubMed and return list of PMIDs for the journal."""
     query = JOURNAL_QUERIES[journal]
-    term = f'{query} AND "{year}"[Date - Publication] AND hasabstract[text]'
+    term = f'{query} AND ("last {days} days"[Date - Entrez] OR ahead of print[sb]) AND hasabstract[text]'
     params = {
         "db": "pubmed",
         "term": term,
@@ -120,11 +120,11 @@ def _parse_single(node: ET.Element) -> dict:
 
 
 def fetch_journal_articles(
-    journal: str, year: str = "2026", count: int = 20
+    journal: str, days: int = 30, count: int = 20
 ) -> list[dict]:
     """High-level: search + fetch for one journal. Only returns articles with abstracts."""
     # Fetch more than needed to account for post-filter
-    pmids = search_pmids(journal, year=year, count=count * 2)
+    pmids = search_pmids(journal, days=days, count=count * 2)
     articles = fetch_articles(pmids)
     articles = [a for a in articles if a.get("abstract", "").strip()]
     return articles[:count]

@@ -73,9 +73,10 @@ def parse_args():
         help="跳過摘要生成，直接列標題讓你勾選下載",
     )
     parser.add_argument(
-        "--year",
-        default="2026",
-        help="搜尋年份（預設 2026）",
+        "--days",
+        type=int,
+        default=30,
+        help="搜尋最近幾天內的文章（預設 30）",
     )
     return parser.parse_args()
 
@@ -115,7 +116,7 @@ def main():
     for journal in args.journals:
         print(f"  → {journal}...")
         try:
-            articles = fetch_journal_articles(journal, year=args.year, count=args.count)
+            articles = fetch_journal_articles(journal, days=args.days, count=args.count)
             print(f"     取得 {len(articles)} 篇")
             all_articles.extend(articles)
         except Exception as e:

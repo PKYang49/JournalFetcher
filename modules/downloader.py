@@ -8,7 +8,7 @@ import shutil
 import tempfile
 import warnings
 from pathlib import Path
-from urllib.parse import urljoin, urlparse
+from urllib.parse import urljoin, urlparse, quote as urlquote
 
 # Suppress noisy asyncio warning when nodriver closes Chrome
 warnings.filterwarnings("ignore", message=".*Loop.*that handles pid.*is closed.*")
@@ -25,7 +25,7 @@ except ImportError:
     IMPERSONATE = None
     print("[warn] curl_cffi not found, falling back to requests (may fail on Cloudflare sites)")
 
-UNPAYWALL_EMAIL = "researcher@example.com"
+UNPAYWALL_EMAIL = os.getenv("UNPAYWALL_EMAIL", "researcher@example.com")
 ELSEVIER_API_KEY = os.getenv("ELSEVIER_API_KEY", "")
 TIMEOUT = 30
 PDF_DIR = Path("output/pdfs")
@@ -1762,29 +1762,66 @@ def _try_pmc(doi: str) -> bytes | None:
 
 
 
-def _try_unpaywall(doi: str) -> bytes | None:
-    """Try Unpaywall OA PDF locations."""
-    try:
-        resp = _get(f"https://api.unpaywall.org/v2/{doi}?email={UNPAYWALL_EMAIL}")
-        resp.raise_for_status()
-        data = resp.json()
-        locations = data.get("oa_locations") or []
-        best = data.get("best_oa_location")
-        if best:
-            locations = [best] + [l for l in locations if l != best]
-        for loc in locations:
-            pdf_url = loc.get("url_for_pdf")
-            if not pdf_url:
+def _try_unpaywall(doi: str, max_retries: int = 3) -> bytes | None:
+    """Try Unpaywall OA PDF locations with retry and rate-limit handling.
+
+    Queries the Unpaywall API with proper URL encoding, retries on transient
+    errors (429 / 5xx / timeout), then iterates all oa_locations (not just
+    best) to maximise the chance of obtaining a valid PDF.
+    """
+    encoded_doi = urlquote(doi, safe="")
+    url = f"https://api.unpaywall.org/v2/{encoded_doi}?email={UNPAYWALL_EMAIL}"
+
+    # --- Step 1: query Unpaywall API with retry ---
+    data = None
+    for attempt in range(max_retries):
+        try:
+            resp = _get(url)
+
+            if resp.status_code == 404:
+                logger.debug(f"Unpaywall: DOI not found — {doi}")
+                return None
+            if resp.status_code == 422:
+                logger.debug(f"Unpaywall: unprocessable DOI — {doi}")
+                return None
+            if resp.status_code == 429:
+                wait = (attempt + 1) * 2
+                logger.debug(f"Unpaywall: rate-limited for {doi}, wait {wait}s")
+                time.sleep(wait)
                 continue
-            try:
-                pdf_resp = _get(pdf_url, allow_redirects=True)
-                pdf_resp.raise_for_status()
-                if _is_pdf(pdf_resp.content):
-                    return pdf_resp.content
-            except Exception:
+
+            resp.raise_for_status()
+            data = resp.json()
+            break
+
+        except Exception as e:
+            if attempt < max_retries - 1:
+                time.sleep((attempt + 1) * 1)
                 continue
-    except Exception as e:
-        logger.debug(f"Unpaywall failed for {doi}: {e}")
+            logger.debug(f"Unpaywall API failed for {doi}: {e}")
+            return None
+
+    if data is None:
+        return None
+
+    # --- Step 2: try all OA locations, best first ---
+    locations = data.get("oa_locations") or []
+    best = data.get("best_oa_location")
+    if best:
+        locations = [best] + [l for l in locations if l != best]
+
+    for loc in locations:
+        pdf_url = loc.get("url_for_pdf")
+        if not pdf_url:
+            continue
+        try:
+            pdf_resp = _get(pdf_url, allow_redirects=True)
+            pdf_resp.raise_for_status()
+            if _is_pdf(pdf_resp.content):
+                return pdf_resp.content
+        except Exception:
+            continue
+
     return None
 
 
