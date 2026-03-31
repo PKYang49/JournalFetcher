@@ -17,6 +17,8 @@ from pathlib import Path
 from modules.downloader import (
     _get,
     _is_pdf,
+    _is_incomplete_elsevier_pdf,
+    _is_usable_pdf_file,
     _try_direct,
     _try_doi_redirect,
     _try_elsevier_api,
@@ -78,7 +80,7 @@ def download_one(doi: str, out_dir: Path) -> Path | None:
     fname = f"{meta['first_author']}_{meta['year']}_{doi.replace('/', '_')}.pdf"
     dest = out_dir / fname
 
-    if dest.exists() and dest.stat().st_size > 10_000:
+    if dest.exists() and _is_usable_pdf_file(dest, doi):
         print(f"  [skip] {dest.name}")
         return dest
 
@@ -102,6 +104,9 @@ def download_one(doi: str, out_dir: Path) -> Path | None:
     if not content and is_elsevier and ELSEVIER_API_KEY:
         print(f"  [{step}] Elsevier API...")
         content = _try_elsevier_api(doi)
+        if content and _is_incomplete_elsevier_pdf(content, doi):
+            print(f"  [incomplete] Elsevier API returned preview only, trying nodriver...")
+            content = None
         step += 1
 
     # [4] ScienceDirect browser session for Elsevier journals
