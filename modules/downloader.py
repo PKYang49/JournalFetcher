@@ -7,6 +7,7 @@ import logging
 import shutil
 import tempfile
 import warnings
+from functools import lru_cache
 from pathlib import Path
 from urllib.parse import urljoin, urlparse, quote as urlquote
 
@@ -57,6 +58,99 @@ def _get(url: str, **kwargs) -> requests.Response:
 
 def _is_pdf(content: bytes) -> bool:
     return content[:4] == b"%PDF"
+
+
+def _pdf_page_count(content: bytes) -> int | None:
+    """Best-effort PDF page count without extra dependencies."""
+    if not _is_pdf(content):
+        return None
+
+    count_match = re.search(rb"/Count\s+(\d+)", content)
+    if count_match:
+        try:
+            return int(count_match.group(1))
+        except ValueError:
+            pass
+
+    pages = len(re.findall(rb"/Type\s*/Page\b", content))
+    return pages or None
+
+
+@lru_cache(maxsize=512)
+def _crossref_expected_page_span(doi: str) -> int | None:
+    """Fetch expected page span from Crossref when available."""
+    try:
+        resp = _get(f"https://api.crossref.org/works/{doi}")
+        resp.raise_for_status()
+        page = resp.json()["message"].get("page", "")
+        match = re.search(r"(\d+)\s*[-\u2013]\s*(\d+)", page)
+        if not match:
+            return None
+        start, end = int(match.group(1)), int(match.group(2))
+        if end >= start:
+            return end - start + 1
+    except Exception as e:
+        logger.debug(f"Crossref page span lookup failed for {doi}: {e}")
+    return None
+
+
+def _is_incomplete_elsevier_pdf(content: bytes, doi: str) -> bool:
+    """
+    Detect Elsevier preview/stub PDFs.
+    Some JACC downloads return a valid PDF that only contains the first page.
+    """
+    page_count = _pdf_page_count(content)
+    if page_count != 1:
+        return False
+
+    expected_pages = _crossref_expected_page_span(doi)
+    if expected_pages and expected_pages > page_count:
+        logger.debug(
+            f"Elsevier API returned preview PDF for {doi}: "
+            f"pdf_pages={page_count}, expected_pages~={expected_pages}"
+        )
+        return True
+
+    if doi.lower().startswith("10.1016/j.jacc.") and len(content) < 250_000:
+        logger.debug(
+            f"Elsevier PDF looks like a JACC preview for {doi}: "
+            f"pdf_pages={page_count}, size={len(content)}"
+        )
+        return True
+
+    return False
+
+
+def _is_usable_pdf_file(path: Path, doi: str) -> bool:
+    """Validate an existing on-disk PDF before treating it as a successful download."""
+    try:
+        content = path.read_bytes()
+    except Exception as e:
+        logger.debug(f"Cannot read PDF for validation ({path}): {e}")
+        return False
+
+    if not _is_pdf(content):
+        return False
+    if doi.startswith("10.1016/") and _is_incomplete_elsevier_pdf(content, doi):
+        return False
+    return True
+
+
+def _find_existing_sciencedirect_pdf(doi: str, out_dir: Path) -> Path | None:
+    """Find a previously downloaded ScienceDirect PDF by PII in the output folder."""
+    pii = _resolve_pii(doi)
+    if not pii:
+        return None
+
+    candidates = sorted(
+        [p for p in out_dir.glob(f"*{pii}*.pdf") if p.is_file()],
+        key=lambda p: p.stat().st_mtime,
+        reverse=True,
+    )
+    for path in candidates:
+        if _is_usable_pdf_file(path, doi):
+            return path
+    return None
 
 
 def _pdf_filename(article: dict) -> str:
@@ -1487,7 +1581,7 @@ def _try_nodriver_url(url: str) -> bytes | None:
         return None
 
     async def _download():
-        browser = await uc.start(headless=False)
+        browser = await uc.start(headless=False, no_sandbox=True)
         try:
             return await _nodriver_download_url(browser, url)
         finally:
@@ -1520,7 +1614,7 @@ def _try_nodriver(doi: str) -> bytes | None:
     logger.debug(f"Resolved PII: {pii}")
 
     async def _download():
-        browser = await uc.start(headless=False)
+        browser = await uc.start(headless=False, no_sandbox=True)
         try:
             return await _nodriver_download_one(browser, pii)
         finally:
@@ -1554,7 +1648,7 @@ def nodriver_batch_download(articles: list[dict], out_dir: Path = PDF_DIR) -> di
         if not doi or not doi.startswith("10.1016/"):
             continue
         dest = out_dir / _pdf_filename(article)
-        if dest.exists() and dest.stat().st_size > 10_000:
+        if dest.exists() and _is_usable_pdf_file(dest, doi):
             continue
         pii = _resolve_pii(doi)
         if pii:
@@ -1566,8 +1660,15 @@ def nodriver_batch_download(articles: list[dict], out_dir: Path = PDF_DIR) -> di
     async def _batch():
         results = {}
         failed_dois = []
-        browser = await uc.start(headless=False)
+        browser = await uc.start(headless=False, no_sandbox=True)
         try:
+            # Warmup: visit ScienceDirect homepage to clear Cloudflare challenge
+            warmup_tab = await browser.get("https://www.sciencedirect.com")
+            await warmup_tab.sleep(3)
+            await _nodriver_wait_for_cloudflare(warmup_tab)
+            await warmup_tab.sleep(2)
+            logger.debug("nodriver batch: warmup done, Cloudflare cookie should be set")
+
             for i, (doi, pii) in enumerate(doi_pii.items()):
                 logger.debug(f"nodriver batch [{i+1}/{len(doi_pii)}]: {doi} (PII={pii})")
                 content = await _nodriver_download_one(browser, pii)
@@ -1620,6 +1721,8 @@ def _try_elsevier_api(doi: str) -> bytes | None:
         )
         pdf_resp = _get(pdf_url, allow_redirects=True)
         if pdf_resp.status_code == 200 and _is_pdf(pdf_resp.content):
+            if _is_incomplete_elsevier_pdf(pdf_resp.content, doi):
+                return None
             return pdf_resp.content
         logger.debug(f"Elsevier API returned {pdf_resp.status_code} for {pii}")
     except Exception as e:
@@ -1948,17 +2051,25 @@ def download_pdf(article: dict, out_dir: Path = PDF_DIR) -> Path | None:
     out_dir.mkdir(parents=True, exist_ok=True)
     dest = out_dir / _pdf_filename(article)
 
+    if not doi:
+        _log_failure(article, "No DOI")
+        return None
+
     if dest.exists() and dest.stat().st_size > 10_000:
-        print(f"  [skip] Already downloaded: {dest.name}")
-        return dest
+        if _is_usable_pdf_file(dest, doi):
+            print(f"  [skip] Already downloaded: {dest.name}")
+            return dest
+        print(f"  [redo] Existing PDF is incomplete: {dest.name}")
+
+    recovered = _find_existing_sciencedirect_pdf(doi, out_dir)
+    if recovered and recovered != dest:
+        print(f"  [skip] Already downloaded: {recovered.name}")
+        return recovered
 
     journal = article.get("journal", "")
     is_eurointervention = _is_eurointervention_journal(journal)
     is_jacc = _is_jacc_article(article)
     is_circulation = _is_circulation_article(article)
-    if not doi:
-        _log_failure(article, "No DOI")
-        return None
     is_elsevier = doi.startswith("10.1016/")
     content = None
 
@@ -1985,7 +2096,11 @@ def download_pdf(article: dict, out_dir: Path = PDF_DIR) -> Path | None:
         content = _try_elsevier_api(doi)
 
         if not content:
-            print("  [2] DOI redirect...")
+            print("  [2] ScienceDirect browser session...")
+            content = _try_nodriver(doi)
+
+        if not content:
+            print("  [3] DOI redirect...")
             content = _try_doi_redirect(doi)
 
         if not content:
@@ -1996,8 +2111,13 @@ def download_pdf(article: dict, out_dir: Path = PDF_DIR) -> Path | None:
             print(f"  [OK] {dest.name} ({len(content)//1024} KB)")
             return dest
 
-        _log_failure(article, "JACC PDF not found via Elsevier API")
-        print(f"  [FAIL] {doi} (JACC Elsevier API)")
+        recovered = _find_existing_sciencedirect_pdf(doi, out_dir)
+        if recovered and recovered != dest:
+            print(f"  [skip] Already downloaded: {recovered.name}")
+            return recovered
+
+        _log_failure(article, "JACC PDF not found via Elsevier API/ScienceDirect")
+        print(f"  [FAIL] {doi} (JACC Elsevier API/ScienceDirect)")
         return None
 
     print(f"  [1] Direct PDF URL ({journal[:30]})...")
@@ -2038,6 +2158,11 @@ def download_pdf(article: dict, out_dir: Path = PDF_DIR) -> Path | None:
         print(f"  [OK] {dest.name} ({len(content)//1024} KB)")
         return dest
 
+    recovered = _find_existing_sciencedirect_pdf(doi, out_dir)
+    if recovered and recovered != dest:
+        print(f"  [skip] Already downloaded: {recovered.name}")
+        return recovered
+
     _log_failure(article, "PDF not found via all methods")
     print(f"  [FAIL] {doi}")
     return None
@@ -2074,8 +2199,16 @@ def download_articles(articles: list[dict], out_dir: Path = PDF_DIR) -> dict[str
 
         dest = out_dir / _pdf_filename(article)
         if dest.exists() and dest.stat().st_size > 10_000:
-            print(f"  [skip] Already downloaded: {dest.name}")
-            results[pmid] = dest
+            if _is_usable_pdf_file(dest, doi):
+                print(f"  [skip] Already downloaded: {dest.name}")
+                results[pmid] = dest
+                continue
+            print(f"  [redo] Existing PDF is incomplete: {dest.name}")
+
+        recovered = _find_existing_sciencedirect_pdf(doi, out_dir)
+        if recovered and recovered != dest:
+            print(f"  [skip] Already downloaded: {recovered.name}")
+            results[pmid] = recovered
             continue
 
         journal = article.get("journal", "")
@@ -2131,7 +2264,7 @@ def download_articles(articles: list[dict], out_dir: Path = PDF_DIR) -> dict[str
         elif is_oup:
             print(f"  [pending] queued for Playwright batch (OUP)")
             oup_pending.append(article)
-        elif is_elsevier and not is_jacc:
+        elif is_elsevier:
             print(f"  [pending] queued for nodriver batch (Elsevier)")
             elsevier_pending.append(article)
         elif _direct_pdf_urls(doi, journal):
@@ -2228,7 +2361,7 @@ def download_articles(articles: list[dict], out_dir: Path = PDF_DIR) -> dict[str
 
         if uc:
             async def _cf_batch():
-                browser = await uc.start(headless=False)
+                browser = await uc.start(headless=False, no_sandbox=True)
                 try:
                     batch = {}
                     for article in cloudflare_pending:

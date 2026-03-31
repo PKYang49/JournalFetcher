@@ -20,6 +20,7 @@ from modules.downloader import (
     _try_direct,
     _try_doi_redirect,
     _try_elsevier_api,
+    _try_nodriver,
     _try_unpaywall,
     _try_pmc,
     _try_nodriver_url,
@@ -103,19 +104,25 @@ def download_one(doi: str, out_dir: Path) -> Path | None:
         content = _try_elsevier_api(doi)
         step += 1
 
-    # [4] Unpaywall
+    # [4] ScienceDirect browser session for Elsevier journals
+    if not content and is_elsevier:
+        print(f"  [{step}] ScienceDirect browser session...")
+        content = _try_nodriver(doi)
+        step += 1
+
+    # [5] Unpaywall
     if not content:
         print(f"  [{step}] Unpaywall...")
         content = _try_unpaywall(doi)
         step += 1
 
-    # [5] PMC
+    # [6] PMC
     if not content:
         print(f"  [{step}] PMC...")
         content = _try_pmc(doi)
         step += 1
 
-    # [6] nodriver (Cloudflare-protected sites: NEJM, JAMA, etc.)
+    # [7] nodriver (Cloudflare-protected sites: NEJM, JAMA, etc.)
     if not content:
         urls = _direct_pdf_urls(doi, journal)
         if urls:

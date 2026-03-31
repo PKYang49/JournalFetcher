@@ -216,10 +216,15 @@ def main():
         print(f"詳細記錄：{downloader_module.FAILURES_LOG}")
 
     # ── 評讀提示 ──────────────────────────────────────────────────────────────
-    _print_appraise_hint(selected, run_dir, downloaded=True)
+    _print_appraise_hint(selected, run_dir, downloaded=True, results=results)
 
 
-def _print_appraise_hint(articles: list[dict], pdf_dir: Path, downloaded: bool = True):
+def _print_appraise_hint(
+    articles: list[dict],
+    pdf_dir: Path,
+    downloaded: bool = True,
+    results: dict[str, Path | None] | None = None,
+):
     """Print instructions for manual appraisal via Claude.ai."""
     print(f"\n{'='*60}")
     print("【評讀提示】")
@@ -235,8 +240,12 @@ def _print_appraise_hint(articles: list[dict], pdf_dir: Path, downloaded: bool =
         year = a.get("year", "")
         fname = f"{pmid}_{first_author.split()[0] if first_author else 'unknown'}_{year}.pdf"
         fpath = pdf_dir / fname
+        resolved_path = results.get(pmid) if results else None
         if not downloaded:
             status = "－ (未下載)"
+        elif resolved_path is not None:
+            status = "✓"
+            fname = resolved_path.name
         elif fpath.exists():
             status = "✓"
         else:
