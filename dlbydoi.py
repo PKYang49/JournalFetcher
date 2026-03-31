@@ -22,6 +22,8 @@ from modules.downloader import (
     _try_elsevier_api,
     _try_unpaywall,
     _try_pmc,
+    _try_nodriver_url,
+    _direct_pdf_urls,
     ELSEVIER_API_KEY,
     UNPAYWALL_EMAIL,
 )
@@ -113,6 +115,17 @@ def download_one(doi: str, out_dir: Path) -> Path | None:
         content = _try_pmc(doi)
         step += 1
 
+    # [6] nodriver (Cloudflare-protected sites: NEJM, JAMA, etc.)
+    if not content:
+        urls = _direct_pdf_urls(doi, journal)
+        if urls:
+            print(f"  [{step}] nodriver (browser)...")
+            for url in urls:
+                content = _try_nodriver_url(url)
+                if content:
+                    break
+            step += 1
+
     if content:
         dest.write_bytes(content)
         print(f"  [OK] {dest.name} ({len(content)//1024} KB)")
@@ -136,6 +149,8 @@ def read_dois(source: str) -> list[str]:
             continue
         # 支援 https://doi.org/10.xxxx 格式
         line = re.sub(r"^https?://doi\.org/", "", line)
+        if not re.match(r"^10\.\d{4,}/\S+", line):
+            continue
         dois.append(line)
     return dois
 

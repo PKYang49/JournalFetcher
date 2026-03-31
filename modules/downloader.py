@@ -1387,6 +1387,119 @@ async def _nodriver_download_one(browser, pii: str) -> bytes | None:
 
 
 
+async def _nodriver_download_url(browser, url: str) -> bytes | None:
+    """Download PDF from a direct URL using an existing nodriver browser instance."""
+    import base64
+
+    try:
+        tab = await browser.get(url)
+        await tab.sleep(5)
+
+        if not await _nodriver_wait_for_cloudflare(tab):
+            logger.debug("nodriver: Cloudflare challenge did not resolve")
+            return None
+
+        await tab.sleep(3)
+        ct = await tab.evaluate("document.contentType")
+        if ct == "application/pdf":
+            # Page is already PDF, extract bytes
+            pdf_b64 = await tab.evaluate('''
+                (() => {
+                    const xhr = new XMLHttpRequest();
+                    xhr.open('GET', window.location.href, false);
+                    xhr.overrideMimeType('text/plain; charset=x-user-defined');
+                    xhr.send(null);
+                    if (xhr.status === 200) {
+                        let binary = '';
+                        const text = xhr.responseText;
+                        for (let i = 0; i < text.length; i++) {
+                            binary += String.fromCharCode(text.charCodeAt(i) & 0xff);
+                        }
+                        return btoa(binary);
+                    }
+                    return null;
+                })()
+            ''')
+            if pdf_b64 and isinstance(pdf_b64, str):
+                content = base64.b64decode(pdf_b64)
+                if _is_pdf(content):
+                    logger.debug(f"nodriver: got PDF from {url} ({len(content)} bytes)")
+                    return content
+
+        # Not PDF directly — try finding a PDF link on the page
+        pdf_url = await tab.evaluate('''
+            (() => {
+                const meta = document.querySelector('meta[name="citation_pdf_url"]');
+                if (meta) return meta.content;
+                const links = document.querySelectorAll('a[href*="pdf"]');
+                for (const a of links) {
+                    if (a.href.includes('.pdf') || a.href.includes('/pdf/'))
+                        return a.href;
+                }
+                return null;
+            })()
+        ''')
+        if pdf_url:
+            logger.debug(f"nodriver: found PDF link {pdf_url}")
+            tab2 = await browser.get(pdf_url)
+            await tab2.sleep(5)
+            if not await _nodriver_wait_for_cloudflare(tab2):
+                return None
+            await tab2.sleep(3)
+            pdf_b64 = await tab2.evaluate('''
+                (() => {
+                    const xhr = new XMLHttpRequest();
+                    xhr.open('GET', window.location.href, false);
+                    xhr.overrideMimeType('text/plain; charset=x-user-defined');
+                    xhr.send(null);
+                    if (xhr.status === 200) {
+                        let binary = '';
+                        const text = xhr.responseText;
+                        for (let i = 0; i < text.length; i++) {
+                            binary += String.fromCharCode(text.charCodeAt(i) & 0xff);
+                        }
+                        return btoa(binary);
+                    }
+                    return null;
+                })()
+            ''')
+            if pdf_b64 and isinstance(pdf_b64, str):
+                content = base64.b64decode(pdf_b64)
+                if _is_pdf(content):
+                    logger.debug(f"nodriver: got PDF ({len(content)} bytes)")
+                    return content
+
+        logger.debug(f"nodriver: failed to get PDF from {url}")
+        return None
+    except Exception as e:
+        logger.debug(f"nodriver download_url failed for {url}: {e}")
+        return None
+
+
+def _try_nodriver_url(url: str) -> bytes | None:
+    """Use nodriver to download PDF from a URL (for Cloudflare-protected sites like NEJM)."""
+    import asyncio
+
+    try:
+        import nodriver as uc
+    except ImportError:
+        logger.debug("nodriver not installed, skipping")
+        return None
+
+    async def _download():
+        browser = await uc.start(headless=False)
+        try:
+            return await _nodriver_download_url(browser, url)
+        finally:
+            browser.stop()
+
+    try:
+        return asyncio.run(_download())
+    except Exception as e:
+        logger.debug(f"nodriver URL download failed for {url}: {e}")
+        return None
+
+
 def _try_nodriver(doi: str) -> bytes | None:
     """
     Use nodriver (undetected Chrome, visible window) to download a single Elsevier PDF.
@@ -1910,6 +2023,16 @@ def download_pdf(article: dict, out_dir: Path = PDF_DIR) -> Path | None:
     if not content:
         content = _try_unpaywall(doi)
 
+    # nodriver fallback for Cloudflare-protected sites (NEJM, JAMA, etc.)
+    if not content:
+        urls = _direct_pdf_urls(doi, journal)
+        if urls:
+            print(f"  [nodriver] browser fallback...")
+            for url in urls:
+                content = _try_nodriver_url(url)
+                if content:
+                    break
+
     if content:
         dest.write_bytes(content)
         print(f"  [OK] {dest.name} ({len(content)//1024} KB)")
@@ -1941,6 +2064,7 @@ def download_articles(articles: list[dict], out_dir: Path = PDF_DIR) -> dict[str
     elsevier_pending: list[dict] = []
     oup_pending: list[dict] = []
     circulation_pending: list[dict] = []
+    cloudflare_pending: list[dict] = []
 
     for i, article in enumerate(articles, 1):
         title = article.get("title", "")[:60]
@@ -2010,6 +2134,9 @@ def download_articles(articles: list[dict], out_dir: Path = PDF_DIR) -> dict[str
         elif is_elsevier and not is_jacc:
             print(f"  [pending] queued for nodriver batch (Elsevier)")
             elsevier_pending.append(article)
+        elif _direct_pdf_urls(doi, journal):
+            print(f"  [pending] queued for nodriver batch (Cloudflare)")
+            cloudflare_pending.append(article)
         else:
             _log_failure(article, "PDF not found via all methods")
             print(f"  [FAIL] {doi}")
@@ -2085,6 +2212,59 @@ def download_articles(articles: list[dict], out_dir: Path = PDF_DIR) -> dict[str
                 _log_failure(article, "PDF not found via all methods")
                 print(f"  [FAIL] {doi}")
                 results[pmid] = None
+
+    # ── Pass 5: Cloudflare nodriver batch (NEJM, JAMA, etc.) ────────
+    if cloudflare_pending:
+        print(f"\n{'─'*50}")
+        print(f"  nodriver batch: downloading {len(cloudflare_pending)} Cloudflare-protected PDF(s)...")
+        print(f"  (opening Chrome, please wait)\n")
+
+        import asyncio
+        try:
+            import nodriver as uc
+        except ImportError:
+            logger.debug("nodriver not installed, skipping Cloudflare batch")
+            uc = None
+
+        if uc:
+            async def _cf_batch():
+                browser = await uc.start(headless=False)
+                try:
+                    batch = {}
+                    for article in cloudflare_pending:
+                        doi = article.get("doi", "")
+                        journal = article.get("journal", "")
+                        urls = _direct_pdf_urls(doi, journal)
+                        content = None
+                        for url in urls:
+                            content = await _nodriver_download_url(browser, url)
+                            if content:
+                                break
+                        batch[doi] = content
+                    return batch
+                finally:
+                    browser.stop()
+
+            try:
+                cf_results = asyncio.run(_cf_batch())
+            except Exception as e:
+                logger.debug(f"Cloudflare nodriver batch failed: {e}")
+                cf_results = {}
+
+            for article in cloudflare_pending:
+                pmid = article.get("pmid", "?")
+                doi = article.get("doi", "")
+                dest = out_dir / _pdf_filename(article)
+                content = cf_results.get(doi)
+
+                if content:
+                    dest.write_bytes(content)
+                    print(f"  [OK] {dest.name} ({len(content)//1024} KB)")
+                    results[pmid] = dest
+                else:
+                    _log_failure(article, "PDF not found (Cloudflare nodriver)")
+                    print(f"  [FAIL] {doi}")
+                    results[pmid] = None
 
     return results
 
