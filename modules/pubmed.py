@@ -1,7 +1,6 @@
 """Phase 1: Fetch article list from PubMed E-utilities API."""
 
 import xml.etree.ElementTree as ET
-from typing import Optional
 import requests
 
 EMAIL = "researcher@example.com"
@@ -21,7 +20,9 @@ JOURNAL_QUERIES = {
 def search_pmids(journal: str, days: int = 30, count: int = 20) -> list[str]:
     """Search PubMed and return list of PMIDs for the journal."""
     query = JOURNAL_QUERIES[journal]
-    term = f'{query} AND ("last {days} days"[Date - Entrez] OR ahead of print[sb]) AND hasabstract[text]'
+    # Use publication date so "recent" means recently published, not recently
+    # added/updated inside PubMed's indexing pipeline.
+    term = f'{query} AND "last {days} days"[dp] AND hasabstract[text]'
     params = {
         "db": "pubmed",
         "term": term,
@@ -95,12 +96,9 @@ def _parse_single(node: ET.Element) -> dict:
         if last:
             authors.append(f"{last} {fore}".strip())
 
-    # Publication year, volume, issue, pages
-    year = (
-        article.findtext(".//Journal/JournalIssue/PubDate/Year")
-        or article.findtext(".//Journal/JournalIssue/PubDate/MedlineDate", "")[:4]
-        or ""
-    )
+    # Prefer the electronic publication year when PubMed provides one. This
+    # avoids labelling older ePub articles with a later issue-assignment year.
+    year = _extract_publication_year(article)
     volume = article.findtext(".//Journal/JournalIssue/Volume", "")
     issue = article.findtext(".//Journal/JournalIssue/Issue", "")
     pages = article.findtext(".//Pagination/MedlinePgn", "")
@@ -117,6 +115,24 @@ def _parse_single(node: ET.Element) -> dict:
         "issue": issue,
         "pages": pages,
     }
+
+
+def _extract_publication_year(article: ET.Element) -> str:
+    article_dates = article.findall(".//ArticleDate")
+    for date_node in article_dates:
+        year = date_node.findtext("Year", "")
+        if year:
+            return year
+
+    pub_date = article.find(".//Journal/JournalIssue/PubDate")
+    if pub_date is None:
+        return ""
+
+    return (
+        pub_date.findtext("Year", "")
+        or pub_date.findtext("MedlineDate", "")[:4]
+        or ""
+    )
 
 
 def fetch_journal_articles(

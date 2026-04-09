@@ -1799,6 +1799,138 @@ def _resolve_oup_pdf_url(doi: str) -> str | None:
     return None
 
 
+def playwright_nejm_batch_download(
+    articles: list[dict], out_dir: Path = PDF_DIR
+) -> dict[str, bytes]:
+    """Download multiple NEJM PDFs using a SINGLE Playwright Chrome session.
+    Uses page.request.get (institution IP auth via browser session) — same pattern as OUP.
+    Returns {doi: pdf_bytes} for successful downloads.
+    """
+    import base64
+    import tempfile
+
+    try:
+        from playwright.sync_api import sync_playwright
+    except ImportError:
+        logger.debug("playwright not installed, skipping NEJM batch")
+        return {}
+
+    to_download = [
+        a for a in articles
+        if a.get("doi") and not (
+            (out_dir / _pdf_filename(a)).exists()
+            and (out_dir / _pdf_filename(a)).stat().st_size > 10_000
+        )
+    ]
+    if not to_download:
+        return {}
+
+    user_data = tempfile.mkdtemp(prefix="pw_nejm_")
+    results: dict[str, bytes] = {}
+    try:
+        with sync_playwright() as p:
+            context = p.chromium.launch_persistent_context(
+                user_data,
+                headless=False,
+                channel="chrome",
+                accept_downloads=True,
+                args=["--disable-blink-features=AutomationControlled"],
+            )
+            page = context.pages[0] if context.pages else context.new_page()
+
+            # Establish session by visiting NEJM homepage (clears Cloudflare)
+            page.goto("https://www.nejm.org", timeout=30000)
+            page.wait_for_load_state("domcontentloaded", timeout=15000)
+            time.sleep(3)
+            print(f"  NEJM session established: {page.title()[:60]}")
+
+            for i, article in enumerate(to_download):
+                doi = article.get("doi", "")
+                print(f"  [{i+1}/{len(to_download)}] {doi}...")
+                pdf_url = f"https://www.nejm.org/doi/pdf/{doi}"
+                content = None
+                try:
+                    # Strategy 1: page.request.get — shares browser cookies, handles redirects
+                    print(f"    [1] API request: {pdf_url}...")
+                    resp = page.request.get(pdf_url)
+                    body = resp.body()
+                    is_pdf = _is_pdf(body)
+                    print(f"    status={resp.status}, size={len(body)//1024}KB, is_pdf={is_pdf}")
+                    if resp.ok and is_pdf:
+                        content = body
+                        print(f"    [OK] via API request ({len(content)//1024} KB)")
+                        results[doi] = content
+                        time.sleep(1)
+                        continue
+
+                    # Strategy 2: navigate then XHR if content-type is PDF
+                    page.goto(pdf_url, timeout=60000, wait_until="commit")
+                    time.sleep(5)
+                    ct = page.evaluate("document.contentType")
+                    print(f"    [2] navigate contentType={ct}")
+                    if ct == "application/pdf":
+                        pdf_b64 = page.evaluate("""
+                            (() => {
+                                const xhr = new XMLHttpRequest();
+                                xhr.open('GET', window.location.href, false);
+                                xhr.overrideMimeType('text/plain; charset=x-user-defined');
+                                xhr.send(null);
+                                if (xhr.status === 200) {
+                                    let binary = '';
+                                    const text = xhr.responseText;
+                                    for (let i = 0; i < text.length; i++) {
+                                        binary += String.fromCharCode(text.charCodeAt(i) & 0xff);
+                                    }
+                                    return btoa(binary);
+                                }
+                                return null;
+                            })()
+                        """)
+                        if pdf_b64 and isinstance(pdf_b64, str):
+                            content = base64.b64decode(pdf_b64)
+                            if _is_pdf(content):
+                                print(f"    [OK] via XHR ({len(content)//1024} KB)")
+                                results[doi] = content
+                                time.sleep(1)
+                                continue
+
+                    # Strategy 3: look for PDF download link on viewer page
+                    pdf_link = page.evaluate("""
+                        (() => {
+                            const links = Array.from(document.querySelectorAll('a[href]'));
+                            for (const a of links) {
+                                const href = a.href || '';
+                                if (href.includes('/doi/pdf/') || href.endsWith('.pdf') ||
+                                    a.textContent.toLowerCase().includes('download pdf')) {
+                                    return href;
+                                }
+                            }
+                            return null;
+                        })()
+                    """)
+                    if pdf_link:
+                        print(f"    [3] PDF link: {pdf_link[:80]}")
+                        resp2 = page.request.get(pdf_link)
+                        if resp2.ok and _is_pdf(resp2.body()):
+                            content = resp2.body()
+                            print(f"    [OK] via link ({len(content)//1024} KB)")
+                            results[doi] = content
+                            time.sleep(1)
+                            continue
+
+                    print(f"    [FAIL] could not get PDF for {doi}")
+                except Exception as e:
+                    logger.debug(f"NEJM Playwright failed for {doi}: {e}")
+                    print(f"    [FAIL] {doi}: {e}")
+                time.sleep(1)
+
+            context.close()
+    finally:
+        shutil.rmtree(user_data, ignore_errors=True)
+
+    return results
+
+
 def playwright_oup_batch_download(
     articles: list[dict], out_dir: Path = PDF_DIR
 ) -> dict[str, bytes]:
@@ -2189,6 +2321,7 @@ def download_articles(articles: list[dict], out_dir: Path = PDF_DIR) -> dict[str
     elsevier_pending: list[dict] = []
     oup_pending: list[dict] = []
     circulation_pending: list[dict] = []
+    nejm_pending: list[dict] = []
     cloudflare_pending: list[dict] = []
 
     for i, article in enumerate(articles, 1):
@@ -2267,6 +2400,9 @@ def download_articles(articles: list[dict], out_dir: Path = PDF_DIR) -> dict[str
         elif is_elsevier:
             print(f"  [pending] queued for nodriver batch (Elsevier)")
             elsevier_pending.append(article)
+        elif doi.startswith("10.1056/"):
+            print(f"  [pending] queued for Playwright batch (NEJM)")
+            nejm_pending.append(article)
         elif _direct_pdf_urls(doi, journal):
             print(f"  [pending] queued for nodriver batch (Cloudflare)")
             cloudflare_pending.append(article)
@@ -2346,10 +2482,33 @@ def download_articles(articles: list[dict], out_dir: Path = PDF_DIR) -> dict[str
                 print(f"  [FAIL] {doi}")
                 results[pmid] = None
 
-    # ── Pass 5: Cloudflare nodriver batch (NEJM, JAMA, etc.) ────────
+    # ── Pass 5: NEJM Playwright batch ───────────────────────────────
+    if nejm_pending:
+        print(f"\n{'─'*50}")
+        print(f"  Playwright batch: downloading {len(nejm_pending)} NEJM PDF(s)...")
+        print(f"  (opening Chrome, please wait)\n")
+
+        nejm_results = playwright_nejm_batch_download(nejm_pending, out_dir)
+
+        for article in nejm_pending:
+            pmid = article.get("pmid", "?")
+            doi = article.get("doi", "")
+            dest = out_dir / _pdf_filename(article)
+            content = nejm_results.get(doi)
+
+            if content:
+                dest.write_bytes(content)
+                print(f"  [OK] {dest.name} ({len(content)//1024} KB)")
+                results[pmid] = dest
+            else:
+                _log_failure(article, "NEJM PDF not found via Playwright")
+                print(f"  [FAIL] {doi}")
+                results[pmid] = None
+
+    # ── Pass 6: Cloudflare nodriver batch (JAMA, etc.) ───────────────
     if cloudflare_pending:
         print(f"\n{'─'*50}")
-        print(f"  nodriver batch: downloading {len(cloudflare_pending)} Cloudflare-protected PDF(s)...")
+        print(f"  nodriver batch: downloading {len(cloudflare_pending)} Cloudflare-protected PDF(s) (JAMA etc.)...")
         print(f"  (opening Chrome, please wait)\n")
 
         import asyncio
