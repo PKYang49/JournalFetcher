@@ -1,6 +1,5 @@
 """Phase 2b: Terminal checkbox UI for article selection."""
 
-import shutil
 import questionary
 from questionary import Choice
 
@@ -30,18 +29,12 @@ def _display_journal_name(journal: str) -> str:
 
 
 def _build_choices(articles: list[dict]) -> list[Choice]:
-    """Build checkbox choices with truncated titles that fit terminal width."""
-    term_width = shutil.get_terminal_size().columns
-    max_title_len = term_width - 25  # reserve space for "  ○ XX. [JOURNAL] "
-
+    """Build checkbox choices with full titles (no truncation)."""
     choices = []
     for idx, a in enumerate(articles, 1):
         journal = _display_journal_name(a.get("journal", "Unknown"))
         title = a.get("title", "(無標題)")
-        tag = f"[{journal}]"
-        avail = max_title_len - len(tag) - 1
-        short_title = title if len(title) <= avail else title[: avail - 1] + "…"
-        label = f"{idx:>2}. {tag} {short_title}"
+        label = f"{idx:>2}. [{journal}] {title}"
         choices.append(Choice(title=label, value=a))
     return choices
 
