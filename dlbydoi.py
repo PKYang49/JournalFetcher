@@ -27,6 +27,8 @@ from modules.downloader import (
     _try_pmc,
     _try_nodriver_url,
     _direct_pdf_urls,
+    playwright_nejm_batch_download,
+    playwright_oup_batch_download,
     ELSEVIER_API_KEY,
     UNPAYWALL_EMAIL,
 )
@@ -127,7 +129,25 @@ def download_one(doi: str, out_dir: Path) -> Path | None:
         content = _try_pmc(doi)
         step += 1
 
-    # [7] nodriver (Cloudflare-protected sites: NEJM, JAMA, etc.)
+    # [7] Playwright NEJM session (persistent Chrome + homepage warmup + session cookies)
+    is_nejm = doi.startswith("10.1056/") or "nejm" in journal.lower() or "new england" in journal.lower()
+    if not content and is_nejm:
+        print(f"  [{step}] Playwright NEJM session...")
+        fake_article = {"doi": doi, "pmid": "manual", "authors": [], "year": "0000"}
+        results = playwright_nejm_batch_download([fake_article], out_dir)
+        content = results.get(doi)
+        step += 1
+
+    # [8] Playwright OUP session (EHJ etc.; Crossref -> article-pdf URL + browser cookies)
+    is_oup = doi.startswith("10.1093/")
+    if not content and is_oup:
+        print(f"  [{step}] Playwright OUP session...")
+        fake_article = {"doi": doi, "pmid": "manual", "authors": [], "year": "0000"}
+        results = playwright_oup_batch_download([fake_article], out_dir)
+        content = results.get(doi)
+        step += 1
+
+    # [9] nodriver (Cloudflare-protected sites: JAMA etc.; NEJM/OUP last resort)
     if not content:
         urls = _direct_pdf_urls(doi, journal)
         if urls:
