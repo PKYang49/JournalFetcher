@@ -1379,29 +1379,42 @@ def _try_circulation_via_primo(article: dict) -> bytes | None:
 
 def _resolve_pii(doi: str) -> str | None:
     """Resolve Elsevier DOI to PII via linkinghub (no browser needed)."""
-    try:
-        resp = _get(f"https://doi.org/{doi}", allow_redirects=True)
-        m = re.search(r"/pii/([A-Z0-9]+)", resp.url)
-        if m:
-            return m.group(1)
-        m = re.search(r"/pii/([A-Z0-9]+)", resp.text)
-        if m:
-            return m.group(1)
-    except Exception as e:
-        logger.debug(f"PII resolve failed for {doi}: {e}")
+    last_err = None
+    for attempt in range(3):
+        try:
+            resp = _get(f"https://doi.org/{doi}", allow_redirects=True)
+            m = re.search(r"/pii/([A-Z0-9]+)", resp.url)
+            if m:
+                return m.group(1)
+            m = re.search(r"/pii/([A-Z0-9]+)", resp.text)
+            if m:
+                return m.group(1)
+            return None
+        except Exception as e:
+            last_err = e
+            if attempt < 2:
+                time.sleep(2 * (attempt + 1))
+    logger.debug(f"PII resolve failed for {doi}: {last_err}")
     return None
 
 
-async def _nodriver_wait_for_cloudflare(tab, max_wait: int = 30) -> bool:
-    """Wait for Cloudflare challenge to auto-resolve. Returns True if page is accessible."""
+async def _nodriver_wait_for_cloudflare(tab, max_wait: int = 120) -> bool:
+    """Wait for Cloudflare challenge to clear (auto or human-solved). Returns True if page is accessible."""
     import asyncio
 
+    challenge_markers = ("just a moment", "請稍候", "verify you are human", "checking your browser")
+    body_markers = ("robot", "verify you are human", "needs to review the security")
+    notified = False
+
     for _ in range(max_wait // 2):
-        title = await tab.evaluate("document.title")
-        body_start = await tab.evaluate("document.body.innerText.substring(0, 100)")
-        if "robot" not in body_start.lower() and "請稍候" not in title and "just a moment" not in title.lower():
+        title = (await tab.evaluate("document.title") or "").lower()
+        body_start = (await tab.evaluate("document.body.innerText.substring(0, 200)") or "").lower()
+        if not any(m in title for m in challenge_markers) and not any(m in body_start for m in body_markers):
             return True
-        logger.debug(f"Cloudflare challenge active, waiting... (title={title})")
+        if not notified:
+            print("  [!] Cloudflare challenge detected — please click the verification box in the open Chrome window")
+            notified = True
+        logger.debug(f"Cloudflare challenge active, waiting... (title={title!r})")
         await asyncio.sleep(2)
     return False
 
@@ -1425,28 +1438,38 @@ async def _nodriver_download_one(browser, pii: str) -> bytes | None:
         title = await tab.evaluate("document.title")
         logger.debug(f"Article page: {title}")
 
-        # Check for access
+        # Access detection is advisory only — page may render late or use
+        # variant button text. Final source of truth is /pdf contentType.
         has_access = await tab.evaluate(
-            'document.body.innerText.includes("Download PDF")'
-            ' || document.body.innerText.includes("View PDF")'
+            '(() => {'
+            '  const t = document.body.innerText;'
+            '  return t.includes("Download PDF") || t.includes("View PDF")'
+            '    || t.includes("View Article PDF") || t.includes("View full issue")'
+            '    || t.includes("Download full issue") || t.includes("Access through your institution")'
+            '    || !!document.querySelector(\'a[href*="/pdfft"], a[href$="/pdf"]\');'
+            '})()'
         )
         if not has_access:
-            logger.debug("nodriver: no institutional access on article page")
-            return None
+            logger.debug("nodriver: access markers not found, trying /pdf anyway")
 
-        # Step 2: navigate to /pdf viewer
+        # Step 2: navigate to /pdf viewer with retry
         pdf_viewer_url = f"https://www.sciencedirect.com/science/article/pii/{pii}/pdf"
-        tab2 = await browser.get(pdf_viewer_url)
-        await tab2.sleep(5)
+        ct = None
+        for attempt in range(2):
+            tab2 = await browser.get(pdf_viewer_url)
+            await tab2.sleep(8 if attempt == 0 else 12)
 
-        if not await _nodriver_wait_for_cloudflare(tab2):
-            logger.debug("nodriver: Cloudflare challenge on PDF viewer")
-            return None
+            if not await _nodriver_wait_for_cloudflare(tab2):
+                logger.debug(f"nodriver: Cloudflare challenge on PDF viewer (attempt {attempt+1})")
+                continue
 
-        await tab2.sleep(5)
-        ct = await tab2.evaluate("document.contentType")
+            await tab2.sleep(3)
+            ct = await tab2.evaluate("document.contentType")
+            if ct == "application/pdf":
+                break
+            logger.debug(f"nodriver: /pdf not PDF on attempt {attempt+1} (ct={ct})")
+
         if ct != "application/pdf":
-            logger.debug(f"nodriver: /pdf page not PDF (ct={ct})")
             return None
 
         # Step 3: extract PDF bytes via sync XHR (same-origin)
