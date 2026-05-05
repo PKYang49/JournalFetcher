@@ -2005,7 +2005,15 @@ def playwright_oup_batch_download(
             page.goto(f"https://doi.org/{first_doi}", timeout=30000)
             page.wait_for_load_state("domcontentloaded", timeout=15000)
             time.sleep(3)
-            print(f"  OUP session established: {page.title()[:60]}")
+            try:
+                page.wait_for_load_state("networkidle", timeout=10000)
+            except Exception:
+                pass
+            try:
+                session_label = page.title()[:60]
+            except Exception:
+                session_label = page.url[:80]
+            print(f"  OUP session established: {session_label}")
 
             for i, (doi, pdf_url) in enumerate(doi_pdf_url.items()):
                 print(f"  [{i+1}/{len(doi_pdf_url)}] {doi}...")
