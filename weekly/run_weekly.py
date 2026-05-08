@@ -1,0 +1,136 @@
+"""Weekly report runner.
+
+Pipeline:
+  1. fetch articles for each journal (last `days` days, top `count` per journal)
+  2. summarize each abstract via `claude -p` (4 sentences)
+  3. render HTML to docs/<YYYY>-Wxx.html and update docs/index.html
+  4. (optional) git push
+  5. (optional) Discord webhook
+
+Usage:
+  python -m weekly.run_weekly                    # generate + push + discord
+  python -m weekly.run_weekly --dry-run          # generate only, no git/discord
+  python -m weekly.run_weekly --no-push          # skip git push
+  python -m weekly.run_weekly --no-discord       # skip Discord
+  python -m weekly.run_weekly --journals NEJM Lancet
+  python -m weekly.run_weekly --count 5 --days 14
+"""
+
+from __future__ import annotations
+
+import argparse
+import sys
+import traceback
+from pathlib import Path
+
+# Allow `python weekly/run_weekly.py` execution as well as `-m weekly.run_weekly`
+ROOT = Path(__file__).resolve().parent.parent
+if str(ROOT) not in sys.path:
+    sys.path.insert(0, str(ROOT))
+
+from modules import pubmed  # noqa: E402
+from weekly import render, summarize_weekly  # noqa: E402
+
+DEFAULT_JOURNALS = list(pubmed.JOURNAL_QUERIES.keys())
+
+
+def fetch_all(journals: list[str], days: int, count: int) -> list[dict]:
+    """Fetch articles from each journal, tagging with `journal_key`."""
+    all_articles: list[dict] = []
+    for key in journals:
+        print(f"[{key}] fetching last {days}d, up to {count} articles ...")
+        try:
+            articles = pubmed.fetch_journal_articles(key, days=days, count=count)
+        except Exception as e:
+            print(f"  [error] {key} fetch failed: {e}")
+            continue
+        for a in articles:
+            a["journal_key"] = key
+        print(f"  -> got {len(articles)} articles")
+        all_articles.extend(articles)
+    return all_articles
+
+
+def journal_count_summary(articles: list[dict], journals: list[str]) -> list[dict]:
+    counts = {k: 0 for k in journals}
+    for a in articles:
+        k = a.get("journal_key")
+        if k in counts:
+            counts[k] += 1
+    return [{"name": k, "count": counts[k]} for k in journals if counts[k] > 0]
+
+
+def main() -> int:
+    parser = argparse.ArgumentParser(description="Generate weekly journal report.")
+    parser.add_argument(
+        "--journals",
+        nargs="+",
+        default=DEFAULT_JOURNALS,
+        help="Subset of journals (keys from pubmed.JOURNAL_QUERIES)",
+    )
+    parser.add_argument("--count", type=int, default=10, help="Per-journal count")
+    parser.add_argument("--days", type=int, default=7, help="Lookback window in days")
+    parser.add_argument("--dry-run", action="store_true", help="Generate HTML only")
+    parser.add_argument("--no-push", action="store_true", help="Skip git push")
+    parser.add_argument("--no-discord", action="store_true", help="Skip Discord webhook")
+    parser.add_argument(
+        "--no-summarize",
+        action="store_true",
+        help="Skip claude -p summarization (debug HTML layout)",
+    )
+    args = parser.parse_args()
+
+    label, filename, date_str = render.iso_week_label()
+    print(f"=== Weekly report {label} ===")
+    print(f"Journals: {', '.join(args.journals)}")
+
+    articles = fetch_all(args.journals, days=args.days, count=args.count)
+    if not articles:
+        print("[abort] no articles fetched.")
+        return 1
+
+    if args.no_summarize:
+        for a in articles:
+            a["summary"] = "[--no-summarize 模式：未生成摘要]"
+    else:
+        print(f"\nSummarizing {len(articles)} articles via claude -p ...")
+        summarize_weekly.summarize_articles(articles)
+
+    counts = journal_count_summary(articles, args.journals)
+    html = render.render_weekly(articles, week_label=label, journal_counts=counts)
+    out_path = render.write_weekly(html, filename)
+    index_path = render.update_index(filename, label, len(articles), date_str)
+    print(f"\n[ok] wrote {out_path}")
+    print(f"[ok] updated {index_path}")
+
+    if args.dry_run:
+        print("\n[dry-run] skipping git push & discord")
+        return 0
+
+    if not args.no_push:
+        try:
+            from weekly import publish
+
+            publish.git_commit_and_push(filename, label)
+        except ImportError:
+            print("[skip] weekly/publish.py not implemented yet")
+        except Exception as e:
+            print(f"[error] git push failed: {e}")
+            traceback.print_exc()
+
+    if not args.no_discord:
+        try:
+            from weekly import publish
+
+            publish.send_discord(label, articles, counts, filename)
+        except ImportError:
+            print("[skip] weekly/publish.py not implemented yet")
+        except Exception as e:
+            print(f"[error] discord push failed: {e}")
+            traceback.print_exc()
+
+    return 0
+
+
+if __name__ == "__main__":
+    sys.exit(main())

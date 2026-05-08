@@ -16,6 +16,39 @@ JOURNAL_QUERIES = {
     "Circulation": '"Circulation"[Journal]',
 }
 
+# Priority order for picking a representative publication type.
+# Each entry: (PubMed PublicationType string, display label)
+PUB_TYPE_PRIORITY = [
+    ("Meta-Analysis", "Meta-Analysis"),
+    ("Systematic Review", "Systematic Review"),
+    ("Practice Guideline", "Guideline"),
+    ("Guideline", "Guideline"),
+    ("Randomized Controlled Trial", "RCT"),
+    ("Clinical Trial, Phase IV", "Phase IV Trial"),
+    ("Clinical Trial, Phase III", "Phase III Trial"),
+    ("Clinical Trial, Phase II", "Phase II Trial"),
+    ("Clinical Trial, Phase I", "Phase I Trial"),
+    ("Clinical Trial", "Trial"),
+    ("Review", "Review"),
+    ("Editorial", "Editorial"),
+    ("Comment", "Comment"),
+    ("Letter", "Letter"),
+    ("Case Reports", "Case Report"),
+    ("News", "News"),
+    ("Observational Study", "Observational"),
+]
+
+
+def _classify_pub_type(pub_types: list[str]) -> str:
+    """Pick the most informative publication type from PubMed's list."""
+    pub_set = set(pub_types)
+    for key, label in PUB_TYPE_PRIORITY:
+        if key in pub_set:
+            return label
+    if "Journal Article" in pub_set:
+        return "Original"
+    return pub_types[0] if pub_types else ""
+
 
 def search_pmids(journal: str, days: int = 30, count: int = 20) -> list[str]:
     """Search PubMed and return list of PMIDs for the journal."""
@@ -103,6 +136,12 @@ def _parse_single(node: ET.Element) -> dict:
     issue = article.findtext(".//Journal/JournalIssue/Issue", "")
     pages = article.findtext(".//Pagination/MedlinePgn", "")
 
+    pub_types = [
+        (t.text or "")
+        for t in article.findall(".//PublicationTypeList/PublicationType")
+    ]
+    pub_type = _classify_pub_type(pub_types)
+
     return {
         "pmid": pmid,
         "title": title,
@@ -114,6 +153,8 @@ def _parse_single(node: ET.Element) -> dict:
         "volume": volume,
         "issue": issue,
         "pages": pages,
+        "pub_types": pub_types,
+        "pub_type": pub_type,
     }
 
 
