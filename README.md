@@ -1,18 +1,19 @@
 # JournalFetcher
 
-自動抓取頂尖醫學期刊最新文章、生成繁體中文摘要、下載 PDF，並透過 Discord Bot 支援 DOI 觸發下載。
+自動追蹤主要醫學期刊文章，支援兩種工作流：
 
-## 功能
-
-- **Phase 1**：從 PubMed E-utilities API 抓取最新文章（PMID、標題、摘要、DOI、作者）
-- **Phase 2a**：呼叫 Claude API 生成三句繁體中文摘要
-- **Phase 2b**：Terminal checkbox 介面勾選感興趣的文章
-- **Phase 3**：機構內網 IP 授權直接下載 PDF（含多重 fallback 策略）
-- **Discord Bot**：傳 DOI 或 URL 給 Bot，自動下載 PDF 並回傳到頻道
+- 互動式瀏覽：從 PubMed 抓最新文章，產生繁體中文摘要，終端機勾選後下載 PDF。
+- 每週週報：每週一自動抓取 7 大期刊，產生四句中文摘要，輸出 GitHub Pages HTML，並延後發 Discord 通知。
 
 ## 支援期刊
 
-NEJM、Lancet、JAMA、JACC、EHJ、EuroIntervention、Circulation
+- NEJM
+- Lancet
+- JAMA
+- JACC
+- European Heart Journal
+- EuroIntervention
+- Circulation
 
 ## 安裝
 
@@ -24,8 +25,10 @@ playwright install chromium
 建立 `.env`：
 
 ```env
-ANTHROPIC_API_KEY=sk-ant-...
-# Discord Bot（選用）
+# Weekly Discord webhook
+DISCORD_WEBHOOK_URL=https://discord.com/api/webhooks/...
+
+# Discord Bot（選用：DOI 下載機器人）
 DISCORD_BOT_TOKEN=...
 DISCORD_ALLOWED_USER_IDS=123456789
 DISCORD_CHANNEL_ID=987654321
@@ -33,9 +36,13 @@ BOT_OUTPUT_DIR=~/GoogleDrive/papers
 BOT_SEND_PDF=true
 ```
 
-## 用法
+摘要功能使用 Claude Code CLI：
 
-### 主程式
+```bash
+claude --version
+```
+
+## 互動式抓取與下載
 
 ```bash
 # 抓全部期刊（預設最近 30 天，每本 20 篇）
@@ -54,43 +61,140 @@ python fetch_journals.py --no-download
 python fetch_journals.py --no-summary
 ```
 
-### 單篇 DOI 下載
+流程：
+
+1. PubMed E-utilities 抓取 metadata。
+2. `claude -p` 產生三句繁體中文摘要。
+3. `questionary` checkbox 選擇文章。
+4. 透過機構內網 IP 授權下載 PDF。
+
+輸出會放在：
+
+```text
+output/YYYY-MM-DD/
+├── errors.log
+├── download_failures.log
+└── *.pdf
+```
+
+## 每週自動週報
+
+手動執行：
+
+```bash
+# 完整流程：抓文獻、摘要、渲染 HTML、commit/push、發 Discord
+python3 -m weekly.run_weekly
+
+# 只產生 HTML，不 push、不發 Discord
+python3 -m weekly.run_weekly --dry-run
+
+# 產生週報並 push，但不發 Discord
+python3 -m weekly.run_weekly --no-discord
+
+# 測試版面，不消耗摘要額度
+python3 -m weekly.run_weekly --dry-run --no-summarize --count 2 --journals NEJM
+```
+
+目前 launchd 排程：
+
+- 週一 03:00：`python3 -m weekly.run_weekly --no-discord`
+  - 產生本週 HTML
+  - 更新 `docs/`
+  - commit 並 push 到 GitHub
+- 週一 08:00：`python3 -m weekly.notify_latest`
+  - 讀取 `docs/_index.json` 最新週報
+  - 發 Discord webhook 通知
+
+安裝或更新 launchd：
+
+```bash
+mkdir -p output/logs
+cp scripts/com.pokai.weekly-journal.plist ~/Library/LaunchAgents/
+cp scripts/com.pokai.weekly-journal-discord.plist ~/Library/LaunchAgents/
+
+launchctl bootstrap gui/$(id -u) ~/Library/LaunchAgents/com.pokai.weekly-journal.plist
+launchctl bootstrap gui/$(id -u) ~/Library/LaunchAgents/com.pokai.weekly-journal-discord.plist
+```
+
+檢查狀態：
+
+```bash
+launchctl print gui/$(id -u)/com.pokai.weekly-journal
+launchctl print gui/$(id -u)/com.pokai.weekly-journal-discord
+```
+
+log：
+
+```text
+output/logs/weekly.out.log
+output/logs/weekly.err.log
+output/logs/weekly-discord.out.log
+output/logs/weekly-discord.err.log
+```
+
+GitHub Pages 輸出：
+
+```text
+docs/
+├── index.html
+├── _index.json
+└── YYYY-Wxx.html
+```
+
+正式網址：
+
+```text
+https://pkyang49.github.io/JournalFetcher/
+```
+
+## 單篇 DOI 下載
 
 ```bash
 python dlbydoi.py 10.1056/NEJMoa2301743
 ```
 
-### Discord Bot
+PDF 下載策略：
+
+1. Playwright 抓機構授權頁面。
+2. DOI redirect 到期刊頁面後解析 PDF 連結。
+3. Unpaywall API 取得 open-access PDF。
+
+## Discord DOI Bot
 
 ```bash
 python journal_bot.py
 ```
 
-Bot 啟動後，在指定頻道傳入 DOI（`10.xxxx/...`）或完整 URL，Bot 自動下載並回傳 PDF。
-
-## 輸出結構
-
-```
-output/
-├── YYYY-MM-DD/
-│   ├── errors.log
-│   └── download_failures.log
-└── pdfs/
-    └── {pmid}_{first_author}_{year}.pdf
-```
-
-## PDF 下載策略
-
-1. Playwright 抓機構授權頁面（NEJM、OUP 系列優先）
-2. DOI redirect → 期刊頁面解析 PDF 連結
-3. Unpaywall API 取 open-access PDF
+Bot 啟動後，在指定頻道傳入 DOI 或完整 URL，會自動下載 PDF 並回傳到頻道。
 
 ## 文獻評讀
 
 下載後手動上傳 PDF 至 Claude.ai，搭配 `skills/literature-appraisal-SKILL.md` 進行結構化評讀。
 
+## 主要檔案
+
+```text
+fetch_journals.py                 # 互動式主程式
+modules/pubmed.py                 # PubMed 查詢與 metadata 解析
+modules/summarize.py              # 三句摘要
+modules/selector.py               # 終端機選擇介面
+modules/downloader.py             # PDF 下載
+
+weekly/run_weekly.py              # 每週週報主流程
+weekly/summarize_weekly.py        # 四句摘要
+weekly/render.py                  # HTML 渲染與 index 維護
+weekly/publish.py                 # git push 與 Discord webhook
+weekly/notify_latest.py           # 只發最新週報 Discord 通知
+weekly/templates/                 # Jinja2 templates
+
+scripts/*.plist                   # launchd 排程
+docs/                             # GitHub Pages 輸出
+```
+
 ## 需求
 
 - Python 3.10+
-- Anthropic API key
-- 機構內網（IP 授權 PDF 下載）
+- Claude Code CLI（`claude -p`）
+- 機構內網或可存取期刊 PDF 的網路環境
+- GitHub Pages：`main` branch 的 `/docs`
+- Discord webhook（每週通知選用）
