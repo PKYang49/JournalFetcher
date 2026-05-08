@@ -3,7 +3,7 @@
 自動追蹤主要醫學期刊文章，支援兩種工作流：
 
 - 互動式瀏覽：從 PubMed 抓最新文章，產生繁體中文摘要，終端機勾選後下載 PDF。
-- 每週週報：每週一自動抓取 7 大期刊，產生四句中文摘要，輸出 GitHub Pages HTML，並延後發 Discord 通知。
+- 每週週報：每週一自動抓取 7 大期刊，產生中文摘要與個人化短評，輸出 GitHub Pages HTML，並延後發 Discord 通知。
 
 ## 支援期刊
 
@@ -181,7 +181,7 @@ modules/selector.py               # 終端機選擇介面
 modules/downloader.py             # PDF 下載
 
 weekly/run_weekly.py              # 每週週報主流程
-weekly/summarize_weekly.py        # 四句摘要
+weekly/summarize_weekly.py        # 週報摘要與短評
 weekly/render.py                  # HTML 渲染與 index 維護
 weekly/publish.py                 # git push 與 Discord webhook
 weekly/notify_latest.py           # 只發最新週報 Discord 通知

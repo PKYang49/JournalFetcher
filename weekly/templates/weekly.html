@@ -86,8 +86,24 @@
     line-height: 1.4;
   }
   .authors { color: var(--muted); font-size: 13px; margin-bottom: 10px; }
-  .summary { font-size: 15px; margin: 10px 0; }
+  .summary-block { margin: 12px 0; }
+  .section-label {
+    color: var(--muted);
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0;
+    margin-bottom: 3px;
+  }
+  .summary { font-size: 15px; margin: 0; }
   .summary.error { color: #b00; font-style: italic; }
+  .commentary {
+    border-left: 3px solid var(--accent);
+    color: var(--text);
+    font-size: 15px;
+    margin-top: 12px;
+    padding-left: 12px;
+  }
+  .commentary p { margin: 0; }
   .links { font-size: 13px; margin-top: 10px; }
   .links a { color: var(--accent); text-decoration: none; margin-right: 14px; }
   .links a:hover { text-decoration: underline; }
@@ -135,9 +151,18 @@
     <div class="authors">
       {{ article.authors_display }}{% if article.year %} · {{ article.year }}{% endif %}
     </div>
-    <div class="summary{% if article.summary_error %} error{% endif %}">
-      {{ article.summary }}
+    <div class="summary-block">
+      <div class="section-label">摘要</div>
+      <p class="summary{% if article.summary_error %} error{% endif %}">
+        {{ article.summary }}
+      </p>
     </div>
+    {% if article.commentary %}
+    <div class="commentary">
+      <div class="section-label">短評</div>
+      <p>{{ article.commentary }}</p>
+    </div>
+    {% endif %}
     <div class="links">
       {% if article.doi %}<a href="https://doi.org/{{ article.doi }}" target="_blank" rel="noopener">DOI</a>{% endif %}
       <a href="https://pubmed.ncbi.nlm.nih.gov/{{ article.pmid }}/" target="_blank" rel="noopener">PubMed</a>

@@ -80,6 +80,7 @@ def render_weekly(
                 **a,
                 "authors_display": _authors_display(a.get("authors", [])),
                 "summary_error": _summary_is_error(a.get("summary", "")),
+                "commentary": a.get("commentary", ""),
                 "pub_type_class": _pub_type_class(a.get("pub_type", "")),
             }
         )
