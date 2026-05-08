@@ -3,14 +3,13 @@
 <plist version="1.0">
 <dict>
     <key>Label</key>
-    <string>com.pokai.weekly-journal</string>
+    <string>com.pokai.weekly-journal-discord</string>
 
     <key>ProgramArguments</key>
     <array>
         <string>/Library/Frameworks/Python.framework/Versions/3.13/bin/python3</string>
         <string>-m</string>
-        <string>weekly.run_weekly</string>
-        <string>--no-discord</string>
+        <string>weekly.notify_latest</string>
     </array>
 
     <key>WorkingDirectory</key>
@@ -29,16 +28,16 @@
         <key>Weekday</key>
         <integer>1</integer>
         <key>Hour</key>
-        <integer>3</integer>
+        <integer>8</integer>
         <key>Minute</key>
         <integer>0</integer>
     </dict>
 
     <key>StandardOutPath</key>
-    <string>/Users/pokai/JournalFetcher/output/logs/weekly.out.log</string>
+    <string>/Users/pokai/JournalFetcher/output/logs/weekly-discord.out.log</string>
 
     <key>StandardErrorPath</key>
-    <string>/Users/pokai/JournalFetcher/output/logs/weekly.err.log</string>
+    <string>/Users/pokai/JournalFetcher/output/logs/weekly-discord.err.log</string>
 
     <key>RunAtLoad</key>
     <false/>

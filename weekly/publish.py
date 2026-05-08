@@ -133,7 +133,50 @@ def send_discord(
     embed = _build_embed(label, articles, journal_counts, filename)
     payload = {"embeds": [embed]}
 
-    resp = requests.post(webhook_url, json=payload, timeout=15)
+    try:
+        resp = requests.post(webhook_url, json=payload, timeout=15)
+    except requests.RequestException as e:
+        print(f"[discord] webhook request failed: {type(e).__name__}")
+        return False
+
+    if resp.status_code in (200, 204):
+        print(f"[discord] webhook sent OK ({resp.status_code})")
+        return True
+    print(f"[discord] webhook failed: {resp.status_code} {resp.text[:200]}")
+    return False
+
+
+def send_discord_index_notice(label: str, filename: str, count: int) -> bool:
+    """Send a Discord notice for an already-rendered weekly report."""
+    load_dotenv(ROOT / ".env")
+    webhook_url = os.getenv("DISCORD_WEBHOOK_URL")
+    if not webhook_url:
+        print("[discord] DISCORD_WEBHOOK_URL not set in .env; skip")
+        return False
+
+    weekly_url = f"{PAGES_BASE_URL}/{filename}"
+    payload = {
+        "embeds": [
+            {
+                "title": f"📚 期刊週報 {label}",
+                "url": weekly_url,
+                "description": f"本週週報已更新，共 {count} 篇。",
+                "color": DISCORD_EMBED_COLOR,
+                "fields": [
+                    {"name": "🔗 完整週報", "value": weekly_url, "inline": False},
+                ],
+                "footer": {"text": "JournalFetcher"},
+                "timestamp": datetime.now(timezone.utc).isoformat(),
+            }
+        ]
+    }
+
+    try:
+        resp = requests.post(webhook_url, json=payload, timeout=15)
+    except requests.RequestException as e:
+        print(f"[discord] webhook request failed: {type(e).__name__}")
+        return False
+
     if resp.status_code in (200, 204):
         print(f"[discord] webhook sent OK ({resp.status_code})")
         return True
