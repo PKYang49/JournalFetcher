@@ -159,6 +159,11 @@ PDF 下載策略：
 2. DOI redirect 到期刊頁面後解析 PDF 連結。
 3. Unpaywall API 取得 open-access PDF。
 
+週報 HTML 每篇文章會提供：
+
+- `複製 DOI`：貼到 Discord DOI Bot 頻道下載。
+- `複製下載指令`：貼到 terminal 執行 `python dlbydoi.py <DOI>`。
+
 ## Discord DOI Bot
 
 ```bash

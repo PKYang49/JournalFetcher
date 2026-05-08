@@ -169,6 +169,10 @@ def download_one(doi: str, out_dir: Path) -> Path | None:
 
 def read_dois(source: str) -> list[str]:
     """Read DOIs from file or stdin."""
+    normalized_source = re.sub(r"^https?://doi\.org/", "", source.strip())
+    if re.match(r"^10\.\d{4,}/\S+", normalized_source):
+        return [normalized_source.rstrip(".,);]>'\"")]
+
     if source == "-":
         lines = sys.stdin.read().splitlines()
     else:
