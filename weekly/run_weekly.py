@@ -28,7 +28,7 @@ ROOT = Path(__file__).resolve().parent.parent
 if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
 
-from modules import pubmed  # noqa: E402
+from modules import crossref, pubmed  # noqa: E402
 from weekly import render, summarize_weekly  # noqa: E402
 
 DEFAULT_JOURNALS = list(pubmed.JOURNAL_QUERIES.keys())
@@ -57,7 +57,13 @@ def fetch_all(journals: list[str], days: int | None, count: int) -> list[dict]:
             kw = {"days": window}
         print(f"[{key}] fetching {window_label}, up to {count} articles ...")
         try:
-            articles = pubmed.fetch_journal_articles(key, count=count, **kw)
+            if key == "BJSM" and date_range is not None:
+                articles = crossref.fetch_bjsm_articles(
+                    count=count,
+                    date_range=date_range,
+                )
+            else:
+                articles = pubmed.fetch_journal_articles(key, count=count, **kw)
         except Exception as e:
             print(f"  [error] {key} fetch failed: {e}")
             continue
@@ -90,7 +96,10 @@ def main() -> int:
         "--days",
         type=int,
         default=None,
-        help="Lookback window in days (overrides per-journal defaults; default 7d, BJSM 90-97d ago)",
+        help=(
+            "Lookback window in days (overrides per-journal defaults; "
+            "default 7d, BJSM 90-100d ago)"
+        ),
     )
     parser.add_argument("--dry-run", action="store_true", help="Generate HTML only")
     parser.add_argument("--no-push", action="store_true", help="Skip git push")

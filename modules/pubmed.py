@@ -46,11 +46,11 @@ JOURNAL_QUERIES = {
 
 # Per-journal publication-date window override, as (min_days_ago, max_days_ago).
 # Articles are restricted to that historical window — e.g. BJSM picks up papers
-# published between 90 and 97 days ago, giving each weekly run a roughly 1-week
-# slice of historical content rather than the bleeding-edge ePub stream.
+# published between 90 and 100 days ago, giving each weekly run a historical
+# slice of content rather than the bleeding-edge ePub stream.
 # Journals not listed here use the caller-supplied `days` argument.
 JOURNAL_DEFAULT_WINDOW: dict[str, tuple[int, int]] = {
-    "BJSM": (90, 97),
+    "BJSM": (90, 100),
     "Heart": (90, 97),
 }
 

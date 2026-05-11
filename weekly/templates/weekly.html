@@ -182,7 +182,9 @@
     {% endif %}
     <div class="links">
       {% if article.doi %}<a href="https://doi.org/{{ article.doi }}" target="_blank" rel="noopener">DOI</a>{% endif %}
+      {% if article.pmid %}
       <a href="https://pubmed.ncbi.nlm.nih.gov/{{ article.pmid }}/" target="_blank" rel="noopener">PubMed</a>
+      {% endif %}
       {% if article.doi %}
       <button class="copy-btn" type="button" data-copy="{{ article.doi }}">複製 DOI</button>
       <button class="copy-btn" type="button" data-copy="python dlbydoi.py {{ article.doi }}">複製下載指令</button>
