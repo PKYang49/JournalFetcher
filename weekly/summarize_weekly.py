@@ -1,7 +1,9 @@
-"""Weekly report summarizer using `claude -p`."""
+"""Weekly report summarizer using `codex exec`."""
 
 import subprocess
 import sys
+import tempfile
+from pathlib import Path
 
 SYSTEM_PROMPT = (
     "你是醫學文獻摘要助手。用繁體中文（台灣用語）整理這篇文章，"
@@ -10,6 +12,38 @@ SYSTEM_PROMPT = (
     "短評：用輕鬆、個人化但專業的語氣，一句話評論臨床意義或後續可能影響；不超過 60 字。\n"
     "不要使用條列，不要加 Markdown，不要輸出其他內容。"
 )
+
+
+def _run_codex_prompt(prompt: str, timeout: int = 180) -> str | None:
+    """Run Codex CLI non-interactively and return the final message only."""
+    with tempfile.TemporaryDirectory(prefix="codex_weekly_summary_") as tmp_dir:
+        output_path = Path(tmp_dir) / "last_message.txt"
+        result = subprocess.run(
+            [
+                "codex",
+                "exec",
+                "--sandbox",
+                "read-only",
+                "--color",
+                "never",
+                "--ephemeral",
+                "--output-last-message",
+                str(output_path),
+                prompt,
+            ],
+            input="",
+            capture_output=True,
+            text=True,
+            timeout=timeout,
+        )
+        if result.returncode != 0:
+            err = (result.stderr or result.stdout).strip()
+            print(f"  [warn] codex exec error: {err[:200]}", file=sys.stderr)
+            return None
+        if output_path.exists():
+            return output_path.read_text().strip()
+        stdout = result.stdout.strip()
+        return stdout or None
 
 
 def _parse_summary_response(text: str) -> tuple[str, str]:
@@ -41,7 +75,7 @@ def _parse_summary_response(text: str) -> tuple[str, str]:
 
 
 def summarize_one(abstract: str, title: str = "") -> tuple[str, str]:
-    """Generate a Traditional Chinese summary and commentary via `claude -p`."""
+    """Generate a Traditional Chinese summary and commentary via `codex exec`."""
     if not abstract:
         return "[無摘要]", ""
 
@@ -49,24 +83,16 @@ def summarize_one(abstract: str, title: str = "") -> tuple[str, str]:
     prompt = f"{SYSTEM_PROMPT}\n\n{user_content}"
 
     try:
-        result = subprocess.run(
-            ["claude", "-p", prompt],
-            capture_output=True,
-            text=True,
-            timeout=90,
-        )
-        if result.returncode == 0:
-            summary, commentary = _parse_summary_response(result.stdout.strip())
+        response = _run_codex_prompt(prompt)
+        if response:
+            summary, commentary = _parse_summary_response(response)
             if summary:
                 return summary, commentary
             return "[摘要解析失敗]", ""
-        print(
-            f"  [warn] claude CLI error: {result.stderr[:200]}", file=sys.stderr
-        )
         return "[摘要生成失敗]", ""
     except FileNotFoundError:
-        print("  [warn] claude CLI not found", file=sys.stderr)
-        return "[需要 claude CLI 才能生成摘要]", ""
+        print("  [warn] codex CLI not found", file=sys.stderr)
+        return "[需要 codex CLI 才能生成摘要]", ""
     except subprocess.TimeoutExpired:
         return "[摘要生成逾時]", ""
 

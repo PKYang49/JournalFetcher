@@ -14,7 +14,8 @@ from pathlib import Path
 import discord
 from dotenv import load_dotenv
 
-from dlbydoi import download_one
+from dlbydoi import _normalize_doi, download_one
+from modules.downloader import _get
 
 load_dotenv()
 
@@ -38,18 +39,55 @@ logging.basicConfig(
 )
 log = logging.getLogger("journal_bot")
 
-DOI_RE = re.compile(r"10\.\d{4,}/[^\s?#]+")
+DOI_RE = re.compile(r"10\.\d{4,}/[^\s?#<>]+", re.I)
+URL_RE = re.compile(r"https?://[^\s<>]+", re.I)
 
 
 def extract_dois(text: str) -> list[str]:
     """Extract unique DOIs, stripping URL cruft and trailing punctuation."""
     seen, out = set(), []
     for m in DOI_RE.finditer(text):
-        doi = m.group(0).rstrip(".,);]>'\"")
+        doi = _normalize_doi(m.group(0))
         if doi not in seen:
             seen.add(doi)
             out.append(doi)
     return out
+
+
+def _extract_citation_doi(html: str) -> str | None:
+    patterns = [
+        r'<meta[^>]+name=["\']citation_doi["\'][^>]+content=["\']([^"\']+)["\']',
+        r'<meta[^>]+content=["\']([^"\']+)["\'][^>]+name=["\']citation_doi["\']',
+        r'<meta[^>]+property=["\']citation_doi["\'][^>]+content=["\']([^"\']+)["\']',
+    ]
+    for pattern in patterns:
+        match = re.search(pattern, html, flags=re.I)
+        if match:
+            return _normalize_doi(match.group(1))
+    match = DOI_RE.search(html)
+    return _normalize_doi(match.group(0)) if match else None
+
+
+def resolve_dois(text: str) -> list[str]:
+    """Extract DOI strings, resolving article URLs through citation metadata."""
+    dois = extract_dois(text)
+    seen = set(dois)
+
+    for match in URL_RE.finditer(text):
+        url = match.group(0).rstrip(".,);]>'\"")
+        if DOI_RE.search(url):
+            continue
+        try:
+            resp = _get(url, allow_redirects=True)
+            html = resp.text or ""
+            doi = _extract_citation_doi(f"{resp.url}\n{html}")
+        except Exception as e:
+            log.warning("URL DOI resolution failed for %s: %s", url, e)
+            continue
+        if doi and doi not in seen:
+            seen.add(doi)
+            dois.append(doi)
+    return dois
 
 
 def _blocking_download(doi: str) -> Path | None:
@@ -90,7 +128,7 @@ async def on_message(message: discord.Message):
         return
 
     text = message.content or ""
-    dois = extract_dois(text)
+    dois = resolve_dois(text)
     log.info("user=%s dois=%s", message.author.id, dois)
 
     if not dois:

@@ -3,7 +3,7 @@
 自動追蹤主要醫學期刊文章，支援兩種工作流：
 
 - 互動式瀏覽：從 PubMed 抓最新文章，產生繁體中文摘要，終端機勾選後下載 PDF。
-- 每週週報：每週一自動抓取 7 大期刊，產生中文摘要與個人化短評，輸出 GitHub Pages HTML，並延後發 Discord 通知。
+- 每週週報：每週一自動抓取期刊文章，產生中文摘要與個人化短評，輸出 GitHub Pages HTML，並延後發 Discord 通知。
 
 ## 支援期刊
 
@@ -14,6 +14,12 @@
 - European Heart Journal
 - EuroIntervention
 - Circulation
+- Heart
+- JAMA Cardiology
+- BJSM
+- Medicine & Science in Sports & Exercise
+- Sports Medicine
+- Journal of Applied Physiology
 
 ## 安裝
 
@@ -36,11 +42,14 @@ BOT_OUTPUT_DIR=~/GoogleDrive/papers
 BOT_SEND_PDF=true
 ```
 
-摘要功能使用 Claude Code CLI：
+摘要功能使用 Codex CLI：
 
 ```bash
-claude --version
+codex --version
+codex login status
 ```
+
+`codex login status` 應顯示 `Logged in using ChatGPT`。摘要流程呼叫 `codex exec`，不再依賴 `claude -p`。
 
 ## 互動式抓取與下載
 
@@ -64,9 +73,9 @@ python fetch_journals.py --no-summary
 流程：
 
 1. PubMed E-utilities 抓取 metadata。
-2. `claude -p` 產生三句繁體中文摘要。
+2. `codex exec` 產生三句繁體中文摘要。
 3. `questionary` checkbox 選擇文章。
-4. 透過機構內網 IP 授權下載 PDF。
+4. 透過機構內網 IP 授權與各出版社 fallback 下載 PDF。
 
 輸出會放在：
 
@@ -151,13 +160,19 @@ https://pkyang49.github.io/JournalFetcher/
 
 ```bash
 python dlbydoi.py 10.1056/NEJMoa2301743
+python dlbydoi.py https://doi.org/10.1001/jama.2026.7886/
 ```
 
 PDF 下載策略：
 
-1. Playwright 抓機構授權頁面。
-2. DOI redirect 到期刊頁面後解析 PDF 連結。
-3. Unpaywall API 取得 open-access PDF。
+1. 先嘗試 direct PDF URL、DOI redirect、Unpaywall、PMC。
+2. Elsevier/JACC：Elsevier API 與 ScienceDirect browser fallback。
+3. NEJM、OUP/EHJ、JAMA Network、Springer Sports Medicine：Playwright browser fallback。
+4. Circulation：Primo/Ovid Playwright fallback。
+5. MSSE：LWW tokenized PDF fallback。
+6. Heart (BMJ)：一般路徑失敗後，走 ProQuest Playwright fallback。
+
+`dlbydoi.py` 會正規化 DOI/URL，支援 `https://doi.org/...` 與常見貼上格式。
 
 週報 HTML 每篇文章會提供：
 
@@ -170,7 +185,37 @@ PDF 下載策略：
 python journal_bot.py
 ```
 
-Bot 啟動後，在指定頻道傳入 DOI 或完整 URL，會自動下載 PDF 並回傳到頻道。
+Bot 啟動後，在指定頻道傳入 DOI、`https://doi.org/...`，或含 `citation_doi` 的期刊文章 URL，會自動下載 PDF 並回傳到頻道。
+
+目前手動背景啟動方式：
+
+```bash
+mkdir -p output/logs
+nohup /Library/Frameworks/Python.framework/Versions/3.13/Resources/Python.app/Contents/MacOS/Python \
+  /Users/pokai/JournalFetcher/journal_bot.py \
+  >> /Users/pokai/JournalFetcher/output/logs/journal_bot.out.log \
+  2>> /Users/pokai/JournalFetcher/output/logs/journal_bot.err.log &
+```
+
+檢查 process：
+
+```bash
+ps aux | rg journal_bot.py
+```
+
+log：
+
+```text
+output/journal_bot.log
+output/logs/journal_bot.out.log
+output/logs/journal_bot.err.log
+```
+
+停止 bot：
+
+```bash
+pkill -f journal_bot.py
+```
 
 ## 文獻評讀
 
@@ -184,6 +229,8 @@ modules/pubmed.py                 # PubMed 查詢與 metadata 解析
 modules/summarize.py              # 三句摘要
 modules/selector.py               # 終端機選擇介面
 modules/downloader.py             # PDF 下載
+dlbydoi.py                        # 單篇 DOI/URL 下載
+journal_bot.py                    # Discord DOI 下載 bot
 
 weekly/run_weekly.py              # 每週週報主流程
 weekly/summarize_weekly.py        # 週報摘要與短評
@@ -199,7 +246,7 @@ docs/                             # GitHub Pages 輸出
 ## 需求
 
 - Python 3.10+
-- Claude Code CLI（`claude -p`）
+- Codex CLI（`codex exec`，需 `codex login`）
 - 機構內網或可存取期刊 PDF 的網路環境
 - GitHub Pages：`main` branch 的 `/docs`
 - Discord webhook（每週通知選用）

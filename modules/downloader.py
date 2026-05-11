@@ -181,6 +181,44 @@ def _is_circulation_article(article: dict) -> bool:
     return "circulation" in journal
 
 
+def _is_msse_article(article: dict) -> bool:
+    journal = article.get("journal", "").lower()
+    doi = article.get("doi", "").lower()
+    return (
+        "med sci sports exerc" in journal
+        or "medicine and science in sports" in journal
+        or doi.startswith("10.1249/mss.")
+    )
+
+
+# LWW's "Author Permission Guidelines" PDF — what journals.lww.com sometimes
+# serves as the only public .pdf-suffixed link on a paywalled landing page —
+# is produced by "Microsoft Publisher 2013". Real journal PDFs use TeX or
+# Adobe Distiller, never Publisher. The Producer dictionary entry is stored
+# as UTF-16BE in an uncompressed PDF metadata stream, so a raw byte search
+# of that encoded form catches the stub regardless of FlateDecode.
+_LWW_STUB_PRODUCER_MARKER = (
+    b"\x00M\x00i\x00c\x00r\x00o\x00s\x00o\x00f\x00t\x00\xae"
+    b"\x00 \x00P\x00u\x00b\x00l\x00i\x00s\x00h\x00e\x00r"
+)
+
+
+def _is_lww_paywall_pdf(content: bytes) -> bool:
+    """True if `content` is LWW's rights/permissions document rather than the
+    article body. Defensive net behind `_is_lww_stub_url`; useful when a stub
+    arrives via a path we haven't blacklisted yet."""
+    if not _is_pdf(content):
+        return False
+    return _LWW_STUB_PRODUCER_MARKER in content
+
+
+def _is_sports_medicine_article(article: dict) -> bool:
+    """Adis/Springer Sports Medicine (Auckland). The s40279 prefix is the
+    safe discriminator — both MSSE and BJSM contain "sports medicine" in
+    their journal titles, so a name-based check would collide."""
+    return article.get("doi", "").lower().startswith("10.1007/s40279-")
+
+
 def _direct_pdf_urls(doi: str, journal: str) -> list[str]:
     """Return known direct PDF URL candidates for this journal."""
     j = journal.lower()
@@ -189,9 +227,26 @@ def _direct_pdf_urls(doi: str, journal: str) -> list[str]:
             f"https://www.nejm.org/doi/pdf/{doi}",
             f"https://www.nejm.org/doi/pdf/{doi}?articleTools=true",
         ]
-    if "jama" in j:
+    if "jama" in j or doi.lower().startswith("10.1001/"):
+        # JAMA Network sub-journals use different URL slugs. Map DOI prefix
+        # to slug; default to "jama" so plain 10.1001/jama.* still works.
+        doi_low = doi.lower()
+        if doi_low.startswith("10.1001/jamacardio."):
+            slug = "jamacardiology"
+        elif doi_low.startswith("10.1001/jamainternmed."):
+            slug = "jamainternalmedicine"
+        elif doi_low.startswith("10.1001/jamasurg."):
+            slug = "jamasurgery"
+        elif doi_low.startswith("10.1001/jamaneurol."):
+            slug = "jamaneurology"
+        elif doi_low.startswith("10.1001/jamaoncol."):
+            slug = "jamaoncology"
+        elif doi_low.startswith("10.1001/jamanetworkopen."):
+            slug = "jamanetworkopen"
+        else:
+            slug = "jama"
         return [
-            f"https://jamanetwork.com/journals/jama/fullarticle/{doi}",
+            f"https://jamanetwork.com/journals/{slug}/fullarticle/{doi}",
         ]
     if "lancet" in j:
         return [
@@ -209,6 +264,13 @@ def _direct_pdf_urls(doi: str, journal: str) -> list[str]:
         return [
             f"https://eurointervention.pcronline.com/doi/{doi}/pdf",
             f"https://eurointervention.pcronline.com/doi/pdf/{doi}",
+        ]
+    # American Physiological Society (J Appl Physiol, Am J Physiol, etc.).
+    # The DOI redirect on journals.physiology.org points at /epdf/, which is
+    # an HTML viewer; /pdf/ is the real PDF and is gated only by IP auth.
+    if doi.lower().startswith("10.1152/") or "physiol" in j:
+        return [
+            f"https://journals.physiology.org/doi/pdf/{doi}",
         ]
     return []
 
@@ -1037,24 +1099,33 @@ def _navigate_back(page, url: str):
         logger.debug(f"Navigate back failed: {e}")
 
 
-def playwright_circulation_batch_download(
-    articles: list[dict], out_dir: Path = PDF_DIR
+def playwright_primo_ovid_batch_download(
+    articles: list[dict],
+    out_dir: Path,
+    primo_url: str,
+    label: str,
 ) -> dict[str, bytes]:
     """
-    Download multiple Circulation PDFs using a SINGLE Playwright browser session
-    via NCKU Primo -> Ovid.
+    Download multiple LWW PDFs via NCKU Primo -> Ovid using a single
+    persistent Playwright Chrome session. `primo_url` must be the per-journal
+    Primo fulldisplay URL (so the Ovid landing point is that journal's browse
+    page), and `label` is used only for log/tempdir prefixes.
     Returns {doi: pdf_bytes} for successful downloads.
     """
     try:
         from playwright.sync_api import sync_playwright
     except ImportError:
-        logger.debug("playwright not installed, skipping Circulation batch")
+        logger.debug(f"playwright not installed, skipping {label} batch")
+        return {}
+
+    if not primo_url:
+        logger.debug(f"Primo URL empty for {label}; cannot run Primo/Ovid flow")
         return {}
 
     primo_user = os.getenv("PRIMO_USER", "")
     primo_pass = os.getenv("PRIMO_PASS", "")
     if not primo_user or not primo_pass:
-        logger.debug("Primo credentials not set for Circulation batch")
+        logger.debug(f"Primo credentials not set for {label} batch")
         return {}
 
     # Filter articles that still need downloading
@@ -1068,7 +1139,7 @@ def playwright_circulation_batch_download(
     if not to_download:
         return {}
 
-    user_data = tempfile.mkdtemp(prefix="pw_circulation_batch_")
+    user_data = tempfile.mkdtemp(prefix=f"pw_{label}_batch_")
     results: dict[str, bytes] = {}
     try:
         with sync_playwright() as p:
@@ -1081,9 +1152,9 @@ def playwright_circulation_batch_download(
             )
             page = context.pages[0] if context.pages else context.new_page()
 
-            # Step 1: Navigate to Primo Circulation page
-            print(f"    [debug] Navigating to Primo: {PRIMO_CIRCULATION_URL[:80]}...")
-            page.goto(PRIMO_CIRCULATION_URL, timeout=60000)
+            # Step 1: Navigate to Primo journal page
+            print(f"    [debug] Navigating to Primo: {primo_url[:80]}...")
+            page.goto(primo_url, timeout=60000)
             page.wait_for_load_state("domcontentloaded", timeout=30000)
             print(f"    [debug] Primo loaded, URL: {page.url[:100]}")
 
@@ -1137,13 +1208,24 @@ def playwright_circulation_batch_download(
 
             context.close()
     except Exception as e:
-        logger.debug(f"Circulation batch failed: {e}")
+        logger.debug(f"{label} batch failed: {e}")
         import traceback
         logger.debug(traceback.format_exc())
     finally:
         shutil.rmtree(user_data, ignore_errors=True)
 
     return results
+
+
+def playwright_circulation_batch_download(
+    articles: list[dict], out_dir: Path = PDF_DIR
+) -> dict[str, bytes]:
+    """Thin wrapper preserving the original Circulation entry point."""
+    return playwright_primo_ovid_batch_download(
+        articles, out_dir, PRIMO_CIRCULATION_URL, label="circulation"
+    )
+
+
 
 
 def _ovid_title_queries(title: str) -> list[str]:
@@ -1753,6 +1835,77 @@ def _try_elsevier_api(doi: str) -> bytes | None:
     return None
 
 
+def _try_lww_direct(doi: str) -> bytes | None:
+    """Three-hop fetch of the real article PDF from journals.lww.com.
+
+    1. DOI -> article fulltext page. Body carries the article number (`an=...`)
+       and the visit sets session cookies needed by step 2.
+    2. /_layouts/15/oaks.journals/downloadpdf.aspx?an=<AN> -> JS interstitial
+       page ("Your download should start automatically..."). Body contains a
+       tokenized https://pdfs.journals.lww.com/.../<slug>.pdf?token=... URL.
+    3. GET the tokenized URL with the same session -> the real PDF bytes.
+
+    The token has a short TTL, so the whole sequence must happen on one
+    Session. Returns None if any hop fails to produce a real PDF (paywall,
+    expired token, malformed page, etc.).
+    """
+    try:
+        # curl_cffi.Session preserves the Chrome TLS fingerprint across calls;
+        # falling back to requests.Session is fine on networks where TLS
+        # fingerprinting isn't gated.
+        if IMPERSONATE:
+            from curl_cffi import requests as _r
+            session = _r.Session(impersonate=IMPERSONATE)
+        else:
+            import requests as _r
+            session = _r.Session()
+            session.headers.update(HEADERS)
+
+        # Hop 1: DOI -> article fulltext page
+        r1 = session.get(f"https://doi.org/{doi}", timeout=TIMEOUT, allow_redirects=True)
+        r1.raise_for_status()
+        if "journals.lww.com" not in r1.url:
+            return None  # not an LWW article
+
+        article_url = r1.url
+        m = re.search(r'downloadpdf\.aspx\?[^"\']*an=([\w-]+)', r1.text)
+        if not m:
+            logger.debug(f"LWW: no an= param on {article_url}")
+            return None
+        an = m.group(1)
+
+        # The journal slug is the path segment right after journals.lww.com/.
+        # Using it (instead of hardcoding "acsm-msse") makes this work for any
+        # LWW journal that ever lands here.
+        path_parts = urlparse(article_url).path.lstrip("/").split("/")
+        journal_slug = path_parts[0] if path_parts else "acsm-msse"
+        dl_aspx = (
+            f"https://journals.lww.com/{journal_slug}"
+            f"/_layouts/15/oaks.journals/downloadpdf.aspx"
+            f"?trckng_src_pg=ArticleViewer&an={an}"
+        )
+
+        # Hop 2: JS interstitial that carries the tokenized PDF URL
+        r2 = session.get(dl_aspx, timeout=TIMEOUT, headers={"Referer": article_url})
+        m2 = re.search(
+            r'href=["\'](https://pdfs\.journals\.lww\.com/[^"\']+\.pdf\?[^"\']+)["\']',
+            r2.text,
+        )
+        if not m2:
+            logger.debug(f"LWW: no tokenized PDF URL in interstitial for {doi}")
+            return None
+
+        # Hop 3: signed CDN URL -> real PDF bytes
+        r3 = session.get(m2.group(1), timeout=60, headers={"Referer": dl_aspx})
+        if not _is_pdf(r3.content) or _is_lww_paywall_pdf(r3.content):
+            logger.debug(f"LWW: token URL returned non-PDF/stub for {doi}")
+            return None
+        return r3.content
+    except Exception as e:
+        logger.debug(f"LWW direct fetch failed for {doi}: {e}")
+        return None
+
+
 def _try_doi_redirect(doi: str) -> bytes | None:
     """Follow DOI → landing page → find PDF link."""
     try:
@@ -1779,6 +1932,14 @@ def _try_doi_redirect(doi: str) -> bytes | None:
     return None
 
 
+def _is_lww_stub_url(url: str) -> bool:
+    """Return True for known LWW non-article stub PDFs (Author-Document.pdf
+    on Mozu CDN), which journals.lww.com surfaces as the only public .pdf
+    link on a paywalled landing page."""
+    u = url.lower()
+    return "author-document.pdf" in u or "mozu.com" in u
+
+
 def _find_pdf_link(html: str, base: str, page_url: str) -> str | None:
     # 1. citation_pdf_url meta tag (JAMA, many publishers)
     m = re.search(r'citation_pdf_url[^>]*content=["\']([^"\']+)["\']', html)
@@ -1786,7 +1947,7 @@ def _find_pdf_link(html: str, base: str, page_url: str) -> str | None:
         m = re.search(r'content=["\']([^"\']+)["\'][^>]*citation_pdf_url', html)
     if m:
         url = m.group(1)
-        if url.startswith("http"):
+        if url.startswith("http") and not _is_lww_stub_url(url):
             return url
 
     # 2. href patterns
@@ -1798,6 +1959,8 @@ def _find_pdf_link(html: str, base: str, page_url: str) -> str | None:
     ]
     for pattern in patterns:
         for match in re.findall(pattern, html):
+            if _is_lww_stub_url(match):
+                continue
             if match.startswith("http"):
                 return match
             elif match.startswith("/"):
@@ -2108,6 +2271,361 @@ def playwright_oup_batch_download(
     return results
 
 
+def _springer_pdf_url(doi: str) -> str:
+    return f"https://link.springer.com/content/pdf/{doi}.pdf"
+
+
+def _springer_article_url(doi: str) -> str:
+    return f"https://link.springer.com/article/{doi}"
+
+
+def playwright_springer_batch_download(
+    articles: list[dict], out_dir: Path = PDF_DIR
+) -> dict[str, bytes]:
+    """Download Springer (link.springer.com) PDFs via Playwright.
+
+    Plain HTTP gets a 3 KB "Client Challenge" page; even nodriver can't always
+    pass the check. A persistent Chrome context with a real article-page
+    warmup clears the JS challenge, then `page.request.get()` on the
+    `/content/pdf/<doi>.pdf` URL reuses the browser's cookies + TLS to fetch
+    the actual PDF. One warmup per batch is enough.
+
+    Returns {doi: pdf_bytes} for successful downloads.
+    """
+    try:
+        from playwright.sync_api import sync_playwright
+    except ImportError:
+        logger.debug("playwright not installed, skipping Springer batch")
+        return {}
+
+    to_download = [
+        a for a in articles
+        if a.get("doi") and not (
+            (out_dir / _pdf_filename(a)).exists()
+            and (out_dir / _pdf_filename(a)).stat().st_size > 10_000
+        )
+    ]
+    if not to_download:
+        return {}
+
+    user_data = tempfile.mkdtemp(prefix="pw_springer_")
+    results: dict[str, bytes] = {}
+    try:
+        with sync_playwright() as p:
+            context = p.chromium.launch_persistent_context(
+                user_data,
+                headless=False,
+                channel="chrome",
+                accept_downloads=True,
+                args=["--disable-blink-features=AutomationControlled"],
+            )
+            page = context.pages[0] if context.pages else context.new_page()
+
+            # Warmup: visit the first article page so Cloudflare's JS
+            # challenge has a chance to set its clearance cookies.
+            first_doi = to_download[0]["doi"]
+            warmup_url = _springer_article_url(first_doi)
+            try:
+                page.goto(warmup_url, timeout=60000, wait_until="domcontentloaded")
+                page.wait_for_timeout(4000)
+                print(f"  Springer session established: {page.title()[:60]!r}")
+            except Exception as e:
+                logger.debug(f"Springer warmup failed: {e}")
+
+            for i, article in enumerate(to_download):
+                doi = article["doi"]
+                pdf_url = _springer_pdf_url(doi)
+                print(f"  [{i+1}/{len(to_download)}] {doi}...")
+                try:
+                    resp = page.request.get(pdf_url, timeout=60000)
+                    body = resp.body()
+                    if resp.status == 200 and _is_pdf(body):
+                        results[doi] = body
+                        print(f"    [OK] {len(body)//1024} KB")
+                    else:
+                        ct = resp.headers.get("content-type", "")
+                        print(
+                            f"    [miss] status={resp.status} ct={ct} "
+                            f"size={len(body)}"
+                        )
+                except Exception as e:
+                    logger.debug(f"Springer fetch failed for {doi}: {e}")
+                    print(f"    [error] {type(e).__name__}: {e}")
+                time.sleep(1)
+
+            context.close()
+    except Exception as e:
+        print(f"  [ERROR] Playwright Springer batch failed: {e}")
+        logger.debug(f"Playwright Springer batch failed: {e}")
+    finally:
+        shutil.rmtree(user_data, ignore_errors=True)
+    return results
+
+
+def _try_springer_playwright(doi: str) -> bytes | None:
+    """Single-article shortcut over `playwright_springer_batch_download`."""
+    results = playwright_springer_batch_download(
+        [{"doi": doi, "pmid": "manual", "authors": [], "year": "0000"}]
+    )
+    return results.get(doi)
+
+
+_JAMA_SLUG_MAP = {
+    "jamacardio.":         "jamacardiology",
+    "jamainternmed.":      "jamainternalmedicine",
+    "jamasurg.":           "jamasurgery",
+    "jamaneurol.":         "jamaneurology",
+    "jamaoncol.":          "jamaoncology",
+    "jamanetworkopen.":    "jamanetworkopen",
+    "jamaophthalmol.":     "jamaophthalmology",
+    "jamapsychiatry.":     "jamapsychiatry",
+    "jamapediatrics.":     "jamapediatrics",
+    "jamadermatol.":       "jamadermatology",
+    "jamaotol.":           "jamaotolaryngology",
+    "jamahealthforum.":    "jamahealthforum",
+}
+
+
+def _jama_network_slug(doi: str) -> str:
+    """Map a JAMA Network DOI to the journals.lww-style URL slug."""
+    body = doi.lower().split("/", 1)[1] if "/" in doi else doi.lower()
+    for prefix, slug in _JAMA_SLUG_MAP.items():
+        if body.startswith(prefix):
+            return slug
+    return "jama"
+
+
+def playwright_jamanetwork_batch_download(
+    articles: list[dict], out_dir: Path = PDF_DIR
+) -> dict[str, bytes]:
+    """Download JAMA Network PDFs (JAMA + sub-journals) via Playwright.
+
+    The article landing pages on jamanetwork.com are Cloudflare-protected
+    AND hydrate the `citation_pdf_url` meta tag client-side, so neither
+    plain HTTP nor `_nodriver_download_url` can discover the actual PDF
+    URL. A persistent Chrome context navigates to each article page (CF
+    clears + JS hydrates), reads `citation_pdf_url` via DOM, then
+    `page.request.get()` fetches the signed `/articlepdf/...` URL with the
+    session cookies in place.
+    """
+    try:
+        from playwright.sync_api import sync_playwright
+    except ImportError:
+        logger.debug("playwright not installed, skipping JAMA Network batch")
+        return {}
+
+    to_download = [
+        a for a in articles
+        if a.get("doi") and not (
+            (out_dir / _pdf_filename(a)).exists()
+            and (out_dir / _pdf_filename(a)).stat().st_size > 10_000
+        )
+    ]
+    if not to_download:
+        return {}
+
+    user_data = tempfile.mkdtemp(prefix="pw_jamanetwork_")
+    results: dict[str, bytes] = {}
+    try:
+        with sync_playwright() as p:
+            context = p.chromium.launch_persistent_context(
+                user_data,
+                headless=False,
+                channel="chrome",
+                accept_downloads=True,
+                args=["--disable-blink-features=AutomationControlled"],
+            )
+            page = context.pages[0] if context.pages else context.new_page()
+
+            for i, article in enumerate(to_download):
+                doi = article["doi"]
+                slug = _jama_network_slug(doi)
+                landing = f"https://jamanetwork.com/journals/{slug}/fullarticle/{doi}"
+                print(f"  [{i+1}/{len(to_download)}] {doi}...")
+                try:
+                    page.goto(landing, timeout=60000, wait_until="domcontentloaded")
+                    page.wait_for_timeout(6000)  # let CF + JS hydration finish
+
+                    pdf_url = page.evaluate("""
+                        () => {
+                            const m = document.querySelector('meta[name="citation_pdf_url"]');
+                            return m ? m.content : null;
+                        }
+                    """)
+                    if not pdf_url:
+                        print(f"    [miss] no citation_pdf_url after hydration")
+                        continue
+
+                    if pdf_url.startswith("/"):
+                        pdf_url = "https://jamanetwork.com" + pdf_url
+                    resp = page.request.get(pdf_url, timeout=60000)
+                    body = resp.body()
+                    if resp.status == 200 and _is_pdf(body):
+                        results[doi] = body
+                        print(f"    [OK] {len(body)//1024} KB")
+                    else:
+                        ct = resp.headers.get("content-type", "")
+                        print(
+                            f"    [miss] status={resp.status} ct={ct} "
+                            f"size={len(body)}"
+                        )
+                except Exception as e:
+                    logger.debug(f"JAMA Network fetch failed for {doi}: {e}")
+                    print(f"    [error] {type(e).__name__}: {e}")
+                time.sleep(1)
+
+            context.close()
+    except Exception as e:
+        print(f"  [ERROR] Playwright JAMA Network batch failed: {e}")
+        logger.debug(f"Playwright JAMA Network batch failed: {e}")
+    finally:
+        shutil.rmtree(user_data, ignore_errors=True)
+    return results
+
+
+def _try_jamanetwork_playwright(doi: str) -> bytes | None:
+    """Single-article shortcut over `playwright_jamanetwork_batch_download`."""
+    results = playwright_jamanetwork_batch_download(
+        [{"doi": doi, "pmid": "manual", "authors": [], "year": "0000"}]
+    )
+    return results.get(doi)
+
+
+def playwright_proquest_batch_download(
+    articles: list[dict], out_dir: Path = PDF_DIR
+) -> dict[str, bytes]:
+    """Download Heart PDFs via ProQuest using NCKU IP-authenticated access."""
+    try:
+        from playwright.sync_api import sync_playwright
+    except ImportError:
+        logger.debug("playwright not installed, skipping ProQuest batch")
+        return {}
+
+    to_download = [
+        a for a in articles
+        if a.get("doi") and not (
+            (out_dir / _pdf_filename(a)).exists()
+            and (out_dir / _pdf_filename(a)).stat().st_size > 10_000
+        )
+    ]
+    if not to_download:
+        return {}
+
+    def _evaluate_with_retry(page, script: str, attempts: int = 3) -> str | None:
+        """Evaluate after ProQuest finishes client-side navigation."""
+        for attempt in range(attempts):
+            try:
+                return page.evaluate(script)
+            except Exception as e:
+                if attempt == attempts - 1:
+                    raise
+                logger.debug(f"ProQuest evaluate retry after navigation: {e}")
+                page.wait_for_load_state("domcontentloaded", timeout=30000)
+                page.wait_for_timeout(2500)
+        return None
+
+    user_data = tempfile.mkdtemp(prefix="pw_proquest_")
+    results: dict[str, bytes] = {}
+    try:
+        with sync_playwright() as p:
+            context = p.chromium.launch_persistent_context(
+                user_data,
+                headless=False,
+                channel="chrome",
+                accept_downloads=True,
+                args=["--disable-blink-features=AutomationControlled"],
+            )
+            page = context.pages[0] if context.pages else context.new_page()
+
+            for i, article in enumerate(to_download):
+                doi = article["doi"]
+                print(f"  [{i+1}/{len(to_download)}] {doi}...")
+                try:
+                    page.goto(
+                        "https://www.proquest.com/?accountid=12719",
+                        timeout=60000,
+                        wait_until="domcontentloaded",
+                    )
+                    page.wait_for_timeout(4500)
+
+                    page.fill("#searchTerm", doi)
+                    page.press("#searchTerm", "Enter")
+                    page.wait_for_load_state("domcontentloaded", timeout=30000)
+                    page.wait_for_timeout(5000)
+
+                    docview_url = _evaluate_with_retry(page, """
+                        () => {
+                            const links = Array.from(document.querySelectorAll('a[href*="/docview/"]'))
+                                .filter((a, i, arr) => arr.findIndex(x => x.href === a.href) === i);
+                            return links.length ? links[0].href : null;
+                        }
+                    """)
+                    if not docview_url:
+                        print("    [miss] no ProQuest docview link")
+                        continue
+
+                    page.goto(docview_url, timeout=60000, wait_until="domcontentloaded")
+                    page.wait_for_timeout(4500)
+
+                    fulltext_pdf_url = _evaluate_with_retry(page, """
+                        () => {
+                            const a = Array.from(document.querySelectorAll('a'))
+                                .find(el => /fulltextPDF/.test(el.href));
+                            return a ? a.href : null;
+                        }
+                    """)
+                    if not fulltext_pdf_url:
+                        print("    [miss] no ProQuest fulltextPDF link")
+                        continue
+
+                    page.goto(fulltext_pdf_url, timeout=60000, wait_until="domcontentloaded")
+                    page.wait_for_timeout(5000)
+
+                    media_url = _evaluate_with_retry(page, """
+                        () => {
+                            const a = Array.from(document.querySelectorAll('a'))
+                                .find(el => /^https:\\/\\/media\\.proquest\\.com\\/media\\//.test(el.href)
+                                            && /pdf/i.test(el.textContent || ''));
+                            return a ? a.href : null;
+                        }
+                    """)
+                    if not media_url:
+                        print("    [miss] no ProQuest media PDF link")
+                        continue
+
+                    resp = page.request.get(media_url, timeout=60000)
+                    body = resp.body()
+                    if resp.status == 200 and _is_pdf(body) and len(body) > 100_000:
+                        results[doi] = body
+                        print(f"    [OK] {len(body)//1024} KB")
+                    else:
+                        ct = resp.headers.get("content-type", "")
+                        print(
+                            f"    [miss] status={resp.status} ct={ct} "
+                            f"size={len(body)}"
+                        )
+                except Exception as e:
+                    logger.debug(f"ProQuest fetch failed for {doi}: {e}")
+                    print(f"    [error] {type(e).__name__}: {e}")
+                time.sleep(1)
+
+            context.close()
+    except Exception as e:
+        print(f"  [ERROR] Playwright ProQuest batch failed: {e}")
+        logger.debug(f"Playwright ProQuest batch failed: {e}")
+    finally:
+        shutil.rmtree(user_data, ignore_errors=True)
+    return results
+
+
+def _try_proquest_playwright(doi: str) -> bytes | None:
+    """Single-article shortcut over `playwright_proquest_batch_download`."""
+    results = playwright_proquest_batch_download(
+        [{"doi": doi, "pmid": "manual", "authors": [], "year": "0000"}]
+    )
+    return results.get(doi)
+
+
 def _resolve_pmcid(doi: str) -> str | None:
     """Convert DOI to PMCID via NCBI ID converter."""
     try:
@@ -2233,8 +2751,54 @@ def download_pdf(article: dict, out_dir: Path = PDF_DIR) -> Path | None:
     is_eurointervention = _is_eurointervention_journal(journal)
     is_jacc = _is_jacc_article(article)
     is_circulation = _is_circulation_article(article)
+    is_msse = _is_msse_article(article)
+    is_sports_medicine = _is_sports_medicine_article(article)
+    is_jamanetwork = doi.lower().startswith("10.1001/")
+    is_heart = doi.lower().startswith("10.1136/heartjnl-")
     is_elsevier = doi.startswith("10.1016/")
     content = None
+
+    if is_jamanetwork:
+        # JAMA Network (JAMA + sub-journals). citation_pdf_url is JS-rendered
+        # and pages are Cloudflare-protected. Playwright + warmup is the only
+        # path that consistently exposes the signed /articlepdf/ URL.
+        print("  [1] JAMA Network Playwright...")
+        content = _try_jamanetwork_playwright(doi)
+        if content:
+            dest.write_bytes(content)
+            print(f"  [OK] {dest.name} ({len(content)//1024} KB)")
+            return dest
+        _log_failure(article, "JAMA Network PDF not found via Playwright")
+        print(f"  [FAIL] {doi or article.get('title', '')} (JAMA Network)")
+        return None
+
+    if is_sports_medicine:
+        # Springer Sports Medicine: link.springer.com gates `/content/pdf`
+        # with a JS challenge that plain HTTP and nodriver both fail.
+        # Playwright with article-page warmup clears the challenge.
+        print("  [1] Springer Playwright (Sports Medicine)...")
+        content = _try_springer_playwright(doi)
+        if content:
+            dest.write_bytes(content)
+            print(f"  [OK] {dest.name} ({len(content)//1024} KB)")
+            return dest
+        _log_failure(article, "Sports Medicine PDF not found via Springer Playwright")
+        print(f"  [FAIL] {doi or article.get('title', '')} (Sports Medicine)")
+        return None
+
+    if is_msse:
+        # MSSE: tokenized journals.lww.com endpoint (pure HTTP, three hops).
+        # The public landing page exposes only a stub PDF; this path uses
+        # downloadpdf.aspx's signed pdfs.journals.lww.com URL instead.
+        print("  [1] LWW tokenized PDF (MSSE)...")
+        content = _try_lww_direct(doi)
+        if content:
+            dest.write_bytes(content)
+            print(f"  [OK] {dest.name} ({len(content)//1024} KB)")
+            return dest
+        _log_failure(article, "MSSE PDF not found via LWW direct")
+        print(f"  [FAIL] {doi or article.get('title', '')} (MSSE)")
+        return None
 
     if is_circulation:
         print("  [1] Direct PDF (Circulation)...")
@@ -2306,6 +2870,10 @@ def download_pdf(article: dict, out_dir: Path = PDF_DIR) -> Path | None:
     if not content:
         content = _try_unpaywall(doi)
 
+    if not content and is_heart:
+        print(f"  [ProQuest fallback] Heart...")
+        content = _try_proquest_playwright(doi)
+
     # nodriver fallback for Cloudflare-protected sites (NEJM, JAMA, etc.)
     if not content:
         urls = _direct_pdf_urls(doi, journal)
@@ -2340,10 +2908,14 @@ def _log_failure(article: dict, reason: str):
 def download_articles(articles: list[dict], out_dir: Path = PDF_DIR) -> dict[str, Path | None]:
     """Download PDFs for multiple articles. Returns {pmid: path_or_None}.
 
-    Pass 1: non-browser methods (direct URL, DOI redirect, Elsevier API, Unpaywall, PMC)
-    Pass 2: Elsevier nodriver batch
-    Pass 3: Circulation Playwright batch (Primo/Ovid)
-    Pass 4: OUP Playwright batch (EHJ etc.)
+    Pass 1:  non-browser methods (direct URL, DOI redirect, Elsevier API, Unpaywall, PMC,
+             MSSE tokenized LWW endpoint)
+    Pass 2:  Elsevier nodriver batch
+    Pass 3:  Circulation Playwright batch (Primo/Ovid)
+    Pass 4:  OUP Playwright batch (EHJ etc.)
+    Pass 4b: Springer Playwright batch (Sports Medicine etc.)
+    Pass 4c: JAMA Network Playwright batch (JAMA, JAMA Cardio, etc.)
+    Pass 4d: ProQuest Playwright batch (Heart)
     """
     out_dir.mkdir(parents=True, exist_ok=True)
     results = {}
@@ -2354,6 +2926,9 @@ def download_articles(articles: list[dict], out_dir: Path = PDF_DIR) -> dict[str
     circulation_pending: list[dict] = []
     nejm_pending: list[dict] = []
     cloudflare_pending: list[dict] = []
+    springer_pending: list[dict] = []
+    jamanetwork_pending: list[dict] = []
+    heart_pending: list[dict] = []
 
     for i, article in enumerate(articles, 1):
         title = article.get("title", "")[:60]
@@ -2379,20 +2954,63 @@ def download_articles(articles: list[dict], out_dir: Path = PDF_DIR) -> dict[str
         is_eurointervention = _is_eurointervention_journal(journal)
         is_jacc = _is_jacc_article(article)
         is_circulation = _is_circulation_article(article)
+        is_msse = _is_msse_article(article)
+        is_sports_medicine = _is_sports_medicine_article(article)
+        is_jamanetwork = doi.lower().startswith("10.1001/")
+        is_heart = doi.lower().startswith("10.1136/heartjnl-")
         is_oup = doi.startswith("10.1093/")
         is_elsevier = doi.startswith("10.1016/")
         content = None
         step = 1
 
+        # JAMA Network: skip Pass 1 (citation_pdf_url is JS-rendered and CF
+        # blocks plain HTTP). Queue for the batched Playwright pass.
+        if is_jamanetwork:
+            print(f"  [pending] queued for Playwright batch (JAMA Network)")
+            jamanetwork_pending.append(article)
+            time.sleep(1)
+            continue
+
+        # MSSE: tokenized journals.lww.com endpoint (pure HTTP, 3 hops).
+        # Public landing page only exposes a stub PDF, so the rest of Pass 1
+        # is useless for MSSE.
+        if is_msse:
+            print(f"  [1] LWW tokenized PDF (MSSE)...")
+            content = _try_lww_direct(doi)
+            if content:
+                dest.write_bytes(content)
+                print(f"  [OK] {dest.name} ({len(content)//1024} KB)")
+                results[pmid] = dest
+            else:
+                _log_failure(article, "MSSE PDF not found via LWW direct")
+                print(f"  [FAIL] {doi or article.get('title', '')} (MSSE)")
+                results[pmid] = None
+            time.sleep(1)
+            continue
+
+        # Sports Medicine (Springer): link.springer.com blocks plain HTTP
+        # with a JS challenge. Queue for the batched Playwright pass.
+        if is_sports_medicine:
+            print(f"  [pending] queued for Playwright batch (Springer)")
+            springer_pending.append(article)
+            time.sleep(1)
+            continue
+
         # [1] Direct PDF URL
         print(f"  [{step}] Direct PDF URL...")
         content = _try_direct(doi, journal)
+        if content and _is_lww_paywall_pdf(content):
+            print(f"  [reject] LWW paywall stub from direct URL")
+            content = None
         step += 1
 
         # [2] DOI redirect
         if not content:
             print(f"  [{step}] DOI redirect...")
             content = _try_doi_redirect(doi)
+            if content and _is_lww_paywall_pdf(content):
+                print(f"  [reject] LWW paywall stub from DOI redirect")
+                content = None
             step += 1
 
         # [3] Elsevier API (JACC and other Elsevier)
@@ -2434,6 +3052,9 @@ def download_articles(articles: list[dict], out_dir: Path = PDF_DIR) -> dict[str
         elif doi.startswith("10.1056/"):
             print(f"  [pending] queued for Playwright batch (NEJM)")
             nejm_pending.append(article)
+        elif is_heart:
+            print(f"  [pending] queued for Playwright batch (Heart/ProQuest)")
+            heart_pending.append(article)
         elif _direct_pdf_urls(doi, journal):
             print(f"  [pending] queued for nodriver batch (Cloudflare)")
             cloudflare_pending.append(article)
@@ -2511,6 +3132,75 @@ def download_articles(articles: list[dict], out_dir: Path = PDF_DIR) -> dict[str
             else:
                 _log_failure(article, "PDF not found via all methods")
                 print(f"  [FAIL] {doi}")
+                results[pmid] = None
+
+    # ── Pass 4c: JAMA Network Playwright batch ──────────────────────
+    if jamanetwork_pending:
+        print(f"\n{'─'*50}")
+        print(f"  Playwright batch: downloading {len(jamanetwork_pending)} JAMA Network PDF(s)...")
+        print(f"  (opening Chrome, please wait)\n")
+
+        jn_results = playwright_jamanetwork_batch_download(jamanetwork_pending, out_dir)
+
+        for article in jamanetwork_pending:
+            pmid = article.get("pmid", "?")
+            doi = article.get("doi", "")
+            dest = out_dir / _pdf_filename(article)
+            content = jn_results.get(doi)
+
+            if content:
+                dest.write_bytes(content)
+                print(f"  [OK] {dest.name} ({len(content)//1024} KB)")
+                results[pmid] = dest
+            else:
+                _log_failure(article, "JAMA Network PDF not found via Playwright")
+                print(f"  [FAIL] {doi or article.get('title', '')} (JAMA Network)")
+                results[pmid] = None
+
+    # ── Pass 4d: ProQuest Playwright batch (Heart) ──────────────────
+    if heart_pending:
+        print(f"\n{'─'*50}")
+        print(f"  Playwright batch: downloading {len(heart_pending)} Heart PDF(s) via ProQuest...")
+        print(f"  (opening Chrome → ProQuest, please wait)\n")
+
+        pq_results = playwright_proquest_batch_download(heart_pending, out_dir)
+
+        for article in heart_pending:
+            pmid = article.get("pmid", "?")
+            doi = article.get("doi", "")
+            dest = out_dir / _pdf_filename(article)
+            content = pq_results.get(doi)
+
+            if content:
+                dest.write_bytes(content)
+                print(f"  [OK] {dest.name} ({len(content)//1024} KB)")
+                results[pmid] = dest
+            else:
+                _log_failure(article, "Heart PDF not found via ProQuest")
+                print(f"  [FAIL] {doi or article.get('title', '')} (Heart ProQuest)")
+                results[pmid] = None
+
+    # ── Pass 4b: Springer Playwright batch (Sports Medicine etc.) ───
+    if springer_pending:
+        print(f"\n{'─'*50}")
+        print(f"  Playwright batch: downloading {len(springer_pending)} Springer PDF(s)...")
+        print(f"  (opening Chrome, please wait)\n")
+
+        sm_results = playwright_springer_batch_download(springer_pending, out_dir)
+
+        for article in springer_pending:
+            pmid = article.get("pmid", "?")
+            doi = article.get("doi", "")
+            dest = out_dir / _pdf_filename(article)
+            content = sm_results.get(doi)
+
+            if content:
+                dest.write_bytes(content)
+                print(f"  [OK] {dest.name} ({len(content)//1024} KB)")
+                results[pmid] = dest
+            else:
+                _log_failure(article, "Springer PDF not found via Playwright")
+                print(f"  [FAIL] {doi or article.get('title', '')} (Springer)")
                 results[pmid] = None
 
     # ── Pass 5: NEJM Playwright batch ───────────────────────────────

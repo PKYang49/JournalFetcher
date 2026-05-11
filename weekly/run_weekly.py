@@ -2,7 +2,7 @@
 
 Pipeline:
   1. fetch articles for each journal (last `days` days, top `count` per journal)
-  2. summarize each abstract via `claude -p` (4 sentences)
+  2. summarize each abstract via `codex exec`
   3. render HTML to docs/<YYYY>-Wxx.html and update docs/index.html
   4. (optional) git push
   5. (optional) Discord webhook
@@ -34,13 +34,30 @@ from weekly import render, summarize_weekly  # noqa: E402
 DEFAULT_JOURNALS = list(pubmed.JOURNAL_QUERIES.keys())
 
 
-def fetch_all(journals: list[str], days: int, count: int) -> list[dict]:
-    """Fetch articles from each journal, tagging with `journal_key`."""
+def fetch_all(journals: list[str], days: int | None, count: int) -> list[dict]:
+    """Fetch articles from each journal, tagging with `journal_key`.
+
+    When `days` is None, use the per-journal default from
+    `pubmed.JOURNAL_DEFAULT_WINDOW` (a historical (min, max) day-range), or
+    fall back to a last-7-days window. When the user supplies `--days`
+    explicitly, it applies uniformly to all journals.
+    """
     all_articles: list[dict] = []
     for key in journals:
-        print(f"[{key}] fetching last {days}d, up to {count} articles ...")
+        date_range = None
+        window_label = ""
+        if days is None and key in pubmed.JOURNAL_DEFAULT_WINDOW:
+            date_range = pubmed.JOURNAL_DEFAULT_WINDOW[key]
+            lo, hi = min(date_range), max(date_range)
+            window_label = f"{lo}-{hi}d ago"
+            kw = {"date_range": date_range}
+        else:
+            window = days if days is not None else 7
+            window_label = f"last {window}d"
+            kw = {"days": window}
+        print(f"[{key}] fetching {window_label}, up to {count} articles ...")
         try:
-            articles = pubmed.fetch_journal_articles(key, days=days, count=count)
+            articles = pubmed.fetch_journal_articles(key, count=count, **kw)
         except Exception as e:
             print(f"  [error] {key} fetch failed: {e}")
             continue
@@ -69,14 +86,19 @@ def main() -> int:
         help="Subset of journals (keys from pubmed.JOURNAL_QUERIES)",
     )
     parser.add_argument("--count", type=int, default=10, help="Per-journal count")
-    parser.add_argument("--days", type=int, default=7, help="Lookback window in days")
+    parser.add_argument(
+        "--days",
+        type=int,
+        default=None,
+        help="Lookback window in days (overrides per-journal defaults; default 7d, BJSM 90-97d ago)",
+    )
     parser.add_argument("--dry-run", action="store_true", help="Generate HTML only")
     parser.add_argument("--no-push", action="store_true", help="Skip git push")
     parser.add_argument("--no-discord", action="store_true", help="Skip Discord webhook")
     parser.add_argument(
         "--no-summarize",
         action="store_true",
-        help="Skip claude -p summarization (debug HTML layout)",
+        help="Skip codex exec summarization (debug HTML layout)",
     )
     args = parser.parse_args()
 
@@ -93,7 +115,7 @@ def main() -> int:
         for a in articles:
             a["summary"] = "[--no-summarize 模式：未生成摘要]"
     else:
-        print(f"\nSummarizing {len(articles)} articles via claude -p ...")
+        print(f"\nSummarizing {len(articles)} articles via codex exec ...")
         summarize_weekly.summarize_articles(articles)
 
     counts = journal_count_summary(articles, args.journals)

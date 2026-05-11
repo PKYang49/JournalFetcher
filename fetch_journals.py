@@ -4,7 +4,7 @@ JournalFetcher — 主程式入口
 
 流程：
   Phase 1  : 從 PubMed 抓取最新文章列表
-  Phase 2a : 用 Claude Code CLI 生成繁體中文摘要
+  Phase 2a : 用 Codex CLI 生成繁體中文摘要
   Phase 2b : Terminal checkbox 勾選文章
   Phase 3  : 下載 PDF（機構內網 IP 授權）
   提示     : 開啟 Claude.ai，手動上傳 PDF + Literature Appraisal Skill 進行評讀

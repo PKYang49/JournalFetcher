@@ -1,10 +1,32 @@
 """Phase 1: Fetch article list from PubMed E-utilities API."""
 
+import os
+import time
 import xml.etree.ElementTree as ET
-import requests
+from datetime import datetime, timedelta, timezone
+from pathlib import Path
 
-EMAIL = "researcher@example.com"
+import requests
+from dotenv import load_dotenv
+
+load_dotenv(Path(__file__).resolve().parent.parent / ".env")
+
+# NCBI asks every E-utilities client to identify itself via `tool` + `email`.
+# Doing so puts us in a higher-trust bucket and surfaces a real contact in
+# their logs if we ever misbehave (lower chance of silent throttling).
+EMAIL = os.getenv("PUBMED_EMAIL", "researcher@example.com")
+TOOL = "JournalFetcher"
 BASE_URL = "https://eutils.ncbi.nlm.nih.gov/entrez/eutils"
+
+# Retry policy for transient NCBI failures (HTTP 5xx, network blip, or 200 OK
+# with an `ERROR` payload / missing `idlist`). With ATTEMPTS=3 and BASE=3.0,
+# waits between attempts are 1s and 3s (no sleep after the final attempt).
+SEARCH_MAX_ATTEMPTS = 3
+SEARCH_BACKOFF_BASE = 3.0
+
+
+class PubmedSearchError(RuntimeError):
+    """Raised when PubMed esearch keeps failing after all retries."""
 
 JOURNAL_QUERIES = {
     "NEJM": '"N Engl J Med"[Journal]',
@@ -14,6 +36,22 @@ JOURNAL_QUERIES = {
     "EHJ": '"Eur Heart J"[Journal]',
     "EuroIntervention": '"EuroIntervention"[Journal]',
     "Circulation": '"Circulation"[Journal]',
+    "BJSM": '"Br J Sports Med"[Journal]',
+    "MSSE": '"Med Sci Sports Exerc"[Journal]',
+    "SportsMed": '"Sports Med"[Journal]',
+    "JAP": '"J Appl Physiol (1985)"[Journal]',
+    "JAMACardio": '"JAMA Cardiol"[Journal]',
+    "Heart": '"Heart"[Journal]',
+}
+
+# Per-journal publication-date window override, as (min_days_ago, max_days_ago).
+# Articles are restricted to that historical window — e.g. BJSM picks up papers
+# published between 90 and 97 days ago, giving each weekly run a roughly 1-week
+# slice of historical content rather than the bleeding-edge ePub stream.
+# Journals not listed here use the caller-supplied `days` argument.
+JOURNAL_DEFAULT_WINDOW: dict[str, tuple[int, int]] = {
+    "BJSM": (90, 97),
+    "Heart": (90, 97),
 }
 
 # Priority order for picking a representative publication type.
@@ -50,24 +88,94 @@ def _classify_pub_type(pub_types: list[str]) -> str:
     return pub_types[0] if pub_types else ""
 
 
-def search_pmids(journal: str, days: int = 30, count: int = 20) -> list[str]:
-    """Search PubMed and return list of PMIDs for the journal."""
+def _build_esearch_params(
+    journal: str,
+    days: int,
+    count: int,
+    date_range: tuple[int, int] | None,
+) -> dict:
     query = JOURNAL_QUERIES[journal]
-    # Use publication date so "recent" means recently published, not recently
-    # added/updated inside PubMed's indexing pipeline.
-    term = f'{query} AND "last {days} days"[dp] AND hasabstract[text]'
     params = {
         "db": "pubmed",
-        "term": term,
         "retmax": count,
         "retmode": "json",
         "sort": "pub date",
         "email": EMAIL,
+        "tool": TOOL,
     }
-    resp = requests.get(f"{BASE_URL}/esearch.fcgi", params=params, timeout=30)
-    resp.raise_for_status()
-    data = resp.json()
-    return data["esearchresult"]["idlist"]
+    if date_range is not None:
+        a, b = date_range
+        min_days_ago, max_days_ago = min(a, b), max(a, b)
+        today = datetime.now(timezone.utc).date()
+        mindate = today - timedelta(days=max_days_ago)
+        maxdate = today - timedelta(days=min_days_ago)
+        params["term"] = f"{query} AND hasabstract[text]"
+        params["datetype"] = "pdat"
+        params["mindate"] = mindate.strftime("%Y/%m/%d")
+        params["maxdate"] = maxdate.strftime("%Y/%m/%d")
+    else:
+        # Use publication date so "recent" means recently published, not
+        # recently added/updated inside PubMed's indexing pipeline.
+        params["term"] = (
+            f'{query} AND "last {days} days"[dp] AND hasabstract[text]'
+        )
+    return params
+
+
+def search_pmids(
+    journal: str,
+    days: int = 30,
+    count: int = 20,
+    date_range: tuple[int, int] | None = None,
+) -> list[str]:
+    """Search PubMed and return list of PMIDs for the journal.
+
+    `date_range`, when given as (min_days_ago, max_days_ago), restricts results
+    to articles whose publication date falls inside that historical window and
+    takes precedence over `days`.
+
+    Retries on transient failures: HTTP 5xx, network errors, and 200 OK
+    responses whose `esearchresult` is missing `idlist` or carries an `ERROR`
+    field. Raises `PubmedSearchError` after all retries are exhausted so the
+    caller can decide whether to abort or fall back.
+    """
+    params = _build_esearch_params(journal, days, count, date_range)
+    last_reason = ""
+    for attempt in range(1, SEARCH_MAX_ATTEMPTS + 1):
+        try:
+            resp = requests.get(
+                f"{BASE_URL}/esearch.fcgi", params=params, timeout=30
+            )
+            resp.raise_for_status()
+            data = resp.json()
+            result = data.get("esearchresult", {})
+            # NCBI sometimes returns 200 OK with an explicit ERROR payload or
+            # an empty body lacking `idlist` — treat both as transient.
+            if "ERROR" in result:
+                last_reason = f"NCBI ERROR: {result['ERROR']!r}"
+            elif "idlist" not in result:
+                last_reason = (
+                    f"missing 'idlist'; body keys={sorted(result.keys())}"
+                )
+            else:
+                return result["idlist"]
+        except requests.RequestException as e:
+            last_reason = f"{type(e).__name__}: {e}"
+        except ValueError as e:  # json decode failure
+            last_reason = f"JSON decode failed: {e}"
+
+        if attempt < SEARCH_MAX_ATTEMPTS:
+            sleep_s = SEARCH_BACKOFF_BASE ** (attempt - 1)
+            print(
+                f"  [retry {attempt}/{SEARCH_MAX_ATTEMPTS - 1}] {journal}: "
+                f"{last_reason}; sleeping {sleep_s:.0f}s"
+            )
+            time.sleep(sleep_s)
+
+    raise PubmedSearchError(
+        f"esearch failed for {journal} after {SEARCH_MAX_ATTEMPTS} attempts: "
+        f"{last_reason}"
+    )
 
 
 def fetch_articles(pmids: list[str]) -> list[dict]:
@@ -80,6 +188,7 @@ def fetch_articles(pmids: list[str]) -> list[dict]:
         "retmode": "xml",
         "rettype": "abstract",
         "email": EMAIL,
+        "tool": TOOL,
     }
     resp = requests.get(f"{BASE_URL}/efetch.fcgi", params=params, timeout=60)
     resp.raise_for_status()
@@ -177,11 +286,20 @@ def _extract_publication_year(article: ET.Element) -> str:
 
 
 def fetch_journal_articles(
-    journal: str, days: int = 30, count: int = 20
+    journal: str,
+    days: int = 30,
+    count: int = 20,
+    date_range: tuple[int, int] | None = None,
 ) -> list[dict]:
-    """High-level: search + fetch for one journal. Only returns articles with abstracts."""
+    """High-level: search + fetch for one journal. Only returns articles with abstracts.
+
+    Pass `date_range=(min_days_ago, max_days_ago)` to restrict to a historical
+    publication-date window; otherwise `days` is the "last N days" lookback.
+    """
     # Fetch more than needed to account for post-filter
-    pmids = search_pmids(journal, days=days, count=count * 2)
+    pmids = search_pmids(
+        journal, days=days, count=count * 2, date_range=date_range
+    )
     articles = fetch_articles(pmids)
     articles = [a for a in articles if a.get("abstract", "").strip()]
     return articles[:count]
