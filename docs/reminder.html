@@ -67,19 +67,18 @@
   const params = new URLSearchParams(window.location.search);
   const text = params.get("text") || "";
   const shortcutName = params.get("shortcut") || "Add Reminder from Discord";
-  const shortcutUrl = new URL("shortcuts://run-shortcut");
-
-  shortcutUrl.searchParams.set("name", shortcutName);
-  shortcutUrl.searchParams.set("input", "text");
-  shortcutUrl.searchParams.set("text", text);
+  const shortcutUrl = "shortcuts://run-shortcut"
+    + "?name=" + encodeURIComponent(shortcutName)
+    + "&input=text"
+    + "&text=" + encodeURIComponent(text);
 
   const fallback = document.getElementById("fallback");
-  fallback.href = shortcutUrl.toString();
+  fallback.href = shortcutUrl;
 
   if (!text) {
     document.getElementById("status").textContent = "沒有收到提醒事項內容。";
   } else {
-    window.location.href = shortcutUrl.toString();
+    window.location.href = shortcutUrl;
   }
 </script>
 </body>
