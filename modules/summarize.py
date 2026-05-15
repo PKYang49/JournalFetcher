@@ -5,6 +5,8 @@ import sys
 import tempfile
 from pathlib import Path
 
+from modules.codex_model import get_summary_model
+
 SYSTEM_PROMPT = (
     "你是醫學文獻摘要助手。用繁體中文，以三句話摘要這篇文章："
     "第一句說研究設計和族群，第二句說主要發現和數字，第三句說臨床意義。"
@@ -21,6 +23,8 @@ def _run_codex_prompt(prompt: str, timeout: int = 180) -> str | None:
             [
                 "codex",
                 "exec",
+                "--model",
+                get_summary_model(),
                 "--sandbox",
                 "read-only",
                 "--color",

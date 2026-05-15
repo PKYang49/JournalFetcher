@@ -5,6 +5,8 @@ import sys
 import tempfile
 from pathlib import Path
 
+from modules.codex_model import get_summary_model
+
 SYSTEM_PROMPT = (
     "你是醫學文獻摘要助手。用繁體中文（台灣用語）整理這篇文章，"
     "輸出必須剛好兩行，格式如下：\n"
@@ -23,6 +25,8 @@ def _run_codex_prompt(prompt: str, timeout: int = 180) -> str | None:
             [
                 "codex",
                 "exec",
+                "--model",
+                get_summary_model(),
                 "--sandbox",
                 "read-only",
                 "--color",
