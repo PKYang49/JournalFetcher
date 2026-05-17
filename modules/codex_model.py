@@ -4,11 +4,16 @@ from __future__ import annotations
 
 import os
 import re
+import shutil
 from pathlib import Path
 
 FALLBACK_SUMMARY_MODEL = "gpt-5.4"
 SUMMARY_MODEL_ENV = "JOURNAL_FETCHER_CODEX_MODEL"
 CODEX_CONFIG_PATH = Path.home() / ".codex" / "config.toml"
+COMMON_CODEX_PATHS = (
+    Path("/opt/homebrew/bin/codex"),
+    Path("/usr/local/bin/codex"),
+)
 
 
 def get_summary_model() -> str:
@@ -22,6 +27,19 @@ def get_summary_model() -> str:
         return FALLBACK_SUMMARY_MODEL
 
     return _previous_minor_model(default_model) or FALLBACK_SUMMARY_MODEL
+
+
+def resolve_codex_cli() -> str:
+    """Return the Codex CLI path, including common launchd-missing PATH locations."""
+    found = shutil.which("codex")
+    if found:
+        return found
+
+    for path in COMMON_CODEX_PATHS:
+        if path.exists():
+            return str(path)
+
+    raise FileNotFoundError("codex CLI not found")
 
 
 def _read_codex_default_model() -> str | None:

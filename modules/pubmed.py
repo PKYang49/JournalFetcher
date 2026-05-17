@@ -95,6 +95,7 @@ def _build_esearch_params(
     date_range: tuple[int, int] | None,
 ) -> dict:
     query = JOURNAL_QUERIES[journal]
+    today = datetime.now(timezone.utc).date()
     params = {
         "db": "pubmed",
         "retmax": count,
@@ -106,19 +107,19 @@ def _build_esearch_params(
     if date_range is not None:
         a, b = date_range
         min_days_ago, max_days_ago = min(a, b), max(a, b)
-        today = datetime.now(timezone.utc).date()
         mindate = today - timedelta(days=max_days_ago)
         maxdate = today - timedelta(days=min_days_ago)
-        params["term"] = f"{query} AND hasabstract[text]"
-        params["datetype"] = "pdat"
-        params["mindate"] = mindate.strftime("%Y/%m/%d")
-        params["maxdate"] = maxdate.strftime("%Y/%m/%d")
     else:
         # Use publication date so "recent" means recently published, not
-        # recently added/updated inside PubMed's indexing pipeline.
-        params["term"] = (
-            f'{query} AND "last {days} days"[dp] AND hasabstract[text]'
-        )
+        # recently added/updated inside PubMed's indexing pipeline. Explicit
+        # date parameters are more stable than a relative `"last N days"[dp]`
+        # term, which can interleave older issue-assigned Lancet records.
+        mindate = today - timedelta(days=days)
+        maxdate = today
+    params["term"] = f"{query} AND hasabstract[text]"
+    params["datetype"] = "pdat"
+    params["mindate"] = mindate.strftime("%Y/%m/%d")
+    params["maxdate"] = maxdate.strftime("%Y/%m/%d")
     return params
 
 
