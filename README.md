@@ -236,9 +236,8 @@ pkill -f journal_bot.py
 
 ## 文獻評讀
 
-下載後手動上傳 PDF 至 Claude.ai，搭配 `skills/literature-appraisal/SKILL.md` 進行結構化評讀。
+使用Codex自動化摘要，搭配 `skills/literature-appraisal/SKILL.md` 進行結構化評讀。
 
-> 註：`skills/literature-appraisal/references/` 內含第三方版權參考資料，已於 `.gitignore` 排除，不會進入公開 repo。
 
 ## 主要檔案
 
