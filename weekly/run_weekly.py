@@ -218,6 +218,7 @@ def main() -> int:
             select_articles.write_selected_metadata(selected_articles, weekly_out_dir)
             published = render.publish_appraisals(selected_articles, label)
             if published:
+                select_articles.write_selected_metadata(selected_articles, weekly_out_dir)
                 print(f"[ok] published {len(published)} appraisal HTML file(s)")
 
     counts = journal_count_summary(articles, args.journals)

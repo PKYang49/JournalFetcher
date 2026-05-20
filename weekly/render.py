@@ -90,18 +90,7 @@ def render_weekly(
             }
         )
 
-    # Articles with a published full appraisal appear only in the highlights
-    # section; drop them from 本週文章摘要 so they are not listed twice.
-    appraised_pmids = {
-        str(a.get("pmid"))
-        for a in (selected_articles or [])
-        if a.get("pmid") and a.get("appraisal_url")
-    }
-    summary_articles = [
-        a for a in articles if str(a.get("pmid")) not in appraised_pmids
-    ]
-
-    prepared = [prepare(a) for a in summary_articles]
+    prepared = [prepare(a) for a in articles]
     prepared_selected = [prepare(a) for a in (selected_articles or [])]
     selected_pmids = {
         str(a.get("pmid")) for a in (selected_articles or []) if a.get("pmid")

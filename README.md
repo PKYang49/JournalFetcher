@@ -55,6 +55,10 @@ codex login status
 
 `codex login status` 應顯示 `Logged in using ChatGPT`。摘要流程呼叫 `codex exec`，不再依賴 `claude -p`。
 
+模型設定：
+- 文章摘要與自動選文：預設使用 Codex default model 的次一級；可用 `.env` 的 `JOURNAL_FETCHER_CODEX_MODEL` 覆寫。
+- 完整文獻評讀：預設使用 Codex default/latest model；可用 `.env` 的 `JOURNAL_FETCHER_APPRAISAL_MODEL` 覆寫。
+
 ## 互動式抓取與下載
 
 ```bash
@@ -168,10 +172,16 @@ https://pkyang49.github.io/JournalFetcher/
 週報 HTML 的每篇文章（精選與一般摘要）都有 👍/👎 回饋按鈕。點擊後：
 
 1. 回饋透過 Google Apps Script web app 寫入 Google 試算表（手機等任何裝置皆可）。
-2. 下次 `run_weekly` 選文前，`weekly/sync_feedback.py` 把回饋拉回 `data/interest_feedback.jsonl`。
+2. 下次 `run_weekly` 選文前，`weekly/sync_feedback.py` 以 POST body 傳送 `FEEDBACK_SYNC_TOKEN`，把回饋拉回 `data/interest_feedback.jsonl`。
 3. `weekly/select_articles.py` 選文時據此調整權重，讓精選越來越貼近個人興趣。
 
 部署步驟見 `scripts/feedback_relay.gs`，並在 `.env` 填入 `FEEDBACK_ENDPOINT_URL`、`FEEDBACK_SYNC_TOKEN`。
+
+安全性設計：
+- HTML 內的 `FEEDBACK_ENDPOINT_URL` 是公開的；寫入端不放 token。
+- Apps Script 會驗證 `week/pmid/verdict` 格式、限制欄位長度，並以 `week + pmid` upsert，避免同一篇被無限 append。
+- Sheet 超過列數上限會自動裁切舊資料；本機同步端仍會用已知 PMID 白名單過濾。
+- 同步讀取使用 POST body 傳送 `FEEDBACK_SYNC_TOKEN`，不使用 URL query。
 
 ## 單篇 DOI 下載
 

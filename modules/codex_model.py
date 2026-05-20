@@ -1,4 +1,4 @@
-"""Resolve the Codex model used for journal summarization."""
+"""Resolve Codex models used by JournalFetcher."""
 
 from __future__ import annotations
 
@@ -8,11 +8,23 @@ import shutil
 from pathlib import Path
 
 FALLBACK_SUMMARY_MODEL = "gpt-5.4"
+FALLBACK_APPRAISAL_MODEL = "gpt-5.5"
 SUMMARY_MODEL_ENV = "JOURNAL_FETCHER_CODEX_MODEL"
+APPRAISAL_MODEL_ENV = "JOURNAL_FETCHER_APPRAISAL_MODEL"
 CODEX_CONFIG_PATH = Path.home() / ".codex" / "config.toml"
 COMMON_CODEX_PATHS = (
     Path("/opt/homebrew/bin/codex"),
     Path("/usr/local/bin/codex"),
+)
+CODEX_ENV_ALLOWLIST = (
+    "HOME",
+    "PATH",
+    "LANG",
+    "LC_ALL",
+    "LC_CTYPE",
+    "TERM",
+    "TMPDIR",
+    "CODEX_HOME",
 )
 
 
@@ -29,6 +41,15 @@ def get_summary_model() -> str:
     return _previous_minor_model(default_model) or FALLBACK_SUMMARY_MODEL
 
 
+def get_appraisal_model() -> str:
+    """Return the newest/default Codex model for full literature appraisal."""
+    override = os.getenv(APPRAISAL_MODEL_ENV)
+    if override:
+        return override
+
+    return _read_codex_default_model() or FALLBACK_APPRAISAL_MODEL
+
+
 def resolve_codex_cli() -> str:
     """Return the Codex CLI path, including common launchd-missing PATH locations."""
     found = shutil.which("codex")
@@ -40,6 +61,11 @@ def resolve_codex_cli() -> str:
             return str(path)
 
     raise FileNotFoundError("codex CLI not found")
+
+
+def codex_exec_env() -> dict[str, str]:
+    """Return a minimal environment for untrusted article-content Codex runs."""
+    return {key: value for key in CODEX_ENV_ALLOWLIST if (value := os.getenv(key))}
 
 
 def _read_codex_default_model() -> str | None:

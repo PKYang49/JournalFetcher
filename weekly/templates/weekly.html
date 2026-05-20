@@ -225,11 +225,13 @@
       {% if article.selection_reason %}
       <p class="selection-reason">{{ article.selection_reason }}</p>
       {% endif %}
+      {% if article.selection_tags or article.appraisal_status %}
       <div class="selection-meta">
-        {% if article.selection_score %}Score {{ article.selection_score }}{% endif %}
-        {% if article.selection_tags %} · {{ article.selection_tags | join(", ") }}{% endif %}
-        {% if article.appraisal_status %} · appraisal: {{ article.appraisal_status }}{% endif %}
+        {% if article.selection_tags %}{{ article.selection_tags | join(", ") }}{% endif %}
+        {% if article.selection_tags and article.appraisal_status %} · {% endif %}
+        {% if article.appraisal_status %}appraisal: {{ article.appraisal_status }}{% endif %}
       </div>
+      {% endif %}
       <div class="links">
         {% if article.appraisal_url %}<a href="{{ article.appraisal_url }}">完整評讀</a>{% endif %}
         {% if article.doi %}<a href="https://doi.org/{{ article.doi }}" target="_blank" rel="noopener">DOI</a>{% endif %}

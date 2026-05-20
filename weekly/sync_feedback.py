@@ -78,7 +78,11 @@ def sync_feedback(timeout: int = 30) -> int:
         print("[feedback] FEEDBACK_ENDPOINT_URL not set; skip sync")
         return 0
 
-    resp = requests.get(url, params={"token": token}, timeout=timeout)
+    resp = requests.post(
+        url,
+        json={"action": "sync", "token": token},
+        timeout=timeout,
+    )
     resp.raise_for_status()
     payload = resp.json()
     if not payload.get("ok"):

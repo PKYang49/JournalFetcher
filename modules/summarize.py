@@ -5,7 +5,7 @@ import sys
 import tempfile
 from pathlib import Path
 
-from modules.codex_model import get_summary_model, resolve_codex_cli
+from modules.codex_model import codex_exec_env, get_summary_model, resolve_codex_cli
 
 SYSTEM_PROMPT = (
     "你是醫學文獻摘要助手。用繁體中文，以三句話摘要這篇文章："
@@ -27,6 +27,7 @@ def _run_codex_prompt(prompt: str, timeout: int = 180) -> str | None:
                 get_summary_model(),
                 "--sandbox",
                 "read-only",
+                "--skip-git-repo-check",
                 "--color",
                 "never",
                 "--ephemeral",
@@ -34,6 +35,8 @@ def _run_codex_prompt(prompt: str, timeout: int = 180) -> str | None:
                 str(output_path),
                 prompt,
             ],
+            cwd=tmp_dir,
+            env=codex_exec_env(),
             input="",
             capture_output=True,
             text=True,
