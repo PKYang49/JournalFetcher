@@ -11,20 +11,27 @@ from modules.codex_model import codex_exec_env, get_appraisal_model, resolve_cod
 
 ROOT = Path(__file__).resolve().parent.parent
 SKILL_PATH = ROOT / "skills" / "literature-appraisal" / "SKILL.md"
+STYLE_GUIDE_PATH = ROOT / "skills" / "literature-appraisal" / "references" / "output_quality_style_guide.md"
 
 APPRAISAL_PROMPT = """你要使用以下文獻評讀 Skill，對目標文章做完整批判性評讀。
 
 評讀要求：
 - 使用繁體中文（台灣用語）。
 - 依 Skill 的 SECTION-0 與對應 SKILL-A/B/C 輸出。
+- 依 Output Quality Style Guide 的品質規格控制輸出密度、批判深度與 study-type-specific 檢查項。
+- 先路由文章類型，再選擇適合模組；若是 non-inferiority、diagnostic/device validation、NMA、observational/post-hoc、guideline/consensus，必須套用 style guide 對應小節。
 - 若 PDF 轉出的 markdown 缺少表格、圖片或 supplement，明確標註限制，不要假裝看過。
 - 不要輸出與文章無關的泛泛教科書內容。
 - Skill 原本要求外部搜尋的欄位必須進行外部搜尋，例如作者背景、期刊屬性、審查週期、Impact Factor / 分區、同期 editorial/commentary。
 - 外部搜尋結果必須標註來源名稱與查到的關鍵事實；找不到時才標註 [無法取得]。
 - 不要用模型記憶補外部資料；無法以搜尋或文內資料確認的內容，一律標註 [無法取得] 或 [推論]。
+- 先抽取 evidence table/關鍵數據，再進行批判；最終輸出不要透露內部草稿，只輸出完整評讀。
 
 Skill:
 {skill}
+
+Output Quality Style Guide:
+{style_guide}
 
 文章 metadata:
 Title: {title}
@@ -102,6 +109,8 @@ def appraise_pdf(article: dict, pdf_path: Path, out_dir: Path) -> Path | None:
     """Create one appraisal report. Returns report path or None on failure."""
     if not SKILL_PATH.exists():
         raise FileNotFoundError(f"missing skill: {SKILL_PATH}")
+    if not STYLE_GUIDE_PATH.exists():
+        raise FileNotFoundError(f"missing output quality style guide: {STYLE_GUIDE_PATH}")
 
     out_dir.mkdir(parents=True, exist_ok=True)
     report_path = out_dir / _safe_report_name(article)
@@ -118,6 +127,7 @@ def appraise_pdf(article: dict, pdf_path: Path, out_dir: Path) -> Path | None:
 
     prompt = APPRAISAL_PROMPT.format(
         skill=SKILL_PATH.read_text(encoding="utf-8"),
+        style_guide=STYLE_GUIDE_PATH.read_text(encoding="utf-8"),
         title=article.get("title", ""),
         journal=article.get("journal") or article.get("journal_key", ""),
         year=article.get("year", ""),
