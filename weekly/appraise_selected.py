@@ -1,0 +1,159 @@
+"""Generate weekly appraisals for selected downloaded PDFs."""
+
+from __future__ import annotations
+
+import subprocess
+import sys
+import tempfile
+from pathlib import Path
+
+from modules.codex_model import get_summary_model, resolve_codex_cli
+
+ROOT = Path(__file__).resolve().parent.parent
+SKILL_PATH = ROOT / "skills" / "literature-appraisal" / "SKILL.md"
+
+APPRAISAL_PROMPT = """你要使用以下文獻評讀 Skill，對目標文章做完整批判性評讀。
+
+評讀要求：
+- 使用繁體中文（台灣用語）。
+- 依 Skill 的 SECTION-0 與對應 SKILL-A/B/C 輸出。
+- 若 PDF 轉出的 markdown 缺少表格、圖片或 supplement，明確標註限制，不要假裝看過。
+- 不要輸出與文章無關的泛泛教科書內容。
+- Skill 原本要求外部搜尋的欄位必須進行外部搜尋，例如作者背景、期刊屬性、審查週期、Impact Factor / 分區、同期 editorial/commentary。
+- 外部搜尋結果必須標註來源名稱與查到的關鍵事實；找不到時才標註 [無法取得]。
+- 不要用模型記憶補外部資料；無法以搜尋或文內資料確認的內容，一律標註 [無法取得] 或 [推論]。
+
+Skill:
+{skill}
+
+文章 metadata:
+Title: {title}
+Journal: {journal}
+Year: {year}
+DOI: {doi}
+PMID: {pmid}
+
+PDF converted markdown:
+{article_markdown}
+"""
+
+
+def _run_codex_prompt(prompt: str, timeout: int = 900) -> str | None:
+    with tempfile.TemporaryDirectory(prefix="codex_weekly_appraise_") as tmp_dir:
+        output_path = Path(tmp_dir) / "last_message.md"
+        result = subprocess.run(
+            [
+                resolve_codex_cli(),
+                "exec",
+                "--model",
+                get_summary_model(),
+                "--sandbox",
+                "read-only",
+                "--color",
+                "never",
+                "--ephemeral",
+                "--output-last-message",
+                str(output_path),
+                prompt,
+            ],
+            input="",
+            capture_output=True,
+            text=True,
+            timeout=timeout,
+        )
+        if result.returncode != 0:
+            err = (result.stderr or result.stdout).strip()
+            print(f"  [warn] codex appraisal error: {err[:400]}", file=sys.stderr)
+            return None
+        if output_path.exists():
+            return output_path.read_text(encoding="utf-8").strip()
+        return result.stdout.strip() or None
+
+
+def _convert_pdf_to_markdown(pdf_path: Path) -> str:
+    with tempfile.TemporaryDirectory(prefix="markitdown_pdf_") as tmp_dir:
+        md_path = Path(tmp_dir) / "article.md"
+        result = subprocess.run(
+            ["python3", "-m", "markitdown", str(pdf_path), "-o", str(md_path)],
+            capture_output=True,
+            text=True,
+            timeout=180,
+        )
+        if result.returncode != 0:
+            err = (result.stderr or result.stdout).strip()
+            raise RuntimeError(f"markitdown failed for {pdf_path.name}: {err[:400]}")
+        return md_path.read_text(encoding="utf-8").strip()
+
+
+def _safe_report_name(article: dict) -> str:
+    pmid = article.get("pmid") or "no-pmid"
+    first_author = "unknown"
+    authors = article.get("authors") or []
+    if authors:
+        first_author = str(authors[0]).split()[0]
+    year = article.get("year") or "unknown-year"
+    return f"{pmid}_{first_author}_{year}_appraisal.md"
+
+
+def appraise_pdf(article: dict, pdf_path: Path, out_dir: Path) -> Path | None:
+    """Create one appraisal report. Returns report path or None on failure."""
+    if not SKILL_PATH.exists():
+        raise FileNotFoundError(f"missing skill: {SKILL_PATH}")
+
+    out_dir.mkdir(parents=True, exist_ok=True)
+    report_path = out_dir / _safe_report_name(article)
+    if report_path.exists() and report_path.stat().st_size > 1000:
+        print(f"  [skip] appraisal exists: {report_path.name}")
+        return report_path
+
+    article_markdown = _convert_pdf_to_markdown(pdf_path)
+    if len(article_markdown) > 120_000:
+        article_markdown = (
+            article_markdown[:120_000]
+            + "\n\n[TRUNCATED: PDF markdown exceeded 120000 characters]\n"
+        )
+
+    prompt = APPRAISAL_PROMPT.format(
+        skill=SKILL_PATH.read_text(encoding="utf-8"),
+        title=article.get("title", ""),
+        journal=article.get("journal") or article.get("journal_key", ""),
+        year=article.get("year", ""),
+        doi=article.get("doi", ""),
+        pmid=article.get("pmid", ""),
+        article_markdown=article_markdown,
+    )
+    report = _run_codex_prompt(prompt)
+    if not report:
+        return None
+
+    report_path.write_text(report + "\n", encoding="utf-8")
+    return report_path
+
+
+def appraise_selected(
+    selected: list[dict],
+    download_results: dict[str, Path | None],
+    out_dir: Path,
+) -> dict[str, Path | None]:
+    """Appraise all selected articles that have PDFs."""
+    results: dict[str, Path | None] = {}
+    total = len(selected)
+    for i, article in enumerate(selected, 1):
+        pmid = str(article.get("pmid", ""))
+        title = article.get("title", "")[:70]
+        pdf_path = download_results.get(pmid)
+        print(f"\n[{i}/{total}] 完整評讀：{title}...")
+        if pdf_path is None:
+            print("  [skip] PDF not downloaded")
+            results[pmid] = None
+            article["appraisal_status"] = "pdf_failed"
+            continue
+        try:
+            report_path = appraise_pdf(article, pdf_path, out_dir)
+        except Exception as e:
+            print(f"  [warn] appraisal failed: {e}", file=sys.stderr)
+            report_path = None
+        results[pmid] = report_path
+        article["appraisal_path"] = str(report_path) if report_path else ""
+        article["appraisal_status"] = "done" if report_path else "failed"
+    return results

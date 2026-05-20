@@ -3,9 +3,10 @@
 Pipeline:
   1. fetch articles for each journal (last `days` days, top `count` per journal)
   2. summarize each abstract via `codex exec`
-  3. render HTML to docs/<YYYY>-Wxx.html and update docs/index.html
-  4. (optional) git push
-  5. (optional) Discord webhook
+  3. optionally select top articles, download PDFs, and generate full appraisals
+  4. render HTML to docs/<YYYY>-Wxx.html and update docs/index.html
+  5. (optional) git push
+  6. (optional) Discord webhook
 
 Usage:
   python -m weekly.run_weekly                    # generate + push + discord
@@ -14,14 +15,19 @@ Usage:
   python -m weekly.run_weekly --no-discord       # skip Discord
   python -m weekly.run_weekly --journals NEJM Lancet
   python -m weekly.run_weekly --count 5 --days 14
+  python -m weekly.run_weekly --select-top 2 --dry-run
 """
 
 from __future__ import annotations
 
 import argparse
+import json
+import os
 import sys
 import traceback
 from pathlib import Path
+
+from dotenv import load_dotenv
 
 # Allow `python weekly/run_weekly.py` execution as well as `-m weekly.run_weekly`
 ROOT = Path(__file__).resolve().parent.parent
@@ -109,7 +115,31 @@ def main() -> int:
         action="store_true",
         help="Skip codex exec summarization (debug HTML layout)",
     )
+    parser.add_argument(
+        "--select-top",
+        type=int,
+        default=0,
+        help="Select N articles for PDF download and full appraisal",
+    )
+    parser.add_argument(
+        "--no-download-selected",
+        action="store_true",
+        help="Select top articles but skip PDF download",
+    )
+    parser.add_argument(
+        "--no-appraise-selected",
+        action="store_true",
+        help="Download selected PDFs but skip full appraisal",
+    )
+    parser.add_argument(
+        "--no-sync-feedback",
+        action="store_true",
+        help="Skip pulling highlight feedback from the Apps Script relay",
+    )
     args = parser.parse_args()
+
+    load_dotenv(ROOT / ".env")
+    feedback_endpoint = os.getenv("FEEDBACK_ENDPOINT_URL", "").strip()
 
     label, filename, date_str = render.iso_week_label()
     print(f"=== Weekly report {label} ===")
@@ -127,8 +157,77 @@ def main() -> int:
         print(f"\nSummarizing {len(articles)} articles via codex exec ...")
         summarize_weekly.summarize_articles(articles)
 
+    # Persist the full article list — sync_feedback uses it as the PMID
+    # whitelist so feedback on 本週文章摘要 articles is not dropped as spam.
+    weekly_out_dir = ROOT / "output" / "weekly" / label
+    weekly_out_dir.mkdir(parents=True, exist_ok=True)
+    (weekly_out_dir / "articles.json").write_text(
+        json.dumps(articles, ensure_ascii=False, indent=2), encoding="utf-8"
+    )
+    print(f"[ok] wrote {weekly_out_dir / 'articles.json'}")
+
+    selected_articles: list[dict] = []
+    if args.select_top > 0:
+        from weekly import select_articles
+
+        if not args.no_sync_feedback:
+            try:
+                from weekly import sync_feedback
+
+                print("\nSyncing highlight feedback from relay ...")
+                sync_feedback.sync_feedback()
+            except Exception as e:
+                print(f"[warn] feedback sync failed; selecting without it: {e}")
+
+        pdf_dir = weekly_out_dir / "pdfs"
+        appraisal_dir = weekly_out_dir / "appraisals"
+
+        print(f"\nSelecting top {args.select_top} articles for full appraisal ...")
+        selected_articles = select_articles.select_top_articles(
+            articles,
+            limit=args.select_top,
+        )
+        selected_meta = select_articles.write_selected_metadata(
+            selected_articles,
+            weekly_out_dir,
+        )
+        print(f"[ok] wrote {selected_meta}")
+
+        download_results: dict[str, Path | None] = {}
+        if args.no_download_selected:
+            print("[skip] selected PDF download disabled")
+        else:
+            from modules.downloader import download_articles
+
+            print(f"\nDownloading selected PDFs -> {pdf_dir}")
+            download_results = download_articles(selected_articles, out_dir=pdf_dir)
+
+        if args.no_appraise_selected:
+            print("[skip] selected appraisal disabled")
+        elif args.no_download_selected:
+            print("[skip] selected appraisal needs downloaded PDFs")
+        else:
+            from weekly import appraise_selected
+
+            print(f"\nGenerating full appraisals -> {appraisal_dir}")
+            appraise_selected.appraise_selected(
+                selected_articles,
+                download_results,
+                appraisal_dir,
+            )
+            select_articles.write_selected_metadata(selected_articles, weekly_out_dir)
+            published = render.publish_appraisals(selected_articles, label)
+            if published:
+                print(f"[ok] published {len(published)} appraisal HTML file(s)")
+
     counts = journal_count_summary(articles, args.journals)
-    html = render.render_weekly(articles, week_label=label, journal_counts=counts)
+    html = render.render_weekly(
+        articles,
+        week_label=label,
+        journal_counts=counts,
+        selected_articles=selected_articles,
+        feedback_endpoint=feedback_endpoint,
+    )
     out_path = render.write_weekly(html, filename)
     index_path = render.update_index(filename, label, len(articles), date_str)
     print(f"\n[ok] wrote {out_path}")

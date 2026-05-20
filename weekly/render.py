@@ -2,10 +2,12 @@
 
 import json
 import re
+from html import escape
 from datetime import datetime, timezone, timedelta
 from pathlib import Path
 
 from jinja2 import Environment, FileSystemLoader, select_autoescape
+from markdown_it import MarkdownIt
 
 ROOT = Path(__file__).resolve().parent.parent
 TEMPLATE_DIR = Path(__file__).resolve().parent / "templates"
@@ -63,27 +65,47 @@ def render_weekly(
     articles: list[dict],
     week_label: str,
     journal_counts: list[dict],
+    selected_articles: list[dict] | None = None,
+    feedback_endpoint: str = "",
 ) -> str:
     """Render a single weekly report HTML.
 
     `articles` should already include a `summary` and a `journal_key` field.
+    `feedback_endpoint` is the Apps Script web app URL; when set, the selected
+    cards render 👍/👎 feedback buttons that POST to it.
     Returns the rendered HTML string.
     """
     env = _env()
     tmpl = env.get_template("weekly.html")
     now = datetime.now(TPE).strftime("%Y-%m-%d %H:%M %Z")
 
-    prepared = []
-    for a in articles:
-        prepared.append(
+    def prepare(article: dict) -> dict:
+        return (
             {
-                **a,
-                "authors_display": _authors_display(a.get("authors", [])),
-                "summary_error": _summary_is_error(a.get("summary", "")),
-                "commentary": a.get("commentary", ""),
-                "pub_type_class": _pub_type_class(a.get("pub_type", "")),
+                **article,
+                "authors_display": _authors_display(article.get("authors", [])),
+                "summary_error": _summary_is_error(article.get("summary", "")),
+                "commentary": article.get("commentary", ""),
+                "pub_type_class": _pub_type_class(article.get("pub_type", "")),
             }
         )
+
+    # Articles with a published full appraisal appear only in the highlights
+    # section; drop them from 本週文章摘要 so they are not listed twice.
+    appraised_pmids = {
+        str(a.get("pmid"))
+        for a in (selected_articles or [])
+        if a.get("pmid") and a.get("appraisal_url")
+    }
+    summary_articles = [
+        a for a in articles if str(a.get("pmid")) not in appraised_pmids
+    ]
+
+    prepared = [prepare(a) for a in summary_articles]
+    prepared_selected = [prepare(a) for a in (selected_articles or [])]
+    selected_pmids = {
+        str(a.get("pmid")) for a in (selected_articles or []) if a.get("pmid")
+    }
 
     return tmpl.render(
         week_label=week_label,
@@ -91,6 +113,9 @@ def render_weekly(
         total_count=len(articles),
         articles=prepared,
         journal_counts=journal_counts,
+        selected_articles=prepared_selected,
+        selected_pmids=selected_pmids,
+        feedback_endpoint=feedback_endpoint,
     )
 
 
@@ -99,6 +124,135 @@ def write_weekly(html: str, filename: str) -> Path:
     path = DOCS_DIR / filename
     path.write_text(html, encoding="utf-8")
     return path
+
+
+def publish_appraisals(
+    selected_articles: list[dict],
+    week_label: str,
+) -> list[Path]:
+    """Render selected appraisal markdown reports into docs/appraisals/<week>/."""
+    if not selected_articles:
+        return []
+
+    out_dir = DOCS_DIR / "appraisals" / week_label
+    out_dir.mkdir(parents=True, exist_ok=True)
+    published: list[Path] = []
+    md = MarkdownIt("commonmark", {"html": False, "linkify": True}).enable("table")
+
+    for article in selected_articles:
+        source = article.get("appraisal_path")
+        if not source:
+            continue
+        source_path = Path(source)
+        if not source_path.exists():
+            continue
+
+        name = sanitize_filename(source_path.stem) + ".html"
+        html_path = out_dir / name
+        body = md.render(source_path.read_text(encoding="utf-8"))
+        title = article.get("title") or source_path.stem
+        page = _render_appraisal_page(
+            title=title,
+            week_label=week_label,
+            body_html=body,
+        )
+        html_path.write_text(page, encoding="utf-8")
+        article["appraisal_url"] = f"appraisals/{week_label}/{name}"
+        published.append(html_path)
+
+    return published
+
+
+def _render_appraisal_page(title: str, week_label: str, body_html: str) -> str:
+    safe_title = escape(title)
+    safe_week = escape(week_label)
+    return f"""<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>{safe_title}</title>
+<style>
+  :root {{
+    --bg: #fafafa;
+    --card: #ffffff;
+    --text: #1a1a1a;
+    --muted: #6b6b6b;
+    --border: #e5e5e5;
+    --accent: #0b5fff;
+  }}
+  body {{
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang TC",
+      "Microsoft JhengHei", sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    margin: 0;
+    padding: 24px 16px 64px;
+    line-height: 1.72;
+  }}
+  main {{
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    margin: 0 auto;
+    max-width: 840px;
+    padding: 22px 26px;
+  }}
+  nav {{
+    margin: 0 auto 14px;
+    max-width: 840px;
+    color: var(--muted);
+    font-size: 14px;
+  }}
+  a {{ color: var(--accent); text-decoration: none; }}
+  a:hover {{ text-decoration: underline; }}
+  h1, h2, h3, h4 {{ line-height: 1.35; }}
+  h1 {{ font-size: 26px; margin-top: 0; }}
+  h2 {{ border-top: 1px solid var(--border); padding-top: 18px; }}
+  code {{
+    background: rgba(127, 127, 127, 0.12);
+    border-radius: 4px;
+    padding: 1px 4px;
+  }}
+  table {{
+    border-collapse: collapse;
+    display: block;
+    overflow-x: auto;
+    width: 100%;
+  }}
+  th, td {{
+    border: 1px solid var(--border);
+    padding: 6px 8px;
+    text-align: left;
+    vertical-align: top;
+  }}
+  blockquote {{
+    border-left: 3px solid var(--accent);
+    color: var(--muted);
+    margin-left: 0;
+    padding-left: 14px;
+  }}
+  @media (prefers-color-scheme: dark) {{
+    :root {{
+      --bg: #1a1a1a;
+      --card: #242424;
+      --text: #e8e8e8;
+      --muted: #999;
+      --border: #333;
+      --accent: #6ea8ff;
+    }}
+  }}
+</style>
+</head>
+<body>
+<nav><a href="../../{safe_week}.html">← 回到 {safe_week} 週報</a></nav>
+<main>
+<h1>{safe_title}</h1>
+{body_html}
+</main>
+</body>
+</html>
+"""
 
 
 def update_index(filename: str, label: str, count: int, date: str) -> Path:

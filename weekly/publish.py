@@ -66,6 +66,10 @@ def _truncate(text: str, limit: int = TITLE_MAX) -> str:
 
 def _pick_highlights(articles: list[dict], n: int = HIGHLIGHT_COUNT) -> list[dict]:
     """Pick first article from each unique journal, capped at n."""
+    selected = [a for a in articles if a.get("selected_for_appraisal")]
+    if selected:
+        return selected[:n]
+
     seen: set[str] = set()
     picked: list[dict] = []
     for a in articles:

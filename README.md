@@ -40,6 +40,10 @@ DISCORD_ALLOWED_USER_IDS=123456789
 DISCORD_CHANNEL_ID=987654321
 BOT_OUTPUT_DIR=~/GoogleDrive/papers
 BOT_SEND_PDF=true
+
+# 週報精選回饋中繼（選用：Google Apps Script web app）
+FEEDBACK_ENDPOINT_URL=https://script.google.com/macros/s/.../exec
+FEEDBACK_SYNC_TOKEN=自訂亂碼，需與 Apps Script 內 SYNC_TOKEN 一致
 ```
 
 摘要功能使用 Codex CLI：
@@ -100,16 +104,19 @@ python3 -m weekly.run_weekly --dry-run
 # 產生週報並 push，但不發 Discord
 python3 -m weekly.run_weekly --no-discord
 
+# 精選 N 篇，下載 PDF 並產生完整評讀
+python3 -m weekly.run_weekly --select-top 8
+
 # 測試版面，不消耗摘要額度
 python3 -m weekly.run_weekly --dry-run --no-summarize --count 2 --journals NEJM
 ```
 
 目前 launchd 排程：
 
-- 週一 03:00：`python3 -m weekly.run_weekly --no-discord`
-  - 產生本週 HTML
-  - 更新 `docs/`
-  - commit 並 push 到 GitHub
+- 週一 03:00：`python3 -m weekly.run_weekly --no-discord --select-top 8`
+  - 抓文獻、產生摘要與短評
+  - 精選最值得評讀的文章，下載 PDF 並產生完整評讀
+  - 渲染本週 HTML、更新 `docs/`，commit 並 push 到 GitHub
 - 週一 08:00：`python3 -m weekly.notify_latest`
   - 讀取 `docs/_index.json` 最新週報
   - 發 Discord webhook 通知
@@ -155,6 +162,16 @@ docs/
 ```text
 https://pkyang49.github.io/JournalFetcher/
 ```
+
+## 週報回饋迴路
+
+週報 HTML 的每篇文章（精選與一般摘要）都有 👍/👎 回饋按鈕。點擊後：
+
+1. 回饋透過 Google Apps Script web app 寫入 Google 試算表（手機等任何裝置皆可）。
+2. 下次 `run_weekly` 選文前，`weekly/sync_feedback.py` 把回饋拉回 `data/interest_feedback.jsonl`。
+3. `weekly/select_articles.py` 選文時據此調整權重，讓精選越來越貼近個人興趣。
+
+部署步驟見 `scripts/feedback_relay.gs`，並在 `.env` 填入 `FEEDBACK_ENDPOINT_URL`、`FEEDBACK_SYNC_TOKEN`。
 
 ## 單篇 DOI 下載
 
@@ -219,7 +236,9 @@ pkill -f journal_bot.py
 
 ## 文獻評讀
 
-下載後手動上傳 PDF 至 Claude.ai，搭配 `skills/literature-appraisal-SKILL.md` 進行結構化評讀。
+下載後手動上傳 PDF 至 Claude.ai，搭配 `skills/literature-appraisal/SKILL.md` 進行結構化評讀。
+
+> 註：`skills/literature-appraisal/references/` 內含第三方版權參考資料，已於 `.gitignore` 排除，不會進入公開 repo。
 
 ## 主要檔案
 
@@ -234,12 +253,16 @@ journal_bot.py                    # Discord DOI 下載 bot
 
 weekly/run_weekly.py              # 每週週報主流程
 weekly/summarize_weekly.py        # 週報摘要與短評
+weekly/select_articles.py         # 精選值得評讀的文章
+weekly/appraise_selected.py       # 精選文章完整評讀
+weekly/sync_feedback.py           # 同步週報回饋
 weekly/render.py                  # HTML 渲染與 index 維護
 weekly/publish.py                 # git push 與 Discord webhook
 weekly/notify_latest.py           # 只發最新週報 Discord 通知
 weekly/templates/                 # Jinja2 templates
 
 scripts/*.plist                   # launchd 排程
+scripts/feedback_relay.gs         # 回饋中繼 Apps Script
 docs/                             # GitHub Pages 輸出
 ```
 

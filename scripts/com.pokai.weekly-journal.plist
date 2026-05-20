@@ -11,6 +11,8 @@
         <string>-m</string>
         <string>weekly.run_weekly</string>
         <string>--no-discord</string>
+        <string>--select-top</string>
+        <string>8</string>
     </array>
 
     <key>WorkingDirectory</key>

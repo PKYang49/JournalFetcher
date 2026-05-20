@@ -1,0 +1,7 @@
+interface:
+  display_name: "Literature Appraisal"
+  short_description: "醫學文獻批判性評讀與臨床判讀"
+  default_prompt: "Use $literature-appraisal to critically appraise this medical article in Traditional Chinese."
+
+policy:
+  allow_implicit_invocation: true

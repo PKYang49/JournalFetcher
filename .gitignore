@@ -18,7 +18,15 @@ __pycache__/
 # Runtime output
 output/
 *.log
+tmp/
+
+# 個人興趣偏好與回饋紀錄（不進公開 repo）
+data/
 
 # Local agent instructions
 CLAUDE.md
-skills/
+skills/*
+!skills/literature-appraisal/
+!skills/literature-appraisal/**
+# 參考資料含第三方版權內容（JAMA Evidence 等），不進公開 repo
+skills/literature-appraisal/references/
