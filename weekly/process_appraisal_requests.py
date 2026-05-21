@@ -50,6 +50,17 @@ def _request_identifier(row: dict) -> str:
     return ""
 
 
+def _candidate_identifiers(row: dict) -> list[str]:
+    identifiers: list[str] = []
+    pmid = str(row.get("pmid", "")).strip()
+    doi = _normalize_doi(str(row.get("doi", "")))
+    if pmid:
+        identifiers.append(f"pmid:{pmid}")
+    if doi:
+        identifiers.append(f"doi:{doi}")
+    return identifiers
+
+
 def _article_identifiers(article: dict) -> list[str]:
     identifiers: list[str] = []
     pmid = str(article.get("pmid", "")).strip()
@@ -89,12 +100,14 @@ def _load_state() -> dict[tuple[str, str], dict]:
             obj = json.loads(line)
         except json.JSONDecodeError:
             continue
-        identifier = str(obj.get("identifier", "")).strip()
-        if not identifier:
-            identifier = _request_identifier(obj)
-        key = (str(obj.get("week", "")), identifier)
-        if key[0] and key[1]:
-            records[key] = obj
+        identifiers = _candidate_identifiers(obj)
+        explicit_identifier = str(obj.get("identifier", "")).strip()
+        if explicit_identifier:
+            identifiers.insert(0, explicit_identifier)
+        for identifier in dict.fromkeys(identifiers):
+            key = (str(obj.get("week", "")), identifier)
+            if key[0] and key[1]:
+                records[key] = obj
     return records
 
 
@@ -320,7 +333,7 @@ def _process_one(row: dict, article: dict, force: bool, no_push: bool, no_discor
     if no_push:
         print("[git] --no-push set; skip docs push")
     else:
-        publish.git_commit_and_push(f"{week}.html", f"{week} appraisal {pmid}")
+        publish.git_commit_and_push(f"{week}.html", f"{week} appraisal {identifier}")
 
     if no_discord:
         print("[discord] --no-discord set; skip appraisal notice")
@@ -394,21 +407,30 @@ def process_requests(
 
     for row in rows:
         week = str(row.get("week", "")).strip()
-        identifier = _request_identifier(row)
+        identifiers = _candidate_identifiers(row)
+        identifier = identifiers[0] if identifiers else ""
         status = str(row.get("status", "requested")).strip() or "requested"
-        key = (week, identifier)
         if status != "requested":
             continue
         if not identifier:
             continue
-        if not force and key in state:
+        if not force and any((week, candidate) in state for candidate in identifiers):
             continue
-        article = known.get(key)
+        article = None
+        matched_identifier = identifier
+        for candidate in identifiers:
+            article = known.get((week, candidate))
+            if article is not None:
+                matched_identifier = candidate
+                break
         if article is None:
             print(f"[appraisal-request] skip unknown article: {week} {identifier}")
             continue
+        article = {**article}
+        if row.get("pmid") and not str(article.get("pmid", "")).strip():
+            article["pmid"] = str(row.get("pmid", "")).strip()
         if dry_run:
-            print(f"[dry-run] would appraise {week} {identifier}: {article.get('title', '')}")
+            print(f"[dry-run] would appraise {week} {matched_identifier}: {article.get('title', '')}")
             processed += 1
         else:
             if _process_one(row, article, force, no_push, no_discord):

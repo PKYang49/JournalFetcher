@@ -19,6 +19,7 @@ description: Use this skill when the user asks to critically appraise, interpret
 - **A2.0 定位為「論證架構重建」階段的延伸**：先忠實重建，不得在此段混入批判。
 - **強化路由規則**：CPG / Consensus 類文章在 SECTION-0 完成後，必須先執行 A2.0「建議清單重建」，再進入 A2.1 / A2.2 方法學評估。
 - **SELF-CHECK 新增 CPG / Consensus 專屬檢查項**：確認建議清單完整、分級清楚、強建議低證據條目已計數、共識統計透明度已標注。
+- **明確表格分工**：原始研究的數據整理放在 SECTION-0「研究結果重點整理」；SR/MA/NMA 用 evidence synthesis table；CPG/Consensus 用 A2.0 建議清單。
 
 ## v3.2 變更摘要（保留）
 
@@ -45,6 +46,33 @@ Use bundled references as supporting methodology checks, not as replacements for
 
 所有文章一律先執行 SECTION-0（通用描述），再根據路由規則執行對應 SKILL（A/B/C）。
 
+## 最終輸出邊界
+
+- 只輸出最終文獻評讀，不輸出內部草稿、逐步思考、執行筆記或 self-check checklist。
+- SELF-CHECK 只在輸出前內部執行，用來修正遺漏與矛盾，不得作為獨立段落呈現給使用者。
+
+## 輸入來源與可見性限制
+
+- 在 weekly journal 自動化流程中，文章通常是**原始 PDF 經 MarkItDown 轉出的 markdown**，不是可直接視覺檢查的原始 PDF。
+- 只能判讀 markdown 中實際保留下來的正文、表格文字、圖說、補充資料文字與頁碼/章節標籤；不得聲稱看過 markdown 中沒有呈現的圖像細節、曲線形狀、影像、流程圖或 supplement 內容。
+- 若 markdown 未保留表格、圖片、頁碼、supplement 或部分內容被截斷，必須在相關段落明確標註限制，例如「[限制：PDF 轉檔 markdown 未保留 Figure 2 圖像內容]」。
+- 引用文內依據時，優先使用 markdown 保留的 section / table / figure caption / paragraph / page label；若沒有頁碼，不得自行編造頁碼，改標註「[markdown 未保留頁碼]」。
+- 只有在使用者實際提供可視覺檢查的原始 PDF / 圖片，且當前工具能讀取圖像內容時，才可進行圖表視覺判讀；否則圖表判讀限於 markdown 轉出的文字與圖說。
+
+## 全域輸出語言規則
+
+- 全文以**台灣臨床醫師習慣的自然繁體中文**輸出；避免中國用語、直譯腔與大段英文原文堆疊。
+- 醫學專有名詞、疾病/藥物/裝置正式名稱、試驗名稱、量表、統計術語、指引分級與常用縮寫可保留英文或中英並列，例如 `GRADE`、`Class IIa`、`HFpEF`、`hazard ratio`、`SGLT2 inhibitor`。
+- 除上述專有名詞外，研究背景、建議內容、臨床解讀、方法學批判、紅旗與實務建議都必須用清楚的繁體中文表達。
+- 若需要保留英文原句以避免失真，只能短句引用，並立刻附上繁體中文精準翻譯或轉述；不得以整段英文替代中文評讀。
+- 表格欄位中的「建議內容」「作者主張」「臨床意義」「批判重點」均應以繁體中文為主，英文只作為必要術語或括號補充。
+
+## 全域表格使用規則
+
+- **原始研究**：RCT、觀察性研究、診斷/裝置驗證、生物標記研究、動物/細胞/前臨床研究的數據，放在 `SECTION-0` 第 5 節「研究結果重點整理」；數字很多時可用「主要結果整理」或「關鍵結果」小型表格。
+- **證據整合型文章**：systematic review、meta-analysis、NMA、scoping review，或文章本身以多篇研究證據整合為核心時，使用 evidence synthesis table。
+- **Guideline / consensus**：使用 A2.0「文章建議清單完整重建」呈現建議；A2.0 仍須以繁體中文完整重建建議內容。
+
 ## 路由規則
 
 收到文章後，先掃描以下特徵判斷類型，再選擇對應 SKILL 與子模組：
@@ -52,7 +80,8 @@ Use bundled references as supporting methodology checks, not as replacements for
 | 文章特徵 | 啟動 | 子模組 |
 |---|---|---|
 | RCT、隨機對照試驗、crossover、pilot study、clinical trial | SKILL-A | 主流程 + A1（特殊設計） |
-| 觀察性研究、世代研究、病例對照、橫斷面研究、動物/細胞實驗 | SKILL-A | 主流程 + 觀察性子模組 + Appendix 因果推論框架 |
+| 觀察性研究、世代研究、病例對照、橫斷面研究 | SKILL-A | 主流程 + 觀察性子模組 + Appendix 因果推論框架 |
+| 動物實驗、細胞實驗、前臨床機轉研究 | SKILL-A | 主流程 + 前臨床/機轉子模組；不套用人體臨床試驗專屬要求 |
 | Diagnostic accuracy、sensitivity/specificity、AUC、ML 模型、clinical prediction rule | SKILL-C | 主流程 |
 | **Systematic Review、Meta-analysis** | **SKILL-B** | **A1（量化合成型）** |
 | **Network Meta-analysis、Multiple Treatment Comparison** | **SKILL-B** | **A1（NMA 段）** |
@@ -99,6 +128,13 @@ Use bundled references as supporting methodology checks, not as replacements for
 - 文內資料 → [文內]
 - 外部搜尋 → [外部: 來源名稱]
 - 找不到 → [無法取得]
+
+**外部資料與推論邊界**：
+
+- 不得用模型記憶補外部資料。凡是作者背景、期刊指標、審查週期、editorial/commentary、同期外部評論等外部欄位，必須來自實際搜尋結果。
+- 若外部搜尋找不到，標註「[無法取得]」，不要用印象或常識補齊。
+- 若是根據文內線索做合理推論，必須明確標註「[推論]」並說明推論依據。
+- 不要輸出與目標文章無關的泛泛教科書內容；方法學批判必須回扣本文設計、數據、限制或外部證據。
 
 ### OUTPUT FORMAT — SECTION-0
 
@@ -207,7 +243,7 @@ Use bundled references as supporting methodology checks, not as replacements for
 
 ---
 
-## SKILL-A：人體研究批判性評讀（RCT ＋ 觀察性研究）
+## SKILL-A：原始研究批判性評讀（臨床 ＋ 前臨床）
 
 ### ROLE
 
@@ -215,24 +251,31 @@ Use bundled references as supporting methodology checks, not as replacements for
 
 ### INPUT HANDLING
 
-- 輸入為 PDF：先掃描全文，Table 與 Figure 若不在正文，主動搜尋最後幾頁，引用時標注頁碼
-- 引用格式：(Methods, p.X) / (Table 1) / (Figure 2, p.X)
+- 輸入為 PDF converted markdown：先掃描 markdown 全文；Table 與 Figure 只判讀 markdown 中保留下來的表格文字、圖說與相關正文，未保留的圖像內容必須標註限制。
+- 輸入為可視覺檢查的原始 PDF：才可檢視全文頁面、Table 與 Figure 圖像；引用時標注頁碼。
+- 引用格式：(Methods) / (Table 1) / (Figure 2 caption) / (p.X，若 markdown 有保留頁碼) / [markdown 未保留頁碼]
 - 資訊缺失：寫「無法判定——文內未提供[具體缺漏]」
 
 ### CORE RULES
 
 1. 先萃取事實，再下結論。每個批判必須附文內依據（頁碼/段落/表格）。
 2. 不確定就明講「無法判定」，禁止腦補數字。
-3. p-value 使用原則（Altman 1995 / ASA 2016 / Harrell）：
+3. p-value 使用原則（臨床研究適用；Altman 1995 / ASA 2016 / Harrell）：
    - p > 0.05 ≠ "no effect"、≠ "no difference"、≠ "negative"
-   - 結果分類必須依 CI + MCID，而非 p 值
+   - 臨床結果分類必須依 CI + MCID，而非 p 值
    - 禁止使用 post-hoc power（post-hoc power = f(p-value)，零資訊量）
-   - 必須同時評估效果量、CI 寬度、MCID 位置、臨床意義
+   - 臨床研究必須同時評估效果量、CI 寬度、MCID 位置、臨床意義；前臨床研究改評估效果量、變異度、replicate 層級與模型有效性
 4. 優先抓讓結果「看起來變好」的偏差：多重比較、選擇性報告、致盲失敗、安慰劑不匹配、基線不平衡、carryover、underpowered positive（Winner's Curse）等。
 5. 確認三個核心 EBM 問題：
    - Results valid?（內部效度 / 偏差風險）
    - What are the results?（效果大小、精確度、方向）
    - Will results help my patients?（外推性 / 外部效度）
+
+### 適用性守門規則
+
+- 人體 RCT、非劣性試驗、觀察性研究才套用 randomization、allocation concealment、ITT/per-protocol、MCID、clinical endpoint、真實世界外推性等臨床試驗專屬要求。
+- 動物、細胞、ex vivo、mechanistic 或其他前臨床研究，不要求 PICO 完整臨床對照、不要求 MCID/clinical endpoint、不做臨床採用判斷；重點改為模型有效性、劑量/暴露合理性、測量可靠性、轉譯限制與是否過度推論人體效果。
+- 若文章混合人體資料與前臨床資料，分段處理：人體資料依臨床研究規則，前臨床資料依前臨床/機轉規則。
 
 ### SELF-CHECK（輸出前內部執行，不顯示給使用者）
 
@@ -284,6 +327,15 @@ Use bundled references as supporting methodology checks, not as replacements for
 - 子試驗是否共用同期對照組（contemporaneous control arm）？
 - 入組族群是否符合目標臨床情境？
 
+**Preclinical / Mechanistic Study（若適用）**
+
+- 模型是否能代表作者宣稱的疾病狀態或臨床情境？若只是機轉模型，明確標注「只能支持機轉假說」。
+- 動物品系、性別、年齡、樣本數、隨機分組、致盲評估、排除標準與死亡/失敗實驗是否透明？
+- 細胞或 ex vivo 模型是否說明來源、passage、刺激條件、劑量/濃度與暴露時間？是否在生理可達範圍？
+- 終點是否為 surrogate / mechanistic readout？是否有功能性或疾病相關 outcome 支撐？
+- 統計單位是否正確？避免把 technical replicates 當 biological replicates。
+- 轉譯聲明是否過度：不得由動物/細胞結果直接推出人體療效、診斷效能或臨床採用。
+
 ##### 觀察性研究交代清楚混淆控制方法（若適用）
 
 | 方法 | 強度 | 關鍵要求 |
@@ -303,13 +355,13 @@ Use bundled references as supporting methodology checks, not as replacements for
 
 - 假說是否預先指定？是否存在撒網式測量後再挑顯著（post-hoc hypothesis generation）？
 - 機轉是否與情境匹配？劑量與生理可行性？
-- 必須輸出：最可能合理機轉 1–3 點 ＋ 最可疑敘事跳躍 1–3 點（各附文內依據）
+- 輸出最可能合理機轉 1–3 點；若有過度敘事，列出最可疑敘事跳躍 1–3 點（各附文內依據）。
 
 ##### B2. 受試者與外推性
 
 - 受試者是否與宣稱對象一致？基線是否平衡？
 - 研究環境能否外推真實世界？
-- 必須輸出：外推性分級
+- 臨床研究輸出外推性分級；前臨床研究輸出轉譯距離分級（近 / 中 / 遠，附理由）。
   1. 一般健康族群：可外推條件 / 不該外推原因
   2. 特定病患族群：同上
   3. 特殊族群（運動員 / 老年 / 兒童等）：同上
@@ -335,20 +387,20 @@ Use bundled references as supporting methodology checks, not as replacements for
 - 是否記錄並分析進展後治療（post-progression therapy）？
 - 若對照組後續治療不足（某比例患者未接受任何後續治療），OS 差異可能被人為誇大
 - 若 crossover 被允許：是否用 RPSFT / two-stage method 校正 OS 分析？
-- 必須輸出：最可能造成偏差的 3 個設計點 ＋ 各自讓效果「變大或變小」的方向
+- 輸出最可能造成偏差的設計點，最多 3 個；若不足 3 個，不要硬湊，說明資料限制。能判斷方向時，說明各自讓效果「變大或變小」。
 
 ##### B4. 測量工具與實務意義
 
 - 測量工具的信度 / 變異度（test-retest reliability、CV）？
 - 終點是否有臨床意義？（surrogate marker vs 真實結果；硬終點 vs 軟終點）
 - 統計顯著 ≠ 臨床重要：同時呈現效果量與 CI
-- 必須輸出：「就算結果是真的，真實世界可能有多大用處？」（附文內數字）
+- 臨床研究輸出：「就算結果是真的，真實世界可能有多大用處？」（附文內數字）。前臨床研究改輸出：「就算機轉成立，距離人體臨床可用還缺哪幾步？」
 
 #### C. 統計與資料完整性
 
-##### C1. 結果分類（CI + MCID 框架）— 必須執行
+##### C1. 結果分類（CI + MCID 框架）— 人體臨床研究必須執行
 
-依據 Harrell / Zampieri / Pocock / ASA 框架，拒絕以 p 值單獨分類試驗結果。
+依據 Harrell / Zampieri / Pocock / ASA 框架，拒絕以 p 值單獨分類試驗結果。若為動物、細胞或前臨床機轉研究，改用效果量、變異度、replicate 層級、模型有效性與轉譯限制進行分類，不套用 MCID。
 
 **Step 1 — MCID（δ）確認**
 
@@ -486,12 +538,14 @@ Null value (HR=1 / MD=0)    MCID-benefit (δ)    MCID-harm (δ_harm)
 
 ### CONDITIONAL OUTPUT
 
-**必須輸出**（有效果量與 CI 時）：
+**臨床研究必須輸出**（有效果量與 CI 時）：
 
 | 指標 | 介入組 | 對照組 | 效果量 | 95% CI | ARD | MCID | 結果分類 | 實務意義 |
 |---|---|---|---|---|---|---|---|---|
 
-**必須輸出**（非顯著結果時）：明確說明屬於 Neutral / Negative / Inconclusive，並說明 CI 位置與 MCID 的關係。禁止以「no significant difference」作結。
+**前臨床研究輸出**（有量化數據時）：整理 effect size / fold change / mean difference、變異度、biological replicate 數、technical replicate 處理、模型與轉譯限制；不使用 MCID 欄位。
+
+**臨床研究必須輸出**（非顯著結果時）：明確說明屬於 Neutral / Negative / Inconclusive，並說明 CI 位置與 MCID 的關係。禁止以「no significant difference」作結。
 
 **選擇性輸出**（p 接近 0.05，或 Neutral vs Negative 有臨床爭議時）：執行 C3 Bayesian 補充分析，報告三組 prior 下的 Pr(benefit)、Pr(ROPE)、Pr(harm)。
 
@@ -514,8 +568,9 @@ Null value (HR=1 / MD=0)    MCID-benefit (δ)    MCID-harm (δ_harm)
 
 ### INPUT HANDLING
 
-- 輸入為 PDF：先掃描全文架構（標題層級、章節順序），再逐節分析論證邏輯
-- 引用格式：(p.X) / (Section: XXX) / (Figure X)
+- 輸入為 PDF converted markdown：先掃描 markdown 全文架構（標題層級、章節順序），再逐節分析論證邏輯；Figure 只可依 markdown 保留的圖說或正文描述分析。
+- 輸入為可視覺檢查的原始 PDF：才可檢視全文頁面與圖表視覺內容。
+- 引用格式：(Section: XXX) / (Figure X caption) / (p.X，若 markdown 有保留頁碼) / [markdown 未保留頁碼]
 - 找不到的資訊：寫「無法判定——文內未提供[具體缺漏]」
 
 ### CORE RULES
@@ -582,7 +637,7 @@ Null value (HR=1 / MD=0)    MCID-benefit (δ)    MCID-harm (δ_harm)
 
 **執行順序強制要求**：A2.0 → A2.1 → A2.2。不得跳過或合併 A2.0。
 
-A2.0 屬於「第一階段忠實重建」，必須用作者原文語言或精準翻譯，不插入任何評價。批判一律延後至 A2.1 與 A2.2。
+A2.0 屬於「第一階段忠實重建」，必須用繁體中文精準翻譯/轉述作者建議，不插入任何評價。批判一律延後至 A2.1 與 A2.2。醫學專有名詞、正式分級、藥物/裝置名稱與常用縮寫可保留英文或中英並列；除此之外不得用大段英文原文取代中文重建。
 
 ###### A2.0 文章建議清單完整重建（強制段落）
 
@@ -599,9 +654,9 @@ A2.0 屬於「第一階段忠實重建」，必須用作者原文語言或精準
 
 **(2) 建議清單主表**
 
-依文章章節順序，逐條列出所有具體建議。**不得省略、不得歸納合併**。若文章建議極多，仍需完整列出；可用主題分段拆表，但不可只摘要。
+依 markdown 可見內容與文章章節順序，逐條列出所有具體建議。**不得省略、不得歸納合併可見的具體建議**。若文章建議極多，仍需完整列出；可用主題分段拆表，但不可只摘要。若 PDF 轉檔缺頁、截斷或未保留建議表，必須標註「[限制：markdown 未完整保留建議內容]」，不得自行補齊不可見建議。
 
-| 編號 | 建議內容（原文摘錄或精準翻譯） | 建議強度 | 證據品質 | 文內位置 | 主要支撐文獻 |
+| 編號 | 建議內容（繁體中文精準翻譯/轉述；必要術語可中英並列） | 建議強度 | 證據品質 | 文內位置 | 主要支撐文獻 |
 |---|---|---|---|---|---|
 | R1 | [完整建議內容] | Class I / Strong / 95% 同意等 | Level A / High 等 | p.X, Table/Box X | 主要引用文獻（編號或第一作者） |
 | R2 | ... | | | | |
@@ -609,9 +664,11 @@ A2.0 屬於「第一階段忠實重建」，必須用作者原文語言或精準
 **格式細則**
 
 - 建議內容必須完整保留「對誰、做什麼、何時、目標為何」四要素；若原文有遺漏，標注「[原文未明確]」。
+- 建議內容欄位以繁體中文為主；只保留必要醫學專有名詞、正式推薦分級、藥物/裝置名稱與縮寫原文。不得整句或整段直接貼英文 recommendation 充數。
+- 若英文原句措辭本身會影響建議強度（例如 `should be considered`, `is recommended`, `may be reasonable`, `should not`），可在中文翻譯後用括號保留該關鍵短語。
 - 若文章使用條件句（例如 "in patients with X, Y is recommended"），條件部分不得省略。
 - 若同一條建議在不同章節重複出現或有微妙差異，併列呈現並標注差異。
-- 多語言文獻：以原文為主，中文翻譯緊隨其後；術語翻譯若有疑義，附上原文括號標注。
+- 多語言文獻：以繁體中文翻譯/轉述為主；術語翻譯若有疑義，附上原文括號標注。
 
 **(3) 建議分布概覽**
 

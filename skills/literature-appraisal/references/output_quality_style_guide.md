@@ -1,49 +1,34 @@
 # Literature Appraisal Output Quality Style Guide
 
-This guide defines the expected output quality for full literature appraisals. It is distilled from high-quality appraisals across RCTs, non-inferiority trials, observational/post-hoc analyses, diagnostic/device validation studies, systematic reviews/network meta-analyses, and consensus statements.
+This guide supplements `SKILL.md` with output-quality targets distilled from high-quality appraisals across RCTs, non-inferiority trials, observational/post-hoc analyses, diagnostic/device validation studies, systematic reviews/network meta-analyses, and consensus statements.
+
+`SKILL.md` is the source of truth for routing, SECTION-0 order, input visibility, language rules, and table-use scope. If this guide appears to conflict with `SKILL.md`, follow `SKILL.md`.
 
 ## Core Output Contract
 
 Every appraisal must:
 
-1. Route the article type explicitly before appraisal.
-2. Produce `SECTION-0：文章全面描述` before study-type critique.
-3. Separate facts by source label: `[文內]`, `[外部]`, `[推論]`, `[無法取得]`.
-4. Preserve exact effect sizes, denominators, confidence intervals, margins, event counts, and subgroup sample sizes when available.
-5. Avoid `p > 0.05 = no difference`; classify uncertainty with CI + MCID or fit-for-purpose equivalence/non-inferiority logic.
-6. Identify where authors' clinical or policy claims exceed the evidence.
-7. Provide alternative explanations and a final clinical-use verdict.
-8. Include a red-flag list and "若要改觀，最需要的 3 個關鍵改進".
+1. Follow `SKILL.md` routing and SECTION-0 order.
+2. Preserve exact effect sizes, denominators, confidence intervals, margins, event counts, and subgroup sample sizes when available.
+3. Avoid `p > 0.05 = no difference`; classify uncertainty with CI + MCID or fit-for-purpose equivalence/non-inferiority logic where relevant.
+4. Identify where authors' clinical or policy claims exceed the evidence.
+5. Provide alternative explanations and a final clinical-use verdict.
+6. Include a red-flag list and "若要改觀，最需要的 3 個關鍵改進".
 
 Preferred tone: precise, clinically opinionated, evidence-grounded, and skeptical without being performative. Use concrete numbers instead of vague adjectives.
 
-## Required SECTION-0 Structure
+## SECTION-0 Quality Checklist
 
-Use this order unless the article type makes a section irrelevant:
+Use the SECTION-0 order defined in `SKILL.md`. Within the relevant SKILL.md sections, make sure the appraisal captures:
 
-1. `文章身份證`
-   - Title, journal, year/issue/pages, DOI/PMID, registration number if relevant, article type and routing.
-2. `作者團隊評論`
-   - Corresponding author identity, institution, field fit, prior work, trial/network ownership, sponsor or device/drug-company role.
-   - Use external search where required. If not found, say `[無法取得]`.
-3. `文獻 Metadata 整理`
-   - Received/revised/accepted/published dates, review duration, journal IF/category, OA status, conference-synchronous publication, editorial/commentary availability.
-4. `研究背景`
-   - Existing facts, knowledge gap, and research question.
-5. `研究設計與方法`
-   - PICO, design, setting, dates, sample source, randomization/exposure/test/reference standard, blinding, endpoint definitions, statistical plan, multiplicity plan.
-6. `研究結果重點整理`
-   - Baseline balance or case-mix, primary result table, clinically important secondary results, safety, missing data/failures, subgroup signals.
-7. `結果分類（CI + MCID 框架）`
-   - Identify prespecified MCID/margin when present.
-   - If absent, clearly label a clinically reasonable threshold as `[推論]`.
-   - Classify as POSITIVE, NEGATIVE/HARMFUL, INCONCLUSIVE, IMPRECISE, FAILED NON-INFERIORITY, or BORDERLINE as appropriate.
-8. `作者討論與評論重點`
-   - What authors claim, what they acknowledge, what they omit, and whether the clinical implication follows.
-9. `外部專業意見`
-   - Editorials, journal scans, conference discussion, independent critiques, competing meta-analyses, guideline context. State `[無法取得]` if none found.
-10. `臨床建議`
-    - `可採用情境`, `不建議直接套用`, `給臨床醫師的實務建議`, and evidence-strength rating.
+- Article identity, type routing, and any registration number when relevant.
+- Author/team fit, external context, funding, sponsor role, and COI implications.
+- Received/accepted/published dates, journal context, editorial/commentary availability, and any limits of external search.
+- PICO, endpoint definitions, statistical plan, multiplicity plan, missing-data handling, and source population.
+- Exact primary and clinically important secondary results, including denominators, event counts, confidence intervals, subgroup sample sizes, and safety signals.
+- CI + MCID interpretation where relevant; for non-inferiority/equivalence, classify the full CI against the prespecified margin.
+- Where authors' discussion or clinical implications exceed the data.
+- A practical final clinical-use verdict.
 
 ## Study-Type Modules
 
@@ -139,8 +124,8 @@ Required output:
 
 Required critique points:
 - Distinguish formal guideline with GRADE from expert consensus.
-- Before critique, create `A2.0 文章建議清單完整重建`: extract all concrete article recommendations item-by-item in article order. Do not omit, merge, or summarize recommendations away.
-- For each recommendation: quote/summarize the operative recommendation, location, supporting evidence type, and certainty.
+- Before critique, create `A2.0 文章建議清單完整重建`: extract all concrete article recommendations visible in the markdown item-by-item in article order. Do not omit, merge, or summarize visible recommendations away; if markdown extraction is incomplete, state the limitation instead of inventing missing recommendations.
+- For each recommendation: translate/paraphrase the operative recommendation into Traditional Chinese, preserving necessary English medical terms only; include location, supporting evidence type, and certainty.
 - Count how many recommendations are supported by RCTs, observational data, mechanistic reasoning, or pure expert consensus.
 - Flag recommendations with strong language but weak evidence.
 - For consensus statements, report item-level agreement percentages when available; if unavailable, mark this as a transparency problem.
@@ -172,7 +157,7 @@ End with:
 1. `紅旗清單`
    - Separate design, statistics, narrative, COI, and external-validity flags when useful.
 2. `反向解釋`
-   - At least 3 plausible alternative explanations, each with supporting and opposing clues.
+   - Up to 3 plausible alternative explanations, each with supporting and opposing clues. If fewer than 3 are credible from the available text, do not invent extras; state the limitation.
 3. `最終裁決`
    - Overall credibility: high / moderate / low-moderate / low.
    - What can be used now.
@@ -185,7 +170,8 @@ End with:
 
 The output should feel like an expert journal club note, not a generic evidence summary. A high-quality appraisal usually contains:
 
-- Enough tables to preserve numeric precision.
+- Tables when needed to preserve numeric precision.
+- Use tables only when they preserve numeric precision or make comparison easier; do not add decorative or low-information tables.
 - Enough prose to explain why the numbers matter.
 - At least one strong, specific methodological insight.
 - At least one clinically actionable caution.
