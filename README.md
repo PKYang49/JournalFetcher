@@ -124,6 +124,10 @@ python3 -m weekly.run_weekly --dry-run --no-summarize --count 2 --journals NEJM
 - 週一 08:00：`python3 -m weekly.notify_latest`
   - 讀取 `docs/_index.json` 最新週報
   - 發 Discord webhook 通知
+- 每 15 分鐘：`python3 -m weekly.process_appraisal_requests`
+  - 讀取週報 HTML 送出的「文獻評讀」請求
+  - 下載 PDF、產生評讀 HTML、push 到 GitHub Pages
+  - 用 Discord 發送該篇完整評讀連結
 
 安裝或更新 launchd：
 
@@ -131,9 +135,11 @@ python3 -m weekly.run_weekly --dry-run --no-summarize --count 2 --journals NEJM
 mkdir -p output/logs
 cp scripts/com.pokai.weekly-journal.plist ~/Library/LaunchAgents/
 cp scripts/com.pokai.weekly-journal-discord.plist ~/Library/LaunchAgents/
+cp scripts/com.pokai.weekly-appraisal-requests.plist ~/Library/LaunchAgents/
 
 launchctl bootstrap gui/$(id -u) ~/Library/LaunchAgents/com.pokai.weekly-journal.plist
 launchctl bootstrap gui/$(id -u) ~/Library/LaunchAgents/com.pokai.weekly-journal-discord.plist
+launchctl bootstrap gui/$(id -u) ~/Library/LaunchAgents/com.pokai.weekly-appraisal-requests.plist
 ```
 
 檢查狀態：
@@ -141,6 +147,7 @@ launchctl bootstrap gui/$(id -u) ~/Library/LaunchAgents/com.pokai.weekly-journal
 ```bash
 launchctl print gui/$(id -u)/com.pokai.weekly-journal
 launchctl print gui/$(id -u)/com.pokai.weekly-journal-discord
+launchctl print gui/$(id -u)/com.pokai.weekly-appraisal-requests
 ```
 
 log：
@@ -150,6 +157,8 @@ output/logs/weekly.out.log
 output/logs/weekly.err.log
 output/logs/weekly-discord.out.log
 output/logs/weekly-discord.err.log
+output/logs/weekly-appraisal-requests.out.log
+output/logs/weekly-appraisal-requests.err.log
 ```
 
 GitHub Pages 輸出：
@@ -175,13 +184,47 @@ https://pkyang49.github.io/JournalFetcher/
 2. 下次 `run_weekly` 選文前，`weekly/sync_feedback.py` 以 POST body 傳送 `FEEDBACK_SYNC_TOKEN`，把回饋拉回 `data/interest_feedback.jsonl`。
 3. `weekly/select_articles.py` 選文時據此調整權重，讓精選越來越貼近個人興趣。
 
-部署步驟見 `scripts/feedback_relay.gs`，並在 `.env` 填入 `FEEDBACK_ENDPOINT_URL`、`FEEDBACK_SYNC_TOKEN`。
+同一支 Apps Script 也處理週報摘要區的「文獻評讀」請求。GitHub Pages
+上的公開 HTML 只會開啟 Apps Script 驗證頁，不會直接寫入 request；輸入
+server-side passphrase 正確後，Apps Script 才把請求寫入
+`appraisal_requests` sheet。本機 `weekly/process_appraisal_requests.py` 會用
+`FEEDBACK_SYNC_TOKEN` 拉回請求，確認該文章的 PMID 或 DOI 曾出現在本機週報
+或已發布週報 HTML 後，才下載 PDF、產生完整評讀、更新 Pages，並用
+Discord 發送評讀連結。
+
+評讀請求識別規則：
+- 優先使用 `week + pmid` 作為 request key。
+- 若文章沒有 PMID，改用 `week + doi` 作為 request key。
+- Apps Script 會允許 DOI-only request，但 DOI 必須符合 `10.xxxx/...` 格式。
+- 本機同步端會從 `output/weekly/*/articles.json` 與 `docs/20xx-Wxx.html` 建立白名單，避免公開 HTML 觸發任意 DOI 評讀。
+
+部署步驟見 `scripts/feedback_relay.gs`，並在 `.env` 填入
+`FEEDBACK_ENDPOINT_URL`、`FEEDBACK_SYNC_TOKEN`。Apps Script 的「指令碼屬性」
+需另外設定 `APPRAISAL_PASSPHRASE`，這組密語只存在 Apps Script server-side，
+不要放進 `.env` 或 GitHub HTML。
 
 安全性設計：
 - HTML 內的 `FEEDBACK_ENDPOINT_URL` 是公開的；寫入端不放 token。
-- Apps Script 會驗證 `week/pmid/verdict` 格式、限制欄位長度，並以 `week + pmid` upsert，避免同一篇被無限 append。
-- Sheet 超過列數上限會自動裁切舊資料；本機同步端仍會用已知 PMID 白名單過濾。
+- 評讀請求需通過 Apps Script 的 `APPRAISAL_PASSPHRASE` 驗證；passphrase 不會出現在公開 HTML。
+- Apps Script 會驗證 `week/pmid/doi/verdict` 格式、限制欄位長度，並以 `week + pmid` 或 `week + doi` upsert，避免同一篇被無限 append。
+- Sheet 超過列數上限會自動裁切舊資料；本機同步端仍會用已知 PMID/DOI 白名單過濾。
 - 同步讀取使用 POST body 傳送 `FEEDBACK_SYNC_TOKEN`，不使用 URL query。
+
+測試評讀 request relay：
+
+```bash
+# 只確認本機能讀取 Apps Script request，不下載、不評讀、不發 Discord
+python3 -m weekly.process_appraisal_requests --dry-run --limit 5
+
+# 真跑一篇，但不 push、不發 Discord
+python3 -m weekly.process_appraisal_requests --limit 1 --no-push --no-discord
+
+# 完整流程：下載 PDF、評讀、更新 Pages、Discord 通知
+python3 -m weekly.process_appraisal_requests --limit 1
+```
+
+若要測 DOI-only request，可用週報 HTML 內沒有 PMID 但有 DOI 的文章；本機 log
+會顯示 `doi:<doi>`，而不是 `pmid:<pmid>`。
 
 ## 單篇 DOI 下載
 
@@ -265,6 +308,7 @@ weekly/summarize_weekly.py        # 週報摘要與短評
 weekly/select_articles.py         # 精選值得評讀的文章
 weekly/appraise_selected.py       # 精選文章完整評讀
 weekly/sync_feedback.py           # 同步週報回饋
+weekly/process_appraisal_requests.py  # 處理 HTML 手動評讀請求
 weekly/render.py                  # HTML 渲染與 index 維護
 weekly/publish.py                 # git push 與 Discord webhook
 weekly/notify_latest.py           # 只發最新週報 Discord 通知

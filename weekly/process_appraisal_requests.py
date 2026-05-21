@@ -1,0 +1,447 @@
+"""Process on-demand appraisal requests from the weekly HTML.
+
+The public GitHub Pages HTML can only write a request to the Apps Script relay.
+This local worker pulls those requests with the private sync token, downloads
+the PDF, runs the full appraisal, publishes the appraisal HTML, and sends a
+Discord link.
+
+Run manually:
+  python3 -m weekly.process_appraisal_requests
+
+Recommended launchd schedule:
+  run every 10-15 minutes while the Mac is awake.
+"""
+
+from __future__ import annotations
+
+import argparse
+import hashlib
+import json
+import os
+import re
+import sys
+from pathlib import Path
+from typing import Any
+from urllib.parse import parse_qs, urlparse
+
+import requests
+from dotenv import load_dotenv
+
+ROOT = Path(__file__).resolve().parent.parent
+DATA_DIR = ROOT / "data"
+STATE_PATH = DATA_DIR / "appraisal_requests_processed.jsonl"
+WEEKLY_DIR = ROOT / "output" / "weekly"
+DOCS_DIR = ROOT / "docs"
+
+
+def _normalize_doi(value: str) -> str:
+    doi = str(value or "").strip()
+    doi = re.sub(r"^https?://(?:dx\.)?doi\.org/", "", doi, flags=re.I)
+    return doi.rstrip(".").lower()
+
+
+def _request_identifier(row: dict) -> str:
+    pmid = str(row.get("pmid", "")).strip()
+    if pmid:
+        return f"pmid:{pmid}"
+    doi = _normalize_doi(str(row.get("doi", "")))
+    if doi:
+        return f"doi:{doi}"
+    return ""
+
+
+def _article_identifiers(article: dict) -> list[str]:
+    identifiers: list[str] = []
+    pmid = str(article.get("pmid", "")).strip()
+    doi = _normalize_doi(str(article.get("doi", "")))
+    if pmid:
+        identifiers.append(f"pmid:{pmid}")
+    if doi:
+        identifiers.append(f"doi:{doi}")
+    return identifiers
+
+
+def _local_id_from_doi(doi: str) -> str:
+    digest = hashlib.sha1(_normalize_doi(doi).encode("utf-8")).hexdigest()[:12]
+    return f"doi-{digest}"
+
+
+def _load_json(path: Path, default: Any) -> Any:
+    try:
+        return json.loads(path.read_text(encoding="utf-8"))
+    except (FileNotFoundError, json.JSONDecodeError, OSError):
+        return default
+
+
+def _write_json(path: Path, data: Any) -> None:
+    path.parent.mkdir(parents=True, exist_ok=True)
+    path.write_text(json.dumps(data, ensure_ascii=False, indent=2), encoding="utf-8")
+
+
+def _load_state() -> dict[tuple[str, str], dict]:
+    records: dict[tuple[str, str], dict] = {}
+    if not STATE_PATH.exists():
+        return records
+    for line in STATE_PATH.read_text(encoding="utf-8").splitlines():
+        if not line.strip():
+            continue
+        try:
+            obj = json.loads(line)
+        except json.JSONDecodeError:
+            continue
+        identifier = str(obj.get("identifier", "")).strip()
+        if not identifier:
+            identifier = _request_identifier(obj)
+        key = (str(obj.get("week", "")), identifier)
+        if key[0] and key[1]:
+            records[key] = obj
+    return records
+
+
+def _append_state(record: dict) -> None:
+    DATA_DIR.mkdir(parents=True, exist_ok=True)
+    with STATE_PATH.open("a", encoding="utf-8") as f:
+        f.write(json.dumps(record, ensure_ascii=False) + "\n")
+
+
+def _sync_requests(timeout: int = 30) -> list[dict]:
+    load_dotenv(ROOT / ".env")
+    url = os.getenv("FEEDBACK_ENDPOINT_URL", "").strip()
+    token = os.getenv("FEEDBACK_SYNC_TOKEN", "").strip()
+    if not url:
+        print("[appraisal-request] FEEDBACK_ENDPOINT_URL not set; skip")
+        return []
+    if not token:
+        raise RuntimeError("FEEDBACK_SYNC_TOKEN is not set")
+
+    resp = requests.post(
+        url,
+        json={"action": "sync_appraisal_requests", "token": token},
+        timeout=timeout,
+    )
+    resp.raise_for_status()
+    payload = resp.json()
+    if not payload.get("ok"):
+        error = str(payload.get("error", ""))
+        if "bad week" in error or "bad verdict" in error:
+            print(
+                "[appraisal-request] relay does not support appraisal requests yet; "
+                "redeploy scripts/feedback_relay.gs"
+            )
+            return []
+        raise RuntimeError(f"relay rejected request: {error}")
+    return list(payload.get("rows", []))
+
+
+def _known_articles() -> dict[tuple[str, str], dict]:
+    """Known weekly articles keyed by (week, pmid/doi identifier)."""
+    known: dict[tuple[str, str], dict] = {}
+    if not WEEKLY_DIR.exists():
+        weekly_paths: list[Path] = []
+    else:
+        weekly_paths = list(WEEKLY_DIR.glob("*/articles.json"))
+
+    def add_article(week: str, article: dict) -> None:
+        for identifier in _article_identifiers(article):
+            known.setdefault((week, identifier), article)
+
+    for article_path in weekly_paths:
+        week = article_path.parent.name
+        articles = _load_json(article_path, [])
+        if isinstance(articles, list):
+            for article in articles:
+                add_article(week, article)
+
+    for html_path in DOCS_DIR.glob("20*-W*.html"):
+        week = html_path.stem
+        for article in _articles_from_weekly_html(html_path):
+            add_article(week, article)
+    return known
+
+
+def _articles_from_weekly_html(path: Path) -> list[dict]:
+    """Recover article metadata from an already-published weekly HTML page."""
+    try:
+        from bs4 import BeautifulSoup
+    except ImportError:
+        return []
+
+    soup = BeautifulSoup(path.read_text(encoding="utf-8"), "html.parser")
+    articles: list[dict] = []
+    for node in soup.find_all("article"):
+        title_node = node.find("h2")
+        title = title_node.get_text(" ", strip=True) if title_node else ""
+        doi = ""
+        pmid = ""
+        for link in node.find_all("a"):
+            href = link.get("href", "")
+            if href.startswith("https://doi.org/"):
+                doi = href.replace("https://doi.org/", "", 1)
+            elif "pubmed.ncbi.nlm.nih.gov" in href:
+                match = re.search(r"/(\d{6,12})/?$", href)
+                if match:
+                    pmid = match.group(1)
+            elif "view=appraise" in href:
+                qs = parse_qs(urlparse(href).query)
+                pmid = pmid or (qs.get("pmid", [""])[0])
+                doi = doi or (qs.get("doi", [""])[0])
+
+        if not doi:
+            continue
+
+        tag = node.find("span", class_="tag")
+        journal_key = tag.get_text(strip=True) if tag else ""
+        authors_node = node.find("div", class_="authors")
+        authors_text = authors_node.get_text(" ", strip=True) if authors_node else ""
+        year_match = re.search(r"\b(20\d{2})\b", authors_text)
+        year = year_match.group(1) if year_match else ""
+        author_part = authors_text.split("·", 1)[0].strip()
+        authors = [a.strip() for a in author_part.split(",") if a.strip()]
+        articles.append(
+            {
+                "pmid": pmid,
+                "doi": doi,
+                "journal_key": journal_key,
+                "journal": journal_key,
+                "title": title,
+                "authors": authors,
+                "year": year,
+                "source_html": str(path),
+            }
+        )
+    return articles
+
+
+def _journal_counts(articles: list[dict]) -> list[dict]:
+    counts: dict[str, int] = {}
+    order: list[str] = []
+    for article in articles:
+        key = str(article.get("journal_key") or article.get("journal") or "").strip()
+        if not key:
+            key = "Unknown"
+        if key not in counts:
+            counts[key] = 0
+            order.append(key)
+        counts[key] += 1
+    return [{"name": key, "count": counts[key]} for key in order]
+
+
+def _merge_selected(week_dir: Path, article: dict) -> list[dict]:
+    selected_path = week_dir / "selected_articles.json"
+    selected = _load_json(selected_path, [])
+    if not isinstance(selected, list):
+        selected = []
+
+    identifiers = set(_article_identifiers(article))
+    merged: list[dict] = []
+    replaced = False
+    for item in selected:
+        if identifiers.intersection(_article_identifiers(item)):
+            merged.append({**item, **article})
+            replaced = True
+        else:
+            merged.append(item)
+    if not replaced:
+        article.setdefault("selected_for_appraisal", True)
+        article.setdefault("selection_reason", "由週報摘要區手動請求文獻評讀。")
+        article.setdefault("selection_tags", ["manual_request"])
+        merged.append(article)
+
+    _write_json(selected_path, merged)
+    return merged
+
+
+def _prepare_article_for_pipeline(article: dict) -> dict:
+    prepared = {**article}
+    if not str(prepared.get("pmid", "")).strip():
+        prepared["original_pmid"] = ""
+        prepared["pmid"] = _local_id_from_doi(str(prepared.get("doi", "")))
+    return prepared
+
+
+def _render_weekly_page(week: str, selected: list[dict]) -> Path:
+    from weekly import render
+
+    load_dotenv(ROOT / ".env")
+    feedback_endpoint = os.getenv("FEEDBACK_ENDPOINT_URL", "").strip()
+    week_dir = WEEKLY_DIR / week
+    articles = _load_json(week_dir / "articles.json", [])
+    if not isinstance(articles, list) or not articles:
+        raise FileNotFoundError(f"missing weekly articles: {week_dir / 'articles.json'}")
+
+    html = render.render_weekly(
+        articles,
+        week_label=week,
+        journal_counts=_journal_counts(articles),
+        selected_articles=selected,
+        feedback_endpoint=feedback_endpoint,
+    )
+    return render.write_weekly(html, f"{week}.html")
+
+
+def _process_one(row: dict, article: dict, force: bool, no_push: bool, no_discord: bool) -> bool:
+    from modules.downloader import download_articles
+    from weekly import appraise_selected, publish, render
+
+    week = str(row.get("week", "")).strip()
+    identifier = _request_identifier(row)
+    week_dir = WEEKLY_DIR / week
+    pdf_dir = week_dir / "pdfs"
+    appraisal_dir = week_dir / "appraisals"
+
+    article = _prepare_article_for_pipeline(article)
+    article["selected_for_appraisal"] = True
+    article.setdefault("selection_reason", "由週報摘要區手動請求文獻評讀。")
+    article.setdefault("selection_tags", ["manual_request"])
+    result_key = str(article.get("pmid", ""))
+
+    print(f"[appraisal-request] processing {week} {identifier}: {article.get('title', '')[:80]}")
+    download_results = download_articles([article], out_dir=pdf_dir)
+    result = appraise_selected.appraise_selected([article], download_results, appraisal_dir)
+    report_path = result.get(result_key)
+    if not report_path:
+        _append_state({"week": week, "identifier": identifier, **row, "status": "failed"})
+        print(f"[appraisal-request] failed {identifier}")
+        return False
+
+    render.publish_appraisals([article], week)
+    if (week_dir / "articles.json").exists():
+        selected = _merge_selected(week_dir, article)
+        _render_weekly_page(week, selected)
+    else:
+        _update_existing_weekly_html_appraisal_link(week, article)
+
+    appraisal_url = str(article.get("appraisal_url", ""))
+    if not appraisal_url:
+        _append_state({"week": week, "identifier": identifier, **row, "status": "failed"})
+        print(f"[appraisal-request] appraisal HTML missing {identifier}")
+        return False
+
+    if no_push:
+        print("[git] --no-push set; skip docs push")
+    else:
+        publish.git_commit_and_push(f"{week}.html", f"{week} appraisal {pmid}")
+
+    if no_discord:
+        print("[discord] --no-discord set; skip appraisal notice")
+    else:
+        publish.send_appraisal_notice(week, article, appraisal_url)
+
+    _append_state(
+        {
+            "week": week,
+            "identifier": identifier,
+            "pmid": str(row.get("pmid", "")).strip(),
+            "doi": str(row.get("doi", "")).strip(),
+            "status": "done",
+            "appraisal_url": appraisal_url,
+            "force": force,
+        }
+    )
+    print(f"[appraisal-request] done {identifier}: {appraisal_url}")
+    return True
+
+
+def _update_existing_weekly_html_appraisal_link(week: str, article: dict) -> None:
+    try:
+        from bs4 import BeautifulSoup
+    except ImportError:
+        return
+
+    html_path = DOCS_DIR / f"{week}.html"
+    if not html_path.exists():
+        return
+    target_doi = _normalize_doi(str(article.get("doi", "")))
+    target_pmid = str(article.get("original_pmid", article.get("pmid", ""))).strip()
+    soup = BeautifulSoup(html_path.read_text(encoding="utf-8"), "html.parser")
+    for node in soup.find_all("article"):
+        article_doi = ""
+        article_pmid = ""
+        request_link = None
+        for link in node.find_all("a"):
+            href = link.get("href", "")
+            if href.startswith("https://doi.org/"):
+                article_doi = _normalize_doi(href)
+            elif link.get_text(strip=True) == "請求評讀":
+                request_link = link
+                qs = parse_qs(urlparse(href).query)
+                article_pmid = qs.get("pmid", [""])[0]
+                article_doi = article_doi or _normalize_doi(qs.get("doi", [""])[0])
+        if article_doi != target_doi and (not target_pmid or article_pmid != target_pmid):
+            continue
+        if request_link:
+            request_link["href"] = str(article.get("appraisal_url", ""))
+            request_link.attrs.pop("target", None)
+            request_link.attrs.pop("rel", None)
+            request_link.attrs.pop("class", None)
+            request_link.string = "評讀結果"
+        break
+    html_path.write_text(str(soup), encoding="utf-8")
+
+
+def process_requests(
+    *,
+    limit: int,
+    force: bool,
+    dry_run: bool,
+    no_push: bool,
+    no_discord: bool,
+) -> int:
+    rows = _sync_requests()
+    known = _known_articles()
+    state = _load_state()
+    processed = 0
+
+    for row in rows:
+        week = str(row.get("week", "")).strip()
+        identifier = _request_identifier(row)
+        status = str(row.get("status", "requested")).strip() or "requested"
+        key = (week, identifier)
+        if status != "requested":
+            continue
+        if not identifier:
+            continue
+        if not force and key in state:
+            continue
+        article = known.get(key)
+        if article is None:
+            print(f"[appraisal-request] skip unknown article: {week} {identifier}")
+            continue
+        if dry_run:
+            print(f"[dry-run] would appraise {week} {identifier}: {article.get('title', '')}")
+            processed += 1
+        else:
+            if _process_one(row, article, force, no_push, no_discord):
+                processed += 1
+        if limit and processed >= limit:
+            break
+
+    print(f"[appraisal-request] processed {processed} request(s)")
+    return processed
+
+
+def main() -> int:
+    parser = argparse.ArgumentParser(description="Process weekly HTML appraisal requests.")
+    parser.add_argument("--limit", type=int, default=3, help="Maximum requests per run; 0 means no limit")
+    parser.add_argument("--force", action="store_true", help="Reprocess even if local state has this request")
+    parser.add_argument("--dry-run", action="store_true", help="List requests without downloading/appraising")
+    parser.add_argument("--no-push", action="store_true", help="Skip git commit/push of docs/")
+    parser.add_argument("--no-discord", action="store_true", help="Skip Discord completion notice")
+    args = parser.parse_args()
+
+    try:
+        process_requests(
+            limit=args.limit,
+            force=args.force,
+            dry_run=args.dry_run,
+            no_push=args.no_push,
+            no_discord=args.no_discord,
+        )
+    except Exception as e:  # noqa: BLE001 - standalone worker should report a clear failure
+        print(f"[appraisal-request] failed: {e}", file=sys.stderr)
+        return 1
+    return 0
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())

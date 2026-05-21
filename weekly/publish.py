@@ -188,6 +188,58 @@ def send_discord_index_notice(label: str, filename: str, count: int) -> bool:
     return False
 
 
+def send_appraisal_notice(label: str, article: dict, appraisal_url: str) -> bool:
+    """Send a Discord notice with a single completed appraisal link."""
+    load_dotenv(ROOT / ".env")
+    webhook_url = os.getenv("DISCORD_WEBHOOK_URL")
+    if not webhook_url:
+        print("[discord] DISCORD_WEBHOOK_URL not set in .env; skip")
+        return False
+
+    full_url = appraisal_url
+    if not full_url.startswith(("http://", "https://")):
+        full_url = f"{PAGES_BASE_URL}/{appraisal_url.lstrip('/')}"
+
+    doi = str(article.get("doi", "")).strip()
+    pmid = str(article.get("pmid", "")).strip()
+    source_url = f"https://doi.org/{doi}" if doi else (
+        f"https://pubmed.ncbi.nlm.nih.gov/{pmid}/" if pmid else ""
+    )
+    fields = [
+        {"name": "🔗 完整評讀", "value": full_url, "inline": False},
+    ]
+    if source_url:
+        fields.append({"name": "原文", "value": source_url, "inline": False})
+
+    payload = {
+        "embeds": [
+            {
+                "title": "文獻評讀完成",
+                "url": full_url,
+                "description": _truncate(article.get("title", ""), 180),
+                "color": DISCORD_EMBED_COLOR,
+                "fields": fields,
+                "footer": {
+                    "text": f"JournalFetcher · {label} · {article.get('journal_key') or article.get('journal', '')}"
+                },
+                "timestamp": datetime.now(timezone.utc).isoformat(),
+            }
+        ]
+    }
+
+    try:
+        resp = requests.post(webhook_url, json=payload, timeout=15)
+    except requests.RequestException as e:
+        print(f"[discord] webhook request failed: {type(e).__name__}")
+        return False
+
+    if resp.status_code in (200, 204):
+        print(f"[discord] appraisal webhook sent OK ({resp.status_code})")
+        return True
+    print(f"[discord] webhook failed: {resp.status_code} {resp.text[:200]}")
+    return False
+
+
 if __name__ == "__main__":
     # Quick test: build and print an example embed without sending
     sample_articles = [

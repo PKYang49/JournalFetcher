@@ -147,6 +147,41 @@
     background: var(--tag-bg);
     border-color: var(--accent);
   }
+  .request-btn {
+    appearance: none;
+    background: var(--accent);
+    border: 1px solid var(--accent);
+    border-radius: 6px;
+    color: #fff;
+    cursor: pointer;
+    display: inline-block;
+    font: inherit;
+    font-size: 13px;
+    margin: 4px 8px 0 0;
+    padding: 3px 10px;
+    text-decoration: none;
+  }
+  .request-btn:hover { filter: brightness(0.95); }
+  .links a.request-btn {
+    color: #fff;
+    text-decoration: none;
+  }
+  .links a.request-btn:hover {
+    color: #fff;
+    text-decoration: none;
+  }
+  .request-btn.sent,
+  .request-btn:disabled {
+    background: transparent;
+    color: var(--muted);
+    cursor: default;
+    filter: none;
+  }
+  .request-msg {
+    color: var(--accent);
+    font-size: 13px;
+    margin-left: 2px;
+  }
   .feedback {
     margin-top: 12px;
     padding-top: 10px;
@@ -201,7 +236,7 @@
 <div class="container">
   <header>
     <h1>📚 期刊週報 2026-W21</h1>
-    <div class="meta">2026-05-20 16:28 UTC+08:00 · 共 6 篇</div>
+    <div class="meta">2026-05-21 16:51 UTC+08:00 · 共 6 篇</div>
     <div class="nav"><a href="index.html">← 回到週報索引</a></div>
   </header>
 
@@ -233,11 +268,8 @@
       </div>
       
       <div class="links">
-        <a href="appraisals/2026-W21/42149993_Nathan_2026_appraisal.html">完整評讀</a>
-        <a href="https://doi.org/10.1056/NEJMoa2501488" target="_blank" rel="noopener">DOI</a>
-        
-        <a href="https://pubmed.ncbi.nlm.nih.gov/42149993/" target="_blank" rel="noopener">PubMed</a>
-        
+        <a href="appraisals/2026-W21/42149993_Nathan_2026_appraisal.html">評讀結果</a>
+        <a href="https://doi.org/10.1056/NEJMoa2501488" target="_blank" rel="noopener">下載連結</a>
         
         <button class="copy-btn" type="button" data-copy="10.1056/NEJMoa2501488">複製 DOI</button>
         <button class="copy-btn" type="button" data-copy="python dlbydoi.py 10.1056/NEJMoa2501488">複製下載指令</button>
@@ -249,6 +281,45 @@
            data-doi="10.1056/NEJMoa2501488"
            data-journal="NEJM"
            data-title="Phase 3 Trials of Inhaled Treprostinil for Idiopathic Pulmonary Fibrosis.">
+        <span class="fb-q">這篇選得合你意嗎?</span>
+        <button class="fb-btn" type="button" data-verdict="up">👍 有興趣</button>
+        <button class="fb-btn" type="button" data-verdict="down">👎 沒興趣</button>
+        <span class="fb-msg"></span>
+      </div>
+      
+    </article>
+    
+    <article class="selected-card">
+      <span class="tag">NEJM</span>
+      <span class="tag pub-type type-original">Original</span>
+      <h2>Azithromycin for Preschoolers with Wheezing in the Emergency Department.</h2>
+      <div class="authors">
+        Denninghoff Kurt R, Casper T Charles, Zorc Joseph J 等 14 人 · 2026
+      </div>
+      
+      <p class="selection-reason">由週報摘要區手動請求文獻評讀。</p>
+      
+      
+      <div class="selection-meta">
+        manual_request
+         · 
+        appraisal: done
+      </div>
+      
+      <div class="links">
+        <a href="appraisals/2026-W21/42149992_Denninghoff_2026_appraisal.html">評讀結果</a>
+        <a href="https://doi.org/10.1056/NEJMoa2516505" target="_blank" rel="noopener">下載連結</a>
+        
+        <button class="copy-btn" type="button" data-copy="10.1056/NEJMoa2516505">複製 DOI</button>
+        <button class="copy-btn" type="button" data-copy="python dlbydoi.py 10.1056/NEJMoa2516505">複製下載指令</button>
+        
+      </div>
+      
+      <div class="feedback"
+           data-pmid="42149992"
+           data-doi="10.1056/NEJMoa2516505"
+           data-journal="NEJM"
+           data-title="Azithromycin for Preschoolers with Wheezing in the Emergency Department.">
         <span class="fb-q">這篇選得合你意嗎?</span>
         <button class="fb-btn" type="button" data-verdict="up">👍 有興趣</button>
         <button class="fb-btn" type="button" data-verdict="down">👎 沒興趣</button>
@@ -283,13 +354,16 @@
     </div>
     
     <div class="links">
-      <a href="https://doi.org/10.1056/NEJMoa2602167" target="_blank" rel="noopener">DOI</a>
-      
-      <a href="https://pubmed.ncbi.nlm.nih.gov/42150044/" target="_blank" rel="noopener">PubMed</a>
-      
+      <a href="https://doi.org/10.1056/NEJMoa2602167" target="_blank" rel="noopener">下載連結</a>
       
       <button class="copy-btn" type="button" data-copy="10.1056/NEJMoa2602167">複製 DOI</button>
       <button class="copy-btn" type="button" data-copy="python dlbydoi.py 10.1056/NEJMoa2602167">複製下載指令</button>
+      
+      
+      <a class="request-btn"
+         href="https://script.google.com/macros/s/AKfycbwM6kGHe0XfPGPpmUTMFbm1NBu0lnccP74CXAWwdgS7eUfcNvI48pL-KOVzByCNNAuiZA/exec?view=appraise&amp;week=2026-W21&amp;pmid=42150044&amp;doi=10.1056%2FNEJMoa2602167&amp;journal=NEJM&amp;title=Prehospital+Resuscitation+with+Type+O+Whole+Blood+for+Trauma+and+Hemorrhage."
+         target="_blank"
+         rel="noopener">請求評讀</a>
       
     </div>
     
@@ -326,13 +400,13 @@
     </div>
     
     <div class="links">
-      <a href="https://doi.org/10.1056/NEJMoa2501488" target="_blank" rel="noopener">DOI</a>
-      
-      <a href="https://pubmed.ncbi.nlm.nih.gov/42149993/" target="_blank" rel="noopener">PubMed</a>
-      
+      <a href="https://doi.org/10.1056/NEJMoa2501488" target="_blank" rel="noopener">下載連結</a>
       
       <button class="copy-btn" type="button" data-copy="10.1056/NEJMoa2501488">複製 DOI</button>
       <button class="copy-btn" type="button" data-copy="python dlbydoi.py 10.1056/NEJMoa2501488">複製下載指令</button>
+      
+      
+      <a href="appraisals/2026-W21/42149993_Nathan_2026_appraisal.html">評讀結果</a>
       
     </div>
     
@@ -358,25 +432,14 @@
     </div>
     
     <div class="links">
-      <a href="https://doi.org/10.1056/NEJMoa2516505" target="_blank" rel="noopener">DOI</a>
-      
-      <a href="https://pubmed.ncbi.nlm.nih.gov/42149992/" target="_blank" rel="noopener">PubMed</a>
-      
+      <a href="https://doi.org/10.1056/NEJMoa2516505" target="_blank" rel="noopener">下載連結</a>
       
       <button class="copy-btn" type="button" data-copy="10.1056/NEJMoa2516505">複製 DOI</button>
       <button class="copy-btn" type="button" data-copy="python dlbydoi.py 10.1056/NEJMoa2516505">複製下載指令</button>
       
-    </div>
-    
-    <div class="feedback"
-         data-pmid="42149992"
-         data-doi="10.1056/NEJMoa2516505"
-         data-journal="NEJM"
-         data-title="Azithromycin for Preschoolers with Wheezing in the Emergency Department.">
-      <span class="fb-q">對這篇有興趣嗎?</span>
-      <button class="fb-btn" type="button" data-verdict="up">👍 有興趣</button>
-      <button class="fb-btn" type="button" data-verdict="down">👎 沒興趣</button>
-      <span class="fb-msg"></span>
+      
+      <a href="appraisals/2026-W21/42149992_Denninghoff_2026_appraisal.html">評讀結果</a>
+      
     </div>
     
   </article>
@@ -401,13 +464,16 @@
     </div>
     
     <div class="links">
-      <a href="https://doi.org/10.1056/NEJMra2415426" target="_blank" rel="noopener">DOI</a>
-      
-      <a href="https://pubmed.ncbi.nlm.nih.gov/42127392/" target="_blank" rel="noopener">PubMed</a>
-      
+      <a href="https://doi.org/10.1056/NEJMra2415426" target="_blank" rel="noopener">下載連結</a>
       
       <button class="copy-btn" type="button" data-copy="10.1056/NEJMra2415426">複製 DOI</button>
       <button class="copy-btn" type="button" data-copy="python dlbydoi.py 10.1056/NEJMra2415426">複製下載指令</button>
+      
+      
+      <a class="request-btn"
+         href="https://script.google.com/macros/s/AKfycbwM6kGHe0XfPGPpmUTMFbm1NBu0lnccP74CXAWwdgS7eUfcNvI48pL-KOVzByCNNAuiZA/exec?view=appraise&amp;week=2026-W21&amp;pmid=42127392&amp;doi=10.1056%2FNEJMra2415426&amp;journal=NEJM&amp;title=Inflammatory+Myopathies."
+         target="_blank"
+         rel="noopener">請求評讀</a>
       
     </div>
     
@@ -444,13 +510,16 @@
     </div>
     
     <div class="links">
-      <a href="https://doi.org/10.1056/NEJMoa2514415" target="_blank" rel="noopener">DOI</a>
-      
-      <a href="https://pubmed.ncbi.nlm.nih.gov/42127391/" target="_blank" rel="noopener">PubMed</a>
-      
+      <a href="https://doi.org/10.1056/NEJMoa2514415" target="_blank" rel="noopener">下載連結</a>
       
       <button class="copy-btn" type="button" data-copy="10.1056/NEJMoa2514415">複製 DOI</button>
       <button class="copy-btn" type="button" data-copy="python dlbydoi.py 10.1056/NEJMoa2514415">複製下載指令</button>
+      
+      
+      <a class="request-btn"
+         href="https://script.google.com/macros/s/AKfycbwM6kGHe0XfPGPpmUTMFbm1NBu0lnccP74CXAWwdgS7eUfcNvI48pL-KOVzByCNNAuiZA/exec?view=appraise&amp;week=2026-W21&amp;pmid=42127391&amp;doi=10.1056%2FNEJMoa2514415&amp;journal=NEJM&amp;title=Telitacicept+for+IgA+Nephropathy+-+Interim+Analysis+of+a+Phase+3+Trial."
+         target="_blank"
+         rel="noopener">請求評讀</a>
       
     </div>
     
@@ -487,13 +556,16 @@
     </div>
     
     <div class="links">
-      <a href="https://doi.org/10.1056/NEJMoa2509306" target="_blank" rel="noopener">DOI</a>
-      
-      <a href="https://pubmed.ncbi.nlm.nih.gov/42127390/" target="_blank" rel="noopener">PubMed</a>
-      
+      <a href="https://doi.org/10.1056/NEJMoa2509306" target="_blank" rel="noopener">下載連結</a>
       
       <button class="copy-btn" type="button" data-copy="10.1056/NEJMoa2509306">複製 DOI</button>
       <button class="copy-btn" type="button" data-copy="python dlbydoi.py 10.1056/NEJMoa2509306">複製下載指令</button>
+      
+      
+      <a class="request-btn"
+         href="https://script.google.com/macros/s/AKfycbwM6kGHe0XfPGPpmUTMFbm1NBu0lnccP74CXAWwdgS7eUfcNvI48pL-KOVzByCNNAuiZA/exec?view=appraise&amp;week=2026-W21&amp;pmid=42127390&amp;doi=10.1056%2FNEJMoa2509306&amp;journal=NEJM&amp;title=Ensitrelvir+for+Covid-19+Postexposure+Prophylaxis+in+Household+Contacts."
+         target="_blank"
+         rel="noopener">請求評讀</a>
       
     </div>
     
@@ -513,7 +585,7 @@
   </section>
 
   <footer>
-    Generated by JournalFetcher · 2026-05-20 16:28 UTC+08:00
+    Generated by JournalFetcher · 2026-05-21 16:51 UTC+08:00
   </footer>
 </div>
 <script>

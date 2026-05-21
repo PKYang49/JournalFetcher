@@ -147,6 +147,41 @@
     background: var(--tag-bg);
     border-color: var(--accent);
   }
+  .request-btn {
+    appearance: none;
+    background: var(--accent);
+    border: 1px solid var(--accent);
+    border-radius: 6px;
+    color: #fff;
+    cursor: pointer;
+    display: inline-block;
+    font: inherit;
+    font-size: 13px;
+    margin: 4px 8px 0 0;
+    padding: 3px 10px;
+    text-decoration: none;
+  }
+  .request-btn:hover { filter: brightness(0.95); }
+  .links a.request-btn {
+    color: #fff;
+    text-decoration: none;
+  }
+  .links a.request-btn:hover {
+    color: #fff;
+    text-decoration: none;
+  }
+  .request-btn.sent,
+  .request-btn:disabled {
+    background: transparent;
+    color: var(--muted);
+    cursor: default;
+    filter: none;
+  }
+  .request-msg {
+    color: var(--accent);
+    font-size: 13px;
+    margin-left: 2px;
+  }
   .feedback {
     margin-top: 12px;
     padding-top: 10px;
@@ -233,11 +268,8 @@
       </div>
       {% endif %}
       <div class="links">
-        {% if article.appraisal_url %}<a href="{{ article.appraisal_url }}">完整評讀</a>{% endif %}
-        {% if article.doi %}<a href="https://doi.org/{{ article.doi }}" target="_blank" rel="noopener">DOI</a>{% endif %}
-        {% if article.pmid %}
-        <a href="https://pubmed.ncbi.nlm.nih.gov/{{ article.pmid }}/" target="_blank" rel="noopener">PubMed</a>
-        {% endif %}
+        {% if article.appraisal_url %}<a href="{{ article.appraisal_url }}">評讀結果</a>{% endif %}
+        {% if article.doi %}<a href="https://doi.org/{{ article.doi }}" target="_blank" rel="noopener">下載連結</a>{% endif %}
         {% if article.doi %}
         <button class="copy-btn" type="button" data-copy="{{ article.doi }}">複製 DOI</button>
         <button class="copy-btn" type="button" data-copy="python dlbydoi.py {{ article.doi }}">複製下載指令</button>
@@ -283,13 +315,18 @@
     </div>
     {% endif %}
     <div class="links">
-      {% if article.doi %}<a href="https://doi.org/{{ article.doi }}" target="_blank" rel="noopener">DOI</a>{% endif %}
-      {% if article.pmid %}
-      <a href="https://pubmed.ncbi.nlm.nih.gov/{{ article.pmid }}/" target="_blank" rel="noopener">PubMed</a>
-      {% endif %}
+      {% if article.doi %}<a href="https://doi.org/{{ article.doi }}" target="_blank" rel="noopener">下載連結</a>{% endif %}
       {% if article.doi %}
       <button class="copy-btn" type="button" data-copy="{{ article.doi }}">複製 DOI</button>
       <button class="copy-btn" type="button" data-copy="python dlbydoi.py {{ article.doi }}">複製下載指令</button>
+      {% endif %}
+      {% if article.appraisal_url %}
+      <a href="{{ article.appraisal_url }}">評讀結果</a>
+      {% elif article.appraise_request_url %}
+      <a class="request-btn"
+         href="{{ article.appraise_request_url }}"
+         target="_blank"
+         rel="noopener">請求評讀</a>
       {% endif %}
     </div>
     {% if feedback_endpoint and article.pmid and article.pmid|string not in selected_pmids %}

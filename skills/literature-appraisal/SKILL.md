@@ -3,7 +3,7 @@ name: literature-appraisal
 description: Use this skill when the user asks to critically appraise, interpret, critique, or generate a structured evidence-based review of a medical paper, clinical trial, observational study, diagnostic/prognostic model, systematic review, meta-analysis, guideline, narrative review, expert opinion, or uploaded PDF/article link. The workflow routes articles by study type, produces Traditional Chinese clinical-methodology appraisal, and uses bundled JAMA Users' Guides / causal inference references when needed.
 ---
 
-# SKILL: 醫學文獻批判性評讀 v3.2
+# SKILL: 醫學文獻批判性評讀 v3.3
 
 ## 融合來源
 
@@ -13,7 +13,14 @@ description: Use this skill when the user asks to critically appraise, interpret
 4. Gyawali B. How I Read a Clinical Trial Report? JCO Oncol Pract. 2026
 5. **新增：SANRA (Baethge et al. 2019) — narrative review 專屬品質評估工具**
 
-## v3.2 變更摘要
+## v3.3 變更摘要
+
+- **A2 子模組（Clinical Practice Guideline / Consensus Statement）新增強制段落 A2.0**：在進入方法學批判前，必須先以結構化表格完整列出文章本身給出的所有具體建議。
+- **A2.0 定位為「論證架構重建」階段的延伸**：先忠實重建，不得在此段混入批判。
+- **強化路由規則**：CPG / Consensus 類文章在 SECTION-0 完成後，必須先執行 A2.0「建議清單重建」，再進入 A2.1 / A2.2 方法學評估。
+- **SELF-CHECK 新增 CPG / Consensus 專屬檢查項**：確認建議清單完整、分級清楚、強建議低證據條目已計數、共識統計透明度已標注。
+
+## v3.2 變更摘要（保留）
 
 - **路由規則細分**：將原本 SKILL-B 一網打盡的 review 類文章，依「證據宣稱範疇」拆為四個子型，分別對應不同的 A 段子模組
 - **新增 A3：Narrative Review 子模組**——以 SANRA 為基礎方法學評估，額外加上 narrative review 特有的紅旗清單
@@ -49,8 +56,9 @@ Use bundled references as supporting methodology checks, not as replacements for
 | Diagnostic accuracy、sensitivity/specificity、AUC、ML 模型、clinical prediction rule | SKILL-C | 主流程 |
 | **Systematic Review、Meta-analysis** | **SKILL-B** | **A1（量化合成型）** |
 | **Network Meta-analysis、Multiple Treatment Comparison** | **SKILL-B** | **A1（NMA 段）** |
-| **Clinical Practice Guideline、Recommendation** | **SKILL-B** | **A2（規範型）** |
-| **Consensus Statement、Delphi、Position Paper** | **SKILL-B** | **A2（規範型，共識方法段）** |
+| **Clinical Practice Guideline、Recommendation** | **SKILL-B** | **A2.0（建議清單重建）+ A2.1（方法學評估）** |
+| **Consensus Statement、Delphi、Position Paper** | **SKILL-B** | **A2.0（建議清單重建）+ A2.2（共識方法評估）** |
+| **Guideline 內含 Delphi 共識成分** | **SKILL-B** | **A2.0 + A2.1 + A2.2 全部執行** |
 | **Narrative Review、State-of-the-Art Review、Focus Seminar、Educational Review** | **SKILL-B** | **A3（敘事型，本版新增）** |
 | **Expert Opinion、Viewpoint、Perspective、Commentary** | **SKILL-B** | **A3（敘事型，簡化版）** |
 | Scoping Review | SKILL-B | A1 + A3 混合判斷 |
@@ -109,7 +117,7 @@ Use bundled references as supporting methodology checks, not as replacements for
 - 作者團隊構成：各作者分工與專長（若文內有 Author Contributions）
 - 所屬機構聲譽：機構在此領域的研究地位
 - 團隊過往研究：此團隊在相關主題的代表性發表（3–5 篇，附年份與期刊）；是否為該領域核心研究者？或跨領域首次切入？
-- **作者立場史（narrative review 特別關鍵）**：作者過去公開立場與本篇結論是否一致？若高度一致，可能存在確認偏差
+- **作者立場史（narrative review 與 CPG / Consensus 特別關鍵）**：作者過去公開立場與本篇結論是否一致？若高度一致，可能存在確認偏差
 - 利益揭露：
   - 文內申報的 COI / funding 來源 [文內]
   - 評估：funding 是否可能影響研究方向或結論呈現？
@@ -150,6 +158,14 @@ Use bundled references as supporting methodology checks, not as replacements for
 - 文獻來源描述（若有）：搜尋的資料庫、時間範圍、語言限制；若無，標注「[無搜尋策略描述]」
 - 引用文獻總數與年份分布
 
+**對 CPG / Consensus 的調整**：第 4 節改為「指引制定方法學」——
+
+- 委員會構成：學科組成、地理代表性、患者代表是否納入
+- 證據檢索與評估方法：是否自行進行 SR？是否使用 GRADE 或等效系統？
+- 共識方法（若為 consensus）：Delphi / RAND-UCLA / Nominal Group Technique，幾輪投票，匿名性，共識門檻
+- COI 管理機制
+- 外部審查流程
+
 #### 5. 研究結果重點整理
 
 （同原版，視文章類型適用）
@@ -159,6 +175,8 @@ Use bundled references as supporting methodology checks, not as replacements for
 - 作者的核心論點（3–5 條）
 - 支撐各論點的證據類型分布（RCT / 觀察性 / 動物 / 細胞 / 機轉 / 專家意見）
 - 是否有量化呈現？若有，是哪一類圖表？（forest-plot-like？整合圖？時間軸？）
+
+**對 CPG / Consensus 的調整**：第 5 節留作簡述（建議總數、強度分布的高階概覽），詳細建議清單由 A2.0 處理。
 
 #### 6. 作者討論與評論重點
 
@@ -516,6 +534,8 @@ Null value (HR=1 / MD=0)    MCID-benefit (δ)    MCID-harm (δ_harm)
 - [ ] 替代解釋有沒有文內依據？
 - [ ] **若為 narrative review：是否套用了 A3 而非錯誤套用 A1 的 systematic review 標準？**
 - [ ] **若為混血文章：是否同時標注自稱類別 vs 實際方法學的落差？**
+- [ ] **若為 CPG / Consensus：是否先完成 A2.0 建議清單完整重建，且未在 A2.0 混入批判？**
+- [ ] **若為 CPG / Consensus：建議分級系統、強度/證據品質分布、強建議低證據條目、共識同意比例透明度是否已整理？**
 
 ### OUTPUT FORMAT — SKILL-B
 
@@ -560,22 +580,94 @@ Null value (HR=1 / MD=0)    MCID-benefit (δ)    MCID-harm (δ_harm)
 
 ##### A2. Clinical Practice Guideline / Consensus Statement 子模組（規範型）
 
-**Guideline 部分**
+**執行順序強制要求**：A2.0 → A2.1 → A2.2。不得跳過或合併 A2.0。
 
-- 是否由透明、利益衝突管理的委員會制定？
-- 底層證據是否經過系統性回顧？
+A2.0 屬於「第一階段忠實重建」，必須用作者原文語言或精準翻譯，不插入任何評價。批判一律延後至 A2.1 與 A2.2。
+
+###### A2.0 文章建議清單完整重建（強制段落）
+
+**目的**：在進入方法學評估前，先以結構化方式完整列出文章本身給出的所有建議。讀者應能僅憑此段落即掌握「這篇文章到底建議了什麼」，無需再回查原文。
+
+**(1) 建議的層級結構**
+
+先說明文章使用的建議分級系統：
+
+- 證據品質分級：使用什麼系統？（GRADE / ACC-AHA Level of Evidence / NICE / 自訂等）各級定義為何？[文內]
+- 建議強度分級：使用什麼系統？（GRADE Strong/Conditional / ACC-AHA Class I/IIa/IIb/III / 共識同意比例等）各級操作型定義為何？[文內]
+- 若使用多重分級系統，說明兩者如何組合呈現。
+- 若未使用正式分級，明確標注「[未使用正式建議分級系統]」。
+
+**(2) 建議清單主表**
+
+依文章章節順序，逐條列出所有具體建議。**不得省略、不得歸納合併**。若文章建議極多，仍需完整列出；可用主題分段拆表，但不可只摘要。
+
+| 編號 | 建議內容（原文摘錄或精準翻譯） | 建議強度 | 證據品質 | 文內位置 | 主要支撐文獻 |
+|---|---|---|---|---|---|
+| R1 | [完整建議內容] | Class I / Strong / 95% 同意等 | Level A / High 等 | p.X, Table/Box X | 主要引用文獻（編號或第一作者） |
+| R2 | ... | | | | |
+
+**格式細則**
+
+- 建議內容必須完整保留「對誰、做什麼、何時、目標為何」四要素；若原文有遺漏，標注「[原文未明確]」。
+- 若文章使用條件句（例如 "in patients with X, Y is recommended"），條件部分不得省略。
+- 若同一條建議在不同章節重複出現或有微妙差異，併列呈現並標注差異。
+- 多語言文獻：以原文為主，中文翻譯緊隨其後；術語翻譯若有疑義，附上原文括號標注。
+
+**(3) 建議分布概覽**
+
+完成清單後，提供統計概覽：
+
+- 建議總數：__ 條
+- 各強度分布：Strong/Class I __ 條；Conditional/Class IIa __ 條；Class IIb __ 條；Class III/不建議 __ 條
+- 各證據品質分布：High/Level A __ 條；Moderate/Level B __ 條；Low/Level C __ 條；Expert opinion __ 條
+- **關鍵交叉分析**：
+  - 「強烈建議 + 低證據品質」條目數：__ 條（列出編號）
+  - 完全基於專家意見的強烈建議：__ 條（列出編號）
+  - 與前一版 guideline 相比的變更（若文內有提及）：新增 __ 條；移除 __ 條；強度升級 __ 條；強度降級 __ 條
+
+**(4) 建議主題分組**
+
+依臨床決策階段或主題分組（如：診斷 / 風險評估 / 藥物治療 / 介入治療 / 追蹤監測 / 特殊族群），便於讀者快速定位。
+
+**(5)「新增 / 變更 / 爭議」標記**
+
+若文章本身有標注以下狀態，逐條列出：
+
+- 本版新增的建議（new recommendation）
+- 與前版相比修訂的建議（modified recommendation）— 並摘要變更內容
+- 文中明確標注為「有爭議」或「委員會內部意見分歧」的建議
+- 文中標注為「研究空缺」（knowledge gap）或「未來研究方向」的領域
+
+**(6) 共識統計揭露（Consensus statement 必填）**
+
+若為共識聲明，且文章揭露各題目同意比例，整理為：
+
+| 編號 | 建議內容 | 第一輪同意比例 | 最終輪同意比例 | 是否達預設門檻 |
+|---|---|---|---|---|
+| R1 | ... | __% | __% | 是 / 否 |
+
+若文章未揭露各題目同意比例：在此處明確標注「[嚴重透明度缺失：未揭露各題目同意比例]」，並將此項列入後續 A2.2 紅旗清單。
+
+###### A2.1 Guideline 部分方法學評估
+
+完成 A2.0 建議清單後，方可進入方法學批判：
+
+- 是否由透明、利益衝突管理的委員會制定？COI 比例與管理機制是否公開？
+- 底層證據是否經過系統性回顧？SR 是否為本指引團隊自行執行，或引用既有 SR？引用既有 SR 時，SR 的時效性與品質是否評估？
 - 是否使用 GRADE 或等效架構評定證據品質與建議強度？
-- Strong recommendation（「建議」）vs Conditional recommendation（「考慮」）——是否清楚區分，並說明不確定性？
-- 即使是強烈建議，是否可能因患者價值觀、共病、資源差異而不適用？
-- AGREE-II 六大面向（範疇與目的 / 利害關係人參與 / 制定嚴謹度 / 表達清晰度 / 適用性 / 編輯獨立性）的核心評估
+- Strong recommendation vs Conditional recommendation 的區分是否清楚？文中是否有「Strong recommendation based on Low-quality evidence」？若有，是否符合 GRADE 合理例外情境（life-threatening situation / uncertain but low-cost intervention / catastrophic harm avoidance / equivalent options / ethical imperatives）？
+- 即使是強烈建議，是否討論可能因患者價值觀、共病、資源差異而不適用的情境？
+- **AGREE-II 六大面向系統性評估**（每面向 1–7 分）：範疇與目的、利害關係人參與、制定嚴謹度、表達清晰度、適用性、編輯獨立性。
+- 更新計畫：是否說明下一版時程？是否有 living guideline 機制？
 
-**Consensus Statement / Delphi 部分**
+###### A2.2 Consensus Statement / Delphi 部分方法學評估
 
-- 共識方法是否明確（Delphi / RAND-UCLA / Nominal Group）？
-- 專家小組組成：學科多元性、地理代表性、是否包含患者代表？
-- 投票機制：匿名性、輪數、停止規則、共識門檻（例如 ≥ 75%）？
-- 是否在共識聲明後揭露各題目的同意比例與分歧點？
-- 共識 ≠ 證據：作者是否誤將「我們同意 X」呈現為「證據顯示 X」？
+- **共識方法是否明確**：Delphi（修正式 / 經典式）/ RAND-UCLA / Nominal Group Technique？方法選擇理由是否說明？
+- **專家小組組成**：學科多元性、地理代表性、患者/公眾代表、方法學家/統計學家是否納入；COI 分布與投票迴避是否公開？
+- **投票機制透明度**：匿名性、輪數、輪間回饋、停止規則、共識門檻（通常 ≥75% 為標準，文章採用幾%？）。
+- **揭露完整度**：各題目同意比例、分歧點與少數意見、未達共識題目的處理。
+- **共識 ≠ 證據**：作者是否誤將「我們同意 X」呈現為「證據顯示 X」？共識聲明語氣是否暗示等同於 evidence-based recommendation？
+- 對照 A2.0 第 (3) 項：完全基於專家意見的強烈建議比例若過高，需重點批判。
 
 ---
 
@@ -764,6 +856,48 @@ Narrative review 不必然是壞的。它適用於：
   - [ ] 概念整合（conceptual framework proposal）
   - [ ] 不建議作為臨床決策的證據基礎
 
+**CPG / Consensus 專屬欄位（v3.3 新增）**
+
+- **建議清單完整性**：A2.0 所列建議總數 = __ 條
+- **建議強度 vs 證據品質的整體一致性**：
+  - 「強烈建議 + 低證據品質」佔比：__%
+  - 「強烈建議 + 完全基於專家意見」佔比：__%
+  - 整體評估：合理 / 部分合理 / 明顯越界
+- **AGREE-II 六面向綜合評分**：總分 __ / 42（若做了完整評估）
+- **共識統計揭露**（consensus 適用）：
+  - [ ] 完整揭露各題目同意比例
+  - [ ] 部分揭露（僅總體統計）
+  - [ ] 完全未揭露（嚴重透明度缺失）
+- **本指引在臨床決策中的合理角色**：
+  - [ ] 直接採用為臨床決策依據
+  - [ ] 採用為臨床決策參考，但需個體化調整
+  - [ ] 採用為「現階段共識立場」的參考，但證據基礎薄弱
+  - [ ] 不建議直接採用，需等待更高品質證據
+
+**SKILL-B 輸出順序總表（CPG / Consensus 適用）**
+
+當文章類型為 CPG 或 Consensus 時，SKILL-B 輸出順序為：
+
+```
+SECTION-0（通用描述）
+  ↓
+A. 補充技術細節
+  ↓
+A2.0 文章建議清單完整重建
+  ↓
+A2.1 / A2.2 方法學評估（規範型）
+  ↓
+B. 論證架構重建（聚焦於「為什麼這樣建議」的論證鏈）
+  ↓
+C. 引用品質評估
+  ↓
+D. 過度推論分析（聚焦於「建議強度 vs 證據品質」的落差）
+  ↓
+E. 論證結構完整性評估
+  ↓
+F. 最終裁決（含 CPG / Consensus 專屬欄位）
+```
+
 ---
 
 ## SKILL-C：診斷研究與臨床預測模型評讀
@@ -932,6 +1066,15 @@ Narrative review 不必然是壞的。它適用於：
 - 是否考慮系統性的計數不完整（誰被計入、誰被遺漏）？
 
 ---
+
+## Version 3.3
+
+**v3.3 主要變更**：
+- 新增 A2.0：CPG / Consensus 文章必須先完整重建文章本身的建議清單，再進行方法學批判
+- CPG / Consensus 路由拆成 A2.0 + A2.1 / A2.2，混合型全執行
+- A2.0 要求逐條列出建議內容、建議強度、證據品質、文內位置與主要支撐文獻；不得省略或歸納合併
+- 新增建議分布概覽、強建議低證據交叉分析、共識同意比例透明度檢查
+- 最終裁決新增 CPG / Consensus 專屬欄位
 
 ## Version 3.2
 

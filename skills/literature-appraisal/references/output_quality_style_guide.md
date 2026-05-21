@@ -139,10 +139,11 @@ Required output:
 
 Required critique points:
 - Distinguish formal guideline with GRADE from expert consensus.
-- Extract actionable recommendations item-by-item when the user's goal is implementation.
+- Before critique, create `A2.0 文章建議清單完整重建`: extract all concrete article recommendations item-by-item in article order. Do not omit, merge, or summarize recommendations away.
 - For each recommendation: quote/summarize the operative recommendation, location, supporting evidence type, and certainty.
 - Count how many recommendations are supported by RCTs, observational data, mechanistic reasoning, or pure expert consensus.
 - Flag recommendations with strong language but weak evidence.
+- For consensus statements, report item-level agreement percentages when available; if unavailable, mark this as a transparency problem.
 
 Useful structure:
 - `R1`, `R2`, ... itemized recommendations by article section.

@@ -5,6 +5,7 @@ import re
 from html import escape
 from datetime import datetime, timezone, timedelta
 from pathlib import Path
+from urllib.parse import urlencode
 
 from jinja2 import Environment, FileSystemLoader, select_autoescape
 from markdown_it import MarkdownIt
@@ -80,6 +81,22 @@ def render_weekly(
     now = datetime.now(TPE).strftime("%Y-%m-%d %H:%M %Z")
 
     def prepare(article: dict) -> dict:
+        appraise_request_url = ""
+        if feedback_endpoint and article.get("doi"):
+            appraise_request_url = (
+                feedback_endpoint
+                + "?"
+                + urlencode(
+                    {
+                        "view": "appraise",
+                        "week": week_label,
+                        "pmid": article.get("pmid", ""),
+                        "doi": article.get("doi", ""),
+                        "journal": article.get("journal_key") or article.get("journal") or "",
+                        "title": article.get("title", ""),
+                    }
+                )
+            )
         return (
             {
                 **article,
@@ -87,10 +104,35 @@ def render_weekly(
                 "summary_error": _summary_is_error(article.get("summary", "")),
                 "commentary": article.get("commentary", ""),
                 "pub_type_class": _pub_type_class(article.get("pub_type", "")),
+                "appraise_request_url": appraise_request_url,
             }
         )
 
-    prepared = [prepare(a) for a in articles]
+    selected_meta = {
+        str(a.get("pmid")): a for a in (selected_articles or []) if a.get("pmid")
+    }
+
+    enriched_articles: list[dict] = []
+    for article in articles:
+        pmid = str(article.get("pmid", ""))
+        selected = selected_meta.get(pmid)
+        if selected:
+            merged = {**article}
+            for key in (
+                "appraisal_url",
+                "appraisal_path",
+                "appraisal_status",
+                "selected_for_appraisal",
+                "selection_reason",
+                "selection_tags",
+            ):
+                if selected.get(key):
+                    merged[key] = selected[key]
+            enriched_articles.append(merged)
+        else:
+            enriched_articles.append(article)
+
+    prepared = [prepare(a) for a in enriched_articles]
     prepared_selected = [prepare(a) for a in (selected_articles or [])]
     selected_pmids = {
         str(a.get("pmid")) for a in (selected_articles or []) if a.get("pmid")
