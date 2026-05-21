@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The cTnI/cTnT Ratio in Myocardial Injury: A Multicohort and Experimental Synthesis.</title>
+<style>
+  :root {
+    --bg: #fafafa;
+    --card: #ffffff;
+    --text: #1a1a1a;
+    --muted: #6b6b6b;
+    --border: #e5e5e5;
+    --accent: #0b5fff;
+  }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang TC",
+      "Microsoft JhengHei", sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    margin: 0;
+    padding: 24px 16px 64px;
+    line-height: 1.72;
+  }
+  main {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    margin: 0 auto;
+    max-width: 840px;
+    padding: 22px 26px;
+  }
+  nav {
+    margin: 0 auto 14px;
+    max-width: 840px;
+    color: var(--muted);
+    font-size: 14px;
+  }
+  a { color: var(--accent); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  h1, h2, h3, h4 { line-height: 1.35; }
+  h1 { font-size: 26px; margin-top: 0; }
+  h2 { border-top: 1px solid var(--border); padding-top: 18px; }
+  code {
+    background: rgba(127, 127, 127, 0.12);
+    border-radius: 4px;
+    padding: 1px 4px;
+  }
+  table {
+    border-collapse: collapse;
+    display: block;
+    overflow-x: auto;
+    width: 100%;
+  }
+  th, td {
+    border: 1px solid var(--border);
+    padding: 6px 8px;
+    text-align: left;
+    vertical-align: top;
+  }
+  blockquote {
+    border-left: 3px solid var(--accent);
+    color: var(--muted);
+    margin-left: 0;
+    padding-left: 14px;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #1a1a1a;
+      --card: #242424;
+      --text: #e8e8e8;
+      --muted: #999;
+      --border: #333;
+      --accent: #6ea8ff;
+    }
+  }
+</style>
+</head>
+<body>
+<nav><a href="../../2026-W20.html">← 回到 2026-W20 週報</a></nav>
+<main>
+<h1>The cTnI/cTnT Ratio in Myocardial Injury: A Multicohort and Experimental Synthesis.</h1>
+<p>使用你提供的 <code>literature-appraisal</code> Skill。路由判斷：這不是 RCT，也不是 guideline/review；主體是「多 cohort 觀察性診斷生物標記研究 + 外部驗證 + 實驗模型機轉支持」。因此採 <code>SECTION-0</code> + <code>SKILL-C 診斷/生物標記驗證評讀</code>，並加上觀察性研究與實驗轉譯的批判。</p>
+<p><strong>資料限制</strong>
+你提供的是 PDF 轉 markdown；正文、主要表圖與 references 可讀，但 Supplementary Material 未提供。文中多次引用 Supplemental Table/Appendix，因此 adjudication 細節、完整 baseline、部分 sensitivity analysis、外部 cohort 細節無法完整核對，以下會標註限制。</p>
+<h2>關鍵 Evidence Table</h2>
+<table>
+<thead>
+<tr>
+<th>問題</th>
+<th style="text-align:right">主要數據</th>
+<th>臨床解讀</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>急性 vs 慢性/無已知心臟病</td>
+<td style="text-align:right">main cohort n=9,704；cTnI/cTnT ratio：急性 2.06、慢性 0.66、無已知 0.50</td>
+<td>方向性訊號很強，急性壞死性傷害偏 cTnI-dominant</td>
+</tr>
+<tr>
+<td>外部驗證</td>
+<td style="text-align:right">High-STEACS：急性 3.55、慢性 0.73、無已知 0.52；INTERCATH/BACC：急性 2.73、慢性 0.79、無已知 0.71</td>
+<td>方向可重現，但絕對 ratio 隨 cohort/assay 變動大</td>
+</tr>
+<tr>
+<td>不同 hs-cTnI assay</td>
+<td style="text-align:right">Architect、Clarity、Centaur 方向一致，但 acute ratio 絕對值差異大</td>
+<td>不能直接拿單一 cutoff 跨 assay 使用</td>
+</tr>
+<tr>
+<td>Type 1 vs type 2 AMI</td>
+<td style="text-align:right">n=506；cTnT+cTnI AUC 0.70 → 加 ratio AUC 0.73；Neumann score 0.69 → 0.74</td>
+<td>統計上改善，但臨床增益偏小；尚無 cut-off、LR、decision curve</td>
+</tr>
+<tr>
+<td>實驗模型</td>
+<td style="text-align:right">mild nonlethal injury：ratio 約 0.14–0.20；lethal injury：ratio &gt;1</td>
+<td>支持生物合理性，但模型小、半定量、不可直接等同人體疾病</td>
+</tr>
+</tbody>
+</table>
+<h2>SECTION-0：文章全面描述</h2>
+<h3>0. 文章身份證</h3>
+<ul>
+<li>標題：The cTnI/cTnT Ratio in Myocardial Injury: A Multicohort and Experimental Synthesis</li>
+<li>期刊：JACC, 2026;87:2211–2230</li>
+<li>DOI：10.1016/j.jacc.2025.12.078；PMID：41739020</li>
+<li>類型：original research；多 cohort 觀察性診斷生物標記研究 + 外部驗證 + cardiomyocyte experimental models</li>
+<li>路由：SKILL-C 為主；因 cohort 分組與診斷分類屬觀察性研究，另套用 observational/post-hoc 批判點</li>
+<li>非 guideline / consensus，因此不需 A2.0 建議清單</li>
+</ul>
+<h3>1. 作者團隊評論</h3>
+<ul>
+<li>通訊作者：[文內] Christian Mueller，University Hospital Basel / Cardiovascular Research Institute Basel；Ola Hammarsten，University of Gothenburg, Department of Laboratory Medicine。</li>
+<li>團隊背景：[外部: University Basel / dyspnea.ch] Basel 團隊長期經營 APACE、BASEL VIII 等急性胸痛與 hs-cTn 診斷研究。</li>
+<li>Hammarsten 背景：[外部: University of Gothenburg、PubMed] 研究重點包含 cTn 釋放、降解、清除與 cTnT/cTnI 生物機制。</li>
+<li>代表性相關研究：[外部: PubMed/JACC/Oxford]
+<ul>
+<li>APACE/POC hs-cTnI 早期 MI 診斷，JACC 2020。</li>
+<li>cTn release from injured myocardium，Eur Heart J Acute Cardiovasc Care 2018/2022。</li>
+<li>cTnI vs cTnT diagnostic/prognostic performance，JACC 2025。</li>
+<li>BASEL VIII 使用 hs-cTn 排除 inducible ischemia，Ann Intern Med 2020。</li>
+</ul>
+</li>
+<li>作者立場史：[評估] 這是高度核心團隊，不是跨領域偶然切入；優點是資料庫與方法熟悉，缺點是過去研究脈絡已支持「cTnI 與 cTnT 不完全可互換」，本篇結論與既有立場一致，需注意 confirmation bias。</li>
+<li>Funding/COI：[文內] Swiss National Science Foundation、Swiss Heart Foundation、EU、University Basel、Abbott、Roche、Siemens、Singulex 等多個診斷公司與學術基金支持；多位作者有 Abbott/Roche/Siemens/Singulex honoraria 或研究支持。作者聲明 sponsors 未參與設計、分析或 manuscript。</li>
+<li>COI 評估：方向性結論「同時測 cTnI/cTnT 可能有臨床價值」與診斷公司利益一致；不代表結果無效，但應提高對臨床導入語氣的審慎度。</li>
+</ul>
+<h3>2. 文獻 Metadata</h3>
+<ul>
+<li>Received：2025-07-26；Revised：2025-12-19；Accepted：2025-12-22；Published online：2026-02-25。[文內；外部: JACC article page]</li>
+<li>投稿至接受：約149天；修回至接受3天。</li>
+<li>期刊平均速度：[外部: JACC Author Center] JACC 標示 submission-to-decision 30天內、acceptance-to-publication 6–8週。本篇 acceptance-to-online 約65天，約略相當；received-to-accepted 149天，較 first-decision 指標長，但這不是同一指標。</li>
+<li>期刊屬性：[外部: JACC Impact Factor page / SCImago] JACC 2024 JIF 22.3；Cardiology Q1；SJR 2024 Q1。Hybrid/OA 支援。</li>
+<li>同期 editorial/commentary：[外部: JACC]
+<ul>
+<li>L. Kristin Newby, “High-Sensitivity Troponin I-to-High-Sensitivity Troponin T Ratio in Myocardial Injury: Old Dogs, New Tricks,” JACC 2026;87:2231–2233。</li>
+<li>Jason H. Wasfy, “Reframing the Next Era of Advancing Outcomes Following Acute Myocardial Infarction: The Need to Improve Diagnosis,” JACC 2026;87:2234–2235。</li>
+<li>兩篇全文需訂閱，僅能確認題名、作者、頁碼與其為 editorial/editor’s note。</li>
+</ul>
+</li>
+</ul>
+<h3>3. 研究背景</h3>
+<ul>
+<li>既有事實：[文內] cTnI 與 cTnT 在臨床上常被視為可互換，用於 myocardial injury / AMI 診斷。</li>
+<li>知識缺口：[文內] pilot studies 顯示 cTnI/cTnT ratio 可能因急性壞死性傷害、慢性/非壞死性傷害、type 1 vs type 2 AMI 而不同。</li>
+<li>Research question：[文內] cTnI/cTnT ratio 是否是一個有生物意義的 construct，可區分心肌傷害類型與嚴重度，並改善 type 1 vs type 2 AMI 鑑別？</li>
+</ul>
+<h3>4. 研究設計與方法</h3>
+<ul>
+<li>P：三個 prospective studies：APACE、BASEL VIII、Maastricht healthy subcohort；main analysis n=9,704。[文內]</li>
+<li>Index test：hs-cTnI/hs-cTnT ratio，主要為 Abbott Architect hs-cTnI / Roche Elecsys hs-cTnT；另以 Singulex Clarity、Siemens Centaur 內外部驗證。[文內]</li>
+<li>Reference standard：central adjudicated cardiac diagnoses，分 no known cardiac disease、chronic cardiac disease、acute cardiac disease；AMI 再分 type 1 / type 2。[文內]</li>
+<li>Outcome：ratio 在三大診斷群差異；type 1 vs type 2 AMI discrimination；實驗模型中 mild nonlethal vs lethal injury 的 ratio 方向。[文內]</li>
+<li>排除：缺 cTn 或低於 LoD 者排除；dialysis ESRD 排除。[文內]</li>
+<li>統計：log ratio；OLS regression；調整 cohort、age、sex、kidney function、risk factors、CVD、CV medication；restricted cubic splines；AUC/DeLong；mixed effects model；hierarchical testing。[文內]</li>
+<li>Reference standard 限制：[無法完整核對] adjudication 的完整流程在 supplement；本 markdown 未提供。</li>
+</ul>
+<h3>5. 研究結果重點</h3>
+<ul>
+<li>Main cohort：865 無已知心臟病、6,701 慢性心臟病、2,138 急性心臟病；中位年齡67歲，女性30%。[文內]</li>
+<li>Ratio 主結果：急性 2.06（95% CI 1.89–2.26），慢性 0.66（0.60–0.72），無已知 0.50（0.43–0.59）。[文內]</li>
+<li>外部驗證方向一致，但絕對值不同。[文內]</li>
+<li>Type 1 vs type 2 AMI：加 ratio 後 AUC 0.70→0.73；加到 Neumann score 後 0.69→0.74。[文內]</li>
+<li>實驗模型：mild nonlethal injury cTnT-dominant；lethal injury cTnI-dominant。[文內]</li>
+<li>重要負面資訊：未提供可臨床使用的 prespecified cut-off、sensitivity/specificity、LR+、LR−、calibration、decision curve、net reclassification 或 patient outcome impact。[文內未提供]</li>
+</ul>
+<h3>6. 結果分類（CI + MCID / diagnostic utility）</h3>
+<ul>
+<li>文內 prespecified MCID：無。[文內]</li>
+<li>對 AUC 改善的臨床 MCID：[推論] 對急診 AMI 分型，單純 AUC +0.03 通常不足以支持改變流程；若能提供明確 cut-off 且改善 downstream management，才有實務價值。</li>
+<li>分類：
+<ul>
+<li>「急性 vs 慢性/無已知」的 biological association：POSITIVE，效果方向大且外部驗證一致。</li>
+<li>「type 1 vs type 2 AMI 臨床診斷增益」：IMPRECISE / early diagnostic signal。AUC 統計上增加，但臨床可用性未建立。</li>
+<li>「routine implementation」：目前 INCONCLUSIVE，缺乏 cut-off、LR、校準、臨床決策與 outcome 試驗。</li>
+</ul>
+</li>
+</ul>
+<h3>7. 作者討論與評論</h3>
+<ul>
+<li>作者主張：[文內] cTnI/cTnT ratio 挑戰 cTnI/cTnT 可互換的假設，可能幫助急性 vs 慢性傷害及 type 1 vs type 2 AMI 鑑別。</li>
+<li>作者承認限制：[文內] 可能 misclassification；storage/freeze-thaw 資訊不完整；不能外推 dialysis；實驗模型不能直接比較；模型不完全模擬臨床疾病；STEMI ED 族群不代表所有 STEMI。</li>
+<li>評估：作者在 conclusion 對 routine adoption 保持克制，這點合理；但 Clinical Implications / Roadmap 對「測兩個 biomarker」的未來價值敘事較積極，超過目前 AUC +0.03 與缺乏 cut-off 的證據強度。</li>
+</ul>
+<h3>8. 外部專業意見</h3>
+<ul>
+<li>[外部: JACC] 找到同期期 editorial comment 與 editor’s note，但全文需訂閱，無法評估其完整批判內容。</li>
+<li>[外部: JACC article page] editorial comment 明確連結本研究，表示 JACC 認為此議題有臨床診斷重要性。</li>
+<li>[無法取得] 未找到可自由存取、逐點批判本研究的獨立全文評論。</li>
+</ul>
+<h3>9. 臨床建議</h3>
+<ul>
+<li>可採用：可在 journal club、研究設計、診斷公司/實驗室策略討論中視為「cTnI 與 cTnT 可能反映不同 pathophysiology」的強訊號。</li>
+<li>不建議直接套用：不要用本篇 ratio 對個別病人直接診斷 type 1 vs type 2 AMI；不要跨 assay 套用 cutoff；不要用於 dialysis ESRD。</li>
+<li>實務建議：
+<ol>
+<li>目前臨床仍以症狀、ECG、serial delta、影像與整體臨床判斷區分 AMI subtype。</li>
+<li>若院內同時有 hs-cTnI/hs-cTnT，ratio 可作研究性輔助資訊，不應單獨決策。</li>
+<li>後續需要 assay-specific cutoff、LR、calibration、decision curve 與前瞻性管理試驗。</li>
+</ol>
+</li>
+<li>證據強度：生物與關聯性證據中等偏強；臨床導入證據偏弱。</li>
+</ul>
+<h2>SKILL-C：診斷/生物標記驗證評讀</h2>
+<h3>A. 補充技術細節</h3>
+<ul>
+<li>Reference standard：central adjudication 是優點，但 supplement 未提供，無法完整判斷是否有 incorporation bias。若 adjudication 使用臨床 cTnI/cTnT 或 serial troponin 資訊，index test 與 reference standard 可能不完全獨立。</li>
+<li>Index test 盲法：[文內] investigational cTnI/cTnT measurement blinded to clinical diagnoses，這是優點。</li>
+<li>Spectrum bias：存在。APACE 為急性胸痛/疑似 ACS，BASEL VIII 與 Maastricht 族群不同；主分析又排除低於 LoD 者，低風險族群代表性下降。</li>
+<li>Cut-off：未建立。這是臨床應用最大缺口。</li>
+<li>Failed/unreadable tests：低於 LoD 者主分析排除；APACE 排除 2,067/8,267，BASEL VIII 排除 703/4,219，Maastricht 排除 903/1,540。雖有 LoD/2 sensitivity analysis，但主分析族群已偏向 troponin 可測得者。</li>
+<li>Assay portability：不佳。Architect、Clarity、Centaur 的 ratio 絕對值差很多，因此任何 cutoff 都必須 assay-pair specific。</li>
+</ul>
+<h3>B. 診斷準確度核心評估</h3>
+<table>
+<thead>
+<tr>
+<th>指標</th>
+<th style="text-align:right">文內結果</th>
+<th style="text-align:right">95% CI</th>
+<th>臨床解讀</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>AUC：cTnT+cTnI 區分 type 1 vs type 2 AMI</td>
+<td style="text-align:right">0.70</td>
+<td style="text-align:right">0.67–0.73</td>
+<td>中等辨別力</td>
+</tr>
+<tr>
+<td>AUC：cTnT+cTnI+log ratio</td>
+<td style="text-align:right">0.73</td>
+<td style="text-align:right">0.70–0.76</td>
+<td>統計改善，但幅度小</td>
+</tr>
+<tr>
+<td>AUC：Neumann score</td>
+<td style="text-align:right">0.69</td>
+<td style="text-align:right">0.66–0.72</td>
+<td>中等偏低</td>
+</tr>
+<tr>
+<td>AUC：Neumann score + ratio</td>
+<td style="text-align:right">0.74</td>
+<td style="text-align:right">0.71–0.77</td>
+<td>仍只到中等辨別力</td>
+</tr>
+<tr>
+<td>Sensitivity/specificity</td>
+<td style="text-align:right">未提供</td>
+<td style="text-align:right">—</td>
+<td>無法判斷特定 cut-off 實用性</td>
+</tr>
+<tr>
+<td>LR+ / LR−</td>
+<td style="text-align:right">無法計算</td>
+<td style="text-align:right">—</td>
+<td>臨床決策價值尚未建立</td>
+</tr>
+<tr>
+<td>Calibration</td>
+<td style="text-align:right">未提供</td>
+<td style="text-align:right">—</td>
+<td>無法確認 predicted probability 是否可靠</td>
+</tr>
+<tr>
+<td>Decision curve / NRI</td>
+<td style="text-align:right">未提供</td>
+<td style="text-align:right">—</td>
+<td>無法判斷是否改善臨床流程</td>
+</tr>
+</tbody>
+</table>
+<p>重點：AUC 0.73 不能直接翻譯成「可用來分 type 1/type 2 AMI」。臨床需要的是在特定 pre-test probability 下，某個 ratio cutoff 會把 post-test probability 推到可改變處置的程度；本篇沒有提供這一層資料。</p>
+<h3>C. 觀察性與模型偏差</h3>
+<ol>
+<li>
+<p><strong>ratio 不是獨立新 biomarker</strong></p>
+<ul>
+<li>問題：cTnI/cTnT ratio 是 cTnI 與 cTnT 的數學函數。</li>
+<li>文內證據：模型同時放入 cTnI、cTnT 與 log ratio。</li>
+<li>風險方向：AUC 改善可能反映非線性轉換或 interaction，而不是新增生物資訊。</li>
+<li>需要什麼才放心：預先指定模型、外部 calibration、decision curve、與只用 flexible cTnI/cTnT nonlinear terms 的比較。</li>
+</ul>
+</li>
+<li>
+<p><strong>主分析排除 LoD 以下者，可能造成 selection bias</strong></p>
+<ul>
+<li>文內證據：大量低於 LoD 者排除，尤其 Maastricht 637/1,540 才進主分析。</li>
+<li>風險方向：高估 ratio 在真實低風險族群的可用性。</li>
+<li>需要什麼才放心：完整 cohort 的 prespecified handling、multiple imputation 或 censored biomarker modeling，而不只 LoD/2 sensitivity。</li>
+</ul>
+</li>
+<li>
+<p><strong>Type 1 vs type 2 AMI 的 reference standard 本身困難</strong></p>
+<ul>
+<li>文內證據：作者承認 type 1 vs type 2 AMI 是日常臨床重大挑戰。</li>
+<li>風險方向：若 type 2 AMI 或 acute myocardial injury 被 misclassified，AUC 可能被稀釋或扭曲。</li>
+<li>需要什麼才放心：獨立 adjudication protocol、observer agreement、是否使用 investigational assays、分歧處理流程。</li>
+</ul>
+</li>
+<li>
+<p><strong>時間依賴性會影響 ratio</strong></p>
+<ul>
+<li>文內證據：late presenters ratio 較高；serial sampling 顯示 ratio 隨時間改變。</li>
+<li>風險方向：同一 cutoff 在症狀後 1 小時、3 小時、12 小時可能代表不同意義。</li>
+<li>需要什麼才放心：依 symptom-onset time 分層的 cutoff、LR、calibration。</li>
+</ul>
+</li>
+<li>
+<p><strong>腎功能與年齡是重要 effect modifier</strong></p>
+<ul>
+<li>文內證據：年齡增加 ratio 下降；eGFR 越好 ratio 越高。</li>
+<li>風險方向：高齡、CKD、HF 族群可能更容易 cTnT-dominant，造成 type 2/chronic 方向偏移。</li>
+<li>需要什麼才放心：年齡/eGFR-specific thresholds，特別是 CKD stage 3–5 與 HFpEF/HFrEF 分層。</li>
+</ul>
+</li>
+</ol>
+<h3>D. 實驗模型轉譯評估</h3>
+<p>優點：</p>
+<ul>
+<li>mild nonlethal vs lethal injury 的方向與臨床 cohort 一致。</li>
+<li>包含 human iPS-derived cardiomyocytes、rat neonatal cardiomyocytes、human LV tissue。</li>
+<li>直接處理 cTnT retention、tropomyosin binding、fragmentation 的機轉。</li>
+</ul>
+<p>限制：</p>
+<ul>
+<li>human lethal mechanical injury 來自 single donor heart tissue，外推性有限。</li>
+<li>neonatal rat cardiomyocytes 與 adult human ischemic myocardium 差距大。</li>
+<li>作者明確說 experimental cTn measurement 只能 semi-quantitative，不可直接與人體比較。</li>
+<li>mild/lethal ischemic models 中，個別 cTnI 或 cTnT concentration 在 normoxia vs hypoxia 間未達統計顯著；主要訊號來自 ratio 方向。</li>
+<li>n 很小，多為 biological replicates 3–5，適合機轉假說，不適合定量臨床推論。</li>
+</ul>
+<h2>紅旗清單</h2>
+<ul>
+<li>設計：非前瞻性臨床決策試驗；未證明 ratio 改善 patient outcome、ED length of stay 或 angiography 選擇。</li>
+<li>診斷：未提供 cut-off、sensitivity/specificity、LR+、LR−、calibration。</li>
+<li>統計：AUC 增幅小；ratio 與 cTnI/cTnT 原始值數學相依。</li>
+<li>外推：dialysis ESRD 排除；低於 LoD 者大量排除；STEMI ED 族群不代表直接進 cath lab 者。</li>
+<li>Assay：不同 hs-cTnI assay 的 ratio 絕對值不可互換。</li>
+<li>敘事：從「biologically meaningful」到「potential diagnostic value」合理；但到「改變 clinical practice/guideline」仍早。</li>
+<li>COI：多家 troponin assay 公司 funding 與作者 honoraria，與「同時測兩項 troponin」的敘事方向一致。</li>
+</ul>
+<h2>反向解釋</h2>
+<ol>
+<li>
+<p><strong>Ratio 可能主要反映疾病嚴重度與時間，而非病因</strong></p>
+<ul>
+<li>支持：STEMI/NSTEMI ratio 高；late presenters ratio 更高。</li>
+<li>反對：調整後三大群仍有差異，實驗模型方向一致。</li>
+</ul>
+</li>
+<li>
+<p><strong>cTnT-dominant 慢性狀態可能由腎功能/年齡/慢性結構性心臟病驅動</strong></p>
+<ul>
+<li>支持：age 與 eGFR 均影響 ratio。</li>
+<li>反對：慢性與急性心臟病 baseline 腎功能大致相似，調整後訊號仍存在。</li>
+</ul>
+</li>
+<li>
+<p><strong>AUC 改善可能是統計建模形式造成，而非真正新增資訊</strong></p>
+<ul>
+<li>支持：ratio 是 cTnI 與 cTnT 的函數。</li>
+<li>反對：外部 cohort 與不同 assay 方向一致，且實驗模型提供生物合理性。</li>
+</ul>
+</li>
+<li>
+<p><strong>急性非 CAD 疾病 heterogeneity 稀釋或混淆解讀</strong></p>
+<ul>
+<li>支持：tachyarrhythmia、acute HF、hypertensive crisis 等 ratio 較接近慢性。</li>
+<li>反對：這正符合作者主張：ratio 可能反映 necrotic vs non-necrotic injury，而非單純 acute label。</li>
+</ul>
+</li>
+</ol>
+<h2>最終裁決</h2>
+<p>整體可信度：<strong>中等偏高，用於生物訊號與假說建立；中等偏低，用於立即臨床導入。</strong></p>
+<p>可採用的部分：</p>
+<ul>
+<li>cTnI 與 cTnT 不應被視為完全相同的 pathophysiologic signal。</li>
+<li>cTnI/cTnT ratio 可能有助於辨認壞死性、急性、type 1 AMI 方向的心肌傷害。</li>
+<li>值得設計前瞻性 diagnostic management trial。</li>
+</ul>
+<p>不建議採用的部分：</p>
+<ul>
+<li>不應用本篇數字直接建立院內 cut-off。</li>
+<li>不應以 ratio 單獨判定 type 1 vs type 2 AMI。</li>
+<li>不應跨 assay 或跨平台套用 ratio。</li>
+</ul>
+<p>若要改觀，最需要：</p>
+<ol>
+<li>Assay-specific、symptom-time-specific cutoff，附 sensitivity/specificity、LR+、LR−。</li>
+<li>外部前瞻性 validation，含 calibration、decision curve、net reclassification。</li>
+<li>將 ratio 納入臨床流程的 management trial，證明改善決策、資源使用或病人 outcome。</li>
+</ol>
+<p>一句話結論：<strong>這篇很有說服力地挑戰 cTnI/cTnT 可互換性，但離臨床常規雙測仍差一個前瞻性決策試驗。</strong></p>
+<p>外部來源：JACC 原文頁、JACC editorial comment、JACC editor’s note、JACC Author Center、JACC impact factor page、SCImago、PubMed、University Basel、University of Gothenburg。</p>
+
+</main>
+</body>
+</html>
