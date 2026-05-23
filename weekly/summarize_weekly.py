@@ -1,10 +1,15 @@
-"""Weekly report summarizer using `codex exec`."""
+"""Weekly report summarizer.
+
+Primary backend: `claude -p` with Haiku (Agent SDK credit). Fallback: `codex
+exec` with GPT 5.4, used automatically when claude reports a rate-limit /
+credit-exhausted error."""
 
 import subprocess
 import sys
 import tempfile
 from pathlib import Path
 
+from modules import claude_exec
 from modules.codex_model import codex_exec_env, get_summary_model, resolve_codex_cli
 
 SYSTEM_PROMPT = (
@@ -82,8 +87,23 @@ def _parse_summary_response(text: str) -> tuple[str, str]:
     return summary.strip(), commentary.strip()
 
 
+def _run_summary_prompt(prompt: str, timeout: int = 180) -> str | None:
+    """Try claude -p Haiku first; fall back to codex GPT 5.4 on rate/credit error."""
+    text, _backend = claude_exec.try_claude_or_fallback(
+        prompt,
+        claude_model=claude_exec.get_claude_summary_model(),
+        fallback=lambda: _run_codex_prompt(prompt, timeout=timeout),
+        timeout=timeout,
+        label="summarize-weekly",
+    )
+    return text
+
+
 def summarize_one(abstract: str, title: str = "") -> tuple[str, str]:
-    """Generate a Traditional Chinese summary and commentary via `codex exec`."""
+    """Generate a Traditional Chinese summary and commentary.
+
+    claude -p Haiku primary, codex GPT 5.4 fallback.
+    """
     if not abstract:
         return "[無摘要]", ""
 
@@ -91,7 +111,7 @@ def summarize_one(abstract: str, title: str = "") -> tuple[str, str]:
     prompt = f"{SYSTEM_PROMPT}\n\n{user_content}"
 
     try:
-        response = _run_codex_prompt(prompt)
+        response = _run_summary_prompt(prompt)
         if response:
             summary, commentary = _parse_summary_response(response)
             if summary:
@@ -99,8 +119,8 @@ def summarize_one(abstract: str, title: str = "") -> tuple[str, str]:
             return "[摘要解析失敗]", ""
         return "[摘要生成失敗]", ""
     except FileNotFoundError:
-        print("  [warn] codex CLI not found", file=sys.stderr)
-        return "[需要 codex CLI 才能生成摘要]", ""
+        print("  [warn] no usable backend (claude / codex CLI not found)", file=sys.stderr)
+        return "[需要 claude 或 codex CLI 才能生成摘要]", ""
     except subprocess.TimeoutExpired:
         return "[摘要生成逾時]", ""
 

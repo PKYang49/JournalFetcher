@@ -54,6 +54,12 @@
   .selected-card {
     border-left: 4px solid var(--accent);
   }
+  .appraised-card {
+    border-left-color: #1d7a44;
+  }
+  @media (prefers-color-scheme: dark) {
+    .appraised-card { border-left-color: #7fd0a3; }
+  }
   .selection-reason {
     color: var(--text);
     font-size: 14px;
@@ -246,48 +252,61 @@
     {% endfor %}
   </div>
 
-  {% if selected_articles %}
+  {% macro appraisal_card(article, feedback_endpoint, extra_class="", show_meta=true, show_feedback=true) %}
+  <article class="selected-card{% if extra_class %} {{ extra_class }}{% endif %}">
+    <span class="tag">{{ article.journal_key }}</span>
+    {% if article.pub_type %}<span class="tag pub-type {{ article.pub_type_class }}">{{ article.pub_type }}</span>{% endif %}
+    <h2>{{ article.title }}</h2>
+    <div class="authors">
+      {{ article.authors_display }}{% if article.year %} · {{ article.year }}{% endif %}
+    </div>
+    {% if article.selection_reason %}
+    <p class="selection-reason">{{ article.selection_reason }}</p>
+    {% endif %}
+    {% if show_meta and (article.selection_tags or article.appraisal_status) %}
+    <div class="selection-meta">
+      {% if article.selection_tags %}{{ article.selection_tags | join(", ") }}{% endif %}
+      {% if article.selection_tags and article.appraisal_status %} · {% endif %}
+      {% if article.appraisal_status %}appraisal: {{ article.appraisal_status }}{% endif %}
+    </div>
+    {% endif %}
+    <div class="links">
+      {% if article.appraisal_url %}<a href="{{ article.appraisal_url }}">評讀結果</a>{% endif %}
+      {% if article.doi %}<a href="https://doi.org/{{ article.doi }}" target="_blank" rel="noopener">下載連結</a>{% endif %}
+      {% if article.doi %}
+      <button class="copy-btn" type="button" data-copy="{{ article.doi }}">複製 DOI</button>
+      <button class="copy-btn" type="button" data-copy="python dlbydoi.py {{ article.doi }}">複製下載指令</button>
+      {% endif %}
+    </div>
+    {% if show_feedback and feedback_endpoint and article.pmid %}
+    <div class="feedback"
+         data-pmid="{{ article.pmid }}"
+         data-doi="{{ article.doi }}"
+         data-journal="{{ article.journal_key }}"
+         data-title="{{ article.title }}">
+      <span class="fb-q">這篇選得合你意嗎?</span>
+      <button class="fb-btn" type="button" data-verdict="up">👍 有興趣</button>
+      <button class="fb-btn" type="button" data-verdict="down">👎 沒興趣</button>
+      <span class="fb-msg"></span>
+    </div>
+    {% endif %}
+  </article>
+  {% endmacro %}
+
+  {% if featured_articles %}
   <section class="selected-section">
     <h2 class="section-title">本週精選評讀</h2>
-    {% for article in selected_articles %}
-    <article class="selected-card">
-      <span class="tag">{{ article.journal_key }}</span>
-      {% if article.pub_type %}<span class="tag pub-type {{ article.pub_type_class }}">{{ article.pub_type }}</span>{% endif %}
-      <h2>{{ article.title }}</h2>
-      <div class="authors">
-        {{ article.authors_display }}{% if article.year %} · {{ article.year }}{% endif %}
-      </div>
-      {% if article.selection_reason %}
-      <p class="selection-reason">{{ article.selection_reason }}</p>
-      {% endif %}
-      {% if article.selection_tags or article.appraisal_status %}
-      <div class="selection-meta">
-        {% if article.selection_tags %}{{ article.selection_tags | join(", ") }}{% endif %}
-        {% if article.selection_tags and article.appraisal_status %} · {% endif %}
-        {% if article.appraisal_status %}appraisal: {{ article.appraisal_status }}{% endif %}
-      </div>
-      {% endif %}
-      <div class="links">
-        {% if article.appraisal_url %}<a href="{{ article.appraisal_url }}">評讀結果</a>{% endif %}
-        {% if article.doi %}<a href="https://doi.org/{{ article.doi }}" target="_blank" rel="noopener">下載連結</a>{% endif %}
-        {% if article.doi %}
-        <button class="copy-btn" type="button" data-copy="{{ article.doi }}">複製 DOI</button>
-        <button class="copy-btn" type="button" data-copy="python dlbydoi.py {{ article.doi }}">複製下載指令</button>
-        {% endif %}
-      </div>
-      {% if feedback_endpoint and article.pmid %}
-      <div class="feedback"
-           data-pmid="{{ article.pmid }}"
-           data-doi="{{ article.doi }}"
-           data-journal="{{ article.journal_key }}"
-           data-title="{{ article.title }}">
-        <span class="fb-q">這篇選得合你意嗎?</span>
-        <button class="fb-btn" type="button" data-verdict="up">👍 有興趣</button>
-        <button class="fb-btn" type="button" data-verdict="down">👎 沒興趣</button>
-        <span class="fb-msg"></span>
-      </div>
-      {% endif %}
-    </article>
+    {% for article in featured_articles %}
+    {{ appraisal_card(article, feedback_endpoint) }}
+    {% endfor %}
+  </section>
+  {% endif %}
+
+  {% if appraised_articles %}
+  <section class="selected-section">
+    <h2 class="section-title">已評讀</h2>
+    {% for article in appraised_articles %}
+    {{ appraisal_card(article, feedback_endpoint, "appraised-card", false, false) }}
     {% endfor %}
   </section>
   {% endif %}

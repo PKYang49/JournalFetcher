@@ -74,6 +74,11 @@ def render_weekly(
     `articles` should already include a `summary` and a `journal_key` field.
     `feedback_endpoint` is the Apps Script web app URL; when set, the selected
     cards render 👍/👎 feedback buttons that POST to it.
+
+    `selected_articles` is split into two top sections by the `manual_request`
+    tag: AI-curated picks render under 本週精選評讀, reader-requested appraisals
+    under 已評讀. 本週文章摘要 then drops every article shown above so each
+    article appears in exactly one section.
     Returns the rendered HTML string.
     """
     env = _env()
@@ -135,16 +140,32 @@ def render_weekly(
     prepared = [prepare(a) for a in enriched_articles]
     prepared_selected = [prepare(a) for a in (selected_articles or [])]
     selected_pmids = {
-        str(a.get("pmid")) for a in (selected_articles or []) if a.get("pmid")
+        str(a.get("pmid")) for a in prepared_selected if a.get("pmid")
     }
+
+    # Split appraised articles: AI-curated picks (本週精選評讀) vs. articles a
+    # reader requested via the weekly HTML (已評讀). process_appraisal_requests
+    # tags the latter with `manual_request`.
+    def _is_manual(article: dict) -> bool:
+        return "manual_request" in (article.get("selection_tags") or [])
+
+    featured_articles = [a for a in prepared_selected if not _is_manual(a)]
+    appraised_articles = [a for a in prepared_selected if _is_manual(a)]
+
+    # 本週文章摘要 drops everything already shown above, so each article
+    # appears in exactly one section.
+    summary_articles = [
+        a for a in prepared if str(a.get("pmid")) not in selected_pmids
+    ]
 
     return tmpl.render(
         week_label=week_label,
         generated_at=now,
         total_count=len(articles),
-        articles=prepared,
+        articles=summary_articles,
         journal_counts=journal_counts,
-        selected_articles=prepared_selected,
+        featured_articles=featured_articles,
+        appraised_articles=appraised_articles,
         selected_pmids=selected_pmids,
         feedback_endpoint=feedback_endpoint,
     )

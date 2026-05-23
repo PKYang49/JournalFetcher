@@ -46,18 +46,30 @@ FEEDBACK_ENDPOINT_URL=https://script.google.com/macros/s/.../exec
 FEEDBACK_SYNC_TOKEN=自訂亂碼，需與 Apps Script 內 SYNC_TOKEN 一致
 ```
 
-摘要功能使用 Codex CLI：
+摘要與評讀採雙後端,主要走 `claude -p`,撞到限額自動 fallback 到 `codex exec`。兩邊都不需要 API key,各自用 CLI 訂閱登入。
 
 ```bash
+claude --version                      # Claude Code CLI(主要)
 codex --version
-codex login status
+codex login status                    # 應顯示 Logged in using ChatGPT
 ```
 
-`codex login status` 應顯示 `Logged in using ChatGPT`。摘要流程呼叫 `codex exec`，不再依賴 `claude -p`。
+- **主要後端 `claude -p`**(吃 Claude 訂閱 / 6/15 後的 Agent SDK 額度):
+  Haiku 4.5 跑摘要,Opus 4.6 跑評讀。透過 macOS keychain OAuth 認證,不需要 `ANTHROPIC_API_KEY`。
+- **Fallback `codex exec`**(吃 ChatGPT 訂閱):
+  撞到 Claude 限額(rate-limit / credit / quota / monthly 等錯誤訊息)時自動切換,本次 process 後續全走 codex,下次 run 重新嘗試 claude。GPT 5.4 摘要、GPT 5.5 評讀。
 
-模型設定：
-- 文章摘要與自動選文：預設使用 Codex default model 的次一級；可用 `.env` 的 `JOURNAL_FETCHER_CODEX_MODEL` 覆寫。
-- 完整文獻評讀：預設使用 Codex default/latest model；可用 `.env` 的 `JOURNAL_FETCHER_APPRAISAL_MODEL` 覆寫。
+Dispatcher 邏輯與限額判斷字串集中在 `modules/claude_exec.py`。
+
+模型覆寫(`.env` 或 export):
+
+| 變數 | 用途 | 預設 |
+|---|---|---|
+| `JOURNAL_FETCHER_CLAUDE_SUMMARY_MODEL` | claude 摘要模型 | `claude-haiku-4-5` |
+| `JOURNAL_FETCHER_CLAUDE_APPRAISAL_MODEL` | claude 評讀模型 | `claude-opus-4-6` |
+| `JOURNAL_FETCHER_CODEX_MODEL` | codex 摘要 fallback | Codex default 降一個 minor |
+| `JOURNAL_FETCHER_APPRAISAL_MODEL` | codex 評讀 fallback | Codex default / latest |
+| `JOURNAL_FETCHER_APPRAISAL_CHAR_BACKSTOP` | 評讀文章字元上限 | `1500000`(超過會被 flag 為 `too_large`,不會被截斷) |
 
 ## 互動式抓取與下載
 
@@ -176,9 +188,19 @@ docs/
 https://pkyang49.github.io/JournalFetcher/
 ```
 
+## 週報 HTML 版面
+
+每週 HTML(`docs/<YYYY>-Wxx.html`)由上而下分三區,文章不重複:
+
+1. **本週精選評讀** — `weekly/select_articles.py` 系統自動挑選並完成的評讀。
+2. **已評讀** — 使用者透過週報內「請求評讀」按鈕、由 `weekly/process_appraisal_requests.py` 完成的評讀(`selection_tags` 含 `manual_request`,卡片以綠色左邊框區分)。
+3. **本週文章摘要** — 其餘文章的四句中文摘要 + 短評。
+
+去重邏輯在 `weekly/render.py`(用 `selected_pmids` 排除上方兩區的 PMID)。1、3 區帶 👍/👎 回饋按鈕,2 區因為是使用者自己請求的所以不放。
+
 ## 週報回饋迴路
 
-週報 HTML 的每篇文章（精選與一般摘要）都有 👍/👎 回饋按鈕。點擊後：
+「本週精選評讀」與「本週文章摘要」每篇有 👍/👎 回饋按鈕。點擊後:
 
 1. 回饋透過 Google Apps Script web app 寫入 Google 試算表（手機等任何裝置皆可）。
 2. 下次 `run_weekly` 選文前，`weekly/sync_feedback.py` 以 POST body 傳送 `FEEDBACK_SYNC_TOKEN`，把回饋拉回 `data/interest_feedback.jsonl`。
@@ -297,23 +319,27 @@ pkill -f journal_bot.py
 ```text
 fetch_journals.py                 # 互動式主程式
 modules/pubmed.py                 # PubMed 查詢與 metadata 解析
-modules/summarize.py              # 三句摘要
+modules/crossref.py               # Crossref API(BJSM 等 PubMed 涵蓋不佳的期刊)
+modules/claude_exec.py            # claude -p 主要後端 + codex fallback dispatcher
+modules/codex_model.py            # codex 模型解析與 env 限制
+modules/summarize.py              # 三句摘要(claude/codex 雙後端)
 modules/selector.py               # 終端機選擇介面
 modules/downloader.py             # PDF 下載
 dlbydoi.py                        # 單篇 DOI/URL 下載
 journal_bot.py                    # Discord DOI 下載 bot
 
 weekly/run_weekly.py              # 每週週報主流程
-weekly/summarize_weekly.py        # 週報摘要與短評
+weekly/summarize_weekly.py        # 週報摘要與短評(claude/codex 雙後端)
 weekly/select_articles.py         # 精選值得評讀的文章
-weekly/appraise_selected.py       # 精選文章完整評讀
+weekly/appraise_selected.py       # 精選文章完整評讀(雙後端 + 1.5M 字元 backstop)
 weekly/sync_feedback.py           # 同步週報回饋
 weekly/process_appraisal_requests.py  # 處理 HTML 手動評讀請求
-weekly/render.py                  # HTML 渲染與 index 維護
+weekly/render.py                  # HTML 渲染與 index 維護(三區版面)
 weekly/publish.py                 # git push 與 Discord webhook
 weekly/notify_latest.py           # 只發最新週報 Discord 通知
 weekly/templates/                 # Jinja2 templates
 
+skills/literature-appraisal/      # 文獻評讀 Skill v3.3(SKILL.md + style guide + references/)
 scripts/*.plist                   # launchd 排程
 scripts/feedback_relay.gs         # 回饋中繼 Apps Script
 docs/                             # GitHub Pages 輸出
@@ -322,7 +348,8 @@ docs/                             # GitHub Pages 輸出
 ## 需求
 
 - Python 3.10+
-- Codex CLI（`codex exec`，需 `codex login`）
+- **Claude Code CLI**(主要後端,需 keychain 已登入 Claude 訂閱;不需要 `ANTHROPIC_API_KEY`)
+- **Codex CLI**(fallback,需 `codex login`,顯示 `Logged in using ChatGPT`)
 - 機構內網或可存取期刊 PDF 的網路環境
-- GitHub Pages：`main` branch 的 `/docs`
-- Discord webhook（每週通知選用）
+- GitHub Pages:`main` branch 的 `/docs`
+- Discord webhook(每週通知選用)
