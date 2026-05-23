@@ -121,7 +121,7 @@ python3 -m weekly.run_weekly --dry-run
 python3 -m weekly.run_weekly --no-discord
 
 # 精選 N 篇，下載 PDF 並產生完整評讀
-python3 -m weekly.run_weekly --select-top 8
+python3 -m weekly.run_weekly --select-top 5
 
 # 測試版面，不消耗摘要額度
 python3 -m weekly.run_weekly --dry-run --no-summarize --count 2 --journals NEJM
@@ -129,7 +129,7 @@ python3 -m weekly.run_weekly --dry-run --no-summarize --count 2 --journals NEJM
 
 目前 launchd 排程：
 
-- 週一 03:00：`python3 -m weekly.run_weekly --no-discord --select-top 8`
+- 週一 03:00：`python3 -m weekly.run_weekly --no-discord --select-top 5`
   - 抓文獻、產生摘要與短評
   - 精選最值得評讀的文章，下載 PDF 並產生完整評讀
   - 渲染本週 HTML、更新 `docs/`，commit 並 push 到 GitHub

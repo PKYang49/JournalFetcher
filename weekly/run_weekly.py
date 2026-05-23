@@ -2,7 +2,7 @@
 
 Pipeline:
   1. fetch articles for each journal (last `days` days, top `count` per journal)
-  2. summarize each abstract via `codex exec`
+  2. summarize each abstract via `claude -p`, falling back to `codex exec`
   3. optionally select top articles, download PDFs, and generate full appraisals
   4. render HTML to docs/<YYYY>-Wxx.html and update docs/index.html
   5. (optional) git push

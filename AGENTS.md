@@ -82,12 +82,12 @@ Codex 5.5 的 context window 我不確定;如果 fallback 到 codex 跑 1M 字�
 ## launchd 排程(現況)
 
 ```text
-Mon 03:00  python3 -m weekly.run_weekly --no-discord --select-top 8
+Mon 03:00  python3 -m weekly.run_weekly --no-discord --select-top 5
 Mon 08:00  python3 -m weekly.notify_latest               (Discord 推播)
 每 15 分鐘  python3 -m weekly.process_appraisal_requests
 ```
 
-- `--select-top 8`:每週 8 篇 Opus 評讀(早期討論過 5 但 plist 沒改)。要降回 5 改 `~/Library/LaunchAgents/com.pokai.weekly-journal.plist` 後 `launchctl bootout` + `bootstrap`。
+- `--select-top 5`:每週 5 篇 Opus 評讀,先消耗 Claude Agent SDK 額度; hit limit 後本 process 會自動 fallback 到 Codex。
 - launchd 不會主動喚醒 Mac;週日晚上要保持機器醒著(或合蓋接電源 Power Nap)。
 - log:`output/logs/weekly.{out,err}.log` 等。
 
