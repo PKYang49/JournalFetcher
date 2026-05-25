@@ -3,7 +3,7 @@ name: literature-appraisal
 description: Use this skill when the user asks to critically appraise, interpret, critique, or generate a structured evidence-based review of a medical paper, clinical trial, observational study, diagnostic/prognostic model, systematic review, meta-analysis, guideline, narrative review, expert opinion, or uploaded PDF/article link. The workflow routes articles by study type, produces Traditional Chinese clinical-methodology appraisal, and uses bundled JAMA Users' Guides / causal inference references when needed.
 ---
 
-# SKILL: 醫學文獻批判性評讀 v3.3
+# SKILL: 醫學文獻批判性評讀 v3.4
 
 ## 融合來源
 
@@ -11,7 +11,15 @@ description: Use this skill when the user asks to critically appraise, interpret
 2. JAMA Users' Guides to the Medical Literature（JAMAevidence）
 3. CI + MCID + Bayesian RCT 結果分類框架（Harrell / Zampieri / ASA / Pocock / Gelman & Carlin）
 4. Gyawali B. How I Read a Clinical Trial Report? JCO Oncol Pract. 2026
-5. **新增：SANRA (Baethge et al. 2019) — narrative review 專屬品質評估工具**
+5. SANRA (Baethge et al. 2019) — narrative review 專屬品質評估工具
+
+## v3.4 變更摘要
+
+- **A2（CPG / Consensus）新增「明確不適用的標準」段**：仿 A3 narrative review 寫法，明確指出 PROSPERO 註冊、獨立 SR、GRADE 框架、PRISMA flow、雙人篩選等屬於 systematic review 的方法學要求，不應作為 ACC/AHA / ESC 等專科學會型 CPG 的失敗批判；這些是制度差異而非品質缺陷。
+- **A2.1 AGREE-II 改為定性評估**：取消「每面向 1–7 分、總分 __/42」的偽精度評分（正規 AGREE-II 是 23 個 item 換算 domain percentage，6 個面向各打一分不是 AGREE-II）。改為六面向各自定性評定「強 / 中 / 弱」並附理由。
+- **A2.0「建議分布概覽」禁止輸出估計總數**：當 PDF→markdown 轉檔導致部分建議方塊遺失時，必須明確列出遺失章節清單，不得從建議框出現次數或 Table 1 計數推算「總數 N–M 條」這類不可驗證的估計值。
+- **F. 最終裁決 CPG 專屬欄位同步更新**：移除「AGREE-II 總分 __/42」、改為六面向定性；建議清單完整性改報「可見並完整重建 N 條 + 遺失章節 M 個」。
+- **移除「Bundled references」段**：weekly pipeline 將整份 SKILL inline 進 prompt 且 `cwd=tmpdir`，模型實際讀不到 `references/jamaevidence/`；該目錄在本 repo 也未提供。引導模型載入不存在或不可達的檔案會造成假動作。
 
 ## v3.3 變更摘要
 
@@ -29,14 +37,6 @@ description: Use this skill when the user asks to critically appraise, interpret
 - **新增「混血文章」警示**——對自稱 review 但方法學介於 narrative 與 systematic 之間的文章特別標注
 
 ---
-
-## Bundled references
-
-JAMA Users' Guides and causal inference references converted with Microsoft MarkItDown live in `references/jamaevidence/`.
-
-Before loading a reference, inspect `references/index.md` and choose only the files relevant to the article type. Do not bulk-load the full reference set; `hernanrobins_WhatIf_2jan25.md` is very large and should be searched with `rg` for targeted causal-inference questions.
-
-Use bundled references as supporting methodology checks, not as replacements for reading the target article.
 
 ## 觸發條件
 
@@ -591,6 +591,9 @@ Null value (HR=1 / MD=0)    MCID-benefit (δ)    MCID-harm (δ_harm)
 - [ ] **若為混血文章：是否同時標注自稱類別 vs 實際方法學的落差？**
 - [ ] **若為 CPG / Consensus：是否先完成 A2.0 建議清單完整重建，且未在 A2.0 混入批判？**
 - [ ] **若為 CPG / Consensus：建議分級系統、強度/證據品質分布、強建議低證據條目、共識同意比例透明度是否已整理？**
+- [ ] **若為 CPG：是否避免輸出「估計總數 N–M 條」？是否改為「可見 N 條 + 遺失章節清單」？**
+- [ ] **若為 CPG：是否避免把 SR/GRADE 標準誤套到非 SR-based 的 CPG？（PROSPERO、PRISMA、雙人篩選、forest plot、獨立 SR 不應作為 ACC/AHA / ESC 型 CPG 的失敗批判）**
+- [ ] **若為 CPG：AGREE-II 是否輸出為六面向定性評估而非偽加總分數（如 29/42）？**
 
 ### OUTPUT FORMAT — SKILL-B
 
@@ -639,6 +642,29 @@ Null value (HR=1 / MD=0)    MCID-benefit (δ)    MCID-harm (δ_harm)
 
 A2.0 屬於「第一階段忠實重建」，必須用繁體中文精準翻譯/轉述作者建議，不插入任何評價。批判一律延後至 A2.1 與 A2.2。醫學專有名詞、正式分級、藥物/裝置名稱與常用縮寫可保留英文或中英並列；除此之外不得用大段英文原文取代中文重建。
 
+**⚠️ 明確不適用的標準（CPG / Scientific Statement）**
+
+ACC/AHA、ESC、NICE、IDSA 等多數專科學會型 CPG 由 writing committee 自行 review 文獻、內部投票決議，採用 COR/LOE 或對應分級系統。這是制度設計，**不是「方法學失敗」**。不要把以下當成缺失批判——這些是 systematic review 的特徵，不是 CPG 的失敗：
+
+- ❌ 「未進行獨立 systematic review」（ACC/AHA / ESC 制度上由 writing committee 自行 review；只有自我宣稱「以 SR 為基礎」的 CPG，如 NICE / WHO 部分指引，才適用此批判）
+- ❌ 「未預先註冊於 PROSPERO」（CPG 不是 SR，不註冊 SR protocol）
+- ❌ 「未使用 GRADE」（COR/LOE 是平行的正式分級體系，不是 GRADE 的劣化版）
+- ❌ 「未報告 PRISMA flow」（PRISMA 是 SR 報告規範）
+- ❌ 「未報告 κ 值 / 雙人篩選」（雙人篩選是 SR 流程）
+- ❌ 「未有 forest plot / 異質性檢驗」（CPG 不做量化合成）
+
+**正確處理**：把以上「差異」描述為「相對於 IOM Standards for Trustworthy CPG / NICE Methods Manual / GRADE 系統的方法學差異」，而非「失敗」或「品質低」；也可在 F. 最終裁決指出「若期待 GRADE-style CPG，本指引採用不同框架」。
+
+**仍可批判（這些才是 CPG 真正的方法學要點，列入 A2.1）**：
+
+- COI 管理機制是否透明、是否有迴避規則、主席 / 副主席是否無產業關係
+- 利害關係人多元性（基層醫療代表、患者代表、地理代表性、合作組織背書）
+- 強建議 + 低證據品質 / 專家意見條目的比例與合理性（COR/LOE 與 GRADE 例外情境邏輯相通）
+- 是否有外部 peer review、審查者名單是否公開
+- 更新機制 / living guideline 規劃與下一版時程
+- 與既有 CPG（不同學會、不同國家版本）的差異是否討論
+- 證據搜尋截止日 vs 出版日的時差，是否提及審查後出爐的關鍵試驗
+
 ###### A2.0 文章建議清單完整重建（強制段落）
 
 **目的**：在進入方法學評估前，先以結構化方式完整列出文章本身給出的所有建議。讀者應能僅憑此段落即掌握「這篇文章到底建議了什麼」，無需再回查原文。
@@ -672,15 +698,18 @@ A2.0 屬於「第一階段忠實重建」，必須用繁體中文精準翻譯/�
 
 **(3) 建議分布概覽**
 
-完成清單後，提供統計概覽：
+完成清單後，提供統計概覽。**僅就 markdown 中實際可見、能完整重建的建議**統計：
 
-- 建議總數：__ 條
-- 各強度分布：Strong/Class I __ 條；Conditional/Class IIa __ 條；Class IIb __ 條；Class III/不建議 __ 條
-- 各證據品質分布：High/Level A __ 條；Moderate/Level B __ 條；Low/Level C __ 條；Expert opinion __ 條
-- **關鍵交叉分析**：
+- **可見並完整重建的建議數**：__ 條
+- **markdown 中遺失或格式退化、無法逐條重建的章節清單**：[列出 section 編號與標題；若無遺失，明確標「無」]
+- **❌ 禁止輸出「估計總數 N–M 條」**：若部分章節因 PDF→markdown 轉檔遺失而無法重建，明確列出遺失章節清單，**不得**從建議框出現次數（如 "31 處 COR/LOE header"）、Table 1 的 new/revised 計數、章節數量、或文章字數推算總建議數。讀者需要的是「可見 N 條」+「遺失 M 個章節」兩個可驗證的數字，而不是一個 LLM 推算出來的不可驗證估計值。
+- 各強度分布（**僅就可見建議**）：Strong/Class I __ 條；Conditional/Class IIa __ 條；Class IIb __ 條；Class III/不建議 __ 條
+- 各證據品質分布（**僅就可見建議**）：High/Level A __ 條；Moderate/Level B __ 條；Low/Level C __ 條；Expert opinion __ 條
+- **關鍵交叉分析**（僅就可見建議）：
   - 「強烈建議 + 低證據品質」條目數：__ 條（列出編號）
   - 完全基於專家意見的強烈建議：__ 條（列出編號）
-  - 與前一版 guideline 相比的變更（若文內有提及）：新增 __ 條；移除 __ 條；強度升級 __ 條；強度降級 __ 條
+  - 與前一版 guideline 相比的變更（若文內有明確標示）：新增 __ 條；移除 __ 條；強度升級 __ 條；強度降級 __ 條
+    （若文章只列「new/revised」未列「removed/downgraded」，標「文內未明確列出」）
 
 **(4) 建議主題分組**
 
@@ -714,7 +743,15 @@ A2.0 屬於「第一階段忠實重建」，必須用繁體中文精準翻譯/�
 - 是否使用 GRADE 或等效架構評定證據品質與建議強度？
 - Strong recommendation vs Conditional recommendation 的區分是否清楚？文中是否有「Strong recommendation based on Low-quality evidence」？若有，是否符合 GRADE 合理例外情境（life-threatening situation / uncertain but low-cost intervention / catastrophic harm avoidance / equivalent options / ethical imperatives）？
 - 即使是強烈建議，是否討論可能因患者價值觀、共病、資源差異而不適用的情境？
-- **AGREE-II 六大面向系統性評估**（每面向 1–7 分）：範疇與目的、利害關係人參與、制定嚴謹度、表達清晰度、適用性、編輯獨立性。
+- **AGREE-II 六大面向定性評估**：對以下六個面向各給「強 / 中 / 弱」並附 1–2 句具體理由（引用文內依據）：
+  - 範疇與目的（Scope and Purpose）
+  - 利害關係人參與（Stakeholder Involvement）
+  - 制定嚴謹度（Rigour of Development）
+  - 表達清晰度（Clarity of Presentation）
+  - 適用性（Applicability）
+  - 編輯獨立性（Editorial Independence）
+
+  **❌ 禁止輸出加總分數（如「29/42」或「每面向 1–7 分」）**：正規 AGREE-II 是 23 個 item / 7 個 domain、每 domain 用官方公式換算 percentage（不是 6 個面向各打一分加總）。若沒有 23 個 item 的逐項評分，就不要輸出看似 AGREE-II 但不是 AGREE-II 的偽分數。要做完整 AGREE-II 評分，必須使用官方 23-item 問卷並標明「依官方 AGREE-II 公式換算」。
 - 更新計畫：是否說明下一版時程？是否有 living guideline 機制？
 
 ###### A2.2 Consensus Statement / Delphi 部分方法學評估
@@ -913,14 +950,14 @@ Narrative review 不必然是壞的。它適用於：
   - [ ] 概念整合（conceptual framework proposal）
   - [ ] 不建議作為臨床決策的證據基礎
 
-**CPG / Consensus 專屬欄位（v3.3 新增）**
+**CPG / Consensus 專屬欄位（v3.3 新增、v3.4 更新）**
 
-- **建議清單完整性**：A2.0 所列建議總數 = __ 條
-- **建議強度 vs 證據品質的整體一致性**：
+- **建議清單完整性**：A2.0 中可見並完整重建的建議數 = __ 條；markdown 遺失或格式退化的章節 = __ 個（列出 section 編號）
+- **建議強度 vs 證據品質的整體一致性**（僅就可見建議）：
   - 「強烈建議 + 低證據品質」佔比：__%
   - 「強烈建議 + 完全基於專家意見」佔比：__%
   - 整體評估：合理 / 部分合理 / 明顯越界
-- **AGREE-II 六面向綜合評分**：總分 __ / 42（若做了完整評估）
+- **AGREE-II 六面向定性評估**：六個面向各自為強 / 中 / 弱（**不輸出加總分數，不寫「__/42」**）
 - **共識統計揭露**（consensus 適用）：
   - [ ] 完整揭露各題目同意比例
   - [ ] 部分揭露（僅總體統計）
@@ -1123,6 +1160,16 @@ F. 最終裁決（含 CPG / Consensus 專屬欄位）
 - 是否考慮系統性的計數不完整（誰被計入、誰被遺漏）？
 
 ---
+
+## Version 3.4
+
+**v3.4 主要變更**（CPG 路徑的類別錯誤與偽精度修正）：
+- A2 新增「明確不適用的標準（CPG / Scientific Statement）」段：明定 PROSPERO 註冊、獨立 SR、GRADE、PRISMA flow、雙人篩選等屬於 systematic review 的方法學要求，不應作為 ACC/AHA / ESC 型 CPG 的失敗批判
+- A2.1 AGREE-II 改為六面向定性評估（強 / 中 / 弱），禁止輸出「__/42」這類偽加總分數
+- A2.0 (3) 禁止輸出「估計總數 N–M 條」，改為「可見 N 條 + 遺失章節清單」
+- F. 最終裁決 CPG 專屬欄位同步更新
+- SKILL-B SELF-CHECK 新增三項 CPG 相關檢查項
+- 移除「Bundled references」段（weekly pipeline 將 skill inline 進 prompt 且 cwd=tmpdir，`references/jamaevidence/` 實際不可達，且本 repo 未提供）
 
 ## Version 3.3
 
