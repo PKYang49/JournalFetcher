@@ -4,11 +4,18 @@ Primary backend: `claude -p` with Opus 4.6 (Agent SDK credit; identical
 per-token price to 4.7 but uses the older, more efficient tokenizer).
 Fallback: `codex exec` with GPT 5.5, used automatically when claude reports
 a rate-limit / credit-exhausted error.
+
+PDF→markdown: pymupdf4llm (preserves heading levels, multi-column flow, and
+table structure that MarkItDown collapses into runs of text). MarkItDown is
+retained as a safety fallback in case pymupdf4llm fails on a specific PDF.
+Reference lists are stripped after conversion — they're 30-40% of markdown
+on guidelines / SR and contribute nothing to critical appraisal.
 """
 
 from __future__ import annotations
 
 import os
+import re
 import subprocess
 import sys
 import tempfile
@@ -111,7 +118,73 @@ def _run_appraisal_prompt(prompt: str, timeout: int = 1800) -> str | None:
     return text
 
 
-def _convert_pdf_to_markdown(pdf_path: Path) -> str:
+_REFERENCES_HEADING_RE = re.compile(
+    r"^#{1,3}\s+("
+    r"references?"
+    r"|bibliography"
+    r"|works\s+cited"
+    r"|cited\s+literature"
+    r"|literature\s+cited"
+    r"|reference\s+list"
+    r"|references\s+and\s+notes"
+    r")\s*$",
+    re.MULTILINE | re.IGNORECASE,
+)
+
+
+def _strip_references(markdown: str) -> str:
+    """Cut markdown from the first References-style heading to end of document.
+
+    Most journal articles end with a reference list that takes up 30-40% of
+    the markdown but contributes nothing to critical appraisal. Stripping it
+    frees model context and lowers token cost.
+
+    Safety: only strip when the cut keeps ≥2,000 chars of leading content,
+    so a misidentified heading near the top can't blank out the whole article.
+    """
+    match = _REFERENCES_HEADING_RE.search(markdown)
+    if not match:
+        return markdown
+    stripped = markdown[: match.start()].rstrip()
+    if len(stripped) < 2000:
+        return markdown
+    removed = len(markdown) - len(stripped)
+    print(f"  [strip-refs] removed {removed:,} chars from References onward")
+    return stripped
+
+
+def _convert_with_pymupdf4llm(pdf_path: Path) -> str | None:
+    """Primary path: pymupdf4llm preserves headings, multi-column flow, tables."""
+    try:
+        import pymupdf4llm
+    except ImportError:
+        print("  [warn] pymupdf4llm not installed; falling back to markitdown", file=sys.stderr)
+        return None
+    try:
+        md = pymupdf4llm.to_markdown(
+            str(pdf_path),
+            ignore_images=True,
+            show_progress=False,
+        )
+    except Exception as e:
+        print(
+            f"  [warn] pymupdf4llm failed for {pdf_path.name}: {e}; falling back to markitdown",
+            file=sys.stderr,
+        )
+        return None
+    md = (md or "").strip()
+    if len(md) < 1000:
+        print(
+            f"  [warn] pymupdf4llm output suspiciously short ({len(md)} chars); "
+            f"falling back to markitdown",
+            file=sys.stderr,
+        )
+        return None
+    return md
+
+
+def _convert_with_markitdown(pdf_path: Path) -> str:
+    """Fallback path: MarkItDown via subprocess. Raises RuntimeError on failure."""
     with tempfile.TemporaryDirectory(prefix="markitdown_pdf_") as tmp_dir:
         md_path = Path(tmp_dir) / "article.md"
         result = subprocess.run(
@@ -124,6 +197,13 @@ def _convert_pdf_to_markdown(pdf_path: Path) -> str:
             err = (result.stderr or result.stdout).strip()
             raise RuntimeError(f"markitdown failed for {pdf_path.name}: {err[:400]}")
         return md_path.read_text(encoding="utf-8").strip()
+
+
+def _convert_pdf_to_markdown(pdf_path: Path) -> str:
+    md = _convert_with_pymupdf4llm(pdf_path)
+    if md is None:
+        md = _convert_with_markitdown(pdf_path)
+    return _strip_references(md)
 
 
 def _safe_report_name(article: dict) -> str:
