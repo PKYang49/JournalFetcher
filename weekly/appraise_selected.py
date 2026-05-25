@@ -10,6 +10,12 @@ table structure that MarkItDown collapses into runs of text). MarkItDown is
 retained as a safety fallback in case pymupdf4llm fails on a specific PDF.
 Reference lists are stripped after conversion — they're 30-40% of markdown
 on guidelines / SR and contribute nothing to critical appraisal.
+
+Skill routing (v3.5): `classify_article.classify()` pre-determines the route
+(rct/sr/cpg/narrative/diagnostic/…) using Haiku 4.5 (→ codex gpt-5.4 →
+heuristic → default). We then load only the corresponding fragment from
+`skills/literature-appraisal/fragments/` instead of the full 1180-line SKILL.
+The "default" route concatenates all fragments → identical to pre-v3.5.
 """
 
 from __future__ import annotations
@@ -23,10 +29,36 @@ from pathlib import Path
 
 from modules import claude_exec
 from modules.codex_model import codex_exec_env, get_appraisal_model, resolve_codex_cli
+from weekly import classify_article
 
 ROOT = Path(__file__).resolve().parent.parent
-SKILL_PATH = ROOT / "skills" / "literature-appraisal" / "SKILL.md"
-STYLE_GUIDE_PATH = ROOT / "skills" / "literature-appraisal" / "references" / "output_quality_style_guide.md"
+SKILL_DIR = ROOT / "skills" / "literature-appraisal"
+SKILL_PATH = SKILL_DIR / "SKILL.md"
+FRAGMENTS_DIR = SKILL_DIR / "fragments"
+STYLE_GUIDE_PATH = SKILL_DIR / "references" / "output_quality_style_guide.md"
+
+# route → fragment filename(s). Keep in sync with classify_article.VALID_ROUTES
+# and the actual files in skills/literature-appraisal/fragments/. "default"
+# concatenates all fragments → equivalent to the pre-fragmentation full SKILL.md
+# (zero-risk safety net when classification is uncertain).
+_FRAGMENT_BY_ROUTE: dict[str, tuple[str, ...]] = {
+    "rct": ("skill_a.md",),
+    "observational": ("skill_a.md",),
+    "preclinical": ("skill_a.md",),
+    "sr": ("skill_b_sr.md",),
+    "nma": ("skill_b_sr.md",),
+    "cpg": ("skill_b_cpg.md",),
+    "consensus": ("skill_b_cpg.md",),
+    "narrative": ("skill_b_narrative.md",),
+    "diagnostic": ("skill_c.md",),
+    "default": (
+        "skill_a.md",
+        "skill_b_sr.md",
+        "skill_b_cpg.md",
+        "skill_b_narrative.md",
+        "skill_c.md",
+    ),
+}
 
 # Size backstop for the article markdown fed into one appraisal. This is a
 # safety limit, NOT a routine truncation cap: normal papers (~40-90k chars)
@@ -206,6 +238,26 @@ def _convert_pdf_to_markdown(pdf_path: Path) -> str:
     return _strip_references(md)
 
 
+def _load_skill_for_route(route: str) -> str:
+    """Compose the skill text: entry SKILL.md + fragment(s) for this route.
+
+    Unknown / "default" routes fall back to concatenating all fragments so the
+    output is identical to the pre-fragmentation full skill (zero-risk fallback).
+    """
+    fragments = _FRAGMENT_BY_ROUTE.get(route, _FRAGMENT_BY_ROUTE["default"])
+    parts = [SKILL_PATH.read_text(encoding="utf-8")]
+    for name in fragments:
+        path = FRAGMENTS_DIR / name
+        if not path.exists():
+            print(
+                f"  [warn] missing fragment {path}; route={route} will degrade output",
+                file=sys.stderr,
+            )
+            continue
+        parts.append(path.read_text(encoding="utf-8"))
+    return "\n\n".join(parts)
+
+
 def _safe_report_name(article: dict) -> str:
     pmid = article.get("pmid") or "no-pmid"
     first_author = "unknown"
@@ -224,6 +276,8 @@ def appraise_pdf(article: dict, pdf_path: Path, out_dir: Path) -> Path | None:
     """
     if not SKILL_PATH.exists():
         raise FileNotFoundError(f"missing skill: {SKILL_PATH}")
+    if not FRAGMENTS_DIR.exists():
+        raise FileNotFoundError(f"missing skill fragments dir: {FRAGMENTS_DIR}")
     if not STYLE_GUIDE_PATH.exists():
         raise FileNotFoundError(f"missing output quality style guide: {STYLE_GUIDE_PATH}")
 
@@ -242,8 +296,21 @@ def appraise_pdf(article: dict, pdf_path: Path, out_dir: Path) -> Path | None:
             f"review)"
         )
 
+    # Classify once and cache on the article dict so manual re-runs skip
+    # the LLM call entirely.
+    route = article.get("appraisal_route")
+    if route and route in _FRAGMENT_BY_ROUTE:
+        print(f"  [classify] route={route} (cached)")
+    else:
+        route, source = classify_article.classify(article, article_markdown[:3000])
+        article["appraisal_route"] = route
+        article["appraisal_route_source"] = source
+        print(f"  [classify] route={route} (source={source})")
+
+    skill_text = _load_skill_for_route(route)
+
     prompt = APPRAISAL_PROMPT.format(
-        skill=SKILL_PATH.read_text(encoding="utf-8"),
+        skill=skill_text,
         style_guide=STYLE_GUIDE_PATH.read_text(encoding="utf-8"),
         title=article.get("title", ""),
         journal=article.get("journal") or article.get("journal_key", ""),
