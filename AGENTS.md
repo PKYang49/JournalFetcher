@@ -113,7 +113,7 @@ AGENTS.md                         (本次更新)
 1. **不用 `--bare` 模式**:`--bare` 需要 `ANTHROPIC_API_KEY`(raw API 計費),違反「吃 Claude 訂閱 / Agent SDK 額度」的目的。所以接受 Claude Code base system prompt 的少量 token overhead。
 2. **subprocess `cwd` 設為 `tmpdir`**:避免 claude -p 自動載入專案 CLAUDE.md / skills,造成不必要的 token 開銷。
 3. **Prompt caching 經實測效果有限**(1h ephemeral cache 內重跑同樣 prompt 只有 21% token hit、$0.06 saving)。Cost model 不依賴 caching 折扣。
-4. **`process_appraisal_requests` 走同一條 dispatcher**:on-demand 評讀請求和週報自選評讀共用 `appraise_selected.appraise_selected()`,所以雙後端與 backstop 對它們自動生效。
+4. **`process_appraisal_requests` 固定走 Codex**:on-demand「要求評讀」呼叫 `appraise_selected.appraise_selected_with_codex()`,避免消耗 Claude 額度。週報自選評讀才走 `appraise_selected.appraise_selected()` 的 Claude primary + Codex fallback dispatcher。兩條路徑都共用 PDF markdown backstop。
 5. **訂閱優先於 batch**:使用者有現存 Claude/ChatGPT 訂閱,Batch API 是獨立 raw-API 計費,改用會變成額外付費,所以不採用。
 
 ## 接手後可能會被問到的事

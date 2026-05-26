@@ -151,7 +151,7 @@ def _run_appraisal_prompt(prompt: str, timeout: int = 1800) -> str | None:
 
 
 _REFERENCES_HEADING_RE = re.compile(
-    r"^#{1,3}\s+("
+    r"^#{1,3}\s+\**\s*("
     r"references?"
     r"|bibliography"
     r"|works\s+cited"
@@ -159,7 +159,7 @@ _REFERENCES_HEADING_RE = re.compile(
     r"|literature\s+cited"
     r"|reference\s+list"
     r"|references\s+and\s+notes"
-    r")\s*$",
+    r")\s*\**\s*$",
     re.MULTILINE | re.IGNORECASE,
 )
 

@@ -2807,9 +2807,8 @@ def download_pdf(article: dict, out_dir: Path = PDF_DIR) -> Path | None:
             dest.write_bytes(content)
             print(f"  [OK] {dest.name} ({len(content)//1024} KB)")
             return dest
-        print("  [2] Primo/Ovid fallback (Circulation)...")
-        circ_results = playwright_circulation_batch_download([article], out_dir)
-        content = circ_results.get(doi)
+        print("  [2] nodriver browser fallback (Circulation direct URL)...")
+        content = _try_nodriver_direct_urls(doi, journal)
         if content:
             dest.write_bytes(content)
             print(f"  [OK] {dest.name} ({len(content)//1024} KB)")
@@ -2905,13 +2904,22 @@ def _log_failure(article: dict, reason: str):
         f.write(f"{article.get('pmid','?')} | {article.get('doi','?')} | {reason}\n")
 
 
+def _try_nodriver_direct_urls(doi: str, journal: str) -> bytes | None:
+    urls = _direct_pdf_urls(doi, journal)
+    for url in urls:
+        content = _try_nodriver_url(url)
+        if content:
+            return content
+    return None
+
+
 def download_articles(articles: list[dict], out_dir: Path = PDF_DIR) -> dict[str, Path | None]:
     """Download PDFs for multiple articles. Returns {pmid: path_or_None}.
 
     Pass 1:  non-browser methods (direct URL, DOI redirect, Elsevier API, Unpaywall, PMC,
              MSSE tokenized LWW endpoint)
     Pass 2:  Elsevier nodriver batch
-    Pass 3:  Circulation Playwright batch (Primo/Ovid)
+    Pass 3:  Circulation nodriver browser fallback
     Pass 4:  OUP Playwright batch (EHJ etc.)
     Pass 4b: Springer Playwright batch (Sports Medicine etc.)
     Pass 4c: JAMA Network Playwright batch (JAMA, JAMA Cardio, etc.)
@@ -3041,7 +3049,7 @@ def download_articles(articles: list[dict], out_dir: Path = PDF_DIR) -> dict[str
 
         # 失敗 → 依出版社決定是否排入 Playwright/nodriver batch
         if is_circulation:
-            print(f"  [pending] queued for Playwright batch (Circulation/Ovid)")
+            print(f"  [pending] queued for nodriver batch (Circulation)")
             circulation_pending.append(article)
         elif is_oup:
             print(f"  [pending] queued for Playwright batch (OUP)")
@@ -3088,27 +3096,28 @@ def download_articles(articles: list[dict], out_dir: Path = PDF_DIR) -> dict[str
                 print(f"  [FAIL] {doi}")
                 results[pmid] = None
 
-    # ── Pass 3: Circulation Playwright batch (Primo/Ovid) ────────────
+    # ── Pass 3: Circulation nodriver browser fallback ────────────────
     if circulation_pending:
         print(f"\n{'─'*50}")
-        print(f"  Playwright batch: downloading {len(circulation_pending)} Circulation PDF(s) via Ovid...")
-        print(f"  (opening Chrome → Primo → Ovid, please wait)\n")
-
-        circ_results = playwright_circulation_batch_download(circulation_pending, out_dir)
+        print(f"  nodriver batch: downloading {len(circulation_pending)} Circulation PDF(s)...")
+        print(f"  (opening Chrome, please wait)\n")
 
         for article in circulation_pending:
             pmid = article.get("pmid", "?")
             doi = article.get("doi", "")
             dest = out_dir / _pdf_filename(article)
-            content = circ_results.get(doi)
+            content = _try_nodriver_direct_urls(
+                doi,
+                str(article.get("journal", "")),
+            )
 
             if content:
                 dest.write_bytes(content)
                 print(f"  [OK] {dest.name} ({len(content)//1024} KB)")
                 results[pmid] = dest
             else:
-                _log_failure(article, "Circulation PDF not found via Primo/Ovid")
-                print(f"  [FAIL] {doi or article.get('title', '')} (Circulation Primo/Ovid)")
+                _log_failure(article, "Circulation PDF not found via nodriver")
+                print(f"  [FAIL] {doi or article.get('title', '')} (Circulation)")
                 results[pmid] = None
 
     # ── Pass 4: OUP Playwright batch (EHJ etc.) ─────────────────────

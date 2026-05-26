@@ -25,12 +25,22 @@ FEEDBACK_PATH = DATA_DIR / "interest_feedback.jsonl"
 VERDICT_MAP = {"up": "interested", "down": "not_interested"}
 
 
-def _known_pmids() -> set[str]:
-    """PMIDs shown in any past weekly report — used to drop spam against the public endpoint."""
-    pmids: set[str] = set()
+def _identifier(row: dict) -> str:
+    pmid = str(row.get("pmid", "")).strip()
+    if pmid:
+        return f"pmid:{pmid}"
+    doi = str(row.get("doi", "")).strip().lower()
+    if doi:
+        return f"doi:{doi}"
+    return ""
+
+
+def _known_identifiers() -> set[str]:
+    """Known article IDs shown in past weekly reports; used to drop public-endpoint spam."""
+    identifiers: set[str] = set()
     weekly_dir = ROOT / "output" / "weekly"
     if not weekly_dir.exists():
-        return pmids
+        return identifiers
     for pattern in ("*/articles.json", "*/selected_articles.json"):
         for meta in weekly_dir.glob(pattern):
             try:
@@ -39,14 +49,14 @@ def _known_pmids() -> set[str]:
                 continue
             if isinstance(data, list):
                 for art in data:
-                    pmid = str(art.get("pmid", "")).strip()
-                    if pmid:
-                        pmids.add(pmid)
-    return pmids
+                    identifier = _identifier(art)
+                    if identifier:
+                        identifiers.add(identifier)
+    return identifiers
 
 
 def _load_existing() -> dict[tuple[str, str], dict]:
-    """Existing feedback keyed by (week, pmid); newest ``ts`` wins per key."""
+    """Existing feedback keyed by (week, pmid/doi identifier); newest ``ts`` wins."""
     records: dict[tuple[str, str], dict] = {}
     if not FEEDBACK_PATH.exists():
         return records
@@ -58,7 +68,10 @@ def _load_existing() -> dict[tuple[str, str], dict]:
             obj = json.loads(line)
         except json.JSONDecodeError:
             continue
-        key = (str(obj.get("week", "")), str(obj.get("pmid", "")))
+        identifier = _identifier(obj)
+        if not identifier:
+            continue
+        key = (str(obj.get("week", "")), identifier)
         prev = records.get(key)
         if prev is None or str(obj.get("ts", "")) >= str(prev.get("ts", "")):
             records[key] = obj
@@ -88,29 +101,32 @@ def sync_feedback(timeout: int = 30) -> int:
     if not payload.get("ok"):
         raise RuntimeError(f"relay rejected request: {payload.get('error')}")
 
-    known = _known_pmids()
+    known = _known_identifiers()
     records = _load_existing()
     changed = 0
 
     for row in payload.get("rows", []):
         pmid = str(row.get("pmid", "")).strip()
+        doi = str(row.get("doi", "")).strip()
         week = str(row.get("week", "")).strip()
         verdict = VERDICT_MAP.get(str(row.get("verdict", "")).strip())
-        if not pmid or not verdict:
+        identifier = _identifier(row)
+        if not identifier or not verdict:
             continue
-        if known and pmid not in known:
-            continue  # unknown PMID — likely spam against the public endpoint
+        if known and identifier not in known:
+            continue  # unknown article ID — likely spam against the public endpoint
 
         record = {
             "ts": str(row.get("ts", "")).strip(),
             "week": week,
             "pmid": pmid,
+            "doi": doi,
             "journal": str(row.get("journal", "")).strip(),
             "title": str(row.get("title", "")).strip(),
             "verdict": verdict,
             "note": str(row.get("note", "")).strip(),
         }
-        key = (week, pmid)
+        key = (week, identifier)
         prev = records.get(key)
         if prev is not None and str(prev.get("ts", "")) >= record["ts"]:
             continue  # already stored this verdict or a newer one

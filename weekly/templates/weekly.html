@@ -278,7 +278,7 @@
       <button class="copy-btn" type="button" data-copy="python dlbydoi.py {{ article.doi }}">複製下載指令</button>
       {% endif %}
     </div>
-    {% if show_feedback and feedback_endpoint and article.pmid %}
+    {% if show_feedback and feedback_endpoint and article.feedback_id %}
     <div class="feedback"
          data-pmid="{{ article.pmid }}"
          data-doi="{{ article.doi }}"
@@ -348,7 +348,7 @@
          rel="noopener">請求評讀</a>
       {% endif %}
     </div>
-    {% if feedback_endpoint and article.pmid and article.pmid|string not in selected_pmids %}
+    {% if feedback_endpoint and article.feedback_id and article.feedback_id not in selected_ids %}
     <div class="feedback"
          data-pmid="{{ article.pmid }}"
          data-doi="{{ article.doi }}"
@@ -395,7 +395,8 @@
 
     document.querySelectorAll(".feedback").forEach((box) => {
       const pmid = box.dataset.pmid || "";
-      const storeKey = "jf_fb_" + WEEK + "_" + pmid;
+      const doi = box.dataset.doi || "";
+      const storeKey = "jf_fb_" + WEEK + "_" + (pmid || doi);
       const buttons = box.querySelectorAll(".fb-btn");
       const msg = box.querySelector(".fb-msg");
 
@@ -422,7 +423,7 @@
             body: JSON.stringify({
               week: WEEK,
               pmid: pmid,
-              doi: box.dataset.doi || "",
+              doi: doi,
               journal: box.dataset.journal || "",
               title: box.dataset.title || "",
               verdict: verdict,

@@ -19,7 +19,7 @@ https://pkyang49.github.io/JournalFetcher/
 
 ## 後端策略
 
-摘要與評讀採雙後端：
+摘要與每週精選評讀採雙後端：
 
 - **主要後端**：`claude -p`
   - 摘要：`claude-haiku-4-5`
@@ -30,7 +30,7 @@ https://pkyang49.github.io/JournalFetcher/
   - 評讀：`gpt-5.5`
   - 當 Claude 回報 rate-limit、credit、quota、monthly limit、Agent SDK limit 等訊號時自動切換
 
-切換邏輯集中在 `modules/claude_exec.py`。hit limit 後，本次 process 後續呼叫都走 Codex；下一次排程會重新先嘗試 Claude。
+切換邏輯集中在 `modules/claude_exec.py`。hit limit 後，本次 process 後續呼叫都走 Codex；下一次排程會重新先嘗試 Claude。週報內手動送出的「要求評讀」固定走 Codex，不消耗 Claude 額度。
 
 ## 支援期刊
 
@@ -134,7 +134,7 @@ python3 -m weekly.process_appraisal_requests --limit 1 --no-push --no-discord
 ```text
 週一 03:00   python3 -m weekly.run_weekly --no-discord --select-top 5
 週一 08:00   python3 -m weekly.notify_latest
-每 15 分鐘   python3 -m weekly.process_appraisal_requests
+每 15 分鐘   python3 -m weekly.process_appraisal_requests  # 手動要求評讀，Codex-only
 ```
 
 launchd plist 放在 `scripts/*.plist`。目前 weekly 主排程精選評讀 5 篇，先用 Claude 額度，hit limit 後自動 fallback 到 Codex。
@@ -156,7 +156,7 @@ launchd plist 放在 `scripts/*.plist`。目前 weekly 主排程精選評讀 5 �
 | `JOURNAL_FETCHER_CLAUDE_SUMMARY_MODEL` | Claude 摘要模型 | `claude-haiku-4-5` |
 | `JOURNAL_FETCHER_CLAUDE_APPRAISAL_MODEL` | Claude 評讀模型 | `claude-opus-4-6` |
 | `JOURNAL_FETCHER_CODEX_MODEL` | Codex 摘要 fallback | Codex default 降一個 minor |
-| `JOURNAL_FETCHER_APPRAISAL_MODEL` | Codex 評讀 fallback | Codex default / latest |
+| `JOURNAL_FETCHER_APPRAISAL_MODEL` | Codex 評讀 fallback / 手動要求評讀 | Codex default / latest |
 | `JOURNAL_FETCHER_APPRAISAL_CHAR_BACKSTOP` | 評讀文章字元上限 | `1500000` |
 | `DISCORD_WEBHOOK_URL` | 週報與評讀完成通知 | 無 |
 | `FEEDBACK_ENDPOINT_URL` | Apps Script 回饋中繼 | 無 |

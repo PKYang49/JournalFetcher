@@ -113,7 +113,7 @@ def main() -> int:
     parser.add_argument(
         "--no-summarize",
         action="store_true",
-        help="Skip codex exec summarization (debug HTML layout)",
+        help="Skip backend summarization (debug HTML layout)",
     )
     parser.add_argument(
         "--select-top",
@@ -154,7 +154,7 @@ def main() -> int:
         for a in articles:
             a["summary"] = "[--no-summarize 模式：未生成摘要]"
     else:
-        print(f"\nSummarizing {len(articles)} articles via codex exec ...")
+        print(f"\nSummarizing {len(articles)} articles via claude/codex backends ...")
         summarize_weekly.summarize_articles(articles)
 
     # Persist the full article list — sync_feedback uses it as the PMID

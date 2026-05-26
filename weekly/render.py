@@ -37,6 +37,16 @@ def _summary_is_error(summary: str) -> bool:
     return bool(summary) and summary.startswith("[") and summary.endswith("]")
 
 
+def _feedback_id(article: dict) -> str:
+    pmid = str(article.get("pmid", "")).strip()
+    if pmid:
+        return f"pmid:{pmid}"
+    doi = str(article.get("doi", "")).strip().lower()
+    if doi:
+        return f"doi:{doi}"
+    return ""
+
+
 PUB_TYPE_CLASS = {
     "Meta-Analysis": "type-evidence",
     "Systematic Review": "type-evidence",
@@ -110,6 +120,7 @@ def render_weekly(
                 "commentary": article.get("commentary", ""),
                 "pub_type_class": _pub_type_class(article.get("pub_type", "")),
                 "appraise_request_url": appraise_request_url,
+                "feedback_id": _feedback_id(article),
             }
         )
 
@@ -139,9 +150,7 @@ def render_weekly(
 
     prepared = [prepare(a) for a in enriched_articles]
     prepared_selected = [prepare(a) for a in (selected_articles or [])]
-    selected_pmids = {
-        str(a.get("pmid")) for a in prepared_selected if a.get("pmid")
-    }
+    selected_ids = {a.get("feedback_id") for a in prepared_selected if a.get("feedback_id")}
 
     # Split appraised articles: AI-curated picks (本週精選評讀) vs. articles a
     # reader requested via the weekly HTML (已評讀). process_appraisal_requests
@@ -155,7 +164,7 @@ def render_weekly(
     # 本週文章摘要 drops everything already shown above, so each article
     # appears in exactly one section.
     summary_articles = [
-        a for a in prepared if str(a.get("pmid")) not in selected_pmids
+        a for a in prepared if a.get("feedback_id") not in selected_ids
     ]
 
     return tmpl.render(
@@ -166,7 +175,7 @@ def render_weekly(
         journal_counts=journal_counts,
         featured_articles=featured_articles,
         appraised_articles=appraised_articles,
-        selected_pmids=selected_pmids,
+        selected_ids=selected_ids,
         feedback_endpoint=feedback_endpoint,
     )
 

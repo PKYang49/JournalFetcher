@@ -23,8 +23,8 @@
  * 安全性:
  *   - /exec 網址會被嵌進公開的 GitHub Pages HTML,任何人都看得到。回饋
  *     寫入仍不驗證,但評讀請求必須輸入 server-side passphrase 才能寫入。
- *   - 本 relay 會驗證 payload、用 week+pmid upsert、限制總列數；
- *     sync_feedback.py 也會用 PMID 白名單過濾掉亂寫的資料。
+ *   - 本 relay 會驗證 payload、用 week+pmid 或 week+doi upsert、限制總列數；
+ *     sync_feedback.py 也會用 PMID/DOI 白名單過濾掉亂寫的資料。
  *   - 同步讀取使用 POST body 傳 token,token 只放在你 Mac 的 .env,不會
  *     出現在 HTML 或 URL query,所以外人無法把你的回饋讀走。
  */
@@ -124,12 +124,19 @@ function _verifyAppraisalPassphrase(value) {
 function _validateFeedback(d) {
   const week = _text(d.week, 12);
   const pmid = _text(d.pmid, 16);
+  const doi = _text(d.doi, 120);
   const verdict = _text(d.verdict, 8);
   if (!/^20\d{2}-W\d{2}$/.test(week)) {
     throw new Error('bad week');
   }
-  if (!/^\d{6,12}$/.test(pmid)) {
+  if (!pmid && !doi) {
+    throw new Error('missing identifier');
+  }
+  if (pmid && !/^\d{6,12}$/.test(pmid)) {
     throw new Error('bad pmid');
+  }
+  if (doi && !/^10\.\S+\/\S+/.test(doi)) {
+    throw new Error('bad doi');
   }
   if (verdict !== 'up' && verdict !== 'down') {
     throw new Error('bad verdict');
@@ -137,7 +144,7 @@ function _validateFeedback(d) {
   return {
     week: week,
     pmid: pmid,
-    doi: _text(d.doi, 120),
+    doi: doi,
     journal: _text(d.journal, 40),
     title: _text(d.title, 500),
     verdict: verdict,
@@ -186,6 +193,31 @@ function _indexByKey(sheet, week, pmid) {
   return 0;
 }
 
+function _feedbackIndexByKey(sheet, week, pmid, doi) {
+  const lastRow = sheet.getLastRow();
+  if (lastRow < 2) {
+    return 0;
+  }
+  const values = sheet.getRange(2, 2, lastRow - 1, 3).getValues();
+  const keyPmid = String(pmid || '');
+  const keyDoi = String(doi || '').toLowerCase();
+  for (let i = values.length - 1; i >= 0; i--) {
+    const rowWeek = String(values[i][0]);
+    const rowPmid = String(values[i][1] || '');
+    const rowDoi = String(values[i][2] || '').toLowerCase();
+    if (rowWeek !== week) {
+      continue;
+    }
+    if (keyPmid && rowPmid === keyPmid) {
+      return i + 2;
+    }
+    if (!keyPmid && keyDoi && rowDoi === keyDoi) {
+      return i + 2;
+    }
+  }
+  return 0;
+}
+
 function _trimRows(sheet) {
   const lastRow = sheet.getLastRow();
   const maxLastRow = MAX_ROWS + 1;  // header + data rows
@@ -223,7 +255,7 @@ function _upsertFeedback(d) {
     d.note,
   ];
   const sheet = _feedbackSheet();
-  const existingRow = _indexByKey(sheet, d.week, d.pmid);
+  const existingRow = _feedbackIndexByKey(sheet, d.week, d.pmid, d.doi);
   if (existingRow) {
     sheet.getRange(existingRow, 1, 1, row.length).setValues([row]);
     return 'updated';
