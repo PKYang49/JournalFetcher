@@ -7,3 +7,4 @@ curl_cffi>=0.7.0
 playwright>=1.40.0
 discord.py>=2.3
 jinja2>=3.1
+pymupdf4llm>=1.27.0

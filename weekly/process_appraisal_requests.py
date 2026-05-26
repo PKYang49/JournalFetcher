@@ -324,6 +324,21 @@ def _process_one(row: dict, article: dict, force: bool, no_push: bool, no_discor
     else:
         _update_existing_weekly_html_appraisal_link(week, article)
 
+    # Persist mutations from appraise_selected (appraisal_route /
+    # appraisal_route_source / appraisal_status / appraisal_path) and from
+    # publish_appraisals (appraisal_url) back to selected_articles.json so
+    # subsequent on-demand re-runs of this article hit the route cache and
+    # skip the Haiku classify call.
+    selected_json = week_dir / "selected_articles.json"
+    if selected_json.exists():
+        existing = json.loads(selected_json.read_text(encoding="utf-8"))
+        pmid = str(article.get("pmid", ""))
+        existing = [a for a in existing if str(a.get("pmid", "")) != pmid] + [article]
+        selected_json.write_text(
+            json.dumps(existing, ensure_ascii=False, indent=2),
+            encoding="utf-8",
+        )
+
     appraisal_url = str(article.get("appraisal_url", ""))
     if not appraisal_url:
         _append_state({"week": week, "identifier": identifier, **row, "status": "failed"})

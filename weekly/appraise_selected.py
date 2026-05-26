@@ -4,11 +4,24 @@ Primary backend: `claude -p` with Opus 4.6 (Agent SDK credit; identical
 per-token price to 4.7 but uses the older, more efficient tokenizer).
 Fallback: `codex exec` with GPT 5.5, used automatically when claude reports
 a rate-limit / credit-exhausted error.
+
+PDF→markdown: pymupdf4llm (preserves heading levels, multi-column flow, and
+table structure that MarkItDown collapses into runs of text). MarkItDown is
+retained as a safety fallback in case pymupdf4llm fails on a specific PDF.
+Reference lists are stripped after conversion — they're 30-40% of markdown
+on guidelines / SR and contribute nothing to critical appraisal.
+
+Skill routing (v3.5): `classify_article.classify()` pre-determines the route
+(rct/sr/cpg/narrative/diagnostic/…) using Haiku 4.5 (→ codex gpt-5.4 →
+heuristic → default). We then load only the corresponding fragment from
+`skills/literature-appraisal/fragments/` instead of the full 1180-line SKILL.
+The "default" route concatenates all fragments → identical to pre-v3.5.
 """
 
 from __future__ import annotations
 
 import os
+import re
 import subprocess
 import sys
 import tempfile
@@ -16,10 +29,36 @@ from pathlib import Path
 
 from modules import claude_exec
 from modules.codex_model import codex_exec_env, get_appraisal_model, resolve_codex_cli
+from weekly import classify_article
 
 ROOT = Path(__file__).resolve().parent.parent
-SKILL_PATH = ROOT / "skills" / "literature-appraisal" / "SKILL.md"
-STYLE_GUIDE_PATH = ROOT / "skills" / "literature-appraisal" / "references" / "output_quality_style_guide.md"
+SKILL_DIR = ROOT / "skills" / "literature-appraisal"
+SKILL_PATH = SKILL_DIR / "SKILL.md"
+FRAGMENTS_DIR = SKILL_DIR / "fragments"
+STYLE_GUIDE_PATH = SKILL_DIR / "references" / "output_quality_style_guide.md"
+
+# route → fragment filename(s). Keep in sync with classify_article.VALID_ROUTES
+# and the actual files in skills/literature-appraisal/fragments/. "default"
+# concatenates all fragments → equivalent to the pre-fragmentation full SKILL.md
+# (zero-risk safety net when classification is uncertain).
+_FRAGMENT_BY_ROUTE: dict[str, tuple[str, ...]] = {
+    "rct": ("skill_a.md",),
+    "observational": ("skill_a.md",),
+    "preclinical": ("skill_a.md",),
+    "sr": ("skill_b_sr.md",),
+    "nma": ("skill_b_sr.md",),
+    "cpg": ("skill_b_cpg.md",),
+    "consensus": ("skill_b_cpg.md",),
+    "narrative": ("skill_b_narrative.md",),
+    "diagnostic": ("skill_c.md",),
+    "default": (
+        "skill_a.md",
+        "skill_b_sr.md",
+        "skill_b_cpg.md",
+        "skill_b_narrative.md",
+        "skill_c.md",
+    ),
+}
 
 # Size backstop for the article markdown fed into one appraisal. This is a
 # safety limit, NOT a routine truncation cap: normal papers (~40-90k chars)
@@ -111,7 +150,73 @@ def _run_appraisal_prompt(prompt: str, timeout: int = 1800) -> str | None:
     return text
 
 
-def _convert_pdf_to_markdown(pdf_path: Path) -> str:
+_REFERENCES_HEADING_RE = re.compile(
+    r"^#{1,3}\s+("
+    r"references?"
+    r"|bibliography"
+    r"|works\s+cited"
+    r"|cited\s+literature"
+    r"|literature\s+cited"
+    r"|reference\s+list"
+    r"|references\s+and\s+notes"
+    r")\s*$",
+    re.MULTILINE | re.IGNORECASE,
+)
+
+
+def _strip_references(markdown: str) -> str:
+    """Cut markdown from the first References-style heading to end of document.
+
+    Most journal articles end with a reference list that takes up 30-40% of
+    the markdown but contributes nothing to critical appraisal. Stripping it
+    frees model context and lowers token cost.
+
+    Safety: only strip when the cut keeps ≥2,000 chars of leading content,
+    so a misidentified heading near the top can't blank out the whole article.
+    """
+    match = _REFERENCES_HEADING_RE.search(markdown)
+    if not match:
+        return markdown
+    stripped = markdown[: match.start()].rstrip()
+    if len(stripped) < 2000:
+        return markdown
+    removed = len(markdown) - len(stripped)
+    print(f"  [strip-refs] removed {removed:,} chars from References onward")
+    return stripped
+
+
+def _convert_with_pymupdf4llm(pdf_path: Path) -> str | None:
+    """Primary path: pymupdf4llm preserves headings, multi-column flow, tables."""
+    try:
+        import pymupdf4llm
+    except ImportError:
+        print("  [warn] pymupdf4llm not installed; falling back to markitdown", file=sys.stderr)
+        return None
+    try:
+        md = pymupdf4llm.to_markdown(
+            str(pdf_path),
+            ignore_images=True,
+            show_progress=False,
+        )
+    except Exception as e:
+        print(
+            f"  [warn] pymupdf4llm failed for {pdf_path.name}: {e}; falling back to markitdown",
+            file=sys.stderr,
+        )
+        return None
+    md = (md or "").strip()
+    if len(md) < 1000:
+        print(
+            f"  [warn] pymupdf4llm output suspiciously short ({len(md)} chars); "
+            f"falling back to markitdown",
+            file=sys.stderr,
+        )
+        return None
+    return md
+
+
+def _convert_with_markitdown(pdf_path: Path) -> str:
+    """Fallback path: MarkItDown via subprocess. Raises RuntimeError on failure."""
     with tempfile.TemporaryDirectory(prefix="markitdown_pdf_") as tmp_dir:
         md_path = Path(tmp_dir) / "article.md"
         result = subprocess.run(
@@ -124,6 +229,33 @@ def _convert_pdf_to_markdown(pdf_path: Path) -> str:
             err = (result.stderr or result.stdout).strip()
             raise RuntimeError(f"markitdown failed for {pdf_path.name}: {err[:400]}")
         return md_path.read_text(encoding="utf-8").strip()
+
+
+def _convert_pdf_to_markdown(pdf_path: Path) -> str:
+    md = _convert_with_pymupdf4llm(pdf_path)
+    if md is None:
+        md = _convert_with_markitdown(pdf_path)
+    return _strip_references(md)
+
+
+def _load_skill_for_route(route: str) -> str:
+    """Compose the skill text: entry SKILL.md + fragment(s) for this route.
+
+    Unknown / "default" routes fall back to concatenating all fragments so the
+    output is identical to the pre-fragmentation full skill (zero-risk fallback).
+    """
+    fragments = _FRAGMENT_BY_ROUTE.get(route, _FRAGMENT_BY_ROUTE["default"])
+    parts = [SKILL_PATH.read_text(encoding="utf-8")]
+    for name in fragments:
+        path = FRAGMENTS_DIR / name
+        if not path.exists():
+            print(
+                f"  [warn] missing fragment {path}; route={route} will degrade output",
+                file=sys.stderr,
+            )
+            continue
+        parts.append(path.read_text(encoding="utf-8"))
+    return "\n\n".join(parts)
 
 
 def _safe_report_name(article: dict) -> str:
@@ -144,6 +276,8 @@ def appraise_pdf(article: dict, pdf_path: Path, out_dir: Path) -> Path | None:
     """
     if not SKILL_PATH.exists():
         raise FileNotFoundError(f"missing skill: {SKILL_PATH}")
+    if not FRAGMENTS_DIR.exists():
+        raise FileNotFoundError(f"missing skill fragments dir: {FRAGMENTS_DIR}")
     if not STYLE_GUIDE_PATH.exists():
         raise FileNotFoundError(f"missing output quality style guide: {STYLE_GUIDE_PATH}")
 
@@ -162,8 +296,21 @@ def appraise_pdf(article: dict, pdf_path: Path, out_dir: Path) -> Path | None:
             f"review)"
         )
 
+    # Classify once and cache on the article dict so manual re-runs skip
+    # the LLM call entirely.
+    route = article.get("appraisal_route")
+    if route and route in _FRAGMENT_BY_ROUTE:
+        print(f"  [classify] route={route} (cached)")
+    else:
+        route, source = classify_article.classify(article, article_markdown[:3000])
+        article["appraisal_route"] = route
+        article["appraisal_route_source"] = source
+        print(f"  [classify] route={route} (source={source})")
+
+    skill_text = _load_skill_for_route(route)
+
     prompt = APPRAISAL_PROMPT.format(
-        skill=SKILL_PATH.read_text(encoding="utf-8"),
+        skill=skill_text,
         style_guide=STYLE_GUIDE_PATH.read_text(encoding="utf-8"),
         title=article.get("title", ""),
         journal=article.get("journal") or article.get("journal_key", ""),
