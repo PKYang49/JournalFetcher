@@ -1,0 +1,680 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Automated Echocardiographic Detection of Congenital Heart Disease Using Artificial Intelligence.</title>
+<style>
+  :root {
+    --bg: #fafafa;
+    --card: #ffffff;
+    --text: #1a1a1a;
+    --muted: #6b6b6b;
+    --border: #e5e5e5;
+    --accent: #0b5fff;
+  }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang TC",
+      "Microsoft JhengHei", sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    margin: 0;
+    padding: 24px 16px 64px;
+    line-height: 1.72;
+  }
+  main {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    margin: 0 auto;
+    max-width: 840px;
+    padding: 22px 26px;
+  }
+  nav {
+    margin: 0 auto 14px;
+    max-width: 840px;
+    color: var(--muted);
+    font-size: 14px;
+  }
+  a { color: var(--accent); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  h1, h2, h3, h4 { line-height: 1.35; }
+  h1 { font-size: 26px; margin-top: 0; }
+  h2 { border-top: 1px solid var(--border); padding-top: 18px; }
+  code {
+    background: rgba(127, 127, 127, 0.12);
+    border-radius: 4px;
+    padding: 1px 4px;
+  }
+  table {
+    border-collapse: collapse;
+    display: block;
+    overflow-x: auto;
+    width: 100%;
+  }
+  th, td {
+    border: 1px solid var(--border);
+    padding: 6px 8px;
+    text-align: left;
+    vertical-align: top;
+  }
+  blockquote {
+    border-left: 3px solid var(--accent);
+    color: var(--muted);
+    margin-left: 0;
+    padding-left: 14px;
+  }
+  .appraisal-meta {
+    border-top: 1px solid var(--border);
+    margin-top: 28px;
+    padding-top: 14px;
+    color: var(--muted);
+    font-size: 13px;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #1a1a1a;
+      --card: #242424;
+      --text: #e8e8e8;
+      --muted: #999;
+      --border: #333;
+      --accent: #6ea8ff;
+    }
+  }
+</style>
+</head>
+<body>
+<nav><a href="../../2026-W23.html">← 回到 2026-W23 週報</a></nav>
+<main>
+<h1>Automated Echocardiographic Detection of Congenital Heart Disease Using Artificial Intelligence.</h1>
+<p>現在我有足夠資料進行完整評讀。</p>
+<hr />
+<h1>文獻批判性評讀</h1>
+<h2>SECTION-0：文章全面描述</h2>
+<h3>0. 文章身份證</h3>
+<ul>
+<li><strong>標題</strong>：Automated Echocardiographic Detection of Congenital Heart Disease Using Artificial Intelligence</li>
+<li><strong>期刊</strong>：Circulation</li>
+<li><strong>年份</strong>：2026</li>
+<li><strong>DOI</strong>：10.1161/CIRCULATIONAHA.126.079781</li>
+<li><strong>文章類型</strong>：AI/ML 診斷模型開發與驗證研究（Diagnostic AI model — derivation + internal/referral testing）</li>
+<li><strong>路由判斷</strong>：diagnostic → SKILL-C</li>
+</ul>
+<hr />
+<h3>1. 作者團隊評論</h3>
+<p><strong>通訊作者</strong>：Joshua Mayourian, MD, PhD — Boston Children's Hospital (BCH) Department of Cardiology；Congenital Heart Artificial Intelligence (CHAI) Lab 創辦人暨主任 [外部: BCH 官網、medicalxpress]</p>
+<p><strong>作者團隊構成</strong>：</p>
+<ul>
+<li><em><em>Platon Lukyanenko, PhD</em>（共同第一作者）</em>*：Computational Health Informatics Program (CHIP), BCH；計算科學與深度學習專長</li>
+<li><em><em>Sunil J. Ghelani, MD</em>（共同第一作者）</em>*：BCH Division of Cardiac Imaging；Advanced imaging（echo、CMR、CT）；Associate Professor, Harvard Medical School [外部: BCH 官網]</li>
+<li><strong>William G. La Cava, PhD†（共同通訊）</strong>：CHIP, BCH；interpretable ML、multi-objective learning、公平性建模專家；Cava Lab 主持人 [外部: cavalab.org]</li>
+<li><strong>Tal Geva, MD</strong>：BCH Cardiologist-in-Chief emeritus；Alexander S. Nadas Professor of Pediatrics, Harvard Medical School；先天性心臟病影像領域全球領袖，&gt;215 篇 peer-reviewed 論文；共同編輯先天性心臟病心臟超音波教科書 [外部: ResearchGate、BCH 官網]</li>
+<li><strong>Andrew J. Powell, MD</strong>：BCH 資深心臟影像專家</li>
+<li><strong>John K. Triedman, MD</strong>：BCH 資深電生理暨 CHAI Lab 共同主持人</li>
+</ul>
+<p><strong>所屬機構聲譽</strong>：BCH 為全球頂尖兒童醫院，其心臟科（含影像部門）長期為兒童心臟病影像研究的全球標竿。CHIP 是 BCH 的計算健康資訊學核心設施。此團隊結合了頂尖臨床影像專家（Geva、Ghelani、Powell）與計算科學專家（La Cava、Lukyanenko），是典型的學術醫學中心跨領域 AI 研發團隊。</p>
+<p><strong>團隊過往研究</strong>（代表性發表）：</p>
+<ol>
+<li>PanEcho: Complete AI-enabled echocardiography interpretation with multi-task deep learning（medRxiv 2024 → PMC 2025）</li>
+<li>EchoFocus-Measure: Deep Learning-Based Automated Echocardiographic Measurements in Pediatric and Congenital Heart Disease（medRxiv 2026）</li>
+<li>Mayourian et al. Deep Learning-Based ECG Predicts Biventricular Dysfunction in CHD（JACC 2024）</li>
+<li>Mayourian et al. Infant ECG-Based Deep Learning Predicts Critical CHD（Circulation 2025/2026）</li>
+<li>Geva lab 多篇 CHD 影像 outcome 預測研究</li>
+</ol>
+<p>此團隊為兒童心臟 AI 領域核心研究者，非跨領域首次切入。</p>
+<p><strong>作者立場史</strong>：Mayourian 為 One Heart Health（非營利，推動低資源地區 CHD 篩檢）board member，Saloni Heart Foundation 醫學顧問 [文內]。團隊過去 2–3 年密集發表 AI-echo/AI-ECG 在 CHD 的應用，立場一致偏向「AI 可民主化兒童心臟診斷」，本篇結論與既有立場高度吻合——需注意確認偏差風險。</p>
+<p><strong>利益揭露</strong> [文內]：</p>
+<ul>
+<li>Funding：Kostin Innovation Fund、Thrasher Research Fund Early Career Award、NIH（T32HL007572、R01LM012973、2U01HL098147-12）</li>
+<li>COI：Mayourian — One Heart Health board member、Saloni Heart Foundation advisor；Miller — lavita.ai scientific advisory board</li>
+<li><strong>評估</strong>：Funding 來自學術基金，無直接商業利益。但 Mayourian 的 One Heart Health board member 身份意味著其組織宗旨（將 AI 診斷工具推廣至低資源地區）與本研究目標完全重合，存在 intellectual COI。文內已揭露此些組織「had no role in the design, conduct, funding, or reporting of this study」，但 narrative framing 仍可能受影響。</li>
+</ul>
+<hr />
+<h3>2. 文獻 Metadata 整理</h3>
+<ul>
+<li><strong>Received date</strong>：2026-02-02 [文內]</li>
+<li><strong>Accepted date</strong>：2026-03-21 [文內]</li>
+<li><strong>審查天數</strong>：47 天（自行計算）</li>
+<li><strong>該期刊平均審查天數</strong>：Circulation median time to first decision 為 17 天（含 desk rejection）；進入 peer review 的稿件決策時間約 4–8 週 [外部: manusights.com、research.com]</li>
+<li><strong>比較</strong>：47 天在 Circulation 屬正常偏快。考量本文數據量龐大（3.6M videos）、涉及 AI 方法學與 58 國資料，此速度合理但偏快，可能反映 invited revision 或審稿人對團隊先前 PanEcho 工作的熟悉度</li>
+<li><strong>期刊屬性</strong>：Impact Factor 38.6（2025）[外部: journalsearches.com]；Q1 心血管領域排名第 1–2；AHA 旗艦期刊；非 open access（但 supplemental material 公開）</li>
+<li><strong>邀稿 vs 投稿</strong>：文內未揭露；但此團隊 2024–2026 已在 Circulation 連續發表 AI-echo/AI-ECG 系列，可能有編輯關係但無法確認 [推論]</li>
+<li><strong>報告規範</strong>：遵循 TRUE-AIM Report Card（AHA 自家 AI 報告標準）[文內]</li>
+</ul>
+<hr />
+<h3>3. 研究背景</h3>
+<p><strong>既有事實與證據</strong> [文內]：</p>
+<ul>
+<li>CHD 影響 ~1/100 活產，全球 &gt;1200 萬人；~25% 為 critical CHD，需新生兒期介入</li>
+<li>CHD 在低資源與高資源國家均存在延遲診斷問題</li>
+<li>
+<blockquote>
+<p>90% CHD 兒童生活在中低收入國家，占全球 CHD 死亡的 94%</p>
+</blockquote>
+</li>
+<li>心臟超音波是 CHD 診斷的基石，但專家判讀是稀缺且分布不均的全球資源</li>
+<li>成人 AI-echo 已有成熟進展（自動化測量、瓣膜/心肌功能評估），但兒童 AI-echo 仍停留在 view classification 或單一任務</li>
+</ul>
+<p><strong>知識缺口</strong>：</p>
+<ul>
+<li>尚無涵蓋廣泛 CHD 病灶的多任務 AI-echo 模型</li>
+<li>兒童心臟超音波 AI 模型的跨機構/跨國泛化性未被系統性評估</li>
+<li>Domain shift 對 AI-echo 在真實世界部署的影響尚未被充分描述</li>
+</ul>
+<p><strong>Research question</strong> [推論，基於 Introduction 末段]：</p>
+<p>一個建立在 PanEcho 框架上的多任務、view-agnostic AI 模型，能否從完整心臟超音波檢查中準確偵測廣泛的 critical 與 noncritical CHD 病灶？其跨機構與跨國泛化性如何？</p>
+<hr />
+<h3>4. 研究設計與方法</h3>
+<p><strong>PICO</strong>：</p>
+<ul>
+<li><strong>P（Population）</strong>：BCH 2015-07 至 2025-07 間所有首次心臟超音波的病人（排除 &lt;10 DICOM 的檢查）。Internal cohort：BCH 及附屬中心施作的檢查；Referral cohort：外部機構施作、送至 BCH 判讀的檢查（US + international）</li>
+<li><strong>I（Index test）</strong>：EchoFocus-CHD — 基於 PanEcho 架構擴展的 study-level transformer encoder，輸入整份 echo 所有影片 clips，輸出多任務 CHD 分類</li>
+<li><strong>C（Reference standard）</strong>：Fyler coding system — BCH 資深影像專科醫師為每份 echo 指定的結構化解剖分類碼（decades-old system，validated 97–100% accuracy vs manual annotation in 100-echo subset）</li>
+<li><strong>O（Outcome）</strong>：
+<ul>
+<li><strong>Primary</strong>：Composite critical CHD（12 種需一歲內介入的病灶）</li>
+<li><strong>Secondary</strong>：Individual critical CHD（12 種）、composite noncritical CHD（8 種）、individual noncritical CHD</li>
+</ul>
+</li>
+</ul>
+<p><strong>關鍵研究設計細節</strong>：</p>
+<ul>
+<li><strong>設計類型</strong>：Retrospective diagnostic model development and internal/referral testing</li>
+<li><strong>Patient-level split</strong>：Internal 80% development / 20% testing（patient-level random）；Referral cohort 全部用於獨立測試</li>
+<li><strong>Model development 內再拆</strong>：Training 80% + Validation 20%（用於 model selection 與 hyperparameter tuning）</li>
+<li><strong>Retraining experiment</strong>：擴充 training set 納入所有 US referral studies → 只保留 BCH test + international referral 測試</li>
+<li><strong>Decision threshold</strong>：Youden index maximization on validation set → fixed threshold applied to all test cohorts</li>
+<li><strong>統計方法</strong>：AUROC、sensitivity、specificity、PPV、NPV、LR+、LR−、lift；95% CI from 1000 bootstrap samples；scaled Brier score for calibration；Cohen κ for adjudication agreement；Fisher exact test for adjudication comparison；UMAP + maximum mean discrepancy for domain shift</li>
+</ul>
+<p><strong>主要變項定義</strong>：</p>
+<ul>
+<li>Critical CHD：需一歲內手術或心導管介入的 CHD（12 種，含 HLHS、ToF、TGA、AVCD、CoA 等）</li>
+<li>Noncritical CHD：通常保守治療或延遲至嬰兒期後介入（8 類，含 ASD、VSD、PDA、BAV 等）</li>
+<li>Labels 非互斥（一位病人可同時有多種病灶）</li>
+</ul>
+<hr />
+<h3>5. 研究結果重點整理</h3>
+<table>
+<thead>
+<tr>
+<th>指標</th>
+<th>Internal test cohort</th>
+<th>Referral cohort (overall)</th>
+<th>International (retrained)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Echo studies, n</td>
+<td>10,945</td>
+<td>3,356</td>
+<td>991</td>
+</tr>
+<tr>
+<td>Videos, n</td>
+<td>818,487</td>
+<td>167,484</td>
+<td>48,332</td>
+</tr>
+<tr>
+<td>Critical CHD prevalence</td>
+<td>5.74%</td>
+<td>29.41%</td>
+<td>17.86%</td>
+</tr>
+<tr>
+<td><strong>Composite critical CHD AUROC</strong></td>
+<td><strong>0.94</strong></td>
+<td><strong>0.77</strong></td>
+<td><strong>0.87 (retrained)</strong></td>
+</tr>
+<tr>
+<td>Composite critical CHD — infant AUROC</td>
+<td>0.93</td>
+<td>0.71</td>
+<td>0.84 (retrained)</td>
+</tr>
+<tr>
+<td>Sensitivity (retrained)</td>
+<td>~90%</td>
+<td>—</td>
+<td>86–88%</td>
+</tr>
+<tr>
+<td>Specificity (retrained)</td>
+<td>~90%</td>
+<td>—</td>
+<td>72%</td>
+</tr>
+<tr>
+<td>LR+</td>
+<td>7.50 (initial) / 7.8 (retrained)</td>
+<td>—</td>
+<td>3.2 (retrained)</td>
+</tr>
+<tr>
+<td>LR−</td>
+<td>0.14 (initial) / 0.13 (retrained)</td>
+<td>—</td>
+<td>0.13–0.19 (retrained)</td>
+</tr>
+<tr>
+<td>NPV</td>
+<td>99% (99–99%)</td>
+<td>—</td>
+<td>97% (96–98%)</td>
+</tr>
+<tr>
+<td>PPV</td>
+<td>33% (32–34%)</td>
+<td>—</td>
+<td>35% (30–41%)</td>
+</tr>
+<tr>
+<td>Scaled Brier score</td>
+<td>0.405</td>
+<td>0.045 (overall)</td>
+<td>0.151 (retrained)</td>
+</tr>
+<tr>
+<td>Individual critical CHD AUROC range</td>
+<td>0.83–1.00</td>
+<td>0.70–0.85</td>
+<td>improved in 10/12</td>
+</tr>
+<tr>
+<td>Adjudication interrater κ</td>
+<td>0.82</td>
+<td>0.72</td>
+<td>—</td>
+</tr>
+</tbody>
+</table>
+<p><strong>其他關鍵發現</strong>：</p>
+<ul>
+<li>Explainability：模型在 internal 與 referral 均優先關注相同臨床相關 views（PLAX、PSAX、subxiphoid LAX、apical）</li>
+<li>View ablation：移除單一 view 不影響 AUROC；但移除所有 4 個 top views → AUROC 降至 0.78–0.93</li>
+<li>UMAP：internal 與 referral 嵌入空間僅部分重疊，定量 MMD 顯著（P=0.01），確認 domain shift</li>
+<li>Sensitivity analysis：排除有先前心臟介入的病人 → 結果不變</li>
+</ul>
+<hr />
+<h3>6. 作者討論與評論重點</h3>
+<p><strong>作者的主要訊息</strong>：</p>
+<ul>
+<li>EchoFocus-CHD 是首個涵蓋 20 種 CHD 病灶的 view-agnostic、multitask AI-echo 模型，使用最大兒童 echo 資料集（~3.6M videos, 58 國）</li>
+<li>Internal discrimination 極佳，referral cohort 有 domain shift 導致效能下降，但擴充訓練資料可部分改善</li>
+<li>定位為 triage / decision-support tool，尤其適合 resource-limited settings 的 tele-echocardiography</li>
+</ul>
+<p><strong>限制（作者觀點）</strong> [文內]：</p>
+<ol>
+<li>Retrained model 在 international cohort 仍低於 safe clinical deployment threshold</li>
+<li>Fyler codes 與 LLM-extracted labels 均非完美 reference standard</li>
+<li>Sub-Saharan Africa 未被代表</li>
+<li>International referral 定義基於 home address 而非確認的 acquisition site</li>
+<li>Referral cohort 可能有 selection bias，非隨機社區 echo</li>
+<li>依賴 trained sonographer 施作的 TTE；未驗證 point-of-care/portable ultrasound</li>
+<li>未涵蓋所有兒童心臟疾病（如 Kawasaki、風濕性心臟病、心肌病）</li>
+<li>Explainability 對臨床決策的實際影響尚未評估</li>
+</ol>
+<p><strong>[評估]</strong>：作者自述限制相當全面且誠實。然而，narrative framing 仍然過度樂觀——文章標題用「Automated Detection」而非「Screening」或「Triage Support」；Clinical Perspective 段宣稱「may offer a pathway to equitable AI-assisted care」，但 referral cohort AUROC 0.77 且 calibration 近乎失敗（scaled Brier 0.045），距離可用於 real-world deployment 差距甚大。作者在 Discussion 有承認，但整體 framing 讓讀者容易高估 model maturity。</p>
+<hr />
+<h3>7. 外部專業意見</h3>
+<p>[無法取得——搜尋未發現同期 editorial、commentary 或公開同行評論。文章於 2026-05-26 正式上線，距今僅數日。本文曾於 2026-01-24 以 preprint 發表於 medRxiv。]</p>
+<hr />
+<h3>8. 臨床建議</h3>
+<p><strong>可採用這篇研究結論的情境</strong>：</p>
+<ul>
+<li>作為概念驗證，了解 AI-echo 在 CHD 偵測的技術可行性上限</li>
+<li>在 BCH 或類似高學術量能中心，作為 internal quality assurance 的研究工具</li>
+<li>在已有專家判讀的 tele-echocardiography 系統中，作為 pre-screening / prioritization 的研究試行</li>
+</ul>
+<p><strong>不建議直接套用的情境</strong>：</p>
+<ul>
+<li>任何獨立運作的臨床 CHD 篩檢（無 expert oversight）</li>
+<li>低資源國家的社區 echo（model 未以此類數據訓練或驗證）</li>
+<li>Point-of-care / portable ultrasound（未驗證）</li>
+<li>新生兒期高風險 triage（infant subgroup referral AUROC 0.68–0.73，不足以作為臨床決策依據）</li>
+</ul>
+<p><strong>給臨床醫師的實務建議</strong>：</p>
+<ol>
+<li>本模型目前不可取代兒童心臟影像專科醫師的判讀——NPV 97–99% 看似高，但 PPV 僅 33–35%，意味著每 3 個 flagged 案例中有 2 個是 false positive</li>
+<li>Domain shift 問題未解決前，不應假設在非 BCH 類型的 echo 上有相同表現</li>
+<li>關注團隊後續的前瞻性多中心驗證結果，這是決定臨床可用性的關鍵下一步</li>
+</ol>
+<p><strong>研究證據強度分級</strong>：<strong>中</strong>——大規模回溯性開發與測試、excellent internal performance、有 referral cohort 測試但非真正獨立外部驗證、無前瞻性臨床有效性試驗</p>
+<hr />
+<h2>SKILL-C：診斷研究與 AI/ML 模型評讀</h2>
+<h3>A. 補充技術細節</h3>
+<p>（SECTION-0 已涵蓋 PICO、設計、資助，此處補充）</p>
+<p><strong>Reference standard</strong>：</p>
+<ul>
+<li>Fyler coding system — BCH 特有的解剖分類系統，由 subspecialty-trained 影像專科醫師指定</li>
+<li>Validation of reference standard：在 100 份隨機取樣 echo 報告中，Fyler codes 與 manual annotation 的 accuracy 為 97%（ASD）至 99–100%（其他病灶）</li>
+<li><strong>問題</strong>：Fyler code 是由同一機構（BCH）的同一群專家所指定，對 internal cohort 和 referral cohort 均為 BCH 專家判讀的結果。這不是真正獨立的 reference standard validation——同一群人既定義 label 又是 model 最終被比較的 gold standard</li>
+</ul>
+<p><strong>Index test 與 reference standard 的獨立性</strong>：</p>
+<ul>
+<li>Index test（EchoFocus-CHD）是自動化模型，其 prediction 不影響 Fyler code assignment（回溯性研究）</li>
+<li>Reference standard（Fyler code）的 assignment 不知道 model prediction → 符合盲目要求</li>
+<li>但 reference standard 本身並未經過獨立外部驗證（僅 100 例內部驗證 vs manual annotation）</li>
+</ul>
+<p><strong>Spectrum 分布</strong>：</p>
+<ul>
+<li>Internal cohort：critical CHD 僅 5.74%（相對合理的社區普遍率）</li>
+<li>Referral cohort：critical CHD 29.41%——極度 enriched，因為是被轉介到 BCH 的困難案例</li>
+<li>此 spectrum 差異是 domain shift 的重要成分之一，但作者未將 spectrum bias 與 acquisition-level domain shift 分開量化</li>
+</ul>
+<p><strong>Cut-off 設定方式</strong>：</p>
+<ul>
+<li>Youden index maximization on validation set（independent of test set）→ 方法學正確</li>
+<li>同一 threshold 套用至所有 cohort → 合理做法</li>
+</ul>
+<p><strong>測試結果的可重複性</strong>：</p>
+<ul>
+<li>模型為確定性（deterministic）架構（同樣輸入 → 同樣輸出）</li>
+<li>但 training 使用 random augmentation、random clip sampling → reproducibility 取決於 model weights 是否 frozen（inference 時 clips 仍隨機取樣 16×16 frames）</li>
+<li>文內未報告 test-retest reliability（同一 echo 多次跑模型的結果一致性）</li>
+</ul>
+<hr />
+<h3>B. 診斷準確度核心評估</h3>
+<p><strong>Composite Critical CHD（Primary endpoint）— Internal test cohort</strong></p>
+<table>
+<thead>
+<tr>
+<th>指標</th>
+<th>數值</th>
+<th>95% CI</th>
+<th>臨床解讀</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>AUROC</td>
+<td>0.94</td>
+<td>[文內未列 CI for composite]</td>
+<td>優秀辨別力</td>
+</tr>
+<tr>
+<td>Sensitivity</td>
+<td>~90%</td>
+<td>—</td>
+<td>每 10 位 critical CHD 漏掉 1 位</td>
+</tr>
+<tr>
+<td>Specificity</td>
+<td>~90%</td>
+<td>—</td>
+<td>每 10 位非 critical 有 1 位被誤判</td>
+</tr>
+<tr>
+<td>LR+</td>
+<td>7.50</td>
+<td>—</td>
+<td>大幅增加診斷機率</td>
+</tr>
+<tr>
+<td>LR−</td>
+<td>0.14</td>
+<td>—</td>
+<td>大幅降低診斷機率（rule-out 有力）</td>
+</tr>
+<tr>
+<td>PPV</td>
+<td>33% (32–34%)</td>
+<td>(retrained)</td>
+<td>低——每 3 個 flag 只有 1 個是真 critical</td>
+</tr>
+<tr>
+<td>NPV</td>
+<td>99% (99–99%)</td>
+<td>(retrained)</td>
+<td>極高——negative 幾乎可排除 critical CHD</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Composite Critical CHD — International Referral (retrained model)</strong></p>
+<table>
+<thead>
+<tr>
+<th>指標</th>
+<th>數值</th>
+<th>95% CI</th>
+<th>臨床解讀</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>AUROC</td>
+<td>0.87</td>
+<td>—</td>
+<td>中等至良好辨別力</td>
+</tr>
+<tr>
+<td>Sensitivity</td>
+<td>86–88%</td>
+<td>—</td>
+<td>漏診率 12–14%</td>
+</tr>
+<tr>
+<td>Specificity</td>
+<td>72%</td>
+<td>—</td>
+<td>約 3 成非 critical 被誤報</td>
+</tr>
+<tr>
+<td>LR+</td>
+<td>3.2</td>
+<td>—</td>
+<td>中度改變診斷機率（臨床用處有限）</td>
+</tr>
+<tr>
+<td>LR−</td>
+<td>0.13–0.19</td>
+<td>—</td>
+<td>仍有 rule-out 價值</td>
+</tr>
+<tr>
+<td>PPV</td>
+<td>35% (30–41%)</td>
+<td>—</td>
+<td>低</td>
+</tr>
+<tr>
+<td>NPV</td>
+<td>97% (96–98%)</td>
+<td>—</td>
+<td>高，但在此高盛行率下不如 internal 強</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Pre-test probability 與 post-test probability 的臨床情境分析</strong>：</p>
+<ul>
+<li><strong>低盛行率場景（社區篩檢 ~1%）</strong>：LR+ 7.5 → post-test probability ~7%；LR− 0.14 → post-test probability ~0.1%。Rule-out 有臨床價值（negative result 幾乎排除），但 positive result 仍需專家確認（PPV 仍低）</li>
+<li><strong>中盛行率場景（regional referral ~6%）</strong>：LR+ 7.5 → post-test probability ~32%；LR− 0.14 → post-test probability ~0.9%。與 BCH internal data 吻合</li>
+<li><strong>高盛行率場景（tertiary referral ~30%）</strong>：LR+ 3.2（referral）→ post-test probability ~58%；LR− 0.19 → post-test probability ~8%。在此場景 model 的附加價值有限——positive 不能確診，negative 也不能完全排除（8% post-test miss rate 對 critical CHD 不可接受）</li>
+</ul>
+<p><strong>核心問題</strong>：在模型最想 serve 的場景（低資源國家，pre-test probability 未知但可能偏高）使用的是 referral cohort 數據，而 LR+ 只有 3.2，diagnostic utility 有限。</p>
+<hr />
+<h3>C. AI / ML 診斷模型三階段評估</h3>
+<h4>① 建模（Derivation）</h4>
+<p><strong>任務定義</strong>：明確——20 個 binary classification tasks（12 critical + 8 noncritical CHD），individually 與 as composites</p>
+<p><strong>架構選擇</strong>：</p>
+<ul>
+<li>基於 PanEcho（已發表的 multi-task echo foundation model）+ 新增 study-level transformer encoder</li>
+<li>ConvNeXt-T（ImageNet pretrained）→ temporal transformer → study-level transformer → task-specific FC layers</li>
+<li>PanEcho weights frozen → 只訓練 transformer + FC layers（transfer learning 策略合理）</li>
+</ul>
+<p><strong>Overfitting 防護</strong>：</p>
+<ul>
+<li>Patient-level split（避免 data leakage）✓</li>
+<li>Dropout 0.2 + clip-level dropout 0.5 ✓</li>
+<li>Early stopping（10 consecutive epochs without validation improvement）✓</li>
+<li>Data augmentation（cropping、rotation、flipping）✓</li>
+<li>Hyperparameter search（transformer depth、learning rate、batch size）on validation set ✓</li>
+</ul>
+<p><strong>特徵選擇透明度</strong>：</p>
+<ul>
+<li>無手動特徵選擇——end-to-end deep learning，所有 frames 作為 input</li>
+<li>但 clip sampling 是隨機的（每 video 取 16×16 frames）→ 可能引入 stochasticity</li>
+</ul>
+<p><strong>Reference standard 適切性</strong>：</p>
+<ul>
+<li>Fyler codes 是 BCH 幾十年使用的標準化系統，但僅在 100 例進行了 vs manual annotation 的 agreement 測試</li>
+<li>未在外部機構驗證 Fyler coding 的 inter-rater reliability</li>
+</ul>
+<p><strong>⚠️ Derivation 主要疑慮</strong>：</p>
+<ol>
+<li><strong>Single-institution label system</strong>：Fyler code 是 BCH-specific 系統，其他機構不使用。雖然文中提到 GPT-4o-mini 可從 echo reports 抽取 labels 作為 multi-center 策略，但這僅是 sensitivity analysis，不是正式的 reference standard validation</li>
+<li><strong>Clip sampling randomness</strong>：inference 時每 video 隨機取 16 clips × 16 frames，文內未報告相同 echo 多次 inference 的結果一致性</li>
+</ol>
+<h4>② 驗證（Validation）</h4>
+<p><strong>Internal validation</strong>：</p>
+<ul>
+<li>20% hold-out test set（patient-level random split）✓</li>
+<li>AUROC 0.94 for primary endpoint — excellent</li>
+</ul>
+<p><strong>External validation — critical assessment</strong>：</p>
+<p>⚠️ <strong>Referral cohort 並非真正的 external validation</strong>：</p>
+<ul>
+<li>所有 referral echos 都是「外部機構施作，但送到 BCH 由 BCH 專家判讀」的研究</li>
+<li>Reference standard（Fyler codes）由同一群 BCH 專家指定</li>
+<li>這是「same readers, different images」的設計——測試的是 model 對 non-BCH-acquired images 的泛化性，但 label 一致性不受挑戰</li>
+<li>真正的 external validation 需要：獨立機構的獨立專家以自己的 labeling system 建立 ground truth，再與 model predictions 比較</li>
+<li>作者在 Limitations 有承認 referral cohort 不等同真正 external validation，但 framing 容易誤導</li>
+</ul>
+<p><strong>Referral cohort 的 selection bias</strong>：</p>
+<ul>
+<li>被轉介到 BCH 的是困難案例（critical CHD 29.4% vs internal 5.7%）</li>
+<li>這些 echos 通常是在外部無法確定診斷時才送 BCH — 代表 diagnostically ambiguous cases</li>
+<li>Expert adjudication 也證實 referral cases 的 interrater agreement 較低（κ=0.72 vs 0.82）</li>
+<li>因此 referral cohort performance 下降部分反映的是 case difficulty 而非純粹 domain shift</li>
+</ul>
+<p><strong>Domain shift 量化</strong>：</p>
+<ul>
+<li>UMAP + MMD 確認 distributional shift 存在 ✓</li>
+<li>Retraining 後 international AUROC 改善（0.77 → 0.87）✓</li>
+<li><strong>但</strong>：retrained model 的 training set 包含所有 US referral studies（n=2365），而 test set 只剩 international（n=991）——sample size 小，CI 寬</li>
+</ul>
+<p><strong>⚠️ Validation 重大缺陷</strong>：</p>
+<ol>
+<li><strong>無獨立外部機構驗證</strong>：沒有任何一個非 BCH 的機構以自己的 expertise 對 model predictions 進行 ground truth 比較</li>
+<li><strong>Calibration 近乎失敗</strong>：Referral cohort scaled Brier score 0.045（幾乎沒有超越 baseline 的 predictive value）；retrained 後改善至 0.151 但仍差</li>
+<li><strong>Retraining circular concern</strong>：retrained model 納入 US referral（BCH label），然後在 international referral（也是 BCH label）測試 → label bias 無法被偵測</li>
+</ol>
+<h4>③ 臨床有效性（Clinical Effectiveness）</h4>
+<p><strong>是否有前瞻性試驗？</strong> ❌ 完全沒有</p>
+<p><strong>是否分析 failure modes？</strong> 部分——</p>
+<ul>
+<li>Expert adjudication 100 discrepant cases（50 internal + 50 referral）</li>
+<li>Integrated gradients explainability 揭示 model 在最大 error cases 的行為（如 VSD with PA banding 被誤判為 ToF）</li>
+<li>但 systematic failure mode analysis 不夠深入</li>
+</ul>
+<p><strong>公平性 / Fairness</strong>：</p>
+<ul>
+<li>未報告 model 按 race/ethnicity、sex 或 socioeconomic status 的表現差異</li>
+<li>Age subgroup analysis 做了，但 demographic fairness 未被正式評估</li>
+<li><strong>這是重大遺漏</strong>：一個宣稱要「democratize diagnostics」的模型，必須證明不會對特定人群產生系統性偏差</li>
+</ul>
+<p><strong>可解釋性</strong>：</p>
+<ul>
+<li>Integrated gradients — view-level attention 分析 ✓</li>
+<li>但只做了 2 種病灶（HLHS、ToF）、只在 smallest prediction error cases 上</li>
+<li>未評估 explainability 對臨床醫師 trust 與 decision-making 的實際影響</li>
+</ul>
+<hr />
+<h3>D. 臨床預測模型評估</h3>
+<p><strong>辨別力（Discrimination）</strong>：</p>
+<ul>
+<li>Internal AUROC 0.94（excellent）</li>
+<li>Referral AUROC 0.77（下降顯著）；retrained international 0.87（improvement but still suboptimal for clinical use）</li>
+<li>Individual lesions：AUROC 0.83–1.00 internal；0.70–0.85 referral → 部分罕見病灶（TAPVC AUROC 0.83 internal）辨別力僅中等</li>
+</ul>
+<p><strong>校準度（Calibration）</strong>：</p>
+<ul>
+<li>Internal scaled Brier score 0.405 — moderate（非 excellent）</li>
+<li>Referral scaled Brier score 0.045 — <strong>近乎無預測價值</strong></li>
+<li>Retrained international 0.151 — 仍差</li>
+<li><strong>Critical insight</strong>：一個辨別力中等（AUROC 0.87）但校準差的模型，其 predicted probability 不可靠。在低資源環境中作為 risk stratification（作者宣稱的用途）時，calibration 品質是核心要求——目前不滿足</li>
+</ul>
+<p><strong>外部驗證</strong>：</p>
+<ul>
+<li><strong>無時間驗證（temporal validation）</strong>：training data 2015–2025，未有獨立的不同時間窗測試</li>
+<li><strong>無地理驗證（geographic validation）in the strict sense</strong>：referral cohort 的 ground truth 仍由 BCH 提供</li>
+<li><strong>Retraining 不等於 validation</strong>：納入更多 data 訓練後的 performance improvement 不能等同於在從未見過的獨立機構的 validation</li>
+</ul>
+<hr />
+<h3>E. 紅旗清單</h3>
+<p><strong>設計紅旗</strong>：</p>
+<ol>
+<li><strong>偽外部驗證</strong>：Referral cohort 所有 labels 由 BCH 專家指定，不是真正的 independent external validation。若 BCH 專家在 Fyler coding 存在 systematic tendency（如傾向 over-call 或 under-call 某些病灶），model 與 reference standard 會有 shared bias，AUROC 會被 inflate</li>
+<li><strong>Spectrum bias</strong>：Referral cohort disease prevalence 極高（29.4% critical），嚴重偏離目標部署場景（社區篩檢 ~1%）；PPV/NPV 的 generalizability 存疑</li>
+<li><strong>Reference standard 的 100-example validation 不足</strong>：僅 100 例 internal 驗證，未涵蓋 referral cohort、未評估 inter-reader reliability、未涵蓋 edge cases</li>
+<li><strong>No prospective validation</strong>：整個研究為回溯性設計，model 從未在 real-time clinical workflow 中測試</li>
+</ol>
+<p><strong>統計紅旗</strong>：</p>
+<ol start="5">
+<li><strong>Calibration 失敗被低調處理</strong>：Referral scaled Brier 0.045 意味模型在目標人群幾乎無校準價值，但文中只以一句帶過，重點放在 retrained 後的 improvement</li>
+<li><strong>PPV 33–35% 的臨床意涵未被充分討論</strong>：在 triage 情境中，2/3 的 flagged cases 是 false positive → 可能造成 unnecessary anxiety、over-referral、resource waste</li>
+<li><strong>Bootstrap CI 未完整報告</strong>：Composite AUROC 的 CI 在主要圖表中有，但多數 individual lesion、sensitivity、specificity 的 CI 被放到 supplement</li>
+</ol>
+<p><strong>敘事紅旗</strong>：</p>
+<ol start="8">
+<li><strong>「Largest pediatric echo dataset」narrative</strong>：3.6M videos / 58K echos 確實大，但 &gt;94% 來自單一機構（BCH），數據多樣性有限。「58 countries」聽起來 impressive 但 international 只有 991 例</li>
+<li><strong>「Equitable global care」framing</strong>：Model 未在 sub-Saharan Africa（最大 unmet need 地區）驗證、未在 portable/POCUS 設備驗證、未在非 BCH-trained sonographer 的影像驗證——目前離 global equity 的 promise 很遠</li>
+<li><strong>Open-source narrative</strong>：Code 公開但 data 受 MTA 限制 → 獨立 replication 仍有實際障礙</li>
+</ol>
+<p><strong>外推紅旗</strong>：</p>
+<ol start="11">
+<li><strong>Sonographer 依賴</strong>：BCH-trained sonographer 按標準 protocol 取得的影像品質 ≠ low-resource setting 的影像品質；文中 subgroup analysis 顯示 &lt;25 videos 的 echos performance 下降，而 resource-limited settings 通常影片數更少</li>
+<li><strong>Age distribution mismatch</strong>：Internal median age 7.1y vs referral 2.5y；目標場景（neonatal screening）的 model performance（infant AUROC 0.68–0.73 referral）是最差的</li>
+<li><strong>Missing CHD categories</strong>：未涵蓋的 rheumatic heart disease 正是 LMIC 最常見的後天性心臟病——模型的 specificity 在存在 RHD 的 population 中未被評估</li>
+</ol>
+<hr />
+<h3>F. 最終裁決</h3>
+<p><strong>診斷測試可信度</strong>：<strong>中偏低</strong></p>
+<ul>
+<li>Internal derivation + testing 方法學合格，performance 優秀</li>
+<li>但缺乏真正獨立的外部驗證、calibration 在目標 population 失敗、未進入臨床有效性階段</li>
+</ul>
+<p><strong>在何種臨床情境下此測試有用（pre-test probability 範圍）？</strong></p>
+<ul>
+<li>Pre-test probability 低（1–5%）時，negative result 的 rule-out 價值最高（post-test probability &lt;1%），可作為大規模篩檢中的分流工具——<strong>但僅限於 BCH-like 高品質影像</strong></li>
+<li>Pre-test probability 高（&gt;15%）時，LR+ 3.2 不足以 rule-in；LR− 0.13–0.19 的 rule-out 雖有價值但 miss rate 對 critical CHD 仍太高</li>
+</ul>
+<p><strong>不建議使用的情境</strong>：</p>
+<ul>
+<li>任何臨床決策的 sole basis（包括轉介決定）</li>
+<li>Portable/POCUS 設備的影像</li>
+<li>非 BCH-trained sonographer protocol 取得的 echo</li>
+<li>Sub-Saharan Africa 或 model training 中 underrepresented 的地區</li>
+<li>Neonatal / infant critical CHD triage 作為唯一工具（infant referral AUROC 0.68–0.73）</li>
+</ul>
+<p><strong>若要改觀，最需要的 3 個關鍵改進</strong>：</p>
+<ol>
+<li><strong>多中心前瞻性外部驗證</strong>：至少 3–5 個獨立機構（含 LMIC），由當地專家以當地 reference standard 建立 ground truth，sample size powered for calibration assessment</li>
+<li><strong>Calibration 修正與 threshold optimization for deployment context</strong>：針對不同 pre-test probability 場景提供 calibrated risk estimates，而非 one-size-fits-all threshold</li>
+<li><strong>Clinical effectiveness RCT 或 pragmatic trial</strong>：比較有 vs 無 EchoFocus-CHD 輔助時的 diagnostic timeliness、referral appropriateness、patient outcome（至少 diagnostic yield）</li>
+</ol>
+<p><strong>一句話結論</strong>：</p>
+<blockquote>
+<p>大規模單中心開發的兒童 CHD AI 模型具優秀內部辨別力，但缺乏獨立外部驗證且校準度不足，目前不具備臨床部署條件。</p>
+</blockquote>
+<hr />
+<p>Sources:</p>
+<ul>
+<li><a href="https://www.childrenshospital.org/providers/joshua-mayourian">Joshua Mayourian | Boston Children's Research</a></li>
+<li><a href="http://cavalab.org/members/01_LaCava-William/">William La Cava | Cava Lab</a></li>
+<li><a href="https://research.childrenshospital.org/researchers/tal-geva">Tal Geva | Boston Children's Research</a></li>
+<li><a href="https://www.childrenshospital.org/providers/sunil-ghelani">Sunil Ghelani | Boston Children's Hospital</a></li>
+<li><a href="https://manusights.com/blog/circulation-impact-factor">Circulation Impact Factor 2026: 38.6</a></li>
+<li><a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC12047937/">PanEcho: Complete AI-enabled echocardiography interpretation | PMC</a></li>
+<li><a href="https://onehearthealth.org/about-us/">One Heart Health - About Us</a></li>
+<li><a href="https://www.ahajournals.org/doi/10.1161/CIRCULATIONAHA.125.074325">TRUE-AIM Report Card | Circulation</a></li>
+<li><a href="https://www.ahajournals.org/doi/10.1161/CIRCULATIONAHA.126.079781">EchoFocus-CHD | Circulation</a></li>
+<li>[參考: jama_liu_2019_ug_190001.md — Liu et al. JAMA 2019; ML validation three-stage framework]</li>
+</ul>
+
+<footer class="appraisal-meta">評讀資訊：模型：claude-opus-4-6 (claude)  ·  route：diagnostic  ·  產出時間：2026-06-01 03:55 CST</footer>
+</main>
+</body>
+</html>
