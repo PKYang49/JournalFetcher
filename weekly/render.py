@@ -216,6 +216,10 @@ def publish_appraisals(
             title=title,
             week_label=week_label,
             body_html=body,
+            backend=article.get("appraisal_backend"),
+            model=article.get("appraisal_model"),
+            route=article.get("appraisal_route"),
+            appraised_at=article.get("appraised_at"),
         )
         html_path.write_text(page, encoding="utf-8")
         article["appraisal_url"] = f"appraisals/{week_label}/{name}"
@@ -224,9 +228,44 @@ def publish_appraisals(
     return published
 
 
-def _render_appraisal_page(title: str, week_label: str, body_html: str) -> str:
+def _build_appraisal_footer(
+    backend: str | None,
+    model: str | None,
+    route: str | None,
+    appraised_at: str | None,
+) -> str:
+    """Return a small HTML footer block listing which backend/model/route
+    produced this appraisal. Returns "" when nothing useful is recorded
+    (e.g. appraisals from before the metadata-plumbing was added)."""
+    parts: list[str] = []
+    if model:
+        backend_label = f" ({escape(backend)})" if backend else ""
+        parts.append(f"模型：{escape(model)}{backend_label}")
+    if route:
+        parts.append(f"route：{escape(route)}")
+    if appraised_at:
+        parts.append(f"產出時間：{escape(appraised_at)}")
+    if not parts:
+        return ""
+    return (
+        '<footer class="appraisal-meta">評讀資訊：'
+        + "  ·  ".join(parts)
+        + "</footer>"
+    )
+
+
+def _render_appraisal_page(
+    title: str,
+    week_label: str,
+    body_html: str,
+    backend: str | None = None,
+    model: str | None = None,
+    route: str | None = None,
+    appraised_at: str | None = None,
+) -> str:
     safe_title = escape(title)
     safe_week = escape(week_label)
+    footer_html = _build_appraisal_footer(backend, model, route, appraised_at)
     return f"""<!DOCTYPE html>
 <html lang="zh-Hant">
 <head>
@@ -293,6 +332,13 @@ def _render_appraisal_page(title: str, week_label: str, body_html: str) -> str:
     margin-left: 0;
     padding-left: 14px;
   }}
+  .appraisal-meta {{
+    border-top: 1px solid var(--border);
+    margin-top: 28px;
+    padding-top: 14px;
+    color: var(--muted);
+    font-size: 13px;
+  }}
   @media (prefers-color-scheme: dark) {{
     :root {{
       --bg: #1a1a1a;
@@ -310,6 +356,7 @@ def _render_appraisal_page(title: str, week_label: str, body_html: str) -> str:
 <main>
 <h1>{safe_title}</h1>
 {body_html}
+{footer_html}
 </main>
 </body>
 </html>

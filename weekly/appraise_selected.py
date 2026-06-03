@@ -11,11 +11,21 @@ retained as a safety fallback in case pymupdf4llm fails on a specific PDF.
 Reference lists are stripped after conversion — they're 30-40% of markdown
 on guidelines / SR and contribute nothing to critical appraisal.
 
-Skill routing (v3.5): `classify_article.classify()` pre-determines the route
-(rct/sr/cpg/narrative/diagnostic/…) using Haiku 4.5 (→ codex gpt-5.4 →
-heuristic → default). We then load only the corresponding fragment from
-`skills/literature-appraisal/fragments/` instead of the full 1180-line SKILL.
-The "default" route concatenates all fragments → identical to pre-v3.5.
+Skill routing: `classify_article.classify()` pre-determines the route
+(rct/sr/cpg/narrative/diagnostic/…). It tries the local heuristic (title +
+journal + PubMed pub_type) first, then falls back to claude Haiku 4.5 only
+when the heuristic is ambiguous; if claude is exhausted the route becomes
+"default" (loads the full SKILL = pre-fragmentation behavior). Once a route
+is picked, only its fragment from `skills/literature-appraisal/fragments/`
+is loaded into the system prompt instead of the full SKILL.md.
+
+Prompt structure (v3.6): the cacheable system prompt is composed of
+SKILL.md + route fragment + output-quality style guide + per-route JAMA
+references catalog (`_build_references_section`). Passed to claude via
+`--append-system-prompt-file` so it auto-caches (1h ephemeral). When the
+route has a JAMA mapping, claude is also given `--add-dir <references>`
+and the Read tool to lazily pull individual reference files; codex sees the
+same absolute paths in the prompt and uses its read-only sandbox shell.
 """
 
 from __future__ import annotations
@@ -25,17 +35,64 @@ import re
 import subprocess
 import sys
 import tempfile
+from contextlib import nullcontext
 from pathlib import Path
 
 from modules import claude_exec
 from modules.codex_model import codex_exec_env, get_appraisal_model, resolve_codex_cli
 from weekly import classify_article
+from weekly.figure_extract import extract_figure_pages
 
 ROOT = Path(__file__).resolve().parent.parent
 SKILL_DIR = ROOT / "skills" / "literature-appraisal"
 SKILL_PATH = SKILL_DIR / "SKILL.md"
 FRAGMENTS_DIR = SKILL_DIR / "fragments"
-STYLE_GUIDE_PATH = SKILL_DIR / "references" / "output_quality_style_guide.md"
+REFERENCES_DIR = SKILL_DIR / "references"
+JAMA_REFERENCES_DIR = REFERENCES_DIR / "jamaevidence"
+STYLE_GUIDE_PATH = REFERENCES_DIR / "output_quality_style_guide.md"
+
+# route → list of JAMA Users' Guides filenames that match this route's
+# methodology. Files live under JAMA_REFERENCES_DIR. An empty list means
+# "no specific JAMA guide applies to this route"; the model can still consult
+# the full catalog via `references/index.md` if needed.
+#
+# Maintained alongside the file inventory in references/index.md — if a new
+# JAMA guide is added, update both.
+_REFERENCES_BY_ROUTE: dict[str, tuple[str, ...]] = {
+    "rct": (
+        "jama_271_9_039.md",
+        "jug130002.md",
+        "jug120004_2605_2611.md",
+        "jama_park_2022_ug_210002_1642635648.12041.md",
+        "ssc160002.md",
+    ),
+    "observational": (
+        "jama_agoritsas_2017_ug_160001.md",
+        "hernanrobins_WhatIf_2jan25.md",
+    ),
+    "preclinical": (),
+    "sr": (
+        "jug140001.md",
+        "jug120001_1246_1253.md",
+    ),
+    "nma": (
+        "jug140001.md",
+        "jug120001_1246_1253.md",
+    ),
+    "cpg": (
+        "jama_brignardellopetersen_2021_ug_210001_1643153219.93024.md",
+    ),
+    "consensus": (
+        "jama_brignardellopetersen_2021_ug_210001_1643153219.93024.md",
+    ),
+    "narrative": (),
+    "diagnostic": (
+        "jama_alba_2017_ug_170001.md",
+        "jama_liu_2019_ug_190001.md",
+        "jml90008.md",
+    ),
+    "default": (),
+}
 
 # route → fragment filename(s). Keep in sync with classify_article.VALID_ROUTES
 # and the actual files in skills/literature-appraisal/fragments/. "default"
@@ -80,16 +137,26 @@ class ArticleTooLargeError(RuntimeError):
     """Raised when PDF-converted markdown exceeds ARTICLE_CHAR_BACKSTOP."""
 
 
-APPRAISAL_PROMPT = """請依照下方文獻評讀 Skill，對目標文章做完整批判性評讀。
+# System prompt: stable across all articles sharing the same route in a given
+# week. Goes into claude's cached system prompt via --append-system-prompt-file,
+# so a route's second-and-onward articles pay cache-read price (~10% of full
+# input) for these ~26k tokens of skill + style guide instead of re-ingesting.
+APPRAISAL_SYSTEM_PROMPT = """你是醫學文獻批判性評讀助手。對於使用者送進來的每一篇文章，請依照下方 Skill 與 Output Quality Style Guide 完成完整批判性評讀。
 
-Output Quality Style Guide 只作為補充品質規格；若與 Skill 衝突，以 Skill 為準。
-本文輸入是 PDF converted markdown。
+執行原則：
+- Output Quality Style Guide 只作為補充品質規格；若與 Skill 衝突，以 Skill 為準。
+- 使用者輸入的「文章 metadata」與「PDF converted markdown」是該次評讀的目標文章。
 
 Skill:
 {skill}
 
 Output Quality Style Guide:
 {style_guide}
+"""
+
+# User prompt: variable per-article portion. Lives outside the cache so each
+# article gets fresh input ingestion of its own content.
+APPRAISAL_USER_PROMPT = """請對下方文章執行完整批判性評讀，遵守 system prompt 中的 Skill 與 Style Guide。本文輸入是 PDF converted markdown。
 
 文章 metadata:
 Title: {title}
@@ -102,26 +169,66 @@ PDF converted markdown:
 {article_markdown}
 """
 
+CODEX_REFERENCE_INSTRUCTIONS = """You are running under `codex exec --sandbox read-only`. You have read access
+to any file the user can read on this filesystem. If the appraisal task
+below references JAMA Users' Guides by absolute path, you may consult them
+with shell tools (`cat`, `rg`, `head`) — but only when a specific
+methodological question warrants it, and only excerpt the passages directly
+relevant to the article under review. Use the citation format defined in
+the references catalog later in this prompt.
+"""
 
-def _run_codex_prompt(prompt: str, timeout: int = 1800) -> str | None:
+FIGURE_APPRAISAL_INSTRUCTIONS = """\
+本文另有 {n} 張從同一份 PDF 抽出的圖頁 PNG,位於:
+{figdir}
+
+圖檔:
+{filelist}
+
+請在完成文字評讀時一併讀取並判讀這些圖頁,把「圖傳達但文字沒講清楚的證據」整合進正文。
+尤其留意:Kaplan-Meier 曲線分離時點與 number-at-risk 後期是否銳減、forest plot
+點估計與 CI 是否跨越無效線、CONSORT/flow diagram 人數是否一致、座標軸是否從非零起點
+誇大效果。只根據圖中實際可見內容評讀;看不清楚就明說「圖解析度不足無法判讀」,不要臆測。
+"""
+
+CODEX_FIGURE_INSTRUCTIONS = """The prompt includes figure-page context, and {n}
+PNG image(s) from the article PDF are attached with `codex exec -i`. Inspect
+the attached images and integrate their visible evidence into the appraisal.
+"""
+
+
+def _run_codex_prompt(
+    prompt: str,
+    timeout: int = 1800,
+    has_references: bool = False,
+    image_paths: list[Path] | None = None,
+) -> str | None:
+    if has_references:
+        prompt = CODEX_REFERENCE_INSTRUCTIONS.rstrip() + "\n\n" + prompt
+    if image_paths:
+        prompt = CODEX_FIGURE_INSTRUCTIONS.format(n=len(image_paths)).rstrip() + "\n\n" + prompt
+
     with tempfile.TemporaryDirectory(prefix="codex_weekly_appraise_") as tmp_dir:
         output_path = Path(tmp_dir) / "last_message.md"
+        cmd = [
+            resolve_codex_cli(),
+            "exec",
+            "--model",
+            get_appraisal_model(),
+            "--sandbox",
+            "read-only",
+            "--skip-git-repo-check",
+            "--color",
+            "never",
+            "--ephemeral",
+            "--output-last-message",
+            str(output_path),
+        ]
+        for img in image_paths or []:
+            cmd.extend(["-i", str(img)])
+        cmd.append(prompt)
         result = subprocess.run(
-            [
-                resolve_codex_cli(),
-                "exec",
-                "--model",
-                get_appraisal_model(),
-                "--sandbox",
-                "read-only",
-                "--skip-git-repo-check",
-                "--color",
-                "never",
-                "--ephemeral",
-                "--output-last-message",
-                str(output_path),
-                prompt,
-            ],
+            cmd,
             cwd=tmp_dir,
             env=codex_exec_env(),
             input="",
@@ -138,16 +245,78 @@ def _run_codex_prompt(prompt: str, timeout: int = 1800) -> str | None:
         return result.stdout.strip() or None
 
 
-def _run_appraisal_prompt(prompt: str, timeout: int = 1800) -> str | None:
-    """Try claude -p Opus 4.6 first; fall back to codex GPT 5.5 on rate/credit error."""
-    text, _backend = claude_exec.try_claude_or_fallback(
-        prompt,
-        claude_model=claude_exec.get_claude_appraisal_model(),
-        fallback=lambda: _run_codex_prompt(prompt, timeout=timeout),
+def _appraisal_web_search_enabled() -> bool:
+    """Read JOURNAL_FETCHER_APPRAISAL_WEB_SEARCH; default on.
+
+    Set to "0" / "false" / "no" / "off" to disable. Useful when claude's
+    Agent SDK credit is low (web search adds server-side tool fees) or when
+    you specifically want offline / cache-only behavior.
+    """
+    raw = os.getenv("JOURNAL_FETCHER_APPRAISAL_WEB_SEARCH", "1").strip().lower()
+    return raw not in ("0", "false", "no", "off", "")
+
+
+def _appraisal_figures_enabled() -> bool:
+    """Read JOURNAL_FETCHER_APPRAISAL_FIGURES; default off."""
+    raw = os.getenv("JOURNAL_FETCHER_APPRAISAL_FIGURES", "0").strip().lower()
+    return raw not in ("0", "false", "no", "off", "")
+
+
+def _build_figure_instruction(figdir: Path, files: list[Path]) -> str:
+    filelist = "\n".join(f"- {p.name}" for p in files)
+    return FIGURE_APPRAISAL_INSTRUCTIONS.format(
+        n=len(files),
+        figdir=figdir,
+        filelist=filelist,
+    )
+
+
+def _run_appraisal_prompt(
+    system_prompt: str,
+    user_prompt: str,
+    timeout: int = 1800,
+    read_dirs: list[Path] | None = None,
+    has_references: bool = False,
+    image_paths: list[Path] | None = None,
+) -> tuple[str | None, str, str]:
+    """Try claude -p Opus 4.6 first (with cached system prompt + WebSearch +
+    optional reference Read access); fall back to codex GPT 5.5 on rate /
+    credit error.
+
+    WebSearch lets claude actually fulfil SKILL.md SECTION-0's external-
+    search requirements (author background, journal IF, editorial). When
+    `read_dirs` is set, claude can also Read JAMA Users' Guides on demand.
+
+    Codex has its own built-in web access and read-only sandbox access; this
+    helper only forwards the combined prompt — the codex side of `--add-dir`
+    / explicit reference injection is handled in `_run_codex_prompt`.
+
+    Returns `(text, backend, model)` so the caller can record which backend
+    actually produced the appraisal (claude vs codex fallback) and the model
+    name. `model` reflects the env-resolved appraisal model for that backend
+    at call time; if `text` is None the model still reflects what was tried.
+    """
+    codex_combined = system_prompt.rstrip() + "\n\n---\n\n" + user_prompt
+    enable_web = _appraisal_web_search_enabled()
+
+    claude_model = claude_exec.get_claude_appraisal_model()
+    text, backend = claude_exec.try_claude_or_fallback(
+        user_prompt,
+        claude_model=claude_model,
+        fallback=lambda: _run_codex_prompt(
+            codex_combined,
+            timeout=timeout,
+            has_references=has_references,
+            image_paths=image_paths,
+        ),
         timeout=timeout,
         label="appraise",
+        system_prompt=system_prompt,
+        enable_web_search=enable_web,
+        read_dirs=read_dirs,
     )
-    return text
+    model = claude_model if backend == "claude" else get_appraisal_model()
+    return text, backend, model
 
 
 _REFERENCES_HEADING_RE = re.compile(
@@ -238,6 +407,63 @@ def _convert_pdf_to_markdown(pdf_path: Path) -> str:
     return _strip_references(md)
 
 
+def _build_references_section(route: str) -> str:
+    """Emit a markdown catalog of JAMA reference files for this route.
+
+    The output is used by both backends:
+      - claude: with --add-dir + Read tool, the model can lazily Read the
+        listed files when relevant.
+      - codex: with --sandbox read-only it can `cat`/`rg` the same absolute
+        paths from a shell.
+
+    Absolute paths mean the same string works for both backends without
+    needing per-route path rewriting. Per-machine cache effect: the absolute
+    path differs across machines, so the cache key is machine-local — fine
+    for a single-user setup, would need adjustment for shared CI.
+
+    The references directory is .gitignored (local-only on the maintainer's
+    Mac). On CI / fresh clones the directory is absent; in that case this
+    helper returns "" and the pipeline runs without the references layer —
+    equivalent to pre-v3.6 behavior.
+
+    Returns "" when the route has no specific JAMA guide (preclinical /
+    narrative / default) so callers can skip the system-prompt append.
+    """
+    if not JAMA_REFERENCES_DIR.is_dir():
+        return ""
+    specific_files = _REFERENCES_BY_ROUTE.get(route, ())
+    if not specific_files and route != "default":
+        return ""
+    index_path = REFERENCES_DIR / "index.md"
+    if not index_path.exists():
+        return ""
+
+    lines: list[str] = []
+    lines.append("## 可用權威參考（按需讀取，非必讀）")
+    lines.append("")
+    lines.append(
+        f"以下為當前文章 route=`{route}` 對應的 JAMA Users' Guides / 工具書。"
+        "**只在批判涉及對應方法學議題時取用**，不要一律展開。"
+        "引用時在輸出明確標註「[參考: <filename> 第 X 節]」，並只擷取與本文相關段落。"
+    )
+    lines.append("")
+
+    if specific_files:
+        lines.append("### route 對應重點參考")
+        lines.append("")
+        for filename in specific_files:
+            abs_path = JAMA_REFERENCES_DIR / filename
+            if not abs_path.exists():
+                continue
+            lines.append(f"- `{abs_path}`")
+        lines.append("")
+
+    lines.append("### 完整索引（含其他主題）")
+    lines.append("")
+    lines.append(f"完整檔案清單與用途說明見 `{index_path}`。")
+    return "\n".join(lines)
+
+
 def _load_skill_for_route(route: str) -> str:
     """Compose the skill text: entry SKILL.md + fragment(s) for this route.
 
@@ -309,9 +535,15 @@ def appraise_pdf(article: dict, pdf_path: Path, out_dir: Path) -> Path | None:
 
     skill_text = _load_skill_for_route(route)
 
-    prompt = APPRAISAL_PROMPT.format(
+    system_prompt = APPRAISAL_SYSTEM_PROMPT.format(
         skill=skill_text,
         style_guide=STYLE_GUIDE_PATH.read_text(encoding="utf-8"),
+    )
+    references_block = _build_references_section(route)
+    if references_block:
+        system_prompt = system_prompt.rstrip() + "\n\n" + references_block + "\n"
+
+    user_prompt = APPRAISAL_USER_PROMPT.format(
         title=article.get("title", ""),
         journal=article.get("journal") or article.get("journal_key", ""),
         year=article.get("year", ""),
@@ -319,9 +551,60 @@ def appraise_pdf(article: dict, pdf_path: Path, out_dir: Path) -> Path | None:
         pmid=article.get("original_pmid", article.get("pmid", "")),
         article_markdown=article_markdown,
     )
-    report = _run_appraisal_prompt(prompt)
+
+    temp_context = (
+        tempfile.TemporaryDirectory(prefix="appraisal_figures_")
+        if _appraisal_figures_enabled()
+        else nullcontext(None)
+    )
+    with temp_context as fig_tmp:
+        figure_paths: list[Path] = []
+        figure_dir = Path(fig_tmp) if fig_tmp else None
+        if figure_dir is not None:
+            try:
+                figure_paths = extract_figure_pages(pdf_path, figure_dir)
+            except Exception as e:
+                print(
+                    f"  [warn] figure extraction failed for {pdf_path.name}: {e}",
+                    file=sys.stderr,
+                )
+            if figure_paths:
+                print(f"  [figures] extracted {len(figure_paths)} page(s)")
+                user_prompt = (
+                    user_prompt.rstrip()
+                    + "\n\n"
+                    + _build_figure_instruction(figure_dir, figure_paths)
+                    + "\n"
+                )
+
+        # Give claude Read access to the references dir only when this route
+        # actually has corresponding JAMA guides. Figure pages, when enabled,
+        # are added as a separate temporary Read directory. Codex receives the
+        # same figures via explicit `-i <path>` flags.
+        read_dirs = [REFERENCES_DIR] if references_block else []
+        if figure_dir is not None and figure_paths:
+            read_dirs.append(figure_dir)
+        report, backend, model = _run_appraisal_prompt(
+            system_prompt,
+            user_prompt,
+            read_dirs=read_dirs or None,
+            has_references=bool(references_block),
+            image_paths=figure_paths or None,
+        )
     if not report:
         return None
+
+    # Persist backend/model/timestamp on the article so render can show them
+    # in the per-appraisal HTML footer (and on-demand re-renders read them
+    # straight from selected_articles.json without needing the model again).
+    from datetime import datetime
+    from zoneinfo import ZoneInfo
+
+    article["appraisal_backend"] = backend
+    article["appraisal_model"] = model
+    article["appraised_at"] = datetime.now(ZoneInfo("Asia/Taipei")).strftime(
+        "%Y-%m-%d %H:%M %Z"
+    )
 
     report_path.write_text(report + "\n", encoding="utf-8")
     return report_path

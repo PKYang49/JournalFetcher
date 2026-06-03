@@ -159,3 +159,11 @@
   3.
 - 一句話結論（20–40 字，給一般讀者）
 
+---
+
+## 本 route 可用 JAMA 參考（按需讀取）
+
+- `sr` / `nma` 共用以下 JAMA Users' Guides；絕對路徑見 prompt 末段的 references catalog。
+- 當搜尋策略、納入排除、偏差風險、異質性、間接性、publication bias 或 GRADE 判讀有疑問時才讀取。
+- 系統性回顧總體方法：`jug140001.md`
+- 網絡統合分析 / 間接比較：`jug120001_1246_1253.md`

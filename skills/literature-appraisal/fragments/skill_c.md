@@ -120,3 +120,10 @@
 
 ---
 
+## 本 route 可用 JAMA 參考（按需讀取）
+
+- `diagnostic` route 可用以下 JAMA Users' Guides；絕對路徑見 prompt 末段的 references catalog。
+- 當 reference standard、spectrum bias、驗證設計、pre-test probability、likelihood ratio 或臨床決策門檻有疑問時才讀取。
+- 診斷測試基本評讀：`jama_alba_2017_ug_170001.md`
+- 臨床預測模型 / AI 診斷工具：`jama_liu_2019_ug_190001.md`
+- 多變量診斷模型與臨床使用情境：`jml90008.md`

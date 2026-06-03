@@ -306,3 +306,12 @@ E. 論證結構完整性評估
   ↓
 F. 最終裁決（含 CPG / Consensus 專屬欄位）
 ```
+
+---
+
+## 本 route 可用 JAMA 參考（按需讀取）
+
+- `cpg` / `consensus` 共用指引評讀參考；絕對路徑見 prompt 末段的 references catalog。
+- 當建議強度、證據品質、利益衝突、共識流程、透明度或臨床適用性需要校準時才讀取。
+- 主要參考：`jama_brignardellopetersen_2021_ug_210001_1643153219.93024.md`
+- 對 consensus paper，重點放在共識形成方法與證據到建議的跳躍。

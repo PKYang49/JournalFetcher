@@ -1,13 +1,19 @@
 """Classify an article into one of ~10 routes so appraise_selected can load
 only the relevant SKILL fragment instead of the full 1180-line SKILL.md.
 
-Layered fallback (matches the rest of the pipeline's philosophy: "don't track
-spend locally; let the error signal drive switching"):
+Resolution chain:
 
-  1. claude -p Haiku 4.5 (primary, ~$0.005/article, 30-60ms)
-  2. codex exec gpt-5.4 (limit-hit fallback, via try_claude_or_fallback)
-  3. local heuristic on title + journal (covers ~95% by simple keywords)
-  4. "default" → caller loads the full SKILL.md (= pre-fragmentation behavior)
+  1. local heuristic on title + journal + pub_type — covers ~50% of articles
+     directly because PubMed already tags Meta-Analysis / Systematic Review /
+     Practice Guideline / RCT / Editorial etc. authoritatively.
+  2. claude -p Haiku 4.5 (~$0.005/article, 30-60ms) — only on heuristic miss.
+  3. "default" → caller loads the full SKILL.md (= pre-fragmentation behavior).
+
+There used to be a `codex exec gpt-5.4` middle layer for when claude was
+limit-exhausted, but with heuristic-first the LLM is only invoked on
+genuinely-ambiguous titles (a handful per week). Falling straight to
+"default" is the simpler and safer choice — loading the full SKILL is a
+zero-quality-cost backstop, just slightly more tokens.
 
 The classification is stateless here; the caller persists it on the article
 dict (article["appraisal_route"] / ["appraisal_route_source"]) so subsequent
@@ -18,13 +24,8 @@ from __future__ import annotations
 
 import json
 import re
-import subprocess
-import sys
-import tempfile
-from pathlib import Path
 
 from modules import claude_exec
-from modules.codex_model import codex_exec_env, get_summary_model, resolve_codex_cli
 
 # Routes correspond 1:1 with skill fragment files. Keep in sync with
 # weekly/appraise_selected.py::_FRAGMENT_BY_ROUTE.
@@ -77,49 +78,6 @@ Journal: {journal}
 """
 
 
-def _run_codex_classify(prompt: str, timeout: int = 60) -> str | None:
-    """Fallback path: codex exec with summary model (gpt-5.4)."""
-    with tempfile.TemporaryDirectory(prefix="codex_classify_") as tmp_dir:
-        output_path = Path(tmp_dir) / "last_message.txt"
-        try:
-            result = subprocess.run(
-                [
-                    resolve_codex_cli(),
-                    "exec",
-                    "--model",
-                    get_summary_model(),
-                    "--sandbox",
-                    "read-only",
-                    "--skip-git-repo-check",
-                    "--color",
-                    "never",
-                    "--ephemeral",
-                    "--output-last-message",
-                    str(output_path),
-                    prompt,
-                ],
-                cwd=tmp_dir,
-                env=codex_exec_env(),
-                input="",
-                capture_output=True,
-                text=True,
-                timeout=timeout,
-            )
-        except FileNotFoundError:
-            print("  [warn] codex CLI not found; classifier falling through to heuristic", file=sys.stderr)
-            return None
-        except subprocess.TimeoutExpired:
-            print("  [warn] codex classify timed out; falling through to heuristic", file=sys.stderr)
-            return None
-        if result.returncode != 0:
-            err = (result.stderr or result.stdout).strip()
-            print(f"  [warn] codex classify error: {err[:200]}", file=sys.stderr)
-            return None
-        if output_path.exists():
-            return output_path.read_text().strip()
-        return result.stdout.strip() or None
-
-
 def _parse_route(text: str) -> tuple[str | None, str | None]:
     """Extract (route, confidence) from a model response. Returns (None, None)
     if the response isn't usable. Confidence is "high" / "medium" / "low" or None.
@@ -145,13 +103,73 @@ def _parse_route(text: str) -> tuple[str | None, str | None]:
     return route, confidence
 
 
-def _classify_by_heuristic(title: str, journal: str) -> str | None:
-    """Rule-based fallback. Conservative — return None on no clear match."""
-    t = (title or "").lower()
+# PubMed pub_type label → route. Labels come from modules.pubmed.PUB_TYPE_PRIORITY.
+# Exclude the ambiguous ones ("Review" alone could be narrative or SR-without-MA-tag;
+# "Original" is just Journal Article and tells us nothing about study type) — those
+# fall through to title heuristics or the LLM.
+_PUB_TYPE_ROUTE = {
+    "Meta-Analysis": "sr",
+    "Systematic Review": "sr",
+    "Guideline": "cpg",
+    "RCT": "rct",
+    "Phase IV Trial": "rct",
+    "Phase III Trial": "rct",
+    "Phase II Trial": "rct",
+    "Phase I Trial": "rct",
+    "Trial": "rct",
+    "Editorial": "narrative",
+    "Comment": "narrative",
+    "Letter": "narrative",
+    "News": "narrative",
+    "Observational": "observational",
+    "Case Report": "observational",
+}
 
-    # CPG / scientific statement — checked first because guideline titles
-    # often also contain "consensus" or "expert" keywords
-    if any(k in t for k in (
+
+def _classify_by_heuristic(
+    title: str, journal: str, pub_type: str = ""
+) -> str | None:
+    """Rule-based fallback. Conservative — return None on no clear match.
+
+    Resolution order (most-specific first):
+      1. Title-only NMA detection (PubMed has no NMA pub_type — it tags as Meta-Analysis).
+      2. CPG / scientific-statement title patterns. CPG outranks the pub_type "Review"
+         tag that ACC/AHA / ESC documents sometimes also carry.
+      3. PubMed pub_type for clear-cut tags (Meta-Analysis, Systematic Review,
+         Practice Guideline, RCT, Editorial, Observational, etc.).
+      4. Title heuristics for everything pub_type does not cover (scoping review,
+         narrative review, diagnostic accuracy, observational design names, etc.).
+      5. Last-resort: pub_type "Review" alone → narrative (no SR/CPG signal found
+         above, so it is almost certainly a narrative / educational review).
+    """
+    t = (title or "").lower()
+    pt = (pub_type or "").strip()
+
+    # 1. NMA: PubMed has no separate NMA tag; the title is the only reliable signal.
+    if "network meta-analysis" in t:
+        return "nma"
+
+    # 2. CPG title patterns — must run before pub_type because guideline documents
+    # are sometimes tagged only as "Review" in PubMed, and ACC/AHA / ESC framing
+    # is more authoritative than the generic Review tag.
+    #
+    # Bare "guideline" alone is too greedy ("guideline-recommended LDL",
+    # "guideline-directed therapy", "off-guideline", etc. all appear in
+    # observational / RCT titles). Strip these compounds before matching.
+    t_for_cpg = t
+    for compound in (
+        "guideline-recommended",
+        "guideline-directed",
+        "guideline-based",
+        "guideline-concordant",
+        "guideline-indicated",
+        "guideline-eligible",
+        "guideline-adherent",
+        "off-guideline",
+        "non-guideline",
+    ):
+        t_for_cpg = t_for_cpg.replace(compound, "")
+    if any(k in t_for_cpg for k in (
         "guideline", "guidelines",
         "scientific statement",
         "recommendations for",
@@ -164,6 +182,11 @@ def _classify_by_heuristic(title: str, journal: str) -> str | None:
     )):
         return "cpg"
 
+    # 3. PubMed pub_type — authoritative for the labels in _PUB_TYPE_ROUTE.
+    if pt in _PUB_TYPE_ROUTE:
+        return _PUB_TYPE_ROUTE[pt]
+
+    # 4. Title-based patterns for routes pub_type does not cover.
     # Pure consensus (no formal CPG framing)
     if any(k in t for k in (
         "consensus statement",
@@ -172,9 +195,7 @@ def _classify_by_heuristic(title: str, journal: str) -> str | None:
     )):
         return "consensus"
 
-    # SR / NMA
-    if "network meta-analysis" in t:
-        return "nma"
+    # SR via title (scoping / umbrella reviews lack a dedicated pub_type)
     if any(k in t for k in (
         "meta-analysis", "meta analysis",
         "systematic review",
@@ -183,7 +204,8 @@ def _classify_by_heuristic(title: str, journal: str) -> str | None:
     )):
         return "sr"
 
-    # Narrative / editorial / perspective
+    # Narrative / editorial / perspective (title-side; pub_type already handled
+    # the Editorial/Comment/Letter/News cases above)
     if any(k in t for k in (
         "narrative review",
         "state of the art", "state-of-the-art",
@@ -204,7 +226,7 @@ def _classify_by_heuristic(title: str, journal: str) -> str | None:
     )):
         return "diagnostic"
 
-    # RCT
+    # RCT title patterns (catches trials that PubMed has not yet retagged)
     if any(k in t for k in (
         "randomized trial", "randomised trial",
         "randomized clinical trial", "randomised clinical trial",
@@ -217,7 +239,7 @@ def _classify_by_heuristic(title: str, journal: str) -> str | None:
     )):
         return "rct"
 
-    # Observational
+    # Observational title patterns
     if any(k in t for k in (
         "cohort study", "prospective cohort",
         "case-control", "case control",
@@ -227,19 +249,44 @@ def _classify_by_heuristic(title: str, journal: str) -> str | None:
     )):
         return "observational"
 
+    # 5. pub_type "Review" with no SR/CPG/narrative title cues → narrative.
+    # ("Original" / "" / unknown stay as None so the caller can ask the LLM.)
+    if pt == "Review":
+        return "narrative"
+
     return None
 
 
 def classify(article: dict, markdown_head: str) -> tuple[str, str]:
     """Classify an article. Returns (route, source).
 
-    source ∈ {"haiku", "codex", "heuristic", "fallback"}
+    source ∈ {"heuristic", "haiku", "fallback"}
     route is one of VALID_ROUTES; "default" means no confident classification.
+
+    Heuristic runs first because PubMed's pub_type tagging is authoritative for
+    Meta-Analysis / Systematic Review / Practice Guideline / RCT / Editorial /
+    etc. Only when title + journal + pub_type leave the route ambiguous do we
+    pay for a Haiku call. If Haiku is exhausted, the caller loads the full
+    SKILL (route="default") — a slightly more expensive but zero-quality-risk
+    backstop.
     """
     title = article.get("title", "") or ""
     journal = article.get("journal") or article.get("journal_key", "") or ""
-    head = (markdown_head or "")[:_HEAD_CHARS]
+    pub_type = article.get("pub_type", "") or ""
 
+    heuristic_route = _classify_by_heuristic(title, journal, pub_type)
+    if heuristic_route:
+        return heuristic_route, "heuristic"
+
+    # Heuristic missed — title is genuinely ambiguous (e.g. pub_type=Original
+    # with no design keywords). Ask Haiku, but only if it is still available
+    # in this process. If claude is exhausted we go straight to "default" —
+    # the full SKILL works for everything; we just lose the per-route token
+    # saving on this one article.
+    if claude_exec.claude_exhausted_this_run():
+        return "default", "fallback"
+
+    head = (markdown_head or "")[:_HEAD_CHARS]
     prompt = _CLASSIFY_PROMPT.format(
         head_chars=_HEAD_CHARS,
         title=title,
@@ -247,76 +294,138 @@ def classify(article: dict, markdown_head: str) -> tuple[str, str]:
         head=head,
     )
 
-    text, backend = claude_exec.try_claude_or_fallback(
-        prompt,
-        claude_model=claude_exec.get_claude_summary_model(),
-        fallback=lambda: _run_codex_classify(prompt, timeout=60),
-        timeout=60,
-        label="classify",
-    )
+    try:
+        text, _cost = claude_exec.run_claude_prompt(
+            prompt,
+            model=claude_exec.get_claude_summary_model(),
+            timeout=60,
+        )
+    except claude_exec.ClaudeLimitError:
+        # First exhaustion of the process; flag will already be flipped by
+        # run_claude_prompt's caller — but run_claude_prompt itself does not
+        # flip the flag (try_claude_or_fallback used to). Set it explicitly
+        # so subsequent classify() calls short-circuit to "default".
+        claude_exec._session["claude_exhausted"] = True
+        return "default", "fallback"
+    except claude_exec.ClaudeError:
+        return "default", "fallback"
 
-    if text:
-        route, confidence = _parse_route(text)
-        # Trust high/medium confidence from the LLM. low-confidence → drop to
-        # heuristic so we don't lock in a guess.
-        if route and confidence != "low":
-            source = "haiku" if backend == "claude" else "codex"
-            return route, source
-
-    # Heuristic on title + journal
-    heuristic_route = _classify_by_heuristic(title, journal)
-    if heuristic_route:
-        return heuristic_route, "heuristic"
-
-    # No confident classification — caller loads the full skill
+    route, confidence = _parse_route(text)
+    # Trust high/medium confidence. low-confidence → "default" so we don't
+    # lock in a guess; caller loads the full SKILL.
+    if route and confidence != "low":
+        return route, "haiku"
     return "default", "fallback"
 
 
 if __name__ == "__main__":
     samples = [
+        # Title-driven (no pub_type needed)
         {
             "title": "2026 ACC/AHA Guideline for the Management of Patients With Dyslipidemia",
             "journal": "JACC",
+            "pub_type": "Guideline",
             "expected": "cpg",
-        },
-        {
-            "title": "Effect of Daily Caffeine on Cardiovascular Events: A Randomized Trial",
-            "journal": "NEJM",
-            "expected": "rct",
-        },
-        {
-            "title": "Statins for Primary Prevention: A Systematic Review and Meta-Analysis",
-            "journal": "Lancet",
-            "expected": "sr",
         },
         {
             "title": "Comparative Effectiveness of SGLT2 Inhibitors: A Network Meta-Analysis",
             "journal": "JAMA",
+            "pub_type": "Meta-Analysis",
             "expected": "nma",
-        },
-        {
-            "title": "External Validation of the PREVENT Risk Prediction Model",
-            "journal": "Circulation",
-            "expected": "diagnostic",
-        },
-        {
-            "title": "Pathophysiology of HFpEF: A State-of-the-Art Review",
-            "journal": "EHJ",
-            "expected": "narrative",
         },
         {
             "title": "Cardiac Rehabilitation in Athletes: An International Delphi Consensus",
             "journal": "BJSM",
+            "pub_type": "Review",
             "expected": "consensus",
         },
         {
+            "title": "Pathophysiology of HFpEF: A State-of-the-Art Review",
+            "journal": "EHJ",
+            "pub_type": "Review",
+            "expected": "narrative",
+        },
+        {
+            "title": "External Validation of the PREVENT Risk Prediction Model",
+            "journal": "Circulation",
+            "pub_type": "Original",
+            "expected": "diagnostic",
+        },
+        # pub_type drives classification when title is generic
+        {
+            "title": "Effect of Daily Caffeine on Cardiovascular Events",
+            "journal": "NEJM",
+            "pub_type": "RCT",
+            "expected": "rct",
+        },
+        {
+            "title": "Statins for Primary Prevention",
+            "journal": "Lancet",
+            "pub_type": "Systematic Review",
+            "expected": "sr",
+        },
+        {
+            "title": "Editorial on the SGLT2 Era",
+            "journal": "Circulation",
+            "pub_type": "Editorial",
+            "expected": "narrative",
+        },
+        {
+            "title": "Outcomes in TAVR Recipients: A Multi-Center Cohort",
+            "journal": "JACC",
+            "pub_type": "Observational",
+            "expected": "observational",
+        },
+        # pub_type "Review" alone with no SR/CPG/narrative title cue → narrative
+        {
+            "title": "Inflammation in Atherosclerosis",
+            "journal": "EHJ",
+            "pub_type": "Review",
+            "expected": "narrative",
+        },
+        # Regression: "guideline-recommended" in an observational title must NOT
+        # be misrouted to cpg (W22 Lipoprotein(a) paper).
+        {
+            "title": "Lipoprotein(a) and residual cardiovascular risks in patients "
+                     "who achieve guideline-recommended LDL cholesterol goals",
+            "journal": "EHJ",
+            "pub_type": "Original",
+            "expected": None,
+        },
+        # Scientific statement should still hit cpg even with pub_type "Review"
+        {
+            "title": "Cardiac Intensive Care Unit Appropriate Patient Selection and "
+                     "Triage: A Scientific Statement From the American Heart Association",
+            "journal": "Circulation",
+            "pub_type": "Review",
+            "expected": "cpg",
+        },
+        # No pub_type, generic title → None (LLM)
+        {
             "title": "Some random article with no clear cue",
             "journal": "JAMA",
+            "pub_type": "",
+            "expected": None,
+        },
+        # Original article, no title cue → None (LLM decides; could be RCT/obs)
+        {
+            "title": "Long-term outcomes after percutaneous coronary intervention",
+            "journal": "Circulation",
+            "pub_type": "Original",
             "expected": None,
         },
     ]
-    print("Testing _classify_by_heuristic:")
+    print("Testing _classify_by_heuristic (title + journal + pub_type):")
+    failures = 0
     for s in samples:
-        got = _classify_by_heuristic(s["title"], s["journal"])
-        ok = "OK" if got == s["expected"] else f"FAIL (expected {s['expected']})"
-        print(f"  {ok:>30s}  got={got!r:>15s}  title={s['title'][:60]}")
+        got = _classify_by_heuristic(s["title"], s["journal"], s.get("pub_type", ""))
+        ok = got == s["expected"]
+        if not ok:
+            failures += 1
+        marker = "OK" if ok else f"FAIL (expected {s['expected']!r})"
+        print(
+            f"  {marker:>30s}  got={got!r:>15s}  pt={s.get('pub_type', '')!r:>20s}  "
+            f"title={s['title'][:55]}"
+        )
+    print(f"\n{len(samples) - failures}/{len(samples)} passed")
+    raise SystemExit(1 if failures else 0)

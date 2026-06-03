@@ -3,7 +3,7 @@ name: literature-appraisal
 description: Use this skill when the user asks to critically appraise, interpret, critique, or generate a structured evidence-based review of a medical paper, clinical trial, observational study, diagnostic/prognostic model, systematic review, meta-analysis, guideline, narrative review, expert opinion, or uploaded PDF/article link. The workflow routes articles by study type, produces Traditional Chinese clinical-methodology appraisal, and uses bundled JAMA Users' Guides / causal inference references when needed.
 ---
 
-# SKILL: 醫學文獻批判性評讀 v3.5
+# SKILL: 醫學文獻批判性評讀 v3.6
 
 ## 融合來源
 
@@ -13,13 +13,29 @@ description: Use this skill when the user asks to critically appraise, interpret
 4. Gyawali B. How I Read a Clinical Trial Report? JCO Oncol Pract. 2026
 5. SANRA (Baethge et al. 2019) — narrative review 專屬品質評估工具
 
+## v3.6 變更摘要
+
+- **重新引入 JAMA Users' Guides 參考機制（取代 v3.4「移除 Bundled references」決定，v3.5 沿用該決定）**：weekly pipeline 改為主動讓 backend 取用本機的 `references/jamaevidence/`：
+  - **claude backend**：呼叫 `claude -p` 時帶 `--add-dir <references_dir>` 與 `--tools Read --allowedTools Read`，模型可按需 `Read` 對應方法學的 JAMA Users' Guide markdown。
+  - **codex backend**：`codex exec --sandbox read-only` 本來就能讀任何使用者可讀檔案；在 prompt 前段注入 `CODEX_REFERENCE_INSTRUCTIONS` 明確告知可用 `cat` / `rg` 讀取。
+  - **取用策略**：appraise pipeline 透過 `_REFERENCES_BY_ROUTE` 與 `_build_references_section()` 按 route 列出對應檔案的**絕對路徑**到 system prompt（共用 prompt cache）。模型只在批判實際涉及對應方法學議題時才讀，引用格式為 `[參考: <filename> 第 X 節]`。
+- **Local-only 機制（重要）**：`references/jamaevidence/` 跟 `references/index.md` 都在 `.gitignore`，**只存在維護者本機**。CI / clone 環境下整個目錄不存在 → helper 自動 return ""，pipeline 等價於 pre-v3.6 行為（沒有 references 層）。文字提及檔案是 graceful degradation 而非 hard requirement。
+- **v3.4 的「移除 Bundled references」段（v3.5 沿用）現在已過時**：保留在下方版本歷史以便追溯，但**本版本路由與 SECTION-0 規則不再受其約束**。
+- **`_REFERENCES_BY_ROUTE` 路由對照**（程式碼層；非 prompt 內規範）：
+  - `rct` → 5 份（therapy validity、亞群、非劣性、platform trial、surgical RCT）
+  - `observational` → `jama_agoritsas_…`、`hernanrobins_WhatIf_…`
+  - `sr` / `nma` → `jug140001.md`、`jug120001_…`
+  - `cpg` / `consensus` → `jama_brignardellopetersen_…`
+  - `diagnostic` → `jama_alba_…`、`jama_liu_…`、`jml90008.md`
+  - `preclinical` / `narrative` / `default` → 無對應，不掛載 references 層
+
 ## v3.4 變更摘要
 
 - **A2（CPG / Consensus）新增「明確不適用的標準」段**：仿 A3 narrative review 寫法，明確指出 PROSPERO 註冊、獨立 SR、GRADE 框架、PRISMA flow、雙人篩選等屬於 systematic review 的方法學要求，不應作為 ACC/AHA / ESC 等專科學會型 CPG 的失敗批判；這些是制度差異而非品質缺陷。
 - **A2.1 AGREE-II 改為定性評估**：取消「每面向 1–7 分、總分 __/42」的偽精度評分（正規 AGREE-II 是 23 個 item 換算 domain percentage，6 個面向各打一分不是 AGREE-II）。改為六面向各自定性評定「強 / 中 / 弱」並附理由。
 - **A2.0「建議分布概覽」禁止輸出估計總數**：當 PDF→markdown 轉檔導致部分建議方塊遺失時，必須明確列出遺失章節清單，不得從建議框出現次數或 Table 1 計數推算「總數 N–M 條」這類不可驗證的估計值。
 - **F. 最終裁決 CPG 專屬欄位同步更新**：移除「AGREE-II 總分 __/42」、改為六面向定性；建議清單完整性改報「可見並完整重建 N 條 + 遺失章節 M 個」。
-- **移除「Bundled references」段**：weekly pipeline 將整份 SKILL inline 進 prompt 且 `cwd=tmpdir`，模型實際讀不到 `references/jamaevidence/`；該目錄在本 repo 也未提供。引導模型載入不存在或不可達的檔案會造成假動作。
+- ~~**移除「Bundled references」段**~~（**已被 v3.6 取代**；保留為歷史紀錄）：原本因 `cwd=tmpdir` 與 references 不在 repo 而撤掉相關引導。v3.6 透過 `--add-dir` (claude) 與 `read-only` sandbox (codex) 重新讓本機 references 可被取用；本機沒有時 helper 自動降級不輸出 references 段，等價於 pre-v3.6 行為。
 
 ## v3.3 變更摘要
 
@@ -262,6 +278,16 @@ Pipeline (`weekly/appraise_selected.py`) 會先用 `weekly/classify_article.py` 
 若 fragment 未接上（極少數異常路徑），預設執行 SECTION-0 後即停止並標注「[限制：未載入對應評讀 fragment]」，不要強行用記憶填補。
 
 ---
+
+## Version 3.6
+
+**v3.6 主要變更**（JAMA references 重新可用 + local-only graceful degradation）：
+- 透過 `claude -p --add-dir <references_dir>` + `Read` 工具，讓 claude backend 可按需讀取 `references/jamaevidence/` 內的 JAMA Users' Guides
+- 透過 `codex exec --sandbox read-only` + `CODEX_REFERENCE_INSTRUCTIONS` 注入，讓 codex backend 可 shell-read 同一批檔案
+- 新增 `_REFERENCES_BY_ROUTE` 對照表（rct / observational / sr / nma / cpg / consensus / diagnostic 有對應檔；preclinical / narrative / default 無對應，不掛載 references 層）
+- 新增 `_build_references_section()` helper：把 route 對應檔案以**絕對路徑**列入 cached system prompt；fragment 末段補上「何時讀」的觸發條件
+- **Local-only**：`references/jamaevidence/` 與 `references/index.md` 在 `.gitignore`，本機沒這目錄時 helper 自動 return ""，等價 pre-v3.6 行為（無 references 層）
+- 撤銷 v3.4「移除 Bundled references」決定（v3.5 沿用該決定）；該決定當時是因 cwd=tmpdir 與 repo 不含目錄而做的安全考量，v3.6 用 `--add-dir` 與絕對路徑 + 存在性檢查解決了該疑慮
 
 ## Version 3.5
 

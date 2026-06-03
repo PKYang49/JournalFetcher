@@ -368,3 +368,14 @@ Null value (HR=1 / MD=0)    MCID-benefit (δ)    MCID-harm (δ_harm)
 
 ---
 
+## 本 route 可用 JAMA 參考（按需讀取）
+
+絕對路徑見 prompt 末段的 references catalog。
+
+| route | 何時讀取 | 參考檔案（filename） |
+|---|---|---|
+| rct | 隨機化、盲法、失訪、效益/傷害平衡、實用性或等效/非劣性設計有疑問時 | `jama_271_9_039.md`; `jug130002.md`; `jug120004_2605_2611.md`; `jama_park_2022_ug_210002_1642635648.12041.md`; `ssc160002.md` |
+| observational | 因果推論、混淆、target trial emulation、positivity 或 time-varying confounding 需要細化時 | `jama_agoritsas_2017_ug_160001.md`; `hernanrobins_WhatIf_2jan25.md` |
+| preclinical | 無專屬 JAMA Users' Guide；除非本文把動物/細胞結果外推到臨床因果結論，否則不要讀取 JAMA 參考。 | 無 |
+
+---

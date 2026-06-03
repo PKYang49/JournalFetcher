@@ -1,23 +1,47 @@
-# Journal Fetcher — Codex 交班文件
+# Journal Fetcher — Agent 共用指南
 
-> Codex 接手時讀這份。專案的標準參考是 **`CLAUDE.md`**(隨程式碼一起維護的事實來源);本檔補充交班時的狀態、雙後端架構、最近的設計決策與待辦,讓 Codex 能直接接上。
+> 這份檔案是 Claude Code 與 Codex 共用的專案規範。本機的 `CLAUDE.md` 是指向本檔的 symlink，所以兩個工具讀到的內容完全一致。
 
-## 一句話狀態
+## 專案目標
 
-雙後端 pipeline:`claude -p` 為主、`codex exec` 為 fallback。Codex 在本專案的角色是**後備備案**,當 Claude 訂閱的 Agent SDK 月額度撞限時自動接手。
+- **互動模式**：抓取數本期刊最新文章列表，生成繁體中文摘要，terminal 勾選後下載 PDF（評讀由使用者另行處理）。
+- **週報模式**：每週一自動抓 13 本期刊、生成四句中文摘要，渲染成 HTML 部署到 GitHub Pages，並推播連結到 Discord。每週自選 N 篇進行完整文獻評讀；使用者可在 HTML 上「請求評讀」追加個別文章。
 
-## 必讀順序
+## 執行環境
 
-1. `CLAUDE.md` — 期刊清單、env、檔案結構、流程、constraints,都在裡面且是最新的。
-2. `weekly/run_weekly.py` — 週報 pipeline 入口,理解整條流程從這裡。
-3. `modules/claude_exec.py` — dispatcher 與限額判斷邏輯(本次交班的核心新檔)。
-4. `weekly/appraise_selected.py` — 評讀流程;Codex 是這裡的 fallback backend。
-5. `skills/literature-appraisal/SKILL.md` — 1162 行的文獻評讀 Skill v3.3,評讀路徑會把這份完整塞進 prompt。
+- Python 3.10+。
+- 本機在機構內網：PDF 下載**無需 VPN 或 cookie**，直接用 DOI 打期刊網站即可。
+- 設定全部走 `.env`，**不 hardcode**。
+- **不需要 Anthropic API key、也不需要 OpenAI API key** — 兩個 backend 都靠 CLI 訂閱登入：
+  - claude → macOS keychain OAuth（Agent SDK 月額度）
+  - codex → `~/.codex/config.toml` + `auth.json`
 
-## 雙後端契約(重要)
+## 期刊清單（13 本）
+
+`modules/pubmed.py::JOURNAL_QUERIES`
+
+| Key | PubMed Journal Name |
+|---|---|
+| NEJM | N Engl J Med |
+| Lancet | Lancet |
+| JAMA | JAMA |
+| JACC | J Am Coll Cardiol |
+| EHJ | Eur Heart J |
+| EuroIntervention | EuroIntervention |
+| Circulation | Circulation |
+| BJSM | Br J Sports Med（用 90–100d window，crossref 抓）|
+| MSSE | Med Sci Sports Exerc |
+| SportsMed | Sports Med |
+| JAP | J Appl Physiol (1985) |
+| JAMACardio | JAMA Cardiol |
+| Heart | Heart（用 90–97d window）|
+
+`JOURNAL_DEFAULT_WINDOW` 為部分期刊指定歷史抓取區間（覆寫預設 7d）。
+
+## 雙後端契約（重要）
 
 ```
-summarize_one / appraise_pdf
+summarize_one / appraise_pdf / classify
         │
         ▼
 _run_<role>_prompt (各檔自己的 wrapper)
@@ -32,101 +56,271 @@ modules/claude_exec.py :: try_claude_or_fallback
   Opus 4.6)   GPT 5.5 評讀)
 ```
 
-切換規則:
+**切換規則**：
 
-- **`ClaudeLimitError`**(錯誤訊息含 `rate_limit` / `billing` / `credit` / `monthly limit` / `usage limit` / `quota` / `agent sdk` 等子字串)→ **永久切換**:設 `_session["claude_exhausted"] = True`,本 process 之後所有呼叫直接走 codex。下個 process(下次 run)重新從 claude 嘗試。
-- **其他 `ClaudeError`**(timeout、parse、暫時性 5xx 等)→ **單次 fallback**:本次走 codex,後續仍會繼續試 claude。
-- 設計刻意:使用者明確**不開 usage credits**,所以額度歸零時 claude 端就會回錯,fallback 是唯一信號。**不要在程式內自己算用量**。
+- `ClaudeLimitError`（錯誤訊息含 `rate_limit` / `billing` / `credit` / `monthly limit` / `usage limit` / `quota` / `agent sdk` 等子字串）→ **永久切換**：設 `_session["claude_exhausted"] = True`，本 process 之後所有呼叫直接走 codex。下個 process（下次 run）重新從 claude 嘗試。
+- 其他 `ClaudeError`（timeout、parse、暫時性 5xx）→ **單次 fallback**：本次走 codex，後續仍會繼續試 claude。
+- 設計刻意：使用者明確**不開 usage credits**，所以額度歸零時 claude 端會直接回錯，fallback 是唯一信號。**不要在程式內自己算用量**。
 
 ## 模型對照
 
-| 角色 | Claude(主) | Codex(fallback) | 覆寫 env |
+| 角色 | Claude（主） | Codex（fallback） | 覆寫 env |
 |---|---|---|---|
-| 摘要 / 短評 | `claude-haiku-4-5` | `gpt-5.4` | `JOURNAL_FETCHER_CLAUDE_SUMMARY_MODEL` / `JOURNAL_FETCHER_CODEX_MODEL` |
+| 摘要 / 短評 / classify | `claude-haiku-4-5` | `gpt-5.4` | `JOURNAL_FETCHER_CLAUDE_SUMMARY_MODEL` / `JOURNAL_FETCHER_CODEX_MODEL` |
 | 完整評讀 | `claude-opus-4-6` | `gpt-5.5` | `JOURNAL_FETCHER_CLAUDE_APPRAISAL_MODEL` / `JOURNAL_FETCHER_APPRAISAL_MODEL` |
 
-**為什麼 Opus 4.6 而非 4.7**:每 token 價格一模一樣($5/$25),但 4.7 換了新 tokenizer 同樣中文文字會多吃最多 35% tokens。4.6 比較省。
+**為什麼 Opus 4.6 而非 4.7**：每 token 價格一模一樣（$5 / $25），但 4.7 換了新 tokenizer，同樣中文文字會多吃最多 35% tokens。4.6 比較省。
 
-## 一個一定不能踩的雷:launchd 環境的 claude auth
+## 一個一定不能踩的雷：launchd 環境的 claude auth
 
-`modules/claude_exec.py::claude_env()` 做兩件事:
+`modules/claude_exec.py::claude_env()` 做兩件事：
 
-1. 移除 `ANTHROPIC_API_KEY`(強制走 keychain OAuth = 訂閱計費,不是 raw API)。
-2. **若 `USER` 或 `LOGNAME` 沒設,從目前 uid 反查並補上**。
+1. 移除 `ANTHROPIC_API_KEY`（強制走 keychain OAuth = 訂閱計費，不是 raw API）。
+2. **若 `USER` 或 `LOGNAME` 沒設，從目前 uid 反查並補上**。
 
-launchd 啟動的 process env 幾乎是空的(只有 plist 裡寫的 PATH/HOME)。macOS Keychain 需要 `USER` / `LOGNAME` 識別 owner,否則 `claude -p` 30ms 就回 `"Not logged in · Please run /login"`,整條 claude 路徑全部失效、100% fallback 到 codex。
+launchd 啟動的 process env 幾乎是空的（只有 plist 裡寫的 PATH/HOME）。macOS Keychain 需要 `USER` / `LOGNAME` 識別 owner，否則 `claude -p` 30ms 就回 `"Not logged in · Please run /login"`，整條 claude 路徑全部失效、100% fallback 到 codex。
 
-**修這段時務必保留 `USER`/`LOGNAME` 的 backfill 邏輯**,不然下週一 03:00 launchd 跑出來的就只剩 codex。
+**修這段時務必保留 `USER` / `LOGNAME` 的 backfill 邏輯**，不然下週一 03:00 launchd 跑出來的就只剩 codex。
 
-## 評讀文章大小政策
-
-`weekly/appraise_selected.py` 用 `ARTICLE_CHAR_BACKSTOP`(預設 1,500,000 字元,可用 `JOURNAL_FETCHER_APPRAISAL_CHAR_BACKSTOP` 覆寫)當高位 backstop。
-
-- 一般論文(4-9 萬字元)與完整 ACC/AHA 指引(~1.05M 字元)都**完整送進去**,不截斷。
-- 超過 backstop → raise `ArticleTooLargeError` → `appraisal_status = "too_large"`、不產出評讀(而不是拿病態 PDF/MarkItDown 異常去燒 token)。
-
-Codex 5.5 的 context window 我不確定;如果 fallback 到 codex 跑 1M 字元的指引時 codex 報 context overflow,把 backstop 調小或在 codex 路徑加自己的截斷。
-
-## 週報 HTML 三區版面
-
-`weekly/render.py::render_weekly()` 依 `selection_tags` 拆兩個區:
+## 檔案結構
 
 ```
-本週精選評讀  ← select_articles.py 系統自選(語意 tags)
-已評讀        ← process_appraisal_requests.py(tags 含 "manual_request")
-本週文章摘要  ← 其餘文章,去除上面兩區的 PMID
+JournalFetcher/
+├── AGENTS.md                   # 本文件（兩個 agent 共用）
+├── CLAUDE.md                   # symlink → AGENTS.md（本機，.gitignore）
+├── .env                        # DISCORD_WEBHOOK_URL / FEEDBACK_ENDPOINT_URL 等
+├── fetch_journals.py           # 互動模式入口
+├── modules/
+│   ├── pubmed.py               # PubMed E-utilities API；JOURNAL_QUERIES、pub_type 分類
+│   ├── crossref.py             # BJSM 走 Crossref（PubMed 索引慢）
+│   ├── claude_exec.py          # claude -p dispatcher + codex fallback；prompt cache、WebSearch、Read 工具
+│   ├── codex_model.py          # codex model 解析 + env allowlist
+│   ├── summarize.py            # 三句中文摘要（互動模式）
+│   ├── selector.py             # terminal checkbox 勾選
+│   └── downloader.py           # PDF 下載（DOI redirect、Unpaywall 備援）
+├── weekly/
+│   ├── run_weekly.py           # 週報主程式（launchd 觸發）
+│   ├── summarize_weekly.py     # 四句中文摘要
+│   ├── classify_article.py     # 文章類型分類：heuristic-first → Haiku fallback → default
+│   ├── select_articles.py      # 自選每週 N 篇（讀 interest_feedback.jsonl）
+│   ├── appraise_selected.py    # 完整評讀；prompt cache + WebSearch + JAMA references
+│   ├── process_appraisal_requests.py  # on-demand「請求評讀」worker（每 15 分鐘）
+│   ├── sync_feedback.py        # 從 Apps Script 同步使用者 👍/👎
+│   ├── notify_latest.py        # Discord 推播（與 run_weekly 拆開排程）
+│   ├── render.py               # Jinja2 HTML 渲染
+│   ├── publish.py              # git push + Discord webhook
+│   └── templates/{weekly.html,index.html}
+├── docs/                       # GitHub Pages（Public）；index.html + <YYYY>-Wxx.html
+├── skills/literature-appraisal/
+│   ├── SKILL.md                # v3.6（全域規則 + SECTION-0 + 路由表）
+│   ├── fragments/              # 每 route 一份；appraise_selected 按 route 載入
+│   ├── references/             # 本機 local-only（.gitignore）
+│   │   ├── output_quality_style_guide.md  # 唯一 tracked
+│   │   ├── index.md                       # JAMA 檔案索引
+│   │   └── jamaevidence/                  # 18 份 JAMA Users' Guides + WhatIf 因果推論教科書
+│   └── agents/openai.yaml      # codex agent 設定（如有）
+├── data/
+│   ├── interest_feedback.jsonl # 使用者 👍/👎 歷史
+│   └── appraisal_requests_processed.jsonl  # on-demand 請求 state
+├── output/
+│   ├── pdfs/                   # 互動模式下載
+│   ├── weekly/<week>/          # articles.json / selected_articles.json / pdfs/ / appraisals/
+│   └── logs/                   # launchd 輸出
+└── scripts/
+    ├── com.pokai.weekly-journal.plist  # launchd 設定檔
+    └── feedback_relay.gs               # Apps Script web app
 ```
 
-`appraisal_card` Jinja macro 重用三區的卡片 markup。「已評讀」卡片用 `.appraised-card` 綠色左邊框,且不放 👍/👎(使用者自己請求的,不需要再回饋)。
+## 互動模式 Phase
 
-## launchd 排程(現況)
+### Phase 1 — 抓取文章列表（`modules/pubmed.py`）
+- 工具：PubMed E-utilities（免費、無需 API key）。`&email=` 帶上避免被限速。
+- 端點：`esearch.fcgi`（找 PMID）+ `efetch.fcgi`（取 metadata）。
+- 搜尋條件：`<journal> AND "last 30 days"[dp] AND hasabstract[text]`，按 pub date 排序。
+- 輸出 dict：`{pmid, title, abstract, doi, journal, authors, year, volume, issue, pages, pub_type, pub_types}`。
 
-```text
-Mon 03:00  python3 -m weekly.run_weekly --no-discord --select-top 5
-Mon 08:00  python3 -m weekly.notify_latest               (Discord 推播)
-每 15 分鐘  python3 -m weekly.process_appraisal_requests
+### Phase 2a — 中文摘要（`modules/summarize.py`）
+- 主要：`claude -p --model claude-haiku-4-5 --output-format json`，prompt 透過 stdin，`cwd=tmpdir`。
+- Fallback：`codex exec` GPT 5.4（整個 process 永久切換）。
+- System prompt：三句話（研究設計/族群、主要發現、臨床意義），≤ 120 字。循序執行（避免 session 互搶）。
+
+### Phase 2b — 勾選介面（`modules/selector.py`）
+- `questionary` checkbox，顯示「[期刊] 標題 + 摘要」。
+
+### Phase 3 — PDF 下載（`modules/downloader.py`）
+- 機構內網 IP 授權，直接 GET。
+- 策略：DOI redirect → 期刊頁面找 PDF link；備援 Unpaywall API。
+- 儲存：`output/pdfs/{pmid}_{first_author}_{year}.pdf`。
+- 失敗記到 `output/download_failures.log`，不中斷流程。
+- 已知 quirk：OUP（EHJ）下載要走 `page.request.get` 不是 `page.goto`；NEJM 單 DOI 場景 Playwright + homepage warmup 優於 nodriver。
+
+### Phase 4 — 文獻評讀（互動模式由使用者另行處理；週報模式見下）
+
+## 週報模式（`weekly/`）
+
+### 流程（`weekly/run_weekly.py`）
+
+1. 每本期刊抓最新 10 篇（13 本約 130 篇）。
+2. 對每篇 abstract 用 claude Haiku（fallback codex GPT 5.4）產生**四句**中文摘要：背景、方法、結果、結論。
+3. （可選）`select_articles.select_top_articles` 自選 N 篇，下載 PDF，跑完整評讀。
+4. 渲染 `docs/<YYYY>-W<week>.html`，三區由上而下：
+   - **本週精選評讀**：系統自選並完成評讀
+   - **已評讀**：使用者透過週報「請求評讀」按鈕、由 `process_appraisal_requests` 完成（`selection_tags` 含 `manual_request`）
+   - **本週文章摘要**：其餘文章；render 用 `selected_pmids` 去重
+5. 更新 `docs/index.html`（最新在頂端）。
+6. `git add docs/ && commit && push` → GitHub Pages 部署。
+7. POST Discord webhook（embed 卡片 + 前 3 篇精華 + 完整週報連結）。
+
+`appraisal_card` Jinja macro 重用三區卡片 markup；「已評讀」用 `.appraised-card` 綠色左邊框、不放 👍/👎。
+
+### 評讀流程（`weekly/appraise_selected.py`）
+
+完整管線：
+
+```
+PDF
+  ↓ pymupdf4llm（主）/ markitdown（fallback）
+  ↓ _strip_references（regex 砍掉 References 段，~30% 體積）
+markdown
+  ↓ classify_article.classify()
+route ∈ {rct, observational, preclinical, sr, nma, cpg, consensus, narrative, diagnostic, default}
+  ↓ _load_skill_for_route：SKILL.md + 對應 fragment
+  ↓ _build_references_section(route)：列出該 route 對應的 JAMA Users' Guides 絕對路徑（cached）
+  ↓ APPRAISAL_SYSTEM_PROMPT + APPRAISAL_USER_PROMPT
+  ↓ claude -p Opus 4.6（--append-system-prompt-file + WebSearch + Read on references）
+  ↓   fallback：codex GPT 5.5（CODEX_REFERENCE_INSTRUCTIONS 前置）
+appraisal.md → render.publish_appraisals → docs/<pmid>.html → git push → Discord
 ```
 
-- `--select-top 5`:每週 5 篇 Opus 評讀,先消耗 Claude Agent SDK 額度; hit limit 後本 process 會自動 fallback 到 Codex。
-- launchd 不會主動喚醒 Mac;週日晚上要保持機器醒著(或合蓋接電源 Power Nap)。
-- log:`output/logs/weekly.{out,err}.log` 等。
+關鍵機制：
 
-## 本次交班時未 commit 的檔案
+- **Heuristic-first classify**：`classify_article._classify_by_heuristic` 看 title + journal + `pub_type`，命中（W22 實測 ~53%）就直接回，省掉 LLM 呼叫。命中失敗才打 Haiku；Haiku 也不能用時 fallback 到 `default` 路由（載完整 SKILL）。
+- **Prompt cache**：SKILL + fragment + style guide + references catalog 全進 `--append-system-prompt-file`，claude 自動 1h ephemeral cache。同 route 第二篇以後 ~10% 價（cache_read）。
+- **WebSearch**：appraisal 路徑預設開（`--tools "WebSearch,WebFetch" --allowedTools "..."`），讓模型實際執行 SECTION-0 的「外部搜尋」需求（作者、期刊 IF、editorial）。`JOURNAL_FETCHER_APPRAISAL_WEB_SEARCH=0` 可關。
+- **JAMA references（v3.6）**：
+  - claude path：`--add-dir <references_dir>` + `Read` 工具，模型按需 Read 對應方法學的 JAMA Users' Guides
+  - codex path：`codex exec --sandbox read-only` 本來就能讀檔，prompt 開頭注入 `CODEX_REFERENCE_INSTRUCTIONS` 明確告知可用 `cat` / `rg`
+  - **Local-only**：`references/jamaevidence/` 跟 `references/index.md` 在 `.gitignore`，本機沒這目錄時 helper 自動 return ""（graceful degradation）
+- **Article size backstop**：`ARTICLE_CHAR_BACKSTOP=1,500,000`（可用 `JOURNAL_FETCHER_APPRAISAL_CHAR_BACKSTOP` 覆寫）。一般論文（4–9 萬字元）與完整 ACC/AHA 指引（~1.05M 字元）都完整送進去。超過 → `ArticleTooLargeError` → `appraisal_status = "too_large"`，不產出。
+- **Route cache**：`appraise_pdf` 把 classify 結果寫進 `article["appraisal_route"]`，後續 manual re-run 跳過 LLM。
+
+### Discord 推播
+
+- 用 webhook（不是 bot），單向推播。
+- URL 存在 `.env` 的 `DISCORD_WEBHOOK_URL`。
+- Embed：標題、各期刊文章數、前 3 篇亮點、完整週報連結。
+- 週報生成（Mon 03:00）與 Discord 推播（Mon 08:00）拆開排程，避免 push 完馬上推播但 GitHub Pages 還沒部署。
+
+### 回饋迴路（feedback loop）
+
+- 週報 HTML 按鈕 → POST 到 Google Apps Script web app → 寫進 Google 試算表。
+- `run_weekly` 每次寫 `output/weekly/<week>/articles.json`（PMID 白名單）。
+- `weekly/sync_feedback.py`：選文前 GET 試算表，併進 `data/interest_feedback.jsonl`；用 articles.json + selected_articles.json 過濾垃圾資料；同一 `(week, pmid)` 以最新 `ts` 為準。
+- `weekly/select_articles.py` 的選文 prompt 會讀 `interest_feedback.jsonl` 調整權重。
+- 設定：`.env` 的 `FEEDBACK_ENDPOINT_URL`、`FEEDBACK_SYNC_TOKEN`。
+- Apps Script：`scripts/feedback_relay.gs`。
+- 關閉同步：`python -m weekly.run_weekly --no-sync-feedback`。
+
+### On-demand「請求評讀」（`weekly/process_appraisal_requests.py`）
+
+- launchd 每 15 分鐘跑一次。
+- 從 Apps Script 拉「請求評讀」清單（同 feedback 用試算表，不同欄位）。
+- 對每筆：下載 PDF → `appraise_selected.appraise_pdf` → render 該篇 HTML → 更新該週的 weekly.html「已評讀」區 → Discord 推播。
+- State：`data/appraisal_requests_processed.jsonl`。
+
+## 重要 Constraints
+
+### API
+- PubMed E-utilities URL 帶 `&email=` 避免被限速。
+- 摘要 / 評讀 / 分類**主要走 `claude -p`**，用完自動 fallback `codex exec`。兩邊額度各算各的。
+
+### PDF 下載
+- 機構內網 IP 授權直接 GET。
+- User-Agent 設正常瀏覽器字串避免被擋。
+- timeout 30 秒，失敗重試 2 次。
+
+### 錯誤處理
+- 每個 phase 獨立 try/except，單篇失敗不影響其他篇。
+- 所有錯誤記到 `output/errors.log`。
+- 週報模式：單篇摘要失敗顯示 `[摘要生成失敗]` 並繼續。
+
+### 輸出
+- 互動模式：PDF → `output/pdfs/`。
+- 週報模式：HTML → `docs/`（commit 進 repo），歷史保留。
+
+## 執行方式
+
+```bash
+# 安裝依賴
+pip install -r requirements.txt
+
+# 互動模式
+python3 fetch_journals.py
+python3 fetch_journals.py --journals NEJM JAMA
+
+# 週報模式
+python3 -m weekly.run_weekly                         # 跑當週 + push + Discord
+python3 -m weekly.run_weekly --dry-run               # 只生成 HTML，不 push、不推播
+python3 -m weekly.run_weekly --no-push               # 跳過 git push
+python3 -m weekly.run_weekly --no-discord            # 跳過 Discord
+python3 -m weekly.run_weekly --no-summarize          # 用佔位符（debug HTML layout）
+python3 -m weekly.run_weekly --select-top 5          # 自選 5 篇做完整評讀
+python3 -m weekly.run_weekly --no-sync-feedback      # 跳過 feedback 同步
+python3 -m weekly.run_weekly --journals NEJM Lancet --count 5 --days 14
+
+# On-demand「請求評讀」worker
+python3 -m weekly.process_appraisal_requests        # 預設一次最多 3 筆
+python3 -m weekly.process_appraisal_requests --limit 0 --force   # 全跑、忽略 state
+
+# 單篇手動評讀 CLI（重用 appraise_selected pipeline；一樣 render + push + Discord）
+python3 -m weekly.request_appraisal --doi 10.1016/j.jacc.2026.01.020   # 抓 metadata→下載 PDF→評讀
+python3 -m weekly.request_appraisal --pdf ~/Downloads/paper.pdf --doi 10.1016/...  # 指定本機 PDF，跳過下載
+python3 -m weekly.request_appraisal --pdf ~/Downloads/paper.pdf --title "..."      # 純 PDF 無 DOI
+python3 -m weekly.request_appraisal --doi <DOI> --no-push --no-discord --force     # debug / 重跑
+
+# 分類 heuristic regression（不打 LLM）
+python3 -m weekly.classify_article
+```
+
+## launchd 排程（現況）
 
 ```
-modules/claude_exec.py            (新檔)
-modules/summarize.py              (改用 dispatcher)
-weekly/summarize_weekly.py        (改用 dispatcher)
-weekly/appraise_selected.py       (dispatcher + ArticleTooLargeError backstop)
-weekly/render.py                  (三區版面 split + 摘要區去重)
-weekly/templates/weekly.html      (appraisal_card macro + 已評讀 section + .appraised-card)
-CLAUDE.md                         (五處同步雙後端架構)
-docs/2026-W21.html                (用三區重渲過、本機,未 push)
-README.md                         (本次更新)
-AGENTS.md                         (本次更新)
+Mon 03:00   python3 -m weekly.run_weekly --no-discord --select-top 5
+Mon 08:00   python3 -m weekly.notify_latest                   # Discord 推播
+每 15 分鐘   python3 -m weekly.process_appraisal_requests
 ```
 
-驗證狀態:`py_compile` 全過、imports OK、Claude Haiku 主路徑端到端跑通($0.04,~30 秒/篇)、Opus 4.7 評讀基準量過($1.01/篇、無有效 cache 跨文章複用)。**Opus 4.6 路徑尚未實際跑過評讀**,第一次真實呼叫會發生在 2026-05-25 Mon 03:00。
+- launchd 不會主動喚醒 Mac；週日晚上要保持機器醒著（或合蓋接電源 Power Nap）。
+- log：`output/logs/weekly.{out,err}.log` 等。
+
+## 通知小工具
+
+```bash
+osascript -e 'display notification "完成：[任務名稱]" with title "Journal Fetcher"'
+```
 
 ## 已知的設計決策與其理由
 
-1. **不用 `--bare` 模式**:`--bare` 需要 `ANTHROPIC_API_KEY`(raw API 計費),違反「吃 Claude 訂閱 / Agent SDK 額度」的目的。所以接受 Claude Code base system prompt 的少量 token overhead。
-2. **subprocess `cwd` 設為 `tmpdir`**:避免 claude -p 自動載入專案 CLAUDE.md / skills,造成不必要的 token 開銷。
-3. **Prompt caching 經實測效果有限**(1h ephemeral cache 內重跑同樣 prompt 只有 21% token hit、$0.06 saving)。Cost model 不依賴 caching 折扣。
-4. **`process_appraisal_requests` 固定走 Codex**:on-demand「要求評讀」呼叫 `appraise_selected.appraise_selected_with_codex()`,避免消耗 Claude 額度。週報自選評讀才走 `appraise_selected.appraise_selected()` 的 Claude primary + Codex fallback dispatcher。兩條路徑都共用 PDF markdown backstop。
-5. **訂閱優先於 batch**:使用者有現存 Claude/ChatGPT 訂閱,Batch API 是獨立 raw-API 計費,改用會變成額外付費,所以不採用。
+1. **不用 `--bare` 模式**：`--bare` 需要 `ANTHROPIC_API_KEY`（raw API 計費），違反「吃 Claude 訂閱 / Agent SDK 額度」的目的。接受 Claude Code base system prompt 的少量 token overhead。
+2. **subprocess `cwd` 設為 `tmpdir`**：避免 `claude -p` 自動載入專案 CLAUDE.md / skills，造成不必要的 token 開銷。
+3. **Prompt caching（v3.6 新接）**：用 `--append-system-prompt-file`，1h ephemeral cache。同 route 第二篇以後 cache_read（~10% 價）。`--exclude-dynamic-system-prompt-sections` 用來把 per-machine 段（cwd / git status）移到 user message，讓 cache key 跨次穩定。
+4. **`process_appraisal_requests` 與 `run_weekly` 共用 `appraise_selected`**：兩條路徑共用 PDF markdown backstop 與 references 機制。Claude / Codex 額度由 dispatcher 自動分配，不再手動分流。
+5. **訂閱優先於 batch**：使用者有現存 Claude / ChatGPT 訂閱，Batch API 是獨立 raw-API 計費，不採用。
+6. **Heuristic-first classify**：用 PubMed 的 `pub_type`（Meta-Analysis、Practice Guideline、RCT、Editorial、Observational ...）+ title 規則，命中就跳過 LLM 呼叫。Codex fallback for classify 已移除（heuristic 本身夠強，撞 Haiku limit 就直接走 `default` 路由載完整 SKILL）。
+7. **JAMA references 為 local-only**：`.gitignore` 排除 `references/*`（只破例追蹤 `output_quality_style_guide.md`）。Helper 自動偵測目錄是否存在；不存在就降級。原因：避免把 JAMA 版權內容放進 public repo。
 
 ## 接手後可能會被問到的事
 
-- **如果 launchd 跑完發現 claude path 全部失敗**:先看 `output/logs/weekly.err.log`,確認是不是 `USER`/`LOGNAME` 缺失導致的 `Not logged in`。若是,檢查 `claude_env()` 是否還在補。
-- **要不要把 `--select-top` 降回 5**:成本估算是月 ~$25-30(8 篇 Opus + 80 篇 Haiku);若想塞進 Pro $20 Agent SDK 額度,降到 5 篇是其中一個槓桿。
-- **參考文獻剝除**:討論過但沒做。指引 / SR 的 reference 段佔 markdown 30-50%,方法學評讀用不到。要實作就在 `_convert_pdf_to_markdown` 之後加 regex 剝除(`## References` 之後砍掉)。但 regex 跨期刊格式較脆弱,建議謹慎。
-- **6/15 之後**:`claude -p` 從訂閱用量改成 Agent SDK 月額度($20 Pro / $100 Max 5x);需要一次性 claim。但程式邏輯不變 —— dispatcher 看到限額錯誤就 fallback。
+- **launchd 跑完發現 claude path 全部失敗**：先看 `output/logs/weekly.err.log`，確認是否 `USER` / `LOGNAME` 缺失導致的 `Not logged in`。若是，檢查 `claude_env()` 是否還在補。
+- **要不要把 `--select-top` 降回 3**：成本估算每月 ~$25–30（8 篇 Opus + 130 篇 Haiku）；若想塞進 Pro $20 Agent SDK 額度，降到 3 篇是其中一個槓桿。或反過來提到 8 篇但接受月超額。
+- **參考文獻剝除已實作**：`_strip_references` 用 regex 砍 `^#{1,3} References?$` 之後到結尾。指引 / SR 跨期刊測過 OK；偶爾 PDF→md 把 References 轉成粗體無 heading 會漏砍 — 必要時再加 fallback regex。
+- **6/15 之後**：`claude -p` 從訂閱用量改成 Agent SDK 月額度（$20 Pro / $100 Max 5x）；需要一次性 claim。程式邏輯不變 —— dispatcher 看到限額錯誤就 fallback。
 
 ## 開發習慣
 
-- Python 3.10+,型別註記齊全,避免 flag parameter。
-- 修改後 `python3 -m py_compile` 起手,週報相關改動可用 `python3 -m weekly.run_weekly --dry-run --no-summarize --count 2 --journals NEJM` 跑空殼。
-- Git commit 前確認沒留 debug code。Commit 訊息接 Co-Authored-By 自己。
-- 不開 ANTHROPIC_API_KEY,不開 OpenAI API key —— 雙後端都靠 CLI 訂閱登入。
-- 本機在機構內網,PDF 下載直接 GET DOI,不需要 VPN / cookie。
+- Python 3.10+，型別註記齊全，避免 flag parameter。
+- 修改後 `python3 -m py_compile <file>` 起手；週報相關改動可用 `python3 -m weekly.run_weekly --dry-run --no-summarize --count 2 --journals NEJM` 跑空殼。
+- 分類改動跑 `python3 -m weekly.classify_article` 確認 regression 通過。
+- Git commit 前確認沒留 debug code。Commit 訊息接 Co-Authored-By 自己（claude）/ codex 自己的格式。
+- **不開 `ANTHROPIC_API_KEY`、不開 `OPENAI_API_KEY`** —— 雙後端都靠 CLI 訂閱登入。
+- 本機在機構內網，PDF 下載直接 GET DOI，不需要 VPN / cookie。

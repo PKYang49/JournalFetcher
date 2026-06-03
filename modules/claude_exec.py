@@ -126,11 +126,31 @@ def run_claude_prompt(
     *,
     model: str,
     timeout: int = 1800,
+    system_prompt: str | None = None,
+    enable_web_search: bool = False,
+    read_dirs: list[Path | str] | None = None,
 ) -> tuple[str, float]:
     """Run `claude -p --model <model> --output-format json` once.
 
     The full caller prompt goes through stdin (not ARG_MAX-bounded). cwd is
     a tmpdir so claude does not auto-load the project's CLAUDE.md / skills.
+
+    `system_prompt`: when provided, it is written to a tempfile and appended
+    to claude's default system prompt via `--append-system-prompt-file`.
+    Claude auto-caches the system block (1-hour ephemeral cache), so passing
+    a stable system prompt across articles in the same week turns most calls
+    into cache reads (~10% of full input price) instead of full ingests.
+
+    `enable_web_search`: when True, exposes WebSearch + WebFetch tools and
+    pre-grants permission. Adds a server-side fee per search (~$0.01-0.03)
+    and 30-90s runtime per call, but lets the model actually fulfil SKILL.md
+    SECTION-0 external-search requirements (author background, journal IF,
+    editorial/commentary) instead of hallucinating from memory.
+
+    `read_dirs`: when provided, each directory is passed via --add-dir and
+    the Read tool is added to the allowed set so the model can lazily pull
+    on-disk references (e.g. JAMA Users' Guides) only when relevant. Cwd is
+    still a tmpdir, so Read is constrained to these explicit dirs.
 
     Returns (result_text, total_cost_usd).
     Raises ClaudeLimitError on rate/credit exhaustion; ClaudeError otherwise.
@@ -140,17 +160,53 @@ def run_claude_prompt(
     except FileNotFoundError as e:
         raise ClaudeError(str(e)) from e
 
+    sys_file: tempfile._TemporaryFileWrapper | None = None
+    cmd = [
+        cli,
+        "-p",
+        "請依照輸入內容完成任務，只輸出指定的最終結果。",
+        "--model",
+        model,
+        "--output-format",
+        "json",
+        # Strip per-machine sections (cwd, env, git status, memory paths) from
+        # the system prompt so the cache key is identical across processes /
+        # machines / weeks. Required for the cache to actually hit on reruns.
+        "--exclude-dynamic-system-prompt-sections",
+    ]
+    if system_prompt:
+        sys_file = tempfile.NamedTemporaryFile(
+            mode="w",
+            encoding="utf-8",
+            suffix=".md",
+            prefix="claude_sys_",
+            delete=False,
+        )
+        try:
+            sys_file.write(system_prompt)
+            sys_file.flush()
+        finally:
+            sys_file.close()
+        cmd.extend(["--append-system-prompt-file", sys_file.name])
+
+    # Compose the visible tool list from feature flags. --tools restricts the
+    # visible set (no Bash/Edit leakage); --allowedTools pre-grants permission
+    # so -p mode does not stall on a permission prompt. Both are required:
+    # --tools alone still hits permission gating in non-interactive runs.
+    tool_names: list[str] = []
+    if enable_web_search:
+        tool_names.extend(["WebSearch", "WebFetch"])
+    if read_dirs:
+        for d in read_dirs:
+            cmd.extend(["--add-dir", str(d)])
+        tool_names.append("Read")
+    if tool_names:
+        joined = ",".join(tool_names)
+        cmd.extend(["--tools", joined, "--allowedTools", joined])
+
     try:
         result = subprocess.run(
-            [
-                cli,
-                "-p",
-                "請依照輸入內容完成任務，只輸出指定的最終結果。",
-                "--model",
-                model,
-                "--output-format",
-                "json",
-            ],
+            cmd,
             input=prompt,
             cwd=tempfile.gettempdir(),
             env=claude_env(),
@@ -160,6 +216,12 @@ def run_claude_prompt(
         )
     except subprocess.TimeoutExpired as e:
         raise ClaudeError(f"claude -p timed out after {timeout}s") from e
+    finally:
+        if sys_file is not None:
+            try:
+                os.unlink(sys_file.name)
+            except OSError:
+                pass
 
     if result.returncode != 0:
         msg = (result.stderr or result.stdout or "").strip()[:400]
@@ -194,6 +256,9 @@ def try_claude_or_fallback(
     fallback: Callable[[], str | None],
     timeout: int = 1800,
     label: str = "",
+    system_prompt: str | None = None,
+    enable_web_search: bool = False,
+    read_dirs: list[Path | str] | None = None,
 ) -> tuple[str | None, str]:
     """Try claude first; on error fall back to `fallback()`.
 
@@ -202,12 +267,23 @@ def try_claude_or_fallback(
     - On other ClaudeError (timeout, parse, transient): falls back this
       one call only, claude will be tried again on the next call.
 
+    `system_prompt` is forwarded to `run_claude_prompt` for prompt caching;
+    `enable_web_search` exposes WebSearch+WebFetch; `read_dirs` exposes the
+    Read tool over those dirs. The codex fallback receives a single combined
+    prompt — the caller is responsible for joining system + user content and
+    wiring any codex-side file/web access on its own.
+
     Returns (text, backend) where backend is "claude" or "codex".
     """
     if not _session["claude_exhausted"]:
         try:
             text, _cost = run_claude_prompt(
-                prompt, model=claude_model, timeout=timeout
+                prompt,
+                model=claude_model,
+                timeout=timeout,
+                system_prompt=system_prompt,
+                enable_web_search=enable_web_search,
+                read_dirs=read_dirs,
             )
             return text, "claude"
         except ClaudeLimitError as e:

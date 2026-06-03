@@ -196,6 +196,35 @@ def fetch_articles(pmids: list[str]) -> list[dict]:
     return _parse_articles(resp.text)
 
 
+def fetch_article_by_doi(doi: str) -> dict | None:
+    """Resolve a DOI to a single PubMed article metadata dict.
+
+    Returns None when PubMed has no record for the DOI (e.g. an ahead-of-print
+    that is not yet indexed). The caller can then fall back to Crossref or to a
+    minimal hand-built dict.
+    """
+    doi = (doi or "").strip()
+    if not doi:
+        return None
+    params = {
+        "db": "pubmed",
+        "term": f"{doi}[AID]",
+        "retmode": "json",
+        "email": EMAIL,
+        "tool": TOOL,
+    }
+    try:
+        resp = requests.get(f"{BASE_URL}/esearch.fcgi", params=params, timeout=30)
+        resp.raise_for_status()
+        idlist = resp.json().get("esearchresult", {}).get("idlist", [])
+    except (requests.RequestException, ValueError):
+        return None
+    if not idlist:
+        return None
+    articles = fetch_articles(idlist[:1])
+    return articles[0] if articles else None
+
+
 def _parse_articles(xml_text: str) -> list[dict]:
     root = ET.fromstring(xml_text)
     articles = []
