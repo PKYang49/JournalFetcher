@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Comparative Cardiovascular Effectiveness of Glucagon-Like Peptide 1 Receptor Agonists and Sodium-Glucose Cotransporter 2 Inhibitors in Diabetes Mellitus.</title>
+<style>
+  :root {
+    --bg: #fafafa;
+    --card: #ffffff;
+    --text: #1a1a1a;
+    --muted: #6b6b6b;
+    --border: #e5e5e5;
+    --accent: #0b5fff;
+  }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang TC",
+      "Microsoft JhengHei", sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    margin: 0;
+    padding: 24px 16px 64px;
+    line-height: 1.72;
+  }
+  main {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    margin: 0 auto;
+    max-width: 840px;
+    padding: 22px 26px;
+  }
+  nav {
+    margin: 0 auto 14px;
+    max-width: 840px;
+    color: var(--muted);
+    font-size: 14px;
+  }
+  a { color: var(--accent); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  h1, h2, h3, h4 { line-height: 1.35; }
+  h1 { font-size: 26px; margin-top: 0; }
+  h2 { border-top: 1px solid var(--border); padding-top: 18px; }
+  code {
+    background: rgba(127, 127, 127, 0.12);
+    border-radius: 4px;
+    padding: 1px 4px;
+  }
+  table {
+    border-collapse: collapse;
+    display: block;
+    overflow-x: auto;
+    width: 100%;
+  }
+  th, td {
+    border: 1px solid var(--border);
+    padding: 6px 8px;
+    text-align: left;
+    vertical-align: top;
+  }
+  blockquote {
+    border-left: 3px solid var(--accent);
+    color: var(--muted);
+    margin-left: 0;
+    padding-left: 14px;
+  }
+  .appraisal-meta {
+    border-top: 1px solid var(--border);
+    margin-top: 28px;
+    padding-top: 14px;
+    color: var(--muted);
+    font-size: 13px;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #1a1a1a;
+      --card: #242424;
+      --text: #e8e8e8;
+      --muted: #999;
+      --border: #333;
+      --accent: #6ea8ff;
+    }
+  }
+</style>
+</head>
+<body>
+<nav><a href="../../2026-W24.html">← 回到 2026-W24 週報</a></nav>
+<main>
+<h1>Comparative Cardiovascular Effectiveness of Glucagon-Like Peptide 1 Receptor Agonists and Sodium-Glucose Cotransporter 2 Inhibitors in Diabetes Mellitus.</h1>
+<h2>SECTION-0：文章全面描述</h2>
+<h3>0. 文章身份證</h3>
+<ul>
+<li><strong>標題</strong>：Comparative Cardiovascular Effectiveness of GLP-1 Receptor Agonists and SGLT2 Inhibitors in Diabetes Mellitus</li>
+<li><strong>期刊 / 年份 / DOI</strong>：Journal of the American College of Cardiology, 2026;87:2963–2977. DOI: 10.1016/j.jacc.2026.02.5123 [文內；外部: JACC / PubMed]</li>
+<li><strong>PMID</strong>：41984016 [文內 metadata；外部: PubMed]</li>
+<li><strong>文章類型</strong>：多國、多資料庫、回溯性、new-user active-comparator cohort comparative effectiveness study。路由為 <strong>觀察性研究</strong>。</li>
+<li><strong>核心問題</strong>：在已使用 metformin 的 T2DM 成人中，第二線起始個別 GLP-1RA 與 SGLT2I 藥物時，心血管事件風險是否不同？</li>
+</ul>
+<h3>1. 作者團隊評論</h3>
+<ul>
+<li><strong>通訊作者</strong>：Marc A. Suchard，UCLA Fielding School of Public Health / David Geffen School of Medicine biostatistics、biomathematics、human genetics 相關單位 [文內；外部搜尋確認其 UCLA / OHDSI 背景]。</li>
+<li><strong>團隊構成</strong>：本文是典型 OHDSI / LEGEND-T2DM 團隊：UCLA、Columbia biomedical informatics、Yale cardiovascular data science、Hong Kong / UCL pharmacoepidemiology、VA、IQVIA、Janssen 等跨國資料網絡 [文內]。</li>
+<li><strong>領域地位</strong>：OHDSI 官網描述其為多方、跨領域、國際觀察性健康資料協作網絡，核心是大規模 observational health database analytics 與 open-source 工具 [外部: OHDSI]。這個團隊是 real-world evidence / OMOP / empirical calibration 的核心社群之一。</li>
+<li><strong>過往代表性研究</strong>：
+<ul>
+<li>Khera et al. 2024 JACC：LEGEND-T2DM class-level second-line antihyperglycemic comparative effectiveness [外部: JACC 2024 / PubMed]。</li>
+<li>Khera et al. 2022 BMJ Open protocol：LEGEND-T2DM protocol [文內 ref 39]。</li>
+<li>Hripcsak et al. 2015：OHDSI infrastructure paper [文內 ref 38；外部 OHDSI]。</li>
+<li>Schuemie / Suchard 系列 empirical calibration、negative controls、large-scale observational diagnostics [文內 refs 44–50]。</li>
+</ul>
+</li>
+<li><strong>作者立場史</strong>：團隊長期主張以標準化多資料庫、negative controls、empirical calibration 提升觀察性研究可信度。本篇結論與其 LEGEND framework 的方法學立場一致：大規模、預先指定、跨資料庫一致性可提高 RWE 可用性。這不是直接的商業立場，但有「方法學平台證成」的 prior commitment bias 風險。</li>
+<li><strong>COI / funding</strong>：NIH 多項 grant 與 VA agreement；funder 宣稱未參與設計、撰寫與投稿 [文內]。但作者中有 Janssen 員工、IQVIA 員工 / 股東，Khera 與 Novo Nordisk 等有 scope 外支持，Suchard / Hripcsak 有 Janssen 與 FDA / NIH 合約或 grants [文內]。此 COI 不一定指向某一藥物，但會強化對 RWE 平台、商業資料庫與藥物比較議題的利益敏感性。</li>
+</ul>
+<h3>2. 文獻 Metadata 整理</h3>
+<ul>
+<li><strong>Received / revised / accepted</strong>：2025-08-27 received；2026-02-26 revised；2026-02-27 accepted [文內]。</li>
+<li><strong>審查天數</strong>：received 到 accepted 約 <strong>184 天</strong>；accepted 到 online publication 2026-04-15 約 <strong>47 天</strong> [文內日期自行計算；外部 JACC 頁面顯示 online date]。</li>
+<li><strong>期刊平均審查天數</strong>：[無法取得]。JACC 有 2024 editorial 提到改善 initial submission review / door-to-decision 流程，但未找到可引用的平均接受天數。</li>
+<li><strong>期刊屬性</strong>：JACC 為心血管旗艦期刊；JACC 官方 impact-factor 頁面顯示 2024 Clarivate JIF 為 <strong>22.3</strong> [外部: JACC impact-factor page]。Scimago / journal metrics 搜尋結果列為 cardiovascular medicine Q1 [外部: Scimago / metrics pages]。</li>
+<li><strong>Open access</strong>：CC BY-NC-ND open access [文內]。</li>
+<li><strong>邀稿 vs 投稿</strong>：未見 invited article 標示 [文內未提供]。</li>
+</ul>
+<h3>3. 研究背景</h3>
+<p>作者的出發點是：GLP-1RA 與 SGLT2I 在 T2DM 已有 RCT 證實心血管保護效果，且現行 guideline 對高 CV risk T2DM 族群推薦這兩類藥物；但個別藥物間 head-to-head RCT 稀少，real-world 研究多停留在 class-level，個別 agent 的比較證據不足且既有觀察性結果不一致 [Introduction]。</p>
+<p><strong>Research question [推論]</strong>：在 metformin 後起始第二線治療的 T2DM 成人中，個別 GLP-1RA 與 SGLT2I 藥物在 3-point MACE、4-point MACE 及其組成事件上的比較心血管效果是否有臨床上重要差異？</p>
+<h3>4. 研究設計與方法</h3>
+<ul>
+<li><strong>P</strong>：成人 T2DM、至少 1 年資料觀察期、1 年內 T2DM 診斷、起始第二線治療前至少 3 個月 metformin 使用、無 comparator second-line drug 暴露、起始前 insulin 暴露不超過 30 天 [Methods]。</li>
+<li><strong>I / C</strong>：6 種 GLP-1RA 與 4 種 SGLT2I 的任兩個別藥物 pairwise comparison；實際可分析主要集中在 dulaglutide、exenatide、semaglutide、canagliflozin、dapagliflozin、empagliflozin、ertugliflozin，較少用藥物部分比較未產生估計 [Methods; Results]。</li>
+<li><strong>O</strong>：
+<ul>
+<li>主要：3-point MACE = AMI、stroke、sudden cardiac death；4-point MACE = 3-point MACE + HHF / ER visit with HF [Methods]。</li>
+<li>次要：各組成事件 [Methods]。</li>
+</ul>
+</li>
+<li><strong>資料源</strong>：10 個 claims / EHR databases，包含 U.S. claims、U.S. EHR、VA、GermanyDA、IMRD 等，皆 mapping 到 OMOP CDM [Methods]。</li>
+<li><strong>分析</strong>：large-scale PS，L1-regularized logistic regression，常 &gt;10,000 baseline characteristics；PS stratification 與 variable-ratio matching；Cox model；negative control empirical calibration；study diagnostics 包含 empirical equipoise、covariate balance、MDRR、EASE；通過 diagnostics 的資料庫才進 random-effects meta-analysis [Methods]。</li>
+<li><strong>時間風險定義</strong>：主要為 on-treatment / per-protocol TAR 到停藥；ITT TAR 作次要設計 [Methods]。</li>
+<li><strong>主要變項定義限制</strong>：outcome OMOP concept IDs 在 supplement / protocol；markdown 未完整保留 supplement，因此無法直接審查 outcome algorithm 的陽性預測值、coding validity 或各資料庫一致性。</li>
+</ul>
+<h3>5. 研究結果重點整理</h3>
+<table>
+<thead>
+<tr>
+<th>結果</th>
+<th style="text-align:right">文內數字</th>
+<th>評讀重點</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>總樣本</td>
+<td style="text-align:right">1,245,211 second-line new users</td>
+<td>大樣本但不是隨機化；精確度不等於無偏</td>
+</tr>
+<tr>
+<td>CVD subgroup</td>
+<td style="text-align:right">316,242</td>
+<td>約 25.4%；CI 較寬</td>
+</tr>
+<tr>
+<td>常用藥物</td>
+<td style="text-align:right">empagliflozin 393,499；semaglutide 235,585；dapagliflozin 208,666；dulaglutide 207,348</td>
+<td>結論主要適用於這些常用藥</td>
+</tr>
+<tr>
+<td>semaglutide vs empagliflozin 3-point MACE</td>
+<td style="text-align:right">HR 1.05, 95% CI 0.79–1.39</td>
+<td>CI 仍涵蓋可能有意義差異；不能稱等效</td>
+</tr>
+<tr>
+<td>semaglutide vs empagliflozin 4-point MACE</td>
+<td style="text-align:right">HR 0.95, 95% CI 0.81–1.12</td>
+<td>較接近「無大差異」，但仍非正式 equivalence</td>
+</tr>
+<tr>
+<td>semaglutide vs dapagliflozin HHF</td>
+<td style="text-align:right">HR 0.79, 95% CI 0.65–0.94；CVD subgroup HR 0.70, 95% CI 0.54–0.90</td>
+<td>與 SGLT2I HF RCT 證據方向衝突，作者也稱 exploratory</td>
+</tr>
+<tr>
+<td>semaglutide vs dapagliflozin 4-point MACE</td>
+<td style="text-align:right">HR 0.83, 95% CI 0.71–0.96；CVD subgroup HR 0.72, 95% CI 0.57–0.91</td>
+<td>可能被 HHF coding / residual confounding 驅動</td>
+</tr>
+</tbody>
+</table>
+<p>[限制：Figure 2–5 圖像內容多數被 markdown 轉成破碎文字；此處只依正文、caption 與保留數字評讀。]</p>
+<h3>6. 作者討論與評論重點</h3>
+<p>作者主張：個別 GLP-1RA 與 SGLT2I 在心血管效果上大致相近，支持 guideline 對個別藥物選擇保持彈性；臨床選擇應更多依 safety、tolerability、adherence、cost、availability、patient preference [Discussion / Conclusions]。</p>
+<p>作者限制承認相當完整：資料到 2022，未納入 tirzepatide；無法評估 combination / sequential therapy；adherence / persistence 差異可能造成偏差；secular trend、guideline shifts、drug shortages 未完全捕捉；Cox 未處理 competing risks 或 nonproportional hazards；低使用量藥物與小資料庫估計受限；部分資料庫可能 patient overlap；HHF signal 可能 outcome misclassification [Limitations]。</p>
+<p><strong>評估</strong>：作者對 HHF 反常訊號的謹慎是合理的。但把多數比較「95% CI 包含 1」詮釋為「similar cardiovascular benefits」仍偏強；更精確應說：在通過診斷、且主要常用藥物比較中，未觀察到穩定、可校準後仍明確的差異，但部分 CI 仍容許臨床上有意義差異。</p>
+<h3>7. 外部專業意見</h3>
+<ul>
+<li>JACC 同期 issue 有 editorial comment 頁面，文章頁亦標示 “SEE PAGE 2978”；搜尋結果顯示 ScienceDirect 有 2026 JACC 87(21):2978–2980 editorial/commentary 相關頁面 [外部: JACC TOC / ScienceDirect search result]。</li>
+<li>但目前可開放擷取內容不足，無法可靠摘要 editorial 具體觀點。因此標註為：<strong>[部分取得] 有同期 editorial/comment 頁面線索，但全文重點無法取得，不做內容性轉述。</strong></li>
+</ul>
+<h3>8. 臨床建議</h3>
+<ul>
+<li><strong>可採用情境</strong>：T2DM、已使用 metformin、需選擇第二線 GLP-1RA 或 SGLT2I、且主要考量 3-point MACE / 4-point MACE 的一般族群；尤其是 semaglutide、dulaglutide、dapagliflozin、empagliflozin 這幾個資料量足夠者。</li>
+<li><strong>不建議直接套用情境</strong>：既有 HF 或 CKD 需要 organ-protective therapy 的患者、需判斷 HHF / renal outcome 優先順序者、使用 tirzepatide 或合併 GLP-1RA + SGLT2I 者、非 metformin 後第二線起始者、治療可近性 / 停藥率與保險限制高度不同的 setting。</li>
+<li><strong>給臨床醫師的實務建議</strong>：
+<ol>
+<li>不要用本文推翻 SGLT2I 在 HF / CKD 的既有 RCT 與 guideline 地位。</li>
+<li>若目標是整體 MACE 風險降低，本文支持「個別藥物間沒有明確 superiority」的實務彈性。</li>
+<li>藥物選擇仍應回到 HF / CKD phenotype、安全性、副作用、體重目標、可近性與病人偏好。</li>
+</ol>
+</li>
+<li><strong>研究證據強度</strong>：<strong>中等</strong>。優點是樣本大、new-user active-comparator、多資料庫、預先 protocol、negative controls 與 diagnostics；弱點是觀察性研究仍受未測混淆、time-varying adherence / switching、coding outcome validity 與 secular trend 影響。</li>
+</ul>
+<hr />
+<h2>A. 補充技術細節</h2>
+<ul>
+<li><strong>樣本數 / power</strong>：未見傳統單一 primary hypothesis power calculation；以 MDRR 作為可偵測風險比診斷。作者宣稱常用藥物 meta-analytically 足以偵測 HR 0.8–1.2 範圍內 similarity；但這是 study diagnostic，不等同正式 equivalence / non-inferiority 設計。</li>
+<li><strong>隨機化 / 分派隱藏</strong>：不適用；觀察性 new-user design。</li>
+<li><strong>PS 細節</strong>：L1-regularized logistic regression，10-fold CV 選 hyperparameter；PS stratification 5 strata；variable-ratio matching caliper 0.2，最多 100 matched units / target subject [Methods]。</li>
+<li><strong>缺失資料</strong>：baseline covariates 取自 claims / EHR coding；lab measurements 有納入但各資料庫完整性未在 markdown 主文完整呈現。</li>
+<li><strong>Cox proportional hazards</strong>：作者承認未顯式處理 nonproportional hazards 與 competing risks [Limitations]。</li>
+<li><strong>多重比較</strong>：45 pairwise × 6 outcomes × 10 databases × 2 TAR × 2 PS approaches = 10,800 HR estimates；作者不計個別 p 值，使用 calibration 與 diagnostics，但 multiplicity 與 exploratory interpretation 仍是核心問題。</li>
+</ul>
+<h3>觀察性研究混淆控制</h3>
+<table>
+<thead>
+<tr>
+<th>方法</th>
+<th>本文做法</th>
+<th>評估</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>New-user active comparator</td>
+<td>有</td>
+<td>強設計；降低 prevalent user bias 與 confounding by indication，但不能消除</td>
+</tr>
+<tr>
+<td>高維 PS</td>
+<td>有，&gt;10,000 baseline characteristics</td>
+<td>對已測量 baseline confounders 有幫助</td>
+</tr>
+<tr>
+<td>Balance diagnostics</td>
+<td>max SMD threshold ≤0.15，例 semaglutide vs empagliflozin CCAE after PS 多數接近 0</td>
+<td>優點明確</td>
+</tr>
+<tr>
+<td>Negative controls / empirical calibration</td>
+<td>100 negative control outcomes</td>
+<td>可校正系統偏差訊號，但仰賴 negative controls 合理性</td>
+</tr>
+<tr>
+<td>Time-varying confounding</td>
+<td>主要未完整處理；部分 sensitivity 用 IPCW / IPTW</td>
+<td>對 discontinuation / switching 問題仍不足</td>
+</tr>
+<tr>
+<td>Positivity / overlap</td>
+<td>preference score equipoise threshold</td>
+<td>有診斷，但部分資料庫因此被排除，外推性變窄</td>
+</tr>
+</tbody>
+</table>
+<p>JAMA Users’ Guide 對 propensity score 的核心提醒是：PS 成功要看治療組與對照組在預處理混淆因子上是否達到平衡；但 PS 不能處理未測量混淆 [參考: jama_agoritsas_2017_ug_160001.md 第 Propensity Analysis 節]。Hernán / Robins target trial 框架則強調 observational analysis 應明確定義 eligibility、time zero、treatment strategies、outcomes、causal contrast 與 analysis plan；per-protocol / on-treatment 對 sustained treatment 通常需要處理 time-varying prognostic factors 與 censoring selection bias [參考: hernanrobins_WhatIf_2jan25.md 第 22.3–22.5 節]。這兩點正是本文最重要的方法學張力。</p>
+<hr />
+<h2>B. 批判性評估</h2>
+<h3>B1. 假說與理論邏輯</h3>
+<ul>
+<li><strong>問題</strong>：研究宣稱比較個別藥物心血管 effectiveness，但主要臨床決策問題其實不只 MACE，還包括 HF、CKD、體重、安全性與停藥。</li>
+<li><strong>文內證據</strong>：作者主要 outcome 是 3-point / 4-point MACE；Discussion 才指出 safety、adherence、tolerability、cost 仍需進一步研究。</li>
+<li><strong>風險方向</strong>：若讀者只看 central illustration 的 “GLP-1RA ≈ SGLT2I”，可能過度簡化為所有臨床 phenotype 可互換。</li>
+<li><strong>需要什麼才放心</strong>：預先定義以 HF history、CKD stage、BMI、ASCVD phenotype、renal outcome、安全性與 persistence 為共同決策軸的 target trial emulation。</li>
+</ul>
+<h3>B2. 受試者與外推性</h3>
+<ul>
+<li><strong>優點</strong>：10 個資料庫、claims + EHR、多國資料、1,245,211 人，外部效度比單一資料庫強。</li>
+<li><strong>限制</strong>：收案限於 metformin 後第二線 new users；不能外推到初始合併治療、metformin 不耐、晚期 CKD、既有 HF 優先治療、tirzepatide 或 GLP-1RA/SGLT2I combination。</li>
+<li><strong>基線差異</strong>：GLP-1RA 使用者較年輕、女性、肥胖；SGLT2I 使用者較多 CVD history，PS 後 SMD 降低 [Results; Table 2]。這支持已測量變項平衡，但也凸顯原始 treatment selection 很強。</li>
+<li><strong>外推性分級</strong>：一般 T2DM 第二線族群：中等；既有 CVD：中等偏低；HF / CKD phenotype-specific treatment choice：低。</li>
+</ul>
+<h3>B3. 研究設計與偏差</h3>
+<ol>
+<li>
+<p><strong>Residual confounding</strong></p>
+<ul>
+<li>證據：作者承認 residual confounding from time-varying or invariant factors associated with discontinuation or switching cannot be excluded [Discussion]。</li>
+<li>風險方向：GLP-1RA 與 SGLT2I 的處方受 BMI、腎功能、HF、泌尿生殖感染風險、GI tolerability、保險、drug shortage、專科別影響；未測或測量不佳時，可能讓某一藥物看起來較安全或較有效。</li>
+</ul>
+</li>
+<li>
+<p><strong>On-treatment / per-protocol censoring bias</strong></p>
+<ul>
+<li>證據：主要 OT 分析到停藥；GLP-1RA discontinuation 可能較高，作者亦承認 differential adherence / persistence 可能造成偏差 [Methods; Limitations]。</li>
+<li>風險方向：若高風險或副作用患者較早停藥而被 censored，OT 分析可能低估事件風險。</li>
+</ul>
+</li>
+<li>
+<p><strong>Secular trend / calendar-time confounding</strong></p>
+<ul>
+<li>證據：semaglutide 與 empagliflozin uptake 在近年快速成長；canagliflozin / exenatide follow-up 較長，因較早上市 [Results; Figure 1 text]。</li>
+<li>風險方向：較新藥物使用時期可能伴隨 guideline、背景治療、ASCVD/HF 管理、coding practice 改變；baseline PS 不一定完全捕捉。</li>
+</ul>
+</li>
+<li>
+<p><strong>Outcome misclassification</strong></p>
+<ul>
+<li>證據：HHF outcome 合併 hospitalization / ER visit with HF；作者承認 coding limitations 與 differential outcome misclassification 可能解釋 semaglutide vs dapagliflozin 反常 HHF signal [Discussion]。</li>
+<li>風險方向：特別影響 4-point MACE 與 HHF 組成事件。</li>
+</ul>
+</li>
+<li>
+<p><strong>Selective estimand visibility</strong></p>
+<ul>
+<li>證據：只報通過 diagnostics 的 HR；失敗資料庫灰色或排除；某些比較少於 3 個資料庫通過 diagnostics 須謹慎 [Results]。</li>
+<li>風險方向：提高可信度但改變 target population；最後 meta-analysis 代表「可良好比較的資料庫 / pair」而非所有真實世界使用者。</li>
+</ul>
+</li>
+</ol>
+<h3>B4. 測量工具與實務意義</h3>
+<ul>
+<li>3-point MACE 是硬終點組合，但 sudden cardiac death 在 claims / EHR 中可能不如 AMI / stroke 穩定。</li>
+<li>4-point MACE 加入 HHF / ER HF 後，臨床意義更混合；HHF 對 SGLT2I 尤其關鍵，但本文最反常的訊號正來自 HHF。</li>
+<li>本文最適合回答：「在可比性通過 diagnostics 的常用藥物 new users 中，有沒有明確觀察到 MACE superiority？」不適合回答：「HF 患者該選 GLP-1RA 還是 SGLT2I？」</li>
+</ul>
+<hr />
+<h2>C. 統計與資料完整性</h2>
+<h3>C1. 結果分類：CI + 臨床意義</h3>
+<p>本文不是 RCT，也不是正式 equivalence / non-inferiority study；因此不能把 HR 95% CI 包含 1 解讀為「等效」。</p>
+<table>
+<thead>
+<tr>
+<th>比較 / outcome</th>
+<th style="text-align:right">HR (95% CI)</th>
+<th>結果分類</th>
+<th>臨床解讀</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>semaglutide vs empagliflozin，3-point MACE</td>
+<td style="text-align:right">1.05 (0.79–1.39)</td>
+<td><strong>Inconclusive for equivalence</strong></td>
+<td>CI 同時容許 semaglutide 較佳或較差；不能證明相同</td>
+</tr>
+<tr>
+<td>semaglutide vs empagliflozin，4-point MACE</td>
+<td style="text-align:right">0.95 (0.81–1.12)</td>
+<td><strong>接近 similarity，但非正式 equivalence</strong></td>
+<td>可排除很大的差異，但仍非等效試驗</td>
+</tr>
+<tr>
+<td>semaglutide vs dapagliflozin，HHF</td>
+<td style="text-align:right">0.79 (0.65–0.94)</td>
+<td><strong>Exploratory positive signal</strong></td>
+<td>與既有 SGLT2I HF RCT 證據衝突，需高度保留</td>
+</tr>
+<tr>
+<td>semaglutide vs dapagliflozin，4-point MACE</td>
+<td style="text-align:right">0.83 (0.71–0.96)</td>
+<td><strong>可能由 HHF signal 驅動</strong></td>
+<td>不應單獨改變用藥優先順序</td>
+</tr>
+</tbody>
+</table>
+<h3>C2. Underpowered / Winner’s Curse</h3>
+<p>常用藥物比較樣本大，但不是所有 pair 都有足夠 power。作者用 MDRR ≤4 作最低門檻，並稱常用藥物可偵測 HR 0.8–1.2 similarity；但對 CVD subgroup、少用藥物、少數資料庫比較仍有寬 CI。此處的風險不是傳統小樣本 winner’s curse，而是 <strong>多重探索 + residual bias 中挑出反常顯著訊號</strong>，例如 semaglutide vs dapagliflozin HHF。</p>
+<h3>C3. Bayesian 補充</h3>
+<p>本文沒有提供可直接進行 Bayesian posterior 的事件數 / full likelihood。由臨床角度，semaglutide vs dapagliflozin HHF 的 prior 應偏向 SGLT2I 有 HF benefit；因此觀察到 semaglutide 較佳的 HR 0.79 即使 CI 未跨 1，也應視為需要強 prior-challenge 的訊號，而不是直接採信。</p>
+<h3>C4. 統計紅旗清單</h3>
+<ol>
+<li><strong>10,800 HR estimates</strong>，即使不報 p value，多重探索仍會產生視覺與敘事上的選擇風險。</li>
+<li><strong>「similarity」不是等效性檢定</strong>；缺少預先 equivalence margin 與 formal equivalence framework。</li>
+<li><strong>OT / per-protocol 主要分析</strong>在停藥率、切換、藥物 tolerability 不同時容易有 informative censoring。</li>
+<li><strong>Time-varying confounding</strong> 主要未以 g-methods 系統處理，作者僅在部分 sensitivity 做 IPCW / IPTW。</li>
+<li><strong>Cox PH / competing risk 未處理</strong>，作者承認可能需 extended survival models。</li>
+<li><strong>資料庫 pass diagnostics 後才納入 meta-analysis</strong>，提高內部可信度但可能犧牲代表性。</li>
+<li><strong>HHF outcome 定義混合 hospitalization / ER visit</strong>，且最具臨床爭議的結果正是 HHF。</li>
+<li><strong>部分重要 supplement 未在 markdown 保留</strong>，無法審查 outcome algorithm、negative control set、diagnostic thresholds sensitivity 的完整細節。</li>
+</ol>
+<hr />
+<h2>D. 次組分析評估</h2>
+<p>主要 subgroup 是 <strong>established CVD</strong>，樣本 316,242。</p>
+<ul>
+<li><strong>Interaction p-value</strong>：文內未見針對 general vs CVD subgroup 的 formal interaction test。</li>
+<li><strong>方向一致性</strong>：作者稱整體與 CVD subgroup 大致一致，但 CVD subgroup CI 較寬。</li>
+<li><strong>預先指定</strong>：CVD subgroup 看似 protocol / prespecified secondary analysis [Methods]。</li>
+<li><strong>生物機轉</strong>：合理，因 GLP-1RA / SGLT2I CV benefit 常依 baseline CV risk 討論。</li>
+<li><strong>可信度</strong>：中等。可作為高風險族群參考，但不足以處理 HF、CKD、ASCVD subtype 的個別決策。</li>
+</ul>
+<hr />
+<h2>E. 紅旗清單</h2>
+<ul>
+<li>把 observational “no clear difference” 寫成「broadly similar benefits」語氣偏強。</li>
+<li>HHF 反常結果與 SGLT2I RCT evidence 衝突，最可能是 residual confounding 或 coding misclassification。</li>
+<li>OT 分析容易受停藥、切換、耐受性與藥物供應影響。</li>
+<li>個別藥物比較受上市時間與 uptake trend 影響，calendar-time confounding 難完全排除。</li>
+<li>結論主要適用於常用藥物；albiglutide、liraglutide、lixisenatide 等未能充分比較。</li>
+<li>Safety、renal outcome、weight、adherence 未整合進主要臨床決策。</li>
+<li>商業資料與產業相關作者存在，雖非單一藥物導向，仍需注意資料平台與 RWE 敘事利益。</li>
+</ul>
+<hr />
+<h2>F. 反向解釋</h2>
+<ol>
+<li>
+<p><strong>真正藥物效果相近</strong></p>
+<ul>
+<li>支持：多資料庫、PS 後平衡、negative control calibration，多數常用藥物 MACE HR 接近 1。</li>
+<li>反對：CI 對部分比較仍寬，且未做正式 equivalence。</li>
+</ul>
+</li>
+<li>
+<p><strong>未測混淆掩蓋真實差異</strong></p>
+<ul>
+<li>支持：起始 GLP-1RA vs SGLT2I 的臨床決策受 BMI、腎功能、HF phenotype、專科別、保險與副作用高度影響；作者承認 residual confounding。</li>
+<li>反對：negative controls 與跨資料庫一致性降低但不能消除此疑慮。</li>
+</ul>
+</li>
+<li>
+<p><strong>HHF 反常訊號是 outcome misclassification</strong></p>
+<ul>
+<li>支持：作者明確指出 HHF coding limitations，且結果與 SGLT2I HF RCT 文獻相反。</li>
+<li>反對：該比較通過 diagnostics，不能完全忽略，應作為 hypothesis-generating。</li>
+</ul>
+</li>
+<li>
+<p><strong>calendar-time / drug availability bias</strong></p>
+<ul>
+<li>支持：semaglutide 與 empagliflozin uptake 近年快速成長，較早藥物 follow-up 較長。</li>
+<li>反對：多資料庫與 ITT sensitivity 大致一致，但仍未完全解決時間趨勢。</li>
+</ul>
+</li>
+</ol>
+<hr />
+<h2>G. 最終裁決</h2>
+<ul>
+<li><strong>整體可信度</strong>：<strong>中等</strong>。</li>
+<li><strong>可採用條件</strong>：可用來支持「對多數 metformin 後第二線 T2DM 患者，常用 GLP-1RA 與 SGLT2I 在 MACE 上未見明確個別藥物 superiority」。</li>
+<li><strong>不建議採用情境</strong>：不應用來推翻 HF / CKD phenotype 下 SGLT2I 的優先地位，也不應作為 tirzepatide、合併治療、sequential therapy 或 safety / renal decision 的主要證據。</li>
+<li><strong>若要改觀，最需要的 3 個改進</strong>：
+<ol>
+<li>明確 target trial protocol，含 time-varying treatment、switching、discontinuation 與 adherence strategy。</li>
+<li>對 HF / CKD / ASCVD phenotype 做預先指定、具 interaction test 的 subgroup / effect modification 分析。</li>
+<li>以 validated outcome algorithms、competing risk / non-PH model、g-methods 或 robust sensitivity analysis 重新檢驗 HHF 反常訊號。</li>
+</ol>
+</li>
+<li><strong>一句話結論</strong>：本文支持 MACE 用藥彈性，但不能取代 phenotype-guided 選藥。</li>
+</ul>
+<p><strong>主要外部來源</strong>：JACC article page / PubMed PMID 41984016、JACC impact factor page、OHDSI 官網、JACC 2024 LEGEND-T2DM class-level paper、JACC issue / ScienceDirect editorial listing。</p>
+
+<footer class="appraisal-meta">評讀資訊：模型：gpt-5.5 (codex)  ·  route：default  ·  產出時間：2026-06-08 09:41 CST</footer>
+</main>
+</body>
+</html>
