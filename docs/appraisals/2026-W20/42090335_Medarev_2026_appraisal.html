@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>High and moderate intensity exercise training differentially impact microvascular function in skeletal muscle of mice lacking adiponectin.</title>
+<title>High- and moderate-intensity exercise training differentially impact microvascular function in skeletal muscle of mice lacking adiponectin.</title>
 <style>
   :root {
     --bg: #fafafa;
@@ -64,6 +64,13 @@
     margin-left: 0;
     padding-left: 14px;
   }
+  .appraisal-meta {
+    border-top: 1px solid var(--border);
+    margin-top: 28px;
+    padding-top: 14px;
+    color: var(--muted);
+    font-size: 13px;
+  }
   @media (prefers-color-scheme: dark) {
     :root {
       --bg: #1a1a1a;
@@ -79,387 +86,587 @@
 <body>
 <nav><a href="../../2026-W20.html">← 回到 2026-W20 週報</a></nav>
 <main>
-<h1>High and moderate intensity exercise training differentially impact microvascular function in skeletal muscle of mice lacking adiponectin.</h1>
-<p>以下依你提供的 literature-appraisal Skill 執行。路由判定：<strong>動物前臨床介入實驗</strong>，套用 <strong>SECTION-0 + SKILL-A（動物/觀察性前臨床研究批判）</strong>。不是 clinical guideline / consensus / review，因此不適用 A2.0。</p>
-<h2>Evidence Table：先抽取關鍵數據</h2>
-<p><strong>PDF 轉檔限制</strong>：本文 Table 1/2 有數字；但 Figure 1–7 的實際圖形、座標與多數效果量未被 markdown 完整轉出。以下圖形結果只能依正文與 figure legend 轉述，無法核對精確數值、CI 或完整 p 值。</p>
+<h1>High- and moderate-intensity exercise training differentially impact microvascular function in skeletal muscle of mice lacking adiponectin.</h1>
+<p>Now I have all the information needed. Let me compile the full critical appraisal.</p>
+<hr />
+<h1>文獻批判性評讀</h1>
+<hr />
+<h2>SECTION-0：文章全面描述</h2>
+<h3>0. 文章身份證</h3>
+<ul>
+<li><strong>標題</strong>：High- and moderate-intensity exercise training differentially impact microvascular function in skeletal muscle of mice lacking adiponectin</li>
+<li><strong>期刊</strong>：Journal of Applied Physiology (Bethesda, Md. : 1985)</li>
+<li><strong>年份</strong>：2026；Volume 140, Issue 6, Pages 1548–1559</li>
+<li><strong>DOI</strong>：<a href="https://doi.org/10.1152/japplphysiol.00918.2025">10.1152/japplphysiol.00918.2025</a></li>
+<li><strong>PMID</strong>：42090335</li>
+<li><strong>文章類型</strong>：<strong>前臨床動物實驗（小鼠 knockout 模型）</strong>——屬於 SKILL-A 路由，前臨床/機轉子模組。本研究使用 germline adiponectin knockout 小鼠搭配跑步機運動訓練，評估骨骼肌微血管功能適應。不適用人體臨床試驗的 MCID、clinical endpoint、外推性分級等要求。</li>
+</ul>
+<hr />
+<h3>1. 作者團隊評論</h3>
+<p><strong>通訊作者</strong>：Judy Muller-Delp, PhD [文內]</p>
+<ul>
+<li>原機構 Florida State University College of Medicine, Department of Biomedical Sciences；現任 Kansas State University College of Veterinary Medicine, Department of Anatomy and Physiology [文內]</li>
+<li>專長領域：骨骼肌微血管生理學、運動訓練對阻力血管的適應、老化與血管功能 [外部: ResearchGate]</li>
+</ul>
+<p><strong>作者團隊構成</strong> [文內, Author Contributions]：</p>
+<ul>
+<li>J.M.D.（Muller-Delp）：構思與設計研究、執行實驗、分析數據、解讀結果、準備圖表</li>
+<li>S.M.（Steven Medarev）：第一作者，執行實驗、分析數據、解讀結果、撰稿</li>
+<li>X.Z.（Xiangyu Zheng）、D.M.（Daniel Machin）：執行實驗、分析數據、解讀結果、準備圖表</li>
+<li>其餘作者（V.E., M.P., A.F., H.P., J.M., A.R., P.G.）：執行實驗與/或分析數據</li>
+</ul>
+<p><strong>Daniel Machin, PhD</strong>：University of New Mexico School of Medicine, Vascular Physiology Group；專長為心血管生理學、血管老化、glycocalyx [外部: UNM Health Sciences Center, Google Scholar]</p>
+<p><strong>團隊過往研究</strong> [外部: PubMed]：</p>
+<ol>
+<li>Caldwell JT et al. Aerobic exercise training reduces cardiac function and coronary flow-induced vasodilation in mice lacking adiponectin. <em>Am J Physiol Heart Circ Physiol</em>. 2021;321:H1–H14.（本研究的冠狀動脈版本，同一動物模型）</li>
+<li>Park H et al. Aerobic exercise training-induced bone and vascular adaptations in mice lacking adiponectin. <em>Bone</em>. 2025;190:117272.（ref 31，與本文共用 cohort 1 部分生理數據）</li>
+<li>Ghosh P et al. Exercise training reverses aging-induced impairment of myogenic constriction in skeletal muscle arterioles. <em>J Appl Physiol</em>. 2015;118:904–11.</li>
+<li>Muller-Delp JM et al. Aging impairs endothelium-dependent vasodilation in rat skeletal muscle arterioles. <em>Am J Physiol Heart Circ Physiol</em>. 2002;283:H1662–72.</li>
+</ol>
+<p><strong>評估</strong>：Muller-Delp 是骨骼肌微血管運動生理學領域的核心研究者，超過 20 年持續產出。本文是其 adiponectin knockout 系列研究的第三篇（2021 冠狀動脈 → 2025 骨骼與血管 → 2026 骨骼肌微血管），使用同一動物模型、同一實驗室、甚至部分共用 cohort 1 數據（明確揭露於文內 line 317）。這種串接式發表模式本身合理，但要注意**同一研究群反覆從同一 dataset 提取結論的先驗承諾偏差（prior commitment bias）**風險——團隊對「adiponectin 對運動適應是必要的」這一結論有強烈先驗期望。</p>
+<p><strong>利益揭露</strong> [文內]：</p>
+<ul>
+<li>Funding：NIH R56AG068156 與 NIH R01HL166591（均給 J.M.D.）</li>
+<li>COI：作者申報無利益衝突</li>
+<li><strong>評估</strong>：NIH 聯邦經費無直接商業利益衝突。但連續三篇圍繞同一 hypothesis 的 grant-funded 研究，存在 publication bias 壓力（需要陽性結果支撐後續 funding）。</li>
+</ul>
+<hr />
+<h3>2. 文獻 Metadata 整理</h3>
+<ul>
+<li><strong>Received / Accepted date</strong>：[無法取得]——markdown 未保留投稿與接受日期；期刊官網 403 無法存取</li>
+<li><strong>PubMed 刊出日期</strong>：2026-05-06 [外部: PubMed]</li>
+<li><strong>該期刊平均審查天數</strong>：首輪審查約 4 週（28 天），外部審查者通常有 14 天 [外部: SciRev / APS peer review policy]</li>
+<li><strong>比較</strong>：無法比較（本文投稿/接受日期不可取得）</li>
+<li><strong>期刊屬性</strong> [外部: Research.com / JournalMetrics]：
+<ul>
+<li>Impact Factor：3.3（2025 JCR）</li>
+<li>5-year IF：3.5</li>
+<li>分區：Q1（Physiology 領域）</li>
+<li>出版者：American Physiological Society</li>
+<li>Open Access 狀態：非 OA（從成大醫圖 IP 下載，非開放取用）</li>
+</ul>
+</li>
+<li><strong>邀稿 vs 投稿</strong>：[文內未揭露]，推測為主動投稿之原創研究</li>
+</ul>
+<hr />
+<h3>3. 研究背景</h3>
+<p><strong>既有事實與證據</strong> [文內, Introduction]：</p>
+<ul>
+<li>肥胖引起荷爾蒙失調，增加血管疾病風險，其中 adiponectin 與體脂呈反比（line 73–82）</li>
+<li>Adiponectin 不只由脂肪細胞分泌，心肌、骨骼肌、血管內皮與平滑肌皆可合成（line 78–82）</li>
+<li>有氧運動訓練改善骨骼肌阻力血管的結構與功能適應，依運動強度與肌纖維類型而異（line 83–98）</li>
+<li>先前動物與人體研究指出 adiponectin 可能介導運動相關心血管益處（line 99–111）</li>
+<li>但 adiponectin 在骨骼肌阻力血管運動適應中的具體角色尚未被釐清（line 109–111）</li>
+</ul>
+<p><strong>知識缺口</strong> [文內]：</p>
+<ul>
+<li>Adiponectin 在骨骼肌阻力血管運動訓練適應中的角色未被確認（line 109–111）</li>
+<li>不同運動強度是否經由 adiponectin 對微血管產生差異性影響？（line 112–115）</li>
+</ul>
+<p><strong>Research question</strong> [文內, line 112–115]：
+在缺乏 adiponectin 的情況下，中等強度與高強度有氧運動訓練是否會差異性地影響骨骼肌的微血管適應？</p>
+<hr />
+<h3>4. 研究設計與方法</h3>
+<p><strong>PICO</strong>：</p>
+<ul>
+<li><strong>P</strong>：12 週齡雄性 C57BL/6 WT 小鼠與同品系背景的 homozygous adiponectin knockout（AdipoKO, strain 008195）小鼠 [文內, line 123–124]</li>
+<li><strong>I</strong>：中等強度（12 m/min, 5° incline, 60 min/day, 5 days/week, 8 wk）或高強度（20 m/min, 10° incline, 60 min/day, 5 days/week, 8 wk）跑步機運動訓練 [文內, line 138–155]</li>
+<li><strong>C</strong>：同基因型的 sedentary 對照組</li>
+<li><strong>O</strong>：
+<ul>
+<li>主要終點：ex vivo arteriolar vasoreactivity（ACh、flow-mediated dilation、DEA-NONO-ate、phenylephrine、myogenic responses）</li>
+<li>次要終點：in vivo 微血管灌流密度與動態毛細管血量（intravital microscopy）、soleus capillary-to-fiber ratio（lectin 染色）、citrate synthase activity</li>
+</ul>
+</li>
+</ul>
+<p><strong>關鍵設計細節</strong>：</p>
+<ul>
+<li>設計類型：2×2 factorial（genotype × exercise），分為兩個**獨立世代（cohorts）**執行
+<ul>
+<li><strong>Cohort 1</strong>（中等強度）：WT SED n=19, WT EX n=24, KO SED n=12, KO EX n=18</li>
+<li><strong>Cohort 2</strong>（高強度）：各組 n=6</li>
+</ul>
+</li>
+<li>兩個 cohort 是<strong>分開進行</strong>的實驗，<strong>不是同一批動物的隨機分配</strong>——無法直接比較中等 vs 高強度的差異（文內也未做此比較）</li>
+<li>隨機化：文內提及&quot;randomly assigned&quot;（line 126, 135, 151）但未說明隨機化方法</li>
+<li>致盲：文內未提及</li>
+<li>運動訓練在 dark cycle 下以紅光執行，有持續監控（line 153–154）</li>
+<li>末次運動後 48 小時犧牲以排除急性運動效應（line 155）</li>
+<li>統計：Two-way ANOVA（genotype × exercise）用於動物與血管特徵；Three-way ANOVA（genotype × exercise × dose/time，含 repeated measures）用於血管反應性；Bonferroni post hoc；p &lt; 0.05 為顯著（line 284–290）</li>
+<li>部分 cohort 1 生理數據已於 Park et al. 2025（ref 31）發表 [文內, line 317]</li>
+</ul>
+<hr />
+<h3>5. 研究結果重點整理</h3>
+<h4>Cohort 1（中等強度運動）— 評估 soleus 肌</h4>
 <table>
 <thead>
 <tr>
-<th>項目</th>
-<th style="text-align:right">WT SED</th>
-<th style="text-align:right">WT EX</th>
-<th style="text-align:right">AdipoKO SED</th>
-<th style="text-align:right">AdipoKO EX</th>
-<th>解讀</th>
+<th>終點</th>
+<th>WT SED</th>
+<th>WT EX</th>
+<th>KO SED</th>
+<th>KO EX</th>
+<th>主要發現</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>Moderate cohort n</td>
-<td style="text-align:right">19</td>
-<td style="text-align:right">24</td>
-<td style="text-align:right">12</td>
-<td style="text-align:right">18</td>
-<td>n 不平衡，且 KO 組較少</td>
+<td>體重 (g)</td>
+<td>28.0±0.6</td>
+<td>28.7±0.4</td>
+<td>29.9±0.5 ($)</td>
+<td>27.7±0.4 (#)</td>
+<td>KO 基線較重；運動後降低</td>
 </tr>
 <tr>
-<td>體重 g</td>
-<td style="text-align:right">28.0 ± 0.6</td>
-<td style="text-align:right">28.7 ± 0.4</td>
-<td style="text-align:right">29.9 ± 0.5</td>
-<td style="text-align:right">27.7 ± 0.4</td>
-<td>KO SED 較重；KO EX 體重下降，是潛在混雜</td>
+<td>Soleus CS activity (µmol·min⁻¹·g⁻¹)</td>
+<td>16.34±0.77</td>
+<td>20.10±0.72 (#)</td>
+<td>18.83±0.78 ($)</td>
+<td>19.41±0.68</td>
+<td>WT 運動增加；KO 基線已升高，運動無額外增加</td>
 </tr>
 <tr>
-<td>Soleus citrate synthase</td>
-<td style="text-align:right">16.34 ± 0.77</td>
-<td style="text-align:right">20.10 ± 0.72</td>
-<td style="text-align:right">18.83 ± 0.78</td>
-<td style="text-align:right">19.41 ± 0.68</td>
-<td>Moderate exercise 只在 WT 明顯增加；KO baseline 已較高</td>
+<td>Capillary:fiber ratio</td>
+<td>~4.4</td>
+<td>~5.1 (#)</td>
+<td>~6.4 ($)</td>
+<td>~6.3 ($)</td>
+<td>WT 運動增加；KO 基線已升高（ceiling effect？），運動無額外增加</td>
 </tr>
 <tr>
-<td>Soleus capillary:fiber</td>
-<td style="text-align:right">圖形數值缺</td>
-<td style="text-align:right">增加</td>
-<td style="text-align:right">baseline 較高</td>
-<td style="text-align:right">未再增加</td>
-<td>支持 KO 有 baseline 補償，但訓練反應鈍化</td>
+<td>ACh vasodilation (soleus feed artery)</td>
+<td>基線</td>
+<td>無變化</td>
+<td>基線</td>
+<td>增強 (#, $)</td>
+<td>出乎預料：KO EX 反而增強</td>
 </tr>
 <tr>
-<td>High cohort n</td>
-<td style="text-align:right">6</td>
-<td style="text-align:right">6</td>
-<td style="text-align:right">6</td>
-<td style="text-align:right">6</td>
-<td>樣本很小</td>
+<td>Serum adiponectin (µg/mL)</td>
+<td>9.7±0.39</td>
+<td>9.5±0.37</td>
+<td>0±0 ($)</td>
+<td>0±0 ($)</td>
+<td>確認 KO 有效</td>
+</tr>
+</tbody>
+</table>
+<h4>Cohort 2（高強度運動）— 評估 gastrocnemius 肌</h4>
+<table>
+<thead>
+<tr>
+<th>終點</th>
+<th>WT SED</th>
+<th>WT EX</th>
+<th>KO SED</th>
+<th>KO EX</th>
+<th>主要發現</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>體重 (g)</td>
+<td>30.6±0.6</td>
+<td>31.5±0.4</td>
+<td>30.1±0.8</td>
+<td>30.6±0.8</td>
+<td>無差異</td>
 </tr>
 <tr>
-<td>Soleus citrate synthase</td>
-<td style="text-align:right">18.35 ± 1.15</td>
-<td style="text-align:right">21.17 ± 0.51, p=0.053</td>
-<td style="text-align:right">18.82 ± 1.64</td>
-<td style="text-align:right">20.87 ± 0.87</td>
-<td>high cohort 對 soleus 只有趨勢，不宜稱確定增加</td>
-</tr>
-<tr>
-<td>Gastrocnemius citrate synthase</td>
-<td style="text-align:right">11.0 ± 0.72</td>
-<td style="text-align:right">9.44 ± 0.31</td>
-<td style="text-align:right">11.0 ± 0.83</td>
-<td style="text-align:right">9.57 ± 0.98</td>
-<td>high exercise 未增加 gastrocnemius oxidative capacity</td>
+<td>Soleus CS activity</td>
+<td>18.35±1.15</td>
+<td>21.17±0.51 (P=0.054)</td>
+<td>18.82±1.64</td>
+<td>20.87±0.87</td>
+<td>趨勢但未達顯著</td>
 </tr>
 <tr>
 <td>Perfused capillary density</td>
-<td style="text-align:right">圖形數值缺</td>
-<td style="text-align:right">high EX 增加</td>
-<td style="text-align:right">圖形數值缺</td>
-<td style="text-align:right">未增加</td>
-<td>只可說方向性支持，效果大小無法從 markdown 核對</td>
+<td>~20</td>
+<td>~40 (#)</td>
+<td>~22</td>
+<td>~20 ($)</td>
+<td>WT 大幅增加；KO 無變化</td>
 </tr>
 <tr>
-<td>Flow-mediated vasodilation</td>
-<td style="text-align:right">圖形數值缺</td>
-<td style="text-align:right">high EX 增強</td>
-<td style="text-align:right">圖形數值缺</td>
-<td style="text-align:right">未增強</td>
-<td>主要機轉訊號，但缺實際效果量與 CI</td>
+<td>CBV dynamic</td>
+<td>~25</td>
+<td>~30</td>
+<td>~20</td>
+<td>~17 ($)</td>
+<td>運動後 KO 顯著低於 WT</td>
 </tr>
 <tr>
-<td>DEA-NONO-ate response</td>
-<td style="text-align:right">圖形數值缺</td>
-<td style="text-align:right">high EX 增強</td>
-<td style="text-align:right">圖形數值缺</td>
-<td style="text-align:right">high EX 增強</td>
-<td>smooth muscle 對 NO 反應保留，不依賴 adiponectin</td>
+<td>Flow-mediated dilation (gastroc 1A)</td>
+<td>~35% max</td>
+<td>~60% max (#)</td>
+<td>~25% max</td>
+<td>~25% max ($)</td>
+<td>WT 大幅增強；KO 完全無反應</td>
 </tr>
 <tr>
-<td>PE vasoconstriction</td>
-<td style="text-align:right">圖形數值缺</td>
-<td style="text-align:right">無明顯改變</td>
-<td style="text-align:right">圖形數值缺</td>
-<td style="text-align:right">high EX 後下降</td>
-<td>解釋偏機轉推測，未直接驗證 receptor / signaling</td>
+<td>DEA-NONO-ate (gastroc 1A)</td>
+<td>基線</td>
+<td>增強 (*)</td>
+<td>基線</td>
+<td>增強趨勢 (p=0.064–0.083)</td>
+<td>兩基因型均有改善→平滑肌 NO 反應不依賴 adiponectin</td>
+</tr>
+<tr>
+<td>PE vasoconstriction (gastroc 1A)</td>
+<td>基線</td>
+<td>無變化</td>
+<td>基線</td>
+<td>減弱 (#, p=0.055)</td>
+<td>KO EX 收縮反應降低</td>
 </tr>
 </tbody>
 </table>
 <hr />
-<h1>SECTION-0：文章全面描述</h1>
-<h2>0. 文章身份證</h2>
-<ul>
-<li>標題：<em>High and moderate intensity exercise training differentially impact microvascular function in skeletal muscle of mice lacking adiponectin</em></li>
-<li>期刊：Journal of Applied Physiology, 2026 [文內/使用者 metadata]</li>
-<li>DOI：10.1152/japplphysiol.00918.2025；PMID：42090335 [文內/使用者 metadata]</li>
-<li>文章類型：動物前臨床介入研究；AdipoKO 與 WT 小鼠接受 treadmill exercise training 或 sedentary control。</li>
-<li>路由：SKILL-A。這不是人體 RCT；genotype 不是隨機化暴露，exercise training 在 genotype 內隨機分派。</li>
-</ul>
-<h2>1. 作者團隊評論</h2>
-<ul>
-<li>通訊作者：Judy Muller-Delp, PhD；Kansas State University College of Veterinary Medicine / Anatomy and Physiology [文內]。</li>
-<li>專長符合度：K-State 個人頁列出其研究重點為 aging、exercise training 與心臟/骨骼肌 microcirculation 適應 [外部: Kansas State University]。</li>
-<li>團隊過往研究：
-<ul>
-<li>2018 J Appl Physiol：年齡與 exercise training 對 coronary microvascular smooth muscle phenotype/function 的影響 [外部: PubMed]。</li>
-<li>2016 J Physiol：骨骼肌 microvascular ageing 的綜述，指出不同肌纖維型態的微血管功能老化具有異質性 [外部: PubMed]。</li>
-<li>2021 Am J Physiol Heart Circ Physiol：adiponectin KO 小鼠在 exercise training 後冠狀微血管與心功能適應受損 [外部: MouseMine/PubMed indexed metadata]。</li>
-<li>2025 Bone：同團隊發表 adiponectin KO 小鼠 exercise training 後骨與血管適應 [外部: Colorado Profiles]。</li>
-</ul>
-</li>
-<li>作者立場史：團隊長期主張 exercise training 對微血管適應重要，且近年多篇聚焦 adiponectin KO 對 exercise adaptation 的限制；本篇結論與既有研究路線高度一致。這提高領域專精可信度，也增加 prior commitment bias 風險。</li>
-<li>Funding / COI：NIH R56AG068156、R01HL166591；作者宣稱無 COI [文內]。公部門資助降低商業偏差，但不排除學術立場偏差。</li>
-</ul>
-<h2>2. 文獻 Metadata 整理</h2>
-<ul>
-<li>Received / revised / accepted：PDF markdown 未提供；外部搜尋未找到本篇 Crossmark metadata [無法取得]。</li>
-<li>審查天數：無法計算。</li>
-<li>期刊平均審查天數：SciRev 顯示 Journal of Applied Physiology「first review round 0.9 months、accepted manuscripts total handling time 1.5 months」，但這是使用者回報型資料，不是期刊官方統計 [外部: SciRev]。</li>
-<li>期刊屬性：NLM Catalog 顯示 Journal of Applied Physiology 由 American Physiological Society 出版、monthly、MEDLINE/PubMed indexed [外部: NLM Catalog]。</li>
-<li>Impact Factor / 分區：第三方 JCR mirror 顯示 2024 Impact Factor 3.300、5-year JIF 3.500、JIF Quartile Q1、rank 22/133 [外部: journalsimpactfactors.com；非 Clarivate 官方頁面]。Resurchify/Scopus 指標顯示 SJR 1.078，Medicine miscellaneous Q1、Physiology Q2、Sports Science Q2 [外部: Resurchify]。</li>
-<li>Open access：APS 2026 說明 Journal of Applied Physiology 屬 Subscribe to Open 期刊之一，2026 年維持 fully open access；作者付 fixed publishing fee、非 APC 模式 [外部: APS]。</li>
-<li>Invited vs submitted：文內未標示 invited [無法取得]。</li>
-</ul>
-<h2>3. 研究背景</h2>
-<ul>
-<li>既有事實：肥胖與代謝異常會影響血管功能；adiponectin 與體脂呈反向關係，且與代謝、血管內皮功能、NO signaling、oxidative stress 有關 [文內]。</li>
-<li>知識缺口：adiponectin 在 exercise training 後骨骼肌 resistance vasculature 與 microcirculation 適應中的角色仍未明確 [文內]。</li>
-<li>Research question：缺乏 circulating adiponectin 是否會限制 moderate / high intensity aerobic exercise training 所誘發的骨骼肌 oxidative capacity、capillarity、perfusion 與 arteriolar vasoreactivity 適應？[文內]</li>
-</ul>
-<h2>4. 研究設計與方法</h2>
-<ul>
-<li>P：12 週齡雄性 WT C57BL/6 與 homozygous male AdipoKO 小鼠 [文內]。</li>
-<li>I：8 週 treadmill exercise training。
-<ul>
-<li>Moderate：12 m/min、5° incline，漸進至 60 min/day、5 days/week。</li>
-<li>High：20 m/min、10° incline，漸進至 60 min/day、5 days/week。</li>
-</ul>
-</li>
-<li>C：同 genotype sedentary control。</li>
-<li>O：
-<ul>
-<li>skeletal muscle oxidative capacity：citrate synthase activity。</li>
-<li>capillarity：soleus lectin staining capillary:fiber ratio。</li>
-<li>in vivo microvascular dynamics：gastrocnemius SDF / GlycoCheck perfused microvascular density、CBV、RBC velocity。</li>
-<li>ex vivo arteriolar function：ACh、flow-mediated dilation、DEA-NONO-ate、phenylephrine、myogenic response。</li>
-</ul>
-</li>
-<li>隨機化：文內說各 genotype 隨機分配 exercise 或 sedentary，但未說明亂數方法、allocation concealment、是否盲化測量 [文內缺漏]。</li>
-<li>統計：SPSS v25；animal/vessel characteristics 用 two-way ANOVA；vessel dose/time response 用 three-way ANOVA，dose/time repeated measure；Bonferroni post hoc；p &lt; 0.05；資料以 mean ± SEM；n 為 animals [文內]。</li>
-</ul>
-<h2>5. 研究結果重點整理</h2>
-<ul>
-<li>Moderate training：
-<ul>
-<li>WT soleus citrate synthase 由 16.34 ± 0.77 增至 20.10 ± 0.72；KO 未明顯增加。</li>
-<li>WT soleus capillary:fiber ratio 增加；KO 未增加，但 KO sedentary baseline capillarity/oxidative capacity 較高。</li>
-<li>KO soleus feed arteries 的 ACh vasodilation 反而因 moderate training 增強。</li>
-</ul>
-</li>
-<li>High training：
-<ul>
-<li>WT gastrocnemius perfused capillary density 增加；KO 未增加。</li>
-<li>WT gastrocnemius arterioles flow-mediated vasodilation 增強；KO 未增強。</li>
-<li>DEA-NONO-ate response 在 WT 與 KO 都因 high training 增強，暗示 vascular smooth muscle NO responsiveness 不需 adiponectin。</li>
-<li>KO high EX 後 phenylephrine vasoconstriction 下降。</li>
-</ul>
-</li>
-<li>結果呈現問題：主要功能圖缺精確效果量與 CI；多數結論依 p-value / ANOVA 標記與圖形判讀。</li>
-</ul>
-<h2>6. 結果分類（CI + MCID 框架）</h2>
-<ul>
-<li>文內未預先定義 MCID；在小鼠 arteriolar dilation、capillary:fiber ratio、citrate synthase activity 中也沒有直接可轉換為臨床 MCID 的標準 [文內缺漏]。</li>
-<li>文內未提供 95% CI，僅 mean ± SEM 與 p &lt; 0.05 門檻；因此無法依 CI + MCID 做正式 POSITIVE / NEUTRAL / NEGATIVE 分類。</li>
-<li>合理分類：<strong>前臨床機轉訊號為「方向性支持但不精確」</strong>。它支持 adiponectin 參與 exercise-induced microvascular adaptation，但不足以證明「adiponectin 對所有運動血管效益都是必要條件」，更不能直接外推到人類臨床處方。</li>
-</ul>
-<h2>7. 作者討論與評論重點</h2>
-<ul>
-<li>作者主張：adiponectin 對 exercise training 後骨骼肌 oxidative capacity、capillarity、perfusion 與 endothelial adaptation 很重要；缺乏 adiponectin 會鈍化部分運動誘發的血管適應 [文內]。</li>
-<li>作者承認限制：只用雄鼠；未測 baseline exercise capacity；KO 與 WT 可能承受不同 relative intensity；germline KO 可能有補償路徑；未做機轉實驗；未評估運動中 microvascular perfusion [文內]。</li>
-<li>評估：作者有承認幾個核心限制，但結論「adiponectin is essential」語氣偏強。以 germline KO、surrogate endpoints、不同 cohort / muscle / vessel 的資料，較適合說「adiponectin 可能是部分訓練適應的必要或調節因子」。</li>
-</ul>
-<h2>8. 外部專業意見</h2>
-<ul>
-<li>針對本篇 DOI / 標題搜尋未找到同期 editorial、commentary 或獨立公開評論 [無法取得]。</li>
-<li>相關背景文獻支持 exercise training 可改善微血管功能，且 Muller-Delp 團隊在此領域有連續研究基礎 [外部: PubMed]，但這不是對本篇的獨立評論。</li>
-</ul>
-<h2>9. 臨床建議</h2>
-<ul>
-<li>可採用情境：作為「adiponectin 可能參與運動誘發微血管適應」的前臨床機轉證據。</li>
-<li>不建議直接套用：不能用於決定人類肥胖、糖尿病、PAD 或 HFpEF 患者應選 moderate 還是 high intensity exercise；也不能推出 adiponectin 補充或 AdipoR agonist 可增強運動療效。</li>
-<li>給臨床醫師的實務建議：
+<h3>6. 作者討論與評論重點</h3>
+<p><strong>作者的主要訊息</strong> [文內, Discussion]：</p>
 <ol>
-<li>這篇可放在機轉討論，不應作為運動處方證據。</li>
-<li>對低 adiponectin / 肥胖族群，合理假設運動血管適應可能較異質，但仍需人體訓練研究驗證。</li>
-<li>若引用，請限定為「雄性小鼠、germline AdipoKO、骨骼肌微血管 surrogate endpoints」。</li>
+<li>Adiponectin 是骨骼肌運動訓練誘導的氧化能力與微血管功能改善所必需的</li>
+<li>中等強度運動增加 WT 的 soleus 毛細管密度與氧化能力，但 KO 小鼠因基線已有代償性上調而無額外增加</li>
+<li>高強度運動增加 WT 的 gastrocnemius 灌流密度與 flow-mediated dilation，但 KO 小鼠缺乏此適應</li>
+<li>平滑肌 NO 反應性在兩基因型均被運動增強，暗示 adiponectin 的作用主要在內皮層</li>
+<li>ACh 對 KO EX 的增強效應是「出乎預料」的（&quot;Surprisingly&quot;，line 343），需要進一步機轉實驗</li>
 </ol>
-</li>
-<li>證據強度：<strong>臨床證據弱；前臨床機轉證據中等偏弱</strong>。理由是設計有實驗控制，但樣本小、無 CI、無主要終點階層、無 relative intensity 校正、無 acute/inducible KO 驗證。</li>
+<p><strong>限制（作者觀點）</strong> [文內, line 518–536]：</p>
+<ol>
+<li>僅使用雄性小鼠</li>
+<li>未評估運動前的最大運動能力（maximal exercise capacity），因此無法確定兩基因型是否在相同的相對強度下訓練</li>
+<li>Germline knockout 可能有發育性代償</li>
+<li>未進行機轉實驗（如 eNOS、ROS、AMPK 路徑）</li>
+</ol>
+<p><strong>[評估]</strong>：作者的限制陳述誠實且到位，特別是承認了相對強度問題（line 526–530）和 germline 代償（line 478–480）。但有幾個<strong>被迴避的關鍵限制</strong>：</p>
+<ul>
+<li>兩個 cohort 是分開的實驗、不同時間執行，但文題以「differentially impact」暗示中等 vs 高強度的差異比較——實際上<strong>不存在此直接比較的統計檢定</strong></li>
+<li>Cohort 2 的 n=6/組極小，多項結果在 p=0.05–0.10 之間</li>
+<li>部分數據報告為「data not shown」（ACh in gastroc, myogenic responses, soleus PE and DEA），無法獨立驗證</li>
+<li>文內對「Surprisingly」增強的 ACh 反應（KO EX soleus）的解釋薄弱，與整體「adiponectin 是必需的」論述矛盾，但未充分討論此矛盾</li>
 </ul>
 <hr />
-<h1>SKILL-A：批判性評讀</h1>
-<h2>A. 補充技術細節</h2>
+<h3>7. 外部專業意見</h3>
+<p>[無法取得]——未發現針對本文的同期 editorial、commentary 或公開評論。PubMed related articles 搜尋未顯示 editorial link。</p>
+<hr />
+<h3>8. 臨床建議</h3>
+<p><strong>適用情境</strong>：</p>
 <ul>
-<li>樣本數估算：未提供 power calculation 或預先主要終點 [文內缺漏]。</li>
-<li>隨機化：只說 randomly assigned；未說明亂數方法與分派隱藏 [文內缺漏]。</li>
-<li>盲化：未說明 imaging、arteriole cannulation、ImageJ/MATLAB thresholding、dose-response analysis 是否 blind to group [文內缺漏]。</li>
-<li>ITT / per-protocol：動物實驗不適用傳統 ITT；文內說所有 exercise animals 完成訓練，但未交代排除 vessel failure / unreadable imaging 的數量 [文內缺漏]。</li>
-<li>多重比較：多 genotype、training、muscle、vessel bed、dose/time、functional endpoints；雖 post hoc 用 Bonferroni，但沒有清楚 outcome hierarchy，假陽性風險高。</li>
-<li>缺失資料：Data available upon reasonable request；未提供原始資料或完整 figure numerical data [文內]。</li>
+<li>本文為前臨床 germline knockout 小鼠研究，<strong>不得直接外推至人體臨床決策</strong></li>
+<li>可作為「adiponectin 在運動適應中的角色」此生物學假說的支撐證據之一</li>
+<li>對研究低 adiponectin 血症族群（如肥胖、糖尿病、周邊動脈疾病患者）運動處方反應差異的人體研究，提供機轉背景</li>
 </ul>
-<h2>B. 批判性評估</h2>
-<h3>B1. 假說與理論邏輯</h3>
-<p>合理機轉：</p>
-<ol>
-<li>adiponectin 促進 endothelial NO / eNOS signaling，可能讓 high-intensity training 後 shear stress 轉換為 flow-mediated dilation 適應。</li>
-<li>adiponectin / AdipoR1 可能調節 skeletal muscle oxidative metabolism，進而與 capillarity adaptation 連動。</li>
-<li>germline AdipoKO sedentary soleus citrate synthase 與 capillarity 偏高，可能代表發育期或代謝補償。</li>
-</ol>
-<p>可疑跳躍：</p>
-<ol>
-<li>「缺 adiponectin 使 exercise cardiovascular benefit 下降」超出本文資料；本文沒有心血管 hard outcome，也沒有 exercise capacity。</li>
-<li>「high vs moderate intensity differentially impact」其實被 cohort、muscle type、vessel type 綁在一起：moderate 主要看 soleus feed arteries；high 主要看 gastrocnemius 1A arterioles。</li>
-<li>「adiponectin is essential」過強；germline KO 不能區分 adiponectin 急性訊號缺失 vs 發育補償造成的 phenotype。</li>
-</ol>
-<h3>B2. 受試者與外推性</h3>
+<p><strong>不建議直接套用的情境</strong>：</p>
 <ul>
-<li>一般健康成人：外推性低。雄性小鼠、treadmill forced running、surrogate microvascular endpoints，不能直接換成人類運動處方。</li>
-<li>代謝異常 / 肥胖 / 糖尿病患者：外推性很低。本文不是 diet-induced obesity 或糖尿病模型，未測 insulin resistance、血糖、脂肪量、VO₂max。</li>
-<li>PAD / HF / 微血管疾病患者：只能作機轉假說。臨床上 microvascular function 受年齡、藥物、內皮功能、共病與運動耐受度影響，本文無法支撐治療建議。</li>
-<li>女性：不可外推；作者只用雄鼠，且文內承認 adiponectin vascular actions 可能 sex-dependent。</li>
+<li>不應據此建議「低 adiponectin 患者無法從運動中獲益」——germline KO 的代償效應使結果難以直接外推</li>
+<li>不應用來決定特定患者的運動強度處方</li>
 </ul>
-<h3>B3. 研究設計與偏差</h3>
-<p>最可能造成偏差的 3 個設計點：</p>
+<p><strong>給研究者的實務建議</strong>：</p>
+<ol>
+<li>後續人體研究應測量 baseline 血清 adiponectin 並評估其是否調節運動訓練的微血管適應（mediation analysis）</li>
+<li>Conditional/inducible adiponectin knockout 模型可避免 germline 代償，是更合適的下一步</li>
+<li>運動研究需以 maximal exercise capacity 為基準來校正相對強度</li>
+</ol>
+<p><strong>研究證據強度分級</strong>：<strong>弱</strong>——單一實驗室、小樣本（cohort 2 各組 n=6）、缺乏獨立重複、germline KO 的代償問題未解決、多項結果在 borderline significance、兩個 cohort 無法直接比較。</p>
+<hr />
+<h2>SKILL-A：前臨床研究批判性評讀</h2>
+<h3>A. 補充技術細節</h3>
+<p><strong>樣本數估算</strong>：文內<strong>無事前 power calculation</strong>。Cohort 1 的樣本數不均（WT SED n=19, WT EX n=24 vs KO SED n=12, KO EX n=18），暗示可能有數據合併或非預先計畫的收案。Cohort 2 各組僅 n=6，對於 three-way ANOVA（含 repeated measures）而言極為有限。</p>
+<p><strong>隨機化與致盲</strong>：</p>
+<ul>
+<li>隨機化：文內兩次提及&quot;randomly assigned/divided&quot;（line 126, 135），但未描述具體方法（電腦亂數？區塊隨機？）</li>
+<li>致盲：<strong>完全未提及</strong>。體外血管實驗的操作者是否知曉分組？影像分析者是否致盲？lectin 染色計數是否致盲？均未說明。缺乏致盲是前臨床動物研究中最常見的偏差來源之一（ARRIVE 2.0 指引明確要求）。</li>
+</ul>
+<p><strong>Cohort 結構問題</strong>：</p>
+<ul>
+<li>Cohort 1 與 Cohort 2 在不同時間、以不同動物進行，但文章標題使用「differentially impact」一詞暗示兩種強度的比較。實際上<strong>文內無 cohort 1 vs cohort 2 的統計比較</strong>，因為設計中不存在此因子。這是一個<strong>敘事框架問題</strong>：標題與結論暗示的比較超出了實驗設計所能支持的範圍。</li>
+<li>兩個 cohort 評估的<strong>肌肉不同</strong>（cohort 1: soleus feed artery; cohort 2: gastrocnemius 1A arteriole）、<strong>微血管評估方法不同</strong>（cohort 1: ex vivo lectin 染色; cohort 2: in vivo intravital microscopy）。因此即使同一終點名稱相同，測量方法與組織來源完全不同，無法歸因於運動強度差異。</li>
+</ul>
+<p><strong>Cohort 2 的 Citrate Synthase Activity</strong>：</p>
+<ul>
+<li>Soleus CS activity 在 WT EX vs WT SED 為 P=0.054（line 307, Table 2 標記 &amp;），文內以「tended to increase」描述。在 n=6/組的情況下，這並不能確認訓練效果——cohort 2 的運動訓練效果驗證薄弱。</li>
+</ul>
+<p><strong>部分數據已發表</strong>：</p>
+<ul>
+<li>文內明確指出 cohort 1 的部分生理數據已在 Park et al. 2025（ref 31）發表（line 317）。所有微血管功能數據與 cohort 2 全部數據為新報告。</li>
+</ul>
+<h5>前臨床/機轉子模組</h5>
+<p><strong>模型有效性</strong>：</p>
+<ul>
+<li>Germline adiponectin knockout（strain 008195, Jackson Lab）是被廣泛使用的模型。但 germline KO 從胚胎期即缺乏 adiponectin，<strong>終身的代償性適應會混淆對成年後介入的反應</strong>。作者在 Discussion 中明確承認此點（line 478–480），建議未來使用 acute/conditional knockout。</li>
+<li>本文最有趣但也最棘手的發現——KO 小鼠 soleus 基線 CS activity 與 capillary density 升高（Table 1, Figure 1B）——恰恰說明 germline KO 的代償問題：KO 小鼠可能已經達到 soleus 的氧化能力天花板（ceiling effect），使得運動訓練無法再疊加效果。這是一個<strong>替代解釋</strong>，與「adiponectin 是運動適應所必需」的結論方向不同。</li>
+</ul>
+<p><strong>劑量/暴露合理性</strong>：</p>
+<ul>
+<li>運動方案來自團隊先前研究（ref 14, Caldwell 2021），屬於可重現的標準化方案</li>
+<li>但<strong>未評估 baseline maximal exercise capacity</strong>。若 KO 小鼠的有氧能力與 WT 不同，則相同絕對強度代表不同相對強度。作者在 Discussion 中承認此問題（line 420–425, 526–530），但未提出任何事後驗證（如尾端血乳酸、呼吸交換率等替代指標）</li>
+</ul>
+<p><strong>統計單位</strong>：</p>
+<ul>
+<li>文內明確以 n = 動物數為統計單位（line 290），正確做法</li>
+<li>然而 capillary:fiber ratio 的測量方式是「每隻鼠至少 3 根纖維/切面，至少 5 個相鄰切面」再平均（line 279–281），取平均後作為單一值是合理的</li>
+</ul>
+<hr />
+<h3>B. 批判性評估（四大面向）</h3>
+<h4>B1. 假說與理論邏輯</h4>
+<p><strong>假說是否預先指定</strong>：是。Introduction 末段（line 112–115）明確陳述假說：缺乏 adiponectin 會限制骨骼肌微血管對運動的適應，且此影響因運動強度而異。</p>
+<p><strong>機轉是否與情境匹配</strong>：</p>
+<ul>
+<li>Adiponectin → AdipoR1 → AMPK/SIRT1 → PGC-1α → 粒線體生成/eNOS 磷酸化/NO 生物利用度增加 → 血管適應。此路徑有文獻支持（ref 39, 43–46），邏輯合理。</li>
+<li>但本文<strong>未進行任何機轉實驗</strong>（未測 eNOS、pAMPK、ROS、AdipoR1 表現），所有因果推論都是間接的「缺失等於必需」推理。</li>
+</ul>
+<p><strong>敘事跳躍</strong>：</p>
+<ol>
+<li><strong>「Differentially impact」的敘事</strong>：標題暗示中等 vs 高強度對 KO 小鼠有差異性影響，但兩個 cohort 使用不同肌肉、不同血管床、不同測量方法、不同時間執行，<strong>不存在強度間的直接統計比較</strong>。所謂「differential impact」只是兩個獨立實驗各自結果的並列描述。（文內證據：cohort 1 Methods line 138–142 vs cohort 2 Methods line 143–155；Results 分開報告）</li>
+<li><strong>從「KO 小鼠缺乏運動適應」跳到「adiponectin 是運動適應所必需」</strong>：忽略了 germline KO 的 ceiling effect（基線已升高）與相對運動強度不匹配兩個替代解釋（見 B3）</li>
+<li><strong>ACh 結果與整體論述的矛盾</strong>：KO EX 小鼠的 ACh vasodilation 反而增強（Figure 3B），這直接反駁「缺乏 adiponectin 阻礙所有血管適應」的論述。作者以&quot;Surprisingly&quot;帶過（line 343），在 Discussion 中只用一段半處理此矛盾（line 460–480），且未提出清楚的整合解釋。</li>
+</ol>
+<h4>B2. 受試者與外推性（轉譯距離分級）</h4>
+<p><strong>動物模型與宣稱對象的一致性</strong>：</p>
+<ul>
+<li>文章在 Introduction 中先花大量篇幅討論肥胖、糖尿病、周邊動脈疾病的人體脈絡（line 73–111），然後使用年輕健康的 germline adiponectin KO 小鼠。</li>
+<li>AdipoKO 小鼠在正常飲食下的表型溫和——本文 Table 1 顯示 KO SED 體重僅比 WT SED 高 ~2g（29.9 vs 28.0g），且高強度 cohort 中體重無差異。這與人體肥胖或低 adiponectin 血症的臨床情境差距很大。</li>
+<li><strong>基線不平衡</strong>：Cohort 1 中 KO SED 的 soleus CS activity 顯著高於 WT SED（18.83 vs 16.34, $），但 cohort 2 中此差異不存在（18.82 vs 18.35）。兩個 cohort 的基線條件不一致，且作者在 Discussion 中承認「might be related to the smaller sample size in cohort 2」（line 306），暗示 cohort 2 可能 underpowered 到連真實的基線差異都偵測不到。</li>
+</ul>
+<p><strong>轉譯距離分級</strong>：<strong>遠</strong></p>
+<ul>
+<li>Germline KO ≠ 後天獲得的低 adiponectin 血症（如肥胖、代謝症候群）</li>
+<li>年輕健康小鼠 ≠ 老年 / 有共病的患者</li>
+<li>同近交系小鼠 ≠ 人類基因多樣性</li>
+<li>跑步機強制運動 ≠ 人體自主有氧運動</li>
+<li>單一性別、單一年齡</li>
+</ul>
+<h4>B3. 研究設計與偏差</h4>
+<p><strong>最可能造成偏差的設計點</strong>（3 個）：</p>
+<ol>
+<li>
+<p><strong>相對運動強度不匹配（效果方向：可能誇大 KO 與 WT 的差異）</strong></p>
+<ul>
+<li>文內證據：line 420–425, 526–530；作者承認「it is possible that the WT and AdipoKO mice were working at different relative intensities」</li>
+<li>若 KO 小鼠的最大運動能力更低，相同絕對速度（12 或 20 m/min）對 KO 可能代表更高的相對強度——或反之（若 KO 基線更差，可能早期適應不同）</li>
+<li>未有 pre-training maximal exercise test、blood lactate、或 VO₂ data 來評估</li>
+<li>風險方向：<strong>不確定，但可能讓 WT 的適應看起來更好</strong>（如果 KO 實際相對強度更低）</li>
+</ul>
+</li>
+<li>
+<p><strong>Germline KO 的 ceiling effect（效果方向：讓「缺乏運動適應」看起來比實際更明顯）</strong></p>
+<ul>
+<li>文內證據：Table 1 KO SED soleus CS activity 顯著升高、Figure 1B KO SED capillary:fiber ratio 顯著升高</li>
+<li>KO 小鼠的 soleus 基線氧化能力與毛細管密度已達 WT EX 的水準或以上。在這個起點上，8 週中等強度運動可能確實無法再疊加，但這是 ceiling effect 而非「adiponectin 缺乏阻礙適應」</li>
+<li>這是<strong>最根本的替代解釋</strong>，且作者有部分承認（line 417–419）</li>
+</ul>
+</li>
+<li>
+<p><strong>缺乏致盲（效果方向：可能朝向符合預期的方向偏差）</strong></p>
+<ul>
+<li>文內未提及任何致盲措施</li>
+<li>體外血管實驗中，操作者對分組的知情可能影響預處理條件的微調（如 equilibration 時間、換液頻率）</li>
+<li>lectin 染色的手動纖維勾勒（line 272: &quot;muscle fibers were outlined by hand&quot;）若未致盲，存在 operator bias</li>
+</ul>
+</li>
+</ol>
+<h4>B4. 測量工具與實務意義</h4>
+<p><strong>測量工具信度</strong>：</p>
+<ul>
+<li>體外血管反應性（isolated arteriole, pressurized myography）：技術成熟、文獻廣泛使用，但變異度大（不同血管段的 spontaneous tone 差異可達 10–15%，見 Table 1, 2 各 tone 數據）</li>
+<li>Intravital microscopy（CapiScope HVCS + GlycoCheck）：自動化分析降低 operator bias，但每隻鼠 24 trials 的取樣區域選擇仍為操作者主觀決定（line 173–174）</li>
+<li>Capillary:fiber ratio 的手動勾勒纖維 + MATLAB 自動計數：已對照 grid overlay 法驗證（ref 30），合理</li>
+</ul>
+<p><strong>就算機轉成立，距離人體臨床可用還缺哪幾步？</strong></p>
+<ol>
+<li>需要 conditional/inducible KO 模型確認結果並排除 developmental compensation</li>
+<li>需要雌性小鼠的重複實驗</li>
+<li>需要分子機轉實驗（eNOS、pAMPK、ROS、NO 生物利用度）</li>
+<li>需要在肥胖或代謝症候群動物模型中驗證（而非正常飲食的健康小鼠）</li>
+<li>需要人體觀察性研究確認 blood adiponectin level 與運動後微血管適應的關聯</li>
+<li>最終需要人體介入試驗</li>
+</ol>
+<hr />
+<h3>C. 統計與資料完整性</h3>
+<p>本文為前臨床研究，不套用 CI + MCID 框架，改以效果量、變異度、replicate 層級與模型有效性評估。</p>
+<h4>C1–C2. 效果量與統計功效評估</h4>
+<p><strong>Cohort 2（高強度，n=6/組）的 borderline p-values 問題</strong>：</p>
+<p>文內出現大量落在 0.05–0.10 之間的 p 值，作者在行文與圖中以不同方式標注：</p>
 <table>
 <thead>
 <tr>
-<th>設計點</th>
-<th>文內依據</th>
-<th>風險方向</th>
-<th>需要什麼才放心</th>
+<th>終點</th>
+<th>p 值</th>
+<th>文內處理方式</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>絕對強度訓練，未校正 relative intensity</td>
-<td>作者承認未測 exercise capacity</td>
-<td>若 KO 實際運動負荷較低，會誇大「KO 無法適應」</td>
-<td>訓練前後 VO₂max / exhaustion test / lactate 或以個體化相對強度訓練</td>
+<td>Soleus CS activity, WT EX vs WT SED</td>
+<td>0.054</td>
+<td>標為 &quot;&amp;&quot;，文內 &quot;tended to increase&quot; (line 307)</td>
 </tr>
 <tr>
-<td>Germline KO</td>
-<td>作者承認需 acute knockout</td>
-<td>發育補償可能讓 baseline citrate synthase/capillarity 升高，混淆 adiponectin 急性角色</td>
-<td>inducible adult KO、rescue adiponectin、AdipoR agonist/antagonist</td>
+<td>ACh KO EX vs KO SED (某些濃度)</td>
+<td>0.056, 0.094</td>
+<td>圖中標註 p 值 (Figure 3B)</td>
 </tr>
 <tr>
-<td>多重 outcome 無 hierarchy</td>
-<td>Methods 僅列多種 ANOVA 與 Bonferroni</td>
-<td>假陽性與選擇性敘事風險上升</td>
-<td>預註冊 primary endpoint、完整 effect size/CI、資料共享</td>
+<td>DEA KO EX vs KO SED (某些濃度)</td>
+<td>0.064, 0.069, 0.083</td>
+<td>圖中標註 p 值 (Figure 5B)</td>
+</tr>
+<tr>
+<td>DEA WT EX vs WT SED (某濃度)</td>
+<td>0.10</td>
+<td>圖中標註 (Figure 5A)</td>
+</tr>
+<tr>
+<td>PE KO EX vs KO SED (某濃度)</td>
+<td>0.055</td>
+<td>圖中標註 (Figure 6B)</td>
 </tr>
 </tbody>
 </table>
-<h2>C. 統計與資料完整性</h2>
+<p><strong>評估</strong>：在 n=5–6/組的情況下，ANOVA + Bonferroni post hoc 的 power 極低。大量 borderline p 值提示兩種可能：(a) 真實效果存在但樣本不足以偵測，或 (b) 這些是 noise。Bonferroni 校正在此極端小 n 下可能過度保守，但反過來說，如果用 less conservative 校正（如 Fisher's LSD），一些目前顯著的結果也可能不穩定。</p>
+<p><strong>圖表視覺判讀補充</strong>：</p>
+<p><strong>Figure 1B</strong>（capillary:fiber ratio）[已讀圖]：</p>
 <ul>
-<li>主要缺陷：未提供 95% CI、未預設主要終點與 MCID、未報完整 interaction effect。</li>
-<li>p-value 問題：p=0.053 的 WT high EX soleus citrate synthase 被描述為 “tended to increase”，可以作探索訊號，但不應被納入核心結論。</li>
-<li>Underpowered 判斷：high cohort 每組 n=6，且多個功能 endpoint；即使有顯著結果，也有 Type M / Winner’s Curse 風險。未顯著結果更不能解釋成「無效果」。</li>
-<li>SEM 呈現：mean ± SEM 對變異度不直觀；小樣本下 SD、individual data points、CI 更重要。</li>
-<li>統計紅旗：
+<li>WT SED（n=7）與 WT EX（n=13）的 n 數不均，暗示可能有數據合併或排除</li>
+<li>KO SED 與 KO EX 的 error bars 大小相近且均值幾乎相同（~6.3–6.4），確認 ceiling effect</li>
+<li>Y 軸起始於 ~3 而非 0，但此處效果量足夠大，不構成視覺誇大</li>
+</ul>
+<p><strong>Figure 2B</strong>（perfused capillary density）[已讀圖]：</p>
+<ul>
+<li>WT EX 的 error bar 非常大（~±15 mm/mm²），相對於 WT SED 的 ~±3，<strong>離散度增加 5 倍</strong>。這提示 WT EX 組內存在極大的個體差異或可能有一兩隻 outlier 嚴重拉高平均值。在 n=6 的情況下，這是嚴重的可靠性問題。</li>
+</ul>
+<p><strong>Figure 3B</strong>（ACh, KO EX vs KO SED）[已讀圖]：</p>
+<ul>
+<li>圖中在 10⁻⁷ 與 10⁻⁶ M 標記了 # 符號（exercise effect），但也在個別濃度標註了 p=0.056 與 p=0.094——<strong>三維 ANOVA 的 main effect 顯著，但 post hoc 在個別 dose 點未達 0.05</strong>。這是 omnibus test significant but pairwise comparison not 的典型狀況，常見於 small n + Bonferroni 場景。</li>
+<li>n=10/組，統計力度較 cohort 2 佳。</li>
+<li>這個結果（KO 小鼠運動後 ACh vasodilation 增強）是<strong>唯一一個 KO 小鼠展現運動適應的終點</strong>，與整體「KO 缺乏適應」的敘事不一致。</li>
+</ul>
+<p><strong>Figure 4A, E</strong>（flow-mediated dilation）[已讀圖]：</p>
+<ul>
+<li>WT EX 的 FMD 從 ~35%（SED）增加到 ~60%（EX），效果量大且在 n=6 下仍達顯著，是本文最有力的發現</li>
+<li>Panel E 的 max relaxation bar graph 清楚顯示 WT EX 獨立於其他三組</li>
+<li>KO EX（Panel B）與 KO SED 的曲線完全重疊，效果量極小</li>
+<li>但 n=5–6/組的精確度仍需獨立重複確認</li>
+</ul>
+<p><strong>Figure 5</strong>（DEA-NONO-ate）[已讀圖]：</p>
+<ul>
+<li>Panel A: WT EX 的 dose-response 在中間劑量有分離（* 標記），但最高劑量曲線重合；p=0.10 的標註顯示 post hoc 未達顯著</li>
+<li>Panel B: KO EX 在多個劑量點有 p=0.064–0.083 的標註——<strong>全數未達傳統 0.05 門檻</strong></li>
+<li>文內結論「High intensity exercise training increased responsiveness to DEA in gastrocnemius muscle arterioles from both WT and adiponectin KO mice」（line 364–365）——但圖形顯示兩組的 post hoc p 值均在 borderline，<strong>此結論的統計基礎是 three-way ANOVA 的 main effect 而非 pairwise comparison</strong>。讀者可能被文字誤導為每一組都達到 pairwise 顯著。</li>
+</ul>
+<p><strong>Figure 6B</strong>（PE vasoconstriction, KO）[已讀圖]：</p>
+<ul>
+<li>KO EX 在 10⁻⁶ M 處標記 p=0.055，在最高濃度處標記 #（顯著）</li>
+<li>兩條曲線的分離不明顯，error bars 重疊</li>
+<li>結合 Figure 6D（WT EX vs KO EX，$ 標記），整體效果方向一致但精確度不足</li>
+</ul>
+<h4>C4. 報告完整性與其他統計問題</h4>
+<p><strong>「Data not shown」問題</strong>：</p>
+<ul>
+<li>ACh in gastrocnemius arterioles（line 348–349）：「was not altered... (data not shown)」</li>
+<li>Myogenic responses in all vessels（line 374）：「unaltered... (data not shown)」</li>
+<li>PE in soleus arteries（line 376）：「not altered... (data not shown)」</li>
+<li>DEA in soleus arteries（line 367–368）：「neither... altered responsiveness (data not shown)」</li>
+</ul>
+<p>四組實驗數據被「data not shown」處理。在前臨床研究中，陰性結果的選擇性不報告是已知的 publication bias 形式。若有 supplement，這些數據應以附錄呈現。</p>
+<p><strong>多重比較問題</strong>：</p>
+<ul>
+<li>本文有 6+ 個主要血管功能終點（ACh, FMD, DEA, PE, myogenic, capillarity），分別在兩個 cohort、兩個肌肉中測量。整體終點數遠超主要假說能支撐的範圍，但<strong>未對多重終點進行任何校正</strong>。</li>
+<li>Bonferroni 只用在 post hoc pairwise comparison（在同一 ANOVA 內），未處理跨終點的 family-wise error。</li>
+</ul>
+<p><strong>ANOVA 模型選擇</strong>：</p>
+<ul>
+<li>Three-way ANOVA（genotype × exercise × dose/time）含 repeated measures：在 n=5–6/組的條件下，此模型的 power 極低，且 sphericity 假設可能被違反（文內未提及 Greenhouse-Geisser 或 Huynh-Feldt 校正）</li>
+</ul>
+<hr />
+<h3>D. 次組分析評估</h3>
+<p>本文無正式次組分析。兩個 cohort 各自為獨立實驗，不存在按 cohort 分層的次組比較。</p>
+<hr />
+<h3>E. 紅旗清單</h3>
 <ol>
-<li>沒有 power calculation。</li>
-<li>沒有 outcome hierarchy。</li>
-<li>沒有 CI。</li>
-<li>多重 endpoint 與多張 dose-response 圖，選擇性敘事風險高。</li>
-<li>未清楚報 genotype × exercise interaction 是否為核心檢定。</li>
-<li>high cohort n=6/組，精確度不足。</li>
-<li>圖形數字未在 markdown 可核對，資料透明度有限。</li>
+<li><strong>Two separate cohorts 被以「differentially impact」並置，暗示強度比較但無統計基礎</strong>——標題與結論超出設計所允許的推論範圍</li>
+<li><strong>Cohort 2 n=6/組，大量 borderline p-values（0.054–0.10）且無 power calculation</strong>——無法判斷陰性結果究竟是真陰性還是 underpowered</li>
+<li><strong>Figure 2B WT EX 組 perfused capillary density 的 error bar 巨大</strong>——可能有 outlier 驅動整組結果，n=6 下無法穩健</li>
+<li><strong>完全缺乏致盲描述</strong>——手動纖維勾勒、體外血管實驗操作者均可能受分組知情影響</li>
+<li><strong>Germline KO ceiling effect 是最主要的替代解釋，但被弱化處理</strong>——KO SED 基線已高於 WT EX，卻仍被歸為「adiponectin 缺乏阻礙適應」</li>
+<li><strong>ACh 結果（KO EX 增強）直接矛盾主要結論，僅以「Surprisingly」帶過</strong>——一個令人驚訝的陽性結果打破「全部缺乏適應」的敘事</li>
+<li><strong>四組數據以「data not shown」處理</strong>——選擇性報告風險；陰性結果不呈現降低了可驗證性</li>
+<li><strong>DEA 的結論（「increased responsiveness in both genotypes」）在 post hoc 層級多數未達 0.05</strong>——文字結論強度超過統計證據</li>
+</ol>
+<hr />
+<h3>F. 反向解釋</h3>
+<ol>
+<li>
+<p><strong>Ceiling effect / 代償性上調</strong>：KO 小鼠的 soleus 氧化能力與毛細管密度基線已升至 WT 訓練後水準。運動訓練無額外增加可能反映的是已達生理上限，而非 adiponectin 的缺乏阻礙了適應機制。</p>
+<ul>
+<li>支持線索：Table 1 KO SED CS activity 與 capillary:fiber ratio 均顯著高於 WT SED [文內]</li>
+<li>反對線索：高強度 cohort 的 gastrocnemius 無此基線差異，但同樣缺乏運動適應（Figure 2A）——此點有利於作者論述</li>
+<li>但 gastrocnemius cohort n=6 且 error bar 極大，獨立可靠性存疑</li>
+</ul>
+</li>
+<li>
+<p><strong>相對運動強度不匹配</strong>：若 KO 小鼠的 maximal exercise capacity 較低（因代謝異常），同一絕對速度對 KO 代表更高的相對強度，可能導致過度疲勞、低依從性或不同的適應模式——反之若 KO 容忍度較高，則相對強度更低，刺激不足。</p>
+<ul>
+<li>支持線索：作者承認未評估 pre-training capacity (line 526–530) [文內]</li>
+<li>反對線索：文內稱「all mice were able to complete full training sessions by the end of week one」(line 150–151)——但完成≠相同相對負荷</li>
+</ul>
+</li>
+<li>
+<p><strong>Developmental compensation 而非急性 adiponectin 效應</strong>：Germline KO 從胚胎期即缺乏 adiponectin，血管與肌肉的發育路徑可能根本不同。觀察到的「缺乏運動適應」可能是發育性重塑的結果，而非成年後 adiponectin 信號的缺失。</p>
+<ul>
+<li>支持線索：作者明確建議需要 acute knockout（line 478–480）[文內]</li>
+<li>反對線索：Caldwell 2021（ref 14）的冠狀動脈結果也顯示類似模式，跨血管床的一致性增加因果推論可信度——但仍為同一模型、同一實驗室的重複</li>
+</ul>
+</li>
+<li>
+<p><strong>隨機變異與小樣本效應</strong>：Cohort 2 每組 n=6，在 multifactorial ANOVA 中幾乎不可能分辨真實交互作用與隨機變異。Figure 2B 的 WT EX 組 error bar 巨大，提示結果可能由 1–2 隻動物驅動。</p>
+<ul>
+<li>支持線索：大量 borderline p-values [文內 Tables &amp; Figures]</li>
+</ul>
+</li>
+</ol>
+<hr />
+<h3>G. 最終裁決</h3>
+<ul>
+<li>
+<p><strong>整體可信度</strong>：<strong>低至中</strong></p>
+<ul>
+<li>Flow-mediated dilation 的結果（Figure 4）效果量大、方向清楚，是本文最有力的證據</li>
+<li>但 ceiling effect 替代解釋、缺乏致盲、cohort 2 極小 n、不可比較的兩個 cohort、多項 borderline 結果、以及「data not shown」的選擇性報告，整體嚴重削弱結論的穩健性</li>
+</ul>
+</li>
+<li>
+<p><strong>可採用的條件</strong>：</p>
+<ul>
+<li>作為「adiponectin 可能參與運動誘導的血管適應」此假說的<strong>初步支持證據</strong></li>
+<li>與同一團隊先前的冠狀動脈研究（Caldwell 2021）形成一致的 pattern，增加假說的 plausibility</li>
+<li>適合用於 grant proposal 或 review article 中的背景引用</li>
+</ul>
+</li>
+<li>
+<p><strong>不建議採用的情境</strong>：</p>
+<ul>
+<li>不應作為「低 adiponectin 患者無法從運動獲益」的人體臨床推論基礎</li>
+<li>不應作為任何治療決策或運動處方修改的依據</li>
+<li>中等 vs 高強度的「差異性影響」結論不應被引用——兩個 cohort 不可比較</li>
+</ul>
+</li>
+<li>
+<p><strong>若要改觀，最需要的 3 個關鍵改進</strong>：</p>
+<ol>
+<li>使用 <strong>conditional/inducible adiponectin knockout</strong> 模型（如 tamoxifen-inducible），在成年後誘導 KO，排除 developmental compensation</li>
+<li><strong>Pre-training maximal exercise capacity</strong> 測試，確保以相對強度（如 % VO₂max）設定訓練負荷</li>
+<li><strong>分子機轉數據</strong>（eNOS 磷酸化、NO 生物利用度、ROS、AMPK 活性）支撐因果鏈，而非僅憑 KO vs WT 的功能差異做間接推論</li>
 </ol>
 </li>
-</ul>
-<h2>D. 次組分析評估</h2>
-<p>本文核心其實是 genotype × training × muscle/intensity 的交互比較，但不像臨床試驗次組分析那樣預先定義。</p>
-<table>
-<thead>
-<tr>
-<th>比較</th>
-<th>interaction 是否清楚報告</th>
-<th>生物合理性</th>
-<th>可信度</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>WT vs KO 對 moderate exercise 的 soleus capillarity / citrate synthase 反應</td>
-<td>未完整呈現 effect size/CI</td>
-<td>合理</td>
-<td>中等偏低</td>
-</tr>
-<tr>
-<td>WT vs KO 對 high exercise 的 gastrocnemius perfusion / FMD 反應</td>
-<td>未完整呈現 effect size/CI</td>
-<td>合理</td>
-<td>中等偏低</td>
-</tr>
-<tr>
-<td>Moderate vs high intensity 差異</td>
-<td>受 muscle、cohort、vessel type 混雜</td>
-<td>有假說但設計不乾淨</td>
-<td>低</td>
-</tr>
-<tr>
-<td>ACh 在 KO moderate EX 增強</td>
-<td>與主敘事部分相反</td>
-<td>可能為補償</td>
-<td>探索性</td>
-</tr>
-</tbody>
-</table>
-<h2>E. 紅旗清單</h2>
-<ul>
-<li>設計：germline KO、雄鼠限定、未測 baseline fitness、絕對強度訓練。</li>
-<li>統計：無 power calculation、無 CI、無主要終點階層、多重比較。</li>
-<li>測量：圖形數值缺失；capillary counting 與 imaging analysis 是否盲化未明。</li>
-<li>敘事：把 surrogate microvascular function 推到 cardiovascular health benefit，語氣偏強。</li>
-<li>外推：無人體資料、無疾病模型、無運動能力結果。</li>
-<li>COI / 立場：無商業 COI，但團隊長期研究方向與本篇結論高度一致，需注意確認偏差。</li>
-</ul>
-<h2>F. 反向解釋</h2>
-<ol>
 <li>
-<p><strong>KO 小鼠不是不能適應，而是 baseline 已補償到接近上限</strong><br />
-支持：KO SED soleus citrate synthase 與 capillarity 較高。反對：gastrocnemius high cohort baseline 未顯示同樣 oxidative capacity 差異。</p>
-</li>
-<li>
-<p><strong>KO 小鼠接受的 relative exercise intensity 不同</strong><br />
-支持：作者未測 exercise capacity，且承認可能性。反對：所有 mice 完成訓練，仍有部分 KO vascular response 如 ACh / DEA 改變。</p>
-</li>
-<li>
-<p><strong>肌肉與血管床差異，而非單純 intensity 差異</strong><br />
-支持：moderate 主要看 soleus，high 主要看 gastrocnemius；不同肌纖維型態本來就有不同 microvascular adaptation。反對：作者依既有文獻選擇不同肌肉對應不同強度，生理上有一定合理性。</p>
-</li>
-<li>
-<p><strong>多重比較下的部分陽性結果可能被放大</strong><br />
-支持：endpoint 很多、n 小、CI 缺失。反對：多個結果方向一致指向 WT 有訓練適應、KO 鈍化，並非單一孤立發現。</p>
-</li>
-</ol>
-<h2>G. 最終裁決</h2>
-<ul>
-<li>整體可信度：<strong>中等偏低到中等</strong>。作為前臨床機轉研究有價值；作為臨床或運動處方證據不足。</li>
-<li>可採用：引用為「adiponectin 可能調節小鼠骨骼肌 exercise-induced endothelial / microvascular adaptation」。</li>
-<li>不建議採用：不能說低 adiponectin 患者不會從運動獲益；不能據此選擇 high vs moderate intensity；不能支持 adiponectin 靶向治療。</li>
-<li>若要改觀，最需要：
-<ol>
-<li>adult inducible AdipoKO + adiponectin rescue。</li>
-<li>以 VO₂max / exhaustion / lactate 校正 relative exercise intensity。</li>
-<li>預先指定主要 endpoint，完整報告 individual data、effect size、95% CI 與 interaction tests。</li>
-</ol>
+<p><strong>一句話結論</strong>：本研究提示 adiponectin 可能參與骨骼肌微血管對運動的適應，但 germline knockout 的代償效應、極小樣本與缺乏機轉數據使此結論仍屬初步假說。</p>
 </li>
 </ul>
-<p><strong>一句話結論</strong>：這篇支持 adiponectin 參與小鼠運動後微血管適應，但離臨床運動處方仍很遠。</p>
-<p><strong>外部來源</strong>：Kansas State University faculty profile；PubMed；NLM Catalog；APS open access 說明；SciRev；Resurchify；journalsimpactfactors.com。</p>
 
+<footer class="appraisal-meta">評讀資訊：模型：claude-opus-4-6 (claude)  ·  route：preclinical  ·  產出時間：2026-06-08 13:35 CST</footer>
 </main>
 </body>
 </html>
