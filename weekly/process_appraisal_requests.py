@@ -89,6 +89,15 @@ def _write_json(path: Path, data: Any) -> None:
     path.write_text(json.dumps(data, ensure_ascii=False, indent=2), encoding="utf-8")
 
 
+def _merge_article_record(base: dict, update: dict) -> dict:
+    """Merge appraisal metadata without dropping existing summary fields."""
+    merged = {**base, **update}
+    for key in ("summary", "commentary", "abstract"):
+        if not update.get(key) and base.get(key):
+            merged[key] = base[key]
+    return merged
+
+
 def _load_state() -> dict[tuple[str, str], dict]:
     records: dict[tuple[str, str], dict] = {}
     if not STATE_PATH.exists():
@@ -250,11 +259,17 @@ def _merge_selected(week_dir: Path, article: dict) -> list[dict]:
     replaced = False
     for item in selected:
         if identifiers.intersection(_article_identifiers(item)):
-            merged.append({**item, **article})
+            merged.append(_merge_article_record(item, article))
             replaced = True
         else:
             merged.append(item)
     if not replaced:
+        articles = _load_json(week_dir / "articles.json", [])
+        if isinstance(articles, list):
+            for weekly_article in articles:
+                if identifiers.intersection(_article_identifiers(weekly_article)):
+                    article = _merge_article_record(weekly_article, article)
+                    break
         article.setdefault("selected_for_appraisal", True)
         article.setdefault("selection_reason", "由週報摘要區手動請求文獻評讀。")
         article.setdefault("selection_tags", ["manual_request"])
@@ -333,9 +348,18 @@ def _process_one(row: dict, article: dict, force: bool, no_push: bool, no_discor
     if selected_json.exists():
         existing = json.loads(selected_json.read_text(encoding="utf-8"))
         pmid = str(article.get("pmid", ""))
-        existing = [a for a in existing if str(a.get("pmid", "")) != pmid] + [article]
+        persisted: list[dict] = []
+        replaced = False
+        for item in existing:
+            if str(item.get("pmid", "")) == pmid:
+                persisted.append(_merge_article_record(item, article))
+                replaced = True
+            else:
+                persisted.append(item)
+        if not replaced:
+            persisted.append(article)
         selected_json.write_text(
-            json.dumps(existing, ensure_ascii=False, indent=2),
+            json.dumps(persisted, ensure_ascii=False, indent=2),
             encoding="utf-8",
         )
 

@@ -252,7 +252,24 @@
     {% endfor %}
   </div>
 
-  {% macro appraisal_card(article, feedback_endpoint, extra_class="", show_meta=true, show_feedback=true) %}
+  {% macro article_summary(article) %}
+    {% if article.summary %}
+    <div class="summary-block">
+      <div class="section-label">摘要</div>
+      <p class="summary{% if article.summary_error %} error{% endif %}">
+        {{ article.summary }}
+      </p>
+    </div>
+    {% endif %}
+    {% if article.commentary %}
+    <div class="commentary">
+      <div class="section-label">短評</div>
+      <p>{{ article.commentary }}</p>
+    </div>
+    {% endif %}
+  {% endmacro %}
+
+  {% macro appraisal_card(article, feedback_endpoint, extra_class="", show_meta=true, show_feedback=true, show_summary=true) %}
   <article class="selected-card{% if extra_class %} {{ extra_class }}{% endif %}">
     <span class="tag">{{ article.journal_key }}</span>
     {% if article.pub_type %}<span class="tag pub-type {{ article.pub_type_class }}">{{ article.pub_type }}</span>{% endif %}
@@ -269,6 +286,9 @@
       {% if article.selection_tags and article.appraisal_status %} · {% endif %}
       {% if article.appraisal_status %}appraisal: {{ article.appraisal_status }}{% endif %}
     </div>
+    {% endif %}
+    {% if show_summary %}
+    {{ article_summary(article) }}
     {% endif %}
     <div class="links">
       {% if article.appraisal_url %}<a href="{{ article.appraisal_url }}">評讀結果</a>{% endif %}
@@ -297,7 +317,7 @@
   <section class="selected-section">
     <h2 class="section-title">本週精選評讀</h2>
     {% for article in featured_articles %}
-    {{ appraisal_card(article, feedback_endpoint) }}
+    {{ appraisal_card(article, feedback_endpoint, "", true, true, false) }}
     {% endfor %}
   </section>
   {% endif %}
@@ -321,18 +341,7 @@
     <div class="authors">
       {{ article.authors_display }}{% if article.year %} · {{ article.year }}{% endif %}
     </div>
-    <div class="summary-block">
-      <div class="section-label">摘要</div>
-      <p class="summary{% if article.summary_error %} error{% endif %}">
-        {{ article.summary }}
-      </p>
-    </div>
-    {% if article.commentary %}
-    <div class="commentary">
-      <div class="section-label">短評</div>
-      <p>{{ article.commentary }}</p>
-    </div>
-    {% endif %}
+    {{ article_summary(article) }}
     <div class="links">
       {% if article.doi %}<a href="https://doi.org/{{ article.doi }}" target="_blank" rel="noopener">下載連結</a>{% endif %}
       {% if article.doi %}

@@ -149,7 +149,21 @@ def render_weekly(
             enriched_articles.append(article)
 
     prepared = [prepare(a) for a in enriched_articles]
-    prepared_selected = [prepare(a) for a in (selected_articles or [])]
+
+    article_meta = {
+        a.get("feedback_id"): a for a in prepared if a.get("feedback_id")
+    }
+    prepared_selected = []
+    for article in selected_articles or []:
+        selected = prepare(article)
+        base = article_meta.get(selected.get("feedback_id"))
+        if base:
+            selected = {**base, **selected}
+            for key in ("summary", "commentary"):
+                if not selected.get(key) and base.get(key):
+                    selected[key] = base[key]
+            selected["summary_error"] = _summary_is_error(selected.get("summary", ""))
+        prepared_selected.append(selected)
     selected_ids = {a.get("feedback_id") for a in prepared_selected if a.get("feedback_id")}
 
     # Split appraised articles: AI-curated picks (本週精選評讀) vs. articles a
