@@ -226,12 +226,11 @@ def _run_codex_prompt(
         ]
         for img in image_paths or []:
             cmd.extend(["-i", str(img)])
-        cmd.append(prompt)
         result = subprocess.run(
             cmd,
             cwd=tmp_dir,
             env=codex_exec_env(),
-            input="",
+            input=prompt,
             capture_output=True,
             text=True,
             timeout=timeout,
