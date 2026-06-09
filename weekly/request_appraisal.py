@@ -24,9 +24,16 @@ from __future__ import annotations
 
 import argparse
 import hashlib
+import json
+import os
 import re
 import sys
 from pathlib import Path
+
+# Distinct exit codes so a wrapper can tell a claude usage-limit (worth a
+# deferred retry) apart from a hard failure.
+EXIT_CLAUDE_LIMIT = 10
+EXIT_CLAUDE_ERROR = 11
 
 import requests
 from dotenv import load_dotenv
@@ -91,6 +98,27 @@ def _crossref_metadata(doi: str) -> dict | None:
     }
 
 
+def _week_article_by_doi(week: str, doi: str) -> dict | None:
+    """Return the week's articles.json record matching this DOI, if any.
+
+    Used by --update-weekly so the appraised card reuses the real pmid /
+    journal_key / summary already on the weekly page (dedup + enrichment in
+    render_weekly key on pmid), instead of a freshly resolved dict.
+    """
+    path = ROOT / "output" / "weekly" / week / "articles.json"
+    if not doi or not path.exists():
+        return None
+    try:
+        articles = json.loads(path.read_text(encoding="utf-8"))
+    except (OSError, json.JSONDecodeError):
+        return None
+    target = _normalize_doi(doi).lower()
+    for article in articles if isinstance(articles, list) else []:
+        if _normalize_doi(str(article.get("doi", ""))).lower() == target:
+            return article
+    return None
+
+
 def _resolve_metadata(doi: str, title_override: str) -> dict:
     """Build the article dict from a DOI (PubMed → Crossref → minimal)."""
     from modules import pubmed
@@ -149,6 +177,44 @@ def _get_pdf(article: dict, pdf_arg: str | None) -> Path | None:
     return results.get(str(article.get("pmid", "")))
 
 
+def _update_weekly_page(week: str, article: dict) -> None:
+    """Fold the finished appraisal into docs/<week>.html's 已評讀 section.
+
+    Reuses the on-demand worker helpers so the manual CLI path and the
+    button-driven path produce identical weekly markup and state.
+    """
+    from weekly import process_appraisal_requests as par
+
+    week_dir = ROOT / "output" / "weekly" / week
+    if (week_dir / "articles.json").exists():
+        selected = par._merge_selected(week_dir, article)
+        par._render_weekly_page(week, selected)
+        print(f"[weekly] updated docs/{week}.html (已評讀)")
+    else:
+        par._update_existing_weekly_html_appraisal_link(week, article)
+        print(f"[weekly] patched appraisal link in docs/{week}.html")
+
+    # Persist appraisal_url / route / model mutations so a later re-run hits
+    # the route cache (mirrors process_appraisal_requests._process_one).
+    selected_json = week_dir / "selected_articles.json"
+    if selected_json.exists():
+        existing = json.loads(selected_json.read_text(encoding="utf-8"))
+        pmid = str(article.get("pmid", ""))
+        persisted: list[dict] = []
+        replaced = False
+        for item in existing:
+            if str(item.get("pmid", "")) == pmid:
+                persisted.append(par._merge_article_record(item, article))
+                replaced = True
+            else:
+                persisted.append(item)
+        if not replaced:
+            persisted.append(article)
+        selected_json.write_text(
+            json.dumps(persisted, ensure_ascii=False, indent=2), encoding="utf-8"
+        )
+
+
 def run(
     *,
     doi: str,
@@ -158,8 +224,13 @@ def run(
     no_push: bool,
     no_discord: bool,
     force: bool,
+    update_weekly: bool,
+    claude_only: bool,
 ) -> int:
     load_dotenv(ROOT / ".env")
+    if claude_only:
+        os.environ["JOURNAL_FETCHER_CLAUDE_ONLY"] = "1"
+    from modules import claude_exec
     from weekly import appraise_selected, publish, render
     from weekly.appraise_selected import ArticleTooLargeError
 
@@ -168,9 +239,24 @@ def run(
         print("[error] need --doi or --pdf", file=sys.stderr)
         return 2
 
-    article = _resolve_metadata(doi, title)
+    # When integrating into the weekly page, prefer that week's existing record
+    # so pmid/journal_key/summary line up with the rest of the page.
+    article = None
+    if update_weekly and doi:
+        article = _week_article_by_doi(week, doi)
+        if article is not None:
+            article = {**article}
+            print(f"[meta] {week} articles.json: {article.get('title', '')[:80]}")
+    if article is None:
+        article = _resolve_metadata(doi, title)
+
     seed = doi or (pdf or "") or (article.get("title", "") or "request")
     _finalize_article_keys(article, seed)
+
+    if update_weekly:
+        tags = article.get("selection_tags") or []
+        if "manual_request" not in tags:
+            article["selection_tags"] = [*tags, "manual_request"]
 
     if not article.get("title"):
         print("[error] no title resolved; pass --title for a PDF-only request", file=sys.stderr)
@@ -192,6 +278,13 @@ def run(
     except ArticleTooLargeError as e:
         print(f"[error] {e}", file=sys.stderr)
         return 1
+    except claude_exec.ClaudeLimitError as e:
+        # claude-only mode: usage limit hit, no codex fallback produced.
+        print(f"[claude-limit] {str(e)[:160]}", file=sys.stderr)
+        return EXIT_CLAUDE_LIMIT
+    except claude_exec.ClaudeError as e:
+        print(f"[claude-error] {str(e)[:160]}", file=sys.stderr)
+        return EXIT_CLAUDE_ERROR
     if not report_path:
         print("[error] appraisal failed (no report produced)", file=sys.stderr)
         return 1
@@ -203,6 +296,9 @@ def run(
         print("[error] appraisal HTML not produced", file=sys.stderr)
         return 1
     print(f"[render] {published[0]}")
+
+    if update_weekly:
+        _update_weekly_page(week, article)
 
     identifier = f"doi:{doi}" if doi else f"pmid:{article['pmid']}"
     if no_push:
@@ -233,6 +329,8 @@ def main() -> int:
     parser.add_argument("--no-push", action="store_true", help="Skip git commit/push of docs/")
     parser.add_argument("--no-discord", action="store_true", help="Skip Discord completion notice")
     parser.add_argument("--force", action="store_true", help="Re-run even if an appraisal report already exists")
+    parser.add_argument("--update-weekly", action="store_true", help="Fold the appraisal into docs/<week>.html 已評讀 section")
+    parser.add_argument("--claude-only", action="store_true", help=f"Never fall back to codex; exit {EXIT_CLAUDE_LIMIT} on claude usage limit, {EXIT_CLAUDE_ERROR} on other claude error")
     args = parser.parse_args()
 
     week = args.week.strip() or render.iso_week_label()[0]
@@ -246,6 +344,8 @@ def main() -> int:
             no_push=args.no_push,
             no_discord=args.no_discord,
             force=args.force,
+            update_weekly=args.update_weekly,
+            claude_only=args.claude_only,
         )
     except Exception as e:  # noqa: BLE001 - standalone CLI should report a clear failure
         print(f"[error] {e}", file=sys.stderr)

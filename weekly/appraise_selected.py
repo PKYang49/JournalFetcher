@@ -257,9 +257,27 @@ def _appraisal_web_search_enabled() -> bool:
 
 
 def _appraisal_figures_enabled() -> bool:
-    """Read JOURNAL_FETCHER_APPRAISAL_FIGURES; default off."""
-    raw = os.getenv("JOURNAL_FETCHER_APPRAISAL_FIGURES", "0").strip().lower()
+    """Read JOURNAL_FETCHER_APPRAISAL_FIGURES; default on for full appraisals."""
+    raw = os.getenv("JOURNAL_FETCHER_APPRAISAL_FIGURES", "1").strip().lower()
     return raw not in ("0", "false", "no", "off", "")
+
+
+# Figure-page budget per route. Guidelines/statements and evidence syntheses
+# carry many labelled figures (key-takeaway panels, multiple forest plots), so
+# they get a larger budget; primary studies need only the core few. Combined
+# with figure_extract's caption-first ordering, this keeps a late key figure
+# from being crowded out in long documents without inflating cost everywhere.
+DEFAULT_FIGURE_MAX_PAGES = 6
+FIGURE_MAX_PAGES_BY_ROUTE: dict[str, int] = {
+    "cpg": 12,
+    "consensus": 12,
+    "sr": 10,
+    "nma": 10,
+}
+
+
+def _figure_max_pages(route: str | None) -> int:
+    return FIGURE_MAX_PAGES_BY_ROUTE.get(route or "", DEFAULT_FIGURE_MAX_PAGES)
 
 
 def _build_figure_instruction(figdir: Path, files: list[Path]) -> str:
@@ -562,7 +580,9 @@ def appraise_pdf(article: dict, pdf_path: Path, out_dir: Path) -> Path | None:
         figure_dir = Path(fig_tmp) if fig_tmp else None
         if figure_dir is not None:
             try:
-                figure_paths = extract_figure_pages(pdf_path, figure_dir)
+                figure_paths = extract_figure_pages(
+                    pdf_path, figure_dir, max_pages=_figure_max_pages(route)
+                )
             except Exception as e:
                 print(
                     f"  [warn] figure extraction failed for {pdf_path.name}: {e}",

@@ -61,6 +61,18 @@ LIMIT_ERROR_SIGNALS = (
 _session = {"claude_exhausted": False}
 
 
+def _claude_only() -> bool:
+    """When JOURNAL_FETCHER_CLAUDE_ONLY is truthy, never fall back to codex:
+    a claude failure re-raises so the caller can defer/retry instead of
+    silently producing a codex result. Default behaviour (unset) is unchanged.
+    """
+    return os.environ.get("JOURNAL_FETCHER_CLAUDE_ONLY", "").strip().lower() in (
+        "1",
+        "true",
+        "yes",
+    )
+
+
 class ClaudeError(RuntimeError):
     """Base for claude -p call failures."""
 
@@ -288,12 +300,26 @@ def try_claude_or_fallback(
             return text, "claude"
         except ClaudeLimitError as e:
             _session["claude_exhausted"] = True
+            if _claude_only():
+                print(
+                    f"  [info] {label or 'claude'} {claude_model}: 用量已達上限 "
+                    f"({str(e)[:120]});claude-only 模式,不 fallback codex。",
+                    file=sys.stderr,
+                )
+                raise
             print(
                 f"  [info] {label or 'claude'} {claude_model}: 用量已達上限 "
                 f"({str(e)[:120]});本次 process 後續改用 codex。",
                 file=sys.stderr,
             )
         except ClaudeError as e:
+            if _claude_only():
+                print(
+                    f"  [warn] {label or 'claude'} {claude_model}: {str(e)[:120]};"
+                    f" claude-only 模式,不 fallback codex。",
+                    file=sys.stderr,
+                )
+                raise
             print(
                 f"  [warn] {label or 'claude'} {claude_model}: {str(e)[:120]};"
                 f" 本次改走 codex,後續仍會嘗試 claude。",
