@@ -1,0 +1,774 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>IVUS-Guided versus Angiography-Guided PCI in Unprotected Left Main Coronary Disease.</title>
+<style>
+  :root {
+    --bg: #fafafa;
+    --card: #ffffff;
+    --text: #1a1a1a;
+    --muted: #6b6b6b;
+    --border: #e5e5e5;
+    --accent: #0b5fff;
+  }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang TC",
+      "Microsoft JhengHei", sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    margin: 0;
+    padding: 24px 16px 64px;
+    line-height: 1.72;
+  }
+  main {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    margin: 0 auto;
+    max-width: 840px;
+    padding: 22px 26px;
+  }
+  nav {
+    margin: 0 auto 14px;
+    max-width: 840px;
+    color: var(--muted);
+    font-size: 14px;
+  }
+  a { color: var(--accent); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  h1, h2, h3, h4 { line-height: 1.35; }
+  h1 { font-size: 26px; margin-top: 0; }
+  h2 { border-top: 1px solid var(--border); padding-top: 18px; }
+  code {
+    background: rgba(127, 127, 127, 0.12);
+    border-radius: 4px;
+    padding: 1px 4px;
+  }
+  table {
+    border-collapse: collapse;
+    display: block;
+    overflow-x: auto;
+    width: 100%;
+  }
+  th, td {
+    border: 1px solid var(--border);
+    padding: 6px 8px;
+    text-align: left;
+    vertical-align: top;
+  }
+  blockquote {
+    border-left: 3px solid var(--accent);
+    color: var(--muted);
+    margin-left: 0;
+    padding-left: 14px;
+  }
+  .appraisal-meta {
+    border-top: 1px solid var(--border);
+    margin-top: 28px;
+    padding-top: 14px;
+    color: var(--muted);
+    font-size: 13px;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #1a1a1a;
+      --card: #242424;
+      --text: #e8e8e8;
+      --muted: #999;
+      --border: #333;
+      --accent: #6ea8ff;
+    }
+  }
+</style>
+</head>
+<body>
+<nav><a href="../../2026-W25.html">← 回到 2026-W25 週報</a></nav>
+<main>
+<h1>IVUS-Guided versus Angiography-Guided PCI in Unprotected Left Main Coronary Disease.</h1>
+<p>Now I have all the information needed. Let me compile the full critical appraisal.</p>
+<hr />
+<h1>OPTIMAL Trial 批判性評讀</h1>
+<h2>SECTION-0：文章全面描述</h2>
+<h3>0. 文章身份證</h3>
+<ul>
+<li><strong>標題</strong>：IVUS-Guided versus Angiography-Guided PCI in Unprotected Left Main Coronary Disease</li>
+<li><strong>期刊</strong>：The New England Journal of Medicine</li>
+<li><strong>年份</strong>：2026（線上發表 2026-03-30，紙本 Vol. 394, No. 22, June 11, 2026）</li>
+<li><strong>DOI</strong>：10.1056/NEJMoa2600440</li>
+<li><strong>PMID</strong>：41911017</li>
+<li><strong>ClinicalTrials.gov</strong>：NCT04111770</li>
+<li><strong>文章類型</strong>：多中心、國際、開放標籤、隨機對照優越性試驗（RCT）</li>
+<li><strong>路由判斷</strong>：RCT → SKILL-A 主流程</li>
+</ul>
+<hr />
+<h3>1. 作者團隊評論</h3>
+<p><strong>通訊作者</strong>：Luca Testa, MD — IRCCS Policlinico San Donato, Milan, Italy [文內]</p>
+<p><strong>作者團隊構成</strong>：[文內 + 外部]</p>
+<ul>
+<li><strong>Luca Testa</strong>（共同第一作者）：IRCCS Policlinico San Donato 冠脈血管重建與臨床研究主任。Google Scholar 引用超過 12,000 次、405 篇發表。專長涵蓋冠脈介入影像（IVUS/OCT）、TAVI 與結構性心臟病。屬於該領域核心研究者。[外部: <a href="https://www.researchgate.net/profile/Luca-Testa">ResearchGate</a>, <a href="https://scholar.google.it/citations?user=3Dua16gAAAAJ&amp;hl=en">Google Scholar</a>]</li>
+<li><strong>Ernest Spitzer</strong>（共同第一作者）：Cardialysis 首席醫療官暨歐洲心血管研究機構（ECRI）主任，負責臨床試驗設計、core laboratory、endpoint adjudication。超過 80 篇 peer-reviewed 發表，Academic Research Consortium 董事會成員。[外部: <a href="https://esc365.escardio.org/person/231385">ESC 365</a>]</li>
+<li><strong>Adrian P. Banning</strong>（末位作者 / 資深通訊）：Oxford Heart Centre, John Radcliffe Hospital，Professor of Interventional Cardiology。300+ 篇 PubMed 發表。EXCEL trial 全球首位隨機入組患者的術者，Oxford 中心在該試驗入組數全球第二。<strong>Banning 是 left main PCI 領域的全球頂尖專家</strong>，其參與賦予此試驗高度學術可信度，但也意味著中心 IVUS 使用經驗極豐富（見方法學批判 B3 節）。[外部: <a href="https://www.researchgate.net/profile/Adrian-Banning">ResearchGate</a>]</li>
+<li><strong>Jose Maria De la Torre Hernandez</strong>：Hospital Universitario Marques de Valdecilla, Santander, Spain — 西班牙 left main / 分叉介入領域活躍研究者。[文內]</li>
+<li><strong>Cardialysis（Jan G.P. Tijssen, Wietze Lindeboom）</strong>：學術 CRO，負責資料管理、core lab、endpoint adjudication。Tijssen 是 Amsterdam UMC 臨床流行病學資深教授，大型心血管試驗統計方法學專家。[文內]</li>
+</ul>
+<p><strong>團隊過往研究</strong>：[外部]</p>
+<ol>
+<li>Testa L 等人. OPTIMAL trial design. <em>Am Heart J.</em> 2022（試驗設計文件）</li>
+<li>Banning AP 等人. EXCEL trial 相關 left main PCI 研究（<em>NEJM</em> 2017, <em>JACC</em> 多篇）</li>
+<li>Spitzer E 等人. FAST III (angiography-based physiology)（<em>NEJM</em> 2026）</li>
+<li>團隊跨越 Italy、Spain、UK 三國 28 中心，屬 <strong>left main PCI 領域的核心研究群體</strong>。</li>
+</ol>
+<p><strong>利益揭露</strong>：[文內]</p>
+<ul>
+<li>資助來源：<strong>Philips Image Guided Therapy Devices</strong> 與 <strong>Boston Scientific</strong> 提供 unrestricted grants</li>
+<li>文內聲明 funder 無涉入試驗設計、執行、分析或撰稿</li>
+<li><strong>評估</strong>：Philips 是 IVUS 設備製造商，Boston Scientific 提供試驗指定支架（Synergy / Synergy Megatron）。IVUS 製造商資助一個 IVUS superiority trial 且結果為陰性——此利益結構<strong>不構成結論偏差的方向性疑慮</strong>（若有偏差，應偏向 IVUS 有利；結果反而顯示 IVUS 無優勢）。但 stent 統一使用 Boston Scientific 產品構成推廣效應。</li>
+</ul>
+<hr />
+<h3>2. 文獻 Metadata 整理</h3>
+<ul>
+<li><strong>發表時間線</strong>：線上發表 2026-03-30（ACC 2026 Late-Breaking Clinical Trial 同步發表），紙本 2026-06-11 [文內]</li>
+<li><strong>Received / Accepted date</strong>：[文內未提供確切日期]。ACC.26 同步發表通常意味著 fast-track review。</li>
+<li><strong>NEJM 平均審查天數</strong>：[外部] NEJM 中位審查時間約 14–21 天（一般稿件）；ACC late-breaker 通常走 expedited review，4–8 週內完成。本試驗為 ACC 2026 同步 NEJM 發表，符合 fast-track 審查流程。</li>
+<li><strong>期刊屬性</strong>：Impact Factor ~176（2024/2025）；Q1 Medicine (General &amp; Internal)；非 open access（subscription-based，部分文章 OA）[外部]</li>
+<li><strong>邀稿 vs 投稿</strong>：非邀稿。為 investigator-initiated trial 的主結果報告，以一般投稿方式經 peer review。[文內/推論]</li>
+<li><strong>同期 Editorial</strong>：Frederick G.P. Welt, MD — &quot;Seeing the Left Main Coronary Artery Clearly — Is IVUS Always Necessary?&quot;（<em>NEJM</em> 2026; DOI: 10.1056/NEJMe2602959）[外部: <a href="https://www.nejm.org/doi/full/10.1056/NEJMe2602959">NEJM</a>]</li>
+</ul>
+<hr />
+<h3>3. 研究背景</h3>
+<p><strong>既有事實與證據</strong>：[文內]</p>
+<ul>
+<li>Unprotected left main coronary artery disease (ULMCAD) 佔冠脈攝影的 4–6%，預後不佳</li>
+<li>CABG 為傳統首選，但 RCT（EXCEL, NOBLE, PRECOMBAT）已建立 PCI 在低中複雜度病灶可接受的地位</li>
+<li>Left main PCI 有獨特技術挑戰：stent expansion、apposition、lesion coverage</li>
+<li>IVUS 提供高解析度斷層影像，可優化支架選擇與置放</li>
+<li><strong>觀察性研究與 meta-analysis</strong> 顯示 IVUS 引導 left main PCI 與較低死亡、MI、stent thrombosis 相關</li>
+<li><strong>RENOVATE-COMPLEX-PCI</strong>（<em>NEJM</em> 2023）在廣泛 complex lesion 族群顯示 intravascular imaging guidance 降低 target vessel failure 36%</li>
+</ul>
+<p><strong>知識缺口</strong>：[文內]</p>
+<ul>
+<li>過去 IVUS 引導的 RCT 涵蓋的是較廣泛的冠脈病灶族群，<strong>缺乏專門針對 ULMCAD 的大型 RCT</strong></li>
+<li>觀察性證據可能受選擇偏差影響</li>
+</ul>
+<p><strong>Research question</strong>：[文內]</p>
+<ul>
+<li>在 ULMCAD 患者中，IVUS 引導 PCI 相較於 angiography 引導 PCI，是否能降低缺血事件或死亡風險？（superiority hypothesis）</li>
+</ul>
+<hr />
+<h3>4. 研究設計與方法</h3>
+<p><strong>PICO</strong>：</p>
+<table>
+<thead>
+<tr>
+<th>項目</th>
+<th>內容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>P（Population）</strong></td>
+<td>≥18 歲，ULMCAD（造影目測 ≥50% 狹窄），heart team 或術者判定適合 PCI，有中重度缺血證據或症狀。含 ostial LAD/LCx 病灶。排除 48hr 內 STEMI、cardiogenic shock、預期壽命 &lt;2 年。</td>
+</tr>
+<tr>
+<td><strong>I（Intervention）</strong></td>
+<td>IVUS-guided PCI：強烈建議 pre-stent IVUS 評估病灶型態與血管尺寸；post-stent IVUS 為<strong>mandatory</strong>，評估 stent deployment 並引導額外處置（target MLA: LM body ≥8 mm², polygon of confluence ≥7 mm², prox LAD/LCx ≥6/5 mm²）</td>
+</tr>
+<tr>
+<td><strong>C（Comparison）</strong></td>
+<td>Angiography-guided PCI：不鼓勵使用 IVUS，除非安全需要（如疑似併發症）</td>
+</tr>
+<tr>
+<td><strong>O（Outcome）</strong></td>
+<td><strong>主要終點</strong>：Patient-oriented composite — any stroke + any MI + any revascularization + death from any cause（最長追蹤）。<strong>次要終點</strong>：Device-oriented composite（CV death + target-vessel MI + clinically indicated TLR）；Vessel-oriented composite（CV death + target-vessel MI + TVR）；all-cause death；各組成個別分析</td>
+</tr>
+</tbody>
+</table>
+<p><strong>關鍵設計細節</strong>：</p>
+<ul>
+<li><strong>設計</strong>：Investigator-initiated, international, multicenter, open-label, randomized, superiority trial</li>
+<li><strong>收案地點</strong>：義大利、西班牙、英國 28 中心</li>
+<li><strong>收案期間</strong>：2020-07 至 2023-06（COVID-19 疫情期間）</li>
+<li><strong>追蹤</strong>：1, 12, 24 個月門診 + 之後每年電話 + 2025 年 6–7 月最終電話追蹤</li>
+<li><strong>中位追蹤</strong>：2.9 年（IQR 2.2–3.7）</li>
+<li><strong>隨機化</strong>：Web-based concealed system，1:1，按中心分層</li>
+<li><strong>致盲</strong>：<strong>開放標籤（open-label）</strong>——術者與患者均未致盲；endpoint adjudication 由獨立委員會執行</li>
+<li><strong>支架</strong>：統一使用 everolimus-eluting platinum-chromium stents（Synergy / Synergy Megatron, Boston Scientific）</li>
+<li><strong>統計方法</strong>：ITT 分析；Cox proportional-hazards model；Kaplan-Meier 法；score test P value；次要分析不校正多重比較；sensitivity analysis（modified ITT, per-protocol, as-treated）；Fine-Gray competing risk model（post hoc）</li>
+<li><strong>DSMB</strong>：<strong>未設置</strong>——由 steering committee 監控累積事件。無預定期中分析。</li>
+</ul>
+<hr />
+<h3>5. 研究結果重點整理</h3>
+<p><strong>主要結果整理</strong>：</p>
+<table>
+<thead>
+<tr>
+<th>終點</th>
+<th>IVUS 組 (N=401)</th>
+<th>Angiography 組 (N=405)</th>
+<th>HR (95% CI)</th>
+<th>P 值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>主要複合終點</strong></td>
+<td>135 (33.7%)</td>
+<td>125 (30.9%)</td>
+<td><strong>1.11 (0.87–1.42)</strong></td>
+<td><strong>0.40</strong></td>
+</tr>
+<tr>
+<td>Device-oriented composite</td>
+<td>90 (22.4%)</td>
+<td>83 (20.5%)</td>
+<td>1.10 (0.82–1.49)</td>
+<td>—</td>
+</tr>
+<tr>
+<td>Vessel-oriented composite</td>
+<td>97 (24.2%)</td>
+<td>87 (21.5%)</td>
+<td>1.14 (0.85–1.52)</td>
+<td>—</td>
+</tr>
+<tr>
+<td>全因死亡</td>
+<td>63 (15.7%)</td>
+<td>61 (15.1%)</td>
+<td>1.06 (0.74–1.50)</td>
+<td>—</td>
+</tr>
+<tr>
+<td>CV 死亡</td>
+<td>38 (9.5%)</td>
+<td>29 (7.2%)</td>
+<td>1.34 (0.83–2.17)</td>
+<td>—</td>
+</tr>
+<tr>
+<td><strong>中風</strong></td>
+<td><strong>12 (3.0%)</strong></td>
+<td><strong>4 (1.0%)</strong></td>
+<td><strong>3.11 (1.00–9.65)</strong></td>
+<td>—</td>
+</tr>
+<tr>
+<td>MI</td>
+<td>45 (11.2%)</td>
+<td>44 (10.9%)</td>
+<td>1.04 (0.68–1.57)</td>
+<td>—</td>
+</tr>
+<tr>
+<td>Repeat revascularization</td>
+<td>48 (12.0%)</td>
+<td>45 (11.1%)</td>
+<td>1.10 (0.73–1.65)</td>
+<td>—</td>
+</tr>
+<tr>
+<td>TLR</td>
+<td>32 (8.0%)</td>
+<td>36 (8.9%)</td>
+<td>0.91 (0.56–1.46)</td>
+<td>—</td>
+</tr>
+<tr>
+<td>Clinically indicated TLR</td>
+<td>28 (7.0%)</td>
+<td>30 (7.4%)</td>
+<td>0.96 (0.57–1.60)</td>
+<td>—</td>
+</tr>
+<tr>
+<td>Definite stent thrombosis</td>
+<td>3 (0.7%)</td>
+<td>1 (0.2%)</td>
+<td>3.07 (0.32–29.53)</td>
+<td>—</td>
+</tr>
+</tbody>
+</table>
+<p><strong>圖表判讀（Figure 2, page_008.png）</strong>：</p>
+<ul>
+<li><strong>Panel A（主要終點）</strong>：兩組 Kaplan-Meier 曲線幾乎完全重疊，IVUS 組事件曲線在追蹤後期略高於 angiography 組。曲線在第一年即開始分離但<strong>方向不利 IVUS</strong>。inset 放大圖清楚顯示此趨勢。Numbers at risk：IVUS 組 401→315→286→149→64；angiography 組 405→326→294→153→56。<strong>3 年後剩餘風險人數僅原始人數的 37%，3.9 年時更只剩 ~15%</strong>，尾端曲線估計不穩定。</li>
+<li><strong>Panel B（Device-oriented）</strong>：同樣兩組重疊，趨勢相同（IVUS 略劣）。</li>
+<li><strong>Panel C（Vessel-oriented）</strong>：IVUS 組在追蹤後段有可見的事件累積偏高。</li>
+<li><strong>Panel D（全因死亡）</strong>：兩組曲線極為接近，無可辨識差異。</li>
+<li><strong>整體圖表觀察</strong>：四幅圖的 y 軸均從 0 開始至 100%，<strong>無非零起點的誇大效果問題</strong>。所有 point estimate 的 HR 均 ≥1.0（即數值上全部偏向 angiography 組更佳或相等），無任何一個終點顯示 IVUS 有優勢趨勢。</li>
+</ul>
+<p><strong>CONSORT 流程圖（page_004.png）</strong>：</p>
+<ul>
+<li>806 人隨機化 → IVUS 組 401 / Angiography 組 405</li>
+<li>IVUS 組：2 人於術前死亡、7 人未接受 PCI → 392 人接受 PCI → 其中 5 人未執行 IVUS、5 人 IVUS 失敗、1 人改用 OCT</li>
+<li>Angiography 組：1 人術前死亡、3 人未接受 PCI → 401 人接受 PCI → 其中 12 人接受了 IVUS（crossover）、2 人使用 OCT</li>
+<li>失訪：IVUS 組 21 人、Angiography 組 24 人</li>
+<li><strong>401 vs 405 全數納入 ITT 分析</strong>——人數一致，無明顯流失疑慮</li>
+<li><strong>crossover 比例低</strong>：angiography 組 IVUS 汙染率 3.0%（12/403），可接受</li>
+</ul>
+<hr />
+<h3>6. 作者討論與評論重點</h3>
+<p><strong>作者的主要訊息</strong>：[文內]</p>
+<ul>
+<li>IVUS 引導 left main PCI 相較於 angiography 引導，在 2.9 年追蹤無額外臨床效益</li>
+<li>結果與先前廣泛冠脈族群的 IVUS RCT（RENOVATE-COMPLEX-PCI 等）不同</li>
+<li>IVUS 組的 stroke 偏高（3.0% vs 1.0%）為「unexpected and unexplained」，中位事件時間為 19 個月，可能為偶發現象</li>
+</ul>
+<p><strong>與現有文獻的異同</strong>：[文內]</p>
+<ul>
+<li>先前 meta-analyses 與觀察性研究一致顯示 IVUS 有利；本試驗結果與之矛盾</li>
+<li>作者解釋差異原因：(1) 入組中心操作量高且 IVUS 經驗豐富（50–100% left main PCI 常規使用 IVUS）；(2) 源自 IVUS 的 angiographic algorithm 已被 angiography 組術者內化；(3) 當代第二代 DES + 嚴格術式標準可能縮小兩組差距</li>
+<li>SYNTAX score（29.7±12.6）高於 EXCEL（26.5）、NOBLE（22.5）、PRECOMBAT（24.4），但接近原始 SYNTAX trial LM 亞群（29.6）</li>
+</ul>
+<p><strong>限制（作者觀點）</strong>：[文內]</p>
+<ol>
+<li>Open-label 設計可能引入 performance bias</li>
+<li>COVID-19 疫情影響招募與追蹤完整性</li>
+<li>試驗 power 設計為偵測 35% 相對風險降低（HR 0.65）——觀察到的事件率高於預期</li>
+<li>Subgroup 分析為 hypothesis-generating</li>
+<li>僅限歐洲中心，外推性不確定</li>
+</ol>
+<p><strong>[評估]</strong>：</p>
+<ul>
+<li>作者對 stroke 訊號的處理過於輕描淡寫（「may represent a chance occurrence」），未進一步探討 IVUS 操作時間延長與 catheter manipulation 增加作為潛在機轉。Welt editorial 明確指出「one cannot exclude the possibility that the extra time and manipulation associated with IVUS may have played a role」[外部]。</li>
+<li>作者提出的「expert operator 已內化 IVUS 知識」解釋合理，但此解釋本身即意味著<strong>試驗結果僅適用於 IVUS 高經驗中心</strong>——此侷限性在 Discussion 中雖有觸及，但未充分強調。</li>
+<li>作者在 Discussion 末段暗示這些結果「may challenge the requirement to always use intracoronary imaging guidance」，此臨床建議延伸<strong>超出了一個 neutral superiority trial 能支持的範圍</strong>——未證明 IVUS 有害或等效，僅未能證明其優越。</li>
+</ul>
+<hr />
+<h3>7. 外部專業意見</h3>
+<p><strong>NEJM 同期 Editorial</strong>：[外部: <a href="https://www.nejm.org/doi/full/10.1056/NEJMe2602959">NEJM Editorial</a>]</p>
+<p>Frederick G.P. Welt, MD（University of Utah）在 editorial &quot;Seeing the Left Main Coronary Artery Clearly — Is IVUS Always Necessary?&quot; 中提出以下重點：</p>
+<ul>
+<li>IVUS 數據僅在 <strong>29.3%</strong> 的案例導致術式變更 → 若 IVUS 不改變行為，即使影像品質更好也不會改善結果</li>
+<li>IVUS 訓練有素的術者在執行「angiography-only」時，實質上是在使用<strong>已被 IVUS 經驗校準過的 angiographic 判斷</strong></li>
+<li>Stroke 訊號值得關注，不能排除 IVUS 相關的額外操作時間與 catheter manipulation 為成因</li>
+<li>預期這些結果<strong>不會顯著改變臨床實務</strong>——對缺乏 IVUS 經驗的術者，仍應使用 IVUS</li>
+</ul>
+<p><strong>TCTMD 報導中的專家意見</strong>：[外部: <a href="https://www.tctmd.com/news/two-neutral-ivus-trials-complex-pci-and-one-positive-spark-debate">TCTMD</a>]</p>
+<ul>
+<li><strong>Douglas Drachman, MD</strong>（Massachusetts General Hospital）：「If you're just taking pictures of something and then not modifying what you do, it's probably not going to have any impact.」—— IVUS optimization criteria 在 27% 案例未達標卻未觸發額外處置，削弱了介入效果。</li>
+<li><strong>Juan Granada, MD</strong>（CRF）：「A high-volume, skilled operator can achieve comparable results... not necessarily that [it] can be extrapolated [to] the general population.」—— 結果不可外推至非高量中心。</li>
+</ul>
+<p><strong>同期 IVUS-CHIP trial</strong>：[外部: <a href="https://www.acc.org/Latest-in-Cardiology/Articles/2026/03/25/21/27/mon-1045am-combo-acc-2026">ACC</a>]</p>
+<p>同期在 ACC 2026 發表的 IVUS-CHIP trial（2,020 名 complex PCI 患者，37 個歐洲中心）亦為 neutral 結果（HR 1.25, p=0.08），與 OPTIMAL 形成呼應，但 Deepak Bhatt 指出 IVUS-CHIP 中 IVUS 組 definite/probable stent thrombosis 顯著降低（0.5% vs 1.5%），仍具臨床價值。</p>
+<hr />
+<h3>8. 臨床建議</h3>
+<p><strong>可採用這篇研究結論的臨床情境</strong>：</p>
+<ul>
+<li>**IVUS 高經驗中心（常規 ≥50% left main PCI 使用 IVUS 的中心）**中，由資深術者對中等複雜度 ULMCAD 執行 PCI 時，若特殊情況（裝置故障、血管入路困難等）無法使用 IVUS，可以 angiography 引導完成手術而不預期結果明顯劣化</li>
+<li>作為與患者溝通的依據：說明 IVUS 在高經驗環境中的邊際效益可能較小</li>
+</ul>
+<p><strong>不建議直接套用的情境</strong>：</p>
+<ul>
+<li><strong>低量中心或 IVUS 經驗不足的術者</strong>——本試驗參與者均為 IVUS 常規使用率 50–100% 的高量中心，angiography 組的技術水準已被 IVUS 經驗校準</li>
+<li><strong>非歐洲人群或不同 healthcare system</strong>——亞洲、北美人群的 left main 解剖與共病分布可能不同</li>
+<li><strong>SYNTAX score 較低（≤22）或較高（≥33）的特定亞群</strong>——本試驗平均 SYNTAX 29.7，高於多數前期 RCT，但 subgroup 分析未顯示 score 驅動差異</li>
+<li><strong>不應將本試驗解讀為 IVUS 無用或有害</strong>——superiority trial 未達主要終點 ≠ 等效性已獲證明</li>
+</ul>
+<p><strong>給臨床醫師的實務建議</strong>：</p>
+<ol>
+<li><strong>本試驗不改變「應使用 IVUS」的基本推薦</strong>。在缺乏 IVUS 經驗的環境下，intravascular imaging 仍應為 left main PCI 的標準配備，符合 ESC 2024 Class Ia 建議。</li>
+<li><strong>關鍵在於 IVUS 是否實際改變行為</strong>——若術者拿到 IVUS 影像但不據此調整支架尺寸或追加擴張，imaging 的效益將被稀釋。</li>
+<li><strong>stroke 訊號需持續監測</strong>——雖可能為偶發，但 IVUS 導致手術時間延長 ~25 分鐘的事實值得在高齡、頸動脈疾病、或 aortic atheroma 患者中格外謹慎。</li>
+</ol>
+<p><strong>研究證據強度</strong>：<strong>中</strong>——單一大型 RCT、發表於最高級期刊、但為 open-label 設計，且研究族群高度特殊化（IVUS 高經驗中心），限制推廣性。</p>
+<hr />
+<h2>SKILL-A：原始研究批判性評讀</h2>
+<h3>A. 補充技術細節</h3>
+<p>（PICO、設計類型、主次終點、資助已詳述於 SECTION-0 第 3–6 節，以下僅補充未涵蓋的統計與設計細節。）</p>
+<p><strong>樣本數估算</strong>：[文內, Methods]</p>
+<ul>
+<li>假設 angiography 組 2 年主要終點事件率 26%，IVUS 組 17%（HR 0.65 = 35% 相對風險降低）</li>
+<li>800 名患者可提供 80% power（α = 0.05，two-sided），容許 6% 失訪與 4% crossover</li>
+<li><strong>評估</strong>：HR 0.65 的假設<strong>極為樂觀</strong>。先前觀察性研究的效果量可能因選擇偏差被誇大。RENOVATE-COMPLEX-PCI 在廣泛 complex lesion 族群觀察到 HR 0.64，但該試驗的 imaging 組包含 IVUS 與 OCT、且族群異質性高。將觀察性數據的效果量直接帶入 RCT power calculation，存在 <strong>Winner's Curse</strong> 與 selection bias inflation 的風險。</li>
+</ul>
+<p><strong>隨機化</strong>：Concealed web-based system，按中心分層。分派隱藏方法恰當。[文內]</p>
+<p><strong>致盲</strong>：Open-label — 術者與患者均知分組。Endpoint adjudication 由不知分組的獨立委員會執行，部分補償。[文內]</p>
+<p><strong>ITT vs per-protocol</strong>：主要分析為 ITT（全部 806 人納入）。作者亦報告 modified ITT、per-protocol、as-treated 分析，結果一致。[文內, Tables S4–S6]</p>
+<p><strong>多重比較</strong>：主要終點僅一個，P 值來自 score test。次要終點<strong>不校正多重比較</strong>——95% CI 不應用於推論治療效果。[文內]</p>
+<p><strong>比例風險假設</strong>：以 time-dependent covariate approach 檢驗，假設成立。[文內]</p>
+<p><strong>缺失資料</strong>：罕見，未進行正式填補。[文內]</p>
+<p><strong>IVUS optimization criteria</strong>：[文內 + 外部]</p>
+<ul>
+<li>目標 MLA：LM body ≥8 mm²、polygon of confluence ≥7 mm²、prox LAD ≥6 mm²、prox LCx ≥5 mm²</li>
+<li><strong>27% 的 IVUS 案例未達 optimization criteria</strong>（Testa, TCTMD），但作者認為結果「absolutely acceptable」</li>
+<li>IVUS 數據僅在 <strong>29.3% 案例導致術式變更</strong>（Welt editorial）</li>
+<li><strong>評估</strong>：近 1/3 案例 IVUS 未改變術者行為，嚴重削弱了「IVUS 引導」的介入強度。這不是 IVUS 本身的失敗，而是 <strong>protocol 執行 fidelity</strong> 的問題——相當於一項藥物試驗中近三成患者未達有效血藥濃度。</li>
+</ul>
+<p><strong>DSMB</strong>：<strong>未設置</strong>。由 steering committee 監控事件，無期中分析。[文內]</p>
+<ul>
+<li><strong>評估</strong>：800 人的 open-label 試驗未設獨立 DSMB 屬非典型做法。雖然 endpoint adjudication 為獨立，但缺乏 DSMB 意味著無獨立安全監察。最終出現的 stroke 訊號（HR 3.11）若有 DSMB 可能更早被注意。</li>
+</ul>
+<hr />
+<h3>B. 批判性評估（四大面向）</h3>
+<h4>B1. 假說與理論邏輯</h4>
+<ul>
+<li><strong>假說預先指定</strong>：是——superiority hypothesis，預先註冊於 ClinicalTrials.gov (NCT04111770)，試驗設計已發表（2022）。(Methods)</li>
+<li><strong>機轉合理性</strong>：IVUS 提供更精確的血管與支架尺寸評估 → 應能優化 stent sizing、expansion、apposition → 降低 stent thrombosis 與 restenosis → 改善長期預後。此機轉邏輯完整，且有觀察性證據支持。</li>
+<li><strong>敘事跳躍</strong>：
+<ol>
+<li><strong>從觀察性到 RCT 的效果衰減未被充分預期</strong>：觀察性研究中的 IVUS 受益者可能本身即為更積極、更仔細的術者之病患（selection by indication），RCT 中此偏差被消除後，效果量必然萎縮。</li>
+<li><strong>「imaging 一定改善結果」的隱含假設忽略了行為環節</strong>：IVUS 的價值取決於術者是否根據影像改變行為。若術者已從多年 IVUS 經驗中內化最佳尺寸判斷，則 IVUS 的邊際價值趨近於零——此機轉在試驗設計階段未被納入考量。</li>
+</ol>
+</li>
+</ul>
+<h4>B2. 受試者與外推性</h4>
+<ul>
+<li><strong>受試者與宣稱對象一致性</strong>：試驗收案的是 ULMCAD 患者，與目標族群一致。(Table 1)</li>
+<li><strong>基線平衡</strong>：整體平衡，<strong>但 previous heart failure 存在可辨識不平衡</strong>（IVUS 組 25.8% vs angiography 組 19.8%，差異 6.0 個百分點）。雖未達統計檢定門檻（author 未報告 P 值），但對於以死亡和 MACE 為終點的試驗，心衰竭史是強預後因子。此不平衡<strong>可能對 IVUS 組不利</strong>，但幅度不足以完全解釋主要終點的方向（HR 1.11）。(Table 1)</li>
+<li><strong>Previous CABG 不平衡</strong>：IVUS 組 3.5% vs angiography 組 0.7%——雖人數少（14 vs 3），但有 prior CABG 的患者解剖更複雜，可能進一步偏向不利 IVUS 組。(Table 1)</li>
+</ul>
+<p><strong>外推性分級</strong>：</p>
+<table>
+<thead>
+<tr>
+<th>臨床情境</th>
+<th>可否外推</th>
+<th>理由</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>IVUS 高經驗中心的歐洲族群</strong></td>
+<td>✅ 可直接適用</td>
+<td>與試驗族群高度吻合</td>
+</tr>
+<tr>
+<td><strong>亞洲族群（含台灣）</strong></td>
+<td>⚠️ 有限度外推</td>
+<td>體型差異影響血管尺寸、台灣 IVUS 使用率與經驗程度不均、DES 品牌可能不同</td>
+</tr>
+<tr>
+<td><strong>IVUS 低經驗中心</strong></td>
+<td>❌ 不宜外推</td>
+<td>試驗 angiography 組的表現已被 IVUS 經驗「汙染」；低經驗中心的 angiography-only 結果預期更差</td>
+</tr>
+<tr>
+<td><strong>SYNTAX ≤22 或 isolated ostial LM</strong></td>
+<td>⚠️ 不確定</td>
+<td>本試驗平均 SYNTAX 29.7，高複雜度；低複雜度病灶可能不需要 IVUS 但本試驗未能單獨驗證</td>
+</tr>
+<tr>
+<td><strong>ACS（特別是 STEMI）患者</strong></td>
+<td>❌ 不宜</td>
+<td>排除 48hr 內 STEMI；39% 為 NSTEMI 但穩定後才入組</td>
+</tr>
+</tbody>
+</table>
+<h4>B3. 研究設計與偏差</h4>
+<p><strong>1. Open-label design 的 performance bias</strong>（最關鍵偏差）</p>
+<ul>
+<li>術者知道分組 → 在 angiography 組可能<strong>額外謹慎</strong>（因知道沒有 IVUS 安全網），表現為：更仔細的 balloon sizing、更積極的 proximal optimization technique（POT，實際執行率 85.1% vs IVUS 組 89.6%，差異很小）、更保守的介入決策</li>
+<li>此方向的偏差會<strong>縮小</strong>兩組差距 → 可能掩蓋 IVUS 的真實效益</li>
+<li><strong>但反方向可能性亦存在</strong>：術者在 IVUS 組可能因有影像而挑戰更困難的解剖（如更積極的 two-stent 策略），導致更多手術併發症</li>
+</ul>
+<p><strong>2. IVUS operator expertise bias（核心方法學議題）</strong></p>
+<ul>
+<li>參與中心在試驗前即在 <strong>50–100%</strong> 的 left main PCI 常規使用 IVUS [文內, Discussion]</li>
+<li>這意味著 angiography 組的術者<strong>並非 IVUS-naive</strong>——他們帶著多年 IVUS 經驗去執行「angiography-only」手術</li>
+<li>Welt editorial 指出：IVUS 訓練導致了更好的 angiography-guided 結果 [外部]</li>
+<li><strong>問題</strong>：本試驗比較的不是「有 IVUS 能力 vs 沒有 IVUS 能力」，而是「有 IVUS 能力且使用 IVUS vs 有 IVUS 能力但這次不用 IVUS」——這根本性地限制了效果偵測</li>
+<li>類比：如同一項試驗讓有 CT 讀片經驗的放射科醫師比較「看 CT vs 只看 X-ray」——X-ray 組的表現會因 CT 經驗而被提升</li>
+</ul>
+<p><strong>3. IVUS intervention fidelity 不足</strong></p>
+<ul>
+<li>Pre-stent IVUS「strongly recommended」（非 mandatory）→ 僅 65.1% 執行 (Table 2)</li>
+<li>Post-stent IVUS mandatory → 96.0% 執行</li>
+<li><strong>IVUS 導致術式改變的比例僅 29.3%</strong>（Welt editorial）[外部]</li>
+<li>27% 的案例未達 optimization criteria 但未追加處置 [外部: TCTMD]</li>
+<li><strong>結論</strong>：IVUS 的介入劑量（intervention intensity）明顯不足。若三分之一案例 IVUS 未改變行為、另有四分之一未達標準但未追加處理，則實際的 IVUS-driven optimization 可能只發生在約一半的 IVUS 組患者。</li>
+</ul>
+<p><strong>4. Crossover / contamination</strong></p>
+<ul>
+<li>Angiography → IVUS crossover：3.0%（12/403）— 低，可接受 (Table 2)</li>
+<li>IVUS → 未完成 IVUS：6 人（1.5%）— 低</li>
+<li><strong>整體汙染度低</strong>，不足以解釋結果</li>
+</ul>
+<p><strong>5. 試驗未提早停止</strong>。無期中分析，全部事件累積至計畫結束。[文內]</p>
+<p><strong>對照組適當性</strong>：</p>
+<ul>
+<li>Angiography-guided PCI 在試驗開始時（2020）是臨床上可接受的替代方式，但 2023 年 RENOVATE-COMPLEX-PCI 發表後，guideline 已逐漸移向 IVUS 為 Class Ia。</li>
+<li>對照組<strong>符合試驗啟動時的 standard of care</strong>，且術後擴張率（96.0%）、POT 使用率（85.1%）均顯示高品質手術，非「放任不管」的對照。</li>
+<li><strong>核心問題</strong>：「angiography 組術者日常就在用 IVUS，這次被隨機到不能用」→ 他們的 angiography technique 已超越一般 angiography-only 術者的水準。(Discussion)</li>
+</ul>
+<p><strong>最可能造成偏差的設計點</strong>：</p>
+<ol>
+<li><strong>IVUS expert operator bias</strong>：抹平兩組差距，方向為掩蓋 IVUS 真實效益（→ 效果量變小）</li>
+<li><strong>IVUS intervention fidelity 不足</strong>：稀釋介入效果，方向同上（→ 效果量變小）</li>
+<li><strong>Baseline heart failure 不平衡</strong>：偏向不利 IVUS 組（→ IVUS 組事件率增高）</li>
+</ol>
+<h4>B4. 測量工具與實務意義</h4>
+<ul>
+<li><strong>主要終點定義恰當</strong>：Patient-oriented composite 涵蓋 death、stroke、MI、any revascularization — 廣泛但臨床相關。採用 fourth universal definition of MI 與 SCAI periprocedural MI criteria，定義嚴謹。(Supplementary Appendix)</li>
+<li><strong>TLR 定義值得注意</strong>：target lesion 僅包含 left main stem 本身加上遠端 5mm（EXCEL trial 定義）[文內, Discussion]。此定義<strong>較窄</strong>——發生在 proximal LAD/LCx 距離支架遠端 &gt;5mm 處的 restenosis 不被計入 TLR，可能低估 IVUS 在預防遠端 edge restenosis 方面的效益。</li>
+<li><strong>複合終點中各組成的臨床重要性不等</strong>：death 與 stroke 的臨床意義遠大於 elective revascularization，但在 composite 中被等權加總。Any revascularization 佔事件的大宗（~12%），可能稀釋 death/MI 方面的真實差異。</li>
+<li><strong>統計顯著 ≠ 臨床重要</strong>：主要終點 HR 1.11 — 就算 IVUS 確實稍差，11% 的相對風險增加在臨床上屬微小差距。</li>
+</ul>
+<hr />
+<h3>C. 統計與資料完整性</h3>
+<h4>C1. 結果分類（CI + MCID 框架）</h4>
+<p><strong>Step 1 — MCID（δ）確認</strong></p>
+<ul>
+<li>文內預先指定：試驗 power 基於 HR 0.65 → 作者認為 <strong>35% 相對風險降低</strong> 為有意義差異 [文內, Methods]</li>
+<li>MCID-benefit：HR ≤ 0.65</li>
+<li>MCID 合理性 [推算]：HR 0.65 作為 MCID 可能偏大。更合理的 clinically meaningful benefit 可能為 HR 0.75–0.80（20–25% 相對降低）。以 HR 0.80 作為替代 MCID 進行雙重檢驗。</li>
+</ul>
+<p><strong>Step 2 — CI 位置判讀</strong></p>
+<pre><code>MCID-benefit    Null value    MCID-harm (mirror)
+HR 0.65         HR 1.00       HR 1.54
+  |_______________|_______________|
+                    ▲
+            [===0.87====1.11====1.42===]  ← 95% CI
+</code></pre>
+<ul>
+<li><strong>點估計 HR 1.11</strong>：在 null 右側（數值上偏向 angiography 更佳）</li>
+<li><strong>95% CI (0.87–1.42)</strong>：
+<ul>
+<li>跨越 null（HR 1.0）→ 不能排除 IVUS 略有效益</li>
+<li><strong>下界 0.87 &gt; MCID-benefit 0.65</strong> → 預先指定的 clinically meaningful benefit 被排除</li>
+<li>即以更寬鬆的 MCID HR 0.80 衡量：下界 0.87 &gt; 0.80 → 20% 相對降低亦被排除</li>
+<li>上界 1.42 → 不能排除 IVUS 組相對風險增加高達 42%</li>
+</ul>
+</li>
+</ul>
+<p><strong>結果分類</strong>：</p>
+<table>
+<thead>
+<tr>
+<th>終點</th>
+<th>效果量</th>
+<th>95% CI</th>
+<th>MCID</th>
+<th>分類</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>主要複合終點</strong></td>
+<td>HR 1.11</td>
+<td>0.87–1.42</td>
+<td>HR 0.65</td>
+<td><strong>NEGATIVE ❌</strong></td>
+</tr>
+</tbody>
+</table>
+<p><strong>NEGATIVE ❌ — 無有意義利益</strong>：</p>
+<ul>
+<li>預先指定的 MCID（HR 0.65）被 CI 完全排除</li>
+<li>即使以更寬鬆的 MCID（HR 0.80）衡量，仍被排除</li>
+<li>點估計偏向 angiography 更佳</li>
+<li>但 CI 寬度（0.87–1.42）跨越 null，意味著不能宣稱 IVUS 有害（non-HARMFUL）</li>
+<li><strong>非 NEUTRAL</strong>：CI 上界達 1.42，IVUS 可能造成高達 42% 的相對風險增加未被排除；要宣稱兩組「實質等效」需要更窄的 CI 完全落在 [−δ, +δ] 內</li>
+<li><strong>非 INCONCLUSIVE</strong>：雖然 CI 寬，但已足以排除作者預先設定的有意義效益</li>
+</ul>
+<p><strong>禁止的誤讀</strong>：</p>
+<ul>
+<li>❌ 作者結論中使用「no additional benefit」——雖然在此脈絡中方向正確，但嚴格而言，CI 跨越 null 意味著「無法證明優越性」而非「已確認無效益」。然而，點估計方向與 MCID 排除使此表述在實務上可接受。</li>
+</ul>
+<h4>C2. Underpowered 判斷與 Winner's Curse</h4>
+<p><strong>Power 是否足夠？</strong></p>
+<ul>
+<li>試驗 powered for HR 0.65，實際觀察 HR 1.11</li>
+<li>實際事件率：IVUS 組 33.7%（&gt;預期 17%）、angiography 組 30.9%（&gt;預期 26%）→ <strong>事件數超過預期</strong></li>
+<li>但效果量方向完全相反（HR &gt;1 而非 &lt;1）→ <strong>不是 power 不足的問題，是假說方向不正確</strong></li>
+<li>即使有 10,000 人的試驗，在效果量為 HR 1.11 的真實效果下，也不會達到 IVUS 優越的結論</li>
+<li><strong>本試驗並非 underpowered——是 power calculation 基於過度樂觀的效果量假設，而真實世界效果為零或反向</strong></li>
+</ul>
+<p><strong>Winner's Curse 評估</strong>：</p>
+<ul>
+<li>先前觀察性研究的 HR ~0.65 可能為 Winner's Curse 的典型表現：只有效果量被隨機偏大的觀察性研究才會達到統計顯著並被發表</li>
+<li>本 RCT 的結果（HR 1.11）與觀察性估計（HR ~0.65）之間存在巨大落差，<strong>強烈暗示先前觀察性估計確實被誇大</strong></li>
+<li>這不是 OPTIMAL 試驗的設計缺陷，而是整個 IVUS-for-left-main 文獻中 publication bias + confounding by indication 的結果</li>
+</ul>
+<h4>C3. Bayesian 補充分析</h4>
+<p>本試驗 P=0.40，點估計方向不利 IVUS。Bayesian 分析對此情境的主要價值在於量化「IVUS 確實有利」的殘餘機率：</p>
+<p><strong>估算</strong>（基於 observed HR 1.11, CI 0.87–1.42, 使用 log-normal approximation）：</p>
+<table>
+<thead>
+<tr>
+<th>指標</th>
+<th>Skeptical prior</th>
+<th>Non-informative prior</th>
+<th>Optimistic prior</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Pr(HR &lt; 0.65) — outstanding benefit</td>
+<td>&lt;1%</td>
+<td>&lt;2%</td>
+<td>&lt;5%</td>
+</tr>
+<tr>
+<td>Pr(HR 0.85–1.18) — ROPE</td>
+<td>~55%</td>
+<td>~50%</td>
+<td>~40%</td>
+</tr>
+<tr>
+<td>Pr(HR &gt; 1.30) — meaningful harm</td>
+<td>~15%</td>
+<td>~18%</td>
+<td>~10%</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>即使在 optimistic prior 下（假設先前觀察性數據的中度信念），Pr(outstanding benefit HR &lt;0.65) 仍 &lt;5%</li>
+<li>對三組 prior 都指向同一結論：IVUS 在此族群中大幅優越的機率極低</li>
+<li>Non-informative prior 下 Pr(benefit, HR &lt;1.0) ≈ 30–35%——仍有約三分之一機會 IVUS 有微小效益，但遠未達 clinically meaningful 門檻</li>
+</ul>
+<p><strong>結論</strong>：Bayesian 分析支持頻率派結論——IVUS 在本試驗族群的大幅優越性可被排除。三組 prior 結果方向一致，對 prior 選擇不敏感。</p>
+<h4>C4. 報告完整性與其他統計問題</h4>
+<p><strong>Kaplan-Meier 圖細節判讀</strong>（Figure 2, page_008.png）：</p>
+<ul>
+<li><strong>Numbers at risk 銳減</strong>：主要終點圖中，兩組均從 ~400 人在 3.9 年時降至 ~60 人（約 15% 留存）。此銳減反映的是 staggered enrollment（2020-2023 收案跨 3 年）而非高失訪率——最早入組者追蹤最長，最晚入組者可能僅追蹤 2 年。但仍表示 <strong>3 年後的曲線估計基於少數患者，信賴區間極寬</strong>。</li>
+<li><strong>曲線形態</strong>：四幅圖中兩條曲線均高度重疊，在 Panel A-C 中 IVUS 組曲線在 1–2 年後略高（更多事件），但差距極微且在 CI 範圍內。Panel D（全因死亡）兩線幾乎不可分辨。</li>
+<li><strong>無 crossing curves</strong>——兩組效果自始至終一致，不存在延遲效應或早期傷害/晚期獲益的動態。</li>
+<li><strong>Y 軸</strong>：0–100% 正常範圍，inset 放大圖提供更清楚的事件累積視角。無誇大效果的軸線操弄。</li>
+</ul>
+<p><strong>Stroke 訊號的統計特性</strong>：</p>
+<ul>
+<li>HR 3.11 (95% CI <strong>1.00</strong>–9.65)：下界恰好為 1.00（而非 &lt;1.00），意味著此結果在傳統 α=0.05 門檻的邊界上</li>
+<li>事件數極少（12 vs 4），estimates 極不穩定</li>
+<li><strong>未經多重比較校正</strong>——在 16 個以上的終點中，至少一個出現 borderline significant 結果符合偶然預期（多重比較下的假陽性風險 ~56%）</li>
+<li>但 HR &gt;3 的方向性與幅度仍具臨床警示意義——不應僅以「偶發」輕描淡寫</li>
+</ul>
+<p><strong>統計面紅旗清單</strong>：</p>
+<ol>
+<li>⚠️ <strong>Power calculation 基於觀察性數據的誇大效果量（HR 0.65）</strong>——導致試驗設計對合理效果量（HR 0.80–0.85）嚴重 underpowered</li>
+<li>⚠️ <strong>未設 DSMB</strong>——800 人 RCT 在 open-label 設計下缺乏獨立安全監察，stroke 訊號可能更早被捕捉</li>
+<li>⚠️ <strong>次要終點未校正多重比較</strong>——Stroke HR 3.11（CI 1.00–9.65）在多重比較脈絡下不應被過度解讀為確認性結果，但也不應被忽視</li>
+<li>⚠️ <strong>IVUS intervention fidelity 未設最低執行標準</strong>——pre-stent IVUS 僅 65% 執行，29.3% 的案例 IVUS 未改變行為。Per-protocol analysis 未依 IVUS 實際改變行為（而非僅完成 imaging）進行分層</li>
+<li>⚠️ <strong>Baseline imbalance（heart failure 25.8% vs 19.8%；previous CABG 3.5% vs 0.7%）未進行 adjusted analysis 作為主要結果</strong>——僅報告 unadjusted Cox model</li>
+<li>⚠️ <strong>Fine-Gray competing risk analysis 為 post hoc</strong>——death 作為 competing risk 對 revascularization 和 MI 的影響在 15.7% 死亡率的族群中非可忽略</li>
+<li>⚠️ <strong>COVID-19 影響未量化</strong>——收案橫跨 2020-2023，疫情對追蹤完整性（失訪 21 vs 24 人）、手術時機與品質的影響未正式評估</li>
+</ol>
+<hr />
+<h3>D. 次組分析評估</h3>
+<p>文中提及預先指定的次組分析按 clinical presentation、sex、diabetes、SYNTAX score 分層。結果顯示於 Figure S6（Supplementary Appendix），本文 markdown 未保留圖像內容。</p>
+<p>[限制：PDF 轉檔 markdown 未保留 Figure S6 subgroup forest plot 圖像內容]</p>
+<p>根據文內描述（Results 段）：「Results of prespecified subgroup analyses are shown in Figure S6」，未提供具體次組 interaction P 值或各次組 HR。</p>
+<p><strong>可信度評估框架（基於可用資訊）</strong>：</p>
+<table>
+<thead>
+<tr>
+<th>標準</th>
+<th>評估</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1. Interaction P-value</td>
+<td>[無法判定——文內未報告，需查 Supplement]</td>
+</tr>
+<tr>
+<td>2. 與其他研究方向一致</td>
+<td>先前 RENOVATE 在 diabetes 亞群顯示 IVUS 更有益；OPTIMAL 是否一致不明</td>
+</tr>
+<tr>
+<td>3. 預先指定</td>
+<td>是——4 個次組均為預先指定</td>
+</tr>
+<tr>
+<td>4. 生物機轉合理性</td>
+<td>Diabetes 患者血管 diffuse disease 更嚴重，理論上更需 IVUS；高 SYNTAX 同理</td>
+</tr>
+<tr>
+<td>5. Within-study 比較</td>
+<td>是</td>
+</tr>
+</tbody>
+</table>
+<p><strong>整體可信度</strong>：<strong>低至中</strong>——預先指定，但缺乏 interaction test 報告，且主要終點為 negative，在此基礎上的次組探索統計力極低。</p>
+<hr />
+<h3>E. 紅旗清單</h3>
+<ol>
+<li>🚩 <strong>IVUS expert operator bias</strong>：參與中心 50–100% left main PCI 常規用 IVUS — angiography 組實質上是「IVUS-trained angiography」，根本性地限制了效果偵測能力</li>
+<li>🚩 <strong>IVUS intervention fidelity 嚴重不足</strong>：僅 29.3% 案例 IVUS 改變術式；27% 未達 optimization criteria 卻未追加處置——IVUS 的治療「劑量」被大幅稀釋</li>
+<li>🚩 <strong>Power calculation 基於觀察性數據的誇大效果量</strong>：HR 0.65 的假設在 RCT 設計中不切實際，可能源自 Winner's Curse + confounding by indication</li>
+<li>🚩 <strong>Stroke 安全訊號</strong>（HR 3.11, CI 1.00–9.65）：雖事件數少且未校正多重比較，但 IVUS 組 3% vs angiography 組 1% 的三倍差異加上 25 分鐘的額外手術時間，在機轉上有可解釋性</li>
+<li>🚩 <strong>未設 DSMB</strong>：800 人 open-label RCT 缺乏獨立安全監察</li>
+<li>🚩 <strong>作者結論延伸過度</strong>：superiority trial 未達終點 ≠ 兩組等效；作者暗示「may challenge the requirement to always use IVUS」超出了本試驗能證明的範疇</li>
+<li>🚩 <strong>Baseline heart failure 不平衡</strong>（25.8% vs 19.8%）未進行 adjusted primary analysis</li>
+<li>🚩 <strong>TLR 的窄定義</strong>（EXCEL 定義，僅 LM + 遠端 5mm）可能低估 IVUS 在預防 edge restenosis 的效益</li>
+</ol>
+<hr />
+<h3>F. 反向解釋</h3>
+<p>以下為主要終點「IVUS 未優於 angiography」的替代解釋，各附文內或外部支持/反對線索：</p>
+<p><strong>1. IVUS 確實無效——真實效果量接近零</strong></p>
+<ul>
+<li>支持：本試驗 HR 1.11；同期 IVUS-CHIP trial 亦為 neutral（HR 1.25）；兩項獨立歐洲 RCT 一致指向 IVUS 無優越性</li>
+<li>反對：RENOVATE-COMPLEX-PCI（2023, <em>NEJM</em>）在 broader complex PCI 族群顯示 HR 0.64，且以 intention-to-treat 分析為正結論；先前 meta-analyses 持續一致顯示效益</li>
+</ul>
+<p><strong>2. IVUS 有效，但本試驗因 expert operator bias 偵測不到差異</strong></p>
+<ul>
+<li>支持：Welt editorial 與 TCTMD 多位專家（Drachman, Granada）均持此看法；IVUS 經驗最豐富的術者執行 angiography 的結果已被 IVUS 知識校準；一項先前研究顯示 IVUS 在低經驗術者中效益更大 [文內, Discussion, ref 25]</li>
+<li>反對：若此解釋成立，per-protocol 與 as-treated analysis 應顯示更大差距——但作者報告所有 sensitivity analyses 結果一致</li>
+</ul>
+<p><strong>3. IVUS 有效，但 intervention fidelity 不足導致效果被稀釋</strong></p>
+<ul>
+<li>支持：pre-stent IVUS 僅 65% 執行；29.3% 案例 IVUS 未改變行為；27% 未達 optimization criteria</li>
+<li>反對：post-stent IVUS 96% 執行率顯示 protocol 有被遵守；per-protocol analysis 結果一致</li>
+</ul>
+<p><strong>4. Baseline imbalance（heart failure、previous CABG）偏向不利 IVUS</strong></p>
+<ul>
+<li>支持：Heart failure 25.8% vs 19.8% 是可辨識差異；previous CABG 3.5% vs 0.7%</li>
+<li>反對：LVEF 兩組相似（53.2% vs 53.4%）；單一共病不太可能解釋 HR 1.11 的完整效果量</li>
+</ul>
+<hr />
+<h3>G. 最終裁決</h3>
+<table>
+<thead>
+<tr>
+<th>項目</th>
+<th>評估</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>整體可信度</strong></td>
+<td><strong>中</strong></td>
+</tr>
+<tr>
+<td><strong>CI + MCID 分類</strong></td>
+<td><strong>NEGATIVE ❌</strong>——預先指定的 MCID（HR 0.65）與更寬鬆的 MCID（HR 0.80）均被排除；點估計偏向 angiography；但 CI 寬度不足以宣稱等效或確認傷害</td>
+</tr>
+<tr>
+<td><strong>可採用的條件</strong></td>
+<td>在 IVUS 高經驗中心，若遭遇 IVUS 不可用的特殊情境（設備故障、血管入路困難），可依此試驗結果接受 angiography-only 完成 left main PCI 而不預期結果明顯劣化</td>
+</tr>
+<tr>
+<td><strong>不建議採用的情境</strong></td>
+<td>不應將此結果推廣為「left main PCI 不需要 IVUS」的通則——本試驗族群高度特殊（IVUS 高經驗中心），無法代表一般介入實務</td>
+</tr>
+<tr>
+<td><strong>若要改觀，最需要的 3 個改進</strong></td>
+<td>1. <strong>在 IVUS 低經驗中心執行同設計試驗</strong>——真正測試 IVUS 的附加價值，而非 IVUS-trained operators 在不同模式間的比較 2. <strong>設定可強制執行的 IVUS optimization protocol</strong>（mandatory pre-stent + post-stent IVUS，含明確的 re-intervention 觸發標準與 compliance audit） 3. <strong>合理的效果量假設</strong>（HR 0.80 而非 0.65）→ 需要 ~2,400–3,000 人的樣本量</td>
+</tr>
+<tr>
+<td><strong>一句話結論</strong></td>
+<td>IVUS 高經驗中心的 left main PCI 中，IVUS 引導的邊際效益極小或不存在；但此結論不應外推至經驗不足的環境。</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p>Sources:</p>
+<ul>
+<li><a href="https://www.nejm.org/doi/abs/10.1056/NEJMoa2600440">OPTIMAL Trial — NEJM</a></li>
+<li><a href="https://www.nejm.org/doi/full/10.1056/NEJMe2602959">Welt Editorial — &quot;Seeing the Left Main Coronary Artery Clearly&quot;</a></li>
+<li><a href="https://www.acc.org/Latest-in-Cardiology/Articles/2026/03/25/21/27/mon-1045am-combo-acc-2026">ACC.org — IVUS-CHIP and OPTIMAL</a></li>
+<li><a href="https://www.tctmd.com/news/two-neutral-ivus-trials-complex-pci-and-one-positive-spark-debate">TCTMD — Two Neutral IVUS Trials Spark Debate</a></li>
+<li><a href="https://solaci.org/en/2026/04/07/acc-2026-optimal-ivus-guidance-in-pci-of-the-unprotected-left-main-coronary-artery/">SOLACI — OPTIMAL Summary</a></li>
+<li><a href="https://www.researchgate.net/profile/Luca-Testa">Luca Testa — ResearchGate</a></li>
+<li><a href="https://www.researchgate.net/profile/Adrian-Banning">Adrian Banning — ResearchGate</a></li>
+<li><a href="https://esc365.escardio.org/person/231385">Ernest Spitzer — ESC 365</a></li>
+<li><a href="https://www.nejm.org/doi/abs/10.1056/NEJMoa2216607">RENOVATE-COMPLEX-PCI — NEJM 2023</a></li>
+</ul>
+
+<footer class="appraisal-meta">評讀資訊：模型：claude-opus-4-6 (claude)  ·  route：rct  ·  產出時間：2026-06-15 03:54 CST</footer>
+</main>
+</body>
+</html>
