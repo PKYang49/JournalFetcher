@@ -25,7 +25,7 @@ references catalog (`_build_references_section`). Passed to claude via
 `--append-system-prompt-file` so it auto-caches (1h ephemeral). When the
 route has a JAMA mapping, claude is also given `--add-dir <references>`
 and the Read tool to lazily pull individual reference files; codex sees the
-same absolute paths in the prompt and uses its read-only sandbox shell.
+    same absolute paths in the prompt and uses its sandboxed shell.
 """
 
 from __future__ import annotations
@@ -41,9 +41,11 @@ from pathlib import Path
 from modules import claude_exec
 from modules.codex_model import codex_exec_env, get_appraisal_model, resolve_codex_cli
 from weekly import classify_article
+from weekly.editorial_lookup import find_editorial_candidates
 from weekly.figure_extract import extract_figure_pages
 
 ROOT = Path(__file__).resolve().parent.parent
+EDITORIAL_FETCH_SCRIPT = ROOT / "weekly" / "fetch_editorial.py"
 SKILL_DIR = ROOT / "skills" / "literature-appraisal"
 SKILL_PATH = SKILL_DIR / "SKILL.md"
 FRAGMENTS_DIR = SKILL_DIR / "fragments"
@@ -169,13 +171,12 @@ PDF converted markdown:
 {article_markdown}
 """
 
-CODEX_REFERENCE_INSTRUCTIONS = """You are running under `codex exec --sandbox read-only`. You have read access
-to any file the user can read on this filesystem. If the appraisal task
-below references JAMA Users' Guides by absolute path, you may consult them
-with shell tools (`cat`, `rg`, `head`) — but only when a specific
-methodological question warrants it, and only excerpt the passages directly
-relevant to the article under review. Use the citation format defined in
-the references catalog later in this prompt.
+CODEX_REFERENCE_INSTRUCTIONS = """You are running under `codex exec`. You have read access
+to local reference files listed by absolute path. If the appraisal task below
+references JAMA Users' Guides, you may consult them with shell tools (`cat`,
+`rg`, `head`) — but only when a specific methodological question warrants it,
+and only excerpt the passages directly relevant to the article under review.
+Use the citation format defined in the references catalog later in this prompt.
 """
 
 FIGURE_APPRAISAL_INSTRUCTIONS = """\
@@ -196,17 +197,199 @@ PNG image(s) from the article PDF are attached with `codex exec -i`. Inspect
 the attached images and integrate their visible evidence into the appraisal.
 """
 
+# Lets the backend pull an editorial/comment full text on demand. Cloud-side
+# WebFetch often cannot read paywalled editorials, but this helper runs locally
+# on the institutional network. The absolute script path is machine-specific,
+# so this instruction is injected into the *user* prompt (not the cached system
+# prompt) to keep the cache key stable.
+EDITORIAL_FETCH_INSTRUCTIONS = """\
+外部專業意見全文擷取（SECTION-0 第 7 項，務必執行）：
+若你搜尋後找到針對本文的同期 editorial / commentary / comment 並取得其 DOI,
+但 WebFetch / 網頁搜尋只拿到摘要、書目頁、付費牆頁面、或找不到全文,
+必須改用以下本機指令透過 dlbydoi.py 下載 PDF,再據實摘要其論點,
+不可只憑標題或摘要臆測:
+
+    python3 {script} <DOI>
+
+此指令會在本機機構內網呼叫 dlbydoi.py 的下載鏈,將 editorial/comment PDF 轉成
+markdown 印到 stdout(失敗時 exit code 非 0)。
+- 只對「針對本文的 editorial / commentary / comment」的 DOI 呼叫;不要拿本文自己的
+  DOI 來抓(本文全文已在上方 prompt 內)。
+- 成功: 依實際全文,在第 7 項摘要該 editorial / comment 的核心論點、對本文的肯定與
+  質疑、方法學批評,並標注 [外部: 期刊 editorial/comment 全文]。
+- 只有在指令回報失敗、或確實找不到任何同期評論時,才標注 [無法取得全文] 或
+  [無法取得]。
+- 一個 DOI 一次,可對多個相關 DOI 分別呼叫。
+- 完成後直接輸出評讀報告本身,不要加任何開場白或工具操作說明。
+"""
+
+# Used instead of EDITORIAL_FETCH_INSTRUCTIONS when the deterministic preflight
+# already fetched full text for ≥1 candidate. The ONLY thing it changes vs the
+# imperative version is "don't re-download the editorial preflight already
+# gave you" — the model must still actively search other journals/platforms
+# for commentary, because preflight only covers same-journal / PubMed-linked
+# editorials and misses cross-journal commentary, society responses, and
+# professional platforms (Sensible Medicine, TCTMD, ACC.org, …).
+EDITORIAL_FETCH_BACKUP_INSTRUCTIONS = """\
+外部專業意見（SECTION-0 第 7 項，務必執行）：
+上方 preflight 已 deterministic 抓到「同刊 / PubMed 連結」的 editorial / comment 全文。
+第 7 節要納入這份,且**不要對 preflight 已提供全文的同一篇重複下載**。
+
+但 preflight 只涵蓋同刊與 PubMed 連結,仍可能漏掉其他來源,你**必須繼續主動搜尋並納入**:
+- 其他期刊對本文的 commentary / editorial
+- 學會 / 指引組織的回應或立場聲明
+- 專業評論平台(如 Sensible Medicine、TCTMD、ACC.org 等;產業新聞與一般網路討論不算)
+
+對於你新找到、preflight 未涵蓋、且 WebFetch / 搜尋拿不到全文的 editorial / comment DOI,
+用本機指令補抓全文(不要拿本文自己的 DOI):
+
+    python3 {script} <DOI>
+
+第 7 節整合所有來源的專業意見並標注出處;確實找不到其他評論時才僅就 preflight 結果作結。
+完成後直接輸出評讀報告本身,不要加任何開場白或工具操作說明。
+"""
+
+CODEX_EDITORIAL_FETCH_INSTRUCTIONS = """\
+Codex 執行環境補充：
+本次 `codex exec` 已開啟可寫暫存目錄,所以你可以在找到 editorial / commentary /
+comment DOI 且 WebFetch / 網頁搜尋拿不到全文時,用同一個本機指令下載全文:
+
+    python3 {script} <DOI>
+
+此指令會把下載與轉檔暫存檔寫在本次執行的 TMPDIR,並只把最終 markdown 印到 stdout。
+除非需要取得 editorial/comment 全文,不要執行其他下載或寫檔操作。
+"""
+
+EDITORIAL_PREFLIGHT_CONTEXT = """\
+外部專業意見 preflight 結果（程式已在模型前 deterministic 查詢）：
+{items}
+
+使用規則：
+- 第 7 節「外部專業意見」必須優先使用這份 preflight 結果。
+- 若某項含「全文 markdown」，請根據該全文摘要其核心論點、對本文的肯定與質疑、
+  方法學批評，並標注 [外部: editorial/comment 全文]。
+- 若只有 DOI / 書目資料而沒有全文，請標注 [無法取得全文]，但不得寫成「未找到
+  editorial/comment」。
+- 不要再聲稱未執行本機 fetch 工具；preflight 已經在模型前執行過。
+"""
+
+
+def _appraisal_editorial_enabled() -> bool:
+    """Read JOURNAL_FETCHER_APPRAISAL_EDITORIAL; default on.
+
+    Set to "0"/"false"/"no"/"off" to disable the editorial full-text fetch
+    tool (e.g. off the institutional network, where dlbydoi can't reach the
+    publisher).
+    """
+    raw = os.getenv("JOURNAL_FETCHER_APPRAISAL_EDITORIAL", "1").strip().lower()
+    return raw not in ("0", "false", "no", "off", "")
+
+
+def _build_editorial_preflight_context(article: dict) -> str:
+    """Find and fetch editorial/comment full text before invoking a backend."""
+    if not _appraisal_editorial_enabled():
+        return ""
+
+    try:
+        candidates = find_editorial_candidates(article)
+    except Exception as e:  # noqa: BLE001 - appraisal should still proceed
+        print(f"  [warn] editorial preflight lookup failed: {e}", file=sys.stderr)
+        return ""
+    if not candidates:
+        article["editorial_candidates"] = []
+        print("  [editorial] preflight found no editorial/comment DOI")
+        return ""
+
+    print(
+        "  [editorial] preflight candidate(s): "
+        + ", ".join(c.doi for c in candidates)
+    )
+
+    items: list[str] = []
+    persisted: list[dict] = []
+    for idx, candidate in enumerate(candidates, 1):
+        full_text = ""
+        fetch_status = "not_attempted"
+        if EDITORIAL_FETCH_SCRIPT.exists():
+            try:
+                from weekly.fetch_editorial import fetch as fetch_editorial
+
+                full_text = fetch_editorial(candidate.doi) or ""
+                fetch_status = "ok" if full_text else "failed"
+            except Exception as e:  # noqa: BLE001
+                fetch_status = f"failed: {str(e)[:120]}"
+        persisted.append(
+            {
+                "doi": candidate.doi,
+                "title": candidate.title,
+                "journal": candidate.journal,
+                "year": candidate.year,
+                "pmid": candidate.pmid,
+                "source": candidate.source,
+                "pub_types": list(candidate.pub_types),
+                "fetch_status": fetch_status,
+            }
+        )
+        header = [
+            f"{idx}. DOI: {candidate.doi}",
+            f"   Title: {candidate.title or '[unknown]'}",
+            f"   Journal/Year: {candidate.journal or '[unknown]'} / {candidate.year or '[unknown]'}",
+            f"   PMID: {candidate.pmid or '[unknown]'}",
+            f"   Source: {candidate.source or '[unknown]'}",
+            f"   Full-text fetch: {fetch_status}",
+        ]
+        if full_text:
+            header.append("   Full-text markdown:")
+            header.append("   ```markdown")
+            header.append(full_text)
+            header.append("   ```")
+        items.append("\n".join(header))
+
+    article["editorial_candidates"] = persisted
+    return EDITORIAL_PREFLIGHT_CONTEXT.format(items="\n\n".join(items)).strip()
+
+
+def _codex_editorial_sandbox() -> str:
+    """Sandbox for Codex appraisals that may fetch editorial PDFs.
+
+    `workspace-write` gives the nested Codex run a writable temp workspace
+    for dlbydoi output without defaulting to full machine access. Set
+    JOURNAL_FETCHER_CODEX_APPRAISAL_SANDBOX=danger-full-access only if a
+    publisher browser/session path requires it.
+    """
+    raw = os.getenv(
+        "JOURNAL_FETCHER_CODEX_APPRAISAL_SANDBOX", "workspace-write"
+    ).strip()
+    allowed = {"read-only", "workspace-write", "danger-full-access"}
+    if raw not in allowed:
+        raise ValueError(
+            "JOURNAL_FETCHER_CODEX_APPRAISAL_SANDBOX must be one of "
+            f"{sorted(allowed)}; got {raw!r}"
+        )
+    return raw
+
 
 def _run_codex_prompt(
     prompt: str,
     timeout: int = 1800,
     has_references: bool = False,
     image_paths: list[Path] | None = None,
+    editorial_fetch: bool = False,
 ) -> str | None:
     if has_references:
         prompt = CODEX_REFERENCE_INSTRUCTIONS.rstrip() + "\n\n" + prompt
     if image_paths:
         prompt = CODEX_FIGURE_INSTRUCTIONS.format(n=len(image_paths)).rstrip() + "\n\n" + prompt
+    sandbox = "read-only"
+    if editorial_fetch:
+        sandbox = _codex_editorial_sandbox()
+        prompt = (
+            CODEX_EDITORIAL_FETCH_INSTRUCTIONS.format(
+                script=EDITORIAL_FETCH_SCRIPT
+            ).rstrip()
+            + "\n\n"
+            + prompt
+        )
 
     with tempfile.TemporaryDirectory(prefix="codex_weekly_appraise_") as tmp_dir:
         output_path = Path(tmp_dir) / "last_message.md"
@@ -216,7 +399,7 @@ def _run_codex_prompt(
             "--model",
             get_appraisal_model(),
             "--sandbox",
-            "read-only",
+            sandbox,
             "--skip-git-repo-check",
             "--color",
             "never",
@@ -226,10 +409,13 @@ def _run_codex_prompt(
         ]
         for img in image_paths or []:
             cmd.extend(["-i", str(img)])
+        env = codex_exec_env()
+        if editorial_fetch:
+            env["TMPDIR"] = tmp_dir
         result = subprocess.run(
             cmd,
             cwd=tmp_dir,
-            env=codex_exec_env(),
+            env=env,
             input=prompt,
             capture_output=True,
             text=True,
@@ -295,18 +481,26 @@ def _run_appraisal_prompt(
     read_dirs: list[Path] | None = None,
     has_references: bool = False,
     image_paths: list[Path] | None = None,
+    bash_commands: list[str] | None = None,
+    claude_extra: str = "",
+    codex_extra: str = "",
+    codex_editorial_fetch: bool = False,
 ) -> tuple[str | None, str, str]:
     """Try claude -p Opus 4.6 first (with cached system prompt + WebSearch +
     optional reference Read access); fall back to codex GPT 5.5 on rate /
     credit error.
 
+    `claude_extra` is appended only to the claude prompt; `codex_extra` is
+    appended only to the codex prompt. Both are used for backend-specific
+    operational details around the shared editorial full-text fetch helper.
+
     WebSearch lets claude actually fulfil SKILL.md SECTION-0's external-
     search requirements (author background, journal IF, editorial). When
     `read_dirs` is set, claude can also Read JAMA Users' Guides on demand.
 
-    Codex has its own built-in web access and read-only sandbox access; this
-    helper only forwards the combined prompt — the codex side of `--add-dir`
-    / explicit reference injection is handled in `_run_codex_prompt`.
+    Codex has its own built-in web access and sandboxed shell access; the
+    codex side of reference injection and optional editorial fetching is
+    handled in `_run_codex_prompt`.
 
     Returns `(text, backend, model)` so the caller can record which backend
     actually produced the appraisal (claude vs codex fallback) and the model
@@ -314,23 +508,31 @@ def _run_appraisal_prompt(
     at call time; if `text` is None the model still reflects what was tried.
     """
     codex_combined = system_prompt.rstrip() + "\n\n---\n\n" + user_prompt
+    if codex_extra:
+        codex_combined = codex_combined.rstrip() + "\n\n" + codex_extra
     enable_web = _appraisal_web_search_enabled()
+
+    claude_prompt = user_prompt
+    if claude_extra:
+        claude_prompt = user_prompt.rstrip() + "\n\n" + claude_extra
 
     claude_model = claude_exec.get_claude_appraisal_model()
     text, backend = claude_exec.try_claude_or_fallback(
-        user_prompt,
+        claude_prompt,
         claude_model=claude_model,
         fallback=lambda: _run_codex_prompt(
             codex_combined,
             timeout=timeout,
             has_references=has_references,
             image_paths=image_paths,
+            editorial_fetch=codex_editorial_fetch,
         ),
         timeout=timeout,
         label="appraise",
         system_prompt=system_prompt,
         enable_web_search=enable_web,
         read_dirs=read_dirs,
+        bash_commands=bash_commands,
     )
     model = claude_model if backend == "claude" else get_appraisal_model()
     return text, backend, model
@@ -430,8 +632,8 @@ def _build_references_section(route: str) -> str:
     The output is used by both backends:
       - claude: with --add-dir + Read tool, the model can lazily Read the
         listed files when relevant.
-      - codex: with --sandbox read-only it can `cat`/`rg` the same absolute
-        paths from a shell.
+      - codex: with its sandboxed shell it can `cat`/`rg` the same absolute
+        paths.
 
     Absolute paths mean the same string works for both backends without
     needing per-route path rewriting. Per-machine cache effect: the absolute
@@ -568,6 +770,9 @@ def appraise_pdf(article: dict, pdf_path: Path, out_dir: Path) -> Path | None:
         pmid=article.get("original_pmid", article.get("pmid", "")),
         article_markdown=article_markdown,
     )
+    editorial_preflight = _build_editorial_preflight_context(article)
+    if editorial_preflight:
+        user_prompt = user_prompt.rstrip() + "\n\n" + editorial_preflight + "\n"
 
     temp_context = (
         tempfile.TemporaryDirectory(prefix="appraisal_figures_")
@@ -603,12 +808,51 @@ def appraise_pdf(article: dict, pdf_path: Path, out_dir: Path) -> Path | None:
         read_dirs = [REFERENCES_DIR] if references_block else []
         if figure_dir is not None and figure_paths:
             read_dirs.append(figure_dir)
+
+        # Editorial full-text fetch: expose the dlbydoi-backed helper so the
+        # backend can read paywalled same-issue editorials it finds during the
+        # SECTION-0 external search. Claude is gated to just this script via
+        # the Bash allowlist; Codex gets a writable temp sandbox and matching
+        # prompt instructions.
+        bash_commands: list[str] | None = None
+        claude_extra = ""
+        codex_extra = ""
+        codex_editorial_fetch = False
+        if _appraisal_editorial_enabled() and EDITORIAL_FETCH_SCRIPT.exists():
+            # When the preflight already pulled full text, the tool is only a
+            # backup for editorials it missed — soften the instruction and keep
+            # codex read-only (it just summarises the injected preflight text).
+            preflight_has_fulltext = any(
+                c.get("fetch_status") == "ok"
+                for c in article.get("editorial_candidates", [])
+            )
+            bash_commands = [f"python3 {EDITORIAL_FETCH_SCRIPT}"]
+            if preflight_has_fulltext:
+                claude_extra = EDITORIAL_FETCH_BACKUP_INSTRUCTIONS.format(
+                    script=EDITORIAL_FETCH_SCRIPT
+                )
+                # codex stays read-only: full text is already in the prompt.
+                codex_extra = ""
+                codex_editorial_fetch = False
+            else:
+                claude_extra = EDITORIAL_FETCH_INSTRUCTIONS.format(
+                    script=EDITORIAL_FETCH_SCRIPT
+                )
+                codex_extra = EDITORIAL_FETCH_INSTRUCTIONS.format(
+                    script=EDITORIAL_FETCH_SCRIPT
+                )
+                codex_editorial_fetch = True
+
         report, backend, model = _run_appraisal_prompt(
             system_prompt,
             user_prompt,
             read_dirs=read_dirs or None,
             has_references=bool(references_block),
             image_paths=figure_paths or None,
+            bash_commands=bash_commands,
+            claude_extra=claude_extra,
+            codex_extra=codex_extra,
+            codex_editorial_fetch=codex_editorial_fetch,
         )
     if not report:
         return None

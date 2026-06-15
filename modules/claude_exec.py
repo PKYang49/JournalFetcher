@@ -20,12 +20,15 @@ from __future__ import annotations
 
 import json
 import os
+import shlex
 import shutil
 import subprocess
 import sys
 import tempfile
 from pathlib import Path
 from typing import Callable
+
+BASH_GATE_HOOK = Path(__file__).resolve().parent / "bash_gate_hook.py"
 
 CLAUDE_SUMMARY_MODEL_ENV = "JOURNAL_FETCHER_CLAUDE_SUMMARY_MODEL"
 CLAUDE_APPRAISAL_MODEL_ENV = "JOURNAL_FETCHER_CLAUDE_APPRAISAL_MODEL"
@@ -141,6 +144,7 @@ def run_claude_prompt(
     system_prompt: str | None = None,
     enable_web_search: bool = False,
     read_dirs: list[Path | str] | None = None,
+    bash_commands: list[str] | None = None,
 ) -> tuple[str, float]:
     """Run `claude -p --model <model> --output-format json` once.
 
@@ -163,6 +167,13 @@ def run_claude_prompt(
     the Read tool is added to the allowed set so the model can lazily pull
     on-disk references (e.g. JAMA Users' Guides) only when relevant. Cwd is
     still a tmpdir, so Read is constrained to these explicit dirs.
+
+    `bash_commands`: when provided, the Bash tool is exposed but gated by a
+    PreToolUse hook (registered via a temp --settings file) that allows only
+    commands starting with one of these prefixes and denies everything else.
+    A `Bash(prefix:*)` allowlist alone does NOT restrict Bash in headless
+    mode, so the hook is what makes this a tight, single-helper capability
+    (e.g. the editorial-fetch helper) rather than a general shell.
 
     Returns (result_text, total_cost_usd).
     Raises ClaudeLimitError on rate/credit exhaustion; ClaudeError otherwise.
@@ -206,15 +217,52 @@ def run_claude_prompt(
     # so -p mode does not stall on a permission prompt. Both are required:
     # --tools alone still hits permission gating in non-interactive runs.
     tool_names: list[str] = []
+    allowed: list[str] = []
+    settings_file: tempfile._TemporaryFileWrapper | None = None
     if enable_web_search:
         tool_names.extend(["WebSearch", "WebFetch"])
+        allowed.extend(["WebSearch", "WebFetch"])
     if read_dirs:
         for d in read_dirs:
             cmd.extend(["--add-dir", str(d)])
         tool_names.append("Read")
+        allowed.append("Read")
+    if bash_commands:
+        # Expose Bash (--tools) but gate it with a PreToolUse hook that allows
+        # only the listed command prefixes — a Bash(prefix:*) allowlist does
+        # not restrict Bash in headless mode, the hook does.
+        tool_names.append("Bash")
+        hook_cmd = " ".join(
+            [shlex.quote(sys.executable or "python3"), shlex.quote(str(BASH_GATE_HOOK))]
+            + [shlex.quote(prefix) for prefix in bash_commands]
+        )
+        settings_payload = {
+            "hooks": {
+                "PreToolUse": [
+                    {
+                        "matcher": "Bash",
+                        "hooks": [{"type": "command", "command": hook_cmd}],
+                    }
+                ]
+            }
+        }
+        settings_file = tempfile.NamedTemporaryFile(
+            mode="w",
+            encoding="utf-8",
+            suffix=".json",
+            prefix="claude_settings_",
+            delete=False,
+        )
+        try:
+            json.dump(settings_payload, settings_file)
+            settings_file.flush()
+        finally:
+            settings_file.close()
+        cmd.extend(["--settings", settings_file.name])
     if tool_names:
-        joined = ",".join(tool_names)
-        cmd.extend(["--tools", joined, "--allowedTools", joined])
+        cmd.extend(["--tools", ",".join(tool_names)])
+        if allowed:
+            cmd.extend(["--allowedTools", ",".join(allowed)])
 
     try:
         result = subprocess.run(
@@ -229,11 +277,12 @@ def run_claude_prompt(
     except subprocess.TimeoutExpired as e:
         raise ClaudeError(f"claude -p timed out after {timeout}s") from e
     finally:
-        if sys_file is not None:
-            try:
-                os.unlink(sys_file.name)
-            except OSError:
-                pass
+        for tmp in (sys_file, settings_file):
+            if tmp is not None:
+                try:
+                    os.unlink(tmp.name)
+                except OSError:
+                    pass
 
     if result.returncode != 0:
         msg = (result.stderr or result.stdout or "").strip()[:400]
@@ -271,6 +320,7 @@ def try_claude_or_fallback(
     system_prompt: str | None = None,
     enable_web_search: bool = False,
     read_dirs: list[Path | str] | None = None,
+    bash_commands: list[str] | None = None,
 ) -> tuple[str | None, str]:
     """Try claude first; on error fall back to `fallback()`.
 
@@ -296,6 +346,7 @@ def try_claude_or_fallback(
                 system_prompt=system_prompt,
                 enable_web_search=enable_web_search,
                 read_dirs=read_dirs,
+                bash_commands=bash_commands,
             )
             return text, "claude"
         except ClaudeLimitError as e:

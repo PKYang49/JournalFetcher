@@ -194,12 +194,18 @@ appraisal.md → render.publish_appraisals → docs/<pmid>.html → git push →
 
 關鍵機制：
 
-- **Heuristic-first classify**：`classify_article._classify_by_heuristic` 看 title + journal + `pub_type`，命中（W22 實測 ~53%）就直接回，省掉 LLM 呼叫。命中失敗才打 Haiku；Haiku 也不能用時 fallback 到 `default` 路由（載完整 SKILL）。
+- **Heuristic-first classify**：`classify_article._classify_by_heuristic` 看 title + journal + `pub_type`，命中（W22 實測 ~53%）就直接回，省掉 LLM 呼叫。命中失敗才打 Haiku；Haiku 不可用（claude exhausted / limit / 暫時錯誤）時 fallback 到 **codex GPT 5.4**（`_classify_with_codex`，與摘要同 backend 邏輯）；codex 也失敗才退 `default` 路由（載完整 SKILL）。`source ∈ {heuristic, haiku, codex, fallback}`。
 - **Prompt cache**：SKILL + fragment + style guide + references catalog 全進 `--append-system-prompt-file`，claude 自動 1h ephemeral cache。同 route 第二篇以後 ~10% 價（cache_read）。
 - **WebSearch**：appraisal 路徑預設開（`--tools "WebSearch,WebFetch" --allowedTools "..."`），讓模型實際執行 SECTION-0 的「外部搜尋」需求（作者、期刊 IF、editorial）。`JOURNAL_FETCHER_APPRAISAL_WEB_SEARCH=0` 可關。
+- **外部專業意見全文擷取**：進模型前先跑 deterministic preflight（`weekly/editorial_lookup.py`）：PubMed linked comment / title query，加上 NEJM article page 的 `dc.Relation` metadata（PubMed 不一定掛 linked comment）。找到同期 editorial / comment DOI 後，程式先呼叫 `weekly/fetch_editorial.py <DOI>`（`dlbydoi.download_one` 機構內網下載 → 轉 markdown），再把 DOI、書目資料、全文 markdown 注入同一份 user prompt。Claude / Codex 都吃同一份 preflight 結果；模型不應再自行宣稱「未找到 editorial」。
+  - **Bash 閘門**：headless 的 `--allowedTools "Bash(prefix:*)"` **無法**只限單一指令（實測非白名單指令照跑）；真正生效的是 `--tools` 可見性（全有全無）。故改用 `modules/bash_gate_hook.py` PreToolUse hook（claude_exec 動態產生臨時 `--settings`）：只放行 `fetch_editorial.py` 開頭的指令，其餘 deny → 模型拿到的是「只能跑這支」的 Bash，不是任意 shell。
+  - codex path 也可接：評讀 fallback 若啟用 editorial helper，`codex exec` 從 `read-only` 改用 `workspace-write`，並把 `TMPDIR` 指到該次暫存目錄，讓 `dlbydoi.py` 可寫暫存 PDF / markdown；若期刊瀏覽器 session 需要更大權限，可用 `JOURNAL_FETCHER_CODEX_APPRAISAL_SANDBOX=danger-full-access` 覆寫。
+  - 工具指令與 preflight 結果注入 **user prompt**（非 cached system prompt），避免破壞 prompt cache key。
+  - `JOURNAL_FETCHER_APPRAISAL_EDITORIAL=0` 可關（離開機構內網時）。每次呼叫記到 `output/logs/editorial_fetch.log`（CALL/OK/FAIL）。
+  - 已知限制：Elsevier（JACC / Lancet / EuroIntervention）editorial 走 Cloudflare 互動驗證，無人值守會抓失敗 → 退回 `[無法取得全文]`；JAMA / NEJM / OUP / Heart(ProQuest) 等有 Playwright 路徑的可成功。
 - **JAMA references（v3.6）**：
   - claude path：`--add-dir <references_dir>` + `Read` 工具，模型按需 Read 對應方法學的 JAMA Users' Guides
-  - codex path：`codex exec --sandbox read-only` 本來就能讀檔，prompt 開頭注入 `CODEX_REFERENCE_INSTRUCTIONS` 明確告知可用 `cat` / `rg`
+  - codex path：一般用 `codex exec --sandbox read-only` 讀檔；若同次啟用 editorial/comment 全文擷取則改用 `workspace-write`，prompt 開頭注入 `CODEX_REFERENCE_INSTRUCTIONS` 明確告知可用 `cat` / `rg`
   - **Local-only**：`references/jamaevidence/` 跟 `references/index.md` 在 `.gitignore`，本機沒這目錄時 helper 自動 return ""（graceful degradation）
 - **Article size backstop**：`ARTICLE_CHAR_BACKSTOP=1,500,000`（可用 `JOURNAL_FETCHER_APPRAISAL_CHAR_BACKSTOP` 覆寫）。一般論文（4–9 萬字元）與完整 ACC/AHA 指引（~1.05M 字元）都完整送進去。超過 → `ArticleTooLargeError` → `appraisal_status = "too_large"`，不產出。
 - **Route cache**：`appraise_pdf` 把 classify 結果寫進 `article["appraisal_route"]`，後續 manual re-run 跳過 LLM。
@@ -306,7 +312,7 @@ osascript -e 'display notification "完成：[任務名稱]" with title "Journal
 3. **Prompt caching（v3.6 新接）**：用 `--append-system-prompt-file`，1h ephemeral cache。同 route 第二篇以後 cache_read（~10% 價）。`--exclude-dynamic-system-prompt-sections` 用來把 per-machine 段（cwd / git status）移到 user message，讓 cache key 跨次穩定。
 4. **`process_appraisal_requests` 與 `run_weekly` 共用 `appraise_selected`**：兩條路徑共用 PDF markdown backstop 與 references 機制。Claude / Codex 額度由 dispatcher 自動分配，不再手動分流。
 5. **訂閱優先於 batch**：使用者有現存 Claude / ChatGPT 訂閱，Batch API 是獨立 raw-API 計費，不採用。
-6. **Heuristic-first classify**：用 PubMed 的 `pub_type`（Meta-Analysis、Practice Guideline、RCT、Editorial、Observational ...）+ title 規則，命中就跳過 LLM 呼叫。Codex fallback for classify 已移除（heuristic 本身夠強，撞 Haiku limit 就直接走 `default` 路由載完整 SKILL）。
+6. **Heuristic-first classify**：用 PubMed 的 `pub_type`（Meta-Analysis、Practice Guideline、RCT、Editorial、Observational ...）+ title 規則，命中就跳過 LLM 呼叫。命中失敗 → Haiku；Haiku 不可用 → **codex GPT 5.4 fallback**（`_classify_with_codex`）；codex 也失敗才走 `default`。（先前曾移除 codex 這層、直接 default，後因無類型標籤的觀察性研究被誤判 default 而重新加回。）
 7. **JAMA references 為 local-only**：`.gitignore` 排除 `references/*`（只破例追蹤 `output_quality_style_guide.md`）。Helper 自動偵測目錄是否存在；不存在就降級。原因：避免把 JAMA 版權內容放進 public repo。
 
 ## 接手後可能會被問到的事

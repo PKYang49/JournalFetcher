@@ -17,7 +17,7 @@ description: Use this skill when the user asks to critically appraise, interpret
 
 - **重新引入 JAMA Users' Guides 參考機制（取代 v3.4「移除 Bundled references」決定，v3.5 沿用該決定）**：weekly pipeline 改為主動讓 backend 取用本機的 `references/jamaevidence/`：
   - **claude backend**：呼叫 `claude -p` 時帶 `--add-dir <references_dir>` 與 `--tools Read --allowedTools Read`，模型可按需 `Read` 對應方法學的 JAMA Users' Guide markdown。
-  - **codex backend**：`codex exec --sandbox read-only` 本來就能讀任何使用者可讀檔案；在 prompt 前段注入 `CODEX_REFERENCE_INSTRUCTIONS` 明確告知可用 `cat` / `rg` 讀取。
+  - **codex backend**：一般評讀維持 `codex exec --sandbox read-only`；若啟用 editorial/comment 全文擷取，改用 `workspace-write` 讓 `dlbydoi.py` 寫入暫存 PDF / markdown。JAMA references 在 prompt 前段注入 `CODEX_REFERENCE_INSTRUCTIONS`，明確告知可用 `cat` / `rg` 讀取。
   - **取用策略**：appraise pipeline 透過 `_REFERENCES_BY_ROUTE` 與 `_build_references_section()` 按 route 列出對應檔案的**絕對路徑**到 system prompt（共用 prompt cache）。模型只在批判實際涉及對應方法學議題時才讀，引用格式為 `[參考: <filename> 第 X 節]`。
 - **Local-only 機制（重要）**：`references/jamaevidence/` 跟 `references/index.md` 都在 `.gitignore`，**只存在維護者本機**。CI / clone 環境下整個目錄不存在 → helper 自動 return ""，pipeline 等價於 pre-v3.6 行為（沒有 references 層）。文字提及檔案是 graceful degradation 而非 hard requirement。
 - **v3.4 的「移除 Bundled references」段（v3.5 沿用）現在已過時**：保留在下方版本歷史以便追溯，但**本版本路由與 SECTION-0 規則不再受其約束**。
@@ -137,7 +137,7 @@ description: Use this skill when the user asks to critically appraise, interpret
 - 作者背景與團隊過往研究（Google Scholar / PubMed 作者搜尋）
 - 期刊屬性、Impact Factor、審查週期（期刊官網 / Clarivate / Scimago）
 - 該期刊 peer review 平均接受天數（期刊官網 editorial stats 或 journalguide）
-- 外部專業意見 / editorial / commentary（PubMed 搜尋同期 editorial；搜尋 "[論文標題] commentary" 或 "[論文標題] editorial"）
+- 外部專業意見 / editorial / commentary（PubMed 搜尋同期 editorial；搜尋 "[論文標題] commentary" 或 "[論文標題] editorial"）。**找到同期 editorial / comment 的 DOI 後，若本次任務有提供全文擷取工具/指令，務必先取得全文再轉述其論點；若 WebFetch / 網頁搜尋只拿到摘要、書目頁、付費牆或找不到全文，必須改用該工具/指令下載全文，不要只憑標題或摘要臆測。**
 
 **標注格式**：
 
@@ -241,8 +241,10 @@ description: Use this skill when the user asks to critically appraise, interpret
 
 [需搜尋外部資料]
 
-- 若找到外部意見：摘要重點，標注來源（作者、期刊、年份）
+- 若找到同期 editorial / comment 的 DOI：**當本次任務有提供全文擷取工具/指令時**，先用它取得全文；若 WebFetch / 網頁搜尋只拿到摘要、書目頁、付費牆或找不到全文，也必須改用該工具/指令下載全文，再根據實際內容摘要其核心論點、對本文的肯定與質疑、方法學批評，標注來源（作者、期刊、年份）與「[外部: editorial/comment 全文]」。
+- 找到 DOI 但全文擷取失敗、或本次任務未提供擷取工具（只拿得到付費牆外摘要）：標注「[無法取得全文]」並只陳述可確認的書目資訊（題名、作者、DOI），不要憑題名臆測其立場。
 - 若未找到：標注「[無法取得]——未發現同期 editorial 或公開評論」
+- 產業新聞 / 投資人資訊 / 一般網路討論（Reddit 等）不作為專業意見來源。
 
 #### 8. 臨床建議
 
@@ -283,7 +285,7 @@ Pipeline (`weekly/appraise_selected.py`) 會先用 `weekly/classify_article.py` 
 
 **v3.6 主要變更**（JAMA references 重新可用 + local-only graceful degradation）：
 - 透過 `claude -p --add-dir <references_dir>` + `Read` 工具，讓 claude backend 可按需讀取 `references/jamaevidence/` 內的 JAMA Users' Guides
-- 透過 `codex exec --sandbox read-only` + `CODEX_REFERENCE_INSTRUCTIONS` 注入，讓 codex backend 可 shell-read 同一批檔案
+- 透過 `codex exec` + `CODEX_REFERENCE_INSTRUCTIONS` 注入，讓 codex backend 可 shell-read 同一批檔案；啟用 editorial/comment 全文擷取時，Codex sandbox 由 `read-only` 升為 `workspace-write` 以允許 `dlbydoi.py` 寫暫存檔
 - 新增 `_REFERENCES_BY_ROUTE` 對照表（rct / observational / sr / nma / cpg / consensus / diagnostic 有對應檔；preclinical / narrative / default 無對應，不掛載 references 層）
 - 新增 `_build_references_section()` helper：把 route 對應檔案以**絕對路徑**列入 cached system prompt；fragment 末段補上「何時讀」的觸發條件
 - **Local-only**：`references/jamaevidence/` 與 `references/index.md` 在 `.gitignore`，本機沒這目錄時 helper 自動 return ""，等價 pre-v3.6 行為（無 references 層）
