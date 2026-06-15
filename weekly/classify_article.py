@@ -7,13 +7,12 @@ Resolution chain:
      directly because PubMed already tags Meta-Analysis / Systematic Review /
      Practice Guideline / RCT / Editorial etc. authoritatively.
   2. claude -p Haiku 4.5 (~$0.005/article, 30-60ms) — only on heuristic miss.
-  3. "default" → caller loads the full SKILL.md (= pre-fragmentation behavior).
-
-There used to be a `codex exec gpt-5.4` middle layer for when claude was
-limit-exhausted, but with heuristic-first the LLM is only invoked on
-genuinely-ambiguous titles (a handful per week). Falling straight to
-"default" is the simpler and safer choice — loading the full SKILL is a
-zero-quality-cost backstop, just slightly more tokens.
+  3. codex exec GPT 5.4 — when Haiku is unavailable (claude exhausted / rate
+     limit / transient error). Mirrors the summary backend's claude→codex
+     fallback so an ambiguous article still gets a real route instead of
+     loading the full SKILL.
+  4. "default" → caller loads the full SKILL.md (= pre-fragmentation behavior),
+     only when both LLM backends are unavailable or unsure.
 
 The classification is stateless here; the caller persists it on the article
 dict (article["appraisal_route"] / ["appraisal_route_source"]) so subsequent
@@ -24,8 +23,13 @@ from __future__ import annotations
 
 import json
 import re
+import subprocess
+import sys
+import tempfile
+from pathlib import Path
 
 from modules import claude_exec
+from modules.codex_model import codex_exec_env, get_summary_model, resolve_codex_cli
 
 # Routes correspond 1:1 with skill fragment files. Keep in sync with
 # weekly/appraise_selected.py::_FRAGMENT_BY_ROUTE.
@@ -76,6 +80,51 @@ Journal: {journal}
 前 {head_chars} 字 markdown：
 {head}
 """
+
+
+def _classify_with_codex(prompt: str, timeout: int = 120) -> str | None:
+    """Classify via `codex exec` GPT 5.4 when Haiku is unavailable.
+
+    Returns a valid route, or None on codex failure / unparseable output.
+    Confidence is ignored here: codex is already the degraded path, so a
+    parseable route is preferred over falling through to the full SKILL.
+    """
+    with tempfile.TemporaryDirectory(prefix="codex_classify_") as tmp_dir:
+        output_path = Path(tmp_dir) / "last_message.txt"
+        try:
+            result = subprocess.run(
+                [
+                    resolve_codex_cli(),
+                    "exec",
+                    "--model",
+                    get_summary_model(),
+                    "--sandbox",
+                    "read-only",
+                    "--skip-git-repo-check",
+                    "--color",
+                    "never",
+                    "--ephemeral",
+                    "--output-last-message",
+                    str(output_path),
+                    prompt,
+                ],
+                cwd=tmp_dir,
+                env=codex_exec_env(),
+                input="",
+                capture_output=True,
+                text=True,
+                timeout=timeout,
+            )
+        except (OSError, subprocess.TimeoutExpired) as e:
+            print(f"  [warn] codex classify error: {str(e)[:160]}", file=sys.stderr)
+            return None
+        if result.returncode != 0:
+            err = (result.stderr or result.stdout).strip()
+            print(f"  [warn] codex classify exit {result.returncode}: {err[:160]}", file=sys.stderr)
+            return None
+        text = output_path.read_text().strip() if output_path.exists() else result.stdout.strip()
+    route, _confidence = _parse_route(text)
+    return route
 
 
 def _parse_route(text: str) -> tuple[str | None, str | None]:
@@ -260,15 +309,15 @@ def _classify_by_heuristic(
 def classify(article: dict, markdown_head: str) -> tuple[str, str]:
     """Classify an article. Returns (route, source).
 
-    source ∈ {"heuristic", "haiku", "fallback"}
+    source ∈ {"heuristic", "haiku", "codex", "fallback"}
     route is one of VALID_ROUTES; "default" means no confident classification.
 
     Heuristic runs first because PubMed's pub_type tagging is authoritative for
     Meta-Analysis / Systematic Review / Practice Guideline / RCT / Editorial /
     etc. Only when title + journal + pub_type leave the route ambiguous do we
-    pay for a Haiku call. If Haiku is exhausted, the caller loads the full
-    SKILL (route="default") — a slightly more expensive but zero-quality-risk
-    backstop.
+    pay for an LLM call: claude Haiku first, then codex GPT 5.4 when Haiku is
+    unavailable (exhausted / rate limit / transient error). Only when both
+    backends fail or are unsure do we return "default" (full SKILL backstop).
     """
     title = article.get("title", "") or ""
     journal = article.get("journal") or article.get("journal_key", "") or ""
@@ -279,13 +328,7 @@ def classify(article: dict, markdown_head: str) -> tuple[str, str]:
         return heuristic_route, "heuristic"
 
     # Heuristic missed — title is genuinely ambiguous (e.g. pub_type=Original
-    # with no design keywords). Ask Haiku, but only if it is still available
-    # in this process. If claude is exhausted we go straight to "default" —
-    # the full SKILL works for everything; we just lose the per-route token
-    # saving on this one article.
-    if claude_exec.claude_exhausted_this_run():
-        return "default", "fallback"
-
+    # with no design keywords). Build the LLM prompt once; both backends share it.
     head = (markdown_head or "")[:_HEAD_CHARS]
     prompt = _CLASSIFY_PROMPT.format(
         head_chars=_HEAD_CHARS,
@@ -294,27 +337,34 @@ def classify(article: dict, markdown_head: str) -> tuple[str, str]:
         head=head,
     )
 
-    try:
-        text, _cost = claude_exec.run_claude_prompt(
-            prompt,
-            model=claude_exec.get_claude_summary_model(),
-            timeout=60,
-        )
-    except claude_exec.ClaudeLimitError:
-        # First exhaustion of the process; flag will already be flipped by
-        # run_claude_prompt's caller — but run_claude_prompt itself does not
-        # flip the flag (try_claude_or_fallback used to). Set it explicitly
-        # so subsequent classify() calls short-circuit to "default".
-        claude_exec._session["claude_exhausted"] = True
-        return "default", "fallback"
-    except claude_exec.ClaudeError:
-        return "default", "fallback"
+    # Haiku first, but only if claude is still available this process.
+    if not claude_exec.claude_exhausted_this_run():
+        try:
+            text, _cost = claude_exec.run_claude_prompt(
+                prompt,
+                model=claude_exec.get_claude_summary_model(),
+                timeout=60,
+            )
+            route, confidence = _parse_route(text)
+            # Trust high/medium confidence. low-confidence → "default" so we
+            # don't lock in a guess; caller loads the full SKILL. (We do not
+            # second-guess a usable Haiku answer with codex.)
+            if route and confidence != "low":
+                return route, "haiku"
+            return "default", "fallback"
+        except claude_exec.ClaudeLimitError:
+            # run_claude_prompt does not flip the flag itself; set it so later
+            # classify() calls skip Haiku and go straight to codex.
+            claude_exec._session["claude_exhausted"] = True
+        except claude_exec.ClaudeError:
+            # Transient (timeout / parse / 5xx): fall through to codex this call.
+            pass
 
-    route, confidence = _parse_route(text)
-    # Trust high/medium confidence. low-confidence → "default" so we don't
-    # lock in a guess; caller loads the full SKILL.
-    if route and confidence != "low":
-        return route, "haiku"
+    # Haiku unavailable → codex GPT 5.4 fallback. Only "default" if codex also
+    # fails to produce a valid route.
+    route = _classify_with_codex(prompt)
+    if route:
+        return route, "codex"
     return "default", "fallback"
 
 
