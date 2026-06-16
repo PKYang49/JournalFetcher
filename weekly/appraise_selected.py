@@ -260,6 +260,22 @@ comment DOI 且 WebFetch / 網頁搜尋拿不到全文時,用同一個本機指�
 除非需要取得 editorial/comment 全文,不要執行其他下載或寫檔操作。
 """
 
+CODEX_EDITORIAL_BACKUP_SEARCH_INSTRUCTIONS = """\
+Codex 外部專業意見補充：
+上方 preflight 已提供至少一篇同刊 / PubMed 連結 editorial / comment 的全文,
+第 7 節必須納入該全文。
+
+但 preflight 只涵蓋同刊與 PubMed 連結,仍可能漏掉其他來源,你**必須繼續主動搜尋並納入**:
+- 其他期刊對本文的 commentary / editorial
+- 學會 / 指引組織的回應或立場聲明
+- 專業評論平台(如 Sensible Medicine、TCTMD、ACC.org 等;產業新聞與一般網路討論不算)
+
+本次 Codex 維持 read-only:不要呼叫本機下載 helper,也不要寫檔。對於 preflight 未涵蓋、
+但搜尋可取得全文或可靠摘要的來源,請據實整合並標注出處;若只找到書目頁、付費牆、
+或完全找不到其他評論,第 7 節要明確寫「未找到其他可取得全文的 editorial/comment」,
+不要寫成「未執行搜尋」。
+"""
+
 EDITORIAL_PREFLIGHT_CONTEXT = """\
 外部專業意見 preflight 結果（程式已在模型前 deterministic 查詢）：
 {items}
@@ -831,8 +847,9 @@ def appraise_pdf(article: dict, pdf_path: Path, out_dir: Path) -> Path | None:
                 claude_extra = EDITORIAL_FETCH_BACKUP_INSTRUCTIONS.format(
                     script=EDITORIAL_FETCH_SCRIPT
                 )
-                # codex stays read-only: full text is already in the prompt.
-                codex_extra = ""
+                # Codex stays read-only: full text is already in the prompt,
+                # but it still has to search for other commentary sources.
+                codex_extra = CODEX_EDITORIAL_BACKUP_SEARCH_INSTRUCTIONS
                 codex_editorial_fetch = False
             else:
                 claude_extra = EDITORIAL_FETCH_INSTRUCTIONS.format(
