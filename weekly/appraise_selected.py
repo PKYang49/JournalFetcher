@@ -916,6 +916,33 @@ def appraise_selected(
             article["appraisal_path"] = ""
             article["appraisal_status"] = "too_large"
             continue
+        except claude_exec.ClaudeLimitError as e:
+            # claude-only mode + claude usage hit: defer for a retry window
+            # aligned to Claude's 5h rolling reset (default 4.5h to give a
+            # safety margin). retry_deferred_appraisals scans for these via
+            # the process_appraisal_requests cron (every 15 min).
+            from datetime import datetime, timedelta
+            from zoneinfo import ZoneInfo
+            defer_minutes = int(
+                os.getenv("JOURNAL_FETCHER_APPRAISAL_DEFER_MINUTES", "270")
+            )
+            defer_until = datetime.now(ZoneInfo("Asia/Taipei")) + timedelta(
+                minutes=defer_minutes
+            )
+            defer_iso = defer_until.isoformat(timespec="seconds")
+            print(
+                f"  [defer] claude usage limit; will retry after {defer_iso}",
+                file=sys.stderr,
+            )
+            results[pmid] = None
+            article["appraisal_path"] = ""
+            article["appraisal_status"] = "deferred_claude_limit"
+            article["appraisal_deferred_until"] = defer_iso
+            article["appraisal_retry_count"] = article.get(
+                "appraisal_retry_count", 0
+            )
+            article["appraisal_last_error"] = f"claude usage limit: {str(e)[:160]}"
+            continue
         except Exception as e:
             print(f"  [warn] appraisal failed: {e}", file=sys.stderr)
             report_path = None

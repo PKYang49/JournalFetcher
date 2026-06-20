@@ -136,9 +136,25 @@ def main() -> int:
         action="store_true",
         help="Skip pulling highlight feedback from the Apps Script relay",
     )
+    parser.add_argument(
+        "--allow-codex",
+        action="store_true",
+        help=(
+            "Allow codex fallback when claude hits limit. Default is "
+            "claude-only — claude limit errors mark the article "
+            "deferred_claude_limit and retry_deferred_appraisals picks "
+            "them up 4.5h later via the process_appraisal_requests cron."
+        ),
+    )
     args = parser.parse_args()
 
     load_dotenv(ROOT / ".env")
+    if not args.allow_codex:
+        os.environ.setdefault("JOURNAL_FETCHER_CLAUDE_ONLY", "1")
+        print(
+            "[mode] claude-only (use --allow-codex to enable codex fallback; "
+            "claude limit → 4.5h deferred retry via on-demand cron)"
+        )
     feedback_endpoint = os.getenv("FEEDBACK_ENDPOINT_URL", "").strip()
 
     label, filename, date_str = render.iso_week_label()

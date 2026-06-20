@@ -490,6 +490,17 @@ def main() -> int:
     parser.add_argument("--no-discord", action="store_true", help="Skip Discord completion notice")
     args = parser.parse_args()
 
+    # First sweep: retry any selected appraisals deferred by a previous
+    # claude usage-limit hit whose retry window has elapsed. This cron fires
+    # every 15 min, so a 4.5h-deferred article is picked up within ~15 min of
+    # its window opening. Failures here are logged but do not block relay
+    # request processing — they are independent queues.
+    try:
+        from weekly import retry_deferred_appraisals
+        retry_deferred_appraisals.scan_and_retry(no_push=args.no_push)
+    except Exception as e:  # noqa: BLE001
+        print(f"[retry-deferred] sweep failed (continuing): {e}", file=sys.stderr)
+
     try:
         process_requests(
             limit=args.limit,

@@ -6,10 +6,15 @@ Primary backend for the weekly pipeline:
   the older tokenizer, ~15-25% fewer tokens for the same medical text)
 
 Fallback: when claude reports a rate-limit / credit-exhausted error the
-caller switches to the existing `codex exec` path for the rest of this
-process. The Agent SDK credit resets monthly, so the next process invocation
-tries claude again. We do not track spend locally — the authoritative signal
-is the error claude itself returns when the credit runs out.
+caller normally switches to `codex exec` for the rest of this process. The
+Claude subscription uses a 5-hour rolling window that resets silently, so
+the next process invocation tries claude again. The weekly pipeline
+defaults to claude-only via JOURNAL_FETCHER_CLAUDE_ONLY (see
+weekly/run_weekly.py) — in that mode a limit hit re-raises ClaudeLimitError
+instead of falling back to codex, and weekly/retry_deferred_appraisals.py
+picks the article up 4.5h later through the on-demand cron. We do not
+track spend locally — the authoritative signal is the error claude itself
+returns when the window saturates.
 
 Auth: ANTHROPIC_API_KEY is deliberately stripped from the subprocess env so
 claude uses the user's keychain OAuth login (Claude subscription / Agent SDK
