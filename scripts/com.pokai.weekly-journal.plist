@@ -28,10 +28,11 @@
 
     <key>StartCalendarInterval</key>
     <dict>
+        <!-- Weekday: 0=Sun, 1=Mon, ..., 6=Sat. Sunday 01:00. -->
         <key>Weekday</key>
-        <integer>1</integer>
+        <integer>0</integer>
         <key>Hour</key>
-        <integer>3</integer>
+        <integer>1</integer>
         <key>Minute</key>
         <integer>0</integer>
     </dict>

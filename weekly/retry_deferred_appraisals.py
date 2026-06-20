@@ -61,8 +61,21 @@ def _recent_week_dirs(lookback_weeks: int) -> list[Path]:
     return weeks[:lookback_weeks]
 
 
-def _ready_to_retry(article: dict, now: datetime, max_retries: int) -> bool:
-    if article.get("appraisal_status") != "deferred_claude_limit":
+def _ready_to_retry(
+    article: dict,
+    now: datetime,
+    max_retries: int,
+    include_failed_statuses: bool = False,
+) -> bool:
+    status = article.get("appraisal_status")
+    # Backfill path: opt-in retry of statuses produced before the deferred
+    # retry mechanism existed (e.g. W25's 4 'failed' + 1 'pdf_failed' that
+    # were really claude usage limits).
+    if include_failed_statuses and status in ("failed", "pdf_failed"):
+        if article.get("appraisal_retry_count", 0) >= max_retries:
+            return False
+        return True
+    if status != "deferred_claude_limit":
         return False
     if article.get("appraisal_retry_count", 0) >= max_retries:
         return False
@@ -149,11 +162,18 @@ def scan_and_retry(
     lookback_weeks: int | None = None,
     max_retries: int | None = None,
     no_push: bool = False,
+    target_week: str | None = None,
+    include_failed_statuses: bool = False,
 ) -> int:
     """Scan recent weeks for deferred appraisals past their retry window.
 
     Returns the number of articles that reached a terminal state this sweep
     (done / permanently_failed / too_large). Articles re-deferred do not count.
+
+    `target_week` limits the sweep to one specific week directory; `lookback_weeks`
+    is ignored in that case. `include_failed_statuses` opt-in also retries
+    status='failed' and 'pdf_failed' (immediately, ignoring deferred_until) — use
+    for one-shot backfill of pre-mechanism failures (e.g. W25 5/5 failed).
     """
     now = now or datetime.now(TZ)
     lookback_weeks = lookback_weeks or DEFAULT_LOOKBACK_WEEKS
@@ -168,7 +188,19 @@ def scan_and_retry(
     from modules import claude_exec
     from weekly import appraise_selected
 
-    for week_dir in _recent_week_dirs(lookback_weeks):
+    if target_week:
+        wd = WEEKLY_DIR / target_week
+        if not (wd / "selected_articles.json").exists():
+            print(
+                f"[retry] {target_week}: selected_articles.json not found",
+                file=sys.stderr,
+            )
+            return 0
+        week_dirs = [wd]
+    else:
+        week_dirs = _recent_week_dirs(lookback_weeks)
+
+    for week_dir in week_dirs:
         week = week_dir.name
         sj = week_dir / "selected_articles.json"
         try:
@@ -177,7 +209,11 @@ def scan_and_retry(
             print(f"[retry] {week}: cannot read {sj.name}: {e}", file=sys.stderr)
             continue
 
-        candidates = [a for a in selected if _ready_to_retry(a, now, max_retries)]
+        candidates = [
+            a
+            for a in selected
+            if _ready_to_retry(a, now, max_retries, include_failed_statuses)
+        ]
         if not candidates:
             continue
 
@@ -294,10 +330,27 @@ def main() -> int:
         help=f"How many recent week dirs to scan (default {DEFAULT_LOOKBACK_WEEKS})",
     )
     parser.add_argument(
+        "--week",
+        default=None,
+        help=(
+            "Limit to a specific week (e.g. 2026-W25). "
+            "Overrides --lookback-weeks when set."
+        ),
+    )
+    parser.add_argument(
         "--max-retries",
         type=int,
         default=DEFAULT_MAX_RETRIES,
         help=f"Mark permanently_failed after N attempts (default {DEFAULT_MAX_RETRIES})",
+    )
+    parser.add_argument(
+        "--include-failed",
+        action="store_true",
+        help=(
+            "Also retry status='failed' / 'pdf_failed' (treat as immediately "
+            "due for retry). Use for one-shot backfill of pre-deferred-mechanism "
+            "failures; the normal cron should leave this off."
+        ),
     )
     parser.add_argument("--no-push", action="store_true", help="Skip git push")
     args = parser.parse_args()
@@ -305,6 +358,8 @@ def main() -> int:
         lookback_weeks=args.lookback_weeks,
         max_retries=args.max_retries,
         no_push=args.no_push,
+        target_week=args.week,
+        include_failed_statuses=args.include_failed,
     )
     return 0 if finalized >= 0 else 1
 
