@@ -260,6 +260,11 @@ def _direct_pdf_urls(doi: str, journal: str) -> list[str]:
         return [
             f"https://www.ahajournals.org/doi/pdf/{doi}",
         ]
+    if doi.lower().startswith(("10.1111/", "10.1002/")):
+        return [
+            f"https://onlinelibrary.wiley.com/doi/pdfdirect/{doi}",
+            f"https://onlinelibrary.wiley.com/doi/pdf/{doi}",
+        ]
     if "eurointervention" in j:
         return [
             f"https://eurointervention.pcronline.com/doi/{doi}/pdf",

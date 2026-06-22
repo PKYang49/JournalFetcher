@@ -20,6 +20,7 @@ import json
 import os
 import re
 import sys
+import time
 from pathlib import Path
 from typing import Any
 from urllib.parse import parse_qs, urlparse
@@ -32,6 +33,17 @@ DATA_DIR = ROOT / "data"
 STATE_PATH = DATA_DIR / "appraisal_requests_processed.jsonl"
 WEEKLY_DIR = ROOT / "output" / "weekly"
 DOCS_DIR = ROOT / "docs"
+
+# On-demand requests run claude-only on Opus too (no codex fallback). This
+# 15-minute worker does not block in-process, so when it hits the usage limit
+# it records a `retry_after` timestamp from Claude's reported reset time and
+# skips the request until then. The 5h value is only a parsing fallback.
+APPRAISAL_RETRY_WAIT_SECONDS = int(
+    os.getenv("JOURNAL_FETCHER_APPRAISAL_RETRY_WAIT", str(5 * 60 * 60))
+)
+APPRAISAL_RESET_BUFFER_SECONDS = int(
+    os.getenv("JOURNAL_FETCHER_APPRAISAL_RESET_BUFFER", "120")
+)
 
 
 def _normalize_doi(value: str) -> str:
@@ -124,6 +136,21 @@ def _append_state(record: dict) -> None:
     DATA_DIR.mkdir(parents=True, exist_ok=True)
     with STATE_PATH.open("a", encoding="utf-8") as f:
         f.write(json.dumps(record, ensure_ascii=False) + "\n")
+
+
+def _state_blocks(record: dict) -> bool:
+    """Whether an existing state record should keep us from (re)processing.
+
+    Terminal records (done / failed) always block. A `deferred` record only
+    blocks until its `retry_after` epoch passes — after that the request is
+    retried (the claude usage-limit window is assumed reset).
+    """
+    if str(record.get("status", "")).strip() == "deferred":
+        try:
+            return float(record.get("retry_after", 0)) > time.time()
+        except (TypeError, ValueError):
+            return False
+    return True
 
 
 def _sync_requests(timeout: int = 30) -> list[dict]:
@@ -308,6 +335,7 @@ def _render_weekly_page(week: str, selected: list[dict]) -> Path:
 
 
 def _process_one(row: dict, article: dict, force: bool, no_push: bool, no_discord: bool) -> bool:
+    from modules import claude_exec
     from modules.downloader import download_articles
     from weekly import appraise_selected, publish, render
 
@@ -325,7 +353,31 @@ def _process_one(row: dict, article: dict, force: bool, no_push: bool, no_discor
 
     print(f"[appraisal-request] processing {week} {identifier}: {article.get('title', '')[:80]}")
     download_results = download_articles([article], out_dir=pdf_dir)
-    result = appraise_selected.appraise_selected([article], download_results, appraisal_dir)
+    try:
+        result = appraise_selected.appraise_selected([article], download_results, appraisal_dir)
+    except claude_exec.ClaudeLimitError as e:
+        wait, reset_at = claude_exec.retry_wait_seconds(
+            str(e),
+            fallback_seconds=APPRAISAL_RETRY_WAIT_SECONDS,
+            buffer_seconds=APPRAISAL_RESET_BUFFER_SECONDS,
+        )
+        retry_after = time.time() + wait
+        _append_state(
+            {
+                "week": week,
+                "identifier": identifier,
+                **row,
+                "status": "deferred",
+                "retry_after": retry_after,
+            }
+        )
+        print(
+            f"[appraisal-request] deferred {identifier}: claude usage limit; "
+            f"retry after ~{wait / 3600:.1f}h"
+            f"{f' ({reset_at:%Y-%m-%d %H:%M %Z})' if reset_at else ''} "
+            f"({str(e)[:120]})"
+        )
+        return False
     report_path = result.get(result_key)
     if not report_path:
         _append_state({"week": week, "identifier": identifier, **row, "status": "failed"})
@@ -439,6 +491,10 @@ def process_requests(
     no_push: bool,
     no_discord: bool,
 ) -> int:
+    # On-demand appraisals run claude-only on Opus (no codex fallback); a
+    # usage-limit raises ClaudeLimitError, which _process_one defers.
+    os.environ["JOURNAL_FETCHER_CLAUDE_ONLY"] = "1"
+
     rows = _sync_requests()
     known = _known_articles()
     state = _load_state()
@@ -453,7 +509,10 @@ def process_requests(
             continue
         if not identifier:
             continue
-        if not force and any((week, candidate) in state for candidate in identifiers):
+        if not force and any(
+            (rec := state.get((week, candidate))) is not None and _state_blocks(rec)
+            for candidate in identifiers
+        ):
             continue
         article = None
         matched_identifier = identifier

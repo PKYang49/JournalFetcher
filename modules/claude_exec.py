@@ -20,13 +20,16 @@ from __future__ import annotations
 
 import json
 import os
+import re
 import shlex
 import shutil
 import subprocess
 import sys
 import tempfile
+from datetime import datetime, timedelta
 from pathlib import Path
 from typing import Callable
+from zoneinfo import ZoneInfo
 
 BASH_GATE_HOOK = Path(__file__).resolve().parent / "bash_gate_hook.py"
 
@@ -35,6 +38,10 @@ CLAUDE_APPRAISAL_MODEL_ENV = "JOURNAL_FETCHER_CLAUDE_APPRAISAL_MODEL"
 
 FALLBACK_CLAUDE_SUMMARY_MODEL = "claude-haiku-4-5"
 FALLBACK_CLAUDE_APPRAISAL_MODEL = "claude-opus-4-6"
+CLAUDE_RESET_TIME_RE = re.compile(
+    r"\bresets?\s+(\d{1,2})(?::(\d{2}))?\s*(am|pm)\b",
+    re.IGNORECASE,
+)
 
 # Env passed to claude subprocess: full ambient env minus ANTHROPIC_API_KEY,
 # so claude uses macOS keychain OAuth (subscription / Agent SDK credit)
@@ -48,6 +55,8 @@ FALLBACK_CLAUDE_APPRAISAL_MODEL = "claude-opus-4-6"
 LIMIT_ERROR_SIGNALS = (
     "rate_limit",
     "rate limit",
+    "session limit",
+    "hit your session limit",
     "billing_error",
     "billing error",
     "credit",
@@ -134,6 +143,68 @@ def get_claude_appraisal_model() -> str:
 def _is_limit_signal(text: str) -> bool:
     lower = text.lower()
     return any(signal in lower for signal in LIMIT_ERROR_SIGNALS)
+
+
+def _claude_error_details(stdout: str, stderr: str) -> tuple[str, bool]:
+    """Extract an error before truncation and detect JSON-wrapped 429 limits."""
+    raw = (stderr or stdout or "").strip()
+    payload: dict[str, object] | None = None
+    for candidate in (stdout, stderr):
+        try:
+            parsed = json.loads(candidate)
+        except (json.JSONDecodeError, TypeError):
+            continue
+        if isinstance(parsed, dict):
+            payload = parsed
+            break
+
+    if payload is not None:
+        result = str(payload.get("result", "")).strip()
+        message = result or raw
+        is_limit = (
+            payload.get("api_error_status") == 429
+            or _is_limit_signal(message)
+            or _is_limit_signal(raw)
+        )
+        return message[:400], is_limit
+
+    return raw[:400], _is_limit_signal(raw)
+
+
+def retry_wait_seconds(
+    error_text: str,
+    *,
+    fallback_seconds: int,
+    buffer_seconds: int = 120,
+    now: datetime | None = None,
+) -> tuple[int, datetime | None]:
+    """Return wait seconds from Claude's ``resets H:MMam/pm`` message.
+
+    The reset timestamp is interpreted in Asia/Taipei, matching the Claude CLI
+    message on this host. If no reset time can be parsed, use the configured
+    fallback. A short buffer avoids retrying exactly on the reset boundary.
+    """
+    match = CLAUDE_RESET_TIME_RE.search(error_text)
+    if not match:
+        return fallback_seconds, None
+
+    tz = ZoneInfo("Asia/Taipei")
+    current = now.astimezone(tz) if now is not None else datetime.now(tz)
+    hour = int(match.group(1))
+    minute = int(match.group(2) or 0)
+    meridiem = match.group(3).lower()
+    hour = hour % 12 + (12 if meridiem == "pm" else 0)
+    reset_at = current.replace(hour=hour, minute=minute, second=0, microsecond=0)
+
+    if reset_at <= current:
+        # A reset just passed while the failing request was returning. Retry
+        # after the safety buffer instead of incorrectly waiting another day.
+        if current - reset_at <= timedelta(minutes=15):
+            return max(buffer_seconds, 1), reset_at
+        reset_at += timedelta(days=1)
+
+    wait = max(1, int((reset_at - current).total_seconds()) + buffer_seconds)
+    return wait, reset_at
 
 
 def run_claude_prompt(
@@ -285,8 +356,8 @@ def run_claude_prompt(
                     pass
 
     if result.returncode != 0:
-        msg = (result.stderr or result.stdout or "").strip()[:400]
-        if _is_limit_signal(msg):
+        msg, is_limit = _claude_error_details(result.stdout, result.stderr)
+        if is_limit:
             raise ClaudeLimitError(msg or "rate_limit")
         raise ClaudeError(f"claude -p exit {result.returncode}: {msg}")
 
@@ -382,3 +453,11 @@ def try_claude_or_fallback(
 def claude_exhausted_this_run() -> bool:
     """Test helper: whether the exhausted flag is set in this process."""
     return _session["claude_exhausted"]
+
+
+def reset_claude_exhausted() -> None:
+    """Clear the process-local exhausted flag so the next call tries claude
+    again. Used by the appraisal wait-and-resume loop after Claude's reported
+    usage-limit reset time.
+    """
+    _session["claude_exhausted"] = False

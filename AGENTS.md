@@ -61,6 +61,7 @@ modules/claude_exec.py :: try_claude_or_fallback
 - `ClaudeLimitError`（錯誤訊息含 `rate_limit` / `billing` / `credit` / `monthly limit` / `usage limit` / `quota` / `agent sdk` 等子字串）→ **永久切換**：設 `_session["claude_exhausted"] = True`，本 process 之後所有呼叫直接走 codex。下個 process（下次 run）重新從 claude 嘗試。
 - 其他 `ClaudeError`（timeout、parse、暫時性 5xx）→ **單次 fallback**：本次走 codex，後續仍會繼續試 claude。
 - 設計刻意：使用者明確**不開 usage credits**，所以額度歸零時 claude 端會直接回錯，fallback 是唯一信號。**不要在程式內自己算用量**。
+- **例外：完整評讀預設 claude-only**（`JOURNAL_FETCHER_CLAUDE_ONLY=1`），撞限不 fallback codex 而是等 ~5h 視窗重置續跑。摘要 / 短評 / classify 仍照上面的 fallback 規則。詳見 [launchd 排程 → 評讀的用量上限策略](#評讀的用量上限策略claude-only-opus--5h-續跑)。
 
 ## 模型對照
 
@@ -80,7 +81,7 @@ modules/claude_exec.py :: try_claude_or_fallback
 
 launchd 啟動的 process env 幾乎是空的（只有 plist 裡寫的 PATH/HOME）。macOS Keychain 需要 `USER` / `LOGNAME` 識別 owner，否則 `claude -p` 30ms 就回 `"Not logged in · Please run /login"`，整條 claude 路徑全部失效、100% fallback 到 codex。
 
-**修這段時務必保留 `USER` / `LOGNAME` 的 backfill 邏輯**，不然下週一 03:00 launchd 跑出來的就只剩 codex。
+**修這段時務必保留 `USER` / `LOGNAME` 的 backfill 邏輯**，不然週六 23:00 launchd 跑出來的就只剩 codex。
 
 ## 檔案結構
 
@@ -215,7 +216,7 @@ appraisal.md → render.publish_appraisals → docs/<pmid>.html → git push →
 - 用 webhook（不是 bot），單向推播。
 - URL 存在 `.env` 的 `DISCORD_WEBHOOK_URL`。
 - Embed：標題、各期刊文章數、前 3 篇亮點、完整週報連結。
-- 週報生成（Mon 03:00）與 Discord 推播（Mon 08:00）拆開排程，避免 push 完馬上推播但 GitHub Pages 還沒部署。
+- 週報生成（Sat 23:00）與 Discord 推播（Mon 08:00）拆開排程，避免 push 完馬上推播但 GitHub Pages 還沒部署；中間的時間差也吸收評讀撞限後的 5h 續跑。
 
 ### 回饋迴路（feedback loop）
 
@@ -291,13 +292,21 @@ python3 -m weekly.classify_article
 ## launchd 排程（現況）
 
 ```
-Mon 03:00   python3 -m weekly.run_weekly --no-discord --select-top 5
+Sat 23:00   python3 -m weekly.run_weekly --no-discord --select-top 5
 Mon 08:00   python3 -m weekly.notify_latest                   # Discord 推播
 每 15 分鐘   python3 -m weekly.process_appraisal_requests
 ```
 
-- launchd 不會主動喚醒 Mac；週日晚上要保持機器醒著（或合蓋接電源 Power Nap）。
+- 週報主程式提前到**週六 23:00** 起跑，是為了給評讀的「撞限 → 等視窗 → 續跑」留多輪 5h 緩衝，仍趕得及 Mon 08:00 推播。
+- launchd 不會主動喚醒 Mac；**週六晚到週日**都要保持機器醒著（或合蓋接電源 Power Nap）。
 - log：`output/logs/weekly.{out,err}.log` 等。
+
+### 評讀的用量上限策略（claude-only Opus + 5h 續跑）
+
+- **週報評讀預設 claude-only**：`run_weekly` 進評讀階段前設 `JOURNAL_FETCHER_CLAUDE_ONLY=1`（摘要階段仍維持 Haiku→codex fallback，不受影響），全部用 Opus 4.6，**不 fallback codex**。
+- 撞 `ClaudeLimitError` 時 `appraise_with_resume` 同 process `time.sleep` 一個滾動視窗（預設 5h，`JOURNAL_FETCHER_APPRAISAL_RETRY_WAIT` 覆寫）後 reset exhausted flag、續跑沒評完的篇目（`appraise_pdf` 用 report 檔案存在判斷跳過已完成的，不重複燒 Opus）。最多 `JOURNAL_FETCHER_APPRAISAL_RETRY_MAX_CYCLES`（預設 5）輪，之後放棄剩餘篇目。
+- 想退回舊的 codex fallback 行為：`run_weekly --appraise-allow-codex`。
+- **on-demand「請求評讀」也 claude-only Opus**：`process_appraisal_requests` 開頭設同一 env。15 分鐘 worker 不能 in-process 睡 5h，所以撞限時寫 `status=deferred` + `retry_after`（now+5h）到 state，視窗未到就跳過、到了由後續 run 自動重試（`_state_blocks`）。
 
 ## 通知小工具
 

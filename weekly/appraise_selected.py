@@ -916,6 +916,11 @@ def appraise_selected(
             article["appraisal_path"] = ""
             article["appraisal_status"] = "too_large"
             continue
+        except claude_exec.ClaudeLimitError:
+            # claude-only mode: hit the usage-limit. Don't mark this article
+            # failed — let the caller wait for the window to reset and resume
+            # (appraise_pdf skips the already-finished reports on re-entry).
+            raise
         except Exception as e:
             print(f"  [warn] appraisal failed: {e}", file=sys.stderr)
             report_path = None

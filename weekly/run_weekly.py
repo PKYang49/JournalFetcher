@@ -23,6 +23,7 @@ from __future__ import annotations
 import argparse
 import json
 import os
+import re
 import sys
 import traceback
 from pathlib import Path
@@ -38,6 +39,21 @@ from modules import crossref, pubmed  # noqa: E402
 from weekly import render, summarize_weekly  # noqa: E402
 
 DEFAULT_JOURNALS = list(pubmed.JOURNAL_QUERIES.keys())
+WEEK_LABEL_RE = re.compile(r"^\d{4}-W(?:0[1-9]|[1-4]\d|5[0-3])$")
+
+# Appraisal usage-limit wait-and-resume tuning. The weekly appraisal phase runs
+# claude-only on Opus (no codex fallback); when it hits the rolling usage limit
+# we parse Claude's reported reset time and resume shortly afterward. The 5h
+# value is only a fallback when the CLI does not return a parseable reset time.
+APPRAISAL_RETRY_WAIT_SECONDS = int(
+    os.getenv("JOURNAL_FETCHER_APPRAISAL_RETRY_WAIT", str(5 * 60 * 60))
+)
+APPRAISAL_RESET_BUFFER_SECONDS = int(
+    os.getenv("JOURNAL_FETCHER_APPRAISAL_RESET_BUFFER", "120")
+)
+APPRAISAL_RETRY_MAX_CYCLES = int(
+    os.getenv("JOURNAL_FETCHER_APPRAISAL_RETRY_MAX_CYCLES", "5")
+)
 
 
 def fetch_all(journals: list[str], days: int | None, count: int) -> list[dict]:
@@ -80,6 +96,69 @@ def fetch_all(journals: list[str], days: int | None, count: int) -> list[dict]:
     return all_articles
 
 
+def appraise_with_resume(
+    selected_articles: list[dict],
+    download_results: dict,
+    appraisal_dir: Path,
+) -> None:
+    """Run the full appraisal phase claude-only on Opus, waiting out the
+    reported usage-limit reset and resuming until every article is appraised.
+
+    The dispatcher is forced into claude-only mode (no codex fallback) so a
+    usage-limit raises ClaudeLimitError instead of silently producing a codex
+    appraisal. On that error we sleep until Claude's reported reset time
+    (plus a short buffer) and re-run appraise_selected; finished reports are
+    skipped cheaply on re-entry.
+    """
+    import time
+
+    from modules import claude_exec
+    from weekly import appraise_selected
+
+    os.environ["JOURNAL_FETCHER_CLAUDE_ONLY"] = "1"
+    # Summaries (Haiku) may have tripped the process-local exhausted flag and
+    # fallen back to codex; reset it so the appraisal phase gets a fresh claude
+    # attempt before deciding to wait.
+    claude_exec.reset_claude_exhausted()
+
+    for cycle in range(APPRAISAL_RETRY_MAX_CYCLES + 1):
+        try:
+            appraise_selected.appraise_selected(
+                selected_articles,
+                download_results,
+                appraisal_dir,
+            )
+            return
+        except claude_exec.ClaudeLimitError as e:
+            if cycle >= APPRAISAL_RETRY_MAX_CYCLES:
+                print(
+                    f"[warn] appraisal hit claude usage limit and exhausted "
+                    f"{APPRAISAL_RETRY_MAX_CYCLES} retry cycle(s); leaving "
+                    f"remaining articles un-appraised. ({str(e)[:120]})",
+                    file=sys.stderr,
+                )
+                return
+            wait, reset_at = claude_exec.retry_wait_seconds(
+                str(e),
+                fallback_seconds=APPRAISAL_RETRY_WAIT_SECONDS,
+                buffer_seconds=APPRAISAL_RESET_BUFFER_SECONDS,
+            )
+            reset_note = (
+                f", parsed reset={reset_at:%Y-%m-%d %H:%M %Z}"
+                if reset_at is not None
+                else ", reset time unavailable; using fallback"
+            )
+            print(
+                f"[info] appraisal hit claude usage limit ({str(e)[:120]}); "
+                f"sleeping {wait}s (~{wait / 3600:.1f}h{reset_note}) then resuming the "
+                f"unfinished articles (cycle {cycle + 1}/"
+                f"{APPRAISAL_RETRY_MAX_CYCLES}).",
+                file=sys.stderr,
+            )
+            time.sleep(wait)
+            claude_exec.reset_claude_exhausted()
+
+
 def journal_count_summary(articles: list[dict], journals: list[str]) -> list[dict]:
     counts = {k: 0 for k in journals}
     for a in articles:
@@ -87,6 +166,15 @@ def journal_count_summary(articles: list[dict], journals: list[str]) -> list[dic
         if k in counts:
             counts[k] += 1
     return [{"name": k, "count": counts[k]} for k in journals if counts[k] > 0]
+
+
+def resolve_week_label(week: str) -> tuple[str, str, str]:
+    """Resolve an optional explicit ISO week while retaining today's date."""
+    if not week:
+        return render.iso_week_label()
+    if not WEEK_LABEL_RE.fullmatch(week):
+        raise ValueError(f"invalid --week value: {week!r}; expected YYYY-Www")
+    return week, f"{week}.html", render.iso_week_label()[2]
 
 
 def main() -> int:
@@ -136,12 +224,28 @@ def main() -> int:
         action="store_true",
         help="Skip pulling highlight feedback from the Apps Script relay",
     )
+    parser.add_argument(
+        "--appraise-allow-codex",
+        action="store_true",
+        help=(
+            "Allow codex fallback for appraisals. Default is claude-only Opus: "
+            "on a usage limit, wait ~5h and resume instead of falling back."
+        ),
+    )
+    parser.add_argument(
+        "--week",
+        default="",
+        help="Explicit output ISO week label, for example 2026-W26",
+    )
     args = parser.parse_args()
 
     load_dotenv(ROOT / ".env")
     feedback_endpoint = os.getenv("FEEDBACK_ENDPOINT_URL", "").strip()
 
-    label, filename, date_str = render.iso_week_label()
+    try:
+        label, filename, date_str = resolve_week_label(args.week.strip())
+    except ValueError as e:
+        parser.error(str(e))
     print(f"=== Weekly report {label} ===")
     print(f"Journals: {', '.join(args.journals)}")
 
@@ -210,11 +314,18 @@ def main() -> int:
             from weekly import appraise_selected
 
             print(f"\nGenerating full appraisals -> {appraisal_dir}")
-            appraise_selected.appraise_selected(
-                selected_articles,
-                download_results,
-                appraisal_dir,
-            )
+            if args.appraise_allow_codex:
+                appraise_selected.appraise_selected(
+                    selected_articles,
+                    download_results,
+                    appraisal_dir,
+                )
+            else:
+                appraise_with_resume(
+                    selected_articles,
+                    download_results,
+                    appraisal_dir,
+                )
             select_articles.write_selected_metadata(selected_articles, weekly_out_dir)
             published = render.publish_appraisals(selected_articles, label)
             if published:
