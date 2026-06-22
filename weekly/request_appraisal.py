@@ -226,9 +226,15 @@ def run(
     force: bool,
     update_weekly: bool,
     claude_only: bool,
+    allow_codex: bool = False,
 ) -> int:
     load_dotenv(ROOT / ".env")
-    if claude_only:
+    # Default is claude-only — mirrors weekly/run_weekly.py and
+    # weekly/process_appraisal_requests.py so every appraisal entry point
+    # produces claude Opus output unless the caller explicitly opts into
+    # codex fallback with --allow-codex. `claude_only=True` stays accepted
+    # for back-compat (no-op since it now matches the default).
+    if not allow_codex:
         os.environ["JOURNAL_FETCHER_CLAUDE_ONLY"] = "1"
     from modules import claude_exec
     from weekly import appraise_selected, publish, render
@@ -330,7 +336,24 @@ def main() -> int:
     parser.add_argument("--no-discord", action="store_true", help="Skip Discord completion notice")
     parser.add_argument("--force", action="store_true", help="Re-run even if an appraisal report already exists")
     parser.add_argument("--update-weekly", action="store_true", help="Fold the appraisal into docs/<week>.html 已評讀 section")
-    parser.add_argument("--claude-only", action="store_true", help=f"Never fall back to codex; exit {EXIT_CLAUDE_LIMIT} on claude usage limit, {EXIT_CLAUDE_ERROR} on other claude error")
+    parser.add_argument(
+        "--claude-only",
+        action="store_true",
+        help=(
+            "Back-compat no-op: claude-only is already the default. "
+            f"Exit {EXIT_CLAUDE_LIMIT} on claude usage limit, "
+            f"{EXIT_CLAUDE_ERROR} on other claude error."
+        ),
+    )
+    parser.add_argument(
+        "--allow-codex",
+        action="store_true",
+        help=(
+            "Opt out of claude-only and allow codex fallback when claude "
+            "hits the usage limit. By default the CLI matches the weekly "
+            "and relay paths: claude Opus only, defer on usage limit."
+        ),
+    )
     args = parser.parse_args()
 
     week = args.week.strip() or render.iso_week_label()[0]
@@ -346,6 +369,7 @@ def main() -> int:
             force=args.force,
             update_weekly=args.update_weekly,
             claude_only=args.claude_only,
+            allow_codex=args.allow_codex,
         )
     except Exception as e:  # noqa: BLE001 - standalone CLI should report a clear failure
         print(f"[error] {e}", file=sys.stderr)
