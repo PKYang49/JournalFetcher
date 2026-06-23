@@ -352,10 +352,12 @@ def classify(article: dict, markdown_head: str) -> tuple[str, str]:
             if route and confidence != "low":
                 return route, "haiku"
             return "default", "fallback"
-        except claude_exec.ClaudeLimitError:
+        except claude_exec.ClaudeLimitError as e:
             # run_claude_prompt does not flip the flag itself; set it so later
-            # classify() calls skip Haiku and go straight to codex.
-            claude_exec._session["claude_exhausted"] = True
+            # classify() calls skip Haiku and go straight to codex. Retain the
+            # message so a later claude-only appraisal can re-raise with the
+            # original reset hint instead of silently falling back to codex.
+            claude_exec.mark_claude_exhausted(str(e))
         except claude_exec.ClaudeError:
             # Transient (timeout / parse / 5xx): fall through to codex this call.
             pass

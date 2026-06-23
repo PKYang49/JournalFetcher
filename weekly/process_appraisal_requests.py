@@ -45,6 +45,21 @@ APPRAISAL_RESET_BUFFER_SECONDS = int(
     os.getenv("JOURNAL_FETCHER_APPRAISAL_RESET_BUFFER", "120")
 )
 
+# Transient appraisal errors (non-limit claude error + codex fallback also
+# down, markdown conversion hiccup, etc.) leave no report but are often fixed by
+# a re-run. Defer them for a short window instead of marking terminal `failed`,
+# capped so a permanently broken article eventually gives up rather than
+# deferring forever every 15 minutes. PDF-download / too-large failures stay
+# terminal — a re-run won't fix a missing PDF or an oversized article.
+APPRAISAL_ERROR_RETRY_WAIT_SECONDS = int(
+    os.getenv("JOURNAL_FETCHER_APPRAISAL_ERROR_RETRY_WAIT", str(30 * 60))
+)
+APPRAISAL_ERROR_RETRY_MAX = int(
+    os.getenv("JOURNAL_FETCHER_APPRAISAL_ERROR_RETRY_MAX", "3")
+)
+# appraise_selected statuses that a re-run cannot recover from.
+_TERMINAL_APPRAISAL_STATUSES = frozenset({"pdf_failed", "too_large"})
+
 
 def _normalize_doi(value: str) -> str:
     doi = str(value or "").strip()
@@ -334,7 +349,14 @@ def _render_weekly_page(week: str, selected: list[dict]) -> Path:
     return render.write_weekly(html, f"{week}.html")
 
 
-def _process_one(row: dict, article: dict, force: bool, no_push: bool, no_discord: bool) -> bool:
+def _process_one(
+    row: dict,
+    article: dict,
+    force: bool,
+    no_push: bool,
+    no_discord: bool,
+    prev_error_retries: int = 0,
+) -> bool:
     from modules import claude_exec
     from modules.downloader import download_articles
     from weekly import appraise_selected, publish, render
@@ -380,8 +402,38 @@ def _process_one(row: dict, article: dict, force: bool, no_push: bool, no_discor
         return False
     report_path = result.get(result_key)
     if not report_path:
-        _append_state({"week": week, "identifier": identifier, **row, "status": "failed"})
-        print(f"[appraisal-request] failed {identifier}")
+        appraisal_status = str(article.get("appraisal_status", "")).strip()
+        if appraisal_status in _TERMINAL_APPRAISAL_STATUSES:
+            _append_state(
+                {"week": week, "identifier": identifier, **row, "status": "failed",
+                 "reason": appraisal_status}
+            )
+            print(f"[appraisal-request] failed {identifier} ({appraisal_status})")
+            return False
+        # Transient error (no PDF/too-large status): retry a few times before
+        # giving up, so a flaky claude/codex/conversion error self-heals.
+        attempts = prev_error_retries + 1
+        if attempts > APPRAISAL_ERROR_RETRY_MAX:
+            _append_state(
+                {"week": week, "identifier": identifier, **row, "status": "failed",
+                 "reason": "appraisal_error", "error_retries": attempts}
+            )
+            print(
+                f"[appraisal-request] failed {identifier}: appraisal error after "
+                f"{APPRAISAL_ERROR_RETRY_MAX} retries"
+            )
+            return False
+        retry_after = time.time() + APPRAISAL_ERROR_RETRY_WAIT_SECONDS
+        _append_state(
+            {"week": week, "identifier": identifier, **row, "status": "deferred",
+             "retry_after": retry_after, "error_retries": attempts,
+             "reason": "appraisal_error"}
+        )
+        print(
+            f"[appraisal-request] deferred {identifier}: appraisal error "
+            f"(attempt {attempts}/{APPRAISAL_ERROR_RETRY_MAX}); "
+            f"retry in ~{APPRAISAL_ERROR_RETRY_WAIT_SECONDS / 60:.0f} min"
+        )
         return False
 
     render.publish_appraisals([article], week)
@@ -531,7 +583,18 @@ def process_requests(
             print(f"[dry-run] would appraise {week} {matched_identifier}: {article.get('title', '')}")
             processed += 1
         else:
-            if _process_one(row, article, force, no_push, no_discord):
+            prev_record = next(
+                (rec for candidate in identifiers if (rec := state.get((week, candidate)))),
+                None,
+            )
+            try:
+                prev_error_retries = int((prev_record or {}).get("error_retries", 0))
+            except (TypeError, ValueError):
+                prev_error_retries = 0
+            if _process_one(
+                row, article, force, no_push, no_discord,
+                prev_error_retries=prev_error_retries,
+            ):
                 processed += 1
         if limit and processed >= limit:
             break

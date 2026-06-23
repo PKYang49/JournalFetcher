@@ -69,8 +69,22 @@ LIMIT_ERROR_SIGNALS = (
 
 # Process-local: flips to True on first ClaudeLimitError, stays True for the
 # rest of this process. The Agent SDK credit refreshes monthly, so the next
-# pipeline run starts fresh.
-_session = {"claude_exhausted": False}
+# pipeline run starts fresh. `claude_limit_message` keeps the most recent
+# usage-limit error text so a later claude-only call (e.g. appraisal after an
+# already-exhausted Haiku classify) can re-raise with the original reset hint
+# for retry_wait_seconds() to parse.
+_session: dict[str, object] = {"claude_exhausted": False, "claude_limit_message": ""}
+
+
+def mark_claude_exhausted(message: str = "") -> None:
+    """Flag claude as exhausted for the rest of this process and remember the
+    usage-limit error text. Call sites that hit a ClaudeLimitError outside
+    `try_claude_or_fallback` (e.g. classify's direct run_claude_prompt) should
+    use this instead of poking `_session` directly so the message is retained.
+    """
+    _session["claude_exhausted"] = True
+    if message:
+        _session["claude_limit_message"] = message
 
 
 def _claude_only() -> bool:
@@ -408,6 +422,21 @@ def try_claude_or_fallback(
 
     Returns (text, backend) where backend is "claude" or "codex".
     """
+    # Already exhausted earlier this process (e.g. by a Haiku classify call).
+    # In claude-only mode we must NOT silently fall through to codex below —
+    # re-raise so the caller defers/waits for the reset window. Without this,
+    # an on-demand appraisal whose classify already tripped the limit would run
+    # on codex, fail, and be marked terminally failed instead of deferred.
+    if _claude_only() and _session["claude_exhausted"]:
+        print(
+            f"  [info] {label or 'claude'} {claude_model}: 用量先前已達上限;"
+            f" claude-only 模式,不 fallback codex。",
+            file=sys.stderr,
+        )
+        raise ClaudeLimitError(
+            str(_session["claude_limit_message"])
+            or "claude usage limit reached earlier this process"
+        )
     if not _session["claude_exhausted"]:
         try:
             text, _cost = run_claude_prompt(
@@ -421,7 +450,7 @@ def try_claude_or_fallback(
             )
             return text, "claude"
         except ClaudeLimitError as e:
-            _session["claude_exhausted"] = True
+            mark_claude_exhausted(str(e))
             if _claude_only():
                 print(
                     f"  [info] {label or 'claude'} {claude_model}: 用量已達上限 "
@@ -461,3 +490,4 @@ def reset_claude_exhausted() -> None:
     usage-limit reset time.
     """
     _session["claude_exhausted"] = False
+    _session["claude_limit_message"] = ""
