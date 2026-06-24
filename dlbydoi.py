@@ -105,6 +105,10 @@ def _detect_journal(doi: str, journal: str) -> str:
         return "EuroIntervention"
     if "med sci sports exerc" in j or doi.lower().startswith("10.1249/mss."):
         return "Medicine and science in sports and exercise"
+    if "br j sports med" in j or doi.lower().startswith("10.1136/bjsports-"):
+        return "British Journal of Sports Medicine"
+    if "heart" in j or doi.lower().startswith("10.1136/heartjnl-"):
+        return "Heart"
     return journal
 
 
@@ -127,6 +131,7 @@ def download_one(doi: str, out_dir: Path) -> Path | None:
     is_sports_medicine = doi.lower().startswith("10.1007/s40279-")
     is_jamanetwork = doi.lower().startswith("10.1001/")
     is_heart = doi.lower().startswith("10.1136/heartjnl-")
+    is_bjsm = doi.lower().startswith("10.1136/bjsports-")
     content = None
     step = 1
 
@@ -209,10 +214,10 @@ def download_one(doi: str, out_dir: Path) -> Path | None:
         content = _try_pmc(doi)
         step += 1
 
-    # Heart (BMJ): most closed-access articles are available via ProQuest
-    # under NCKU IP auth after the cheaper OA/direct methods fail.
-    if not content and is_heart:
-        print(f"  [{step}] ProQuest fallback (Heart)...")
+    # BMJ journals (Heart, BJSM): most closed-access articles are available via
+    # ProQuest under NCKU IP auth after the cheaper OA/direct methods fail.
+    if not content and (is_heart or is_bjsm):
+        print(f"  [{step}] ProQuest fallback ({'Heart' if is_heart else 'BJSM'})...")
         content = _try_proquest_playwright(doi)
         if content:
             dest.write_bytes(content)

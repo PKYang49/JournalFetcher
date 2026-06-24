@@ -2499,7 +2499,8 @@ def _try_jamanetwork_playwright(doi: str) -> bytes | None:
 def playwright_proquest_batch_download(
     articles: list[dict], out_dir: Path = PDF_DIR
 ) -> dict[str, bytes]:
-    """Download Heart PDFs via ProQuest using NCKU IP-authenticated access."""
+    """Download BMJ-journal PDFs (Heart, BJSM) via ProQuest using NCKU
+    IP-authenticated access. Journal-agnostic: matches each article by DOI."""
     try:
         from playwright.sync_api import sync_playwright
     except ImportError:
@@ -2760,6 +2761,7 @@ def download_pdf(article: dict, out_dir: Path = PDF_DIR) -> Path | None:
     is_sports_medicine = _is_sports_medicine_article(article)
     is_jamanetwork = doi.lower().startswith("10.1001/")
     is_heart = doi.lower().startswith("10.1136/heartjnl-")
+    is_bjsm = doi.lower().startswith("10.1136/bjsports-")
     is_elsevier = doi.startswith("10.1016/")
     content = None
 
@@ -2874,8 +2876,11 @@ def download_pdf(article: dict, out_dir: Path = PDF_DIR) -> Path | None:
     if not content:
         content = _try_unpaywall(doi)
 
-    if not content and is_heart:
-        print(f"  [ProQuest fallback] Heart...")
+    if not content and (is_heart or is_bjsm):
+        # BMJ journals (Heart, BJSM) are on ProQuest with NCKU IP access; the
+        # global DOI search surfaces the full-text PDF when the direct/redirect
+        # cascade is blocked.
+        print(f"  [ProQuest fallback] {'Heart' if is_heart else 'BJSM'}...")
         content = _try_proquest_playwright(doi)
 
     # nodriver fallback for Cloudflare-protected sites (NEJM, JAMA, etc.)
@@ -2928,7 +2933,7 @@ def download_articles(articles: list[dict], out_dir: Path = PDF_DIR) -> dict[str
     Pass 4:  OUP Playwright batch (EHJ etc.)
     Pass 4b: Springer Playwright batch (Sports Medicine etc.)
     Pass 4c: JAMA Network Playwright batch (JAMA, JAMA Cardio, etc.)
-    Pass 4d: ProQuest Playwright batch (Heart)
+    Pass 4d: ProQuest Playwright batch (Heart, BJSM)
     """
     out_dir.mkdir(parents=True, exist_ok=True)
     results = {}
@@ -2941,7 +2946,7 @@ def download_articles(articles: list[dict], out_dir: Path = PDF_DIR) -> dict[str
     cloudflare_pending: list[dict] = []
     springer_pending: list[dict] = []
     jamanetwork_pending: list[dict] = []
-    heart_pending: list[dict] = []
+    proquest_pending: list[dict] = []  # BMJ journals on ProQuest: Heart, BJSM
 
     for i, article in enumerate(articles, 1):
         title = article.get("title", "")[:60]
@@ -2971,6 +2976,7 @@ def download_articles(articles: list[dict], out_dir: Path = PDF_DIR) -> dict[str
         is_sports_medicine = _is_sports_medicine_article(article)
         is_jamanetwork = doi.lower().startswith("10.1001/")
         is_heart = doi.lower().startswith("10.1136/heartjnl-")
+        is_bjsm = doi.lower().startswith("10.1136/bjsports-")
         is_oup = doi.startswith("10.1093/")
         is_elsevier = doi.startswith("10.1016/")
         content = None
@@ -3065,9 +3071,9 @@ def download_articles(articles: list[dict], out_dir: Path = PDF_DIR) -> dict[str
         elif doi.startswith("10.1056/"):
             print(f"  [pending] queued for Playwright batch (NEJM)")
             nejm_pending.append(article)
-        elif is_heart:
-            print(f"  [pending] queued for Playwright batch (Heart/ProQuest)")
-            heart_pending.append(article)
+        elif is_heart or is_bjsm:
+            print(f"  [pending] queued for Playwright batch ({'Heart' if is_heart else 'BJSM'}/ProQuest)")
+            proquest_pending.append(article)
         elif _direct_pdf_urls(doi, journal):
             print(f"  [pending] queued for nodriver batch (Cloudflare)")
             cloudflare_pending.append(article)
@@ -3171,15 +3177,15 @@ def download_articles(articles: list[dict], out_dir: Path = PDF_DIR) -> dict[str
                 print(f"  [FAIL] {doi or article.get('title', '')} (JAMA Network)")
                 results[pmid] = None
 
-    # ── Pass 4d: ProQuest Playwright batch (Heart) ──────────────────
-    if heart_pending:
+    # ── Pass 4d: ProQuest Playwright batch (Heart, BJSM) ─────────────
+    if proquest_pending:
         print(f"\n{'─'*50}")
-        print(f"  Playwright batch: downloading {len(heart_pending)} Heart PDF(s) via ProQuest...")
+        print(f"  Playwright batch: downloading {len(proquest_pending)} BMJ PDF(s) via ProQuest...")
         print(f"  (opening Chrome → ProQuest, please wait)\n")
 
-        pq_results = playwright_proquest_batch_download(heart_pending, out_dir)
+        pq_results = playwright_proquest_batch_download(proquest_pending, out_dir)
 
-        for article in heart_pending:
+        for article in proquest_pending:
             pmid = article.get("pmid", "?")
             doi = article.get("doi", "")
             dest = out_dir / _pdf_filename(article)
@@ -3190,8 +3196,8 @@ def download_articles(articles: list[dict], out_dir: Path = PDF_DIR) -> dict[str
                 print(f"  [OK] {dest.name} ({len(content)//1024} KB)")
                 results[pmid] = dest
             else:
-                _log_failure(article, "Heart PDF not found via ProQuest")
-                print(f"  [FAIL] {doi or article.get('title', '')} (Heart ProQuest)")
+                _log_failure(article, "BMJ PDF not found via ProQuest")
+                print(f"  [FAIL] {doi or article.get('title', '')} (BMJ ProQuest)")
                 results[pmid] = None
 
     # ── Pass 4b: Springer Playwright batch (Sports Medicine etc.) ───
