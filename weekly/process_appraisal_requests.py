@@ -28,6 +28,8 @@ from urllib.parse import parse_qs, urlparse
 import requests
 from dotenv import load_dotenv
 
+from weekly.appraisal_status import RequestStatus, TERMINAL_APPRAISAL_FAILURES
+
 ROOT = Path(__file__).resolve().parent.parent
 DATA_DIR = ROOT / "data"
 STATE_PATH = DATA_DIR / "appraisal_requests_processed.jsonl"
@@ -57,8 +59,8 @@ APPRAISAL_ERROR_RETRY_WAIT_SECONDS = int(
 APPRAISAL_ERROR_RETRY_MAX = int(
     os.getenv("JOURNAL_FETCHER_APPRAISAL_ERROR_RETRY_MAX", "3")
 )
-# appraise_selected statuses that a re-run cannot recover from.
-_TERMINAL_APPRAISAL_STATUSES = frozenset({"pdf_failed", "too_large"})
+# appraise_selected statuses that a re-run cannot recover from live in
+# weekly.appraisal_status.TERMINAL_APPRAISAL_FAILURES (imported above).
 
 
 def _normalize_doi(value: str) -> str:
@@ -160,7 +162,7 @@ def _state_blocks(record: dict) -> bool:
     blocks until its `retry_after` epoch passes — after that the request is
     retried (the claude usage-limit window is assumed reset).
     """
-    if str(record.get("status", "")).strip() == "deferred":
+    if str(record.get("status", "")).strip() == RequestStatus.DEFERRED:
         try:
             return float(record.get("retry_after", 0)) > time.time()
         except (TypeError, ValueError):
@@ -389,7 +391,7 @@ def _process_one(
                 "week": week,
                 "identifier": identifier,
                 **row,
-                "status": "deferred",
+                "status": RequestStatus.DEFERRED,
                 "retry_after": retry_after,
             }
         )
@@ -403,10 +405,10 @@ def _process_one(
     report_path = result.get(result_key)
     if not report_path:
         appraisal_status = str(article.get("appraisal_status", "")).strip()
-        if appraisal_status in _TERMINAL_APPRAISAL_STATUSES:
+        if appraisal_status in TERMINAL_APPRAISAL_FAILURES:
             _append_state(
-                {"week": week, "identifier": identifier, **row, "status": "failed",
-                 "reason": appraisal_status}
+                {"week": week, "identifier": identifier, **row,
+                 "status": RequestStatus.FAILED, "reason": appraisal_status}
             )
             print(f"[appraisal-request] failed {identifier} ({appraisal_status})")
             return False
@@ -415,7 +417,8 @@ def _process_one(
         attempts = prev_error_retries + 1
         if attempts > APPRAISAL_ERROR_RETRY_MAX:
             _append_state(
-                {"week": week, "identifier": identifier, **row, "status": "failed",
+                {"week": week, "identifier": identifier, **row,
+                 "status": RequestStatus.FAILED,
                  "reason": "appraisal_error", "error_retries": attempts}
             )
             print(
@@ -425,7 +428,8 @@ def _process_one(
             return False
         retry_after = time.time() + APPRAISAL_ERROR_RETRY_WAIT_SECONDS
         _append_state(
-            {"week": week, "identifier": identifier, **row, "status": "deferred",
+            {"week": week, "identifier": identifier, **row,
+             "status": RequestStatus.DEFERRED,
              "retry_after": retry_after, "error_retries": attempts,
              "reason": "appraisal_error"}
         )
@@ -469,7 +473,8 @@ def _process_one(
 
     appraisal_url = str(article.get("appraisal_url", ""))
     if not appraisal_url:
-        _append_state({"week": week, "identifier": identifier, **row, "status": "failed"})
+        _append_state({"week": week, "identifier": identifier, **row,
+                       "status": RequestStatus.FAILED})
         print(f"[appraisal-request] appraisal HTML missing {identifier}")
         return False
 
@@ -489,7 +494,7 @@ def _process_one(
             "identifier": identifier,
             "pmid": str(row.get("pmid", "")).strip(),
             "doi": str(row.get("doi", "")).strip(),
-            "status": "done",
+            "status": RequestStatus.DONE,
             "appraisal_url": appraisal_url,
             "force": force,
         }
@@ -556,8 +561,8 @@ def process_requests(
         week = str(row.get("week", "")).strip()
         identifiers = _candidate_identifiers(row)
         identifier = identifiers[0] if identifiers else ""
-        status = str(row.get("status", "requested")).strip() or "requested"
-        if status != "requested":
+        status = str(row.get("status", RequestStatus.REQUESTED)).strip() or RequestStatus.REQUESTED
+        if status != RequestStatus.REQUESTED:
             continue
         if not identifier:
             continue
