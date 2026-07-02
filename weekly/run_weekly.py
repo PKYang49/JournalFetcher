@@ -333,15 +333,15 @@ def main() -> int:
                 print(f"[ok] published {len(published)} appraisal HTML file(s)")
 
     counts = journal_count_summary(articles, args.journals)
-    html = render.render_weekly(
+    out_path, index_path = render.render_and_write_weekly(
         articles,
         week_label=label,
+        filename=filename,
+        date_str=date_str,
         journal_counts=counts,
         selected_articles=selected_articles,
         feedback_endpoint=feedback_endpoint,
     )
-    out_path = render.write_weekly(html, filename)
-    index_path = render.update_index(filename, label, len(articles), date_str)
     print(f"\n[ok] wrote {out_path}")
     print(f"[ok] updated {index_path}")
 
