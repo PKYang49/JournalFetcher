@@ -81,7 +81,7 @@ modules/claude_exec.py :: try_claude_or_fallback
 
 launchd 啟動的 process env 幾乎是空的（只有 plist 裡寫的 PATH/HOME）。macOS Keychain 需要 `USER` / `LOGNAME` 識別 owner，否則 `claude -p` 30ms 就回 `"Not logged in · Please run /login"`，整條 claude 路徑全部失效、100% fallback 到 codex。
 
-**修這段時務必保留 `USER` / `LOGNAME` 的 backfill 邏輯**，不然週六 23:00 launchd 跑出來的就只剩 codex。
+**修這段時務必保留 `USER` / `LOGNAME` 的 backfill 邏輯**，不然週日 00:15 launchd 跑出來的就只剩 codex。
 
 ## 檔案結構
 
@@ -216,7 +216,7 @@ appraisal.md → render.publish_appraisals → docs/<pmid>.html → git push →
 - 用 webhook（不是 bot），單向推播。
 - URL 存在 `.env` 的 `DISCORD_WEBHOOK_URL`。
 - Embed：標題、各期刊文章數、前 3 篇亮點、完整週報連結。
-- 週報生成（Sat 23:00）與 Discord 推播（Mon 08:00）拆開排程，避免 push 完馬上推播但 GitHub Pages 還沒部署；中間的時間差也吸收評讀撞限後的 5h 續跑。
+- 週報生成（Sun 00:15）與 Discord 推播（Mon 08:00）拆開排程，避免 push 完馬上推播但 GitHub Pages 還沒部署；中間的時間差也吸收評讀撞限後的 5h 續跑。
 
 ### 回饋迴路（feedback loop）
 
@@ -292,13 +292,13 @@ python3 -m weekly.classify_article
 ## launchd 排程（現況）
 
 ```
-Sat 23:00   python3 -m weekly.run_weekly --no-discord --select-top 5
+Sun 00:15   python3 -m weekly.run_weekly --no-discord --select-top 5
 Mon 08:00   python3 -m weekly.notify_latest                   # Discord 推播
 每 15 分鐘   python3 -m weekly.process_appraisal_requests
 ```
 
-- 週報主程式提前到**週六 23:00** 起跑，是為了給評讀的「撞限 → 等視窗 → 續跑」留多輪 5h 緩衝，仍趕得及 Mon 08:00 推播。
-- launchd 不會主動喚醒 Mac；**週六晚到週日**都要保持機器醒著（或合蓋接電源 Power Nap）。
+- 週報主程式提前到**週日 00:15** 起跑，是為了給評讀的「撞限 → 等視窗 → 續跑」留多輪 5h 緩衝，仍趕得及 Mon 08:00 推播。
+- launchd 不會主動喚醒 Mac；**週日凌晨到週一**都要保持機器醒著（或合蓋接電源 Power Nap）。
 - log：`output/logs/weekly.{out,err}.log` 等。
 
 ### 評讀的用量上限策略（claude-only Opus + 5h 續跑）
