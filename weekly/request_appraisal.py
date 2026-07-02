@@ -201,14 +201,22 @@ def run(
     no_discord: bool,
     force: bool,
     update_weekly: bool,
-    claude_only: bool,
+    backend: str = "claude",
 ) -> int:
     load_dotenv(ROOT / ".env")
-    if claude_only:
-        os.environ["JOURNAL_FETCHER_CLAUDE_ONLY"] = "1"
     from modules import claude_exec
     from weekly import appraise_selected, publish, render
     from weekly.appraise_selected import ArticleTooLargeError
+
+    # Backend selection (default claude). `claude` runs claude-only Opus with no
+    # silent codex fallback — a usage limit surfaces as EXIT_CLAUDE_LIMIT instead
+    # of a quietly codex-authored appraisal (the W26 surprise). `codex` marks the
+    # dispatcher exhausted up front so both classify and appraisal skip claude
+    # and go straight to codex.
+    if backend == "codex":
+        claude_exec.mark_claude_exhausted("--backend codex requested")
+    else:
+        os.environ["JOURNAL_FETCHER_CLAUDE_ONLY"] = "1"
 
     doi = _normalize_doi(doi)
     if not doi and not pdf:
@@ -303,10 +311,27 @@ def main() -> int:
     parser.add_argument("--no-discord", action="store_true", help="Skip Discord completion notice")
     parser.add_argument("--force", action="store_true", help="Re-run even if an appraisal report already exists")
     parser.add_argument("--update-weekly", action="store_true", help="Fold the appraisal into docs/<week>.html 已評讀 section")
-    parser.add_argument("--claude-only", action="store_true", help=f"Never fall back to codex; exit {EXIT_CLAUDE_LIMIT} on claude usage limit, {EXIT_CLAUDE_ERROR} on other claude error")
+    parser.add_argument(
+        "--backend",
+        choices=["claude", "codex"],
+        default="claude",
+        help=(
+            "Which backend to use (default: claude). "
+            "claude = claude-only Opus, no codex fallback "
+            f"(exit {EXIT_CLAUDE_LIMIT} on usage limit, {EXIT_CLAUDE_ERROR} on other claude error); "
+            "codex = go straight to codex, skip claude."
+        ),
+    )
+    parser.add_argument(
+        "--claude-only",
+        action="store_true",
+        help="Deprecated alias for --backend claude (kept for existing scripts).",
+    )
     args = parser.parse_args()
 
     week = args.week.strip() or render.iso_week_label()[0]
+    # --claude-only is a legacy alias; --backend wins if both somehow appear.
+    backend = "claude" if args.claude_only else args.backend
 
     try:
         return run(
@@ -318,7 +343,7 @@ def main() -> int:
             no_discord=args.no_discord,
             force=args.force,
             update_weekly=args.update_weekly,
-            claude_only=args.claude_only,
+            backend=backend,
         )
     except Exception as e:  # noqa: BLE001 - standalone CLI should report a clear failure
         print(f"[error] {e}", file=sys.stderr)

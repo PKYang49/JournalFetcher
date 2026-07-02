@@ -81,7 +81,7 @@ modules/claude_exec.py :: try_claude_or_fallback
 
 launchd 啟動的 process env 幾乎是空的（只有 plist 裡寫的 PATH/HOME）。macOS Keychain 需要 `USER` / `LOGNAME` 識別 owner，否則 `claude -p` 30ms 就回 `"Not logged in · Please run /login"`，整條 claude 路徑全部失效、100% fallback 到 codex。
 
-**修這段時務必保留 `USER` / `LOGNAME` 的 backfill 邏輯**，不然週日 00:15 launchd 跑出來的就只剩 codex。
+**修這段時務必保留 `USER` / `LOGNAME` 的 backfill 邏輯**，不然週日 08:50 launchd 跑出來的就只剩 codex。
 
 ## 檔案結構
 
@@ -216,7 +216,7 @@ appraisal.md → render.publish_appraisals → docs/<pmid>.html → git push →
 - 用 webhook（不是 bot），單向推播。
 - URL 存在 `.env` 的 `DISCORD_WEBHOOK_URL`。
 - Embed：標題、各期刊文章數、前 3 篇亮點、完整週報連結。
-- 週報生成（Sun 00:15）與 Discord 推播（Mon 08:00）拆開排程，避免 push 完馬上推播但 GitHub Pages 還沒部署；中間的時間差也吸收評讀撞限後的 5h 續跑。
+- 週報生成（Sun 08:50）與 Discord 推播（Mon 08:00）拆開排程，避免 push 完馬上推播但 GitHub Pages 還沒部署；中間的時間差也吸收評讀撞限後的 5h 續跑。
 
 ### 回饋迴路（feedback loop）
 
@@ -287,6 +287,8 @@ python3 -m weekly.request_appraisal --doi 10.1016/j.jacc.2026.01.020   # 抓 met
 python3 -m weekly.request_appraisal --pdf ~/Downloads/paper.pdf --doi 10.1016/...  # 指定本機 PDF，跳過下載
 python3 -m weekly.request_appraisal --pdf ~/Downloads/paper.pdf --title "..."      # 純 PDF 無 DOI
 python3 -m weekly.request_appraisal --doi <DOI> --no-push --no-discord --force     # debug / 重跑
+python3 -m weekly.request_appraisal --doi <DOI> --backend codex                    # 指定用 codex（跳過 claude）
+# --backend 預設 claude（claude-only Opus，撞限 exit 10、不 silent fallback codex）；--claude-only 為舊別名
 
 # 分類 heuristic regression（不打 LLM）
 python3 -m weekly.classify_article
@@ -295,12 +297,12 @@ python3 -m weekly.classify_article
 ## launchd 排程（現況）
 
 ```
-Sun 00:15   python3 -m weekly.run_weekly --no-discord --select-top 5
+Sun 08:50   python3 -m weekly.run_weekly --no-discord --select-top 5
 Mon 08:00   python3 -m weekly.notify_latest                   # Discord 推播
 每 15 分鐘   python3 -m weekly.process_appraisal_requests
 ```
 
-- 週報主程式提前到**週日 00:15** 起跑，是為了給評讀的「撞限 → 等視窗 → 續跑」留多輪 5h 緩衝，仍趕得及 Mon 08:00 推播。
+- 週報主程式**週日 08:50** 起跑；評讀「撞限 → 等視窗 → 續跑」的 5h 緩衝到 Mon 08:00 推播前仍足夠。
 - launchd 不會主動喚醒 Mac；**週日凌晨到週一**都要保持機器醒著（或合蓋接電源 Power Nap）。
 - log：`output/logs/weekly.{out,err}.log` 等。
 
