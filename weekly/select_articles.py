@@ -5,10 +5,10 @@ from __future__ import annotations
 import json
 import subprocess
 import sys
-import tempfile
 from pathlib import Path
 
-from modules.codex_model import codex_exec_env, get_summary_model, resolve_codex_cli
+from modules.codex_exec import run_codex_exec
+from modules.codex_model import get_summary_model
 
 ROOT = Path(__file__).resolve().parent.parent
 DATA_DIR = ROOT / "data"
@@ -110,38 +110,14 @@ def _article_payload(articles: list[dict]) -> list[dict]:
 
 
 def _run_codex_prompt(prompt: str, timeout: int = 240) -> str | None:
-    with tempfile.TemporaryDirectory(prefix="codex_weekly_select_") as tmp_dir:
-        output_path = Path(tmp_dir) / "last_message.txt"
-        result = subprocess.run(
-            [
-                resolve_codex_cli(),
-                "exec",
-                "--model",
-                get_summary_model(),
-                "--sandbox",
-                "read-only",
-                "--skip-git-repo-check",
-                "--color",
-                "never",
-                "--ephemeral",
-                "--output-last-message",
-                str(output_path),
-                prompt,
-            ],
-            cwd=tmp_dir,
-            env=codex_exec_env(),
-            input="",
-            capture_output=True,
-            text=True,
-            timeout=timeout,
-        )
-        if result.returncode != 0:
-            err = (result.stderr or result.stdout).strip()
-            print(f"  [warn] codex selection error: {err[:300]}", file=sys.stderr)
-            return None
-        if output_path.exists():
-            return output_path.read_text(encoding="utf-8").strip()
-        return result.stdout.strip() or None
+    return run_codex_exec(
+        prompt,
+        model=get_summary_model(),
+        timeout=timeout,
+        tmp_prefix="codex_weekly_select_",
+        label="codex selection",
+        err_truncate=300,
+    )
 
 
 def _parse_selection(text: str) -> list[dict]:

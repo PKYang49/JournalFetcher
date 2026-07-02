@@ -6,11 +6,10 @@ credit-exhausted error."""
 
 import subprocess
 import sys
-import tempfile
-from pathlib import Path
 
 from modules import claude_exec
-from modules.codex_model import codex_exec_env, get_summary_model, resolve_codex_cli
+from modules.codex_exec import run_codex_exec
+from modules.codex_model import get_summary_model
 
 SYSTEM_PROMPT = (
     "你是醫學文獻摘要助手。用繁體中文，以三句話摘要這篇文章："
@@ -22,39 +21,14 @@ SYSTEM_PROMPT = (
 
 def _run_codex_prompt(prompt: str, timeout: int = 180) -> str | None:
     """Run Codex CLI non-interactively and return the final message only."""
-    with tempfile.TemporaryDirectory(prefix="codex_summary_") as tmp_dir:
-        output_path = Path(tmp_dir) / "last_message.txt"
-        result = subprocess.run(
-            [
-                resolve_codex_cli(),
-                "exec",
-                "--model",
-                get_summary_model(),
-                "--sandbox",
-                "read-only",
-                "--skip-git-repo-check",
-                "--color",
-                "never",
-                "--ephemeral",
-                "--output-last-message",
-                str(output_path),
-                prompt,
-            ],
-            cwd=tmp_dir,
-            env=codex_exec_env(),
-            input="",
-            capture_output=True,
-            text=True,
-            timeout=timeout,
-        )
-        if result.returncode != 0:
-            err = (result.stderr or result.stdout).strip()
-            print(f"  [warn] codex exec error: {err[:200]}", file=sys.stderr)
-            return None
-        if output_path.exists():
-            return output_path.read_text().strip()
-        stdout = result.stdout.strip()
-        return stdout or None
+    return run_codex_exec(
+        prompt,
+        model=get_summary_model(),
+        timeout=timeout,
+        tmp_prefix="codex_summary_",
+        label="codex exec",
+        err_truncate=200,
+    )
 
 
 def _run_summary_prompt(prompt: str, timeout: int = 180) -> str | None:

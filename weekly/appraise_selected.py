@@ -39,7 +39,9 @@ from contextlib import nullcontext
 from pathlib import Path
 
 from modules import claude_exec
-from modules.codex_model import codex_exec_env, get_appraisal_model, resolve_codex_cli
+from modules.codex_exec import run_codex_exec
+from modules.codex_model import get_appraisal_model
+from weekly.appraisal_status import AppraisalStatus
 from weekly import classify_article
 from weekly.editorial_lookup import find_editorial_candidates
 from weekly.figure_extract import extract_figure_pages
@@ -407,43 +409,17 @@ def _run_codex_prompt(
             + prompt
         )
 
-    with tempfile.TemporaryDirectory(prefix="codex_weekly_appraise_") as tmp_dir:
-        output_path = Path(tmp_dir) / "last_message.md"
-        cmd = [
-            resolve_codex_cli(),
-            "exec",
-            "--model",
-            get_appraisal_model(),
-            "--sandbox",
-            sandbox,
-            "--skip-git-repo-check",
-            "--color",
-            "never",
-            "--ephemeral",
-            "--output-last-message",
-            str(output_path),
-        ]
-        for img in image_paths or []:
-            cmd.extend(["-i", str(img)])
-        env = codex_exec_env()
-        if editorial_fetch:
-            env["TMPDIR"] = tmp_dir
-        result = subprocess.run(
-            cmd,
-            cwd=tmp_dir,
-            env=env,
-            input=prompt,
-            capture_output=True,
-            text=True,
-            timeout=timeout,
-        )
-        if result.returncode != 0:
-            err = (result.stderr or result.stdout).strip()
-            print(f"  [warn] codex appraisal error: {err[:400]}", file=sys.stderr)
-            return None
-        if output_path.exists():
-            return output_path.read_text(encoding="utf-8").strip()
-        return result.stdout.strip() or None
+    return run_codex_exec(
+        prompt,
+        model=get_appraisal_model(),
+        sandbox=sandbox,
+        image_paths=image_paths,
+        timeout=timeout,
+        tmp_prefix="codex_weekly_appraise_",
+        set_tmpdir_env=editorial_fetch,
+        label="codex appraisal",
+        err_truncate=400,
+    )
 
 
 def _appraisal_web_search_enabled() -> bool:
@@ -906,7 +882,7 @@ def appraise_selected(
         if pdf_path is None:
             print("  [skip] PDF not downloaded")
             results[pmid] = None
-            article["appraisal_status"] = "pdf_failed"
+            article["appraisal_status"] = AppraisalStatus.PDF_FAILED
             continue
         try:
             report_path = appraise_pdf(article, pdf_path, out_dir)
@@ -914,7 +890,7 @@ def appraise_selected(
             print(f"  [skip] {e}", file=sys.stderr)
             results[pmid] = None
             article["appraisal_path"] = ""
-            article["appraisal_status"] = "too_large"
+            article["appraisal_status"] = AppraisalStatus.TOO_LARGE
             continue
         except claude_exec.ClaudeLimitError:
             # claude-only mode: hit the usage-limit. Don't mark this article
@@ -926,5 +902,7 @@ def appraise_selected(
             report_path = None
         results[pmid] = report_path
         article["appraisal_path"] = str(report_path) if report_path else ""
-        article["appraisal_status"] = "done" if report_path else "failed"
+        article["appraisal_status"] = (
+            AppraisalStatus.DONE if report_path else AppraisalStatus.FAILED
+        )
     return results

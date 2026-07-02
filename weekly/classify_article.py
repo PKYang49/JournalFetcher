@@ -25,11 +25,10 @@ import json
 import re
 import subprocess
 import sys
-import tempfile
-from pathlib import Path
 
 from modules import claude_exec
-from modules.codex_model import codex_exec_env, get_summary_model, resolve_codex_cli
+from modules.codex_exec import run_codex_exec
+from modules.codex_model import get_summary_model
 
 # Routes correspond 1:1 with skill fragment files. Keep in sync with
 # weekly/appraise_selected.py::_FRAGMENT_BY_ROUTE.
@@ -89,41 +88,19 @@ def _classify_with_codex(prompt: str, timeout: int = 120) -> str | None:
     Confidence is ignored here: codex is already the degraded path, so a
     parseable route is preferred over falling through to the full SKILL.
     """
-    with tempfile.TemporaryDirectory(prefix="codex_classify_") as tmp_dir:
-        output_path = Path(tmp_dir) / "last_message.txt"
-        try:
-            result = subprocess.run(
-                [
-                    resolve_codex_cli(),
-                    "exec",
-                    "--model",
-                    get_summary_model(),
-                    "--sandbox",
-                    "read-only",
-                    "--skip-git-repo-check",
-                    "--color",
-                    "never",
-                    "--ephemeral",
-                    "--output-last-message",
-                    str(output_path),
-                    prompt,
-                ],
-                cwd=tmp_dir,
-                env=codex_exec_env(),
-                input="",
-                capture_output=True,
-                text=True,
-                timeout=timeout,
-            )
-        except (OSError, subprocess.TimeoutExpired) as e:
-            print(f"  [warn] codex classify error: {str(e)[:160]}", file=sys.stderr)
-            return None
-        if result.returncode != 0:
-            err = (result.stderr or result.stdout).strip()
-            print(f"  [warn] codex classify exit {result.returncode}: {err[:160]}", file=sys.stderr)
-            return None
-        text = output_path.read_text().strip() if output_path.exists() else result.stdout.strip()
-    route, _confidence = _parse_route(text)
+    try:
+        text = run_codex_exec(
+            prompt,
+            model=get_summary_model(),
+            timeout=timeout,
+            tmp_prefix="codex_classify_",
+            label="codex classify",
+            err_truncate=160,
+        )
+    except (OSError, subprocess.TimeoutExpired) as e:
+        print(f"  [warn] codex classify error: {str(e)[:160]}", file=sys.stderr)
+        return None
+    route, _confidence = _parse_route(text or "")
     return route
 
 
