@@ -283,67 +283,99 @@ def _classify_by_heuristic(
     return None
 
 
+class _ClassifyContext:
+    """Carries the inputs shared by the classification handlers.
+
+    The LLM prompt is built lazily on first access so that a heuristic hit
+    (~50% of articles) never pays to format the 3k-char prompt.
+    """
+
+    def __init__(self, article: dict, markdown_head: str) -> None:
+        self.title = article.get("title", "") or ""
+        self.journal = article.get("journal") or article.get("journal_key", "") or ""
+        self.pub_type = article.get("pub_type", "") or ""
+        self._head = (markdown_head or "")[:_HEAD_CHARS]
+        self._prompt: str | None = None
+
+    @property
+    def prompt(self) -> str:
+        if self._prompt is None:
+            self._prompt = _CLASSIFY_PROMPT.format(
+                head_chars=_HEAD_CHARS,
+                title=self.title,
+                journal=self.journal,
+                head=self._head,
+            )
+        return self._prompt
+
+
+# Classification is a Chain of Responsibility: each handler either resolves the
+# route (returns (route, source)) or defers to the next (returns None). The
+# first non-None wins; if the whole chain defers, classify() returns the
+# "default" backstop (caller loads the full SKILL). Order matters — cheapest and
+# most authoritative first.
+def _heuristic_handler(ctx: "_ClassifyContext") -> tuple[str, str] | None:
+    """PubMed pub_type + title/journal rules. Authoritative for Meta-Analysis /
+    Practice Guideline / RCT / Editorial etc.; resolves ~50% with no LLM call."""
+    route = _classify_by_heuristic(ctx.title, ctx.journal, ctx.pub_type)
+    return (route, "heuristic") if route else None
+
+
+def _haiku_handler(ctx: "_ClassifyContext") -> tuple[str, str] | None:
+    """claude Haiku 4.5 on an ambiguous title. Defers (None) to codex when
+    claude is exhausted / rate-limited / errors. A *successful* call with only
+    low confidence terminates the chain at the "default" backstop instead of
+    second-guessing it with codex."""
+    if claude_exec.claude_exhausted_this_run():
+        return None
+    try:
+        text, _cost = claude_exec.run_claude_prompt(
+            ctx.prompt,
+            model=claude_exec.get_claude_summary_model(),
+            timeout=60,
+        )
+    except claude_exec.ClaudeLimitError as e:
+        # run_claude_prompt does not flip the flag itself; set it so later
+        # classify() calls skip Haiku and go straight to codex. Retain the
+        # message so a later claude-only appraisal can re-raise with the
+        # original reset hint instead of silently falling back to codex.
+        claude_exec.mark_claude_exhausted(str(e))
+        return None
+    except claude_exec.ClaudeError:
+        # Transient (timeout / parse / 5xx): defer to codex this call.
+        return None
+    route, confidence = _parse_route(text)
+    if route and confidence != "low":
+        return route, "haiku"
+    # Usable call, low confidence → don't lock in a guess and don't waste a
+    # codex call; end the chain at the default backstop.
+    return "default", "fallback"
+
+
+def _codex_handler(ctx: "_ClassifyContext") -> tuple[str, str] | None:
+    """codex GPT 5.4 fallback when Haiku was unavailable."""
+    route = _classify_with_codex(ctx.prompt)
+    return (route, "codex") if route else None
+
+
+_CLASSIFY_CHAIN = (_heuristic_handler, _haiku_handler, _codex_handler)
+
+
 def classify(article: dict, markdown_head: str) -> tuple[str, str]:
     """Classify an article. Returns (route, source).
 
     source ∈ {"heuristic", "haiku", "codex", "fallback"}
     route is one of VALID_ROUTES; "default" means no confident classification.
 
-    Heuristic runs first because PubMed's pub_type tagging is authoritative for
-    Meta-Analysis / Systematic Review / Practice Guideline / RCT / Editorial /
-    etc. Only when title + journal + pub_type leave the route ambiguous do we
-    pay for an LLM call: claude Haiku first, then codex GPT 5.4 when Haiku is
-    unavailable (exhausted / rate limit / transient error). Only when both
-    backends fail or are unsure do we return "default" (full SKILL backstop).
+    Runs the handler chain (`_CLASSIFY_CHAIN`): heuristic → Haiku → codex, each
+    resolving the route or deferring to the next. "default"/"fallback" is the
+    backstop when the whole chain defers (both LLM backends unavailable/unsure).
     """
-    title = article.get("title", "") or ""
-    journal = article.get("journal") or article.get("journal_key", "") or ""
-    pub_type = article.get("pub_type", "") or ""
-
-    heuristic_route = _classify_by_heuristic(title, journal, pub_type)
-    if heuristic_route:
-        return heuristic_route, "heuristic"
-
-    # Heuristic missed — title is genuinely ambiguous (e.g. pub_type=Original
-    # with no design keywords). Build the LLM prompt once; both backends share it.
-    head = (markdown_head or "")[:_HEAD_CHARS]
-    prompt = _CLASSIFY_PROMPT.format(
-        head_chars=_HEAD_CHARS,
-        title=title,
-        journal=journal,
-        head=head,
-    )
-
-    # Haiku first, but only if claude is still available this process.
-    if not claude_exec.claude_exhausted_this_run():
-        try:
-            text, _cost = claude_exec.run_claude_prompt(
-                prompt,
-                model=claude_exec.get_claude_summary_model(),
-                timeout=60,
-            )
-            route, confidence = _parse_route(text)
-            # Trust high/medium confidence. low-confidence → "default" so we
-            # don't lock in a guess; caller loads the full SKILL. (We do not
-            # second-guess a usable Haiku answer with codex.)
-            if route and confidence != "low":
-                return route, "haiku"
-            return "default", "fallback"
-        except claude_exec.ClaudeLimitError as e:
-            # run_claude_prompt does not flip the flag itself; set it so later
-            # classify() calls skip Haiku and go straight to codex. Retain the
-            # message so a later claude-only appraisal can re-raise with the
-            # original reset hint instead of silently falling back to codex.
-            claude_exec.mark_claude_exhausted(str(e))
-        except claude_exec.ClaudeError:
-            # Transient (timeout / parse / 5xx): fall through to codex this call.
-            pass
-
-    # Haiku unavailable → codex GPT 5.4 fallback. Only "default" if codex also
-    # fails to produce a valid route.
-    route = _classify_with_codex(prompt)
-    if route:
-        return route, "codex"
+    ctx = _ClassifyContext(article, markdown_head)
+    for handler in _CLASSIFY_CHAIN:
+        result = handler(ctx)
+        if result is not None:
+            return result
     return "default", "fallback"
 
 
