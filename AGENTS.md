@@ -267,10 +267,13 @@ python3 fetch_journals.py --journals NEJM JAMA
 
 # 週報模式
 python3 -m weekly.run_weekly                         # 跑當週 + push + Discord
-python3 -m weekly.run_weekly --dry-run               # 只生成 HTML，不 push、不推播
+python3 -m weekly.run_weekly --dry-run               # 只生成 HTML，不 push、不推播（⚠️ 仍會覆寫本機當週 docs/<週>.html）
 python3 -m weekly.run_weekly --no-push               # 跳過 git push
 python3 -m weekly.run_weekly --no-discord            # 跳過 Discord
 python3 -m weekly.run_weekly --no-summarize          # 用佔位符（debug HTML layout）
+# 安全驗證 render（不碰真實當週檔）：用不存在的假 week label 寫到拋棄式檔案
+python3 -m weekly.run_weekly --dry-run --no-summarize --count 2 --journals NEJM --week 2099-W01
+rm -f docs/2099-W01.html && git checkout HEAD -- docs/index.html docs/_index.json  # 清掉驗證產物
 python3 -m weekly.run_weekly --select-top 5          # 自選 5 篇做完整評讀
 python3 -m weekly.run_weekly --no-sync-feedback      # 跳過 feedback 同步
 python3 -m weekly.run_weekly --journals NEJM Lancet --count 5 --days 14
@@ -334,7 +337,8 @@ osascript -e 'display notification "完成：[任務名稱]" with title "Journal
 ## 開發習慣
 
 - Python 3.10+，型別註記齊全，避免 flag parameter。
-- 修改後 `python3 -m py_compile <file>` 起手；週報相關改動可用 `python3 -m weekly.run_weekly --dry-run --no-summarize --count 2 --journals NEJM` 跑空殼。
+- 修改後 `python3 -m py_compile <file>` 起手；週報相關改動跑空殼驗證 render 時**務必帶假 week label**避免覆寫當週真檔：`python3 -m weekly.run_weekly --dry-run --no-summarize --count 2 --journals NEJM --week 2099-W01`，驗完 `rm -f docs/2099-W01.html && git checkout HEAD -- docs/index.html docs/_index.json`。
+  - ⚠️ `--dry-run` 只跳過 git push / Discord，**仍會寫本機 `docs/<當週>.html`**。若不帶 `--week`，當天所屬 ISO 週的完整頁面（含所有評讀）會被 2 篇佔位符版本覆蓋。真檔在 git HEAD，誤覆寫時 `git checkout HEAD -- docs/<週>.html docs/index.html docs/_index.json` 還原。
 - 分類改動跑 `python3 -m weekly.classify_article` 確認 regression 通過。
 - Git commit 前確認沒留 debug code。Commit 訊息接 Co-Authored-By 自己（claude）/ codex 自己的格式。
 - **不開 `ANTHROPIC_API_KEY`、不開 `OPENAI_API_KEY`** —— 雙後端都靠 CLI 訂閱登入。
