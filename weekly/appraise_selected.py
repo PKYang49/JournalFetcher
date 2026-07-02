@@ -705,6 +705,83 @@ def _safe_report_name(article: dict) -> str:
     return f"{pmid}_{first_author}_{year}_appraisal.md"
 
 
+def _join_prompt_parts(parts: list[str]) -> str:
+    """Glue prompt sections the way the pipeline always has: the first part
+    verbatim, then each subsequent part after one blank line, each block
+    followed by a trailing newline. Equivalent to the previous inline
+    ``acc.rstrip() + "\\n\\n" + block + "\\n"`` chaining (byte-identical,
+    including that a single part is returned untouched)."""
+    if not parts:
+        return ""
+    result = parts[0]
+    for block in parts[1:]:
+        result = result.rstrip() + "\n\n" + block + "\n"
+    return result
+
+
+class AppraisalPromptBuilder:
+    """Assemble the cacheable system prompt and the per-article user prompt
+    from optional sections, so appraise_pdf declares *which* sections apply
+    instead of hand-gluing newlines.
+
+    - system prompt (stable per route → prompt-cache friendly): Skill + style
+      guide, then the per-route JAMA references catalog.
+    - user prompt (per article): metadata + PDF markdown, then the editorial
+      preflight context, then the figure-page instruction.
+
+    Callers pass already-computed section text (references_block,
+    editorial_preflight, figure_instruction); the builder only owns the
+    ordering + gluing. Empty/falsy sections are skipped.
+    """
+
+    def __init__(
+        self,
+        *,
+        skill_text: str,
+        style_guide: str,
+        title: str,
+        journal: str,
+        year: str,
+        doi: str,
+        pmid: str,
+        article_markdown: str,
+    ) -> None:
+        self._system_parts: list[str] = [
+            APPRAISAL_SYSTEM_PROMPT.format(skill=skill_text, style_guide=style_guide)
+        ]
+        self._user_parts: list[str] = [
+            APPRAISAL_USER_PROMPT.format(
+                title=title,
+                journal=journal,
+                year=year,
+                doi=doi,
+                pmid=pmid,
+                article_markdown=article_markdown,
+            )
+        ]
+
+    def with_references(self, references_block: str) -> "AppraisalPromptBuilder":
+        if references_block:
+            self._system_parts.append(references_block)
+        return self
+
+    def with_editorial(self, editorial_preflight: str) -> "AppraisalPromptBuilder":
+        if editorial_preflight:
+            self._user_parts.append(editorial_preflight)
+        return self
+
+    def with_figures(self, figure_instruction: str) -> "AppraisalPromptBuilder":
+        if figure_instruction:
+            self._user_parts.append(figure_instruction)
+        return self
+
+    def build_system(self) -> str:
+        return _join_prompt_parts(self._system_parts)
+
+    def build_user(self) -> str:
+        return _join_prompt_parts(self._user_parts)
+
+
 def appraise_pdf(article: dict, pdf_path: Path, out_dir: Path) -> Path | None:
     """Create one appraisal report.
 
@@ -746,15 +823,11 @@ def appraise_pdf(article: dict, pdf_path: Path, out_dir: Path) -> Path | None:
 
     skill_text = _load_skill_for_route(route)
 
-    system_prompt = APPRAISAL_SYSTEM_PROMPT.format(
-        skill=skill_text,
-        style_guide=STYLE_GUIDE_PATH.read_text(encoding="utf-8"),
-    )
     references_block = _build_references_section(route)
-    if references_block:
-        system_prompt = system_prompt.rstrip() + "\n\n" + references_block + "\n"
-
-    user_prompt = APPRAISAL_USER_PROMPT.format(
+    editorial_preflight = _build_editorial_preflight_context(article)
+    prompt_builder = AppraisalPromptBuilder(
+        skill_text=skill_text,
+        style_guide=STYLE_GUIDE_PATH.read_text(encoding="utf-8"),
         title=article.get("title", ""),
         journal=article.get("journal") or article.get("journal_key", ""),
         year=article.get("year", ""),
@@ -762,9 +835,7 @@ def appraise_pdf(article: dict, pdf_path: Path, out_dir: Path) -> Path | None:
         pmid=article.get("original_pmid", article.get("pmid", "")),
         article_markdown=article_markdown,
     )
-    editorial_preflight = _build_editorial_preflight_context(article)
-    if editorial_preflight:
-        user_prompt = user_prompt.rstrip() + "\n\n" + editorial_preflight + "\n"
+    prompt_builder.with_references(references_block).with_editorial(editorial_preflight)
 
     temp_context = (
         tempfile.TemporaryDirectory(prefix="appraisal_figures_")
@@ -786,12 +857,12 @@ def appraise_pdf(article: dict, pdf_path: Path, out_dir: Path) -> Path | None:
                 )
             if figure_paths:
                 print(f"  [figures] extracted {len(figure_paths)} page(s)")
-                user_prompt = (
-                    user_prompt.rstrip()
-                    + "\n\n"
-                    + _build_figure_instruction(figure_dir, figure_paths)
-                    + "\n"
+                prompt_builder.with_figures(
+                    _build_figure_instruction(figure_dir, figure_paths)
                 )
+
+        system_prompt = prompt_builder.build_system()
+        user_prompt = prompt_builder.build_user()
 
         # Give claude Read access to the references dir only when this route
         # actually has corresponding JAMA guides. Figure pages, when enabled,
