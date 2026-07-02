@@ -180,39 +180,15 @@ def _get_pdf(article: dict, pdf_arg: str | None) -> Path | None:
 def _update_weekly_page(week: str, article: dict) -> None:
     """Fold the finished appraisal into docs/<week>.html's 已評讀 section.
 
-    Reuses the on-demand worker helpers so the manual CLI path and the
-    button-driven path produce identical weekly markup and state.
+    Delegates to the on-demand worker's shared steps so the manual CLI path and
+    the button-driven path produce identical weekly markup and state.
     """
     from weekly import process_appraisal_requests as par
 
     week_dir = ROOT / "output" / "weekly" / week
-    if (week_dir / "articles.json").exists():
-        selected = par._merge_selected(week_dir, article)
-        par._render_weekly_page(week, selected)
-        print(f"[weekly] updated docs/{week}.html (已評讀)")
-    else:
-        par._update_existing_weekly_html_appraisal_link(week, article)
-        print(f"[weekly] patched appraisal link in docs/{week}.html")
-
-    # Persist appraisal_url / route / model mutations so a later re-run hits
-    # the route cache (mirrors process_appraisal_requests._process_one).
-    selected_json = week_dir / "selected_articles.json"
-    if selected_json.exists():
-        existing = json.loads(selected_json.read_text(encoding="utf-8"))
-        pmid = str(article.get("pmid", ""))
-        persisted: list[dict] = []
-        replaced = False
-        for item in existing:
-            if str(item.get("pmid", "")) == pmid:
-                persisted.append(par._merge_article_record(item, article))
-                replaced = True
-            else:
-                persisted.append(item)
-        if not replaced:
-            persisted.append(article)
-        selected_json.write_text(
-            json.dumps(persisted, ensure_ascii=False, indent=2), encoding="utf-8"
-        )
+    par.update_weekly_html_for_article(week, article)
+    par.persist_selected_article(week_dir, article)
+    print(f"[weekly] updated docs/{week}.html (已評讀)")
 
 
 def run(
@@ -300,16 +276,13 @@ def run(
     if update_weekly:
         _update_weekly_page(week, article)
 
-    identifier = f"doi:{doi}" if doi else f"pmid:{article['pmid']}"
-    if no_push:
-        print("[git] --no-push set; skip docs push")
-    else:
-        publish.git_commit_and_push(f"{week}.html", f"{week} appraisal {identifier}")
+    from weekly import process_appraisal_requests as par
 
-    if no_discord:
-        print("[discord] --no-discord set; skip appraisal notice")
-    else:
-        publish.send_appraisal_notice(week, article, appraisal_url)
+    identifier = f"doi:{doi}" if doi else f"pmid:{article['pmid']}"
+    par.push_and_notify(
+        week, article, appraisal_url,
+        identifier=identifier, no_push=no_push, no_discord=no_discord,
+    )
 
     full_url = appraisal_url
     if not full_url.startswith(("http://", "https://")):

@@ -62,17 +62,16 @@ def main() -> int:
         print(f"[ok] published {len(published)} appraisal HTML file(s)", flush=True)
 
     counts = journal_count_summary(articles, list(pubmed.JOURNAL_QUERIES))
-    html = render.render_weekly(
+    filename = f"{week}.html"
+    render.render_and_write_weekly(
         articles,
         week_label=week,
+        filename=filename,
+        date_str=render.iso_week_label()[2],
         journal_counts=counts,
         selected_articles=selected,
         feedback_endpoint=os.getenv("FEEDBACK_ENDPOINT_URL", "").strip(),
     )
-    filename = f"{week}.html"
-    render.write_weekly(html, filename)
-    date_str = render.iso_week_label()[2]
-    render.update_index(filename, week, len(articles), date_str)
     print(f"[ok] rebuilt docs/{filename}", flush=True)
 
     if not args.no_push:

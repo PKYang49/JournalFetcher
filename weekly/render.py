@@ -406,6 +406,35 @@ def update_index(filename: str, label: str, count: int, date: str) -> Path:
     return index_path
 
 
+def render_and_write_weekly(
+    articles: list[dict],
+    *,
+    week_label: str,
+    filename: str,
+    date_str: str,
+    journal_counts: list[dict],
+    selected_articles: list[dict],
+    feedback_endpoint: str,
+) -> tuple[Path, Path]:
+    """Render one week's page, write docs/<filename>, refresh docs/index.html.
+
+    The full-re-render tail shared by the two batch entry points
+    (weekly.run_weekly and weekly.resume_weekly). Returns (weekly_path,
+    index_path). git push / Discord stay in the callers — they differ
+    (run_weekly sends a digest, resume_weekly does not).
+    """
+    html = render_weekly(
+        articles,
+        week_label=week_label,
+        journal_counts=journal_counts,
+        selected_articles=selected_articles,
+        feedback_endpoint=feedback_endpoint,
+    )
+    weekly_path = write_weekly(html, filename)
+    index_path = update_index(filename, week_label, len(articles), date_str)
+    return weekly_path, index_path
+
+
 def iso_week_label(dt: datetime | None = None) -> tuple[str, str, str]:
     """Return (label='2026-W19', filename='2026-W19.html', date='2026-05-08')."""
     dt = dt or datetime.now(TPE)

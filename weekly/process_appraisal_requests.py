@@ -351,6 +351,83 @@ def _render_weekly_page(week: str, selected: list[dict]) -> Path:
     return render.write_weekly(html, f"{week}.html")
 
 
+# ── Shared "finalize a single appraisal" steps ───────────────────────────
+# These three helpers are the skeleton common to both single-article entry
+# points — the on-demand relay worker (_process_one) and the manual CLI
+# (weekly.request_appraisal). Each was previously copy-pasted in both files;
+# centralizing them keeps the weekly-HTML update, the selected_articles.json
+# persistence, and the git-push / Discord notice identical across entry points
+# (see AGENTS.md: the two paths must produce the same markup and state).
+
+
+def update_weekly_html_for_article(week: str, article: dict) -> None:
+    """Fold one finished appraisal into docs/<week>.html.
+
+    Full re-render when the week's articles.json exists (system-selected or a
+    week we still have metadata for); otherwise patch just the appraisal link
+    into the already-published HTML.
+    """
+    week_dir = WEEKLY_DIR / week
+    if (week_dir / "articles.json").exists():
+        selected = _merge_selected(week_dir, article)
+        _render_weekly_page(week, selected)
+    else:
+        _update_existing_weekly_html_appraisal_link(week, article)
+
+
+def persist_selected_article(week_dir: Path, article: dict) -> None:
+    """Merge one article's post-appraisal fields into selected_articles.json.
+
+    Persists appraisal_route / appraisal_route_source / appraisal_status /
+    appraisal_path (from appraise_selected) and appraisal_url (from
+    publish_appraisals) so a later re-run hits the route cache and skips the
+    Haiku classify call. No-op when the week has no selected_articles.json.
+    """
+    selected_json = week_dir / "selected_articles.json"
+    if not selected_json.exists():
+        return
+    existing = json.loads(selected_json.read_text(encoding="utf-8"))
+    pmid = str(article.get("pmid", ""))
+    persisted: list[dict] = []
+    replaced = False
+    for item in existing:
+        if str(item.get("pmid", "")) == pmid:
+            persisted.append(_merge_article_record(item, article))
+            replaced = True
+        else:
+            persisted.append(item)
+    if not replaced:
+        persisted.append(article)
+    selected_json.write_text(
+        json.dumps(persisted, ensure_ascii=False, indent=2),
+        encoding="utf-8",
+    )
+
+
+def push_and_notify(
+    week: str,
+    article: dict,
+    appraisal_url: str,
+    *,
+    identifier: str,
+    no_push: bool,
+    no_discord: bool,
+) -> None:
+    """git-commit-and-push docs/<week>.html and send the per-appraisal Discord
+    notice. Shared tail of both single-article entry points."""
+    from weekly import publish
+
+    if no_push:
+        print("[git] --no-push set; skip docs push")
+    else:
+        publish.git_commit_and_push(f"{week}.html", f"{week} appraisal {identifier}")
+
+    if no_discord:
+        print("[discord] --no-discord set; skip appraisal notice")
+    else:
+        publish.send_appraisal_notice(week, article, appraisal_url)
+
+
 def _process_one(
     row: dict,
     article: dict,
@@ -361,7 +438,7 @@ def _process_one(
 ) -> bool:
     from modules import claude_exec
     from modules.downloader import download_articles
-    from weekly import appraise_selected, publish, render
+    from weekly import appraise_selected, render
 
     week = str(row.get("week", "")).strip()
     identifier = _request_identifier(row)
@@ -441,35 +518,8 @@ def _process_one(
         return False
 
     render.publish_appraisals([article], week)
-    if (week_dir / "articles.json").exists():
-        selected = _merge_selected(week_dir, article)
-        _render_weekly_page(week, selected)
-    else:
-        _update_existing_weekly_html_appraisal_link(week, article)
-
-    # Persist mutations from appraise_selected (appraisal_route /
-    # appraisal_route_source / appraisal_status / appraisal_path) and from
-    # publish_appraisals (appraisal_url) back to selected_articles.json so
-    # subsequent on-demand re-runs of this article hit the route cache and
-    # skip the Haiku classify call.
-    selected_json = week_dir / "selected_articles.json"
-    if selected_json.exists():
-        existing = json.loads(selected_json.read_text(encoding="utf-8"))
-        pmid = str(article.get("pmid", ""))
-        persisted: list[dict] = []
-        replaced = False
-        for item in existing:
-            if str(item.get("pmid", "")) == pmid:
-                persisted.append(_merge_article_record(item, article))
-                replaced = True
-            else:
-                persisted.append(item)
-        if not replaced:
-            persisted.append(article)
-        selected_json.write_text(
-            json.dumps(persisted, ensure_ascii=False, indent=2),
-            encoding="utf-8",
-        )
+    update_weekly_html_for_article(week, article)
+    persist_selected_article(week_dir, article)
 
     appraisal_url = str(article.get("appraisal_url", ""))
     if not appraisal_url:
@@ -478,15 +528,10 @@ def _process_one(
         print(f"[appraisal-request] appraisal HTML missing {identifier}")
         return False
 
-    if no_push:
-        print("[git] --no-push set; skip docs push")
-    else:
-        publish.git_commit_and_push(f"{week}.html", f"{week} appraisal {identifier}")
-
-    if no_discord:
-        print("[discord] --no-discord set; skip appraisal notice")
-    else:
-        publish.send_appraisal_notice(week, article, appraisal_url)
+    push_and_notify(
+        week, article, appraisal_url,
+        identifier=identifier, no_push=no_push, no_discord=no_discord,
+    )
 
     _append_state(
         {
