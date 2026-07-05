@@ -1,0 +1,691 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Angiography-Derived Fractional Flow Reserve to Guide PCI.</title>
+<style>
+  :root {
+    --bg: #fafafa;
+    --card: #ffffff;
+    --text: #1a1a1a;
+    --muted: #6b6b6b;
+    --border: #e5e5e5;
+    --accent: #0b5fff;
+  }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang TC",
+      "Microsoft JhengHei", sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    margin: 0;
+    padding: 24px 16px 64px;
+    line-height: 1.72;
+  }
+  main {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    margin: 0 auto;
+    max-width: 840px;
+    padding: 22px 26px;
+  }
+  nav {
+    margin: 0 auto 14px;
+    max-width: 840px;
+    color: var(--muted);
+    font-size: 14px;
+  }
+  a { color: var(--accent); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  h1, h2, h3, h4 { line-height: 1.35; }
+  h1 { font-size: 26px; margin-top: 0; }
+  h2 { border-top: 1px solid var(--border); padding-top: 18px; }
+  code {
+    background: rgba(127, 127, 127, 0.12);
+    border-radius: 4px;
+    padding: 1px 4px;
+  }
+  table {
+    border-collapse: collapse;
+    display: block;
+    overflow-x: auto;
+    width: 100%;
+  }
+  th, td {
+    border: 1px solid var(--border);
+    padding: 6px 8px;
+    text-align: left;
+    vertical-align: top;
+  }
+  blockquote {
+    border-left: 3px solid var(--accent);
+    color: var(--muted);
+    margin-left: 0;
+    padding-left: 14px;
+  }
+  .appraisal-meta {
+    border-top: 1px solid var(--border);
+    margin-top: 28px;
+    padding-top: 14px;
+    color: var(--muted);
+    font-size: 13px;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #1a1a1a;
+      --card: #242424;
+      --text: #e8e8e8;
+      --muted: #999;
+      --border: #333;
+      --accent: #6ea8ff;
+    }
+  }
+</style>
+</head>
+<body>
+<nav><a href="../../2026-W27.html">← 回到 2026-W27 週報</a></nav>
+<main>
+<h1>Angiography-Derived Fractional Flow Reserve to Guide PCI.</h1>
+<p>Now I have sufficient information. Let me compile the full critical appraisal.</p>
+<hr />
+<h1>ALL-RISE 試驗批判性評讀</h1>
+<h2>SECTION-0：文章全面描述</h2>
+<h3>0. 文章身份證</h3>
+<ul>
+<li><strong>標題</strong>：Angiography-Derived Fractional Flow Reserve to Guide PCI</li>
+<li><strong>期刊</strong>：New England Journal of Medicine</li>
+<li><strong>年份</strong>：2026；卷期：Vol. 395, No. 1, pp. 9–19</li>
+<li><strong>DOI</strong>：10.1056/NEJMoa2600949</li>
+<li><strong>PMID</strong>：41910384</li>
+<li><strong>文章類型</strong>：隨機對照非劣性試驗（RCT — noninferiority design）</li>
+<li><strong>試驗名稱</strong>：ALL-RISE（Advancing Cath Lab Results with FFRangio Coronary Physiology Assessment）</li>
+<li><strong>註冊號</strong>：NCT05893498</li>
+</ul>
+<hr />
+<h3>1. 作者團隊評論</h3>
+<p><strong>通訊作者</strong>：William F. Fearon, M.D.；Stanford University School of Medicine，Division of Cardiovascular Medicine / Stanford Cardiovascular Institute；同時任職 VA Palo Alto Health Care System。[文內]</p>
+<p><strong>專長領域</strong>：Fearon 是介入性心臟學教授暨 Stanford 介入心臟科主任，長期專注冠狀動脈生理學研究，為 FFR 領域的全球核心研究者。[外部: Stanford Profiles / Doximity]</p>
+<p><strong>團隊過往研究</strong>：</p>
+<ol>
+<li>FAME 試驗（Tonino, Fearon et al., NEJM 2009）— 確立 FFR 引導 PCI 優於單純血管攝影</li>
+<li>FAME 2 試驗（De Bruyne, Fearon et al., NEJM 2012）— FFR 引導 PCI 優於藥物治療</li>
+<li>FAME 2 長期追蹤（Collet, Fearon et al., Nat Med 2026）— FFR 引導 PCI 的長期獲益</li>
+<li>FAST-FFR（Fearon et al., JACC Cardiovasc Interv 2019）— CathWorks FFRangio 診斷準確度驗證</li>
+<li>FFRangio 延遲 PCI 預後資料（Jeremias, Fearon et al., JACC Cardiovasc Interv 2022）</li>
+</ol>
+<p>Fearon 是 FFR 領域最核心的研究者之一，從 pressure-wire FFR（FAME 系列）到 FFRangio（FAST-FFR → ALL-RISE），研究軌跡高度一致。這代表深厚的領域專長，但也意味著其學術生涯與 FFR/FFRangio 的臨床普及高度綁定。[外部: Google Scholar / PubMed]</p>
+<p><strong>共同 PI</strong>：Allen Jeremias, M.D.（St. Francis Hospital / Cardiovascular Research Foundation）——同為 FFRangio 系列研究的核心成員。Martin B. Leon, M.D. 與 Ajay J. Kirtane, M.D.（Columbia University / CRF）擔任 trial chairperson 與 senior investigator，CRF 同時負責獨立統計分析。[文內]</p>
+<p><strong>關鍵 COI</strong>：Ran Kornowski, M.D. 為 CathWorks 共同創辦人、持有智財權並為股東。[外部: CathWorks press release] 試驗由 CathWorks 贊助，CathWorks 參與 site selection、data collection 與 monitoring。[文內] 統計分析由 CRF 獨立執行，PI 有完全數據存取權。[文內] 值得注意的是，CathWorks 於 2026 年 4 月被 Medtronic 完成收購 [外部: Medtronic press release]，試驗結果公布時間（2026 年 3 月 29 日 ACC.26）恰在收購完成前一個月，ALL-RISE 陽性結果對收購估值具有重大商業意義。</p>
+<p><strong>利益揭露評估</strong>：雖然統計分析由 CRF 獨立執行，且 PI 擁有數據存取與手稿撰寫權，但贊助商在 site selection 與 monitoring 的參與程度值得關注。作者 COI 全文揭露見 NEJM.org（本次 markdown 未保留完整揭露表）。</p>
+<hr />
+<h3>2. 文獻 Metadata 整理</h3>
+<ul>
+<li><strong>線上發表日期</strong>：2026 年 3 月 29 日（NEJM.org）[文內]</li>
+<li><strong>正式刊出日期</strong>：2026 年 7 月 2 日（Vol. 395, No. 1）[文內]</li>
+<li><strong>Received / Accepted date</strong>：[文內未提供]——NEJM 原始研究通常不在文內標示投稿與接受日期</li>
+<li><strong>審查天數</strong>：[無法判定]——因缺乏收稿/接受日期</li>
+<li><strong>期刊平均審查天數</strong>：NEJM 通過 desk review 進入同儕審查的稿件，首次決定約 21 天，審查完成通常 4–6 週。[外部: Manusights / NEJM editorial policy]</li>
+<li><strong>比較</strong>：本文配合 ACC.26（2026 年 3 月 29 日）同步線上發表（simultaneous publication with conference presentation），此為 NEJM 慣例，不代表審查品質有差異，但表示編輯與審稿時程可能受會議日程驅動</li>
+<li><strong>期刊屬性</strong>：Impact Factor 84.5（2025）[外部: Clarivate / Manusights]；Q1 頂尖醫學期刊；Subscription model with open access option</li>
+<li><strong>邀稿 vs 投稿</strong>：本文為隨機試驗原始研究，非 invited review；但 NEJM 在大型 RCT 的刊登中通常有 PI 與編輯的預先溝通（standard for late-breaking trial manuscripts）。[推論]</li>
+</ul>
+<hr />
+<h3>3. 研究背景</h3>
+<p><strong>既有事實與證據</strong> [文內]：</p>
+<ul>
+<li>Pressure-wire FFR（與 nonhyperemic pressure ratio, 如 iFR）引導的 PCI 決策已被多項 RCT 證實可改善臨床預後（FAME, FAME 2, DEFINE-FLAIR, iFR-SWEDEHEART），獲得 AHA/ACC 與 ESC Class I 建議</li>
+<li>儘管有 Class I 建議，實際臨床使用率仍低於 20%，主要障礙為 pressure wire 操作的工作流程複雜度（需 guide catheter、壓力線、部分需注射 adenosine 誘發充血）</li>
+</ul>
+<p><strong>知識缺口</strong> [文內]：</p>
+<ul>
+<li>CathWorks FFRangio 系統可由冠狀動脈攝影影像直接以 3D 重建與流阻模型估算 FFR，不需要壓力線或充血藥物，診斷準確度與 pressure-wire FFR 相關性良好</li>
+<li>但 FFRangio 引導的 PCI 決策是否在臨床預後上不劣於 pressure-wire 引導策略，缺乏大規模前瞻性比較數據</li>
+<li>先前 FAVOR III Europe 試驗以另一種 angiography-derived 系統（QFR）進行類似比較，未達非劣性，臨床結果較差</li>
+</ul>
+<p><strong>Research question</strong> [文內]：
+以 FFRangio 引導中等冠狀動脈狹窄的血運重建決策，在 1 年複合終點（死亡、心肌梗塞、非計畫性冠狀動脈血運重建）上是否不劣於 pressure-wire 引導策略？</p>
+<hr />
+<h3>4. 研究設計與方法</h3>
+<p><strong>PICO</strong>：</p>
+<ul>
+<li><strong>P（Population）</strong>：≥18 歲、接受冠狀動脈攝影、至少有一處視覺評估 50–90% 狹窄且需要生理學評估引導 PCI 決策的患者。排除：近期 STEMI、NSTE-ACS 的罪犯血管、CABG 候選人、研究血管有先前 bypass graft、嚴重瓣膜疾病、嚴重 LV dysfunction</li>
+<li><strong>I（Intervention）</strong>：FFRangio（CathWorks 軟體）引導——以 ≤0.80 為功能性顯著門檻，決定是否進行 PCI</li>
+<li><strong>C（Comparison）</strong>：Pressure-wire（FFR ≤0.80 或 nonhyperemic pressure ratio ≤0.89）引導——使用任何市售壓力線系統</li>
+<li><strong>O（Outcome）</strong>：
+<ul>
+<li><strong>主要終點</strong>：1 年內全因死亡、心肌梗塞、或非計畫性有臨床適應症的冠狀動脈血運重建之複合終點</li>
+<li><strong>次要終點</strong>：主要終點各組成成分、手術時間、輻射暴露、顯影劑用量</li>
+</ul>
+</li>
+</ul>
+<p><strong>關鍵研究設計細節</strong>：</p>
+<ul>
+<li>設計類型：國際多中心（59 sites，跨北美、歐洲、亞洲、中東）、隨機分派、開放標籤（open-label）、非劣性試驗</li>
+<li>收案期間：2023 年 6 月 21 日至 2025 年 1 月 2 日</li>
+<li>追蹤時長：1 年</li>
+<li>隨機化方式：1:1 分派，以臨床表現（stable angina vs NSTE-ACS）與壓力線組預計使用 FFR 或 NHPR 進行分層</li>
+<li>致盲層級：開放標籤（無法致盲——FFRangio 為軟體分析 vs 壓力線為有線介入，操作根本不同）</li>
+<li>事件判定：獨立臨床事件委員會，不知分組</li>
+<li>統計方法：Kaplan–Meier 法估算 1 年累積事件率；Com-Nougue method 檢驗單側非劣性假設；非劣性界值 3.5 個百分點；單側 P &lt; 0.025；ITT 分析；無中期分析</li>
+</ul>
+<p><strong>主要變項定義</strong>：</p>
+<ul>
+<li>FFRangio 功能顯著門檻：≤0.80（同 wire-based FFR）</li>
+<li>Wire-based 功能顯著門檻：FFR ≤0.80 或 NHPR ≤0.89</li>
+<li>複合終點中「非計畫性有臨床適應症的冠狀動脈血運重建」：定義見 Table S3 與 protocol（markdown 未保留完整定義）</li>
+</ul>
+<hr />
+<h3>5. 研究結果重點整理</h3>
+<p><strong>收案與追蹤</strong>：4704 人篩選 → 1930 人隨機分派（FFRangio 965, pressure-wire 965）→ 1 年追蹤完成率 96.0%（FFRangio 95.4%, pressure-wire 96.6%）</p>
+<p><strong>主要結果整理</strong>：</p>
+<table>
+<thead>
+<tr>
+<th>終點</th>
+<th>FFRangio (N=965)</th>
+<th>Pressure Wire (N=965)</th>
+<th>HR (95% CI)</th>
+<th>解讀</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>複合主要終點</strong></td>
+<td>64 (6.9%)</td>
+<td>65 (7.1%)</td>
+<td>0.98 (0.70–1.39)</td>
+<td>差異 −0.2 pp；上界 2.1 pp &lt; margin 3.5 pp；<strong>非劣性成立</strong></td>
+</tr>
+<tr>
+<td>全因死亡</td>
+<td>22 (2.3%)</td>
+<td>19 (2.1%)</td>
+<td>1.16 (0.63–2.14)</td>
+<td>無顯著差異</td>
+</tr>
+<tr>
+<td>心肌梗塞</td>
+<td>15 (1.6%)</td>
+<td>23 (2.5%)</td>
+<td>0.65 (0.34–1.25)</td>
+<td>數值上有利 FFRangio，但 CI 跨 1</td>
+</tr>
+<tr>
+<td>非計畫性血運重建</td>
+<td>37 (4.1%)</td>
+<td>41 (4.6%)</td>
+<td>0.90 (0.58–1.40)</td>
+<td>無顯著差異</td>
+</tr>
+<tr>
+<td>BARC 3/4/5 出血</td>
+<td>7 (0.7%)</td>
+<td>14 (1.5%)</td>
+<td>0.50 (0.20–1.23)</td>
+<td>數值上有利 FFRangio，未達統計顯著</td>
+</tr>
+<tr>
+<td>手術併發症</td>
+<td>10 (1.0%)</td>
+<td>5 (0.5%)</td>
+<td>2.00 (0.68–5.85)</td>
+<td>FFRangio 組較多，未達顯著</td>
+</tr>
+</tbody>
+</table>
+<p><strong>操作性指標</strong>：</p>
+<table>
+<thead>
+<tr>
+<th>指標</th>
+<th>FFRangio</th>
+<th>Pressure Wire</th>
+<th>差異 (95% CI)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>生理評估計算時間（中位數）</td>
+<td>6 min</td>
+<td>8 min</td>
+<td>−2 min (−3 to −2)</td>
+</tr>
+<tr>
+<td>總手術時間（中位數）</td>
+<td>39 min</td>
+<td>42 min</td>
+<td>−5 min (−7 to −3)</td>
+</tr>
+<tr>
+<td>透視時間（中位數）</td>
+<td>9 min</td>
+<td>12 min</td>
+<td>−3 min (−3 to −2)</td>
+</tr>
+<tr>
+<td>顯影劑用量（中位數）</td>
+<td>100 ml</td>
+<td>105 ml</td>
+<td>−14 ml (−20 to −10)</td>
+</tr>
+</tbody>
+</table>
+<p><strong>關鍵差異——PCI 施行率</strong>：FFRangio 組 44.3% vs pressure-wire 組 35.4%（OR 1.45; 95% CI 1.24–1.70）——FFRangio 組有顯著更高的 PCI 施行率。</p>
+<p><strong>從圖表中觀察到的額外資訊</strong>：</p>
+<ul>
+<li>
+<p><strong>Figure 1（page_007.png）— Kaplan–Meier 曲線</strong>：四組 Panel（A–D）的 inset 放大圖可清楚看出：</p>
+<ul>
+<li>Panel A（主要複合終點）：兩條曲線從起點即高度重疊，至 12 個月無明顯分離，呈現典型非劣性結果</li>
+<li>Panel B（全因死亡）：FFRangio 曲線在追蹤末期略高於 pressure-wire（2.3% vs 2.1%），但差異極小</li>
+<li>Panel C（心肌梗塞）：FFRangio 曲線持續低於 pressure-wire（1.6% vs 2.5%），兩曲線在約第 3 個月開始輕微分離</li>
+<li>Panel D（非計畫性血運重建）：兩曲線高度重疊（4.1% vs 4.6%）</li>
+<li><strong>Number-at-risk</strong>：12 個月時各組仍維持 859–905 人（起始 965 人），無急速銳減跡象，後期曲線可靠性尚可</li>
+</ul>
+</li>
+<li>
+<p><strong>Figure 2（page_009.png）— Subgroup Forest Plot</strong>：</p>
+<ul>
+<li>整體 HR 0.98（0.70–1.39），所有次組 CI 均跨越 1.0（無效線）</li>
+<li><strong>值得注意的次組異質性</strong>：LAD 病灶 HR 0.64（0.40–1.03）有利 FFRangio，non-LAD 病灶 HR 1.70（0.99–2.92）有利 pressure-wire——方向相反且 CI 幾乎不重疊</li>
+<li>FFR strata HR 0.61（0.36–1.03）vs NHPR strata HR 1.48（0.92–2.38）——方向同樣相反</li>
+<li>所有次組 CI 寬，試驗未對次組分析提供檢定力，forest plot 下方明確標注「should not be used to infer treatment effect」</li>
+<li>圖中座標軸為對數尺度（0.25–3.00），無非零起點問題</li>
+</ul>
+</li>
+<li>
+<p><strong>Table 1（page_005.png）— Baseline Characteristics</strong>：基線特徵兩組良好平衡，無明顯不均。值得注意的是 female 僅佔 24.5–25.5%，diabetes 37.8%，近 90% 為穩定型心絞痛或無 biomarker 升高的患者。</p>
+</li>
+<li>
+<p><strong>Table 2（page_006.png）— Procedural Characteristics</strong>：清楚呈現 FFRangio 組 abnormal value 比例較高（43.0% vs 37.0%），直接解釋了 PCI 率的差距。</p>
+</li>
+</ul>
+<hr />
+<h3>6. 作者討論與評論重點</h3>
+<p><strong>作者的主要訊息</strong> [文內]：</p>
+<ol>
+<li>FFRangio 在 1 年複合終點上不劣於 pressure-wire 策略，各組成成分事件率相似</li>
+<li>FFRangio 策略在手術時間、輻射暴露、顯影劑用量上均有改善</li>
+<li>FFRangio 組 PCI 率較高可能源於接近門檻的測量值，而文獻顯示這些 borderline 病灶無論 PCI 或 defer 結果相似</li>
+<li>結果與 FAVOR III Europe（QFR 系統）不一致，可能因兩系統使用不同演算法、QFR 需更多操作者手動調整導致變異性較大</li>
+</ol>
+<p><strong>限制（作者觀點）</strong> [文內]：</p>
+<ul>
+<li>納入標準雖廣，但需先確認冠狀動脈解剖同時適用 pressure-wire 與 FFRangio，可能排除了解剖複雜的患者</li>
+<li>絕大多數為穩定型冠心病或無 biomarker 升高的患者；NSTE-ACS 非罪犯血管與 STEMI 的角色正由 AIR-STEMI 試驗測試</li>
+<li>對照組混合了 FFR（55.5%）與 NHPR（44.5%），可視為限制，但反映真實臨床使用情況</li>
+<li>開放標籤設計——但作者認為 open-label 應偏向有利既有標準治療，類似的非計畫性血運重建率因此更具說服力</li>
+<li>對照組實際事件率 7.1% 低於預估的 7.5%，但實際達成的 power 為 87.3%，上界 2.1 pp 仍遠低於 3.5 pp 的非劣性界值</li>
+</ul>
+<p><strong>[評估]</strong>：作者對限制的討論尚屬完整，但有幾點避重就輕——對 PCI 率差異（44.3% vs 35.4%）的臨床意涵（包括增加的支架相關長期風險）輕描淡寫；對開放標籤可能偏向 FFRangio 組施行更多 PCI 的可能性未充分探討；對 LAD vs non-LAD 次組異質性的潛在臨床影響未深入分析。</p>
+<hr />
+<h3>7. 外部專業意見</h3>
+<p>本節整合三篇同期發表的 NEJM editorial 全文（由 preflight 提供），以及外部專業評論平台意見。</p>
+<h4>7.1 Amanda Randles, Ph.D.（Duke University, Biomedical Engineering）</h4>
+<p><strong>&quot;Physiological Assessment of Coronary Artery Disease&quot;</strong> — NEJM Science behind the Study editorial（DOI: 10.1056/NEJMe2602134）[外部: editorial/comment 全文]</p>
+<p><strong>核心論點</strong>：</p>
+<ul>
+<li>從 FFR 基礎科學角度解釋 FFRangio 的合理性——FFR 反映的壓力梯度受病灶幾何與血管口徑緊密約束，當影像能準確擷取解剖特徵時，生理學響應的可能範圍被大幅限縮，因此可從影像直接推斷 FFR 值</li>
+<li>肯定 ALL-RISE 證明 FFR 引導 PCI 的獲益不必依賴直接冠脈內壓力測量，而是取決於是否有可靠的、病灶特異性的缺血負荷資訊</li>
+<li>結論：「更廣泛的 ischemia-guided PCI 使用可能更多取決於減少使用障礙，而非改進測量技術本身」</li>
+<li><strong>未提出重大方法學批評</strong></li>
+</ul>
+<h4>7.2 Gianluca Campo, M.D.（Ferrara University, Italy）</h4>
+<p><strong>&quot;Toward Broader Adoption of Coronary Physiological Assessment&quot;</strong> — NEJM Editorial（DOI: 10.1056/NEJMe2603396）[外部: editorial/comment 全文]</p>
+<p><strong>核心論點</strong>：</p>
+<ul>
+<li>定位 ALL-RISE 的意義不在 FFRangio vs wire 的直接比較，而在推動「從解剖學依賴走向生理學評估」的範式轉移</li>
+<li>提出 FFRangio 可作為整合式第一線生理評估工具，pressure-wire 保留在 borderline 值需確認、微血管功能評估、或 FFRangio 不可行/解剖太複雜的情境使用</li>
+<li><strong>批評與警示</strong>：
+<ol>
+<li>FFRangio 的表現高度依賴影像擷取品質與軟體需要的操作者互動程度；「當需要大量手動調整時，再現性下降，方法可能退化為更複雜版本的血管攝影判讀」</li>
+<li>ALL-RISE 與 FAVOR III Europe 的結果分歧顯示 angiography-derived 評估並非同質類別——演算法差異、影像處理需求、與操作者依賴性可能有臨床意義的後果</li>
+<li>ALL-RISE 的 FFRangio 組 PCI 率高於 pressure-wire 組——強調 borderline 值附近的決策是灰色地帶，此差異本身就是整合策略（angiography-derived 擴大評估＋pressure-wire 確認）的理由</li>
+</ol>
+</li>
+<li>指出 FAST III 與 AIR-STEMI 兩項正在進行的試驗結果若與 ALL-RISE 一致，將大幅強化對 angiography-derived 評估的信心</li>
+</ul>
+<h4>7.3 Yiannis S. Chatzizisis, M.D., Ph.D.（University of Miami）</h4>
+<p><strong>&quot;Redefining Physiology in the Cardiac Catheterization Laboratory&quot;</strong> — NEJM Editorial（DOI: 10.1056/NEJMe2603714）[外部: editorial/comment 全文]</p>
+<p><strong>核心論點</strong>（此篇主要針對同期發表的 FAST III 試驗，但同時討論 ALL-RISE）：</p>
+<ul>
+<li>肯定 ALL-RISE 與 FAST III 兩項試驗的一致性結果——兩種不同的 angiography-derived FFR 平台均達非劣性</li>
+<li><strong>批評與警示</strong>：
+<ol>
+<li>所有 angiography-derived 系統都觀察到更高的 PCI 率：vFFR 45% vs FFR 36%（FAST III）、FFRangio 44% vs wire 35%（ALL-RISE）——兩種解讀：可能捕獲了 wire 未偵測的有意義病變，也可能只是降低門檻增加了無臨床獲益的 PCI。「目前的試驗無法區分這兩種可能」</li>
+<li>一般化限制：不應將一個平台的結果自動推論到所有 angiography-derived FFR 系統</li>
+<li>非劣性界值在對照組事件率 7.5% 的情境下，相對而言偏寬</li>
+<li>開放標籤且「任何血運重建」為複合終點組成，後續管理決策可能受知曉分組影響</li>
+</ol>
+</li>
+<li>結論定調為「通往新標準治療的重要一步」，但 invasive testing 在主幹/ostial 病灶與複雜解剖中仍不可或缺</li>
+</ul>
+<h4>7.4 專業評論平台意見</h4>
+<p><strong>TCTMD（Cardiovascular Research Foundation 學術新聞平台）</strong> [外部: TCTMD]：</p>
+<ul>
+<li>**David Moliterno, M.D.（University of Kentucky）**肯定結果，「I think this is what we've been looking for」，鼓勵更多生理評估在 cath lab 的應用。但同時提出擔憂：AUC 測量「less than ideal」，且不同病灶位置可能有 false positive 的 discordance</li>
+<li>**Ajay Kirtane, M.D.（Columbia, trial co-investigator）**特別警告不應假設所有 angiography-derived 系統具有「class effect」，強調 FFRangio 為「judicious alternative」而非 pressure-wire 的完全替代</li>
+<li>**Joost Daemen, M.D.（Erasmus, FAST III PI）**呼籲隨技術快速迭代，每一代新軟體/演算法都應有「proper prospective randomized trial」驗證</li>
+</ul>
+<p><strong>ACC.org 試驗摘要</strong> [外部: ACC.org]：重述主要結果，未加重大批判。</p>
+<p>[未發現 Sensible Medicine、其他期刊獨立 commentary 或學會針對 ALL-RISE 的專門立場聲明]</p>
+<hr />
+<h3>8. 臨床建議</h3>
+<p><strong>可採用這篇研究結論的臨床情境</strong>：</p>
+<ul>
+<li>穩定型冠心病或無 biomarker 升高的患者，在 cath lab 發現中等狹窄（50–90%）需要生理評估引導 PCI 決策時，FFRangio（CathWorks 系統）可作為 pressure-wire 的替代方案</li>
+<li>特別適合工作流程限制導致 pressure-wire 使用率低的 cath lab——用 FFRangio 取代「不做任何生理評估就依解剖決定」的做法，其臨床價值明確</li>
+<li>解剖學上同時適用 FFRangio 與 wire 評估的病灶</li>
+</ul>
+<p><strong>不建議直接套用的情境</strong>：</p>
+<ul>
+<li>複雜解剖（主幹、ostial 病灶、嚴重迂曲或彌漫性病變）——試驗要求解剖同時適用兩種方法，排除了 FFRangio 可能表現較差的複雜情境</li>
+<li>STEMI 急性期（試驗排除）；NSTE-ACS 罪犯血管（試驗排除）</li>
+<li>需要微血管功能評估的情境（FFRangio 無法提供）</li>
+<li>使用 CathWorks 以外的 angiography-derived FFR 系統——FAVOR III Europe 已顯示不同系統的結果可能不一致</li>
+</ul>
+<p><strong>給臨床醫師的實務建議</strong>：</p>
+<ol>
+<li><strong>FFRangio 的最大價值在於「用生理評估取代不評估」而非「取代 wire」</strong>——如果你的 cath lab 已經常規使用 pressure-wire 且操作順暢，沒有急迫的理由轉換；但如果你的 lab FFR 使用率低於 20%，FFRangio 提供了一個更容易嵌入工作流程的替代方案</li>
+<li><strong>注意 FFRangio 可能導致更高 PCI 率</strong>（+9 百分點）——在 borderline 值附近，建議低門檻使用 pressure-wire 確認</li>
+<li><strong>本試驗僅追蹤 1 年</strong>——更多 PCI 帶來的長期支架相關事件（如晚期支架血栓、再狹窄）尚待更長追蹤確認</li>
+</ol>
+<p><strong>研究證據強度分級</strong>：<strong>中</strong>——非劣性試驗設計合理且達標，power 充足（87.3%），但開放標籤設計、贊助商角色、混合對照組（FFR + NHPR）、PCI 率差異的長期影響未知，以及僅 1 年追蹤，均限制了證據強度的進一步提升。</p>
+<hr />
+<h2>SKILL-A：批判性評讀</h2>
+<h3>A. 補充技術細節</h3>
+<p>（SECTION-0 第 3–6 節已涵蓋的設計與結果概述不重複）</p>
+<p><strong>樣本數估算</strong>：預估兩組 1 年事件率均為 7.5%（基於 DEFINE-FLAIR / iFR-SWEDEHEART），非劣性界值 3.5 百分點，單側 α = 0.025，假設 5% 失訪，需 1924 人可達 80% power。實際入組 1930 人達標。實際對照組事件率 7.1%（低於預估 7.5%），達成 power 87.3%。[文內]</p>
+<p><strong>隨機化細節</strong>：1:1 隨機分派，以臨床表現（stable vs NSTE-ACS）與壓力線組預計使用方法（FFR vs NHPR）進行分層。具體隨機化方法（電腦亂數、中央分派等）見 protocol。[文內；markdown 未保留 protocol 細節]</p>
+<p><strong>致盲細節</strong>：開放標籤（open-label）。因介入手段根本不同（軟體分析 vs 有線操作），無法對操作者致盲。事件判定委員會不知分組（blinded adjudication）。[文內]</p>
+<p><strong>ITT vs per-protocol</strong>：主要分析以 ITT 原則執行。Per-protocol 分析未在 markdown 正文提及，見 Supplementary Appendix。[文內]</p>
+<p><strong>多重比較處理</strong>：試驗僅對主要終點提供 power，整體 type I error 受控，無需多重比較校正。次要終點 CI「widths have not been adjusted for multiplicity and should not be used to infer treatment effect」[文內 Table 3 註腳]。</p>
+<p><strong>缺失資料處理</strong>：未進行填補（no imputation）。未完成 12 個月追蹤且無事件的患者以最後已知狀態為截斷日期。1 年追蹤完成率 96.0%，缺失比例低。[文內]</p>
+<p><strong>競爭風險</strong>：使用 Fine–Gray subdistribution hazard model，死亡為競爭事件。結果與 cause-specific Cox 模型一致（Table S7）。[文內]</p>
+<h4>A1. 特殊設計子模組：Non-inferiority Trial</h4>
+<p><strong>非劣性界值（Δ = 3.5 百分點）</strong>：</p>
+<ul>
+<li>依據：「previous studies that used a similar margin and the steering committee's assessment of a clinically acceptable difference given the inclusion of repeat revascularization in the primary end point」[文內]。引用 DEFINE-FLAIR / iFR-SWEDEHEART 系列使用相似界值。</li>
+<li><strong>合理性評估</strong>：對照組 1 年事件率 7.1%，3.5 百分點的非劣性界值意味著允許 FFRangio 組事件率最高達 10.6%——相當於相對風險增加約 49%。這在絕對值上雖然「看起來」只有 3.5%，但以相對比例而言偏寬。Chatzizisis 的 editorial 也提及此點。然而，考慮到複合終點包含了較「軟」的 unplanned revascularization（佔事件的多數），而非全為硬終點（死亡/MI），3.5 百分點的界值在 interventional cardiology 非劣性試驗中屬於常見範圍。</li>
+<li>實際結果：上界 2.1 pp，遠低於 3.5 pp 界值，提供了額外的信心。</li>
+</ul>
+<p><strong>Active comparator 是否以最佳方式使用</strong>：</p>
+<ul>
+<li>Pressure-wire 組是混合比較：55.5% 使用 FFR（需充血誘發）、44.5% 使用 NHPR（不需充血）。這反映了真實世界實踐，但不是「最佳方式」的單一標準——嚴格而言，FFR 的證據基礎較 NHPR 更深厚（FAME 系列只使用 FFR）。混合比較可能稀釋了 pressure-wire 策略的最佳效果。</li>
+<li>分層隨機確保了 FFR/NHPR 子層的平衡。</li>
+</ul>
+<p><strong>ITT 在非劣性設計中的保守性問題</strong>：</p>
+<ul>
+<li>標準 EBM 教科書指出：在非劣性試驗中，ITT 分析並非保守——因為它可能透過「稀釋」兩組差異而偏向非劣性結論。理想上應同時報告 per-protocol 分析。[參考: jug120004_2605_2611.md]</li>
+<li>文內提及「per-protocol analysis」見 Supplementary Appendix，但 markdown 未保留。若 per-protocol 結果一致，才能增強非劣性結論的可信度。</li>
+</ul>
+<hr />
+<h3>B. 批判性評估（四大面向）</h3>
+<h4>B1. 假說與理論邏輯</h4>
+<ul>
+<li><strong>假說是否預先指定</strong>：是。非劣性假說明確預先指定於 protocol 中（NCT05893498），主要終點、界值、分析方法均為 a priori。[文內]</li>
+<li><strong>機轉合理性</strong>：FFRangio 基於冠狀動脈攝影影像的 3D 重建與阻力模型估算壓力梯度。其準確度在 FAST-FFR 等研究中已驗證（90–95% diagnostic accuracy vs wire-based FFR）。[外部: SCAI roundtable 2026] 若影像品質充足且解剖清楚，從影像推估 FFR 在生理學上合理——FFR 值受病灶幾何與血管口徑緊密約束。[外部: Randles editorial]</li>
+<li><strong>最可能合理機轉</strong>：
+<ol>
+<li>冠狀動脈壓力梯度主要由狹窄幾何決定，影像可準確擷取此資訊</li>
+<li>軟體分析可避免壓力線本身的操作性誤差（如 pressure-wire drift、inadequate hyperemia）</li>
+<li>工作流程簡化可能降低操作者在耗時操作中的「捷徑」行為</li>
+</ol>
+</li>
+<li><strong>最可疑的敘事跳躍</strong>：
+<ol>
+<li>「等效臨床結果 = 等效測量品質」——事實上 FFRangio 有 6% 更高的 abnormal 判讀率，導致更多 PCI，但 1 年結果相似。這可能因為 borderline 病灶 PCI vs defer 本就結局相近，而非 FFRangio 真的更精準。[文內 Discussion]</li>
+<li>作者將 FAVOR III Europe 的失敗歸因於 QFR 需較多手動調整，但同篇也承認 ALL-RISE 的 FFRangio 也需要操作者選取影像並「manually corrected, if necessary」。兩者差異是程度問題，不是本質差異。[文內 Methods vs Discussion]</li>
+</ol>
+</li>
+</ul>
+<h4>B2. 受試者與外推性</h4>
+<ul>
+<li><strong>受試者是否與宣稱對象一致</strong>：基本一致，但有重要限制。排除了 STEMI、NSTE-ACS 罪犯血管、CABG 候選人、嚴重瓣膜疾病、嚴重 LV dysfunction 與解剖不適用 FFRangio 的患者。最終受試者 90.6% 無 biomarker 升高，實質上是以穩定型冠心病為主的族群。[文內 Table 1]</li>
+<li><strong>基線平衡</strong>：兩組在年齡、性別、糖尿病、高血壓、血脂異常、prior MI/PCI、腎功能、LVEF、臨床表現等特徵上良好匹配（Table 1 圖示確認）。[文內]</li>
+<li><strong>女性代表性不足</strong>：僅 25%，低於一般冠心病女性比例。[文內]</li>
+</ul>
+<p><strong>外推性分級</strong>：</p>
+<ol>
+<li><strong>中等風險穩定型冠心病患者於設備完善的 cath lab 進行中等狹窄評估</strong>：高度可外推——這是試驗的核心族群。但 59 個研究中心可能代表操作水準較高的單位，社區型 cath lab 的 FFRangio 影像品質能否達到試驗標準需考量。</li>
+<li><strong>急性冠心症候群患者</strong>：有限外推——NSTE-ACS 僅佔 9.4% 且排除罪犯血管；STEMI 完全排除。對這些族群需等待 AIR-STEMI 等後續試驗。</li>
+<li><strong>解剖複雜病灶（主幹、ostial、嚴重彌漫性病變、prior CABG）</strong>：不可外推——試驗設計明確排除或暗示排除這些情境。</li>
+</ol>
+<h4>B3. 研究設計與偏差</h4>
+<ul>
+<li><strong>隨機化與分派隱藏</strong>：1:1 隨機，分層隨機化。具體分派隱藏機制見 protocol（markdown 未保留），但多中心大型 RCT 使用中央電子系統分派為常規。[推論]</li>
+<li><strong>致盲</strong>：開放標籤。操作者與臨床團隊知曉分組，可能影響後續管理決策——特別是「非計畫性有臨床適應症的血運重建」這項軟終點。事件判定委員會致盲。</li>
+</ul>
+<p><strong>開放標籤的偏差方向</strong>：作者主張 open-label 應偏向有利已建立的標準治療（pressure-wire），因為臨床醫師對新技術可能更保守。然而，也可考慮相反方向：</p>
+<ul>
+<li>
+<p>FFRangio 組更高的 PCI 率（44.3% vs 35.4%）可能部分源於知曉分組後的行為偏差——操作者可能認為 FFRangio 的 borderline 值不夠「可靠」而傾向 PCI</p>
+</li>
+<li>
+<p>這種更積極的 PCI 策略可能反而減少了後續非計畫性血運重建（預防性效果），使 FFRangio 組在複合終點中「人造地」表現更好</p>
+</li>
+<li>
+<p><strong>試驗是否提早停止</strong>：否。無中期分析，依計畫完成全部收案。[文內]</p>
+</li>
+</ul>
+<p><strong>對照組適當性（Gyawali 框架）</strong>：</p>
+<ul>
+<li>「這是我日常臨床會給患者的治療嗎？」——是。Pressure-wire FFR/NHPR 是目前 Class I 建議的標準。</li>
+<li>但對照組混合了兩種方法（55.5% FFR + 44.5% NHPR）——雖然反映真實世界，但 NHPR 的證據深度不如 FFR，且次組分析顯示 FFR strata 與 NHPR strata 結果可能不同（HR 0.61 vs 1.48）。將 FFRangio 與「較弱的對照」混合可能稀釋了差異。</li>
+</ul>
+<p><strong>最可能造成偏差的設計點</strong>：</p>
+<ol>
+<li><strong>開放標籤 + 軟終點（非計畫性血運重建佔複合終點約 60%）</strong>：操作者知曉分組可能影響後續血運重建決策，偏差方向不確定但可能有利 FFRangio（更高初始 PCI → 更少後續 revascularization）</li>
+<li><strong>PCI 率差異（+9 百分點）</strong>：FFRangio 組更多 PCI，長期可能有更多支架相關事件（支架血栓、target lesion revascularization），但 1 年追蹤可能不足以捕捉</li>
+<li><strong>混合對照組</strong>：FFR + NHPR 混合比較可能稀釋了 pressure-wire 策略的最佳效果</li>
+</ol>
+<h4>B4. 測量工具與實務意義</h4>
+<ul>
+<li><strong>FFRangio 測量特性</strong>：成功率 98.5%（comparable to wire 98.6%）。核心問題在於 FFRangio 的測量值分布偏低——43.0% abnormal vs wire-based 37.0%，意味著 FFRangio 在群體層面比 wire 判定更多病灶為「有意義」。這可能代表更高的 false positive rate。[文內 Table 2]</li>
+<li><strong>終點臨床意義</strong>：複合終點包含死亡（硬終點）、MI（中硬終點）、與非計畫性有臨床適應症的血運重建（軟終點）。軟終點佔比最大（約 60% 的事件），且最容易受 open-label 影響。</li>
+<li><strong>「就算結果是真的，真實世界可能有多大用處？」</strong>：
+<ul>
+<li>手術時間節省中位數 5 分鐘、透視時間少 3 分鐘、顯影劑少 14 ml——這些改善在統計上顯著但臨床上偏modest</li>
+<li>真正的實務價值不在「從 wire 轉到 FFRangio」，而在「從不做生理評估（現狀 &lt;20% 使用率）轉到用 FFRangio 做」——這是一個巨大的潛在獲益，但本試驗的設計（FFRangio vs wire）無法直接回答這個問題</li>
+</ul>
+</li>
+</ul>
+<hr />
+<h3>C. 統計與資料完整性</h3>
+<h4>C1. 結果分類（CI + MCID 框架）</h4>
+<p><strong>Step 1 — MCID（δ）確認</strong>：</p>
+<ul>
+<li>文內預先指定的非劣性界值為 3.5 百分點（absolute risk difference）[文內 Methods]</li>
+<li>此界值本身即作為臨床可接受差異，隱含的 MCID-benefit 與 MCID-harm 以此為基準</li>
+</ul>
+<p><strong>Step 2 — CI 位置判讀</strong>：</p>
+<table>
+<thead>
+<tr>
+<th>終點</th>
+<th>效果量（KM 差異）</th>
+<th>95% CI / one-sided 97.5% UI</th>
+<th>非劣性界值</th>
+<th>結果分類</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>複合主要終點</strong></td>
+<td>−0.2 pp（有利 FFRangio）</td>
+<td>UI: 2.1 pp</td>
+<td>3.5 pp</td>
+<td><strong>POSITIVE for noninferiority</strong> ✅ — UI 2.1 遠低於 3.5</td>
+</tr>
+<tr>
+<td>全因死亡</td>
+<td>HR 1.16</td>
+<td>0.63–2.14</td>
+<td>—</td>
+<td>INCONCLUSIVE ❓ — CI 寬，跨越 null，事件數少</td>
+</tr>
+<tr>
+<td>心肌梗塞</td>
+<td>HR 0.65</td>
+<td>0.34–1.25</td>
+<td>—</td>
+<td>INCONCLUSIVE ❓ — 數值有利 FFRangio 但 CI 跨 1，事件數少</td>
+</tr>
+<tr>
+<td>非計畫性血運重建</td>
+<td>HR 0.90</td>
+<td>0.58–1.40</td>
+<td>—</td>
+<td>INCONCLUSIVE ❓ — CI 寬，跨越 null</td>
+</tr>
+</tbody>
+</table>
+<p>非劣性主要終點的結果分類為 <strong>POSITIVE for noninferiority</strong>：one-sided 97.5% UI（2.1 pp）不僅低於預設界值（3.5 pp），且點估計偏向 FFRangio（−0.2 pp），P &lt; 0.001。這是一個強勁的非劣性結果。</p>
+<p>所有個別組成終點因事件數不足均為 INCONCLUSIVE——試驗未對此提供 power，不應過度解讀。</p>
+<h4>C2. Underpowered 判斷與 Winner's Curse</h4>
+<ul>
+<li>本試驗主要終點 power 充足（87.3% &gt; 80% 目標）；實際事件率略低於預估但仍足以達成非劣性</li>
+<li>個別組成終點均為 underpowered（CI 寬且跨越 null 與 MCID），但試驗設計本就未打算對個別終點提供 power——這是合理的設計選擇，不是缺陷</li>
+<li>Winner's Curse 不適用——本試驗為非劣性設計，風險不在效果量的誇大，而在虛假非劣性</li>
+</ul>
+<h4>C3. Bayesian 補充分析</h4>
+<p>本試驗為非劣性設計且 P &lt; 0.001，結論明確，CI 上界距非劣性界值仍有充裕空間（2.1 vs 3.5）。無需 Bayesian 補充分析。</p>
+<h4>C4. 報告完整性與其他統計問題</h4>
+<p><strong>樣本數與 power（雙向評估）</strong>：</p>
+<ul>
+<li>事前 power calculation：有。假設兩組事件率均為 7.5%，delta = 3.5 pp，80% power，需 1924 人。[文內]</li>
+<li>實際 power 87.3%，高於計畫值。[文內]</li>
+<li>Overpowered 疑慮：不適用——非劣性設計中更高的 power 是優勢而非問題。</li>
+</ul>
+<p><strong>Kaplan-Meier 圖細節判讀</strong>（結合 page_007.png 圖像）：</p>
+<ul>
+<li><strong>Number-at-risk</strong>：兩組起始 965 人，12 個月時 859–905 人（依終點不同），衰減平穩，無急速銳減</li>
+<li>曲線無交叉現象，全程高度重疊（主要終點）</li>
+<li>Y 軸使用 expanded inset（0–8%）與完整軸（0–100%）並列呈現，沒有誇大差異的嫌疑——inset 反而有助於看清差異極小</li>
+</ul>
+<p><strong>多重比較</strong>：僅主要終點有 power 與 alpha 控制。次要終點 CI 未調整，Table 3 與 Figure 2 均明確標注不應用於推斷治療效果。報告透明度良好。</p>
+<p><strong>報告完整性</strong>：主要終點事件率、HR、95% CI、非劣性 P 值、one-sided 97.5% UI 均完整報告。個別終點 HR 與 95% CI 亦完整。缺失資料處理與競爭風險分析均有執行。整體報告品質高。</p>
+<p><strong>統計面紅旗清單</strong>：</p>
+<ol>
+<li><strong>非劣性界值偏寬（3.5 pp / 相對 ~49% risk increase）</strong>——雖然在 interventional cardiology 屬常見範圍，但對於包含「硬終點」（死亡、MI）的複合終點而言，允許近 50% 的相對增加值得質疑</li>
+<li><strong>ITT 在非劣性設計中非保守</strong>——未在正文呈現 per-protocol 結果（僅在 Supplement），增加了結論的不確定性</li>
+<li><strong>對照組混合 FFR（55.5%）與 NHPR（44.5%）</strong>——NHPR 證據深度不如 FFR，混合比較可能稀釋了「最佳標準」的效果</li>
+<li><strong>PCI 率差異（+9 pp）的長期影響未評估</strong>——1 年追蹤可能不足以捕捉支架相關的晚期事件</li>
+<li><strong>開放標籤 + 軟終點主導複合終點</strong>——非計畫性血運重建佔事件 ~60%，且最容易受 unblinded 後續管理影響</li>
+</ol>
+<hr />
+<h3>D. 次組分析評估</h3>
+<p>文內報告了多項預先指定的次組分析（Figure 2），最值得關注的兩組：</p>
+<p><strong>D1. LAD vs non-LAD 病灶</strong></p>
+<table>
+<thead>
+<tr>
+<th>標準</th>
+<th>評估</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1. Interaction P-value</td>
+<td>文內僅以視覺化（CI 幾乎不重疊）呈現，未報告 formal interaction P-value [限制]</td>
+</tr>
+<tr>
+<td>2. 與其他研究一致？</td>
+<td>FAVOR III Europe 未報告相同次組比較 [無法判定]</td>
+</tr>
+<tr>
+<td>3. 預先指定與方向？</td>
+<td>預先指定（Fig 2 為 prespecified subgroups），但未見預設方向</td>
+</tr>
+<tr>
+<td>4. 生物機轉？</td>
+<td>中度合理——LAD 供應較大心肌區域，FFRangio 的 3D 重建在較長直行血管（LAD）可能比較短彎曲血管（RCA, LCx）更準確</td>
+</tr>
+<tr>
+<td>5. Within-study 比較？</td>
+<td>是（同一試驗內）</td>
+</tr>
+</tbody>
+</table>
+<p><strong>可信度：低至中</strong>——方向差異明顯（LAD HR 0.64 vs non-LAD HR 1.70），有潛在生物機轉支持，但缺乏 formal interaction test、試驗 underpowered for subgroup、且無外部驗證。作者謹慎地在 Discussion 中僅以「possible exception」描述此發現。</p>
+<p><strong>D2. FFR strata vs NHPR strata</strong></p>
+<table>
+<thead>
+<tr>
+<th>標準</th>
+<th>評估</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1. Interaction P-value</td>
+<td>未報告 [限制]</td>
+</tr>
+<tr>
+<td>2. 與其他研究一致？</td>
+<td>無可比資料</td>
+</tr>
+<tr>
+<td>3. 預先指定與方向？</td>
+<td>預先指定（分層隨機因子），但未見預設方向</td>
+</tr>
+<tr>
+<td>4. 生物機轉？</td>
+<td>弱——FFR 使用 adenosine-induced hyperemia，NHPR 測量靜息狀態壓力比值，兩者測量的生理學資訊不完全相同，FFRangio 校準可能更接近 FFR 而非 NHPR</td>
+</tr>
+<tr>
+<td>5. Within-study 比較？</td>
+<td>是</td>
+</tr>
+</tbody>
+</table>
+<p><strong>可信度：低</strong>——CI 重疊程度有限（HR 0.61 vs 1.48），但兩個 strata 內事件數極少（23 vs 36、41 vs 29），且此次組比較本身是「改變對照組定義」的間接比較，而非直接的暴露因子。作者正確地歸因於「random differences in absolute event rates」。[參考: jug130002.md — JAMA subgroup criteria 指出低事件數的次組效果高度不可靠]</p>
+<hr />
+<h3>E. 紅旗清單</h3>
+<ol>
+<li><strong>贊助商深度參與</strong>：CathWorks 贊助、參與 site selection / data collection / monitoring；共同創辦人為作者之一（Kornowski）；試驗結果公布恰在 Medtronic 完成收購 CathWorks 前一個月，有重大商業利益</li>
+<li><strong>PCI 率差異未解決</strong>：FFRangio 導致 9 百分點更高的 PCI 率，等於每 11 位接受 FFRangio 評估的患者中多 1 位接受 PCI——長期影響未知，且 1 年追蹤不足以捕捉晚期支架事件</li>
+<li><strong>非劣性界值相對偏寬</strong>：對照組事件率 7.1%，3.5 pp 界值允許 ~49% 的相對風險增加，在複合終點包含硬終點的情況下偏寬</li>
+<li><strong>開放標籤 + 軟終點主導</strong>：非計畫性血運重建為複合終點最大組成（~60% 的事件），最容易受 unblinding 影響</li>
+<li><strong>混合對照組稀釋了最佳標準</strong>：55.5% FFR + 44.5% NHPR——NHPR 證據較淺，FFRangio 可能與最佳標準（pure FFR）的比較結果不同</li>
+<li><strong>FAVOR III Europe 的陰影</strong>：同類型但不同演算法的 QFR 系統未達非劣性。作者將差異歸因於 QFR 的操作者依賴性較高，但 FFRangio 也需手動校正。兩者的差異是否真是平台效應，或 ALL-RISE 只是剛好因隨機誤差落在界值內，需要獨立重複驗證</li>
+<li><strong>追蹤僅 1 年</strong>：對於決定是否接受額外 PCI（含支架植入）的策略試驗，需要至少 2–3 年追蹤才能全面評估利弊</li>
+</ol>
+<hr />
+<h3>F. 反向解釋</h3>
+<ol>
+<li><strong>FFRangio 的「過度治療」效應可能製造了假非劣性</strong>：FFRangio 比 wire 多做了 9 百分點的 PCI。這些額外 PCI 可能「預防」了部分未來的非計畫性血運重建（佔複合終點最大組成），使兩組事件率看起來相似。若追蹤更長，額外 PCI 的支架相關事件可能侵蝕這種表面平衡。<strong>文內部分支持此解讀</strong>：FFRangio 組的非計畫性血運重建率略低（4.1% vs 4.6%），但差異極小且 CI 跨 null。</li>
+<li><strong>Borderline 病灶的「治療 vs 不治療」等效現象掩蓋了測量差異</strong>：FFRangio 比 wire 判定更多病灶為「abnormal」，多出的 PCI 集中在 borderline 區域。文獻已知 FFR 0.75–0.85 區間的病灶無論 PCI 或 defer 結果相似。因此 FFRangio 可能確實比 wire 更不精確，但在最可能出錯的 borderline 區間，結果對精確度不敏感。<strong>文內支持</strong>：Discussion 段明確引用此機轉。</li>
+<li><strong>NHPR strata 拉高了非劣性結果</strong>：若對照組只使用 FFR（55.5%），次組分析顯示 HR 0.61（FFRangio 更佳），這暗示 NHPR 比較組中 FFRangio 表現可能較差（HR 1.48）。整體非劣性結果可能被 FFR strata 的有利結果拉向非劣性，掩蓋了 NHPR strata 的潛在劣性。<strong>文內部分支持</strong>：作者承認試驗 underpowered for such assessment，但未明確探討此假說。</li>
+<li><strong>選擇性入組（解剖篩選）創造了最有利 FFRangio 的測試環境</strong>：只有「冠狀動脈解剖同時適用 pressure-wire 與 FFRangio」的病灶才被入組，排除了 FFRangio 可能表現最差的複雜解剖。<strong>文內支持</strong>：Limitations 段有提及。</li>
+</ol>
+<hr />
+<h3>G. 最終裁決</h3>
+<ul>
+<li>
+<p><strong>整體可信度</strong>：<strong>中</strong></p>
+</li>
+<li>
+<p><strong>可採用的條件</strong>：穩定型冠心病患者在設備完善的 cath lab 發現中等狹窄時，FFRangio（CathWorks 平台）可作為 pressure-wire 的合理替代方案引導 PCI 決策，特別是當 wire-based 評估因工作流程限制無法常規執行時</p>
+</li>
+<li>
+<p><strong>不建議採用的情境</strong>：複雜冠脈解剖（主幹、ostial、CABG 後）、STEMI、NSTE-ACS 罪犯血管、需要微血管功能評估的患者、使用 CathWorks 以外的 angiography-derived FFR 平台</p>
+</li>
+<li>
+<p><strong>若要改觀，最需要的 3 個關鍵改進</strong>：</p>
+<ol>
+<li><strong>≥3 年長期追蹤數據</strong>——確認更高 PCI 率的長期淨效應（支架血栓、target lesion revascularization 等）</li>
+<li><strong>Per-protocol 分析結果完整公開</strong>——非劣性試驗中 ITT 非保守，per-protocol 一致才能確認結論</li>
+<li><strong>獨立試驗重複驗證</strong>——由非 CathWorks 贊助的研究團隊獨立執行（AIR-STEMI 為一個期待的數據點，但仍由 CathWorks 相關團隊主導）</li>
+</ol>
+</li>
+<li>
+<p><strong>一句話結論</strong>：FFRangio 在 1 年追蹤中不劣於壓力線引導策略，但較高的 PCI 率與短追蹤期意味著長期安全性仍需確認。</p>
+</li>
+</ul>
+
+<footer class="appraisal-meta">評讀資訊：模型：claude-opus-4-6 (claude)  ·  route：rct  ·  產出時間：2026-07-05 09:34 CST</footer>
+</main>
+</body>
+</html>
