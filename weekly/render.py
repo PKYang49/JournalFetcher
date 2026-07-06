@@ -436,9 +436,16 @@ def render_and_write_weekly(
 
 
 def iso_week_label(dt: datetime | None = None) -> tuple[str, str, str]:
-    """Return (label='2026-W19', filename='2026-W19.html', date='2026-05-08')."""
+    """Return (label='2026-W19', filename='2026-W19.html', date='2026-05-08').
+
+    Weeks start on **Sunday** (not ISO's Monday): the Sunday 08:50 launchd run
+    should open a NEW week rather than append to the just-ended one. We reuse
+    ISO's robust year/week numbering (handles year-end W52/W53 edges) by
+    shifting the date +1 day, so ISO's Monday boundary lands on Sunday. E.g.
+    Sun 2026-07-05 → W28 (a fresh week), Sat 2026-07-04 → W27.
+    """
     dt = dt or datetime.now(TPE)
-    year, week, _ = dt.isocalendar()
+    year, week, _ = (dt + timedelta(days=1)).isocalendar()
     label = f"{year}-W{week:02d}"
     return label, f"{label}.html", dt.strftime("%Y-%m-%d")
 
