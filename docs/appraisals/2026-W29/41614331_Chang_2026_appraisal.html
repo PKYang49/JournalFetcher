@@ -1,0 +1,722 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Comparative Effectiveness and Outcomes of Nebivolol Versus Other Beta Blockers in Hypertensive Patients: A Multicenter Cohort Study</title>
+<style>
+  :root {
+    --bg: #fafafa;
+    --card: #ffffff;
+    --text: #1a1a1a;
+    --muted: #6b6b6b;
+    --border: #e5e5e5;
+    --accent: #0b5fff;
+  }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang TC",
+      "Microsoft JhengHei", sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    margin: 0;
+    padding: 24px 16px 64px;
+    line-height: 1.72;
+  }
+  main {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    margin: 0 auto;
+    max-width: 840px;
+    padding: 22px 26px;
+  }
+  nav {
+    margin: 0 auto 14px;
+    max-width: 840px;
+    color: var(--muted);
+    font-size: 14px;
+  }
+  a { color: var(--accent); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  h1, h2, h3, h4 { line-height: 1.35; }
+  h1 { font-size: 26px; margin-top: 0; }
+  h2 { border-top: 1px solid var(--border); padding-top: 18px; }
+  code {
+    background: rgba(127, 127, 127, 0.12);
+    border-radius: 4px;
+    padding: 1px 4px;
+  }
+  table {
+    border-collapse: collapse;
+    display: block;
+    overflow-x: auto;
+    width: 100%;
+  }
+  th, td {
+    border: 1px solid var(--border);
+    padding: 6px 8px;
+    text-align: left;
+    vertical-align: top;
+  }
+  blockquote {
+    border-left: 3px solid var(--accent);
+    color: var(--muted);
+    margin-left: 0;
+    padding-left: 14px;
+  }
+  .appraisal-meta {
+    border-top: 1px solid var(--border);
+    margin-top: 28px;
+    padding-top: 14px;
+    color: var(--muted);
+    font-size: 13px;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #1a1a1a;
+      --card: #242424;
+      --text: #e8e8e8;
+      --muted: #999;
+      --border: #333;
+      --accent: #6ea8ff;
+    }
+  }
+</style>
+</head>
+<body>
+<nav><a href="../../2026-W29.html">← 回到 2026-W29 週報</a></nav>
+<main>
+<h1>Comparative Effectiveness and Outcomes of Nebivolol Versus Other Beta Blockers in Hypertensive Patients: A Multicenter Cohort Study</h1>
+<h2>0. 文章身份證</h2>
+<ul>
+<li><strong>題名</strong>：Comparative Effectiveness and Outcomes of Nebivolol Versus Other Beta Blockers in Patients With Hypertension: A Multicenter Cohort Study</li>
+<li><strong>期刊／年份</strong>：<em>Journal of the American Heart Association</em>（JAHA），2026</li>
+<li><strong>DOI／PMID</strong>：10.1161/JAHA.125.044910；PMID 41614331</li>
+<li><strong>文章類型</strong>：多院區、單一醫療體系電子病歷資料庫的回溯性 new-user cohort study。</li>
+<li><strong>路由判斷</strong>：觀察性比較效果研究，使用三組 propensity score IPTW。</li>
+<li><strong>核心判讀</strong>：本文可支持「nebivolol 使用者的血壓、心率及死亡率結果較好」的<strong>關聯性假說</strong>，但不足以證明 nebivolol 本身造成較低死亡率，更不足以據此指定為高血壓患者的 preferred beta blocker。</li>
+</ul>
+<hr />
+<h1>SECTION-0：文章全面描述</h1>
+<h2>1. 作者團隊評論</h2>
+<h3>通訊作者與團隊背景</h3>
+<p>通訊作者 Pao-Hsien Chu（褚柏顯）為長庚紀念醫院心臟內科教授級主治醫師，院方公開專長包括心衰竭、分子心臟學、心臟超音波、巨量資料庫與人工智慧；院方亦列其為心臟內科科系主任及長庚大學教授。<a href="https://www.changgung.hospital/doc-info.aspx?id=2017080316242684068">外部：長庚醫院醫師介紹</a></p>
+<p>此團隊兼具：</p>
+<ul>
+<li>臨床心臟科背景。</li>
+<li>CGRD 大型資料庫分析經驗。</li>
+<li>心衰竭、心血管預後、轉譯研究與 AI 模型經驗。</li>
+<li>統計分析由另行致謝的 3 位人員協助，但正文未提供正式 Author Contributions，無法判定研究構想、資料處理、程式碼驗證及稿件決策的實際分工。[文內：Acknowledgments]</li>
+</ul>
+<p>代表性研究脈絡包括：</p>
+<ul>
+<li>以 CGRD 建立 HFpEF 死亡及住院預測模型，<em>JACC Asia</em> 2024。<a href="https://pubmed.ncbi.nlm.nih.gov/39802984/">外部：PubMed</a></li>
+<li>以 CGRD 分析 lipid variability 與周邊動脈疾病，<em>Circulation Journal</em>，2025 online／2026 print。<a href="https://pubmed.ncbi.nlm.nih.gov/41224281/">外部：PubMed</a></li>
+<li>長期參與台灣全國性或長庚資料庫的心血管預後研究，包括肝炎、心臟手術、心血管生物標記及 MACE 等主題。[外部：PubMed／長庚醫院作者資料]</li>
+</ul>
+<p>因此，這不是首次進入大型資料庫研究；團隊屬於<strong>心血管臨床與 real-world database 分析的資深團隊</strong>。但本文的 nebivolol 比較效果問題仍缺乏同資料庫外的獨立重現。</p>
+<h3>機構背景</h3>
+<p>長庚體系為台灣大型醫療網，本文 CGRD 涵蓋 7 家醫院及超過 10,000 床。長庚醫院自述其心臟科為台灣臨床訓練中心，具多個心導管室及完整心血管次專科服務。<a href="https://www.changgung.hospital/en/featured-1.aspx?bid=5&amp;id=2016120217092750327">外部：長庚心臟科介紹</a></p>
+<p>但「多中心」應解讀為<strong>同一醫療體系的多院區</strong>，不是不同制度、處方文化及資料平台的獨立中心。</p>
+<h3>利益揭露</h3>
+<ul>
+<li>Funding：長庚紀念醫院 CORPG3Q0021、BMRP456。[文內]</li>
+<li>Disclosures：None。[文內]</li>
+<li>未見藥廠資助或藥品供應。[文內]</li>
+<li>內部醫院資助的直接商業偏差疑慮較低，但資料、分析程式碼均因機構限制不能分享，降低外部稽核與重現性。</li>
+<li>未揭露個別作者是否曾接受 nebivolol 製造商演講、顧問或研究費；只能說本文申報「無利益衝突」，不能證明完全不存在非財務立場偏差。</li>
+</ul>
+<hr />
+<h2>2. 文獻 Metadata</h2>
+<ul>
+<li>Received：2025-07-07。[文內]</li>
+<li>Accepted：2025-12-31。[文內]</li>
+<li>投稿至接受：<strong>177 天</strong>。</li>
+<li>JAHA 官網列 original research 平均 submission-to-acceptance 為 <strong>165 天</strong>、first decision 18.5 天、接受率 28.5%。本文比平均多約 12 天，整體相當，無法從審查天數推論審查特別嚴格或寬鬆。<a href="https://www.ahajournals.org/jaha/about">外部：JAHA About</a></li>
+<li>期刊為 AHA 官方、同儕審查、完全 Open Access、線上出版期刊。[外部：JAHA About]</li>
+<li>最新外部 JCR 彙整資料顯示 2025 JIF 約 <strong>6.0、Cardiac &amp; Cardiovascular Systems Q1</strong>；JAHA 自身 2025 年回顧則報告 2024 年排名為 41/230、約第 82 百分位。<a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC12909044/">外部：JAHA year-in-review</a></li>
+<li>本文為一般 original research，未標示 invited article。[文內]</li>
+</ul>
+<hr />
+<h2>3. 研究背景</h2>
+<h3>既有事實</h3>
+<p>作者指出：</p>
+<ul>
+<li>高血壓在全球及台灣常見，台灣血壓控制率仍不足。</li>
+<li>β-blocker 具有不同受體選擇性及血管擴張特性，不能視為完全同質的藥物類別。</li>
+<li>Nebivolol 具有 β₁-selectivity 與 nitric oxide–mediated vasodilation。</li>
+<li>既有試驗支持 nebivolol 降壓效果，但台灣 real-world comparative data 與長期臨床結果資料有限。[文內：Introduction]</li>
+</ul>
+<h3>知識缺口與研究問題</h3>
+<p>作者希望回答：</p>
+<blockquote>
+<p>在無明顯心衰竭的高血壓新使用者中，nebivolol 相較 carvedilol 或其他 β-blocker，是否有更佳的長期血壓、心率及臨床結果？</p>
+</blockquote>
+<p>這是合理的比較效果問題，但同時包含兩種難度不同的主張：</p>
+<ol>
+<li>血壓及心率的 comparative effectiveness。</li>
+<li>死亡與心血管事件的因果效果。</li>
+</ol>
+<p>第二項比第一項更容易受 confounding by indication、健康使用者效應及 informative censoring 影響。</p>
+<hr />
+<h2>4. 研究設計與方法</h2>
+<h3>PICO</h3>
+<ul>
+<li><strong>P</strong>：2018-12-01 至 2023-12-31，長庚門診首次使用研究 β-blocker 的成年高血壓患者；排除已知心衰竭、LVEF &lt;40%、無基線生命徵象、前90天使用不足、早期換藥、追蹤不足90天或失訪者。</li>
+<li><strong>I</strong>：Nebivolol。</li>
+<li><strong>C</strong>：
+<ul>
+<li>Carvedilol。</li>
+<li>「Other beta blockers」：bisoprolol、atenolol、metoprolol；其中 bisoprolol 74,224/78,823（94.2%），實質上主要是 nebivolol vs bisoprolol。</li>
+</ul>
+</li>
+<li><strong>O</strong>：
+<ul>
+<li>Primary：每6個月門診 SBP、DBP、心率變化。</li>
+<li>Secondary：AMI、stroke、ischemic/hemorrhagic stroke、全因死亡、心衰住院及 composite cardiovascular events。</li>
+</ul>
+</li>
+</ul>
+<h3>研究流程</h3>
+<p>Figure 1 可見：</p>
+<ul>
+<li>初始 149,510 人。</li>
+<li>排除：
+<ul>
+<li>&lt;18歲：50</li>
+<li>心衰或 LVEF &lt;40%：16,115</li>
+<li>無基線生命徵象：20,871</li>
+<li>「服藥順從性差」：6,262</li>
+<li>失訪：953</li>
+<li>追蹤 &lt;90天：3,610</li>
+<li>前90天換藥：1,707</li>
+</ul>
+</li>
+<li>排除合計 49,568，與 149,510−99,942 完全一致。</li>
+<li>最終原始組別人數：nebivolol 7,729；carvedilol 13,390；other 78,823，合計亦為 99,942。</li>
+<li>IPTW 後顯示的有效人數為 7,729.0、6,613.8、7,425.9。</li>
+</ul>
+<p>流程人數帳面一致，但 IPTW 後 carvedilol 與 other 組有效樣本大幅縮小，且文中未清楚解釋這些數字是 sum of weights、effective sample size，或採用了何種 normalization。這不是小問題：它暗示組間可能存在嚴重 overlap 不足或極端權重。</p>
+<h3>統計方法</h3>
+<ul>
+<li>三組 generalized boosted propensity model，interaction depth 3、最多10,000 trees。</li>
+<li>以 MASD &lt;0.1 判斷平衡。</li>
+<li>缺失資料用 expectation–maximization algorithm 填補。</li>
+<li>重複生命徵象：linear mixed-effects model，random intercept。</li>
+<li>全因死亡及 composite：Cox model。</li>
+<li>非致死事件：Fine–Gray competing-risk model。</li>
+<li>追蹤於事件、換藥、死亡或資料截止時終止。</li>
+<li>Cox proportional hazards 以 Schoenfeld residual 檢查，作者稱絕對相關值均 &lt;0.1。</li>
+<li>無研究註冊、預先 protocol、事前樣本數／power calculation 或 multiplicity correction。[文內：Methods]</li>
+</ul>
+<hr />
+<h2>5. 研究結果重點整理</h2>
+<h3>基線與追蹤</h3>
+<p>IPTW 後列出的共變項 MASD 皆 &lt;0.1，包括：</p>
+<ul>
+<li>年齡約62歲。</li>
+<li>男性約58%。</li>
+<li>糖尿病約30%。</li>
+<li>CAD 約24%–26%。</li>
+<li>CKD 約20%。</li>
+<li>基線 SBP 約153 mmHg、DBP 86 mmHg、心率86 bpm。</li>
+<li>其他降壓藥及代謝藥物表面平衡良好。（Table 1）</li>
+</ul>
+<p>但有兩個重要異常：</p>
+<ol>
+<li>
+<p><strong>Table 1 的平均追蹤為 2.31、2.38、2.38 年，正文卻反覆稱 mean follow-up 4.5 years。</strong><br />
+Figure 2 的4.5年只是最末量測時間點，不可能等同平均追蹤。研究期間採滾動入組至2023年底、資料截止2024年3月，平均4.5年在時間上亦不合理。這是明顯的報告錯誤。</p>
+</li>
+<li>
+<p>Follow-up duration 是治療後變項，作者明言未放進 PS，卻列入「baseline」Table 1 並報 MASD；這個平衡數字不具有基線交換性的意義。</p>
+</li>
+</ol>
+<h3>主要結果</h3>
+<table>
+<thead>
+<tr>
+<th>指標</th>
+<th style="text-align:right">Nebivolol</th>
+<th style="text-align:right">Carvedilol</th>
+<th style="text-align:right">Other BB</th>
+<th style="text-align:right">Nebivolol 約略組間差</th>
+<th>95% CI</th>
+<th>MCID</th>
+<th>分類與解讀</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>SBP change</td>
+<td style="text-align:right">−11.0</td>
+<td style="text-align:right">−6.8</td>
+<td style="text-align:right">−6.8 mmHg</td>
+<td style="text-align:right">−4.2 vs 兩組</td>
+<td>僅報各組 CI，未報組間 CI</td>
+<td>未預先指定；可用5 mmHg作保守參考值[推算]</td>
+<td>組間點估計接近但未明確超過5 mmHg；<strong>無法正式 CI+MCID 分類</strong></td>
+</tr>
+<tr>
+<td>DBP change</td>
+<td style="text-align:right">−8.1</td>
+<td style="text-align:right">−5.4</td>
+<td style="text-align:right">−5.8 mmHg</td>
+<td style="text-align:right">−2.7／−2.3</td>
+<td>未報組間 CI</td>
+<td>未預先指定</td>
+<td>可能具臨床意義，但缺組間 CI</td>
+</tr>
+<tr>
+<td>Heart-rate change</td>
+<td style="text-align:right">−7.3</td>
+<td style="text-align:right">−2.0</td>
+<td style="text-align:right">−3.6 bpm</td>
+<td style="text-align:right">−5.3／−3.7</td>
+<td>未報組間 CI</td>
+<td>未預先指定</td>
+<td>對需心率控制者可能有意義，但非臨床事件替代終點</td>
+</tr>
+</tbody>
+</table>
+<p>Figure 2 提供的重要補充：</p>
+<ul>
+<li>三個縱軸均從 baseline change=0 開始，沒有使用截斷軸誇大效果。</li>
+<li>差異在最早0.5年已形成；nebivolol 的心率下降之後維持約−7至−8 bpm，carvedilol 卻逐漸回到約−2 bpm。</li>
+<li>各組曲線在3–4.5年間明顯上下波動，較像不同時間點可用個案組成改變，不是平順的藥理 trajectory。</li>
+<li>可用生命徵象人數至第4年降為 nebivolol 1,119、carvedilol 932、other 1,197，分別只約初始加權人數的14.5%、14.1%、16.1%。4.5年點未列人數，應更少。</li>
+<li>因此曲線後段可能有嚴重 informative visit／attrition bias；complete-case analysis方向相同，並不能證明 missing-at-random 或排除此偏差。</li>
+</ul>
+<h3>臨床結果</h3>
+<p>Table 2 的 incidence 實際為每100 person-years，而非表下注記所稱 frequency percentage。</p>
+<table>
+<thead>
+<tr>
+<th>結果／比較</th>
+<th style="text-align:right">Nebivolol</th>
+<th style="text-align:right">對照</th>
+<th style="text-align:right">效果量</th>
+<th>95% CI</th>
+<th style="text-align:right">incidence-rate difference</th>
+<th>MCID[推算]</th>
+<th>CI+MCID分類</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>全因死亡 vs other</td>
+<td style="text-align:right">1.6 vs 2.2/100 PY</td>
+<td style="text-align:right">Other BB</td>
+<td style="text-align:right">HR 0.73</td>
+<td>0.63–0.86</td>
+<td style="text-align:right">−0.6/100 PY</td>
+<td>HR 0.90</td>
+<td>若因果成立，CI完全超過10%相對降低：<strong>Positive association</strong></td>
+</tr>
+<tr>
+<td>全因死亡 vs carvedilol</td>
+<td style="text-align:right">1.6 vs 2.1/100 PY</td>
+<td style="text-align:right">Carvedilol</td>
+<td style="text-align:right">HR 0.77</td>
+<td>0.66–0.91</td>
+<td style="text-align:right">−0.5/100 PY</td>
+<td>HR 0.90</td>
+<td>上界略跨0.90：<strong>Imprecise positive association</strong></td>
+</tr>
+<tr>
+<td>Composite vs other</td>
+<td style="text-align:right">4.5 vs 5.5/100 PY</td>
+<td style="text-align:right">Other BB</td>
+<td style="text-align:right">HR 0.81</td>
+<td>0.74–0.90</td>
+<td style="text-align:right">−1.0/100 PY</td>
+<td>HR 0.90</td>
+<td>位於MCID邊界；臨床意義可能存在，但因果可信度低</td>
+</tr>
+<tr>
+<td>Composite vs carvedilol</td>
+<td style="text-align:right">4.5 vs 5.1/100 PY</td>
+<td style="text-align:right">Carvedilol</td>
+<td style="text-align:right">HR 0.89</td>
+<td>0.80–0.98</td>
+<td style="text-align:right">−0.6/100 PY</td>
+<td>HR 0.90</td>
+<td>CI跨越MCID且接近null：<strong>Imprecise (+)</strong></td>
+</tr>
+<tr>
+<td>AMI vs other</td>
+<td style="text-align:right">0.4 vs 0.5/100 PY</td>
+<td style="text-align:right">Other BB</td>
+<td style="text-align:right">SHR 0.87</td>
+<td>0.62–1.21</td>
+<td style="text-align:right">−0.1/100 PY</td>
+<td>HR 0.90</td>
+<td><strong>Inconclusive</strong>，可容許重要利益或傷害</td>
+</tr>
+<tr>
+<td>Stroke vs other</td>
+<td style="text-align:right">1.0 vs 1.1/100 PY</td>
+<td style="text-align:right">Other BB</td>
+<td style="text-align:right">SHR 0.92</td>
+<td>0.74–1.13</td>
+<td style="text-align:right">−0.1/100 PY</td>
+<td>HR 0.90</td>
+<td><strong>Inconclusive</strong>，不是neutral</td>
+</tr>
+<tr>
+<td>HF hospitalization vs other</td>
+<td style="text-align:right">1.0 vs 1.0/100 PY</td>
+<td style="text-align:right">Other BB</td>
+<td style="text-align:right">SHR 1.01</td>
+<td>0.81–1.26</td>
+<td style="text-align:right">約0</td>
+<td>HR 0.90／1.10</td>
+<td><strong>Inconclusive</strong>，CI仍容許利益或傷害</td>
+</tr>
+</tbody>
+</table>
+<p>以上結果分類僅描述<strong>觀察到的關聯</strong>，不能自動升格為藥物的因果效果。</p>
+<h3>Figure 3 的額外訊息</h3>
+<ul>
+<li>全因死亡及 composite 曲線均在追蹤早期、約第一年內即開始分離。</li>
+<li>y軸從0起，沒有截斷軸誇大視覺差異。</li>
+<li>5年全因死亡 risk set 僅剩 nebivolol 227、carvedilol 536.6、other 653.8，約初始加權人數的2.9%、8.1%、8.8%。</li>
+<li>Composite 的5年 risk set 更只有204、500.6、598.6。</li>
+<li>因此曲線末端極不穩定，不應用5年尾端垂直差距推算可靠 NNT。</li>
+<li>圖中未呈現 confidence bands，也未交代後期 censoring 原因。</li>
+<li>Nebivolol 同時明顯降低<strong>非心血管死亡</strong>（vs other HR 0.75；vs carvedilol HR 0.75），但對 AMI、stroke、HF hospitalization 均未出現明確訊號。這種「非心血管死亡改善、個別心血管事件卻不改善」的結果型態，更像健康使用者／處方選擇偏差，而不是單純由較佳降壓造成的心血管保護。</li>
+</ul>
+<hr />
+<h2>6. 作者討論與評論</h2>
+<h3>作者主要訊息</h3>
+<p>作者主張 nebivolol：</p>
+<ul>
+<li>比 carvedilol 及其他 β-blocker 更能降低血壓與心率。</li>
+<li>與較低全因死亡及 composite cardiovascular events 有關。</li>
+<li>可能因 β₁-selectivity、NO-mediated vasodilation、抗氧化及較佳依從性而產生額外心血管保護。</li>
+<li>可考慮成為無心衰竭高血壓患者的 preferred beta blocker。[文內：Clinical Perspective、Discussion]</li>
+</ul>
+<h3>作者承認的限制</h3>
+<p>作者有提及：</p>
+<ul>
+<li>回溯性研究與 residual confounding。</li>
+<li>ICD 診斷、院外處方與共病誤分類。</li>
+<li>劑量及後續 titration 不標準。</li>
+<li>心衰患者不可外推。</li>
+<li>只有門診血壓，無 home/ambulatory BP。</li>
+<li>無病人耐受性與代謝結果。</li>
+<li>無長期 medication possession ratio。[文內：Limitations]</li>
+</ul>
+<h3>評估</h3>
+<p>限制段落方向正確，但避重就輕之處包括：</p>
+<ol>
+<li>未承認前90天存活／依從／不換藥條件造成的 selection及immortal-time問題。</li>
+<li>未討論 drug switching censoring 的 informative censoring。</li>
+<li>未提供 propensity overlap、權重分布、trimming及極端權重診斷。</li>
+<li>未處理醫師、院區、適應症及處方文化的群聚與未測混淆。</li>
+<li>未正視 51.5% 基線資料缺失及追蹤後段逾80%生命徵象不可用。</li>
+<li>未說明「mean follow-up 4.5年」與 Table 1 約2.3年的矛盾。</li>
+<li>未正視 composite 的差異主要伴隨死亡、尤其非心血管死亡，而非個別心血管事件。</li>
+<li>作者稱 carvedilol 25 mg/day「比隨機試驗高很多」，但同段引用的試驗劑量為12.5–25 mg <strong>bid</strong>，即25–50 mg/day；本文25 mg/day其實是範圍低端。這個論證在文內自相矛盾。</li>
+<li>Bisoprolol 中位數僅2.5 mg/day，低於作者所列RCT常用5–10 mg/day；因此 nebivolol 的差異仍可能部分來自 comparator underdosing。</li>
+</ol>
+<p>因此，「supporting its consideration as a preferred beta blocker」明顯超出資料可支持範圍。</p>
+<hr />
+<h2>7. 外部專業意見</h2>
+<p>[無法取得]——以本文完整題名、DOI、PMID及「editorial／commentary／comment」精確檢索，未發現 PubMed <code>Comment In</code> 紀錄或針對本文的同期 editorial/commentary DOI。</p>
+<p>因沒有找到相關評論 DOI，未執行 editorial 全文下載；目前僅有本文本身、資料庫頁面及一般二手摘要，不應把它們當成獨立專業評論。</p>
+<hr />
+<h2>8. 臨床建議</h2>
+<h3>可參考的情境</h3>
+<ul>
+<li>台灣大型醫療體系中、無明顯 HFrEF、確實需要 β-blocker 的高血壓患者。</li>
+<li>特別重視降低心率、希望 once-daily 用藥且沒有 nebivolol 禁忌時。</li>
+<li>用於產生「nebivolol可能具有較佳長期 hemodynamic control」的研究假說。</li>
+</ul>
+<h3>不宜直接套用</h3>
+<ul>
+<li>HFrEF、近期心衰住院或 LVEF &lt;40%。</li>
+<li>急性冠心症、心律不整、HFpEF 等 β-blocker 適應症不同者。</li>
+<li>Black population、兒童、孕婦、極高齡或其他醫療體系。</li>
+<li>以本文作為「換藥可降低死亡27%」的依據。</li>
+<li>以本文取代現行高血壓第一線藥物證據。</li>
+<li>要求完整安全性、生活品質或代謝比較的決策。</li>
+</ul>
+<h3>實務建議</h3>
+<ol>
+<li><strong>不要因本研究單獨把穩定患者從 carvedilol／bisoprolol 換成 nebivolol以降低死亡。</strong></li>
+<li>若原本就有選擇 β-blocker 的適應症，nebivolol可作為合理選項，但決策應依心率、血壓、共病、劑量、成本、耐受性與依從性，而非本文的死亡HR。</li>
+<li>換藥或加藥後應以 home／ambulatory BP、心率及副作用評估個人反應。</li>
+</ol>
+<p><strong>研究證據強度：弱。</strong><br />
+血壓與心率關聯尚有一定一致性，但長期死亡與 composite 結果高度容易受處方選擇、早期存活者篩選及informative censoring影響。</p>
+<hr />
+<h1>SKILL-A：觀察性研究批判性評讀</h1>
+<h2>A. 補充技術細節</h2>
+<h3>樣本數與統計規劃</h3>
+<ul>
+<li>無事前 power calculation；大型資料庫對常見終點可能 overpowered，可讓很小的差異達統計顯著。</li>
+<li>未預先註冊主要假說、主要 pairwise contrast、MCID 或 statistical analysis plan。</li>
+<li>Primary outcomes 實為三個生命徵象、三組多時點比較；另有多個死亡及非致死終點、三類臨床次組、六類生命徵象次組，未做 multiplicity correction。</li>
+</ul>
+<h3>IPTW</h3>
+<p>優點：</p>
+<ul>
+<li>使用 new-user design。</li>
+<li>PS納入大量臨床、藥物、生命徵象及檢驗資料。</li>
+<li>納入 index date，以部分控制 calendar-time差異。</li>
+<li>加權後已測共變項 MASD &lt;0.1。</li>
+</ul>
+<p>主要缺漏：</p>
+<ul>
+<li>沒有 propensity-score density／common-support圖。</li>
+<li>沒有報告 stabilized weights、權重均值、範圍、極端值。</li>
+<li>沒有 trimming／truncation規則。</li>
+<li>未清楚定義加權後 n 的意義。</li>
+<li>未報院區、醫師或處方適應症的平衡。</li>
+<li>MASD &lt;0.1只能證明<strong>已測且正確測量</strong>的共變項表面平衡；不能排除未測混淆。Propensity方法也不比傳統調整更能防止 unmeasured confounding。[參考: <code>jama_agoritsas_2017_ug_160001.md</code>「Propensity Analysis」節]</li>
+</ul>
+<h3>缺失資料</h3>
+<ul>
+<li>51,468/99,942（51.5%）有至少一項基線資料缺失。</li>
+<li>使用 EM algorithm，但未提供：
+<ul>
+<li>各變項缺失比例。</li>
+<li>分布假設。</li>
+<li>是否納入 outcome／censoring variables。</li>
+<li>標準誤是否反映填補不確定性。</li>
+<li>與 multiple imputation 的比較。</li>
+</ul>
+</li>
+<li>Complete cases 系統性有更多共病、較差檢驗及較多用藥，表示缺失明顯不是完全隨機。</li>
+<li>「三組缺失率相近」不等於缺失機制為 MAR；缺失仍可在每組內同時與預後相關。</li>
+</ul>
+<h3>Cox與追蹤</h3>
+<ul>
+<li>作者報 Schoenfeld residual 絕對相關值 &lt;0.1，支持未見明顯 proportional-hazards違反。</li>
+<li>但「相關很低」與正式 global PH test、圖形檢查並不完全等價。</li>
+<li>換藥時 censor，未做 inverse-probability-of-censoring weighting。</li>
+<li>未說明 IPTW 後 Cox／mixed model 是否使用 robust sandwich SE。</li>
+<li>未處理院區或醫師群聚。</li>
+</ul>
+<hr />
+<h2>B. 批判性評估</h2>
+<h3>B1. 假說與理論邏輯</h3>
+<h4>合理機轉</h4>
+<ol>
+<li>Nebivolol 的 β₁-selectivity與NO-mediated vasodilation可能改善血壓及心率。</li>
+<li>Once-daily療程可能較carvedilol BID有較佳依從性。</li>
+<li>其對血管僵硬與endothelial function的影響可作為血壓差異的機轉假說。</li>
+</ol>
+<h4>最可疑的敘事跳躍</h4>
+<ol>
+<li>
+<p><strong>血壓／心率改善 → 死亡因果利益</strong><br />
+個別AMI、stroke及HF住院均為inconclusive，死亡差異卻很大且包含非心血管死亡，缺乏一致的endpoint chain。</p>
+</li>
+<li>
+<p><strong>早期曲線分離 → NO與抗氧化保護</strong><br />
+Figure 3在第一年即分離，也可能是基線健康程度、frailty、適應症或依從性差異；本文未測NO、氧化壓力或血管僵硬。</p>
+</li>
+<li>
+<p><strong>carvedilol表現較差 → BID依從性</strong><br />
+研究沒有足夠的長期MPR資料，也未報各組換藥、停藥及處方領取率，不能用依從性作為已證實解釋。</p>
+</li>
+</ol>
+<h3>B2. 受試者與外推性</h3>
+<ul>
+<li><strong>台灣同體系、無已知HFrEF的門診患者：中等外推性。</strong></li>
+<li><strong>一般高血壓患者：低至中。</strong> 只有需使用β-blocker者，且基線約三分之一有心血管病，不能代表所有 uncomplicated hypertension。</li>
+<li><strong>心衰、心律不整或近期ACS：低。</strong> 研究排除部分HF，但可能殘留HFpEF或未編碼心衰；β-blocker適應症也未完全釐清。</li>
+<li><strong>其他族群／醫療制度：低。</strong> Nebivolol給付、醫師偏好、藥物供應及族群反應可能不同。</li>
+<li><strong>高齡、孕婦、兒童、Black population：無法外推。</strong></li>
+</ul>
+<h3>B3. 研究設計與偏差</h3>
+<h4>1. 前90天「保證存活且耐受」選樣</h4>
+<p>問題：入組後還須符合使用至少2個月、不換藥、追蹤≥90天及未失訪。</p>
+<p>文內證據：Figure 1及Patients段落。</p>
+<p>方向：排除早期死亡、早期副作用、早期無效及換藥者，形成 post-treatment selection／immortal eligibility period。若carvedilol或其他藥較常因適應症嚴重、低血壓或副作用而早停，留下的三組就不是原始new-user trial的可比族群。</p>
+<p>需要：以index date為time zero納入所有合格new users，採ITT-like策略；另以clone-censor-weight或IPCW估計持續治療策略。[參考: <code>hernanrobins_WhatIf_2jan25.md</code> 第3.6節「The target trial」及第8.4節「Selection bias and censoring」]</p>
+<h4>2. Confounding by indication／healthy-user bias</h4>
+<p>問題：nebivolol剛導入、原始使用者較年輕且共病較少；carvedilol／bisoprolol可能被用於subclinical HF、CAD、AF或較複雜患者。</p>
+<p>方向：大多會讓nebivolol看起來更好，尤其是全因與非心血管死亡。</p>
+<p>需要：更完整的適應症、frailty、功能狀態、社經、醫師／院區、既往住院、癌症嚴重度、用藥依從性與negative-control outcome；再加E-value或quantitative bias analysis。</p>
+<h4>3. 換藥時informative censoring</h4>
+<p>問題：血壓控制差、副作用、病況惡化或醫師判斷均會同時影響換藥及outcome。</p>
+<p>方向：無法預先確定；若carvedilol／other組高風險患者較常持續用藥、低風險或不耐受者換藥，可能誇大nebivolol優勢。</p>
+<p>需要：報告各組換藥率與原因、censoring model及IPCW；不能只在換藥時停止觀察。</p>
+<h3>B4. 測量與臨床實義</h3>
+<ul>
+<li>Office BP不是標準化24小時ABPM；未提供測量裝置、休息時間、測量次數或 cuff protocol。</li>
+<li>看診頻率會受病情及治療反應影響；「有量測」本身可能是informative。</li>
+<li>Linear mixed model只設random intercept，未交代random slope或相關結構，未必適合Figure 2高度非線性的trajectory。</li>
+<li>生命徵象變化可支持 hemodynamic association，但不能作為死亡利益的充分surrogate。</li>
+<li>就算SBP組間約4.2 mmHg差異為真，個人層面效益仍須與症狀、bradycardia、orthostasis、性功能及代謝副作用一起評估；本文完全缺乏這些資料。</li>
+</ul>
+<hr />
+<h2>C. 統計與資料完整性</h2>
+<h3>C1. CI＋MCID總結</h3>
+<ul>
+<li>文內沒有預先指定 MCID。</li>
+<li>血壓與心率只報各組內變化CI，未報<strong>組間contrast的effect estimate與CI</strong>，無法依CI相對MCID正式分類。</li>
+<li>全因死亡及composite的HR具統計顯著性，但這是觀察性association；CI再窄也不能修復未測混淆。</li>
+<li>AMI、stroke、HF住院等CI跨越null及合理臨床利益／傷害界線，應稱為<strong>Inconclusive</strong>，不能稱為「沒有差異」。</li>
+<li>不適合做Bayesian補充：主要不確定性不是抽樣誤差或p值臨界，而是結構性偏差。</li>
+</ul>
+<h3>C2. Underpowered／Winner’s Curse</h3>
+<ul>
+<li>整體樣本很大，死亡及composite不是典型underpowered positive。</li>
+<li>個別AMI、stroke、HF住院的CI仍寬，對臨床有意義的利益及傷害均未排除，屬於事件數不足或有效樣本下降造成的inconclusive。</li>
+<li>最大風險不是Winner’s Curse，而是<strong>大樣本產生極窄CI，讓殘餘混淆的biased estimate看起來非常精確</strong>。</li>
+</ul>
+<h3>C3. 報告及統計紅旗</h3>
+<ol>
+<li>「平均追蹤4.5年」與Table 1約2.3年直接矛盾。</li>
+<li>IPTW後有效樣本大幅縮小，卻無overlap／weight診斷。</li>
+<li>51.5%有缺失，EM假設與標準誤處理不明。</li>
+<li>前90天依從、不換藥、追蹤達90天屬治療後選樣。</li>
+<li>換藥censor未使用IPCW。</li>
+<li>三組、多終點、多時間點、多次組，無multiplicity correction。</li>
+<li>血壓／心率缺少pairwise difference CI及預先MCID。</li>
+<li>未說明加權後模型是否使用robust variance。</li>
+<li>未處理醫師、院區群聚。</li>
+<li>Composite含all-cause death，卻稱 cardiovascular events；組成事件的臨床重要性不等。</li>
+<li>表下注記稱frequency percentage，但實際是每100 person-years。</li>
+<li>Figure 3尾端risk set銳減且無confidence band。</li>
+<li>資料、程式碼與模型不能分享，重現性低。</li>
+<li>MASD在文內被稱maximum absolute standardized difference，表下注記卻寫mean absolute SD，定義不一致。</li>
+</ol>
+<hr />
+<h2>D. 次組分析</h2>
+<h3>生命徵象次組</h3>
+<p>分層：</p>
+<ul>
+<li>SBP ≥／&lt;160 mmHg。</li>
+<li>DBP ≥／&lt;100 mmHg。</li>
+<li>HR ≥／&lt;100 bpm。</li>
+</ul>
+<p>評估：</p>
+<ol>
+<li>文中僅稱結果一致，未在可見正文提供各次組interaction p-value。</li>
+<li>以baseline outcome二分可能引入regression-to-the-mean。</li>
+<li>Cut-off有臨床直覺，但缺乏預先註冊證據。</li>
+<li>Supplement圖未完整提供於本次可視頁面，無法核對effect size與CI。</li>
+</ol>
+<p><strong>可信度：低，僅探索性。</strong></p>
+<h3>Composite次組</h3>
+<p>分層：CAD、diabetes、CKD。</p>
+<ul>
+<li>作者報沒有顯著interaction。</li>
+<li>這只能說未偵測到heterogeneity，不能證明三次組效果完全相同。</li>
+<li>未見各次組effect estimate、CI、事件數及interaction p值，無法評估precision。</li>
+<li>生物合理性存在，但沒有預先註冊資訊。</li>
+</ul>
+<p><strong>可信度：低至中；最多支持未見明顯異質性的探索性結論。</strong></p>
+<hr />
+<h2>E. 紅旗清單</h2>
+<ul>
+<li>90天存活／依從／不換藥條件造成post-treatment selection。</li>
+<li>重要confounding by indication未解。</li>
+<li>非心血管死亡顯著下降，個別心血管事件卻皆inconclusive。</li>
+<li>IPTW overlap與極端權重完全未報。</li>
+<li>51.5%缺失資料，卻把complete-case方向一致當成填補正確的證明。</li>
+<li>Figure 2與3後期可用人數急遽下降。</li>
+<li>「平均追蹤4.5年」明顯錯誤。</li>
+<li>Comparator劑量不等價；bisoprolol可能underdosed。</li>
+<li>Carvedilol劑量論證與作者自己引用的RCT範圍矛盾。</li>
+<li>無長期adherence、安全性及病人報告結果。</li>
+<li>「preferred beta blocker」為超越資料的臨床敘事。</li>
+</ul>
+<hr />
+<h2>F. 反向解釋</h2>
+<ol>
+<li>
+<p><strong>較健康的患者較常被開nebivolol</strong><br />
+支持：加權前較年輕、共病較少；非心血管死亡亦降低。<br />
+反對：大量已測共變項加權後平衡。<br />
+判讀：仍是最有力替代解釋，因frailty、適應症及醫師判斷未測。</p>
+</li>
+<li>
+<p><strong>劑量與治療版本差異，而非藥物分子本身</strong><br />
+支持：bisoprolol 2.5 mg偏低、metoprolol約23.8 mg極低；other組混合三種藥。<br />
+反對：nebivolol也多為5 mg低端劑量。<br />
+判讀：至少足以破壞「各藥理等效劑量直接比較」的假設。</p>
+</li>
+<li>
+<p><strong>持續服藥與換藥機制造成survivor/adherer bias</strong><br />
+支持：必須前90天使用足夠且不換藥；後續換藥即censor。<br />
+反對：三組使用相同規則。<br />
+判讀：相同規則不代表相同偏差，因停換藥機率可能與藥物、病況及outcome不同。</p>
+</li>
+<li>
+<p><strong>看診與生命徵象量測的選擇性</strong><br />
+支持：第4年生命徵象可用人數僅約14%–16%，曲線後期波動。<br />
+反對：complete-case方向一致。<br />
+判讀：complete-case本身是選擇性更強的族群，不能排除此偏差。</p>
+</li>
+</ol>
+<hr />
+<h2>G. Target-trial與因果推論裁決</h2>
+<p>理想 target trial 應為：</p>
+<ul>
+<li>同一時間點納入所有需β-blocker的高血壓患者。</li>
+<li>隨機分派nebivolol、carvedilol、bisoprolol的等效治療策略。</li>
+<li>使用明確titration target、依從性監測、ABPM及標準化安全性評估。</li>
+<li>以ITT為主，另做per-protocol分析。</li>
+<li>預先指定血壓差、MACE與死亡MCID。</li>
+<li>完整追蹤停藥、換藥、副作用及後續治療。</li>
+</ul>
+<p>本文對應情形：</p>
+<table>
+<thead>
+<tr>
+<th>因果條件</th>
+<th>評估</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Exchangeability</td>
+<td>不充分；只能平衡已測變項，處方適應症、frailty、醫師偏好及依從性仍未測</td>
+</tr>
+<tr>
+<td>Positivity</td>
+<td>無法判定；有效樣本大幅下降，但未報PS overlap與極端權重</td>
+</tr>
+<tr>
+<td>Consistency</td>
+<td>不充分；other組混合bisoprolol、atenolol、metoprolol及不同劑量，治療版本不一致</td>
+</tr>
+<tr>
+<td>Temporality</td>
+<td>大致成立，但time zero後再以90天資訊決定納入，破壞理想target-trial對齊</td>
+</tr>
+<tr>
+<td>Censoring exchangeability</td>
+<td>不可信；換藥與失訪可能與治療反應和風險相關，無IPCW</td>
+</tr>
+</tbody>
+</table>
+<p>觀察性資料要推估因果效果，至少需明確定義eligibility、治療策略、time zero、追蹤、outcome及causal contrast，並盡量模擬同一target trial。[參考: <code>hernanrobins_WhatIf_2jan25.md</code> 第3.6節] 本文在前90天納入條件及換藥censoring上未完成這項對齊。</p>
+<hr />
+<h1>最終裁決</h1>
+<ul>
+<li><strong>整體可信度：低。</strong></li>
+<li><strong>對血壓／心率關聯的可信度：中低。</strong></li>
+<li><strong>對死亡／MACE因果利益的可信度：低。</strong></li>
+<li><strong>最合理用途</strong>：產生需由隨機試驗或更嚴格target-trial emulation驗證的假說。</li>
+<li><strong>不建議用途</strong>：將HR 0.73解讀為nebivolol可降低27%死亡，或據此全面改變β-blocker選擇。</li>
+</ul>
+<p>最需要的三項改進：</p>
+<ol>
+<li>重新以index date為time zero納入所有new users，處理90天adherence與switching所造成的selection，並加入IPCW。</li>
+<li>公開propensity overlap、weights、trimming、有效樣本、院區／醫師效應及未測混淆敏感度分析。</li>
+<li>以等效劑量分別比較nebivolol、bisoprolol、carvedilol，提供pairwise BP差異CI、ABPM、安全性及預先指定的臨床終點。</li>
+</ol>
+<p><strong>一句話結論：</strong><br />
+Nebivolol使用者結果較佳，但選藥與存活者偏差足以解釋多數死亡優勢，尚不足以改變處方。</p>
+
+<footer class="appraisal-meta">評讀資訊：模型：gpt-5.6-sol (codex)  ·  route：observational  ·  產出時間：2026-07-12 15:52 CST</footer>
+</main>
+</body>
+</html>
