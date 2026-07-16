@@ -1870,7 +1870,12 @@ def _try_lww_direct(doi: str) -> bytes | None:
         r1 = session.get(f"https://doi.org/{doi}", timeout=TIMEOUT, allow_redirects=True)
         r1.raise_for_status()
         if "journals.lww.com" not in r1.url:
-            return None  # not an LWW article
+            # Since ~2026-07 MSSE DOIs redirect to www.ovid.com/jnls/acsm-msse/...
+            # instead of journals.lww.com, and the article PDF is gated behind an
+            # entitled (logged-in) Ovid session — an unauthenticated curl_cffi hit
+            # gets isEntitledContentRequest=false and bounces to /abstract/. This
+            # HTTP-only path can no longer fetch MSSE; use the browser helper.
+            return None  # not journals.lww.com (e.g. ovid.com) — see caller log
 
         article_url = r1.url
         m = re.search(r'downloadpdf\.aspx\?[^"\']*an=([\w-]+)', r1.text)
@@ -2803,7 +2808,13 @@ def download_pdf(article: dict, out_dir: Path = PDF_DIR) -> Path | None:
             dest.write_bytes(content)
             print(f"  [OK] {dest.name} ({len(content)//1024} KB)")
             return dest
-        _log_failure(article, "MSSE PDF not found via LWW direct")
+        _log_failure(
+            article,
+            "MSSE PDF not found — DOI now redirects to ovid.com behind "
+            "institutional login (curl_cffi is not entitled). Use the browser "
+            "helper (logged-in Ovid + local receiver POST); see "
+            "project_msse_ovid_download memory.",
+        )
         print(f"  [FAIL] {doi or article.get('title', '')} (MSSE)")
         return None
 
@@ -3001,7 +3012,13 @@ def download_articles(articles: list[dict], out_dir: Path = PDF_DIR) -> dict[str
                 print(f"  [OK] {dest.name} ({len(content)//1024} KB)")
                 results[pmid] = dest
             else:
-                _log_failure(article, "MSSE PDF not found via LWW direct")
+                _log_failure(
+            article,
+            "MSSE PDF not found — DOI now redirects to ovid.com behind "
+            "institutional login (curl_cffi is not entitled). Use the browser "
+            "helper (logged-in Ovid + local receiver POST); see "
+            "project_msse_ovid_download memory.",
+        )
                 print(f"  [FAIL] {doi or article.get('title', '')} (MSSE)")
                 results[pmid] = None
             time.sleep(1)

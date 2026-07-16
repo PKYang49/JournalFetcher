@@ -2,8 +2,9 @@
 
 Primary backend for the weekly pipeline:
 - summaries:  claude -p with Haiku 4.5
-- appraisals: claude -p with Opus 4.6 (same per-token price as 4.7 but uses
-  the older tokenizer, ~15-25% fewer tokens for the same medical text)
+- appraisals: claude -p with Opus 4.8 (latest Opus; same per-token price as
+  4.6/4.7 but uses the 4.7-era tokenizer, ~1x-1.35x tokens for the same
+  Chinese/medical text vs 4.6)
 
 Fallback: when claude reports a rate-limit / credit-exhausted error the
 caller switches to the existing `codex exec` path for the rest of this
@@ -37,7 +38,7 @@ CLAUDE_SUMMARY_MODEL_ENV = "JOURNAL_FETCHER_CLAUDE_SUMMARY_MODEL"
 CLAUDE_APPRAISAL_MODEL_ENV = "JOURNAL_FETCHER_CLAUDE_APPRAISAL_MODEL"
 
 FALLBACK_CLAUDE_SUMMARY_MODEL = "claude-haiku-4-5"
-FALLBACK_CLAUDE_APPRAISAL_MODEL = "claude-opus-4-6"
+FALLBACK_CLAUDE_APPRAISAL_MODEL = "claude-opus-4-8"
 CLAUDE_RESET_TIME_RE = re.compile(
     r"\bresets?\s+(\d{1,2})(?::(\d{2}))?\s*(am|pm)\b",
     re.IGNORECASE,

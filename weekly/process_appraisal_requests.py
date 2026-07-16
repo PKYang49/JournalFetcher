@@ -28,7 +28,11 @@ from urllib.parse import parse_qs, urlparse
 import requests
 from dotenv import load_dotenv
 
-from weekly.appraisal_status import RequestStatus, TERMINAL_APPRAISAL_FAILURES
+from weekly.appraisal_status import (
+    AppraisalStatus,
+    RequestStatus,
+    TERMINAL_APPRAISAL_FAILURES,
+)
 
 ROOT = Path(__file__).resolve().parent.parent
 DATA_DIR = ROOT / "data"
@@ -61,6 +65,24 @@ APPRAISAL_ERROR_RETRY_MAX = int(
 )
 # appraise_selected statuses that a re-run cannot recover from live in
 # weekly.appraisal_status.TERMINAL_APPRAISAL_FAILURES (imported above).
+
+# MSSE (and any other Ovid-hosted, login-gated journal) fails PDF download not
+# because the article is permanently unavailable but because it now lives on
+# ovid.com behind institutional login (see project_msse_ovid_download memory).
+# A later re-run — after the article is formally published (its /pdf/ opens) or
+# after a browser-assisted fetch — can succeed, so a PDF_FAILED for these is
+# NOT terminal: defer daily instead, capped so a genuinely dead request stops.
+OVID_GATED_JOURNALS = frozenset(
+    j.strip()
+    for j in os.getenv("JOURNAL_FETCHER_OVID_GATED_JOURNALS", "MSSE").split(",")
+    if j.strip()
+)
+OVID_AUTH_RETRY_WAIT_SECONDS = int(
+    os.getenv("JOURNAL_FETCHER_OVID_AUTH_RETRY_WAIT", str(24 * 60 * 60))
+)
+OVID_AUTH_RETRY_MAX = int(
+    os.getenv("JOURNAL_FETCHER_OVID_AUTH_RETRY_MAX", "14")
+)
 
 
 def _normalize_doi(value: str) -> str:
@@ -435,6 +457,7 @@ def _process_one(
     no_push: bool,
     no_discord: bool,
     prev_error_retries: int = 0,
+    prev_ovid_deferrals: int = 0,
 ) -> bool:
     from modules import claude_exec
     from modules.downloader import download_articles
@@ -483,6 +506,32 @@ def _process_one(
     if not report_path:
         appraisal_status = str(article.get("appraisal_status", "")).strip()
         if appraisal_status in TERMINAL_APPRAISAL_FAILURES:
+            journal = str(
+                row.get("journal") or article.get("journal_key") or ""
+            ).strip()
+            # Ovid login-gated PDF failure is retryable, not terminal: defer daily
+            # until the article's /pdf/ opens (published) or a browser fetch runs.
+            if (
+                appraisal_status == AppraisalStatus.PDF_FAILED
+                and journal in OVID_GATED_JOURNALS
+            ):
+                deferrals = prev_ovid_deferrals + 1
+                if deferrals <= OVID_AUTH_RETRY_MAX:
+                    _append_state(
+                        {"week": week, "identifier": identifier, **row,
+                         "status": RequestStatus.DEFERRED,
+                         "retry_after": time.time() + OVID_AUTH_RETRY_WAIT_SECONDS,
+                         "reason": "ovid_auth_required",
+                         "ovid_deferrals": deferrals}
+                    )
+                    print(
+                        f"[appraisal-request] deferred {identifier}: {journal} PDF "
+                        f"login-gated on ovid.com (attempt {deferrals}/"
+                        f"{OVID_AUTH_RETRY_MAX}); retry in "
+                        f"~{OVID_AUTH_RETRY_WAIT_SECONDS / 3600:.0f}h"
+                    )
+                    return False
+                # cap reached — fall through to terminal failure below
             _append_state(
                 {"week": week, "identifier": identifier, **row,
                  "status": RequestStatus.FAILED, "reason": appraisal_status}
@@ -641,9 +690,14 @@ def process_requests(
                 prev_error_retries = int((prev_record or {}).get("error_retries", 0))
             except (TypeError, ValueError):
                 prev_error_retries = 0
+            try:
+                prev_ovid_deferrals = int((prev_record or {}).get("ovid_deferrals", 0))
+            except (TypeError, ValueError):
+                prev_ovid_deferrals = 0
             if _process_one(
                 row, article, force, no_push, no_discord,
                 prev_error_retries=prev_error_retries,
+                prev_ovid_deferrals=prev_ovid_deferrals,
             ):
                 processed += 1
         if limit and processed >= limit:
