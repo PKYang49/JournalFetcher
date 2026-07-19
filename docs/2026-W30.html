@@ -1,0 +1,3455 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>期刊週報 2026-W30</title>
+<style>
+  :root {
+    --bg: #fafafa;
+    --card: #ffffff;
+    --text: #1a1a1a;
+    --muted: #6b6b6b;
+    --border: #e5e5e5;
+    --accent: #0b5fff;
+    --tag-bg: #eef3ff;
+    --tag-text: #0b5fff;
+  }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang TC",
+      "Microsoft JhengHei", sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    margin: 0;
+    padding: 24px 16px 64px;
+    line-height: 1.65;
+  }
+  .container { max-width: 760px; margin: 0 auto; }
+  header { margin-bottom: 32px; }
+  h1 { margin: 0 0 8px; font-size: 28px; font-weight: 700; }
+  .meta { color: var(--muted); font-size: 14px; }
+  .nav { margin-top: 12px; }
+  .nav a { color: var(--accent); text-decoration: none; font-size: 14px; }
+  .nav a:hover { text-decoration: underline; }
+  .summary-bar {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 12px 16px;
+    margin-bottom: 24px;
+    font-size: 14px;
+    color: var(--muted);
+  }
+  .summary-bar strong { color: var(--text); }
+  .selected-section {
+    margin: 0 0 28px;
+  }
+  .article-section {
+    margin-top: 30px;
+  }
+  .section-title {
+    font-size: 20px;
+    margin: 0 0 12px;
+  }
+  .selected-card {
+    border-left: 4px solid var(--accent);
+  }
+  .appraised-card {
+    border-left-color: #1d7a44;
+  }
+  @media (prefers-color-scheme: dark) {
+    .appraised-card { border-left-color: #7fd0a3; }
+  }
+  .selection-reason {
+    color: var(--text);
+    font-size: 14px;
+    margin: 8px 0 0;
+  }
+  .selection-meta {
+    color: var(--muted);
+    font-size: 13px;
+    margin-top: 8px;
+  }
+  article {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 18px 20px;
+    margin-bottom: 14px;
+  }
+  .tag {
+    display: inline-block;
+    background: var(--tag-bg);
+    color: var(--tag-text);
+    padding: 2px 10px;
+    border-radius: 12px;
+    font-size: 12px;
+    font-weight: 600;
+    margin-right: 6px;
+    margin-bottom: 8px;
+  }
+  .pub-type {
+    background: #f0f0f0;
+    color: #555;
+  }
+  .pub-type.type-trial      { background: #e6f7ec; color: #1d7a44; }
+  .pub-type.type-evidence   { background: #f3eaff; color: #6d28d9; }
+  .pub-type.type-guideline  { background: #ffe8d6; color: #b85c00; }
+  .pub-type.type-review     { background: #e7f0ff; color: #0b5fff; }
+  .pub-type.type-editorial  { background: #fff4e6; color: #b85c00; }
+  .pub-type.type-original   { background: #fff8e1; color: #8a6d00; }
+  .pub-type.type-other      { background: #f0f0f0; color: #666; }
+  @media (prefers-color-scheme: dark) {
+    .pub-type.type-trial      { background: #1f3a2c; color: #7fd0a3; }
+    .pub-type.type-evidence   { background: #3a2f4a; color: #c9a8ff; }
+    .pub-type.type-guideline  { background: #4a3320; color: #ffb878; }
+    .pub-type.type-review     { background: #1f3050; color: #9ec0ff; }
+    .pub-type.type-editorial  { background: #4a3320; color: #ffb878; }
+    .pub-type.type-original   { background: #3d3520; color: #e8c878; }
+    .pub-type.type-other      { background: #333; color: #aaa; }
+  }
+  h2 {
+    font-size: 17px;
+    font-weight: 600;
+    margin: 4px 0 8px;
+    line-height: 1.4;
+  }
+  .authors { color: var(--muted); font-size: 13px; margin-bottom: 10px; }
+  .summary-block { margin: 12px 0; }
+  .section-label {
+    color: var(--muted);
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0;
+    margin-bottom: 3px;
+  }
+  .summary { font-size: 15px; margin: 0; }
+  .summary.error { color: #b00; font-style: italic; }
+  .commentary {
+    border-left: 3px solid var(--accent);
+    color: var(--text);
+    font-size: 15px;
+    margin-top: 12px;
+    padding-left: 12px;
+  }
+  .commentary p { margin: 0; }
+  .links { font-size: 13px; margin-top: 10px; }
+  .links a { color: var(--accent); text-decoration: none; margin-right: 14px; }
+  .links a:hover { text-decoration: underline; }
+  .copy-btn {
+    appearance: none;
+    background: transparent;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    color: var(--accent);
+    cursor: pointer;
+    font: inherit;
+    font-size: 13px;
+    margin: 4px 8px 0 0;
+    padding: 3px 8px;
+  }
+  .copy-btn:hover { border-color: var(--accent); }
+  .copy-btn.copied {
+    background: var(--tag-bg);
+    border-color: var(--accent);
+  }
+  .request-btn {
+    appearance: none;
+    background: var(--accent);
+    border: 1px solid var(--accent);
+    border-radius: 6px;
+    color: #fff;
+    cursor: pointer;
+    display: inline-block;
+    font: inherit;
+    font-size: 13px;
+    margin: 4px 8px 0 0;
+    padding: 3px 10px;
+    text-decoration: none;
+  }
+  .request-btn:hover { filter: brightness(0.95); }
+  .links a.request-btn {
+    color: #fff;
+    text-decoration: none;
+  }
+  .links a.request-btn:hover {
+    color: #fff;
+    text-decoration: none;
+  }
+  .request-btn.sent,
+  .request-btn:disabled {
+    background: transparent;
+    color: var(--muted);
+    cursor: default;
+    filter: none;
+  }
+  .request-msg {
+    color: var(--accent);
+    font-size: 13px;
+    margin-left: 2px;
+  }
+  .feedback {
+    margin-top: 12px;
+    padding-top: 10px;
+    border-top: 1px dashed var(--border);
+    font-size: 13px;
+    color: var(--muted);
+  }
+  .fb-q { margin-right: 6px; }
+  .fb-btn {
+    appearance: none;
+    background: transparent;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    color: var(--text);
+    cursor: pointer;
+    font: inherit;
+    font-size: 13px;
+    margin: 4px 6px 0 0;
+    padding: 3px 10px;
+  }
+  .fb-btn:hover { border-color: var(--accent); }
+  .fb-btn.active-up { background: #e6f7ec; border-color: #1d7a44; color: #1d7a44; }
+  .fb-btn.active-down { background: #fdecec; border-color: #b00; color: #b00; }
+  .fb-msg { margin-left: 6px; color: var(--accent); }
+  @media (prefers-color-scheme: dark) {
+    .fb-btn.active-up { background: #1f3a2c; color: #7fd0a3; }
+    .fb-btn.active-down { background: #3a2020; color: #ff9b9b; }
+  }
+  footer {
+    margin-top: 40px;
+    padding-top: 20px;
+    border-top: 1px solid var(--border);
+    color: var(--muted);
+    font-size: 13px;
+    text-align: center;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #1a1a1a;
+      --card: #242424;
+      --text: #e8e8e8;
+      --muted: #999;
+      --border: #333;
+      --accent: #6ea8ff;
+      --tag-bg: #2a3a5a;
+      --tag-text: #a8c4ff;
+    }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+  <header>
+    <h1>📚 期刊週報 2026-W30</h1>
+    <div class="meta">2026-07-19 14:25 UTC+08:00 · 共 63 篇</div>
+    <div class="nav"><a href="index.html">← 回到週報索引</a></div>
+  </header>
+
+  <div class="summary-bar">
+    
+      <strong>NEJM</strong> 9 · 
+    
+      <strong>Lancet</strong> 9 · 
+    
+      <strong>JAMA</strong> 3 · 
+    
+      <strong>JACC</strong> 6 · 
+    
+      <strong>EHJ</strong> 10 · 
+    
+      <strong>Circulation</strong> 6 · 
+    
+      <strong>BJSM</strong> 1 · 
+    
+      <strong>SportsMed</strong> 1 · 
+    
+      <strong>JAP</strong> 10 · 
+    
+      <strong>JAMACardio</strong> 2 · 
+    
+      <strong>Heart</strong> 6
+    
+  </div>
+
+  
+
+  
+
+  
+  <section class="selected-section">
+    <h2 class="section-title">本週精選評讀</h2>
+    
+    
+  <article class="selected-card">
+    <span class="tag">JACC</span>
+    <span class="tag pub-type type-original">Original</span>
+    <h2>Sudden Cardiac Death Due to Myocardial Infarction With Obstructive and Nonobstructive Coronary Arteries.</h2>
+    <div class="authors">
+      Nakasuka Kosuke, Kewcharoen Jakrin, Salazar James W 等 6 人 · 2026
+    </div>
+    
+    <p class="selection-reason">高起搏負荷且心功能脆弱患者的隨機試驗，直接比較LBBP與RVP，36個月複合臨床終點明顯下降，且主要由PICM減少驅動，同時有一致的超音波與功能改善。這非常貼近臨床裝置選擇，對生理性起搏策略有實際改變決策的潛力。</p>
+    
+    
+    <div class="selection-meta">
+      cardiology, device, pacing, RCT, heart_failure
+       · 
+      appraisal: done
+    </div>
+    
+    
+    <div class="links">
+      <a href="appraisals/2026-W30/42024048_Nakasuka_2026_appraisal.html">評讀結果</a>
+      <a href="https://doi.org/10.1016/j.jacc.2026.01.030" target="_blank" rel="noopener">下載連結</a>
+      
+      <button class="copy-btn" type="button" data-copy="10.1016/j.jacc.2026.01.030">複製 DOI</button>
+      <button class="copy-btn" type="button" data-copy="python dlbydoi.py 10.1016/j.jacc.2026.01.030">複製下載指令</button>
+      
+    </div>
+    
+    <div class="feedback"
+         data-pmid="42024048"
+         data-doi="10.1016/j.jacc.2026.01.030"
+         data-journal="JACC"
+         data-title="Sudden Cardiac Death Due to Myocardial Infarction With Obstructive and Nonobstructive Coronary Arteries.">
+      <span class="fb-q">這篇選得合你意嗎?</span>
+      <button class="fb-btn" type="button" data-verdict="up">👍 有興趣</button>
+      <button class="fb-btn" type="button" data-verdict="down">👎 沒興趣</button>
+      <span class="fb-msg"></span>
+    </div>
+    
+  </article>
+  
+    
+    
+  <article class="selected-card">
+    <span class="tag">Lancet</span>
+    <span class="tag pub-type type-original">Original</span>
+    <h2>1-month versus 12-month dual antithrombotic therapy after percutaneous coronary intervention in patients with atrial fibrillation (OPTIMA-AF): a multicentre, open-label, hybrid non-inferiority and superiority, randomised, controlled trial.</h2>
+    <div class="authors">
+      Sotomi Yohei, Kozuma Ken, Higuchi Yoshiharu 等 24 人 · 2026
+    </div>
+    
+    <p class="selection-reason">AF合併PCI是高頻且高風險情境，這篇隨機試驗直接回答雙重抗栓治療要維持多久。1個月雙重治療在死亡或血栓事件上非劣於12個月，且出血更少，對抗栓策略去強化、縮短療程非常有臨床價值，也和你過去對AF與抗血小板相關文章的興趣高度一致。</p>
+    
+    
+    <div class="selection-meta">
+      cardiology, atrial_fibrillation, PCI, antithrombotic, RCT
+       · 
+      appraisal: done
+    </div>
+    
+    
+    <div class="links">
+      <a href="appraisals/2026-W30/42456692_Sotomi_2026_appraisal.html">評讀結果</a>
+      <a href="https://doi.org/10.1016/S0140-6736(26)00665-3" target="_blank" rel="noopener">下載連結</a>
+      
+      <button class="copy-btn" type="button" data-copy="10.1016/S0140-6736(26)00665-3">複製 DOI</button>
+      <button class="copy-btn" type="button" data-copy="python dlbydoi.py 10.1016/S0140-6736(26)00665-3">複製下載指令</button>
+      
+    </div>
+    
+    <div class="feedback"
+         data-pmid="42456692"
+         data-doi="10.1016/S0140-6736(26)00665-3"
+         data-journal="Lancet"
+         data-title="1-month versus 12-month dual antithrombotic therapy after percutaneous coronary intervention in patients with atrial fibrillation (OPTIMA-AF): a multicentre, open-label, hybrid non-inferiority and superiority, randomised, controlled trial.">
+      <span class="fb-q">這篇選得合你意嗎?</span>
+      <button class="fb-btn" type="button" data-verdict="up">👍 有興趣</button>
+      <button class="fb-btn" type="button" data-verdict="down">👎 沒興趣</button>
+      <span class="fb-msg"></span>
+    </div>
+    
+  </article>
+  
+    
+    
+  <article class="selected-card">
+    <span class="tag">NEJM</span>
+    <span class="tag pub-type type-trial">RCT</span>
+    <h2>Extended Dual Antiplatelet Therapy for Multivessel Coronary Artery Disease.</h2>
+    <div class="authors">
+      Tian Jinwei, Wang Zhuozhong, Wang Yan 等 31 人 · 2026
+    </div>
+    
+    <p class="selection-reason">多血管CAD支架後穩定患者是否該延長DAPT，是非常實務的冠心病問題。這篇大型RCT顯示延長12個月DAPT可降低心血管死亡、MI或中風，而出血未明顯增加。雖然絕對效益不算巨大，但對患者分層與療程長度判斷有直接影響，也呼應你近期對DAPT長度與P2Y12策略的持續興趣。</p>
+    
+    
+    <div class="selection-meta">
+      cardiology, coronary_artery_disease, DAPT, PCI, RCT
+       · 
+      appraisal: done
+    </div>
+    
+    
+    <div class="links">
+      <a href="appraisals/2026-W30/42456136_Tian_2026_appraisal.html">評讀結果</a>
+      <a href="https://doi.org/10.1056/NEJMoa2517588" target="_blank" rel="noopener">下載連結</a>
+      
+      <button class="copy-btn" type="button" data-copy="10.1056/NEJMoa2517588">複製 DOI</button>
+      <button class="copy-btn" type="button" data-copy="python dlbydoi.py 10.1056/NEJMoa2517588">複製下載指令</button>
+      
+    </div>
+    
+    <div class="feedback"
+         data-pmid="42456136"
+         data-doi="10.1056/NEJMoa2517588"
+         data-journal="NEJM"
+         data-title="Extended Dual Antiplatelet Therapy for Multivessel Coronary Artery Disease.">
+      <span class="fb-q">這篇選得合你意嗎?</span>
+      <button class="fb-btn" type="button" data-verdict="up">👍 有興趣</button>
+      <button class="fb-btn" type="button" data-verdict="down">👎 沒興趣</button>
+      <span class="fb-msg"></span>
+    </div>
+    
+  </article>
+  
+    
+    
+  <article class="selected-card">
+    <span class="tag">JACC</span>
+    <span class="tag pub-type type-trial">RCT</span>
+    <h2>Effectiveness and Safety of Early Rhythm Control in Patients With Atrial Fibrillation and Chronic Kidney Disease.</h2>
+    <div class="authors">
+      Schenker Niklas, Borof Katrin, Goette Andreas 等 28 人 · 2026
+    </div>
+    
+    <p class="selection-reason">AF合併CKD是臨床上常見但治療顧慮很多的族群。這篇來自EAST-AFNET 4的預先指定次分析，顯示早期節律控制在CKD與非CKD患者都能有效且安全地降低重大心血管事件。雖非獨立新RCT，但臨床可轉譯性很高，足以影響AF合併腎病患者的治療門檻。</p>
+    
+    
+    <div class="selection-meta">
+      cardiology, atrial_fibrillation, CKD, rhythm_control, trial_analysis
+       · 
+      appraisal: done
+    </div>
+    
+    
+    <div class="links">
+      <a href="appraisals/2026-W30/42126365_Schenker_2026_appraisal.html">評讀結果</a>
+      <a href="https://doi.org/10.1016/j.jacc.2026.03.087" target="_blank" rel="noopener">下載連結</a>
+      
+      <button class="copy-btn" type="button" data-copy="10.1016/j.jacc.2026.03.087">複製 DOI</button>
+      <button class="copy-btn" type="button" data-copy="python dlbydoi.py 10.1016/j.jacc.2026.03.087">複製下載指令</button>
+      
+    </div>
+    
+    <div class="feedback"
+         data-pmid="42126365"
+         data-doi="10.1016/j.jacc.2026.03.087"
+         data-journal="JACC"
+         data-title="Effectiveness and Safety of Early Rhythm Control in Patients With Atrial Fibrillation and Chronic Kidney Disease.">
+      <span class="fb-q">這篇選得合你意嗎?</span>
+      <button class="fb-btn" type="button" data-verdict="up">👍 有興趣</button>
+      <button class="fb-btn" type="button" data-verdict="down">👎 沒興趣</button>
+      <span class="fb-msg"></span>
+    </div>
+    
+  </article>
+  
+    
+    
+  <article class="selected-card">
+    <span class="tag">Heart</span>
+    <span class="tag pub-type type-original">Original</span>
+    <h2>Prognostic value of transaortic flow rate compared with ejection fraction and stroke volume index in low-gradient severe aortic stenosis.</h2>
+    <div class="authors">
+      Allam Mohamed, Villa Etchegoyen Cecilia, Alsidawi Said 等 18 人 · 2026
+    </div>
+    
+    <p class="selection-reason">低梯度重度主動脈狹窄的流量判讀一直是診斷與預後分層難題。這篇研究指出TAFR比LVEF與SVI更能獨立預測死亡，若結果穩健，可能改變目前對low-flow狀態的定義與評估流程。屬於高臨床實用性的diagnostic/prognostic文章。</p>
+    
+    
+    <div class="selection-meta">
+      cardiology, valvular_disease, aortic_stenosis, prognosis, echocardiography
+       · 
+      appraisal: done
+    </div>
+    
+    
+    <div class="links">
+      <a href="appraisals/2026-W30/41980805_Allam_2026_appraisal.html">評讀結果</a>
+      <a href="https://doi.org/10.1136/heartjnl-2025-327594" target="_blank" rel="noopener">下載連結</a>
+      
+      <button class="copy-btn" type="button" data-copy="10.1136/heartjnl-2025-327594">複製 DOI</button>
+      <button class="copy-btn" type="button" data-copy="python dlbydoi.py 10.1136/heartjnl-2025-327594">複製下載指令</button>
+      
+    </div>
+    
+    <div class="feedback"
+         data-pmid="41980805"
+         data-doi="10.1136/heartjnl-2025-327594"
+         data-journal="Heart"
+         data-title="Prognostic value of transaortic flow rate compared with ejection fraction and stroke volume index in low-gradient severe aortic stenosis.">
+      <span class="fb-q">這篇選得合你意嗎?</span>
+      <button class="fb-btn" type="button" data-verdict="up">👍 有興趣</button>
+      <button class="fb-btn" type="button" data-verdict="down">👎 沒興趣</button>
+      <span class="fb-msg"></span>
+    </div>
+    
+  </article>
+  
+    
+    
+  <article class="selected-card">
+    <span class="tag">JACC</span>
+    <span class="tag pub-type type-original">Original</span>
+    <h2>ECG Signatures and Long-Term Ischemic Stroke Risk: A Deep Learning Analysis of 200,000 Patients.</h2>
+    <div class="authors">
+      Mahajan Rahul, Pace Danielle F, Friedman Samuel F 等 15 人 · 2026
+    </div>
+    
+    <p class="selection-reason">用12導程ECG深度學習預測10年缺血性中風風險，且外部驗證樣本大、表現接近既有臨床評分，還提示P波與心房病變可能是主要訊號來源。這篇兼具臨床風險分層與方法學價值，對AI-ECG實際落地很有參考性。</p>
+    
+    
+    <div class="selection-meta">
+      cardiology, ECG, stroke, AI, risk_prediction
+       · 
+      appraisal: done
+    </div>
+    
+    
+    <div class="links">
+      <a href="appraisals/2026-W30/42126358_Mahajan_2026_appraisal.html">評讀結果</a>
+      <a href="https://doi.org/10.1016/j.jacc.2026.03.084" target="_blank" rel="noopener">下載連結</a>
+      
+      <button class="copy-btn" type="button" data-copy="10.1016/j.jacc.2026.03.084">複製 DOI</button>
+      <button class="copy-btn" type="button" data-copy="python dlbydoi.py 10.1016/j.jacc.2026.03.084">複製下載指令</button>
+      
+    </div>
+    
+    <div class="feedback"
+         data-pmid="42126358"
+         data-doi="10.1016/j.jacc.2026.03.084"
+         data-journal="JACC"
+         data-title="ECG Signatures and Long-Term Ischemic Stroke Risk: A Deep Learning Analysis of 200,000 Patients.">
+      <span class="fb-q">這篇選得合你意嗎?</span>
+      <button class="fb-btn" type="button" data-verdict="up">👍 有興趣</button>
+      <button class="fb-btn" type="button" data-verdict="down">👎 沒興趣</button>
+      <span class="fb-msg"></span>
+    </div>
+    
+  </article>
+  
+    
+    
+  <article class="selected-card">
+    <span class="tag">Heart</span>
+    <span class="tag pub-type type-original">Original</span>
+    <h2>Infective endocarditis in hypertrophic cardiomyopathy: a real-world matched cohort analysis.</h2>
+    <div class="authors">
+      Rosenzveig Akiva, Platek Nicholas, Massad Faysal 等 6 人 · 2026
+    </div>
+    
+    <p class="selection-reason">HCM患者是否屬感染性心內膜炎中度風險族群，涉及是否需要重新思考預防策略。這篇大型真實世界配對隊列顯示5年IE風險為對照的2.6倍，雖然仍非介入研究，但訊號夠強，對指引與門診衛教都有潛在影響，也符合你對HCM與臨床風險分層文章的偏好。</p>
+    
+    
+    <div class="selection-meta">
+      cardiology, hypertrophic_cardiomyopathy, infective_endocarditis, observational, risk_stratification
+       · 
+      appraisal: done
+    </div>
+    
+    
+    <div class="links">
+      <a href="appraisals/2026-W30/41986139_Rosenzveig_2026_appraisal.html">評讀結果</a>
+      <a href="https://doi.org/10.1136/heartjnl-2026-327787" target="_blank" rel="noopener">下載連結</a>
+      
+      <button class="copy-btn" type="button" data-copy="10.1136/heartjnl-2026-327787">複製 DOI</button>
+      <button class="copy-btn" type="button" data-copy="python dlbydoi.py 10.1136/heartjnl-2026-327787">複製下載指令</button>
+      
+    </div>
+    
+    <div class="feedback"
+         data-pmid="41986139"
+         data-doi="10.1136/heartjnl-2026-327787"
+         data-journal="Heart"
+         data-title="Infective endocarditis in hypertrophic cardiomyopathy: a real-world matched cohort analysis.">
+      <span class="fb-q">這篇選得合你意嗎?</span>
+      <button class="fb-btn" type="button" data-verdict="up">👍 有興趣</button>
+      <button class="fb-btn" type="button" data-verdict="down">👎 沒興趣</button>
+      <span class="fb-msg"></span>
+    </div>
+    
+  </article>
+  
+    
+  </section>
+  
+
+  
+
+  <section class="article-section">
+  <h2 class="section-title">本週文章摘要</h2>
+  
+  <article>
+    <span class="tag">NEJM</span>
+    <span class="tag pub-type type-review">Review</span>
+    <h2>Fibromyalgia.</h2>
+    <div class="authors">
+      Williams David A, Clauw Daniel J · 2026
+    </div>
+    
+    
+    <div class="summary-block">
+      <div class="section-label">摘要</div>
+      <p class="summary">
+        纖維肌痛症以廣泛性全身疼痛、疲勞及認知功能異常為特徵，根源於中樞神經系統對感覺刺激的過度反應。藥物和非藥物治療均聚焦於穩定中樞神經系統，雖難根治但在初級照護設置中多數患者可獲得良好管理。
+      </p>
+    </div>
+    
+    
+    <div class="commentary">
+      <div class="section-label">短評</div>
+      <p>重點是初級照護就能管理，患者得做好打長期戰的心理建設，但只要願意配合藥物和非藥物介入，生活品質能實質改善。</p>
+    </div>
+    
+  
+    <div class="links">
+      <a href="https://doi.org/10.1056/NEJMcp2411656" target="_blank" rel="noopener">下載連結</a>
+      
+      <button class="copy-btn" type="button" data-copy="10.1056/NEJMcp2411656">複製 DOI</button>
+      <button class="copy-btn" type="button" data-copy="python dlbydoi.py 10.1056/NEJMcp2411656">複製下載指令</button>
+      
+      
+      <a class="request-btn"
+         href="https://script.google.com/macros/s/AKfycbwM6kGHe0XfPGPpmUTMFbm1NBu0lnccP74CXAWwdgS7eUfcNvI48pL-KOVzByCNNAuiZA/exec?view=appraise&amp;week=2026-W30&amp;pmid=42456138&amp;doi=10.1056%2FNEJMcp2411656&amp;journal=NEJM&amp;title=Fibromyalgia."
+         target="_blank"
+         rel="noopener">請求評讀</a>
+      
+    </div>
+    
+    <div class="feedback"
+         data-pmid="42456138"
+         data-doi="10.1056/NEJMcp2411656"
+         data-journal="NEJM"
+         data-title="Fibromyalgia.">
+      <span class="fb-q">對這篇有興趣嗎?</span>
+      <button class="fb-btn" type="button" data-verdict="up">👍 有興趣</button>
+      <button class="fb-btn" type="button" data-verdict="down">👎 沒興趣</button>
+      <span class="fb-msg"></span>
+    </div>
+    
+  </article>
+  
+  <article>
+    <span class="tag">NEJM</span>
+    <span class="tag pub-type type-original">Original</span>
+    <h2>Health Care-Associated Infections in U.S. Hospitals, 2023 versus 2015.</h2>
+    <div class="authors">
+      Chea Nora, Li Rongxia, Eure Taniece 等 57 人 · 2026
+    </div>
+    
+    
+    <div class="summary-block">
+      <div class="section-label">摘要</div>
+      <p class="summary">
+        全美盛行率調查比較 2015 與 2023 年醫療照護相關感染，納入約 13,000 名患者／200 家醫院；盛行率從 3.2%（1/31 患者）降至 2.6%（1/38），風險比 0.73，但全美仍有約 51.8 萬例感染，六成未與裝置/程序相關。
+      </p>
+    </div>
+    
+    
+    <div class="commentary">
+      <div class="section-label">短評</div>
+      <p>感染率終於下降，但 60% 無涉裝置的感染提醒我們：最有效的感控工具其實不是高科技，而是老掉牙的手衛生和操作規範。</p>
+    </div>
+    
+  
+    <div class="links">
+      <a href="https://doi.org/10.1056/NEJMoa2510881" target="_blank" rel="noopener">下載連結</a>
+      
+      <button class="copy-btn" type="button" data-copy="10.1056/NEJMoa2510881">複製 DOI</button>
+      <button class="copy-btn" type="button" data-copy="python dlbydoi.py 10.1056/NEJMoa2510881">複製下載指令</button>
+      
+      
+      <a class="request-btn"
+         href="https://script.google.com/macros/s/AKfycbwM6kGHe0XfPGPpmUTMFbm1NBu0lnccP74CXAWwdgS7eUfcNvI48pL-KOVzByCNNAuiZA/exec?view=appraise&amp;week=2026-W30&amp;pmid=42456137&amp;doi=10.1056%2FNEJMoa2510881&amp;journal=NEJM&amp;title=Health+Care-Associated+Infections+in+U.S.+Hospitals%2C+2023+versus+2015."
+         target="_blank"
+         rel="noopener">請求評讀</a>
+      
+    </div>
+    
+    <div class="feedback"
+         data-pmid="42456137"
+         data-doi="10.1056/NEJMoa2510881"
+         data-journal="NEJM"
+         data-title="Health Care-Associated Infections in U.S. Hospitals, 2023 versus 2015.">
+      <span class="fb-q">對這篇有興趣嗎?</span>
+      <button class="fb-btn" type="button" data-verdict="up">👍 有興趣</button>
+      <button class="fb-btn" type="button" data-verdict="down">👎 沒興趣</button>
+      <span class="fb-msg"></span>
+    </div>
+    
+  </article>
+  
+  <article>
+    <span class="tag">NEJM</span>
+    <span class="tag pub-type type-trial">RCT</span>
+    <h2>Continuous or Fixed-Duration Maintenance Therapy in Multiple Myeloma.</h2>
+    <div class="authors">
+      Kumar Shaji, Jacobus Susanna, Cohen Adam 等 24 人 · 2026
+    </div>
+    
+    
+    <div class="summary-block">
+      <div class="section-label">摘要</div>
+      <p class="summary">
+        本第三期試驗納入 516 名新診斷標準風險多發性骨髓瘤患者（未行前期幹細胞移植），經蛋白酶抑制劑-雷那度胺誘導治療後，隨機分配無限期維持或固定 2 年雷那度胺。7 年整體存活率兩組無顯著差異（68.6% vs 69.0%，P=0.93），但無限期組二次癌症發生率更高（11.2% vs 8.3%），不良事件亦更多（48.2% vs 31.5%）。
+      </p>
+    </div>
+    
+    
+    <div class="commentary">
+      <div class="section-label">短評</div>
+      <p>看來多吃雷那度胺不會多活幾年，反而惹來更多麻煩，省藥費又減副作用，固定 2 年療程根本就夠了。</p>
+    </div>
+    
+  
+    <div class="links">
+      <a href="https://doi.org/10.1056/NEJMoa2600157" target="_blank" rel="noopener">下載連結</a>
+      
+      <button class="copy-btn" type="button" data-copy="10.1056/NEJMoa2600157">複製 DOI</button>
+      <button class="copy-btn" type="button" data-copy="python dlbydoi.py 10.1056/NEJMoa2600157">複製下載指令</button>
+      
+      
+      <a class="request-btn"
+         href="https://script.google.com/macros/s/AKfycbwM6kGHe0XfPGPpmUTMFbm1NBu0lnccP74CXAWwdgS7eUfcNvI48pL-KOVzByCNNAuiZA/exec?view=appraise&amp;week=2026-W30&amp;pmid=42456135&amp;doi=10.1056%2FNEJMoa2600157&amp;journal=NEJM&amp;title=Continuous+or+Fixed-Duration+Maintenance+Therapy+in+Multiple+Myeloma."
+         target="_blank"
+         rel="noopener">請求評讀</a>
+      
+    </div>
+    
+    <div class="feedback"
+         data-pmid="42456135"
+         data-doi="10.1056/NEJMoa2600157"
+         data-journal="NEJM"
+         data-title="Continuous or Fixed-Duration Maintenance Therapy in Multiple Myeloma.">
+      <span class="fb-q">對這篇有興趣嗎?</span>
+      <button class="fb-btn" type="button" data-verdict="up">👍 有興趣</button>
+      <button class="fb-btn" type="button" data-verdict="down">👎 沒興趣</button>
+      <span class="fb-msg"></span>
+    </div>
+    
+  </article>
+  
+  <article>
+    <span class="tag">NEJM</span>
+    <span class="tag pub-type type-review">Review</span>
+    <h2>Bundibugyo Virus Disease in 2026 - Clinical and Public Health Responses.</h2>
+    <div class="authors">
+      Sullivan Nancy J · 2026
+    </div>
+    
+    
+    <div class="summary-block">
+      <div class="section-label">摘要</div>
+      <p class="summary">
+        Bundibugyo病毒為罕見正現症病毒，2026年在剛果民主共和國再度爆發，本文檢視其檢測、診斷與防控挑戰。儘管無特異性疫苗或批准治療，支持療法進展已改善預後，伊波拉疫苗與療法初步顯示交叉保護潛能，強調整合臨床照護、監測、診斷與公衛協調的必要性。
+      </p>
+    </div>
+    
+    
+    <div class="commentary">
+      <div class="section-label">短評</div>
+      <p>還是那個老問題，沒有特效藥就只能向伊波拉借家當應急，資源有限的地區防線最脆弱。</p>
+    </div>
+    
+  
+    <div class="links">
+      <a href="https://doi.org/10.1056/NEJMra2607216" target="_blank" rel="noopener">下載連結</a>
+      
+      <button class="copy-btn" type="button" data-copy="10.1056/NEJMra2607216">複製 DOI</button>
+      <button class="copy-btn" type="button" data-copy="python dlbydoi.py 10.1056/NEJMra2607216">複製下載指令</button>
+      
+      
+      <a class="request-btn"
+         href="https://script.google.com/macros/s/AKfycbwM6kGHe0XfPGPpmUTMFbm1NBu0lnccP74CXAWwdgS7eUfcNvI48pL-KOVzByCNNAuiZA/exec?view=appraise&amp;week=2026-W30&amp;pmid=42341299&amp;doi=10.1056%2FNEJMra2607216&amp;journal=NEJM&amp;title=Bundibugyo+Virus+Disease+in+2026+-+Clinical+and+Public+Health+Responses."
+         target="_blank"
+         rel="noopener">請求評讀</a>
+      
+    </div>
+    
+    <div class="feedback"
+         data-pmid="42341299"
+         data-doi="10.1056/NEJMra2607216"
+         data-journal="NEJM"
+         data-title="Bundibugyo Virus Disease in 2026 - Clinical and Public Health Responses.">
+      <span class="fb-q">對這篇有興趣嗎?</span>
+      <button class="fb-btn" type="button" data-verdict="up">👍 有興趣</button>
+      <button class="fb-btn" type="button" data-verdict="down">👎 沒興趣</button>
+      <span class="fb-msg"></span>
+    </div>
+    
+  </article>
+  
+  <article>
+    <span class="tag">NEJM</span>
+    <span class="tag pub-type type-trial">RCT</span>
+    <h2>Efficacy and Safety of Obinutuzumab in Active Systemic Lupus Erythematosus.</h2>
+    <div class="authors">
+      Furie Richard A, Dall&#39;Era Maria, Vital Edward M 等 25 人 · 2026
+    </div>
+    
+    
+    <div class="summary-block">
+      <div class="section-label">摘要</div>
+      <p class="summary">
+        303名活動性SLE患者（非增殖性/膜性腎炎）接受Obinutuzumab或安慰劑治療。第52週時obinutuzumab組達到SRI-4反應者為76.7%相比安慰劑組53.5%（P&lt;0.001），且obinutuzumab優於安慰劑在BILAG反應、糖皮質激素減少及延遲疾病惡化等所有關鍵次要終點。
+      </p>
+    </div>
+    
+    
+    <div class="commentary">
+      <div class="section-label">短評</div>
+      <p>Obinutuzumab終於在廣義SLE證實有效，但藥物負擔跟臨床獲益的「CP值」如何評估，恐怕得看患者狀況和醫療資源了。</p>
+    </div>
+    
+  
+    <div class="links">
+      <a href="https://doi.org/10.1056/NEJMoa2516150" target="_blank" rel="noopener">下載連結</a>
+      
+      <button class="copy-btn" type="button" data-copy="10.1056/NEJMoa2516150">複製 DOI</button>
+      <button class="copy-btn" type="button" data-copy="python dlbydoi.py 10.1056/NEJMoa2516150">複製下載指令</button>
+      
+      
+      <a class="request-btn"
+         href="https://script.google.com/macros/s/AKfycbwM6kGHe0XfPGPpmUTMFbm1NBu0lnccP74CXAWwdgS7eUfcNvI48pL-KOVzByCNNAuiZA/exec?view=appraise&amp;week=2026-W30&amp;pmid=41789864&amp;doi=10.1056%2FNEJMoa2516150&amp;journal=NEJM&amp;title=Efficacy+and+Safety+of+Obinutuzumab+in+Active+Systemic+Lupus+Erythematosus."
+         target="_blank"
+         rel="noopener">請求評讀</a>
+      
+    </div>
+    
+    <div class="feedback"
+         data-pmid="41789864"
+         data-doi="10.1056/NEJMoa2516150"
+         data-journal="NEJM"
+         data-title="Efficacy and Safety of Obinutuzumab in Active Systemic Lupus Erythematosus.">
+      <span class="fb-q">對這篇有興趣嗎?</span>
+      <button class="fb-btn" type="button" data-verdict="up">👍 有興趣</button>
+      <button class="fb-btn" type="button" data-verdict="down">👎 沒興趣</button>
+      <span class="fb-msg"></span>
+    </div>
+    
+  </article>
+  
+  <article>
+    <span class="tag">NEJM</span>
+    <span class="tag pub-type type-review">Review</span>
+    <h2>Andes Virus - A Clinical Review.</h2>
+    <div class="authors">
+      Harris Gavin H, Sinchi Anabel, Lawler James 等 4 人 · 2026
+    </div>
+    
+    
+    <div class="summary-block">
+      <div class="section-label">摘要</div>
+      <p class="summary">
+        本文為安地斯病毒臨床綜述，該病毒為唯一具人傳人能力之正痘病毒；內容涵蓋流行病學、臨床特徵、最佳管理實踐，並評估現有與試驗中的抗病毒藥物、單株抗體療法及疫苗開發前景。
+      </p>
+    </div>
+    
+    
+    <div class="commentary">
+      <div class="section-label">短評</div>
+      <p>ANDV因會人傳人確實令人擔憂，這份綜述把現有武器整理得夠清楚，對第一線醫生算實用指南，就是希望疫苗開發別再跳票。</p>
+    </div>
+    
+  
+    <div class="links">
+      <a href="https://doi.org/10.1056/NEJMra2606651" target="_blank" rel="noopener">下載連結</a>
+      
+      <button class="copy-btn" type="button" data-copy="10.1056/NEJMra2606651">複製 DOI</button>
+      <button class="copy-btn" type="button" data-copy="python dlbydoi.py 10.1056/NEJMra2606651">複製下載指令</button>
+      
+      
+      <a class="request-btn"
+         href="https://script.google.com/macros/s/AKfycbwM6kGHe0XfPGPpmUTMFbm1NBu0lnccP74CXAWwdgS7eUfcNvI48pL-KOVzByCNNAuiZA/exec?view=appraise&amp;week=2026-W30&amp;pmid=42456129&amp;doi=10.1056%2FNEJMra2606651&amp;journal=NEJM&amp;title=Andes+Virus+-+A+Clinical+Review."
+         target="_blank"
+         rel="noopener">請求評讀</a>
+      
+    </div>
+    
+    <div class="feedback"
+         data-pmid="42456129"
+         data-doi="10.1056/NEJMra2606651"
+         data-journal="NEJM"
+         data-title="Andes Virus - A Clinical Review.">
+      <span class="fb-q">對這篇有興趣嗎?</span>
+      <button class="fb-btn" type="button" data-verdict="up">👍 有興趣</button>
+      <button class="fb-btn" type="button" data-verdict="down">👎 沒興趣</button>
+      <span class="fb-msg"></span>
+    </div>
+    
+  </article>
+  
+  <article>
+    <span class="tag">NEJM</span>
+    <span class="tag pub-type type-review">Review</span>
+    <h2>Platelet-Activating Anti-Platelet Factor 4 Disorders.</h2>
+    <div class="authors">
+      Warkentin Theodore E, Greinacher Andreas · 2026
+    </div>
+    
+    
+    <div class="summary-block">
+      <div class="section-label">摘要</div>
+      <p class="summary">
+        本文綜述抗PF4抗體引發的高凝血小板減少症，包括肝素誘發型 (HIT)、自身免疫型及疫苗誘發型 (VITT) 三種類型，其發病機制分別涉及肝素複合物、多陰離子及直接PF4靶向。VITT原與COVID-19腺病毒疫苗相關，但自然病毒感染亦可引發相同臨床表現。
+      </p>
+    </div>
+    
+    
+    <div class="commentary">
+      <div class="section-label">短評</div>
+      <p>這篇綜述把HIT知識擴展到後COVID時代的VITT，臨床上得警惕接種或感染後的血小板下降，別再措手不及了。</p>
+    </div>
+    
+  
+    <div class="links">
+      <a href="https://doi.org/10.1056/NEJMra2502459" target="_blank" rel="noopener">下載連結</a>
+      
+      <button class="copy-btn" type="button" data-copy="10.1056/NEJMra2502459">複製 DOI</button>
+      <button class="copy-btn" type="button" data-copy="python dlbydoi.py 10.1056/NEJMra2502459">複製下載指令</button>
+      
+      
+      <a class="request-btn"
+         href="https://script.google.com/macros/s/AKfycbwM6kGHe0XfPGPpmUTMFbm1NBu0lnccP74CXAWwdgS7eUfcNvI48pL-KOVzByCNNAuiZA/exec?view=appraise&amp;week=2026-W30&amp;pmid=42441431&amp;doi=10.1056%2FNEJMra2502459&amp;journal=NEJM&amp;title=Platelet-Activating+Anti-Platelet+Factor+4+Disorders."
+         target="_blank"
+         rel="noopener">請求評讀</a>
+      
+    </div>
+    
+    <div class="feedback"
+         data-pmid="42441431"
+         data-doi="10.1056/NEJMra2502459"
+         data-journal="NEJM"
+         data-title="Platelet-Activating Anti-Platelet Factor 4 Disorders.">
+      <span class="fb-q">對這篇有興趣嗎?</span>
+      <button class="fb-btn" type="button" data-verdict="up">👍 有興趣</button>
+      <button class="fb-btn" type="button" data-verdict="down">👎 沒興趣</button>
+      <span class="fb-msg"></span>
+    </div>
+    
+  </article>
+  
+  <article>
+    <span class="tag">NEJM</span>
+    <span class="tag pub-type type-original">Original</span>
+    <h2>Rivaroxaban Then Aspirin vs. Aspirin Alone after Total Hip or Knee Arthroplasty.</h2>
+    <div class="authors">
+      Shivakumar Sudeep, Matino Davide, Zukor David 等 26 人 · 2026
+    </div>
+    
+    
+    <div class="summary-block">
+      <div class="section-label">摘要</div>
+      <p class="summary">
+        這項包含5429名髖或膝全關節置換患者的雙盲RCT，比較術後阿司匹林單獨使用(81mg)與先用rivaroxaban(10mg/5天)再用阿司匹林的VTE預防效果。阿司匹林組VTE發生率0.48%，rivaroxaban-阿司匹林組0.45%，達到非劣性標準，出血事件無臨床相關差異。
+      </p>
+    </div>
+    
+    
+    <div class="commentary">
+      <div class="section-label">短評</div>
+      <p>阿司匹林的逆襲──用廉價方案打敗昂貴新藥，成本節省點滿分，但0.48%和0.45%的VTE差異基本上是統計誤差，其實兩種都很安全。</p>
+    </div>
+    
+  
+    <div class="links">
+      <a href="https://doi.org/10.1056/NEJMoa2603649" target="_blank" rel="noopener">下載連結</a>
+      
+      <button class="copy-btn" type="button" data-copy="10.1056/NEJMoa2603649">複製 DOI</button>
+      <button class="copy-btn" type="button" data-copy="python dlbydoi.py 10.1056/NEJMoa2603649">複製下載指令</button>
+      
+      
+      <a class="request-btn"
+         href="https://script.google.com/macros/s/AKfycbwM6kGHe0XfPGPpmUTMFbm1NBu0lnccP74CXAWwdgS7eUfcNvI48pL-KOVzByCNNAuiZA/exec?view=appraise&amp;week=2026-W30&amp;pmid=42437501&amp;doi=10.1056%2FNEJMoa2603649&amp;journal=NEJM&amp;title=Rivaroxaban+Then+Aspirin+vs.+Aspirin+Alone+after+Total+Hip+or+Knee+Arthroplasty."
+         target="_blank"
+         rel="noopener">請求評讀</a>
+      
+    </div>
+    
+    <div class="feedback"
+         data-pmid="42437501"
+         data-doi="10.1056/NEJMoa2603649"
+         data-journal="NEJM"
+         data-title="Rivaroxaban Then Aspirin vs. Aspirin Alone after Total Hip or Knee Arthroplasty.">
+      <span class="fb-q">對這篇有興趣嗎?</span>
+      <button class="fb-btn" type="button" data-verdict="up">👍 有興趣</button>
+      <button class="fb-btn" type="button" data-verdict="down">👎 沒興趣</button>
+      <span class="fb-msg"></span>
+    </div>
+    
+  </article>
+  
+  <article>
+    <span class="tag">Lancet</span>
+    <span class="tag pub-type type-trial">RCT</span>
+    <h2>[</h2>
+    <div class="authors">
+      Walter Thomas, Jann Henning, Ansquer Catherine 等 29 人 · 2026
+    </div>
+    
+    
+    <div class="summary-block">
+      <div class="section-label">摘要</div>
+      <p class="summary">
+        文章內容不完整 — 標題和摘要中有多處被截斷（方括號內容缺失）。無法產生符合要求的摘要。
+      </p>
+    </div>
+    
+    
+    <div class="commentary">
+      <div class="section-label">短評</div>
+      <p>請提供完整的文獻標題和摘要文本。</p>
+    </div>
+    
+  
+    <div class="links">
+      <a href="https://doi.org/10.1016/S0140-6736(26)00604-5" target="_blank" rel="noopener">下載連結</a>
+      
+      <button class="copy-btn" type="button" data-copy="10.1016/S0140-6736(26)00604-5">複製 DOI</button>
+      <button class="copy-btn" type="button" data-copy="python dlbydoi.py 10.1016/S0140-6736(26)00604-5">複製下載指令</button>
+      
+      
+      <a class="request-btn"
+         href="https://script.google.com/macros/s/AKfycbwM6kGHe0XfPGPpmUTMFbm1NBu0lnccP74CXAWwdgS7eUfcNvI48pL-KOVzByCNNAuiZA/exec?view=appraise&amp;week=2026-W30&amp;pmid=42392118&amp;doi=10.1016%2FS0140-6736%2826%2900604-5&amp;journal=Lancet&amp;title=%5B"
+         target="_blank"
+         rel="noopener">請求評讀</a>
+      
+    </div>
+    
+    <div class="feedback"
+         data-pmid="42392118"
+         data-doi="10.1016/S0140-6736(26)00604-5"
+         data-journal="Lancet"
+         data-title="[">
+      <span class="fb-q">對這篇有興趣嗎?</span>
+      <button class="fb-btn" type="button" data-verdict="up">👍 有興趣</button>
+      <button class="fb-btn" type="button" data-verdict="down">👎 沒興趣</button>
+      <span class="fb-msg"></span>
+    </div>
+    
+  </article>
+  
+  <article>
+    <span class="tag">Lancet</span>
+    <span class="tag pub-type type-review">Review</span>
+    <h2>Safety and efficacy of mRNA vaccines: a mechanistic and public health perspective.</h2>
+    <div class="authors">
+      Blakney Anna K, Top Karina A, Cowling Benjamin J 等 6 人 · 2026
+    </div>
+    
+    
+    <div class="summary-block">
+      <div class="section-label">摘要</div>
+      <p class="summary">
+        本綜述統合臨床、機制及公衛證據，評估全球COVID-19疫苗計劃中數十億劑次mRNA疫苗在各族群（含懷孕、免疫低下）的安全性與有效性，確認該平台安全有效且可調適，對未來傳染病防控、癌症與自免疾病治療具潛力。
+      </p>
+    </div>
+    
+    
+    <div class="commentary">
+      <div class="section-label">短評</div>
+      <p>全球數十億人試驗成功，mRNA疫苗終於可以理直氣壯，接下來想進軍癌症和自免治療，只是別讓持續的疫苗爭議拖了後腿。</p>
+    </div>
+    
+  
+    <div class="links">
+      <a href="https://doi.org/10.1016/S0140-6736(26)00512-X" target="_blank" rel="noopener">下載連結</a>
+      
+      <button class="copy-btn" type="button" data-copy="10.1016/S0140-6736(26)00512-X">複製 DOI</button>
+      <button class="copy-btn" type="button" data-copy="python dlbydoi.py 10.1016/S0140-6736(26)00512-X">複製下載指令</button>
+      
+      
+      <a class="request-btn"
+         href="https://script.google.com/macros/s/AKfycbwM6kGHe0XfPGPpmUTMFbm1NBu0lnccP74CXAWwdgS7eUfcNvI48pL-KOVzByCNNAuiZA/exec?view=appraise&amp;week=2026-W30&amp;pmid=42379196&amp;doi=10.1016%2FS0140-6736%2826%2900512-X&amp;journal=Lancet&amp;title=Safety+and+efficacy+of+mRNA+vaccines%3A+a+mechanistic+and+public+health+perspective."
+         target="_blank"
+         rel="noopener">請求評讀</a>
+      
+    </div>
+    
+    <div class="feedback"
+         data-pmid="42379196"
+         data-doi="10.1016/S0140-6736(26)00512-X"
+         data-journal="Lancet"
+         data-title="Safety and efficacy of mRNA vaccines: a mechanistic and public health perspective.">
+      <span class="fb-q">對這篇有興趣嗎?</span>
+      <button class="fb-btn" type="button" data-verdict="up">👍 有興趣</button>
+      <button class="fb-btn" type="button" data-verdict="down">👎 沒興趣</button>
+      <span class="fb-msg"></span>
+    </div>
+    
+  </article>
+  
+  <article>
+    <span class="tag">Lancet</span>
+    <span class="tag pub-type type-trial">RCT</span>
+    <h2>Efficacy and safety of tirofiban after successful endovascular reperfusion in acute ischaemic stroke (ATTRACTION) in China: a multicentre, double-blind, randomised controlled trial.</h2>
+    <div class="authors">
+      Huang Hao, Xu Shabei, Qin Tingting 等 33 人 · 2026
+    </div>
+    
+    
+    <div class="summary-block">
+      <div class="section-label">摘要</div>
+      <p class="summary">
+        中國多中心雙盲隨機對照試驗，納入1,380名前循環大血管阻塞經血栓切除術成功再灌流之患者，比較術後給予tirofiban與安慰劑。90天功能獨立率tirofiban組49%高於安慰劑組43%（調整風險比1.15，p=0.0092），症狀性顱內出血無顯著差異。
+      </p>
+    </div>
+    
+    
+    <div class="commentary">
+      <div class="section-label">短評</div>
+      <p>微幅勝利？tirofiban讓49% vs 43%的患者獲得90天功能獨立，但為了這6個百分點增加出血風險值不值得，臨床端恐怕見仁見智。</p>
+    </div>
+    
+  
+    <div class="links">
+      <a href="https://doi.org/10.1016/S0140-6736(26)00983-9" target="_blank" rel="noopener">下載連結</a>
+      
+      <button class="copy-btn" type="button" data-copy="10.1016/S0140-6736(26)00983-9">複製 DOI</button>
+      <button class="copy-btn" type="button" data-copy="python dlbydoi.py 10.1016/S0140-6736(26)00983-9">複製下載指令</button>
+      
+      
+      <a class="request-btn"
+         href="https://script.google.com/macros/s/AKfycbwM6kGHe0XfPGPpmUTMFbm1NBu0lnccP74CXAWwdgS7eUfcNvI48pL-KOVzByCNNAuiZA/exec?view=appraise&amp;week=2026-W30&amp;pmid=42341797&amp;doi=10.1016%2FS0140-6736%2826%2900983-9&amp;journal=Lancet&amp;title=Efficacy+and+safety+of+tirofiban+after+successful+endovascular+reperfusion+in+acute+ischaemic+stroke+%28ATTRACTION%29+in+China%3A+a+multicentre%2C+double-blind%2C+randomised+controlled+trial."
+         target="_blank"
+         rel="noopener">請求評讀</a>
+      
+    </div>
+    
+    <div class="feedback"
+         data-pmid="42341797"
+         data-doi="10.1016/S0140-6736(26)00983-9"
+         data-journal="Lancet"
+         data-title="Efficacy and safety of tirofiban after successful endovascular reperfusion in acute ischaemic stroke (ATTRACTION) in China: a multicentre, double-blind, randomised controlled trial.">
+      <span class="fb-q">對這篇有興趣嗎?</span>
+      <button class="fb-btn" type="button" data-verdict="up">👍 有興趣</button>
+      <button class="fb-btn" type="button" data-verdict="down">👎 沒興趣</button>
+      <span class="fb-msg"></span>
+    </div>
+    
+  </article>
+  
+  <article>
+    <span class="tag">Lancet</span>
+    <span class="tag pub-type type-trial">RCT</span>
+    <h2>Safety, pharmacokinetics, and exploratory efficacy of the oral ghrelin receptor agonist AC01 in heart failure with reduced ejection fraction (GOAL-HF1): a randomised, double-blind, placebo-controlled, phase 1b/2a study.</h2>
+    <div class="authors">
+      Lund Lars H, Barandiarán Aizpurua Arantxa, Bollano Entela 等 30 人 · 2026
+    </div>
+    
+    
+    <div class="summary-block">
+      <div class="section-label">摘要</div>
+      <p class="summary">
+        58名HFrEF患者（91%男性，中位年齡66歲）接受AC01（0.1-3.0mg口服）或安慰劑，分phase 1b（7天）及phase 2a（28天）進行。AC01組80%出現輕中度不良事件，主要為低血壓、心律不整、呼吸困難，但無嚴重不良事件或死亡，心肌標記無變化。
+      </p>
+    </div>
+    
+    
+    <div class="commentary">
+      <div class="section-label">短評</div>
+      <p>安全性摸起來還不錯，但80%患者有不良事件，實在難說是「容忍良好」還是「副作用還算能接受」；真正考驗還在後面的大型試驗，到時就知道能不能取代現有強心藥。</p>
+    </div>
+    
+  
+    <div class="links">
+      <a href="https://doi.org/10.1016/S0140-6736(26)00904-9" target="_blank" rel="noopener">下載連結</a>
+      
+      <button class="copy-btn" type="button" data-copy="10.1016/S0140-6736(26)00904-9">複製 DOI</button>
+      <button class="copy-btn" type="button" data-copy="python dlbydoi.py 10.1016/S0140-6736(26)00904-9">複製下載指令</button>
+      
+      
+      <a class="request-btn"
+         href="https://script.google.com/macros/s/AKfycbwM6kGHe0XfPGPpmUTMFbm1NBu0lnccP74CXAWwdgS7eUfcNvI48pL-KOVzByCNNAuiZA/exec?view=appraise&amp;week=2026-W30&amp;pmid=42341796&amp;doi=10.1016%2FS0140-6736%2826%2900904-9&amp;journal=Lancet&amp;title=Safety%2C+pharmacokinetics%2C+and+exploratory+efficacy+of+the+oral+ghrelin+receptor+agonist+AC01+in+heart+failure+with+reduced+ejection+fraction+%28GOAL-HF1%29%3A+a+randomised%2C+double-blind%2C+placebo-controlled%2C+phase+1b%2F2a+study."
+         target="_blank"
+         rel="noopener">請求評讀</a>
+      
+    </div>
+    
+    <div class="feedback"
+         data-pmid="42341796"
+         data-doi="10.1016/S0140-6736(26)00904-9"
+         data-journal="Lancet"
+         data-title="Safety, pharmacokinetics, and exploratory efficacy of the oral ghrelin receptor agonist AC01 in heart failure with reduced ejection fraction (GOAL-HF1): a randomised, double-blind, placebo-controlled, phase 1b/2a study.">
+      <span class="fb-q">對這篇有興趣嗎?</span>
+      <button class="fb-btn" type="button" data-verdict="up">👍 有興趣</button>
+      <button class="fb-btn" type="button" data-verdict="down">👎 沒興趣</button>
+      <span class="fb-msg"></span>
+    </div>
+    
+  </article>
+  
+  <article>
+    <span class="tag">Lancet</span>
+    <span class="tag pub-type type-trial">RCT</span>
+    <h2>Mezigdomide, carfilzomib, and dexamethasone versus carfilzomib and dexamethasone in patients with relapsed or refractory multiple myeloma (SUCCESSOR-2): a phase 3, open-label, randomised controlled trial.</h2>
+    <div class="authors">
+      Dimopoulos Meletios A, Schjesvold Fredrik, Fu Chengcheng 等 47 人 · 2026
+    </div>
+    
+    
+    <div class="summary-block">
+      <div class="section-label">摘要</div>
+      <p class="summary">
+        第三期試驗納入479位抗CD38及lenalidomide難治的復發/難治性骨髓瘤患者，隨機接受mezigdomide-carfilzomib-dexamethasone或carfilzomib-dexamethasone，結果顯示MZD組無惡化存活期顯著優越（18.0 vs 8.3個月，p&lt;0.0001），但三級以上不良事件更頻繁（84% vs 56%），包括感染（34% vs 16%）。
+      </p>
+    </div>
+    
+    
+    <div class="commentary">
+      <div class="section-label">短評</div>
+      <p>PFS延長近倍看似不錯，但感染率升至34%的代價著實不便宜，臨床應用需衡量患者體況與耐受力。</p>
+    </div>
+    
+  
+    <div class="links">
+      <a href="https://doi.org/10.1016/S0140-6736(26)01088-3" target="_blank" rel="noopener">下載連結</a>
+      
+      <button class="copy-btn" type="button" data-copy="10.1016/S0140-6736(26)01088-3">複製 DOI</button>
+      <button class="copy-btn" type="button" data-copy="python dlbydoi.py 10.1016/S0140-6736(26)01088-3">複製下載指令</button>
+      
+      
+      <a class="request-btn"
+         href="https://script.google.com/macros/s/AKfycbwM6kGHe0XfPGPpmUTMFbm1NBu0lnccP74CXAWwdgS7eUfcNvI48pL-KOVzByCNNAuiZA/exec?view=appraise&amp;week=2026-W30&amp;pmid=42289183&amp;doi=10.1016%2FS0140-6736%2826%2901088-3&amp;journal=Lancet&amp;title=Mezigdomide%2C+carfilzomib%2C+and+dexamethasone+versus+carfilzomib+and+dexamethasone+in+patients+with+relapsed+or+refractory+multiple+myeloma+%28SUCCESSOR-2%29%3A+a+phase+3%2C+open-label%2C+randomised+controlled+trial."
+         target="_blank"
+         rel="noopener">請求評讀</a>
+      
+    </div>
+    
+    <div class="feedback"
+         data-pmid="42289183"
+         data-doi="10.1016/S0140-6736(26)01088-3"
+         data-journal="Lancet"
+         data-title="Mezigdomide, carfilzomib, and dexamethasone versus carfilzomib and dexamethasone in patients with relapsed or refractory multiple myeloma (SUCCESSOR-2): a phase 3, open-label, randomised controlled trial.">
+      <span class="fb-q">對這篇有興趣嗎?</span>
+      <button class="fb-btn" type="button" data-verdict="up">👍 有興趣</button>
+      <button class="fb-btn" type="button" data-verdict="down">👎 沒興趣</button>
+      <span class="fb-msg"></span>
+    </div>
+    
+  </article>
+  
+  <article>
+    <span class="tag">Lancet</span>
+    <span class="tag pub-type type-review">Review</span>
+    <h2>The role of community-based blood pressure screening in improving hypertension care.</h2>
+    <div class="authors">
+      Poulter Neil R, Beaney Thomas, Kerr Gabriele K 等 7 人 · 2026
+    </div>
+    
+    
+    <div class="summary-block">
+      <div class="section-label">摘要</div>
+      <p class="summary">
+        本評論反駁大規模血壓篩檢浪費資源的論點，主張社區篩檢可透過低成本、標準化方式增加高血壓偵測，特別是在醫療資源有限的地區；但強調最終確診和長期管理仍需與醫療設施整合，並可同時提升社區衛教認知。
+      </p>
+    </div>
+    
+    
+    <div class="commentary">
+      <div class="section-label">短評</div>
+      <p>邏輯通順，但實際執行時常見的問題是：成功篩檢了卻缺乏後續轉診通道，最後還是淪為高成本低效益的公衛項目；說穿了就是硬體篩檢簡單，軟體銜接才是難題。</p>
+    </div>
+    
+  
+    <div class="links">
+      <a href="https://doi.org/10.1016/S0140-6736(26)00379-X" target="_blank" rel="noopener">下載連結</a>
+      
+      <button class="copy-btn" type="button" data-copy="10.1016/S0140-6736(26)00379-X">複製 DOI</button>
+      <button class="copy-btn" type="button" data-copy="python dlbydoi.py 10.1016/S0140-6736(26)00379-X">複製下載指令</button>
+      
+      
+      <a class="request-btn"
+         href="https://script.google.com/macros/s/AKfycbwM6kGHe0XfPGPpmUTMFbm1NBu0lnccP74CXAWwdgS7eUfcNvI48pL-KOVzByCNNAuiZA/exec?view=appraise&amp;week=2026-W30&amp;pmid=42105777&amp;doi=10.1016%2FS0140-6736%2826%2900379-X&amp;journal=Lancet&amp;title=The+role+of+community-based+blood+pressure+screening+in+improving+hypertension+care."
+         target="_blank"
+         rel="noopener">請求評讀</a>
+      
+    </div>
+    
+    <div class="feedback"
+         data-pmid="42105777"
+         data-doi="10.1016/S0140-6736(26)00379-X"
+         data-journal="Lancet"
+         data-title="The role of community-based blood pressure screening in improving hypertension care.">
+      <span class="fb-q">對這篇有興趣嗎?</span>
+      <button class="fb-btn" type="button" data-verdict="up">👍 有興趣</button>
+      <button class="fb-btn" type="button" data-verdict="down">👎 沒興趣</button>
+      <span class="fb-msg"></span>
+    </div>
+    
+  </article>
+  
+  <article>
+    <span class="tag">Lancet</span>
+    <span class="tag pub-type type-original">Original</span>
+    <h2>Empirical treatment with valganciclovir in infants living with HIV and hospitalised with severe pneumonia in Africa: a multicentre, open-label, factorial, randomised, controlled, superiority trial.</h2>
+    <div class="authors">
+      Moraleda Cinta, Tagarro Alfredo, Domínguez-Rodríguez Sara 等 42 人 · 2026
+    </div>
+    
+    
+    <div class="summary-block">
+      <div class="section-label">摘要</div>
+      <p class="summary">
+        非洲 6 國 558 名患嚴重 HIV 相關肺炎的嬰兒（中位數 4.4 月），隨機分配接受標準照護或加上 15 天萬司羅韋治療；第 15 天死亡率萬司羅韋組 23% vs 對照組 27%（p=0.15），12 個月分別為 43% vs 48%（p=0.15），但時間變異分析提示早期可能獲益（day 15 HR 0.60，p=0.006）。
+      </p>
+    </div>
+    
+    
+    <div class="commentary">
+      <div class="section-label">短評</div>
+      <p>主終點沒過線（p=0.15），但換個分析角度就有效了——典型的「事後諸葛」問題；不過早期死亡確實低了，得靠後續大試驗把故事講完整，別讓統計遊戲矇騙臨床判斷。</p>
+    </div>
+    
+  
+    <div class="links">
+      <a href="https://doi.org/10.1016/S0140-6736(26)00754-3" target="_blank" rel="noopener">下載連結</a>
+      
+      <button class="copy-btn" type="button" data-copy="10.1016/S0140-6736(26)00754-3">複製 DOI</button>
+      <button class="copy-btn" type="button" data-copy="python dlbydoi.py 10.1016/S0140-6736(26)00754-3">複製下載指令</button>
+      
+      
+      <a class="request-btn"
+         href="https://script.google.com/macros/s/AKfycbwM6kGHe0XfPGPpmUTMFbm1NBu0lnccP74CXAWwdgS7eUfcNvI48pL-KOVzByCNNAuiZA/exec?view=appraise&amp;week=2026-W30&amp;pmid=42468541&amp;doi=10.1016%2FS0140-6736%2826%2900754-3&amp;journal=Lancet&amp;title=Empirical+treatment+with+valganciclovir+in+infants+living+with+HIV+and+hospitalised+with+severe+pneumonia+in+Africa%3A+a+multicentre%2C+open-label%2C+factorial%2C+randomised%2C+controlled%2C+superiority+trial."
+         target="_blank"
+         rel="noopener">請求評讀</a>
+      
+    </div>
+    
+    <div class="feedback"
+         data-pmid="42468541"
+         data-doi="10.1016/S0140-6736(26)00754-3"
+         data-journal="Lancet"
+         data-title="Empirical treatment with valganciclovir in infants living with HIV and hospitalised with severe pneumonia in Africa: a multicentre, open-label, factorial, randomised, controlled, superiority trial.">
+      <span class="fb-q">對這篇有興趣嗎?</span>
+      <button class="fb-btn" type="button" data-verdict="up">👍 有興趣</button>
+      <button class="fb-btn" type="button" data-verdict="down">👎 沒興趣</button>
+      <span class="fb-msg"></span>
+    </div>
+    
+  </article>
+  
+  <article>
+    <span class="tag">Lancet</span>
+    <span class="tag pub-type type-original">Original</span>
+    <h2>Multidomain lifestyle intervention for the prevention of cognitive decline in at-risk older adults in Latin America (LatAm-FINGERS): a single-blind, multicentre, randomised controlled trial.</h2>
+    <div class="authors">
+      Crivelli Lucia, Suemoto Claudia Kimie, Sosa Ana Luisa 等 102 人 · 2026
+    </div>
+    
+    
+    <div class="summary-block">
+      <div class="section-label">摘要</div>
+      <p class="summary">
+        LatAm-FINGERS 是拉丁美洲 11 國的多中心隨機對照試驗，納入 1065 位 60-77 歲認知風險高的長者，比較系統性多領域生活方式介入與靈活生活方式建議對 2 年認知功能的影響；系統性介入組認知複合評分年均改善 0.31 SD，優於對照組的 0.20 SD（差異 0.11 SD/年，p&lt;0.0001）。
+      </p>
+    </div>
+    
+    
+    <div class="commentary">
+      <div class="section-label">短評</div>
+      <p>終於有大型研究證實在拉丁美洲也能用多領域生活方式介入有效延緩認知衰退，而且介入效果差異統計上明顯，代表認知衰退防治策略得真正在地化落實才行。</p>
+    </div>
+    
+  
+    <div class="links">
+      <a href="https://doi.org/10.1016/S0140-6736(26)01278-X" target="_blank" rel="noopener">下載連結</a>
+      
+      <button class="copy-btn" type="button" data-copy="10.1016/S0140-6736(26)01278-X">複製 DOI</button>
+      <button class="copy-btn" type="button" data-copy="python dlbydoi.py 10.1016/S0140-6736(26)01278-X">複製下載指令</button>
+      
+      
+      <a class="request-btn"
+         href="https://script.google.com/macros/s/AKfycbwM6kGHe0XfPGPpmUTMFbm1NBu0lnccP74CXAWwdgS7eUfcNvI48pL-KOVzByCNNAuiZA/exec?view=appraise&amp;week=2026-W30&amp;pmid=42442374&amp;doi=10.1016%2FS0140-6736%2826%2901278-X&amp;journal=Lancet&amp;title=Multidomain+lifestyle+intervention+for+the+prevention+of+cognitive+decline+in+at-risk+older+adults+in+Latin+America+%28LatAm-FINGERS%29%3A+a+single-blind%2C+multicentre%2C+randomised+controlled+trial."
+         target="_blank"
+         rel="noopener">請求評讀</a>
+      
+    </div>
+    
+    <div class="feedback"
+         data-pmid="42442374"
+         data-doi="10.1016/S0140-6736(26)01278-X"
+         data-journal="Lancet"
+         data-title="Multidomain lifestyle intervention for the prevention of cognitive decline in at-risk older adults in Latin America (LatAm-FINGERS): a single-blind, multicentre, randomised controlled trial.">
+      <span class="fb-q">對這篇有興趣嗎?</span>
+      <button class="fb-btn" type="button" data-verdict="up">👍 有興趣</button>
+      <button class="fb-btn" type="button" data-verdict="down">👎 沒興趣</button>
+      <span class="fb-msg"></span>
+    </div>
+    
+  </article>
+  
+  <article>
+    <span class="tag">JAMA</span>
+    <span class="tag pub-type type-original">Original</span>
+    <h2>Hip Fractures: A Review.</h2>
+    <div class="authors">
+      Johannesdottir Fjola, Roberts Jimmie E, Kiel Douglas P 等 4 人 · 2026
+    </div>
+    
+    
+    <div class="summary-block">
+      <div class="section-label">摘要</div>
+      <p class="summary">
+        本文為髖部骨折綜述。全球每年 1,420 萬人經歷髖部骨折，中位 1 年死亡率 22%，約 42-71% 患者 6 個月內恢復日常功能。臨床分為囊內（股骨頸 34%）和囊外（轉子間 48%）骨折，老年女性風險最高。治療包括外科修復、物理治療、防跌倒策略及雙磷酸鹽等藥物治療。
+      </p>
+    </div>
+    
+    
+    <div class="commentary">
+      <div class="section-label">短評</div>
+      <p>這是老人跌倒的必然代價，預防勝於治療，但實務上要患者做肌力訓練、用居家安全取代行動自由？永遠是任務不可能。</p>
+    </div>
+    
+  
+    <div class="links">
+      <a href="https://doi.org/10.1001/jama.2026.11895" target="_blank" rel="noopener">下載連結</a>
+      
+      <button class="copy-btn" type="button" data-copy="10.1001/jama.2026.11895">複製 DOI</button>
+      <button class="copy-btn" type="button" data-copy="python dlbydoi.py 10.1001/jama.2026.11895">複製下載指令</button>
+      
+      
+      <a class="request-btn"
+         href="https://script.google.com/macros/s/AKfycbwM6kGHe0XfPGPpmUTMFbm1NBu0lnccP74CXAWwdgS7eUfcNvI48pL-KOVzByCNNAuiZA/exec?view=appraise&amp;week=2026-W30&amp;pmid=42461643&amp;doi=10.1001%2Fjama.2026.11895&amp;journal=JAMA&amp;title=Hip+Fractures%3A+A+Review."
+         target="_blank"
+         rel="noopener">請求評讀</a>
+      
+    </div>
+    
+    <div class="feedback"
+         data-pmid="42461643"
+         data-doi="10.1001/jama.2026.11895"
+         data-journal="JAMA"
+         data-title="Hip Fractures: A Review.">
+      <span class="fb-q">對這篇有興趣嗎?</span>
+      <button class="fb-btn" type="button" data-verdict="up">👍 有興趣</button>
+      <button class="fb-btn" type="button" data-verdict="down">👎 沒興趣</button>
+      <span class="fb-msg"></span>
+    </div>
+    
+  </article>
+  
+  <article>
+    <span class="tag">JAMA</span>
+    <span class="tag pub-type type-original">Original</span>
+    <h2>Prognostic Value of Blood-Based P-Tau217 Levels for Progression to Cognitive Impairment.</h2>
+    <div class="authors">
+      Buckley Rachel F, Townsend Diana L, Birkenbihl Colin J 等 38 人 · 2026
+    </div>
+    
+    
+    <div class="summary-block">
+      <div class="section-label">摘要</div>
+      <p class="summary">
+        多中心縱向隊列追蹤 2684 名認知正常老年人（中位年齡 69.6 歲），5.4 年期間根據基準血漿 p-tau217 水準評估認知障礙進展風險。p-tau217 很高組 5 年進展風險達 38%，認知衰退加快，每增加 1 個標準差風險增加 38%。
+      </p>
+    </div>
+    
+    
+    <div class="commentary">
+      <div class="section-label">短評</div>
+      <p>終於有個血檢生物標誌可以預測誰要走向失智了，不過得先在正常人群確認一下它不是在選擇族群裡才這麼神準。</p>
+    </div>
+    
+  
+    <div class="links">
+      <a href="https://doi.org/10.1001/jama.2026.12556" target="_blank" rel="noopener">下載連結</a>
+      
+      <button class="copy-btn" type="button" data-copy="10.1001/jama.2026.12556">複製 DOI</button>
+      <button class="copy-btn" type="button" data-copy="python dlbydoi.py 10.1001/jama.2026.12556">複製下載指令</button>
+      
+      
+      <a class="request-btn"
+         href="https://script.google.com/macros/s/AKfycbwM6kGHe0XfPGPpmUTMFbm1NBu0lnccP74CXAWwdgS7eUfcNvI48pL-KOVzByCNNAuiZA/exec?view=appraise&amp;week=2026-W30&amp;pmid=42449500&amp;doi=10.1001%2Fjama.2026.12556&amp;journal=JAMA&amp;title=Prognostic+Value+of+Blood-Based+P-Tau217+Levels+for+Progression+to+Cognitive+Impairment."
+         target="_blank"
+         rel="noopener">請求評讀</a>
+      
+    </div>
+    
+    <div class="feedback"
+         data-pmid="42449500"
+         data-doi="10.1001/jama.2026.12556"
+         data-journal="JAMA"
+         data-title="Prognostic Value of Blood-Based P-Tau217 Levels for Progression to Cognitive Impairment.">
+      <span class="fb-q">對這篇有興趣嗎?</span>
+      <button class="fb-btn" type="button" data-verdict="up">👍 有興趣</button>
+      <button class="fb-btn" type="button" data-verdict="down">👎 沒興趣</button>
+      <span class="fb-msg"></span>
+    </div>
+    
+  </article>
+  
+  <article>
+    <span class="tag">JAMA</span>
+    <span class="tag pub-type type-review">Review</span>
+    <h2>Low Back Pain: A Review.</h2>
+    <div class="authors">
+      Cashin Aidan G, Chou Roger, Weimer Melissa B 等 4 人 · 2026
+    </div>
+    
+    
+    <div class="summary-block">
+      <div class="section-label">摘要</div>
+      <p class="summary">
+        全球約6.19億人患腰痛，女性患率(9330/10萬)高於男性(5520/10萬)，90%為非特異性腰痛。急性腰痛(&lt;6週)患者72%於12個月內自癒，慢性腰痛恢復率42%。急性期一線治療包含熱療、脊椎操作、按摩、針灸與NSAIDs；慢性期著重運動、認知行為治療與多學科整合方案。
+      </p>
+    </div>
+    
+    
+    <div class="commentary">
+      <div class="section-label">短評</div>
+      <p>終於有份綜述力挺保守療法，72%急性腰痛自癒這個現實，可惜患者仍執迷過度治療，每年花冤枉錢在不必要的介入。</p>
+    </div>
+    
+  
+    <div class="links">
+      <a href="https://doi.org/10.1001/jama.2026.9631" target="_blank" rel="noopener">下載連結</a>
+      
+      <button class="copy-btn" type="button" data-copy="10.1001/jama.2026.9631">複製 DOI</button>
+      <button class="copy-btn" type="button" data-copy="python dlbydoi.py 10.1001/jama.2026.9631">複製下載指令</button>
+      
+      
+      <a class="request-btn"
+         href="https://script.google.com/macros/s/AKfycbwM6kGHe0XfPGPpmUTMFbm1NBu0lnccP74CXAWwdgS7eUfcNvI48pL-KOVzByCNNAuiZA/exec?view=appraise&amp;week=2026-W30&amp;pmid=42295944&amp;doi=10.1001%2Fjama.2026.9631&amp;journal=JAMA&amp;title=Low+Back+Pain%3A+A+Review."
+         target="_blank"
+         rel="noopener">請求評讀</a>
+      
+    </div>
+    
+    <div class="feedback"
+         data-pmid="42295944"
+         data-doi="10.1001/jama.2026.9631"
+         data-journal="JAMA"
+         data-title="Low Back Pain: A Review.">
+      <span class="fb-q">對這篇有興趣嗎?</span>
+      <button class="fb-btn" type="button" data-verdict="up">👍 有興趣</button>
+      <button class="fb-btn" type="button" data-verdict="down">👎 沒興趣</button>
+      <span class="fb-msg"></span>
+    </div>
+    
+  </article>
+  
+  <article>
+    <span class="tag">JACC</span>
+    <span class="tag pub-type type-original">Original</span>
+    <h2>Sudden Cardiac Death and its Relation to Previously Diagnosed or Occult Cardiac Disease at Autopsy.</h2>
+    <div class="authors">
+      Salazar James W, Nakasuka Kosuke, Connolly Andrew J 等 5 人 · 2026
+    </div>
+    
+    
+    <div class="summary-block">
+      <div class="section-label">摘要</div>
+      <p class="summary">
+        12年郡級驗屍研究（877例社區心猝死），58%屬心律不整；其中32%有既診風險因素，31%存在隱藏性梗塞或擴張性心肌病，突顯隱藏性心臟病在社區心猝死中的重要性。
+      </p>
+    </div>
+    
+    
+    <div class="commentary">
+      <div class="section-label">短評</div>
+      <p>診斷率只有32%，剩下的全靠驗屍才揭露，實在是個尷尬的現實；也難怪論文說隱藏性檢測得成為下一個關鍵課題。</p>
+    </div>
+    
+  
+    <div class="links">
+      <a href="https://doi.org/10.1016/j.jacc.2026.01.029" target="_blank" rel="noopener">下載連結</a>
+      
+      <button class="copy-btn" type="button" data-copy="10.1016/j.jacc.2026.01.029">複製 DOI</button>
+      <button class="copy-btn" type="button" data-copy="python dlbydoi.py 10.1016/j.jacc.2026.01.029">複製下載指令</button>
+      
+      
+      <a class="request-btn"
+         href="https://script.google.com/macros/s/AKfycbwM6kGHe0XfPGPpmUTMFbm1NBu0lnccP74CXAWwdgS7eUfcNvI48pL-KOVzByCNNAuiZA/exec?view=appraise&amp;week=2026-W30&amp;pmid=42029360&amp;doi=10.1016%2Fj.jacc.2026.01.029&amp;journal=JACC&amp;title=Sudden+Cardiac+Death+and+its+Relation+to+Previously+Diagnosed+or+Occult+Cardiac+Disease+at+Autopsy."
+         target="_blank"
+         rel="noopener">請求評讀</a>
+      
+    </div>
+    
+    <div class="feedback"
+         data-pmid="42029360"
+         data-doi="10.1016/j.jacc.2026.01.029"
+         data-journal="JACC"
+         data-title="Sudden Cardiac Death and its Relation to Previously Diagnosed or Occult Cardiac Disease at Autopsy.">
+      <span class="fb-q">對這篇有興趣嗎?</span>
+      <button class="fb-btn" type="button" data-verdict="up">👍 有興趣</button>
+      <button class="fb-btn" type="button" data-verdict="down">👎 沒興趣</button>
+      <span class="fb-msg"></span>
+    </div>
+    
+  </article>
+  
+  <article>
+    <span class="tag">JACC</span>
+    <span class="tag pub-type type-trial">RCT</span>
+    <h2>Randomized Trial of Left Bundle Branch Pacing vs Right Ventricular Pacing in Vulnerable Cardiac Function.</h2>
+    <div class="authors">
+      Qiu Nan, Liu Xi, Wang Zhongkai 等 16 人 · 2026
+    </div>
+    
+    
+    <div class="summary-block">
+      <div class="section-label">摘要</div>
+      <p class="summary">
+        160名高起搏量患者隨機接受左束支起搏（LBBP）或右心室起搏（RVP），36個月內LBBP組主要複合端點發生率低於RVP組（11.6% vs 33.9%，P=0.001），主要由起搏誘發心肌病減少所驅動（6.5% vs 18.2%），且左心室功能和臨床症狀改善更優。
+      </p>
+    </div>
+    
+    
+    <div class="commentary">
+      <div class="section-label">短評</div>
+      <p>LBBP終於翻身了，數據漂亮到不行，唯一小遺憾是沒救到人命，但心臟保護好本身就是贏。</p>
+    </div>
+    
+  
+    <div class="links">
+      <a href="https://doi.org/10.1016/j.jacc.2026.03.161" target="_blank" rel="noopener">下載連結</a>
+      
+      <button class="copy-btn" type="button" data-copy="10.1016/j.jacc.2026.03.161">複製 DOI</button>
+      <button class="copy-btn" type="button" data-copy="python dlbydoi.py 10.1016/j.jacc.2026.03.161">複製下載指令</button>
+      
+      
+      <a class="request-btn"
+         href="https://script.google.com/macros/s/AKfycbwM6kGHe0XfPGPpmUTMFbm1NBu0lnccP74CXAWwdgS7eUfcNvI48pL-KOVzByCNNAuiZA/exec?view=appraise&amp;week=2026-W30&amp;pmid=42024568&amp;doi=10.1016%2Fj.jacc.2026.03.161&amp;journal=JACC&amp;title=Randomized+Trial+of+Left+Bundle+Branch+Pacing+vs+Right+Ventricular+Pacing+in+Vulnerable+Cardiac+Function."
+         target="_blank"
+         rel="noopener">請求評讀</a>
+      
+    </div>
+    
+    <div class="feedback"
+         data-pmid="42024568"
+         data-doi="10.1016/j.jacc.2026.03.161"
+         data-journal="JACC"
+         data-title="Randomized Trial of Left Bundle Branch Pacing vs Right Ventricular Pacing in Vulnerable Cardiac Function.">
+      <span class="fb-q">對這篇有興趣嗎?</span>
+      <button class="fb-btn" type="button" data-verdict="up">👍 有興趣</button>
+      <button class="fb-btn" type="button" data-verdict="down">👎 沒興趣</button>
+      <span class="fb-msg"></span>
+    </div>
+    
+  </article>
+  
+  <article>
+    <span class="tag">JACC</span>
+    <span class="tag pub-type type-trial">RCT</span>
+    <h2>Varenicline and Ventricular Ectopy After Myocardial Infarction: A Randomized Phase 2 Study.</h2>
+    <div class="authors">
+      Shen Yunli, Guo Xiaogang, Zeng Chunyu 等 34 人 · 2026
+    </div>
+    
+    
+    <div class="summary-block">
+      <div class="section-label">摘要</div>
+      <p class="summary">
+        本多中心隨機雙盲試驗納入118位心肌梗塞後有頻繁室性早期收縮患者，給予Varenicline 0.5mg每日兩次或安慰劑45天。Varenicline相比安慰劑使24小時PVC計數減少60.1個百分點（P=0.001），反應率達67.8% vs 30.5%（P&lt;0.0001），非持續性心室頻脈發生率亦降低（20.3% vs 37.3%；P=0.007），且無致命性心律不整。
+      </p>
+    </div>
+    
+    
+    <div class="commentary">
+      <div class="section-label">短評</div>
+      <p>傳統抗心律不整藥有致心律不整之虞，Varenicline這條尼古丁受體新路初現曙光且數據不俗，樣本數雖小，但若大試驗也這麼順，戒菸藥變心臟科新星也說不準。</p>
+    </div>
+    
+  
+    <div class="links">
+      <a href="https://doi.org/10.1016/j.jacc.2025.12.090" target="_blank" rel="noopener">下載連結</a>
+      
+      <button class="copy-btn" type="button" data-copy="10.1016/j.jacc.2025.12.090">複製 DOI</button>
+      <button class="copy-btn" type="button" data-copy="python dlbydoi.py 10.1016/j.jacc.2025.12.090">複製下載指令</button>
+      
+      
+      <a class="request-btn"
+         href="https://script.google.com/macros/s/AKfycbwM6kGHe0XfPGPpmUTMFbm1NBu0lnccP74CXAWwdgS7eUfcNvI48pL-KOVzByCNNAuiZA/exec?view=appraise&amp;week=2026-W30&amp;pmid=41778949&amp;doi=10.1016%2Fj.jacc.2025.12.090&amp;journal=JACC&amp;title=Varenicline+and+Ventricular+Ectopy+After+Myocardial+Infarction%3A+A+Randomized+Phase+2+Study."
+         target="_blank"
+         rel="noopener">請求評讀</a>
+      
+    </div>
+    
+    <div class="feedback"
+         data-pmid="41778949"
+         data-doi="10.1016/j.jacc.2025.12.090"
+         data-journal="JACC"
+         data-title="Varenicline and Ventricular Ectopy After Myocardial Infarction: A Randomized Phase 2 Study.">
+      <span class="fb-q">對這篇有興趣嗎?</span>
+      <button class="fb-btn" type="button" data-verdict="up">👍 有興趣</button>
+      <button class="fb-btn" type="button" data-verdict="down">👎 沒興趣</button>
+      <span class="fb-msg"></span>
+    </div>
+    
+  </article>
+  
+  <article>
+    <span class="tag">EHJ</span>
+    <span class="tag pub-type type-original">Original</span>
+    <h2>Peripheral artery disease: advances in medical therapy.</h2>
+    <div class="authors">
+      Garagoli Fernando, Slipczuk Leandro, Shapiro Michael D 等 5 人 · 2026
+    </div>
+    
+    
+    <div class="summary-block">
+      <div class="section-label">摘要</div>
+      <p class="summary">
+        本綜述評估PAD醫學治療進展，涵蓋所有PAD患者族群。主要介入包括生活方式改變、風險因子控制，以及多種藥物療法：低劑量rivaroxaban加aspirin的雙重抗血栓療法優於單用aspirin、多種脂質降低劑達成LDL-C目標、新型抗糖尿病藥（GLP-1 RAs、SGLT2i）和semaglutide均具心血管和肢體保護效益。
+      </p>
+    </div>
+    
+    
+    <div class="commentary">
+      <div class="section-label">短評</div>
+      <p>PAD藥物治療進展神速，但最大瓶頸永遠不在藥廠的研發室，而在患者客廳的沙發和便利商店的香菸櫃——依從性才是王道。</p>
+    </div>
+    
+  
+    <div class="links">
+      <a href="https://doi.org/10.1093/eurheartj/ehag516" target="_blank" rel="noopener">下載連結</a>
+      
+      <button class="copy-btn" type="button" data-copy="10.1093/eurheartj/ehag516">複製 DOI</button>
+      <button class="copy-btn" type="button" data-copy="python dlbydoi.py 10.1093/eurheartj/ehag516">複製下載指令</button>
+      
+      
+      <a class="request-btn"
+         href="https://script.google.com/macros/s/AKfycbwM6kGHe0XfPGPpmUTMFbm1NBu0lnccP74CXAWwdgS7eUfcNvI48pL-KOVzByCNNAuiZA/exec?view=appraise&amp;week=2026-W30&amp;pmid=42466921&amp;doi=10.1093%2Feurheartj%2Fehag516&amp;journal=EHJ&amp;title=Peripheral+artery+disease%3A+advances+in+medical+therapy."
+         target="_blank"
+         rel="noopener">請求評讀</a>
+      
+    </div>
+    
+    <div class="feedback"
+         data-pmid="42466921"
+         data-doi="10.1093/eurheartj/ehag516"
+         data-journal="EHJ"
+         data-title="Peripheral artery disease: advances in medical therapy.">
+      <span class="fb-q">對這篇有興趣嗎?</span>
+      <button class="fb-btn" type="button" data-verdict="up">👍 有興趣</button>
+      <button class="fb-btn" type="button" data-verdict="down">👎 沒興趣</button>
+      <span class="fb-msg"></span>
+    </div>
+    
+  </article>
+  
+  <article>
+    <span class="tag">EHJ</span>
+    <span class="tag pub-type type-original">Original</span>
+    <h2>Paraspeckles as a target for myocardial hypertrophy.</h2>
+    <div class="authors">
+      Pan Junjie, Zhong Guohui, Du Ruikai 等 22 人 · 2026
+    </div>
+    
+    
+    <div class="summary-block">
+      <div class="section-label">摘要</div>
+      <p class="summary">
+        這項研究探討囊外顆粒（lncRNA Neat1經液-液相分離形成）在病理性心肌肥厚和心力衰竭中的角色，使用ISO刺激、TAC手術、人類HF患者樣本、Neat1敲除小鼠及AAV9病毒傳遞進行驗證；結果顯示Neat1上調驅動囊外顆粒通過促進心肌細胞鐵死亡（核隔離Fth1 mRNA）導致心肌重構，而其敲除或AAV9-Neat1_2敲低可有效預防TAC誘導的心臟功能障礙。
+      </p>
+    </div>
+    
+    
+    <div class="commentary">
+      <div class="section-label">短評</div>
+      <p>心臟科又多一新靶點——原來心肌細胞竟會因缺鐵『自殺過度』，幕後黑手是lncRNA，AAV9敲低若進臨床可能開創心衰治療新局面。</p>
+    </div>
+    
+  
+    <div class="links">
+      <a href="https://doi.org/10.1093/eurheartj/ehag481" target="_blank" rel="noopener">下載連結</a>
+      
+      <button class="copy-btn" type="button" data-copy="10.1093/eurheartj/ehag481">複製 DOI</button>
+      <button class="copy-btn" type="button" data-copy="python dlbydoi.py 10.1093/eurheartj/ehag481">複製下載指令</button>
+      
+      
+      <a class="request-btn"
+         href="https://script.google.com/macros/s/AKfycbwM6kGHe0XfPGPpmUTMFbm1NBu0lnccP74CXAWwdgS7eUfcNvI48pL-KOVzByCNNAuiZA/exec?view=appraise&amp;week=2026-W30&amp;pmid=42466913&amp;doi=10.1093%2Feurheartj%2Fehag481&amp;journal=EHJ&amp;title=Paraspeckles+as+a+target+for+myocardial+hypertrophy."
+         target="_blank"
+         rel="noopener">請求評讀</a>
+      
+    </div>
+    
+    <div class="feedback"
+         data-pmid="42466913"
+         data-doi="10.1093/eurheartj/ehag481"
+         data-journal="EHJ"
+         data-title="Paraspeckles as a target for myocardial hypertrophy.">
+      <span class="fb-q">對這篇有興趣嗎?</span>
+      <button class="fb-btn" type="button" data-verdict="up">👍 有興趣</button>
+      <button class="fb-btn" type="button" data-verdict="down">👎 沒興趣</button>
+      <span class="fb-msg"></span>
+    </div>
+    
+  </article>
+  
+  <article>
+    <span class="tag">EHJ</span>
+    <span class="tag pub-type type-original">Original</span>
+    <h2>Clonal haematopoiesis of indeterminate potential in cardiovascular medicine: is it time for selective testing?</h2>
+    <div class="authors">
+      Oren Ohad, Libby Peter · 2026
+    </div>
+    
+    
+    <div class="summary-block">
+      <div class="section-label">摘要</div>
+      <p class="summary">
+        CHIP為源於造血幹細胞體細胞突變的年齡相關心血管危險因素。本綜述建議心臟科醫生應選擇性檢測高風險患者的CHIP突變與其負荷（VAF），以改進心血管風險評估並指導個人化預防和管理。
+      </p>
+    </div>
+    
+    
+    <div class="commentary">
+      <div class="section-label">短評</div>
+      <p>有趣的是從「檢測無用」變成「該選擇性檢測」；但要讓心臟科醫生真的買單，恐怕還得更多臨床證據。</p>
+    </div>
+    
+  
+    <div class="links">
+      <a href="https://doi.org/10.1093/eurheartj/ehag454" target="_blank" rel="noopener">下載連結</a>
+      
+      <button class="copy-btn" type="button" data-copy="10.1093/eurheartj/ehag454">複製 DOI</button>
+      <button class="copy-btn" type="button" data-copy="python dlbydoi.py 10.1093/eurheartj/ehag454">複製下載指令</button>
+      
+      
+      <a class="request-btn"
+         href="https://script.google.com/macros/s/AKfycbwM6kGHe0XfPGPpmUTMFbm1NBu0lnccP74CXAWwdgS7eUfcNvI48pL-KOVzByCNNAuiZA/exec?view=appraise&amp;week=2026-W30&amp;pmid=42466898&amp;doi=10.1093%2Feurheartj%2Fehag454&amp;journal=EHJ&amp;title=Clonal+haematopoiesis+of+indeterminate+potential+in+cardiovascular+medicine%3A+is+it+time+for+selective+testing%3F"
+         target="_blank"
+         rel="noopener">請求評讀</a>
+      
+    </div>
+    
+    <div class="feedback"
+         data-pmid="42466898"
+         data-doi="10.1093/eurheartj/ehag454"
+         data-journal="EHJ"
+         data-title="Clonal haematopoiesis of indeterminate potential in cardiovascular medicine: is it time for selective testing?">
+      <span class="fb-q">對這篇有興趣嗎?</span>
+      <button class="fb-btn" type="button" data-verdict="up">👍 有興趣</button>
+      <button class="fb-btn" type="button" data-verdict="down">👎 沒興趣</button>
+      <span class="fb-msg"></span>
+    </div>
+    
+  </article>
+  
+  <article>
+    <span class="tag">EHJ</span>
+    <span class="tag pub-type type-original">Original</span>
+    <h2>Paediatric long QT syndrome: clinical outcomes and therapy in the Spanish National Registry.</h2>
+    <div class="authors">
+      Perin Francesca, Cartón Antonio J, Bermúdez-Jiménez Francisco Jose 等 35 人 · 2026
+    </div>
+    
+    
+    <div class="summary-block">
+      <div class="section-label">摘要</div>
+      <p class="summary">
+        西班牙30個中心371名兒童LQTS患者回顧性研究（2004-24），92.4%接受貝他阻斷劑、8.9%各植入ICD或左心交感神經切除術；追蹤中位6年，3.8%發生心律不整死亡或適當ICD除顫，主要見於高危基因型、QTc≥550ms和極早期發病者。
+      </p>
+    </div>
+    
+    
+    <div class="commentary">
+      <div class="section-label">短評</div>
+      <p>分層管理確實奏效：低危用藥就行，高危用刀也安全，但那些預後好到出人意料的患者可能會暗罵當初被嚇得有點多。</p>
+    </div>
+    
+  
+    <div class="links">
+      <a href="https://doi.org/10.1093/eurheartj/ehag513" target="_blank" rel="noopener">下載連結</a>
+      
+      <button class="copy-btn" type="button" data-copy="10.1093/eurheartj/ehag513">複製 DOI</button>
+      <button class="copy-btn" type="button" data-copy="python dlbydoi.py 10.1093/eurheartj/ehag513">複製下載指令</button>
+      
+      
+      <a class="request-btn"
+         href="https://script.google.com/macros/s/AKfycbwM6kGHe0XfPGPpmUTMFbm1NBu0lnccP74CXAWwdgS7eUfcNvI48pL-KOVzByCNNAuiZA/exec?view=appraise&amp;week=2026-W30&amp;pmid=42466893&amp;doi=10.1093%2Feurheartj%2Fehag513&amp;journal=EHJ&amp;title=Paediatric+long+QT+syndrome%3A+clinical+outcomes+and+therapy+in+the+Spanish+National+Registry."
+         target="_blank"
+         rel="noopener">請求評讀</a>
+      
+    </div>
+    
+    <div class="feedback"
+         data-pmid="42466893"
+         data-doi="10.1093/eurheartj/ehag513"
+         data-journal="EHJ"
+         data-title="Paediatric long QT syndrome: clinical outcomes and therapy in the Spanish National Registry.">
+      <span class="fb-q">對這篇有興趣嗎?</span>
+      <button class="fb-btn" type="button" data-verdict="up">👍 有興趣</button>
+      <button class="fb-btn" type="button" data-verdict="down">👎 沒興趣</button>
+      <span class="fb-msg"></span>
+    </div>
+    
+  </article>
+  
+  <article>
+    <span class="tag">EHJ</span>
+    <span class="tag pub-type type-original">Original</span>
+    <h2>Gut microbe-generated metabolite trimethylamine N-oxide and risk of abdominal aortic aneurysm: a cohort study.</h2>
+    <div class="authors">
+      Li Xinmin S, Wang Meng, Wang Zeneng 等 24 人 · 2026
+    </div>
+    
+    
+    <div class="summary-block">
+      <div class="section-label">摘要</div>
+      <p class="summary">
+        美國社區4442名≥65歲長者隊列研究，追蹤中位12.2年，評估腸道TMAO代謝物與腹主動脈瘤(AAA)發展及不良事件(修復/破裂/死亡)的關聯。高TMAO水平(第三分位或≥6.2 µM)與AAA不良事件風險增加2.46倍或1.93倍。
+      </p>
+    </div>
+    
+    
+    <div class="commentary">
+      <div class="section-label">短評</div>
+      <p>找到新的生物標誌是好事，但TMAO能靠改善腸道菌相來預防AAA嗎？這問題得問下一批臨床試驗。</p>
+    </div>
+    
+  
+    <div class="links">
+      <a href="https://doi.org/10.1093/eurheartj/ehag489" target="_blank" rel="noopener">下載連結</a>
+      
+      <button class="copy-btn" type="button" data-copy="10.1093/eurheartj/ehag489">複製 DOI</button>
+      <button class="copy-btn" type="button" data-copy="python dlbydoi.py 10.1093/eurheartj/ehag489">複製下載指令</button>
+      
+      
+      <a class="request-btn"
+         href="https://script.google.com/macros/s/AKfycbwM6kGHe0XfPGPpmUTMFbm1NBu0lnccP74CXAWwdgS7eUfcNvI48pL-KOVzByCNNAuiZA/exec?view=appraise&amp;week=2026-W30&amp;pmid=42455761&amp;doi=10.1093%2Feurheartj%2Fehag489&amp;journal=EHJ&amp;title=Gut+microbe-generated+metabolite+trimethylamine+N-oxide+and+risk+of+abdominal+aortic+aneurysm%3A+a+cohort+study."
+         target="_blank"
+         rel="noopener">請求評讀</a>
+      
+    </div>
+    
+    <div class="feedback"
+         data-pmid="42455761"
+         data-doi="10.1093/eurheartj/ehag489"
+         data-journal="EHJ"
+         data-title="Gut microbe-generated metabolite trimethylamine N-oxide and risk of abdominal aortic aneurysm: a cohort study.">
+      <span class="fb-q">對這篇有興趣嗎?</span>
+      <button class="fb-btn" type="button" data-verdict="up">👍 有興趣</button>
+      <button class="fb-btn" type="button" data-verdict="down">👎 沒興趣</button>
+      <span class="fb-msg"></span>
+    </div>
+    
+  </article>
+  
+  <article>
+    <span class="tag">EHJ</span>
+    <span class="tag pub-type type-original">Original</span>
+    <h2>Exercise training for cardiovascular prevention in patients with cancer.</h2>
+    <div class="authors">
+      Piepoli Massimo, Cohen-Solal Alain, Ameri Pietro 等 45 人 · 2026
+    </div>
+    
+    
+    <div class="summary-block">
+      <div class="section-label">摘要</div>
+      <p class="summary">
+        這份心臟腫瘤學共識文件檢視了癌症患者的運動訓練證據，指出監督運動療法（包括高強度間歇訓練）在治療前、中、後都安全耐受，可降低治療相關心毒性風險並改善心肺功能和生活品質。
+      </p>
+    </div>
+    
+    
+    <div class="commentary">
+      <div class="section-label">短評</div>
+      <p>癌患運動益處早就有端倪，終於有份文件把它講清楚了，應該能推動更多醫院把運動當癌症治療的標配。</p>
+    </div>
+    
+  
+    <div class="links">
+      <a href="https://doi.org/10.1093/eurheartj/ehag089" target="_blank" rel="noopener">下載連結</a>
+      
+      <button class="copy-btn" type="button" data-copy="10.1093/eurheartj/ehag089">複製 DOI</button>
+      <button class="copy-btn" type="button" data-copy="python dlbydoi.py 10.1093/eurheartj/ehag089">複製下載指令</button>
+      
+      
+      <a class="request-btn"
+         href="https://script.google.com/macros/s/AKfycbwM6kGHe0XfPGPpmUTMFbm1NBu0lnccP74CXAWwdgS7eUfcNvI48pL-KOVzByCNNAuiZA/exec?view=appraise&amp;week=2026-W30&amp;pmid=42455638&amp;doi=10.1093%2Feurheartj%2Fehag089&amp;journal=EHJ&amp;title=Exercise+training+for+cardiovascular+prevention+in+patients+with+cancer."
+         target="_blank"
+         rel="noopener">請求評讀</a>
+      
+    </div>
+    
+    <div class="feedback"
+         data-pmid="42455638"
+         data-doi="10.1093/eurheartj/ehag089"
+         data-journal="EHJ"
+         data-title="Exercise training for cardiovascular prevention in patients with cancer.">
+      <span class="fb-q">對這篇有興趣嗎?</span>
+      <button class="fb-btn" type="button" data-verdict="up">👍 有興趣</button>
+      <button class="fb-btn" type="button" data-verdict="down">👎 沒興趣</button>
+      <span class="fb-msg"></span>
+    </div>
+    
+  </article>
+  
+  <article>
+    <span class="tag">EHJ</span>
+    <span class="tag pub-type type-original">Original</span>
+    <h2>Trientine for hypertrophic cardiomyopathy: a phase 2 trial.</h2>
+    <div class="authors">
+      Farrant John P, Dodd Susanna, Rosala-Hallas Anna 等 34 人 · 2026
+    </div>
+    
+    
+    <div class="summary-block">
+      <div class="section-label">摘要</div>
+      <p class="summary">
+        多中心隨機對照試驗，154 名肥厚性心肌病患者接受 trientine 400 mg 每日兩次或安慰劑治療 52 週。Trientine 組左心室質量指數化減少 4.4 g/m²，優於安慰劑組的 1.5 g/m²（P=0.009），效果在基線左心室質量較高者更顯著。
+      </p>
+    </div>
+    
+    
+    <div class="commentary">
+      <div class="section-label">短評</div>
+      <p>銅螯合新療法來了，心室質量確實改善，但能否轉化為患者臨床獲益？phase 3 才是真正的考試。</p>
+    </div>
+    
+  
+    <div class="links">
+      <a href="https://doi.org/10.1093/eurheartj/ehag512" target="_blank" rel="noopener">下載連結</a>
+      
+      <button class="copy-btn" type="button" data-copy="10.1093/eurheartj/ehag512">複製 DOI</button>
+      <button class="copy-btn" type="button" data-copy="python dlbydoi.py 10.1093/eurheartj/ehag512">複製下載指令</button>
+      
+      
+      <a class="request-btn"
+         href="https://script.google.com/macros/s/AKfycbwM6kGHe0XfPGPpmUTMFbm1NBu0lnccP74CXAWwdgS7eUfcNvI48pL-KOVzByCNNAuiZA/exec?view=appraise&amp;week=2026-W30&amp;pmid=42455121&amp;doi=10.1093%2Feurheartj%2Fehag512&amp;journal=EHJ&amp;title=Trientine+for+hypertrophic+cardiomyopathy%3A+a+phase+2+trial."
+         target="_blank"
+         rel="noopener">請求評讀</a>
+      
+    </div>
+    
+    <div class="feedback"
+         data-pmid="42455121"
+         data-doi="10.1093/eurheartj/ehag512"
+         data-journal="EHJ"
+         data-title="Trientine for hypertrophic cardiomyopathy: a phase 2 trial.">
+      <span class="fb-q">對這篇有興趣嗎?</span>
+      <button class="fb-btn" type="button" data-verdict="up">👍 有興趣</button>
+      <button class="fb-btn" type="button" data-verdict="down">👎 沒興趣</button>
+      <span class="fb-msg"></span>
+    </div>
+    
+  </article>
+  
+  <article>
+    <span class="tag">EHJ</span>
+    <span class="tag pub-type type-original">Original</span>
+    <h2>Micro- and nano-plastics in the coronary circulation and air pollution exposure in ischaemic heart disease presentation.</h2>
+    <div class="authors">
+      Paolisso Pasquale, Scisciola Lucia, Belmonte Marta 等 28 人 · 2026
+    </div>
+    
+    
+    <div class="summary-block">
+      <div class="section-label">摘要</div>
+      <p class="summary">
+        本研究採橫斷面設計，納入61名患者（STEMI 19人、CCS 20人、對照22人），檢測冠狀動脈和周邊血液中的微奈米塑膠。結果發現STEMI患者的檢測率高達84.2%，顯著高於CCS (40%)和對照(31.8%)，且冠狀動脈血液濃度最高；聚乙烯佔97%，吸煙史是獨立預測因子。
+      </p>
+    </div>
+    
+    
+    <div class="commentary">
+      <div class="section-label">短評</div>
+      <p>原來塑膠不只在海洋濃度超標，連冠狀動脈都是重災區；對STEMI患者檢測率84%的發現，後續得深入研究塑膠是否真是心梗幫兇。</p>
+    </div>
+    
+  
+    <div class="links">
+      <a href="https://doi.org/10.1093/eurheartj/ehag447" target="_blank" rel="noopener">下載連結</a>
+      
+      <button class="copy-btn" type="button" data-copy="10.1093/eurheartj/ehag447">複製 DOI</button>
+      <button class="copy-btn" type="button" data-copy="python dlbydoi.py 10.1093/eurheartj/ehag447">複製下載指令</button>
+      
+      
+      <a class="request-btn"
+         href="https://script.google.com/macros/s/AKfycbwM6kGHe0XfPGPpmUTMFbm1NBu0lnccP74CXAWwdgS7eUfcNvI48pL-KOVzByCNNAuiZA/exec?view=appraise&amp;week=2026-W30&amp;pmid=42447841&amp;doi=10.1093%2Feurheartj%2Fehag447&amp;journal=EHJ&amp;title=Micro-+and+nano-plastics+in+the+coronary+circulation+and+air+pollution+exposure+in+ischaemic+heart+disease+presentation."
+         target="_blank"
+         rel="noopener">請求評讀</a>
+      
+    </div>
+    
+    <div class="feedback"
+         data-pmid="42447841"
+         data-doi="10.1093/eurheartj/ehag447"
+         data-journal="EHJ"
+         data-title="Micro- and nano-plastics in the coronary circulation and air pollution exposure in ischaemic heart disease presentation.">
+      <span class="fb-q">對這篇有興趣嗎?</span>
+      <button class="fb-btn" type="button" data-verdict="up">👍 有興趣</button>
+      <button class="fb-btn" type="button" data-verdict="down">👎 沒興趣</button>
+      <span class="fb-msg"></span>
+    </div>
+    
+  </article>
+  
+  <article>
+    <span class="tag">EHJ</span>
+    <span class="tag pub-type type-review">Review</span>
+    <h2>Pulmonary embolism epidemiology: trends, risk factors, comorbidities, and clinical implications.</h2>
+    <div class="authors">
+      Zuin Marco, Becattini Cecilia, Klok Frederikus A 等 12 人 · 2026
+    </div>
+    
+    
+    <div class="summary-block">
+      <div class="section-label">摘要</div>
+      <p class="summary">
+        本回顧總結肺栓塞流行病學趨勢與風險因子，指出隨著老齡化，肺栓塞將持續威脅公共衛生，已知風險包括年齡、肥胖、吸菸與慢性發炎，但現有預防策略仍嫌不足，強調需要更新的流行病學認識以支持臨床教育和人口預防。
+      </p>
+    </div>
+    
+    
+    <div class="commentary">
+      <div class="section-label">短評</div>
+      <p>肺栓塞的風險因子如數家珍，但預防策略仍是老大難——就像知道敵人是誰，卻始終打不贏的戲碼，這篇評論期待醫療體系能有突破。</p>
+    </div>
+    
+  
+    <div class="links">
+      <a href="https://doi.org/10.1093/eurheartj/ehag388" target="_blank" rel="noopener">下載連結</a>
+      
+      <button class="copy-btn" type="button" data-copy="10.1093/eurheartj/ehag388">複製 DOI</button>
+      <button class="copy-btn" type="button" data-copy="python dlbydoi.py 10.1093/eurheartj/ehag388">複製下載指令</button>
+      
+      
+      <a class="request-btn"
+         href="https://script.google.com/macros/s/AKfycbwM6kGHe0XfPGPpmUTMFbm1NBu0lnccP74CXAWwdgS7eUfcNvI48pL-KOVzByCNNAuiZA/exec?view=appraise&amp;week=2026-W30&amp;pmid=42178972&amp;doi=10.1093%2Feurheartj%2Fehag388&amp;journal=EHJ&amp;title=Pulmonary+embolism+epidemiology%3A+trends%2C+risk+factors%2C+comorbidities%2C+and+clinical+implications."
+         target="_blank"
+         rel="noopener">請求評讀</a>
+      
+    </div>
+    
+    <div class="feedback"
+         data-pmid="42178972"
+         data-doi="10.1093/eurheartj/ehag388"
+         data-journal="EHJ"
+         data-title="Pulmonary embolism epidemiology: trends, risk factors, comorbidities, and clinical implications.">
+      <span class="fb-q">對這篇有興趣嗎?</span>
+      <button class="fb-btn" type="button" data-verdict="up">👍 有興趣</button>
+      <button class="fb-btn" type="button" data-verdict="down">👎 沒興趣</button>
+      <span class="fb-msg"></span>
+    </div>
+    
+  </article>
+  
+  <article>
+    <span class="tag">EHJ</span>
+    <span class="tag pub-type type-original">Original</span>
+    <h2>European Society of Cardiology: cardiovascular disease statistics 2025.</h2>
+    <div class="authors">
+      Timmis Adam, Petersen Steffen E, Van Belle Eric 等 20 人 · 2026
+    </div>
+    
+    
+    <div class="summary-block">
+      <div class="section-label">摘要</div>
+      <p class="summary">
+        ESC 2025 年心血管統計涵蓋 50 多國，年均 300 萬死亡、68 百萬傷殘生命年；中等收入國死亡率為高收入國兩倍，肥胖和糖尿病持續威脅防控成果。
+      </p>
+    </div>
+    
+    
+    <div class="commentary">
+      <div class="section-label">短評</div>
+      <p>好消息是防控在進展，壞消息是肥胖和糖尿病這對「拆台高手」正在全力破壞，中低收入國更是雪上加霜。</p>
+    </div>
+    
+  
+    <div class="links">
+      <a href="https://doi.org/10.1093/eurheartj/ehag345" target="_blank" rel="noopener">下載連結</a>
+      
+      <button class="copy-btn" type="button" data-copy="10.1093/eurheartj/ehag345">複製 DOI</button>
+      <button class="copy-btn" type="button" data-copy="python dlbydoi.py 10.1093/eurheartj/ehag345">複製下載指令</button>
+      
+      
+      <a class="request-btn"
+         href="https://script.google.com/macros/s/AKfycbwM6kGHe0XfPGPpmUTMFbm1NBu0lnccP74CXAWwdgS7eUfcNvI48pL-KOVzByCNNAuiZA/exec?view=appraise&amp;week=2026-W30&amp;pmid=42150766&amp;doi=10.1093%2Feurheartj%2Fehag345&amp;journal=EHJ&amp;title=European+Society+of+Cardiology%3A+cardiovascular+disease+statistics+2025."
+         target="_blank"
+         rel="noopener">請求評讀</a>
+      
+    </div>
+    
+    <div class="feedback"
+         data-pmid="42150766"
+         data-doi="10.1093/eurheartj/ehag345"
+         data-journal="EHJ"
+         data-title="European Society of Cardiology: cardiovascular disease statistics 2025.">
+      <span class="fb-q">對這篇有興趣嗎?</span>
+      <button class="fb-btn" type="button" data-verdict="up">👍 有興趣</button>
+      <button class="fb-btn" type="button" data-verdict="down">👎 沒興趣</button>
+      <span class="fb-msg"></span>
+    </div>
+    
+  </article>
+  
+  <article>
+    <span class="tag">Circulation</span>
+    <span class="tag pub-type type-review">Review</span>
+    <h2>Transforming Pulmonary Arterial Hypertension: Key Milestones and Future Perspectives.</h2>
+    <div class="authors">
+      Humbert Marc, Zeder Katarina, Kovacs Gabor 等 4 人 · 2026
+    </div>
+    
+    
+    <div class="summary-block">
+      <div class="section-label">摘要</div>
+      <p class="summary">
+        肺動脈高血壓PAH是罕見漸進性血管重塑疾病。近40年在病理、診斷、治療有重大進展；現患者趨向年長且多合併症。新療法sotatercept是首個抗血管重塑藥物，搭配多藥物組合策略已改善血流動力學與預後，惟診斷仍常延遲，治療仍需個人化與創新。
+      </p>
+    </div>
+    
+    
+    <div class="commentary">
+      <div class="section-label">短評</div>
+      <p>新藥組合策略確實有救，但診斷延遲還是大問題，一發現往往已經進展不少；希望AI工具別只在論文裡說說，真的能早期抓到這群人改寫預後。</p>
+    </div>
+    
+  
+    <div class="links">
+      <a href="https://doi.org/10.1161/CIRCULATIONAHA.126.079274" target="_blank" rel="noopener">下載連結</a>
+      
+      <button class="copy-btn" type="button" data-copy="10.1161/CIRCULATIONAHA.126.079274">複製 DOI</button>
+      <button class="copy-btn" type="button" data-copy="python dlbydoi.py 10.1161/CIRCULATIONAHA.126.079274">複製下載指令</button>
+      
+      
+      <a class="request-btn"
+         href="https://script.google.com/macros/s/AKfycbwM6kGHe0XfPGPpmUTMFbm1NBu0lnccP74CXAWwdgS7eUfcNvI48pL-KOVzByCNNAuiZA/exec?view=appraise&amp;week=2026-W30&amp;pmid=42441757&amp;doi=10.1161%2FCIRCULATIONAHA.126.079274&amp;journal=Circulation&amp;title=Transforming+Pulmonary+Arterial+Hypertension%3A+Key+Milestones+and+Future+Perspectives."
+         target="_blank"
+         rel="noopener">請求評讀</a>
+      
+    </div>
+    
+    <div class="feedback"
+         data-pmid="42441757"
+         data-doi="10.1161/CIRCULATIONAHA.126.079274"
+         data-journal="Circulation"
+         data-title="Transforming Pulmonary Arterial Hypertension: Key Milestones and Future Perspectives.">
+      <span class="fb-q">對這篇有興趣嗎?</span>
+      <button class="fb-btn" type="button" data-verdict="up">👍 有興趣</button>
+      <button class="fb-btn" type="button" data-verdict="down">👎 沒興趣</button>
+      <span class="fb-msg"></span>
+    </div>
+    
+  </article>
+  
+  <article>
+    <span class="tag">Circulation</span>
+    <span class="tag pub-type type-original">Original</span>
+    <h2>Microplastic Exposure Aggravates Cardiomyopathy Under Hemodynamic Stress Through the Gut-Heart Axis.</h2>
+    <div class="authors">
+      Wang Jing, Xu Jie, Mai Huanzhuo 等 10 人 · 2026
+    </div>
+    
+    
+    <div class="summary-block">
+      <div class="section-label">摘要</div>
+      <p class="summary">
+        研究利用無菌小鼠模型及糞便菌群移植等方法探討雙酚F（BPF）的心血管毒性，在285個人尿樣本中有90.5%檢出BPF；發現BPF通過腸菌轉換產生N-乙酰腐胺，進而破壞腸屏障並激活心肌細胞p53通路導致心肌肥大。
+      </p>
+    </div>
+    
+    
+    <div class="commentary">
+      <div class="section-label">短評</div>
+      <p>看來塑膠不只傷環境，還會直接「傷心」，腸菌代謝成共犯，下一步應該找找有沒有辦法用益生菌或飲食介入來阻斷這條通路。</p>
+    </div>
+    
+  
+    <div class="links">
+      <a href="https://doi.org/10.1161/CIRCULATIONAHA.126.079820" target="_blank" rel="noopener">下載連結</a>
+      
+      <button class="copy-btn" type="button" data-copy="10.1161/CIRCULATIONAHA.126.079820">複製 DOI</button>
+      <button class="copy-btn" type="button" data-copy="python dlbydoi.py 10.1161/CIRCULATIONAHA.126.079820">複製下載指令</button>
+      
+      
+      <a class="request-btn"
+         href="https://script.google.com/macros/s/AKfycbwM6kGHe0XfPGPpmUTMFbm1NBu0lnccP74CXAWwdgS7eUfcNvI48pL-KOVzByCNNAuiZA/exec?view=appraise&amp;week=2026-W30&amp;pmid=42206375&amp;doi=10.1161%2FCIRCULATIONAHA.126.079820&amp;journal=Circulation&amp;title=Microplastic+Exposure+Aggravates+Cardiomyopathy+Under+Hemodynamic+Stress+Through+the+Gut-Heart+Axis."
+         target="_blank"
+         rel="noopener">請求評讀</a>
+      
+    </div>
+    
+    <div class="feedback"
+         data-pmid="42206375"
+         data-doi="10.1161/CIRCULATIONAHA.126.079820"
+         data-journal="Circulation"
+         data-title="Microplastic Exposure Aggravates Cardiomyopathy Under Hemodynamic Stress Through the Gut-Heart Axis.">
+      <span class="fb-q">對這篇有興趣嗎?</span>
+      <button class="fb-btn" type="button" data-verdict="up">👍 有興趣</button>
+      <button class="fb-btn" type="button" data-verdict="down">👎 沒興趣</button>
+      <span class="fb-msg"></span>
+    </div>
+    
+  </article>
+  
+  <article>
+    <span class="tag">Circulation</span>
+    <span class="tag pub-type type-original">Original</span>
+    <h2>Hypoxia Upregulation of BACH1 Aggravates Pulmonary Hypertension Through TGFBR2/SMAD Pathways.</h2>
+    <div class="authors">
+      Hou Yannan, Li Qinhan, Wei Tong-You Wade 等 30 人 · 2026
+    </div>
+    
+    
+    <div class="summary-block">
+      <div class="section-label">摘要</div>
+      <p class="summary">
+        利用特發性肺動脈高血壓患者標本與動物模型，發現BACH1經由PHD2/VHL軸在缺氧下穩定增加，激活TGFBR2/SMAD信號促進肺血管重塑。BACH1敲除減輕而過表達加重肺動脈高血壓，TGFBR2抑制劑可有效減弱其病理作用。
+      </p>
+    </div>
+    
+    
+    <div class="commentary">
+      <div class="section-label">短評</div>
+      <p>BACH1是缺氧性肺高血壓的主要推手，TGFBR2抑制劑成了新希望，但別忘了，從漂亮的實驗數據到臨床應用通常隔著好幾十億美元。</p>
+    </div>
+    
+  
+    <div class="links">
+      <a href="https://doi.org/10.1161/CIRCULATIONAHA.124.073606" target="_blank" rel="noopener">下載連結</a>
+      
+      <button class="copy-btn" type="button" data-copy="10.1161/CIRCULATIONAHA.124.073606">複製 DOI</button>
+      <button class="copy-btn" type="button" data-copy="python dlbydoi.py 10.1161/CIRCULATIONAHA.124.073606">複製下載指令</button>
+      
+      
+      <a class="request-btn"
+         href="https://script.google.com/macros/s/AKfycbwM6kGHe0XfPGPpmUTMFbm1NBu0lnccP74CXAWwdgS7eUfcNvI48pL-KOVzByCNNAuiZA/exec?view=appraise&amp;week=2026-W30&amp;pmid=42186808&amp;doi=10.1161%2FCIRCULATIONAHA.124.073606&amp;journal=Circulation&amp;title=Hypoxia+Upregulation+of+BACH1+Aggravates+Pulmonary+Hypertension+Through+TGFBR2%2FSMAD+Pathways."
+         target="_blank"
+         rel="noopener">請求評讀</a>
+      
+    </div>
+    
+    <div class="feedback"
+         data-pmid="42186808"
+         data-doi="10.1161/CIRCULATIONAHA.124.073606"
+         data-journal="Circulation"
+         data-title="Hypoxia Upregulation of BACH1 Aggravates Pulmonary Hypertension Through TGFBR2/SMAD Pathways.">
+      <span class="fb-q">對這篇有興趣嗎?</span>
+      <button class="fb-btn" type="button" data-verdict="up">👍 有興趣</button>
+      <button class="fb-btn" type="button" data-verdict="down">👎 沒興趣</button>
+      <span class="fb-msg"></span>
+    </div>
+    
+  </article>
+  
+  <article>
+    <span class="tag">Circulation</span>
+    <span class="tag pub-type type-trial">RCT</span>
+    <h2>Resuscitation From Out-of-Hospital Cardiac Arrest: When Is EtCO</h2>
+    <div class="authors">
+      Nassal Michelle M J, Smith Rachel M, Aramendi Elisabete 等 12 人 · 2026
+    </div>
+    
+    
+    <div class="summary-block">
+      <div class="section-label">摘要</div>
+      <p class="summary">
+        PART試驗的二次分析，在院外心跳停止患者中比較氣管內插管與喉部導管策略，檢視終末呼氣二氧化碳值與預後關聯。結果顯示目擊者狀態與初始EtCO2水平為復甦成功的重要因素。
+      </p>
+    </div>
+    
+    
+    <div class="commentary">
+      <div class="section-label">短評</div>
+      <p>終末呼氣二氧化碳一直是CPR質量的老牌代理指標，這研究再證一次它的臨床價值，只是論文摘要被截成這樣真的看不出完整結論長什麼樣。</p>
+    </div>
+    
+  
+    <div class="links">
+      <a href="https://doi.org/10.1161/CIRCULATIONAHA.125.077980" target="_blank" rel="noopener">下載連結</a>
+      
+      <button class="copy-btn" type="button" data-copy="10.1161/CIRCULATIONAHA.125.077980">複製 DOI</button>
+      <button class="copy-btn" type="button" data-copy="python dlbydoi.py 10.1161/CIRCULATIONAHA.125.077980">複製下載指令</button>
+      
+      
+      <a class="request-btn"
+         href="https://script.google.com/macros/s/AKfycbwM6kGHe0XfPGPpmUTMFbm1NBu0lnccP74CXAWwdgS7eUfcNvI48pL-KOVzByCNNAuiZA/exec?view=appraise&amp;week=2026-W30&amp;pmid=42145111&amp;doi=10.1161%2FCIRCULATIONAHA.125.077980&amp;journal=Circulation&amp;title=Resuscitation+From+Out-of-Hospital+Cardiac+Arrest%3A+When+Is+EtCO"
+         target="_blank"
+         rel="noopener">請求評讀</a>
+      
+    </div>
+    
+    <div class="feedback"
+         data-pmid="42145111"
+         data-doi="10.1161/CIRCULATIONAHA.125.077980"
+         data-journal="Circulation"
+         data-title="Resuscitation From Out-of-Hospital Cardiac Arrest: When Is EtCO">
+      <span class="fb-q">對這篇有興趣嗎?</span>
+      <button class="fb-btn" type="button" data-verdict="up">👍 有興趣</button>
+      <button class="fb-btn" type="button" data-verdict="down">👎 沒興趣</button>
+      <span class="fb-msg"></span>
+    </div>
+    
+  </article>
+  
+  <article>
+    <span class="tag">Circulation</span>
+    <span class="tag pub-type type-original">Original</span>
+    <h2>GPRASP1 Safeguards Endothelial Aspartate Metabolism to Prevent Pulmonary Hypertension Associated With Heart Failure With Preserved Ejection Fraction.</h2>
+    <div class="authors">
+      Li Ruofei, Tang Yushan, Ding Yuqin 等 12 人 · 2026
+    </div>
+    
+    
+    <div class="summary-block">
+      <div class="section-label">摘要</div>
+      <p class="summary">
+        本研究使用小鼠 PH-HFpEF 模型與內皮特異性 GPRASP1 基因敲除，透過代謝體學和蛋白質體學分析發現 GPRASP1 在患病肺血管內皮細胞明顯下降，並識別出 GPRASP1-PRKN-ASNS 軸調控天冬氨酸代謝及內皮完整性，指出天冬氨酸代謝為潛在治療靶點。
+      </p>
+    </div>
+    
+    
+    <div class="commentary">
+      <div class="section-label">短評</div>
+      <p>終於有人把 HFpEF 這個難纏傢伙的代謝弱點找出來，但這條路從基礎研究到臨床應用還得走很久。</p>
+    </div>
+    
+  
+    <div class="links">
+      <a href="https://doi.org/10.1161/CIRCULATIONAHA.126.079030" target="_blank" rel="noopener">下載連結</a>
+      
+      <button class="copy-btn" type="button" data-copy="10.1161/CIRCULATIONAHA.126.079030">複製 DOI</button>
+      <button class="copy-btn" type="button" data-copy="python dlbydoi.py 10.1161/CIRCULATIONAHA.126.079030">複製下載指令</button>
+      
+      
+      <a class="request-btn"
+         href="https://script.google.com/macros/s/AKfycbwM6kGHe0XfPGPpmUTMFbm1NBu0lnccP74CXAWwdgS7eUfcNvI48pL-KOVzByCNNAuiZA/exec?view=appraise&amp;week=2026-W30&amp;pmid=42093650&amp;doi=10.1161%2FCIRCULATIONAHA.126.079030&amp;journal=Circulation&amp;title=GPRASP1+Safeguards+Endothelial+Aspartate+Metabolism+to+Prevent+Pulmonary+Hypertension+Associated+With+Heart+Failure+With+Preserved+Ejection+Fraction."
+         target="_blank"
+         rel="noopener">請求評讀</a>
+      
+    </div>
+    
+    <div class="feedback"
+         data-pmid="42093650"
+         data-doi="10.1161/CIRCULATIONAHA.126.079030"
+         data-journal="Circulation"
+         data-title="GPRASP1 Safeguards Endothelial Aspartate Metabolism to Prevent Pulmonary Hypertension Associated With Heart Failure With Preserved Ejection Fraction.">
+      <span class="fb-q">對這篇有興趣嗎?</span>
+      <button class="fb-btn" type="button" data-verdict="up">👍 有興趣</button>
+      <button class="fb-btn" type="button" data-verdict="down">👎 沒興趣</button>
+      <span class="fb-msg"></span>
+    </div>
+    
+  </article>
+  
+  <article>
+    <span class="tag">Circulation</span>
+    <span class="tag pub-type type-original">Original</span>
+    <h2>Scaled Multidimensional Assays of Variant Effect Identify Sequence-Function Relationships in Hypertrophic Cardiomyopathy.</h2>
+    <div class="authors">
+      Yamamoto Yuta, Chua Kaiser, Staudt David 等 27 人 · 2026
+    </div>
+    
+    
+    <div class="summary-block">
+      <div class="section-label">摘要</div>
+      <p class="summary">
+        研究採用多維度功能評估策略，結合飽和鹼基編輯技術在誘導多功能幹細胞中系統評估心肌結合蛋白-C（cMyBP-C）變異體的功能影響。這項工作為肥厚型心肌病（HCM）患者的遺傳診斷和個性化治療提供了高分辨率的序列-功能對應圖譜。
+      </p>
+    </div>
+    
+    
+    <div class="commentary">
+      <div class="section-label">短評</div>
+      <p>檢查 HCM 終於從「有無變異」升級成「有幾分嚴重」，精準醫療算是找到了真正的判斷依據，病人終於有機會知道自己到底多糟。</p>
+    </div>
+    
+  
+    <div class="links">
+      <a href="https://doi.org/10.1161/CIRCULATIONAHA.125.075535" target="_blank" rel="noopener">下載連結</a>
+      
+      <button class="copy-btn" type="button" data-copy="10.1161/CIRCULATIONAHA.125.075535">複製 DOI</button>
+      <button class="copy-btn" type="button" data-copy="python dlbydoi.py 10.1161/CIRCULATIONAHA.125.075535">複製下載指令</button>
+      
+      
+      <a class="request-btn"
+         href="https://script.google.com/macros/s/AKfycbwM6kGHe0XfPGPpmUTMFbm1NBu0lnccP74CXAWwdgS7eUfcNvI48pL-KOVzByCNNAuiZA/exec?view=appraise&amp;week=2026-W30&amp;pmid=42437345&amp;doi=10.1161%2FCIRCULATIONAHA.125.075535&amp;journal=Circulation&amp;title=Scaled+Multidimensional+Assays+of+Variant+Effect+Identify+Sequence-Function+Relationships+in+Hypertrophic+Cardiomyopathy."
+         target="_blank"
+         rel="noopener">請求評讀</a>
+      
+    </div>
+    
+    <div class="feedback"
+         data-pmid="42437345"
+         data-doi="10.1161/CIRCULATIONAHA.125.075535"
+         data-journal="Circulation"
+         data-title="Scaled Multidimensional Assays of Variant Effect Identify Sequence-Function Relationships in Hypertrophic Cardiomyopathy.">
+      <span class="fb-q">對這篇有興趣嗎?</span>
+      <button class="fb-btn" type="button" data-verdict="up">👍 有興趣</button>
+      <button class="fb-btn" type="button" data-verdict="down">👎 沒興趣</button>
+      <span class="fb-msg"></span>
+    </div>
+    
+  </article>
+  
+  <article>
+    <span class="tag">BJSM</span>
+    <span class="tag pub-type type-trial">RCT</span>
+    <h2>Tackle higher or lower? Simulation to evaluate how changing the tackle height would impact the number of concussions and head acceleration events in men’s professional rugby league</h2>
+    <div class="authors">
+      Owen Cameron, Tooby James, Sawczuk Thomas 等 14 人 · 2026
+    </div>
+    
+    
+    <div class="summary-block">
+      <div class="section-label">摘要</div>
+      <p class="summary">
+        本前瞻性隊列研究分析 2023 英超橄欖球聯盟 92 球員的 23,081 次搶位（56 例腦震盪、4,632 次頭部加速事件），用蒙特卡洛模擬比較當前和降低搶位高度分布的影響。結果顯示降低搶位高度可減少持球者腦震盪（16→8-9）和頭部加速事件，但對搶位者保護有限，呈現保護悖論。
+      </p>
+    </div>
+    
+    
+    <div class="commentary">
+      <div class="section-label">短評</div>
+      <p>規則改革的經典困境—想保護進攻方卻可能傷害防守方，怪不得職業聯盟改規則永遠有人抱怨。</p>
+    </div>
+    
+  
+    <div class="links">
+      <a href="https://doi.org/10.1136/bjsports-2025-110677" target="_blank" rel="noopener">下載連結</a>
+      
+      <button class="copy-btn" type="button" data-copy="10.1136/bjsports-2025-110677">複製 DOI</button>
+      <button class="copy-btn" type="button" data-copy="python dlbydoi.py 10.1136/bjsports-2025-110677">複製下載指令</button>
+      
+      
+      <a class="request-btn"
+         href="https://script.google.com/macros/s/AKfycbwM6kGHe0XfPGPpmUTMFbm1NBu0lnccP74CXAWwdgS7eUfcNvI48pL-KOVzByCNNAuiZA/exec?view=appraise&amp;week=2026-W30&amp;pmid=&amp;doi=10.1136%2Fbjsports-2025-110677&amp;journal=BJSM&amp;title=Tackle+higher+or+lower%3F+Simulation+to+evaluate+how+changing+the+tackle+height+would+impact+the+number+of+concussions+and+head+acceleration+events+in+men%E2%80%99s+professional+rugby+league"
+         target="_blank"
+         rel="noopener">請求評讀</a>
+      
+    </div>
+    
+    <div class="feedback"
+         data-pmid=""
+         data-doi="10.1136/bjsports-2025-110677"
+         data-journal="BJSM"
+         data-title="Tackle higher or lower? Simulation to evaluate how changing the tackle height would impact the number of concussions and head acceleration events in men’s professional rugby league">
+      <span class="fb-q">對這篇有興趣嗎?</span>
+      <button class="fb-btn" type="button" data-verdict="up">👍 有興趣</button>
+      <button class="fb-btn" type="button" data-verdict="down">👎 沒興趣</button>
+      <span class="fb-msg"></span>
+    </div>
+    
+  </article>
+  
+  <article>
+    <span class="tag">SportsMed</span>
+    <span class="tag pub-type type-original">Original</span>
+    <h2>Demographic and Football-Related Characteristics Associated with Objective Cognitive Performance in Former NFL Players with a Normative Sample Comparison: An NFL-LONG Study.</h2>
+    <div class="authors">
+      Lempke Landon B, Brett Benjamin L, Echemendia Ruben J 等 10 人 · 2026
+    </div>
+    
+    
+    <div class="summary-block">
+      <div class="section-label">摘要</div>
+      <p class="summary">
+        這項橫斷面研究招募 295 名前 NFL 球員（平均 54.1 歲），使用遠端認知測驗平台進行評估，並與年齡、種族、教育程度相配的對照組進行比較。結果發現人口統計因素對認知表現的影響遠優於頭部衝擊暴露指標，職業生涯時間越長認知表現越差；前 NFL 球員在多數認知測驗（除 Trails A/B）表現顯著低於對照組。
+      </p>
+    </div>
+    
+    
+    <div class="commentary">
+      <div class="section-label">短評</div>
+      <p>人口統計因素爆打頭部衝擊暴露這結果滿有趣的，代表敲腦袋沒有年紀和教育重要；但職業生涯越長認知越差還是滿明確，足球界「老而彌堅」的夢想可能要破滅了。</p>
+    </div>
+    
+  
+    <div class="links">
+      <a href="https://doi.org/10.1007/s40279-026-02492-7" target="_blank" rel="noopener">下載連結</a>
+      
+      <button class="copy-btn" type="button" data-copy="10.1007/s40279-026-02492-7">複製 DOI</button>
+      <button class="copy-btn" type="button" data-copy="python dlbydoi.py 10.1007/s40279-026-02492-7">複製下載指令</button>
+      
+      
+      <a class="request-btn"
+         href="https://script.google.com/macros/s/AKfycbwM6kGHe0XfPGPpmUTMFbm1NBu0lnccP74CXAWwdgS7eUfcNvI48pL-KOVzByCNNAuiZA/exec?view=appraise&amp;week=2026-W30&amp;pmid=42463589&amp;doi=10.1007%2Fs40279-026-02492-7&amp;journal=SportsMed&amp;title=Demographic+and+Football-Related+Characteristics+Associated+with+Objective+Cognitive+Performance+in+Former+NFL+Players+with+a+Normative+Sample+Comparison%3A+An+NFL-LONG+Study."
+         target="_blank"
+         rel="noopener">請求評讀</a>
+      
+    </div>
+    
+    <div class="feedback"
+         data-pmid="42463589"
+         data-doi="10.1007/s40279-026-02492-7"
+         data-journal="SportsMed"
+         data-title="Demographic and Football-Related Characteristics Associated with Objective Cognitive Performance in Former NFL Players with a Normative Sample Comparison: An NFL-LONG Study.">
+      <span class="fb-q">對這篇有興趣嗎?</span>
+      <button class="fb-btn" type="button" data-verdict="up">👍 有興趣</button>
+      <button class="fb-btn" type="button" data-verdict="down">👎 沒興趣</button>
+      <span class="fb-msg"></span>
+    </div>
+    
+  </article>
+  
+  <article>
+    <span class="tag">JAP</span>
+    <span class="tag pub-type type-original">Original</span>
+    <h2>Resistance Training Improves Cardiovascular Health in Postmenopausal Women: Systematic Review and Meta-Analysis.</h2>
+    <div class="authors">
+      Rivera-Mejía Sonia L, Rúa-Alonso Marí A, Rial-Vázquez Jessica 等 12 人 · 2026
+    </div>
+    
+    
+    <div class="summary-block">
+      <div class="section-label">摘要</div>
+      <p class="summary">
+        本系統性回顧與統合分析評估抗阻訓練對停經後婦女心血管功能的影響，納入2026年2月前執行時間≥4週的隨機與非隨機對照試驗，主要測量指標為靜息心率、血壓（收縮壓、舒張壓與平均血壓），次要測量血管結構、心率變異性與心臟形態改變。
+      </p>
+    </div>
+    
+    
+    <div class="commentary">
+      <div class="section-label">短評</div>
+      <p>停經後婦女的心血管健康終於不是有氧運動的專利，抗阻訓練這位遲到的救星，雖然數據才剛確認，但至少科學不騙人。</p>
+    </div>
+    
+  
+    <div class="links">
+      <a href="https://doi.org/10.1152/japplphysiol.01180.2025" target="_blank" rel="noopener">下載連結</a>
+      
+      <button class="copy-btn" type="button" data-copy="10.1152/japplphysiol.01180.2025">複製 DOI</button>
+      <button class="copy-btn" type="button" data-copy="python dlbydoi.py 10.1152/japplphysiol.01180.2025">複製下載指令</button>
+      
+      
+      <a class="request-btn"
+         href="https://script.google.com/macros/s/AKfycbwM6kGHe0XfPGPpmUTMFbm1NBu0lnccP74CXAWwdgS7eUfcNvI48pL-KOVzByCNNAuiZA/exec?view=appraise&amp;week=2026-W30&amp;pmid=42470140&amp;doi=10.1152%2Fjapplphysiol.01180.2025&amp;journal=JAP&amp;title=Resistance+Training+Improves+Cardiovascular+Health+in+Postmenopausal+Women%3A+Systematic+Review+and+Meta-Analysis."
+         target="_blank"
+         rel="noopener">請求評讀</a>
+      
+    </div>
+    
+    <div class="feedback"
+         data-pmid="42470140"
+         data-doi="10.1152/japplphysiol.01180.2025"
+         data-journal="JAP"
+         data-title="Resistance Training Improves Cardiovascular Health in Postmenopausal Women: Systematic Review and Meta-Analysis.">
+      <span class="fb-q">對這篇有興趣嗎?</span>
+      <button class="fb-btn" type="button" data-verdict="up">👍 有興趣</button>
+      <button class="fb-btn" type="button" data-verdict="down">👎 沒興趣</button>
+      <span class="fb-msg"></span>
+    </div>
+    
+  </article>
+  
+  <article>
+    <span class="tag">JAP</span>
+    <span class="tag pub-type type-original">Original</span>
+    <h2>Variability in cross-modal proprioceptive judgements impair upper limb function across the lifespan.</h2>
+    <div class="authors">
+      Robertson Lucy S, Diong Joanna, Butler Annie A 等 6 人 · 2026
+    </div>
+    
+    
+    <div class="summary-block">
+      <div class="section-label">摘要</div>
+      <p class="summary">
+        本研究在184名18-95歲健康受試者中檢驗本體感覺對上肢功能的因果影響。高階本體感覺（跨視覺-本體感覺框架轉換）精準度差與穿衣扣釦功能受損相關，效應隨年齡增強（中位精準度下80歲比60歲多13秒），低階本體感覺無影響，提示高階本體感覺為改善老年上肢功能之潛在標靶。
+      </p>
+    </div>
+    
+    
+    <div class="commentary">
+      <div class="section-label">短評</div>
+      <p>找到了老人家穿衣服慢的罪魁禍首，可惜效應量不夠大，單靠本體感覺訓練恐怕改善有限。</p>
+    </div>
+    
+  
+    <div class="links">
+      <a href="https://doi.org/10.1152/japplphysiol.00013.2026" target="_blank" rel="noopener">下載連結</a>
+      
+      <button class="copy-btn" type="button" data-copy="10.1152/japplphysiol.00013.2026">複製 DOI</button>
+      <button class="copy-btn" type="button" data-copy="python dlbydoi.py 10.1152/japplphysiol.00013.2026">複製下載指令</button>
+      
+      
+      <a class="request-btn"
+         href="https://script.google.com/macros/s/AKfycbwM6kGHe0XfPGPpmUTMFbm1NBu0lnccP74CXAWwdgS7eUfcNvI48pL-KOVzByCNNAuiZA/exec?view=appraise&amp;week=2026-W30&amp;pmid=42470115&amp;doi=10.1152%2Fjapplphysiol.00013.2026&amp;journal=JAP&amp;title=Variability+in+cross-modal+proprioceptive+judgements+impair+upper+limb+function+across+the+lifespan."
+         target="_blank"
+         rel="noopener">請求評讀</a>
+      
+    </div>
+    
+    <div class="feedback"
+         data-pmid="42470115"
+         data-doi="10.1152/japplphysiol.00013.2026"
+         data-journal="JAP"
+         data-title="Variability in cross-modal proprioceptive judgements impair upper limb function across the lifespan.">
+      <span class="fb-q">對這篇有興趣嗎?</span>
+      <button class="fb-btn" type="button" data-verdict="up">👍 有興趣</button>
+      <button class="fb-btn" type="button" data-verdict="down">👎 沒興趣</button>
+      <span class="fb-msg"></span>
+    </div>
+    
+  </article>
+  
+  <article>
+    <span class="tag">JAP</span>
+    <span class="tag pub-type type-original">Original</span>
+    <h2>Vasoactive Response of the Thoracic Aorta to Phenylephrine Infusion During Cardiac Surgery.</h2>
+    <div class="authors">
+      Toonen Stan M R L, de Raat Frederique M, van Loo Cindy 等 12 人 · 2026
+    </div>
+    
+    
+    <div class="summary-block">
+      <div class="section-label">摘要</div>
+      <p class="summary">
+        提供的摘要不完整，無法完成任務。請提供完整的 Abstract 或全文，我才能依照格式輸出摘要與短評。
+      </p>
+    </div>
+    
+    
+  
+    <div class="links">
+      <a href="https://doi.org/10.1152/japplphysiol.00996.2025" target="_blank" rel="noopener">下載連結</a>
+      
+      <button class="copy-btn" type="button" data-copy="10.1152/japplphysiol.00996.2025">複製 DOI</button>
+      <button class="copy-btn" type="button" data-copy="python dlbydoi.py 10.1152/japplphysiol.00996.2025">複製下載指令</button>
+      
+      
+      <a class="request-btn"
+         href="https://script.google.com/macros/s/AKfycbwM6kGHe0XfPGPpmUTMFbm1NBu0lnccP74CXAWwdgS7eUfcNvI48pL-KOVzByCNNAuiZA/exec?view=appraise&amp;week=2026-W30&amp;pmid=42462274&amp;doi=10.1152%2Fjapplphysiol.00996.2025&amp;journal=JAP&amp;title=Vasoactive+Response+of+the+Thoracic+Aorta+to+Phenylephrine+Infusion+During+Cardiac+Surgery."
+         target="_blank"
+         rel="noopener">請求評讀</a>
+      
+    </div>
+    
+    <div class="feedback"
+         data-pmid="42462274"
+         data-doi="10.1152/japplphysiol.00996.2025"
+         data-journal="JAP"
+         data-title="Vasoactive Response of the Thoracic Aorta to Phenylephrine Infusion During Cardiac Surgery.">
+      <span class="fb-q">對這篇有興趣嗎?</span>
+      <button class="fb-btn" type="button" data-verdict="up">👍 有興趣</button>
+      <button class="fb-btn" type="button" data-verdict="down">👎 沒興趣</button>
+      <span class="fb-msg"></span>
+    </div>
+    
+  </article>
+  
+  <article>
+    <span class="tag">JAP</span>
+    <span class="tag pub-type type-original">Original</span>
+    <h2>Short-term, circuit-based heat acclimation enhances intermittent work capacity, reaction time, and neuromuscular function under heat stress in active males.</h2>
+    <div class="authors">
+      Dunn Ryan A, Brojanac Alexandra P, Tinsley Grant M 等 6 人 · 2026
+    </div>
+    
+    
+    <div class="summary-block">
+      <div class="section-label">摘要</div>
+      <p class="summary">
+        摘要部分不完整（Abstract 在「HEAT: 35°C;」後中斷）。請提供完整的 Abstract 內容，我才能按照要求的格式輸出摘要和短評。
+      </p>
+    </div>
+    
+    
+    <div class="commentary">
+      <div class="section-label">短評</div>
+      <p>需要的完整資訊包括：</p>
+    </div>
+    
+  
+    <div class="links">
+      <a href="https://doi.org/10.1152/japplphysiol.00560.2026" target="_blank" rel="noopener">下載連結</a>
+      
+      <button class="copy-btn" type="button" data-copy="10.1152/japplphysiol.00560.2026">複製 DOI</button>
+      <button class="copy-btn" type="button" data-copy="python dlbydoi.py 10.1152/japplphysiol.00560.2026">複製下載指令</button>
+      
+      
+      <a class="request-btn"
+         href="https://script.google.com/macros/s/AKfycbwM6kGHe0XfPGPpmUTMFbm1NBu0lnccP74CXAWwdgS7eUfcNvI48pL-KOVzByCNNAuiZA/exec?view=appraise&amp;week=2026-W30&amp;pmid=42462272&amp;doi=10.1152%2Fjapplphysiol.00560.2026&amp;journal=JAP&amp;title=Short-term%2C+circuit-based+heat+acclimation+enhances+intermittent+work+capacity%2C+reaction+time%2C+and+neuromuscular+function+under+heat+stress+in+active+males."
+         target="_blank"
+         rel="noopener">請求評讀</a>
+      
+    </div>
+    
+    <div class="feedback"
+         data-pmid="42462272"
+         data-doi="10.1152/japplphysiol.00560.2026"
+         data-journal="JAP"
+         data-title="Short-term, circuit-based heat acclimation enhances intermittent work capacity, reaction time, and neuromuscular function under heat stress in active males.">
+      <span class="fb-q">對這篇有興趣嗎?</span>
+      <button class="fb-btn" type="button" data-verdict="up">👍 有興趣</button>
+      <button class="fb-btn" type="button" data-verdict="down">👎 沒興趣</button>
+      <span class="fb-msg"></span>
+    </div>
+    
+  </article>
+  
+  <article>
+    <span class="tag">JAP</span>
+    <span class="tag pub-type type-original">Original</span>
+    <h2>DIFFERENTIAL LUNG INJURY AFTER PERMANENT AND TRANSIENT FOCAL CEREBRAL ISCHEMIA IN RATS.</h2>
+    <div class="authors">
+      Somogyi Petra, Farkas Fruzsina, Horváth-Varga Réka 等 9 人 · 2026
+    </div>
+    
+    
+    <div class="summary-block">
+      <div class="section-label">摘要</div>
+      <p class="summary">
+        大鼠中腦動脈永久閉塞（N=10）與暫時閉塞60分鐘後再灌流（N=9）都引發肺損傷，本研究比較兩者對肺部機械、結構及發炎反應的差異。
+      </p>
+    </div>
+    
+    
+    <div class="commentary">
+      <div class="section-label">短評</div>
+      <p>看起來再灌流救了腦卒中患者的命，但肺可能不領情——這警示我們後續器官保護策略得跟上。</p>
+    </div>
+    
+  
+    <div class="links">
+      <a href="https://doi.org/10.1152/japplphysiol.00175.2026" target="_blank" rel="noopener">下載連結</a>
+      
+      <button class="copy-btn" type="button" data-copy="10.1152/japplphysiol.00175.2026">複製 DOI</button>
+      <button class="copy-btn" type="button" data-copy="python dlbydoi.py 10.1152/japplphysiol.00175.2026">複製下載指令</button>
+      
+      
+      <a class="request-btn"
+         href="https://script.google.com/macros/s/AKfycbwM6kGHe0XfPGPpmUTMFbm1NBu0lnccP74CXAWwdgS7eUfcNvI48pL-KOVzByCNNAuiZA/exec?view=appraise&amp;week=2026-W30&amp;pmid=42462267&amp;doi=10.1152%2Fjapplphysiol.00175.2026&amp;journal=JAP&amp;title=DIFFERENTIAL+LUNG+INJURY+AFTER+PERMANENT+AND+TRANSIENT+FOCAL+CEREBRAL+ISCHEMIA+IN+RATS."
+         target="_blank"
+         rel="noopener">請求評讀</a>
+      
+    </div>
+    
+    <div class="feedback"
+         data-pmid="42462267"
+         data-doi="10.1152/japplphysiol.00175.2026"
+         data-journal="JAP"
+         data-title="DIFFERENTIAL LUNG INJURY AFTER PERMANENT AND TRANSIENT FOCAL CEREBRAL ISCHEMIA IN RATS.">
+      <span class="fb-q">對這篇有興趣嗎?</span>
+      <button class="fb-btn" type="button" data-verdict="up">👍 有興趣</button>
+      <button class="fb-btn" type="button" data-verdict="down">👎 沒興趣</button>
+      <span class="fb-msg"></span>
+    </div>
+    
+  </article>
+  
+  <article>
+    <span class="tag">JAP</span>
+    <span class="tag pub-type type-original">Original</span>
+    <h2>Hyperoxic cerebral vasoconstriction in healthy humans: global, lobe and regions of interest.</h2>
+    <div class="authors">
+      Khademi Motlagh Hedyeh, Haley Travis L, Didier Kaylin D 等 10 人 · 2026
+    </div>
+    
+    
+    <div class="summary-block">
+      <div class="section-label">摘要</div>
+      <p class="summary">
+        15名年輕成人接受正常和高含氧（80% O₂）MRI掃描，測量腦血流量和血管導度，發現高含氧時血流無明顯變化，但全腦血管導度下降12%、灰質13%、白質8%，所有65個感興趣區域均顯示血管收縮，沒有區域特異性，證實急性高含氧導致廣泛且均勻的腦血管收縮。
+      </p>
+    </div>
+    
+    
+    <div class="commentary">
+      <div class="section-label">短評</div>
+      <p>病人缺血被拿高氧救，結果血管自行縮小當豬隊友——這篇終於逮到「兇手」，以後高氧治療可能得更克制。</p>
+    </div>
+    
+  
+    <div class="links">
+      <a href="https://doi.org/10.1152/japplphysiol.00541.2025" target="_blank" rel="noopener">下載連結</a>
+      
+      <button class="copy-btn" type="button" data-copy="10.1152/japplphysiol.00541.2025">複製 DOI</button>
+      <button class="copy-btn" type="button" data-copy="python dlbydoi.py 10.1152/japplphysiol.00541.2025">複製下載指令</button>
+      
+      
+      <a class="request-btn"
+         href="https://script.google.com/macros/s/AKfycbwM6kGHe0XfPGPpmUTMFbm1NBu0lnccP74CXAWwdgS7eUfcNvI48pL-KOVzByCNNAuiZA/exec?view=appraise&amp;week=2026-W30&amp;pmid=42462266&amp;doi=10.1152%2Fjapplphysiol.00541.2025&amp;journal=JAP&amp;title=Hyperoxic+cerebral+vasoconstriction+in+healthy+humans%3A+global%2C+lobe+and+regions+of+interest."
+         target="_blank"
+         rel="noopener">請求評讀</a>
+      
+    </div>
+    
+    <div class="feedback"
+         data-pmid="42462266"
+         data-doi="10.1152/japplphysiol.00541.2025"
+         data-journal="JAP"
+         data-title="Hyperoxic cerebral vasoconstriction in healthy humans: global, lobe and regions of interest.">
+      <span class="fb-q">對這篇有興趣嗎?</span>
+      <button class="fb-btn" type="button" data-verdict="up">👍 有興趣</button>
+      <button class="fb-btn" type="button" data-verdict="down">👎 沒興趣</button>
+      <span class="fb-msg"></span>
+    </div>
+    
+  </article>
+  
+  <article>
+    <span class="tag">JAP</span>
+    <span class="tag pub-type type-original">Original</span>
+    <h2>Large increases in resistance training volume do not impair muscle hypertrophy or anabolic-catabolic molecular signaling in trained individuals.</h2>
+    <div class="authors">
+      Camargo Júlio B B, Bittencourt Diego, Michel J Max 等 15 人 · 2026
+    </div>
+    
+    
+    <div class="summary-block">
+      <div class="section-label">摘要</div>
+      <p class="summary">
+        這項研究以 25 名訓練有素的青年（18-35 歲）為對象，採用雙腿單側交叉對照設計，比較訓練量大幅增加（+120%）對比適度增加（+20%）對肌肥大的影響。8 週後兩組肌肉橫截面積都增加且無顯著差異，肌纖維面積和合成-分解代謝分子標誌也相似，表明大幅突增訓練量不會破壞肌肉適應。
+      </p>
+    </div>
+    
+    
+    <div class="commentary">
+      <div class="section-label">短評</div>
+      <p>算是訓練者的好消息，表示不用太擔心增量訓練會超過適應能力；不過研究沒交代恢復策略，實務上怎麼睡覺吃東西才是真關鍵。</p>
+    </div>
+    
+  
+    <div class="links">
+      <a href="https://doi.org/10.1152/japplphysiol.00284.2026" target="_blank" rel="noopener">下載連結</a>
+      
+      <button class="copy-btn" type="button" data-copy="10.1152/japplphysiol.00284.2026">複製 DOI</button>
+      <button class="copy-btn" type="button" data-copy="python dlbydoi.py 10.1152/japplphysiol.00284.2026">複製下載指令</button>
+      
+      
+      <a class="request-btn"
+         href="https://script.google.com/macros/s/AKfycbwM6kGHe0XfPGPpmUTMFbm1NBu0lnccP74CXAWwdgS7eUfcNvI48pL-KOVzByCNNAuiZA/exec?view=appraise&amp;week=2026-W30&amp;pmid=42461790&amp;doi=10.1152%2Fjapplphysiol.00284.2026&amp;journal=JAP&amp;title=Large+increases+in+resistance+training+volume+do+not+impair+muscle+hypertrophy+or+anabolic-catabolic+molecular+signaling+in+trained+individuals."
+         target="_blank"
+         rel="noopener">請求評讀</a>
+      
+    </div>
+    
+    <div class="feedback"
+         data-pmid="42461790"
+         data-doi="10.1152/japplphysiol.00284.2026"
+         data-journal="JAP"
+         data-title="Large increases in resistance training volume do not impair muscle hypertrophy or anabolic-catabolic molecular signaling in trained individuals.">
+      <span class="fb-q">對這篇有興趣嗎?</span>
+      <button class="fb-btn" type="button" data-verdict="up">👍 有興趣</button>
+      <button class="fb-btn" type="button" data-verdict="down">👎 沒興趣</button>
+      <span class="fb-msg"></span>
+    </div>
+    
+  </article>
+  
+  <article>
+    <span class="tag">JAP</span>
+    <span class="tag pub-type type-original">Original</span>
+    <h2>Increased Carbohydrate Availability Partially Attenuates Endocrine Suppression in Response to Low Energy Availability.</h2>
+    <div class="authors">
+      Nusser Valentin, Teubner Jan, Buerger Simon A 等 9 人 · 2026
+    </div>
+    
+    
+    <div class="summary-block">
+      <div class="section-label">摘要</div>
+      <p class="summary">
+        隨機交叉試驗，16位常運動成人（女性9位）在4天低能量可用性條件下，探討增加碳水化合物可用性是否能減緩內分泌抑制反應。結果顯示碳水化合物可用性能部分改善低能量狀態下的內分泌抑制現象。
+      </p>
+    </div>
+    
+    
+    <div class="commentary">
+      <div class="section-label">短評</div>
+      <p>想靠加碳來救內分泌？部分有效，但絕對不是吃碳就能完全解除低能量危機的萬能藥。</p>
+    </div>
+    
+  
+    <div class="links">
+      <a href="https://doi.org/10.1152/japplphysiol.00207.2026" target="_blank" rel="noopener">下載連結</a>
+      
+      <button class="copy-btn" type="button" data-copy="10.1152/japplphysiol.00207.2026">複製 DOI</button>
+      <button class="copy-btn" type="button" data-copy="python dlbydoi.py 10.1152/japplphysiol.00207.2026">複製下載指令</button>
+      
+      
+      <a class="request-btn"
+         href="https://script.google.com/macros/s/AKfycbwM6kGHe0XfPGPpmUTMFbm1NBu0lnccP74CXAWwdgS7eUfcNvI48pL-KOVzByCNNAuiZA/exec?view=appraise&amp;week=2026-W30&amp;pmid=42461760&amp;doi=10.1152%2Fjapplphysiol.00207.2026&amp;journal=JAP&amp;title=Increased+Carbohydrate+Availability+Partially+Attenuates+Endocrine+Suppression+in+Response+to+Low+Energy+Availability."
+         target="_blank"
+         rel="noopener">請求評讀</a>
+      
+    </div>
+    
+    <div class="feedback"
+         data-pmid="42461760"
+         data-doi="10.1152/japplphysiol.00207.2026"
+         data-journal="JAP"
+         data-title="Increased Carbohydrate Availability Partially Attenuates Endocrine Suppression in Response to Low Energy Availability.">
+      <span class="fb-q">對這篇有興趣嗎?</span>
+      <button class="fb-btn" type="button" data-verdict="up">👍 有興趣</button>
+      <button class="fb-btn" type="button" data-verdict="down">👎 沒興趣</button>
+      <span class="fb-msg"></span>
+    </div>
+    
+  </article>
+  
+  <article>
+    <span class="tag">JAP</span>
+    <span class="tag pub-type type-original">Original</span>
+    <h2>Impact of acute mild and severe poikilocapnic hypoxia on dynamic cerebral autoregulation and its directional sensitivity in young healthy volunteers.</h2>
+    <div class="authors">
+      Soleimani Dehnavi Shahrzad, Roy Marc-Antoine, Taghizadeh Mahmoudreza 等 5 人 · 2026
+    </div>
+    
+    
+    <div class="summary-block">
+      <div class="section-label">摘要</div>
+      <p class="summary">
+        我注意到提供的 Abstract 在最後被截斷了（結尾於 &#34;fraction of inspired oxygen (FiO&#34;），無法取得完整的研究方法、樣本數、主要結果數據等關鍵資訊。
+      </p>
+    </div>
+    
+    
+    <div class="commentary">
+      <div class="section-label">短評</div>
+      <p>請提供完整的 Abstract 或全文，我才能按照您指定的格式輸出「摘要」和「短評」兩行。</p>
+    </div>
+    
+  
+    <div class="links">
+      <a href="https://doi.org/10.1152/japplphysiol.00166.2026" target="_blank" rel="noopener">下載連結</a>
+      
+      <button class="copy-btn" type="button" data-copy="10.1152/japplphysiol.00166.2026">複製 DOI</button>
+      <button class="copy-btn" type="button" data-copy="python dlbydoi.py 10.1152/japplphysiol.00166.2026">複製下載指令</button>
+      
+      
+      <a class="request-btn"
+         href="https://script.google.com/macros/s/AKfycbwM6kGHe0XfPGPpmUTMFbm1NBu0lnccP74CXAWwdgS7eUfcNvI48pL-KOVzByCNNAuiZA/exec?view=appraise&amp;week=2026-W30&amp;pmid=42461675&amp;doi=10.1152%2Fjapplphysiol.00166.2026&amp;journal=JAP&amp;title=Impact+of+acute+mild+and+severe+poikilocapnic+hypoxia+on+dynamic+cerebral+autoregulation+and+its+directional+sensitivity+in+young+healthy+volunteers."
+         target="_blank"
+         rel="noopener">請求評讀</a>
+      
+    </div>
+    
+    <div class="feedback"
+         data-pmid="42461675"
+         data-doi="10.1152/japplphysiol.00166.2026"
+         data-journal="JAP"
+         data-title="Impact of acute mild and severe poikilocapnic hypoxia on dynamic cerebral autoregulation and its directional sensitivity in young healthy volunteers.">
+      <span class="fb-q">對這篇有興趣嗎?</span>
+      <button class="fb-btn" type="button" data-verdict="up">👍 有興趣</button>
+      <button class="fb-btn" type="button" data-verdict="down">👎 沒興趣</button>
+      <span class="fb-msg"></span>
+    </div>
+    
+  </article>
+  
+  <article>
+    <span class="tag">JAP</span>
+    <span class="tag pub-type type-original">Original</span>
+    <h2>Limb- and Sex-Specific Determinants of Vascular Function Assessed by Flow-Mediated Dilation and Passive Limb Movement.</h2>
+    <div class="authors">
+      Fioraso Elisa, Pedrinolla Anna, Lang M Jillian 等 6 人 · 2026
+    </div>
+    
+    
+    <div class="summary-block">
+      <div class="section-label">摘要</div>
+      <p class="summary">
+        這項研究涉及20名健康人（10男10女），分別測量上下肢的流動介導血管擴張（FMD）和被動肢體運動（PLM）反應。上肢FMD%顯著高於下肢（7.7% vs 4.9%, p=0.002），但兩肢間無相關性；考慮基線血管直徑後此差異消失。PLM反應中下肢優於上肢（p&lt;0.001）且兩肢相關，並出現性別×肢體交互作用，提示FMD具肢體特異性且受血管大小影響，而PLM反應則存在性別依賴的區域差異。
+      </p>
+    </div>
+    
+    
+    <div class="commentary">
+      <div class="section-label">短評</div>
+      <p>看來測血管功能不能偷懶只量一個部位，還得考慮性別，難怪臨床預測常常不準——原來大小血管的調控邏輯真的差很大。</p>
+    </div>
+    
+  
+    <div class="links">
+      <a href="https://doi.org/10.1152/japplphysiol.00065.2026" target="_blank" rel="noopener">下載連結</a>
+      
+      <button class="copy-btn" type="button" data-copy="10.1152/japplphysiol.00065.2026">複製 DOI</button>
+      <button class="copy-btn" type="button" data-copy="python dlbydoi.py 10.1152/japplphysiol.00065.2026">複製下載指令</button>
+      
+      
+      <a class="request-btn"
+         href="https://script.google.com/macros/s/AKfycbwM6kGHe0XfPGPpmUTMFbm1NBu0lnccP74CXAWwdgS7eUfcNvI48pL-KOVzByCNNAuiZA/exec?view=appraise&amp;week=2026-W30&amp;pmid=42441426&amp;doi=10.1152%2Fjapplphysiol.00065.2026&amp;journal=JAP&amp;title=Limb-+and+Sex-Specific+Determinants+of+Vascular+Function+Assessed+by+Flow-Mediated+Dilation+and+Passive+Limb+Movement."
+         target="_blank"
+         rel="noopener">請求評讀</a>
+      
+    </div>
+    
+    <div class="feedback"
+         data-pmid="42441426"
+         data-doi="10.1152/japplphysiol.00065.2026"
+         data-journal="JAP"
+         data-title="Limb- and Sex-Specific Determinants of Vascular Function Assessed by Flow-Mediated Dilation and Passive Limb Movement.">
+      <span class="fb-q">對這篇有興趣嗎?</span>
+      <button class="fb-btn" type="button" data-verdict="up">👍 有興趣</button>
+      <button class="fb-btn" type="button" data-verdict="down">👎 沒興趣</button>
+      <span class="fb-msg"></span>
+    </div>
+    
+  </article>
+  
+  <article>
+    <span class="tag">JAMACardio</span>
+    <span class="tag pub-type type-original">Original</span>
+    <h2>Modifiable Risk Factors and Attributable Ischemic Heart Disease Mortality in US States, 1990-2023: A Systematic Analysis for the Global Burden of Disease Study 2023.</h2>
+    <div class="authors">
+      Benziger Catherine P, Stark Benjamin, Johnson Catherine O 等 76 人 · 2026
+    </div>
+    
+    
+    <div class="summary-block">
+      <div class="section-label">摘要</div>
+      <p class="summary">
+        用GBD 2023分析美國人口1990-2023年風險與缺血性心臟病死亡。2023年47.3萬死亡（較1990年降59%），高收縮壓、飲食、高膽固醇為主（占47%、39%、29%），高BMI與高血糖負擔增幅最大（增55%、39%），88.7%死亡可修正。
+      </p>
+    </div>
+    
+    
+    <div class="commentary">
+      <div class="section-label">短評</div>
+      <p>看起來高血壓和吃不健康要當心，不過好消息是都可控，只要改飲食、控血壓就能明顯降低風險，中年健檢的最佳勵志文。</p>
+    </div>
+    
+  
+    <div class="links">
+      <a href="https://doi.org/10.1001/jamacardio.2026.2435" target="_blank" rel="noopener">下載連結</a>
+      
+      <button class="copy-btn" type="button" data-copy="10.1001/jamacardio.2026.2435">複製 DOI</button>
+      <button class="copy-btn" type="button" data-copy="python dlbydoi.py 10.1001/jamacardio.2026.2435">複製下載指令</button>
+      
+      
+      <a class="request-btn"
+         href="https://script.google.com/macros/s/AKfycbwM6kGHe0XfPGPpmUTMFbm1NBu0lnccP74CXAWwdgS7eUfcNvI48pL-KOVzByCNNAuiZA/exec?view=appraise&amp;week=2026-W30&amp;pmid=42455550&amp;doi=10.1001%2Fjamacardio.2026.2435&amp;journal=JAMACardio&amp;title=Modifiable+Risk+Factors+and+Attributable+Ischemic+Heart+Disease+Mortality+in+US+States%2C+1990-2023%3A+A+Systematic+Analysis+for+the+Global+Burden+of+Disease+Study+2023."
+         target="_blank"
+         rel="noopener">請求評讀</a>
+      
+    </div>
+    
+    <div class="feedback"
+         data-pmid="42455550"
+         data-doi="10.1001/jamacardio.2026.2435"
+         data-journal="JAMACardio"
+         data-title="Modifiable Risk Factors and Attributable Ischemic Heart Disease Mortality in US States, 1990-2023: A Systematic Analysis for the Global Burden of Disease Study 2023.">
+      <span class="fb-q">對這篇有興趣嗎?</span>
+      <button class="fb-btn" type="button" data-verdict="up">👍 有興趣</button>
+      <button class="fb-btn" type="button" data-verdict="down">👎 沒興趣</button>
+      <span class="fb-msg"></span>
+    </div>
+    
+  </article>
+  
+  <article>
+    <span class="tag">JAMACardio</span>
+    <span class="tag pub-type type-original">Original</span>
+    <h2>Development and Validation of a Simplified Martin-Hopkins LDL-C Equation Using Machine Learning.</h2>
+    <div class="authors">
+      Park Jihwan, Fan Leon, Marzinke Mark A 等 10 人 · 2026
+    </div>
+    
+    
+    <div class="summary-block">
+      <div class="section-label">摘要</div>
+      <p class="summary">
+        近490萬患者的資料庫研究，以MARS演算法簡化Martin-Hopkins LDL-C估算方程式，新方程式偏差-0.1 mg/dL、臨床分類正確率89.7%，與原方程式效能相當，在低LDL-C患者上表現更佳。
+      </p>
+    </div>
+    
+    
+    <div class="commentary">
+      <div class="section-label">短評</div>
+      <p>費時費力驗證490萬人，發現新公式其實就是把複雜度換個方式呈現，但低脂血症患者終於有更準的法子了，臨床推廣價值不錯。</p>
+    </div>
+    
+  
+    <div class="links">
+      <a href="https://doi.org/10.1001/jamacardio.2026.2314" target="_blank" rel="noopener">下載連結</a>
+      
+      <button class="copy-btn" type="button" data-copy="10.1001/jamacardio.2026.2314">複製 DOI</button>
+      <button class="copy-btn" type="button" data-copy="python dlbydoi.py 10.1001/jamacardio.2026.2314">複製下載指令</button>
+      
+      
+      <a class="request-btn"
+         href="https://script.google.com/macros/s/AKfycbwM6kGHe0XfPGPpmUTMFbm1NBu0lnccP74CXAWwdgS7eUfcNvI48pL-KOVzByCNNAuiZA/exec?view=appraise&amp;week=2026-W30&amp;pmid=42455545&amp;doi=10.1001%2Fjamacardio.2026.2314&amp;journal=JAMACardio&amp;title=Development+and+Validation+of+a+Simplified+Martin-Hopkins+LDL-C+Equation+Using+Machine+Learning."
+         target="_blank"
+         rel="noopener">請求評讀</a>
+      
+    </div>
+    
+    <div class="feedback"
+         data-pmid="42455545"
+         data-doi="10.1001/jamacardio.2026.2314"
+         data-journal="JAMACardio"
+         data-title="Development and Validation of a Simplified Martin-Hopkins LDL-C Equation Using Machine Learning.">
+      <span class="fb-q">對這篇有興趣嗎?</span>
+      <button class="fb-btn" type="button" data-verdict="up">👍 有興趣</button>
+      <button class="fb-btn" type="button" data-verdict="down">👎 沒興趣</button>
+      <span class="fb-msg"></span>
+    </div>
+    
+  </article>
+  
+  <article>
+    <span class="tag">Heart</span>
+    <span class="tag pub-type type-original">Original</span>
+    <h2>Risk prediction models for incident heart failure: a systematic review and meta-analysis.</h2>
+    <div class="authors">
+      Navarro Jose Miguel, Doumouras Barbara Stella, Douglas William 等 16 人 · 2026
+    </div>
+    
+    
+    <div class="summary-block">
+      <div class="section-label">摘要</div>
+      <p class="summary">
+        本系統回顧分析238個心衰竭風險預測模型，發現經外部驗證的64個模型中僅12個具中高辨別度，且82.9%研究評估有高偏差風險；PREVENT、ARIC與MESA三個模型最具臨床應用潛力。
+      </p>
+    </div>
+    
+    
+    <div class="commentary">
+      <div class="section-label">短評</div>
+      <p>238個模型淘汰率88%，雖然殘酷但透徹，未來驗證要認真做，免得浪費資源在問題模型上。</p>
+    </div>
+    
+  
+    <div class="links">
+      <a href="https://doi.org/10.1136/heartjnl-2025-327118" target="_blank" rel="noopener">下載連結</a>
+      
+      <button class="copy-btn" type="button" data-copy="10.1136/heartjnl-2025-327118">複製 DOI</button>
+      <button class="copy-btn" type="button" data-copy="python dlbydoi.py 10.1136/heartjnl-2025-327118">複製下載指令</button>
+      
+      
+      <a class="request-btn"
+         href="https://script.google.com/macros/s/AKfycbwM6kGHe0XfPGPpmUTMFbm1NBu0lnccP74CXAWwdgS7eUfcNvI48pL-KOVzByCNNAuiZA/exec?view=appraise&amp;week=2026-W30&amp;pmid=42009574&amp;doi=10.1136%2Fheartjnl-2025-327118&amp;journal=Heart&amp;title=Risk+prediction+models+for+incident+heart+failure%3A+a+systematic+review+and+meta-analysis."
+         target="_blank"
+         rel="noopener">請求評讀</a>
+      
+    </div>
+    
+    <div class="feedback"
+         data-pmid="42009574"
+         data-doi="10.1136/heartjnl-2025-327118"
+         data-journal="Heart"
+         data-title="Risk prediction models for incident heart failure: a systematic review and meta-analysis.">
+      <span class="fb-q">對這篇有興趣嗎?</span>
+      <button class="fb-btn" type="button" data-verdict="up">👍 有興趣</button>
+      <button class="fb-btn" type="button" data-verdict="down">👎 沒興趣</button>
+      <span class="fb-msg"></span>
+    </div>
+    
+  </article>
+  
+  <article>
+    <span class="tag">Heart</span>
+    <span class="tag pub-type type-original">Original</span>
+    <h2>Current evidence for diagnosis and management of cardiac vasculitis.</h2>
+    <div class="authors">
+      Khanna Shaun, Bhat Aditya, Thomas Liza 等 5 人 · 2026
+    </div>
+    
+    
+    <div class="summary-block">
+      <div class="section-label">摘要</div>
+      <p class="summary">
+        心臟血管炎是免疫介導的異質性疾病，可侵犯冠狀血管、心肌、瓣膜和心包組織，雖罕見但可導致急性冠脈症候群、心衰和心包炎等嚴重併發症。因症狀非特異性診斷困難，須靠多模式影像（混合PET-心臟MRI、定量CT）早期識別。治療強調早期集約化免疫抑制合併心血管風險管理，尚需更多研究驗證長期預後。
+      </p>
+    </div>
+    
+    
+    <div class="commentary">
+      <div class="section-label">短評</div>
+      <p>症狀容易混淆、診斷不易，但新影像技術讓我們終於能看清楚；早期識別的好消息是有得治，壞消息是得先想到它。</p>
+    </div>
+    
+  
+    <div class="links">
+      <a href="https://doi.org/10.1136/heartjnl-2025-327506" target="_blank" rel="noopener">下載連結</a>
+      
+      <button class="copy-btn" type="button" data-copy="10.1136/heartjnl-2025-327506">複製 DOI</button>
+      <button class="copy-btn" type="button" data-copy="python dlbydoi.py 10.1136/heartjnl-2025-327506">複製下載指令</button>
+      
+      
+      <a class="request-btn"
+         href="https://script.google.com/macros/s/AKfycbwM6kGHe0XfPGPpmUTMFbm1NBu0lnccP74CXAWwdgS7eUfcNvI48pL-KOVzByCNNAuiZA/exec?view=appraise&amp;week=2026-W30&amp;pmid=42009571&amp;doi=10.1136%2Fheartjnl-2025-327506&amp;journal=Heart&amp;title=Current+evidence+for+diagnosis+and+management+of+cardiac+vasculitis."
+         target="_blank"
+         rel="noopener">請求評讀</a>
+      
+    </div>
+    
+    <div class="feedback"
+         data-pmid="42009571"
+         data-doi="10.1136/heartjnl-2025-327506"
+         data-journal="Heart"
+         data-title="Current evidence for diagnosis and management of cardiac vasculitis.">
+      <span class="fb-q">對這篇有興趣嗎?</span>
+      <button class="fb-btn" type="button" data-verdict="up">👍 有興趣</button>
+      <button class="fb-btn" type="button" data-verdict="down">👎 沒興趣</button>
+      <span class="fb-msg"></span>
+    </div>
+    
+  </article>
+  
+  <article>
+    <span class="tag">Heart</span>
+    <span class="tag pub-type type-original">Original</span>
+    <h2>Home-based, online-monitored high-intensity interval training improves fitness in patients with tetralogy of Fallot: a randomised controlled trial.</h2>
+    <div class="authors">
+      van Genuchten Wouter Jeroen, Fejzic Zina, Kauling Robert M 等 12 人 · 2026
+    </div>
+    
+    
+    <div class="summary-block">
+      <div class="section-label">摘要</div>
+      <p class="summary">
+        本研究隨機分配 34 位 12-30 歲法樓氏四聯症患者（中位年齡 16），接受 12 週家庭式高強度間歇訓練（週三次、每次 30 分鐘）或標準照護，結果訓練組峰值 VO2 增加 4.0 mL/kg/min、最大工作負荷增加 17 W，無心臟結構與函數惡化。
+      </p>
+    </div>
+    
+    
+    <div class="commentary">
+      <div class="section-label">短評</div>
+      <p>終於不用每週奔波醫院，在家也能練得一樣好——只是樣本數不大，當參考就好。</p>
+    </div>
+    
+  
+    <div class="links">
+      <a href="https://doi.org/10.1136/heartjnl-2025-327201" target="_blank" rel="noopener">下載連結</a>
+      
+      <button class="copy-btn" type="button" data-copy="10.1136/heartjnl-2025-327201">複製 DOI</button>
+      <button class="copy-btn" type="button" data-copy="python dlbydoi.py 10.1136/heartjnl-2025-327201">複製下載指令</button>
+      
+      
+      <a class="request-btn"
+         href="https://script.google.com/macros/s/AKfycbwM6kGHe0XfPGPpmUTMFbm1NBu0lnccP74CXAWwdgS7eUfcNvI48pL-KOVzByCNNAuiZA/exec?view=appraise&amp;week=2026-W30&amp;pmid=42009570&amp;doi=10.1136%2Fheartjnl-2025-327201&amp;journal=Heart&amp;title=Home-based%2C+online-monitored+high-intensity+interval+training+improves+fitness+in+patients+with+tetralogy+of+Fallot%3A+a+randomised+controlled+trial."
+         target="_blank"
+         rel="noopener">請求評讀</a>
+      
+    </div>
+    
+    <div class="feedback"
+         data-pmid="42009570"
+         data-doi="10.1136/heartjnl-2025-327201"
+         data-journal="Heart"
+         data-title="Home-based, online-monitored high-intensity interval training improves fitness in patients with tetralogy of Fallot: a randomised controlled trial.">
+      <span class="fb-q">對這篇有興趣嗎?</span>
+      <button class="fb-btn" type="button" data-verdict="up">👍 有興趣</button>
+      <button class="fb-btn" type="button" data-verdict="down">👎 沒興趣</button>
+      <span class="fb-msg"></span>
+    </div>
+    
+  </article>
+  
+  <article>
+    <span class="tag">Heart</span>
+    <span class="tag pub-type type-original">Original</span>
+    <h2>Ethnicity and its impact on presentation and outcomes in patients with spontaneous coronary artery dissection from the Australian-New Zealand registry.</h2>
+    <div class="authors">
+      Jung Hansaem, S Haghighi Masoud, Dang Quan 等 32 人 · 2026
+    </div>
+    
+    
+    <div class="summary-block">
+      <div class="section-label">摘要</div>
+      <p class="summary">
+        澳洲紐西蘭SCAD登錄的622名患者前瞻回溯性隊列研究，依族群分析冠狀動脈解離的臨床表現及預後差異。MENAA族群妊娠相關SCAD較高(24% vs 2%)，原住民/太平洋島民伴隨動脈粥狀硬化較高(25% vs 16%)，亞洲人非纖維肌肉發育不良血管異常較高(16% vs 5%)，但主要不良心血管事件自由生存率各族群相似，種族非獨立預測因子。
+      </p>
+    </div>
+    
+    
+    <div class="commentary">
+      <div class="section-label">短評</div>
+      <p>終於有人系統整理SCAD的多族群模式，MENAA女性妊娠SCAD(24%)風險驚人，但預後卻族群相同，這下篩檢策略得跟著調整了。</p>
+    </div>
+    
+  
+    <div class="links">
+      <a href="https://doi.org/10.1136/heartjnl-2026-327842" target="_blank" rel="noopener">下載連結</a>
+      
+      <button class="copy-btn" type="button" data-copy="10.1136/heartjnl-2026-327842">複製 DOI</button>
+      <button class="copy-btn" type="button" data-copy="python dlbydoi.py 10.1136/heartjnl-2026-327842">複製下載指令</button>
+      
+      
+      <a class="request-btn"
+         href="https://script.google.com/macros/s/AKfycbwM6kGHe0XfPGPpmUTMFbm1NBu0lnccP74CXAWwdgS7eUfcNvI48pL-KOVzByCNNAuiZA/exec?view=appraise&amp;week=2026-W30&amp;pmid=42009569&amp;doi=10.1136%2Fheartjnl-2026-327842&amp;journal=Heart&amp;title=Ethnicity+and+its+impact+on+presentation+and+outcomes+in+patients+with+spontaneous+coronary+artery+dissection+from+the+Australian-New+Zealand+registry."
+         target="_blank"
+         rel="noopener">請求評讀</a>
+      
+    </div>
+    
+    <div class="feedback"
+         data-pmid="42009569"
+         data-doi="10.1136/heartjnl-2026-327842"
+         data-journal="Heart"
+         data-title="Ethnicity and its impact on presentation and outcomes in patients with spontaneous coronary artery dissection from the Australian-New Zealand registry.">
+      <span class="fb-q">對這篇有興趣嗎?</span>
+      <button class="fb-btn" type="button" data-verdict="up">👍 有興趣</button>
+      <button class="fb-btn" type="button" data-verdict="down">👎 沒興趣</button>
+      <span class="fb-msg"></span>
+    </div>
+    
+  </article>
+  
+  </section>
+
+  <footer>
+    Generated by JournalFetcher · 2026-07-19 14:25 UTC+08:00
+  </footer>
+</div>
+<script>
+  document.querySelectorAll(".copy-btn").forEach((button) => {
+    button.addEventListener("click", async () => {
+      const text = button.dataset.copy || "";
+      try {
+        await navigator.clipboard.writeText(text);
+        const originalText = button.textContent;
+        button.textContent = "已複製";
+        button.classList.add("copied");
+        window.setTimeout(() => {
+          button.textContent = originalText;
+          button.classList.remove("copied");
+        }, 1200);
+      } catch {
+        window.prompt("請手動複製", text);
+      }
+    });
+  });
+</script>
+<script>
+  (function () {
+    const ENDPOINT = "https://script.google.com/macros/s/AKfycbwM6kGHe0XfPGPpmUTMFbm1NBu0lnccP74CXAWwdgS7eUfcNvI48pL-KOVzByCNNAuiZA/exec";
+    const WEEK = "2026-W30";
+    if (!ENDPOINT) return;
+
+    document.querySelectorAll(".feedback").forEach((box) => {
+      const pmid = box.dataset.pmid || "";
+      const doi = box.dataset.doi || "";
+      const storeKey = "jf_fb_" + WEEK + "_" + (pmid || doi);
+      const buttons = box.querySelectorAll(".fb-btn");
+      const msg = box.querySelector(".fb-msg");
+
+      const paint = (verdict) => {
+        buttons.forEach((b) => {
+          b.classList.toggle("active-up", verdict === "up" && b.dataset.verdict === "up");
+          b.classList.toggle("active-down", verdict === "down" && b.dataset.verdict === "down");
+        });
+      };
+      paint(localStorage.getItem(storeKey));
+
+      buttons.forEach((button) => {
+        button.addEventListener("click", () => {
+          const verdict = button.dataset.verdict;
+          paint(verdict);
+          localStorage.setItem(storeKey, verdict);
+          msg.textContent = "已記錄,謝謝!";
+          window.setTimeout(() => { msg.textContent = ""; }, 2500);
+          // Apps Script web app: text/plain keeps it a CORS "simple request".
+          fetch(ENDPOINT, {
+            method: "POST",
+            mode: "no-cors",
+            headers: { "Content-Type": "text/plain;charset=utf-8" },
+            body: JSON.stringify({
+              week: WEEK,
+              pmid: pmid,
+              doi: doi,
+              journal: box.dataset.journal || "",
+              title: box.dataset.title || "",
+              verdict: verdict,
+            }),
+          }).catch(() => {
+            msg.textContent = "已存在這台裝置,稍後再點一次即可送出";
+          });
+        });
+      });
+    });
+  })();
+</script>
+</body>
+</html>

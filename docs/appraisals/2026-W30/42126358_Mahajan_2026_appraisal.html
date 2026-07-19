@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ECG Signatures and Long-Term Ischemic Stroke Risk: A Deep Learning Analysis of 200,000 Patients.</title>
+<style>
+  :root {
+    --bg: #fafafa;
+    --card: #ffffff;
+    --text: #1a1a1a;
+    --muted: #6b6b6b;
+    --border: #e5e5e5;
+    --accent: #0b5fff;
+  }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang TC",
+      "Microsoft JhengHei", sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    margin: 0;
+    padding: 24px 16px 64px;
+    line-height: 1.72;
+  }
+  main {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    margin: 0 auto;
+    max-width: 840px;
+    padding: 22px 26px;
+  }
+  nav {
+    margin: 0 auto 14px;
+    max-width: 840px;
+    color: var(--muted);
+    font-size: 14px;
+  }
+  a { color: var(--accent); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  h1, h2, h3, h4 { line-height: 1.35; }
+  h1 { font-size: 26px; margin-top: 0; }
+  h2 { border-top: 1px solid var(--border); padding-top: 18px; }
+  code {
+    background: rgba(127, 127, 127, 0.12);
+    border-radius: 4px;
+    padding: 1px 4px;
+  }
+  table {
+    border-collapse: collapse;
+    display: block;
+    overflow-x: auto;
+    width: 100%;
+  }
+  th, td {
+    border: 1px solid var(--border);
+    padding: 6px 8px;
+    text-align: left;
+    vertical-align: top;
+  }
+  blockquote {
+    border-left: 3px solid var(--accent);
+    color: var(--muted);
+    margin-left: 0;
+    padding-left: 14px;
+  }
+  .appraisal-meta {
+    border-top: 1px solid var(--border);
+    margin-top: 28px;
+    padding-top: 14px;
+    color: var(--muted);
+    font-size: 13px;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #1a1a1a;
+      --card: #242424;
+      --text: #e8e8e8;
+      --muted: #999;
+      --border: #333;
+      --accent: #6ea8ff;
+    }
+  }
+</style>
+</head>
+<body>
+<nav><a href="../../2026-W30.html">← 回到 2026-W30 週報</a></nav>
+<main>
+<h1>ECG Signatures and Long-Term Ischemic Stroke Risk: A Deep Learning Analysis of 200,000 Patients.</h1>
+<p>I have the figures, external context, and confirmed the accompanying editorial exists but its full text is paywalled (fetch failed). I can now produce the appraisal.</p>
+<hr />
+<h1>批判性文獻評讀：ECG2Stroke — 深度學習 ECG 預測 10 年缺血性腦中風風險</h1>
+<blockquote>
+<p>路由判斷：<strong>臨床預測模型（clinical prediction model / ECG-AI risk score）→ SKILL-C</strong>。以 SECTION-0 通用描述打底，再進入 SKILL-C 的預測模型三階段評估。
+輸入為 PDF 轉出 markdown + 6 張圖頁 PNG（Figure 1、2、3、4、5 及 Table 3、4 所在頁），圖像可視覺判讀；supplement 僅有文字轉述，未提供圖像。</p>
+</blockquote>
+<hr />
+<h2>SECTION-0：文章全面描述</h2>
+<h3>0. 文章身份證</h3>
+<ul>
+<li><strong>標題</strong>：ECG Signatures and Long-Term Ischemic Stroke Risk: A Deep Learning Analysis of 200,000 Patients</li>
+<li><strong>期刊 / 年份</strong>：J Am Coll Cardiol. 2026;88(2):205–223（2026/7/14 issue）</li>
+<li><strong>DOI</strong>：10.1016/j.jacc.2026.03.084｜<strong>PMID</strong>：42126358</li>
+<li><strong>文章類型</strong>：回溯性、多中心的 <strong>AI-ECG 臨床預測模型開發與外部驗證研究</strong>（development + external validation of a prognostic model）。非隨機試驗、非診斷準確度的橫斷面研究，而是<strong>時間對事件（time-to-event）預後模型</strong>。</li>
+<li><strong>混血警示</strong>：不適用（非 review）。但標題「200,000 Patients」屬<strong>行銷化措辭</strong>——20 萬是開發集 + 3 個測試集的加總，真正的獨立外部驗證人數約 9.7 萬，單一模型「訓練」樣本為 10.7 萬人／約 30 萬張 ECG。</li>
+</ul>
+<h3>1. 作者團隊評論 [外部]</h3>
+<ul>
+<li><strong>通訊作者</strong>：Shaan Khurshid（Mass General Brigham 心律不整中心 / Broad Institute），電生理與 ECG-AI 方向的年輕 PI（K23 得主）。</li>
+<li><strong>共同資深 / 通訊群</strong>：Patrick T. Ellinor、Christopher D. Anderson（神經科 / 腦血管）、Jennifer E. Ho、Mahnaz Maddah（Broad Data Sciences）。這是 <strong>Broad Institute / MGB 的 ML4H（ml4h）團隊</strong>，屬全球 ECG-AI 研究的核心團隊之一。</li>
+<li><strong>團隊過往代表作</strong>（皆同一批 MGB 資料集 C3PO / EWOC）[外部: PubMed / 期刊]：
+<ul>
+<li>Khurshid et al. <em>Circulation</em> 2022 — ECG-AI 預測心房顫動（本文 loss function 與多任務框架直接沿用）</li>
+<li>Kany et al. <em>JACC Adv</em> 2025 — ECG-AI 辨識冠狀動脈疾病</li>
+<li>Lau et al. <em>JACC</em> 2023 — ECG-AI 評估左心結構功能</li>
+<li>Friedman et al. <em>NPJ Digit Med</em> 2025 — ECG 非監督式疾病剖析</li>
+</ul>
+</li>
+<li><strong>作者立場史 / prior-commitment 考量</strong>：此團隊反覆從<strong>同一組 MGB 資料</strong>發表「ECG-AI 可編碼各種心血管風險」的一致敘事。這是一個需留意的**先前信念偏差（prior-commitment bias）<strong>來源；但本文用了</strong>兩個真正外部站點（BWH，且 BIDMC 屬完全獨立健保系統）**外部驗證，相當程度緩解了單一資料集過度樂觀的疑慮。</li>
+<li><strong>利益揭露</strong> [文內]：主要為 NIH / AHA / Fondation Leducq 公費。值得注意的 ECG-AI 產業關聯：Ellinor（Bayer、IBM Health、BMS/Pfizer 研究支持；Bayer/Novartis/MyoKardia 顧問）、Ho（Bayer、Eli Lilly）、<strong>Waks（Heartbeam、HeartcoR、Anumana——皆 ECG-AI 相關公司）</strong>、Anderson（Bayer）。模型以<strong>學術授權開源</strong>（GitHub ml4h），目前非商品化產品。整體揭露充分，產業關聯存在但與主要結論的商業誘因不直接（模型未商品化）。</li>
+</ul>
+<h3>2. 文獻 Metadata [部分外部]</h3>
+<ul>
+<li>Received 2025/10/24 → Revised 2026/3/12 → Accepted 2026/3/18 [文內]。<strong>投稿至接受約 5 個月、含一輪修訂</strong>，對 JACC 旗艦刊屬正常偏快，反映題材熱度與團隊聲譽，未見異常「快速通關」跡象。</li>
+<li><strong>期刊屬性</strong>：JACC，ACC 旗艦刊，Q1，IF 約 20–24 級距 [外部，確切數字未逐一查證，標為概略]。本文附<strong>同期 editorial（SEE PAGE 224）</strong>，顯示編輯部高度重視。</li>
+<li><strong>邀稿 vs 投稿</strong>：原始研究（非邀稿）。</li>
+</ul>
+<h3>3. 研究背景 [文內]</h3>
+<ul>
+<li><strong>既有事實</strong>：缺血性腦中風負擔仍高，且一級預防缺口大（復發性中風僅占 1/4，多數為初次）；逾半數可預防。既有 ECG–中風關聯多依賴「明顯異常 ECG」、非常規量化的波形參數，或僅預測中介因子（如 AF）。</li>
+<li><strong>知識缺口</strong>：能否用<strong>原始 12 導程 ECG 波形直接、以生存分析方式</strong>預測長期缺血性中風、且釐清訊號是否反映<strong>可解釋機轉（心房病變 atrial cardiopathy）</strong>，尚屬未知。</li>
+<li><strong>Research question</strong>：ECG 深度學習能否達到與已驗證臨床分數（FSRP）相當的長期中風風險分層，並在多站點外泛化？</li>
+</ul>
+<h3>4. 研究設計與方法</h3>
+<ul>
+<li><strong>P</strong>：18–90 歲、於 MGB / BIDMC 接受縱貫性初級照護或門診心臟科照護、且有合格 ECG、基線無中風者。</li>
+<li><strong>I（index model）</strong>：ECG2Stroke = CNN 輸出之中風機率（logit 轉換）+ 年齡 + 性別，套入 Cox 模型。</li>
+<li><strong>C（reference model）</strong>：修訂版 Framingham Stroke Risk Profile（FSRP，8 項臨床變數）；另比較 age+sex、ECG-only、以及 AF 族群的 CHA₂DS₂-VASc。</li>
+<li><strong>O</strong>：主要為 <strong>10 年首發缺血性中風</strong>（另評估 1、5 年）；ICD 碼定義，PPV ≥85%，人工複閱 κ=0.8，排除 TIA 專屬碼。</li>
+<li><strong>關鍵設計</strong>：1D densely-connected CNN，輸入 5000×12 tensor；survival-aware loss（同時處理事件時間與 censoring）；多任務訓練（存活、年齡、性別、AF）。訓練集<strong>刻意納入 prevalent stroke</strong> 以增強訊號，但所有驗證 / 測試集皆排除 prevalent stroke；Cox 於排除 prevalent 的 development set 重新校準。30 天 blanking 期避免 prevalent 誤判為 incident。死亡以 censoring 處理（另做 Fine-Gray 競爭風險敏感度分析）。</li>
+<li><strong>測試集</strong>：MGH 內部 4,771；BWH 外部 68,884；BIDMC 外部（獨立健保系統）29,882。訓練 / 驗證 / 測試在<strong>個人與 ECG 層級皆無重疊</strong>（跨院共有者僅留 MGH ECG）。</li>
+</ul>
+<h3>5. 研究結果重點整理</h3>
+<p><strong>主要判別力與校準（Table 2，全測試集；圖 page_010 / page_011）</strong></p>
+<table>
+<thead>
+<tr>
+<th>測試集</th>
+<th>事件率(10yr KM)</th>
+<th>ECG2Stroke AUC</th>
+<th>ICI(校準)</th>
+<th>HR/SD</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>MGH 內部 (n=4,771)</td>
+<td>0.104</td>
+<td>0.795 (0.768–0.820)</td>
+<td>0.030</td>
+<td>2.84</td>
+</tr>
+<tr>
+<td>BWH 外部 (n=68,884)</td>
+<td>0.072</td>
+<td>0.774 (0.765–0.783)</td>
+<td>0.005</td>
+<td>2.65</td>
+</tr>
+<tr>
+<td>BIDMC 外部 (n=29,882)</td>
+<td>0.053</td>
+<td>0.772 (0.758–0.785)</td>
+<td>0.026</td>
+<td>2.80</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><strong>與 FSRP 比較（僅限 22% 有完整 FSRP 資料的子集；Table 3）</strong>：MGH/BWH：ECG2Stroke 0.791 vs FSRP 0.779；BIDMC：0.745 vs 0.728。兩者「數值相近、ECG2Stroke 點估計略高」。合併模型 0.800 / 0.754（邊際提升）。</li>
+<li><strong>增量價值的真相</strong>：在同一子集，age+sex 已達 AUC 0.753（MGH/BWH）／0.709（BIDMC）。ECG 相對 age+sex 僅<strong>增加約 0.03–0.04 AUC</strong>（partial R² 0.057–0.082）；FSRP 相對 age+sex 也僅增約 0.02–0.03。兩者天花板皆在 ~0.8。</li>
+<li><strong>AF 亞群（Table 4，page_012）</strong>：模型在<strong>臨床最需要決策的 AF 族群反而表現最差</strong>——AF AUC 0.716、AF+OAC AUC 0.688，且 <strong>AF+OAC 的 nAP 95% CI 為 1.100 (0.985–1.270)，跨越 1.0（≈無資訊）</strong>。</li>
+<li><strong>機轉訊號</strong>：saliency 集中於 P 波（Central Illustration）；與 PR interval 相關 r≈0.28–0.30；與 CE 型中風強關聯（csHR 2.17, 1.64–2.87）vs 非 CE（1.13, 0.92–1.39），異質性 P&lt;0.001（但子集僅 258 例，含訓練集個案）。</li>
+</ul>
+<h3>6. 作者討論與限制 [文內 + 評估]</h3>
+<ul>
+<li><strong>作者主訊息</strong>：僅需單張 ECG + 年齡性別，即達與 8 項臨床 FSRP 相當之預測，且訊號反映心房病變 → 可用於<strong>規模化的中風一級預防優先排序</strong>。</li>
+<li><strong>作者自列限制（相當完整、少見的誠實）</strong>：回溯觀察性設計；三站點皆位波士頓單一地理區；EHR 碼誤分類；prevalent→incident 誤分類殘留；<strong>ECG 因臨床適應症取得 → 選擇偏差</strong>；中風亞型子集含訓練集個案；明確聲明「<strong>本研究未確立臨床效用（clinical utility），需前瞻實作研究</strong>」。</li>
+<li><strong>[評估]</strong>：作者對外推與臨床效用的節制值得肯定，未過度宣稱。但討論<strong>低估了兩個關鍵弱點</strong>：(1) AF/OAC 族群的判別力崩解；(2) BIDMC 高風險端的系統性校準漂移（見下 SKILL-C 圖判讀）。</li>
+</ul>
+<h3>7. 外部專業意見 [外部]</h3>
+<ul>
+<li><strong>同期 editorial 確認存在</strong>：Heo J, Lee H, Kim YD, Nam HS（Yonsei 神經科 / 腦中風團隊）. <strong>&quot;ECG-Based Stroke Risk Prediction: Considerations for Clinical Application.&quot;</strong> <em>JACC</em> 2026;88:224–…（DOI: 10.1016/j.jacc.2026.03.164）[外部: JACC 目次 / 搜尋]。</li>
+<li><strong>全文擷取結果</strong>：已依指示執行 <code>fetch_editorial.py 10.1016/j.jacc.2026.03.164</code>，經 7 種下載路徑（含 Elsevier API、ScienceDirect、Unpaywall、PMC、瀏覽器）<strong>全部失敗（Cloudflare 驗證牆）</strong>；WebFetch 亦回 403。故標註 <strong>[無法取得全文]</strong>。</li>
+<li>可確認者僅書目資訊：由韓國 Yonsei 腦中風神經科團隊撰寫，標題明示聚焦「<strong>臨床應用的考量 / 前提</strong>」，屬<strong>謹慎、translational caveat 取向</strong>的評論。<strong>其具體論點無法據實摘要，不臆測。</strong></li>
+<li>一般新聞稿（Mass General Brigham、cardiovascular business 等）僅覆述作者說法，不作為獨立專業意見。</li>
+</ul>
+<h3>8. 臨床建議（詳見 SKILL-C 最終裁決）</h3>
+<ul>
+<li>可用情境：<strong>族群層級的風險分層 / 優先排序</strong>（尤其缺乏完整 EHR、臨床資料難取得的場景），作為研究工具或流程觸發器。</li>
+<li>不宜直接套用：<strong>個別病人的抗凝決策</strong>，尤其 AF 病人是否啟停 OAC；非波士頓區、無系統性 ECG 收案之族群；作為診斷或治療門檻。</li>
+<li>證據強度：<strong>中</strong>（大樣本、真外部驗證強；但為回溯、無臨床效用證據、決策關鍵子群表現弱）。</li>
+</ul>
+<hr />
+<h2>SKILL-C：預測模型評讀</h2>
+<h3>A. 補充技術細節（僅補 SECTION-0 未涵蓋者）</h3>
+<ul>
+<li><strong>參考標準（outcome）</strong>：ICD 碼定義的缺血性中風，PPV ≥85%、κ=0.8，移除 TIA 碼；用**全 EHR（不限治療院所）**做結果確認，減少 outcome 漏失。屬合理但非影像 / 臨床 adjudication 的黃金標準——非 CE/CE 亞型才有人工判讀。</li>
+<li><strong>Index 與 outcome 的獨立性</strong>：ECG 判讀（模型）與中風結果來自不同資料流，無明顯迴圈；但 AF 同時是訓練副任務、共變數、又是中風中介 → 三者糾纏（見 D 段）。</li>
+<li><strong>Spectrum</strong>：非「明顯正常 vs 明顯異常」對比，而是全臨床頻譜；但<strong>所有 ECG 皆因臨床理由取得</strong>（selection bias），非無症狀社區普篩族群——這直接限制「population screening」的宣稱。</li>
+<li><strong>Cut-off 設定</strong>：高 / 低風險門檻（&lt;5% / &gt;20%）直接<strong>借用 ASCVD 一級預防指引</strong>，非由本資料 data-driven 最佳化 → 避免了 optimism，但這些門檻是為 ASCVD（非中風專屬）設計，套用需保留。</li>
+</ul>
+<h3>B. 判別力（Discrimination）</h3>
+<ul>
+<li>三測試集 <strong>10 年 AUC 0.772–0.795、5 年 0.753–0.765、1 年 0.701–0.749</strong>：屬<strong>中等判別力</strong>，非「高」。短時程 AUC 反而略降，但 nAP（相對基線事件率）在短時程改善（1 年 nAP 到 2.47–3.19），反映短期 precision 較佳。</li>
+<li><strong>與 age+sex 的增量</strong>才是重點：ECG 波形相對 age+sex 僅 +0.03–0.04 AUC。這是誠實但關鍵的框架——<strong>大部分判別力來自年齡</strong>（中風的最強單一預測因子）。標題與新聞稿的「AI 預測中風」易讓讀者高估 ECG 波形本身的貢獻。</li>
+<li><strong>與 FSRP 的「相當」有兩個附帶條件</strong>：(1) 僅在 <strong>22% 完整資料子集</strong>成立，該子集資料完整者通常照護較密、較健康，外推性存疑；(2) 敏感度分析把兩組限制到 FSRP 原始驗證的 age&gt;55 後，<strong>FSRP AUC 反跌到 0.681–0.737</strong>——這主要是年齡範圍壓縮使任何模型判別力下降的統計假象，作者用它凸顯 ECG2Stroke 相對優勢，但這對 FSRP <strong>有點不公平的比較框架</strong>，應審慎解讀。</li>
+</ul>
+<h3>C. 校準度（Calibration）— 圖判讀補正文</h3>
+<ul>
+<li>文字與 Table 只報<strong>整體 ICI（0.005–0.038）</strong>，看似「校準良好」。但 <strong>ICI 是全距平均，會被大量低風險個案稀釋</strong>。</li>
+<li><strong>[圖 page_011 Figure 3B（BIDMC 校準曲線）判讀]</strong>：ECG2Stroke（綠）、FSRP（橘）、合併（紫）三條曲線在 predicted &gt;0.15 後<strong>明顯落在對角線下方</strong>——例如 predicted ≈0.4 時 observed 僅 ≈0.18–0.20，屬<strong>高風險端的系統性高估（overprediction）</strong>。相對地 page_011 Figure 3A（MGH/BWH）校準曲線幾乎貼合對角線至 ~0.35。</li>
+<li><strong>臨床意義</strong>：真正要用 &gt;20% 門檻挑「高風險去強化預防」的，正是右端這群人；ICI 0.026 的「良好」數字<strong>掩蓋了決策相關區間的實質高估</strong>，在獨立健保系統（BIDMC）尤甚。這是本文最需要在正文放大、卻被平均統計量遮住的弱點。<strong>若直接照搬絕對風險門檻於 BIDMC 型族群，會系統性高估、導致過度介入。</strong></li>
+</ul>
+<h3>D. 外部驗證與 AF 糾纏</h3>
+<ul>
+<li><strong>外部驗證品質高</strong>：BWH（同健保系統他院）+ BIDMC（<strong>完全獨立健保系統</strong>），且性別 / 種族 / 危險因子亞群一致（Figure 2, page_009）。這是本研究最紮實之處，遠優於多數只有內部或時間驗證的 ECG-AI 論文。</li>
+<li><strong>[圖 page_009 Figure 2 判讀]</strong>：forest plot 幾乎所有亞群 HR 點估計 &gt;1 且 CI 不跨無效線；唯 <strong>Asian（BWH n=1,668 / BIDMC n=857）與 Unknown/Other race CI 明顯較寬</strong>，反映小樣本，這些族群的效度較不確定，不應過度解讀。</li>
+<li><strong>AF 的三重角色問題</strong>：AF 同時是（訓練副任務、共變數、中風中介）。作者做了漂亮的解構——time-dependent AF 調整後 ECG2Stroke 仍保留關聯、partial R² 遠大於 AF（Figure 5, page_013），且在「全程無 AF、遇 AF 即 censoring」下仍維持判別力（Table 4）→ 支持模型<strong>不只是預測 AF</strong>。這是強項。</li>
+<li><strong>但 AF 族群本身是模型最弱區</strong>（B 段）：AF AUC 0.716、AF+OAC AUC 0.688、<strong>nAP CI 跨 1.0</strong>。臨床上最想用 ECG-AI 去輔助「AF 病人抗不抗凝」，模型偏偏在此最不可靠。</li>
+</ul>
+<h3>D-2. 重分類（NRI）的方向性陷阱 — 關鍵方法學洞見</h3>
+<ul>
+<li>在 AF 未抗凝族群，作者以 ECG2Stroke 相對 CHA₂DS₂-VASc 得到「改善重分類」與「顯著淨效益」，並稱主要來自「適當地把非事件下修（appropriate down-classification of nonevents）」。</li>
+<li><strong>拆開 NRI 成分即見隱憂</strong>（high vs intermediate 門檻）：<strong>NRI+ = −0.546（95% CI −0.590 到 −0.495）</strong>、NRI− = +0.616。
+<ul>
+<li>NRI+ 為<strong>事件者（真的中風的人）<strong>的淨重分類——<strong>強烈為負</strong>，代表 ECG2Stroke 把</strong>相當比例真正發生中風的 AF 病人錯誤下修到低風險</strong>。</li>
+<li>整體 NRI 為正，完全靠 NRI−（非事件者正確下修，即 specificity）撐起。</li>
+</ul>
+</li>
+<li><strong>[圖 page_012 Figure 4 佐證]</strong>：ECG2Stroke 判為「低風險」的 AF 病人 n=1,096（vs CHA₂DS₂-VASc 低風險僅 n=288）——<strong>模型把 4 倍多的 AF 病人歸為低風險</strong>。對「是否可安全不抗凝」而言，這個以犧牲敏感度換特異度的取捨<strong>方向恰好是危險的</strong>：漏掉可預防的心因性栓塞中風，代價遠高於多開一顆抗凝藥。作者僅以「需外部與前瞻驗證」帶過，本評讀認為此點應被明確標為<strong>不可用於臨床抗凝決策的紅線</strong>。</li>
+</ul>
+<h3>E. 三階段 AI 評估總結</h3>
+<table>
+<thead>
+<tr>
+<th>階段</th>
+<th>評定</th>
+<th>依據</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>① 建模 Derivation</td>
+<td><strong>強</strong></td>
+<td>10.7 萬人 / 30 萬 ECG；survival-aware loss；多任務；train/val 分離調參；競爭風險敏感度分析穩定（HR 2.42 vs 2.52）</td>
+</tr>
+<tr>
+<td>② 驗證 Validation</td>
+<td><strong>強</strong></td>
+<td>兩個真外部站點含獨立健保系統；個人 / ECG 層級零重疊；亞群一致。<strong>但</strong>：BIDMC 高風險端校準漂移、單一地理區、ECG 為臨床適應症取得（selection bias）</td>
+</tr>
+<tr>
+<td>③ 臨床效用 Clinical effectiveness</td>
+<td><strong>未建立</strong></td>
+<td>無前瞻、無「改變決策 / 改善病人結果」證據；決策曲線淨效益相對 FSRP 僅「modest」；failure mode 分析僅止於 AF 亞群觀察，未系統化；fairness 僅有亞群 HR，未報各族群校準</td>
+</tr>
+</tbody>
+</table>
+<h3>F. 機轉宣稱的證據強度（額外）</h3>
+<ul>
+<li>「編碼心房病變」的證據<strong>部分成立</strong>：saliency P 波 + PR interval r≈0.3 + CE 型強關聯，三線索一致，方向合理。</li>
+<li><strong>但不宜過度延伸</strong>：與 P-wave duration / axis 的相關 r 僅 0.033–0.044（雖 P&lt;0.001，純因 n 破萬，<strong>統計顯著但臨床上可忽略</strong>）；且僅用 3 個 P 波指標的 Cox 模型<strong>顯著劣於</strong> ECG-only 或 age+sex（Supplemental Table 16）→ 代表 NN 抓到的訊號<strong>遠超過可量測的結構化 P 波指標</strong>，機轉仍有大片黑箱未解釋。CE/非 CE 子集僅 258 例且含訓練個案，屬 hypothesis-generating。</li>
+</ul>
+<h3>G. 紅旗清單</h3>
+<ul>
+<li><strong>[設計]</strong> 所有 ECG 因臨床適應症取得 → 非普篩族群，與「population-level screening」宣稱存在落差。</li>
+<li><strong>[設計]</strong> 三站點皆波士頓區 → 地理 / 醫療體系同質，外泛化未證。</li>
+<li><strong>[統計]</strong> 整體 ICI 良好但<strong>遮蔽 BIDMC 高風險端系統性高估</strong>（圖判讀）。</li>
+<li><strong>[統計]</strong> AF+OAC 族群 nAP CI 跨 1.0（近無資訊）；AF 重分類「效益」由 specificity 撐起、<strong>NRI+ 為大負值（漏判真事件）</strong>。</li>
+<li><strong>[統計]</strong> FSRP 比較僅限 22% 完整資料子集；age&gt;55 敏感度分析框架對 FSRP 不利。</li>
+<li><strong>[敘事]</strong> 標題「200,000 patients」加總化、易高估獨立驗證規模；新聞稿易讓大眾高估「ECG 波形」相對年齡的貢獻。</li>
+<li><strong>[外推]</strong> KM 曲線後期人數銳減 —<strong>[圖 page_011 / page_012 number-at-risk 判讀]</strong> MGH/BWH ECG2Stroke 高風險組 at-risk 由 2,236 降至第 10 年僅 194、BIDMC 高風險組 1,896→706；中位追蹤僅 7–7.5 年，<strong>10 年估計倚賴少數尚在追蹤者，尾端 CI 應視為不穩</strong>（圖中信賴帶於後期變寬亦一致）。</li>
+<li><strong>[潛在]</strong> 同團隊反覆用同資料集發表 ECG-AI「編碼萬象」敘事的 prior-commitment 傾向（由真外部驗證緩解）。</li>
+</ul>
+<h3>H. 最終裁決</h3>
+<ul>
+<li><strong>模型可信度</strong>：<strong>中偏高</strong>（判別力中等但穩健、外部驗證是同類研究中的模範；校準與 AF 決策效用是主要短板）。</li>
+<li><strong>有用情境</strong>：族群 / 系統層級的<strong>中風風險優先排序與流程觸發</strong>，特別在臨床資料不全、EHR 不健全的資源受限場景；作為心房病變的<strong>研究型 ECG 生物標記</strong>（模型已學術開源，利於後續機轉 / 介入研究）。</li>
+<li><strong>不建議使用</strong>：個別病人的<strong>抗凝啟停決策</strong>（尤其 AF——模型最弱且 NRI+ 為負，漏判方向危險）；直接以絕對風險門檻套用於非波士頓 / BIDMC 型族群（高風險端高估）；作為診斷或治療 gatekeeper。</li>
+<li><strong>改觀所需的 3 個關鍵改進</strong>：
+<ol>
+<li><strong>前瞻性實作研究</strong>證明「用了模型 → 改變預防決策 → 改善病人結果」（clinical effectiveness，目前完全缺）。</li>
+<li><strong>決策相關區間（高風險端）的重新校準與跨體系再校準</strong>，並報告各族群（種族、AF）之校準而非僅整體 ICI。</li>
+<li>AF 族群若要用於抗凝決策，需<strong>以敏感度為導向</strong>重新設定門檻並前瞻驗證，避免漏判可預防的心因性栓塞中風。</li>
+</ol>
+</li>
+<li><strong>一句話結論（給一般讀者）</strong>：這個 AI 用一張心電圖能相當準地把「未來十年中風風險較高的人」排出來，適合拿來做大規模篩選與研究，但<strong>還不能用它來決定個別病人要不要吃抗凝藥或治療</strong>。</li>
+</ul>
+<hr />
+<h3>Sources</h3>
+<ul>
+<li><a href="https://www.jacc.org/doi/10.1016/j.jacc.2026.03.084">ECG Signatures and Long-Term Ischemic Stroke Risk (JACC, 本文)</a></li>
+<li><a href="https://www.jacc.org/doi/10.1016/j.jacc.2026.03.164">同期 editorial：ECG-Based Stroke Risk Prediction: Considerations for Clinical Application (DOI 10.1016/j.jacc.2026.03.164) — 全文無法取得</a></li>
+<li><a href="https://www.massgeneralbrigham.org/en/about/newsroom/press-releases/ai-model-predicts-10-year-stroke-risk">Mass General Brigham 新聞稿</a></li>
+<li><a href="https://advances.massgeneral.org/contributors/contributor.aspx?id=1789">Shaan Khurshid 團隊背景（Mass General Advances in Motion）</a></li>
+<li><a href="https://www.jacc.org/digital-content/video/behind-science-ecg-prediction-stroke-jacc-video">Behind the Science: ECG Prediction of Stroke (JACC video)</a></li>
+</ul>
+<blockquote>
+<p>限制聲明：本評讀基於 PDF 轉出 markdown 正文 + 6 張圖頁 PNG 之實際可見內容；supplement（Supplemental Tables/Figures）僅有文字轉述、無圖像，相關判讀已標明來源。同期 editorial 全文因 Cloudflare 驗證牆與付費牆，經 <code>fetch_editorial.py</code> 全部下載路徑失敗，僅能確認書目資訊，其具體論點未臆測。</p>
+</blockquote>
+
+<footer class="appraisal-meta">評讀資訊：模型：claude-opus-4-8 (claude)  ·  route：diagnostic  ·  產出時間：2026-07-19 14:20 CST</footer>
+</main>
+</body>
+</html>

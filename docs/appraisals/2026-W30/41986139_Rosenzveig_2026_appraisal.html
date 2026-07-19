@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Infective endocarditis in hypertrophic cardiomyopathy: a real-world matched cohort analysis.</title>
+<style>
+  :root {
+    --bg: #fafafa;
+    --card: #ffffff;
+    --text: #1a1a1a;
+    --muted: #6b6b6b;
+    --border: #e5e5e5;
+    --accent: #0b5fff;
+  }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang TC",
+      "Microsoft JhengHei", sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    margin: 0;
+    padding: 24px 16px 64px;
+    line-height: 1.72;
+  }
+  main {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    margin: 0 auto;
+    max-width: 840px;
+    padding: 22px 26px;
+  }
+  nav {
+    margin: 0 auto 14px;
+    max-width: 840px;
+    color: var(--muted);
+    font-size: 14px;
+  }
+  a { color: var(--accent); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  h1, h2, h3, h4 { line-height: 1.35; }
+  h1 { font-size: 26px; margin-top: 0; }
+  h2 { border-top: 1px solid var(--border); padding-top: 18px; }
+  code {
+    background: rgba(127, 127, 127, 0.12);
+    border-radius: 4px;
+    padding: 1px 4px;
+  }
+  table {
+    border-collapse: collapse;
+    display: block;
+    overflow-x: auto;
+    width: 100%;
+  }
+  th, td {
+    border: 1px solid var(--border);
+    padding: 6px 8px;
+    text-align: left;
+    vertical-align: top;
+  }
+  blockquote {
+    border-left: 3px solid var(--accent);
+    color: var(--muted);
+    margin-left: 0;
+    padding-left: 14px;
+  }
+  .appraisal-meta {
+    border-top: 1px solid var(--border);
+    margin-top: 28px;
+    padding-top: 14px;
+    color: var(--muted);
+    font-size: 13px;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #1a1a1a;
+      --card: #242424;
+      --text: #e8e8e8;
+      --muted: #999;
+      --border: #333;
+      --accent: #6ea8ff;
+    }
+  }
+</style>
+</head>
+<body>
+<nav><a href="../../2026-W30.html">← 回到 2026-W30 週報</a></nav>
+<main>
+<h1>Infective endocarditis in hypertrophic cardiomyopathy: a real-world matched cohort analysis.</h1>
+<h1>批判性文獻評讀</h1>
+<p><strong>Infective endocarditis in hypertrophic cardiomyopathy: a real-world matched cohort analysis</strong>
+<em>Rosenzveig A, et al. Heart (BMJ). 2026. DOI: 10.1136/heartjnl-2026-327787 · PMID 41986139</em></p>
+<hr />
+<h2>SECTION-0：文章全面描述</h2>
+<h3>0. 文章身份證</h3>
+<ul>
+<li><strong>標題</strong>：Infective endocarditis in hypertrophic cardiomyopathy: a real-world matched cohort analysis</li>
+<li><strong>期刊 / 年份</strong>：<em>Heart</em>（British Cardiac Society / BMJ Group），2026（Epub ahead of print）</li>
+<li><strong>DOI</strong>：10.1136/heartjnl-2026-327787</li>
+<li><strong>文章類型（路由判斷）</strong>：<strong>觀察性研究</strong>——retrospective、propensity-score matched cohort，使用 TriNetX 聯邦式 EHR 資料庫。文體為 <em>Short report</em>（短篇報告，字數與方法細節受限）。</li>
+<li><strong>路由結果</strong>：SKILL-A 主流程 ＋ 觀察性子模組 ＋ 因果推論 Appendix（本文明確宣稱要「quantify the risk」並以 DAG 選共變項，且結論直指指引改寫，屬因果宣稱）。</li>
+</ul>
+<h3>1. 作者團隊評論 [部分外部]</h3>
+<ul>
+<li><strong>通訊作者</strong>：Dr Venu Menon，Cleveland Clinic Heart Vascular and Thoracic Institute，心臟加護病房主任，專長 critical care cardiology、影像與瓣膜疾病 [外部: ResearchGate / Radcliffe Cardiology]。</li>
+<li><strong>團隊構成</strong>：第一作者 Akiva Rosenzveig（Cleveland Clinic，guarantor），與 Menon 共同發想研究與分析計畫；其餘作者平均分攤撰寫。第二機構為 University of Arkansas（Ankit Agrawal）。</li>
+<li><strong>團隊研究取向</strong>：此團隊近年有多篇以 <strong>TriNetX</strong> 平台進行的 propensity-matched 觀察性研究（例如 AMI 病人 SGLT2i、cardiogenic shock 趨勢等）[外部: ResearchGate / PMC]。<strong>[推論]</strong> 這代表團隊對 TriNetX 操作熟練，但也意味其產出高度依賴同一資料庫的內建分析工具，需特別留意平台方法學共通弱點（見下文）。</li>
+<li><strong>作者立場史</strong>：本文 Discussion 明白站在「HCM 應被重新分類為 intermediate-risk、值得個別化考慮抗生素預防」一方，並引用一系列「主張給預防」的舊文獻 [文內, refs 8–10]。屬於方向性明確、帶倡議色彩的短報告，需警覺確認偏差。</li>
+<li><strong>利益揭露</strong> [文內]：Funding「無特定資助」；Competing interests「None declared」。無明顯商業利益衝突；mavacamten 分析未申報藥廠關聯。</li>
+</ul>
+<h3>2. 文獻 Metadata [部分外部]</h3>
+<ul>
+<li><strong>Received</strong> 2026-01-04 → <strong>Accepted</strong> 2026-03-17：審查約 <strong>72 天</strong>（含修改），對短報告屬中等偏快。</li>
+<li><em>Heart</em> 為心臟科 Q1 期刊（BMJ Group）[外部: 期刊屬性]；本篇平均審查天數之官方 editorial stats <strong>[無法取得]</strong>。</li>
+<li><strong>邀稿 vs 投稿</strong>：Provenance 明列「Not commissioned; externally peer reviewed」[文內]——非邀稿，經外部同儕審查。</li>
+<li><strong>補充資料警語</strong> [文內]：Supplementary（含關鍵的 DAG figure S1 與 baseline table 1）「has not been vetted by BMJ… may not have been peer-reviewed」——<strong>核心的混淆選擇邏輯與完整基線平衡表落在未經審查的附錄，且本次 markdown 未保留其內容</strong>。</li>
+</ul>
+<h3>3. 研究背景 [文內]</h3>
+<ul>
+<li><strong>既有事實</strong>：IE 少見但可致命；現行 AHA/ACC（2018）與 ESC（2023）指引僅對人工瓣膜、既往 IE、特定先天性心臟病建議抗生素預防；HCM <strong>不</strong>列高風險。</li>
+<li><strong>知識缺口</strong>：多個 case report/series 與小型登錄研究顯示 HCM（尤其 LVOT obstruction）可能有臨床上有意義的 IE 風險，但缺乏大樣本量化。</li>
+<li><strong>Research question</strong>：HCM 病人 5 年 IE 風險相對配對對照與瓣膜介入參考族群為何？（明確陳述）</li>
+</ul>
+<h3>4. 研究設計與方法（含混淆控制）</h3>
+<ul>
+<li><strong>PICO</strong>
+<ul>
+<li><strong>P</strong>：≥45 歲、2015-01-01～2019-12-31 有門診紀錄、ICD-10-CM I42.1/I42.2（HCM）；排除既往 IE、先天性心臟病（Q20–Q28）、任何瓣膜介入史、物質使用疾患（F11/F14/F15/F19）。</li>
+<li><strong>E（Exposure）</strong>：HCM 診斷。</li>
+<li><strong>C</strong>：有門診紀錄但無 HCM 之病人，1:1 propensity-score 配對；另設「既往瓣膜介入」參考組（n=1916）當高風險基準。</li>
+<li><strong>O</strong>：主要=5 年累積 IE（I33.x、I38、I39）；次要=全因死亡。</li>
+</ul>
+</li>
+<li><strong>關鍵設計</strong>：logistic PS + nearest-neighbour matching、caliper 0.1 pooled SD；共變項以 causal DAG 選「minimally sufficient set」（figure S1，未保留）；追蹤自 HCM 初診起算，截尾於 IE / 死亡 / 5 年；Cox PH（Schoenfeld 檢定 PH 假設）；<strong>明白承認 competing-risks 分析因 TriNetX 限制未做</strong>；person-years 以「cohort size × median follow-up」粗估（自承假設均勻追蹤）。</li>
+<li><strong>主要 outcome 操作型定義</strong>：純以 ICD 碼定義，<strong>無影像 / 血培養 / Duke criteria 佐證</strong>。</li>
+</ul>
+<h3>5. 研究結果重點整理 [文內＋圖]</h3>
+<table>
+<thead>
+<tr>
+<th>項目</th>
+<th>HCM</th>
+<th>對照</th>
+<th>效果量 (95% CI)</th>
+<th>p</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>配對數</td>
+<td>18 177</td>
+<td>18 177</td>
+<td>—</td>
+<td>—</td>
+</tr>
+<tr>
+<td>年齡（平均±SD）</td>
+<td>65.7±10.4；43.8% 女</td>
+<td>同</td>
+<td>—</td>
+<td>—</td>
+</tr>
+<tr>
+<td>5 年累積 IE</td>
+<td>3.25%</td>
+<td>1.31%</td>
+<td><strong>HR 2.62 (2.20–3.12)</strong></td>
+<td>&lt;0.001</td>
+</tr>
+<tr>
+<td>絕對風險差 (ARD)</td>
+<td>—</td>
+<td>—</td>
+<td><strong>≈1.94%（NNH≈52 / 5 年）</strong></td>
+<td>—</td>
+</tr>
+<tr>
+<td>全因死亡</td>
+<td>12.4%</td>
+<td>10.1%</td>
+<td>HR 1.11 (1.04–1.18)</td>
+<td>0.002</td>
+</tr>
+<tr>
+<td>瓣膜組 vs 對照 (n=1916)</td>
+<td>6.46%</td>
+<td>1.52%</td>
+<td>HR 4.21 (2.62–6.75)</td>
+<td>&lt;0.001</td>
+</tr>
+<tr>
+<td>ICD/PPM 次組 (n=239)</td>
+<td>6.3%（CI 0.77–6.94，見紅旗）</td>
+<td>—</td>
+<td>—</td>
+<td>—</td>
+</tr>
+<tr>
+<td>Mavacamten 次組 (n=231, 1yr)</td>
+<td>0 例 IE</td>
+<td>—</td>
+<td>不可估計</td>
+<td>—</td>
+</tr>
+<tr>
+<td>粗發生率</td>
+<td>~6.5 / 1000 person-years</td>
+<td>—</td>
+<td>—</td>
+<td>—</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><strong>基線殘餘不平衡（重要）</strong>：AFib 24.9% vs 10.3%（<strong>SMD 0.39</strong>）、ischaemic heart disease 32.6% vs 20.9%（<strong>SMD 0.27</strong>）、aortic valve disease 7.7% vs 3.2%（<strong>SMD 0.20</strong>）——均遠超 0.1 門檻。</li>
+</ul>
+<h3>6. 作者討論與評論重點 [文內]</h3>
+<ul>
+<li><strong>主要訊息</strong>：HCM 為 IE 的「中度風險」族群，5 年風險是一般族群 2 倍餘、約瓣膜病人一半；主張重新評估指引、對高風險表型（LVOT 阻塞、左房擴大、既往中膈縮減術）「合理考慮」抗生素預防。</li>
+<li><strong>與文獻異同</strong>：自承粗發生率（~6.5/1000 PY）高於 Spirito（3.8/1000 PY，僅阻塞型 224 例）、Thornhill（0.8%/5yr）、Somendra（0.57%/6.1yr），歸因於樣本大、機構多元、社經未捕捉。</li>
+<li><strong>作者限</strong>：ICD 碼誤分類、無法取得預防性抗生素使用、無法依表型次組、HR 非恆定因果、對照組 IE（1.3%）偏高。</li>
+<li><strong>[評估]</strong>：限制清單<strong>避重就輕</strong>——完全未提 IE 這種「需被偵測才會被編碼」的結果在 HCM（高度醫療接觸族群）與門診對照間存在<strong>嚴重偵測 / 監測偏差</strong>；也未討論死亡的競爭風險如何影響累積發生率。臨床建議（考慮預防）明顯<strong>超出資料所能支持的範圍</strong>。</li>
+</ul>
+<h3>7. 外部專業意見 [外部搜尋]</h3>
+<ul>
+<li>針對本文的同期 editorial / commentary：於 PubMed 與網路搜尋（含「HCM IE prophylaxis editorial Heart 2026」）<strong>未發現</strong>任何專屬社論或評論；本文為 2026-04 剛上線之短報告，尚無配對社論。→ <strong>[無法取得]——未發現同期 editorial 或公開評論</strong>（未執行 dlbydoi.py，因無可對應之評論 DOI）。</li>
+<li><strong>相關背景文獻（非針對本文，供脈絡）</strong>：Spirito <em>et al</em>（Circulation 1999）指 IE 幾乎只見於阻塞型 HCM；HCM IE 多中心前瞻研究（2016）；多篇「主張 / 反對 HCM 給預防」辯論文。這些是本文引用的既有辯論，不作為對本文的專業評論。[外部: PubMed]</li>
+</ul>
+<h3>8. 臨床建議</h3>
+<ul>
+<li><strong>可謹慎參考的情境</strong>：作為「HCM 病人 IE 絕對風險並非可忽略」的<strong>訊號生成</strong>證據；提醒臨床對阻塞型、左房擴大、既往中膈縮減、帶 CIED 導線的 HCM 病人，於菌血症事件時提高 IE 警覺。</li>
+<li><strong>不建議直接套用</strong>：<strong>不應</strong>據本文改變抗生素預防決策。本文並未證明 (a) HCM 是 IE 的因果驅動、(b) 抗生素預防能降低 HCM 的 IE——兩者都是「重新分類為 intermediate-risk 並給預防」主張的必要前提，本文皆未提供。</li>
+<li><strong>實務建議</strong>：現行 AHA/ACC 2018、ESC 2023 立場（HCM 不常規預防，除非併瓣膜介入或既往 IE）仍應維持；此研究不足以推翻。</li>
+<li><strong>證據強度分級</strong>：<strong>弱</strong>（單一資料庫、純碼定義結局、偵測偏差與殘餘混淆方向一致地把 HR 往上推、無競爭風險校正）。</li>
+</ul>
+<hr />
+<h2>SKILL-A：觀察性研究批判性評讀</h2>
+<h3>A. 補充技術細節（僅補 SECTION-0 未涵蓋者）</h3>
+<ul>
+<li><strong>Power/樣本</strong>：無事前 power 估算（觀察性、便利樣本 3.6 萬人，統計精度非瓶頸）。</li>
+<li><strong>配對變項</strong>：由 DAG「minimally sufficient set」決定，但<strong>清單在未保留的 figure S1</strong>——無法驗證是否納入關鍵混淆（醫療接觸強度、牙科處置、留置導管、洗腎、免疫抑制）。</li>
+<li><strong>PH 假設</strong>：Schoenfeld χ²=8.899，<strong>p=0.003（統計上違反）</strong>，作者卻寫「no meaningful violations」——自相矛盾（見 C）。</li>
+<li><strong>缺失資料 / 追蹤</strong>：person-time 以 cohort×median follow-up 粗估，自承假設均勻追蹤（EHR 幾乎不成立）。</li>
+<li><strong>競爭風險</strong>：<strong>未做</strong>（TriNetX 限制），對「罕見結局＋12.4% 死亡」是實質缺陷。</li>
+</ul>
+<h4>觀察性研究混淆控制評估</h4>
+<table>
+<thead>
+<tr>
+<th>方法</th>
+<th>本文採用</th>
+<th>評估</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>多變量 / PS matching</td>
+<td>✅ logistic PS + caliper 0.1</td>
+<td>名目上做了，但<strong>在最相關的 IE 風險因子上配對失敗</strong>（AFib SMD 0.39、aortic valve disease 0.20）</td>
+</tr>
+<tr>
+<td>DAG 選共變項</td>
+<td>✅（figure S1）</td>
+<td>立意良好，但清單不可見、無法驗證 minimally sufficient 是否真的足夠</td>
+</tr>
+<tr>
+<td>IV / 敏感度分析</td>
+<td>❌</td>
+<td>無 E-value、無 negative control、無 quantitative bias analysis</td>
+</tr>
+<tr>
+<td>時序性 (temporality)</td>
+<td>部分</td>
+<td>追蹤自 HCM 初診起，IE 需在其後——方向正確；但「初診」是<strong>首次編碼日</strong>而非發病日</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong>[參考: jama_agoritsas_2017_ug_160001.md]</strong>：觀察性治療/暴露研究的核心是「殘餘混淆是否可能解釋觀察到的關聯」；當配對後仍在<strong>與結局直接相關的變項</strong>上留下大 SMD，估計值的可信度即受質疑——本文正是此情形。</p>
+</blockquote>
+<h3>B. 批判性評估（四大面向）</h3>
+<p><strong>B1. 假說與理論邏輯</strong></p>
+<ul>
+<li>機轉合理：阻塞型 HCM 的 mitral-septal contact、高速湍流、二尖瓣逆流、左房擴大 → 內皮損傷 → 菌血症時附著。<strong>可信機轉 1–3</strong>：LVOT 湍流內皮損傷、MR jet lesion、左房擴大瘀滯。</li>
+<li><strong>敘事跳躍</strong>：機轉只適用於<strong>阻塞型</strong>（Spirito 早已指出 IE 幾乎專屬阻塞型），但本文用 ICD 碼（I42.1 含 obstructive、I42.2 為 other HCM）<strong>無法區分阻塞與否</strong>，卻把整體 HR 2.62 的因果解釋掛在阻塞型機轉上——機轉與被測族群不匹配。</li>
+</ul>
+<p><strong>B2. 受試者與外推性</strong></p>
+<ul>
+<li>≥45 歲門診 HCM；排除物質使用（好，降低 IV drug use 混淆）。但排除 &lt;45 歲，恰好可能排除機轉最相關的年輕阻塞型。</li>
+<li>對照為「有門診紀錄但無 HCM」、且自承「顯著共病負擔」——<strong>對照組 IE 1.3% 偏高</strong>，作者稱這會「低估」HCM 真實風險；但同時對照組缺乏 HCM 病人那種密集心臟影像追蹤，反而使 HCM 端 IE <strong>更容易被偵測</strong>，方向相反。</li>
+<li><strong>外推性分級：低–中</strong>。單一美國 EHR 網絡、純碼結局。</li>
+</ul>
+<p><strong>B3. 研究設計與偏差（方向判斷）</strong></p>
+<ol>
+<li><strong>偵測 / 監測偏差（最關鍵，效果被放大）</strong>：IE 是「查了才會發現」的結局。HCM 病人終身接受年度心臟超音波、心臟科追蹤、症狀時做血培養與 TEE；門診對照則否。差異化的偵測強度會<strong>系統性把 HCM 端 IE 發生率往上抬</strong> → HR 2.62 高估。作者完全未觸及。</li>
+<li><strong>殘餘混淆（效果被放大）</strong>：AFib、缺血性心臟病、主動脈瓣疾病配對後仍嚴重不平衡，而這三者本身就是 IE / 菌血症 / 心內膜受損的風險因子。作者辯稱「反映 HCM 內在重塑而非配對偏差」——但無論成因為何，只要它們同時預測 IE，<strong>未被平衡即為殘餘混淆</strong>，把 HCM 效果往上推。</li>
+<li><strong>競爭風險未校正（效果方向不定但偏高估）</strong>：12.4% 死亡下用 KM 估累積發生率會<strong>高估</strong> IE 累積機率（本應用 Aalen-Johansen / Fine-Gray）。</li>
+</ol>
+<ul>
+<li><strong>對照組適當性（Gyawali）</strong>：此為病因學而非療效研究，對照為「無 HCM 門診族群」尚合理，但監測強度不對等破壞可比性。</li>
+</ul>
+<p><strong>B4. 測量工具與實務意義</strong></p>
+<ul>
+<li>IE 純以 I33.x/I38/I39 定義，<strong>無 Duke criteria、無血培養 / 影像佐證</strong>；I38「valve unspecified」與 I39 誤分類率高。</li>
+<li>就算關聯為真：ARD ≈1.94% / 5 年、<strong>NNH≈52</strong>——距離「值得對整個 HCM 族群給抗生素預防」還缺兩步：預防有效性證據（缺）、以及鎖定真正高風險（阻塞型）表型的能力（本資料做不到）。</li>
+</ul>
+<h3>C. 統計與資料完整性</h3>
+<h4>C1. 結果分類（觀察性關聯，改以偏差方向判讀）</h4>
+<ul>
+<li>關聯<strong>統計上穩健</strong>（HR 2.62，CI 2.20–3.12，精度佳）——問題<strong>不在精度，而在偏差</strong>。</li>
+<li>綜合 B3：偵測偏差 ＋ 關鍵風險因子殘餘混淆 ＋ 競爭風險未校正，<strong>三者方向一致地使 HR 高估</strong>。因此真實因果 HR 很可能明顯低於 2.62，甚至部分為偽關聯。<strong>不做 MCID 分類</strong>（非療效試驗）。</li>
+</ul>
+<h4>C2 / C3. Winner's curse / Bayesian</h4>
+<ul>
+<li>不適用（大樣本、非 underpowered、非療效試驗）。</li>
+</ul>
+<h4>C4. 報告完整性與其他統計問題</h4>
+<ul>
+<li><strong>PH 假設自相矛盾</strong>：Schoenfeld p=0.003 表示 PH <strong>被違反</strong>，作者卻稱「no meaningful violations」並照報單一 HR。搭配 KM 曲線（見下）呈近乎<strong>線性恆定發散</strong>，若 PH 真被違反，單一 HR 只是時間平均，解讀應保留。作者亦自承 HR 未必反映恆定因果效果。</li>
+<li><strong>person-years 粗估</strong>：cohort×median follow-up 假設均勻追蹤，EHR 中並不成立 → ~6.5/1000 PY 這個「高於 Spirito」的比較<strong>不可靠</strong>，不能當作「HCM 風險更高」的證據。</li>
+<li><strong>統計面紅旗（≥5）</strong>：(1) 純碼結局無臨床佐證；(2) 偵測偏差未評估；(3) 關鍵 IE 風險因子配對失敗（SMD 0.20–0.39）被辯解掉；(4) 競爭風險未做；(5) PH 違反卻稱無違反；(6) 未做任何敏感度 / negative-control / E-value；(7) ICD 次組 CI「0.77–6.94% 圍繞點估計 6.3%」在數學上不合理（點估計幾乎等於上界），疑為計算或轉錄錯誤。</li>
+</ul>
+<h4>圖表判讀（page_002 Figure 1，解析度足以判讀）</h4>
+<ul>
+<li><strong>Panel A（HCM 藍 vs 對照橘）</strong>：兩曲線於<strong>第一年內即分離</strong>並近乎<strong>線性穩定發散</strong>至 3.25% vs 1.31%；Y 軸自 0 起、上探 14% 留大量空白，<strong>未以截軸誇大</strong>（若有，反而是視覺上壓縮效果）。</li>
+<li><strong>number-at-risk 的重大訊號</strong>：HCM 第 5 年 at-risk <strong>17 586</strong>（起始 18 177，僅少 591，≈3.3%）。但全因死亡達 <strong>12.4%</strong>——若死亡有被正確截尾，at-risk 應掉到約 15 000 上下。<strong>at-risk 幾乎不隨死亡下降</strong>，顯示 TriNetX 的 KM at-risk / person-time 未妥當處理 12.4% 的死亡（與「未做競爭風險」「person-time 假設均勻」一致）。這使累積發生率與 ~6.5/1000 PY 的分母都偏樂觀。→ <strong>[圖佐證：競爭風險與截尾處理不足]</strong></li>
+<li><strong>Panel B（瓣膜綠 vs 對照紫）</strong>：瓣膜曲線持續近線性上升至 6.46%；對照紫線平坦（~1.5%，近第 4 年有一小跳）。at-risk 遞減溫和（1916→1792），與 6.46% 事件率大致相容。Y 軸同自 0 起，無誇大。</li>
+<li><strong>未見</strong>：本文圖中<strong>無 forest plot、無 CONSORT/flow diagram</strong>；因此「點估計是否跨無效線」「流程人數是否一致」在圖中<strong>無對應內容可判</strong>。</li>
+</ul>
+<h3>D. 次組分析評估（JAMA 5 標準）</h3>
+<table>
+<thead>
+<tr>
+<th>次組</th>
+<th>interaction p</th>
+<th>方向與他研究一致</th>
+<th>預先指定</th>
+<th>生物機轉</th>
+<th>within-study</th>
+<th>可信度</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ICD/PPM (n=239, 6.3%)</td>
+<td>未報</td>
+<td>CIED 導線本就 IE 風險，一致</td>
+<td>否（探索）</td>
+<td>有（導線）</td>
+<td>是</td>
+<td><strong>低</strong>；且 CI 疑有誤</td>
+</tr>
+<tr>
+<td>Mavacamten (n=231, 1yr, 0 例)</td>
+<td>不可估</td>
+<td>無可比</td>
+<td>否（探索）</td>
+<td>有（降 gradient）</td>
+<td>是</td>
+<td><strong>推測性</strong></td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><strong>Mavacamten 0/231 於 1 年</strong>：以 rule of three，0 事件的上界約 1.3%，而 IE 本就罕見、1 年追蹤過短——此結果<strong>幾乎零資訊量</strong>，不能支持「降 gradient → 降 IE」。作者雖標「hypothesis-generating」，Discussion 仍給予過度正向敘事。</li>
+</ul>
+<h3>E. 紅旗清單</h3>
+<ul>
+<li>🚩 <strong>偵測 / 監測偏差未處理</strong>：IE 為需偵測才編碼之結局，HCM 端影像 / 血培養接觸遠高於門診對照 → HR 系統性高估。</li>
+<li>🚩 <strong>關鍵 IE 風險因子配對失敗</strong>（AFib SMD 0.39、aortic valve disease 0.20、IHD 0.27）被辯解為「HCM 內在」而非殘餘混淆。</li>
+<li>🚩 <strong>競爭風險（12.4% 死亡）未校正</strong>；圖中 at-risk 不隨死亡下降 → 分母 / 累積發生率偏樂觀。</li>
+<li>🚩 <strong>PH 假設 p=0.003 違反，卻自稱無違反</strong>。</li>
+<li>🚩 <strong>結局純 ICD 碼、無 Duke criteria</strong>；HCM 無法分阻塞 / 非阻塞，機轉與被測族群不匹配。</li>
+<li>🚩 <strong>ICD 次組 CI（0.77–6.94% vs 點估計 6.3%）數學上不合理</strong>，疑計算 / 轉錄錯誤。</li>
+<li>🚩 <strong>臨床倡議超出資料</strong>：由「關聯」跳到「重新分類 + 考慮抗生素預防」，缺預防有效性證據。</li>
+<li>🚩 核心方法（DAG、完整 baseline table）落在<strong>未經同儕審查、且本次未保留</strong>的 supplement。</li>
+</ul>
+<h3>F. 反向解釋</h3>
+<ol>
+<li><strong>偵測偏差主導</strong>：HCM 端因密集心臟監測，IE 被「發現並編碼」的機率高於對照，關聯部分為人為。文內支持：對照 IE 1.3% 已偏高、HCM 端接觸密集；反對線索：作者稱一致編碼實務可部分緩解（但無法消除差異化偵測）。</li>
+<li><strong>殘餘混淆（AFib / 瓣膜 / IHD）</strong>：不平衡的共病本身驅動 IE，HCM 只是其標記。文內支持：SMD 0.20–0.39；反對：作者主張這些是 HCM 內在路徑（若真是中介，調整與否各有偏差，但仍非「HCM 直接致 IE」的乾淨證據）。</li>
+<li><strong>競爭風險假象</strong>：KM 在高死亡率下高估累積 IE。文內支持：12.4% 死亡、未做競爭風險、圖 at-risk 異常平緩。</li>
+<li><strong>關聯為真但僅限阻塞型</strong>：整體 HR 稀釋自阻塞型的高風險（與 Spirito 一致）。文內支持：機轉論述；反對：資料無法分型驗證。</li>
+</ol>
+<h3>G. 最終裁決</h3>
+<ul>
+<li><strong>整體可信度：低–中</strong>。「HCM 病人 IE 絕對風險並非可忽略、且高於一般門診族群」這一<strong>訊號</strong>方向可信；但 <strong>HR 2.62 的因果數值高度可疑</strong>（偵測偏差＋殘餘混淆＋競爭風險三者同向高估），不足以支撐指引層級的預防決策。</li>
+<li><strong>可採用</strong>：作為病因學訊號與未來前瞻 / target-trial emulation 的假說來源。<strong>不建議採用</strong>於改變抗生素預防臨床決策。</li>
+<li><strong>要改觀最需要的 3 項</strong>：(1) 對監測強度做量化偏差分析（如以就醫次數 / 影像次數為 negative-control 或納入 PS，並給 E-value）；(2) 用 Aalen-Johansen / Fine-Gray 處理死亡競爭風險，並報告真實 person-time 而非均勻假設；(3) 分出阻塞型 vs 非阻塞型、以血培養 / 影像佐證 IE 結局（提高結局效度）。</li>
+<li><strong>一句話結論</strong>：這篇 TriNetX 研究提示 HCM 病人心內膜炎風險或許不容忽視，但因監測偏差與殘餘混淆，尚不足以據此改變抗生素預防的臨床決策。</li>
+</ul>
+<hr />
+<h2>因果推論 Appendix（觀察性因果宣稱）</h2>
+<ul>
+<li><strong>Target trial 對照</strong> [參考: hernanrobins_WhatIf_2jan25.md]：理想試驗應「隨機把等監測強度下的病人分到 HCM-like 暴露」——不可行，且關鍵在於本觀察研究<strong>無法讓兩組接受等同的 IE 偵測強度</strong>（differential ascertainment），這是 emulation 最大破口。</li>
+<li><strong>三大可識別性條件</strong>
+<ul>
+<li><strong>Exchangeability（無未測混淆）</strong>：<strong>不滿足</strong>。監測強度、牙科處置、留置導管 / 洗腎、免疫狀態等未測；已測的 AFib / 瓣膜 / IHD 甚至未被平衡。</li>
+<li><strong>Positivity</strong>：大致可接受（PS matching + caliper 已在共同支持區內配對）。</li>
+<li><strong>Consistency</strong>：「HCM 暴露」定義為首次編碼，非發病；「初診」起算引入 <strong>prevalent-diagnosis / 左截斷</strong>與潛在 lead-time 問題。</li>
+</ul>
+</li>
+<li><strong>時間變動混淆</strong>：追蹤期間新發 AFib、瓣膜手術、CIED 植入等 time-varying 因子未處理；本文為簡單 baseline 配對 Cox，不足以承載因果結論。</li>
+</ul>
+<hr />
+<p><strong>Sources</strong></p>
+<ul>
+<li><a href="https://pubmed.ncbi.nlm.nih.gov/41986139/">PubMed — 本文 (PMID 41986139)</a></li>
+<li><a href="https://www.researchgate.net/profile/Venu-Menon-2">Venu Menon — ResearchGate profile</a></li>
+<li><a href="https://www.researchgate.net/scientific-contributions/Akiva-Rosenzveig-2194073868">Akiva Rosenzveig — ResearchGate</a></li>
+<li><a href="https://www.ahajournals.org/doi/10.1161/01.cir.99.16.2132">Spirito et al. IE in HCM — Circulation 1999</a></li>
+<li><a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC4937928/">IE in HCM: multicenter prospective cohort (2016) — PMC</a></li>
+<li><a href="https://link.springer.com/article/10.1007/s10654-025-01342-6">On impossible index-event designs in TriNetX studies — Eur J Epidemiol 2025</a></li>
+<li><a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC8962148/">Immortal time bias for life-long conditions in EHR studies — PMC</a></li>
+<li><a href="https://www.frontiersin.org/journals/pharmacology/articles/10.3389/fphar.2025.1516126/full">Comprehensive review of TriNetX methodology — Front Pharmacol 2025</a></li>
+</ul>
+<p><em>[限制：PDF 轉檔 markdown 未保留 supplemental figure S1（DAG）與 supplemental table 1（完整基線平衡表）內容，相關評估僅能依正文所引數字與 Figure 1 圖頁進行。]</em></p>
+
+<footer class="appraisal-meta">評讀資訊：模型：claude-opus-4-8 (claude)  ·  route：observational  ·  產出時間：2026-07-19 14:25 CST</footer>
+</main>
+</body>
+</html>
