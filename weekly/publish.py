@@ -1,4 +1,4 @@
-"""Publish weekly report: git push + Discord webhook."""
+"""Archive weekly reports in GitHub, deploy to Cloudflare, and notify Discord."""
 
 from __future__ import annotations
 
@@ -12,14 +12,25 @@ from dotenv import load_dotenv
 
 ROOT = Path(__file__).resolve().parent.parent
 DOCS_DIR = ROOT / "docs"
+CLOUDFLARE_DIR = ROOT / "cloudflare" / "relay"
 
-GITHUB_USER = "pkyang49"
-GITHUB_REPO = "JournalFetcher"
-PAGES_BASE_URL = f"https://{GITHUB_USER}.github.io/{GITHUB_REPO}"
+load_dotenv(ROOT / ".env")
+PAGES_BASE_URL = os.getenv("JOURNAL_FETCHER_PAGES_BASE_URL", "").strip().rstrip("/")
 
 DISCORD_EMBED_COLOR = 0x0B5FFF
 HIGHLIGHT_COUNT = 3
 TITLE_MAX = 110
+
+
+def site_url(path: str = "") -> str:
+    """Build a URL on the configured Cloudflare weekly-journal origin."""
+    if not PAGES_BASE_URL:
+        raise RuntimeError(
+            "JOURNAL_FETCHER_PAGES_BASE_URL must be set to the Cloudflare Worker origin"
+        )
+    if not path:
+        return PAGES_BASE_URL
+    return f"{PAGES_BASE_URL}/{path.lstrip('/')}"
 
 
 def _run_git(args: list[str], check: bool = True) -> subprocess.CompletedProcess:
@@ -35,6 +46,25 @@ def _run_git(args: list[str], check: bool = True) -> subprocess.CompletedProcess
 def _docs_has_changes() -> bool:
     result = _run_git(["status", "--porcelain", "docs/"], check=False)
     return bool(result.stdout.strip())
+
+
+def _deploy_cloudflare() -> bool:
+    """Deploy the Worker and current docs/ static assets when enabled."""
+    enabled = os.getenv("JOURNAL_FETCHER_CLOUDFLARE_DEPLOY", "").strip().lower()
+    if enabled not in {"1", "true", "yes", "on"}:
+        return True
+    deploy = subprocess.run(
+        ["npx", "wrangler", "deploy"],
+        cwd=CLOUDFLARE_DIR,
+        capture_output=True,
+        text=True,
+        check=False,
+    )
+    if deploy.returncode != 0:
+        print(f"[cloudflare] deploy failed:\n{deploy.stderr}")
+        return False
+    print("[cloudflare] deployed Worker and weekly journal assets")
+    return True
 
 
 def git_commit_and_push(filename: str, label: str) -> bool:
@@ -54,7 +84,7 @@ def git_commit_and_push(filename: str, label: str) -> bool:
         print(f"[git] push failed:\n{push.stderr}")
         return False
     print(f"[git] pushed to origin/{branch}")
-    return True
+    return _deploy_cloudflare()
 
 
 def _truncate(text: str, limit: int = TITLE_MAX) -> str:
@@ -89,7 +119,7 @@ def _build_embed(
     journal_counts: list[dict],
     filename: str,
 ) -> dict:
-    weekly_url = f"{PAGES_BASE_URL}/{filename}"
+    weekly_url = site_url(filename)
     counts_line = " · ".join(
         f"**{c['name']}** {c['count']}" for c in journal_counts
     )
@@ -158,7 +188,7 @@ def send_discord_index_notice(label: str, filename: str, count: int) -> bool:
         print("[discord] DISCORD_WEBHOOK_URL not set in .env; skip")
         return False
 
-    weekly_url = f"{PAGES_BASE_URL}/{filename}"
+    weekly_url = site_url(filename)
     payload = {
         "embeds": [
             {
@@ -198,7 +228,7 @@ def send_appraisal_notice(label: str, article: dict, appraisal_url: str) -> bool
 
     full_url = appraisal_url
     if not full_url.startswith(("http://", "https://")):
-        full_url = f"{PAGES_BASE_URL}/{appraisal_url.lstrip('/')}"
+        full_url = site_url(appraisal_url)
 
     doi = str(article.get("doi", "")).strip()
     pmid = str(article.get("pmid", "")).strip()

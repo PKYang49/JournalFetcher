@@ -1,9 +1,9 @@
 """Process on-demand appraisal requests from the weekly HTML.
 
-The public GitHub Pages HTML can only write a request to the Apps Script relay.
-This local worker pulls those requests with the private sync token, downloads
-the PDF, runs the full appraisal, publishes the appraisal HTML, and sends a
-Discord link.
+The public weekly HTML writes requests to the configured relay (Cloudflare D1
+or the legacy Apps Script). This local worker pulls them with the private sync
+token, downloads the PDF, runs the full appraisal, publishes the appraisal
+HTML, and sends a Discord link.
 
 Run manually:
   python3 -m weekly.process_appraisal_requests
@@ -27,6 +27,8 @@ from urllib.parse import parse_qs, urlparse
 
 import requests
 from dotenv import load_dotenv
+
+from weekly.relay_client import access_headers
 
 from weekly.appraisal_status import (
     AppraisalStatus,
@@ -192,6 +194,13 @@ def _state_blocks(record: dict) -> bool:
     return True
 
 
+def _request_is_newer(row: dict, record: dict) -> bool:
+    """Whether a relay row is a retry submitted after the local state row."""
+    request_ts = str(row.get("ts", "")).strip()
+    state_ts = str(record.get("request_ts") or record.get("ts") or "").strip()
+    return bool(request_ts and state_ts and request_ts > state_ts)
+
+
 def _sync_requests(timeout: int = 30) -> list[dict]:
     load_dotenv(ROOT / ".env")
     url = os.getenv("FEEDBACK_ENDPOINT_URL", "").strip()
@@ -205,6 +214,7 @@ def _sync_requests(timeout: int = 30) -> list[dict]:
     resp = requests.post(
         url,
         json={"action": "sync_appraisal_requests", "token": token},
+        headers=access_headers(),
         timeout=timeout,
     )
     resp.raise_for_status()
@@ -214,11 +224,51 @@ def _sync_requests(timeout: int = 30) -> list[dict]:
         if "bad week" in error or "bad verdict" in error:
             print(
                 "[appraisal-request] relay does not support appraisal requests yet; "
-                "redeploy scripts/feedback_relay.gs"
+                "redeploy the configured relay"
             )
             return []
         raise RuntimeError(f"relay rejected request: {error}")
     return list(payload.get("rows", []))
+
+
+def _report_remote_status(
+    row: dict,
+    status: RequestStatus,
+    note: str = "",
+    timeout: int = 30,
+) -> None:
+    """Best-effort lifecycle update for the Access-protected D1 relay."""
+    load_dotenv(ROOT / ".env")
+    url = os.getenv("FEEDBACK_ENDPOINT_URL", "").strip()
+    token = os.getenv("FEEDBACK_SYNC_TOKEN", "").strip()
+    if not url or not token:
+        print("[appraisal-status] relay URL/token missing; status not reported")
+        return
+    payload = {
+        "action": "update_appraisal_request",
+        "token": token,
+        "week": str(row.get("week", "")).strip(),
+        "pmid": str(row.get("pmid", "")).strip(),
+        "doi": str(row.get("doi", "")).strip(),
+        "status": str(status),
+        "note": note[:500],
+    }
+    try:
+        response = requests.post(
+            url,
+            json=payload,
+            headers=access_headers(),
+            timeout=timeout,
+        )
+        response.raise_for_status()
+        result = response.json()
+        if not result.get("ok"):
+            raise RuntimeError(str(result.get("error", "relay rejected status update")))
+    except (requests.RequestException, RuntimeError, ValueError) as exc:
+        print(
+            f"[appraisal-status] failed to report {status} for "
+            f"{_request_identifier(row)}: {exc}"
+        )
 
 
 def _known_articles() -> dict[tuple[str, str], dict]:
@@ -476,6 +526,11 @@ def _process_one(
     result_key = str(article.get("pmid", ""))
 
     print(f"[appraisal-request] processing {week} {identifier}: {article.get('title', '')[:80]}")
+    _report_remote_status(
+        row,
+        RequestStatus.PROCESSING,
+        "已由本機開始下載全文並產生完整評讀。",
+    )
     download_results = download_articles([article], out_dir=pdf_dir)
     try:
         result = appraise_selected.appraise_selected([article], download_results, appraisal_dir)
@@ -494,6 +549,11 @@ def _process_one(
                 "status": RequestStatus.DEFERRED,
                 "retry_after": retry_after,
             }
+        )
+        _report_remote_status(
+            row,
+            RequestStatus.DEFERRED,
+            f"Claude 用量暫時達上限，系統預計約 {wait / 3600:.1f} 小時後自動重試。",
         )
         print(
             f"[appraisal-request] deferred {identifier}: claude usage limit; "
@@ -524,6 +584,11 @@ def _process_one(
                          "reason": "ovid_auth_required",
                          "ovid_deferrals": deferrals}
                     )
+                    _report_remote_status(
+                        row,
+                        RequestStatus.DEFERRED,
+                        "PDF 需要 Ovid 登入授權，系統將稍後自動重試。",
+                    )
                     print(
                         f"[appraisal-request] deferred {identifier}: {journal} PDF "
                         f"login-gated on ovid.com (attempt {deferrals}/"
@@ -536,6 +601,11 @@ def _process_one(
                 {"week": week, "identifier": identifier, **row,
                  "status": RequestStatus.FAILED, "reason": appraisal_status}
             )
+            failure_note = {
+                AppraisalStatus.PDF_FAILED: "PDF 下載失敗。",
+                AppraisalStatus.TOO_LARGE: "文章內容過大，超過評讀上限。",
+            }.get(appraisal_status, "評讀失敗。")
+            _report_remote_status(row, RequestStatus.FAILED, failure_note)
             print(f"[appraisal-request] failed {identifier} ({appraisal_status})")
             return False
         # Transient error (no PDF/too-large status): retry a few times before
@@ -546,6 +616,11 @@ def _process_one(
                 {"week": week, "identifier": identifier, **row,
                  "status": RequestStatus.FAILED,
                  "reason": "appraisal_error", "error_retries": attempts}
+            )
+            _report_remote_status(
+                row,
+                RequestStatus.FAILED,
+                f"評讀程序連續失敗 {APPRAISAL_ERROR_RETRY_MAX} 次。",
             )
             print(
                 f"[appraisal-request] failed {identifier}: appraisal error after "
@@ -558,6 +633,11 @@ def _process_one(
              "status": RequestStatus.DEFERRED,
              "retry_after": retry_after, "error_retries": attempts,
              "reason": "appraisal_error"}
+        )
+        _report_remote_status(
+            row,
+            RequestStatus.DEFERRED,
+            f"評讀程序暫時失敗，約 {APPRAISAL_ERROR_RETRY_WAIT_SECONDS / 60:.0f} 分鐘後自動重試。",
         )
         print(
             f"[appraisal-request] deferred {identifier}: appraisal error "
@@ -574,6 +654,7 @@ def _process_one(
     if not appraisal_url:
         _append_state({"week": week, "identifier": identifier, **row,
                        "status": RequestStatus.FAILED})
+        _report_remote_status(row, RequestStatus.FAILED, "評讀頁面產生失敗。")
         print(f"[appraisal-request] appraisal HTML missing {identifier}")
         return False
 
@@ -591,8 +672,10 @@ def _process_one(
             "status": RequestStatus.DONE,
             "appraisal_url": appraisal_url,
             "force": force,
+            "request_ts": str(row.get("ts", "")).strip(),
         }
     )
+    _report_remote_status(row, RequestStatus.DONE, "評讀已完成。")
     print(f"[appraisal-request] done {identifier}: {appraisal_url}")
     return True
 
@@ -656,12 +739,14 @@ def process_requests(
         identifiers = _candidate_identifiers(row)
         identifier = identifiers[0] if identifiers else ""
         status = str(row.get("status", RequestStatus.REQUESTED)).strip() or RequestStatus.REQUESTED
-        if status != RequestStatus.REQUESTED:
+        if status not in {RequestStatus.REQUESTED, RequestStatus.DEFERRED}:
             continue
         if not identifier:
             continue
         if not force and any(
-            (rec := state.get((week, candidate))) is not None and _state_blocks(rec)
+            (rec := state.get((week, candidate))) is not None
+            and _state_blocks(rec)
+            and not _request_is_newer(row, rec)
             for candidate in identifiers
         ):
             continue
@@ -674,6 +759,20 @@ def process_requests(
                 break
         if article is None:
             print(f"[appraisal-request] skip unknown article: {week} {identifier}")
+            _append_state(
+                {
+                    "week": week,
+                    "identifier": identifier,
+                    **row,
+                    "status": RequestStatus.FAILED,
+                    "reason": "unknown_article",
+                }
+            )
+            _report_remote_status(
+                row,
+                RequestStatus.FAILED,
+                "找不到該週文章資料，請確認週報資料仍存在後再重試。",
+            )
             continue
         article = {**article}
         if row.get("pmid") and not str(article.get("pmid", "")).strip():
@@ -686,6 +785,8 @@ def process_requests(
                 (rec for candidate in identifiers if (rec := state.get((week, candidate)))),
                 None,
             )
+            if prev_record and _request_is_newer(row, prev_record):
+                prev_record = None
             try:
                 prev_error_retries = int((prev_record or {}).get("error_retries", 0))
             except (TypeError, ValueError):
@@ -694,12 +795,20 @@ def process_requests(
                 prev_ovid_deferrals = int((prev_record or {}).get("ovid_deferrals", 0))
             except (TypeError, ValueError):
                 prev_ovid_deferrals = 0
-            if _process_one(
-                row, article, force, no_push, no_discord,
-                prev_error_retries=prev_error_retries,
-                prev_ovid_deferrals=prev_ovid_deferrals,
-            ):
-                processed += 1
+            try:
+                if _process_one(
+                    row, article, force, no_push, no_discord,
+                    prev_error_retries=prev_error_retries,
+                    prev_ovid_deferrals=prev_ovid_deferrals,
+                ):
+                    processed += 1
+            except Exception as exc:
+                _report_remote_status(
+                    row,
+                    RequestStatus.FAILED,
+                    f"評讀程序錯誤：{type(exc).__name__}",
+                )
+                raise
         if limit and processed >= limit:
             break
 

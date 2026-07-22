@@ -1,8 +1,8 @@
-"""Sync weekly highlight feedback from the Google Apps Script relay.
+"""Sync weekly highlight feedback from the configured relay.
 
-The weekly report's "本週精選評讀" cards carry 👍/👎 buttons that POST to a
-Google Apps Script web app (a Google Sheet acts as storage). This module pulls
-those rows back and merges them into ``data/interest_feedback.jsonl``, which
+The weekly report's cards POST to a Cloudflare Worker + D1 relay (or the legacy
+Google Apps Script relay). This module pulls those rows back and merges them
+into ``data/interest_feedback.jsonl``, which
 ``weekly/select_articles.py`` feeds into the article-selection prompt.
 
 Run standalone:  python -m weekly.sync_feedback
@@ -17,6 +17,8 @@ from pathlib import Path
 
 import requests
 from dotenv import load_dotenv
+
+from weekly.relay_client import access_headers
 
 ROOT = Path(__file__).resolve().parent.parent
 DATA_DIR = ROOT / "data"
@@ -94,6 +96,7 @@ def sync_feedback(timeout: int = 30) -> int:
     resp = requests.post(
         url,
         json={"action": "sync", "token": token},
+        headers=access_headers(),
         timeout=timeout,
     )
     resp.raise_for_status()

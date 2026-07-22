@@ -1,5 +1,6 @@
 /**
- * JournalFetcher — 週報精選回饋中繼 (Google Apps Script web app)
+ * JournalFetcher — 舊版週報精選回饋中繼 (Google Apps Script web app)
+ * 正式服務已移至 Cloudflare Worker + D1；此檔僅保留遷移參考。
  * ============================================================
  * 週報 HTML 的回饋按鈕會 POST 到這支 web app。「文獻評讀」連結會
  * 開啟這支 web app 產生的 passphrase 驗證頁；驗證通過後才把評讀
@@ -21,7 +22,7 @@
  *        FEEDBACK_SYNC_TOKEN=<與下方 SYNC_TOKEN 完全相同的字串>
  *
  * 安全性:
- *   - /exec 網址會被嵌進公開的 GitHub Pages HTML,任何人都看得到。回饋
+ *   - /exec 網址若被嵌進公開 HTML，任何人都看得到。回饋
  *     寫入仍不驗證,但評讀請求必須輸入 server-side passphrase 才能寫入。
  *   - 本 relay 會驗證 payload、用 week+pmid 或 week+doi upsert、限制總列數；
  *     sync_feedback.py 也會用 PMID/DOI 白名單過濾掉亂寫的資料。

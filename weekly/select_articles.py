@@ -3,9 +3,11 @@
 from __future__ import annotations
 
 import json
+import re
 import subprocess
 import sys
 from pathlib import Path
+from urllib.parse import unquote
 
 from modules.codex_exec import run_codex_exec
 from modules.codex_model import get_summary_model
@@ -207,6 +209,19 @@ def _write_selection_raw(
     return path
 
 
+def _normalize_doi(value: object) -> str:
+    """Return a lowercase bare DOI suitable for identity comparisons."""
+    doi = unquote(str(value or "")).strip()
+    doi = re.sub(r"^doi:\s*", "", doi, flags=re.IGNORECASE)
+    doi = re.sub(
+        r"^(?:https?://)?(?:dx\.)?doi\.org/",
+        "",
+        doi,
+        flags=re.IGNORECASE,
+    )
+    return doi.strip().rstrip(".").lower()
+
+
 def _resolve_item(
     item: dict,
     article_by_pmid: dict[str, dict],
@@ -217,11 +232,12 @@ def _resolve_item(
     The model emits pmid and doi for the same paper, so they must agree. A
     transposed digit in the pmid can still land on a different-but-real article
     in the pool (seen in 2026-W30: 42024568 -> 42024048), which silently
-    attaches one paper's reason to another. On disagreement the doi wins — it
-    carries journal/year substrings, so a corrupted one rarely resolves at all.
+    attaches one paper's reason to another. When both identifiers resolve but
+    disagree, reject the item; neither model-emitted identifier is inherently
+    trustworthy enough to choose over the other.
     """
     pmid = str(item.get("pmid", ""))
-    doi = str(item.get("doi", "")).lower()
+    doi = _normalize_doi(item.get("doi", ""))
     by_pmid = article_by_pmid.get(pmid) if pmid else None
     by_doi = article_by_doi.get(doi) if doi else None
 
@@ -229,10 +245,10 @@ def _resolve_item(
         print(
             f"  [warn] selection pmid/doi disagree: pmid={pmid} -> "
             f"{by_pmid.get('title', '')[:60]!r}, doi={doi} -> "
-            f"{by_doi.get('title', '')[:60]!r}; trusting doi",
+            f"{by_doi.get('title', '')[:60]!r}; rejecting item",
             file=sys.stderr,
         )
-        return by_doi
+        return None
     if by_pmid is not None:
         if doi and by_doi is None:
             print(
@@ -277,7 +293,11 @@ def select_top_articles(
         selection_items = _fallback_select(articles, limit)
 
     article_by_pmid = {str(a.get("pmid", "")): a for a in articles if a.get("pmid")}
-    article_by_doi = {str(a.get("doi", "")).lower(): a for a in articles if a.get("doi")}
+    article_by_doi = {
+        normalized: article
+        for article in articles
+        if (normalized := _normalize_doi(article.get("doi", "")))
+    }
     selected_articles: list[dict] = []
     seen_ids: set[str] = set()
 

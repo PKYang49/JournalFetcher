@@ -1,0 +1,14 @@
+{
+  "name": "journal-fetcher-relay",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "test": "node --test test/*.test.js"
+  },
+  "dependencies": {
+    "jose": "^6.1.0"
+  },
+  "devDependencies": {
+    "wrangler": "^4.27.0"
+  }
+}

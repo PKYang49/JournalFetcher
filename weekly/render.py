@@ -72,6 +72,42 @@ def _pub_type_class(pub_type: str) -> str:
     return PUB_TYPE_CLASS.get(pub_type, "type-other")
 
 
+def _journal_sections(articles: list[dict], journal_counts: list[dict]) -> list[dict]:
+    """Group summary cards by journal and assign stable in-page anchors."""
+    grouped: dict[str, list[dict]] = {}
+    for article in articles:
+        name = str(article.get("journal_key") or article.get("journal") or "").strip()
+        name = name or "其他"
+        grouped.setdefault(name, []).append(article)
+
+    ordered_names = [
+        str(item.get("name", "")).strip()
+        for item in journal_counts
+        if str(item.get("name", "")).strip() in grouped
+    ]
+    ordered_names.extend(name for name in grouped if name not in ordered_names)
+
+    sections: list[dict] = []
+    used_anchors: set[str] = set()
+    for name in ordered_names:
+        slug = re.sub(r"[^a-z0-9]+", "-", name.lower()).strip("-") or "other"
+        anchor = f"journal-{slug}"
+        suffix = 2
+        while anchor in used_anchors:
+            anchor = f"journal-{slug}-{suffix}"
+            suffix += 1
+        used_anchors.add(anchor)
+        sections.append(
+            {
+                "name": name,
+                "anchor": anchor,
+                "articles": grouped[name],
+                "count": len(grouped[name]),
+            }
+        )
+    return sections
+
+
 def render_weekly(
     articles: list[dict],
     week_label: str,
@@ -82,8 +118,8 @@ def render_weekly(
     """Render a single weekly report HTML.
 
     `articles` should already include a `summary` and a `journal_key` field.
-    `feedback_endpoint` is the Apps Script web app URL; when set, the selected
-    cards render 👍/👎 feedback buttons that POST to it.
+    `feedback_endpoint` is the relay URL (Cloudflare Worker or legacy Apps
+    Script); when set, cards render 👍/👎 buttons that POST to it.
 
     `selected_articles` is split into two top sections by the `manual_request`
     tag: AI-curated picks render under 本週精選評讀, reader-requested appraisals
@@ -180,12 +216,14 @@ def render_weekly(
     summary_articles = [
         a for a in prepared if a.get("feedback_id") not in selected_ids
     ]
+    journal_sections = _journal_sections(summary_articles, journal_counts)
 
     return tmpl.render(
         week_label=week_label,
         generated_at=now,
         total_count=len(articles),
         articles=summary_articles,
+        journal_sections=journal_sections,
         journal_counts=journal_counts,
         featured_articles=featured_articles,
         appraised_articles=appraised_articles,
@@ -197,7 +235,13 @@ def render_weekly(
 def write_weekly(html: str, filename: str) -> Path:
     DOCS_DIR.mkdir(parents=True, exist_ok=True)
     path = DOCS_DIR / filename
-    path.write_text(html, encoding="utf-8")
+    # Jinja control-flow indentation can leave whitespace-only lines. Keep
+    # generated reports stable so small template changes do not create noisy
+    # trailing-whitespace diffs across every article card.
+    clean_html = "\n".join(line.rstrip() for line in html.splitlines())
+    if html.endswith("\n"):
+        clean_html += "\n"
+    path.write_text(clean_html, encoding="utf-8")
     return path
 
 

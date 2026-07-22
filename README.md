@@ -1,16 +1,16 @@
 # JournalFetcher
 
-醫學文獻追蹤與週報自動化工具。它會定期抓取主要醫學期刊文章，產生繁體中文摘要、個人化短評、精選文獻評讀，並發布成 GitHub Pages 週報。
+醫學文獻追蹤與週報自動化工具。它會定期抓取主要醫學期刊文章，產生繁體中文摘要、個人化短評、精選文獻評讀，並發布成靜態週報。
 
-正式頁面：
+正式頁面（Cloudflare Access 保護）：
 
 ```text
-https://pkyang49.github.io/JournalFetcher/
+https://journal-fetcher-relay.<account>.workers.dev/
 ```
 
 ## 功能
 
-- **每週週報**：每週自動抓取新文章，摘要、排序、渲染 HTML，並推送到 GitHub Pages。
+- **每週週報**：每週自動抓取新文章，摘要、排序、渲染 HTML，並部署到 Cloudflare Worker Static Assets。
 - **精選評讀**：每週自選 5 篇值得深入閱讀的文章，下載 PDF 後產生結構化文獻評讀。
 - **手動評讀請求**：週報內可對單篇文章送出評讀請求，本機排程會定期處理。
 - **回饋迴路**：週報上的正負回饋會回流到選文權重，讓精選逐週貼近個人興趣。
@@ -69,9 +69,13 @@ codex login status
 # Weekly Discord webhook
 DISCORD_WEBHOOK_URL=https://discord.com/api/webhooks/...
 
-# Feedback relay / appraisal requests
-FEEDBACK_ENDPOINT_URL=https://script.google.com/macros/s/.../exec
+# Cloudflare feedback relay / appraisal requests
+FEEDBACK_ENDPOINT_URL=https://journal-fetcher-relay.<account>.workers.dev/api
 FEEDBACK_SYNC_TOKEN=自訂亂碼
+CF_ACCESS_CLIENT_ID=本機同步用的 Access service-token client ID
+CF_ACCESS_CLIENT_SECRET=本機同步用的 Access service-token client secret
+JOURNAL_FETCHER_PAGES_BASE_URL=https://journal-fetcher-relay.<account>.workers.dev
+JOURNAL_FETCHER_CLOUDFLARE_DEPLOY=1
 
 # Discord DOI Bot
 DISCORD_BOT_TOKEN=...
@@ -147,7 +151,7 @@ launchd plist 放在 `scripts/*.plist`。目前 weekly 主排程精選評讀 5 �
 2. **已評讀**：使用者手動請求後完成的評讀。
 3. **本週文章摘要**：其餘文章的中文摘要與短評。
 
-`docs/index.html` 與 `docs/_index.json` 由 pipeline 自動更新，用於 GitHub Pages 首頁與 Discord 通知。
+`docs/index.html` 與 `docs/_index.json` 由 pipeline 自動更新，作為 Cloudflare Static Assets 首頁與 Discord 通知來源；同一份輸出會 push 到 GitHub repository 留存版本。
 
 ## 設定
 
@@ -159,8 +163,14 @@ launchd plist 放在 `scripts/*.plist`。目前 weekly 主排程精選評讀 5 �
 | `JOURNAL_FETCHER_APPRAISAL_MODEL` | Codex 評讀 fallback / 手動要求評讀 | Codex default / latest |
 | `JOURNAL_FETCHER_APPRAISAL_CHAR_BACKSTOP` | 評讀文章字元上限 | `1500000` |
 | `DISCORD_WEBHOOK_URL` | 週報與評讀完成通知 | 無 |
-| `FEEDBACK_ENDPOINT_URL` | Apps Script 回饋中繼 | 無 |
+| `FEEDBACK_ENDPOINT_URL` | Access 保護的 Cloudflare Worker `/api` | 無 |
 | `FEEDBACK_SYNC_TOKEN` | 本機同步回饋與 request 的 token | 無 |
+| `CF_ACCESS_CLIENT_ID` / `CF_ACCESS_CLIENT_SECRET` | 本機輪詢 Worker 的 Access service token | 無 |
+| `JOURNAL_FETCHER_PAGES_BASE_URL` | 正式週報與 Discord 通知使用的 Cloudflare origin | 必填 |
+| `JOURNAL_FETCHER_CLOUDFLARE_DEPLOY` | git push 後同步部署 Worker 靜態資產 | 關閉 |
+
+Cloudflare Worker + D1、Static Assets 與 Access 的部署步驟見
+[`cloudflare/relay/README.md`](cloudflare/relay/README.md)。
 
 ## 主要檔案
 
@@ -179,12 +189,12 @@ weekly/select_articles.py         # 精選文章排序
 weekly/appraise_selected.py       # 精選文章完整評讀
 weekly/process_appraisal_requests.py  # 手動評讀請求
 weekly/render.py                  # HTML 渲染與 index 維護
-weekly/publish.py                 # GitHub Pages push 與 Discord webhook
+weekly/publish.py                 # GitHub 備份 push、Cloudflare 部署與 Discord webhook
 
 skills/literature-appraisal/      # 文獻評讀 skill 與 style guide
 scripts/*.plist                   # launchd 排程
-scripts/feedback_relay.gs         # Google Apps Script 回饋中繼
-docs/                             # GitHub Pages 輸出
+scripts/feedback_relay.gs         # 舊版 Apps Script relay（僅供遷移參考）
+docs/                             # Cloudflare 靜態資產（同步提交到 GitHub 留存）
 ```
 
 ## 需求
@@ -194,4 +204,4 @@ docs/                             # GitHub Pages 輸出
 - Codex CLI，已 `codex login`
 - Playwright Chromium
 - 可存取期刊 PDF 的網路環境
-- GitHub Pages：`main` branch 的 `/docs`
+- Cloudflare Access 應用程式與本機同步用 service token

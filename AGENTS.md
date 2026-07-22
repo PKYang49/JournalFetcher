@@ -5,7 +5,7 @@
 ## 專案目標
 
 - **互動模式**：抓取數本期刊最新文章列表，生成繁體中文摘要，terminal 勾選後下載 PDF（評讀由使用者另行處理）。
-- **週報模式**：每週一自動抓 13 本期刊、生成四句中文摘要，渲染成 HTML 部署到 GitHub Pages，並推播連結到 Discord。每週自選 N 篇進行完整文獻評讀；使用者可在 HTML 上「請求評讀」追加個別文章。
+- **週報模式**：每週一自動抓 13 本期刊、生成四句中文摘要，渲染成 HTML 部署到 Cloudflare Static Assets，並推播連結到 Discord。每週自選 N 篇進行完整文獻評讀；使用者可在 HTML 上「請求評讀」追加個別文章。GitHub repository 與自動 push 僅保留為版本紀錄，不提供正式網站。
 
 ## 執行環境
 
@@ -106,12 +106,12 @@ JournalFetcher/
 │   ├── select_articles.py      # 自選每週 N 篇（讀 interest_feedback.jsonl）
 │   ├── appraise_selected.py    # 完整評讀；prompt cache + WebSearch + JAMA references
 │   ├── process_appraisal_requests.py  # on-demand「請求評讀」worker（每 15 分鐘）
-│   ├── sync_feedback.py        # 從 Apps Script 同步使用者 👍/👎
+│   ├── sync_feedback.py        # 從 Cloudflare Worker + D1 同步使用者 👍/👎
 │   ├── notify_latest.py        # Discord 推播（與 run_weekly 拆開排程）
 │   ├── render.py               # Jinja2 HTML 渲染
-│   ├── publish.py              # git push + Discord webhook
+│   ├── publish.py              # GitHub 備份 push + Cloudflare deploy + Discord
 │   └── templates/{weekly.html,index.html}
-├── docs/                       # GitHub Pages（Public）；index.html + <YYYY>-Wxx.html
+├── docs/                       # Cloudflare 靜態資產；同步提交到 GitHub 留存
 ├── skills/literature-appraisal/
 │   ├── SKILL.md                # v3.6（全域規則 + SECTION-0 + 路由表）
 │   ├── fragments/              # 每 route 一份；appraise_selected 按 route 載入
@@ -129,7 +129,7 @@ JournalFetcher/
 │   └── logs/                   # launchd 輸出
 └── scripts/
     ├── com.pokai.weekly-journal.plist  # launchd 設定檔
-    └── feedback_relay.gs               # Apps Script web app
+    └── feedback_relay.gs               # 舊版 Apps Script relay（不再是正式服務）
 ```
 
 ## 互動模式 Phase
@@ -171,8 +171,8 @@ JournalFetcher/
    - **已評讀**：使用者透過週報「請求評讀」按鈕、由 `process_appraisal_requests` 完成（`selection_tags` 含 `manual_request`）
    - **本週文章摘要**：其餘文章；render 用 `selected_pmids` 去重
 5. 更新 `docs/index.html`（最新在頂端）。
-6. `git add docs/ && commit && push` → GitHub Pages 部署。
-7. POST Discord webhook（embed 卡片 + 前 3 篇精華 + 完整週報連結）。
+6. `git add docs/ && commit && push` → GitHub 留存版本，再部署 Cloudflare Worker + Static Assets。
+7. POST Discord webhook（embed 卡片 + 前 3 篇精華 + Cloudflare 正式週報連結）。
 
 `appraisal_card` Jinja macro 重用三區卡片 markup；「已評讀」用 `.appraised-card` 綠色左邊框、不放 👍/👎。
 
@@ -218,22 +218,22 @@ appraisal.md → render.publish_appraisals → docs/<pmid>.html → git push →
 - 用 webhook（不是 bot），單向推播。
 - URL 存在 `.env` 的 `DISCORD_WEBHOOK_URL`。
 - Embed：標題、各期刊文章數、前 3 篇亮點、完整週報連結。
-- 週報生成（Sun 08:50）與 Discord 推播（Mon 08:00）拆開排程，避免 push 完馬上推播但 GitHub Pages 還沒部署；中間的時間差也吸收評讀撞限後的 5h 續跑。
+- 週報生成（Sun 08:50）與 Discord 推播（Mon 08:00）拆開排程，讓 Cloudflare 部署完成；中間的時間差也吸收評讀撞限後的 5h 續跑。
 
 ### 回饋迴路（feedback loop）
 
-- 週報 HTML 按鈕 → POST 到 Google Apps Script web app → 寫進 Google 試算表。
+- 週報 HTML 按鈕 → POST 到 Access 保護的 Cloudflare Worker `/api` → 寫進 D1。
 - `run_weekly` 每次寫 `output/weekly/<week>/articles.json`（PMID 白名單）。
-- `weekly/sync_feedback.py`：選文前 GET 試算表，併進 `data/interest_feedback.jsonl`；用 articles.json + selected_articles.json 過濾垃圾資料；同一 `(week, pmid)` 以最新 `ts` 為準。
+- `weekly/sync_feedback.py`：選文前從 D1 relay 取回資料，併進 `data/interest_feedback.jsonl`；用 articles.json + selected_articles.json 過濾垃圾資料；同一 `(week, pmid)` 以最新 `ts` 為準。
 - `weekly/select_articles.py` 的選文 prompt 會讀 `interest_feedback.jsonl` 調整權重。
 - 設定：`.env` 的 `FEEDBACK_ENDPOINT_URL`、`FEEDBACK_SYNC_TOKEN`。
-- Apps Script：`scripts/feedback_relay.gs`。
+- 舊版 Apps Script：`scripts/feedback_relay.gs`（僅保留遷移參考）。
 - 關閉同步：`python -m weekly.run_weekly --no-sync-feedback`。
 
 ### On-demand「請求評讀」（`weekly/process_appraisal_requests.py`）
 
 - launchd 每 15 分鐘跑一次。
-- 從 Apps Script 拉「請求評讀」清單（同 feedback 用試算表，不同欄位）。
+- 從 Cloudflare Worker + D1 拉「請求評讀」清單。
 - 對每筆：下載 PDF → `appraise_selected.appraise_pdf` → render 該篇 HTML → 更新該週的 weekly.html「已評讀」區 → Discord 推播。
 - State：`data/appraisal_requests_processed.jsonl`。
 

@@ -43,6 +43,7 @@ class RequestStatus(StrEnum):
     """Lifecycle of an on-demand appraisal request (jsonl `status` field)."""
 
     REQUESTED = "requested"
+    PROCESSING = "processing"
     DEFERRED = "deferred"
     DONE = "done"
     FAILED = "failed"

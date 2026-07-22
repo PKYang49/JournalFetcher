@@ -222,7 +222,7 @@ def main() -> int:
     parser.add_argument(
         "--no-sync-feedback",
         action="store_true",
-        help="Skip pulling highlight feedback from the Apps Script relay",
+        help="Skip pulling highlight feedback from the configured relay",
     )
     parser.add_argument(
         "--appraise-allow-codex",

@@ -294,7 +294,7 @@ def run(
 
     full_url = appraisal_url
     if not full_url.startswith(("http://", "https://")):
-        full_url = f"{publish.PAGES_BASE_URL}/{appraisal_url.lstrip('/')}"
+        full_url = publish.site_url(appraisal_url)
     print(f"[done] {full_url}")
     return 0
 

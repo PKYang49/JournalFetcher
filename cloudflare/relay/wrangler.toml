@@ -1,0 +1,21 @@
+name = "journal-fetcher-relay"
+main = "src/index.js"
+compatibility_date = "2026-07-22"
+workers_dev = true
+preview_urls = false
+
+[vars]
+MAX_DAILY_WRITES = "300"
+TEAM_DOMAIN = "dark-union-5684.cloudflareaccess.com"
+POLICY_AUD = "6367febf3afb41c02107bee5dc5ec9be62db4ef32aaee6d19bdf3bf0930b3af1"
+
+[assets]
+directory = "../../docs"
+binding = "ASSETS"
+run_worker_first = ["/api", "/api/*"]
+
+[[d1_databases]]
+binding = "DB"
+database_name = "journal-fetcher"
+database_id = "34cadd00-9d62-452b-8f03-fc690fa9f9cc"
+migrations_dir = "migrations"
