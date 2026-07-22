@@ -290,6 +290,7 @@ def main() -> int:
         selected_articles = select_articles.select_top_articles(
             articles,
             limit=args.select_top,
+            out_dir=weekly_out_dir,
         )
         selected_meta = select_articles.write_selected_metadata(
             selected_articles,

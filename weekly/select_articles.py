@@ -189,7 +189,66 @@ def _fallback_select(articles: list[dict], limit: int) -> list[dict]:
     return selected
 
 
-def select_top_articles(articles: list[dict], limit: int = 2) -> list[dict]:
+def _write_selection_raw(
+    out_dir: Path,
+    *,
+    response: str | None,
+    items: list[dict],
+) -> Path:
+    """Persist the selector's raw reply so a bad pick can be audited later."""
+    out_dir.mkdir(parents=True, exist_ok=True)
+    path = out_dir / "selection_raw.json"
+    payload = {
+        "model": get_summary_model(),
+        "response": response,
+        "parsed": items,
+    }
+    path.write_text(json.dumps(payload, ensure_ascii=False, indent=2), encoding="utf-8")
+    return path
+
+
+def _resolve_item(
+    item: dict,
+    article_by_pmid: dict[str, dict],
+    article_by_doi: dict[str, dict],
+) -> dict | None:
+    """Map one selection item back to a candidate article.
+
+    The model emits pmid and doi for the same paper, so they must agree. A
+    transposed digit in the pmid can still land on a different-but-real article
+    in the pool (seen in 2026-W30: 42024568 -> 42024048), which silently
+    attaches one paper's reason to another. On disagreement the doi wins — it
+    carries journal/year substrings, so a corrupted one rarely resolves at all.
+    """
+    pmid = str(item.get("pmid", ""))
+    doi = str(item.get("doi", "")).lower()
+    by_pmid = article_by_pmid.get(pmid) if pmid else None
+    by_doi = article_by_doi.get(doi) if doi else None
+
+    if by_pmid is not None and by_doi is not None and by_pmid is not by_doi:
+        print(
+            f"  [warn] selection pmid/doi disagree: pmid={pmid} -> "
+            f"{by_pmid.get('title', '')[:60]!r}, doi={doi} -> "
+            f"{by_doi.get('title', '')[:60]!r}; trusting doi",
+            file=sys.stderr,
+        )
+        return by_doi
+    if by_pmid is not None:
+        if doi and by_doi is None:
+            print(
+                f"  [warn] selection doi {doi} not in candidate pool "
+                f"(pmid={pmid}); cannot cross-check",
+                file=sys.stderr,
+            )
+        return by_pmid
+    return by_doi
+
+
+def select_top_articles(
+    articles: list[dict],
+    limit: int = 2,
+    out_dir: Path | None = None,
+) -> list[dict]:
     """Annotate and return selected articles."""
     if limit <= 0:
         return []
@@ -203,12 +262,16 @@ def select_top_articles(articles: list[dict], limit: int = 2) -> list[dict]:
     )
 
     selection_items: list[dict]
+    response: str | None = None
     try:
         response = _run_codex_prompt(prompt)
         selection_items = _parse_selection(response) if response else []
     except (FileNotFoundError, subprocess.TimeoutExpired, json.JSONDecodeError, ValueError) as e:
         print(f"  [warn] selection via codex failed; using fallback: {e}", file=sys.stderr)
         selection_items = []
+
+    if out_dir is not None:
+        _write_selection_raw(out_dir, response=response, items=selection_items)
 
     if not selection_items:
         selection_items = _fallback_select(articles, limit)
@@ -219,13 +282,7 @@ def select_top_articles(articles: list[dict], limit: int = 2) -> list[dict]:
     seen_ids: set[str] = set()
 
     for item in selection_items:
-        article = None
-        pmid = str(item.get("pmid", ""))
-        doi = str(item.get("doi", "")).lower()
-        if pmid:
-            article = article_by_pmid.get(pmid)
-        if article is None and doi:
-            article = article_by_doi.get(doi)
+        article = _resolve_item(item, article_by_pmid, article_by_doi)
         if article is None:
             continue
 
