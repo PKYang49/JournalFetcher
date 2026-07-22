@@ -352,7 +352,7 @@
     <span class="jump-label">快速跳轉</span>
     {% if featured_articles %}<a class="jump-chip" href="#featured-appraisals">精選評讀</a>{% endif %}
     {% if appraised_articles %}<a class="jump-chip" href="#completed-appraisals">已評讀</a>{% endif %}
-    <a class="jump-chip" id="appraisal-attention-jump" href="#appraisal-attention" hidden>評讀進度</a>
+    <a class="jump-chip" id="appraisal-attention-jump" href="#appraisal-attention" hidden>評讀中</a>
     {% for section in visible_journal_sections %}
     <a class="jump-chip" href="#{{ section.anchor }}">{{ section.name }}</a>
     {% endfor %}
@@ -438,7 +438,7 @@
   {% endif %}
 
   <section class="selected-section" id="appraisal-attention" hidden>
-    <h2 class="section-title">評讀進度</h2>
+    <h2 class="section-title">評讀中</h2>
     <p class="status-section-note">集中顯示評讀中、等待自動重試，以及需要手動重新送出的評讀。</p>
     <div id="appraisal-attention-list"></div>
   </section>
