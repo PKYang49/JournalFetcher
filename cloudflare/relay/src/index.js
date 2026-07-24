@@ -262,6 +262,18 @@ async function appraisalStatuses(env, week) {
   return result.results || [];
 }
 
+async function feedbackVerdicts(env, week) {
+  if (!WEEK_RE.test(week)) {
+    throw new HttpError("bad week");
+  }
+  const result = await env.DB.prepare(
+    `SELECT identifier, pmid, doi, verdict
+     FROM feedback
+     WHERE week = ?1`,
+  ).bind(week).all();
+  return result.results || [];
+}
+
 async function syncRows(env, table) {
   const result = await env.DB.prepare(
     `SELECT ts, week, pmid, doi, journal, title, ${table === "feedback" ? "verdict" : "status"}, note
@@ -359,6 +371,10 @@ async function handle(request, env) {
     if (url.searchParams.get("view") === "appraisal_statuses") {
       const week = text(url.searchParams.get("week"), 12);
       return jsonResponse({ ok: true, rows: await appraisalStatuses(env, week) });
+    }
+    if (url.searchParams.get("view") === "feedback") {
+      const week = text(url.searchParams.get("week"), 12);
+      return jsonResponse({ ok: true, rows: await feedbackVerdicts(env, week) });
     }
     if (url.searchParams.get("view") === "appraise" || url.searchParams.get("action") === "appraise") {
       return appraisalForm(request, Object.fromEntries(url.searchParams));

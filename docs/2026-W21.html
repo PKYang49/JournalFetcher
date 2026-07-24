@@ -41,15 +41,72 @@
     color: var(--muted);
   }
   .summary-bar strong { color: var(--text); }
+  .jump-nav {
+    align-items: center;
+    background: color-mix(in srgb, var(--bg) 92%, transparent);
+    border-bottom: 1px solid var(--border);
+    border-top: 1px solid var(--border);
+    display: flex;
+    gap: 8px;
+    margin: 0 0 28px;
+    overflow-x: auto;
+    padding: 10px 2px;
+    position: sticky;
+    scrollbar-width: thin;
+    top: 0;
+    z-index: 10;
+  }
+  .jump-label {
+    color: var(--muted);
+    flex: 0 0 auto;
+    font-size: 12px;
+    font-weight: 700;
+  }
+  .jump-chip {
+    background: var(--tag-bg);
+    border: 1px solid transparent;
+    border-radius: 999px;
+    color: var(--tag-text);
+    flex: 0 0 auto;
+    font-size: 13px;
+    font-weight: 600;
+    padding: 4px 11px;
+    text-decoration: none;
+  }
+  .jump-chip:hover,
+  .jump-chip:focus-visible {
+    border-color: var(--accent);
+    outline: none;
+  }
   .selected-section {
     margin: 0 0 28px;
+    scroll-margin-top: 64px;
   }
   .article-section {
     margin-top: 30px;
+    scroll-margin-top: 64px;
   }
   .section-title {
     font-size: 20px;
     margin: 0 0 12px;
+  }
+  .journal-section {
+    margin-top: 26px;
+    scroll-margin-top: 64px;
+  }
+  .journal-title {
+    align-items: baseline;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    font-size: 18px;
+    gap: 8px;
+    margin: 0 0 12px;
+    padding-bottom: 6px;
+  }
+  .journal-count {
+    color: var(--muted);
+    font-size: 12px;
+    font-weight: 500;
   }
   .selected-card {
     border-left: 4px solid var(--accent);
@@ -57,8 +114,24 @@
   .appraised-card {
     border-left-color: #1d7a44;
   }
+  .status-card-deferred {
+    border-left: 4px solid #b7791f;
+  }
+  .status-card-processing {
+    border-left: 4px solid var(--accent);
+  }
+  .status-card-failed {
+    border-left: 4px solid #b42318;
+  }
+  .status-section-note {
+    color: var(--muted);
+    font-size: 14px;
+    margin: -4px 0 14px;
+  }
   @media (prefers-color-scheme: dark) {
     .appraised-card { border-left-color: #7fd0a3; }
+    .status-card-deferred { border-left-color: #e8b75d; }
+    .status-card-failed { border-left-color: #ff9b9b; }
   }
   .selection-reason {
     color: var(--text);
@@ -177,16 +250,34 @@
     text-decoration: none;
   }
   .request-btn.sent,
-  .request-btn:disabled {
+  .request-btn:disabled,
+  .request-btn.is-processing,
+  .request-btn.is-done {
     background: transparent;
     color: var(--muted);
     cursor: default;
     filter: none;
+    pointer-events: none;
+  }
+  .request-btn.is-failed {
+    background: #b42318;
+    border-color: #b42318;
   }
   .request-msg {
     color: var(--accent);
     font-size: 13px;
     margin-left: 2px;
+  }
+  .request-status {
+    color: var(--muted);
+    display: block;
+    font-size: 13px;
+    margin-top: 6px;
+  }
+  .request-status.is-failed { color: #b42318; }
+  @media (prefers-color-scheme: dark) {
+    .request-btn.is-failed { background: #b94a48; border-color: #b94a48; }
+    .request-status.is-failed { color: #ff9b9b; }
   }
   .feedback {
     margin-top: 12px;
@@ -242,23 +333,37 @@
 <div class="container">
   <header>
     <h1>📚 期刊週報 2026-W21</h1>
-    <div class="meta">2026-05-22 08:21 UTC+08:00 · 共 6 篇</div>
+    <div class="meta">2026-07-24 11:58 UTC+08:00 · 共 6 篇</div>
     <div class="nav"><a href="index.html">← 回到週報索引</a></div>
   </header>
 
   <div class="summary-bar">
-    
+
       <strong>NEJM</strong> 6
-    
+
   </div>
 
-  
 
-  
-  <section class="selected-section">
+
+  <nav class="jump-nav" aria-label="週報快速導覽">
+    <span class="jump-label">快速跳轉</span>
+    <a class="jump-chip" href="#featured-appraisals">精選評讀</a>
+    <a class="jump-chip" href="#completed-appraisals">已評讀</a>
+    <a class="jump-chip" id="appraisal-attention-jump" href="#appraisal-attention" hidden>評讀中</a>
+
+    <a class="jump-chip" href="#journal-nejm">NEJM</a>
+
+  </nav>
+
+
+
+
+
+
+  <section class="selected-section" id="featured-appraisals">
     <h2 class="section-title">本週精選評讀</h2>
-    
-    
+
+
   <article class="selected-card">
     <span class="tag">NEJM</span>
     <span class="tag pub-type type-original">Original</span>
@@ -266,25 +371,26 @@
     <div class="authors">
       Nathan Steven D, Smith Peter, Deng Chunqin 等 22 人 · 2026
     </div>
-    
+
     <p class="selection-reason">這是第3期隨機雙盲試驗，證據等級高，且不只改善肺功能下降這類替代終點，還顯示臨床惡化事件下降（HR 0.67），比多數僅停留在生理指標的研究更值得完整評讀。雖非純心臟科主題，但 treprostinil 與肺血管疾病、心肺整合照護有高度交集，對實際臨床決策與跨專科治療策略有可轉譯價值。相較其他候選文，這篇兼具方法學品質、潛在改變治療實務的可能性，且未落入你近期已明確表達較無興趣的創傷輸血方向。</p>
-    
-    
+
+
     <div class="selection-meta">
       phase_3_rct, practice_change_potential, cardiopulmonary, clinical_worsening, therapeutics
-       · 
+       ·
       appraisal: done
     </div>
-    
+
+
     <div class="links">
       <a href="appraisals/2026-W21/42149993_Nathan_2026_appraisal.html">評讀結果</a>
       <a href="https://doi.org/10.1056/NEJMoa2501488" target="_blank" rel="noopener">下載連結</a>
-      
+
       <button class="copy-btn" type="button" data-copy="10.1056/NEJMoa2501488">複製 DOI</button>
       <button class="copy-btn" type="button" data-copy="python dlbydoi.py 10.1056/NEJMoa2501488">複製下載指令</button>
-      
+
     </div>
-    
+
     <div class="feedback"
          data-pmid="42149993"
          data-doi="10.1056/NEJMoa2501488"
@@ -295,18 +401,18 @@
       <button class="fb-btn" type="button" data-verdict="down">👎 沒興趣</button>
       <span class="fb-msg"></span>
     </div>
-    
-  </article>
-  
-    
-  </section>
-  
 
-  
-  <section class="selected-section">
+  </article>
+
+
+  </section>
+
+
+
+  <section class="selected-section" id="completed-appraisals">
     <h2 class="section-title">已評讀</h2>
-    
-    
+
+
   <article class="selected-card appraised-card">
     <span class="tag">NEJM</span>
     <span class="tag pub-type type-original">Original</span>
@@ -314,216 +420,269 @@
     <div class="authors">
       Denninghoff Kurt R, Casper T Charles, Zorc Joseph J 等 14 人 · 2026
     </div>
-    
+
     <p class="selection-reason">由週報摘要區手動請求文獻評讀。</p>
-    
-    
+
+
+
+
+
+    <div class="summary-block">
+      <div class="section-label">摘要</div>
+      <p class="summary">
+        這項多中心隨機試驗納入840名18至59個月、因中重度喘鳴就診急診的學齡前兒童，比較5天阿奇黴素與安慰劑；無論是否檢出致病菌，5天症狀分數皆無顯著差異（陽性組9.59比9.72，P=0.70）。
+      </p>
+    </div>
+
+
+    <div class="commentary">
+      <div class="section-label">短評</div>
+      <p>清菌很會，止喘沒比較強，這顆抗生素看來不是急診喘鳴的萬用救援卡。</p>
+    </div>
+
+
+
     <div class="links">
       <a href="appraisals/2026-W21/42149992_Denninghoff_2026_appraisal.html">評讀結果</a>
       <a href="https://doi.org/10.1056/NEJMoa2516505" target="_blank" rel="noopener">下載連結</a>
-      
+
       <button class="copy-btn" type="button" data-copy="10.1056/NEJMoa2516505">複製 DOI</button>
       <button class="copy-btn" type="button" data-copy="python dlbydoi.py 10.1056/NEJMoa2516505">複製下載指令</button>
-      
-    </div>
-    
-  </article>
-  
-    
-  </section>
-  
 
-  <section class="article-section">
-  <h2 class="section-title">本週文章摘要</h2>
-  
-  <article>
-    <span class="tag">NEJM</span>
-    <span class="tag pub-type type-original">Original</span>
-    <h2>Prehospital Resuscitation with Type O Whole Blood for Trauma and Hemorrhage.</h2>
-    <div class="authors">
-      Sperry Jason L, Guyette Francis X, Cotton Bryan A 等 31 人 · 2026
     </div>
+
+  </article>
+
+
+  </section>
+
+
+  <section class="selected-section" id="appraisal-attention" hidden>
+    <h2 class="section-title">評讀中</h2>
+    <p class="status-section-note">集中顯示評讀中、等待自動重試，以及需要手動重新送出的評讀。</p>
+    <div id="appraisal-attention-list"></div>
+  </section>
+
+  <section class="article-section" id="weekly-summary">
+  <h2 class="section-title">本週文章摘要</h2>
+
+  <section class="journal-section" id="journal-nejm">
+    <h3 class="journal-title">NEJM <span class="journal-count">4 篇</span></h3>
+
+    <article data-appraisal-card data-pmid="42150044" data-doi="10.1056/NEJMoa2602167">
+      <span class="tag">NEJM</span>
+      <span class="tag pub-type type-original">Original</span>
+      <h2>Prehospital Resuscitation with Type O Whole Blood for Trauma and Hemorrhage.</h2>
+      <div class="authors">
+        Sperry Jason L, Guyette Francis X, Cotton Bryan A 等 31 人 · 2026
+      </div>
+
+
     <div class="summary-block">
       <div class="section-label">摘要</div>
       <p class="summary">
         這項務實型多中心第3期叢集隨機試驗納入1020名創傷出血性休克患者，比較到院前輸注最多2單位O型全血與依指示成分血；30天死亡率分別為25.9%與20.5%，aOR 1.24（95% CI 0.87-1.76），無顯著差異，且全血保存天數長短也未影響死亡率。
       </p>
     </div>
-    
+
+
     <div class="commentary">
       <div class="section-label">短評</div>
       <p>全血聽起來很威，但這次沒把死亡率救得更漂亮，臨床上大概還是先別急著把成分血打入冷宮。</p>
     </div>
-    
-    <div class="links">
-      <a href="https://doi.org/10.1056/NEJMoa2602167" target="_blank" rel="noopener">下載連結</a>
-      
-      <button class="copy-btn" type="button" data-copy="10.1056/NEJMoa2602167">複製 DOI</button>
-      <button class="copy-btn" type="button" data-copy="python dlbydoi.py 10.1056/NEJMoa2602167">複製下載指令</button>
-      
-      
-      <a class="request-btn"
-         href="https://journal-fetcher-relay.rivafann.workers.dev/api?view=appraise&amp;week=2026-W21&amp;pmid=42150044&amp;doi=10.1056%2FNEJMoa2602167&amp;journal=NEJM&amp;title=Prehospital+Resuscitation+with+Type+O+Whole+Blood+for+Trauma+and+Hemorrhage."
-         target="_blank"
-         rel="noopener">請求評讀</a>
-      
-    </div>
-    
-    <div class="feedback"
-         data-pmid="42150044"
-         data-doi="10.1056/NEJMoa2602167"
-         data-journal="NEJM"
-         data-title="Prehospital Resuscitation with Type O Whole Blood for Trauma and Hemorrhage.">
-      <span class="fb-q">對這篇有興趣嗎?</span>
-      <button class="fb-btn" type="button" data-verdict="up">👍 有興趣</button>
-      <button class="fb-btn" type="button" data-verdict="down">👎 沒興趣</button>
-      <span class="fb-msg"></span>
-    </div>
-    
-  </article>
-  
-  <article>
-    <span class="tag">NEJM</span>
-    <span class="tag pub-type type-review">Review</span>
-    <h2>Inflammatory Myopathies.</h2>
-    <div class="authors">
-      Allenbach Yves, Benveniste Olivier · 2026
-    </div>
+
+
+      <div class="links">
+        <a href="https://doi.org/10.1056/NEJMoa2602167" target="_blank" rel="noopener">下載連結</a>
+
+        <button class="copy-btn" type="button" data-copy="10.1056/NEJMoa2602167">複製 DOI</button>
+        <button class="copy-btn" type="button" data-copy="python dlbydoi.py 10.1056/NEJMoa2602167">複製下載指令</button>
+
+
+        <a class="request-btn"
+           href="https://journal-fetcher-relay.rivafann.workers.dev/api?view=appraise&amp;week=2026-W21&amp;pmid=42150044&amp;doi=10.1056%2FNEJMoa2602167&amp;journal=NEJM&amp;title=Prehospital+Resuscitation+with+Type+O+Whole+Blood+for+Trauma+and+Hemorrhage."
+           data-request-url="https://journal-fetcher-relay.rivafann.workers.dev/api?view=appraise&amp;week=2026-W21&amp;pmid=42150044&amp;doi=10.1056%2FNEJMoa2602167&amp;journal=NEJM&amp;title=Prehospital+Resuscitation+with+Type+O+Whole+Blood+for+Trauma+and+Hemorrhage."
+           target="_blank"
+           rel="noopener">請求評讀</a>
+        <span class="request-status" aria-live="polite"></span>
+
+      </div>
+
+      <div class="feedback"
+           data-pmid="42150044"
+           data-doi="10.1056/NEJMoa2602167"
+           data-journal="NEJM"
+           data-title="Prehospital Resuscitation with Type O Whole Blood for Trauma and Hemorrhage.">
+        <span class="fb-q">對這篇有興趣嗎?</span>
+        <button class="fb-btn" type="button" data-verdict="up">👍 有興趣</button>
+        <button class="fb-btn" type="button" data-verdict="down">👎 沒興趣</button>
+        <span class="fb-msg"></span>
+      </div>
+
+    </article>
+
+    <article data-appraisal-card data-pmid="42127392" data-doi="10.1056/NEJMra2415426">
+      <span class="tag">NEJM</span>
+      <span class="tag pub-type type-review">Review</span>
+      <h2>Inflammatory Myopathies.</h2>
+      <div class="authors">
+        Allenbach Yves, Benveniste Olivier · 2026
+      </div>
+
+
     <div class="summary-block">
       <div class="section-label">摘要</div>
       <p class="summary">
         這篇綜述整理發炎性肌病的 5 大亞型，說明其自體免疫致骨骼肌受損，並比較各亞型在肌力障礙、皮膚關節肺部侵犯、預後與肌炎特異性自體抗體上的差異，指出病理機轉理解進步正推動更精準治療。
       </p>
     </div>
-    
+
+
     <div class="commentary">
       <div class="section-label">短評</div>
       <p>重點是別再把肌炎都當同一包處理，分型分對了，治療才不會像閉眼抽籤。</p>
     </div>
-    
-    <div class="links">
-      <a href="https://doi.org/10.1056/NEJMra2415426" target="_blank" rel="noopener">下載連結</a>
-      
-      <button class="copy-btn" type="button" data-copy="10.1056/NEJMra2415426">複製 DOI</button>
-      <button class="copy-btn" type="button" data-copy="python dlbydoi.py 10.1056/NEJMra2415426">複製下載指令</button>
-      
-      
-      <a class="request-btn"
-         href="https://journal-fetcher-relay.rivafann.workers.dev/api?view=appraise&amp;week=2026-W21&amp;pmid=42127392&amp;doi=10.1056%2FNEJMra2415426&amp;journal=NEJM&amp;title=Inflammatory+Myopathies."
-         target="_blank"
-         rel="noopener">請求評讀</a>
-      
-    </div>
-    
-    <div class="feedback"
-         data-pmid="42127392"
-         data-doi="10.1056/NEJMra2415426"
-         data-journal="NEJM"
-         data-title="Inflammatory Myopathies.">
-      <span class="fb-q">對這篇有興趣嗎?</span>
-      <button class="fb-btn" type="button" data-verdict="up">👍 有興趣</button>
-      <button class="fb-btn" type="button" data-verdict="down">👎 沒興趣</button>
-      <span class="fb-msg"></span>
-    </div>
-    
-  </article>
-  
-  <article>
-    <span class="tag">NEJM</span>
-    <span class="tag pub-type type-trial">RCT</span>
-    <h2>Telitacicept for IgA Nephropathy - Interim Analysis of a Phase 3 Trial.</h2>
-    <div class="authors">
-      Lv Jicheng, Liu Lijun, Wang Wenxiang 等 8 人 · 2026
-    </div>
+
+
+      <div class="links">
+        <a href="https://doi.org/10.1056/NEJMra2415426" target="_blank" rel="noopener">下載連結</a>
+
+        <button class="copy-btn" type="button" data-copy="10.1056/NEJMra2415426">複製 DOI</button>
+        <button class="copy-btn" type="button" data-copy="python dlbydoi.py 10.1056/NEJMra2415426">複製下載指令</button>
+
+
+        <a class="request-btn"
+           href="https://journal-fetcher-relay.rivafann.workers.dev/api?view=appraise&amp;week=2026-W21&amp;pmid=42127392&amp;doi=10.1056%2FNEJMra2415426&amp;journal=NEJM&amp;title=Inflammatory+Myopathies."
+           data-request-url="https://journal-fetcher-relay.rivafann.workers.dev/api?view=appraise&amp;week=2026-W21&amp;pmid=42127392&amp;doi=10.1056%2FNEJMra2415426&amp;journal=NEJM&amp;title=Inflammatory+Myopathies."
+           target="_blank"
+           rel="noopener">請求評讀</a>
+        <span class="request-status" aria-live="polite"></span>
+
+      </div>
+
+      <div class="feedback"
+           data-pmid="42127392"
+           data-doi="10.1056/NEJMra2415426"
+           data-journal="NEJM"
+           data-title="Inflammatory Myopathies.">
+        <span class="fb-q">對這篇有興趣嗎?</span>
+        <button class="fb-btn" type="button" data-verdict="up">👍 有興趣</button>
+        <button class="fb-btn" type="button" data-verdict="down">👎 沒興趣</button>
+        <span class="fb-msg"></span>
+      </div>
+
+    </article>
+
+    <article data-appraisal-card data-pmid="42127391" data-doi="10.1056/NEJMoa2514415">
+      <span class="tag">NEJM</span>
+      <span class="tag pub-type type-trial">RCT</span>
+      <h2>Telitacicept for IgA Nephropathy - Interim Analysis of a Phase 3 Trial.</h2>
+      <div class="authors">
+        Lv Jicheng, Liu Lijun, Wang Wenxiang 等 8 人 · 2026
+      </div>
+
+
     <div class="summary-block">
       <div class="section-label">摘要</div>
       <p class="summary">
         這項第3期雙盲隨機安慰劑對照試驗納入318名高風險IgA腎病成人，比較每週皮下注射 telitacicept 240 mg 與安慰劑；39週時蛋白尿降幅為58.9%對8.8%，相對差55.0%，eGFR下降也較少。
       </p>
     </div>
-    
+
+
     <div class="commentary">
       <div class="section-label">短評</div>
       <p>蛋白尿壓得很漂亮，若後續腎保護撐得住，IgA腎病治療可能真的要多一張王牌。</p>
     </div>
-    
-    <div class="links">
-      <a href="https://doi.org/10.1056/NEJMoa2514415" target="_blank" rel="noopener">下載連結</a>
-      
-      <button class="copy-btn" type="button" data-copy="10.1056/NEJMoa2514415">複製 DOI</button>
-      <button class="copy-btn" type="button" data-copy="python dlbydoi.py 10.1056/NEJMoa2514415">複製下載指令</button>
-      
-      
-      <a class="request-btn"
-         href="https://journal-fetcher-relay.rivafann.workers.dev/api?view=appraise&amp;week=2026-W21&amp;pmid=42127391&amp;doi=10.1056%2FNEJMoa2514415&amp;journal=NEJM&amp;title=Telitacicept+for+IgA+Nephropathy+-+Interim+Analysis+of+a+Phase+3+Trial."
-         target="_blank"
-         rel="noopener">請求評讀</a>
-      
-    </div>
-    
-    <div class="feedback"
-         data-pmid="42127391"
-         data-doi="10.1056/NEJMoa2514415"
-         data-journal="NEJM"
-         data-title="Telitacicept for IgA Nephropathy - Interim Analysis of a Phase 3 Trial.">
-      <span class="fb-q">對這篇有興趣嗎?</span>
-      <button class="fb-btn" type="button" data-verdict="up">👍 有興趣</button>
-      <button class="fb-btn" type="button" data-verdict="down">👎 沒興趣</button>
-      <span class="fb-msg"></span>
-    </div>
-    
-  </article>
-  
-  <article>
-    <span class="tag">NEJM</span>
-    <span class="tag pub-type type-trial">RCT</span>
-    <h2>Ensitrelvir for Covid-19 Postexposure Prophylaxis in Household Contacts.</h2>
-    <div class="authors">
-      Hayden Frederick G, Shinkai Masaharu, Clark Tristan W 等 16 人 · 2026
-    </div>
+
+
+      <div class="links">
+        <a href="https://doi.org/10.1056/NEJMoa2514415" target="_blank" rel="noopener">下載連結</a>
+
+        <button class="copy-btn" type="button" data-copy="10.1056/NEJMoa2514415">複製 DOI</button>
+        <button class="copy-btn" type="button" data-copy="python dlbydoi.py 10.1056/NEJMoa2514415">複製下載指令</button>
+
+
+        <a class="request-btn"
+           href="https://journal-fetcher-relay.rivafann.workers.dev/api?view=appraise&amp;week=2026-W21&amp;pmid=42127391&amp;doi=10.1056%2FNEJMoa2514415&amp;journal=NEJM&amp;title=Telitacicept+for+IgA+Nephropathy+-+Interim+Analysis+of+a+Phase+3+Trial."
+           data-request-url="https://journal-fetcher-relay.rivafann.workers.dev/api?view=appraise&amp;week=2026-W21&amp;pmid=42127391&amp;doi=10.1056%2FNEJMoa2514415&amp;journal=NEJM&amp;title=Telitacicept+for+IgA+Nephropathy+-+Interim+Analysis+of+a+Phase+3+Trial."
+           target="_blank"
+           rel="noopener">請求評讀</a>
+        <span class="request-status" aria-live="polite"></span>
+
+      </div>
+
+      <div class="feedback"
+           data-pmid="42127391"
+           data-doi="10.1056/NEJMoa2514415"
+           data-journal="NEJM"
+           data-title="Telitacicept for IgA Nephropathy - Interim Analysis of a Phase 3 Trial.">
+        <span class="fb-q">對這篇有興趣嗎?</span>
+        <button class="fb-btn" type="button" data-verdict="up">👍 有興趣</button>
+        <button class="fb-btn" type="button" data-verdict="down">👎 沒興趣</button>
+        <span class="fb-msg"></span>
+      </div>
+
+    </article>
+
+    <article data-appraisal-card data-pmid="42127390" data-doi="10.1056/NEJMoa2509306">
+      <span class="tag">NEJM</span>
+      <span class="tag pub-type type-trial">RCT</span>
+      <h2>Ensitrelvir for Covid-19 Postexposure Prophylaxis in Household Contacts.</h2>
+      <div class="authors">
+        Hayden Frederick G, Shinkai Masaharu, Clark Tristan W 等 16 人 · 2026
+      </div>
+
+
     <div class="summary-block">
       <div class="section-label">摘要</div>
       <p class="summary">
         這項雙盲隨機安慰劑對照試驗納入2041名家庭接觸者，於指標個案發病72小時內給予ensitrelvir或安慰劑；至第10天發生Covid-19比例為2.9%比9.0%，風險比0.33，且不良事件相近。
       </p>
     </div>
-    
+
+
     <div class="commentary">
       <div class="section-label">短評</div>
       <p>家戶暴露後多一顆口服預防牌，效果不錯又沒多出副作用，之後門診大概會更常被問「能不能先吃一點？」</p>
     </div>
-    
-    <div class="links">
-      <a href="https://doi.org/10.1056/NEJMoa2509306" target="_blank" rel="noopener">下載連結</a>
-      
-      <button class="copy-btn" type="button" data-copy="10.1056/NEJMoa2509306">複製 DOI</button>
-      <button class="copy-btn" type="button" data-copy="python dlbydoi.py 10.1056/NEJMoa2509306">複製下載指令</button>
-      
-      
-      <a class="request-btn"
-         href="https://journal-fetcher-relay.rivafann.workers.dev/api?view=appraise&amp;week=2026-W21&amp;pmid=42127390&amp;doi=10.1056%2FNEJMoa2509306&amp;journal=NEJM&amp;title=Ensitrelvir+for+Covid-19+Postexposure+Prophylaxis+in+Household+Contacts."
-         target="_blank"
-         rel="noopener">請求評讀</a>
-      
-    </div>
-    
-    <div class="feedback"
-         data-pmid="42127390"
-         data-doi="10.1056/NEJMoa2509306"
-         data-journal="NEJM"
-         data-title="Ensitrelvir for Covid-19 Postexposure Prophylaxis in Household Contacts.">
-      <span class="fb-q">對這篇有興趣嗎?</span>
-      <button class="fb-btn" type="button" data-verdict="up">👍 有興趣</button>
-      <button class="fb-btn" type="button" data-verdict="down">👎 沒興趣</button>
-      <span class="fb-msg"></span>
-    </div>
-    
-  </article>
-  
+
+
+      <div class="links">
+        <a href="https://doi.org/10.1056/NEJMoa2509306" target="_blank" rel="noopener">下載連結</a>
+
+        <button class="copy-btn" type="button" data-copy="10.1056/NEJMoa2509306">複製 DOI</button>
+        <button class="copy-btn" type="button" data-copy="python dlbydoi.py 10.1056/NEJMoa2509306">複製下載指令</button>
+
+
+        <a class="request-btn"
+           href="https://journal-fetcher-relay.rivafann.workers.dev/api?view=appraise&amp;week=2026-W21&amp;pmid=42127390&amp;doi=10.1056%2FNEJMoa2509306&amp;journal=NEJM&amp;title=Ensitrelvir+for+Covid-19+Postexposure+Prophylaxis+in+Household+Contacts."
+           data-request-url="https://journal-fetcher-relay.rivafann.workers.dev/api?view=appraise&amp;week=2026-W21&amp;pmid=42127390&amp;doi=10.1056%2FNEJMoa2509306&amp;journal=NEJM&amp;title=Ensitrelvir+for+Covid-19+Postexposure+Prophylaxis+in+Household+Contacts."
+           target="_blank"
+           rel="noopener">請求評讀</a>
+        <span class="request-status" aria-live="polite"></span>
+
+      </div>
+
+      <div class="feedback"
+           data-pmid="42127390"
+           data-doi="10.1056/NEJMoa2509306"
+           data-journal="NEJM"
+           data-title="Ensitrelvir for Covid-19 Postexposure Prophylaxis in Household Contacts.">
+        <span class="fb-q">對這篇有興趣嗎?</span>
+        <button class="fb-btn" type="button" data-verdict="up">👍 有興趣</button>
+        <button class="fb-btn" type="button" data-verdict="down">👎 沒興趣</button>
+        <span class="fb-msg"></span>
+      </div>
+
+    </article>
+
+  </section>
+
   </section>
 
   <footer>
-    Generated by JournalFetcher · 2026-05-22 08:21 UTC+08:00
+    Generated by JournalFetcher · 2026-07-24 11:58 UTC+08:00
   </footer>
 </div>
 <script>
@@ -549,11 +708,155 @@
   (function () {
     const ENDPOINT = "https://journal-fetcher-relay.rivafann.workers.dev/api";
     const WEEK = "2026-W21";
+    const cards = Array.from(document.querySelectorAll("[data-appraisal-card]"));
+    if (!ENDPOINT || !cards.length) return;
+    const attentionSection = document.getElementById("appraisal-attention");
+    const attentionList = document.getElementById("appraisal-attention-list");
+    const attentionJump = document.getElementById("appraisal-attention-jump");
+    const origins = new Map();
+    cards.forEach((card) => {
+      const marker = document.createComment("appraisal-card-origin");
+      card.parentNode.insertBefore(marker, card);
+      origins.set(card, marker);
+    });
+
+    const cardKey = (card) => {
+      const pmid = card.dataset.pmid || "";
+      const doi = (card.dataset.doi || "").toLowerCase();
+      return pmid ? `pmid:${pmid}` : `doi:${doi}`;
+    };
+
+    const resetButton = (button, message) => {
+      button.href = button.dataset.requestUrl || "";
+      button.target = "_blank";
+      button.rel = "noopener";
+      button.textContent = "請求評讀";
+      button.classList.remove("is-processing", "is-failed", "is-done");
+      button.removeAttribute("aria-disabled");
+      message.textContent = "";
+      message.classList.remove("is-failed");
+    };
+
+    const placeCard = (card, status) => {
+      const needsAttention = ["requested", "processing", "deferred", "failed"].includes(status);
+      card.classList.toggle(
+        "status-card-processing",
+        status === "requested" || status === "processing",
+      );
+      card.classList.toggle("status-card-deferred", status === "deferred");
+      card.classList.toggle("status-card-failed", status === "failed");
+      if (needsAttention) {
+        attentionList.appendChild(card);
+        return;
+      }
+      const marker = origins.get(card);
+      if (marker && marker.parentNode) {
+        marker.parentNode.insertBefore(card, marker.nextSibling);
+      }
+    };
+
+    const refreshSectionLayout = () => {
+      const attentionCount = attentionList.querySelectorAll(":scope > article").length;
+      attentionSection.hidden = attentionCount === 0;
+      attentionJump.hidden = attentionCount === 0;
+      document.querySelectorAll("#weekly-summary .journal-section").forEach((section) => {
+        const count = Array.from(section.children).filter(
+          (child) => child.tagName === "ARTICLE",
+        ).length;
+        section.hidden = count === 0;
+        const countLabel = section.querySelector(".journal-count");
+        if (countLabel) countLabel.textContent = `${count} 篇`;
+        const jump = document.querySelector(`.jump-chip[href="#${section.id}"]`);
+        if (jump) jump.hidden = count === 0;
+      });
+    };
+
+    const paintStatus = (card, row) => {
+      const button = card.querySelector(".request-btn");
+      const message = card.querySelector(".request-status");
+      if (!button || !message) return;
+      resetButton(button, message);
+      placeCard(card, row?.status || "");
+      if (!row) return;
+
+      const status = row.status || "";
+      const note = row.note || "";
+      if (status === "requested" || status === "processing") {
+        button.removeAttribute("href");
+        button.removeAttribute("target");
+        button.textContent = "評讀中";
+        button.classList.add("is-processing");
+        button.setAttribute("aria-disabled", "true");
+        message.textContent = note || "已收到請求，等待本機排程處理。";
+      } else if (status === "deferred") {
+        button.removeAttribute("href");
+        button.removeAttribute("target");
+        button.textContent = "評讀中（等待重試）";
+        button.classList.add("is-processing");
+        button.setAttribute("aria-disabled", "true");
+        message.textContent = note || "系統將自動重試。";
+      } else if (status === "failed") {
+        button.textContent = "重試請求評讀";
+        button.classList.add("is-failed");
+        message.textContent = `評讀失敗：${note || "未提供錯誤原因"}`;
+        message.classList.add("is-failed");
+      } else if (status === "done") {
+        button.removeAttribute("href");
+        button.removeAttribute("target");
+        button.textContent = "評讀完成";
+        button.classList.add("is-done");
+        button.setAttribute("aria-disabled", "true");
+        message.textContent = "評讀已完成；重新整理頁面即可查看結果。";
+      }
+    };
+
+    const refreshStatuses = async () => {
+      try {
+        const url = new URL(ENDPOINT, window.location.href);
+        url.search = "";
+        url.searchParams.set("view", "appraisal_statuses");
+        url.searchParams.set("week", WEEK);
+        const response = await fetch(url, {
+          credentials: "same-origin",
+          cache: "no-store",
+        });
+        if (!response.ok) throw new Error(`relay returned ${response.status}`);
+        const payload = await response.json();
+        const rows = new Map((payload.rows || []).map((row) => [row.identifier, row]));
+        cards.forEach((card) => paintStatus(card, rows.get(cardKey(card))));
+        refreshSectionLayout();
+      } catch (error) {
+        console.warn("Unable to refresh appraisal statuses", error);
+      }
+    };
+
+    refreshStatuses();
+    window.addEventListener("focus", refreshStatuses);
+    document.addEventListener("visibilitychange", () => {
+      if (!document.hidden) refreshStatuses();
+    });
+    window.setInterval(refreshStatuses, 60000);
+  })();
+</script>
+<script>
+  (function () {
+    const ENDPOINT = "https://journal-fetcher-relay.rivafann.workers.dev/api";
+    const WEEK = "2026-W21";
     if (!ENDPOINT) return;
 
-    document.querySelectorAll(".feedback").forEach((box) => {
+    const boxKey = (box) => {
       const pmid = box.dataset.pmid || "";
-      const storeKey = "jf_fb_" + WEEK + "_" + pmid;
+      const doi = (box.dataset.doi || "").toLowerCase();
+      return pmid ? `pmid:${pmid}` : `doi:${doi}`;
+    };
+
+    const boxes = Array.from(document.querySelectorAll(".feedback"));
+    const painters = new Map();
+
+    boxes.forEach((box) => {
+      const pmid = box.dataset.pmid || "";
+      const doi = box.dataset.doi || "";
+      const storeKey = "jf_fb_" + WEEK + "_" + (pmid || doi);
       const buttons = box.querySelectorAll(".fb-btn");
       const msg = box.querySelector(".fb-msg");
 
@@ -563,7 +866,9 @@
           b.classList.toggle("active-down", verdict === "down" && b.dataset.verdict === "down");
         });
       };
+      // Optimistic: show this device's last choice until the server answers.
       paint(localStorage.getItem(storeKey));
+      painters.set(boxKey(box), { paint, storeKey });
 
       buttons.forEach((button) => {
         button.addEventListener("click", () => {
@@ -572,24 +877,53 @@
           localStorage.setItem(storeKey, verdict);
           msg.textContent = "已記錄,謝謝!";
           window.setTimeout(() => { msg.textContent = ""; }, 2500);
-          // Apps Script web app: text/plain keeps it a CORS "simple request".
           fetch(ENDPOINT, {
             method: "POST",
-            mode: "no-cors",
+            credentials: "same-origin",
             headers: { "Content-Type": "text/plain;charset=utf-8" },
             body: JSON.stringify({
               week: WEEK,
               pmid: pmid,
-              doi: box.dataset.doi || "",
+              doi: doi,
               journal: box.dataset.journal || "",
               title: box.dataset.title || "",
               verdict: verdict,
             }),
+          }).then((response) => {
+            if (!response.ok) throw new Error(`relay returned ${response.status}`);
           }).catch(() => {
             msg.textContent = "已存在這台裝置,稍後再點一次即可送出";
           });
         });
       });
+    });
+
+    // Hydrate from the relay so verdicts recorded on other devices show here.
+    // The server is authoritative; it overwrites the localStorage-only guess.
+    const hydrate = async () => {
+      try {
+        const url = new URL(ENDPOINT, window.location.href);
+        url.search = "";
+        url.searchParams.set("view", "feedback");
+        url.searchParams.set("week", WEEK);
+        const response = await fetch(url, { credentials: "same-origin", cache: "no-store" });
+        if (!response.ok) throw new Error(`relay returned ${response.status}`);
+        const payload = await response.json();
+        (payload.rows || []).forEach((row) => {
+          const target = painters.get(row.identifier);
+          if (!target || (row.verdict !== "up" && row.verdict !== "down")) return;
+          target.paint(row.verdict);
+          localStorage.setItem(target.storeKey, row.verdict);
+        });
+      } catch (error) {
+        console.warn("Unable to hydrate feedback verdicts", error);
+      }
+    };
+
+    hydrate();
+    window.addEventListener("focus", hydrate);
+    document.addEventListener("visibilitychange", () => {
+      if (!document.hidden) hydrate();
     });
   })();
 </script>

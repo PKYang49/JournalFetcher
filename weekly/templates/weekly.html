@@ -655,7 +655,16 @@
     const WEEK = {{ week_label | tojson }};
     if (!ENDPOINT) return;
 
-    document.querySelectorAll(".feedback").forEach((box) => {
+    const boxKey = (box) => {
+      const pmid = box.dataset.pmid || "";
+      const doi = (box.dataset.doi || "").toLowerCase();
+      return pmid ? `pmid:${pmid}` : `doi:${doi}`;
+    };
+
+    const boxes = Array.from(document.querySelectorAll(".feedback"));
+    const painters = new Map();
+
+    boxes.forEach((box) => {
       const pmid = box.dataset.pmid || "";
       const doi = box.dataset.doi || "";
       const storeKey = "jf_fb_" + WEEK + "_" + (pmid || doi);
@@ -668,7 +677,9 @@
           b.classList.toggle("active-down", verdict === "down" && b.dataset.verdict === "down");
         });
       };
+      // Optimistic: show this device's last choice until the server answers.
       paint(localStorage.getItem(storeKey));
+      painters.set(boxKey(box), { paint, storeKey });
 
       buttons.forEach((button) => {
         button.addEventListener("click", () => {
@@ -696,6 +707,34 @@
           });
         });
       });
+    });
+
+    // Hydrate from the relay so verdicts recorded on other devices show here.
+    // The server is authoritative; it overwrites the localStorage-only guess.
+    const hydrate = async () => {
+      try {
+        const url = new URL(ENDPOINT, window.location.href);
+        url.search = "";
+        url.searchParams.set("view", "feedback");
+        url.searchParams.set("week", WEEK);
+        const response = await fetch(url, { credentials: "same-origin", cache: "no-store" });
+        if (!response.ok) throw new Error(`relay returned ${response.status}`);
+        const payload = await response.json();
+        (payload.rows || []).forEach((row) => {
+          const target = painters.get(row.identifier);
+          if (!target || (row.verdict !== "up" && row.verdict !== "down")) return;
+          target.paint(row.verdict);
+          localStorage.setItem(target.storeKey, row.verdict);
+        });
+      } catch (error) {
+        console.warn("Unable to hydrate feedback verdicts", error);
+      }
+    };
+
+    hydrate();
+    window.addEventListener("focus", hydrate);
+    document.addEventListener("visibilitychange", () => {
+      if (!document.hidden) hydrate();
     });
   })();
 </script>
