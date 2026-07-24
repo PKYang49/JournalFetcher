@@ -1980,6 +1980,36 @@ def _try_ego_ovid(doi: str) -> bytes | None:
     return None
 
 
+def _download_msse(doi: str) -> tuple[bytes | None, str]:
+    """Fetch an MSSE PDF. Returns (bytes, "") or (None, failure reason).
+
+    download_pdf, download_articles and dlbydoi all need this cascade, so it
+    lives here rather than being copied three times. The reason string
+    distinguishes "ego was not usable" from "ego ran and Ovid gave nothing",
+    since those need different fixes.
+    """
+    content = _try_ego_ovid(doi)
+    if content:
+        return content, ""
+
+    # Still correct for any MSSE DOI that lands on the legacy LWW host.
+    content = _try_lww_direct(doi)
+    if content:
+        return content, ""
+
+    if not ego_available():
+        return None, (
+            "MSSE PDF not found — ego browser unavailable (CLI missing or "
+            "JOURNAL_FETCHER_EGO=0) and the ovid.com PDF needs a real browser "
+            "profile. Start ego lite, then retry."
+        )
+    return None, (
+        "MSSE PDF not found — ego browser ran but ovid.com returned no PDF "
+        "(entitlement cookie expired, captcha, or all 3 Ovid seats busy). "
+        "Open ovid.com in ego lite and retry."
+    )
+
+
 def _try_doi_redirect(doi: str) -> bytes | None:
     """Follow DOI → landing page → find PDF link."""
     try:
@@ -2867,35 +2897,11 @@ def download_pdf(article: dict, out_dir: Path = PDF_DIR) -> Path | None:
         # the PDF on an httpOnly entitlement cookie, so the HTTP path below can
         # no longer reach it; ego lite carries that cookie in a real profile.
         print("  [1] Ovid via ego browser (MSSE)...")
-        content = _try_ego_ovid(doi)
+        content, reason = _download_msse(doi)
         if content:
             dest.write_bytes(content)
             print(f"  [OK] {dest.name} ({len(content)//1024} KB)")
             return dest
-
-        # Kept as fallback: still the right path for any MSSE DOI that lands on
-        # the legacy journals.lww.com host.
-        print("  [2] LWW tokenized PDF (MSSE)...")
-        content = _try_lww_direct(doi)
-        if content:
-            dest.write_bytes(content)
-            print(f"  [OK] {dest.name} ({len(content)//1024} KB)")
-            return dest
-
-        # Distinguish "ego was not usable" from "ego ran and got nothing", so
-        # the log says whether to restart ego lite or to re-authenticate Ovid.
-        if not ego_available():
-            reason = (
-                "MSSE PDF not found — ego browser unavailable (CLI missing or "
-                "JOURNAL_FETCHER_EGO=0) and the ovid.com PDF needs a real "
-                "browser profile. Start ego lite, then retry."
-            )
-        else:
-            reason = (
-                "MSSE PDF not found — ego browser ran but ovid.com returned no "
-                "PDF (entitlement cookie expired, captcha, or all 3 Ovid seats "
-                "busy). Open ovid.com in ego lite and retry."
-            )
         _log_failure(article, reason)
         print(f"  [FAIL] {doi or article.get('title', '')} (MSSE)")
         return None
@@ -3083,24 +3089,17 @@ def download_articles(articles: list[dict], out_dir: Path = PDF_DIR) -> dict[str
             time.sleep(1)
             continue
 
-        # MSSE: tokenized journals.lww.com endpoint (pure HTTP, 3 hops).
-        # Public landing page only exposes a stub PDF, so the rest of Pass 1
-        # is useless for MSSE.
+        # MSSE lives on ovid.com behind an httpOnly entitlement cookie, so the
+        # rest of Pass 1 (plain HTTP) is useless for it.
         if is_msse:
-            print(f"  [1] LWW tokenized PDF (MSSE)...")
-            content = _try_lww_direct(doi)
+            print(f"  [1] Ovid via ego browser (MSSE)...")
+            content, reason = _download_msse(doi)
             if content:
                 dest.write_bytes(content)
                 print(f"  [OK] {dest.name} ({len(content)//1024} KB)")
                 results[pmid] = dest
             else:
-                _log_failure(
-            article,
-            "MSSE PDF not found — DOI now redirects to ovid.com behind "
-            "institutional login (curl_cffi is not entitled). Use the browser "
-            "helper (logged-in Ovid + local receiver POST); see "
-            "project_msse_ovid_download memory.",
-        )
+                _log_failure(article, reason)
                 print(f"  [FAIL] {doi or article.get('title', '')} (MSSE)")
                 results[pmid] = None
             time.sleep(1)
