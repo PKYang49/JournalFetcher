@@ -98,7 +98,8 @@ JournalFetcher/
 │   ├── codex_model.py          # codex model 解析 + env allowlist
 │   ├── summarize.py            # 三句中文摘要（互動模式）
 │   ├── selector.py             # terminal checkbox 勾選
-│   └── downloader.py           # PDF 下載（DOI redirect、Unpaywall 備援）
+│   ├── downloader.py           # PDF 下載（DOI redirect、Unpaywall 備援）
+│   └── ego_browser.py          # ego lite adapter：真實瀏覽器 profile 抓 cookie/challenge 擋住的 PDF
 ├── weekly/
 │   ├── run_weekly.py           # 週報主程式（launchd 觸發）
 │   ├── summarize_weekly.py     # 四句中文摘要
@@ -154,7 +155,12 @@ JournalFetcher/
 - 儲存：`output/pdfs/{pmid}_{first_author}_{year}.pdf`。
 - 失敗記到 `output/download_failures.log`，不中斷流程。
 - 已知 quirk：OUP（EHJ）下載要走 `page.request.get` 不是 `page.goto`；NEJM 單 DOI 場景 Playwright + homepage warmup 優於 nodriver。
-- **MSSE 已從 LWW IP 授權改成 Ovid 登入授權（~2026-07）**：DOI 現在 redirect 到 `www.ovid.com/jnls/acsm-msse/...`，PDF 卡在 entitled（登入）Ovid session；headless curl_cffi 抓不到（`_try_lww_direct` 回 None，`download_failures.log` 會說明），entitlement cookie 又是 httpOnly 無法做 cookie-bridge。**標準做法：瀏覽器輔助**——使用者登入 Ovid → agent 用 Claude-in-Chrome 開新分頁（共用登入態）navigate 到 `/fulltext/<doi>` 取席 → `fetch('/pdf/',{credentials:'include'})` 取 bytes → **no-cors POST 到本機 `scripts/ovid_pdf_receiver.py`（127.0.0.1:8799）寫入 ~/Downloads** → `request_appraisal --pdf` 評讀。注意 Ovid 3 concurrent seats、每開一次 fulltext 佔一席，要一次一篇、慢慢來。細節見 memory `project_msse_ovid_download`。
+- **MSSE 已從 LWW 改到 Ovid（~2026-07），走 ego lite 自動下載**：DOI 現在 redirect 到 `www.ovid.com/jnls/acsm-msse/...`，PDF 需要 **httpOnly entitlement cookie**；headless curl_cffi 抓不到（直打 `/pdf/` 會 bounce 回 `/fulltext/` 的 HTML），cookie-bridge 也不可行。**現行做法：`modules/ego_browser.py`**——`_try_ego_ovid` 用 `requests` 跟 doi.org redirect 拿到帶 slug 的 `/fulltext/` URL，再交給 `fetch_pdf_via_ego` 在 ego lite 內 navigate（**這步才會讓 session entitled**）→ 同源 `fetch(location.href.replace('/fulltext/','/pdf/'))` → Node `fs` 直接落檔。`download_pdf` 與 `dlbydoi.download_one` 的 `is_msse` 分支都走這條，`_try_lww_direct` 降為 legacy host 備援。
+  - **UI 上不需處於登入態**：頁面 nav 顯示 Login、`signedIn: false` 照樣拿得到 PDF，關鍵是 profile 裡的 httpOnly cookie。**cookie 壽命未測**，所以 `deferred` 重試機制要保留。
+  - **Ovid 3 concurrent seats**，每開一次 fulltext 佔一席：`_OVID_MIN_INTERVAL`（8s）節流，且 `fetch_pdf_via_ego` 在 `finally` 一定 `completeTaskSpace({keep:false})` 釋放席位。
+  - `JOURNAL_FETCHER_EGO=0` 或 CLI 不存在 → 回 `None` 優雅降級；`download_failures.log` 會分「ego 不可用」與「ego 有跑但 Ovid 沒給」兩種訊息。
+  - ego lite **沒有自啟機制**（不在登入項目，`com.citrolabs.EgoUpdater.wake` 只是更新檢查），重開機後是關著的。CLI 二進位含 `launch_application.mm` / `LSOpen`，且 launchd job 在 Aqua session，冷啟動應可自動拉起——但**未實測**。
+  - 舊的 Claude-in-Chrome + `scripts/ovid_pdf_receiver.py`（127.0.0.1:8799）已不再需要，檔案保留當退路。細節見 memory `project_msse_ovid_download`。
 - **on-demand 請求評讀的 MSSE 失敗改為可重試**：`process_appraisal_requests` 把 Ovid-gated 期刊（`JOURNAL_FETCHER_OVID_GATED_JOURNALS`，預設 `MSSE`）的 `pdf_failed` 記成 `deferred`（reason `ovid_auth_required`，每 24h 重試，上限 `OVID_AUTH_RETRY_MAX`=14）而非永久 `failed`，讓文章正式出版 / 補抓後能自動接上。
 
 ### Phase 4 — 文獻評讀（互動模式由使用者另行處理；週報模式見下）
