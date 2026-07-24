@@ -63,6 +63,21 @@ try {
   await openOrReuseTab(__NAV_URL__, { wait: true, timeout: __NAV_TIMEOUT__ })
   await wait(__SETTLE__)
 
+  // Optional second hop: read a link off the landing page and navigate to it.
+  // Needed where the PDF URL is not derivable from the DOI (ScienceDirect
+  // signs it with an md5) and where only a real navigation clears the
+  // publisher's JS challenge — an in-page fetch just returns the challenge.
+  const linkJs = __LINK_JS__
+  if (linkJs) {
+    const next = await js(linkJs)
+    if (!next) {
+      cliLog('EGO_FAIL no link matched on landing page')
+      throw new Error('no-link')
+    }
+    await gotoAndWait(next, { timeout: __NAV_TIMEOUT__ })
+    await wait(__SETTLE__)
+  }
+
   const waitFor = __WAIT_FOR_URL__
   if (waitFor) {
     const re = new RegExp(waitFor)
@@ -108,6 +123,7 @@ def _render(template: str, values: dict[str, str]) -> str:
 def fetch_pdf_via_ego(
     nav_url: str,
     *,
+    link_js: str | None = None,
     pdf_url_js: str = "location.href",
     wait_for_url: str | None = None,
     settle: float = 3.0,
@@ -116,7 +132,12 @@ def fetch_pdf_via_ego(
 ) -> bytes | None:
     """Navigate to `nav_url` in ego lite, then fetch the PDF from page context.
 
-    `pdf_url_js` is a JavaScript expression evaluated in the loaded page; the
+    `link_js` (optional) is evaluated on the landing page and must return a URL
+    to navigate to before fetching — use it when the PDF URL is only
+    discoverable from the page, or when the publisher's JS challenge only
+    clears on a real navigation.
+
+    `pdf_url_js` is a JavaScript expression evaluated in the final page; the
     default re-fetches whatever the navigation landed on (ScienceDirect, where
     the challenge redirects to a signed asset URL). Ovid instead derives the
     PDF URL from the fulltext URL.
@@ -143,6 +164,7 @@ def fetch_pdf_via_ego(
             "__NAV_URL__": json.dumps(nav_url),
             "__NAV_TIMEOUT__": str(nav_timeout),
             "__SETTLE__": str(settle),
+            "__LINK_JS__": json.dumps(link_js) if link_js else "null",
             "__WAIT_FOR_URL__": json.dumps(wait_for_url) if wait_for_url else "null",
             "__PAGE_FETCH__": json.dumps(page_fetch),
             "__OUT_PATH__": json.dumps(str(out_path)),

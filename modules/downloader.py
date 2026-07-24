@@ -1,5 +1,6 @@
 """Phase 3: PDF download — institution IP auth, Chrome TLS fingerprint via curl_cffi."""
 
+import json
 import os
 import re
 import time
@@ -63,9 +64,21 @@ def _is_pdf(content: bytes) -> bool:
 
 
 def _pdf_page_count(content: bytes) -> int | None:
-    """Best-effort PDF page count without extra dependencies."""
+    """Best-effort PDF page count."""
     if not _is_pdf(content):
         return None
+
+    # Regex on /Count picks up whichever node comes first, which on some
+    # Elsevier PDFs is the outline tree — a 3-page editorial reported 1 page
+    # and got rejected as incomplete. Parse properly when pymupdf is present.
+    try:
+        import fitz
+
+        with fitz.open(stream=content, filetype="pdf") as doc:
+            if doc.page_count:
+                return doc.page_count
+    except Exception:
+        pass
 
     count_match = re.search(rb"/Count\s+(\d+)", content)
     if count_match:
@@ -1980,6 +1993,52 @@ def _try_ego_ovid(doi: str) -> bytes | None:
     return None
 
 
+def _try_ego_sciencedirect(doi: str) -> bytes | None:
+    """Fetch an Elsevier (JACC / Lancet / …) PDF through ego lite.
+
+    ScienceDirect signs the PDF URL with an md5 that is only discoverable from
+    the article page, and plain HTTP cannot even read that page (Cloudflare
+    returns 403). Navigating to the signed /pdfft URL clears the JS challenge
+    and lands on a short-lived pdf.sciencedirectassets.com URL, which is bound
+    to the browser session — so the bytes must be fetched from that page, not
+    from Python.
+
+    Returns None on the Turnstile captcha, which needs a human; the caller's
+    remaining cascade still applies.
+    """
+    if not ego_available():
+        return None
+
+    pii = _resolve_pii(doi)
+    if not pii:
+        logger.debug(f"ScienceDirect: could not resolve PII for {doi}")
+        return None
+
+    # Scope the link to this PII: article pages also list "View PDF" links for
+    # related articles and the recommended-articles rail.
+    link_js = (
+        "(() => {"
+        f"  const pii = {json.dumps(pii)};"
+        "  const hit = [...document.querySelectorAll('a')]"
+        "    .map(a => a.href)"
+        "    .find(h => h.includes('/pii/' + pii) && h.includes('pdfft'));"
+        "  return hit || null;"
+        "})()"
+    )
+
+    content = fetch_pdf_via_ego(
+        f"https://www.sciencedirect.com/science/article/pii/{pii}",
+        link_js=link_js,
+        wait_for_url=r"pdf\.sciencedirectassets\.com",
+        settle=4.0,
+    )
+    if content and _is_pdf(content) and not _is_incomplete_elsevier_pdf(content, doi):
+        return content
+    if content:
+        logger.debug(f"ScienceDirect: ego returned an incomplete PDF for {doi}")
+    return None
+
+
 def _download_msse(doi: str) -> tuple[bytes | None, str]:
     """Fetch an MSSE PDF. Returns (bytes, "") or (None, failure reason).
 
@@ -2928,11 +2987,18 @@ def download_pdf(article: dict, out_dir: Path = PDF_DIR) -> Path | None:
         content = _try_elsevier_api(doi)
 
         if not content:
-            print("  [2] ScienceDirect browser session...")
+            # ego reuses the real profile, so a Cloudflare clearance obtained
+            # once is still good on the next article; nodriver starts from a
+            # fresh temp profile and re-triggers the challenge every batch.
+            print("  [2] ScienceDirect via ego browser...")
+            content = _try_ego_sciencedirect(doi)
+
+        if not content:
+            print("  [3] ScienceDirect browser session (nodriver)...")
             content = _try_nodriver(doi)
 
         if not content:
-            print("  [3] DOI redirect...")
+            print("  [4] DOI redirect...")
             content = _try_doi_redirect(doi)
 
         if not content:
@@ -2965,11 +3031,15 @@ def download_pdf(article: dict, out_dir: Path = PDF_DIR) -> Path | None:
         return None
 
     if not content and is_elsevier:
-        print(f"  [3] nodriver (ScienceDirect)...")
+        print(f"  [3] ScienceDirect via ego browser...")
+        content = _try_ego_sciencedirect(doi)
+
+    if not content and is_elsevier:
+        print(f"  [4] nodriver (ScienceDirect)...")
         content = _try_nodriver(doi)
 
     if not content and ELSEVIER_API_KEY and is_elsevier:
-        print(f"  [4] Elsevier API...")
+        print(f"  [5] Elsevier API...")
         content = _try_elsevier_api(doi)
 
     if not content:
@@ -3164,6 +3234,17 @@ def download_articles(articles: list[dict], out_dir: Path = PDF_DIR) -> dict[str
             print(f"  [pending] queued for Playwright batch (OUP)")
             oup_pending.append(article)
         elif is_elsevier:
+            # Try ego first: it is per-article and reuses the real profile, so
+            # a warm Cloudflare clearance short-circuits the nodriver batch
+            # (which restarts from a cold temp profile every time).
+            print(f"  [{step}] ScienceDirect via ego browser...")
+            content = _try_ego_sciencedirect(doi)
+            if content:
+                dest.write_bytes(content)
+                print(f"  [OK] {dest.name} ({len(content)//1024} KB)")
+                results[pmid] = dest
+                time.sleep(1)
+                continue
             print(f"  [pending] queued for nodriver batch (Elsevier)")
             elsevier_pending.append(article)
         elif doi.startswith("10.1056/"):
