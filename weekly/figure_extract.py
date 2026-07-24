@@ -16,11 +16,15 @@ DEFAULT_MAX_PAGES = 12
 # weight as any plot.
 DEFAULT_MAX_TABLE_PAGES = 4
 DEFAULT_MIN_DRAWINGS = 40
-# 2.5x (=180 DPI) renders a journal page at ~1440x1935. Opus 4.8 caps a single
-# image at 2576px on the long edge and ~3.6 MP, so a 3.0x render (4.0 MP) is
+# 2.5x (=180 DPI) renders a journal page at ~1440x1935. Calibrated against the
+# 4.8-era vision cap (2576px long edge, ~3.6 MP): a 3.0x render (4.0 MP) is
 # downscaled server-side before the model ever sees it — the extra pixels cost
-# tokens but carry no detail. 2.5x lands just under the cap: ~21% fewer image
+# tokens but carry no detail. 2.5x lands just under that cap: ~21% fewer image
 # tokens per page for ~12% less effective resolution than 3.0x.
+# NOTE: appraisals now run on Opus 5 (2026-07-25); its image cap has not been
+# re-verified. If Opus 5 raised the cap, 2.5x is still legible but no longer
+# the token-optimal point — re-check the cap and revisit this if image cost
+# looks off in the first weekly run.
 DEFAULT_ZOOM = 2.5
 # Caption-based fallback for vector-drawn figures (e.g. Lancet KM curves,
 # CONSORT diagrams): a whole step-curve is a single path, so the drawing-object
