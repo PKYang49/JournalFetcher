@@ -565,6 +565,33 @@ def _strip_references(markdown: str) -> str:
     return stripped
 
 
+_HEADING_LINE_RE = re.compile(r"^#{1,6}\s+\S", re.MULTILINE)
+
+
+def _strip_preamble(report: str) -> str:
+    """Drop any conversational lead-in the model emits before the appraisal.
+
+    Every appraisal proper starts with a markdown heading (`# 批判性…`).
+    Backends occasionally prepend a chatty line such as "I have the figures…
+    I can now produce the appraisal." (optionally followed by a `---` rule)
+    before that first heading. We cut everything before the first heading so
+    only the appraisal itself is written / rendered.
+
+    No-op when the text already starts with a heading, or when no heading is
+    found at all (defensive — never blank out an otherwise-valid report).
+    """
+    match = _HEADING_LINE_RE.search(report)
+    if not match or match.start() == 0:
+        return report
+    lead = report[: match.start()]
+    if lead.strip() == "":
+        return report[match.start() :]
+    stripped = report[match.start() :]
+    preview = " ".join(lead.split())[:80]
+    print(f"  [strip-preamble] removed {len(lead):,} chars of lead-in: {preview!r}")
+    return stripped
+
+
 def _convert_with_pymupdf4llm(pdf_path: Path) -> str | None:
     """Primary path: pymupdf4llm preserves headings, multi-column flow, tables."""
     try:
@@ -862,6 +889,7 @@ def appraise_pdf(article: dict, pdf_path: Path, out_dir: Path) -> Path | None:
         "%Y-%m-%d %H:%M %Z"
     )
 
+    report = _strip_preamble(report)
     report_path.write_text(report + "\n", encoding="utf-8")
     return report_path
 

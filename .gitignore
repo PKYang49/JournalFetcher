@@ -33,3 +33,6 @@ skills/*
 # 參考資料含第三方版權內容（JAMA Evidence 等），不進公開 repo
 skills/literature-appraisal/references/*
 !skills/literature-appraisal/references/output_quality_style_guide.md
+
+.dev.vars*
+!.dev.vars.example
