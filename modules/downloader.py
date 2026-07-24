@@ -2039,6 +2039,44 @@ def _try_ego_sciencedirect(doi: str) -> bytes | None:
     return None
 
 
+# Reads the publisher's own PDF pointer off the article page. citation_pdf_url
+# is authoritative where present (JAMA, OUP, Springer, BMJ); NEJM omits it, so
+# fall back to its /doi/pdf/ anchor. Supplement files are excluded explicitly —
+# they sit next to the article link and are also PDFs.
+_CITATION_PDF_LINK_JS = """(() => {
+  const meta = document.querySelector('meta[name="citation_pdf_url"]');
+  if (meta && meta.content) return meta.content;
+  const hit = [...document.querySelectorAll('a')]
+    .map(a => a.href)
+    .find(h => h && /\\/doi\\/pdf\\//.test(h) && !/suppl/i.test(h));
+  return hit || null;
+})()"""
+
+
+def _try_ego_citation_pdf(doi: str) -> bytes | None:
+    """Fetch a PDF via ego by following the article page's own PDF pointer.
+
+    Works uniformly across the Silverchair (JAMA, OUP), Springer, BMJ and NEJM
+    platforms: the PDF URL redirects to a short-lived signed asset bound to the
+    browser session, so the bytes must be fetched from that page rather than
+    from Python.
+
+    Returns None on anything that is not a usable PDF, leaving the caller's
+    existing Playwright/nodriver cascade to run.
+    """
+    if not ego_available():
+        return None
+
+    content = fetch_pdf_via_ego(
+        f"https://doi.org/{doi}",
+        link_js=_CITATION_PDF_LINK_JS,
+        settle=4.0,
+    )
+    if content and _is_pdf(content) and not _is_lww_paywall_pdf(content):
+        return content
+    return None
+
+
 def _download_msse(doi: str) -> tuple[bytes | None, str]:
     """Fetch an MSSE PDF. Returns (bytes, "") or (None, failure reason).
 
@@ -2927,13 +2965,16 @@ def download_pdf(article: dict, out_dir: Path = PDF_DIR) -> Path | None:
         # JAMA Network (JAMA + sub-journals). citation_pdf_url is JS-rendered
         # and pages are Cloudflare-protected. Playwright + warmup is the only
         # path that consistently exposes the signed /articlepdf/ URL.
-        print("  [1] JAMA Network Playwright...")
-        content = _try_jamanetwork_playwright(doi)
+        print("  [1] JAMA Network via ego browser...")
+        content = _try_ego_citation_pdf(doi)
+        if not content:
+            print("  [2] JAMA Network Playwright...")
+            content = _try_jamanetwork_playwright(doi)
         if content:
             dest.write_bytes(content)
             print(f"  [OK] {dest.name} ({len(content)//1024} KB)")
             return dest
-        _log_failure(article, "JAMA Network PDF not found via Playwright")
+        _log_failure(article, "JAMA Network PDF not found via ego or Playwright")
         print(f"  [FAIL] {doi or article.get('title', '')} (JAMA Network)")
         return None
 
@@ -2941,13 +2982,16 @@ def download_pdf(article: dict, out_dir: Path = PDF_DIR) -> Path | None:
         # Springer Sports Medicine: link.springer.com gates `/content/pdf`
         # with a JS challenge that plain HTTP and nodriver both fail.
         # Playwright with article-page warmup clears the challenge.
-        print("  [1] Springer Playwright (Sports Medicine)...")
-        content = _try_springer_playwright(doi)
+        print("  [1] Springer via ego browser (Sports Medicine)...")
+        content = _try_ego_citation_pdf(doi)
+        if not content:
+            print("  [2] Springer Playwright (Sports Medicine)...")
+            content = _try_springer_playwright(doi)
         if content:
             dest.write_bytes(content)
             print(f"  [OK] {dest.name} ({len(content)//1024} KB)")
             return dest
-        _log_failure(article, "Sports Medicine PDF not found via Springer Playwright")
+        _log_failure(article, "Sports Medicine PDF not found via ego or Springer Playwright")
         print(f"  [FAIL] {doi or article.get('title', '')} (Sports Medicine)")
         return None
 
@@ -3044,6 +3088,14 @@ def download_pdf(article: dict, out_dir: Path = PDF_DIR) -> Path | None:
 
     if not content:
         content = _try_unpaywall(doi)
+
+    # Follows the article page's own citation_pdf_url, which covers the
+    # Silverchair (NEJM, OUP), Springer and BMJ platforms uniformly. For BMJ it
+    # reaches heart.bmj.com / bjsm.bmj.com directly, so ProQuest is only needed
+    # when this fails.
+    if not content:
+        print(f"  [ego] citation_pdf_url via ego browser...")
+        content = _try_ego_citation_pdf(doi)
 
     if not content and (is_heart or is_bjsm):
         # BMJ journals (Heart, BJSM) are on ProQuest with NCKU IP access; the
@@ -3147,13 +3199,23 @@ def download_articles(articles: list[dict], out_dir: Path = PDF_DIR) -> dict[str
         is_heart = doi.lower().startswith("10.1136/heartjnl-")
         is_bjsm = doi.lower().startswith("10.1136/bjsports-")
         is_oup = doi.startswith("10.1093/")
+        is_nejm = doi.startswith("10.1056/")
         is_elsevier = doi.startswith("10.1016/")
         content = None
         step = 1
 
         # JAMA Network: skip Pass 1 (citation_pdf_url is JS-rendered and CF
-        # blocks plain HTTP). Queue for the batched Playwright pass.
+        # blocks plain HTTP). ego renders the page for real, so try it before
+        # falling back to the batched Playwright pass.
         if is_jamanetwork:
+            print(f"  [{step}] JAMA Network via ego browser...")
+            content = _try_ego_citation_pdf(doi)
+            if content:
+                dest.write_bytes(content)
+                print(f"  [OK] {dest.name} ({len(content)//1024} KB)")
+                results[pmid] = dest
+                time.sleep(1)
+                continue
             print(f"  [pending] queued for Playwright batch (JAMA Network)")
             jamanetwork_pending.append(article)
             time.sleep(1)
@@ -3178,6 +3240,14 @@ def download_articles(articles: list[dict], out_dir: Path = PDF_DIR) -> dict[str
         # Sports Medicine (Springer): link.springer.com blocks plain HTTP
         # with a JS challenge. Queue for the batched Playwright pass.
         if is_sports_medicine:
+            print(f"  [{step}] Springer via ego browser...")
+            content = _try_ego_citation_pdf(doi)
+            if content:
+                dest.write_bytes(content)
+                print(f"  [OK] {dest.name} ({len(content)//1024} KB)")
+                results[pmid] = dest
+                time.sleep(1)
+                continue
             print(f"  [pending] queued for Playwright batch (Springer)")
             springer_pending.append(article)
             time.sleep(1)
@@ -3230,9 +3300,28 @@ def download_articles(articles: list[dict], out_dir: Path = PDF_DIR) -> dict[str
         if is_circulation:
             print(f"  [pending] queued for nodriver batch (Circulation)")
             circulation_pending.append(article)
-        elif is_oup:
-            print(f"  [pending] queued for Playwright batch (OUP)")
-            oup_pending.append(article)
+        elif is_oup or is_nejm or is_heart or is_bjsm:
+            # One ego attempt covers OUP, NEJM and BMJ: all three expose
+            # citation_pdf_url and redirect it to a session-bound signed asset.
+            # Falls through to the existing Playwright batches when it fails.
+            print(f"  [{step}] citation_pdf_url via ego browser...")
+            content = _try_ego_citation_pdf(doi)
+            if content:
+                dest.write_bytes(content)
+                print(f"  [OK] {dest.name} ({len(content)//1024} KB)")
+                results[pmid] = dest
+                time.sleep(1)
+                continue
+            if is_oup:
+                print(f"  [pending] queued for Playwright batch (OUP)")
+                oup_pending.append(article)
+            elif is_nejm:
+                print(f"  [pending] queued for Playwright batch (NEJM)")
+                nejm_pending.append(article)
+            else:
+                print(f"  [pending] queued for Playwright batch "
+                      f"({'Heart' if is_heart else 'BJSM'}/ProQuest)")
+                proquest_pending.append(article)
         elif is_elsevier:
             # Try ego first: it is per-article and reuses the real profile, so
             # a warm Cloudflare clearance short-circuits the nodriver batch
@@ -3247,12 +3336,6 @@ def download_articles(articles: list[dict], out_dir: Path = PDF_DIR) -> dict[str
                 continue
             print(f"  [pending] queued for nodriver batch (Elsevier)")
             elsevier_pending.append(article)
-        elif doi.startswith("10.1056/"):
-            print(f"  [pending] queued for Playwright batch (NEJM)")
-            nejm_pending.append(article)
-        elif is_heart or is_bjsm:
-            print(f"  [pending] queued for Playwright batch ({'Heart' if is_heart else 'BJSM'}/ProQuest)")
-            proquest_pending.append(article)
         elif _direct_pdf_urls(doi, journal):
             print(f"  [pending] queued for nodriver batch (Cloudflare)")
             cloudflare_pending.append(article)
