@@ -433,10 +433,10 @@ def update_index(filename: str, label: str, count: int, date: str) -> Path:
             entries = []
 
     entries = [e for e in entries if e.get("filename") != filename]
-    entries.insert(
-        0,
-        {"filename": filename, "label": label, "count": count, "date": date},
-    )
+    entries.append({"filename": filename, "label": label, "count": count, "date": date})
+    # Sort by label, newest first. Not insert(0): re-rendering a past week
+    # (resume_weekly, backfills) would otherwise hoist it above newer ones.
+    entries.sort(key=lambda e: e.get("label", ""), reverse=True)
 
     INDEX_DATA.write_text(
         json.dumps(entries, ensure_ascii=False, indent=2), encoding="utf-8"

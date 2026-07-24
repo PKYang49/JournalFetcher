@@ -241,12 +241,17 @@ def _parse_single(node: ET.Element) -> dict:
     article = medline.find("Article")
 
     pmid = medline.findtext("PMID", "")
-    title = article.findtext("ArticleTitle", "")
 
-    # Abstract — may be structured
+    # Title and abstract both carry inline markup (<i>, <sup>, <sub>, <b>).
+    # Use itertext(): .text/.findtext() stop at the first child element, which
+    # silently truncates e.g. "Chronic PM<sub>2.5</sub> Exposure..." to "Chronic PM".
+    title_node = article.find("ArticleTitle")
+    title = "".join(title_node.itertext()).strip() if title_node is not None else ""
+
+    # Abstract — may be structured.
     abstract_parts = article.findall(".//AbstractText")
     abstract = " ".join(
-        (p.get("Label", "") + ": " if p.get("Label") else "") + (p.text or "")
+        (p.get("Label", "") + ": " if p.get("Label") else "") + "".join(p.itertext())
         for p in abstract_parts
     ).strip()
 

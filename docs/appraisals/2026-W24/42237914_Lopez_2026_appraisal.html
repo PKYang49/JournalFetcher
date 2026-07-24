@@ -87,328 +87,157 @@
 <nav><a href="../../2026-W24.html">← 回到 2026-W24 週報</a></nav>
 <main>
 <h1>Incremental Prognostic Value of Subendocardial Myocardial Flow Reserve in Patients With Normal Perfusion.</h1>
-<p>外部資料蒐集完成（同期 editorial 尚未檢索到，標註為無法取得）。以下為完整評讀。</p>
-<hr />
-<h1>批判性文獻評讀：Subendocardial MFR 對正常灌注病人的增量預後價值</h1>
-<blockquote>
-<p>本文為 PDF 轉檔 markdown ＋ 6 張圖頁 PNG。正文表格文字大致完整保留；Figure 1/2/3 圖像已實際判讀，但 Figure S1、Table S1–S4 等補充資料未提供，相關處標註限制。</p>
-</blockquote>
-<hr />
-<h2>SECTION-0：文章全面描述</h2>
-<h3>0. 文章身份證</h3>
+<h2>0. 文章身份證</h2>
 <ul>
 <li><strong>標題</strong>：Incremental Prognostic Value of Subendocardial Myocardial Flow Reserve in Patients With Normal Perfusion</li>
-<li><strong>期刊／年份</strong>：Circulation, 2026；DOI: 10.1161/CIRCULATIONAHA.125.078816；PMID 42237914</li>
-<li><strong>文章類型（路由判斷）</strong>：<strong>回溯性、多中心註冊資料庫的觀察性世代研究（prognostic / risk-stratification study）</strong>。雖然題目用「incremental prognostic value」，本質是把一個新影像指標（subendocardial MFR）拿來做風險分層的觀察性世代分析。</li>
-<li>套用模組：SECTION-0 → SKILL-A 主流程 ＋ 觀察性子模組 ＋ 因果推論附錄（本文以「預後關聯」為主、未宣稱治療因果，因果框架部分採用）。</li>
-<li><strong>無混血文章問題</strong>：方法學自我定位與實際執行一致，沒有自稱 RCT 或 systematic review 的落差。</li>
+<li><strong>期刊 / 年份 / DOI</strong>：<em>Circulation</em>, 2026; DOI: <code>10.1161/CIRCULATIONAHA.125.078816</code> [文內]</li>
+<li><strong>文章類型</strong>：多中心回溯性臨床登錄世代研究，屬於<strong>觀察性預後研究</strong>。</li>
+<li><strong>核心問題</strong>：在 stress/rest Rb-82 PET 顯示正常灌流、且傳統 transmural MFR 看似正常的病人中，subendocardial MFR 是否能額外辨識較高風險族群？</li>
 </ul>
-<h3>1. 作者團隊評論 [外部]</h3>
+<h2>1. 作者團隊評論</h2>
+<p>通訊作者 Diana M. Lopez 來自 Brigham &amp; Women’s Hospital；共同 senior authors 為 Piotr J. Slomka 與 Marcelo F. Di Carli [文內]。團隊組成橫跨 Brigham、Cedars-Sinai、Intermountain、Mayo、Columbia、Zurich 等心臟影像與核醫中心，屬於 PET myocardial blood flow / nuclear cardiology 的核心研究群。</p>
+<p>Piotr Slomka 的 Cedars-Sinai lab 官方介紹聚焦於核醫心臟影像自動化分析、PET/CT angiography 整合與 machine learning；這與本文使用 QPET、layer-specific segmentation、DL CAC quantification 高度一致 <a href="https://www.cedars-sinai.edu/health-sciences-university/research/labs/slomka.html">外部: Cedars-Sinai Slomka Lab</a>。ACC 對 2024 年 Xu/Divakaran/Weber 等同一研究脈絡的 hypertensive cohort 摘要指出，較低 subendocardial MFR 與較高 CV risk、心肌 injury marker、HF hospitalization/all-cause death 相關 <a href="https://www.acc.org/latest-in-cardiology/journal-scans/2024/08/26/15/58/relationship-of-subendocardial">外部: ACC Journal Scan</a>。因此本文不是首次切入，而是同一研究主軸的擴大、多中心預後驗證。</p>
+<p><strong>COI / funding</strong>：NIH、AHA、ASNC 等資助 [文內]。但多位作者揭露與 GE HealthCare、Siemens、Philips、QPS software、APQ Health、MedTrace、Ionetix 等影像、軟體、核醫相關產業關係 [文內]。這不直接否定結果，但本文結論會推動 layer-specific PET quantification 與特定軟體流程的臨床價值，COI 與敘事方向有合理關聯，解讀時要提高警覺。</p>
+<h2>2. Metadata 與期刊脈絡</h2>
 <ul>
-<li><strong>通訊作者</strong>：Diana M. Lopez（Brigham and Women's Hospital, 心血管影像）。</li>
-<li><strong>共同資深作者</strong>：Marcelo F. Di Carli（Brigham 核子醫學與分子影像主任）與 Piotr J. Slomka（Cedars-Sinai AI in Medicine）。這兩位是 <strong>PET MFR 預後研究與量化軟體領域的全球核心人物</strong> [外部: Brigham/Cedars 機構介紹、PubMed]。Di Carli 把 PET 量化血流稱為「functional coronary angiogram」，長期主張量化 MFR 的臨床價值；Slomka、Berman 則是 QPET/QPS 量化軟體的開發者。</li>
-<li><strong>機構聲譽</strong>：Brigham、Cedars-Sinai、Intermountain 都是核子心臟學頂尖中心；作者名單橫跨北美、歐洲、墨西哥多家機構，屬該領域「核心圈內人」整體背書，而非外部獨立團隊驗證。</li>
-<li><strong>作者立場史與既得利益（關鍵）</strong>：本研究使用的 layer-specific quantification 是 <strong>QPET 的「research version」</strong>——即由本團隊（Cedars-Sinai）自家軟體獨家產生的指標。Disclosures 中 <strong>Slomka、Berman 申報 QPS/QPET 軟體的 equity interest 與 software royalties</strong>，Di Carli 為該領域主要倡議者。換言之，提出「subendocardial MFR 有臨床價值」的人，正是擁有唯一能產出該指標之軟體商業權益的人。這構成明確的 <strong>prior commitment / 商業敘事一致性偏差</strong>，不是失格，但在解讀「應納入臨床判讀」這類推廣性結論時必須打折扣。</li>
-<li><strong>利益揭露 [文內]</strong>：資助為 NIH（R35HL161195、R01EB034586）等公費，COI 揭露龐大（GE、Pfizer、Siemens、Philips、Novo Nordisk 等多家консult/grant）。資金本身（NIH）方向中立，但軟體權益與多重產業關係仍值得注意。</li>
+<li><strong>Received / Accepted</strong>：2025-12-03 收稿，2026-05-08 接受，約 <strong>156 天</strong> [文內]。</li>
+<li><strong>期刊屬性</strong>：<em>Circulation</em> 為 AHA 旗艦心血管期刊；AHA 說明 Circulation 屬 hybrid journal <a href="https://www.ahajournals.org/open-access-information">外部: AHA Open Access information</a>。</li>
+<li><strong>Impact factor / 分區</strong>：搜尋到第三方彙整資料列 2024 JCR impact factor 38.6、Q1、Cardiac &amp; Cardiovascular Systems 排名頂尖；此處非官方 Clarivate 原頁，標為 <a href="https://manusights.com/blog/circulation-review-time">外部: Manusights</a>。</li>
+<li><strong>審查速度比較</strong>：同一第三方資料稱 median time to first decision 約 17 天、總 submission-to-acceptance 常見 3–8 個月 <a href="https://manusights.com/journals/circulation">外部: Manusights</a>。本文 156 天屬合理範圍，沒有異常快速接受的訊號。</li>
+<li><strong>外部 editorial/commentary</strong>：以題名、DOI、PMID 搜尋，未找到針對本篇 Circulation 文章的同期 editorial 或 commentary [無法取得]。</li>
 </ul>
-<h3>2. 文獻 Metadata 整理</h3>
-<ul>
-<li><strong>Received</strong> 2025/12/3；<strong>Accepted</strong> 2026/5/8 → 審查約 <strong>156 天</strong> [文內，自行計算]。</li>
-<li>該期刊平均審查天數：[無法取得]——未檢索到 Circulation 官方公布之精確平均接受天數，不臆測。以頂尖期刊原創研究而言 5 個月屬正常至略偏長，無「異常快速放行」跡象。</li>
-<li><strong>期刊屬性 [外部]</strong>：Circulation，2025 JCR Impact Factor 約 <strong>38.6</strong>，心臟科 Q1、排名前段 [外部: Clarivate/journalmetrics]。屬訂閱制（本文非標示 OA）。本文經 Guest Editor Fabien Hyafil 外送專家審查。</li>
-<li><strong>邀稿 vs 投稿</strong>：未揭露為邀稿；視為一般投稿原創研究。</li>
-</ul>
-<h3>3. 研究背景 [文內]</h3>
-<ul>
-<li><strong>既有事實</strong>：CMD（冠狀微血管功能障礙）即使無阻塞性 CAD 也與不良預後相關；PET 量化的 transmural MFR（MFR_TM）是目前最被驗證的非侵襲性 CMD 評估標準。</li>
-<li><strong>知識缺口</strong>：傳統 MFR 是把全層心肌平均；subendocardium 代謝需求高、易缺血，理論上其血流異常可能「早於」全層 MFR 下降而被平均值掩蓋。subendocardial MFR（MFR_SE）已知與不良預後有關，但<strong>在 transmural MFR 仍正常的病人中，MFR_SE 是否有額外（增量）價值，尚不清楚</strong>。</li>
-<li><strong>Research question</strong>：在灌注正常的病人中，MFR_TM 保留（≥2.0）但 MFR_SE 偏低，是否代表一群被低估的中度風險族群？</li>
-</ul>
-<h3>4. 研究設計與方法</h3>
-<ul>
-<li><strong>PICO</strong>：
-<ul>
-<li><strong>P</strong>：2007–2024 連續接受 rest–stress Rb-82 PET、灌注正常（stress TPD ≤5%）的臨床轉介病人；排除 &lt;18 歲、CABG、心臟移植、其他心臟手術、LVEF&lt;40%、非血管擴張劑壓力測試、影像品質不足、無臨床資料者。三家學術中心有 subendocardial 資料（Brigham、Cedars-Sinai、Intermountain）。</li>
-<li><strong>I/Exposure</strong>：MFR_SE &lt; 2.1（在 MFR_TM ≥2.0 前提下）→ 「discordant low-MFR_SE」。</li>
-<li><strong>C</strong>：concordant-normal（MFR_TM ≥2.0 且 MFR_SE ≥2.1）；另設 abnormal MFR_TM（&lt;2.0）作為高風險參照。</li>
-<li><strong>O</strong>：主要為首次 MACE（全死因死亡、非致死性 MI、HF 住院、≥90 天的晚期血運重建）；次要為全死因死亡；另有 CV-specific composite（CV 死亡、MI、HF）以 Fine-Gray 競爭風險分析。</li>
-</ul>
-</li>
-<li><strong>關鍵設計細節</strong>：回溯性世代；中央化影像處理（Cedars QPET，研究版做 layer-specific）；MFR_SE 取「心肌內半層」counts。<strong>最佳 cutoff 以 1:1 隨機切成 derivation/validation，用 Youden index 在 derivation set 決定為 2.1</strong>，但最終結果報告於全 cohort（N=6603）。Cox 比例風險（Schoenfeld 驗證 PH 假設）；Poisson + marginal standardization 算絕對年化事件率（AER）。</li>
-<li><strong>多變量校正變項</strong>：年齡、性別、糖尿病、高血壓、高血脂、過去 MI、過去 PCI、BMI、LV mass index、LVEF、CAC。</li>
-</ul>
-<h3>5. 研究結果重點整理 [文內 ＋ 圖]</h3>
+<h2>3. 研究背景</h2>
+<p>作者的出發點是：PET MFR 已是評估 coronary microvascular dysfunction 的重要非侵入工具，但傳統 MFR 是 full-thickness 平均；subendocardium 因代謝需求與灌流壓脆弱性，可能較早出現異常。既有研究提示 reduced subendocardial flow 與 adverse outcomes 相關，但在 <strong>preserved transmural MFR</strong> 的病人中，MFR_SE 是否有獨立/增量預後價值仍不清楚 [Introduction]。</p>
+<h2>4. 研究設計與方法</h2>
+<p><strong>PICO</strong></p>
 <table>
 <thead>
 <tr>
-<th>指標</th>
-<th>Concordant-normal (N=4103)</th>
-<th>Discordant low-MFR_SE (N=885)</th>
-<th>Abnormal MFR_TM (N=1615)</th>
+<th>項目</th>
+<th>內容</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>佔比</td>
-<td>62.1%</td>
-<td><strong>13.4%</strong></td>
-<td>24.5%</td>
+<td>P</td>
+<td>2007–2024 年 3 個 academic centers，接受 rest-stress Rb-82 PET、normal perfusion（stress TPD ≤5%）的臨床轉介病人</td>
 </tr>
 <tr>
-<td>MFR_TM 中位數</td>
-<td>2.85 (2.51–3.32)</td>
-<td><strong>2.15 (2.06–2.28)</strong></td>
-<td>1.72 (1.48–1.87)</td>
+<td>Exposure</td>
+<td>MFR group：concordant-normal、discordant low MFR_SE with normal MFR_TM、abnormal MFR_TM</td>
 </tr>
 <tr>
-<td>MFR_SE 中位數</td>
-<td>2.61</td>
-<td>1.98</td>
-<td>1.63</td>
+<td>Comparator</td>
+<td>主要為 concordant-normal；另比較 abnormal MFR_TM vs discordant</td>
 </tr>
 <tr>
-<td>年齡</td>
-<td>64.3</td>
-<td>68.8</td>
-<td>70.1</td>
-</tr>
-<tr>
-<td>DM / HTN / PAD / 既往PCI</td>
-<td>較低</td>
-<td>居中、皆顯著高於 normal</td>
-<td>最高</td>
-</tr>
-<tr>
-<td>CAC 中位數 (AU)</td>
-<td>21.7</td>
-<td>78.5</td>
-<td>106.3</td>
-</tr>
-<tr>
-<td>調整後 MACE AER</td>
-<td>3.99% (3.67–4.30)</td>
-<td><strong>5.79% (5.10–6.49)</strong></td>
-<td>8.35% (7.71–9.00)</td>
-</tr>
-<tr>
-<td>調整後 ACM AER</td>
-<td>2.61%</td>
-<td>3.73%</td>
-<td>5.69%</td>
-</tr>
-<tr>
-<td>調整後 MACE HR vs normal</td>
-<td>Ref</td>
-<td><strong>1.41 (1.22–1.63)</strong></td>
-<td>—</td>
-</tr>
-<tr>
-<td>調整後 ACM HR vs normal</td>
-<td>Ref</td>
-<td><strong>1.36 (1.14–1.61)</strong></td>
-<td>—</td>
+<td>Outcome</td>
+<td>主要：time to first MACE，含 all-cause death、nonfatal MI、HF hospitalization、late revascularization ≥90 天；次要：all-cause mortality</td>
 </tr>
 </tbody>
 </table>
-<ul>
-<li>中位追蹤 4.95 年，1661 件 MACE（其中 <strong>1223 死亡、218 MI、311 HF、284 晚期血運重建</strong>）；death 為 60.9% 病人的首發事件。</li>
-<li><strong>關鍵觀察（來自 Table 2／Figure 2）</strong>：discordant 組的 MFR_TM 中位數 2.15、IQR 僅 2.06–2.28，<strong>幾乎全部貼著 2.0 門檻的下緣</strong>。也就是說「discordant」族群在 transmural 層面本來就是「剛好低空飛過」的一群。</li>
-</ul>
-<h3>6. 作者討論與評論重點 [文內]</h3>
-<ul>
-<li><strong>主要訊息</strong>：layer-specific 分析揪出 13.4% transmural 正常但 subendocardial 偏低的病人，風險約 1.4 倍，整合 subendocardial 評估可對近 1/5「被視為低風險」者重新分層。</li>
-<li>與既往文獻：與 Xu et al.（高血壓族群）、Gould et al.（相對灌注法）一致；作者主張本研究是「第一個以<strong>絕對</strong> subendocardial 血流量化、在 &gt;6000 人證明其超越 transmural MFR 增量價值」。</li>
-<li><strong>限制（作者自陳，相對完整）</strong>：回溯性、殘餘混淆；無 subendocardial 正常參考值；空間解析度有限、內半層其實混入中層心肌、可能<strong>高估 MFR_SE</strong>；院外住院可能漏計；無冠脈解剖、無法完全排除多血管病；僅 Rb-82。</li>
-<li>[評估]：限制揭露算誠實，但<strong>避重就輕兩處</strong>：(1) discordant 組 transmural MFR 緊貼門檻這件事，被輕描淡寫成「preserved flow 在其他層掩蓋」，沒有正面處理「MFR_SE 是否只是 transmural MFR 連續值的代理」；(2) Clinical implication 寫到「may guide diagnosis, risk assessment, and personalized treatment」，但<strong>沒有任何介入能改變此族群預後的證據</strong>，屬超出資料的推論。</li>
-</ul>
-<h3>7. 外部專業意見</h3>
-<ul>
-<li>[無法取得]——本文 2026 年新發表，檢索未找到同期 editorial 或公開 commentary。Circulation 此類論文通常會配 editorial，但目前無法取得，不臆測其立場。</li>
-</ul>
-<h3>8. 臨床建議（總覽，詳見最終裁決）</h3>
-<ul>
-<li><strong>可參考的情境</strong>：在已經常規做量化 PET MFR、且軟體支援 layer-specific 分析的中心，對 MFR_TM 落在 2.0–2.3 邊緣的灌注正常病人，MFR_SE 偏低可作為「風險偏高、值得積極控制危險因子」的輔助訊號。</li>
-<li><strong>不建議直接套用</strong>：不具 layer-specific 量化能力的中心、非 Rb-82 示蹤劑、無症狀一般族群；更不應據此啟動任何特定藥物或血運重建（無 outcome 證據）。</li>
-<li><strong>證據強度：中</strong>（大樣本、事件多、關聯穩健，但回溯觀察性、指標循環選 cutoff、增量價值未正式量化、無 actionability）。</li>
-</ul>
-<hr />
-<h2>SKILL-A：原始研究批判性評讀（觀察性子模組）</h2>
-<h3>A. 補充技術細節（僅補 SECTION-0 未涵蓋者）</h3>
-<ul>
-<li><strong>樣本數估算</strong>：未報告事前 power calculation；事件數極多（1661 MACE），統計檢定力非問題。</li>
-<li><strong>cutoff 決定</strong>：split-sample 1:1，Youden index 取 MFR_SE=2.1。<strong>但最終 HR/AER 報告於全 cohort（含 derivation set）</strong>，未見只用 validation set 的獨立效果量（Table S1 未提供，[限制：markdown 未保留補充表]）。</li>
-<li><strong>缺失資料</strong>：追蹤可得 6584/6603（99.7%），極佳。</li>
-<li><strong>競爭風險</strong>：CV death/MI 複合用 Fine-Gray、以非 CV 死亡為競爭風險，<strong>處理正確</strong>。</li>
-<li><strong>PH 假設</strong>：Schoenfeld residual 驗證，作者稱通過。</li>
-<li><strong>混淆控制方法</strong>：多變量 Cox（11 個共變項）＋ Poisson marginal standardization。屬中等強度（見下表）。</li>
-</ul>
+<p>關鍵方法：QPET 中央批次處理；MFR_TM abnormal cutoff 採既有 &lt;2.0；MFR_SE 無既有標準，本文用 1:1 derivation/validation split 加 Youden’s index 得到 2.1。Cox 模型調整 age、sex、diabetes、HTN、hyperlipidemia、previous MI/PCI、BMI、LV mass index、LVEF、CAC；並檢查 Schoenfeld residuals [Statistical Analysis]。</p>
+<h2>5. 研究結果重點整理</h2>
 <table>
 <thead>
 <tr>
-<th>方法</th>
-<th>強度</th>
-<th>本文是否滿足關鍵要求</th>
+<th>結果</th>
+<th>數字</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>多變量迴歸</td>
-<td>中</td>
-<td>納入主要危險因子與 CAC，但<strong>未納入連續 MFR_TM</strong>、未納入腎功能/用藥/eGFR（殘餘混淆風險）</td>
+<td>最終樣本</td>
+<td>N=6603；follow-up 可得 6584/6603（99.7%）</td>
 </tr>
 <tr>
-<td>Propensity score</td>
-<td>—</td>
-<td>未使用</td>
+<td>分組</td>
+<td>normal 4103（62.1%）；discordant low MFR_SE 885（13.4%）；abnormal MFR_TM 1615（24.5%）</td>
 </tr>
 <tr>
-<td>Instrumental variable</td>
-<td>—</td>
-<td>不適用</td>
+<td>MFR 數值</td>
+<td>MFR_TM：2.85 vs 2.15 vs 1.72；MFR_SE：2.61 vs 1.98 vs 1.63</td>
+</tr>
+<tr>
+<td>事件</td>
+<td>MACE 1661；其中 death first event 60.9%，HF 16.8%，MI 11.8%，late revascularization 10.6%</td>
+</tr>
+<tr>
+<td>Discordant vs normal</td>
+<td>MACE adjusted HR 1.41（95% CI 1.22–1.63）；ACM HR 1.36（1.14–1.61）</td>
+</tr>
+<tr>
+<td>Absolute risk</td>
+<td>Adjusted MACE AER：3.99%、5.79%、8.35%/year；ACM AER：2.61%、3.73%、5.69%/year</td>
+</tr>
+<tr>
+<td>Sex subgroup</td>
+<td>MACE association 在男女皆存在；女性 ACM discordant vs normal 調整後 HR 1.20（0.94–1.51），不精確且跨 1</td>
 </tr>
 </tbody>
 </table>
-<h3>B. 批判性評估</h3>
-<h4>B1. 假說與理論邏輯</h4>
-<ul>
-<li><strong>合理機轉（1–3）</strong>：(1) subendocardium 收縮期管壁張力最高、小動脈壁薄易受壓、代謝需求高，理論上血流異常可早於全層 → 生理上站得住腳；(2) discordant 組 CAC、TID、負向 LVEF reserve 較多，支持確有早期微血管/缺血傾向。</li>
-<li><strong>最可疑的敘事跳躍</strong>：作者反覆把 MFR_SE 描述成「捕捉到被 transmural 平均掩蓋的早期病變」。但 discordant 組 MFR_TM 中位數 2.15、IQR 2.06–2.28——<strong>這群人 transmural MFR 本來就接近異常門檻</strong>。因此「subendocardial 提供 transmural 看不到的資訊」與「subendocardial 只是 transmural 連續惡化的更敏感讀數」兩種解釋無法被本文設計區分（見 F. 反向解釋）。這是全文最核心的邏輯弱點。</li>
-</ul>
-<h4>B2. 受試者與外推性</h4>
-<ul>
-<li><strong>外推性分級：窄</strong>。臨床轉介、做得起量化 PET 的學術中心、79.6% 白人、平均 66 歲多共病、症狀性族群。不能外推到一般無症狀人口、社區醫院、或不做 layer-specific 量化的場域。</li>
-<li>discordant 組與 concordant 組基線<strong>顯著不平衡</strong>（年齡、HTN、DM、PAD、PCI、CAC 全部偏高），暴露非隨機分派，預後差異有相當部分源自這些可測與不可測差異。</li>
-</ul>
-<h4>B3. 研究設計與偏差</h4>
-<ul>
-<li><strong>最可能造成偏差的設計點（≤3）</strong>：
+<p><strong>圖頁整合</strong>：Figure 1 PNG 顯示起始 N=7444、排除 N=841，細項加總與 final N=6603 一致，沒有 flow diagram 人數不合。Figure 2 的 boxplot 顯示 discordant 組的 transmural MFR 仍在 ≥2，但 subendocardial MFR 明顯低於 concordant；不過 y 軸約從 1 起跳，視覺分離可能比從 0 起跳更強，仍需以表格中位數解讀。Figure 3 Kaplan-Meier 曲線在早期即呈現 normal、discordant、abnormal 分離，且持續拉開；但 12 年附近 number-at-risk 明顯下降，normal 約 199–224、discordant 69–76、abnormal 86–105，尾端曲線不宜過度解讀。</p>
+<h2>6. 作者討論與限制</h2>
+<p>作者主張：MFR_SE 可在傳統 MFR_TM 正常與 normal perfusion 的病人中，重新分類約 17.8%（885/4988），辨識 intermediate-risk phenotype。作者承認的限制包括：回溯觀察性、臨床轉介族群、殘餘混淆、MFR_SE 無 established reference values、PET 空間解析度限制、hospitalization ascertainment 可能不完整、無 angiographic anatomy、僅 Rb-82 PET [Limitations]。</p>
+<p>我的評估：限制寫得相對完整，但最關鍵的「cutoff 在同一 cohort 內 data-driven 產生」與「incremental value 是否超越連續 MFR_TM/CAC/TID/LVEF reserve 的正式 reclassification 指標」仍不足。作者說 “clinically meaningful risk heterogeneity” 合理；若推到「應常規改變 PET interpretation 或治療策略」則超出本文資料。</p>
+<h2>7. 臨床建議</h2>
+<p>可採用情境：已在高品質 PET MPI 中取得 layer-specific MBF/MFR、病人為 symptomatic / clinically referred、relative perfusion normal、MFR_TM 接近正常低端時，MFR_SE 可作為<strong>風險分層補充訊號</strong>。</p>
+<p>不建議直接套用：無症狀篩檢族群、低風險健康族群、非 Rb-82 tracer、非 QPET 或未驗證軟體、沒有標準化動態影像品質控管的中心。</p>
+<p>實務建議：</p>
 <ol>
-<li><strong>資料驅動 cutoff 的循環性（最重要的偏差來源）</strong>：MFR_SE=2.1 是用「能最佳區分 MACE」挑出來的（Youden）。雖做了 split-sample，但最終效果量在含 derivation set 的全 cohort 報告，<strong>會系統性把 HR 往「顯著且偏大」方向膨脹</strong>（類 Winner's Curse / optimism bias）。方向：誇大效果。</li>
-<li><strong>晚期血運重建（≥90 天）作為 MACE 成分</strong>：醫師看到低 MFR 可能更積極安排冠脈攝影/血運重建——測試結果本身會驅動 outcome（treatment-paradox / ascertainment 偏差）。用 ≥90 天部分緩解即時導向，但無法消除。方向：誇大關聯。</li>
-<li><strong>殘餘混淆</strong>：未校正 eGFR/CKD、用藥（statin、ACEi/ARB、SGLT2i）、frailty；HR 從未校正 1.83 掉到校正後 1.41，<strong>將近一半的粗關聯是已知混淆</strong>，剩下的 1.41 仍可能含未測混淆。方向：可能仍誇大。</li>
+<li>不要把 MFR_SE &lt;2.1 當成診斷 obstructive CAD 或必須介入的門檻。</li>
+<li>可把 discordant low MFR_SE 視為「microvascular / diffuse atherosclerotic risk marker」，加強風險因子控制。</li>
+<li>若症狀持續，應結合 CCTA、CAC、症狀型態與其他 ischemia/CMD 評估，而不是只靠 MFR_SE 決策。</li>
 </ol>
-</li>
-<li><strong>對照組適當性</strong>：concordant-normal 作為參照組合理，但兩組臨床特徵差距大，並非「只差 MFR_SE」的乾淨對比。</li>
-<li>無提早停止問題（回溯性、非試驗）。</li>
-</ul>
-<h4>B4. 測量工具與實務意義</h4>
+<p><strong>證據強度：中等</strong>。樣本大、多中心、事件多、效果一致；但仍是回溯觀察性、cutoff data-driven、治療可改變性未證明。</p>
+<h2>A. 補充技術細節</h2>
+<p>沒有事前樣本數估算或 power calculation；這是 registry prognostic analysis，可接受但仍限制 inferential planning。MFR_SE cutoff 用 derivation/validation split 與 Youden’s index，但補充表 S1 未在 markdown 中呈現，無法評估 validation set 的效能、AUC、calibration 或 optimism。比例風險假設以 Schoenfeld residuals 驗證 [Statistical Analysis]。缺失 outcome 僅 19/6603，完整性佳；但 hospitalization 外院事件可能漏抓。</p>
+<h2>B. 批判性評估</h2>
+<p><strong>B1 假說與理論邏輯</strong>：機轉合理，subendocardium 較易受 wall stress、灌流壓與微血管功能影響。但本文結果也可由較高 rest MBF、血壓、CAC、糖尿病與年齡組合反映整體 cardiometabolic burden，而非純粹「早期 subendocardial ischemia」。</p>
+<p><strong>B2 受試者與外推性</strong>：三中心 academic PET registry，White 79.6%，臨床轉介、胸痛為主。可外推到類似高階 PET 中心的 symptomatic population；不能外推到一般門診低風險族群或亞洲族群。Discordant 組比 normal 組年長、HTN/DM/PAD/PCI/CAC 更高，雖有調整，但 residual confounding 很可能仍存在。</p>
+<p><strong>B3 設計與偏差</strong>：最大問題是 exposure threshold 由 outcome 最佳化產生。即使用 split validation，也仍需外部驗證，否則 MFR_SE &lt;2.1 可能是本 registry 的 calibration artifact。另一問題是 MACE composite 以 all-cause death 為最大成分，death first event 60.9%；這提高事件數與統計力，但其病理特異性低，較難說明是 subendocardial microvascular abnormality 造成。</p>
+<p><strong>B4 測量與實務意義</strong>：subendocardial layer 被定義為 LV wall inner half；作者承認受空間解析度限制，可能包含 central myocardium 並高估 MFR_SE。這是核心測量限制。臨床上 adjusted MACE AER 從 3.99% 到 5.79%/year，絕對差約 1.8%/year，對風險溝通有意義；但尚未證明根據此資訊治療會改善 outcome。</p>
+<h2>C. 統計與資料完整性</h2>
+<p>主要結果不是治療效果，MCID 不適用；應以預後 discrimination、calibration、reclassification 與 clinical utility 判讀。本文提供 HR 與 AER，但缺少 C-statistic change、net reclassification improvement、integrated discrimination improvement、decision curve analysis。題名使用 “incremental prognostic value”，但 markdown 中可見資料主要是 adjusted association 與分層 event rate，尚不足以完整證明臨床層級的 incremental value。</p>
+<p>統計紅旗：</p>
 <ul>
-<li><strong>測量信度疑慮（作者自承）</strong>：PET 空間解析度（約 5–7 mm）大於 subendocardium 真實厚度；「內半層」實際混入中層心肌，<strong>可能高估 MFR_SE</strong>，意味真正的 subendocardial 訊號比報告的更被稀釋或被測量噪音汙染。MFR_SE 與 MFR_TM 高度相關（同一掃描衍生），兩者非獨立量測。</li>
-<li><strong>終點意義</strong>：MACE 由全死因死亡主導（74% 事件、60.9% 首發），在 66 歲多共病族群，全死因死亡含大量非心臟死因，<strong>稀釋了 subendocardial 缺血的生理特異性</strong>。CV-specific 複合（705 事件、278 CV 死亡）才較對應機轉，但事件數與效果呈現較少。晚期血運重建為較軟、受決策影響的終點。</li>
-<li><strong>實務意義</strong>：就算關聯為真，<strong>絕對風險差距約 1.8%/年</strong>（5.79% vs 3.99%），臨床上屬中等；且目前沒有任何「依 MFR_SE 採取行動能改善預後」的證據——distance to actionability 仍遠。</li>
+<li>MFR_SE cutoff 2.1 是 data-driven，需外部驗證。</li>
+<li>多個 outcome、pairwise comparison、sex subgroup，未見多重比較校正。</li>
+<li>Composite MACE 混合 all-cause death、MI、HF、late revascularization，臨床重要性與機轉特異性不等。</li>
+<li>調整模型未見 renal function、medication、socioeconomic factors、site/scanner protocol、stress agent/site effect。</li>
+<li>未提供連續 MFR_SE 的 dose-response / spline 結果於主文 markdown。</li>
+<li>未正式呈現 incremental discrimination / calibration。</li>
+<li>女性 all-cause mortality subgroup CI 跨 1，仍應稱為不精確，不是「男女死亡風險一致」。</li>
 </ul>
-<h3>C. 統計與資料完整性</h3>
-<h4>C1. 結果分類（預後關聯版 CI 判讀）</h4>
-<p>本文為預後觀察研究，MCID 不直接適用；改以「CI 是否穩定排除無效、效果量級與絕對風險」判讀：</p>
-<table>
-<thead>
-<tr>
-<th>終點</th>
-<th>調整後效果</th>
-<th>95% CI</th>
-<th>判讀</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>MACE（discordant vs normal）</td>
-<td>HR 1.41</td>
-<td>1.22–1.63</td>
-<td><strong>穩健正向關聯</strong>：CI 完全 &gt;1，下界 1.22 已具臨床意義</td>
-</tr>
-<tr>
-<td>全死因死亡（同上）</td>
-<td>HR 1.36</td>
-<td>1.14–1.61</td>
-<td>正向關聯，CI 完全 &gt;1</td>
-</tr>
-<tr>
-<td><strong>女性全死因死亡（同上）</strong></td>
-<td>HR 1.20</td>
-<td><strong>0.94–1.51</strong></td>
-<td><strong>不確定/陰性</strong>：CI 跨越 1，校正後不顯著</td>
-</tr>
-<tr>
-<td>CV 複合（discordant vs normal）</td>
-<td>HR 1.53</td>
-<td>1.22–1.91</td>
-<td>正向</td>
-</tr>
-</tbody>
-</table>
+<h2>D. 次組分析</h2>
+<p>Sex subgroup：文內有 stratified Cox/Poisson。可信度 <strong>中低</strong>。有生物合理性，但 markdown 未見 interaction p-value；不能只因男女各自 HR 類似或其中一組顯著就宣稱 effect modification。女性 ACM discordant vs normal HR 1.20（0.94–1.51）顯示不確定性仍大。</p>
+<h2>E. 紅旗清單</h2>
 <ul>
-<li>整體為 <strong>POSITIVE（穩健正向預後關聯）</strong>，非 underpowered（1661 事件）。但「正向關聯」≠「臨床有用」：效果量中等、絕對差距 ~1.8%/年、且關聯而非因果。</li>
-<li><strong>禁止謬誤檢核</strong>：本文未誤用 p&gt;0.05=no difference；未用 post-hoc power。✔</li>
+<li>「incremental value」未搭配正式 reclassification / discrimination 指標。</li>
+<li>Cutoff 由同一研究族群推導，臨床門檻尚未穩固。</li>
+<li>產業與軟體相關 COI 多，且研究結論支持更廣泛使用進階影像軟體。</li>
+<li>無 angiographic anatomy，balanced multivessel CAD 雖少見但不能完全排除。</li>
+<li>事件主要由 all-cause death 驅動，與 subendocardial physiology 的因果連結較弱。</li>
+<li>Figure 3 後期 number-at-risk 小，KM 尾端不可過度詮釋。</li>
 </ul>
-<h4>C2. Underpowered / Winner's Curse</h4>
-<ul>
-<li>整體<strong>非</strong>檢定力不足。但 <strong>cutoff 選擇本身帶 optimism</strong>：以 Youden 在資料內最佳化門檻，再於含該資料的全 cohort 報效果，等同部分「保證顯著」。若僅用獨立 validation set 報 HR，效果量很可能略縮（本文未單獨呈現，[限制：Table S1 未提供]）。</li>
-</ul>
-<h4>C3. Bayesian 補充</h4>
-<ul>
-<li>主要終點 CI 明確遠離 1、p&lt;0.001，非邊緣顯著，<strong>不需</strong> Bayesian 重判。唯一邊緣案例是女性 ACM（HR 1.20, 0.94–1.51），屬 inconclusive，宜謹慎不宜過度解讀為「女性同樣有效」。</li>
-</ul>
-<h4>C4. 報告完整性與其他</h4>
-<ul>
-<li><strong>「增量價值」未被正式證明（核心統計缺口）</strong>：題目主打 incremental value，但<strong>全文沒有任何 C-statistic/AUC 比較、NRI、IDI 或巢狀模型 likelihood ratio test</strong> 來證明「加入 MFR_SE 後，預測能力超越只含連續 MFR_TM 的基準模型」。所謂「reclassified 17.8%」只是計算落入 discordant 組的人數佔比，<strong>不是經驗證的 reclassification 指標</strong>。在預後方法學上，這是把「分組後組間有風險差」當成「增量價值」，兩者不等價。</li>
-<li><strong>未把連續 MFR_TM 放進校正模型</strong>：既然 discordant 組 MFR_TM 緊貼 2.0–2.3，最關鍵的對照分析應是「校正連續 MFR_TM 後 MFR_SE 是否仍獨立預測」，或在 MFR_TM 相同層的病人中比較。本文未做，使「超越 transmural」的主張缺乏直接證據。</li>
-<li>統計面紅旗（≥5）：①資料驅動 cutoff 循環性；②增量價值無 ΔC/NRI/IDI；③校正模型未納連續 MFR_TM；④MACE 由全死因死亡主導、特異性低；⑤晚期血運重建受測試結果驅動；⑥未校正腎功能/用藥之殘餘混淆。</li>
-</ul>
-<h3>D. 次組分析評估（性別分層）</h3>
-<p>依 JAMA 五準則評估 sex subgroup：</p>
+<h2>F. 反向解釋</h2>
 <ol>
-<li>有無 interaction p？<strong>無</strong>（僅分層報 HR，未報交互作用檢定）。</li>
-<li>方向一致性？MACE 在男女皆顯著；但 <strong>ACM 在女性不顯著（1.20, 0.94–1.51）、男性顯著（1.60, 1.24–2.05）</strong>，方向一致但強度不一。</li>
-<li>預先指定？性別分層屬合理預設。</li>
-<li>生物機轉？可能（女性 CMD 表現不同），但本文未深究。</li>
-<li>within-study：是（同一 cohort 分層）。</li>
+<li><strong>整體 cardiometabolic risk marker</strong>：MFR_SE 低可能只是年齡、HTN、DM、CAC、resting hemodynamics 的綜合表現；調整後仍殘餘混淆。</li>
+<li><strong>低正常 MFR_TM 的邊界現象</strong>：discordant 組 MFR_TM 中位數 2.15，接近 cutoff 2.0；所謂 layer-specific 訊號可能部分是 transmural MFR 連續風險被二分法遮蔽。</li>
+<li><strong>技術/軟體量測現象</strong>：inner-half segmentation、partial volume、scanner/site protocol 差異可能影響 MFR_SE，需跨 tracer、跨軟體驗證。</li>
 </ol>
-<ul>
-<li><strong>可信度：中</strong>。整體 MACE 結論跨性別穩定可接受；但「女性死亡率也增加」屬<strong>推測性</strong>，因校正後不顯著且無交互作用檢定支持，作者已適度標註，宜維持保守。</li>
-</ul>
-<h3>E. 紅旗清單</h3>
-<ul>
-<li>🚩 <strong>既得利益</strong>：MFR_SE 由作者自家 QPET research 版獨家產生，資深作者持該軟體 equity/royalty → 推廣性結論需打折。</li>
-<li>🚩 <strong>指標循環</strong>：cutoff 用 Youden 內部最佳化，效果量於含 derivation 的全 cohort 報告 → optimism 膨脹。</li>
-<li>🚩 <strong>「增量價值」名實不符</strong>：無 ΔC-statistic / NRI / IDI，未校正連續 MFR_TM。</li>
-<li>🚩 <strong>discordant 組其實是 MFR_TM 邊緣族群</strong>（2.06–2.28），無法區分「subendocardial 特異訊號」vs「transmural 連續惡化代理」。</li>
-<li>🚩 <strong>終點稀釋</strong>：MACE 由全死因死亡主導，特異性低；晚期血運重建受測試結果驅動。</li>
-<li>🚩 <strong>測量近似</strong>：內半層含中層心肌、PET 解析度不足，作者自承可能高估 MFR_SE。</li>
-<li>🚩 <strong>女性 ACM 校正後不顯著</strong>，但 implication 仍寫「across both sexes」。</li>
-</ul>
-<h3>F. 反向解釋</h3>
+<h2>G. 最終裁決</h2>
+<p><strong>整體可信度：中等。</strong><br />
+這篇研究支持 MFR_SE 是有價值的預後風險標記，尤其在 normal perfusion 且 MFR_TM ≥2 的病人中，可辨識一群風險介於 normal 與 abnormal MFR_TM 之間的人。但它還沒有證明 MFR_SE &lt;2.1 是可直接改變臨床處置的標準化門檻。</p>
+<p>最需要的 3 個改進：</p>
 <ol>
-<li><strong>MFR_SE 只是連續 MFR_TM 的更敏感代理</strong>（最強替代解釋）：支持——discordant 組 MFR_TM 緊貼門檻、各層 MBF 呈一致 stepwise 下降、subendo 與 subepi 高度相關；反對——Figure 2 顯示 discordant 組 subendo 與 subepi 分離最明顯。但本文未校正連續 MFR_TM，無法排除此解釋。</li>
-<li><strong>殘餘混淆驅動</strong>：discordant 組更老、更多 DM/HTN/PAD/CAC；校正後 HR 由 1.83→1.41，仍可能殘留未測混淆（CKD、用藥、frailty）。支持線索強。</li>
-<li><strong>測試導向偏差</strong>：低 flow → 更多後續攝影/血運重建 → 推高 MACE。部分被 ≥90 天定義緩解。</li>
-<li><strong>真實 subendocardial 特異生理訊號</strong>（作者主張）：有機轉與 CAC/TID 佐證，但因 1–3 未被設計排除，目前無法確立其為主因。</li>
+<li>外部 cohort 驗證 MFR_SE 2.1 cutoff，最好跨 tracer / scanner / software。</li>
+<li>報告 C-statistic、calibration、NRI/IDI、decision curve，證明真正 incremental value。</li>
+<li>前瞻性研究測試依 MFR_SE 風險分層後的治療策略是否改善症狀或 hard outcomes。</li>
 </ol>
-<h3>G. 最終裁決</h3>
-<ul>
-<li><strong>整體可信度：中</strong>。大樣本、事件多、追蹤完整、競爭風險與 PH 處理得當，關聯方向穩健；但屬回溯觀察性、暴露分組高度不平衡、cutoff 有循環性、且<strong>最核心的「增量價值」從未以標準預後增量指標（ΔC/NRI/IDI、校正連續 MFR_TM）證明</strong>。</li>
-<li><strong>可採用的條件</strong>：已常規量化 PET MFR 且具 layer-specific 能力的中心，把 MFR_SE 偏低當作「MFR_TM 邊緣病人值得更積極危險因子控制與追蹤」的輔助訊號。</li>
-<li><strong>不建議採用</strong>：據此啟動特定藥物或血運重建（無 outcome 證據）；外推至非 Rb-82、無 layer-specific 能力、或無症狀一般族群；把它當成已驗證的獨立增量預測工具。</li>
-<li><strong>最需要的 3 個關鍵改進</strong>：(1) 在校正<strong>連續 MFR_TM</strong> 的模型中、並以 <strong>ΔC-statistic/NRI/IDI</strong> 正式量化增量；(2) 只在<strong>獨立 validation set</strong> 報告 cutoff 衍生之效果量，呈現 optimism 修正；(3) 用 CV-specific 硬終點為主、並前瞻驗證「依 MFR_SE 採取行動能否改善預後」。</li>
-<li><strong>一句話結論</strong>：在 PET 灌注正常的人裡，subendocardial MFR 偏低的確對應到約 1.4 倍、且絕對風險中等的較高事件率，但這群人本來 transmural MFR 就貼著門檻，「超越全層的增量價值」尚未被嚴謹證明，臨床上目前只能當參考訊號、不能據以治療。</li>
-</ul>
-<hr />
-<h3>圖頁判讀補充（圖傳達、文字未明講者）</h3>
-<ul>
-<li><strong>Figure 1（flow diagram，page_003）</strong>：起始 N=7444 → 排除 841（&lt;18 歲 2、CABG 254、OHT 204、其他心臟手術 98、LVEF&lt;40% 217、非血管擴張劑 30、無 dynamic/gated 33、無臨床資料 3）→ 最終 6603。<strong>加總一致、無人數矛盾</strong>，CONSORT-style 完整性 OK。</li>
-<li><strong>Figure 2（box plot，page_006）</strong>：縱軸 Myocardial Flow Reserve 自 0 起、<strong>未截斷誇大</strong>。清楚顯示三組各層 stepwise 下降，且 <strong>discordant 組 subendo 與 subepi 分離最明顯</strong>——這是支持「subendocardial 特異」的最強圖像證據，但也同時看到 discordant 組 transmural box 緊貼 2.0，呼應「邊緣族群」批判。</li>
-<li><strong>Figure 3（KM，page_007）</strong>：兩張縱軸皆 <strong>0–1.0 全尺度、未 truncate</strong>，誠實。曲線自約第 1 年起<strong>漸進且持續分離</strong>，三組順序穩定（normal &gt; discordant &gt; abnormal）。圖上標註調整後 HR：MACE discordant vs normal 1.41 (1.22–1.63)、abnormal vs discordant 1.46 (1.26–1.68)；OS discordant vs normal 1.36 (1.14–1.61)，與內文/Table 3 一致。</li>
-<li><strong>Number-at-risk 後期銳減</strong>：discordant 組 at-risk 由起始約 884 降到後段（約第 8–10 年）僅 ~39–110，normal 組亦由 ~4080 降至百位數。<strong>曲線尾端（&gt;6–8 年）人數偏少、信賴度下降</strong>；惟中位追蹤 4.95 年、主要事件落在前 5 年區間，核心估計仍可靠，尾段不宜過度解讀。</li>
-<li>[限制：Figure S1（各層 MBF/MFR 分布）與 Table S1–S4 未提供，無法核對 cutoff 衍生過程與性別分層細表。]</li>
-</ul>
-<p><strong>Sources:</strong></p>
-<ul>
-<li><a href="https://cardiovascularbusiness.com/topics/cardiac-imaging/how-pet-transforming-cardiac-nuclear-imaging">Brigham/Cedars 作者背景與 PET MFR 研究脈絡</a></li>
-<li><a href="https://jnm.snmjournals.org/content/55/12/1952">82Rb PET MFR 量化方法與預後價值</a></li>
-<li><a href="https://www.journalmetrics.org/journal/circulation">Circulation Impact Factor 2025（Clarivate）</a></li>
-<li><a href="https://www.bioxbio.com/journal/CIRCULATION">Circulation IF 歷年數據</a></li>
-</ul>
+<p>一句話結論：<strong>MFR_SE 可補強 PET 預後分層，但目前是風險標記，不是治療決策門檻。</strong></p>
 
-<footer class="appraisal-meta">評讀資訊：模型：claude-fable-5 (claude)  ·  route：observational  ·  產出時間：2026-06-10 07:58 CST</footer>
+<footer class="appraisal-meta">評讀資訊：模型：gpt-5.5 (codex)  ·  route：default  ·  產出時間：2026-06-09 22:29 CST</footer>
 </main>
 </body>
 </html>
