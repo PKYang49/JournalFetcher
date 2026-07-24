@@ -155,6 +155,25 @@ JournalFetcher/
 - 儲存：`output/pdfs/{pmid}_{first_author}_{year}.pdf`。
 - 失敗記到 `output/download_failures.log`，不中斷流程。
 - 已知 quirk：OUP（EHJ）下載要走 `page.request.get` 不是 `page.goto`；NEJM 單 DOI 場景 Playwright + homepage warmup 優於 nodriver。
+
+#### ego lite 路徑（`modules/ego_browser.py`，2026-07-24）
+
+需要真實瀏覽器 profile 的下載改走 **ego lite**（`ego-browser` CLI）。相對 Claude-in-Chrome 的關鍵差異：ego 給 **CLI + Node runtime**，所以能被 `subprocess` 呼叫、能塞進 launchd 無人值守，且 `fs.writeFileSync` 直接落檔（不需要 `ovid_pdf_receiver.py` 那種 local receiver）。
+
+核心原語 `fetch_pdf_via_ego(nav_url, *, link_js, pdf_url_js, wait_for_url)`：navigate → （選配）在頁面內求值 `link_js` 拿下一跳 URL 並導過去 → 在最終頁 `fetch(pdf_url_js)` → base64 過 CDP → Node 落檔。**PDF 的簽章 URL 幾乎都綁 browser session**（Elsevier `X-Amz-Expires=300`、Silverchair token），從 Python 抓會 403，所以 bytes 一定要從那個分頁取。
+
+| 出版社 | 函式 | 機制 | 需要人工？ |
+|---|---|---|---|
+| Ovid（MSSE） | `_try_ego_ovid` | `/fulltext/` 取席 → `/pdf/` | 否（cookie 有效時） |
+| Elsevier（JACC/Lancet） | `_try_ego_sciencedirect` | PII → 文章頁抓 `pdfft` → 導過去解 challenge | **是，撞 Turnstile 時** |
+| Silverchair（JAMA/OUP）、Springer、BMJ、NEJM | `_try_ego_citation_pdf` | `citation_pdf_url`（NEJM 用 `/doi/pdf/` anchor）→ 導過去 | 否 |
+
+- **一律是新增 tier，不取代既有路徑**：ego 回 `None` 就落回原本的 Playwright / nodriver cascade，行為不變。`JOURNAL_FETCHER_EGO=0` 或 CLI 不存在也一樣。
+- **Elsevier 無法無人值守**：Cloudflare Turnstile 過關後約 **1.5–2 小時**就復發，agent 的 CDP 點擊無效、必須人點。但既有 nodriver 路徑同樣要人（`_nodriver_wait_for_cloudflare` 會提示點擊），而且 `uc.start()` 每次開拋棄式 profile、每批都重撞；ego 的 clearance 留在真實 profile，窗口內跨文章跨 run 都有效。定位是「機會主義 tier」。
+- **其餘出版社不需 captcha**：走機構 IP 授權，ego 的真實 profile IP 對就過 → 這些**可以無人值守**。
+- 每篇約 13–18 秒。`cliLog` 寫的是 **stderr** 不是 stdout（接 subprocess 時要讀兩個串流）。
+- 觀察：Heart / BJSM 測試時在 DOI redirect（純 HTTP）就成功，沒用到 ego 也沒用到 ProQuest；ProQuest 路徑可能已是歷史包袱，但單次觀察不足以下結論。
+
 - **MSSE 已從 LWW 改到 Ovid（~2026-07），走 ego lite 自動下載**：DOI 現在 redirect 到 `www.ovid.com/jnls/acsm-msse/...`，PDF 需要 **httpOnly entitlement cookie**；headless curl_cffi 抓不到（直打 `/pdf/` 會 bounce 回 `/fulltext/` 的 HTML），cookie-bridge 也不可行。**現行做法：`modules/ego_browser.py`**——`_try_ego_ovid` 用 `requests` 跟 doi.org redirect 拿到帶 slug 的 `/fulltext/` URL，再交給 `fetch_pdf_via_ego` 在 ego lite 內 navigate（**這步才會讓 session entitled**）→ 同源 `fetch(location.href.replace('/fulltext/','/pdf/'))` → Node `fs` 直接落檔。`download_pdf` 與 `dlbydoi.download_one` 的 `is_msse` 分支都走這條，`_try_lww_direct` 降為 legacy host 備援。
   - **UI 上不需處於登入態**：頁面 nav 顯示 Login、`signedIn: false` 照樣拿得到 PDF，關鍵是 profile 裡的 httpOnly cookie。**cookie 壽命未測**，所以 `deferred` 重試機制要保留。
   - **Ovid 3 concurrent seats**，每開一次 fulltext 佔一席：`_OVID_MIN_INTERVAL`（8s）節流，且 `fetch_pdf_via_ego` 在 `finally` 一定 `completeTaskSpace({keep:false})` 釋放席位。
