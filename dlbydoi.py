@@ -26,6 +26,8 @@ from modules.downloader import (
     _try_elsevier_api,
     _try_jamanetwork_playwright,
     _try_lww_direct,
+    _try_ego_ovid,
+    ego_available,
     _try_nodriver,
     _try_springer_playwright,
     _try_proquest_playwright,
@@ -147,15 +149,30 @@ def download_one(doi: str, out_dir: Path) -> Path | None:
         print(f"  [FAIL] JAMA Network Playwright 失敗")
         return None
 
-    # MSSE: tokenized journals.lww.com endpoint (pure HTTP, 3 hops).
+    # MSSE moved to ovid.com in ~2026-07, where the PDF needs an httpOnly
+    # entitlement cookie that only a real browser profile carries.
     if is_msse:
+        print(f"  [{step}] Ovid via ego browser (MSSE)...")
+        content = _try_ego_ovid(doi)
+        if content:
+            dest.write_bytes(content)
+            print(f"  [OK] {dest.name} ({len(content)//1024} KB)")
+            return dest
+
+        step += 1
         print(f"  [{step}] LWW tokenized PDF (MSSE)...")
         content = _try_lww_direct(doi)
         if content:
             dest.write_bytes(content)
             print(f"  [OK] {dest.name} ({len(content)//1024} KB)")
             return dest
-        print(f"  [FAIL] MSSE LWW direct 失敗")
+
+        if not ego_available():
+            print("  [FAIL] MSSE — ego browser 不可用（CLI 未安裝或 JOURNAL_FETCHER_EGO=0），"
+                  "ovid.com 需要真實瀏覽器 profile。請啟動 ego lite 後重試。")
+        else:
+            print("  [FAIL] MSSE — ego 有跑但 ovid.com 沒給 PDF（entitlement cookie 過期、"
+                  "captcha、或 3 個 Ovid 席位都被佔）。")
         return None
 
     # Springer Sports Medicine: link.springer.com gates plain HTTP with a JS

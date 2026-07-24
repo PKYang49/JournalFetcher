@@ -18,6 +18,8 @@ logging.getLogger("asyncio").setLevel(logging.CRITICAL)
 from dotenv import load_dotenv
 load_dotenv()
 
+from modules.ego_browser import ego_available, fetch_pdf_via_ego
+
 try:
     from curl_cffi import requests
     IMPERSONATE = "chrome120"
@@ -1916,6 +1918,68 @@ def _try_lww_direct(doi: str) -> bytes | None:
         return None
 
 
+def _ovid_fulltext_url(doi: str) -> str | None:
+    """Resolve an Ovid DOI to its slugged /fulltext/ URL.
+
+    Ovid's PDF endpoint only works when the URL carries the article slug
+    (`/fulltext/10.1249/mss.000...~the-effects-of-...`); a bare DOI bounces.
+    Following the DOI redirect yields that URL without opening a browser —
+    unauthenticated requests still land on /fulltext/, they just get HTML
+    instead of the PDF.
+    """
+    try:
+        resp = _get(f"https://doi.org/{doi}", allow_redirects=True)
+        url = resp.url
+        if "ovid.com" in url and "/fulltext/" in url:
+            return url
+        logger.debug(f"Ovid: DOI {doi} did not resolve to a fulltext URL ({url})")
+        return None
+    except Exception as e:
+        logger.debug(f"Ovid fulltext URL resolution failed for {doi}: {e}")
+        return None
+
+
+# Ovid licenses three concurrent seats institution-wide and each open fulltext
+# page holds one. Space consecutive fetches out so an unattended batch cannot
+# lock the whole institution out.
+_OVID_MIN_INTERVAL = 8.0
+_ovid_last_fetch = 0.0
+
+
+def _try_ego_ovid(doi: str) -> bytes | None:
+    """Fetch an Ovid-hosted PDF through the ego lite browser profile.
+
+    Navigating to /fulltext/ is what entitles the session for that article;
+    only then does swapping the path to /pdf/ return real bytes. Skipping the
+    fulltext hop bounces straight back to HTML.
+    """
+    global _ovid_last_fetch
+
+    if not ego_available():
+        return None
+
+    fulltext_url = _ovid_fulltext_url(doi)
+    if not fulltext_url:
+        return None
+
+    elapsed = time.time() - _ovid_last_fetch
+    if elapsed < _OVID_MIN_INTERVAL:
+        time.sleep(_OVID_MIN_INTERVAL - elapsed)
+
+    try:
+        content = fetch_pdf_via_ego(
+            fulltext_url,
+            pdf_url_js="location.href.replace('/fulltext/', '/pdf/')",
+            settle=4.0,
+        )
+    finally:
+        _ovid_last_fetch = time.time()
+
+    if content and _is_pdf(content) and not _is_lww_paywall_pdf(content):
+        return content
+    return None
+
+
 def _try_doi_redirect(doi: str) -> bytes | None:
     """Follow DOI → landing page → find PDF link."""
     try:
@@ -2799,22 +2863,40 @@ def download_pdf(article: dict, out_dir: Path = PDF_DIR) -> Path | None:
         return None
 
     if is_msse:
-        # MSSE: tokenized journals.lww.com endpoint (pure HTTP, three hops).
-        # The public landing page exposes only a stub PDF; this path uses
-        # downloadpdf.aspx's signed pdfs.journals.lww.com URL instead.
-        print("  [1] LWW tokenized PDF (MSSE)...")
+        # MSSE moved from journals.lww.com to ovid.com in ~2026-07. Ovid gates
+        # the PDF on an httpOnly entitlement cookie, so the HTTP path below can
+        # no longer reach it; ego lite carries that cookie in a real profile.
+        print("  [1] Ovid via ego browser (MSSE)...")
+        content = _try_ego_ovid(doi)
+        if content:
+            dest.write_bytes(content)
+            print(f"  [OK] {dest.name} ({len(content)//1024} KB)")
+            return dest
+
+        # Kept as fallback: still the right path for any MSSE DOI that lands on
+        # the legacy journals.lww.com host.
+        print("  [2] LWW tokenized PDF (MSSE)...")
         content = _try_lww_direct(doi)
         if content:
             dest.write_bytes(content)
             print(f"  [OK] {dest.name} ({len(content)//1024} KB)")
             return dest
-        _log_failure(
-            article,
-            "MSSE PDF not found — DOI now redirects to ovid.com behind "
-            "institutional login (curl_cffi is not entitled). Use the browser "
-            "helper (logged-in Ovid + local receiver POST); see "
-            "project_msse_ovid_download memory.",
-        )
+
+        # Distinguish "ego was not usable" from "ego ran and got nothing", so
+        # the log says whether to restart ego lite or to re-authenticate Ovid.
+        if not ego_available():
+            reason = (
+                "MSSE PDF not found — ego browser unavailable (CLI missing or "
+                "JOURNAL_FETCHER_EGO=0) and the ovid.com PDF needs a real "
+                "browser profile. Start ego lite, then retry."
+            )
+        else:
+            reason = (
+                "MSSE PDF not found — ego browser ran but ovid.com returned no "
+                "PDF (entitlement cookie expired, captcha, or all 3 Ovid seats "
+                "busy). Open ovid.com in ego lite and retry."
+            )
+        _log_failure(article, reason)
         print(f"  [FAIL] {doi or article.get('title', '')} (MSSE)")
         return None
 
