@@ -273,7 +273,7 @@ def main(argv: list[str] | None = None) -> int:
         return 0
 
     if args.measure:
-        markdown = _convert_pdf_to_markdown(args.pdf)
+        markdown = _convert_pdf_to_markdown(args.pdf).markdown
         print(f"\n[measure] markdown={len(markdown):,} chars, "
               f"{len(files)} figure(s), model={get_claude_appraisal_model()}")
         try:

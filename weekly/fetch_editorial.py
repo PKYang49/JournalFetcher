@@ -88,7 +88,7 @@ def fetch(doi: str, max_chars: int = DEFAULT_MAX_CHARS) -> str | None:
             if not pdf or not pdf.exists():
                 return None
             try:
-                md = _convert_pdf_to_markdown(pdf)
+                md = _convert_pdf_to_markdown(pdf).markdown
             except Exception as e:  # noqa: BLE001
                 print(f"[fetch-editorial] convert error for {doi}: {e}", file=sys.stderr)
                 return None

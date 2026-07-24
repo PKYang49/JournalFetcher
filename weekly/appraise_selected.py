@@ -37,6 +37,7 @@ import sys
 import tempfile
 from contextlib import nullcontext
 from pathlib import Path
+from typing import NamedTuple
 
 from modules import claude_exec
 from modules.codex_exec import run_codex_exec
@@ -439,17 +440,22 @@ def _appraisal_figures_enabled() -> bool:
     return raw not in ("0", "false", "no", "off", "")
 
 
-# Figure-page budget per route. Guidelines/statements and evidence syntheses
-# carry many labelled figures (key-takeaway panels, multiple forest plots), so
-# they get a larger budget; primary studies need only the core few. Combined
-# with figure_extract's caption-first ordering, this keeps a late key figure
-# from being crowded out in long documents without inflating cost everywhere.
-DEFAULT_FIGURE_MAX_PAGES = 6
+# Figure-page budget per route. The default of 6 truncated 20-page primary
+# studies mid-figure-set (W29: two observational papers had 11 qualifying pages
+# each and lost their Central Illustration plus three cluster plots), so it now
+# sits at 12 — enough to cover every qualifying page in a typical primary study.
+# figure_extract renders at 2.5x, which costs ~21% fewer image tokens per page
+# than the previous 3.0x, so 12 pages here is roughly cost-neutral against the
+# old budget of 6.
+#
+# Guidelines/statements and evidence syntheses carry many labelled figures
+# (key-takeaway panels, multiple forest plots) and are far longer, so they keep
+# headroom above the default. Combined with figure_extract's key-figure-first
+# ordering, this keeps a late Central Illustration from being crowded out.
+DEFAULT_FIGURE_MAX_PAGES = 12
 FIGURE_MAX_PAGES_BY_ROUTE: dict[str, int] = {
-    "cpg": 12,
-    "consensus": 12,
-    "sr": 10,
-    "nma": 10,
+    "cpg": 16,
+    "consensus": 16,
 }
 
 
@@ -592,7 +598,21 @@ def _strip_preamble(report: str) -> str:
     return stripped
 
 
-def _convert_with_pymupdf4llm(pdf_path: Path) -> str | None:
+class ConvertedPdf(NamedTuple):
+    """PDF→markdown output plus which pages' tables survived the conversion.
+
+    `parsed_table_pages` holds 1-indexed page numbers that produced at least
+    one markdown table. figure_extract uses it to spot tables that were lost in
+    conversion and render those pages as images instead. It is empty whenever
+    per-page data is unavailable (markitdown fallback), which conservatively
+    treats every table as lost.
+    """
+
+    markdown: str
+    parsed_table_pages: frozenset[int]
+
+
+def _convert_with_pymupdf4llm(pdf_path: Path) -> ConvertedPdf | None:
     """Primary path: pymupdf4llm preserves headings, multi-column flow, tables."""
     try:
         import pymupdf4llm
@@ -600,10 +620,14 @@ def _convert_with_pymupdf4llm(pdf_path: Path) -> str | None:
         print("  [warn] pymupdf4llm not installed; falling back to markitdown", file=sys.stderr)
         return None
     try:
-        md = pymupdf4llm.to_markdown(
+        # page_chunks gives per-page text at no extra cost — concatenating the
+        # chunks reproduces the flat output byte for byte, and the per-page view
+        # is what lets us tell a parsed table from a scrambled one.
+        chunks = pymupdf4llm.to_markdown(
             str(pdf_path),
             ignore_images=True,
             show_progress=False,
+            page_chunks=True,
         )
     except Exception as e:
         print(
@@ -611,7 +635,8 @@ def _convert_with_pymupdf4llm(pdf_path: Path) -> str | None:
             file=sys.stderr,
         )
         return None
-    md = (md or "").strip()
+    pages = [(c.get("text") or "") for c in chunks]
+    md = "".join(pages).strip()
     if len(md) < 1000:
         print(
             f"  [warn] pymupdf4llm output suspiciously short ({len(md)} chars); "
@@ -619,7 +644,10 @@ def _convert_with_pymupdf4llm(pdf_path: Path) -> str | None:
             file=sys.stderr,
         )
         return None
-    return md
+    # "|---" is the markdown table separator row: its presence means the table
+    # came through with its row/column structure intact.
+    parsed = frozenset(i for i, text in enumerate(pages, start=1) if "|---" in text)
+    return ConvertedPdf(md, parsed)
 
 
 def _convert_with_markitdown(pdf_path: Path) -> str:
@@ -638,11 +666,11 @@ def _convert_with_markitdown(pdf_path: Path) -> str:
         return md_path.read_text(encoding="utf-8").strip()
 
 
-def _convert_pdf_to_markdown(pdf_path: Path) -> str:
-    md = _convert_with_pymupdf4llm(pdf_path)
-    if md is None:
-        md = _convert_with_markitdown(pdf_path)
-    return _strip_references(md)
+def _convert_pdf_to_markdown(pdf_path: Path) -> ConvertedPdf:
+    converted = _convert_with_pymupdf4llm(pdf_path)
+    if converted is None:
+        converted = ConvertedPdf(_convert_with_markitdown(pdf_path), frozenset())
+    return converted._replace(markdown=_strip_references(converted.markdown))
 
 
 def _build_references_section(route: str) -> str:
@@ -751,7 +779,7 @@ def appraise_pdf(article: dict, pdf_path: Path, out_dir: Path) -> Path | None:
         print(f"  [skip] appraisal exists: {report_path.name}")
         return report_path
 
-    article_markdown = _convert_pdf_to_markdown(pdf_path)
+    article_markdown, parsed_table_pages = _convert_pdf_to_markdown(pdf_path)
     if len(article_markdown) > ARTICLE_CHAR_BACKSTOP:
         raise ArticleTooLargeError(
             f"{pdf_path.name}: markdown is {len(article_markdown):,} chars, "
@@ -804,7 +832,10 @@ def appraise_pdf(article: dict, pdf_path: Path, out_dir: Path) -> Path | None:
         if figure_dir is not None:
             try:
                 figure_paths = extract_figure_pages(
-                    pdf_path, figure_dir, max_pages=_figure_max_pages(route)
+                    pdf_path,
+                    figure_dir,
+                    max_pages=_figure_max_pages(route),
+                    parsed_table_pages=parsed_table_pages,
                 )
             except Exception as e:
                 print(
