@@ -1,0 +1,685 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Comparative effectiveness of dabigatran, rivaroxaban, and edoxaban on cardiac and renal outcomes in Asian patients with atrial fibrillation: a propensity score-weighted analysis</title>
+<style>
+  :root {
+    --bg: #fafafa;
+    --card: #ffffff;
+    --text: #1a1a1a;
+    --muted: #6b6b6b;
+    --border: #e5e5e5;
+    --accent: #0b5fff;
+  }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang TC",
+      "Microsoft JhengHei", sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    margin: 0;
+    padding: 24px 16px 64px;
+    line-height: 1.72;
+  }
+  main {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    margin: 0 auto;
+    max-width: 840px;
+    padding: 22px 26px;
+  }
+  nav {
+    margin: 0 auto 14px;
+    max-width: 840px;
+    color: var(--muted);
+    font-size: 14px;
+  }
+  a { color: var(--accent); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  h1, h2, h3, h4 { line-height: 1.35; }
+  h1 { font-size: 26px; margin-top: 0; }
+  h2 { border-top: 1px solid var(--border); padding-top: 18px; }
+  code {
+    background: rgba(127, 127, 127, 0.12);
+    border-radius: 4px;
+    padding: 1px 4px;
+  }
+  table {
+    border-collapse: collapse;
+    display: block;
+    overflow-x: auto;
+    width: 100%;
+  }
+  th, td {
+    border: 1px solid var(--border);
+    padding: 6px 8px;
+    text-align: left;
+    vertical-align: top;
+  }
+  blockquote {
+    border-left: 3px solid var(--accent);
+    color: var(--muted);
+    margin-left: 0;
+    padding-left: 14px;
+  }
+  .appraisal-meta {
+    border-top: 1px solid var(--border);
+    margin-top: 28px;
+    padding-top: 14px;
+    color: var(--muted);
+    font-size: 13px;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #1a1a1a;
+      --card: #242424;
+      --text: #e8e8e8;
+      --muted: #999;
+      --border: #333;
+      --accent: #6ea8ff;
+    }
+  }
+</style>
+</head>
+<body>
+<nav><a href="../../2026-W31.html">← 回到 2026-W31 週報</a></nav>
+<main>
+<h1>Comparative effectiveness of dabigatran, rivaroxaban, and edoxaban on cardiac and renal outcomes in Asian patients with atrial fibrillation: a propensity score-weighted analysis</h1>
+<h1>SECTION-0：文章全面描述</h1>
+<h2>0. 文章身份證</h2>
+<ul>
+<li><strong>標題</strong>：Comparative effectiveness of dabigatran, rivaroxaban, and edoxaban on cardiac and renal outcomes in Asian patients with atrial fibrillation: a propensity score-weighted analysis</li>
+<li><strong>期刊／年份</strong>：<em>European Heart Journal</em> 2025；46(Suppl 1)</li>
+<li><strong>DOI</strong>：<a href="https://doi.org/10.1093/eurheartj/ehaf784.532">10.1093/eurheartj/ehaf784.532</a></li>
+<li><strong>出版型態</strong>：ESC congress supplement 的單頁摘要／poster abstract，不是具完整 Methods、supplement 與 protocol 的原始研究全文。[文內；<a href="https://esc365.escardio.org/journal/88351">ESC 365</a>]</li>
+<li><strong>研究類型</strong>：回溯性、多中心、觀察性比較效果研究；使用 propensity score weighting。</li>
+<li><strong>路由</strong>：SKILL-A—observational cohort＋因果推論框架。</li>
+<li><strong>核心判斷</strong>：本文只能支持「接受不同 DOAC 的病人，其兩年結果存在加權後關聯」，不能證明 dabigatran 本身造成較低死亡或腎衰竭。</li>
+</ul>
+<hr />
+<h2>1. 作者團隊評論</h2>
+<h3>團隊背景</h3>
+<ul>
+<li><strong>通訊作者</strong>：[無法取得]——本文摘要頁未標示通訊作者或 author contributions。</li>
+<li>J.S. Yeh（Jong-Shiuan Yeh）為萬芳醫院心臟內科醫師、臺北醫學大學心臟內科副教授，並自 2021 年起擔任萬芳醫院心臟內科主任；官方研究興趣以動脈粥樣硬化與冠狀動脈介入為主。[外部: <a href="https://hub.tmu.edu.tw/en/persons/jong-shiuan-yeh/">臺北醫學大學作者頁</a>]</li>
+<li>Jo-Hsin Chen、Yu-Ting Wang 來自醫院藥劑部，Shu-Fen Liao 來自醫學研究部；這是合理的臨床藥物流行病學組合。[文內]</li>
+<li>G.Y.H. Lip 是 AF、血栓與風險分層領域的核心研究者，參與 CHA₂DS₂-VASc、HAS-BLED 與 ABC pathway 的發展，並長期從事大型 AF 資料庫研究。[外部: <a href="https://www.liverpool.ac.uk/people/gregory-lip">University of Liverpool</a>]</li>
+</ul>
+<h3>團隊過往相關研究</h3>
+<ol>
+<li><strong>Wang et al., 2024, European Journal of Clinical Investigation</strong>：同一團隊比較 warfarin 與三種 DOAC 的心腎結果；收案期間同樣為 2013/7/1–2020/12/31，單中心 n=2,203，IPTW 後 dabigatran 相對 warfarin 的 ≥30% eGFR decline HR 0.69、心腎複合結果 HR 0.67。[外部: <a href="https://pubmed.ncbi.nlm.nih.gov/37635402/">PubMed</a>、<a href="https://hub.tmu.edu.tw/en/publications/cardiac-and-renal-outcomes-of-direct-oral-anticoagulants-in-patie/">TMU研究資料</a>]</li>
+<li><strong>Wang et al., 2025, Journal of Arrhythmia</strong>：探討高齡亞洲 AF 病人的脂質軌跡與心血管結果，使用 TMU 臨床資料庫。[外部: <a href="https://onlinelibrary.wiley.com/doi/10.1002/joa3.70151">Wiley</a>]</li>
+<li><strong>Chen et al., 2026, European Journal of Pharmaceutical Sciences</strong>：以觀察性世代研究評估 dapagliflozin 與糖尿病眼部併發症。[外部: <a href="https://pubmed.ncbi.nlm.nih.gov/41260312/">PubMed</a>]</li>
+<li>Lip et al., 2016, <em>Nature Reviews Disease Primers</em>：AF 疾病綜述，顯示資深作者在 AF 領域的長期專業。[外部: <a href="https://www.nature.com/articles/nrdp201616">Nature</a>]</li>
+</ol>
+<h3>重要的資料重疊問題</h3>
+<p>本文與 2024 年 ECI 論文具有：</p>
+<ul>
+<li>幾乎相同作者群；</li>
+<li>完全相同的收案起訖日期；</li>
+<li>相同 DOAC、腎臟終點與 weighting 方法；</li>
+<li>新摘要由單中心 n=2,203 擴展至三院 n=4,392。</li>
+</ul>
+<p>因此本文很可能是既有資料集的多中心擴充及重新比較，而非獨立 replication。[外部＋推論] 正式全文應交代兩篇研究的 cohort overlap、分析差異與新增資訊；目前摘要未做此揭露，存在同一資料庫重複產出及先前立場延續的風險。</p>
+<h3>利益揭露</h3>
+<ul>
+<li><strong>Funding</strong>：private hospital(s)，主要來源為 Taipei Medical University。[文內]</li>
+<li>未見藥廠資助，直接商業偏差疑慮較低。</li>
+<li>但摘要沒有完整 COI、資料分析角色或作者分工，不能排除未揭露的顧問或演講關係。</li>
+<li>團隊先前已從高度重疊資料得到 dabigatran 較有利的結論，可能產生 prior commitment／確認偏差。</li>
+</ul>
+<hr />
+<h2>2. 文獻 Metadata</h2>
+<ul>
+<li><strong>Received／Accepted date</strong>：[無法取得]——摘要未提供，因此不能計算審查天數。</li>
+<li><strong>期刊平均審查時間</strong>：EHJ 過往官方資料報告一般稿件初次決定約 21 天，但屬歷史性指標，且不能直接套用 congress abstract。[外部: <a href="https://academic.oup.com/eurheartj/pages/tenyearsafter">EHJ editorial statistics</a>]</li>
+<li><strong>比較</strong>：無法判定本文比平均快或慢；conference abstract 的篩選程序通常與完整 original article 不同。</li>
+<li><strong>期刊屬性</strong>：ESC 官方國際同儕審查期刊；2025 Impact Factor 45.3，Cardiac &amp; Cardiovascular Systems 2/237，屬 Q1；subscription journal with optional OA。[外部: <a href="https://academic.oup.com/eurheartj/pages/about">EHJ About</a>]</li>
+<li><strong>本文 OA 狀態</strong>：摘要可公開讀取；未發現獨立完整原始論文。</li>
+<li><strong>邀稿與否</strong>：[無法取得]。以 congress supplement abstract 型態判斷，不宜視為 invited review。</li>
+<li><strong>關鍵提醒</strong>：EHJ 的高 IF 不能補足本文僅有一頁摘要、無 protocol、無完整調整變項與無敏感度分析的限制。</li>
+</ul>
+<hr />
+<h2>3. 研究背景</h2>
+<h3>既有事實</h3>
+<ul>
+<li>AF 增加 stroke 與 systemic embolism 風險。</li>
+<li>Dabigatran、rivaroxaban、edoxaban 均為 DOAC，藥物動力學較 warfarin 可預測。[文內]</li>
+</ul>
+<h3>知識缺口</h3>
+<p>作者認為亞洲族群中，三種 DOAC 對死亡與腎臟結果的直接比較資料不足。[文內]</p>
+<h3>Research question</h3>
+<p>在台灣三家醫院接受 dabigatran、rivaroxaban 或 edoxaban 的成人 AF 病人中，經 propensity score weighting 後，兩年死亡、腎臟與出血結果是否不同？[推論，依 Introduction 與 Methods]</p>
+<p>值得注意的是，stroke／systemic embolism 是使用抗凝血藥最直接的效益終點，卻未列入分析；研究問題與抗凝治療的主要臨床目的不完全對齊。</p>
+<hr />
+<h2>4. 研究設計與方法</h2>
+<h3>PICO</h3>
+<ul>
+<li><strong>P</strong>：2013 年 7 月至 2020 年 12 月，台灣三家醫院的 4,392 名成人 AF 病人。</li>
+<li><strong>I／Exposure</strong>：dabigatran，n=803。</li>
+<li><strong>C</strong>：
+<ul>
+<li>rivaroxaban，n=2,834；</li>
+<li>edoxaban，n=755。</li>
+</ul>
+</li>
+<li><strong>O</strong>：
+<ul>
+<li>全因死亡；</li>
+<li>心血管死亡；</li>
+<li>renal failure；</li>
+<li>AKI；</li>
+<li>≥30% eGFR decline；</li>
+<li>major bleeding（雖未列在 Methods 的終點句中，但出現在結果表）。</li>
+</ul>
+</li>
+</ul>
+<h3>設計細節</h3>
+<ul>
+<li>回溯性、多中心觀察性世代研究。</li>
+<li>追蹤兩年。</li>
+<li>使用 propensity score weighting；摘要未說明是 multinomial IPTW、ATE/ATT、stabilized weight 或其他 estimand。</li>
+<li>未提供：
+<ul>
+<li>new-user 或 prevalent-user design；</li>
+<li>index date 與 eligibility 對齊方式；</li>
+<li>DOAC 劑量與 on-label/off-label dose；</li>
+<li>換藥、停藥、依從性及 censoring 規則；</li>
+<li>調整共變項；</li>
+<li>weighting 前後 standardized mean difference；</li>
+<li>propensity overlap、極端權重與 truncation；</li>
+<li>缺失值處理；</li>
+<li>outcome adjudication；</li>
+<li>Cox proportional hazards 檢定；</li>
+<li>competing-risk 方法。</li>
+</ul>
+</li>
+</ul>
+<h3>終點定義缺漏</h3>
+<ul>
+<li>≥30% eGFR decline 未說明是單次數值或 sustained decline。</li>
+<li>未說明 eGFR 公式、baseline 時點及追蹤檢驗密度。</li>
+<li>未定義 renal failure、AKI 或 major bleeding 的 ICD／laboratory／ISTH criteria。</li>
+<li>未說明死亡資料來自院內病歷或全國死亡登記；若只靠三院 EHR，院外死亡可能漏接。</li>
+<li>Methods 未列 major bleeding，但 Results 突然報告，顯示 outcome hierarchy 與預先指定性不透明。</li>
+</ul>
+<hr />
+<h2>5. 研究結果重點整理</h2>
+<p>以下為附圖表中 <strong>After PSW</strong> 的數字；「事件數」可能是加權後 pseudo-population 的數值，不應直接視為原始事件人數。</p>
+<table>
+<thead>
+<tr>
+<th>終點</th>
+<th style="text-align:right">Dabigatran</th>
+<th style="text-align:right">Rivaroxaban vs dabigatran</th>
+<th style="text-align:right">Edoxaban vs dabigatran</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>全因死亡</td>
+<td style="text-align:right">53，6.7%，Ref</td>
+<td style="text-align:right">435，15.3%；HR 1.76（1.320–2.342），p=0.0001</td>
+<td style="text-align:right">69，9.2%；HR 1.55（1.081–2.218），p=0.0171</td>
+</tr>
+<tr>
+<td>心血管死亡</td>
+<td style="text-align:right">9，1.1%，Ref</td>
+<td style="text-align:right">83，3.0%；HR 2.08（1.026–4.219），p=0.0421</td>
+<td style="text-align:right">15，1.9%；HR 2.06（0.882–4.804），p=0.0950</td>
+</tr>
+<tr>
+<td>Renal failure</td>
+<td style="text-align:right">24，3.0%，Ref</td>
+<td style="text-align:right">183，6.4%；HR 1.66（1.079–2.538），p=0.0210</td>
+<td style="text-align:right">37，4.9%；HR 1.80（1.075–3.012），p=0.0254</td>
+</tr>
+<tr>
+<td>AKI</td>
+<td style="text-align:right">47，5.8%，Ref</td>
+<td style="text-align:right">235，8.3%；HR 1.09（0.793–1.488），p=0.6059</td>
+<td style="text-align:right">56，7.5%；HR 1.36（0.919–2.003），p=0.1247</td>
+</tr>
+<tr>
+<td>≥30% eGFR decline</td>
+<td style="text-align:right">180，22.6%，Ref</td>
+<td style="text-align:right">910，32.1%；HR 1.15（0.980–1.349），p=0.0864</td>
+<td style="text-align:right">201，26.8%；HR 1.29（1.052–1.576），p=0.0141</td>
+</tr>
+<tr>
+<td>Major bleeding</td>
+<td style="text-align:right">95，11.9%，Ref</td>
+<td style="text-align:right">483，17.0%；HR 1.22（0.975–1.516），p=0.0821</td>
+<td style="text-align:right">110，14.7%；HR 1.24（0.941–1.633），p=0.1258</td>
+</tr>
+</tbody>
+</table>
+<h3>Weighting 前後變化</h3>
+<ul>
+<li>全因死亡：
+<ul>
+<li>rivaroxaban HR 2.27 → 1.76；</li>
+<li>edoxaban HR 2.04 → 1.55。</li>
+</ul>
+</li>
+<li>心血管死亡：
+<ul>
+<li>rivaroxaban 3.12 → 2.08；</li>
+<li>edoxaban 3.11 → 2.06。</li>
+</ul>
+</li>
+<li>Renal failure：
+<ul>
+<li>rivaroxaban 1.99 → 1.66；</li>
+<li>edoxaban 2.41 → 1.80。</li>
+</ul>
+</li>
+<li>AKI：
+<ul>
+<li>rivaroxaban 1.39 → 1.09；</li>
+<li>edoxaban 1.86 → 1.36。</li>
+</ul>
+</li>
+</ul>
+<p>調整後效果普遍向無效值移動，顯示原始治療組之間確實存在相當程度的 prognostic imbalance；這也使未測量混淆更值得擔心。</p>
+<h3>圖像證據</h3>
+<ul>
+<li>全因死亡曲線在追蹤早期即開始分離，之後持續擴大；圖示 global log-rank p=0.0009。</li>
+<li>Renal failure 與 ≥30% eGFR decline 的累積發生曲線同樣很早開始分離，global Gray p 約為 0.0456 與 0.0001。</li>
+<li>曲線沒有 confidence band、censoring marks 或 number-at-risk table，因此無法判斷後期樣本是否銳減、失訪是否不平衡，亦無法確認曲線尾端可靠度。</li>
+<li>全因死亡圖的 y 軸自 0.8 起而非 0，雖是 survival plot 常見作法，但視覺上會放大組間分離；其餘 cumulative-incidence 圖由 0 起始。</li>
+<li>圖片顯示曲線很早分離，但缺乏用藥前 washout、新使用者定義與 time-zero 資訊，早期差異也可能反映 baseline frailty、既有腎病或 treatment channeling，而非快速藥物效應。</li>
+</ul>
+<hr />
+<h2>6. 作者討論與評論重點</h2>
+<h3>作者主張</h3>
+<p>作者認為 dabigatran 對亞洲 AF 病人具有較佳的死亡及腎臟保護效果，且 major bleeding 無顯著差異。[文內]</p>
+<h3>評估</h3>
+<p>這個結論有三項過度延伸：</p>
+<ol>
+<li>
+<p><strong>「Superior efficacy」是因果語言</strong>：本文是非隨機處方資料，只能說加權後 association。</p>
+</li>
+<li>
+<p><strong>安全性結論過強</strong>：major bleeding 的 CI 很寬：</p>
+<ul>
+<li>rivaroxaban HR 1.22（0.975–1.516）；</li>
+<li>edoxaban HR 1.24（0.941–1.633）。</li>
+</ul>
+<p>兩者都容許約 50–63% 的相對增加，應分類為 <strong>inconclusive</strong>，不是證實安全性相同。</p>
+</li>
+<li>
+<p><strong>沒有整體 net clinical benefit</strong>：未報 stroke/systemic embolism，不能由死亡、腎臟與出血的片段結果決定「最佳抗凝劑」。</p>
+</li>
+</ol>
+<h3>作者限制報告</h3>
+<p>[文內] 摘要沒有正式 limitation 段落。這是嚴重缺漏；至少應討論殘餘混淆、處方 channeling、劑量、換藥、腎功能測量頻率、competing risk、apixaban 缺席及 cohort overlap。</p>
+<hr />
+<h2>7. 外部專業意見</h2>
+<p>[無法取得]——以文章完整標題與 DOI 搜尋 Oxford Academic、ESC、PubMed 及一般網頁，未發現專門針對本文的同期 editorial、commentary 或 comment，因此沒有可供全文擷取的相關 DOI。</p>
+<p>與本文直接相關的外部證據包括：</p>
+<ul>
+<li>同團隊 2024 年研究已在高度重疊的期間與資料來源中得到 dabigatran 腎臟結果較有利的結論，因此本文不是完全獨立驗證。[外部: <a href="https://hub.tmu.edu.tw/en/publications/cardiac-and-renal-outcomes-of-direct-oral-anticoagulants-in-patie/">ECI研究</a>]</li>
+<li>EHRA 指出 dabigatran 約 80% 經腎清除，高於 edoxaban 50%、rivaroxaban 35% 與 apixaban 27%；臨床上較差的腎功能本身會影響藥物選擇。[外部: <a href="https://academic.oup.com/europace/article/23/10/1612/6247378">2021 EHRA Practical Guide</a>]</li>
+<li>2024 ESC AF guideline 亦指出 dabigatran 對腎清除依賴較高，嚴重 CKD 的適用限制與 factor Xa inhibitors 不同。[外部: <a href="https://academic.oup.com/eurheartj/article/45/36/3314/7738779">2024 ESC AF Guideline</a>]</li>
+</ul>
+<p>這使「腎功能較好者較容易被開立 dabigatran」成為非常可信的替代解釋。</p>
+<hr />
+<h2>8. 臨床建議</h2>
+<h3>可以如何使用</h3>
+<ul>
+<li>可作為台灣 EHR 中的 hypothesis-generating signal：選用 DOAC 時，應注意不同藥物使用者可能有不同的死亡與腎臟風險。</li>
+<li>可支持未來以 active-comparator、new-user design 進一步研究 dabigatran 與 factor Xa inhibitors。</li>
+</ul>
+<h3>不宜直接套用</h3>
+<ul>
+<li>不應據此把穩定使用 rivaroxaban／edoxaban 的病人全面換成 dabigatran。</li>
+<li>不適用於：
+<ul>
+<li>CrCl &lt;30 mL/min、透析或高度波動腎功能；</li>
+<li>mechanical valve 或中重度 rheumatic mitral stenosis；</li>
+<li>無法維持 dabigatran BID adherence；</li>
+<li>需要考量特定 P-gp/CYP3A4 interaction 的病人；</li>
+<li>apixaban 使用者，因本文完全未納入。</li>
+</ul>
+</li>
+</ul>
+<h3>臨床實務</h3>
+<ol>
+<li>仍應依 CrCl、年齡、體重、出血風險、交互作用、服藥頻率與核准劑量個別選藥。</li>
+<li>不要把本文的 HR 當成換藥後可預期的因果效果或 NNT/NNH。</li>
+<li>若病人使用 rivaroxaban／edoxaban 且腎功能下降，先檢查劑量、依從性、共病、脫水與腎毒性藥物，不應僅憑本摘要換藥。</li>
+</ol>
+<p><strong>研究證據強度：弱。</strong> 樣本數尚可，但僅有 conference abstract，缺少 propensity model、劑量、baseline balance、outcome definition 與敏感度分析；且殘餘混淆方向高度可預測。</p>
+<hr />
+<h1>SKILL-A：觀察性研究批判性評讀</h1>
+<h2>A. 補充技術細節</h2>
+<ul>
+<li><strong>事前樣本數／power calculation</strong>：未報告。</li>
+<li><strong>主要終點階層</strong>：未明確指定；至少六個 outcome、每個各做兩個藥物比較。</li>
+<li><strong>多重比較</strong>：未見校正。若把六個終點 × 兩個比較視為 12 次檢定，Bonferroni 門檻約 0.0042；明確可通過者主要只剩 rivaroxaban 的全因死亡結果。</li>
+<li><strong>PS 方法</strong>：只寫 propensity score weighting，未報 multinomial model、covariates、balance、overlap、極端權重或 effective sample size。</li>
+<li><strong>缺失值</strong>：未報。</li>
+<li><strong>比例風險假設</strong>：未報；圖中早期分離不等於 PH assumption 已成立。</li>
+<li><strong>Competing risk</strong>：圖稱使用 Gray test，但未交代 HR 是 cause-specific Cox 或 Fine–Gray subdistribution HR。</li>
+<li><strong>負對照／定量偏差分析／E-value</strong>：未報。</li>
+<li><strong>劑量與治療策略</strong>：未區分標準劑量、減量、off-label underdosing，也未說明 switching 或 discontinuation。</li>
+</ul>
+<p>Propensity analysis 的成功應以治療前 prognostic variables 是否達到平衡判定，而不是只看「做過 weighting」；且它不能處理未測量混淆。[參考: <code>jama_agoritsas_2017_ug_160001.md</code>「Users’ Guide Specific to a Propensity Analysis」及 residual confounding 節]</p>
+<hr />
+<h2>B. 批判性評估</h2>
+<h3>B1. 假說與理論邏輯</h3>
+<p><strong>合理部分</strong></p>
+<ul>
+<li>不同 DOAC 的腎清除、劑量與 adherence pattern 不同，確實可能產生不同腎臟或出血結果。</li>
+<li>腎功能與 AF 預後高度相關，研究問題具臨床價值。</li>
+</ul>
+<p><strong>最可疑的敘事跳躍</strong></p>
+<ol>
+<li>加權後關聯 → dabigatran「superior efficacy」。</li>
+<li>p&gt;0.05 的 major bleeding → 三藥無差異。</li>
+<li>未分析 stroke/systemic embolism → 宣稱整體治療優越。</li>
+<li>早期曲線分離 → 藥物快速保護；其實也很符合 baseline frailty/channeling bias。</li>
+</ol>
+<h3>B2. 受試者與外推性</h3>
+<ul>
+<li>三家台灣醫院可代表部分台灣都會區教學醫院病人，但不等同所有「Asian patients」。</li>
+<li>未提供年齡、性別、體重、CrCl、CKD stage、CHA₂DS₂-VASc、HAS-BLED、frailty 或社經狀況，無法判斷族群組成。</li>
+<li>Rivaroxaban 佔 64.5%，組別極不對稱；若某些病人特徵幾乎只出現在特定藥物組，可能違反 positivity。</li>
+<li>Apixaban 缺席，使結果無法回答現今四種主要 DOAC 的完整選擇問題。</li>
+</ul>
+<p><strong>外推性：低至中。</strong> 可外推至相似 TMU 三院 AF 病人作為關聯訊號；不宜外推到其他亞洲國家、嚴重 CKD、透析或不同處方制度。</p>
+<h3>B3. 研究設計與偏差</h3>
+<h4>1. Confounding by indication／channeling bias</h4>
+<p>Dabigatran 的腎清除比例最高，嚴重腎功能不良病人較不可能被處方 dabigatran。即使調整單一 baseline eGFR，未測得的 frailty、腎功能軌跡、蛋白尿、近期 AKI、醫師判斷與 adherence 仍可能使 dabigatran 組先天較健康。</p>
+<ul>
+<li><strong>風險方向</strong>：傾向讓 dabigatran 看起來死亡與腎臟結果較好。</li>
+<li><strong>需要什麼才放心</strong>：詳細 baseline table、CrCl trajectory、CKD stage、frailty、dose appropriateness、negative-control outcome 及定量偏差分析。</li>
+</ul>
+<h4>2. Calendar-time 與醫院處方偏差</h4>
+<p>2013–2020 年間各 DOAC 的可用性、給付、臨床熟悉度及院內 formulary 可能不同；不同醫院也可能偏好不同藥物。</p>
+<ul>
+<li><strong>風險方向</strong>：可能把醫療年代、醫院品質與藥物效果混在一起。</li>
+<li><strong>需要</strong>：calendar year、hospital fixed effects、處方醫師偏好、同期 active comparator 與限制 common-support period。</li>
+</ul>
+<h4>3. Time zero／治療持續性不明</h4>
+<p>未說明是否只納入新開始用藥者、baseline washout、何時開始追蹤，以及停藥／換藥後如何處理。</p>
+<ul>
+<li><strong>風險方向</strong>：可能有 prevalent-user、immortal-time 或 informative-censoring bias。</li>
+<li><strong>需要</strong>：active-comparator new-user design，eligibility、treatment assignment 與 follow-up time zero 完全對齊。</li>
+</ul>
+<h4>4. 腎臟終點與死亡的 competing risk</h4>
+<p>Rivaroxaban／edoxaban 組死亡較多，死亡會阻止後續 renal failure 或 eGFR decline 被觀察。若把死亡當一般 censoring，反而可能低估兩組的腎臟不良結果。</p>
+<ul>
+<li><strong>需要</strong>：Aalen–Johansen cumulative incidence、cause-specific 與 Fine–Gray 分析並列，另做 composite of death or renal outcome。</li>
+</ul>
+<h4>5. Outcome ascertainment bias</h4>
+<p>≥30% eGFR decline 取決於病人是否回院抽血。不同 DOAC、共病與醫院可能造成不同檢驗頻率。</p>
+<ul>
+<li><strong>需要</strong>：固定測量窗口、最低檢驗要求、inverse probability of observation weighting，以及 sustained decline 定義。</li>
+</ul>
+<h3>Target trial 對照</h3>
+<p>理想 target trial 應是：</p>
+<ul>
+<li>相同日期、相同醫院、符合三種 DOAC 核准條件的新使用者；</li>
+<li>隨機分派標準劑量 dabigatran、rivaroxaban 或 edoxaban；</li>
+<li>從首次處方日起追蹤；</li>
+<li>明確定義 treatment switching、停藥、依從性；</li>
+<li>評估 stroke/SE、major bleeding、死亡與腎臟結果；</li>
+<li>以 ITT 與 per-protocol estimand 並列。</li>
+</ul>
+<p>本文未交代 exchangeability、positivity 與 consistency 是否合理，也未明確描述欲模擬的 target trial。[參考: <code>hernanrobins_WhatIf_2jan25.md</code> 第3.2–3.6節]</p>
+<h3>B4. 測量工具與實務意義</h3>
+<ul>
+<li>全因死亡是硬終點，但來源及 completeness 未知。</li>
+<li>心血管死亡通常需 adjudication；摘要未說明。</li>
+<li>Renal failure、AKI 與 major bleeding 操作定義不明。</li>
+<li>≥30% eGFR decline 具臨床意義，但若非 sustained decline，可能受急性波動影響。</li>
+<li>就算加權百分比可比較，rivaroxaban 相對 dabigatran 的全因死亡差約 8.6 個百分點、renal failure 約 3.4 個百分點，臨床幅度不小；但不能轉成換藥的 NNT/NNH，因為不是隨機因果風險差。</li>
+</ul>
+<hr />
+<h2>C. 統計與資料完整性</h2>
+<h3>C1. CI＋臨床重要性分類</h3>
+<p>本文未預先指定 MCID。以下 ARD 僅為圖表中加權百分比的描述性差值，不是標準化兩年 cumulative-risk difference。</p>
+<table>
+<thead>
+<tr>
+<th>指標</th>
+<th style="text-align:right">暴露組</th>
+<th style="text-align:right">Dabigatran</th>
+<th style="text-align:right">效果量</th>
+<th style="text-align:right">95% CI</th>
+<th style="text-align:right">描述性 ARD</th>
+<th>MCID</th>
+<th>分類</th>
+<th>實務意義</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>全因死亡</td>
+<td style="text-align:right">Riva 15.3%</td>
+<td style="text-align:right">6.7%</td>
+<td style="text-align:right">HR 1.76</td>
+<td style="text-align:right">1.320–2.342</td>
+<td style="text-align:right">+8.6%</td>
+<td>未指定</td>
+<td>統計相關且可能臨床重要</td>
+<td>因果性不足</td>
+</tr>
+<tr>
+<td>全因死亡</td>
+<td style="text-align:right">Edo 9.2%</td>
+<td style="text-align:right">6.7%</td>
+<td style="text-align:right">HR 1.55</td>
+<td style="text-align:right">1.081–2.218</td>
+<td style="text-align:right">+2.5%</td>
+<td>未指定</td>
+<td>統計相關；精確度中等</td>
+<td>可能具臨床重要性</td>
+</tr>
+<tr>
+<td>CV死亡</td>
+<td style="text-align:right">Riva 3.0%</td>
+<td style="text-align:right">1.1%</td>
+<td style="text-align:right">HR 2.08</td>
+<td style="text-align:right">1.026–4.219</td>
+<td style="text-align:right">+1.9%</td>
+<td>未指定</td>
+<td><strong>IMPRECISE (+)</strong></td>
+<td>CI 極寬</td>
+</tr>
+<tr>
+<td>CV死亡</td>
+<td style="text-align:right">Edo 1.9%</td>
+<td style="text-align:right">1.1%</td>
+<td style="text-align:right">HR 2.06</td>
+<td style="text-align:right">0.882–4.804</td>
+<td style="text-align:right">+0.8%</td>
+<td>未指定</td>
+<td><strong>INCONCLUSIVE</strong></td>
+<td>可容許無效至近5倍風險</td>
+</tr>
+<tr>
+<td>Renal failure</td>
+<td style="text-align:right">Riva 6.4%</td>
+<td style="text-align:right">3.0%</td>
+<td style="text-align:right">HR 1.66</td>
+<td style="text-align:right">1.079–2.538</td>
+<td style="text-align:right">+3.4%</td>
+<td>未指定</td>
+<td>統計相關；臨床重要性可能高</td>
+<td>受 competing risk 影響</td>
+</tr>
+<tr>
+<td>Renal failure</td>
+<td style="text-align:right">Edo 4.9%</td>
+<td style="text-align:right">3.0%</td>
+<td style="text-align:right">HR 1.80</td>
+<td style="text-align:right">1.075–3.012</td>
+<td style="text-align:right">+1.9%</td>
+<td>未指定</td>
+<td><strong>IMPRECISE (+)</strong></td>
+<td>CI 寬</td>
+</tr>
+<tr>
+<td>AKI</td>
+<td style="text-align:right">Riva 8.3%</td>
+<td style="text-align:right">5.8%</td>
+<td style="text-align:right">HR 1.09</td>
+<td style="text-align:right">0.793–1.488</td>
+<td style="text-align:right">+2.5%</td>
+<td>未指定</td>
+<td><strong>INCONCLUSIVE</strong></td>
+<td>未排除近49%傷害</td>
+</tr>
+<tr>
+<td>AKI</td>
+<td style="text-align:right">Edo 7.5%</td>
+<td style="text-align:right">5.8%</td>
+<td style="text-align:right">HR 1.36</td>
+<td style="text-align:right">0.919–2.003</td>
+<td style="text-align:right">+1.7%</td>
+<td>未指定</td>
+<td><strong>INCONCLUSIVE</strong></td>
+<td>未排除風險倍增</td>
+</tr>
+<tr>
+<td>≥30% eGFR下降</td>
+<td style="text-align:right">Riva 32.1%</td>
+<td style="text-align:right">22.6%</td>
+<td style="text-align:right">HR 1.15</td>
+<td style="text-align:right">0.980–1.349</td>
+<td style="text-align:right">+9.5%</td>
+<td>未指定</td>
+<td><strong>INCONCLUSIVE</strong></td>
+<td>未排除具意義傷害</td>
+</tr>
+<tr>
+<td>≥30% eGFR下降</td>
+<td style="text-align:right">Edo 26.8%</td>
+<td style="text-align:right">22.6%</td>
+<td style="text-align:right">HR 1.29</td>
+<td style="text-align:right">1.052–1.576</td>
+<td style="text-align:right">+4.2%</td>
+<td>未指定</td>
+<td>統計相關；臨床門檻不明</td>
+<td>多重比較後不穩健</td>
+</tr>
+<tr>
+<td>Major bleeding</td>
+<td style="text-align:right">Riva 17.0%</td>
+<td style="text-align:right">11.9%</td>
+<td style="text-align:right">HR 1.22</td>
+<td style="text-align:right">0.975–1.516</td>
+<td style="text-align:right">+5.1%</td>
+<td>未指定</td>
+<td><strong>INCONCLUSIVE</strong></td>
+<td>不能稱安全性相同</td>
+</tr>
+<tr>
+<td>Major bleeding</td>
+<td style="text-align:right">Edo 14.7%</td>
+<td style="text-align:right">11.9%</td>
+<td style="text-align:right">HR 1.24</td>
+<td style="text-align:right">0.941–1.633</td>
+<td style="text-align:right">+2.8%</td>
+<td>未指定</td>
+<td><strong>INCONCLUSIVE</strong></td>
+<td>未排除63%相對傷害</td>
+</tr>
+</tbody>
+</table>
+<h3>C2. Underpowered 與 Winner’s Curse</h3>
+<ul>
+<li>整體 n=4,392 不小，但 CV death、renal failure 等事件有限，CI 明顯寬。</li>
+<li>Edoxaban 的 CV death、AKI、major bleeding 等 CI 同時包含無效值與臨床重要傷害，屬 outcome-specific underpowered／inconclusive。</li>
+<li>顯著但事件少、CI 寬的結果可能有 winner’s curse；不應把本摘要 HR 直接拿去估算下一試驗樣本數。</li>
+<li>未提供事前 power calculation，無法判斷原研究是否針對死亡或 renal failure 有足夠資訊量。</li>
+</ul>
+<h3>C3. Bayesian 補充</h3>
+<p>不宜由摘要自行做數值 Bayesian reanalysis，因缺少 log-HR covariance、完整事件時間及合理預先 MCID。接近 0.05 的結果對 prior 與多重性很敏感；目前最恰當的分類是 imprecise 或 inconclusive，而不是「邊緣顯著」。</p>
+<h3>C4. 統計紅旗</h3>
+<ol>
+<li>未指定 primary outcome。</li>
+<li>至少 12 次主要比較，未見 multiplicity correction。</li>
+<li>未提供 propensity covariates。</li>
+<li>未提供 SMD、overlap、極端權重或 effective sample size。</li>
+<li>未說明 missing data。</li>
+<li>未檢驗 proportional hazards。</li>
+<li>腎臟終點 competing-risk 方法不透明。</li>
+<li>沒有 number-at-risk、confidence bands 或 censoring 資訊。</li>
+<li>用 p&gt;0.05 宣稱 major bleeding「無差異」。</li>
+<li>Methods 未列 major bleeding，結果卻報告。</li>
+<li>未提供 absolute standardized risk、RMST 或兩年 risk difference。</li>
+<li>與先前高度重疊資料的關係未說明。</li>
+</ol>
+<hr />
+<h2>D. 次組分析</h2>
+<p>本文未呈現次組分析，無法依 interaction p-value、預先指定性及生物合理性評估。</p>
+<p>臨床上最需要但缺少的次組包括：</p>
+<ul>
+<li>baseline CrCl／CKD stage；</li>
+<li>標準劑量與減量；</li>
+<li>on-label 與 off-label dosing；</li>
+<li>年齡、體重、性別；</li>
+<li>diabetes、heart failure；</li>
+<li>hospital 與 calendar period。</li>
+</ul>
+<p>任何未提供 interaction test 的事後次組都只能視為探索性。</p>
+<hr />
+<h2>E. 紅旗清單</h2>
+<ul>
+<li>Conference abstract 被寫成可決定藥物優劣的因果結論。</li>
+<li>Dabigatran 高度依賴腎清除，處方 channeling 很可能直接偏向較健康腎功能者。</li>
+<li>未納入 apixaban，也未報 stroke/systemic embolism。</li>
+<li>PS weighting 沒有 balance、overlap 與權重診斷。</li>
+<li>六個終點、兩個比較，未處理多重性。</li>
+<li>Major bleeding 的寬 CI 被錯寫為「無差異」。</li>
+<li>腎臟 outcome 與死亡 competing risk 未說清楚。</li>
+<li>與同團隊 2024 資料高度重疊，非獨立 replication。</li>
+<li>圖無 number-at-risk、censoring marks 或 CI。</li>
+<li>Funding 非藥廠是優點，但完整 COI 仍缺失。</li>
+</ul>
+<hr />
+<h2>F. 反向解釋</h2>
+<ol>
+<li>
+<p><strong>Dabigatran 組基線較健康</strong><br />
+高齡、CKD、frailty 病人因 dabigatran 腎清除高而被導向 factor Xa inhibitor；weighting 未必捕捉醫師綜合判斷。</p>
+</li>
+<li>
+<p><strong>劑量不適當而非藥物分子差異</strong><br />
+Rivaroxaban／edoxaban 的 off-label reduced dose、用藥中斷或依從性可能不同；摘要未提供劑量資料。</p>
+</li>
+<li>
+<p><strong>醫院與年代效應</strong><br />
+各藥物在不同年份、醫院或處方醫師中使用，差異可能代表照護流程、共病治療或資料完整度。</p>
+</li>
+<li>
+<p><strong>檢測及 competing-risk 偏差</strong><br />
+腎功能檢驗頻率不一致，加上較高死亡阻止腎終點被觀察，可同時扭曲 eGFR decline 與 renal failure 的估計。</p>
+</li>
+</ol>
+<hr />
+<h2>G. 最終裁決</h2>
+<ul>
+<li><strong>整體可信度：低。</strong></li>
+<li><strong>可採用條件</strong>：僅可作為台灣多院 EHR 的假說生成訊號，促成更嚴格的 active-comparator new-user study 或 head-to-head pragmatic trial。</li>
+<li><strong>不建議採用</strong>：不可單獨據此制定 DOAC 優先順序、換藥政策或宣稱 dabigatran 具有因果性的腎保護與死亡效益。</li>
+</ul>
+<h3>最需要的三項改進</h3>
+<ol>
+<li>公開完整 protocol、baseline balance、propensity model、overlap／極端權重與 missing-data diagnostics。</li>
+<li>採 active-comparator new-user target-trial emulation，納入劑量、換藥、依從性、calendar year、hospital、CrCl trajectory 與 frailty。</li>
+<li>預先指定主要終點，納入 stroke/SE 與 net clinical benefit，並妥善處理 multiplicity、competing risk 和 absolute risk。</li>
+</ol>
+<p><strong>一句話結論：</strong><br />
+加權結果偏向 dabigatran，但處方選擇混淆與摘要級證據不足以支持臨床換藥。</p>
+
+<footer class="appraisal-meta">評讀資訊：模型：gpt-5.6-sol (codex)  ·  route：observational  ·  產出時間：2026-07-26 11:22 CST</footer>
+</main>
+</body>
+</html>

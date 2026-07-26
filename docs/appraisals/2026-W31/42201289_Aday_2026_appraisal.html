@@ -1,0 +1,1287 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Implications of Modest Reductions in ABI Measurements for Risk of Major Adverse Limb Events Among 223,350 Veterans.</title>
+<style>
+  :root {
+    --bg: #fafafa;
+    --card: #ffffff;
+    --text: #1a1a1a;
+    --muted: #6b6b6b;
+    --border: #e5e5e5;
+    --accent: #0b5fff;
+  }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang TC",
+      "Microsoft JhengHei", sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    margin: 0;
+    padding: 24px 16px 64px;
+    line-height: 1.72;
+  }
+  main {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    margin: 0 auto;
+    max-width: 840px;
+    padding: 22px 26px;
+  }
+  nav {
+    margin: 0 auto 14px;
+    max-width: 840px;
+    color: var(--muted);
+    font-size: 14px;
+  }
+  a { color: var(--accent); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  h1, h2, h3, h4 { line-height: 1.35; }
+  h1 { font-size: 26px; margin-top: 0; }
+  h2 { border-top: 1px solid var(--border); padding-top: 18px; }
+  code {
+    background: rgba(127, 127, 127, 0.12);
+    border-radius: 4px;
+    padding: 1px 4px;
+  }
+  table {
+    border-collapse: collapse;
+    display: block;
+    overflow-x: auto;
+    width: 100%;
+  }
+  th, td {
+    border: 1px solid var(--border);
+    padding: 6px 8px;
+    text-align: left;
+    vertical-align: top;
+  }
+  blockquote {
+    border-left: 3px solid var(--accent);
+    color: var(--muted);
+    margin-left: 0;
+    padding-left: 14px;
+  }
+  .appraisal-meta {
+    border-top: 1px solid var(--border);
+    margin-top: 28px;
+    padding-top: 14px;
+    color: var(--muted);
+    font-size: 13px;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #1a1a1a;
+      --card: #242424;
+      --text: #e8e8e8;
+      --muted: #999;
+      --border: #333;
+      --accent: #6ea8ff;
+    }
+  }
+</style>
+</head>
+<body>
+<nav><a href="../../2026-W31.html">← 回到 2026-W31 週報</a></nav>
+<main>
+<h1>Implications of Modest Reductions in ABI Measurements for Risk of Major Adverse Limb Events Among 223,350 Veterans.</h1>
+<h1>醫學文獻批判性評讀</h1>
+<p><strong>Aday AW, et al. Implications of Modest Reductions in ABI Measurements for Risk of Major Adverse Limb Events Among 223,350 Veterans. JACC. 2026;88(3):324–336.</strong></p>
+<hr />
+<h2>SECTION-0：文章全面描述</h2>
+<h3>0. 文章身份證</h3>
+<table>
+<thead>
+<tr>
+<th>項目</th>
+<th>內容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>標題</td>
+<td>Implications of Modest Reductions in ABI Measurements for Risk of Major Adverse Limb Events Among 223,350 Veterans</td>
+</tr>
+<tr>
+<td>期刊 / 年份</td>
+<td>Journal of the American College of Cardiology, 2026;88(3):324–336</td>
+</tr>
+<tr>
+<td>DOI / PMID</td>
+<td>10.1016/j.jacc.2026.04.004 / 42201289</td>
+</tr>
+<tr>
+<td>文章類型</td>
+<td><strong>原始研究 — 回溯性電子病歷世代研究（retrospective EHR-based cohort）</strong>，作者自稱 &quot;prospective, longitudinal cohort&quot;（Methods、Conclusions）</td>
+</tr>
+<tr>
+<td>路由判斷</td>
+<td><strong>SKILL-A 主流程 ＋ 觀察性研究子模組 ＋ 因果推論 Appendix</strong></td>
+</tr>
+</tbody>
+</table>
+<p><strong>自稱設計與實際設計的落差（需標注）</strong>：Abstract Methods 與 Conclusions 兩處稱本研究為「prospective study」。實際上暴露（臨床照護中做的 ABI）、共變項與結果全部由既存 VA Corporate Data Warehouse／Medicare 行政資料回溯擷取，ABI 值是用 NLP 從病歷文字反向抽取（Methods, EXPOSURE），並無為研究目的預先設計的資料收集流程。VACS-National 本體是「prospective cohort」的資料基礎設施，但<strong>本次分析是 secondary、回溯性的</strong>。這不是致命缺陷，但「prospective」一詞會讓讀者高估設計品質，應視為用詞不當。</p>
+<hr />
+<h3>1. 作者團隊評論</h3>
+<p>[需外部資料]</p>
+<ul>
+<li>
+<p><strong>通訊作者</strong>：Aaron W. Aday, MD, MSc — Vanderbilt Translational and Clinical Cardiovascular Research Center, Division of Cardiovascular Medicine, VUMC [文內]。專長為 PAD 流行病學與血管醫學。</p>
+</li>
+<li>
+<p><strong>團隊構成</strong>（依 Methods 與掛名機構推斷 [推論]）：Vanderbilt 血管/心血管臨床端（Aday、Sullivan、Freiberg、Tindle）＋ Vanderbilt 生物統計（Eden、Greevy）＋ VA Salt Lake City VINCI 資訊學（Alba，負責 NLP ABI 擷取）＋ Pittsburgh 公衛（Alcorn）＋ UT Southwestern 血管醫學（Beckman）。這是一個<strong>方法學配置合理</strong>的組合：EHR-NLP 擷取、生物統計（Greevy 是 propensity score／因果推論方法學者）與臨床血管醫學都有專人。本文未提供 Author Contributions 段 [文內未提供]。</p>
+</li>
+<li>
+<p><strong>團隊過往研究</strong>（依 PubMed 檢索；以下據 PubMed 資料庫取得）：</p>
+<ul>
+<li>Aday AW, Duncan MS, Alba PR, ..., Beckman JA, Freiberg MS. <strong>Association of Sex and Race With Incident Peripheral Artery Disease Among Veterans With Normal Ankle-Brachial Indices.</strong> JAMA Netw Open. 2022;5(11):e2240188. <a href="https://doi.org/10.1001/jamanetworkopen.2022.40188">DOI</a> — <strong>同一團隊、同一 VA 資料體系、限定基線 ABI 0.90–1.40 且無 PAD 病史、N=77,041，並把 revascularization 與 nontraumatic amputation 當作獨立終點分析。</strong></li>
+<li>Beckman JA, Duncan MS, Alcorn CW, ..., Freiberg MS. Association of HIV Infection and Risk of Peripheral Artery Disease. Circulation. 2018;138:255–265（本文 ref 22）。</li>
+<li>Sullivan AE, ..., Aday AW, Freiberg MS, Beckman JA. Microvascular Function and Ambulatory Capacity in Peripheral Artery Disease. Circ Cardiovasc Interv. 2025;18(10):e015582. <a href="https://doi.org/10.1161/CIRCINTERVENTIONS.125.015582">DOI</a> — 此文結論為「微血管功能比 ABI 更能預測步行距離」。</li>
+<li>Aday AW, Matsushita K. Epidemiology of Peripheral Artery Disease and Polyvascular Disease. Circ Res. 2021;128:1818–1832（本文 ref 19，用來正當化共變項選擇）。</li>
+<li>Aday AW, Kinlay S, Gerhard-Herman MD. Comparison of different exercise ankle pressure indices. Vasc Med. 2018;23:541–548（本文 ref 40，用來解釋 ABI 敏感度不足）。</li>
+</ul>
+<p><strong>判定：這是該領域的核心研究團隊，不是跨領域首次切入。</strong> 團隊在 VA-PAD 流行病學上已有連續產出，方法學工具（NLP ABI 擷取、VACS 資料鏈結）為自建。</p>
+</li>
+<li>
+<p><strong>作者立場史與先前承諾偏差（prior commitment bias）</strong>：本團隊一貫主張「正常/接近正常 ABI 的族群仍有實質 PAD 風險」，2022 JAMA Netw Open 一文即是限定「normal ABI」族群的延伸。本文結論與該立場高度一致。<strong>更值得注意的是：本文 43 篇參考文獻中並未引用自己 2022 年這篇 JAMA Netw Open 論文</strong>（我逐一核對 ref 1–43 確認）。這造成兩個具體問題，詳見 E 紅旗清單第 8 項。</p>
+</li>
+<li>
+<p><strong>利益揭露</strong> [文內]：</p>
+<ul>
+<li>資助：NIH K23 HL151871、P01 AA029545、U24 AA020794（後兩者為 NIAAA 酒精研究計畫，即 VACS 的核心資助）。<strong>無業界資助本研究。</strong></li>
+<li>Aday：Merck 顧問費、Tactile Medical 演講費（均聲明與本研究無關）。Beckman：JanOne、Janssen、Novartis 顧問費，Bristol Myers Squibb 研究經費（均與本研究無關）。其餘作者無。</li>
+<li><strong>[評估]</strong>：COI 屬<strong>低至中度</strong>。無藥廠或裝置商資助本分析，資助結構乾淨。但方向性值得記錄：本文結論（borderline ABI 不良性、應擴大異常判定範圍）在制度上有利於擴大血管檢查與血管醫學專科轉介量，而 78% 的主要終點事件是 revascularization。這不構成不當行為指控，但讀者應知道結論的受益方向與作者次專科利益一致。</li>
+</ul>
+</li>
+</ul>
+<hr />
+<h3>2. 文獻 Metadata 整理</h3>
+<table>
+<thead>
+<tr>
+<th>項目</th>
+<th>內容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Received</td>
+<td>2025-08-30 [文內]</td>
+</tr>
+<tr>
+<td>Revised received</td>
+<td>2026-03-25 [文內]</td>
+</tr>
+<tr>
+<td>Accepted</td>
+<td>2026-04-02 [文內]</td>
+</tr>
+<tr>
+<td><strong>投稿至接受總天數</strong></td>
+<td><strong>215 天（約 7.1 個月）</strong>（自行計算）</td>
+</tr>
+<tr>
+<td>其中：初審＋作者修訂期</td>
+<td>207 天</td>
+</tr>
+<tr>
+<td>其中：修訂稿至接受</td>
+<td>8 天</td>
+</tr>
+<tr>
+<td>JACC Impact Factor</td>
+<td>22.3（2025 JIF，2026-06-17 公布）[外部: ACC 官網 / journalmetrics.org]</td>
+</tr>
+<tr>
+<td>期刊分區</td>
+<td>Q1（心臟與心血管醫學）[外部: journalmetrics.org]</td>
+</tr>
+<tr>
+<td>JACC 平均首次決定時間</td>
+<td>14–21 天；接受率約 5% [外部: manusights JACC review time / submission guide]（<strong>注意：此為第三方彙整之非官方數據，可信度中等</strong>）</td>
+</tr>
+<tr>
+<td>JACC 平均「投稿至接受」天數</td>
+<td>[無法取得]——未找到期刊官方 editorial statistics 公布此指標</td>
+</tr>
+<tr>
+<td>Open Access</td>
+<td>非 OA；© 2026 ACC Foundation, published by Elsevier, all rights reserved [文內]</td>
+</tr>
+<tr>
+<td>邀稿 vs 投稿</td>
+<td>文內無 invited 標示；歸類為 ORIGINAL RESEARCH，<strong>判定為自由投稿</strong> [文內]</td>
+</tr>
+</tbody>
+</table>
+<p><strong>[評估] 審查速度解讀</strong>：215 天對 JACC 原始研究屬<strong>偏慢</strong>。關鍵訊號在拆解：<strong>207 天用在第一輪審查加作者修訂，而修訂稿送回後僅 8 天即接受</strong>。這個型態最合理的解讀是第一輪收到了實質性、需要重跑分析的 major revision（[推論]，依據為時程分布本身），而修訂後審閱者滿意。這對本文是<strong>正面</strong>訊號——說明論文經過了不輕的方法學挑戰。但也提醒：8 天的第二輪不足以進行細緻的表格數字核對，這與我在 C4 節指出的 Table 1 數值錯誤未被攔下相符。</p>
+<hr />
+<h3>3. 研究背景</h3>
+<p>[僅依文內]</p>
+<ul>
+<li><strong>既有事實</strong>：ABI 定義為踝部收縮壓／較高側肱動脈收縮壓；正常情況踝壓應略高於臂壓（ref 1，AHA scientific statement）。ABI ≤0.90 為 PAD 診斷標準，0.91–1.00 歸類為 &quot;borderline&quot;（ref 2，2024 ACC/AHA PAD guideline）。異常 ABI 已知與冠心事件（ref 3,4）、心衰（ref 5,6）與心血管死亡（ref 3,7,8）增加相關。</li>
+<li><strong>知識缺口</strong>（作者陳述）：低 ABI 與<strong>肢體結果</strong>（而非全身心血管結果）之關聯較不明確。既有研究受限於：樣本數小（ref 10）、事件數少（ref 9,10）、種族多樣性不足（ref 10）、僅測單腿 ABI（ref 9）、限定已知 PAD 者（ref 10,11）、或僅分析極端 ABI 值（ref 10）。</li>
+<li><strong>Research question</strong>：在無既存 PAD 的大型且種族多元世代中，**完整 ABI 光譜（含 borderline 值）**與 incident MALE 的關聯為何？並分別檢視男/女、Black/White，以及 major amputation、total amputation、revascularization 三個分項終點。（Introduction 末段明確陳述，非推論）</li>
+</ul>
+<hr />
+<h3>4. 研究設計與方法</h3>
+<p><strong>PICO</strong></p>
+<table>
+<thead>
+<tr>
+<th>項目</th>
+<th>內容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>P</strong></td>
+<td>VACS-National Cohort（2000 年起在 VHA 就醫的全體約 1,350 萬退伍軍人）中，於 2000-01-01 至 2021-03-30 間在 VA 系統內接受過 ABI 檢查者；排除單腿 ABI、缺 ABI 日期/側別、有 PAD 編碼病史、以及 qualifying ABI 後 6 個月內發生終點或死亡/censored 者。最終 N=223,350</td>
+</tr>
+<tr>
+<td><strong>E</strong>（暴露，非介入）</td>
+<td>靜息 ABI。連續變項（4 knots restricted cubic spline，參考值 1.1）與類別變項（10 組，參考組 1.11–1.20）。<strong>每人取「兩腿中離 1.1 最遠」的那一側數值</strong>；由 VHA 自建且已驗證的 NLP 工具自病歷擷取（ref 16）</td>
+</tr>
+<tr>
+<td><strong>C</strong></td>
+<td>內部參考組：ABI 1.11–1.20（連續模型為 ABI=1.1）</td>
+</tr>
+<tr>
+<td><strong>O</strong></td>
+<td><strong>主要</strong>：MALE ＝ 非創傷性下肢截肢 or 外科/經皮下肢血管重建（複合終點）。<strong>次要</strong>：踝上 major amputation、total amputation、revascularization 各自單獨分析</td>
+</tr>
+</tbody>
+</table>
+<p><strong>關鍵設計細節</strong></p>
+<ul>
+<li>設計類型：回溯性 EHR 世代研究，含 Medicare／PIT／fee-for-service 資料鏈結（以加密 SSN 串接），以捕捉 VA 系統外發生的事件。</li>
+<li>基線定義：首次 qualifying ABI 日；<strong>追蹤自 ABI 後 6 個月開始</strong>（blanking period），目的是排除既存 PAD、降低 protopathic bias。</li>
+<li>追蹤截止：2021-09-30（Medicare 鏈結檔終點）、最長追蹤 10 年、最後就醫接觸、或死亡，取最早者。</li>
+<li>事件定義：≥1 次住院 and/or ≥2 次門診 ICD-9/10 碼，或 ≥1 次 CPT 碼（ref 17）。創傷性截肢以 30 天內併存創傷碼排除。</li>
+<li>統計方法：
+<ul>
+<li>Cox proportional hazards（<strong>cause-specific hazard</strong>；死亡當 censoring，作者明確說明因目標是 cause-specific hazard 而非 cumulative risk，故刻意不用 Fine–Gray，ref 27,28）。</li>
+<li>10 年 cumulative incidence 用 <strong>Aalen–Johansen</strong> 估計，<strong>死亡當競爭風險</strong>（ref 25）；並以 propensity score weighting（ref 26，Li/Morgan/Zaslavsky overlap weighting）令各 ABI 組在<strong>年齡、性別、種族</strong>分布上可與整體世代比較；CI 用 1,000 次 quantile bootstrap。</li>
+<li>Age-adjusted incidence rate 用 Poisson regression，年齡固定於 60 歲。</li>
+<li>缺失值：predictive mean matching ＋ MICE，10 組 imputed dataset，Rubin's rule 合併。</li>
+<li>變項重要性：chi-square minus df 排序（Supplemental Figure 4）。</li>
+<li>PH 假設：Schoenfeld residuals「確認未違反」。Type I error 設 0.05。R 3.6.2。</li>
+</ul>
+</li>
+<li>共變項（14 項）：年齡、性別、種族/族裔、VISN、抽菸（never/former/current）、BMI、SBP、DBP、抗高血壓藥、eGFR、HDL-C、LDL-C、TG、statin、抗血小板藥（clopidogrel/prasugrel/ticagrelor/dipyridamole）、prevalent CVD、prevalent DM。<strong>共變項選擇依據為作者自己的回顧文（ref 19）</strong>。所有共變項取距 qualifying ABI 最近之值（之前或之後 180 天內）。</li>
+<li><strong>無事前 power calculation</strong> [文內未提供]；作者僅在 Discussion 事後聲稱「given our sample size, we were adequately powered」。以 28,191 事件而言，主分析檢定力確實充裕，但此聲明對女性次群並不成立。</li>
+</ul>
+<hr />
+<h3>5. 研究結果重點整理</h3>
+<p><strong>世代特徵（Table 1；括號為 Q1–Q3 或 %）</strong></p>
+<ul>
+<li>年齡中位數 63（58–68）歲；女性 8,207（3.7%）；White 165,975（74.3%）、Black 42,173（18.9%）、Other 5,162（2.3%）、種族缺失 10,040。</li>
+<li><strong>基線 ABI 中位數 0.96（Q1–Q3: 0.70–1.16）</strong>。分層：男 0.96、女 1.00、White 0.97、<strong>Black 0.91</strong>。</li>
+<li>風險因子負荷極高：current smoking 44.4%、diabetes 47.9%、prevalent CVD 28.1%、<strong>antihypertensive therapy 92.8%</strong>、statin 76.7%、抗血小板藥 22.6%。</li>
+<li>事件數：<strong>28,191 MALE</strong>，中位追蹤 <strong>4.3 年</strong>；其中 major amputation 5,571、total amputation 11,259、<strong>revascularization 21,961</strong>。</li>
+</ul>
+<p><strong>主要結果（MALE，全體世代）</strong></p>
+<table>
+<thead>
+<tr>
+<th>ABI 類別</th>
+<th>10 年絕對發生率/1,000（95% CI）</th>
+<th>超額發生率/1,000（95% CI）</th>
+<th>校正後 HR（vs 1.11–1.20）</th>
+<th>結果分類</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>&lt;0.51</td>
+<td>356（348–364）</td>
+<td>282（274–291）</td>
+<td>—</td>
+<td>明確且巨大</td>
+</tr>
+<tr>
+<td>0.51–0.60</td>
+<td>320（312–329）</td>
+<td>247（237–257）</td>
+<td>—</td>
+<td>明確</td>
+</tr>
+<tr>
+<td>0.61–0.70</td>
+<td>277（269–285）</td>
+<td>203（195–212）</td>
+<td>—</td>
+<td>明確</td>
+</tr>
+<tr>
+<td>0.71–0.80</td>
+<td>238（231–246）</td>
+<td>165（156–174）</td>
+<td>—</td>
+<td>明確</td>
+</tr>
+<tr>
+<td>0.81–0.90</td>
+<td>180（174–187）</td>
+<td>107（98–115）</td>
+<td>—</td>
+<td>明確</td>
+</tr>
+<tr>
+<td><strong>0.91–1.00（borderline）</strong></td>
+<td><strong>114（110–117）</strong></td>
+<td><strong>40（35–46）</strong></td>
+<td><strong>1.53（1.43–1.64）</strong></td>
+<td><strong>明確、精確</strong></td>
+</tr>
+<tr>
+<td><strong>1.01–1.10（low-normal）</strong></td>
+<td><strong>95（89–100）</strong></td>
+<td><strong>21（15–29）</strong></td>
+<td><strong>1.25（1.16–1.36）</strong></td>
+<td><strong>明確但幅度小</strong></td>
+</tr>
+<tr>
+<td>1.11–1.20（<strong>參考</strong>）</td>
+<td>73（69–78）</td>
+<td>0</td>
+<td>Ref</td>
+<td>—</td>
+</tr>
+<tr>
+<td><strong>1.21–1.30</strong></td>
+<td><strong>75（70–80）</strong></td>
+<td><strong>1（−6 至 7）</strong></td>
+<td>—</td>
+<td><strong>NEUTRAL（實質等效）</strong></td>
+</tr>
+<tr>
+<td>&gt;1.30</td>
+<td>106（100–112）</td>
+<td>32（25–40）</td>
+<td>—</td>
+<td>明確</td>
+</tr>
+</tbody>
+</table>
+<p><strong>連續模型（spline，參考 ABI=1.1）</strong>：ABI 0.4 → HR 5.99（5.72–6.27）；ABI 1.0 → <strong>1.38（1.34–1.43）</strong>；ABI 1.2 → <strong>0.95（0.93–0.96）</strong>；ABI 1.3 → 1.16（1.12–1.21）；ABI 1.4 → 1.58（1.46–1.72）。</p>
+<p><strong>Age-adjusted incidence rate（每 1,000 人年）</strong>：borderline 15.0（14.5–15.5）vs 參考 9.3（8.8–9.9）。</p>
+<p><strong>分項終點（全體世代，borderline 0.91–1.00 vs 1.11–1.20）</strong>：major amputation HR 1.34（1.17–1.54）；total amputation 1.22（1.12–1.33）；<strong>revascularization 2.05（1.87–2.26）</strong>。
+<strong>Low-normal 1.01–1.10（全體世代）</strong>：major amputation 1.11（<strong>0.94–1.31，NS</strong>）；total amputation 1.08（<strong>0.97–1.20，NS</strong>）。</p>
+<p><strong>競爭風險（關鍵但被作者低調處理）</strong>：borderline ABI 相較參考組，<strong>10 年「MALE 前全因死亡」超額 51（41–62）／1,000 人——高於超額 MALE 的 40（35–46）／1,000</strong>。</p>
+<p><strong>次群（詳見 D 節）</strong>：女性 borderline MALE HR 2.00（1.18–3.38）；White 1.60（1.48–1.73）；Black 1.39（1.18–1.64）。女性 revascularization HR 5.08（1.83–14.11）。</p>
+<hr />
+<h3>6. 作者討論與評論重點</h3>
+<p><strong>作者主要訊息</strong>：ABI 應被理解為<strong>連續光譜而非二分測試</strong>；borderline（0.91–1.00）與 low-normal（1.01–1.10）皆為 MALE 風險標記；borderline ABI 與 MALE 的關聯<strong>強於 eGFR 下降、current smoking 與已存 CVD</strong>；現行「borderline」一詞對病人與醫師造成<strong>錯誤的安心</strong>（falsely reassures）。並主張 &gt;1.30 亦有風險（MALE 增加 50%），機轉可能為 medial arterial calcification，而現行指引直到 &gt;1.40 才標記異常，顯示術語系統無法涵蓋 ABI 風險的連續性。</p>
+<p><strong>與現有文獻的異同（作者自陳）</strong>：</p>
+<ul>
+<li>與 ARIC（ref 9）<strong>不一致處一</strong>：ARIC 發現 low-normal ABI 1.01–1.10 的 total amputation 風險增加（HR 1.73, 1.07–2.79），本文全體世代則<strong>無顯著關聯</strong>（major 1.11 [0.94–1.31]；total 1.08 [0.97–1.20]）。作者提出四項解釋：ABI 測量年代不同（ARIC 1987–89 vs 本文 2000–21，生活型態與初級預防不同）、ARIC 僅測單腿、ARIC 用 oscillometric 而本文為臨床血管實驗室 Doppler（作者主張自己較準）、以及本文在 borderline 仍證實 major amputation 關聯。</li>
+<li>與 ARIC <strong>不一致處二</strong>：ARIC 未發現 ABI &gt;1.30 的截肢風險上升，本文發現 ABI 1.4 vs 1.1 時 major amputation 增 1.8 倍、total amputation 增 1.6 倍、revascularization 增 1.5 倍。</li>
+<li>新穎性主張：「就我們所知，這是<strong>首次</strong>在無既存臨床 PAD 者中將 ABI 與 incident revascularization 當作獨立終點分析」。</li>
+</ul>
+<p><strong>作者自列限制</strong> [文內，共 5 項]：① 族群以男性為主，女性分析檢定力低得多；② ABI 來自例行臨床照護而非族群篩檢，篩檢情境是否有相同關聯未知；③ 無 PAD 解剖分布與血管重建技術細節；④ 無法比較 oscillometric vs Doppler 的風險預測差異；⑤ 觀察性設計有殘餘混淆可能，包括 aspirin 治療的潛在影響（因 OTC aspirin 資料缺漏）。</p>
+<p><strong>[評估] 作者的解釋是否合理？</strong></p>
+<ul>
+<li><strong>限制清單有明顯避重就輕</strong>。第 ② 點看似承認了選擇性，但實際上迴避了本研究最根本的問題：這不只是「篩檢 vs 臨床」的差異，而是<strong>下 ABI 醫囑的臨床理由（claudication、傷口、術前評估）本身就是後續 revascularization 最強的預測因子，且完全未被測量</strong>。作者把它寫成外推性問題，實則是核心的內部效度問題（confounding by indication）。</li>
+<li><strong>對 ARIC 差異的解釋方向可疑</strong>。作者主張自家 Doppler 測量「更準」因此結果較可信；但<strong>更準的測量會削弱回歸稀釋、使關聯變強，而本文在 low-normal 的結果是變弱（NS）</strong>。作者用「我們測得更準」來解釋「我們找到的關聯更弱」，方向上並不自洽。真正更可能的解釋是族群不同（ARIC 為社區篩檢族群、本文為臨床轉介族群），這正是選擇偏差問題，而作者沒有往這個方向推。</li>
+<li><strong>臨床建議超出數據支持範圍之處有二</strong>：
+<ol>
+<li>「ABI 是比 current smoking 與 prevalent CVD 更強的 MALE 風險標記」——這個比較在方法上不成立（見 E 紅旗第 3 項與 C4）。</li>
+<li>Conclusions 稱「These trends did not vary by sex or race」——<strong>全文未報告任何 interaction p-value</strong>，而作者自己在 Results 中寫道 Black 個體的 borderline ABI 與 amputation 關聯「did not reach statistical significance」。此結論與自身內文矛盾（見 D 節）。</li>
+</ol>
+</li>
+<li><strong>未列出的重要限制</strong>：複合終點被 revascularization 主導（78%）、cause-specific hazard 與絕對風險的校正程度不同、HIV 與酒精未納入校正、<code>total amputation</code> 在 48% 糖尿病族群中混入神經病變性小截肢。</li>
+</ul>
+<hr />
+<h3>7. 外部專業意見</h3>
+<p>[需外部資料]</p>
+<p><strong>同期 editorial（已定位，全文擷取失敗）</strong></p>
+<p>依 PubMed 檢索，本文於 JACC 同期（Vol 88, No 3，本文首頁標示 &quot;SEE PAGE 337&quot;）確有一篇針對本文的 editorial comment：</p>
+<blockquote>
+<p>Kadian-Dodov D. <strong>The Ankle-Brachial Index: A Continuum of Risk and Opportunity.</strong> J Am Coll Cardiol. 2026;88(3):337–339. <a href="https://doi.org/10.1016/j.jacc.2026.04.051">DOI</a>（PMID 42307494；article type: Editorial；PubMed 無 abstract）。作者單位：Mount Sinai Fuster Heart Hospital, Section of Vascular Medicine, Icahn School of Medicine at Mount Sinai.
+以上書目資訊據 PubMed 資料庫取得。</p>
+</blockquote>
+<p><strong>[無法取得全文]</strong>：已依指示執行 <code>fetch_editorial.py 10.1016/j.jacc.2026.04.051</code>，七種擷取途徑（直接 PDF、DOI 轉址、Elsevier API、ScienceDirect 瀏覽器工作階段、Unpaywall、PMC、nodriver）全部失敗，ScienceDirect 觸發 Cloudflare 驗證後中止。WebFetch 對 JACC 目次頁亦回傳 HTTP 403。</p>
+<p><strong>因此我不對這篇 editorial 的立場、論點、對本文的肯定或質疑做任何陳述</strong>。標題含 &quot;A Continuum of Risk and Opportunity&quot; 一語僅為書目事實，不足以推斷其論證內容或是否對本文提出方法學批評——不排除該標題是呼應作者主張，亦不排除是反諷或提出保留。<strong>待取得全文後才可補上此節。</strong></p>
+<p><strong>其他外部評論</strong></p>
+<ul>
+<li>檢索發現 Vanderbilt University Medical Center 新聞稿（&quot;Study questions standard screening test for amputation risk in veterans&quot;）與 Cardiovascular Business 報導（&quot;Have clinicians been wrong about how they diagnose PAD?&quot;）。依 Skill 規定，機構新聞稿與產業/一般媒體報導<strong>不列為專業意見來源</strong>，僅記錄其存在，不採用其內容。</li>
+<li>未發現針對本文的 letter to the editor、correspondence 或其他同儕評論 [外部: PubMed 檢索 2026-07]。</li>
+</ul>
+<hr />
+<h3>8. 臨床建議</h3>
+<p><strong>可採用本研究結論的臨床情境</strong></p>
+<ol>
+<li><strong>對已因症狀或臨床懷疑而做了 ABI、結果落在 0.91–1.10 的病人，不應以「borderline／接近正常」給予安心保證。</strong> 這是本文最站得住腳、也最有臨床價值的訊息。在此族群把系統性心血管風險管理拉高到 PAD 等級（高強度 statin、戒菸、血壓與血糖控制、抗血小板依適應症）是合理的。</li>
+<li><strong>把 ABI 當連續變項記錄與追蹤，而非只記「正常/異常」。</strong> 這是零成本、零風險的照護行為改變，且不依賴本文的因果推論是否成立。</li>
+<li><strong>ABI 0.91–1.00 應視為全身性血管風險的警訊，而非單純肢體警訊。</strong> 本研究中該組的 10 年超額死亡（51/1,000）大於超額 MALE（40/1,000）——這反而強化了系統性風險治療的優先性。</li>
+</ol>
+<p><strong>不建議直接套用的情境</strong></p>
+<ol>
+<li><strong>無症狀族群的 ABI 篩檢</strong>。本世代 100% 有臨床 ABI 醫囑指示，中位 ABI 僅 0.96，約 44% 基線 ABI ≤0.90（見 B2）。這些數字與一般社區篩檢族群相差極遠。作者自己也承認此點。</li>
+<li><strong>女性</strong>。8,207 名女性、截肢事件「rare」，多數次群估計 CI 極寬（revascularization HR 5.08，1.83–14.11），且在絕對尺度上女性只有 0.91–1.00 一組的超額發生率排除了零（見 D 節）。本文不足以支持對女性的分層建議。</li>
+<li><strong>非退伍軍人、非美國、女性為主或低風險因子負荷的族群</strong>。本世代 96.3% 男性、44% current smoker、48% 糖尿病、92.8% 使用抗高血壓藥。</li>
+<li><strong>以「borderline ABI」為理由啟動肢體導向的影像檢查、監測性血管攝影或預防性 revascularization</strong>。本文完全不支持此推論：超額事件幾乎全部由 revascularization（一種治療決策，本身部分由 ABI 觸發）構成，major amputation 的絕對超額極小，且無任何試驗證明對 borderline ABI 早期介入能改善結果。</li>
+<li><strong>不要把「ABI 比抽菸、CVD 更重要」拿來做臨床權重判斷</strong>。該比較在方法上不成立（見 C4、E 第 3 項）。</li>
+</ol>
+<p><strong>給臨床醫師的實務建議（3 點）</strong></p>
+<ol>
+<li>病歷寫下實際 ABI 數值並與前次比較；<strong>捨棄「ABI 正常」這種二分結論</strong>。ABI 0.95 的病人 10 年 MALE 絕對風險約 11.4%，是 ABI 1.15 病人（7.3%）的約 1.5 倍。</li>
+<li>對 ABI 0.91–1.10 的病人，<strong>行動是強化全身性動脈硬化治療，不是加做肢體影像</strong>。同一群人的超額死亡風險高於超額肢體事件風險。</li>
+<li>ABI 1.21–1.30 這一組在本研究中<strong>與參考組實質等效</strong>（超額 1/1,000，95% CI −6 至 7）；不必因為 ABI 略高於 1.2 而額外擔憂。真正的高 ABI 風險訊號出現在 &gt;1.30，且在 Black 病人特別明顯（超額 62/1,000 vs White 25/1,000）。</li>
+</ol>
+<p><strong>研究證據強度分級：中等（medium）</strong></p>
+<p>理由：樣本數與事件數極大、資料鏈結完整（VA＋Medicare＋fee-for-service）、統計方法在多處採用了正確且不偷懶的做法（Aalen–Johansen 處理競爭風險、spline 建模連續暴露、多重插補、cause-specific vs cumulative risk 的區辨清楚說明）。但<strong>不能升到「強」</strong>，因為：核心族群定義（「free of prevalent PAD」）與實際資料嚴重不符、主要複合終點 78% 由一個與暴露存在循環關係的醫師決策終點構成、下 ABI 醫囑的臨床指示這個關鍵混淆因子完全未測量、以及作者最強勢的宣稱（ABI 優於傳統風險因子）缺乏任何 discrimination／calibration 證據支撐。</p>
+<hr />
+<h2>SKILL-A：批判性評讀</h2>
+<h3>A. 補充技術細節</h3>
+<p>（SECTION-0 第 4 節未涵蓋者）</p>
+<table>
+<thead>
+<tr>
+<th>項目</th>
+<th>文內內容與評估</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>事前 power calculation</strong></td>
+<td><strong>無</strong> [文內未提供]。作者僅事後聲稱樣本充足（Discussion）。主分析確實充裕；女性次群不成立。</td>
+</tr>
+<tr>
+<td><strong>參與者篩選流程</strong></td>
+<td>361,854（有 ABI）− 78,395（僅單腿 ABI）− 11,759（缺日期/側別）= 271,700；− 21,264（PAD 編碼病史）− 19,058（6 個月內發生終點）− 8,028（6 個月內死亡/censored）= <strong>223,350</strong>。<strong>算術完全對得上</strong>（我逐步核算確認）。流程圖在 Supplemental Figure 1，未提供。</td>
+</tr>
+<tr>
+<td><strong>隨機化／致盲</strong></td>
+<td>不適用（觀察性研究）。但需注意：<strong>結果判定（revascularization 決策）由知道 ABI 值的臨床醫師做出</strong>，等同於「結果評估者未致盲於暴露」，這在觀察性研究中是實質偏差來源，非形式問題。</td>
+</tr>
+<tr>
+<td><strong>ITT / per-protocol</strong></td>
+<td>不適用。</td>
+</tr>
+<tr>
+<td><strong>多重比較處理</strong></td>
+<td><strong>無任何校正</strong>。Type I error 固定 0.05。實際比較數量為 4 個終點 × 10 個 ABI 類別 × 5 個族群（全體/男/女/White/Black）＋ 連續模型，數量龐大。</td>
+</tr>
+<tr>
+<td><strong>PH 假設</strong></td>
+<td>「Schoenfeld residuals used to confirm that the PH assumption was not violated」。<strong>未提供任何 p 值、統計量或圖形</strong>。以 n=223,350、28,191 事件的檢定力，Schoenfeld 全域檢定幾乎必然拒絕虛無假設；宣稱「未違反」而不出示證據，在此樣本量下<strong>不可信</strong>（見 C4）。</td>
+</tr>
+<tr>
+<td><strong>Blanking period / 不朽時間</strong></td>
+<td>6 個月 blanking，並排除該期間內死亡或 censored 者（8,028 人）。此設計正確地避免了 immortal time bias（未把 blanking 期算入 at-risk 時間），但代價是選擇性排除了最高風險者。作者做了敏感度分析（追蹤自 ABI 當日起算，Supplemental Figure 3）稱結果類似——<strong>但該圖未提供，無法驗證</strong>。</td>
+</tr>
+<tr>
+<td><strong>缺失資料</strong></td>
+<td>種族 10,040（4.5%）、抽菸 10,270（4.6%）、LDL 7,287、TG 6,934、HDL 6,742、TC 5,958、eGFR 2,721、SBP/DBP 各 2,386、BMI 1,930。MICE ＋ predictive mean matching，10 組。<strong>未報告缺失機制假設（MAR）的合理性檢驗，亦未做完整個案分析（complete-case）敏感度比較。</strong> 另有一個未澄清之處：<strong>種族被列入插補變項，但種族同時是分層分析的分層變項</strong>；若在 White/Black 分層分析中使用了插補的種族，這在方法上是有問題的，文中未說明如何處理。</td>
+</tr>
+<tr>
+<td><strong>共變項時間窗</strong></td>
+<td>「距 qualifying ABI 最近之值，之前或<strong>之後 180 天內</strong>」。允許共變項取自基線之後最多 180 天，理論上可納入受暴露影響（甚至受早期疾病進展影響）的數值，屬輕微的時序污染。因追蹤自 180 天後開始，此設計自洽，但仍非嚴格的「基線」測量。</td>
+</tr>
+<tr>
+<td><strong>測量誤差／重複測量</strong></td>
+<td>ABI 為<strong>單次臨床測量</strong>，由 NLP 從病歷擷取。本文未報告該 NLP 工具在此資料集的 precision/recall（僅引用 ref 16）。<strong>無 test-retest、無 inter-observer 變異、無品管流程、無 Doppler vs oscillometric 標記</strong>（作者自列限制 ④）。臨床 ABI 的實務變異度不小，非差異性測量誤差會使 modest ABI 類別的關聯<strong>低估</strong>（regression dilution），此方向對作者結論有利。</td>
+</tr>
+</tbody>
+</table>
+<h4>觀察性研究混淆控制方法評估</h4>
+<table>
+<thead>
+<tr>
+<th>方法</th>
+<th>本文是否採用</th>
+<th>強度</th>
+<th>關鍵要求是否滿足</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>多變量迴歸</td>
+<td>✅ 14 項共變項，連續變項用 spline</td>
+<td>中</td>
+<td><strong>未滿足</strong>。要求「所有相關混淆因子皆已測量並納入」。至少三項可得且已知的混淆因子未納入：<strong>下 ABI 醫囑的臨床指示</strong>（最關鍵）、<strong>HIV 狀態</strong>（VACS 核心變項，且本團隊自己在 Circulation 2018 = 本文 ref 22 證實其為 PAD 風險因子）、<strong>酒精使用</strong>（VACS 由 NIAAA 資助、常規收集）。糖尿病僅二分，無病程、HbA1c、insulin 使用；無透析狀態。</td>
+</tr>
+<tr>
+<td>Propensity score weighting</td>
+<td>✅ 但<strong>僅用於 10 年 cumulative incidence</strong></td>
+<td>中–高（若用對）</td>
+<td><strong>僅平衡年齡、性別、種族三項</strong>（Methods 明文）。與 Cox 的 14 項校正不同層級。詳見 C4 的關鍵不一致。</td>
+</tr>
+<tr>
+<td>Instrumental variable</td>
+<td>❌ 未採用</td>
+<td>—</td>
+<td>本情境亦難找到有效工具變數。</td>
+</tr>
+<tr>
+<td>敏感度分析 / E-value</td>
+<td>❌ <strong>完全未做</strong></td>
+<td>—</td>
+<td>對於一篇核心限制是殘餘混淆的論文，<strong>未提供任何量化的未測量混淆敏感度分析（E-value、bias analysis、negative control outcome）</strong>，是可補救卻未補救的缺口。</td>
+</tr>
+</tbody>
+</table>
+<p>依 JAMA Users' Guide 對調整方法的評述：「propensity methods do not address other limitations of traditional adjustment: investigators may not have measured all relevant prognostic factors (or not accurately), and unknown factors may bias the results」以及「Even if investigators accurately measure and adjust their analysis for all known prognostic factors, results may still be biased by different distributions of unknown prognostic factors (ie, residual confounding)」[參考: jama_agoritsas_2017_ug_160001.md，Table 1 與 &quot;The Challenge of Prognostic Imbalance&quot; 節]。本文的 propensity weighting 只平衡了三項人口學變項，因此連「已知混淆因子已平衡」這個較低標準都未達到，更談不上處理未測量混淆。</p>
+<ul>
+<li><strong>殘餘混淆討論</strong>：作者僅一句概括（限制 ⑤），並只具名 aspirin 一項。<strong>未討論指示混淆（confounding by indication）、未討論 HIV／酒精、未做敏感度分析。</strong></li>
+<li><strong>時序性（temporality）</strong>：6 個月 blanking ＋ 排除 PAD 編碼病史提供了形式上的時序保障。但<strong>時序正確不等於非既存疾病</strong>：ABI 0.45 在測量當日即已是解剖與生理上的 PAD，只是尚未被編碼。時序設計解決的是「結果導致暴露」，解決不了「暴露其實是既存疾病的嚴重度指標」。</li>
+</ul>
+<hr />
+<h3>B. 批判性評估（四大面向）</h3>
+<h4>B1. 假說與理論邏輯</h4>
+<p><strong>假說是否預先指定？</strong></p>
+<ul>
+<li><strong>未預先註冊</strong> [文內未提供 protocol / 註冊號]。Data Availability 僅列 VA 資料使用專案號（SDR 02-237、98-004），非分析計畫註冊。</li>
+<li>但整體而言<strong>假說架構是先驗且合理的</strong>：主要暴露（ABI）、主要終點（MALE）、參考組（1.11–1.20，明確引用 ref 3,9 的先例）皆單一明確，非撒網後挑顯著。共變項選擇亦有先驗依據（ref 19）。<strong>這一點對本文有利，應予肯定。</strong></li>
+<li>撒網風險存在於<strong>次要層面</strong>：4 個終點 × 10 類別 × 5 族群、且「Black 個體 borderline 未達顯著」「女性 revascularization HR 5.08」這類敘述明顯是事後挑選描述（見 D 節）。</li>
+</ul>
+<p><strong>機轉是否與情境匹配？</strong></p>
+<p>最合理的機轉（1–3 點）：</p>
+<ol>
+<li><strong>ABI 是下肢動脈血流動力學負荷的連續指標，而非階梯函數。</strong> 這在生理上完全成立：0.91 與 0.90 之間沒有生物學斷點，ABI 0.95 的人相較 1.15 的人，其動脈粥狀硬化負荷（不論是否達診斷閾值）確實較高。<strong>這個核心生理主張本身無可爭議，也是本文最堅實的部分。</strong></li>
+<li><strong>正常 ABI 者仍發生 MALE，可由 ABI 的偵測敏感度不足解釋。</strong> 靜息 ABI 對局部（尤其髂動脈、股動脈分叉）病灶與側枝良好者敏感度有限；運動後踝壓指數可揭露靜息 ABI 正常者的病灶（作者自己的 ref 40）。這解釋了為何 low-normal 組仍有事件。<strong>合理。</strong></li>
+<li><strong>&gt;1.30 的風險可由 medial arterial calcification 解釋</strong>（ref 37,38）。<strong>部分合理，但作者未考慮更簡單的替代解釋</strong>：ABI 升高本身代表動脈不可壓縮，這使 ABI <strong>系統性高估真實灌流壓</strong>——高 ABI 者可能實際上是嚴重 PAD 被錯誤分類，而非另一條獨立的病生理路徑。這是測量偽影，不是 J 型曲線的生物學。作者選了較有敘事價值的解釋而未討論較簡單的那個（見 F 節）。</li>
+</ol>
+<p><strong>最可疑的敘事跳躍（1–3 點）</strong></p>
+<ol>
+<li><strong>「Borderline ABI 不良性」→「術語系統誤導病人與醫師」→ 暗示應改變 ABI 判定閾值。</strong> 從關聯到「重新劃分診斷閾值」之間缺了關鍵一步：<strong>閾值的價值取決於是否有隨閾值改變而啟動的有效介入</strong>。本文既未評估任何介入，也未提供 reclassification 指標。作者在 Conclusions 呼籲「test the impact of alternative ABI thresholds on clinical outcomes」——這是誠實的，但 Discussion 中「offers an opportunity for earlier prevention」與「a new respect for a measure hiding in plain sight」的修辭已經預先框定了結論。</li>
+<li><strong>「ABI 比 established risk factors 更強」→ 暗示 ABI 有更高的臨床權重。</strong> 這是本文最嚴重的敘事跳躍，且與其自身 Central Illustration 的圖形內容直接矛盾（見 E 第 3 項）。</li>
+<li><strong>「free of prevalent PAD」這個框架本身。</strong> 全文從 Abstract 到 Conclusions 一貫以「無既存 PAD 的世代」自我描述，但世代中位 ABI 為 0.96、約 44% 基線 ABI ≤0.90、9–11% 基線 ABI ≤0.50，而 Introduction 第一段自己就寫「An ABI value ≤0.90 is diagnostic of PAD」。<strong>這是全文最大的內部邏輯衝突</strong>（見 B2、E 第 1 項）。</li>
+</ol>
+<h4>B2. 受試者與外推性</h4>
+<p><strong>受試者是否與宣稱對象一致？——不一致，且落差幅度很大。</strong></p>
+<p>這是本文最根本的問題，且可用文內數字精確量化。依 Table 2（提供 White 與 Black 各 ABI 類別的分母），我核算：</p>
+<table>
+<thead>
+<tr>
+<th>族群</th>
+<th>基線 ABI ≤0.90（達 PAD 診斷標準）</th>
+<th>占該族群比例</th>
+<th>其中 ABI ≤0.50（重度）</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>White</td>
+<td>71,500 / 165,975</td>
+<td><strong>43.1%</strong></td>
+<td>14,963（9.0%）</td>
+</tr>
+<tr>
+<td>Black</td>
+<td>21,058 / 42,173</td>
+<td><strong>49.9%</strong></td>
+<td>4,582（10.9%）</td>
+</tr>
+<tr>
+<td>White＋Black 合計</td>
+<td>92,558 / 208,148</td>
+<td><strong>44.5%</strong></td>
+<td>19,545（9.4%）</td>
+</tr>
+</tbody>
+</table>
+<p><strong>即：本文自稱「free of prevalent PAD」的世代中，約 44% 的人在基線的 ABI 值依作者自己引用的診斷標準（ABI ≤0.90，ref 2）即為 PAD，其中約 9% 落在 ≤0.50 的重度範圍。</strong> 排除的只是「有 PAD 行政編碼病史」的 21,264 人，也就是<strong>排除了「已被編碼的 PAD」，而非「PAD」</strong>。Table 2 進一步顯示，White 族群中 ABI ≤0.50 者有 3,920/14,963（<strong>26.2%</strong>）在追蹤期內接受了血管重建——四分之一以上。這不是一個無 PAD 的世代。</p>
+<p><strong>這對本文結論的實際影響（必須精確界定，不可一概否定）</strong>：</p>
+<ul>
+<li><strong>對「borderline / low-normal ABI 有較高風險」這個核心結論的影響有限。</strong> 該比較是在 ABI 0.91–1.10 與 1.11–1.20 兩組之間進行，這兩組<strong>都不在 ≤0.90 範圍內</strong>，且都經過同樣的 PAD 編碼排除。低 ABI 族群的存在不直接污染這個對比。</li>
+<li><strong>但對三件事影響重大</strong>：① 世代描述與外推性宣稱（Abstract、Conclusions 的「free of prior PAD」誤導讀者對族群風險水準的理解）；② spline 曲線的形狀——4 knots 的限制立方 spline 其擬合受大量極低 ABI 觀察值強力槓桿，使 ABI 0.9–1.2 這段的估計值與 CI 部分「借用」自極端值的資訊（見 C4）；③ 「首次在無既存 PAD 者中分析」的新穎性宣稱。</li>
+</ul>
+<p><strong>基線是否平衡？</strong>
+不適用（非隨機化）。但 Table 1 顯示 Black 個體基線 ABI 中位數 0.91 vs White 0.97，且 Black 糖尿病比例較高（52.2% vs 46.8%）、statin 使用較低（73.2% vs 77.8%）、抗血小板藥較低（18.5% vs 24.0%）——族群間存在系統性的疾病嚴重度與治療強度差異，這對種族分層結果的解讀很重要，作者未討論。</p>
+<p><strong>研究環境能否外推真實世界？</strong></p>
+<p><strong>外推性分級：低至中等。</strong> 分項理由：</p>
+<ol>
+<li><strong>一般健康族群 / 無症狀篩檢</strong>：<strong>不可外推</strong>。100% 有臨床 ABI 醫囑指示、中位 ABI 0.96、44% current/former 以外的極高風險因子負荷（92.8% 用抗高血壓藥）。作者自己承認（限制 ②）。</li>
+<li><strong>臨床上因症狀或懷疑而做 ABI 的病人</strong>：<strong>可外推，這是本文真正的目標族群</strong>。這其實是很大的臨床族群，本文對他們有實質價值。作者若把定位講清楚，論文會更誠實也不會更弱。</li>
+<li><strong>女性</strong>：<strong>證據不足</strong>。3.7%、8,207 人、截肢事件「rare」、多數次群 CI 極寬。</li>
+<li><strong>非美國 / 非 VA 體系</strong>：<strong>謹慎</strong>。VA 的血管照護取得途徑、revascularization 決策門檻與轉介型態具制度特異性，而 revascularization 占主要終點 78%。這使<strong>主要終點本身具有醫療體系依賴性</strong>，跨體系外推風險高於一般臨床終點。</li>
+<li><strong>糖尿病足族群</strong>：<strong>特別謹慎</strong>。48% 糖尿病，且 <code>total amputation</code> 包含足趾等小截肢（見 B4）。</li>
+</ol>
+<h4>B3. 研究設計與偏差</h4>
+<p><strong>最可能造成偏差的三個設計點（依重要性排序，並標示方向）</strong></p>
+<hr />
+<p><strong>① 主要複合終點被「醫師決策型」終點主導，而該決策部分由暴露本身觸發（循環性／偵測偏差）</strong>
+<strong>方向：使關聯明顯變大（誇大效果）</strong></p>
+<ul>
+<li>28,191 個 MALE 中，<strong>21,961（77.9%）是 revascularization</strong>；major amputation 僅 5,571（19.8%）。</li>
+<li>Revascularization 不是疾病的自然發生，而是臨床決策。而<strong>啟動這個決策的關鍵臨床輸入之一，正是 ABI 本身</strong>。一位 ABI 0.95 且有症狀的病人會被排入血管門診、進入監測、最終接受血管攝影與介入；一位 ABI 1.15 的病人則不會。這使暴露與結果之間存在<strong>部分定義性的循環關係</strong>，而非純粹的預後關聯。</li>
+<li>這個推論有文內數據直接支持：Figure 3 顯示三個終點的曲線形狀差異極大。在 ABI 0.4 時，<strong>revascularization HR 為 10.15（9.56–10.79），而 total amputation 僅 2.86（2.68–3.06）</strong>——相差 3.5 倍。在 ABI 1.2 時，major amputation HR 為 1.00（0.97–1.03）、amputation 1.01（0.99–1.03）<strong>完全平坦</strong>，而 revascularization 為 0.85（0.83–0.87）<strong>顯著低於參考</strong>。<strong>即：MALE 複合終點所呈現的那條漂亮的 inverse-J 曲線，形狀基本上就是 revascularization 曲線的形狀。</strong></li>
+<li>更關鍵的是 Table 2 的粗事件比例。White 族群 borderline（0.91–1.00）vs 參考（1.11–1.20）：
+<ul>
+<li><strong>major amputation：378/31,157（1.21%）vs 192/17,055（1.13%）——粗比例幾乎相同（ratio 1.07），但校正後 HR 為 1.42（1.21–1.68）。</strong></li>
+<li><strong>revascularization：1,755/31,157（5.63%）vs 384/17,055（2.25%）——粗比例差 3.4 個百分點（ratio 2.50），校正後 HR 2.22（1.99–2.48）。</strong></li>
+<li>也就是說，borderline ABI 訊號在<strong>病人真正在意的終點（major amputation）上，粗尺度幾乎不存在</strong>，是校正與差異性 censoring（低 ABI 者死亡多、at-risk 時間短，cause-specific hazard 因此被推高）之後才出現的。粗估計與校正估計在 major amputation 上分歧如此大（1.07 → 1.42），正是殘餘混淆與模型設定最有影響力的地方。</li>
+</ul>
+</li>
+<li>作者確實提及了這個問題，但<strong>極為輕描淡寫</strong>，且放在「這是我們的獨特貢獻」的段落裡：「whether this was caused by low sensitivity of the ABI, subsequent limb thromboembolism, or prioritization of arterial anatomy in guiding revascularization remains unclear」。三個候選解釋中，「醫師看到 ABI 就更傾向介入」這個最直接的偏差機制<strong>沒有被列入</strong>。</li>
+</ul>
+<hr />
+<p><strong>② 暴露定義「取離 1.1 最遠的那一腿」，使參考組被選成異常健康的雙腿正常者</strong>
+<strong>方向：使關聯變大（誇大效果）</strong></p>
+<ul>
+<li>Methods 明文：「individuals were classified by whichever limb measure was <strong>furthest from the normal value of 1.1</strong>」。</li>
+<li>這個規則的不對稱後果：一個人若一腿 1.15（距離 0.05）、另一腿 0.95（距離 0.15），會被歸入 <strong>0.91–1.00</strong> 組。因此<strong>要被歸入參考組 1.11–1.20，必須兩腿都落在距 1.1 不超過 0.10 的範圍內</strong>，也就是雙腿皆約 1.00–1.20。</li>
+<li>結果：<strong>參考組是「雙腿都正常」的族群，而 borderline 組只需要「較差那一腿」落在 0.91–1.00</strong>。參考組被系統性篩選成血管狀況最乾淨的一群，而不是「一般正常人」。這會膨脹所有與參考組的對比 HR。</li>
+<li>這個機制也部分製造了 J 型的兩端：&gt;1.30 組同樣只需要「較遠那一腿」≥1.30。</li>
+<li>諷刺的是，作者把「納入雙腿」當成自己優於 ARIC（僅測單腿）的優勢，主張「inclusion of both legs in our analysis may have led to more accurate ABI categorization」。<strong>雙腿資料本身確實是優勢，但「取極端值」這個聚合規則不是更準確的分類，而是一個會膨脹參考組健康度的選擇規則。</strong> 作者未討論其他聚合方式（取較低側——臨床標準做法、取平均、或雙腿分別建模）的敏感度分析。</li>
+</ul>
+<hr />
+<p><strong>③ 下 ABI 醫囑的臨床指示（indication for testing）完全未測量</strong>
+<strong>方向：使關聯變大（誇大效果）</strong></p>
+<ul>
+<li>全體世代皆為臨床照護中做的 ABI。<strong>下醫囑的理由</strong>——間歇性跛行、靜止痛、足部傷口、脈搏異常、術前血管評估、糖尿病足篩檢——是後續 revascularization 與 amputation <strong>最強的預測因子之一</strong>，且與 ABI 值高度相關（有症狀者 ABI 較低）。</li>
+<li>這是典型的 exchangeability 失效（見下方因果推論附錄）。它同時解釋了：為何 borderline 組 revascularization 風險倍增（他們更可能一開始就是因為症狀來的）、以及為何本文結果在 low-normal 的 amputation 上是 null（無症狀者不會被介入，但也不會截肢）。</li>
+<li><strong>作者將此包裝為外推性限制（限制 ②「ABI 做為例行照護而非篩檢」），而非內部效度威脅。這是限制陳述中最實質的避重就輕之處。</strong></li>
+</ul>
+<hr />
+<p><strong>其他設計點（次要但值得記錄）</strong></p>
+<ul>
+<li><strong>排除 78,395 名僅單腿 ABI 者（占原始 361,854 人的 21.7%）</strong>。單腿 ABI 最常見的原因正是對側已截肢、有開放性傷口、石膏或無法測量——<strong>這是系統性排除了最高風險者</strong>，方向上使關聯變小（保守），但也進一步偏離「一般族群」。作者對此排除未做任何討論或敏感度分析。</li>
+<li><strong>6 個月 blanking 排除 27,086 人（19,058 早期事件 ＋ 8,028 早期死亡/censored）</strong>。設計正確且必要（避免 protopathic bias 與 immortal time bias），但選擇性移除了低 ABI 端最高風險者，方向上保守。</li>
+<li><strong>對照組適當性</strong>：本研究無「治療 vs 標準治療」的概念，此標準不直接適用。但可平行提問：<strong>參考組 1.11–1.20 是否是正確的對比基準？</strong> 依 Figure 1A，spline 在 ABI 1.2 時 HR 為 0.95（0.93–0.96），<strong>顯著低於 ABI 1.1</strong>；Table 2 中 White 的 1.21–1.30 組 revascularization HR 為 0.86（0.74–0.99）。<strong>模型的實際風險最低點在約 1.2，而非 1.1。</strong> 選擇偏離最低點的參考組會使該側對比<strong>低估</strong>（方向保守），但也意味著作者所稱的「inverse J」其實是以非最低點為原點畫出來的。</li>
+<li><strong>提早停止</strong>：不適用。</li>
+<li><strong>依從性</strong>：不適用（暴露非治療）。</li>
+</ul>
+<h4>B4. 測量工具與實務意義</h4>
+<p><strong>測量工具的信度／變異度</strong></p>
+<ul>
+<li>ABI 由 NLP 從 VHA 病歷擷取（ref 16，Klarin et al. Million Veteran Program）。<strong>本文未報告該工具在此資料集的 precision/recall 或錯誤率</strong>，僅稱「validated」。</li>
+<li><strong>單次測量，無重複、無品管、無 Doppler/oscillometric 標記</strong>（作者限制 ④）。臨床 ABI 的日間變異與操作者變異在文獻上不小。</li>
+<li><strong>方向</strong>：非差異性測量誤差造成的 regression dilution 會<strong>低估</strong> modest ABI 類別的關聯。這對作者結論有利，也是本文結果的一項可信度支撐。但若 ABI 的測量誤差與下醫囑情境相關（例如傷口照護門診測量品質較差），則可能是差異性的，方向不定。</li>
+</ul>
+<p><strong>終點是否有臨床意義？——這是複合終點設計最需要質疑的地方</strong></p>
+<table>
+<thead>
+<tr>
+<th>終點</th>
+<th>事件數</th>
+<th>對病人的重要性</th>
+<th>評估</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Major amputation（踝上）</td>
+<td>5,571</td>
+<td><strong>極高</strong>（硬終點、不可逆、災難性）</td>
+<td>唯一無可爭議的 patient-important outcome</td>
+</tr>
+<tr>
+<td>Total amputation</td>
+<td>11,259</td>
+<td>差異極大</td>
+<td><strong>在 47.9% 為糖尿病的世代中，包含足趾等小截肢，其主要驅動常為神經病變性潰瘍與感染，而非大血管缺血。</strong> 諷刺的是，作者批評前人（ref 35）「未區分 major amputation 與糖尿病相關 minor amputation」——<strong>但本文自己的 <code>total amputation</code> 終點正好犯同一問題</strong>。文內數據也支持此擔憂：作者報告 diabetes 是 major amputation 與 total amputation 相對重要性排名<strong>最高</strong>的共變項（Supplemental Figure 4B、4C），而 ABI 只在 MALE 與 revascularization 排第一。</td>
+</tr>
+<tr>
+<td>Revascularization</td>
+<td><strong>21,961（78%）</strong></td>
+<td><strong>低至中等</strong>（這是一種治療，不是疾病結果）</td>
+<td>除了循環性問題（B3①），把治療當作不良事件在概念上也有問題：一次成功的血管重建可能代表照護良好而非結果惡化。<strong>且它主導了整個複合終點。</strong></td>
+</tr>
+</tbody>
+</table>
+<p><strong>複合終點違反了「各成分對病人重要性應相近」的基本要求</strong>，而權重最高的成分恰是重要性最低、且最受醫師決策與醫療體系影響的那一個。任何以 MALE 為單位的效果量都應被視為「以血管重建為主的複合指標」，不能口語化為「肢體不良事件」。</p>
+<p><strong>「就算結果是真的，真實世界可能有多大用處？」</strong></p>
+<p>以文內數字直接回答：一位 ABI 0.95 的病人相較 ABI 1.15 的病人，10 年 MALE 絕對風險由 7.3% 升至 11.4%，<strong>超額 4.0%（40/1,000，95% CI 35–46）</strong>。粗略而言，需要追蹤約 <strong>25 位</strong> borderline ABI 病人 10 年，才會多出 1 次 MALE。但這 1 次事件中約 78% 是血管重建；換算為 major amputation，超額幅度小得多（Table 2 White 的粗比例 1.21% vs 1.13%）。</p>
+<p>同時，同一位 borderline ABI 病人的 <strong>10 年超額全因死亡為 51/1,000（41–62）——大於超額 MALE 的 40/1,000</strong>。</p>
+<p><strong>實務結論：這個效果量足以改變「風險溝通」與「全身性風險治療的積極度」，但不足以支持任何肢體導向的新介入或監測流程。</strong> 而且本世代已有 76.7% 在使用 statin、92.8% 在使用抗高血壓藥，實際可增加的治療空間比 HR 1.53 聽起來要小得多。</p>
+<hr />
+<h3>C. 統計與資料完整性</h3>
+<h4>C1. 結果分類（依 CI ＋ 臨床決策門檻）</h4>
+<p>本研究是<strong>觀察性預後標記研究，不是治療試驗</strong>；暴露（ABI 值）不可操作，因此不存在治療試驗意義下的 MCID。依 Skill 要求「fit-for-purpose」處理，我改以**「會改變臨床處置的最小絕對風險差異」**作為決策門檻，並分開兩種處置：</p>
+<p><strong>門檻設定</strong> [推算，並說明依據]</p>
+<ul>
+<li><strong>門檻 A（啟動/強化全身性心血管風險治療）</strong>：依 2024 ACC/AHA PAD 指引（本文 ref 2）將 PAD 視為 CAD risk equivalent 的邏輯，10 年主要血管事件絕對風險增加約 <strong>≥2%</strong> 即足以支持把病人上調至高風險層級。</li>
+<li><strong>門檻 B（啟動肢體導向的影像/監測/預防性介入）</strong>：需要 <strong>major amputation 或 CLTI 的實質絕對風險增加</strong>，且需存在證實有效的介入。本文既無 CLTI 終點，亦無介入證據。</li>
+</ul>
+<p><strong>主要終點（MALE）分類</strong></p>
+<table>
+<thead>
+<tr>
+<th>ABI 類別</th>
+<th>效果量（HR）</th>
+<th>10 年超額/1,000</th>
+<th>vs 門檻 A（2%）</th>
+<th>vs 門檻 B</th>
+<th><strong>結果分類</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0.91–1.00</td>
+<td>1.53（1.43–1.64）</td>
+<td><strong>40（35–46）= 4.0%</strong></td>
+<td><strong>CI 全部超過門檻</strong>（3.5–4.6%）</td>
+<td>未跨過（超額幾乎全為 revasc）</td>
+<td><strong>POSITIVE（對門檻 A）／ INCONCLUSIVE（對門檻 B）</strong></td>
+</tr>
+<tr>
+<td>1.01–1.10</td>
+<td>1.25（1.16–1.36）</td>
+<td>21（15–29）= 2.1%</td>
+<td><strong>CI 橫跨門檻</strong>（1.5–2.9%）</td>
+<td>未跨過（amputation NS）</td>
+<td><strong>IMPRECISE (+)</strong> — 統計顯著但效果量是否跨過決策門檻不確定</td>
+</tr>
+<tr>
+<td><strong>1.21–1.30</strong></td>
+<td>—</td>
+<td><strong>1（−6 至 7）= 0.1%</strong></td>
+<td><strong>CI 窄且完全落在 [−0.6%, +0.7%]，已排除 ±2%</strong></td>
+<td>排除</td>
+<td><strong>NEUTRAL ⚖️ — 與參考組實質等效</strong></td>
+</tr>
+<tr>
+<td>&gt;1.30</td>
+<td>—</td>
+<td>32（25–40）= 3.2%</td>
+<td>CI 全部超過門檻</td>
+<td>未評估</td>
+<td><strong>POSITIVE（對門檻 A）</strong></td>
+</tr>
+</tbody>
+</table>
+<p><strong>這裡有一個必須明確指出的分類結果，與作者結論相衝突</strong>：<strong>ABI 1.21–1.30 這一組不只是「不顯著」，而是達到了 NEUTRAL（實質等效）的較強聲明標準</strong>——超額發生率 1/1,000，95% CI −6 至 7，CI 極窄且雙側都排除了臨床有意義的差異。在 Figure 2C/D（性別）與 2E/F（種族）中同樣如此：男性 1（−20 至 23）、女性 1（−20 至 23）、White −1（−8 至 6）、Black 8（−8 至 24）。</p>
+<p>因此本文所主張的「ABI 光譜全段皆與風險相關（values across the ABI continuum, rather than a cutoff, were associated with limb risk）」<strong>在 1.21–1.30 這一段被自己的數據直接否定</strong>。真實的形狀不是平滑連續的 J，而是「≤1.10 遞增 → <strong>1.11–1.30 平坦區</strong> → &gt;1.30 再上升」。這反而支持了「存在閾值」而非「純連續」的解讀，是與 Conclusions 相反的證據。</p>
+<p><strong>女性次群（Figure 2D，絕對尺度）</strong></p>
+<table>
+<thead>
+<tr>
+<th>女性 ABI 類別</th>
+<th>10 年超額/1,000</th>
+<th>分類</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0.91–1.00</td>
+<td>30（9–50）</td>
+<td>POSITIVE（但 CI 寬）</td>
+</tr>
+<tr>
+<td>1.01–1.10</td>
+<td><strong>8（−13 至 29）</strong></td>
+<td><strong>INCONCLUSIVE ❓</strong>（CI 同時橫跨零與門檻）</td>
+</tr>
+<tr>
+<td>1.21–1.30</td>
+<td><strong>1（−20 至 23）</strong></td>
+<td><strong>INCONCLUSIVE ❓</strong></td>
+</tr>
+<tr>
+<td>&gt;1.30</td>
+<td><strong>3（−23 至 31）</strong></td>
+<td><strong>INCONCLUSIVE ❓</strong></td>
+</tr>
+</tbody>
+</table>
+<p><strong>即：在絕對尺度上，女性只有 borderline 一組排除了零；「low-normal 在女性也有風險」在女性中並不成立</strong>，這與 Conclusions 的「trends did not vary by sex」不符。</p>
+<p><strong>禁止的統計謬誤檢查（本文表現）</strong></p>
+<ul>
+<li>❌ <strong>「p &gt; 0.05 = no difference」</strong>：本文<strong>部分犯此錯</strong>。Discussion 稱「we found <strong>no significant association</strong> with major amputation or total amputation in the total population（1.11 [0.94–1.31]；1.08 [0.97–1.20]）」——用「no significant association」描述 CI 為 0.94–1.31 的結果。該 CI 上限達 1.31，包含臨床上有意義的風險增加，正確描述應為 <strong>INCONCLUSIVE 而非「無關聯」</strong>。此措辭在與 ARIC 比較的段落被用來論證「我們與 ARIC 不同」，而正確的結論是「我們的資料無法區分」。</li>
+<li>✅ <strong>Post-hoc power</strong>：本文<strong>未使用</strong>，正確。</li>
+<li>⚠️ <strong>Underpowered 判斷</strong>：作者以「given our sample size, we were adequately powered」的樣本數論述取代 CI 檢視，對女性次群不成立。</li>
+<li>✅ <strong>Winner's Curse</strong>：主分析不適用（非低檢定力的顯著結果）。<strong>但女性次群適用</strong>，見 C2。</li>
+</ul>
+<h4>C2. Underpowered 判斷與 Winner's Curse</h4>
+<p><strong>主分析：檢定力充裕，無 Winner's Curse 風險。</strong> 28,191 事件、主要對比 CI 極窄（1.43–1.64）。</p>
+<p><strong>女性次群：典型的 underpowered，且存在實質的 Type M（幅度）誇大風險。</strong></p>
+<ul>
+<li>女性 revascularization borderline HR = <strong>5.08（1.83–14.11）</strong>；low-normal = <strong>3.61（1.21–10.82）</strong>。CI 上限逾 10，跨越一個數量級。</li>
+<li>對應男性：2.03（1.85–2.24）與 1.53（1.36–1.71）。</li>
+<li><strong>點估計相差 2.5 倍</strong>。依 Gelman &amp; Carlin 的框架：在低檢定力情境下，只有隨機偏高的估計值才能跨越 p&lt;0.05 門檻，因此<strong>女性的 5.08 幾乎可以確定是被誇大的效果量（Type M error）</strong>。CI 下限 1.83 與男性點估計 2.03 相容，這才是資料實際支持的範圍。</li>
+<li><strong>實務警告</strong>：若有人以女性 HR 5.08 作為後續研究（例如女性專屬 PAD 篩檢試驗）的效果量假設進行 power calculation，將<strong>嚴重低估所需樣本數</strong>。</li>
+<li>Type S（方向）error 風險低（CI 下限仍 &gt;1），因此「女性 borderline ABI 也有風險」的方向性結論可以接受；「女性風險更高」則不可接受。</li>
+<li>Figure 1C 的圖形直接印證：女性的 spline CI 帶寬到 ABI 0.4 時為 10.06（7.08–14.29），而在 ABI 1.4 時為 <strong>1.62（0.77–3.41），明確橫跨無效線</strong>。女性在高 ABI 端完全沒有訊號。</li>
+</ul>
+<h4>C3. Bayesian 補充分析</h4>
+<p><strong>判定：本文主分析不需要 Bayesian 補充。</strong> 主要對比並非 p 值接近 0.05 的邊界情境（CI 1.43–1.64 遠離 1），Neutral vs Negative 的區分亦已能由 CI 寬度直接判定（1.21–1.30 組的 CI −6 至 7 已足以支持等效聲明，不需 Pr(ROPE) 正式量化）。</p>
+<p><strong>建議 Bayesian 分析的情境有二，作者均未執行</strong>：</p>
+<ol>
+<li><strong>女性次群</strong>。此處恰是 Bayesian 方法最有價值的場合：以男性結果（或全體世代結果）作為 informative prior，可大幅收窄女性的後驗區間，並直接回答「女性的關聯是否真的與男性不同」——這比目前的「兩組寬 CI 重疊所以說相同」嚴謹得多。以 skeptical / optimistic / non-informative 三組 prior 檢驗 Pr(HR_女 &gt; HR_男) 的穩健度，會是本文最有價值的補強。</li>
+<li><strong>low-normal（1.01–1.10）的 amputation 終點</strong>。目前 1.11（0.94–1.31）被作者描述為「no significant association」；正確的做法是報告 Pr(HR &gt; 1) 與 Pr(ROPE)，直接回答「這是等效還是資料不足」。</li>
+</ol>
+<h4>C4. 報告完整性與其他統計問題</h4>
+<p><strong>（1）最嚴重的統計不一致：HR 與絕對風險的校正程度不同，而被引用的是校正較差的那個</strong></p>
+<ul>
+<li><strong>Cox HR（1.53）</strong>：校正 14 項共變項（年齡、性別、種族、VISN、抽菸、CVD、糖尿病、抗高血壓藥、SBP、DBP、statin、抗血小板藥、BMI、eGFR、LDL、HDL、TG）。</li>
+<li><strong>10 年 cumulative incidence 與超額發生率（40/1,000）</strong>：Methods 明文——「Propensity score weighting was used to make each of the ABI categories comparable with the cohort as a whole in terms of <strong>age, sex, and race distributions</strong>」。<strong>只平衡了三項人口學變項。</strong></li>
+<li><strong>後果</strong>：被作者放進 Abstract、Discussion 與新聞稿、也最容易被臨床醫師記住並引用的那個具體數字（「borderline ABI 10 年多 40 件 MALE / 1,000 人」、「4% 絕對風險增加」），<strong>完全未針對糖尿病、抽菸、CVD、eGFR、血脂或用藥做校正</strong>。而 Table 1 顯示這些因子在世代中極為普遍（糖尿病 47.9%、current smoking 44.4%）且與 ABI 高度相關（Black 組 ABI 較低且糖尿病較多）。</li>
+<li><strong>這個絕對風險數字幾乎確定被混淆因子誇大</strong>，且誇大幅度可從 major amputation 的粗 vs 校正分歧（1.07 → 1.42，見 B3①）看出並非微小。</li>
+<li><strong>本文完全沒有指出這個不一致</strong>，兩組數字在 Results 與 Discussion 中並列呈現，讀者無從察覺其校正層級不同。<strong>這是本文最具實質誤導性的統計問題。</strong></li>
+</ul>
+<p><strong>（2）「ABI 比傳統風險因子更強」的宣稱在四個層面站不住腳</strong></p>
+<p>這是 Abstract 結尾句、Discussion 段落與 Central Illustration 的核心賣點，需逐一拆解：</p>
+<ul>
+<li><strong>(a) 圖形與其自身圖說直接矛盾。</strong> Central Illustration（p.334）下方 forest plot 依序列出 Male Sex、Diabetes、Borderline ABI 0.90–0.99 vs 1.10–1.19、eGFR、Current vs Never Smoking、CVD。<strong>圖中 Male Sex 與 Diabetes 的點估計明顯位於 Borderline ABI 的右側（HR 更大）</strong>；CVD 的 CI 幾乎貼在 1.0。而該圖的<strong>圖說寫的是「Borderline ABI, vs. 1.10-1.19, was associated with greater risk of MALE than other established risk factors」</strong>——「other established risk factors」與圖中至少兩項風險因子的實際排序相反。Abstract 用詞較謹慎（限定為 &quot;including current smoking and prevalent cardiovascular disease&quot;），但 Central Illustration 這句過度概括的圖說，會是絕大多數讀者唯一記得的一句話。</li>
+<li><strong>(b) 圖說自己聲明不可作結論用。</strong> 同一圖的 footnote：「The study was designed to estimate the effects of the ABI rather than the covariates; thus, <strong>this is for illustrative purposes only</strong>」。<strong>作者一方面聲明此比較僅供圖示，另一方面把它寫進 Abstract 結論句與 Discussion 論證。</strong> 這是明確的內部不一致：若僅供圖示，就不該作為結論；若作為結論，就該提供正當化的分析。</li>
+<li><strong>(c) 比較在結構上被設計成對照風險因子不利。</strong> 抽菸與 CVD 對 MALE 的作用<strong>大部分是經由造成 PAD（也就是降低 ABI）而實現的</strong>——ABI 是這條路徑上的中介變項（mediator）。在已校正 ABI 的模型中估計抽菸的 HR，等於扣除了抽菸經由 PAD 的全部效果，只留下殘餘的直接效果。<strong>在同一個模型裡比較「中介變項」與「被中介變項」的係數大小，必然使中介變項勝出。</strong> 這不是實證發現，是模型設定的算術後果。</li>
+<li><strong>(d) 完全沒有預後模型該有的指標。</strong> 對於一篇核心宣稱是「ABI 是更強的風險標記」的預後研究，本文<strong>未報告任何 C-statistic、calibration plot、ΔC、NRI、IDI，亦無內部驗證或 optimism correction</strong>。唯一的依據是 Supplemental Figure 4 的 <code>chi-square minus df</code> 排序——這是 Harrell（本文 ref 29）用於變項重要性視覺化的工具，<strong>不是臨床預測效用的驗證指標</strong>，且其數值高度依賴變項的編碼方式與變異程度：ABI 以 4-knot spline 建模、跨越 0.3–1.4 的寬廣範圍（消耗 3 個自由度、變異極大），抽菸則是三分類、CVD 是二分——<strong>用 chi-square 比較一個寬範圍 spline 連續變項與一個二分變項，本質上是不對等的比較</strong>。</li>
+<li><strong>對比參照</strong>：作者團隊自己 2025 年在 Circ Cardiovasc Interv 的論文得出「微血管功能比 ABI 更能預測步行距離」（<a href="https://doi.org/10.1161/CIRCINTERVENTIONS.125.015582">DOI</a>，據 PubMed）；文獻上亦有以 AUC 正式比較後認為 ABI 表現有限的研究（例如 Li B, et al. Biomolecules. 2026;16(5):735，ABI 模型 AUC 0.686，<a href="https://doi.org/10.3390/biom16050735">DOI</a>，據 PubMed）。<strong>「ABI 是最強標記」需要 discrimination 指標來支撐，而本文一項都沒有。</strong></li>
+</ul>
+<p><strong>（3）比例風險假設的宣稱不可信</strong></p>
+<ul>
+<li>「Schoenfeld residuals were used to confirm that the proportional hazards assumption was not violated」——<strong>無 p 值、無統計量、無圖形</strong>。</li>
+<li>以 n=223,350、28,191 事件的檢定力，Schoenfeld 全域檢定對任何微小的時間依賴性偏離都會拒絕虛無假設。在此樣本量下宣稱「未違反」而不出示證據，是<strong>統計上不可信的陳述</strong>。</li>
+<li>為何重要：ABI 對 MALE 的效果<strong>在生物學上極可能隨時間衰減</strong>（基線 ABI 對 10 年後事件的預測力應弱於對 1 年後事件的預測力；血管狀態會改變、會被治療）。若 HR 隨時間衰減，則報告的單一 HR 是整個追蹤期的加權平均，會<strong>高估晚期風險、低估早期風險</strong>。</li>
+<li>這與另一個問題交互放大：<strong>中位追蹤僅 4.3 年，卻報告 10 年 cumulative incidence</strong>。10 年的估計依賴少數追蹤最久者的外推，而這群人（VA 系統中持續就醫 10 年以上）在健康狀態與照護取得上與整體不同。</li>
+</ul>
+<p><strong>（4）競爭風險：方法正確，但敘事上被淡化</strong></p>
+<ul>
+<li>方法上作者做對了：cause-specific Cox（死亡當 censoring）用於<strong>病因學 HR</strong>，Aalen–Johansen（死亡當競爭風險）用於<strong>絕對風險</strong>，並在 Methods 明確說明為何不用 Fine–Gray（ref 27,28）。這是本文方法學上值得肯定的一段，比多數 EHR 研究嚴謹。</li>
+<li>但<strong>敘事上被淡化</strong>：borderline ABI 的 <strong>10 年超額「MALE 前全因死亡」為 51（41–62）/1,000，高於超額 MALE 的 40（35–46）/1,000</strong>。這個數字被埋在 Results 一句話裡，未進入 Abstract、Discussion 論證或 Central Illustration。</li>
+<li><strong>它的臨床意涵與作者的框架方向相反</strong>：borderline ABI 病人最可能的結局不是失去肢體，而是死亡。這削弱「早期肢體導向預防機會」的敘事，強化「全身性風險管理」的優先性。作者選擇了不強調它。</li>
+</ul>
+<p><strong>（5）多重比較完全未校正</strong></p>
+<ul>
+<li>4 個終點 × 10 個 ABI 類別 × 5 個族群（全體/男/女/White/Black）＋ 連續模型，type I error 固定 0.05，無任何校正、無 hierarchical testing 策略。</li>
+<li>主要假設（單調趨勢）本身受保護，且大多數效果量遠離 1，因此<strong>主結論不受多重性威脅</strong>。</li>
+<li>但<strong>個別的「顯著/不顯著」次群陳述完全未受保護</strong>，包括 Discussion 中被特別點出的「Black 個體未達顯著」「女性 HR 5.08」「&gt;1.30 在 Black 為 2.00」等。這些應被視為探索性描述。</li>
+</ul>
+<p><strong>（6）資料完整性：Table 1 存在確定的數值錯誤</strong></p>
+<p>我核對 Table 1（已直接檢視 p.327 原始圖頁確認，非僅依賴 markdown）與 Results 內文，發現以下不一致：</p>
+<table>
+<thead>
+<tr>
+<th>位置</th>
+<th>報告值</th>
+<th>依文內分母計算</th>
+<th>判定</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Table 1，Total 欄，Male 列</strong></td>
+<td><strong>232,557（96.3）</strong></td>
+<td>215,143（96.3%）</td>
+<td><strong>確定錯誤。232,557 &gt; N=223,350，數學上不可能。</strong> 且 215,143 ＋ 8,207 ＝ 223,350 完全吻合，<strong>Central Illustration（p.334）亦明列「215,143 Men」</strong>。此錯誤<strong>同時出現在 Table 1 與 Results 首段內文</strong>（「8,207（3.7%）were women and 232,557（96.3）were men」），兩處皆通過了審查與校對。</td>
+</tr>
+<tr>
+<td>Table 1，Men 欄，Diabetes</td>
+<td>103,818（51.7）</td>
+<td>103,818/215,143 = <strong>48.3%</strong></td>
+<td>百分比錯誤（分子與各欄加總皆正確：103,818＋2,875＝106,693 ✓）</td>
+</tr>
+<tr>
+<td>Table 1，Total 欄，Prevalent CVD</td>
+<td>62,801（28.8）</td>
+<td>62,801/223,350 = <strong>28.1%</strong></td>
+<td>百分比錯誤（各分欄百分比皆正確）</td>
+</tr>
+<tr>
+<td>Table 1，Total 欄，Antiplatelet therapy</td>
+<td>50,546（23.9）</td>
+<td>50,546/223,350 = <strong>22.6%</strong></td>
+<td>百分比錯誤（各分欄百分比皆正確）</td>
+</tr>
+</tbody>
+</table>
+<p><strong>評估</strong>：這些是表格生成／校對層級的錯誤，<strong>不影響主要分析結果</strong>（分子與各分層數字內部一致，Table 2 各 ABI 類別分母加總與族群 N 完全吻合——White 十類相加 = 165,975 ✓、Black 十類相加 = 42,173 ✓；篩選流程算術亦完全對得上）。但在一篇 IF 22.3 期刊、經歷 215 天審查的論文中，<strong>一個超過總樣本數的數字同時出現在表格與內文兩處</strong>，反映校對流程的實質缺口，也與第二輪審查僅 8 天的時程相符。</p>
+<p><strong>（7）Supplemental 資料無法驗證</strong></p>
+<p>Supplemental Tables 1–7 與 Supplemental Figures 1–6 均未提供。這意味著以下<strong>無法獨立核實</strong>：① 參與者流程圖（Supplemental Figure 1）；② 全體世代的類別式 HR（Supplemental Figure 2）；③ 追蹤自 ABI 當日起算的敏感度分析（Supplemental Figure 3）；④ 變項重要性排序——即支撐「ABI 最強」宣稱的唯一證據（Supplemental Figure 4）；⑤ 死亡率分層結果（Supplemental Figure 5）；⑥ 男女分別的類別式 HR（Supplemental Tables 6、7）；⑦ ICD/CPT 碼清單（Supplemental Tables 1、2）；⑧ age-adjusted incidence rate 完整表（Supplemental Tables 3–5）。<strong>[限制：Supplemental 資料未提供，上述項目僅能依正文轉述]</strong></p>
+<p><strong>（8）統計面紅旗清單（≥5 點）</strong></p>
+<ol>
+<li><strong>絕對風險（40/1,000）僅校正年齡/性別/種族，HR（1.53）校正 14 項共變項——兩者混用呈現且未標示差異。</strong>（最嚴重）</li>
+<li><strong>「ABI 強於傳統風險因子」的宣稱無 discrimination/calibration/NRI 任何指標支撐，僅憑 chi-square minus df，且該比較因 ABI 是中介變項而結構性偏誤。</strong></li>
+<li><strong>PH 假設在 n=223,350、28,191 事件下宣稱「未違反」而不出示任何證據，統計上不可信；而 ABI 效果隨時間衰減在生物學上可預期。</strong></li>
+<li><strong>中位追蹤 4.3 年卻報告 10 年 cumulative incidence，且全文無任何 KM 曲線與 number-at-risk 呈現。</strong></li>
+<li><strong>多重比較完全未校正（4 終點 × 10 類別 × 5 族群），而次群的「顯著/不顯著」陳述被用於論證。</strong></li>
+<li><strong>次群分析無任何 interaction p-value，卻在 Conclusions 下「did not vary by sex or race」的結論。</strong></li>
+<li><strong>Table 1「Male 232,557」超過總樣本數，且同一錯誤出現在 Results 內文（另有 3 處百分比錯誤）。</strong></li>
+<li><strong>未做任何未測量混淆的量化敏感度分析（E-value / negative control outcome），對一篇核心限制是殘餘混淆的論文而言是可補救而未補救的缺口。</strong></li>
+<li><strong>用「no significant association」描述 CI 為 0.94–1.31 的結果，並以此論證與 ARIC 不同。</strong></li>
+<li><strong>暴露聚合規則（取離 1.1 最遠側）未做替代規則（取較低側／平均／雙腿分別建模）的敏感度分析。</strong></li>
+</ol>
+<hr />
+<h3>D. 次組分析評估</h3>
+<p>本文有兩組次群分析（性別、種族），作者在 Methods 中稱種族分析為 &quot;Exploratory analyses&quot;，但在 Abstract 與 Conclusions 中以確定語氣陳述結論。依 JAMA 五項標準逐一評估：</p>
+<h4>次群 1：性別（男 215,143 / 女 8,207）</h4>
+<table>
+<thead>
+<tr>
+<th>標準</th>
+<th>評估</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>① 有 interaction p-value？</td>
+<td><strong>❌ 完全沒有。</strong> 全文未報告任何 ABI × sex 交互作用檢定。作者僅並列兩組分層 HR 並目視比較。</td>
+</tr>
+<tr>
+<td>② 方向與其他研究一致？</td>
+<td>⚠️ <strong>部分不一致，且與作者自己的前作不一致。</strong> 相對尺度上方向一致（女性 borderline HR 2.00 vs 男性 1.53）；但絕對尺度上女性風險遠低（Figure 2C：ABI &lt;0.51 時女性 298 vs 男性 358/1,000）。作者自己 2022 年 JAMA Netw Open 報告女性 incident PAD 風險比男性<strong>低約 50%</strong>（aHR 0.49，<a href="https://doi.org/10.1001/jamanetworkopen.2022.40188">DOI</a>，據 PubMed）——本文未引用亦未討論此對照。</td>
+</tr>
+<tr>
+<td>③ 假說預先指定並有預期方向？</td>
+<td>✅ 是。性別差異在 Introduction 明確列為研究目標之一，且是既有知識缺口（前人研究缺乏女性）。<strong>這一項本文做得好。</strong></td>
+</tr>
+<tr>
+<td>④ 有合理生物機轉？</td>
+<td>⚠️ 有一般性理由（女性 PAD 表現、血管口徑、症狀表現不同），但作者<strong>未提出任何機轉解釋為何女性的相對風險會更高</strong>。</td>
+</tr>
+<tr>
+<td>⑤ within-study 比較？</td>
+<td>✅ 是（同一世代內分層）。</td>
+</tr>
+</tbody>
+</table>
+<p><strong>可信度：低至中等（相對尺度的方向性）／低（幅度差異）</strong></p>
+<p><strong>具體理由</strong>：8,207 名女性、截肢事件作者自稱「rare」、CI 極寬（revascularization HR 5.08，1.83–14.11）。最關鍵的是<strong>絕對尺度上的證據不支持結論</strong>：Figure 2D 顯示女性只有 0.91–1.00 一組的超額發生率排除了零〔30（9–50）〕，而 1.01–1.10〔8（−13 至 29）〕、1.21–1.30〔1（−20 至 23）〕、&gt;1.30〔3（−23 至 31）〕<strong>三組全部橫跨零</strong>。Figure 1C 的 spline 亦顯示女性在 ABI 1.4 時 HR 為 1.62（0.77–3.41），<strong>明確橫跨無效線</strong>。</p>
+<p><strong>因此 Conclusions 的「These trends did not vary by sex」不成立</strong>：正確陳述應為「女性的估計值與男性相容，但 CI 過寬，無法判斷是否不同；且女性在 low-normal 與高 ABI 端的絕對風險增加未達統計顯著」。這是把「證據不足」誤述為「證據顯示相同」——經典的 absence of evidence ≠ evidence of absence。</p>
+<h4>次群 2：種族（White 165,975 / Black 42,173）</h4>
+<table>
+<thead>
+<tr>
+<th>標準</th>
+<th>評估</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>① 有 interaction p-value？</td>
+<td><strong>❌ 完全沒有。</strong></td>
+</tr>
+<tr>
+<td>② 方向與其他研究一致？</td>
+<td>✅ 「Black 個體截肢率較高」與既有文獻一致（作者引 ref 39，AHA health disparities statement），亦與作者 2022 年前作一致（Black vs White nontraumatic amputation aHR 1.20，<a href="https://doi.org/10.1001/jamanetworkopen.2022.40188">DOI</a>，據 PubMed）。</td>
+</tr>
+<tr>
+<td>③ 假說預先指定？</td>
+<td>⚠️ 種族分析在 Introduction 列為目標，但 Methods 自稱 &quot;Exploratory analyses focused on individuals of Black or White race because of the small number of individuals in the 'other' category&quot;。</td>
+</tr>
+<tr>
+<td>④ 合理生物機轉？</td>
+<td>⚠️ 作者明言「further studies are needed to better understand these racial differences」——即<strong>無機轉解釋</strong>。且未討論社會決定因素、照護取得、治療強度差異（Table 1 顯示 Black 個體 statin 73.2% vs White 77.8%、抗血小板藥 18.5% vs 24.0%、糖尿病 52.2% vs 46.8%、基線 ABI 中位數 0.91 vs 0.97）。</td>
+</tr>
+<tr>
+<td>⑤ within-study 比較？</td>
+<td>✅ 是。</td>
+</tr>
+</tbody>
+</table>
+<p><strong>可信度：中等（整體趨勢）／低（各類別的個別顯著性宣稱）</strong></p>
+<p><strong>與 Conclusions 直接矛盾的內文證據</strong>：Conclusions 稱「These trends did not vary by sex or race」，但作者在同一篇 Results 中寫道 Black 個體的 borderline ABI 與 amputation 關聯「<strong>did not reach statistical significance</strong>」〔major amputation HR 1.17（0.88–1.56）、total amputation 1.13（0.93–1.38）；對照 White 1.42（1.21–1.68）、1.25（1.13–1.38）〕。</p>
+<p>Figure 1D/E 進一步顯示兩族群在<strong>正常區間的曲線形狀不同</strong>：ABI 1.2 時 White 為 <strong>0.93（0.91–0.95，顯著低於參考）</strong>，Black 為 <strong>1.03（0.99–1.07，橫跨無效線）</strong>。Figure 2F 顯示高 ABI 端的差異更大：<strong>&gt;1.30 的超額發生率 Black 為 62（43–83）/1,000，White 僅 25（16–33）/1,000——CI 幾乎不重疊</strong>，Black 約為 White 的 2.5 倍；而 1.21–1.30 的 Black 超額為 8（−8 至 24），橫跨零。</p>
+<p><strong>這是圖形傳達而正文未強調的重要訊號：高 ABI（&gt;1.30）的肢體風險在 Black 病人顯著較大。</strong> 這在機轉上與 medial arterial calcification 假說、以及 Black 族群較高的 CKD 與糖尿病負荷相容，臨床上也比「borderline 不良性」更值得後續研究。作者用一句「further studies are needed」帶過，並在 Conclusions 用「did not vary by race」把它抹平。</p>
+<p><strong>綜合判定</strong>：兩組次群分析<strong>皆未達 JAMA 標準的第 ① 項（無 interaction 檢定）</strong>，而第 ① 項正是判斷「次群效果是否存在」的必要條件。因此 Abstract 的「as well as sex/race subgroups」與 Conclusions 的「did not vary by sex or race」<strong>在方法上均無支撐</strong>。次群分析僅能作為探索性描述，不能作為分層臨床建議的依據。</p>
+<hr />
+<h3>E. 紅旗清單</h3>
+<p><strong>設計</strong></p>
+<ol>
+<li><strong>「Free of prevalent PAD」是編碼定義而非疾病定義。</strong> 世代中位 ABI 0.96；依 Table 2 計算，約 <strong>44.5%</strong> 基線 ABI ≤0.90（作者自己 Introduction 引述的 PAD 診斷標準），<strong>9.4%</strong> ABI ≤0.50，且 ABI ≤0.50 的 White 個體有 26.2% 在追蹤期內接受血管重建。全文（Abstract、Discussion、Conclusions）一貫以「無 PAD 世代」自我描述。</li>
+<li><strong>主要複合終點 78%（21,961/28,191）為 revascularization——一個醫師決策終點，而該決策部分由暴露（ABI）本身觸發。</strong> Figure 3 顯示 MALE 的 inverse-J 形狀基本上就是 revascularization 的形狀（ABI 0.4 時 revasc HR 10.15 vs amputation 2.86）。作者列出三個候選解釋，<strong>獨缺「醫師看到低 ABI 就更傾向介入」這個最直接的機制</strong>。</li>
+<li><strong>暴露聚合規則（取離 1.1 最遠的一腿）使參考組 1.11–1.20 必須雙腿皆近乎正常</strong>，被選成異常健康的族群，系統性膨脹所有對比 HR。作者反而將「納入雙腿」宣稱為方法優勢，且未做替代聚合規則的敏感度分析。</li>
+<li><strong>下 ABI 醫囑的臨床指示（症狀、傷口、術前）完全未測量</strong>，而它是 revascularization 最強的預測因子之一。作者把它寫成外推性限制，而非內部效度威脅。</li>
+<li><strong>可得且已知的混淆因子未納入</strong>：<strong>HIV 狀態</strong>（VACS 的核心變項，且作者團隊自己在 Circulation 2018 = 本文 ref 22 證明其為 PAD 獨立風險因子）與<strong>酒精使用</strong>（VACS 由 NIAAA 的 P01 AA029545／U24 AA020794 資助，即本文列名的資助來源，例行收集）。兩者皆未出現在 14 項共變項清單中，文中亦未說明為何排除。</li>
+<li><strong><code>Total amputation</code> 終點在 47.9% 為糖尿病的世代中混入神經病變性小截肢</strong>——而作者正是以此批評前人（ref 35「未區分 major amputation 與糖尿病相關 minor amputation」）。文內證據支持此擔憂：diabetes 在兩個截肢終點的變項重要性排名第一，ABI 只在 MALE 與 revascularization 排第一。</li>
+<li><strong>排除 78,395 名僅單腿 ABI 者（原始族群的 21.7%）未做任何討論或敏感度分析</strong>；此群最可能包含對側已截肢、開放性傷口者，即最高風險族群。</li>
+</ol>
+<p><strong>統計</strong>（詳見 C4，此處僅列最尖銳者）</p>
+<ol start="8">
+<li><strong>HR 校正 14 項，但被引用的絕對風險（40/1,000、「4% 絕對增加」）僅校正年齡/性別/種族</strong>——臨床上最常被記住的數字，校正程度最低，且本文未指出此不一致。</li>
+<li><strong>「ABI 強於傳統風險因子」無任何 discrimination／calibration／reclassification 指標支撐</strong>；唯一依據 chi-square minus df 是變項重要性視覺化工具而非預測效用指標，且因 ABI 是抽菸/CVD 效果的中介變項而結構性偏誤。</li>
+<li><strong>PH 假設在 28,191 事件下宣稱「未違反」卻不出示任何證據</strong>；而 ABI 效果隨時間衰減在生物學上可預期。</li>
+<li><strong>中位追蹤 4.3 年卻報 10 年 cumulative incidence，且全文無任何 KM 曲線、無 number-at-risk。</strong></li>
+<li><strong>次群分析無 interaction p-value，卻下「did not vary by sex or race」的結論，且與自身 Results 內文（Black borderline 未達顯著）矛盾。</strong></li>
+<li><strong>Table 1「Male 232,557（96.3）」超過總樣本數 223,350，且同一錯誤重複出現於 Results 內文</strong>（另 3 處百分比錯誤：Men 欄 diabetes 51.7% 應為 48.3%；Total 欄 CVD 28.8% 應為 28.1%、antiplatelet 23.9% 應為 22.6%）。</li>
+<li><strong>完全未做未測量混淆的量化敏感度分析（E-value、negative control outcome、bias analysis）。</strong></li>
+</ol>
+<p><strong>敘事</strong></p>
+<ol start="15">
+<li><strong>Central Illustration 的圖說與其自身圖形直接矛盾</strong>：圖說稱 borderline ABI「greater risk of MALE than <strong>other established risk factors</strong>」，但同一 forest plot 中 <strong>Male Sex 與 Diabetes 的點估計皆大於 borderline ABI</strong>。且同圖 footnote 自承「for illustrative purposes only」，作者卻將此比較寫入 Abstract 結論句與 Discussion 論證。</li>
+<li><strong>ABI 類別標示前後不一致</strong>：Abstract、Methods、Results、Table 2 全文使用 0.91–1.00 vs 1.11–1.20；但 <strong>Discussion 首段與 Central Illustration 改用 0.90–0.99 vs 1.10–1.19</strong>。對於一篇論證核心正是「ABI 閾值劃分不當」的論文，自己在閾值標示上前後不一，是不應出現的疏失。</li>
+<li><strong>用「no significant association」描述 CI 為 0.94–1.31 的結果</strong>，並據此論證「我們與 ARIC 不同」；正確結論應為「資料不足以區分」。</li>
+<li><strong>對 ARIC 差異的解釋方向不自洽</strong>：作者主張自家 Doppler 測量「更準確」故結果更可信，但更準確的測量會<strong>減少</strong>回歸稀釋、使關聯<strong>變強</strong>，而本文在 low-normal 的結果是變弱（NS）。用「測得更準」解釋「關聯更弱」在方向上矛盾。真正更可能的解釋（族群性質不同：ARIC 社區篩檢 vs 本文臨床轉介）未被探討。</li>
+<li><strong>設計自稱「prospective study」</strong>（Abstract Methods、Conclusions），實為回溯性 EHR 次級分析。</li>
+<li><strong>競爭風險的關鍵發現被淡化</strong>：borderline ABI 的超額死亡（51/1,000）大於超額 MALE（40/1,000），此數字僅出現於 Results 一句話，未進入 Abstract、Discussion 論證或 Central Illustration——因為它與「早期肢體預防機會」的敘事方向相反。</li>
+</ol>
+<p><strong>利益／立場</strong></p>
+<ol start="21">
+<li><strong>未引用亦未討論作者自己最直接可比的前作</strong>：Aday et al. JAMA Netw Open. 2022;5(11):e2240188（<a href="https://doi.org/10.1001/jamanetworkopen.2022.40188">DOI</a>，據 PubMed）——同一團隊、同一 VA 資料體系、限定基線 ABI 0.90–1.40 且無 PAD 病史、N=77,041，並將 <strong>revascularization 與 nontraumatic amputation 作為獨立終點</strong>分析。此遺漏造成三個實際後果：① 讀者無法評估兩個世代的<strong>重疊程度</strong>（VA Birth Cohort 1945–1965 幾乎確定是 VACS-National 的子集，即兩篇論文很可能大幅共用同一批病人）；② 無法檢視兩篇結果的一致性（例如 2022 年的女性風險低 50% vs 本文「不因性別而異」）；③ 削弱本文「<strong>首次</strong>在無既存臨床 PAD 者中將 ABI 與 incident revascularization 作為獨立終點分析」的新穎性宣稱。<strong>公平地說</strong>：若嚴格限定為「以 ABI 值本身作為暴露」，該宣稱在字面上仍可辯護（2022 年的暴露是性別與種族，非 ABI 層級）；但不引用該文使讀者無法自行判斷這個界線，且遺漏了唯一能評估世代重疊的線索。</li>
+<li><strong>共變項選擇的正當化依據是作者自己的回顧文</strong>（ref 19，Aday &amp; Matsushita），且 ABI 敏感度不足的解釋亦引自作者自己的論文（ref 40）。這在小領域中常見、不構成不當，但形成了自我強化的論證閉環。</li>
+<li><strong>結論方向與作者次專科的制度利益一致</strong>（擴大 ABI 異常判定範圍 → 擴大血管醫學轉介與檢查量），且主要終點 78% 為血管重建。無業界資助本研究，COI 屬低至中度，但方向性應予記錄。</li>
+</ol>
+<hr />
+<h3>F. 反向解釋</h3>
+<p>以下四個替代解釋，均可在不假設「modest ABI 下降本身導致肢體事件」的前提下，解釋本文的核心發現。</p>
+<hr />
+<p><strong>替代解釋 1：這主要是「臨床指示」與「偵測」的關聯，而非 ABI 與疾病的關聯</strong></p>
+<ul>
+<li><strong>論述</strong>：借用 target trial 的語言——本研究實際比較的不是「ABI 0.95 的人 vs ABI 1.15 的人」，而是「因某臨床理由做了 ABI、結果 0.95 的人 vs 因某臨床理由做了 ABI、結果 1.15 的人」，而<strong>那個臨床理由（跛行、傷口、術前評估）同時決定了 ABI 值與後續是否被介入</strong>。</li>
+<li><strong>文內支持線索</strong>：① 100% 的參與者都有臨床 ABI 醫囑，世代中位 ABI 僅 0.96，說明送檢者多為高懷疑度；② 78% 的主要終點是 revascularization——最受臨床注意力影響的終點；③ borderline vs 參考的關聯在 revascularization 最強（HR 2.05）、在 major amputation 最弱（1.34）、在粗尺度的 major amputation 幾乎消失（White 1.21% vs 1.13%）；④ 「臨床注意力」梯度與這個由強到弱的排序完全吻合。</li>
+<li><strong>文內反對線索</strong>：① major amputation 這個較難被「注意力」驅動的硬終點在 borderline 組確實達顯著（總體 1.34，1.17–1.54；White 1.42，1.21–1.68）；② 6 個月 blanking 排除了最即時的偵測效應；③ 效果量在極低 ABI 端極大（HR ~6），單靠偵測偏差難以完全解釋這種幅度。</li>
+<li><strong>判定</strong>：<strong>很可能貢獻了 borderline / low-normal 訊號的相當大一部分，但不足以解釋全部</strong>，尤其解釋不了低 ABI 端與 major amputation 的關聯。這是最強的替代解釋。</li>
+</ul>
+<hr />
+<p><strong>替代解釋 2：ABI 是既存動脈粥狀硬化嚴重度的指標，「modest 下降」只是「已有疾病但未被編碼」的代理</strong></p>
+<ul>
+<li><strong>論述</strong>：ABI 0.95 的人並非「幾乎正常但因某種未知機制而有風險」，而是<strong>已經有動脈粥狀硬化，只是尚未跨過任意的 0.90 編碼閾值</strong>。若如此，本文的發現不是「發現了新的風險區間」，而是「證實了 ABI 是連續的疾病嚴重度指標」——生理上正確，但遠不如作者框架那麼新穎，且對臨床處置的意涵不同（是既有疾病的量化，不是新的預防窗口）。</li>
+<li><strong>文內支持線索</strong>：① 世代中 44.5% 基線 ABI ≤0.90，說明編碼排除完全無法排除疾病；② borderline 組的風險因子負荷極高（全體世代 44.4% current smoking、47.9% 糖尿病、92.8% 抗高血壓藥）；③ <strong>borderline 組的超額全因死亡（51/1,000）大於超額 MALE（40/1,000）</strong>——這正是「全身性動脈粥狀硬化負荷較高」而非「局部肢體特異機制」的特徵；④ ABI 呈連續 spline 關係而無斷點，本身即支持「嚴重度連續體」的解讀。</li>
+<li><strong>文內反對線索</strong>：模型已校正 14 項風險因子後關聯仍存在（但這正是殘餘混淆的標準爭點——ABI 捕捉到的是<strong>未被那 14 項變項測量到的</strong>疾病負荷）。</li>
+<li><strong>判定</strong>：<strong>很可能是正確的解讀，且與作者的結論並不真正衝突——只是意涵不同。</strong> 作者的框架（「早期預防的機會」、「a measure hiding in plain sight」）暗示這是尚未發病的預防窗口；此替代解釋則指出這更可能是既有疾病的量化。這個差異直接決定了臨床行動是「加強全身性治療」（後者）還是「新增肢體監測」（前者）。</li>
+</ul>
+<hr />
+<p><strong>替代解釋 3：高 ABI（&gt;1.30）端的訊號是測量偽影，而非 medial calcification 的獨立病生理路徑</strong></p>
+<ul>
+<li><strong>論述</strong>：ABI 升高代表動脈不可壓縮，這使<strong>測得的 ABI 系統性高估真實灌流壓</strong>。因此「ABI &gt;1.30 的病人」中可能混雜了一批<strong>實際上有嚴重 PAD 但被錯誤分類為高 ABI</strong> 的人。J 型曲線的上升支因此可能是<strong>錯誤分類</strong>，而不是「動脈硬化的另一條致病路徑」。</li>
+<li><strong>文內支持線索</strong>：① 現行指引（ref 2）將 &gt;1.40 定義為不可壓縮並建議改用 toe-brachial index，正是因為此範圍的 ABI 不可靠；② <strong>&gt;1.30 的風險在 Black 個體遠高於 White（超額 62 vs 25/1,000，Figure 2F）</strong>，而 Black 族群 CKD 與糖尿病負荷較高（Table 1：糖尿病 52.2% vs 46.8%，但 eGFR 中位數反而較高 85 vs 79），與血管鈣化／不可壓縮的分布一致；③ 糖尿病僅以二分變項校正，<strong>無病程、無 HbA1c、無 insulin 使用、無透析狀態</strong>，殘餘混淆空間很大；④ 本文未報告 toe-brachial index 或任何可用來辨識不可壓縮動脈的輔助資料。</li>
+<li><strong>文內反對線索</strong>：作者強調關聯在校正糖尿病與 eGFR 後仍存在（Discussion）。但二分糖尿病與單次 eGFR 遠不足以捕捉血管鈣化負荷。</li>
+<li><strong>判定</strong>：<strong>作者選擇了敘事價值較高的解釋（medial calcification 是獨立致病機制），而未討論較簡單的測量偽影解釋。</strong> 兩者在本文資料中無法區分，而作者只呈現了一種。這削弱了「現行指引直到 1.40 才標記異常是不足的」這個推論——若 1.31–1.40 的風險來自錯誤分類，正確的處置是改用 toe-brachial index，而非把 &gt;1.30 標記為「異常 ABI」。</li>
+</ul>
+<hr />
+<p><strong>替代解釋 4：參考組選擇與暴露聚合規則共同製造了效果量的一部分</strong></p>
+<ul>
+<li><strong>論述</strong>：如 B3② 所述，「取離 1.1 最遠側」的規則使參考組 1.11–1.20 必須雙腿皆近乎正常。這個組因此是被主動篩選出的最健康子群，而非一般的「ABI 正常者」。與這樣的參考組相比，任何組別的 HR 都會被膨脹。</li>
+<li><strong>文內支持線索</strong>：① Methods 明文的聚合規則；② 參考組僅占世代約 10%（White 17,055/165,975）——若 1.11–1.20 是常態，比例應更高，這說明該規則確實篩掉了很多人；③ spline 在 ABI 1.2 的 HR 為 <strong>0.95（0.93–0.96），顯著低於 ABI 1.1</strong>，Table 2 White 的 1.21–1.30 revascularization 為 0.86（0.74–0.99）——<strong>風險最低點在約 1.2 而非 1.1</strong>，暗示參考點的選擇並非最佳。</li>
+<li><strong>文內反對線索</strong>：參考點偏離最低點會使該方向的對比<strong>低估</strong>而非高估，兩個效應方向相反、部分互相抵消；且效果量的整體幅度（低 ABI 端 HR ~6）遠大於此類技術性偏移可能造成的量級。</li>
+<li><strong>判定</strong>：<strong>可解釋 borderline / low-normal 對比中一部分（可能是小部分）的效果量，不能解釋主要梯度。</strong> 但它是一個可以用敏感度分析輕易排除的疑慮（改用臨床標準的「取較低側」重跑一次即可），而作者沒有做。</li>
+</ul>
+<hr />
+<h3>G. 最終裁決</h3>
+<p><strong>整體可信度：中等（medium）</strong></p>
+<p><strong>核心生理主張（ABI 是連續風險指標，0.90 不是生物學斷點）可信度高</strong>；<strong>「borderline / low-normal ABI 與後續肢體事件相關」的方向性結論可信度中等</strong>；<strong>「ABI 強於傳統風險因子」與「趨勢不因性別或種族而異」兩項宣稱可信度低</strong>。</p>
+<p><strong>可採用的條件</strong></p>
+<ol>
+<li>對象限定為<strong>因臨床症狀或懷疑而已做 ABI、結果落在 0.91–1.10</strong> 的病人。</li>
+<li>用途限定為<strong>風險溝通與全身性心血管風險治療的積極度調整</strong>（停止使用「borderline／接近正常」這類安心用語）。</li>
+<li>引用時使用<strong>校正後的相對估計（HR 1.53，95% CI 1.43–1.64）</strong>，並明確聲明絕對超額（40/1,000）僅經年齡/性別/種族校正、可能被混淆因子誇大。</li>
+<li><strong>同時傳達競爭風險</strong>：此族群的超額死亡（51/1,000）大於超額肢體事件（40/1,000）。</li>
+</ol>
+<p><strong>不建議採用的情境</strong></p>
+<ol>
+<li>無症狀族群的 ABI 篩檢或人口層級篩檢政策。</li>
+<li>以 borderline ABI 為理由啟動肢體導向影像、監測性血管攝影或預防性血管重建。</li>
+<li>女性的分層臨床建議（證據不足，且相對風險估計存在 Type M 誇大）。</li>
+<li>任何形式的風險因子權重排序（「ABI 比抽菸/CVD 更重要」）。</li>
+<li>修改 ABI 診斷閾值的指引層級決策——本文自己的數據顯示 <strong>1.21–1.30 與參考組實質等效</strong>（超額 1/1,000，95% CI −6 至 7），支持「存在平坦區」而非「全段連續」。</li>
+</ol>
+<p><strong>若要改觀，最需要的 3 個關鍵改進</strong></p>
+<ol>
+<li><strong>把主要終點改為 major amputation 或 CLTI（排除 revascularization），並公開報告該終點的粗與校正估計。</strong> 這是唯一能切斷「暴露→醫師決策→結果」循環的方式。目前 Table 2 的粗比例已顯示 borderline 組的 major amputation 訊號在校正前幾乎不存在（White 1.21% vs 1.13%），這個對比必須被正面處理而非埋在表格裡。</li>
+<li><strong>把「ABI 優於傳統風險因子」的宣稱建立在正式的預後模型評估上</strong>：報告 C-statistic、calibration plot、以及 ABI 加入既有風險模型後的 ΔC 與 NRI，並做內部驗證與 optimism correction。同時處理 ABI 作為抽菸/CVD 中介變項所造成的結構性偏誤（例如改用 mediation analysis 或不含 ABI 的基準模型）。若無法提供，應直接撤除此宣稱——作者自己的 Central Illustration footnote 已承認它「僅供圖示」。</li>
+<li><strong>正面處理指示混淆與族群定義</strong>：① 校正或至少描述下 ABI 醫囑的臨床指示（VA 病歷有此資訊）；② 納入 HIV 與酒精（VACS 的核心變項，且是本文資助來源所關注的暴露）；③ 提供 E-value 或 negative control outcome 分析；④ 依基線 ABI ≤0.90 與 &gt;0.90 分層重跑主分析，或明確改寫族群描述為「無 PAD 診斷編碼」而非「free of prevalent PAD」。</li>
+</ol>
+<p><strong>額外必須修正者（非方法學層級但影響可信度）</strong>：Table 1 與 Results 內文的「Male 232,557」超過總樣本數，應發布 correction；ABI 類別標示（0.91–1.00 vs 0.90–0.99）在 Discussion／Central Illustration 與全文其餘部分不一致，亦應更正。</p>
+<p><strong>一句話結論（給一般讀者）</strong></p>
+<p>ABI 略低於正常確實對應較高的後續肢體處置風險，但因為八成事件是醫師決定去做的血管手術，這篇研究更適合用來提醒加強全身性血管治療，而不是拿來改變診斷閾值。</p>
+<hr />
+<h2>圖表判讀（圖傳達而正文未講清楚的證據）</h2>
+<p><strong>判讀基礎</strong>：11 張圖頁 PNG（journal pages 324, 325, 327–334, 335/336）解析度充足，Figure 1、2、3、Central Illustration 與 Table 1、Table 2 的座標軸、數值標籤與圖說均可清楚辨識。缺 page_003（journal p.326，Methods 頁，無圖表）。Supplemental Figures 1–6 與 Supplemental Tables 1–7 未提供。</p>
+<h3>依指定檢查項逐一回應</h3>
+<p><strong>① Kaplan-Meier 曲線分離時點與 number-at-risk 後期是否銳減</strong></p>
+<p><strong>不適用——本文主文完全沒有 Kaplan-Meier 曲線或任何 time-to-event 曲線，亦無 number-at-risk 列。</strong> Figure 1、Figure 3 與 Central Illustration 皆為「HR vs ABI」的 spline 曲線（橫軸是 ABI 值，不是時間）；Figure 2 為各 ABI 類別的 10 年絕對／超額發生率點估計圖（橫軸是 ABI 類別）。</p>
+<p><strong>這本身是一項應被記錄的報告缺失</strong>：本文以<strong>中位追蹤 4.3 年</strong>的資料報告 <strong>10 年 cumulative incidence</strong>，並把「10 年超額 40 件 MALE/1,000 人」當作主要的臨床訊息，卻<strong>未提供任何隨時間變化的曲線或 number-at-risk</strong>，讀者因此無法判斷：10 年時點還有多少人仍在追蹤、曲線是早期分離還是晚期才分開、以及「last medical contact 即 censoring」造成的 informative censoring 程度。對於一個依賴 Aalen–Johansen 估計與 10 年外推的核心數字，這是實質的透明度缺口，也與 C4（3）的 PH 假設疑慮直接相關。</p>
+<p><strong>② Forest plot 點估計與 CI 是否跨越無效線</strong></p>
+<p>本文唯一的 forest plot 在 <strong>Central Illustration（p.334）</strong>，共 6 條：Male Sex、Diabetes、Borderline ABI 0.90–0.99 vs 1.10–1.19、eGFR（&gt;60 vs ≤60）、Current vs Never Smoking、CVD。橫軸 0.5–2.0（對數刻度），虛線在 1.0。</p>
+<p>圖中可清楚判讀的兩點：</p>
+<ul>
+<li><strong>無任何一條 CI 跨越 1.0</strong>（六條全部完全位於無效線右側）。CVD 的點估計最接近 1.0（約 1.1），CI 短但仍未觸及虛線。</li>
+<li><strong>點估計的實際排序為：Male Sex（約 1.8）&gt; Diabetes（約 1.6）&gt; Borderline ABI（約 1.55）&gt; eGFR（約 1.3）&gt; Current Smoking（約 1.2）&gt; CVD（約 1.1）。</strong></li>
+</ul>
+<p><strong>這與該圖自己的圖說直接矛盾</strong>：圖說寫「Borderline ABI, vs. 1.10-1.19, was associated with greater risk of MALE than <strong>other established risk factors</strong>」，但圖中 <strong>Male Sex 與 Diabetes 兩項的點估計皆明顯大於 borderline ABI</strong>。Abstract 的措辭較謹慎（限定為「including current smoking and prevalent cardiovascular disease」，這兩項在圖中確實低於 ABI），但 Central Illustration 的過度概括圖說，是讀者最容易記住並轉述的版本。同圖 footnote 又自承此比較「for illustrative purposes only」。</p>
+<p><strong>③ CONSORT / flow diagram 人數是否一致</strong></p>
+<p>流程圖位於 <strong>Supplemental Figure 1，未提供</strong>，無法目視核對。但正文的篩選數字<strong>算術完全一致</strong>（我逐步核算）：</p>
+<pre><code>361,854（有 ABI）
+ − 78,395（僅單腿 ABI）
+ − 11,759（缺 ABI 日期或側別）
+ = 271,700  ✓（與文內「the remaining population with a qualifying ABI was 271,700」相符）
+ − 21,264（PAD 編碼病史）
+ − 19,058（6 個月內發生主要終點）
+ −  8,028（6 個月內死亡或 censored）
+ = 223,350  ✓（與文內最終 N 相符）
+</code></pre>
+<p><strong>Table 2 的分母亦完全對得上</strong>：White 十個 ABI 類別相加 = 165,975 ✓；Black 十個類別相加 = 42,173 ✓。<strong>Table 1 的性別與種族分欄加總同樣一致</strong>（215,143 ＋ 8,207 = 223,350；各種族的男女分項相加 = 各族群總數）。</p>
+<p><strong>唯一的人數矛盾出在 Table 1「Male」列與 Results 內文</strong>：報告值 <strong>232,557（96.3）超過總樣本數 223,350</strong>，數學上不可能；正確值為 <strong>215,143</strong>（＝ 223,350 − 8,207，且 <strong>Central Illustration 明列「215,143 Men」</strong>）。此錯誤在 Table 1 與 Results 首段各出現一次。</p>
+<p><strong>④ 座標軸是否從非零起點誇大效果</strong></p>
+<p><strong>未發現以軸截斷誇大效果的問題；實際情況相反。</strong></p>
+<ul>
+<li><strong>Figure 2（絕對／超額發生率）</strong>：縱軸自 <strong>0</strong> 起、上限 600/1,000，刻度 50 一格。<strong>無零點截斷</strong>。實際繪出的最大值僅 356，因此圖面上方有大片空白——<strong>這使所有曲線被壓在下三分之一，視覺上縮小而非放大差異</strong>。</li>
+<li><strong>Figure 1 與 Figure 3（HR vs ABI）</strong>：縱軸標記 1、5、10、15，等距對應等量 HR 增量（<strong>近似線性刻度，非對數刻度</strong>），並在 HR = 1 處畫水平虛線、在 ABI = 1.1 處畫垂直虛線。
+<ul>
+<li><strong>對 ratio measure 使用近似線性刻度不是慣用做法</strong>（HR 的對稱性在對數尺度上才成立）。</li>
+<li><strong>後果對作者不利</strong>：在一個被 HR 5–10 這種極端值主導的線性軸上，本文 headline 的 HR 1.25–1.58 被壓縮成貼近基線、幾乎水平的一小段。<strong>Figure 1A 中 ABI 0.9–1.4 這整段在視覺上幾乎與 HR = 1 的虛線重合</strong>，讀者若只看圖，會以為 borderline 區間毫無風險增加。<strong>圖形實際上低估了作者自己的核心主張</strong>，必須讀取軸旁的數值標籤才看得出 1.38、1.53、1.58 這些數字。這是罕見的「圖形保守於文字」的情況。</li>
+</ul>
+</li>
+</ul>
+<h3>圖形獨有的關鍵證據（正文未強調或與正文結論不符）</h3>
+<p><strong>⑤ MALE 複合終點的「inverse J」形狀，本質上就是 revascularization 的形狀（Figure 3，p.332）</strong></p>
+<p>三個分項終點的 spline 曲線並列後，形狀差異一目了然，但正文只用「similar inverse j-shaped distribution」一語帶過：</p>
+<table>
+<thead>
+<tr>
+<th>ABI 值</th>
+<th>Major amputation</th>
+<th>Total amputation</th>
+<th><strong>Revascularization</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0.4</td>
+<td>4.19（3.81–4.61）</td>
+<td>2.86（2.68–3.06）</td>
+<td><strong>10.15（9.56–10.79）</strong></td>
+</tr>
+<tr>
+<td>0.7</td>
+<td>2.28（2.09–2.50）</td>
+<td>1.74（1.64–1.84）</td>
+<td><strong>6.38（6.03–6.76）</strong></td>
+</tr>
+<tr>
+<td>1.0</td>
+<td>1.28（1.20–1.37）</td>
+<td>1.18（1.13–1.23）</td>
+<td><strong>1.72（1.65–1.79）</strong></td>
+</tr>
+<tr>
+<td>1.1</td>
+<td>Ref</td>
+<td>Ref</td>
+<td>Ref</td>
+</tr>
+<tr>
+<td><strong>1.2</strong></td>
+<td><strong>1.00（0.97–1.03）</strong></td>
+<td><strong>1.01（0.99–1.03）</strong></td>
+<td><strong>0.85（0.83–0.87）</strong></td>
+</tr>
+<tr>
+<td>1.4</td>
+<td>1.80（1.56–2.09）</td>
+<td>1.59（1.44–1.75）</td>
+<td>1.54（1.37–1.73）</td>
+</tr>
+</tbody>
+</table>
+<p>三項觀察：</p>
+<ul>
+<li><strong>revascularization 在低 ABI 端的斜率遠大於截肢</strong>（0.4 時 10.15 vs 2.86，相差 3.5 倍）。既然 revascularization 占複合終點 78%，<strong>MALE 曲線的形狀就是它的形狀</strong>。</li>
+<li><strong>在 ABI 1.2，兩個截肢終點都完全平坦</strong>（1.00 [0.97–1.03]、1.01 [0.99–1.03]），而 <strong>revascularization 顯著低於參考（0.85, 0.83–0.87）</strong>。這解釋了為何 MALE 在 1.2 也呈現 0.95（0.93–0.96）的「保護」——那不是保護，是參考點選在非最低點加上 revascularization 曲線形狀所致。</li>
+<li>Figure 3 的 revascularization 曲線在 ABI 0.7–1.0 之間有明顯的陡降段（6.38 → 1.72），而截肢曲線在同區間平緩得多。<strong>這種「只有醫師決策型終點在此區間陡變」的型態，是 B3① 循環性擔憂最直接的圖形證據。</strong></li>
+</ul>
+<p><strong>⑥ ABI 1.21–1.30 是真正的平坦區，直接否定「全光譜連續風險」（Figure 2B/D/F）</strong></p>
+<p>超額發生率（每 1,000 人，10 年）在 1.21–1.30 一組，五個族群全部橫跨零：</p>
+<table>
+<thead>
+<tr>
+<th>族群</th>
+<th>1.21–1.30 超額（95% CI）</th>
+<th>&gt;1.30 超額（95% CI）</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>全體</td>
+<td><strong>1（−6 至 7）</strong></td>
+<td>32（25–40）</td>
+</tr>
+<tr>
+<td>男性</td>
+<td><strong>1（−5 至 8）</strong></td>
+<td>34（27–42）</td>
+</tr>
+<tr>
+<td>女性</td>
+<td><strong>1（−20 至 23）</strong></td>
+<td><strong>3（−23 至 31）</strong></td>
+</tr>
+<tr>
+<td>White</td>
+<td><strong>−1（−8 至 6）</strong></td>
+<td>25（16–33）</td>
+</tr>
+<tr>
+<td>Black</td>
+<td><strong>8（−8 至 24）</strong></td>
+<td><strong>62（43–83）</strong></td>
+</tr>
+</tbody>
+</table>
+<p>全體世代的 CI 為 −6 至 7，<strong>極窄且雙側都排除了臨床有意義的差異</strong>——這達到了「實質等效（NEUTRAL）」的較強聲明標準，而非單純的「不顯著」。<strong>因此 ABI 的真實形狀是「≤1.10 遞增 → 1.11–1.30 平坦 → &gt;1.30 上升」，即存在一個平坦區，而非 Conclusions 所稱的「values across the ABI continuum, rather than a cutoff, were associated with limb risk」。</strong> 這是圖形直接反駁論文結論句的地方，而正文未提及。</p>
+<p><strong>⑦ 女性在絕對尺度上只有 borderline 一組有訊號（Figure 2C/D，p.330）</strong></p>
+<p>Figure 2C/D 中女性（紅線）的 CI 帶明顯寬於男性（藍線），且女性四組的超額發生率有三組橫跨零：0.91–1.00 為 <strong>30（9–50）</strong>〔唯一排除零者〕、1.01–1.10 為 <strong>8（−13 至 29）</strong>、1.21–1.30 為 <strong>1（−20 至 23）</strong>、&gt;1.30 為 <strong>3（−23 至 31）</strong>。</p>
+<p>Figure 1C 的 spline 同樣呈現：女性 CI 帶在 ABI 0.4 時為 10.06（7.08–14.29），在 <strong>ABI 1.4 時為 1.62（0.77–3.41），明確橫跨無效線</strong>；ABI 1.2 為 0.89（0.78–1.02），亦橫跨。</p>
+<p><strong>即「low-normal ABI 在女性也是風險標記」與「高 ABI 在女性也是風險標記」在絕對尺度與連續模型上均不成立</strong>，與 Conclusions 的「These trends did not vary by sex」不符。</p>
+<p><strong>⑧ 高 ABI（&gt;1.30）的風險在 Black 病人約為 White 的 2.5 倍，且兩族群在正常區間的曲線形狀不同（Figure 1D/E、2E/F）</strong></p>
+<ul>
+<li><strong>超額發生率 &gt;1.30</strong>：Black <strong>62（43–83）</strong> vs White <strong>25（16–33）</strong>/1,000——<strong>兩者 CI 幾乎不重疊</strong>。</li>
+<li><strong>Table 2 呼應</strong>：&gt;1.30 的 major amputation HR Black <strong>2.00（1.46–2.74）</strong> vs White <strong>1.51（1.24–1.82）</strong>；total amputation Black <strong>1.80（1.44–2.25）</strong> vs White 1.37（1.22–1.54）。</li>
+<li><strong>正常區間形狀不同</strong>：ABI 1.2 時 White 為 <strong>0.93（0.91–0.95）顯著低於參考</strong>，Black 為 <strong>1.03（0.99–1.07）橫跨無效線</strong>；ABI 1.3 時 White 1.12（1.07–1.17）vs Black 1.39（1.27–1.53）；ABI 1.4 時 White 1.49（1.36–1.64）vs Black <strong>2.12（1.76–2.55）</strong>。</li>
+</ul>
+<p><strong>這是本文圖形中臨床上最有價值、卻最被忽略的訊號。</strong> 它與血管鈣化／動脈不可壓縮在 Black 族群（較高的糖尿病與 CKD 負荷）分布較廣的假說一致，也與替代解釋 3（高 ABI 是測量偽影而非獨立病生理路徑）相容。正文僅以「further studies are needed to better understand these racial differences」帶過，Conclusions 更以「did not vary by race」將其抹平。</p>
+<p><strong>⑨ Central Illustration 的 ABI 分區標示，與全文其餘部分的類別定義不一致（p.334）</strong></p>
+<p>Central Illustration 上方的 spline 圖以三色底標示「Abnormal ABI（紅，&lt;0.9）／Borderline ABI（黃，0.9–1.0）／Normal ABI（綠，1.0–1.4）」，下方 forest plot 標籤寫 <strong>「Borderline ABI 0.90-0.99 vs. 1.10-1.19」</strong>；Discussion 首段亦寫「A borderline ABI of <strong>0.90 to 0.99</strong> ... compared with an ABI of <strong>1.10 to 1.19</strong>」。</p>
+<p>但 Abstract、Methods、Results 與 Table 2 全文一律使用 <strong>0.91–1.00 vs 1.11–1.20</strong>。</p>
+<p><strong>對一篇論證核心正是「ABI 閾值劃分不當、術語誤導」的論文而言，在自己的閾值標示上前後不一致，是不應出現的疏失</strong>，且 Central Illustration 是最廣為流傳的版本。</p>
+<hr />
+<h2>觀察性研究因果推論補充評估</h2>
+<h3>Target Trial 思維框架</h3>
+<p><strong>理想的隨機對照試驗是什麼？——這是本研究的根本限制：不存在對應的 target trial。</strong></p>
+<p>ABI 值不可被隨機分派或操作，因此不存在「隨機把人分到 ABI 0.95 或 1.15」的假想試驗。這意味著本研究<strong>在本質上只能是預後標記（prognostic marker）研究，不能是因果研究</strong>。</p>
+<p>有兩個可以定義的 target trial，而本文都不是：</p>
+<ol>
+<li><strong>可操作的介入版本</strong>：「在 ABI 落在 0.91–1.10 的病人中，隨機分派至『強化血管風險管理＋肢體監測』vs『常規照護』，比較 major amputation 與 CLTI」。<strong>本文完全未提供這個問題的證據</strong>，但 Discussion 的「offers an opportunity for earlier prevention」與 Conclusions 的「test the impact of alternative ABI thresholds on clinical outcomes」都在暗示這個方向。作者的措辭（「future studies should ... test」）是誠實的，但整體敘事框架已預先假定答案。</li>
+<li><strong>診斷/預後策略版本</strong>：「隨機分派至『ABI 連續值報告』vs『二分結果報告』，比較下游處置與 5 年結果」。這才是與作者「術語誤導」主張直接對應的試驗，本文亦未觸及。</li>
+</ol>
+<p><strong>判定</strong>：本研究應被評為<strong>預後關聯研究</strong>，其應有的評估指標是 discrimination、calibration 與 incremental value——而本文一項未報（見 C4（2））。作者在關聯強度上投入了大量分析，卻在預後研究真正的評估維度上完全空白。</p>
+<h3>三大可識別性條件</h3>
+<table>
+<thead>
+<tr>
+<th>條件</th>
+<th>評估</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Exchangeability（可交換性 / 無未測量混淆）</strong></td>
+<td><strong>明確不成立。</strong> 三類混淆因子未被測量或校正：① <strong>下 ABI 醫囑的臨床指示</strong>（跛行、傷口、術前評估）——同時決定 ABI 值與後續介入機率，是最關鍵的缺口；② <strong>HIV 狀態與酒精使用</strong>——皆為 VACS 常規收集、且本團隊自己（本文 ref 22）已證實 HIV 為 PAD 獨立風險因子，卻未列入 14 項共變項；③ <strong>糖尿病與 CKD 的嚴重度</strong>——糖尿病僅二分（無病程、HbA1c、insulin、透析狀態），eGFR 僅單次值，對高 ABI 端（血管鈣化）的解讀尤其關鍵。依 JAMA Users' Guide：「Even if investigators accurately measure and adjust their analysis for all known prognostic factors, results may still be biased by different distributions of unknown prognostic factors (ie, residual confounding)」[參考: jama_agoritsas_2017_ug_160001.md, &quot;The Challenge of Prognostic Imbalance&quot; 節]。<strong>本文連「已知且可得」的因子都未全部納入，且未提供任何 E-value 或 negative control 分析。</strong></td>
+</tr>
+<tr>
+<td><strong>Positivity（正概率）</strong></td>
+<td><strong>成立。</strong> 十個 ABI 類別在 White 與 Black 中皆有充足人數（White 最小類別 11,971；Black 最小類別 2,676），無結構性或隨機性 positivity violation。這是大樣本的實質優勢。唯一例外是<strong>女性次群</strong>，其中截肢事件作者自稱「rare」，在極端 ABI 類別中可能有近似 sparse-data 的問題（Supplemental Table 4 未提供，無法確認）。</td>
+</tr>
+<tr>
+<td><strong>Consistency（一致性 / 治療版本明確）</strong></td>
+<td><strong>部分不成立，且是被忽略的問題。</strong> 暴露「ABI = 0.95」有多種版本，而它們的預後意涵不同：① <strong>測量方法版本</strong>——Doppler vs oscillometric（作者自列限制 ④，承認無法區分）；② <strong>聚合規則版本</strong>——本文取「離 1.1 最遠側」，而臨床標準做法是取<strong>較低側</strong>；「較差腿 0.95、較好腿 1.10」與「兩腿皆 0.95」在本文被歸為同一暴露值，但疾病負荷明顯不同；③ <strong>臨床情境版本</strong>——「因跛行檢查得到 0.95」與「術前常規檢查得到 0.95」是不同的暴露版本。作者未討論任何一項，亦未做聚合規則的敏感度分析。</td>
+</tr>
+</tbody>
+</table>
+<h3>Time-varying Confounding</h3>
+<ul>
+<li><strong>不適用於主分析</strong>：暴露為單次基線 ABI，非 time-varying treatment，因此無需 marginal structural models 或 g-formula。此設計選擇是合理的。</li>
+<li><strong>但代價需明說</strong>：ABI 在 4.3 年（乃至 10 年）追蹤期間會改變，而<strong>中間期的 ABI 變化、新發生的風險因子、以及新啟動的治療（statin、抗血小板藥、血管重建本身）全部未被納入</strong>。這使報告的 HR 是「基線 ABI 的預後值」，而非「維持某 ABI 水準的效果」。</li>
+<li><strong>這與 PH 假設疑慮直接交互</strong>（C4（3））：若基線 ABI 的預後價值隨時間衰減（生物學上可預期），則單一 HR 是整個追蹤期的加權平均，會<strong>高估晚期風險</strong>。而本文正是以 10 年 cumulative incidence 作為主要臨床訊息，卻無 KM 曲線或 number-at-risk 供讀者檢視此問題。</li>
+<li><strong>中介偏差風險</strong>：治療（statin、抗血小板藥）既受基線 ABI 影響（低 ABI 者更可能被積極治療），又影響結果——這使基線治療狀態的校正成為部分中介變項的校正，會<strong>低估</strong> ABI 的總效果（方向保守）。此點作者未討論，但方向對其結論不利，屬於誠實的保守偏差。</li>
+</ul>
+<hr />
+<h2>Sources</h2>
+<ul>
+<li><a href="https://www.jacc.org/doi/10.1016/j.jacc.2026.04.004">Implications of Modest Reductions in ABI Measurements for Risk of Major Adverse Limb Events Among 223,350 Veterans | JACC</a></li>
+<li><a href="https://www.thecardiologyadvisor.com/news/borderline-ankle-brachial-index-major-adverse-limb-events-risk/">Borderline Ankle-Brachial Index Associated With Risk for Major Adverse Limb Events – The Cardiology Advisor</a></li>
+<li><a href="https://news.vumc.org/2026/06/03/study-questions-standard-screening-test-for-amputation-risk-in-veterans/">Study questions standard screening test for amputation risk in veterans – Vanderbilt Health News</a></li>
+<li><a href="https://cardiovascularbusiness.com/topics/clinical/vascular-endovascular/have-clinicians-been-wrong-about-how-they-diagnose-pad">Have clinicians been wrong about how they diagnose PAD? – Cardiovascular Business</a></li>
+<li><a href="https://www.acc.org/latest-in-cardiology/articles/2026/06/17/17/26/just-announced">2025 Journal Impact Factor Scores Announced – American College of Cardiology</a></li>
+<li><a href="https://www.journalmetrics.org/journal/journal-of-the-american-college-of-cardiology">Impact Factor 2026: 22.3, Q1 — JACC | journalmetrics.org</a></li>
+<li><a href="https://manusights.com/blog/jacc-review-time">JACC Review Time: Timeline &amp; What to Expect – manusights</a></li>
+<li><a href="https://manusights.com/blog/jacc-submission-guide">JACC Submission Guide (2026) – manusights</a></li>
+</ul>
+<p><strong>PubMed 引用</strong>（據 PubMed 資料庫取得）：</p>
+<ul>
+<li>Kadian-Dodov D. The Ankle-Brachial Index: A Continuum of Risk and Opportunity. J Am Coll Cardiol. 2026;88(3):337–339. <a href="https://doi.org/10.1016/j.jacc.2026.04.051">DOI</a></li>
+<li>Aday AW, et al. Association of Sex and Race With Incident Peripheral Artery Disease Among Veterans With Normal Ankle-Brachial Indices. JAMA Netw Open. 2022;5(11):e2240188. <a href="https://doi.org/10.1001/jamanetworkopen.2022.40188">DOI</a></li>
+<li>Sullivan AE, et al. Microvascular Function and Ambulatory Capacity in Peripheral Artery Disease. Circ Cardiovasc Interv. 2025;18(10):e015582. <a href="https://doi.org/10.1161/CIRCINTERVENTIONS.125.015582">DOI</a></li>
+<li>Li B, et al. Comparison of Fatty Acid Binding Protein 3 and Ankle Brachial Index for Predicting Peripheral Artery Disease Outcomes. Biomolecules. 2026;16(5):735. <a href="https://doi.org/10.3390/biom16050735">DOI</a></li>
+</ul>
+
+
+</main>
+</body>
+</html>
