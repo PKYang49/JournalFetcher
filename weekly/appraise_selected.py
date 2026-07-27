@@ -141,6 +141,34 @@ class ArticleTooLargeError(RuntimeError):
     """Raised when PDF-converted markdown exceeds ARTICLE_CHAR_BACKSTOP."""
 
 
+# A finished appraisal walks the whole SKILL, so it always runs long: across
+# ~130 past reports the median is ~18,000 characters and the shortest genuine
+# one is ~7,000. The two known-broken reports are 74 and ~1,700 characters, so
+# this floor sits between the two populations. A fragment happens when the
+# backend hands back only part of its answer (the `result` field of
+# `claude -p --output-format json` carries just the final message, and a
+# credit cutoff mid-generation returns what it has without is_error). Such a
+# fragment reads like a report — it can even end with the citations section —
+# so nothing downstream catches it. Treat anything under this floor as a
+# failed generation rather than publishing a partial review.
+#
+# Measured in characters, not bytes: CJK text is ~2.5-3 bytes per character.
+REPORT_CHAR_FLOOR = int(
+    os.getenv("JOURNAL_FETCHER_APPRAISAL_MIN_CHARS", "4000")
+)
+
+# Extra attempts when the backend returns a fragment. Each retry is a full
+# Opus call, so keep this small.
+REPORT_TRUNCATION_RETRIES = int(
+    os.getenv("JOURNAL_FETCHER_APPRAISAL_TRUNCATION_RETRIES", "1")
+)
+
+
+def _is_report_complete(report: str) -> bool:
+    """Whether a generated report is long enough to be a finished appraisal."""
+    return len(report.strip()) >= REPORT_CHAR_FLOOR
+
+
 # System prompt: stable across all articles sharing the same route in a given
 # week. Goes into claude's cached system prompt via --append-system-prompt-file,
 # so a route's second-and-onward articles pay cache-read price (~10% of full
@@ -774,9 +802,17 @@ def appraise_pdf(article: dict, pdf_path: Path, out_dir: Path) -> Path | None:
 
     out_dir.mkdir(parents=True, exist_ok=True)
     report_path = out_dir / _safe_report_name(article)
-    if report_path.exists() and report_path.stat().st_size > 1000:
-        print(f"  [skip] appraisal exists: {report_path.name}")
-        return report_path
+    if report_path.exists():
+        existing = report_path.read_text(encoding="utf-8", errors="replace")
+        if _is_report_complete(existing):
+            print(f"  [skip] appraisal exists: {report_path.name}")
+            return report_path
+        # A truncated report left by an earlier run must not be mistaken for a
+        # finished one — regenerate it instead of publishing the fragment.
+        print(
+            f"  [redo] existing appraisal is only {len(existing):,} chars "
+            f"(< {REPORT_CHAR_FLOOR:,}): {report_path.name}"
+        )
 
     article_markdown, parsed_table_pages = _convert_pdf_to_markdown(pdf_path)
     if len(article_markdown) > ARTICLE_CHAR_BACKSTOP:
@@ -893,18 +929,41 @@ def appraise_pdf(article: dict, pdf_path: Path, out_dir: Path) -> Path | None:
                 )
                 codex_editorial_fetch = True
 
-        report, backend, model = _run_appraisal_prompt(
-            system_prompt,
-            user_prompt,
-            read_dirs=read_dirs or None,
-            has_references=bool(references_block),
-            image_paths=figure_paths or None,
-            bash_commands=bash_commands,
-            claude_extra=claude_extra,
-            codex_extra=codex_extra,
-            codex_editorial_fetch=codex_editorial_fetch,
-        )
+        report = ""
+        backend = ""
+        model = ""
+        for attempt in range(REPORT_TRUNCATION_RETRIES + 1):
+            report, backend, model = _run_appraisal_prompt(
+                system_prompt,
+                user_prompt,
+                read_dirs=read_dirs or None,
+                has_references=bool(references_block),
+                image_paths=figure_paths or None,
+                bash_commands=bash_commands,
+                claude_extra=claude_extra,
+                codex_extra=codex_extra,
+                codex_editorial_fetch=codex_editorial_fetch,
+            )
+            report = _strip_preamble(report)
+            if not report or _is_report_complete(report):
+                break
+            if attempt < REPORT_TRUNCATION_RETRIES:
+                print(
+                    f"  [retry] backend returned {len(report):,} chars "
+                    f"(< {REPORT_CHAR_FLOOR:,}); regenerating "
+                    f"({attempt + 1}/{REPORT_TRUNCATION_RETRIES})",
+                    file=sys.stderr,
+                )
     if not report:
+        return None
+    if not _is_report_complete(report):
+        print(
+            f"  [fail] appraisal is only {len(report):,} chars "
+            f"(< {REPORT_CHAR_FLOOR:,}) after "
+            f"{REPORT_TRUNCATION_RETRIES + 1} attempt(s); the backend returned "
+            f"a fragment, not writing a partial report",
+            file=sys.stderr,
+        )
         return None
 
     # Persist backend/model/timestamp on the article so render can show them
@@ -919,7 +978,6 @@ def appraise_pdf(article: dict, pdf_path: Path, out_dir: Path) -> Path | None:
         "%Y-%m-%d %H:%M %Z"
     )
 
-    report = _strip_preamble(report)
     report_path.write_text(report + "\n", encoding="utf-8")
     return report_path
 
