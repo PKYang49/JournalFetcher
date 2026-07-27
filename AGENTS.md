@@ -167,6 +167,7 @@ JournalFetcher/
 | Ovid（MSSE） | `_try_ego_ovid` | `/fulltext/` 取席 → `/pdf/` | 否（cookie 有效時） |
 | Elsevier（JACC/Lancet） | `_try_ego_sciencedirect` | PII → 文章頁抓 `pdfft` → 導過去解 challenge | **是，撞 Turnstile 時** |
 | Silverchair（JAMA/OUP）、Springer、BMJ、NEJM | `_try_ego_citation_pdf` | `citation_pdf_url`（NEJM 用 `/doi/pdf/` anchor）→ 導過去 | 否 |
+| AHA / Atypon（Circulation） | `_try_ego_aha` | 文章頁讀 `/doi/pdf/` anchor → **同頁 fetch，不導過去** | 否 |
 
 - **一律是新增 tier，不取代既有路徑**：ego 回 `None` 就落回原本的 Playwright / nodriver cascade，行為不變。`JOURNAL_FETCHER_EGO=0` 或 CLI 不存在也一樣。
 - **Elsevier 無法無人值守**：Cloudflare Turnstile 過關後約 **1.5–2 小時**就復發，agent 的 CDP 點擊無效、必須人點。但既有 nodriver 路徑同樣要人（`_nodriver_wait_for_cloudflare` 會提示點擊），而且 `uc.start()` 每次開拋棄式 profile、每批都重撞；ego 的 clearance 留在真實 profile，窗口內跨文章跨 run 都有效。定位是「機會主義 tier」。

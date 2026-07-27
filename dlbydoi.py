@@ -27,6 +27,7 @@ from modules.downloader import (
     _try_jamanetwork_playwright,
     _try_lww_direct,
     _download_msse,
+    _try_ego_aha,
     _try_nodriver,
     _try_springer_playwright,
     _try_proquest_playwright,
@@ -133,6 +134,7 @@ def download_one(doi: str, out_dir: Path) -> Path | None:
     is_jamanetwork = doi.lower().startswith("10.1001/")
     is_heart = doi.lower().startswith("10.1136/heartjnl-")
     is_bjsm = doi.lower().startswith("10.1136/bjsports-")
+    is_aha = doi.startswith("10.1161/")
     content = None
     step = 1
 
@@ -214,6 +216,14 @@ def download_one(doi: str, out_dir: Path) -> Path | None:
     if not content:
         print(f"  [{step}] PMC...")
         content = _try_pmc(doi)
+        step += 1
+
+    # AHA (Circulation): the article page is reachable without a captcha, but
+    # its PDF anchor is an attachment, so the bytes have to be fetched from
+    # that page's own context in a real browser profile.
+    if not content and is_aha:
+        print(f"  [{step}] AHA via ego browser (Circulation)...")
+        content = _try_ego_aha(doi)
         step += 1
 
     # BMJ journals (Heart, BJSM): most closed-access articles are available via

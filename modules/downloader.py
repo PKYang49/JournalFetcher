@@ -2077,6 +2077,42 @@ def _try_ego_citation_pdf(doi: str) -> bytes | None:
     return None
 
 
+# AHA (Circulation) publishes no citation_pdf_url meta, and its PDF anchor is
+# an attachment (`?download=true`): navigating to it starts a download instead
+# of a page load, so the tab stays on the article and a `location.href` fetch
+# returns the article HTML. Read the href and fetch it from the article page's
+# own context instead — the entitlement cookie rides along with `credentials`.
+_AHA_PDF_URL_JS = """(() => {
+  const hit = [...document.querySelectorAll('a')]
+    .map(a => a.href)
+    .find(h => h && /\\/doi\\/pdf\\//.test(h) && !/suppl/i.test(h));
+  return hit || location.href;
+})()"""
+
+
+def _try_ego_aha(doi: str) -> bytes | None:
+    """Fetch a Circulation (AHA / Atypon) PDF through ego lite.
+
+    Unlike the Silverchair-style publishers there is no second navigation: the
+    PDF is fetched straight from the article page, so this needs no captcha
+    clearance and runs unattended on the institutional IP.
+
+    Returns None on anything that is not a usable PDF, leaving the caller's
+    existing nodriver cascade to run.
+    """
+    if not ego_available():
+        return None
+
+    content = fetch_pdf_via_ego(
+        f"https://doi.org/{doi}",
+        pdf_url_js=_AHA_PDF_URL_JS,
+        settle=4.0,
+    )
+    if content and _is_pdf(content):
+        return content
+    return None
+
+
 def _download_msse(doi: str) -> tuple[bytes | None, str]:
     """Fetch an MSSE PDF. Returns (bytes, "") or (None, failure reason).
 
@@ -3016,7 +3052,13 @@ def download_pdf(article: dict, out_dir: Path = PDF_DIR) -> Path | None:
             dest.write_bytes(content)
             print(f"  [OK] {dest.name} ({len(content)//1024} KB)")
             return dest
-        print("  [2] nodriver browser fallback (Circulation direct URL)...")
+        print("  [2] AHA via ego browser (Circulation)...")
+        content = _try_ego_aha(doi)
+        if content:
+            dest.write_bytes(content)
+            print(f"  [OK] {dest.name} ({len(content)//1024} KB)")
+            return dest
+        print("  [3] nodriver browser fallback (Circulation direct URL)...")
         content = _try_nodriver_direct_urls(doi, journal)
         if content:
             dest.write_bytes(content)
@@ -3298,6 +3340,17 @@ def download_articles(articles: list[dict], out_dir: Path = PDF_DIR) -> dict[str
 
         # 失敗 → 依出版社決定是否排入 Playwright/nodriver batch
         if is_circulation:
+            # Per-article and unattended: no captcha stands between the AHA
+            # article page and its PDF, so this short-circuits the nodriver
+            # batch (which opens a cold throwaway Chrome profile every time).
+            print(f"  [{step}] AHA via ego browser...")
+            content = _try_ego_aha(doi)
+            if content:
+                dest.write_bytes(content)
+                print(f"  [OK] {dest.name} ({len(content)//1024} KB)")
+                results[pmid] = dest
+                time.sleep(1)
+                continue
             print(f"  [pending] queued for nodriver batch (Circulation)")
             circulation_pending.append(article)
         elif is_oup or is_nejm or is_heart or is_bjsm:
