@@ -1,0 +1,1295 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Risk-Guided Screening for Atrial Fibrillation Using Electronic Health Records.</title>
+<style>
+  :root {
+    --bg: #fafafa;
+    --card: #ffffff;
+    --text: #1a1a1a;
+    --muted: #6b6b6b;
+    --border: #e5e5e5;
+    --accent: #0b5fff;
+  }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang TC",
+      "Microsoft JhengHei", sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    margin: 0;
+    padding: 24px 16px 64px;
+    line-height: 1.72;
+  }
+  main {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    margin: 0 auto;
+    max-width: 840px;
+    padding: 22px 26px;
+  }
+  nav {
+    margin: 0 auto 14px;
+    max-width: 840px;
+    color: var(--muted);
+    font-size: 14px;
+  }
+  a { color: var(--accent); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  h1, h2, h3, h4 { line-height: 1.35; }
+  h1 { font-size: 26px; margin-top: 0; }
+  h2 { border-top: 1px solid var(--border); padding-top: 18px; }
+  code {
+    background: rgba(127, 127, 127, 0.12);
+    border-radius: 4px;
+    padding: 1px 4px;
+  }
+  table {
+    border-collapse: collapse;
+    display: block;
+    overflow-x: auto;
+    width: 100%;
+  }
+  th, td {
+    border: 1px solid var(--border);
+    padding: 6px 8px;
+    text-align: left;
+    vertical-align: top;
+  }
+  blockquote {
+    border-left: 3px solid var(--accent);
+    color: var(--muted);
+    margin-left: 0;
+    padding-left: 14px;
+  }
+  .appraisal-meta {
+    border-top: 1px solid var(--border);
+    margin-top: 28px;
+    padding-top: 14px;
+    color: var(--muted);
+    font-size: 13px;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #1a1a1a;
+      --card: #242424;
+      --text: #e8e8e8;
+      --muted: #999;
+      --border: #333;
+      --accent: #6ea8ff;
+    }
+  }
+</style>
+</head>
+<body>
+<nav><a href="../../2026-W32.html">← 回到 2026-W32 週報</a></nav>
+<main>
+<h1>Risk-Guided Screening for Atrial Fibrillation Using Electronic Health Records.</h1>
+<h1>文獻批判性評讀</h1>
+<p><strong>Risk-Guided Screening for Atrial Fibrillation Using Electronic Health Records</strong>
+<em>Circulation</em> 2026;154:00–00. DOI: 10.1161/CIRCULATIONAHA.126.079391 (PMID 42517218)</p>
+<hr />
+<h2>SECTION-0：文章全面描述</h2>
+<h3>0. 文章身份證</h3>
+<ul>
+<li><strong>標題</strong>：Risk-Guided Screening for Atrial Fibrillation Using Electronic Health Records</li>
+<li><strong>期刊 / 年份</strong>：Circulation, 2026（Open Access, CC-BY）</li>
+<li><strong>文章類型（路由判斷）</strong>：<strong>臨床預測模型的開發 + 多國外部驗證 + 前瞻性單臂介入驗證</strong> → 走 <strong>SKILL-C（診斷研究與臨床預測模型評讀）</strong></li>
+<li><strong>本文其實是三個獨立研究拼成的一篇</strong>：
+<ol>
+<li>回溯性 ML 模型開發與 5 國外部驗證（n≈12.8 M）</li>
+<li>前瞻性、<strong>單臂、非隨機</strong>介入性篩檢研究（n=1923，英國 15 個基層醫療站點）</li>
+<li>FinACAF 登錄檔的中風風險關聯分析（n=229 565）</li>
+</ol>
+</li>
+<li><strong>混血警示</strong>：文章自稱「prospective interventional clinical validation study」，但<strong>沒有對照組、沒有隨機分派</strong>。它驗證的是「模型能不能把人分層」，不是「風險導向篩檢是否優於常規照護」。標題的 &quot;Risk-Guided Screening&quot; 容易讓讀者誤以為是篩檢策略試驗。作者在限制第五點有承認，但 Clinical Perspective 與結論的語氣仍偏強。</li>
+</ul>
+<hr />
+<h3>1. 作者團隊評論</h3>
+<p><strong>通訊作者</strong>：Ramesh Nadarajah, PhD，University of Leeds（Leeds Institute for Cardiovascular and Metabolic Medicine + Leeds Institute of Data Analytics）；同時為 Leeds Teaching Hospitals NHS Trust 心臟科醫師。</p>
+<p><strong>背景</strong> [外部: University of Leeds School of Medicine 個人頁面、HDR UK、Alan Turing Institute]：BHF Clinical Research Fellow，以 Alan Turing Institute PhD enrichment award 完成「以機器學習從全國連結健康紀錄預測 incident AF」的博士訓練。研究主軸即為 FIND-AF 系列。屬於<strong>該領域的核心研究者，而非跨領域首次切入</strong>。</p>
+<p><strong>團隊構成</strong>：R. Nadarajah 與 J. Wu 並列第一作者（Wu 為統計/資料科學方，Queen Mary）。資深作者陣容為 AF 篩檢領域的「名人堂」——Ben Freedman（AF-SCREEN 創始人）、Emma Svennberg（STROKESTOP）、A. John Camm、Gregory Y.H. Lip、Chris P. Gale。各國資料集由當地團隊掛名（Kyoto/JMDC、Clalit/Ben Gurion、Calgary、Hong Kong、Finland FinACAF）。</p>
+<p><strong>團隊過往代表作</strong>（本文參考文獻 7–10 即為自引鏈）：</p>
+<ul>
+<li>Nadarajah R, et al. <em>Heart</em> 2022;108:1020–9（AF 預測模型的 SR/MA——本文用來論證「CHA₂DS₂-VASc 與 C₂HEST 是最佳可比對象」的依據，是自己的 SR）</li>
+<li>Nadarajah R, et al. <em>Heart</em> 2023;109:1072–9（原始 FIND-AF，75 變數）</li>
+<li>Nadarajah R, et al. <em>Open Heart</em> 2023;10:e002447（FIND-AF pilot）</li>
+<li>Nadarajah R, et al. <em>BMJ Open</em> 2023;13:e075196（本研究的方案書）</li>
+<li>[外部: PubMed] Rokach L, Benita TR, <strong>Nadarajah R</strong>, et al. <em>Eur J Prev Cardiol</em> 2026 (PMID 41776766, <a href="https://doi.org/10.1093/eurjpc/zwag124">DOI</a>)——<strong>同一個 Clalit（以色列）資料集已在 3 個月前單獨發表過</strong>。此點在下方 C 節有重要含意。</li>
+</ul>
+<p><strong>作者立場史 [評估]</strong>：整個團隊在 FIND-AF 上已投入至少 5 篇論文、一個 pilot、一個方案書。本文結論與其既有立場<strong>完全一致</strong>，且無任何一個分析結果被詮釋為對 FIND-AF 不利（見 D 節「選擇性報告」）。存在明確的 prior commitment bias。</p>
+<p><strong>利益揭露</strong>：</p>
+<ul>
+<li><strong>資助</strong> [文內]：British Heart Foundation（FS/20/12/34789、CC/22/250026）、Leeds Hospital Charity、HDR UK、NIHR、Barts Charity、Israel Science Foundation。<strong>無藥廠或裝置商直接資助本研究</strong>——這是本文的一個真正優點。</li>
+<li><strong>個別 COI</strong> [文內]：Gale、Camm、Lip、Freedman、Lehto、Airaksinen、Langén 等多人有抗凝劑藥廠（BMS/Pfizer、Bayer、Boehringer-Ingelheim、Daiichi-Sankyo）的 honoraria/consulting。White 與 Flewitt 持有 Cohesic Inc.（Calgary 資料平台）股份。</li>
+<li><strong>[評估] 一個未被申報為 COI 的實質利益</strong>：文中自述已「開發 API 讓 FIND-AF 2.0 可用於國際 EHR 與保險資料庫（<strong>TA/PPA/25/215005</strong>）」並「取得英國臨床應用的法規核准（<strong>NIHR204580</strong>），目前正在 NHS 常規照護中試行」。作者對此模型有<strong>智財與實作路徑上的既得利益</strong>，但 Disclosures 段只列了藥廠 honoraria，未把模型商業化/技術轉移列為 competing interest。以 CC-BY 開放取用期刊的標準，這應該揭露。</li>
+<li>抗凝劑廠商的 honoraria 與「擴大 AF 偵測 → 擴大 OAC 處方」在商業上是方向一致的；本研究次要終點正是 OAC 處方率（96.1%）。這不構成造假指控，但屬於 Style Guide 所指的 commercial narrative alignment，讀者應納入考量。</li>
+</ul>
+<hr />
+<h3>2. 文獻 Metadata 整理</h3>
+<table>
+<thead>
+<tr>
+<th>項目</th>
+<th>內容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Received</td>
+<td>2026-01-17 [文內]</td>
+</tr>
+<tr>
+<td>Accepted</td>
+<td>2026-06-05 [文內]</td>
+</tr>
+<tr>
+<td><strong>審查天數</strong></td>
+<td><strong>139 天（約 4.6 個月）</strong>（自行計算）</td>
+</tr>
+<tr>
+<td>Circulation 2026 Impact Factor</td>
+<td>41.3（2026-06-17 釋出，基於 2025 引用資料）[外部: manusights.com / journalmetrics.org 彙整]</td>
+</tr>
+<tr>
+<td>分區</td>
+<td>Cardiac &amp; Cardiovascular Systems Q1</td>
+</tr>
+<tr>
+<td>Open Access</td>
+<td>是（CC-BY）</td>
+</tr>
+<tr>
+<td>邀稿 vs 投稿</td>
+<td>未揭露；Original Research Article，<strong>推定為一般投稿</strong> [推論]</td>
+</tr>
+</tbody>
+</table>
+<p><strong>[限制：外部資料品質]</strong> 我找到的 IF 與審查時程數字來自二手期刊指標彙整站（manusights、bioxbio、journalmetrics），<strong>非 Clarivate JCR 或 Circulation 官方 editorial statistics 原始來源</strong>，僅供粗略參考。同來源列出 Circulation 的 median first decision 約 17 天、完整同儕審查 4–6 週、major revision 再加 60–90 天。</p>
+<p><strong>[評估]</strong> 139 天在 Circulation 的常態範圍內，符合「至少一輪 major revision」的節奏。<strong>沒有加速審查的跡象</strong>——這對一篇由該領域資深名人（Camm、Lip、Freedman、Svennberg 均在作者列）共同署名的稿件而言，是正面訊號，代表沒有明顯的編輯偏袒。</p>
+<hr />
+<h3>3. 研究背景 [僅文內]</h3>
+<p><strong>既有事實</strong>：</p>
+<ul>
+<li>AF 是缺血性中風的常見成因，在常規照護中被低估診斷（refs 1,2）。</li>
+<li>對高齡者或 CHA₂DS₂-VASc 分數高者以 ECG 監測進行篩檢，可增加 AF 偵測率（ref 3，該篇為作者團隊自己的 SR/MA）。</li>
+<li>年齡與 CHA₂DS₂-VASc 的組成變項均與 AF 發生率相關（refs 4,5）。</li>
+</ul>
+<p><strong>知識缺口（作者主張）</strong>：</p>
+<ol>
+<li>既有的 EHR-based AF 預測模型有兩大缺陷：(a) 預測期間過長（辨識出的是「遙遠未來的 AF」，對現在該不該做 ECG 沒有幫助）；(b) 需要在常規資料中經常缺失的變項（身高、體重、血壓、抽菸）。</li>
+<li>這些模型<strong>幾乎從未被前瞻性測試</strong>是否真能引導篩檢。</li>
+<li>團隊自己的原始 FIND-AF 準確度佳但需 <strong>75 個變項</strong>，難以實作。</li>
+</ol>
+<p><strong>Research question</strong>（明確陳述於 Introduction 末段）：能否開發一個<strong>精簡版</strong>（parsimonious）FIND-AF，在多國 EHR 中可規模化，並在前瞻性研究中證明它能在「已符合 CHA₂DS₂-VASc 篩檢資格者」之中<strong>再做一層風險分層</strong>，且所偵測到的 AF 在 AF burden 與 OAC 起始上是「可行動的（actionable）」。</p>
+<p><strong>[評估]</strong> 研究問題設定清楚且務實。「精簡以求可規模化」的動機是真實臨床資訊學問題，不是稻草人。</p>
+<hr />
+<h3>4. 研究設計與方法</h3>
+<p><strong>PICO（前瞻性研究部分）</strong></p>
+<ul>
+<li><strong>P</strong>：≥30 歲、有基層醫療 EHR、無 AF/atrial flutter 病史、非安寧照護名單、未長期抗凝，且<strong>男性 CHA₂DS₂-VASc ≥2 / 女性 ≥3</strong>（即偵測到 AF 就有 OAC 適應症者）</li>
+<li><strong>I（Index test）</strong>：FIND-AF 2.0 風險分數 ≥0.0053 → 高風險</li>
+<li><strong>C（Reference standard）</strong>：3 週、每日 4 次（早/午/下午/晚），Zenicor II 手持單導程 ECG；AF 定義為 <strong>≥1 次完全不規則、無 P 波、持續 30 秒</strong>的紀錄；由 <strong>2 位對風險分類設盲的電生理專科醫師</strong>確認</li>
+<li><strong>O</strong>：主要——監測期間新診斷 AF；次要——新診斷 AF 者的 OAC 處方；安全性——其他心律不整</li>
+</ul>
+<p><strong>模型開發</strong></p>
+<ul>
+<li>演算法：<strong>Random forest classifier</strong></li>
+<li>變項：<strong>12 個</strong>——年齡（連續）、性別，加上 10 項共病（糖尿病、心衰竭、高血壓、中風/TIA、缺血性心臟病、COPD、瓣膜性心臟病、慢性腎病、類風濕性關節炎、甲狀腺功能亢進）</li>
+<li>變項選擇：<strong>「共識過程」（consensus process）</strong>（Figure S1）——非資料驅動的正式特徵選擇</li>
+<li>資料：CPRD-GOLD (UK) 80/20 分割（Mersenne twister PRNG），10-fold CV 調 hyperparameter，以 class weighting 處理類別不平衡</li>
+<li>Outcome（回溯階段）：<strong>6 個月內的 AF/atrial flutter 診斷碼</strong></li>
+<li>變項重要度：Gini impurity</li>
+</ul>
+<p><strong>外部驗證世代</strong>：JMDC（日本商業保險理賠）、Clalit Health Service（以色列）、CIROC（加拿大 Calgary 心血管影像登錄）、CDARS（香港）</p>
+<p><strong>統計</strong></p>
+<ul>
+<li>鑑別力主指標 AUROC；補充 AUPRC；校準以 calibration slope + Brier score</li>
+<li>事前定義 AUROC 分級：&lt;0.60 不足 / 0.60–0.70 尚可 / 0.70–0.80 良好 / &gt;0.80 優異</li>
+<li>性別次組以 DeLong test 比較</li>
+<li>前瞻研究：計算 OR、sensitivity、PPV、NPV、F1；<strong>明確聲明不計算 AUROC 與 specificity</strong>（因高/低風險招募比例事先固定）</li>
+<li><strong>樣本量</strong>：假設高風險組偵測率 6%、低風險組 1.5%，每組 977 人（共 1954）達 80% power、α=0.05</li>
+<li>報告規範：TRIPOD+AI</li>
+</ul>
+<p><strong>[評估] 設計上的三個關鍵結構問題（詳見 SKILL-C）</strong>：</p>
+<ol>
+<li>回溯階段的 reference standard（<strong>診斷碼</strong>）與前瞻階段的 reference standard（<strong>ECG 判讀</strong>）是兩件不同的事，模型是被訓練來預測前者。</li>
+<li>招募比例被事先固定為 ~55% 高風險，這使得所有 prevalence-dependent 指標（PPV、NPV、F1）都<strong>只在這個人工比例下成立</strong>，無法外推。</li>
+<li>前瞻研究是單臂，high/low 不是隨機分派，因此 OR 8.46 是 discrimination 的另一種表達，不是「篩檢有效」的證據。</li>
+</ol>
+<hr />
+<h3>5. 研究結果重點整理</h3>
+<p><strong>表 A｜開發與外部驗證世代（Table 1、Table 2；已對照 page_004、page_005 原圖核實）</strong></p>
+<table>
+<thead>
+<tr>
+<th>世代</th>
+<th>n</th>
+<th>平均年齡 (SD)</th>
+<th>6 個月新 AF</th>
+<th>FIND-AF 2.0 AUROC</th>
+<th>CHA₂DS₂-VASc</th>
+<th>C₂HEST</th>
+<th>FIND-AF 2.0 校準斜率</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>CPRD-GOLD（英，開發）</td>
+<td>2 081 139</td>
+<td>49.9 (15.4)</td>
+<td>7386 (0.4%)</td>
+<td><strong>0.819</strong> (0.809–0.829)</td>
+<td>0.784</td>
+<td>0.757</td>
+<td>0.783 (0.744–0.825)</td>
+</tr>
+<tr>
+<td>JMDC（日）</td>
+<td>7 795 244</td>
+<td>46.1 (10.4)</td>
+<td>6515 (0.1%)</td>
+<td><strong>0.751</strong> (0.745–0.757)</td>
+<td>0.624</td>
+<td>0.678</td>
+<td><strong>1.256</strong> (1.145–1.367)</td>
+</tr>
+<tr>
+<td>CHS（以色列）</td>
+<td>2 166 795</td>
+<td>53.0 (16.0)</td>
+<td>4275 (0.2%)</td>
+<td><strong>0.835</strong> (0.828–0.842)</td>
+<td><strong>0.838</strong> (0.831–0.845)</td>
+<td>0.834</td>
+<td><strong>1.431</strong> (1.311–1.551)</td>
+</tr>
+<tr>
+<td>CIROC（加拿大）</td>
+<td>627 919</td>
+<td>55.2 (15.7)</td>
+<td>10 052 (<strong>1.6%</strong>)</td>
+<td><strong>0.747</strong> (0.741–0.753)</td>
+<td>0.695</td>
+<td>0.697</td>
+<td><strong>0.567</strong> (0.561–0.573)</td>
+</tr>
+<tr>
+<td>CDARS（香港）</td>
+<td>149 145</td>
+<td>65.3 (14.5)</td>
+<td>268 (0.2%)</td>
+<td><strong>0.753</strong> (0.725–0.771)</td>
+<td>0.709</td>
+<td>0.682</td>
+<td>0.827 (0.777–0.876)</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>內部驗證：FIND-AF 2.0（12 變項）AUROC 0.819 vs 原始 FIND-AF（75 變項）0.824；ΔAUROC 0.005（95% CI −0.009 至 0.019），P=0.49。
+變項重要度排序（Gini）：<strong>年齡 &gt; 心衰竭 &gt; 缺血性心臟病 &gt; 瓣膜性心臟病 &gt; 高血壓</strong>。</p>
+</blockquote>
+<p><strong>表 B｜前瞻性研究族群（Table 3；已對照 page_006 原圖核實）</strong></p>
+<table>
+<thead>
+<tr>
+<th>特徵</th>
+<th>全體 (n=1923)</th>
+<th>低風險 (n=902)</th>
+<th>高風險 (n=1021)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>年齡（平均, SD）</td>
+<td>70.2 (9.4)</td>
+<td><strong>64.3 (9.1)</strong></td>
+<td><strong>75.4 (5.9)</strong></td>
+</tr>
+<tr>
+<td>女性</td>
+<td>958 (49.8%)</td>
+<td>356 (39.5%)</td>
+<td>602 (59.0%)</td>
+</tr>
+<tr>
+<td><strong>白人族裔</strong></td>
+<td>1843 (95.8%)</td>
+<td>830 (92.0%)</td>
+<td><strong>1013 (99.2%)</strong></td>
+</tr>
+<tr>
+<td>糖尿病</td>
+<td>631 (32.8%)</td>
+<td><strong>335 (37.1%)</strong></td>
+<td><strong>296 (29.0%)</strong></td>
+</tr>
+<tr>
+<td>高血壓</td>
+<td>1606 (83.6%)</td>
+<td>761 (84.5%)</td>
+<td>845 (82.8%)</td>
+</tr>
+<tr>
+<td>心衰竭</td>
+<td>79 (4.1%)</td>
+<td>14 (1.6%)</td>
+<td>65 (6.4%)</td>
+</tr>
+<tr>
+<td>缺血性心臟病</td>
+<td>277 (14.4%)</td>
+<td>95 (10.6%)</td>
+<td>182 (17.9%)</td>
+</tr>
+<tr>
+<td>瓣膜性心臟病</td>
+<td>84 (4.4%)</td>
+<td>12 (1.3%)</td>
+<td>72 (7.1%)</td>
+</tr>
+<tr>
+<td>平均 CHA₂DS₂-VASc</td>
+<td>3.2 (1.0)</td>
+<td><strong>未報告</strong></td>
+<td><strong>未報告</strong></td>
+</tr>
+</tbody>
+</table>
+<p><strong>表 C｜前瞻性研究主要結果</strong></p>
+<table>
+<thead>
+<tr>
+<th>指標</th>
+<th>數值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>招募漏斗</td>
+<td>篩選 127 216 → 邀請 17 063（13.4%）→ 同意 1960（占受邀 11.5%）→ 完成 1923</td>
+</tr>
+<tr>
+<td><strong>整體參與率（相對於被篩選者）</strong></td>
+<td><strong>1.5%</strong>（自行計算）</td>
+</tr>
+<tr>
+<td>平均 ECG 次數</td>
+<td>74.8 (SD 19.4)；98.0% ≥25 次；90.1% ≥50 次</td>
+</tr>
+<tr>
+<td><strong>AF：低風險</strong></td>
+<td><strong>5 / 902（0.6%）</strong></td>
+</tr>
+<tr>
+<td><strong>AF：高風險</strong></td>
+<td><strong>46 / 1021（4.5%）</strong></td>
+</tr>
+<tr>
+<td>OR</td>
+<td><strong>8.46（95% CI 3.35–21.40）</strong>, P&lt;0.001</td>
+</tr>
+<tr>
+<td>絕對風險差</td>
+<td>3.95 個百分點（自行計算）</td>
+</tr>
+<tr>
+<td>高風險組「找到 1 例 AF 需篩檢人數」</td>
+<td>1021/46 ≈ <strong>22 人</strong></td>
+</tr>
+<tr>
+<td>低風險組</td>
+<td>902/5 ≈ <strong>180 人</strong></td>
+</tr>
+<tr>
+<td><strong>第 1 次 ECG 即診斷 AF</strong></td>
+<td>高風險 22/1021（2.1%）vs 低風險 2/902（0.2%），P&lt;0.01</td>
+</tr>
+<tr>
+<td>首次 ECG 即診斷者的中位 AF burden</td>
+<td><strong>86.3%（IQR 39.8–98.2%）</strong></td>
+</tr>
+<tr>
+<td>中位 AF burden：高風險 vs 低風險</td>
+<td>33.4%（IQR 5.1–91.6%）vs 6.5%（3.6–10.9%），<strong>P=0.18</strong></td>
+</tr>
+<tr>
+<td>高風險組 AF burden &gt;80% 者</td>
+<td>14/46（30.4%）</td>
+</tr>
+<tr>
+<td>事前門檻（≥0.0053）表現</td>
+<td>Sensitivity <strong>90.2%</strong>（79.0–95.7）；PPV <strong>4.5%</strong>（3.4–6.0）；NPV <strong>99.4%</strong>（98.7–99.8）</td>
+</tr>
+<tr>
+<td>次要終點：OAC 處方</td>
+<td>49/51（<strong>96.1%</strong>）</td>
+</tr>
+<tr>
+<td>安全性偶發發現</td>
+<td>2:1 AV block ×1；broad complex tachycardia ×1</td>
+</tr>
+</tbody>
+</table>
+<p><strong>表 D｜與其他篩檢選擇策略的比較（F1 排名）</strong></p>
+<table>
+<thead>
+<tr>
+<th>策略</th>
+<th>Sensitivity</th>
+<th>PPV</th>
+<th>F1</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>FIND-AF 2.0 ≥0.0053</strong></td>
+<td>90.2%</td>
+<td>4.5%</td>
+<td><strong>0.0858</strong></td>
+</tr>
+<tr>
+<td>C₂HEST ≥3</td>
+<td>54.9%（漏 23/51）</td>
+<td>4.5%</td>
+<td>0.0824</td>
+</tr>
+<tr>
+<td>CHA₂DS₂-VASc ≥3(男)/≥4(女)（AMALFI、EQUAL-AF 門檻）</td>
+<td>72.5%</td>
+<td>3.8%</td>
+<td>0.0723</td>
+</tr>
+<tr>
+<td>年齡 75 及 76 歲（STROKESTOP 門檻）</td>
+<td><strong>13.7%</strong></td>
+<td>3.0%</td>
+<td>0.0470</td>
+</tr>
+<tr>
+<td>CHARGE-AF ≥0.11</td>
+<td>91.7%</td>
+<td>1.9%</td>
+<td>0.0377</td>
+</tr>
+<tr>
+<td>CHA₂DS₂-VASc ≥2(男)/≥3(女)（＝納入條件）</td>
+<td>100%</td>
+<td>2.7%</td>
+<td>—</td>
+</tr>
+<tr>
+<td>C₂HEST ≥1</td>
+<td>96.1%</td>
+<td>2.7%</td>
+<td>—</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>CHARGE-AF 僅 <strong>49.7%</strong> 參與者有完整資料；且<strong>有完整資料者的 AF 偵測率反而較低</strong>（1.3% vs 4.0%, P&lt;0.001）。</p>
+</blockquote>
+<p><strong>表 E｜FinACAF 登錄檔（n=229 565，未抗凝的 AF 病人，缺血性中風率）</strong></p>
+<table>
+<thead>
+<tr>
+<th>分層</th>
+<th>高風險</th>
+<th>低（或中）風險</th>
+<th><strong>IRR (95% CI)</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>FIND-AF 2.0</td>
+<td><strong>6.0</strong> /100 病人年</td>
+<td>1.7</td>
+<td><strong>3.43 (3.14–3.74)</strong></td>
+</tr>
+<tr>
+<td>CHA₂DS₂-VASc</td>
+<td>5.9 /100 病人年</td>
+<td>1.2</td>
+<td><strong>5.08 (4.55–5.67)</strong></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h3>6. 作者討論與評論重點</h3>
+<p><strong>作者主要訊息</strong>：FIND-AF 2.0 用 12 個「診斷碼即可取得」的變項，在 5 國 1300 萬筆 EHR 中可 100% 適用且鑑別力良好至優異；在前瞻研究中，即使在已符合 CHA₂DS₂-VASc 篩檢資格的族群中，仍能再分出偵測率 4.5% vs 0.6% 的兩群；偵測到的 AF 有臨床意義（1/3 為高 burden、96% 起始 OAC）；高 FIND-AF 2.0 風險亦與未抗凝 AF 病人的高中風率相關。</p>
+<p><strong>與現有文獻的異同（作者觀點）</strong>：</p>
+<ul>
+<li>相較 Mayo 的 AI-ECG（ref 13）：AI-ECG 需要院內 12 導程 ECG，跨網絡通用性未知。</li>
+<li>相較 VITAL-AF 次分析（ref 25）：AI-ECG 只能套用到 55% 的參與者。</li>
+<li>相較 STROKESTOP II 的 NT-proBNP 導向（ref 26）：yield 相近，但需 point-of-care 檢驗，成本與不便。</li>
+<li>相較 CHARGE-AF / EHR-AF：英國 CPRD 中僅 22% / 34% 有完整資料；荷蘭資料僅 17%。<strong>這是本文最有說服力的論證。</strong></li>
+</ul>
+<p><strong>作者自陳限制（9 點）</strong>：預測變項誤分類與診斷登錄不足；outcome 用診斷碼定義故低估 AF 發生率、且可能有 ascertainment bias；6 個月預測期限制事件數；部分 AF 相關變項因缺失未納入；二元變項未用連續/縱貫資訊；<strong>前瞻研究未隨機化</strong>；低風險組事件數少使 OR 不確定、且各策略 CI 重疊、次組分析無檢定力；最佳門檻可能因地區而異；FinACAF 期間後中風風險可能已下降；未來可用更精細的建模。</p>
+<p><strong>[評估] 作者的限制清單是我在近期 ML 預測模型論文中看過</strong>相對誠實<strong>的一份</strong>——第五、第六點（未隨機化、CI 重疊、缺乏檢定力）直接承認了本研究最大的兩個弱點。這值得肯定。</p>
+<p>但仍有<strong>避重就輕與選擇性呈現</strong>：</p>
+<ol>
+<li>
+<p><strong>FinACAF 的結果對作者不利，但只報有利的一半。</strong> Abstract 只寫「高 FIND-AF 2.0 風險者中風率 6.0/100 病人年」，完全沒有提 CHA₂DS₂-VASc 的對應數字（5.9，幾乎相同）<strong>與 IRR 對比（CHA₂DS₂-VASc 5.08 vs FIND-AF 2.0 3.43，CI 完全不重疊）</strong>。也就是說：<strong>在辨識「哪些未抗凝 AF 病人會中風」這件事上，CHA₂DS₂-VASc 明顯優於 FIND-AF 2.0</strong>。這個數字在 Results 中有報，但 Discussion 一字未提，Abstract 與 Conclusions 也刻意迴避。這是 Style Guide 所指的 claim/evidence mismatch，且是選擇性報告。</p>
+</li>
+<li>
+<p><strong>以色列世代的「無優勢」被輕描淡寫。</strong> 文中寫「all models performed excellently in Israel with no statistically significant difference」，把「FIND-AF 2.0 輸給 CHA₂DS₂-VASc 0.003 個 AUROC」包裝成「三者都優異」。更關鍵的是，<strong>同一個 Clalit 資料集在 3 個月前由部分共同作者單獨發表</strong>（<em>Eur J Prev Cardiol</em> 2026, PMID 41776766），其中<strong>75 變項版 FIND-AF 的 AUROC 是 0.871</strong>，明顯優於 CHA₂DS₂-VASc 的 0.838。本文的 12 變項精簡版在同一資料集掉到 0.835，<strong>優勢消失</strong>。作者宣稱「精簡版與原版無統計差異」——但那個檢定<strong>只在英國內部驗證集做過</strong>，從未在任何外部世代重複。以色列的並列數據其實提示：<strong>精簡確實有代價，只是在英國看不出來。</strong> 這一點本文完全沒有討論。</p>
+</li>
+<li>
+<p><strong>「AF 篩檢有效性」與「模型能分層」的混同。</strong> Clinical Perspective 第一句「could be implemented in nationwide EHRs to <strong>accurately predict incident AF</strong>」——但前瞻階段有 47% 的病例是在<strong>第一次 ECG</strong> 就診斷出來的（見下方 Figure 2 判讀），那些是<strong>既存（prevalent）而未被登錄的 AF</strong>，不是「預測到的 incident AF」。</p>
+</li>
+<li>
+<p><strong>未討論的核心對照缺口</strong>：作者拿來當 comparator 的 age-based 策略是「75 歲及 76 歲」——這是 STROKESTOP 的<strong>招募年齡窗口</strong>，不是一個年齡 cut-off。在一個平均 70.2 歲、標準差 9.4 的世代中，「只篩 75–76 歲這兩歲」當然 sensitivity 只有 13.7%。<strong>真正該做的對照是「年齡 ≥72 歲」或「≥75 歲」這種單一 cut-off，本文完全沒做。</strong> 詳見 D 節。</p>
+</li>
+</ol>
+<hr />
+<h3>7. 外部專業意見</h3>
+<p><strong>[無法取得]</strong> —— 未發現針對本文的同期 editorial 或 commentary。</p>
+<p>已執行的檢索與結果：</p>
+<ul>
+<li>PubMed <code>find_related_articles</code>（pubmed_pubmed，PMID 42517218，100 筆）→ 無任何針對本文的 Editorial/Comment 類型文獻。</li>
+<li>PubMed 檢索 <code>Circulation[journal] AND atrial fibrillation screening AND (Editorial[PT] OR Comment[PT])</code>，date_from=2026 → 110 筆，最新為 2025 年前的舊評論，無對應本文者。</li>
+<li>PubMed 檢索 <code>FIND-AF 2.0 OR (risk-guided screening atrial fibrillation electronic health records)</code>, date_from=2026/06 → 5 筆，僅含本文自身與相關原著，無評論。</li>
+<li>Europe PMC citation API（<code>CITES:42517218_MED</code>）→ hitCount = 0，目前零引用。</li>
+<li>網路檢索（含 DOI 字串）→ 未找到 AHA 的 &quot;Editorial, see p.&quot; 連結。</li>
+<li>WebFetch <code>ahajournals.org/doi/10.1161/CIRCULATIONAHA.126.079391</code> → <strong>HTTP 403（被出版社擋下）</strong>，無法確認 AHA 網頁上是否掛有連動社論。</li>
+</ul>
+<p>由於<strong>始終未取得任何針對本文的 editorial/commentary DOI</strong>，本次未觸發 <code>fetch_editorial.py</code> 全文擷取（該工具需要一個評論文獻的 DOI 作為輸入）。本文為 2026 年 8 月線上首發（PDF 浮水印顯示 &quot;FIRST PROOF ONLY&quot;、下載日期 2026-08-01），評論尚未問世屬合理。</p>
+<p><strong>可作為外部參照的獨立同期證據</strong> [外部: PubMed]：</p>
+<ul>
+<li>Vedage NA, et al. <strong>Risk-Guided Atrial Fibrillation Screening With AI-Enabled ECG Models: A VITAL-AF Trial Analysis.</strong> <em>J Am Coll Cardiol</em> 2026;87:1798–1813. <a href="https://doi.org/10.1016/j.jacc.2026.01.087">DOI</a>（本文參考文獻 25）。此為<strong>隨機試驗的次分析</strong>，證據層級高於本文的單臂設計。其結論值得對照：篩檢效果<strong>只在 CH-AI 風險最高的十分位</strong>才顯著（篩檢組 10.07 vs 對照組 7.76 /100 人年，差 2.32，NNS ≈ 43/年），且明確指出「<strong>提高篩檢效率與縮小涵蓋人口之間存在取捨</strong>」。這正是本文因缺乏對照組而<strong>無法回答</strong>的問題。</li>
+<li>Islam MM, Nkemdirim Okere A. <em>Int J Med Inform</em> 2026;217:106504. <a href="https://doi.org/10.1016/j.ijmedinf.2026.106504">DOI</a>。針對 AF 領域 ML 模型的 SR（PROBAST/TRIPOD-AI），指出 88% 研究在分析面向為 high risk of bias、僅 1 篇做外部驗證。以此標準衡量，<strong>本文在外部驗證的廣度上明顯優於同領域平均</strong>。</li>
+</ul>
+<p><em>（以上為 PubMed 檢索所得；產業新聞、投資人資訊與網路論壇未納入。）</em></p>
+<hr />
+<h3>8. 臨床建議</h3>
+<p><strong>可採用的情境</strong></p>
+<ul>
+<li><strong>健保／NHS 這類具有全國性中央化 EHR 或理賠資料庫的體系</strong>，若已決定要辦 AF 族群篩檢，用 FIND-AF 2.0 排序邀請順位，比用「年齡 75–76 歲」這種窄窗口合理，且<strong>不需要任何額外檢驗或量測</strong>（只需診斷碼），這是它相對 CHARGE-AF、NT-proBNP、AI-ECG 的真實優勢。</li>
+<li><strong>在資源有限、必須決定「先篩誰」時</strong>，作為排序工具（triage/prioritisation）而非決策工具。</li>
+</ul>
+<p><strong>不建議直接套用的情境</strong></p>
+<ul>
+<li><strong>台灣</strong>：前瞻驗證族群 95.8% 為白人（高風險組 99.2%），完全沒有東亞社區族群的前瞻資料。香港 CDARS 世代僅有回溯性 AUROC 0.753，且僅 268 個事件（Figure 1 中該世代 ROC 曲線呈明顯鋸齒狀，統計不穩定）。</li>
+<li><strong>不可用它取代 CHA₂DS₂-VASc 做抗凝決策</strong>。本文自己的 FinACAF 資料顯示 CHA₂DS₂-VASc 辨識中風風險<strong>優於</strong> FIND-AF 2.0（IRR 5.08 vs 3.43，CI 不重疊）。</li>
+<li><strong>不可用低風險分類作為「不必進一步檢查」的臨床理由</strong>。低風險組仍有 0.6% 在 3 週間歇 ECG 就抓到 AF；且模型的低分很大程度只反映「年齡較輕」。有症狀（心悸、不明原因中風、心衰竭惡化）者一律照臨床適應症檢查。</li>
+<li><strong>不可據此推論篩檢能改善臨床結果</strong>。SAFER RCT（8.2 萬人）2027 年才會報告。</li>
+</ul>
+<p><strong>給臨床醫師的 3 點實務建議</strong></p>
+<ol>
+<li>若你的醫院/健保署要導入 AF 風險模型排序篩檢名單，<strong>先問一個問題：它比「年齡 ≥72 歲」這條線好多少？</strong> 本文沒有回答這個問題，而高低風險組的年齡差距（75.4 vs 64.3 歲）強烈暗示答案可能是「沒好多少」。</li>
+<li><strong>記住這個模型抓到的東西有近一半不是「未來的 AF」，而是「現在就有、只是沒被登錄的 AF」</strong>（第一次 ECG 就診斷者占 47%，中位 burden 86.3%）。這在公共衛生上仍有價值（找到未診斷 AF 並給 OAC），但它不是預測。</li>
+<li>在門診層級，若病人已符合 CHA₂DS₂-VASc ≥2/≥3 且你正在猶豫要不要給他一台手持 ECG，本文能給你的實際幫助是：<strong>FIND-AF 2.0 低分的 negative likelihood ratio 約 0.2（見 B 節），這是「可以往後排」的訊號，但高分的 positive likelihood ratio 很弱，不能當作「這人多半有 AF」。</strong></li>
+</ol>
+<p><strong>研究證據強度分級：中等</strong>
+理由：回溯性外部驗證的規模與地理多樣性確實罕見（5 國、1300 萬人、100% 適用率），這部分是<strong>強</strong>證據；但<strong>前瞻性部分是單臂、無對照、僅 51 個事件、95.8% 白人、參與率 1.5%</strong>，且核心的「是否優於單純年齡分層」對照缺失，這部分是<strong>弱</strong>證據。文章的臨床宣稱建立在後者，因此整體降為中等。</p>
+<hr />
+<h1>SKILL-C：診斷研究與臨床預測模型評讀</h1>
+<h2>A. 補充技術細節</h2>
+<p><strong>Reference standard 的分裂——本研究最根本的結構問題</strong></p>
+<p>本研究在兩個階段用了<strong>兩種完全不同的 reference standard</strong>：</p>
+<table>
+<thead>
+<tr>
+<th>階段</th>
+<th>Reference standard</th>
+<th>對象</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>開發 + 5 國外部驗證（n≈12.8 M）</td>
+<td><strong>6 個月內的 AF/atrial flutter 診斷碼</strong></td>
+<td>醫療系統的「登錄行為」</td>
+</tr>
+<tr>
+<td>前瞻性驗證（n=1923）</td>
+<td><strong>3 週間歇單導程 ECG，2 位設盲 EP 判讀</strong></td>
+<td>病人的「實際心律」</td>
+</tr>
+</tbody>
+</table>
+<p>模型是被訓練來預測<strong>前者</strong>，卻被拿來宣稱能預測<strong>後者</strong>。這兩者之間有一個不容忽視的中介變數：<strong>醫療利用行為</strong>。一個人會不會在 6 個月內被打上 AF 診斷碼，取決於 (a) 他真的有 AF，以及 (b) 他有沒有去看醫生、有沒有被做 ECG、有沒有因其他疾病住院或手術。而年齡、心衰竭、缺血性心臟病、瓣膜性心臟病——<strong>恰好就是 Gini importance 排名前 5 的變項中的 4 個</strong>——同時也是「醫療接觸強度高」的最強指標。</p>
+<p>作者在限制第二點模糊地觸及了這一點（「若無症狀 AF 較可能在住院或手術時被診斷，預測變項與新診斷 AF 的關聯可能被高估或低估」），但沒有做任何敏感度分析（例如以醫療就診次數作為調整變項，或分層檢視）。<strong>這意味著 AUROC 0.75–0.84 中有多少來自 AF 生物學風險、多少來自 detection bias，無從得知。</strong></p>
+<p>依 JAMA ML 評讀指引，reference standard 的嚴謹度是評估 ML 診斷工具的核心之一——必須確認其為公認的黃金標準或專家判讀 [參考: jama_liu_2019_ug_190001.md，Clinical Scenario / 三階段評估架構]。本文在前瞻階段（2 位設盲 EP）符合此標準，但在佔資料量 99.98% 的回溯階段（診斷碼）<strong>不符合</strong>。</p>
+<p><strong>Index test 與 reference standard 的設盲</strong></p>
+<ul>
+<li>✅ 判讀 ECG 的 2 位電生理專科醫師對 FIND-AF 2.0 風險分類設盲（B.M. 與 T.S.；致謝中說明 T. Slater 提供設盲判讀）——<strong>這一點做得好</strong>。</li>
+<li>⚠️ 反方向未設盲亦無法設盲：FIND-AF 2.0 分數是演算法輸出，不受人為影響，故無此疑慮。</li>
+<li>⚠️ <strong>參與者本人與其基層醫師未設盲</strong>：邀請函依風險分層分批發出。作者未說明邀請函是否揭露風險層級。若高風險者被告知自己「風險高」，可能更積極在心悸時加測（protocol 允許「whenever they had palpitations」加測）。<strong>但 Figure S6 顯示兩組錄製次數分布相似</strong>（markdown 有此陳述，[限制：Figure S6 未附於本次可判讀的圖頁]），這在相當程度上緩解了此疑慮。</li>
+</ul>
+<p><strong>疾病嚴重度分布（Spectrum bias）——本研究最嚴重的問題</strong></p>
+<p>高低風險兩組<strong>不是同一種病人</strong>：</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>低風險 (n=902)</th>
+<th>高風險 (n=1021)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>年齡</td>
+<td>64.3 (SD 9.1)</td>
+<td><strong>75.4 (SD 5.9)</strong></td>
+</tr>
+<tr>
+<td>糖尿病</td>
+<td>37.1%</td>
+<td><strong>29.0%</strong>（更低）</td>
+</tr>
+<tr>
+<td>高血壓</td>
+<td>84.5%</td>
+<td><strong>82.8%</strong>（更低）</td>
+</tr>
+<tr>
+<td>心衰竭</td>
+<td>1.6%</td>
+<td><strong>6.4%</strong>（4 倍）</td>
+</tr>
+<tr>
+<td>瓣膜性心臟病</td>
+<td>1.3%</td>
+<td><strong>7.1%</strong>（5.5 倍）</td>
+</tr>
+<tr>
+<td>缺血性心臟病</td>
+<td>10.6%</td>
+<td>17.9%</td>
+</tr>
+</tbody>
+</table>
+<p>因為<strong>所有人都必須先符合 CHA₂DS₂-VASc ≥2/≥3 才能入組</strong>，低風險組必須靠糖尿病和高血壓「湊分數」，高風險組則靠年齡（≥75 歲直接 2 分）和結構性心臟病。所以這個所謂的「模型分層」，實質上是：</p>
+<blockquote>
+<p><strong>「≥75 歲、有結構性心臟病」 vs 「約 64 歲、有代謝危險因子」</strong></p>
+</blockquote>
+<p>這正是 FIND-AF 2.0 高低分之間的全部內容。而 AF 與年齡、心衰竭、瓣膜疾病的關聯是心臟科的基本常識——問題在於：<strong>random forest 有沒有帶來超越「看年齡 + 有沒有心臟結構病」的額外資訊？本文沒有提供任何可以回答這個問題的分析。</strong></p>
+<p><strong>Cut-off 設定</strong></p>
+<ul>
+<li>門檻 0.0053 是「一般無 AF 族群中 FIND-AF 2.0 風險的<strong>最高十分位</strong>」，事先指定並在方案書中登錄（ref 10）——<strong>這一點做得正確</strong>。</li>
+<li>但<strong>該門檻是在一般族群定義的，卻被套用在一個 CHA₂DS₂-VASc 加權後的高風險族群</strong>。結果是招募到的族群中有 53.1% 落在「一般族群的前 10%」。這使得所有 prevalence-dependent 指標的解讀變得複雜（見 B 節）。</li>
+<li>作者在限制第七點承認最佳門檻可能因地區而異，但沒有把 Table 2 中<strong>校準斜率跨國落差巨大</strong>（加拿大 0.567 至以色列 1.431）的證據連上去。<strong>一個絕對機率門檻，在校準斜率相差 2.5 倍的國家之間，不可能有相同意義。</strong> 這是本文最實務、最直接影響國際實作的技術缺陷，而且證據就印在它自己的 Table 2 裡。</li>
+</ul>
+<hr />
+<h2>B. 診斷準確度核心評估</h2>
+<h3>B1. 前瞻性研究的準確度指標</h3>
+<p>作者<strong>明確拒絕計算 specificity 與 AUROC</strong>，理由是「高低風險的招募比例已事先固定」。這個理由對 AUROC 部分成立，但對 specificity 只成立於「不能外推到母群」——<strong>在這個已招募樣本內，specificity 是完全可以計算的</strong>，而且計算出來的結果具有重要的臨床詮釋意義。</p>
+<p><strong>2×2 表（自行由文內數字重建）</strong></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>AF 陽性</th>
+<th>AF 陰性</th>
+<th>合計</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>FIND-AF 2.0 高風險</td>
+<td><strong>46</strong></td>
+<td>975</td>
+<td>1021</td>
+</tr>
+<tr>
+<td>FIND-AF 2.0 低風險</td>
+<td><strong>5</strong></td>
+<td>897</td>
+<td>902</td>
+</tr>
+<tr>
+<td>合計</td>
+<td>51</td>
+<td>1872</td>
+<td>1923</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>指標</th>
+<th>數值</th>
+<th>95% CI</th>
+<th>臨床解讀</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Sensitivity</td>
+<td>46/51 = <strong>90.2%</strong></td>
+<td>79.0–95.7%（文內）</td>
+<td>高；漏掉 5 例</td>
+</tr>
+<tr>
+<td><strong>Specificity（樣本內）</strong></td>
+<td>897/1872 = <strong>47.9%</strong></td>
+<td>自行計算</td>
+<td><strong>極低——約一半的無 AF 者被標為高風險</strong></td>
+</tr>
+<tr>
+<td>PPV</td>
+<td>46/1021 = <strong>4.5%</strong></td>
+<td>3.4–6.0%（文內）</td>
+<td>22 人篩到 1 例</td>
+</tr>
+<tr>
+<td>NPV</td>
+<td>897/902 = <strong>99.4%</strong></td>
+<td>98.7–99.8%（文內）</td>
+<td>高，但主要由低盛行率驅動</td>
+</tr>
+<tr>
+<td><strong>LR+</strong></td>
+<td>0.902/(1−0.479) = <strong>1.73</strong></td>
+<td>自行計算</td>
+<td><strong>接近 1，幾乎不改變診斷機率</strong></td>
+</tr>
+<tr>
+<td><strong>LR−</strong></td>
+<td>(1−0.902)/0.479 = <strong>0.20</strong></td>
+<td>自行計算</td>
+<td><strong>中度有用，可用於「往後排」</strong></td>
+</tr>
+<tr>
+<td>AUROC</td>
+<td>未計算（作者聲明）</td>
+<td>—</td>
+<td>—</td>
+</tr>
+</tbody>
+</table>
+<p><strong>⚠️ 這兩個 LR 的成立條件必須說清楚</strong>：因為高:低風險的招募比例被人為固定在約 53:47，這個 specificity（47.9%）<strong>是設計條件下的產物</strong>，不能代表 FIND-AF 2.0 在真實 CHA₂DS₂-VASc-eligible 族群中的 specificity。在真實族群中，符合 CHA₂DS₂-VASc 資格者被歸為高風險的比例應遠低於 53%，因此真實的 specificity 會更高、LR+ 也會更高。</p>
+<p>但這個計算仍有無可取代的價值，因為它揭露了一個關鍵事實：<strong>在真正會被拿來用的族群（已符合篩檢資格者）之中，FIND-AF 2.0 的臨床作用機轉是「排除」而不是「確認」。</strong> LR− ≈ 0.2 是有意義的（可將 pre-test probability 降到約 1/5）；LR+ ≈ 1.7 在同一族群內幾乎不提供資訊。</p>
+<p><strong>這正是文章沒說、但臨床醫師最需要知道的一句話。</strong> 作者用 PPV 4.5% 對比 CHA₂DS₂-VASc 的 2.7% 來論證優越性——這是正確的，但那個 1.7 倍的 yield 提升，代價是要把 53% 的合格人口標為「高風險」。</p>
+<h3>B2. Pre-test / Post-test probability 的臨床情境</h3>
+<p>以 Fagan nomogram 的邏輯逐一走過（文字描述，非繪圖）：</p>
+<p><strong>情境一：一般社區 ≥65 歲族群（pre-test 未診斷 AF 約 1–2%）</strong></p>
+<ul>
+<li>這是模型門檻原本被定義的族群（top decile）。此時 specificity 應接近 90%，LR+ 約 9。</li>
+<li>Pre-test 1.5% → post-test 約 12%。<strong>這是有意義的重分類</strong>，足以支持「值得給他一台 ECG 記錄器」。</li>
+</ul>
+<p><strong>情境二：已符合 CHA₂DS₂-VASc ≥2/≥3 的族群（本研究實際族群，pre-test 2.65% = 51/1923）</strong></p>
+<ul>
+<li>LR+ 1.73 → post-test 4.5%；LR− 0.20 → post-test 0.55%。</li>
+<li><strong>從 2.65% 升到 4.5%，臨床決策不會因此改變</strong>（無論 2.65% 或 4.5%，你都會建議做 ECG 監測）。從 2.65% 降到 0.55% 才比較有決策價值——但即使 0.55%，在有症狀的病人身上你還是會做。</li>
+<li><strong>[評估] 這一層的臨床意義主要在「群體層次的資源配置」，不在「個別病人的決策」。</strong> 文章把這兩件事講得太混在一起。</li>
+</ul>
+<p><strong>情境三：低盛行率的年輕族群（pre-test &lt;0.5%）</strong></p>
+<ul>
+<li>Post-test 即使乘上 LR+ 9 也僅約 4%，且 FIND-AF 2.0 在此族群幾乎不會給高分（年齡是最強變項）。無臨床用途。</li>
+</ul>
+<h3>B3. 一個被文章結構掩蓋的關鍵發現：47% 的病例不是「預測」，是「發現」</h3>
+<p><strong>Figure 2 判讀（page_007 原圖）</strong>：</p>
+<p>圖為累積 AF 診斷數對「第幾次 ECG 紀錄」的階梯曲線，紅線＝高風險、藍線＝低風險。</p>
+<p>我在圖上實際可見的內容：</p>
+<ul>
+<li><strong>紅線在 x=1 處從 0 垂直跳到約 22</strong>。這與內文「第 1 次 ECG 即診斷 22/1021」完全吻合。</li>
+<li><strong>也就是說：高風險組 46 例 AF 中有 22 例（47.8%）在第一次 30 秒紀錄就被抓到。</strong> 全體 51 例中有 24 例（47.1%）。</li>
+<li>紅線隨後在約 x=1–25 之間快速上升到約 42，之後轉為平緩，最終在約 x=66 停在 46。</li>
+<li>藍線幾乎全程平坦：從 x=1 的約 2 例，緩慢累積到 x≈58 的 5 例。</li>
+<li><strong>座標軸</strong>：x 軸自 0 起、y 軸自 0 起，<strong>無非零起點誇大</strong>。</li>
+<li><strong>⚠️ 呈現瑕疵</strong>：y 軸是<strong>原始計數</strong>（Number of AF diagnoses）而非累積發生率。兩組分母不同（1021 vs 902，差 13%），嚴格說應以比例呈現。影響幅度小，但方向偏向誇大高風險組。</li>
+<li><strong>⚠️ 無 number-at-risk 列</strong>。x 軸是「紀錄次數」而非時間，且未顯示每個紀錄次數點上仍在錄製的人數。因此<strong>無法判斷曲線後段（x&gt;50）是否因樣本銳減而不穩定</strong>。已知 90.1% 錄滿 ≥50 次，故 x≤50 的部分應屬穩健；x&gt;50 的區段（紅線約多 4 例、藍線多 1 例）建立在少於 90% 的樣本上，解析度不足以進一步量化。</li>
+</ul>
+<p><strong>這個「第一次 ECG 就抓到 47%」的事實，是本文最重要卻最被淡化的發現。</strong></p>
+<p>配合內文另一個數字：<strong>首次 ECG 即診斷者的中位 AF burden 高達 86.3%（IQR 39.8–98.2%）</strong>——這些幾乎確定是<strong>持續性或永久性 AF</strong>，早在篩檢開始之前就存在，只是從未被登錄進 EHR。</p>
+<p>因此本研究實際在做的事情是<strong>兩件混在一起的事</strong>：</p>
+<ol>
+<li><strong>發現既存但未登錄的 AF</strong>（約 47%）——這是 case-finding，不是預測。模型在此的作用是「找出那些看起來很像已經有 AF、但病歷上沒有的人」。</li>
+<li><strong>偵測陣發性 AF</strong>（約 53%）——這才是真正的篩檢。</li>
+</ol>
+<p>這對「FIND-AF 2.0 能 accurately predict <strong>incident</strong> AF」的宣稱是<strong>直接的概念性反證</strong>。它同時也解釋了為什麼模型的頂級變項（心衰竭、缺血性心臟病、瓣膜性心臟病）看起來像「AF 的下游後果」而不是「AF 的上游預測因子」——因為模型有一部分是在辨識「已經有 AF 的臨床表現型」。</p>
+<p><strong>這在公共衛生上仍然有價值</strong>（找到未診斷 AF、給予 OAC、預防中風正是篩檢的目的），但<strong>文章應該把這兩個機制拆開報告</strong>，而不是統一包裝成「預測」。作者在 Results 誠實報出了這個數字，卻在 Discussion 和 Clinical Perspective 中完全沒有處理其含意。</p>
+<h3>B4. 回溯性驗證的鑑別力與校準</h3>
+<p><strong>Figure 1 判讀（page_006 原圖）</strong></p>
+<p><strong>Panel A（5 個 ROC 曲線面板）</strong> — 我在圖上實際可見：</p>
+<ul>
+<li><strong>CPRD-GOLD (UK)</strong>：紅線（FIND-AF 2.0）在整個 FPR 範圍內明顯高於藍線（CHA₂DS₂-VASc）與黑線（C₂HEST），在 FPR 0.1–0.4 區間分離最大。</li>
+<li><strong>JMDC (Japan)</strong>：<strong>分離最明顯的一張</strong>。紅線在低 FPR 區即快速攀升，藍線（CHA₂DS₂-VASc）明顯最差。</li>
+<li><strong>CHS (Israel)</strong>：<strong>三條線幾乎完全重疊</strong>，肉眼無法區分。</li>
+<li><strong>CIROC (Canada)</strong>：紅線略高於藍/黑線，分離幅度中等；藍黑兩線幾乎重疊。</li>
+<li><strong>CDARS (China)</strong>：紅線略高，但<strong>三條曲線都呈明顯鋸齒狀</strong>（僅 268 個事件所致），統計不穩定肉眼可辨。</li>
+</ul>
+<p><strong>Panel B（ΔAUC forest-plot，含 95% CI 誤差線）</strong> — 這張圖比 Table 2 更能揭露證據強度：</p>
+<ul>
+<li>y 軸自 −0.03 起、有 0 的水平虛線作為無效線，<strong>無座標軸誇大</strong>。</li>
+<li><strong>CPRD-GOLD</strong>：vs CHA₂DS₂-VASc 點估計約 +0.035（CI 約 0.020–0.050）；vs C₂HEST 約 +0.062。皆 ***（P&lt;0.001），CI 明確不跨越 0。</li>
+<li><strong>JMDC</strong>：vs CHA₂DS₂-VASc 點估計約 <strong>+0.127</strong>（最大優勢），vs C₂HEST 約 +0.073。皆 ***。</li>
+<li><strong>CHS (Israel)</strong>：<strong>兩個點估計都幾乎落在 0 線上，CI 明確跨越無效線，標註 ns</strong>。這是圖上最清楚的訊息——<strong>在以色列，FIND-AF 2.0 沒有任何優勢</strong>。</li>
+<li><strong>CIROC</strong>：兩個點估計約 +0.052 與 +0.050，CI 窄且不跨 0，***。</li>
+<li><strong>CDARS (China)</strong>：vs CHA₂DS₂-VASc 點估計約 +0.045，但 <strong>CI 下界緊貼 0（約 0.005），標註為 *（P&lt;0.05）——這是全圖最脆弱的一個「優勢」</strong>。vs C₂HEST 約 +0.070，CI 下界約 0.032（***）。</li>
+</ul>
+<p><strong>[圖傳達但文字沒講清楚的證據]</strong>：Panel B 讓「FIND-AF 2.0 全面優於 CHA₂DS₂-VASc」的敘事出現裂縫——<strong>5 個世代中有 1 個完全無優勢（以色列）、1 個優勢的 CI 幾乎觸及無效線（香港）</strong>。內文用「superior in Japan, Canada, and China，while all models performed excellently in Israel」的措辭，技術上正確，但沒有傳達 Panel B 所呈現的效果量梯度。</p>
+<p><strong>JMDC 的巨大優勢有一個未被討論的解釋</strong>：JMDC 是日本<strong>受雇者商業保險理賠資料庫</strong>，平均年齡僅 46.1 歲。CHA₂DS₂-VASc 在如此年輕的族群幾乎沒有鑑別力（AUROC 0.624）——因為該分數的主要驅動力是年齡 ≥65/≥75，而這群人絕大多數不到 65 歲。<strong>在一個 comparator 本質上不適用的族群中「勝出」，不能算是有力的優越性證據。</strong> 這是 Style Guide 所指的 external validity 問題（該世代不是 AF 篩檢的目標族群）。</p>
+<p><strong>校準（Calibration）——被 Abstract 完全隱藏的弱點</strong></p>
+<p>Abstract 只報 AUROC，一個校準數字都沒有。但 Table 2 的校準斜率是：</p>
+<table>
+<thead>
+<tr>
+<th>世代</th>
+<th>Calibration slope</th>
+<th>解讀</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>CIROC（加拿大）</strong></td>
+<td><strong>0.567</strong> (0.561–0.573)</td>
+<td><strong>嚴重過度離散</strong>——預測機率過於極端；高風險者的真實風險遠低於預測值</td>
+</tr>
+<tr>
+<td>CPRD-GOLD（英，開發地）</td>
+<td>0.783 (0.744–0.825)</td>
+<td><strong>即使在開發世代也未達 1.0</strong></td>
+</tr>
+<tr>
+<td>CDARS（香港）</td>
+<td>0.827 (0.777–0.876)</td>
+<td>尚可</td>
+</tr>
+<tr>
+<td>JMDC（日本）</td>
+<td>1.256 (1.145–1.367)</td>
+<td>離散不足——預測值過於保守</td>
+</tr>
+<tr>
+<td><strong>CHS（以色列）</strong></td>
+<td><strong>1.431</strong> (1.311–1.551)</td>
+<td><strong>嚴重離散不足</strong></td>
+</tr>
+</tbody>
+</table>
+<p>理想值為 1.0。<strong>沒有任何一個世代的 CI 涵蓋 1.0，包含開發世代本身。</strong> 校準斜率橫跨 0.567 到 1.431，跨度達 2.5 倍。</p>
+<p><strong>這件事的實務後果非常具體</strong>：FIND-AF 2.0 是以<strong>絕對機率門檻 0.0053</strong> 來分類的。當校準斜率是 0.567（加拿大）時，模型給出的 0.0053 對應的真實風險，與斜率 1.431（以色列）時的 0.0053 對應的真實風險，<strong>是完全不同的兩件事</strong>。也就是說，<strong>這個門檻不能直接跨國搬用，必須各國重新校準。</strong> 作者在限制第七點只寫了「最佳門檻可能因地區而異，需前瞻評估」——沒有把自己 Table 2 裡的校準證據拿來支持這個論點，也沒有提供各國的重新校準建議或 calibration plot。</p>
+<p>依標準的預測模型評讀原則，<strong>高鑑別力但校準差的模型，其絕對風險估計是不可靠的</strong>；而本模型的臨床應用方式（絕對機率門檻）<strong>恰恰完全依賴絕對風險估計</strong>。這是 discrimination-calibration mismatch 的教科書案例。</p>
+<p><strong>⚠️ Brier score 的比較不具意義</strong></p>
+<ul>
+<li><strong>跨世代不可比</strong>：Brier score 高度依賴事件率。日本 0.001 vs 英國 0.070 的差距幾乎完全由 AF 發生率（0.1% vs 0.4%）驅動，與模型好壞無關。</li>
+<li><strong>模型間比較不公平</strong>：CHA₂DS₂-VASc 與 C₂HEST 是<strong>整數風險分數，不是機率預測</strong>。把它們的原始分數直接當作預測機率去算 Brier score 與 calibration slope，在方法學上是不成立的比較——這解釋了為什麼它們的 Brier score 一律較差（英國 0.093/0.102 vs 0.070）。<strong>公平的比較只有 AUROC</strong>（rank-based，不受尺度影響）。文章沒有說明是否對這兩個分數做過重新校準（recalibration）。若沒有，<strong>Table 2 的 Brier score 與 calibration slope 欄位在模型間的對比上應該被忽略。</strong></li>
+</ul>
+<p><strong>[限制：PDF 轉檔 markdown 未保留 Table S1–S11、Figure S1–S10 的內容]</strong> 因此無法檢視：變項重要度圖（S2）、性別分層 AUROC（S2）、AUPRC（S3）、CONSORT 式流程圖（S4）、風險分數分布（S5）、錄製次數分布（S6）、AF burden 雙峰分布（S7、S8）、各門檻的表現（S6–S11）、FinACAF 中風率圖（S10）。上述所有評論僅依據正文陳述與可判讀的 11 張圖頁。</p>
+<h3>B5. 前瞻性研究的 CONSORT/flow 一致性核對</h3>
+<p>markdown 未保留 Figure S4（流程圖），但正文數字可自行核對：</p>
+<table>
+<thead>
+<tr>
+<th>節點</th>
+<th>人數</th>
+<th>核對</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>篩選資格</td>
+<td>127 216</td>
+<td>—</td>
+</tr>
+<tr>
+<td>受邀</td>
+<td>17 063</td>
+<td>占篩選 13.4%</td>
+</tr>
+<tr>
+<td>同意</td>
+<td>1960</td>
+<td><strong>占受邀 11.5%</strong></td>
+</tr>
+<tr>
+<td>完成介入</td>
+<td>1923</td>
+<td>占同意 98.1%</td>
+</tr>
+<tr>
+<td>未錄任何一次（視為退出）</td>
+<td>37</td>
+<td>1960 − 1923 = 37 ✅</td>
+</tr>
+<tr>
+<td>低風險 + 高風險</td>
+<td>902 + 1021 = <strong>1923</strong> ✅</td>
+<td>一致</td>
+</tr>
+<tr>
+<td>AF：5 + 46 = <strong>51</strong> ✅</td>
+<td>一致</td>
+<td></td>
+</tr>
+<tr>
+<td>OAC：49/51 = 96.1% ✅</td>
+<td>一致</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong>內部算術完全一致，無矛盾。</strong> 但漏斗本身揭露了嚴重的選擇偏差：</p>
+<ul>
+<li><strong>整體參與率僅 1.5%（1923/127 216）。</strong></li>
+<li><strong>受邀者中僅 11.5% 同意。</strong> 這 11.5% 是自我選擇的——通常較健康、教育程度較高、對健康較警覺、且<strong>較可能是白人</strong>（Table 3：整體 95.8% 白人；高風險組 <strong>99.2%</strong>）。</li>
+<li><strong>高低風險組的族裔差異（99.2% vs 92.0% 白人）本身就值得注意</strong>——這反映高風險組幾乎完全由高齡英國白人構成，而模型的外部驗證卻宣稱涵蓋日本、以色列、加拿大、香港。<strong>跨國驗證的是回溯性鑑別力，跨國從未驗證的是前瞻性篩檢表現。</strong></li>
+<li>作者未報告 responder vs non-responder 的比較（Tables S4、S5 可能含此資訊，但 markdown 未保留）。<strong>[限制：無法核實 Table S4/S5 內容]</strong></li>
+</ul>
+<p><strong>這對外推性的具體含意</strong>：PPV 4.5% 是在「同意參與、依從性極佳（平均錄 74.8 次、98% ≥25 次）的自選族群」中測得的。在真實世界的全國性篩檢中，依從性會低得多，PPV 也會隨之下降。</p>
+<h3>B6. Table 3 的一個關鍵遺漏</h3>
+<p>Table 3 報告了整體平均 CHA₂DS₂-VASc = 3.2 (SD 1.0)，<strong>但沒有按高/低風險分組報告</strong>。</p>
+<p>這個遺漏直接打在本研究的核心宣稱上：文章主張 FIND-AF 2.0 提供了「超越 CHA₂DS₂-VASc 的額外分層」。要證明這一點，最起碼要顯示高風險組與低風險組的 CHA₂DS₂-VASc <strong>相近</strong>（否則所謂的「額外分層」其實只是「更高的 CHA₂DS₂-VASc」）。</p>
+<p>而從已知資料可以推斷答案幾乎確定是否定的：高風險組平均 75.4 歲（≥75 歲得 2 分），低風險組 64.3 歲（&lt;65 歲得 0 分）。<strong>高風險組的 CHA₂DS₂-VASc 幾乎必然明顯高於低風險組。</strong> 這個表格欄位的缺席，很難視為單純的疏忽——它恰好是唯一能直接檢驗核心宣稱的數字。</p>
+<hr />
+<h2>C. AI / ML 診斷模型評估</h2>
+<p>依 JAMA Users' Guide 的<strong>三階段架構</strong>逐項檢視 [參考: jama_liu_2019_ug_190001.md，「三步驟：derivation → validation → clinical effectiveness」]：</p>
+<h3>① 建模（Derivation）</h3>
+<table>
+<thead>
+<tr>
+<th>項目</th>
+<th>評估</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>演算法選擇</td>
+<td>Random forest。對於 12 個變項（1 連續 + 11 二元）的表格資料，RF 是合理選擇，但<strong>這個資料維度低到讓人懷疑 RF 的必要性</strong>——見下方關鍵批評。</td>
+</tr>
+<tr>
+<td>任務定義</td>
+<td>明確：6 個月內新 AF/atrial flutter 診斷碼。</td>
+</tr>
+<tr>
+<td>Reference standard</td>
+<td>❌ <strong>診斷碼，非黃金標準</strong>（見 A 節）。</td>
+</tr>
+<tr>
+<td>特徵選擇透明度</td>
+<td>⚠️ <strong>「透過共識過程選出 12 個變項」</strong>——這不是資料驅動的特徵選擇，而是專家判斷（患者顧問團 + 科學顧問委員會）。作者的理由（可實作性優先）是合理的，但<strong>共識過程本身未描述</strong>：誰參與？如何投票？是否有從 75 變項中被刪掉但重要度高的變項？Figure S1 應有說明但 markdown 未保留。<strong>[限制：Figure S1 未保留]</strong></td>
+</tr>
+<tr>
+<td>Overfitting 防護</td>
+<td>✅ 80/20 分割 + 10-fold CV 調 hyperparameter + 內部 bootstrap 驗證。程序正確。</td>
+</tr>
+<tr>
+<td>類別不平衡處理</td>
+<td>✅ Class weighting（AF 6 個月發生率僅 0.4%）。</td>
+</tr>
+<tr>
+<td>可重現性</td>
+<td>⚠️ <strong>R code「應要求提供」（upon request）</strong>，非公開。原始資料不公開（可理解，涉及多國隱私）。以 2026 年 CC-BY 期刊的標準，<strong>模型未公開部署（如 web calculator 或開源套件）是一個實質的可重現性缺口</strong>——尤其考慮到作者同時持有該模型的 API 與法規核准。</td>
+</tr>
+<tr>
+<td>報告規範</td>
+<td>✅ 宣稱遵循 TRIPOD+AI（ref 11, Collins 2024）。</td>
+</tr>
+</tbody>
+</table>
+<p><strong>⚠️ 一個沒有被問的關鍵問題：為什麼需要 random forest？</strong></p>
+<p>模型只有 12 個變項：年齡（連續）+ 性別 + 10 個二元共病。這是一個極低維度的問題。在這種資料結構下，<strong>一個標準的 logistic regression（甚至只含年齡 + 幾個主要共病）通常能達到與 RF 幾乎相同的鑑別力</strong>，而且會直接得到校準良好的機率、可解釋的係數、以及可以印在紙上帶著走的公式。</p>
+<p>文章<strong>完全沒有把 FIND-AF 2.0 與任何 regression-based 模型比較</strong>。唯二的 comparator 是 CHA₂DS₂-VASc 與 C₂HEST——這兩者都是<strong>整數加總分數</strong>，是為了「醫師心算」而刻意犧牲準確度設計的工具，而非為預測最佳化的統計模型。這是一個<strong>被稀釋的 comparator</strong>。</p>
+<p>這個缺口在臨床上有具體代價：作者在 Discussion 中把「FIND-AF 2.0 需要透過健康資料系統執行，不能心算」當作可接受的取捨。但如果一個 logistic regression 能達到同樣表現，代價就完全不同了——因為它可以校準、可以跨國重新校準（正好解決 B4 節的問題）、可以審計、也不需要 API 授權。</p>
+<p><strong>這也是本文最大的商業/科學利益交會點</strong>：一個「必須透過作者的 API 才能執行的黑盒模型」與「一個任何人都能實作的迴歸公式」，在智財價值上天差地別。我不主張作者有此意圖，但這是評讀時必須指出的結構性事實。</p>
+<h3>② 驗證（Validation）</h3>
+<table>
+<thead>
+<tr>
+<th>項目</th>
+<th>評估</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>外部驗證資料集</td>
+<td>✅✅ <strong>本文最強的一項</strong>。4 個獨立國家、3 大洲、共 10.7 M 人。在 AF ML 模型的 SR 中，僅 1/8 的研究做過任何外部驗證（[外部: PubMed] Islam &amp; Okere, <em>Int J Med Inform</em> 2026, <a href="https://doi.org/10.1016/j.ijmedinf.2026.106504">DOI</a>）。本文的驗證廣度<strong>顯著優於領域平均</strong>。</td>
+</tr>
+<tr>
+<td>100% 適用率</td>
+<td>✅ <strong>真正的核心貢獻</strong>。FIND-AF 2.0 可套用於所有紀錄；相較之下 CHARGE-AF 在英國 CPRD 僅 22%、荷蘭 17%、本研究前瞻族群 49.7%；AI-ECG 在 VITAL-AF 僅 55%。這個論證有紮實的數據支持，是本文最站得住腳的部分。</td>
+</tr>
+<tr>
+<td>各世代 reference standard 一致性</td>
+<td>❌ 5 國都用「診斷碼」，但各國的<strong>編碼實務差異巨大</strong>。CIROC（加拿大）的 6 個月 AF 發生率 1.6%，是其他世代的 4–16 倍，而其平均年齡僅 55.2 歲——<strong>這強烈提示 CIROC 不是社區族群，而是被轉介做心血管影像檢查的族群</strong>（名稱即為 Cardiovascular <strong>Imaging</strong> Registry of Calgary）。以此作為「外部驗證」，其 spectrum 與 AF 篩檢的目標族群不同。且 CIROC <strong>同時是 FIND-AF 2.0 表現最差（AUROC 0.747）與校準最差（斜率 0.567）的世代</strong>。</td>
+</tr>
+<tr>
+<td>世代代表性</td>
+<td>⚠️ JMDC 平均 46.1 歲（受雇者保險）、CIROC 為影像轉介族群、CDARS 僅 268 事件。<strong>5 個世代中，真正接近「AF 篩檢目標族群」的其實只有英國 CPRD 與以色列 Clalit——而以色列正是模型無優勢的那一個。</strong></td>
+</tr>
+<tr>
+<td><strong>精簡版 vs 原版的比較未在外部重複</strong></td>
+<td>❌ <strong>重要缺口</strong>。「12 變項 ≈ 75 變項」的等效性檢定<strong>只在英國內部驗證集做過一次</strong>（ΔAUROC 0.005, P=0.49）。而 [外部: PubMed] 同一 Clalit 資料集在 3 個月前的獨立發表中，<strong>75 變項版 FIND-AF 的 AUROC 為 0.871</strong>（Rokach L, Benita TR, Nadarajah R, et al. <em>Eur J Prev Cardiol</em> 2026, <a href="https://doi.org/10.1093/eurjpc/zwag124">DOI</a>），明顯優於同世代 CHA₂DS₂-VASc 的 0.838。本文的 12 變項版在同一世代僅得 <strong>0.835</strong>（與 CHA₂DS₂-VASc 打平）。<strong>這暗示精簡在英國以外的族群是有實質代價的，而該代價恰好使模型失去了相對於 CHA₂DS₂-VASc 的優勢。</strong> 本文完全沒有提及這個並列比較，儘管兩篇有共同作者。這是本次評讀中最具體、最可驗證的一項未揭露的不利證據。</td>
+</tr>
+</tbody>
+</table>
+<h3>③ 臨床有效性（Clinical Effectiveness）</h3>
+<table>
+<thead>
+<tr>
+<th>項目</th>
+<th>評估</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>前瞻性試驗證明改善臨床醫師決策或病人結果</td>
+<td>❌ <strong>未達成</strong>。前瞻研究是<strong>單臂、無對照</strong>。作者在限制第五點承認：「我們無法確定 FIND-AF 2.0 導向的篩檢相較常規照護能增加 AF 偵測。」</td>
+</tr>
+<tr>
+<td>與 usual care 比較</td>
+<td>❌ 無。作者以「其他系統性篩檢研究已證明優於常規照護（ref 3）」作為間接論證——但 ref 3 是<strong>作者團隊自己的 SR/MA</strong>，且證明的是「系統性篩檢 &gt; 常規照護」，不是「風險導向篩檢 &gt; 一般篩檢」。這兩者是不同的問題。</td>
+</tr>
+<tr>
+<td>病人層次結果（中風、死亡）</td>
+<td>❌ 無。SAFER RCT（8.2 萬人，主要終點中風）2027 年才報告。FinACAF 分析是<strong>代理性的間接論證</strong>，且結果對 FIND-AF 2.0 不利（見下）。</td>
+</tr>
+<tr>
+<td>Failure modes 分析</td>
+<td>❌ 未做。5 例被歸為低風險卻有 AF 的病人，<strong>沒有任何特徵描述</strong>。這是 ML 模型評估的標準要求，也是臨床醫師最想知道的事（「什麼樣的人會被這個模型漏掉？」）。</td>
+</tr>
+<tr>
+<td>次族群公平性（fairness）</td>
+<td>❌ <strong>僅做性別分層（Table S2）</strong>。<strong>未做族裔分層</strong>——這在前瞻族群 95.8% 為白人的情況下，等於完全無法評估。模型在英國白人族群開發，於日本/以色列/加拿大/香港做回溯驗證，<strong>但從未在任何非白人族群做過前瞻性測試</strong>。作者在限制中未提及族裔外推性問題。作者在限制第六點承認次組分析缺乏檢定力（多數次組 &lt;5 個事件）。</td>
+</tr>
+<tr>
+<td>可解釋性（interpretability）</td>
+<td>⚠️ 僅提供 Gini importance 排序（年齡 &gt; 心衰竭 &gt; IHD &gt; VHD &gt; HTN）。Gini importance <strong>對高基數/連續變項有已知的系統性偏誤</strong>（會高估連續變項如年齡的重要度）。未使用 SHAP 或 permutation importance 等更穩健的方法。<strong>[限制：Figure S2 未保留，無法檢視重要度的量化幅度]</strong></td>
+</tr>
+</tbody>
+</table>
+<p><strong>FinACAF 分析：一個對作者不利卻被淡化的結果</strong></p>
+<p>這部分的邏輯本身接近循環論證：FIND-AF 2.0 的預測變項（年齡、心衰竭、中風/TIA、糖尿病、高血壓）與 CHA₂DS₂-VASc 的組成<strong>高度重疊</strong>。因此「高 FIND-AF 2.0 風險 → 高中風率」幾乎是必然的，不構成獨立的驗證。</p>
+<p>更重要的是<strong>方向</strong>：</p>
+<table>
+<thead>
+<tr>
+<th>分層工具</th>
+<th>高風險中風率</th>
+<th>低/中風險</th>
+<th><strong>IRR (95% CI)</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>FIND-AF 2.0</td>
+<td>6.0 /100 病人年</td>
+<td>1.7</td>
+<td><strong>3.43 (3.14–3.74)</strong></td>
+</tr>
+<tr>
+<td><strong>CHA₂DS₂-VASc</strong></td>
+<td>5.9 /100 病人年</td>
+<td>1.2</td>
+<td><strong>5.08 (4.55–5.67)</strong></td>
+</tr>
+</tbody>
+</table>
+<p>兩個 IRR 的 <strong>95% CI 完全不重疊</strong>（3.74 vs 4.55）。也就是說：<strong>在辨識「哪些未抗凝的 AF 病人會發生缺血性中風」這個問題上，CHA₂DS₂-VASc 明確優於 FIND-AF 2.0。</strong></p>
+<p>而 Abstract 只寫「高 FIND-AF 2.0 風險者的中風率為 6.0 events per 100 patient-years」——<strong>單獨看起來很有說服力，但省略了 CHA₂DS₂-VASc 的 5.9（幾乎相同）與更佳的 IRR</strong>。Discussion 對此<strong>一字未提</strong>。</p>
+<p>這在臨床上是重要的：<strong>它意味著 FIND-AF 2.0 只應用於「篩檢排序」，絕不應被誤用來取代 CHA₂DS₂-VASc 做抗凝決策。</strong> 這句警語本應由作者自己寫出來，而不是由評讀者從表格中挖出來。</p>
+<p><strong>三階段總評：① 建模合格、② 驗證優異（回溯層面）、③ 臨床有效性完全未建立。</strong>
+依 JAMA ML 評讀架構，一個未完成第三階段的模型<strong>不應被推薦用於臨床實踐</strong>。而文中提及該模型「已取得英國臨床應用的法規核准（NIHR204580），目前正在 NHS 常規照護中試行」——這代表<strong>實作已經跑在證據前面</strong>。作者的 Clinical Perspective 誠實地寫了「需要隨機證據來評估是否改善臨床結果」，但同一段的前一點卻寫「AF 篩檢可以用 FIND-AF 2.0 在全國 EHR 中更精準地大規模導引」。<strong>這兩句話之間存在明顯張力。</strong></p>
+<hr />
+<h2>D. 臨床預測模型評估</h2>
+<h3>辨別力（Discrimination）</h3>
+<ul>
+<li>✅ AUROC 在 5 個世代皆 ≥0.747，男女皆 &gt;0.70（唯一達成此標準的模型）。皆有 95% CI。</li>
+<li>✅ 補充 AUPRC——對 0.1–1.6% 的罕見事件而言，這是正確且必要的做法（AUROC 在極度不平衡資料中會給出過於樂觀的印象）。作者陳述 AUPRC「在每個資料集都是 AF 發生率的數倍」。<strong>[限制：Table S3 未保留，無法核實 AUPRC 的實際數值與提升倍數]</strong> ——這是個遺憾，因為在 0.1% 事件率下，AUPRC 才是決定「篩檢是否可行」的關鍵指標，其絕對值（例如 0.005 vs 0.02）比 AUROC 更能說明實際的篩檢效率。</li>
+<li>⚠️ 外部驗證 AUROC 全部低於開發世代（0.819 → 0.747–0.835），符合預期的 optimism 衰減。</li>
+</ul>
+<h3>校準（Calibration）</h3>
+<ul>
+<li>⚠️ 有 calibration slope 與 Brier score，<strong>但沒有 calibration plot</strong>。對於一個<strong>以絕對機率門檻（0.0053）決定臨床行動</strong>的模型，calibration plot 是不可或缺的——需要看到的是「在 0.005 附近這個關鍵區間，預測值與實際值差多少」，而單一的 slope 值無法回答這個問題。</li>
+<li>❌ <strong>沒有 Hosmer-Lemeshow 或等效檢定，沒有 calibration-in-the-large（截距）。</strong> 只有 slope。這是不完整的校準評估。</li>
+<li>❌ 校準斜率無一涵蓋 1.0，跨國落差 0.567–1.431（詳見 B4）。</li>
+<li>❌ <strong>Abstract 完全未提校準。</strong> 對一個以絕對風險門檻運作的模型，這是重大的報告缺陷。</li>
+</ul>
+<p><strong>[評估] 這是一個「高辨別力、差校準」的模型，卻被以「絕對風險門檻」的方式部署。</strong> 這是預測模型應用上的典型錯配。實務上的正確做法應該是：<strong>各國以自己的資料重新校準截距與斜率後，再決定當地的門檻</strong>；或更簡單地，<strong>改用「排序後取前 X%」的相對門檻</strong>（percentile-based），而非絕對機率門檻——後者對校準不敏感，正好繞開這個問題。作者選擇了絕對門檻（0.0053），卻在限制中只寫「門檻可能因地區而異」，沒有提出解方。</p>
+<h3>外部驗證的層級</h3>
+<ul>
+<li>✅ <strong>地理驗證（geographic validation）</strong>：4 國，最強等級。</li>
+<li>⚠️ <strong>時間驗證（temporal validation）</strong>：未執行。所有世代均為某一時間窗的橫斷資料。AF 的診斷實務、編碼行為、以及穿戴裝置導致的 AF 偵測率，在過去 5 年變化極大。<strong>模型在未來 EHR 上的表現未經測試。</strong></li>
+<li>⚠️ <strong>前瞻性臨床驗證</strong>：僅在英國一國、95.8% 白人族群。</li>
+</ul>
+<h3>🔴 決定性的缺口：與單純年齡分層的正面對照從未進行</h3>
+<p>這是本次評讀中我認為<strong>最重要的一項方法學批評</strong>，因為它直接決定了整篇文章的臨床價值。</p>
+<p><strong>已知事實</strong>：</p>
+<ol>
+<li>年齡是 Gini importance 的<strong>第一名</strong>變項。</li>
+<li>高風險組平均 75.4 歲（SD 5.9，即約 69.5–81.3 歲）；低風險組平均 64.3 歲（SD 9.1）。<strong>兩組分布的重疊區間很窄。</strong></li>
+<li>高風險組的糖尿病（29.0% vs 37.1%）與高血壓（82.8% vs 84.5%）<strong>反而比低風險組更低</strong>——證明代謝共病對分層幾乎沒有貢獻。</li>
+<li>唯一在高風險組顯著較高的是年齡 + 結構性心臟病（HF 6.4% vs 1.6%；VHD 7.1% vs 1.3%；IHD 17.9% vs 10.6%），但這些的<strong>絕對盛行率都很低</strong>（≤18%），無法解釋 53% vs 47% 的分組。</li>
+</ol>
+<p><strong>因此，FIND-AF 2.0 的高低分界線在實務上約等於「年齡 72 歲上下」，再加上少數結構性心臟病病人的上調。</strong></p>
+<p><strong>作者選擇的 age comparator 是什麼？「75 歲與 76 歲」。</strong></p>
+<p>這不是一個年齡 cut-off，而是 STROKESTOP 試驗的<strong>招募年齡窗口</strong>（該試驗只邀請 75–76 歲者）。把一個「只涵蓋 2 歲區間」的規則，套用在一個平均 70.2 歲、SD 9.4 的世代裡，得到 sensitivity 13.7% 是數學上的必然，與模型優劣完全無關。</p>
+<p><strong>應該做而沒有做的分析（只需要既有資料，一行程式碼）</strong>：</p>
+<ul>
+<li>年齡 ≥70 歲 → sensitivity / PPV / F1</li>
+<li>年齡 ≥72 歲 → sensitivity / PPV / F1</li>
+<li>年齡 ≥75 歲（單一 cut-off，非 75–76 窗口）→ sensitivity / PPV / F1</li>
+</ul>
+<p><strong>如果「年齡 ≥72 歲」的 F1 接近 0.0858，整篇文章的核心宣稱就會崩塌</strong>——因為那意味著這個 random forest、這個 API、這個法規核准，全部只是在做一件基層醫師用出生年月日就能做的事。</p>
+<p>反過來說，如果作者做了這個分析而 FIND-AF 2.0 明顯勝出，這將是全文最有力的證據，沒有理由不放進去。<strong>這個分析的缺席，本身就是資訊。</strong></p>
+<p>同樣地，Table 3 沒有按組報告 CHA₂DS₂-VASc（見 B6），也讓「超越 CHA₂DS₂-VASc 的額外分層」無法被獨立檢驗。</p>
+<h3>F1 score 作為主要比較依據的問題</h3>
+<p>作者以 F1 排名作為「FIND-AF 2.0 最佳」的核心論據：</p>
+<blockquote>
+<p>FIND-AF 2.0 (0.0858) &gt; C₂HEST ≥3 (0.0824) &gt; CHA₂DS₂-VASc ≥3/≥4 (0.0723) &gt; 年齡 75–76 (0.0470) &gt; CHARGE-AF (0.0377)</p>
+</blockquote>
+<p><strong>問題</strong>：</p>
+<ol>
+<li><strong>與 C₂HEST ≥3 的差距僅 0.0034。</strong> 在總共 51 個事件的基礎上，這個差距完全落在隨機雜訊範圍內。</li>
+<li><strong>F1 沒有報告 CI，也沒有做任何統計檢定。</strong> 這是一個沒有不確定性量化的排名。</li>
+<li><strong>F1 對 prevalence 敏感</strong>，而本研究的 prevalence 是被招募設計人為決定的（53:47）。改變招募比例，F1 排名可能改變。</li>
+<li>作者在限制第六點誠實承認「各策略的 PPV、NPV、sensitivity 的 CI 相互重疊」，並說「要在統計上確定 FIND-AF 2.0 優於 CHA₂DS₂-VASc 與 C₂HEST，需要更大型的 RCT」——<strong>這句話與 Discussion / Conclusions 中把 F1 最高當作賣點是互相矛盾的。</strong></li>
+<li>依 ASA 對統計顯著性的聲明精神：<strong>沒有 CI、沒有檢定的點估計排名，不足以支持「更好」的宣稱。</strong> 正確的結論應該是：「FIND-AF 2.0 的 F1 在數值上最高，但與 C₂HEST ≥3 的差距在本樣本量下無法區分。」</li>
+</ol>
+<p><strong>唯一在效果量上真正明確的比較是 sensitivity</strong>：FIND-AF 2.0 的 90.2% vs C₂HEST ≥3 的 54.9%（漏掉 23/51 例）。在同樣的 PPV（皆 4.5%）下，這是一個實質差異。<strong>這才應該是文章的主要論點，而不是 F1。</strong></p>
+<h3>AF Burden 的比較未達顯著，但被當作正面結論陳述</h3>
+<ul>
+<li>高風險組中位 AF burden 33.4%（IQR 5.1–91.6%）vs 低風險組 6.5%（3.6–10.9%），<strong>P=0.18</strong>。</li>
+<li>也就是說：<strong>沒有統計證據支持「高風險者偵測到的 AF 比較嚴重」</strong>（低風險組僅 5 例，完全沒有檢定力）。</li>
+<li>但 Abstract 寫「Median AF burden among high FIND-AF 2.0 risk–detected cases was 33.4%」，Discussion 寫「a third of AF cases detected in those with high FIND-AF 2.0 risk had a high AF burden」——<strong>單獨陳述高風險組的數字，不並列對照組，也不提 P=0.18。</strong> 這是典型的 p&gt;0.05 被當成正面結果使用的反向操作。</li>
+</ul>
+<p><strong>⚠️ 更根本的問題：間歇 ECG 的偵測敏感度在兩組間不對稱</strong></p>
+<p>以 3 週、平均 74.8 次、每次 30 秒的取樣方式，<strong>總監測時間約 37 分鐘</strong>。這種取樣對高 burden AF（持續性/永久性）的偵測近乎 100%，但對極低 burden 的短暫陣發（例如一年僅數分鐘）的偵測機率極低。</p>
+<p>已知兩組被偵測到的 AF 在 burden 上有明顯不同的分布（33.4% vs 6.5%，且高風險組 30.4% 的 burden &gt;80%）。這代表 <strong>outcome ascertainment 的敏感度本身在兩組間不同</strong>，會系統性地放大 OR。</p>
+<p>因此嚴格來說：<strong>OR 8.46 是「可被 3 週間歇 ECG 偵測到的 AF」的 OR，不等同於「真實 AF 盛行率」的 OR。</strong> 若改用植入式循環記錄器（如 LOOP study 的設計，ref 29）連續監測，兩組的差距很可能縮小。</p>
+<p>作者在 Discussion 中確實承認「間歇監測可能低估真實 AF 發生率」，但把它當作<strong>優點</strong>來論述（「因為 STROKESTOP 是唯一顯示臨床結果獲益的 RCT，可能正是因為短暫的 AF 對臨床結果影響不大」）。這個論證有其道理（NOAH-AFNET 6 與 ARTESiA 的資料確實支持短暫 device-detected AF 的抗凝獲益有限，ref 35），<strong>但它沒有處理「這個偵測不對稱會膨脹 OR」這個統計問題。</strong></p>
+<h3>未執行的分析</h3>
+<ul>
+<li>❌ <strong>Decision curve analysis / net benefit</strong>：對於一個「要不要篩檢」的決策工具，DCA 是評估臨床實用性的標準方法，能同時納入偽陽性的成本。完全未做。</li>
+<li>❌ <strong>成本效益分析</strong>：文中宣稱「可減少不必要的醫療成本與病人焦慮」，但<strong>沒有提供任何成本數據</strong>。這是無支持的宣稱。</li>
+<li>❌ <strong>偽陽性的下游影響</strong>：953 名高風險但無 AF 者的後續醫療利用、焦慮、進一步檢查，完全未追蹤。（AF 診斷本身由 2 位 EP 確認，故 AF 的偽陽性應極少；此處指的是「被標為高風險」的下游效應。）</li>
+<li>❌ <strong>重分類指標</strong>（NRI、IDI）相對於 CHA₂DS₂-VASc：未報告。</li>
+</ul>
+<hr />
+<h2>E. 紅旗清單</h2>
+<h3>設計層面</h3>
+<ol>
+<li>🔴 <strong>前瞻性研究為單臂、無對照、非隨機</strong>，卻以 &quot;Risk-Guided <strong>Screening</strong>&quot; 為標題，容易被誤讀為篩檢策略試驗。所測試的是模型的分層能力，不是篩檢策略的效益。</li>
+<li>🔴 <strong>與單純年齡 cut-off 的正面對照完全缺席</strong>；所用的 age comparator（「75 及 76 歲」）是 STROKESTOP 的招募窗口而非年齡門檻，在平均 70.2 歲的世代中必然表現極差。這是一個被稀釋的 comparator。</li>
+<li>🔴 <strong>回溯階段與前瞻階段使用兩種不同的 reference standard</strong>（診斷碼 vs ECG 判讀），模型訓練目標與宣稱用途之間存在概念落差；可能包含醫療利用行為（detection bias）成分，未做任何敏感度分析。</li>
+<li>🟠 <strong>高低風險組的臨床本質不同（spectrum bias）</strong>：實質上是「≥75 歲 + 結構性心臟病」vs「約 64 歲 + 代謝危險因子」。高風險組的糖尿病與高血壓<strong>反而較低</strong>。</li>
+<li>🟠 <strong>CIROC（加拿大）不是社區族群</strong>：6 個月 AF 發生率 1.6%（他國的 4–16 倍）、平均年齡 55.2 歲，明顯是心血管影像轉介族群；且為模型表現最差、校準最差的世代。</li>
+<li>🟠 <strong>參與率 1.5%（1923/127 216）</strong>，受邀者僅 11.5% 同意，自我選擇偏差嚴重；未報告 responder vs non-responder 比較。</li>
+<li>🟠 <strong>無時間驗證（temporal validation）</strong>。</li>
+</ol>
+<h3>統計層面</h3>
+<ol start="8">
+<li>🔴 <strong>校準品質差且被 Abstract 完全隱藏</strong>：5 個世代的 calibration slope 從 0.567 到 1.431，<strong>無一 CI 涵蓋 1.0</strong>（含開發世代）。而模型的臨床應用完全依賴絕對機率門檻（0.0053）。這是 discrimination-calibration mismatch 的典型案例。</li>
+<li>🔴 <strong>無 calibration plot、無 calibration-in-the-large、無 Hosmer-Lemeshow</strong>。校準評估不完整。</li>
+<li>🟠 <strong>Brier score 與 calibration slope 在模型間的比較不成立</strong>：CHA₂DS₂-VASc 與 C₂HEST 是整數分數而非機率，未說明是否重新校準即直接計算，對其不利。公平比較僅限 AUROC。</li>
+<li>🟠 <strong>F1 排名無 CI、無檢定</strong>，與第二名（C₂HEST ≥3）差距僅 0.0034，在 51 個事件下不可區分；作者自己在限制中承認 CI 重疊，但結論仍以 F1 為賣點。</li>
+<li>🟠 <strong>OR 8.46 的 CI 極寬（3.35–21.40，上下界相差 6.4 倍）</strong>，低風險組僅 5 個事件，點估計極不穩定。</li>
+<li>🟠 <strong>AF burden 比較 P=0.18（未達顯著）卻被以正面語氣呈現</strong>（Abstract 單獨陳述高風險組的 33.4%，不並列 6.5%，不提 P 值）。</li>
+<li>🟠 <strong>次組分析（年齡、性別、高血壓、糖尿病）多數次組 &lt;5 事件</strong>，無交互作用檢定；作者已警示但仍在 Discussion 中陳述「AF 偵測率在 ≥75 歲與男性較高」。</li>
+<li>🟡 <strong>Gini importance 對連續變項（年齡）有已知的系統性高估偏誤</strong>；未使用 SHAP 或 permutation importance 佐證。</li>
+</ol>
+<h3>敘事與報告層面</h3>
+<ol start="16">
+<li>🔴 <strong>FinACAF 的不利結果被選擇性省略</strong>：CHA₂DS₂-VASc 的中風 IRR（5.08, 4.55–5.67）<strong>明確優於</strong> FIND-AF 2.0（3.43, 3.14–3.74），CI 完全不重疊。Abstract 只報 FIND-AF 2.0 的絕對事件率（6.0），不報 CHA₂DS₂-VASc 的 5.9，也不報 IRR 對比；Discussion 一字未提。</li>
+<li>🔴 <strong>以色列世代的等效性被包裝</strong>：文中寫「all models performed excellently in Israel with no statistically significant difference」，而 Figure 1 Panel B 顯示兩個 ΔAUC 點估計都在 0 線上、CI 跨越無效線、明確標註 ns。</li>
+<li>🔴 <strong>同一 Clalit 資料集 3 個月前的獨立發表（部分共同作者）顯示 75 變項版 AUROC 0.871 &gt; CHA₂DS₂-VASc 0.838，而本文 12 變項版僅 0.835（打平）</strong>——精簡的代價在外部世代顯現，但本文從未並列比較。「12 ≈ 75 變項」的等效性檢定<strong>僅在英國內部驗證集做過一次</strong>，從未在任何外部世代重複。</li>
+<li>🟠 <strong>「第一次 ECG 即診斷 47%」的含意未被處理</strong>：這些是既存未登錄的 AF（中位 burden 86.3%），不是預測到的 incident AF。與 Clinical Perspective 的「accurately predict <strong>incident</strong> atrial fibrillation」直接衝突。</li>
+<li>🟠 <strong>未申報的實質利益衝突</strong>：作者持有該模型的 API（TA/PPA/25/215005）與英國法規核准（NIHR204580），並正在 NHS 試行；Disclosures 僅列藥廠 honoraria，未列此項。</li>
+<li>🟠 <strong>未與任何 regression-based 模型比較</strong>，因此無從得知 random forest 相對於一個簡單 logistic regression 是否帶來任何增益——而這直接關係到「是否需要專屬 API」這個實作與商業問題。</li>
+<li>🟡 <strong>「可減少不必要的醫療成本與病人焦慮」無任何成本或焦慮量測數據支持</strong>。</li>
+<li>🟡 <strong>R code 僅「應要求提供」</strong>，資料不公開，模型未開源部署。</li>
+</ol>
+<h3>外推層面</h3>
+<ol start="24">
+<li>🔴 <strong>前瞻族群 95.8% 為白人（高風險組 99.2%）</strong>；未做族裔次組分析；模型從未在任何非白人族群做過前瞻性測試。對台灣、日本、香港等東亞族群的適用性<strong>沒有前瞻性證據</strong>。</li>
+<li>🟠 <strong>絕對機率門檻 0.0053 不能跨國搬用</strong>（校準斜率跨度 2.5 倍）；作者承認門檻可能因地區而異，但未提供重新校準方法或改用 percentile-based 門檻的建議。</li>
+<li>🟠 <strong>PPV 4.5% 是在依從性極佳的自選族群測得</strong>（平均 74.8 次紀錄、98% ≥25 次）；真實世界全國性篩檢的依從性會低得多。</li>
+<li>🟡 <strong>無 failure mode 分析</strong>：5 例被歸為低風險的 AF 病人特徵完全未描述。</li>
+</ol>
+<hr />
+<h2>F. 最終裁決</h2>
+<h3>診斷測試可信度：<strong>中等</strong></h3>
+<p><strong>分項評估</strong>：</p>
+<table>
+<thead>
+<tr>
+<th>面向</th>
+<th>評級</th>
+<th>理由</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>回溯性鑑別力（AUROC）</td>
+<td><strong>高</strong></td>
+<td>5 國、1300 萬人、100% 適用率、男女皆 &gt;0.70。此規模在本領域罕見。</td>
+</tr>
+<tr>
+<td>回溯性校準</td>
+<td><strong>低</strong></td>
+<td>5 個世代校準斜率 0.567–1.431，無一 CI 涵蓋 1.0；無 calibration plot；Abstract 完全未提。</td>
+</tr>
+<tr>
+<td>相對於現有工具的增益</td>
+<td><strong>低至中</strong></td>
+<td>以色列無優勢；香港 CI 幾乎觸及無效線；日本的優勢部分來自 comparator 在該年輕族群本就不適用；與單純年齡 cut-off 的關鍵對照缺席。</td>
+</tr>
+<tr>
+<td>前瞻性臨床驗證</td>
+<td><strong>低</strong></td>
+<td>單臂、無對照、51 事件、95.8% 白人、參與率 1.5%；47% 為既存 AF 而非預測。</td>
+</tr>
+<tr>
+<td>臨床有效性（三階段的第③階段）</td>
+<td><strong>未建立</strong></td>
+<td>無隨機證據、無病人層次結果、無 usual care 比較、無 DCA、無成本分析。</td>
+</tr>
+<tr>
+<td>可規模化 / 資料完整性</td>
+<td><strong>高</strong></td>
+<td>這是本文最紮實、最有原創價值的貢獻。</td>
+</tr>
+</tbody>
+</table>
+<h3>在何種臨床情境下此測試有用？</h3>
+<ul>
+<li><strong>群體層次的篩檢資源排序</strong>，在具有中央化 EHR 或全民保險資料庫的體系（NHS、台灣健保、以色列 Clalit、日本保險資料庫），當篩檢量能有限、必須決定「先邀請誰」時。</li>
+<li><strong>pre-test probability 約 1–2% 的一般社區高齡族群</strong>（模型門檻原本定義的族群）：LR+ 約 9，可將 post-test 提升至約 12%，具重分類價值。</li>
+<li><strong>相對於 CHARGE-AF / EHR-AF / NT-proBNP / AI-ECG 的核心優勢在「涵蓋率」而非「準確度」</strong>——100% vs 22–55%。當比較的對象是「一個更準但只能用在一半人身上的模型」時，FIND-AF 2.0 有真實優勢。這一點文章論證得很好，也是它最應該被記住的貢獻。</li>
+</ul>
+<h3>不建議使用的情境</h3>
+<ul>
+<li>❌ <strong>取代 CHA₂DS₂-VASc 做抗凝決策</strong>——本文自己的 FinACAF 資料顯示 CHA₂DS₂-VASc 在中風風險辨識上明確更優（IRR 5.08 vs 3.43，CI 不重疊）。</li>
+<li>❌ <strong>個別病人的診斷決策</strong>——在已符合 CHA₂DS₂-VASc 資格的族群中，LR+ 僅約 1.7，幾乎不改變診斷機率。</li>
+<li>❌ <strong>以低風險分類作為「不需進一步檢查」的臨床理由</strong>——低風險組仍有 0.6% 在 3 週內被抓到 AF，且該分類主要反映年齡較輕。</li>
+<li>❌ <strong>非白人族群的前瞻性應用（含台灣）</strong>——無任何前瞻性證據。</li>
+<li>❌ <strong>直接沿用 0.0053 這個絕對門檻於英國以外的體系</strong>——校準斜率跨國差異達 2.5 倍。</li>
+<li>❌ <strong>作為「篩檢能改善臨床結果」的依據</strong>——這個問題要等 SAFER RCT（2027）。</li>
+</ul>
+<h3>若要改觀，最需要的 3 個關鍵改進</h3>
+<ol>
+<li><strong>做出與單純年齡 cut-off（≥70 / ≥72 / ≥75 歲）以及一個 logistic regression 的正面對照。</strong> 這兩個分析用既有資料就能完成，不需新收案。若 FIND-AF 2.0 在這兩個對照下仍明顯勝出，本文的臨床論證強度會從「中等」躍升至「強」；若不勝出，讀者也有權知道。<strong>這是本文與「有臨床決定性」之間唯一的距離。</strong></li>
+<li><strong>提供各世代的 calibration plot 與重新校準後的門檻</strong>，或改採 percentile-based（如「當地前 10%」）的相對門檻以繞開校準問題。目前的絕對門檻設計在跨國實作上站不住腳。</li>
+<li><strong>進行叢集隨機試驗：FIND-AF 2.0 導向篩檢 vs 年齡導向篩檢 vs 常規照護</strong>，主要終點為 AF 偵測率與 OAC 起始率，次要終點為中風。VITAL-AF 的 AI-ECG 次分析（<em>J Am Coll Cardiol</em> 2026）已示範了在隨機架構下如何評估風險導向篩檢，並揭露了「效率 vs 涵蓋率」的取捨——這正是單臂設計無法回答的核心問題。</li>
+</ol>
+<h3>一句話結論</h3>
+<p><strong>這個模型在「全民資料庫都算得出來」這件事上做得非常好，但它有近一半的功勞其實只是年齡，而且從未被證明比看病人幾歲更有用。</strong></p>
+<hr />
+<h3>資料來源</h3>
+<p><strong>PubMed</strong>（依據 PubMed 檢索所得文獻）：</p>
+<ul>
+<li>Rokach L, Benita TR, Nadarajah R, et al. <em>Eur J Prev Cardiol</em> 2026. <a href="https://doi.org/10.1093/eurjpc/zwag124">DOI</a></li>
+<li>Vedage NA, et al. <em>J Am Coll Cardiol</em> 2026;87:1798–1813. <a href="https://doi.org/10.1016/j.jacc.2026.01.087">DOI</a></li>
+<li>Islam MM, Nkemdirim Okere A. <em>Int J Med Inform</em> 2026;217:106504. <a href="https://doi.org/10.1016/j.ijmedinf.2026.106504">DOI</a></li>
+</ul>
+<p><strong>外部網頁</strong>：</p>
+<ul>
+<li><a href="https://medicinehealth.leeds.ac.uk/medicine/staff/5033/dr-ramesh-nadarajah">Dr Ramesh Nadarajah | School of Medicine, University of Leeds</a></li>
+<li><a href="https://www.hdruk.ac.uk/people/ramesh-nadarajah/">Ramesh Nadarajah | HDR UK</a></li>
+<li><a href="https://www.turing.ac.uk/people/former-enrichment-students/ramesh-nadarajah">Ramesh Nadarajah | The Alan Turing Institute</a></li>
+<li><a href="https://manusights.com/blog/circulation-impact-factor">Circulation Impact Factor 2026 (二手彙整)</a></li>
+<li><a href="https://www.journalmetrics.org/journal/circulation">Circulation Journal Metrics (二手彙整)</a></li>
+</ul>
+<p><strong>參考工具書</strong>：[參考: jama_liu_2019_ug_190001.md，三階段評估架構（derivation → validation → clinical effectiveness）與 reference standard 嚴謹度要求]</p>
+
+<footer class="appraisal-meta">評讀資訊：模型：claude-opus-5 (claude)  ·  route：diagnostic  ·  產出時間：2026-08-02 18:32 CST</footer>
+</main>
+</body>
+</html>
