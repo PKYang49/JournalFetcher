@@ -76,6 +76,31 @@ PUB_TYPE_PRIORITY = [
     ("Observational Study", "Observational"),
 ]
 
+# PubMed sometimes labels guideline/consensus documents only as "Review" and
+# may not provide an abstract. Keep these high-value documents in the weekly
+# feed without admitting every abstract-less article.
+GUIDELINE_TITLE_MARKERS = (
+    "guideline",
+    "consensus",
+    "scientific statement",
+    "decision pathway",
+)
+GUIDELINE_PUB_TYPES = {
+    "Practice Guideline",
+    "Guideline",
+    "Consensus Development Conference",
+    "Consensus Development Conference, NIH",
+}
+
+
+def is_guideline_or_consensus(article: dict) -> bool:
+    """Return whether an article is a guideline/consensus candidate."""
+    pub_types = set(article.get("pub_types") or [])
+    if pub_types & GUIDELINE_PUB_TYPES:
+        return True
+    title = (article.get("title") or "").casefold()
+    return any(marker in title for marker in GUIDELINE_TITLE_MARKERS)
+
 
 def _classify_pub_type(pub_types: list[str]) -> str:
     """Pick the most informative publication type from PubMed's list."""
@@ -116,7 +141,14 @@ def _build_esearch_params(
         # term, which can interleave older issue-assigned Lancet records.
         mindate = today - timedelta(days=days)
         maxdate = today
-    params["term"] = f"{query} AND hasabstract[text]"
+    # Include guideline/consensus title and publication-type candidates even
+    # when PubMed has not supplied an abstract for them.
+    abstract_or_guideline = (
+        "(hasabstract[text] OR guideline[Title] OR consensus[Title] "
+        'OR "scientific statement"[Title] OR "decision pathway"[Title] '
+        'OR "Practice Guideline"[pt] OR "Consensus Development Conference"[pt])'
+    )
+    params["term"] = f"{query} AND {abstract_or_guideline}"
     params["datetype"] = "pdat"
     params["mindate"] = mindate.strftime("%Y/%m/%d")
     params["maxdate"] = maxdate.strftime("%Y/%m/%d")
@@ -326,17 +358,26 @@ def fetch_journal_articles(
     count: int = 20,
     date_range: tuple[int, int] | None = None,
 ) -> list[dict]:
-    """High-level: search + fetch for one journal. Only returns articles with abstracts.
+    """High-level: search + fetch for one journal.
+
+    Ordinary articles require an abstract. Guideline/consensus candidates are
+    retained without one because PubMed does not consistently provide
+    abstracts for these documents.
 
     Pass `date_range=(min_days_ago, max_days_ago)` to restrict to a historical
     publication-date window; otherwise `days` is the "last N days" lookback.
     """
-    # Fetch more than needed to account for post-filter
+    # Fetch extra records because ordinary abstract-less records are removed
+    # after metadata parsing.
     pmids = search_pmids(
-        journal, days=days, count=count * 2, date_range=date_range
+        journal, days=days, count=count * 4, date_range=date_range
     )
     articles = fetch_articles(pmids)
-    articles = [a for a in articles if a.get("abstract", "").strip()]
+    articles = [
+        a
+        for a in articles
+        if a.get("abstract", "").strip() or is_guideline_or_consensus(a)
+    ]
     return articles[:count]
 
 

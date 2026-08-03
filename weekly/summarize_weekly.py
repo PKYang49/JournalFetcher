@@ -106,6 +106,10 @@ def summarize_articles(articles: list[dict]) -> list[dict]:
         title = article.get("title", "")
         abstract = article.get("abstract", "")
         print(f"  [{i}/{total}] 生成摘要：{title[:50]}...")
+        if not abstract.strip():
+            article["summary"] = "[PubMed 未提供摘要；請查看全文]"
+            article["commentary"] = ""
+            continue
         summary, commentary = summarize_one(abstract, title)
         article["summary"] = summary
         article["commentary"] = commentary
