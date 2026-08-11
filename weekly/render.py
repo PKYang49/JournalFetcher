@@ -10,6 +10,8 @@ from urllib.parse import urlencode
 from jinja2 import Environment, FileSystemLoader, select_autoescape
 from markdown_it import MarkdownIt
 
+from weekly.appraisal_status import AppraisalStatus
+
 ROOT = Path(__file__).resolve().parent.parent
 TEMPLATE_DIR = Path(__file__).resolve().parent / "templates"
 DOCS_DIR = ROOT / "docs"
@@ -70,6 +72,67 @@ PUB_TYPE_CLASS = {
 
 def _pub_type_class(pub_type: str) -> str:
     return PUB_TYPE_CLASS.get(pub_type, "type-other")
+
+
+# Why an appraisal card can exist without a published page, keyed by the
+# article's `appraisal_status`. "" covers articles the appraisal phase never
+# reached (e.g. run_weekly gave up after exhausting its usage-limit retry
+# cycles), which leaves the field unset. AppraisalStatus.DONE appears here
+# only in the anomalous case where the report file went missing before
+# publish_appraisals ran.
+APPRAISAL_STATE_DISPLAY: dict[str, dict[str, str]] = {
+    "": {
+        "label": "評讀進行中",
+        "note": "評讀尚未產出，系統會在後續排程續跑。",
+        "card_class": "status-card-processing",
+        "chip_class": "is-processing",
+    },
+    AppraisalStatus.DONE: {
+        "label": "評讀頁待產出",
+        "note": "評讀已完成，但頁面尚未產生；下次發布時會補上。",
+        "card_class": "status-card-deferred",
+        "chip_class": "is-deferred",
+    },
+    AppraisalStatus.FAILED: {
+        "label": "評讀失敗",
+        "note": "評讀產出失敗，將於後續排程重新嘗試。",
+        "card_class": "status-card-failed",
+        "chip_class": "is-failed",
+    },
+    AppraisalStatus.PDF_FAILED: {
+        "label": "PDF 下載失敗",
+        "note": "無法取得全文 PDF，暫時無法評讀。",
+        "card_class": "status-card-failed",
+        "chip_class": "is-failed",
+    },
+    AppraisalStatus.TOO_LARGE: {
+        "label": "全文過長",
+        "note": "全文超過長度上限，未進行評讀。",
+        "card_class": "status-card-failed",
+        "chip_class": "is-failed",
+    },
+}
+
+_UNKNOWN_APPRAISAL_STATE: dict[str, str] = {
+    "label": "評讀未完成",
+    "note": "評讀尚未產出，系統會在後續排程續跑。",
+    "card_class": "status-card-deferred",
+    "chip_class": "is-deferred",
+}
+
+
+def _appraisal_state(article: dict) -> dict[str, str]:
+    """Describe why an appraisal card has no page yet.
+
+    Returns {} once `appraisal_url` exists (the card links to the report and
+    needs no status). Otherwise the card would render as a silently empty
+    pick, so every no-page reason gets a visible chip + note, mirroring how
+    on-demand requests surface 評讀中 / 評讀失敗.
+    """
+    if article.get("appraisal_url"):
+        return {}
+    status = str(article.get("appraisal_status") or "").strip()
+    return APPRAISAL_STATE_DISPLAY.get(status, _UNKNOWN_APPRAISAL_STATE)
 
 
 def _journal_sections(articles: list[dict], journal_counts: list[dict]) -> list[dict]:
@@ -156,6 +219,7 @@ def render_weekly(
                 "commentary": article.get("commentary", ""),
                 "pub_type_class": _pub_type_class(article.get("pub_type", "")),
                 "appraise_request_url": appraise_request_url,
+                "appraisal_state": _appraisal_state(article),
                 "feedback_id": _feedback_id(article),
             }
         )

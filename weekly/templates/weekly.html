@@ -128,10 +128,29 @@
     font-size: 14px;
     margin: -4px 0 14px;
   }
+  .appraisal-state-note {
+    color: var(--muted);
+    font-size: 13px;
+    margin: 10px 0 0;
+  }
+  .appraisal-state {
+    border-radius: 12px;
+    display: inline-block;
+    font-size: 12px;
+    font-weight: 600;
+    margin-right: 6px;
+    padding: 2px 10px;
+  }
+  .appraisal-state.is-processing { background: #e7f0ff; color: #0b5fff; }
+  .appraisal-state.is-deferred   { background: #fff4e6; color: #b85c00; }
+  .appraisal-state.is-failed     { background: #fdeaea; color: #b42318; }
   @media (prefers-color-scheme: dark) {
     .appraised-card { border-left-color: #7fd0a3; }
     .status-card-deferred { border-left-color: #e8b75d; }
     .status-card-failed { border-left-color: #ff9b9b; }
+    .appraisal-state.is-processing { background: #1f3050; color: #9ec0ff; }
+    .appraisal-state.is-deferred   { background: #4a3320; color: #ffb878; }
+    .appraisal-state.is-failed     { background: #4a2422; color: #ff9b9b; }
   }
   .selection-reason {
     color: var(--text);
@@ -376,7 +395,7 @@
   {% endmacro %}
 
   {% macro appraisal_card(article, feedback_endpoint, extra_class="", show_meta=true, show_feedback=true, show_summary=true) %}
-  <article class="selected-card{% if extra_class %} {{ extra_class }}{% endif %}">
+  <article class="selected-card{% if extra_class %} {{ extra_class }}{% endif %}{% if article.appraisal_state %} {{ article.appraisal_state.card_class }}{% endif %}">
     <span class="tag">{{ article.journal_key }}</span>
     {% if article.pub_type %}<span class="tag pub-type {{ article.pub_type_class }}">{{ article.pub_type }}</span>{% endif %}
     <h2>{{ article.title }}</h2>
@@ -393,7 +412,15 @@
       {% if article.appraisal_status %}appraisal: {{ article.appraisal_status }}{% endif %}
     </div>
     {% endif %}
-    {% if show_summary %}
+    {% if article.appraisal_state %}
+    <p class="appraisal-state-note">
+      <span class="appraisal-state {{ article.appraisal_state.chip_class }}">{{ article.appraisal_state.label }}</span>
+      {{ article.appraisal_state.note }}
+    </p>
+    {% endif %}
+    {# No appraisal page: fall back to the summary so the card is not empty —
+       these articles are filtered out of 本週文章摘要 by selected_ids. #}
+    {% if show_summary or article.appraisal_state %}
     {{ article_summary(article) }}
     {% endif %}
     <div class="links">
