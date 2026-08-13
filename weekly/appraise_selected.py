@@ -564,7 +564,7 @@ def _run_appraisal_prompt(
 
 
 _REFERENCES_HEADING_RE = re.compile(
-    r"^#{1,3}\s+\**\s*("
+    r"^(?P<level>#{1,3})\s+\**\s*("
     r"references?"
     r"|bibliography"
     r"|works\s+cited"
@@ -575,14 +575,17 @@ _REFERENCES_HEADING_RE = re.compile(
     r")\s*\**\s*$",
     re.MULTILINE | re.IGNORECASE,
 )
+_MAJOR_HEADING_RE = re.compile(r"^(?P<level>#{1,3})\s+\S", re.MULTILINE)
 
 
 def _strip_references(markdown: str) -> str:
-    """Cut markdown from the first References-style heading to end of document.
+    """Remove only the reference section from converted markdown.
 
     Most journal articles end with a reference list that takes up 30-40% of
     the markdown but contributes nothing to critical appraisal. Stripping it
-    frees model context and lowers token cost.
+    frees model context and lowers token cost. Some accepted manuscripts put
+    figure legends and tables *after* the references, so the section ends at
+    the next heading of the same or higher level rather than at EOF.
 
     Safety: only strip when the cut keeps ≥2,000 chars of leading content,
     so a misidentified heading near the top can't blank out the whole article.
@@ -590,11 +593,21 @@ def _strip_references(markdown: str) -> str:
     match = _REFERENCES_HEADING_RE.search(markdown)
     if not match:
         return markdown
-    stripped = markdown[: match.start()].rstrip()
-    if len(stripped) < 2000:
+    prefix = markdown[: match.start()].rstrip()
+    if len(prefix) < 2000:
         return markdown
+
+    reference_level = len(match.group("level"))
+    section_end = len(markdown)
+    for heading in _MAJOR_HEADING_RE.finditer(markdown, match.end()):
+        if len(heading.group("level")) <= reference_level:
+            section_end = heading.start()
+            break
+
+    suffix = markdown[section_end:].lstrip()
+    stripped = f"{prefix}\n\n{suffix}" if suffix else prefix
     removed = len(markdown) - len(stripped)
-    print(f"  [strip-refs] removed {removed:,} chars from References onward")
+    print(f"  [strip-refs] removed {removed:,} chars from References section")
     return stripped
 
 
@@ -628,15 +641,31 @@ def _strip_preamble(report: str) -> str:
 class ConvertedPdf(NamedTuple):
     """PDF→markdown output plus which pages' tables survived the conversion.
 
-    `parsed_table_pages` holds 1-indexed page numbers that produced at least
-    one markdown table. figure_extract uses it to spot tables that were lost in
-    conversion and render those pages as images instead. It is empty whenever
-    per-page data is unavailable (markitdown fallback), which conservatively
-    treats every table as lost.
+    `parsed_table_pages` holds 1-indexed page numbers whose markdown table is
+    still present in the final markdown after reference stripping. figure_extract
+    uses it to spot tables that were lost in conversion or stripping and render
+    those pages as images instead. It is empty whenever per-page data is
+    unavailable (markitdown fallback), which conservatively treats every table
+    as lost.
     """
 
     markdown: str
     parsed_table_pages: frozenset[int]
+
+
+def _table_page_survived(page_markdown: str, markdown: str) -> bool:
+    """Return whether a converted table page remains in final markdown.
+
+    A generic ``|---`` check is not enough after section stripping because
+    another page may contain the same separator. Use surrounding page-local
+    content as a marker; reference stripping only removes complete sections,
+    so this snippet is unchanged when the table page survives.
+    """
+    separator = page_markdown.find("|---")
+    if separator < 0:
+        return False
+    marker = page_markdown[max(0, separator - 120) : separator + 240].strip()
+    return marker in markdown
 
 
 def _convert_with_pymupdf4llm(pdf_path: Path) -> ConvertedPdf | None:
@@ -671,9 +700,17 @@ def _convert_with_pymupdf4llm(pdf_path: Path) -> ConvertedPdf | None:
             file=sys.stderr,
         )
         return None
+    md = _strip_references(md)
+
     # "|---" is the markdown table separator row: its presence means the table
-    # came through with its row/column structure intact.
-    parsed = frozenset(i for i, text in enumerate(pages, start=1) if "|---" in text)
+    # came through with its row/column structure intact. Check a page-specific
+    # snippet against the post-strip markdown so a table page removed by a
+    # non-terminal References section is not falsely reported as available.
+    parsed = frozenset(
+        i
+        for i, text in enumerate(pages, start=1)
+        if "|---" in text and _table_page_survived(text, md)
+    )
     return ConvertedPdf(md, parsed)
 
 
@@ -696,8 +733,10 @@ def _convert_with_markitdown(pdf_path: Path) -> str:
 def _convert_pdf_to_markdown(pdf_path: Path) -> ConvertedPdf:
     converted = _convert_with_pymupdf4llm(pdf_path)
     if converted is None:
-        converted = ConvertedPdf(_convert_with_markitdown(pdf_path), frozenset())
-    return converted._replace(markdown=_strip_references(converted.markdown))
+        converted = ConvertedPdf(
+            _strip_references(_convert_with_markitdown(pdf_path)), frozenset()
+        )
+    return converted
 
 
 def _build_references_section(route: str) -> str:
