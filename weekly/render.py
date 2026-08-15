@@ -438,12 +438,13 @@ def _render_appraisal_page(
   }}
   table {{
     border-collapse: collapse;
-    display: block;
-    overflow-x: auto;
+    table-layout: auto;
     width: 100%;
+    max-width: 100%;
   }}
   th, td {{
     border: 1px solid var(--border);
+    overflow-wrap: anywhere;
     padding: 6px 8px;
     text-align: left;
     vertical-align: top;
@@ -460,6 +461,24 @@ def _render_appraisal_page(
     padding-top: 14px;
     color: var(--muted);
     font-size: 13px;
+  }}
+  @media (max-width: 600px) {{
+    body {{
+      padding: 12px 8px 40px;
+    }}
+    main {{
+      padding: 16px 12px;
+    }}
+    h1 {{
+      font-size: 22px;
+    }}
+    table {{
+      font-size: 12px;
+      table-layout: fixed;
+    }}
+    th, td {{
+      padding: 4px 5px;
+    }}
   }}
   @media (prefers-color-scheme: dark) {{
     :root {{
