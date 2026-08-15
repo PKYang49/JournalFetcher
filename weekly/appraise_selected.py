@@ -576,6 +576,33 @@ _REFERENCES_HEADING_RE = re.compile(
     re.MULTILINE | re.IGNORECASE,
 )
 _MAJOR_HEADING_RE = re.compile(r"^(?P<level>#{1,3})\s+\S", re.MULTILINE)
+_CITATION_MARKER_RE = re.compile(
+    r"\bet al\b|\b(?:19|20)\d{2}[;:,]|\bdoi\b|\bPMID\b", re.IGNORECASE
+)
+# Citation markers per 1,000 chars. Measured across two weeks of appraisal
+# PDFs: blocks that are still reference list scored 1.7-8.7, genuine
+# post-reference content (figure legends, tables, appendices) scored 0.0.
+_CITATION_DENSITY_FLOOR = 1.5
+# Shorter than this carries too few markers for the density to mean anything
+# — most often a heading immediately followed by another heading.
+_CITATION_BLOCK_FLOOR = 200
+
+
+def _reference_block_verdict(block: str) -> bool | None:
+    """Classify a block that follows a heading inside the References section.
+
+    True = still reference list, False = the list has ended, None = too little
+    text to tell. Long reference lists carry their own headings: guidelines
+    group citations under the section that cites them ("## Preamble",
+    "## 1.5. Scope"), and Lancet-family PDFs restart the list under a running
+    "## Articles" header. Those must not end the section, or almost nothing
+    gets stripped.
+    """
+    block = block.strip()
+    if len(block) < _CITATION_BLOCK_FLOOR:
+        return None
+    density = 1000 * len(_CITATION_MARKER_RE.findall(block)) / len(block)
+    return density >= _CITATION_DENSITY_FLOOR
 
 
 def _strip_references(markdown: str) -> str:
@@ -585,7 +612,8 @@ def _strip_references(markdown: str) -> str:
     the markdown but contributes nothing to critical appraisal. Stripping it
     frees model context and lowers token cost. Some accepted manuscripts put
     figure legends and tables *after* the references, so the section ends at
-    the next heading of the same or higher level rather than at EOF.
+    the next heading of the same or higher level rather than at EOF — skipping
+    any heading whose block still reads as reference list.
 
     Safety: only strip when the cut keeps ≥2,000 chars of leading content,
     so a misidentified heading near the top can't blank out the whole article.
@@ -598,11 +626,35 @@ def _strip_references(markdown: str) -> str:
         return markdown
 
     reference_level = len(match.group("level"))
+    headings = [
+        heading
+        for heading in _MAJOR_HEADING_RE.finditer(markdown, match.end())
+        if len(heading.group("level")) <= reference_level
+    ]
+    # Walk the headings inside the section. An undecidable block neither ends
+    # the section nor is swallowed by it: remember it as the earliest possible
+    # end and defer to the next block that can be scored. If that block is
+    # still reference list the candidate is dropped; if it is not — or the
+    # headings run out — the section ends at the remembered candidate, which
+    # errs towards keeping content rather than deleting it.
     section_end = len(markdown)
-    for heading in _MAJOR_HEADING_RE.finditer(markdown, match.end()):
-        if len(heading.group("level")) <= reference_level:
-            section_end = heading.start()
+    candidate_end: int | None = None
+    for index, heading in enumerate(headings):
+        block_end = (
+            headings[index + 1].start() if index + 1 < len(headings) else len(markdown)
+        )
+        verdict = _reference_block_verdict(markdown[heading.end() : block_end])
+        if verdict is None:
+            if candidate_end is None:
+                candidate_end = heading.start()
+        elif verdict:
+            candidate_end = None
+        else:
+            section_end = heading.start() if candidate_end is None else candidate_end
             break
+    else:
+        if candidate_end is not None:
+            section_end = candidate_end
 
     suffix = markdown[section_end:].lstrip()
     stripped = f"{prefix}\n\n{suffix}" if suffix else prefix
@@ -651,6 +703,64 @@ class ConvertedPdf(NamedTuple):
 
     markdown: str
     parsed_table_pages: frozenset[int]
+
+
+_TABLE_SEPARATOR_RE = re.compile(r"^\s*\|[-:| ]*-[-:| ]*\|\s*$")
+# Mean `<br>` per data row. An intact table puts one logical row per line and
+# scores ~0; a collapsed one folds every row into a single cell and scores 8+.
+_COLLAPSED_BR_PER_ROW = 8
+
+
+def _table_row_groups(page_markdown: str) -> list[list[str]]:
+    """Group the data rows of each markdown table on a converted page.
+
+    A table whose separator is followed by no data rows yields no group, so
+    callers see it the same way as a page with no table at all — see
+    `_has_intact_table` for why that is the right reading.
+    """
+    lines = page_markdown.splitlines()
+    groups: list[list[str]] = []
+    for index, line in enumerate(lines):
+        if not _TABLE_SEPARATOR_RE.match(line):
+            continue
+        rows: list[str] = []
+        for candidate in lines[index + 1 :]:
+            if not candidate.lstrip().startswith("|"):
+                break
+            rows.append(candidate)
+        if rows:
+            groups.append(rows)
+    return groups
+
+
+def _has_intact_table(page_markdown: str) -> bool:
+    """Return whether a page kept at least one table's row structure.
+
+    pymupdf4llm marks a table with a ``|---|`` separator, but when it cannot
+    find the column boundaries it collapses the rows into a single cell and
+    joins them with ``<br>``. The values survive that; the row alignment does
+    not, so a model reading it has to re-derive which number belongs to which
+    row. Pages holding such a table count as unparsed, which routes them to
+    figure_extract to be rendered as images instead.
+
+    Collapse takes two shapes. The milder one leaves the data rows in place
+    with the columns folded into them, which the `<br>` score catches. The
+    extreme one folds every column into the header line and leaves the
+    separator with nothing after it, so no group of data rows is found at all
+    — the same answer a page with no table reaches, and correctly so, since
+    neither offers the model a table it can read.
+
+    Scoring uses the mean over data rows rather than the worst single row:
+    guideline tables legitimately wrap prose across ~20 line breaks in one
+    cell, and only a collapse pushes *every* row that high.
+    """
+    groups = _table_row_groups(page_markdown)
+    if not groups:
+        return False
+    return all(
+        sum(row.count("<br>") for row in rows) / len(rows) < _COLLAPSED_BR_PER_ROW
+        for rows in groups
+    )
 
 
 def _table_page_survived(page_markdown: str, markdown: str) -> bool:
@@ -702,14 +812,14 @@ def _convert_with_pymupdf4llm(pdf_path: Path) -> ConvertedPdf | None:
         return None
     md = _strip_references(md)
 
-    # "|---" is the markdown table separator row: its presence means the table
-    # came through with its row/column structure intact. Check a page-specific
-    # snippet against the post-strip markdown so a table page removed by a
-    # non-terminal References section is not falsely reported as available.
+    # A page counts as parsed only when it produced a table that kept its row
+    # structure *and* that table is still present after reference stripping.
+    # Both checks guard the same downstream decision: figure_extract renders a
+    # page as an image precisely when the model cannot read its table as text.
     parsed = frozenset(
         i
         for i, text in enumerate(pages, start=1)
-        if "|---" in text and _table_page_survived(text, md)
+        if _has_intact_table(text) and _table_page_survived(text, md)
     )
     return ConvertedPdf(md, parsed)
 
