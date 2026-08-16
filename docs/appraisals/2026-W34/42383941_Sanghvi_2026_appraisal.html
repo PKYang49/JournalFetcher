@@ -1,0 +1,1374 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Imaging-Derived Sarcopenic Obesity and Cardiovascular Outcomes: Insights Into Heart Failure Risk and Muscle Biology.</title>
+<style>
+  :root {
+    --bg: #fafafa;
+    --card: #ffffff;
+    --text: #1a1a1a;
+    --muted: #6b6b6b;
+    --border: #e5e5e5;
+    --accent: #0b5fff;
+  }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang TC",
+      "Microsoft JhengHei", sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    margin: 0;
+    padding: 24px 16px 64px;
+    line-height: 1.72;
+  }
+  main {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    margin: 0 auto;
+    max-width: 840px;
+    padding: 22px 26px;
+  }
+  nav {
+    margin: 0 auto 14px;
+    max-width: 840px;
+    color: var(--muted);
+    font-size: 14px;
+  }
+  a { color: var(--accent); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  h1, h2, h3, h4 { line-height: 1.35; }
+  h1 { font-size: 26px; margin-top: 0; }
+  h2 { border-top: 1px solid var(--border); padding-top: 18px; }
+  code {
+    background: rgba(127, 127, 127, 0.12);
+    border-radius: 4px;
+    padding: 1px 4px;
+  }
+  table {
+    border-collapse: collapse;
+    table-layout: auto;
+    width: 100%;
+    max-width: 100%;
+  }
+  th, td {
+    border: 1px solid var(--border);
+    overflow-wrap: anywhere;
+    padding: 6px 8px;
+    text-align: left;
+    vertical-align: top;
+  }
+  blockquote {
+    border-left: 3px solid var(--accent);
+    color: var(--muted);
+    margin-left: 0;
+    padding-left: 14px;
+  }
+  .appraisal-meta {
+    border-top: 1px solid var(--border);
+    margin-top: 28px;
+    padding-top: 14px;
+    color: var(--muted);
+    font-size: 13px;
+  }
+  @media (max-width: 600px) {
+    body {
+      padding: 12px 8px 40px;
+    }
+    main {
+      padding: 16px 12px;
+    }
+    h1 {
+      font-size: 22px;
+    }
+    table {
+      font-size: 12px;
+      table-layout: fixed;
+    }
+    th, td {
+      padding: 4px 5px;
+    }
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #1a1a1a;
+      --card: #242424;
+      --text: #e8e8e8;
+      --muted: #999;
+      --border: #333;
+      --accent: #6ea8ff;
+    }
+  }
+</style>
+</head>
+<body>
+<nav><a href="../../2026-W34.html">← 回到 2026-W34 週報</a></nav>
+<main>
+<h1>Imaging-Derived Sarcopenic Obesity and Cardiovascular Outcomes: Insights Into Heart Failure Risk and Muscle Biology.</h1>
+<h1>醫學文獻批判性評讀</h1>
+<p><strong>Imaging-Derived Sarcopenic Obesity and Cardiovascular Outcomes: Insights Into Heart Failure Risk and Muscle Biology</strong>
+<em>J Am Coll Cardiol. 2026;88(6):688–706</em></p>
+<hr />
+<h1>SECTION-0：文章全面描述</h1>
+<h2>0. 文章身份證</h2>
+<table>
+<thead>
+<tr>
+<th>項目</th>
+<th>內容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>標題</td>
+<td>Imaging-Derived Sarcopenic Obesity and Cardiovascular Outcomes: Insights Into Heart Failure Risk and Muscle Biology</td>
+</tr>
+<tr>
+<td>期刊 / 年份</td>
+<td>Journal of the American College of Cardiology, 2026;88(6):688–706</td>
+</tr>
+<tr>
+<td>DOI / PMID</td>
+<td>10.1016/j.jacc.2026.05.022 / 42383941</td>
+</tr>
+<tr>
+<td>文章類型</td>
+<td><strong>Original Research — 觀察性研究（UK Biobank 前瞻世代）</strong>，內含四個並列子研究：①深度學習影像表型開發與驗證 ②Cox 存活分析（預後生物標記）③GWAS + PRS + PheWAS ④既有轉錄體資料集的候選基因查詢</td>
+</tr>
+<tr>
+<td>路由判斷</td>
+<td><strong>SKILL-A 主流程 + 觀察性子模組 + 因果推論框架 Appendix</strong>；預後判別效能部分另援引 clinical prediction model 評估標準</td>
+</tr>
+</tbody>
+</table>
+<p><strong>混血設計提醒</strong>：本文並非單一設計。核心臨床主張（第 ②部分）是觀察性預後研究，但<strong>同時被包裝成預測模型論文</strong>（報告 C-statistic、IDI、NRI）與<strong>遺傳因果論文</strong>（colocalization、「shared causal variants」）。三種主張的證據門檻不同，本文在後續章節會分開處理——這也是本文最主要的批判軸線之一。</p>
+<hr />
+<h2>1. 作者團隊評論</h2>
+<ul>
+<li><strong>通訊作者（雙通訊）</strong>：Mihir M. Sanghvi 與 Nay Aung，皆隸屬 William Harvey Research Institute, Queen Mary University of London / Barts Heart Centre [文內]。</li>
+<li><strong>資深共同作者（標注同等貢獻）</strong>：Patricia B. Munroe（心血管遺傳學/GWAS）與 Nay Aung [文內]。Steffen E. Petersen 為 UK Biobank CMR 影像核心人物 [文內 + 外部]。</li>
+<li><strong>團隊背景</strong>：Barts / QMUL 這組人是 <strong>UK Biobank CMR 影像領域的建置者本身</strong>，並非外來使用者。代表作包括 UK Biobank CMR 正常值參考範圍（J Cardiovasc Magn Reson 2017）、心血管危險因子對心臟結構功能的影響（PLoS One 2017，本文引用為 ref 51）、糖尿病 CMR 子研究（2019）、UK Biobank CMR 自動化品管（2019、2024）[外部: QMUL research publications、PubMed]。Sanghvi 近年產出包括代謝體標記與心臟重塑、牙周病與冠心病的「影像＋觀察＋GWAS」三合一分析 [外部: QMUL publications]。</li>
+<li><strong>關鍵觀察 — 方法學模板的重複使用</strong>：本文的架構（UK Biobank 影像表型 → 深度學習量化 → CMR 重塑關聯 → Cox outcome → GWAS → PRS/PheWAS → 藥物靶點）與該團隊近年多篇論文高度同構。這帶來兩面性：技術執行成熟可信，但也意味著**「表型 → 顯著關聯 → 生物學敘事」的產出流程本身有結構性偏差風險**——同一資料庫、同一分析管線反覆套用不同表型，等同於一個未被計數的大規模多重比較框架。</li>
+<li><strong>跨領域整合</strong>：加入了肌肉生物學重量級團隊（Stuart M. Phillips, McMaster；Bethan Phillips / Philip Atherton, Nottingham；James A. Timmons）。第 ④部分的 7 個轉錄體資料集大多來自這些作者本人的先前發表（ref 21–26 中至少 4 篇為本文作者群自有資料）[文內]。這解釋了為何比對資料集是「這 7 個」而非系統性選取——<strong>候選比對資料集的選擇並非隨機或預先指定，而是取決於作者手上有什麼</strong>。</li>
+<li><strong>利益揭露</strong>：
+<ul>
+<li>文內申報：「The authors declare that this work was conducted in the absence of any commercial or financial relationships that could be construed as a potential conflict of interest.」資助全部為公部門/慈善（BHF、MRC、NIHR、NSERC、Canada Research Chairs、EU、Barts Charity）[文內]。</li>
+<li><strong>[評估]</strong>：資助來源本身乾淨。但需注意一個結構性張力——文章 Discussion 有相當篇幅在推介 <strong>bimagrumab（Lilly）+ semaglutide</strong> 的組合療法，並詳細引述 BELIEVE 試驗的療效百分比，而該試驗資料的引用來源（ref 42）只是 <strong>clinicaltrials.gov 的註冊條目</strong>，不是同儕審查發表。以一份全體宣告「無任何商業關係」的論文而言，這段的行銷性論述強度偏高，且療效數字的來源可追溯性不足。這不構成 COI 指控，但屬於<strong>敘事方向與證據等級不相稱</strong>的紅旗。</li>
+</ul>
+</li>
+</ul>
+<hr />
+<h2>2. 文獻 Metadata 整理</h2>
+<table>
+<thead>
+<tr>
+<th>項目</th>
+<th>內容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Received</td>
+<td>2026-01-19 [文內]</td>
+</tr>
+<tr>
+<td>Revised received</td>
+<td>2026-05-12 [文內]</td>
+</tr>
+<tr>
+<td>Accepted</td>
+<td>2026-05-15 [文內]</td>
+</tr>
+<tr>
+<td>投稿→接受總天數</td>
+<td><strong>116 天</strong></td>
+</tr>
+<tr>
+<td>修訂稿→接受天數</td>
+<td><strong>3 天</strong></td>
+</tr>
+<tr>
+<td>JACC 期刊政策</td>
+<td>宣稱 first decision ≤ 3 週；接受率約 5% [外部: ACC &quot;Publish in JACC&quot;、manusights JACC review time]</td>
+</tr>
+<tr>
+<td>Impact Factor</td>
+<td><strong>22.3（2025 JIF，2026-06-17 公布）</strong>，Cardiac &amp; Cardiovascular Systems Q1 [外部: ACC 2025 Journal Impact Factor Scores]</td>
+</tr>
+<tr>
+<td>Open Access</td>
+<td>主刊為訂閱制；本文於 jacc.org 需付費/機構存取（WebFetch 回傳 403）[外部驗證]</td>
+</tr>
+<tr>
+<td>邀稿 vs 投稿</td>
+<td>標示為 ORIGINAL RESEARCH，無 invited 字樣 → 一般投稿 [文內]</td>
+</tr>
+</tbody>
+</table>
+<p><strong>[解讀]</strong>：116 天總週期對 JACC 原著而言屬正常偏標準。真正值得注意的是 <strong>revised 到 accepted 只有 3 天</strong>——這代表修訂稿幾乎確定未再送外審，由編輯直接接受。對一篇同時包含深度學習驗證、Cox 預後模型、GWAS、colocalization、PRS/PheWAS、轉錄體整合六種方法學的論文而言，單一輪外審能否覆蓋所有面向是合理的疑問。下文列出的多處內部數字矛盾（見 §C4、§E），也與「最後一輪未再細校」相符。</p>
+<hr />
+<h2>3. 研究背景</h2>
+<p><strong>作者引用的既有事實</strong>：</p>
+<ul>
+<li>肌少性肥胖（sarcopenic obesity）＝脂肪過多與骨骼肌量/力量不足並存，與衰弱、認知障礙、血脂異常、糖尿病、術後併發症相關（ref 1–4）。</li>
+<li>肥胖是 HFpEF 與 HFrEF 的發病危險因子，但在<strong>已確診心衰竭者</strong>的預後角色不明確：以 BMI 衡量時風險最低點落在 30–35 kg/m²（ref 6），以 WHtR 衡量則風險在全區間平坦（ref 7）——即所謂「obesity paradox」。</li>
+<li>現行肌少症評估工具（BIA、DEXA）在心臟代謝疾病臨床路徑中不常規執行，且受水分狀態、脂肪分布影響（ref 8, 9）。</li>
+</ul>
+<p><strong>作者主張的知識缺口</strong>：缺乏可在既有心臟影像上「順便」取得、可規模化的直接肌肉量測量法。胸大肌解剖邊界清楚、恆定落在標準胸部/心臟影像視野內，是理想的機會性篩檢標的（ref 10, 45）。</p>
+<p><strong>Research question</strong>：能否從 CMR 導出可轉譯的肌少性肥胖指標，並證明其臨床相關性（心臟重塑、預後、遺傳架構、肌肉生物學）？</p>
+<p><strong>[評估 — 背景鋪陳與研究設計的第一個錯位]</strong>：Introduction 花了最大篇幅鋪陳的是「<strong>已確診心衰竭患者</strong>的 obesity paradox」，Discussion 也回到 PARAGON-HF 與 HFmrEF/HFpEF 試驗合併分析（ref 7, 56）。但本研究收的是<strong>一般人口世代中的 incident（新發）心衰竭</strong>。研究一般人口的<strong>發病</strong>風險，在邏輯上無法回答已病人群的<strong>預後</strong>悖論——這兩者是不同的因果問題，且 obesity paradox 的核心機制（collider stratification bias、反向因果、疾病惡病質）恰恰只發生在「已確診」這個條件化步驟之後。這個錯位貫穿全文，是本文最重要的單一概念缺陷。詳見 §B1。</p>
+<hr />
+<h2>4. 研究設計與方法</h2>
+<h3>PICO（改寫為觀察性研究之 PECO）</h3>
+<table>
+<thead>
+<tr>
+<th>項目</th>
+<th>內容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>P</strong></td>
+<td>UK Biobank 影像子世代；40–69 歲招募（2006–2010），CMR 於 2015 年起執行；約 95% 為白人；分析納入 55,768 次 CMR 檢查 [文內]</td>
+</tr>
+<tr>
+<td><strong>E</strong></td>
+<td><strong>肌少性肥胖指數 = 體重(kg) ÷ 胸大肌肌肉量(g)</strong>，經標準化（mean 0, SD 1），以每增加 1 SD 表示</td>
+</tr>
+<tr>
+<td><strong>C</strong></td>
+<td>BMI、腰臀比（WHR）、腰高比（WHtR）、單獨胸大肌肌肉量、單獨體重（各自獨立建模，非同一模型內比較）</td>
+</tr>
+<tr>
+<td><strong>O</strong></td>
+<td>主要：incident 心衰竭、心肌梗塞、缺血性中風、心血管死亡、全因死亡；次要：LV CMR 表型（EDV、ESV、LVEF、LV mass、MVR、GLS、native T1）</td>
+</tr>
+</tbody>
+</table>
+<h3>關鍵設計細節</h3>
+<ul>
+<li><strong>設計類型</strong>：前瞻世代（暴露測量於影像日，結局經 HES/死亡登錄連結追蹤）。</li>
+<li><strong>追蹤</strong>：影像日至事件或 censor date 2023-01-01；<strong>中位追蹤 4.18 年</strong> [文內]。</li>
+<li><strong>深度學習管線</strong>：nnU-Net v2；ground truth 為 200 例手動 3D 分割（&gt;2,100 slices），train 150 / test 50；最佳模型為 2D U-Net 5-fold ensemble；Dice 0.832 ± 0.05、Jaccard 0.715 ± 0.07、HD95 5.20 ± 3.4 mm、ASD 0.96 ± 0.55 mm [文內]。</li>
+<li><strong>統計方法</strong>：
+<ul>
+<li>CMR 表型：多變量線性迴歸，校正 age, sex, ethnicity, SBP, height, BMI, smoking, alcohol, T2DM, Townsend, LDL, physical activity（native T1 另加中隔壁厚）。</li>
+<li>結局：Cox proportional hazards。<strong>Methods 正文列的共變項不含 LV mass 與 LVEF；但 Table 2 與 Figure 4 的表註明確寫「…physical activity, left ventricular mass, and left ventricular ejection fraction」</strong> [文內，Methods vs Table 2 footnote 直接矛盾]。此矛盾具實質後果，見 §B3。</li>
+<li>PH 假設：僅「visually examined Schoenfeld residuals」，無正式檢定統計量或圖表 [文內]。</li>
+<li>增量預測價值：Harrell's C-statistic + compareC Wald test、likelihood ratio test、IDI、<strong>continuous NRI</strong>。</li>
+<li><strong>未報告任何校準（calibration）分析</strong>。</li>
+<li><strong>未報告任何多重比較校正</strong>（5 個結局 × 4 個暴露 = 20 個 Cox 模型；另有 10 個 CMR 結局）。</li>
+<li><strong>未描述缺失資料處理方式</strong>（無 imputation、無 complete-case 說明、無缺失比例）。</li>
+</ul>
+</li>
+<li><strong>GWAS</strong>：52,253 名歐洲血統個體、8.9M TOPMed imputed variants（MAF ≥ 0.01, INFO &gt; 0.3）、Regenie；校正 age, sex, height, 10 PCs；單一階段發現，<strong>無獨立複製世代</strong>（作者承認）。含 MTAG 多性狀分析。</li>
+<li><strong>敏感度分析</strong>：①以 DEXA 脂肪量取代體重 ②胸大肌對 height² 標準化 ③排除影像後 1 年內事件。</li>
+</ul>
+<hr />
+<h2>5. 研究結果重點整理</h2>
+<h3>5.1 表型驗證（第 ①部分）</h3>
+<table>
+<thead>
+<tr>
+<th>比較對象</th>
+<th>Spearman ρ（對 BMI 標準化後）</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>DEXA appendicular lean mass</td>
+<td>0.84</td>
+</tr>
+<tr>
+<td>MRI 大腿肌肉體積</td>
+<td>0.86</td>
+</tr>
+<tr>
+<td>最大握力</td>
+<td>0.75</td>
+</tr>
+</tbody>
+</table>
+<p>Bland-Altman（z-標準化、對 BMI 標準化）：95% LoA 對 DEXA ALM 為 <strong>−1.12 至 +1.15 SD</strong>；對大腿肌肉體積為 <strong>−1.12 至 +1.14 SD</strong> [文內]。</p>
+<h3>5.2 心臟重塑（Table 1，n = 42,052–55,599）</h3>
+<table>
+<thead>
+<tr>
+<th>CMR 參數</th>
+<th>Effect size / 1 SD</th>
+<th>95% CI</th>
+<th>P</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>LV EDV (mL)</td>
+<td><strong>−4.1</strong></td>
+<td>−4.5 至 −3.7</td>
+<td>7.5×10⁻¹¹⁴</td>
+</tr>
+<tr>
+<td>LV ESV (mL)</td>
+<td>−1.7</td>
+<td>−1.9 至 −1.4</td>
+<td>1.3×10⁻⁴⁸</td>
+</tr>
+<tr>
+<td>LVEF (%)</td>
+<td>−0.03</td>
+<td>−0.12 至 0.06</td>
+<td><strong>0.57（無關聯）</strong></td>
+</tr>
+<tr>
+<td><strong>LV mass (g)</strong></td>
+<td><strong>−3.5</strong></td>
+<td>−3.7 至 −3.3</td>
+<td>1.2×10⁻²⁸¹</td>
+</tr>
+<tr>
+<td>Indexed LV mass (g/m²)</td>
+<td>−0.95</td>
+<td>−1.05 至 −0.85</td>
+<td>1.6×10⁻⁸⁴</td>
+</tr>
+<tr>
+<td>LV mass:volume ratio</td>
+<td>+0.008</td>
+<td>0.007–0.009</td>
+<td>1.9×10⁻⁴¹</td>
+</tr>
+<tr>
+<td>LV GLS (%)</td>
+<td>0.02</td>
+<td>−0.02 至 0.05</td>
+<td><strong>0.34（無關聯）</strong></td>
+</tr>
+<tr>
+<td><strong>LV native T1 (ms)</strong></td>
+<td><strong>+6.4</strong></td>
+<td>5.8–7.1</td>
+<td>6.4×10⁻¹⁰¹</td>
+</tr>
+</tbody>
+</table>
+<h3>5.3 結局關聯（Table 2 / Figure 4；中位追蹤 4.18 年）</h3>
+<table>
+<thead>
+<tr>
+<th>結局</th>
+<th>事件數</th>
+<th>事件率</th>
+<th>SO index HR (95% CI)</th>
+<th>BMI</th>
+<th>WHtR</th>
+<th>WHR</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>心衰竭</strong></td>
+<td>390</td>
+<td>0.81%</td>
+<td><strong>1.31 (1.16–1.49)</strong></td>
+<td>1.11 (1.00–1.23)</td>
+<td>1.11 (1.00–1.23)</td>
+<td>1.21 (1.06–1.39)</td>
+</tr>
+<tr>
+<td>心肌梗塞</td>
+<td>385</td>
+<td>0.79%</td>
+<td><strong>1.08 (0.91–1.28) ns</strong></td>
+<td>1.20 (1.08–1.32)</td>
+<td>1.22 (1.10–1.36)</td>
+<td>1.32 (1.15–1.52)</td>
+</tr>
+<tr>
+<td>中風</td>
+<td>312</td>
+<td>0.64%</td>
+<td>1.13 (0.96–1.33) ns</td>
+<td>0.97 ns</td>
+<td>1.00 ns</td>
+<td>1.07 ns</td>
+</tr>
+<tr>
+<td><strong>心血管死亡</strong></td>
+<td>109</td>
+<td>0.23%</td>
+<td><strong>1.51 (1.25–1.82)</strong></td>
+<td>1.15 ns</td>
+<td>1.16 ns</td>
+<td>1.24 ns</td>
+</tr>
+<tr>
+<td><strong>全因死亡</strong></td>
+<td>707</td>
+<td>1.46%</td>
+<td><strong>1.37 (1.26–1.49)</strong></td>
+<td>1.13 (1.05–1.22)</td>
+<td>1.16 (1.07–1.25)</td>
+<td>1.20 (1.08–1.33)</td>
+</tr>
+</tbody>
+</table>
+<h3>5.4 增量預測價值（Supplemental Table 5，主文轉述）</h3>
+<table>
+<thead>
+<tr>
+<th>指標</th>
+<th>數值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ΔC-statistic（心衰竭）</td>
+<td><strong>≈ 0.005</strong></td>
+</tr>
+<tr>
+<td>ΔC-statistic（心血管死亡、全因死亡）</td>
+<td><strong>≈ 0.008–0.009</strong></td>
+</tr>
+<tr>
+<td>IDI（心血管死亡 vs BMI）</td>
+<td>0.003 (95% CI <strong>0.000</strong>–0.016), P = 0.045</td>
+</tr>
+<tr>
+<td>IDI（心血管死亡 vs WHR）</td>
+<td>0.003 (95% CI <strong>0.000</strong>–0.019), P = 0.047</td>
+</tr>
+<tr>
+<td>IDI（全因死亡）</td>
+<td>0.002 (0.001–0.005), P &lt; 0.001</td>
+</tr>
+<tr>
+<td><strong>continuous NRI</strong>（全因死亡）</td>
+<td>0.100–0.111</td>
+</tr>
+<tr>
+<td><strong>校準（calibration）</strong></td>
+<td><strong>完全未報告</strong></td>
+</tr>
+<tr>
+<td>C-statistic 絕對值（任一模型）</td>
+<td><strong>完全未報告</strong></td>
+</tr>
+</tbody>
+</table>
+<h3>5.5 GWAS / PRS / 轉錄體</h3>
+<ul>
+<li>SNP-based heritability：SO index 17.1%、胸大肌肌肉量 14.6%。</li>
+<li>16 個 loci（SO index）、11 個（胸大肌）、6 個共享；rg = −0.762。</li>
+<li><strong>16 個中有 6 個是已知 BMI loci</strong>（SLC30A10, CAND2, CELF1, LOC646736, GSS, LOC101929664）。</li>
+<li><strong>僅 1 個 locus（CAND2）與 all-cause HF GWAS colocalize（PP4 = 0.94）</strong>。</li>
+<li>PRS（UKB &gt; 430,000 非影像組）：肥胖、高血壓 OR 1.05、心衰竭 OR 1.05、T2DM OR 1.05、敗血症 OR 1.05；All of Us（&gt; 240,000）方向一致。</li>
+<li>轉錄體：86 個候選基因中 <strong>64 個（74.4%）在至少 1 個 unloading 模型中顯著調控</strong>；48 個（55.8%）超過 1.25 倍變化門檻；短期支架卸載 28 個、84 天臥床 36 個；阻力訓練僅 6 個、耐力訓練 8 個、prefrailty 4 個、老化 8 個。</li>
+<li>Druggability：<strong>ACVR2B</strong>（bimagrumab 標靶）。</li>
+</ul>
+<hr />
+<h2>6. 作者討論與評論重點</h2>
+<p><strong>作者的主要訊息</strong>：肌少性肥胖是「distinct and high-risk body composition phenotype」，可從既有心臟影像機會性取得，在心衰竭、心血管死亡、全因死亡的預測上比傳統人體測量指標更一致；其遺傳架構與心衰竭/心肌病基因重疊；候選基因對「機械負荷撤除」特別敏感；並指向可行治療靶點。</p>
+<p><strong>與現有文獻的對照</strong>：</p>
+<ul>
+<li>一致處：先前 2 篇 CMR 胸大肌研究（ref 43, 44）為小規模且僅量測單一切面面積；本文為 3D、n ≈ 55,000。BIA + echo 的小型研究（n = 378, ref 52）亦顯示肌少者 LV mass 較低。</li>
+<li>作者提出的新觀點：低 LV mass 可能也具臨床意義（傳統典範認為高 LV mass 才不利，ref 53, 54）。</li>
+</ul>
+<p><strong>作者自陳限制</strong> [文內]：</p>
+<ol>
+<li>觀察性設計，殘餘干擾無法排除。</li>
+<li>ICD-10 無心衰竭亞型碼，無法區分 HFpEF/HFrEF。</li>
+<li>UK Biobank 有 healthy volunteer selection bias。</li>
+<li>種族多樣性低（約 95% 白人），遺傳分析限歐洲血統。</li>
+<li>單一階段 GWAS，未來需獨立世代複製。</li>
+</ol>
+<p><strong>[評估 — 自陳限制的完整度]</strong>：這 5 條都是真的，但明顯<strong>避重就輕</strong>。以下重大限制完全未被提及：</p>
+<table>
+<thead>
+<tr>
+<th>未申報的限制</th>
+<th>嚴重度</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Cox 模型校正了 <strong>LV mass 與 LVEF</strong>（中介變項過度校正），且與 Methods 正文矛盾</td>
+<td>高</td>
+</tr>
+<tr>
+<td><strong>未做任何校準分析</strong>，未報告 C-statistic 絕對值</td>
+<td>高</td>
+</tr>
+<tr>
+<td>結局分析的實際 n（推算 ≈ 47,400–48,800）與 55,599 有 <strong>約 7,000 人落差且無流程圖說明</strong></td>
+<td>高</td>
+</tr>
+<tr>
+<td>指數<strong>不含任何肥胖門檻</strong>，高分者可為單純低肌肉量的瘦弱者</td>
+<td>高</td>
+</tr>
+<tr>
+<td>UK Biobank MRI 因掃描孔徑限制，<strong>系統性排除極端肥胖者</strong>——正是目標族群</td>
+<td>高</td>
+</tr>
+<tr>
+<td>表型驗證的相關係數<strong>未說明是否分性別計算</strong>（合併性別會嚴重灌水）</td>
+<td>高</td>
+</tr>
+<tr>
+<td>胸大肌體積轉換為「質量(g)」所用的<strong>密度假設從未說明</strong>；肌內脂肪浸潤（myosteatosis）未處理</td>
+<td>中高</td>
+</tr>
+<tr>
+<td>20+ 個 Cox 模型 <strong>無多重比較校正</strong></td>
+<td>中</td>
+</tr>
+<tr>
+<td><strong>缺失資料完全未描述</strong></td>
+<td>中</td>
+</tr>
+<tr>
+<td>轉錄體比對的 7 個資料集<strong>檢定力差異巨大</strong>，「unloading 特異性」可能是 power artifact</td>
+<td>中高</td>
+</tr>
+<tr>
+<td>中位追蹤 4.18 年，Abstract/Objectives 卻宣稱 <strong>&quot;long-term follow-up&quot;</strong></td>
+<td>中</td>
+</tr>
+</tbody>
+</table>
+<p><strong>[評估 — 臨床建議是否超出數據支持]</strong>：是，且幅度不小。Central Illustration 直接寫「Improves identification of individuals at elevated cardiovascular risk beyond conventional anthropometric indices」與「Improves prediction of adverse outcomes compared to BMI/WHR/WHtR」。支撐這兩句的全部證據是 ΔC = 0.005–0.009 與 IDI 0.002–0.003（下界觸及 0.000）。依 JAMA Users' Guide 對預測模型的評估框架，這種量級的判別度改善<strong>不構成臨床可用性的證據</strong>，而且在完全沒有校準資料的情況下，連「風險估計是否準確」都無從判斷 [參考: jama_alba_2017_ug_170001.md，Box「Do the authors provide information about both discrimination and calibration of the model? If not, skepticism is warranted.」]。</p>
+<hr />
+<h2>7. 外部專業意見</h2>
+<p><strong>同期社論（JACC 第 707–709 頁，本文首頁標示 &quot;SEE PAGE 707&quot;）</strong>：</p>
+<blockquote>
+<p><strong>Masci PG, Niglas M, Bell JD.</strong> Reframing Cardiometabolic Risk and Frailty Through Sarcopenic Obesity. <em>J Am Coll Cardiol.</em> 2026;88(6):707–709. DOI: <a href="https://doi.org/10.1016/j.jacc.2026.05.038">10.1016/j.jacc.2026.05.038</a>（PMID 42383942）。作者分屬 King's College London / BHF Centre of Research Excellence / Guy's and St Thomas'，以及 University of Westminster Research Centre for Optimal Health（Jimmy D. Bell 為 MRI 體組成研究領域資深研究者）。根據 PubMed，該文為 Editorial 類型，PubMed 無摘要。</p>
+</blockquote>
+<p><strong>[無法取得全文]</strong>：已依指示執行 <code>python3 /Users/pokai/JournalFetcher/weekly/fetch_editorial.py 10.1016/j.jacc.2026.05.038</code> <strong>兩次</strong>，兩次皆在全部 7 種擷取路徑失敗（Direct PDF → DOI redirect → Elsevier API → ScienceDirect（遭 Cloudflare challenge 攔截）→ Unpaywall → PMC → nodriver），回報 <code>[FAIL] 所有方法皆失敗</code>。直接 WebFetch jacc.org 該頁亦回傳 HTTP 403。<strong>因此無法據實摘要其完整論點、對本文的具體質疑或方法學批評。</strong></p>
+<p>可確認的片段（來自二手來源，非社論全文）：ACC 官方 Journal Scan 引述社論作者的兩句話——肌少性肥胖是「a systemic cardiometabolic phenotype linking ageing, impaired muscle biology, heart failure vulnerability and frailty」，以及深度學習導出的胸大肌肌肉量「can serve as a practical surrogate of systemic muscle status in large cardiovascular imaging cohorts」[外部: ACC Latest in Cardiology Journal Scan, 2026-06-29]。該 Journal Scan 本身<strong>未載明任何限制或批評</strong>。</p>
+<p><strong>[評估]</strong>：可取得的兩句引文都是正面定位語句，看不出社論是否提出方法學質疑。以本文存在的具體問題（校準缺席、中介變項校正、指數不含肥胖成分），一份稱職的社論理應觸及至少其一，但在無法讀到全文的前提下不予臆測。<strong>本節的外部專業意見層在本次評讀中實質缺席，讀者應自行取閱該社論。</strong></p>
+<p>其他外部檢索：未發現針對本文的獨立 letter to the editor、blog 級方法學評論或 PubPeer 條目 [無法取得]。</p>
+<hr />
+<h2>8. 臨床建議</h2>
+<p><strong>可採用的情境</strong></p>
+<ol>
+<li><strong>研究與品質改善用途</strong>：若貴中心已在跑 UK Biobank 類型的影像世代或 CMR registry，胸大肌 3D 自動分割是可行且技術上成熟的表型化工具，Dice 0.832 足以支撐<strong>族群層級</strong>的分布描述與流行病學關聯分析。</li>
+<li><strong>概念層面的臨床提醒</strong>：本文提供了紮實的族群級證據，說明<strong>低骨骼肌量本身</strong>（而非脂肪量）與新發心衰竭、心血管死亡、全因死亡的關聯，比 BMI/WHR/WHtR 更一致。這強化了一個對心臟科而言仍未充分內化的觀念——體重數字掩蓋了肌肉與脂肪的組成差異，對正在使用 GLP-1 RA 減重的病人尤其重要。</li>
+<li><strong>假說產生</strong>：低 LV mass + 高 MVR + 高 native T1 這組表型組合值得後續研究，特別是在 HFpEF 的骨骼肌—心肌軸線上。</li>
+</ol>
+<p><strong>不建議直接套用的情境</strong></p>
+<ol>
+<li><strong>不要拿去做個別病人的風險分層。</strong> ΔC-statistic 0.005–0.009、無校準資料、指數 SD 的臨床單位在主文中從未給出——這三點任一都足以否決臨床部署。</li>
+<li><strong>不要用來回答已確診心衰竭病人的 obesity paradox。</strong> 本研究是一般人口的<strong>發病</strong>風險，與該悖論所處的<strong>已病人群預後</strong>是不同的因果問題。</li>
+<li><strong>不要外推到非白人族群或極端肥胖者。</strong> 前者是作者自陳限制；後者更關鍵——UK Biobank MRI 的孔徑限制系統性排除了 BMI 最高的一群人，而這正是肌少性肥胖最該被偵測的族群。</li>
+<li><strong>不要據此推動 CT 上的機會性篩檢。</strong> 本文<strong>沒有任何 CT 資料</strong>；「可用 transfer learning 移植到 CT」僅引用一篇泛用型 transfer learning 綜述（ref 49），不是實際驗證。</li>
+<li><strong>不要據此選擇 bimagrumab 的用藥對象。</strong> ACVR2B 是既有靶點，本文的 druggability 分析是事後查詢而非發現。</li>
+</ol>
+<p><strong>給臨床醫師的實務建議</strong></p>
+<ol>
+<li>對正在使用 GLP-1 RA 大幅減重的心血管病人，<strong>把「肌肉量是否同步流失」納入例行評估與衛教</strong>（握力、起立坐下測試、飲食蛋白質攝取、阻力訓練），並主動援引 AHA 2023 阻力訓練科學聲明（ref 57）。這是本文中唯一有立即可行性的臨床訊息，而且不需要用到本文的指數。</li>
+<li>看到 CMR 報告顯示 <strong>LV mass 偏低但 MVR 上升、native T1 偏高</strong>的病人，把「骨骼肌狀態」放進鑑別思考，而不要只用「LV mass 正常/偏低＝沒事」的舊典範解讀。</li>
+<li><strong>不要</strong>因為這篇論文就在門診導入任何肌少性肥胖指數計分。目前沒有校準資料、沒有絕對風險換算、沒有臨床決策閾值。</li>
+</ol>
+<p><strong>研究證據強度分級：中偏弱（族群層級的關聯：中；臨床可用性主張：弱；因果與生物學主張：弱）</strong>
+理由：暴露測量客觀、樣本量大、多重敏感度分析方向一致（此為優點）；但事件數少（心血管死亡僅 109）、追蹤僅 4.18 年、關鍵模型校正了中介變項、無校準、無多重比較校正、無獨立世代複製，且核心臨床主張（優於傳統指標）的效果量遠低於任何合理的臨床意義門檻。</p>
+<hr />
+<hr />
+<h1>SKILL-A：批判性評讀</h1>
+<h2>A. 補充技術細節</h2>
+<ul>
+<li><strong>樣本數估算</strong>：無事前 power calculation（觀察性研究常態，不構成缺陷）。但需注意事件數：心血管死亡僅 109 例，而 Cox 模型校正了 <strong>13 個共變項</strong>（含 LV mass、LVEF）。以 events-per-variable ≥ 10 的常規經驗法則，109 事件僅能穩健支撐約 10 個參數——<strong>心血管死亡模型已處於過度參數化邊緣</strong>，這使該結局的 HR 1.51 及其 CI 寬度都應以較低信心解讀。</li>
+<li><strong>隨機化 / 分派隱藏 / 致盲</strong>：不適用（觀察性）。深度學習分割的手動 ground truth 是否對受試者臨床資訊致盲，文內未說明；不過因結局來自後續電子病歷連結，此處偏差風險低。</li>
+<li><strong>ITT vs per-protocol</strong>：不適用。</li>
+<li><strong>多重比較處理</strong>：<strong>完全未處理</strong>。主文可數的統計檢定包括：10 個 CMR 結局 × 1 個暴露、5 個結局 × 4 個暴露（20 個 Cox 模型）、3 個結局 × 3 個比較指標 × 3 種指標（C-stat/IDI/NRI）≈ 27 個增量檢定、GWAS（已用 5×10⁻⁸ 門檻，此部分合格）、PheWAS（主文未說明 phenome-wide 校正）、7 個轉錄體資料集 × 86 個基因。<strong>除 GWAS 外，全文沒有任何一處提到多重比較校正。</strong></li>
+<li><strong>比例風險假設</strong>：僅「visually examined Schoenfeld residuals」，未提供任何檢定統計量、P 值或殘差圖。以中位追蹤 4.18 年而言 PH 違反風險不高，但<strong>這是無法驗證的宣稱</strong>。</li>
+<li><strong>缺失資料處理</strong>：<strong>全文無任何描述</strong>。這在本文特別關鍵，因為推算的分析人數（≈ 48,000）與 55,599 有約 7,000 人落差（見 §C4）。</li>
+<li><strong>敏感度分析（優點）</strong>：三組敏感度分析（DEXA 脂肪量替代體重、height² 標準化、排除 1 年內事件）方向一致，這是本文方法學上實質的加分項，也有效降低了短期反向因果的疑慮。</li>
+</ul>
+<h3>A1 對應：前臨床/機轉子模組（第 ④部分轉錄體分析）</h3>
+<p>第 ④部分是既有人體肌肉切片轉錄體資料集的<strong>查詢</strong>，非本研究新產生的實驗，適用前臨床/機轉規則：</p>
+<ul>
+<li><strong>模型有效性</strong>：7 個資料集橫跨短期支架卸載、84 天臥床、耐力訓練反應者、年輕/年長阻力訓練、prefrailty、健康老化。以「機械負荷」為軸的模型選擇合理。</li>
+<li><strong>統計單位與檢定力（關鍵缺陷）</strong>：<strong>主文從未報告各資料集的樣本數與各自的 DEG 清單長度</strong>（僅總計 1,082 個肌肉樣本）。這是致命的，因為核心主張是「候選基因對 unloading <strong>特異性</strong>敏感，對阻力/耐力訓練不敏感」。84 天臥床是已知會產生極大量 DEG 的強效擾動；阻力訓練的 DEG 清單通常短得多。<strong>在不知道各清單長度與各研究檢定力的前提下，「74.4% vs 6/86」的對比完全可能是檢定力差異而非生物特異性。</strong></li>
+<li><strong>缺乏正式富集檢定</strong>：主文完全沒有 enrichment 的 P 值、odds ratio、permutation 或匹配背景基因集。唯一的量化說法「approximately 3 times enrichment overlap」只出現在 <strong>Figure 6 圖說</strong>，且無檢定統計量。Abstract 卻直接寫成 &quot;<strong>specifically</strong> modulated during muscle atrophy&quot;。</li>
+<li><strong>寬鬆的計數門檻</strong>：「in at least 1 unloading model」是二取一的寬鬆判準；改以「兩個 unloading 模型皆顯著」計算，重疊數會大幅下降（28 + 36 = 64，恰等於報告的 64，暗示<strong>兩個模型的重疊基因幾乎為零</strong>——若 28 與 36 有交集，總數應 &lt; 64）。這個算術巧合本身就削弱了「一致的 unloading 反應」敘事。</li>
+<li><strong>轉譯聲明</strong>：作者措辭尚屬謹慎（&quot;may reflect&quot;、&quot;possible load-sensing nodes&quot;），但 Abstract 的 &quot;specifically modulated&quot; 與 Central Illustration 的定調已超出此謹慎度。</li>
+</ul>
+<h3>觀察性研究混淆控制方法評估</h3>
+<table>
+<thead>
+<tr>
+<th>方法</th>
+<th>本文是否使用</th>
+<th>評估</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>多變量迴歸</td>
+<td>✅ 唯一方法</td>
+<td>13 個共變項；<strong>但包含中介變項</strong>（見 §B3）</td>
+</tr>
+<tr>
+<td>Propensity score</td>
+<td>❌</td>
+<td>連續暴露，不適用，合理</td>
+</tr>
+<tr>
+<td>Instrumental variable / MR</td>
+<td>❌</td>
+<td><strong>重大遺漏</strong>——本文已有 GWAS 與 PRS，<strong>具備做孟德爾隨機化的全部材料卻沒有做</strong>。這是本文最明顯的「該做而未做」：MR 本可直接檢驗肌少性肥胖 → 心衰竭的因果性，卻只做了單一 locus 的 colocalization</td>
+</tr>
+<tr>
+<td>負對照 / E-value</td>
+<td>❌</td>
+<td>未提供 E-value 或負對照結局，無法量化殘餘干擾需多強才能解釋掉 HR 1.31–1.51</td>
+</tr>
+<tr>
+<td>時序性</td>
+<td>✅ 部分</td>
+<td>暴露於影像日測量，結局在其後；排除 1 年內事件的敏感度分析有處理即刻反向因果</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>B. 批判性評估（四大面向）</h2>
+<h3>B1. 假說與理論邏輯</h3>
+<p><strong>問題 1：這個「肌少性肥胖指數」其實不含肥胖成分。</strong></p>
+<ul>
+<li><strong>文內證據</strong>：指數定義為 <code>體重(kg) / 胸大肌肌肉量(g)</code>（Methods 第 690 頁）。分子是<strong>總體重</strong>，不是脂肪量、不是體脂率、不設任何肥胖門檻。</li>
+<li><strong>關鍵量化佐證（Figure 3，圖頁 page_007/008）</strong>：跨越 1–50th → &gt;90th 百分位分組，女性胸大肌肌肉量從約 <strong>203 g 降至 120 g（約 −41%）</strong>，男性從約 <strong>510 g 降至 275 g（約 −46%）</strong>；同期間女性體重僅從約 69.7 kg 升至 76.5 kg（<strong>+10%</strong>），男性從約 82.5 kg 升至 91.5 kg（<strong>+11%</strong>）。<strong>分母的變異幅度是分子的四倍以上——這個指數在數學上幾乎完全由「低肌肉量」驅動。</strong></li>
+<li><strong>風險方向</strong>：這不是一個肌少性肥胖指標，而是一個<strong>以體重加權的低肌肉量指標</strong>。一位體重 55 kg、胸大肌 90 g 的瘦弱高齡者（指數 0.61）會被歸入最高風險組，儘管其毫無肥胖。ESPEN/EASO 共識（ref 12，作者自稱依此改編）要求<strong>同時</strong>滿足脂肪過多與肌肉量/功能不足兩個條件；本文的連續比值取消了這個「且」的邏輯，改成了單一連續軸。</li>
+<li><strong>文內的自我否證</strong>：作者的 §5.3 敏感度分析顯示，<strong>把體重換成 DEXA 脂肪量後，MI 與中風從無關聯變為顯著</strong>（MI HR 1.23, 1.03–1.46；中風 HR 1.22, 1.02–1.45）。這正證明了原始指數的分子（體重）<strong>沒有充分捕捉到肥胖的動脈粥狀硬化風險成分</strong>。作者把這解讀為「支持生物合理性」，但更準確的解讀是「原始指數的肥胖成分測量不良」。</li>
+<li><strong>需要什麼才放心</strong>：以二維分類（脂肪量高 × 肌肉量低）而非單一比值定義表型，並報告四象限（正常、單純肥胖、單純肌少、肌少性肥胖）各自的結局；或至少報告指數與 DEXA 脂肪量、與胸大肌肌肉量各自的 partial R²。</li>
+</ul>
+<p><strong>問題 2：Introduction 立的靶（已病人群的 obesity paradox）與資料能打的靶（一般人口的發病風險）不同。</strong></p>
+<ul>
+<li><strong>文內證據</strong>：Introduction 第 689 頁詳述 HFpEF 患者 BMI 30–35 的死亡率最低點與 WHtR 的平坦風險曲線（ref 6, 7）；Discussion 第 703 頁回到 PARAGON-HF（96% WHtR ≥ 0.5）與 HFmrEF/HFpEF 試驗合併分析（ref 56），並推論「識別同時具備脂肪過多與低肌肉量者，可能是找出最高風險者的有效機制」。但<strong>本研究的所有結局都是 incident（新發）事件，族群是一般人口。</strong></li>
+<li><strong>風險方向</strong>：obesity paradox 的主流機制解釋正是 <strong>collider stratification bias</strong>——一旦條件化於「已罹患心衰竭」，肥胖與其他致病因子之間會被誘發出虛假的負向關聯。本研究從未對心衰竭條件化，因此在結構上<strong>無法</strong>產生任何關於該悖論的證據。Discussion 的整段推論是純粹的類比外推。</li>
+<li><strong>需要什麼才放心</strong>：在已確診心衰竭的次族群中（UK Biobank 中應可識別 prevalent HF 個案）重複分析，或明白承認本研究不觸及 obesity paradox。</li>
+</ul>
+<p><strong>問題 3：GWAS 與 PRS 的表型是一個比值，其遺傳訊號來源無法歸屬。</strong></p>
+<ul>
+<li><strong>文內證據</strong>：16 個 loci 中 <strong>6 個是已知 BMI loci</strong>（第 698 頁）；rg（SO index vs 胸大肌肌肉量）= −0.762。</li>
+<li><strong>風險方向</strong>：比值性狀的 GWAS 會同時撈到分子與分母兩者的 loci，且無法從單一性狀 GWAS 區分。唯一與心衰竭 colocalize 的 locus（<strong>CAND2</strong>）<strong>正好也在那 6 個已知 BMI loci 之列</strong>。因此本文「肌少性肥胖與心衰竭共享因果變異」的旗艦證據，完全可能反映的是<strong>肥胖—心衰竭</strong>的既知生物學，而非任何肌肉特異機轉。</li>
+<li><strong>需要什麼才放心</strong>：對 BMI 做 conditional / multi-trait conditional GWAS；或對胸大肌肌肉量（單獨性狀）做 colocalization，看是否仍在 CAND2 出現訊號。</li>
+</ul>
+<p><strong>最可能的合理機轉（1–3 點）</strong></p>
+<ol>
+<li><strong>低骨骼肌量 ↔ 低心肌量的共同生物學</strong>：LV mass −3.5 g/SD（P = 1.2×10⁻²⁸¹）且已校正 BMI 與身高，加上 GWAS 抓到 TTN、PLEC、MYH7B 等橫紋肌共通結構基因——「全身橫紋肌質量一致性下降」是簡潔且與資料相容的解釋。</li>
+<li><strong>不活動—去負荷軸</strong>：Figure 3 顯示身體活動量在高指數組明顯較低（女性約 93 → 63、男性約 116 → 79 任意單位），且候選基因對 unloading 敏感。低活動 → 骨骼肌與心肌同步萎縮 → 心衰竭易感性上升，是連貫的路徑。</li>
+<li><strong>發炎—胰島素阻抗—合成阻抗</strong>：native T1 +6.4 ms、IRS1 在內臟脂肪的 eQTL 下調，與作者所述機轉相符。</li>
+</ol>
+<p><strong>最可疑的敘事跳躍（1–3 點）</strong></p>
+<ol>
+<li><strong>「obesity paradox 的解方」</strong>：資料是一般人口發病風險，卻用來論述已病人群預後（見上）。</li>
+<li><strong>「specifically modulated during muscle atrophy」</strong>：無富集檢定、無背景基因集、無各資料集檢定力資訊，唯一的「3 倍」數字只在圖說中無統計量地出現。</li>
+<li><strong>「Analyses identified ACVR2B, the target of bimagrumab」</strong>（Abstract）：ACVR2B/myostatin 通路與 bimagrumab 的關係是<strong>二十年前就確立的既有知識</strong>，bimagrumab 早已完成多個 phase 2（ref 37–41）。GWAS 撈到一個已知肌肉生長抑制通路基因，是對管線的<strong>合理性檢查（sanity check）</strong>，不是「識別出治療靶點」。Abstract 的動詞選擇把驗證包裝成發現。</li>
+</ol>
+<h3>B2. 受試者與外推性</h3>
+<p><strong>問題 1：目標族群被系統性排除。</strong></p>
+<ul>
+<li><strong>文內證據</strong>：UK Biobank 為 40–69 歲招募的一般人口世代（第 689 頁）；作者承認 healthy volunteer bias 與 95% 白人 [文內, Study Limitations]。</li>
+<li><strong>作者未提的更嚴重問題</strong>：UK Biobank 的 MRI 影像增強計畫因<strong>掃描孔徑與重量限制</strong>而無法納入極端肥胖者。一項專門研究「肥胖」的論文，其資料來源在結構上排除了肥胖光譜的頂端。Figure 3 可直接驗證這點：<strong>最高風險組（&gt;90th percentile）的平均 BMI 女性僅約 28.6、男性約 29.1 kg/m²——連 obesity（≥30）的門檻都沒到。</strong> 換言之，本文所謂「肌少性肥胖」最嚴重的一組，平均而言只是<strong>過重</strong>。</li>
+<li><strong>風險方向</strong>：外推至真實臨床（BMI 35–45 的 HFpEF 病人）完全無依據；且真正的肌少性肥胖表型（高脂肪 + 低肌肉）在本世代中的代表性極低。</li>
+</ul>
+<p><strong>問題 2：暴露測量與結局測量之間的族群不匹配。</strong></p>
+<ul>
+<li>影像於 2015 年起執行，招募於 2006–2010。能在招募 5–9 年後回來做 CMR 的人，是 healthy volunteer bias 的<strong>二次篩選</strong>——健康程度高於 UK Biobank 母體，母體又高於英國一般人口。這解釋了為何 4.18 年追蹤內心血管死亡率僅 0.23%。</li>
+</ul>
+<p><strong>外推性分級</strong></p>
+<table>
+<thead>
+<tr>
+<th>族群</th>
+<th>分級</th>
+<th>說明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>一般中老年白人族群（40–69 歲，英國）</td>
+<td><strong>中</strong></td>
+<td>關聯方向可信；但因 healthy volunteer bias，絕對風險嚴重低估，事件率不可直接引用</td>
+</tr>
+<tr>
+<td>已確診心衰竭患者（HFpEF/HFrEF）</td>
+<td><strong>不可外推</strong></td>
+<td>研究設計無法回答已病人群預後；心衰竭亞型不可得</td>
+</tr>
+<tr>
+<td>BMI ≥ 35 的肥胖族群</td>
+<td><strong>不可外推</strong></td>
+<td>影像設備限制導致此族群系統性缺席（作者未申報）</td>
+</tr>
+<tr>
+<td>非白人族群</td>
+<td><strong>不可外推</strong></td>
+<td>95% 白人；遺傳分析限歐洲血統（作者已承認）</td>
+</tr>
+<tr>
+<td>高齡衰弱族群（&gt; 70 歲）</td>
+<td><strong>不可外推</strong></td>
+<td>招募上限 69 歲，影像時最高年齡組平均 60 歲（Figure 3B）</td>
+</tr>
+<tr>
+<td>亞洲/台灣族群</td>
+<td><strong>不可外推</strong></td>
+<td>體組成、肌肉量分布、CMR 參考值均有族群差異；且胸大肌絕對質量的分界完全不可移植</td>
+</tr>
+</tbody>
+</table>
+<h3>B3. 研究設計與偏差</h3>
+<p><strong>偏差點 1（最嚴重）：Cox 模型校正了中介變項 LV mass 與 LVEF，且與 Methods 正文自相矛盾。</strong></p>
+<ul>
+<li><strong>文內證據</strong>：Methods 第 691 頁列出 Cox 共變項為「age, sex, ethnicity, systolic blood pressure, height, smoking status, current alcohol use, known type 2 diabetes mellitus, Townsend deprivation index, LDL cholesterol levels, and physical activity」——<strong>不含 LV mass 與 LVEF</strong>。但 <strong>Table 2 表註</strong>（圖頁 page_009）與 <strong>Figure 4 表註</strong>（圖頁 page_010）皆寫「…and physical activity, <strong>left ventricular mass, and left ventricular ejection fraction</strong>」。兩處直接矛盾，讀者無從得知實際跑的是哪一個模型。</li>
+<li><strong>為何這是重大問題</strong>：Table 1 已證明 SO index 與 LV mass 有極強的負向關聯（−3.5 g/SD，P = 1.2×10⁻²⁸¹）。若「低骨骼肌量 → 低心肌量 → 心衰竭易感」是真實路徑，<strong>LV mass 就是中介變項（mediator），不是干擾因子</strong>。校正中介變項會阻斷部分真實效果，使 HR 偏向虛無。</li>
+<li><strong>但方向更複雜且對本文結論不利</strong>：BMI 與 LV mass 是<strong>正</strong>相關（作者自己在 Discussion 引用 ref 51 指出這點）。因此在同一個校正了 LV mass 的模型框架下，SO index（與 LV mass 負相關）與 BMI（與 LV mass 正相關）受到的衰減方向<strong>不對稱</strong>。這意味著「SO index 優於 BMI」這個核心比較，其部分優勢可能是<strong>校正策略人為製造的</strong>，而非表型本質。此外，LVEF 亦可能同時是 collider（受多種上游因子影響），校正 collider 會引入新的虛假關聯。</li>
+<li><strong>風險方向</strong>：讓 SO index 相對 BMI「看起來更好」。</li>
+<li><strong>需要什麼才放心</strong>：報告不校正 LV mass / LVEF 的主模型（這才應是主分析），並以中介分析正式拆解直接效果與間接效果。</li>
+</ul>
+<p><strong>偏差點 2：以「顯著 vs 不顯著」宣稱優越性。</strong></p>
+<ul>
+<li><strong>文內證據</strong>：Results 第 693 頁：「For cardiovascular mortality, the sarcopenic obesity index was significantly associated (HR: 1.51)，<strong>whereas BMI, WHtR, and WHR were not significantly associated with risk</strong>」。Figure 4（圖頁 page_010）視覺上也是這個對比：心血管死亡列中 SO index 的 CI（1.25–1.82）完全在無效線右側，而 BMI（0.94–1.41）、WHtR（0.95–1.42）、WHR（0.96–1.61）的 CI 都跨越 1.00。</li>
+<li><strong>問題</strong>：這是教科書級的「<strong>差異的顯著性 ≠ 顯著性的差異</strong>」謬誤。<strong>Figure 4 的圖像本身就直接反駁了這個宣稱</strong> — SO index 的 CI（1.25–1.82）與 WHR 的 CI（0.96–1.61）<strong>有相當大幅度的重疊</strong>（1.25–1.61 這整段區間）。兩者的差異從未被正式檢定。同一個結局只有 109 個事件，四個指標各自的估計都極不精確。</li>
+<li><strong>部分緩解</strong>：作者確實做了 compareC Wald test 與 IDI/NRI，這是正確方向。但這些正式比較的結果（ΔC = 0.008–0.009；IDI 0.003，CI 下界 0.000）<strong>恰恰顯示差異微不足道</strong>——與 Results 敘事給人的印象不符。</li>
+<li><strong>風險方向</strong>：讀者被文字與圖形引導去接受一個正式檢定並不支持的強度。</li>
+</ul>
+<p><strong>偏差點 3：反向因果與潛在疾病殘餘。</strong></p>
+<ul>
+<li><strong>文內證據</strong>：作者做了排除 1 年內事件的敏感度分析（Supplemental Table 7），結果穩定（HF 1.30、CV death 1.54、all-cause 1.37）。這是好的做法。</li>
+<li><strong>但仍不足</strong>：肌肉流失是<strong>慢性</strong>過程。未診斷的惡性腫瘤、COPD、慢性腎病、早期失智、憂鬱症都可在診斷前 2–5 年就造成肌肉量下降與活動量減少。中位追蹤僅 4.18 年，1 年的 lag 太短。全因死亡 HR 1.37 的強度，很可能有相當比例來自「亞臨床疾病 → 肌肉流失」而非「肌肉流失 → 死亡」。</li>
+<li><strong>需要什麼才放心</strong>：2 年與 3 年 lag 的敏感度分析；癌症死亡作為負對照/正對照結局；以及 E-value 量化殘餘干擾的強度需求。</li>
+<li><strong>[參考: jama_agoritsas_2017_ug_160001.md]</strong> 該指引明確指出：來自例行收集資料的觀察性研究，其死亡率估計相較後續 RCT <strong>系統性偏樂觀約 31%</strong>（relative OR 1.31, 95% CI 1.03–1.65），並提醒殘餘干擾無法以任何統計調整消除。本文所有效果量都落在這個「觀察性研究典型高估幅度」的量級之內（HR 1.31–1.51），這本身就值得警惕。</li>
+</ul>
+<p><strong>偏差點 4：深度學習表型的驗證循環性與物理量轉換未交代。</strong></p>
+<ul>
+<li><strong>文內證據</strong>：ground truth 200 例、test set <strong>僅 50 例</strong>，全部來自 UK Biobank 同一影像協定；無外部驗證、無不同機器/協定測試、<strong>未報告手動分割的觀察者間/內變異</strong>。Dice 0.832 對一塊解剖邊界清楚的大肌肉而言是<strong>中等</strong>，不是優異。</li>
+<li><strong>未交代的關鍵物理轉換</strong>：分割產出的是<strong>體積</strong>（voxel 數），但整篇論文的指數用的是<strong>質量（g）</strong>。體積 → 質量必須乘上肌肉密度假設（文獻常用 1.06 g/cm³），<strong>這個假設全文從未出現</strong>。</li>
+<li><strong>更關鍵的生物學問題 — 肌內脂肪浸潤（myosteatosis）</strong>：分割的是胸大肌的<strong>解剖輪廓</strong>（Figure 1 的黃線，圖頁 page_004 可見輪廓沿肌肉外緣描繪），輪廓內包含肌內與肌間脂肪。肥胖與老化都會增加肌內脂肪。因此<strong>在最需要偵測肌少的族群中，這個方法會系統性高估肌肉量</strong>，使指數偏低、關聯被衰減。這對結論方向是保守的（真實關聯可能更強），但也意味著這個指標<strong>無法區分「肌肉少」與「肌肉品質差」</strong>——而後者在肌少性肥胖的病理生理中至少同等重要。CMR 上完全有能力做脂肪分數量化（Dixon/水脂分離），本文卻只做了體積。</li>
+</ul>
+<p><strong>偏差點 5：表型驗證的相關係數可能被性別合併嚴重灌水。</strong></p>
+<ul>
+<li><strong>文內證據</strong>：ρ = 0.84（DEXA ALM）、0.86（大腿肌肉體積）、<strong>0.75（握力）</strong>。主文完全未說明這些相關係數是否分性別計算 [限制：Supplemental Figure 1 未提供，無法確認]。</li>
+<li><strong>為何懷疑</strong>：Figure 3 顯示男女胸大肌肌肉量幾乎不重疊（女性 120–203 g，男性 275–510 g）。DEXA ALM 與握力同樣有巨大性別差。<strong>若在合併性別的族群中計算相關，性別這一個變項就能單獨產生 ρ ≈ 0.7–0.8 的相關，而不需要任何真正的個體層級一致性。</strong> 文獻中肌肉量與握力的性別內相關通常在 0.4–0.6 區間，ρ = 0.75 明顯偏高，與「合併性別」的假設一致。</li>
+<li><strong>內部佐證</strong>：作者自己的 Bland-Altman 顯示 95% LoA 為 <strong>±1.15 SD</strong>——換算下來，個體層級的一致性只相當於 r ≈ 0.83，而作者在 Discussion 中誠實地稱之為「<strong>moderate</strong> individual-level agreement」。但 Discussion 的同一段落開頭卻寫「demonstrated <strong>excellent</strong> concordance」，Abstract 與 Central Illustration 則完全不提個體層級的限制。<strong>同一段文字中「excellent」與「moderate」並存，是本文修辭與數據脫節最明顯的一處。</strong></li>
+</ul>
+<p><strong>設計面偏差總結（依嚴重度）</strong></p>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>偏差</th>
+<th>對結論的方向</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>校正中介/collider（LV mass, LVEF），且 Methods 與 Table 矛盾</td>
+<td>不對稱衰減，<strong>人為放大 SO index 對 BMI 的相對優勢</strong></td>
+</tr>
+<tr>
+<td>2</td>
+<td>以顯著/不顯著對比宣稱優越（Figure 4 的 CI 明顯重疊）</td>
+<td>誇大差異</td>
+</tr>
+<tr>
+<td>3</td>
+<td>慢性反向因果（1 年 lag 不足，無 E-value、無負對照）</td>
+<td><strong>高估效果量</strong></td>
+</tr>
+<tr>
+<td>4</td>
+<td>表型驗證可能未分性別；肌內脂肪未處理；密度假設未述</td>
+<td>前者高估驗證品質；後者對關聯保守</td>
+</tr>
+</tbody>
+</table>
+<h3>B4. 測量工具與實務意義</h3>
+<p><strong>測量信度</strong></p>
+<ul>
+<li>深度學習分割：Dice 0.832 ± 0.05（族群層級可用，個體層級中等）；<strong>test-retest / scan-rescan 重複性完全未報告</strong>——這對一個宣稱要用於臨床追蹤的指標是關鍵缺口。</li>
+<li>手動 ground truth 的觀察者變異：未報告。</li>
+<li>體重：UK Biobank 標準化測量，信度佳。</li>
+<li><strong>指數的 SD 從未在主文給出</strong>（僅稱在 Supplemental Table 4）。<strong>因此讀者無法把「每 1 SD」翻譯成任何臨床可理解的量</strong>——1 SD 相當於胸大肌少幾克？相當於體重多幾公斤？主文完全無法回答。這使全文所有 HR 在臨床上都是不可操作的抽象數字。</li>
+</ul>
+<p><strong>終點的臨床意義</strong></p>
+<ul>
+<li><strong>硬終點（可信）</strong>：全因死亡、心血管死亡、住院診斷之心衰竭/MI/中風——皆為病人重要結局，這是本文的實質優點。</li>
+<li><strong>替代終點（需謹慎）</strong>：LV mass、MVR、native T1、GLS 皆為 surrogate。<strong>其中 LVEF（P = 0.57）與 GLS（P = 0.34）完全無關聯</strong>——這一點很重要：作者宣稱的「adverse cardiac remodeling」在<strong>兩個最直接的收縮功能指標上完全看不到訊號</strong>，Abstract 與 Central Illustration 卻籠統寫成「adverse cardiac remodeling」。</li>
+<li><strong>native T1 +6.4 ms 的實質意義</strong>：正常 native T1 約 950–1,050 ms（依場強與序列），SD 約 30–45 ms。<strong>6.4 ms ≈ 0.15–0.2 個 SD，遠低於任何 T1 mapping 的重複性閾值（scan-rescan 變異通常 1.5–3%，即 15–30 ms）。</strong> 換言之，這個差異在個體層級<strong>低於測量雜訊</strong>，只有在 n = 42,052 的族群中才「顯著」。將其詮釋為「indicative of myocardial diffuse fibrosis」是實質的過度解讀。</li>
+<li><strong>LV mass −3.5 g 的實質意義</strong>：正常 LV mass 約 90–150 g（男/女不同），SD 約 20–30 g。<strong>3.5 g ≈ 0.12–0.17 個 SD</strong>，同樣遠低於臨床可辨識閾值。</li>
+</ul>
+<p><strong>「就算結果是真的，真實世界有多大用處？」</strong></p>
+<p>依 Table 2 的事件率直接推算 [推算]：</p>
+<table>
+<thead>
+<tr>
+<th>結局</th>
+<th>世代事件率（4.18 年中位追蹤）</th>
+<th>+1 SD 後的推估事件率</th>
+<th><strong>絕對風險差</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>心衰竭</td>
+<td>0.81%</td>
+<td>≈ 1.06%</td>
+<td><strong>+0.25 個百分點</strong></td>
+</tr>
+<tr>
+<td>心血管死亡</td>
+<td>0.23%</td>
+<td>≈ 0.35%</td>
+<td><strong>+0.12 個百分點</strong></td>
+</tr>
+<tr>
+<td>全因死亡</td>
+<td>1.46%</td>
+<td>≈ 2.00%</td>
+<td><strong>+0.54 個百分點</strong></td>
+</tr>
+</tbody>
+</table>
+<p><strong>本文從未報告任何絕對風險，也沒有任何 Kaplan-Meier 曲線或累積發生率圖。</strong> 全文唯一的存活分析呈現方式是 HR 的森林圖（Figure 4）。以上換算顯示：即使關聯完全為真且完全因果，一個 SD 的指數差異在約 4 年內帶來的絕對心衰竭風險差約 <strong>0.25 個百分點</strong>（約每 400 人多 1 例）。這與 ΔC-statistic 0.005 完全一致，也解釋了為何 IDI 只有 0.002–0.003。</p>
+<hr />
+<h2>C. 統計與資料完整性</h2>
+<h3>C1. 結果分類（觀察性預後研究之調整框架）</h3>
+<p>本文非治療性試驗，MCID 不適用於 HR 本身。對<strong>預後生物標記</strong>而言，臨床意義的門檻應落在<strong>增量判別/再分類效能</strong>上。依 JAMA Users' Guide 對預測模型的框架 [參考: jama_alba_2017_ug_170001.md]，判準如下：</p>
+<p><strong>Step 1 — 相關 MCID 的界定</strong></p>
+<ul>
+<li>文內預先指定的 MCID：<strong>無</strong>（未定義任何臨床意義門檻）。</li>
+<li>[推算] 領域慣例：新生物標記加入既有模型後，ΔC-statistic 一般需 ≥ 0.02 才被視為值得考慮；&lt; 0.01 通常被視為無實質增益。同一指引明確指出 C-statistic <strong>&lt; 0.60 判別力差、0.60–0.75 可能有幫助、&gt; 0.75 明確有用</strong>——而本文<strong>從未報告任何模型的 C-statistic 絕對值</strong>，讀者連基礎模型落在哪個區間都不知道。</li>
+</ul>
+<p><strong>Step 2 — CI 位置判讀</strong></p>
+<table>
+<thead>
+<tr>
+<th>結局 / 主張</th>
+<th>效果量與 CI</th>
+<th>相對 MCID 的位置</th>
+<th><strong>分類</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>關聯層次</strong>：SO index 與心衰竭</td>
+<td>HR 1.31 (1.16–1.49)</td>
+<td>CI 完全在無效線右側，且 1.16 已屬非微不足道</td>
+<td><strong>POSITIVE ✅（作為關聯）</strong></td>
+</tr>
+<tr>
+<td><strong>關聯層次</strong>：SO index 與心血管死亡</td>
+<td>HR 1.51 (1.25–1.82)</td>
+<td>CI 完全右側，但僅 109 事件、CI 寬</td>
+<td><strong>IMPRECISE (+)</strong></td>
+</tr>
+<tr>
+<td><strong>關聯層次</strong>：SO index 與全因死亡</td>
+<td>HR 1.37 (1.26–1.49)</td>
+<td>CI 完全右側，707 事件，最穩健</td>
+<td><strong>POSITIVE ✅（作為關聯）</strong></td>
+</tr>
+<tr>
+<td><strong>關聯層次</strong>：SO index 與 MI</td>
+<td>HR 1.08 (0.91–1.28)</td>
+<td>CI 同時跨越無效線與有意義的兩側門檻</td>
+<td><strong>INCONCLUSIVE ❓</strong></td>
+</tr>
+<tr>
+<td><strong>關聯層次</strong>：SO index 與中風</td>
+<td>HR 1.13 (0.96–1.33)</td>
+<td>CI 同時跨越無效線與有意義門檻</td>
+<td><strong>INCONCLUSIVE ❓</strong></td>
+</tr>
+<tr>
+<td><strong>臨床效用層次</strong>：優於 BMI/WHR/WHtR（判別度）</td>
+<td>ΔC = 0.005–0.009</td>
+<td>CI 未報告；點估計遠低於 0.02 門檻</td>
+<td><strong>NEGATIVE ❌ — 統計顯著但無臨床意義的增益</strong></td>
+</tr>
+<tr>
+<td><strong>臨床效用層次</strong>：優於傳統指標（再分類）</td>
+<td>IDI 0.002–0.003（CV death 之 CI 下界觸及 <strong>0.000</strong>）</td>
+<td>效果量趨近於零</td>
+<td><strong>NEGATIVE ❌</strong></td>
+</tr>
+<tr>
+<td><strong>校準（calibration）</strong></td>
+<td><strong>完全未評估</strong></td>
+<td>—</td>
+<td><strong>無法判定</strong></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Step 3 — 統計謬誤檢查</strong></p>
+<table>
+<thead>
+<tr>
+<th>檢查項</th>
+<th>本文是否犯錯</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>把 p &gt; 0.05 說成 &quot;no effect&quot;/&quot;no difference&quot;</td>
+<td><strong>是（部分）</strong>。MI（HR 1.08, 0.91–1.28）與中風（1.13, 0.96–1.33）被陳述為 &quot;not associated with risk&quot;。正確表述是 <strong>INCONCLUSIVE</strong>——CI 上界 1.28 與 1.33 都不排除臨床上有意義的風險上升，只是樣本不足以判定。作者卻用「MI 無關聯」來支撐「這個指數對心衰竭具特異性」的敘事（Discussion 第 703 頁）——<strong>把樣本不足詮釋成生物特異性</strong>，是本文較隱蔽但相當實質的統計誤用</td>
+</tr>
+<tr>
+<td>使用 post-hoc power</td>
+<td><strong>否</strong>（正確，未使用）</td>
+</tr>
+<tr>
+<td>用 post-hoc power 判斷 underpowered</td>
+<td><strong>否</strong></td>
+</tr>
+<tr>
+<td>以 underpowered positive 的效果量推算後續樣本數</td>
+<td>不適用</td>
+</tr>
+<tr>
+<td><strong>以「顯著 vs 不顯著」推論組間差異</strong></td>
+<td><strong>是</strong>（見 §B3 偏差點 2）</td>
+</tr>
+</tbody>
+</table>
+<h3>C2. Underpowered 判斷與 Winner's Curse</h3>
+<ul>
+<li><strong>INCONCLUSIVE 的兩個結局</strong>：MI（385 事件）與中風（312 事件）的 CI 都同時包含虛無值與臨床有意義的效果量（如 HR 1.25），符合 underpowered 定義。作者的「特異於心衰竭」敘事不成立。</li>
+<li><strong>Winner's Curse 風險（心血管死亡）</strong>：109 個事件、13 個共變項、HR 1.51 — 這是 Type M error（效果量誇大）的典型高風險情境。<strong>在低事件數下，只有隨機偏高的估計值才能跨過顯著門檻。</strong> 對照同一暴露在事件數最多的結局（全因死亡，707 事件）上 HR 僅 1.37，以及心衰竭（390 事件）HR 1.31，<strong>心血管死亡的 1.51 明顯是三者中最高、事件數最少、CI 最寬的一個</strong>——這個模式與 Winner's Curse 完全一致。</li>
+<li><strong>實務意涵</strong>：若有人要用 HR 1.51 來設計後續驗證研究的樣本數，將嚴重低估所需規模。<strong>心血管死亡的真實效果量更可能接近 1.3 而非 1.5。</strong></li>
+</ul>
+<h3>C3. Bayesian 補充分析</h3>
+<p>本文所有主要結局的 P 值都遠離 0.05（1.23×10⁻⁵ 至 2.57×10⁻¹³），Neutral vs Negative 的區分不構成爭議，<strong>故不觸發正式 Bayesian 補充分析</strong>。</p>
+<p>但有一處值得 Bayesian 視角：<strong>心衰竭的 BMI（HR 1.11, 95% CI 1.003–1.226, P = 0.043）與 WHtR（HR 1.11, 95% CI 0.999–1.228, P = 0.052）</strong>——兩者點估計完全相同（1.11），CI 幾乎完全重疊，卻分別被歸類為「顯著」與「非顯著」（Results 第 693 頁明白寫「the association with WHtR was nonsignificant」）。這正是 ASA 2016 聲明所警告的二分化謬誤的教科書範例，且<strong>在 Figure 4 中一眼可見</strong>：BMI 與 WHtR 兩條橫線在圖上幾乎完全重合（皆標示 1.11 (1.00–1.23)），左端都恰好抵在無效線上。作者卻用文字把它們分成兩類。</p>
+<h3>C4. 報告完整性與其他統計問題</h3>
+<h4>樣本數與 power（雙向評估）</h4>
+<ul>
+<li><strong>Underpowered</strong>：MI、中風（見 C2）；心血管死亡（109 事件 vs 13 個共變項）。</li>
+<li><strong>Overpowered（更關鍵）</strong>：CMR 表型分析 n = 42,052–55,599，產生 P = 1.2×10⁻²⁸¹ 這種量級的 P 值，對應的效果量卻是 <strong>LV mass −3.5 g（≈ 0.15 SD）、native T1 +6.4 ms（≈ 0.15–0.2 SD）</strong>，兩者都<strong>低於各自的臨床可辨識閾值與 scan-rescan 重複性</strong>。這是「統計顯著 ≠ 臨床重要」的極端案例。作者在 Discussion 第 703 頁反而以「particularly given the <strong>large effect size</strong>（−3.5 g per SD）」來強調 LV mass 的發現——<strong>把 −3.5 g 稱為 large effect size 是明確的錯誤描述</strong>。</li>
+</ul>
+<h4>【圖傳達但文字未講清楚的證據】</h4>
+<p>以下四點僅能從圖頁判讀，主文文字未呈現：</p>
+<p><strong>（1）Figure 3 的 y 軸全數採用非零起點，且刻度範圍被壓縮到極致，視覺上大幅誇大微小差異。</strong>（圖頁 page_007 女性、page_008 男性）</p>
+<ul>
+<li><strong>Height（女性）</strong>：y 軸僅 <strong>163.2 → 163.7 cm</strong>（全幅 0.5 cm），畫出一條陡峭上升線。實際跨組身高差 <strong>0.5 公分</strong>，臨床與統計上皆無意義。</li>
+<li><strong>LDL（女性）</strong>：y 軸 3.56 → 3.64+ mmol/L（全幅約 0.1），呈現急遽上升後平台化的戲劇性曲線。<strong>實際差異約 0.1 mmol/L。</strong></li>
+<li><strong>SBP（女性）</strong>：y 軸 132 → 136 mmHg，畫成陡升。實際差約 4 mmHg。</li>
+<li><strong>HbA1c（女性）</strong>：y 軸 34.4 → 35.6 mmol/mol，實際差約 1.2 mmol/mol（≈ 0.1%）。</li>
+<li><strong>Townsend</strong>：y 軸 −2.0 → −1.7，實際差 0.3 個單位。</li>
+<li><strong>判讀</strong>：這些微小到無臨床意義的差異，因軸截斷而在視覺上與真正有意義的變化（胸大肌肌肉量 −41%、身體活動 −32%）<strong>呈現出相同的視覺陡度</strong>。讀者若只看圖，會得到「高指數組在所有心血管危險因子上都顯著更差」的印象；實際上除肌肉量、體重、BMI、年齡、身體活動外，其餘變項的差異都是 n = 55,000 帶來的統計假象。作者在正文中也確實照單全收地敘述「a clear trend that individuals with higher sarcopenic obesity indices were more likely to be older, have higher BMI, systolic blood pressure, HbA1c, and levels of deprivation」，未區分哪些差異有臨床意義。</li>
+<li><strong>更進一步的過度解讀</strong>：作者為女性 LDL 上升 / 男性 LDL 下降的<strong>約 0.1–0.15 mmol/L</strong> 差異，特地建構了一個關於英國 QRISK 評分與 statin 處方性別差異的解釋（第 693 頁，引用 ref 27）。<strong>為一個 0.1 mmol/L 的差異建構因果敘事，是過度詮釋的明顯例證。</strong></li>
+<li><strong>Townsend 的非單調性</strong>：兩性的 Townsend 曲線都在 50–75th 組出現<strong>下降</strong>後才回升（非單調），但正文一律描述為「higher levels of deprivation」的單向趨勢。</li>
+</ul>
+<p><strong>（2）Figure 4 森林圖的 CI 重疊，直接反駁了正文的優越性宣稱。</strong>（圖頁 page_010）</p>
+<ul>
+<li>x 軸從 <strong>1.00 起始</strong>（對 HR 而言為適當的無效線位置，此處<strong>無軸線誇大問題</strong>，應予肯定）。</li>
+<li>但圖中清楚可見：<strong>心血管死亡列</strong>，SO index 的 CI（1.25–1.82）與 WHR 的 CI（0.96–1.61）<strong>重疊區間達 1.25–1.61</strong>；<strong>心衰竭列</strong>，SO index（1.16–1.49）與 WHR（1.06–1.39）重疊區間達 1.16–1.39。</li>
+<li><strong>全因死亡列</strong>是唯一 SO index 的 CI 下界（1.26）超出 BMI CI 上界（1.22）的情形——<strong>這是全文唯一在視覺上真正支持「優於 BMI」的結局</strong>，且僅對 BMI 成立（對 WHR 上界 1.33 仍重疊）。</li>
+<li>主文文字並未點出這些重疊，反而以「most robust association」「larger effect estimate」帶過。</li>
+</ul>
+<p><strong>（3）本文完全沒有 Kaplan-Meier 曲線、累積發生率圖或任何絕對風險呈現。</strong></p>
+<ul>
+<li>10 張圖頁中，圖形僅有：分割示例（Fig 1）、GWAS 流程圖（Fig 2）、基線趨勢折線圖（Fig 3）、HR 森林圖（Fig 4）、PheWAS OR 森林圖（Fig 5）、轉錄體熱圖（Fig 6）、Central Illustration。</li>
+<li>因此<strong>題目要求檢查的「KM 曲線分離時點」與「number-at-risk 後期銳減」在本文不適用——因為作者根本沒有提供</strong>。這本身是一個實質缺陷：對一篇報告存活結局的預後論文而言，不呈現任何生存曲線或分層絕對風險，讀者無法判斷風險隨時間的分布、是否有早期分離（提示反向因果）、或追蹤後期的樣本耗損。</li>
+</ul>
+<p><strong>（4）本文沒有觀察性世代的流程圖，且推算出的分析人數與宣稱的樣本數有約 7,000 人的落差。</strong></p>
+<ul>
+<li>Figure 2（圖頁 markdown）<strong>只是 GWAS 的流程圖</strong>（52,253 → 16 loci），不涵蓋主要的臨床結局分析。</li>
+<li>從 Table 2（圖頁 page_009）的「Events」與「Event Rate (%)」欄可<strong>反推分母</strong>：</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>結局</th>
+<th>事件數</th>
+<th>事件率</th>
+<th><strong>推算分母</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>心衰竭</td>
+<td>390</td>
+<td>0.81%</td>
+<td>≈ 48,148</td>
+</tr>
+<tr>
+<td>心肌梗塞</td>
+<td>385</td>
+<td>0.79%</td>
+<td>≈ 48,734</td>
+</tr>
+<tr>
+<td>中風</td>
+<td>312</td>
+<td>0.64%</td>
+<td>≈ 48,750</td>
+</tr>
+<tr>
+<td>心血管死亡</td>
+<td>109</td>
+<td>0.23%</td>
+<td>≈ 47,391</td>
+</tr>
+<tr>
+<td>全因死亡</td>
+<td>707</td>
+<td>1.46%</td>
+<td>≈ 48,425</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><strong>但文中宣稱的樣本數是 55,768 次 CMR 檢查（Abstract）、55,599 人有配對的 SO index 與 CMR 資料（第 693 頁）。</strong> 結局分析實際使用的約 <strong>47,400–48,800 人，與 55,599 相差約 7,000 人（約 12–14%）。</strong></li>
+<li><strong>這個落差在全文任何一處都沒有被說明。</strong> 最可能的解釋是完整病例分析（complete-case）——身體活動問卷、LDL、Townsend 等共變項有缺失——但<strong>本文從頭到尾沒有任何缺失資料的描述、缺失比例或處理方法</strong>。</li>
+<li><strong>[限制：Supplemental Table 5–7 與 Supplemental Methods 未提供，無法確認是否在補充資料中交代]</strong>，但主文對一個 12–14% 的樣本流失完全無交代，且無流程圖，這在 STROBE 報告規範下是明確的缺陷。</li>
+<li>次要不一致：各結局的推算分母彼此相差約 1,300 人（47,391 vs 48,750），符合「各結局分別排除盛行病例」的做法，但同樣未在 Methods 中說明。</li>
+</ul>
+<p><strong>（5）Figure 6 熱圖的視覺證據弱於文字宣稱。</strong>（圖頁 page_014）</p>
+<ul>
+<li>熱圖為 86 個基因 × 7 種狀態。<strong>視覺上絕大多數格子為白色或極淡色</strong>，僅約 10–15 個格子呈現飽和的紅/藍（如 SVIL、MYH7B、EYA4、PROCR、OSBPL6、CCDC141、TTN-AS1、TP53INP2、NDUFS3）。</li>
+<li>色階為 −1.76 至 +1.76（推測為 log fold change 或 z-score，圖說未明確定義單位）。</li>
+<li><strong>「74.4% 顯著調控」的說法與熱圖的視覺印象嚴重不符</strong>——因為「顯著」的門檻是統計 P 值，而在 84 天臥床這種高檢定力研究中，極小的 fold change 也能達到統計顯著。這正好呼應 §A1 的批判：<strong>該數字反映的是各來源研究的檢定力，而非生物效應的大小。</strong></li>
+<li>圖說宣稱的「approximately 3 times enrichment overlap」<strong>未附任何統計量、P 值或背景基因集定義</strong>，且此數字<strong>只出現在圖說，主文正文從未重述或提供檢定</strong>。</li>
+</ul>
+<h4>內部數字矛盾與交叉引用錯誤（圖頁核對所得）</h4>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>位置</th>
+<th>錯誤內容</th>
+<th>嚴重度</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>第 697 頁（圖頁 page_010）Results</td>
+<td>「A total of 16 loci were identified for sarcopenic obesity (<strong>Table 2</strong>)」——16 個 loci 在 <strong>Table 3</strong>，Table 2 是結局關聯表</td>
+<td>低（編輯疏失）</td>
+</tr>
+<tr>
+<td>2</td>
+<td>第 699 頁（圖頁 page_012）PRS 段</td>
+<td>All of Us 高血壓「<strong>OR: 1.04; 95% CI: 1.071-1.097</strong>」——<strong>點估計 1.04 落在自己的 CI 之外</strong>，數學上不可能。核對 Figure 5（圖頁 page_013），All of Us 高血壓的紅點約在 1.037，CI 約 1.025–1.05，與文字 CI 完全不符 → <strong>文字的 CI 是錯的</strong></td>
+<td><strong>中高（同儕審查未攔截的明確數字錯誤）</strong></td>
+</tr>
+<tr>
+<td>3</td>
+<td>Table 3（圖頁 page_011）vs 第 698 頁正文</td>
+<td>Table 3 列 CAND2 locus 的 lead variant 為 <strong>rs4642101</strong>（3:12800724）；正文 colocalization 段卻寫「the lead variant at the CAND2 locus (<strong>rs7650482</strong>)」——<strong>兩個不同的 rsID，未說明關係</strong></td>
+<td><strong>中高（此為全文唯一的 colocalization 旗艦證據）</strong></td>
+</tr>
+<tr>
+<td>4</td>
+<td>Methods 第 691 頁 vs Table 2 / Figure 4 表註</td>
+<td>Cox 共變項清單不一致：Methods <strong>無</strong> LV mass 與 LVEF，Table 2 與 Figure 4 表註<strong>有</strong></td>
+<td><strong>高（影響主結論的解讀）</strong></td>
+</tr>
+<tr>
+<td>5</td>
+<td>Abstract &quot;OBJECTIVES&quot;</td>
+<td>宣稱使用「<strong>long-term</strong> follow-up」；實際中位追蹤 <strong>4.18 年</strong></td>
+<td>中</td>
+</tr>
+<tr>
+<td>6</td>
+<td>Discussion 第 701 頁</td>
+<td>同段內先寫「demonstrated <strong>excellent</strong> concordance」，數行後寫「Bland-Altman analyses indicated <strong>moderate</strong> individual-level agreement」</td>
+<td>中</td>
+</tr>
+<tr>
+<td>7</td>
+<td>Discussion 第 703 頁</td>
+<td>稱 LV mass −3.5 g/SD 為「<strong>large effect size</strong>」；實為約 0.15 SD</td>
+<td>中</td>
+</tr>
+<tr>
+<td>8</td>
+<td>Table 3 第一部分表註</td>
+<td>定義 MAF、MTAG、SE，但這三欄位於 Table 3 Continued，非第一部分</td>
+<td>低</td>
+</tr>
+<tr>
+<td>9</td>
+<td>Results 轉錄體段</td>
+<td>「28 candidates ... short-term ... and 36 after 84-day bed rest」總和 = 64，恰等於宣稱的「64 of 86 in <strong>at least 1</strong> unloading model」→ <strong>暗示兩模型的重疊基因為零</strong>，與「一致的 unloading 反應」敘事矛盾</td>
+<td>中</td>
+</tr>
+</tbody>
+</table>
+<h4>統計面紅旗清單（≥ 5 點）</h4>
+<ol>
+<li><strong>無任何校準（calibration）分析</strong>，且從未報告任何模型的 C-statistic 絕對值——依 JAMA Users' Guide，這是預測效能宣稱的必要條件，缺此則「skepticism is warranted」。</li>
+<li><strong>continuous NRI 用於事件率 0.23–1.46% 的極低發生率情境</strong>。JAMA Users' Guide 明確指出 additive NRI 不考慮事件盛行率，在事件罕見時<strong>具誤導性</strong>，應改報 absolute NRI [參考: jama_alba_2017_ug_170001.md，Figure 3B 之範例：additive NRI = 12 而 absolute NRI = −1.36%]。本文報告的 NRI 0.100–0.111 幾乎必然由非事件組（占 98.5%）主導，<strong>未報告 absolute NRI</strong>，該數字無法解讀為「10% 的病人被正確重新分類」。</li>
+<li><strong>無任何多重比較校正</strong>（GWAS 除外）：20+ 個 Cox 模型、10 個 CMR 結局、約 27 個增量比較、PheWAS。</li>
+<li><strong>IDI 的 CI 下界觸及 0.000</strong>（心血管死亡 vs BMI：0.003, 0.000–0.016, P = 0.045；vs WHR：0.003, 0.000–0.019, P = 0.047）——這兩個是勉強跨線的邊界結果，卻被 Discussion 用來支撐「incremental clinical value」。</li>
+<li><strong>校正中介變項（LV mass）並以此比較與 LV mass 呈相反方向關聯的 BMI</strong>——不對稱衰減，方向有利於作者的結論。</li>
+<li><strong>缺失資料完全未描述</strong>，且推算分母與宣稱樣本數有 ~7,000 人（12–14%）的未說明落差；無 STROBE 流程圖。</li>
+<li><strong>無絕對風險、無 KM 曲線、無 number-at-risk</strong>——讀者無法評估效果的臨床規模或風險的時間分布。</li>
+<li><strong>PH 假設僅「視覺檢查」</strong>，無任何檢定統計量或圖表佐證。</li>
+<li><strong>暴露變項的 SD 未在主文給出</strong>，使全部 HR 在臨床上不可操作化。</li>
+<li><strong>PRS 的發現世代（UKB 影像組 n = 52,253）與 PheWAS 應用世代（UKB 非影像組 n &gt; 430,000）為同一生物資料庫</strong>，存在共享的族群結構與潛在親屬關係；All of Us 的複製（n &gt; 240,000）是真正的外部驗證，這部分應予肯定。</li>
+<li><strong>Figure 3 全數 y 軸截斷</strong>，視覺誇大臨床上無意義的差異（見上）。</li>
+</ol>
+<hr />
+<h2>D. 次組分析評估</h2>
+<p><strong>本文未執行任何預先指定的次組分析。</strong> 唯一接近次組呈現的是 Figure 3 的男女分層基線描述，其為描述性統計而非效果修飾（effect modification）分析——<strong>未提供任何性別分層的 HR，亦無 sex × SO index 的交互作用檢定</strong>。</p>
+<p>這其實是一個<strong>遺漏</strong>而非優點。理由：</p>
+<ol>
+<li>胸大肌肌肉量的男女分布幾乎完全不重疊（女性 120–203 g vs 男性 275–510 g，Figure 3）。以性別合併的 SD 進行標準化，意味著「1 SD」在兩性中代表的生理意義不同。</li>
+<li>女性胸大肌受乳房組織鄰接、脂肪浸潤影響，分割難度與偏差特性可能與男性不同；<strong>test set 僅 50 例，未報告分性別的 Dice</strong>。</li>
+<li>女性與男性的 LDL 趨勢方向相反（Figure 3），已提示存在性別特異的關聯結構。</li>
+</ol>
+<p><strong>建議的正確做法</strong>：報告 sex-stratified HR 與交互作用 P 值，並分性別報告表型驗證的相關係數與 Bland-Altman。</p>
+<hr />
+<h2>E. 紅旗清單</h2>
+<p><strong>設計 / 概念</strong></p>
+<ol>
+<li>「肌少性肥胖指數」<strong>不含任何肥胖判準</strong>；Figure 3 顯示分母（肌肉量）的變異幅度是分子（體重）的四倍以上——實質上是低肌肉量指標。</li>
+<li>最高風險組的平均 BMI 僅 28.6（女）/ 29.1（男）kg/m²，<strong>連 obesity 門檻都未達</strong>。</li>
+<li>Introduction 與 Discussion 環繞「已確診心衰竭的 obesity paradox」，資料卻是一般人口的<strong>發病</strong>風險——結構上無法回答該問題。</li>
+<li>UK Biobank MRI 因設備限制<strong>系統性排除極端肥胖者</strong>（作者未申報）。</li>
+<li>心衰竭亞型不可得，但 Discussion 大篇幅推論 HFpEF。</li>
+<li>完全無 CT 資料，卻主張可透過 transfer learning 移植至 CT（僅引用泛用綜述 ref 49）。</li>
+<li>肌內脂肪浸潤（myosteatosis）未處理；體積→質量的密度假設全文未述。</li>
+</ol>
+<p><strong>統計</strong>
+8. <strong>無校準分析、無 C-statistic 絕對值。</strong>
+9. <strong>無絕對風險、無 KM 曲線、無 number-at-risk。</strong>
+10. Cox 模型<strong>校正中介變項 LV mass 與 LVEF</strong>，且 Methods 正文與 Table 2 / Figure 4 表註<strong>直接矛盾</strong>。
+11. 以「顯著 vs 不顯著」宣稱優越性；Figure 4 的 CI <strong>明顯重疊</strong>。
+12. <strong>無多重比較校正</strong>（20+ 個 Cox 模型）。
+13. continuous NRI 用於事件率 0.23–1.46% 的情境，且<strong>未報告 absolute NRI</strong>。
+14. IDI CI 下界觸及 0.000 仍被引為「incremental clinical value」。
+15. <strong>缺失資料零描述</strong>；推算分母（≈ 48,000）與宣稱樣本數（55,599）差約 7,000 人，無流程圖。
+16. 暴露的 SD 未在主文提供，HR 無法臨床操作化。
+17. MI（1.08, 0.91–1.28）與中風（1.13, 0.96–1.33）為 INCONCLUSIVE，卻被說成 &quot;not associated&quot; 並用以支撐「心衰竭特異性」。
+18. 心血管死亡：109 事件 / 13 個共變項，HR 1.51 為三個結局中最高——典型 Winner's Curse 情境。
+19. <strong>Figure 3 全數 y 軸截斷</strong>（身高全幅 0.5 cm、LDL 全幅 0.1 mmol/L），視覺誇大無意義差異。
+20. 為 0.1 mmol/L 的 LDL 性別差異建構 QRISK/statin 處方的因果解釋。</p>
+<p><strong>遺傳 / 生物學</strong>
+21. 比值性狀 GWAS 無法歸屬訊號來源；16 loci 中 <strong>6 個是已知 BMI loci</strong>。
+22. <strong>唯一與心衰竭 colocalize 的 CAND2，正好是那 6 個已知 BMI loci 之一</strong>——旗艦證據可能反映的是既知的肥胖—心衰竭生物學。
+23. <strong>CAND2 的 rsID 在 Table 3（rs4642101）與正文（rs7650482）不一致。</strong>
+24. 從多基因 locus 中<strong>挑選聽起來像心臟的基因</strong>：CAND2 locus 的優先基因實為「RAF1, TMEM40, CAND2」（RAF1 排第一）；MYBPC3 是 CELF1 locus 的<strong>七個</strong>優先基因之一。敘事只提 CAND2 與 MYBPC3。
+25. 「13/16 loci 與心血管 GWAS 重疊」<strong>無虛無期望值、無正式富集檢定</strong>。
+26. 轉錄體：<strong>無富集檢定統計量</strong>；唯一的「3 倍」只在圖說；各資料集<strong>檢定力差異未報告</strong>，「unloading 特異性」可能純屬 power artifact。
+27. 28 + 36 = 64 的算術巧合，暗示兩個 unloading 模型的重疊基因近乎為零，與「一致 unloading 反應」敘事矛盾。
+28. 7 個比對資料集中多數為作者群自有資料，<strong>非系統性或預先指定的選取</strong>。
+29. <strong>具備 MR 的全部材料（GWAS + PRS）卻未執行孟德爾隨機化</strong>——最能檢驗因果性的分析被略過。
+30. 單一階段 GWAS 無獨立複製（作者已承認）；5/16 loci 依賴 MTAG。</p>
+<p><strong>敘事 / 報告 / COI</strong>
+31. Abstract &quot;long-term follow-up&quot; vs 實際中位 4.18 年。
+32. Abstract &quot;<strong>specifically</strong> modulated during muscle atrophy&quot; — 無統計支撐。
+33. Abstract &quot;Analyses <strong>identified</strong> ACVR2B&quot; — 既有靶點的事後查詢被包裝為發現。
+34. 同段內 &quot;excellent concordance&quot; 與 &quot;moderate individual-level agreement&quot; 並存。
+35. 稱 LV mass −3.5 g（≈ 0.15 SD）為「large effect size」。
+36. Abstract 與 Central Illustration 稱「adverse cardiac remodeling」，但 <strong>LVEF（P = 0.57）與 GLS（P = 0.34）完全無關聯</strong>。
+37. native T1 +6.4 ms（低於 scan-rescan 重複性）被詮釋為「indicative of myocardial diffuse fibrosis」。
+38. Discussion 詳述 BELIEVE 試驗的療效百分比（22.1% 減重、92.8% 脂肪佔比），<strong>唯一引用來源為 clinicaltrials.gov 註冊條目（ref 42）</strong>，非同儕審查發表。
+39. 全體宣告「無任何商業或財務關係」，但 Discussion 對特定商業藥物組合有明顯推介性論述。
+40. <strong>All of Us 高血壓的 OR 1.04 落在自己的 95% CI（1.071–1.097）之外</strong>——同儕審查未攔截的明確數字錯誤（修訂稿→接受僅 3 天）。</p>
+<hr />
+<h2>F. 反向解釋</h2>
+<p><strong>替代解釋 1：這是「全身失能/衰弱」的代理指標，不是特異的心血管表型。</strong></p>
+<ul>
+<li><strong>支持</strong>：全因死亡的關聯（HR 1.37，707 事件）最穩健，且 PheWAS 顯示 PRS 與<strong>敗血症</strong>顯著相關（UKB OR 1.05, P = 4.94×10⁻⁹；All of Us OR 1.03）——敗血症與心血管無關。身體活動量在最高組降約 32%（Figure 3）。指數與 MI、中風皆無關聯，與「動脈粥狀硬化路徑」不符。作者自己也承認「it may also be an important biomarker beyond cardiovascular disease」。</li>
+<li><strong>反對</strong>：對心衰竭的關聯（1.31）強於對 MI/中風（1.08/1.13），若純為衰弱代理，理應對所有結局一致地相關。</li>
+<li><strong>綜合判斷</strong>：<strong>這是最強的替代解釋</strong>，且與資料高度相容。心衰竭在 ICD-10 編碼中本身就與衰弱、多重共病高度重疊，住院性心衰竭診斷在衰弱長者中的發生率遠高於健壯者。本文無法區分「肌少性肥胖 → 心衰竭」與「全身衰弱 → 心衰竭 + 死亡 + 敗血症」。</li>
+</ul>
+<p><strong>替代解釋 2：亞臨床疾病的反向因果（occult disease）。</strong></p>
+<ul>
+<li><strong>支持</strong>：肌肉流失是未診斷惡性腫瘤、COPD、CKD、早期失智的早期表現，且這些疾病也預測心衰竭與死亡。中位追蹤僅 4.18 年，1 年 lag 不足。全因死亡的高 HR 與此相符。</li>
+<li><strong>反對</strong>：排除 1 年內事件後 HR 幾乎不變（1.30 / 1.54 / 1.35）；且與 CMR 心臟表型（LV mass、MVR、T1）的橫斷面關聯不易用單純的隱匿疾病解釋。</li>
+<li><strong>綜合判斷</strong>：<strong>部分成立</strong>。1 年 lag 只能排除即刻反向因果，無法排除 2–5 年的慢性亞臨床過程。需要 2–3 年 lag 分析與癌症死亡負對照才能有效排除。</li>
+</ul>
+<p><strong>替代解釋 3：「優於 BMI」是模型設定（校正 LV mass）的人為產物。</strong></p>
+<ul>
+<li><strong>支持</strong>：Table 2 表註明列 LV mass 與 LVEF 為共變項，而 Methods 正文未列。SO index 與 LV mass 強烈<strong>負</strong>相關（−3.5 g/SD），BMI 與 LV mass 為<strong>正</strong>相關（作者引用 ref 51）。在同一模型中校正 LV mass，會對兩者產生<strong>方向相反</strong>的衰減效果。</li>
+<li><strong>反對</strong>：全因死亡的 SO index HR（1.37）與 BMI（1.13）差距較大，且三組敏感度分析方向一致。此外 CMR 表型模型（Table 1）並未校正 LV mass，仍見強關聯。</li>
+<li><strong>綜合判斷</strong>：<strong>無法排除，且是必須由作者澄清的問題。</strong> 由於 Methods 與 Table 表註直接矛盾，讀者甚至無法確定實際跑的是哪個模型。這一點單獨就足以要求勘誤或作者回應。</li>
+</ul>
+<p><strong>替代解釋 4：遺傳訊號實為肥胖生物學，而非肌肉生物學。</strong></p>
+<ul>
+<li><strong>支持</strong>：16 個 loci 中 6 個是已知 BMI loci；唯一與心衰竭 colocalize 的 CAND2 正是其中之一；指數的分子是體重；PheWAS 的最強關聯是「obesity」本身（Figure 5 中 obesity 的 OR 最高，約 1.10）。</li>
+<li><strong>反對</strong>：rg（SO index vs 胸大肌肌肉量）= −0.762，顯示與肌肉量的遺傳共享很強；且 TTN、PLEC、MYH7B、ACVR2B 等骨骼肌基因並非已知 BMI loci。</li>
+<li><strong>綜合判斷</strong>：<strong>混合</strong>。遺傳架構顯然同時包含肌肉與肥胖兩個成分；問題在於作者只呈現了肌肉/心臟這一側的敘事，且旗艦的 colocalization 證據恰落在肥胖那一側。需要對 BMI 做 conditional analysis 才能釐清。</li>
+</ul>
+<hr />
+<h2>G. 最終裁決</h2>
+<h3>整體可信度：<strong>中</strong></h3>
+<p>分層裁決（三種主張的可信度差異極大，不應以單一等級概括）：</p>
+<table>
+<thead>
+<tr>
+<th>主張層次</th>
+<th>可信度</th>
+<th>理由</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>① 深度學習可從 CMR 可靠量化胸大肌</strong>（族群層級）</td>
+<td><strong>中高</strong></td>
+<td>nnU-Net 管線標準、Dice 0.832 合格、n ≈ 55,000。扣分：test set 僅 50 例、無外部驗證、無 scan-rescan、密度假設未述、肌內脂肪未處理、驗證相關係數可能未分性別</td>
+</tr>
+<tr>
+<td><strong>② 低肌肉量（以體重加權）與心衰竭/死亡的族群層級關聯</strong></td>
+<td><strong>中</strong></td>
+<td>樣本大、暴露客觀、三組敏感度分析一致（優點）。扣分：校正中介變項、無多重比較校正、慢性反向因果未排除、無 E-value、無 MR、無絕對風險</td>
+</tr>
+<tr>
+<td><strong>③ 此指數「優於」傳統人體測量指標、具臨床效用</strong></td>
+<td><strong>弱</strong></td>
+<td>ΔC = 0.005–0.009、IDI 0.002–0.003（下界觸及 0）、<strong>完全無校準資料</strong>、continuous NRI 在極低事件率下不可解讀、「顯著 vs 不顯著」的錯誤比較、Figure 4 CI 明顯重疊</td>
+</tr>
+<tr>
+<td><strong>④ 揭示肌少性肥胖的因果生物學與治療靶點</strong></td>
+<td><strong>弱</strong></td>
+<td>比值性狀 GWAS 訊號無法歸屬、唯一 colocalization 落在已知 BMI locus 且 rsID 前後不一致、從多基因 locus 挑選心臟基因、轉錄體無正式富集檢定且極可能為 power artifact、ACVR2B 為既有靶點、無 MR、無獨立複製</td>
+</tr>
+<tr>
+<td><strong>⑤ 澄清 obesity paradox</strong></td>
+<td><strong>不成立</strong></td>
+<td>研究設計（一般人口的發病風險）在結構上無法回答已病人群的預後悖論</td>
+</tr>
+</tbody>
+</table>
+<h3>可採用的條件</h3>
+<ul>
+<li>作為<strong>族群層級</strong>的流行病學證據，支持「骨骼肌量本身是心血管風險的獨立相關因子，且此訊號不被 BMI/WHR/WHtR 捕捉」這個<strong>方向性</strong>結論。</li>
+<li>作為<strong>方法學示範</strong>：從既有心臟影像機會性導出體組成表型是技術上可行的，值得後續研究採用（但需補上密度、脂肪浸潤、重複性、外部驗證）。</li>
+<li>作為<strong>假說產生</strong>：低骨骼肌量 ↔ 低心肌量 ↔ 高 native T1 的三聯表型，值得在 HFpEF 世代中專門驗證。</li>
+</ul>
+<h3>不建議採用的情境</h3>
+<ul>
+<li>個別病人的臨床風險分層（無校準、判別度增益低於任何合理門檻、SD 無臨床單位）。</li>
+<li>已確診心衰竭患者的預後判斷或 obesity paradox 相關推論。</li>
+<li>極端肥胖者、非白人族群、&gt; 70 歲、台灣/亞洲族群。</li>
+<li>CT 上的機會性篩檢（本文無 CT 資料）。</li>
+<li>任何關於 bimagrumab 用藥對象選擇的推論。</li>
+</ul>
+<h3>若要改觀，最需要的 3 個關鍵改進</h3>
+<ol>
+<li>
+<p><strong>澄清並修正 Cox 模型設定，改以不校正 LV mass / LVEF 為主分析，並補上完整的預測效能評估。</strong> 具體包括：說明 Methods 與 Table 2 表註何者為實際模型；報告各模型的 C-statistic <strong>絕對值</strong>；<strong>提供校準曲線（預測 vs 觀察風險，依風險十分位）</strong>；以 absolute NRI 取代或補充 continuous NRI；報告各風險分層的絕對事件率與 KM 曲線。沒有校準，任何「改善風險預測」的主張都不應被接受。</p>
+</li>
+<li>
+<p><strong>執行孟德爾隨機化，並補上完整的世代流程圖與缺失資料報告。</strong> 本文已具備 MR 所需的全部材料（16 個 loci、PRS、UKB + All of Us），卻只做了單一 locus 的 colocalization。同時必須用 STROBE 流程圖交代 55,599 → ≈ 48,000 的約 7,000 人落差，並報告各共變項的缺失比例與處理方式。</p>
+</li>
+<li>
+<p><strong>重新定義表型，使其真正反映「肌少性</strong>肥胖**」，並修正生物學章節的證據強度。** 具體包括：以脂肪量（DEXA 或 MRI）× 肌肉量的<strong>二維分類</strong>取代單一比值，報告四象限各自的結局；分性別報告驗證相關係數與 Bland-Altman；量化肌內脂肪浸潤；轉錄體分析補上正式富集檢定（含各資料集樣本數、DEG 清單長度、匹配背景基因集、permutation P 值）；澄清 CAND2 的 rsID 不一致；對 BMI 做 conditional GWAS 以區分肌肉與肥胖訊號。</p>
+</li>
+</ol>
+<h3>一句話結論</h3>
+<p><strong>這篇論文可信地證明了「用 CMR 自動量測胸大肌是可行的，且低肌肉量與心衰竭和死亡有族群層級的關聯」，但它的指數其實不含肥胖成分、判別度增益小到沒有臨床意義、且完全沒有做校準——「優於 BMI」與「揭示因果生物學」這兩個核心賣點，證據都撐不住。</strong></p>
+<hr />
+<hr />
+<h2>APPENDIX：因果推論補充評估（觀察性研究）</h2>
+<h3>Target Trial 思維框架</h3>
+<p><strong>若以隨機對照試驗回答本文的因果問題，理想設計為何？</strong></p>
+<p>「肌少性肥胖 → 心衰竭」的因果宣稱，其對應的假想試驗應為：在中老年一般人口中，隨機分派至「維持/增加骨骼肌量的介入」（阻力訓練、蛋白質補充、或 myostatin/activin 拮抗）vs「常規照護」，追蹤新發心衰竭與心血管死亡。</p>
+<p><strong>對應到本觀察性研究，哪些關鍵條件無法滿足？</strong></p>
+<table>
+<thead>
+<tr>
+<th>Target trial 要素</th>
+<th>本研究的對應</th>
+<th>落差</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>合格條件</strong></td>
+<td>40–69 歲、能完成 CMR、無盛行結局</td>
+<td><strong>時間零點與合格條件的定義不明</strong>：影像日被當作 time zero，但參與者在此之前已被觀察 5–9 年；未說明如何處理盛行心衰竭/MI（推算分母的差異暗示有排除，但 Methods 未述）</td>
+</tr>
+<tr>
+<td><strong>介入定義</strong></td>
+<td>連續暴露變項的 1 SD 增加</td>
+<td><strong>無明確的介入版本</strong>（見下方 Consistency）</td>
+</tr>
+<tr>
+<td><strong>分派</strong></td>
+<td>無隨機化；僅多變量迴歸</td>
+<td>未使用 propensity、IV、或 MR</td>
+</tr>
+<tr>
+<td><strong>追蹤起點與終點</strong></td>
+<td>影像日 → 事件或 2023-01-01</td>
+<td>合理</td>
+</tr>
+<tr>
+<td><strong>結局</strong></td>
+<td>HES + 死亡登錄</td>
+<td>合理，但心衰竭無亞型</td>
+</tr>
+<tr>
+<td><strong>因果對比</strong></td>
+<td>隱含「per-protocol」式的持續暴露對比</td>
+<td>未明確界定要估計的是何種因果估計量（causal estimand）</td>
+</tr>
+</tbody>
+</table>
+<p><strong>最關鍵的落差</strong>：Target trial 的邏輯要求時間零點、合格條件、介入分派<strong>同時</strong>定義。本文的暴露是在影像當日一次性橫斷面測量，之後不再更新（無 time-varying exposure），因此估計的其實是「<strong>基線肌肉量狀態</strong>與後續事件的關聯」，而非「肌肉量改變的效果」。這兩者在臨床決策上意義完全不同——後者才是治療決策所需，而本文完全無法提供。</p>
+<h3>三大可識別性條件</h3>
+<table>
+<thead>
+<tr>
+<th>條件</th>
+<th>評估</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Exchangeability（無未測混淆）</strong></td>
+<td><strong>不滿足。</strong> 已測混淆包含 age, sex, ethnicity, SBP, height, smoking, alcohol, T2DM, Townsend, LDL, physical activity（+ 可能 LV mass, LVEF）。<strong>未測</strong>的關鍵混淆包括：<strong>衰弱（frailty）指數、共病負擔（Charlson/多重用藥）、蛋白質攝取與整體營養、慢性發炎標記（CRP/IL-6）、腎功能、隱匿惡性腫瘤、憂鬱、社會孤立、肌肉品質（脂肪浸潤）</strong>。其中「衰弱」與「共病負擔」同時強烈影響肌肉量與心衰竭/死亡，是最典型的未測混淆。身體活動雖有校正，但來自自填問卷（RPAQ，ref 15），測量誤差大 → <strong>殘餘混淆必然存在</strong>。作者僅以一句「residual confounding cannot be ruled out」帶過，<strong>未提供 E-value 或負對照結局來量化其強度需求</strong>。依 [參考: jama_agoritsas_2017_ug_160001.md]，例行資料的觀察性研究死亡率估計相較後續 RCT 系統性偏樂觀約 31%——本文的 HR 全數落在 1.31–1.51，恰在此偏誤量級之內。</td>
+</tr>
+<tr>
+<td><strong>Positivity（正概率假設）</strong></td>
+<td><strong>部分違反（結構性）。</strong> 因 MRI 孔徑/重量限制，<strong>BMI ≥ 約 35–40 的個體在此世代中的機率趨近於零</strong>——這是結構性 positivity violation，而非隨機性。因此在肥胖光譜的頂端，指數的效果<strong>在資料中不可識別</strong>，任何外推皆屬模型外插。此外 95% 白人 → 非白人層的 positivity 亦嚴重不足。<strong>作者完全未討論此點。</strong></td>
+</tr>
+<tr>
+<td><strong>Consistency（一致性）</strong></td>
+<td><strong>不滿足。</strong> 「肌少性肥胖指數增加 1 SD」對應的<strong>介入版本高度不明確</strong>：可以來自體重增加（脂肪）、體重增加（水腫）、肌肉量下降（廢用性萎縮）、肌肉量下降（惡病質）、或肌肉量下降（神經性）。這些「治療版本」的下游後果截然不同，卻被合併為同一個暴露對比。這是 treatment version irrelevance 假設的明確違反，也直接呼應 §B1 的核心批判——<strong>指數把兩個生物學意義相反的過程壓縮成一個數字</strong>。</td>
+</tr>
+</tbody>
+</table>
+<h3>Time-varying Confounding</h3>
+<ul>
+<li>本研究為<strong>單一時點暴露</strong>，未使用 time-varying exposure，因此不涉及 marginal structural model 或 g-formula 的需求。</li>
+<li><strong>但這本身是限制</strong>：UK Biobank 有重複影像造訪（repeat imaging visit），可構建暴露變化軌跡。使用單一時點暴露意味著暴露錯分（exposure misclassification）隨追蹤時間增長而加劇，一般會使關聯偏向虛無（保守方向）。</li>
+<li><strong>潛在的中介偏差</strong>：若實際模型確實校正了 LV mass 與 LVEF，而這兩者是<strong>受暴露影響的中介變項</strong>，則構成典型的 mediator adjustment；若 LVEF 同時受未測共同原因影響，則進一步構成 <strong>collider stratification bias</strong>，可能引入方向不定的虛假關聯。這是本文最需要作者澄清的單一技術問題。</li>
+</ul>
+<hr />
+<p><strong>[本次評讀的輸入限制彙總]</strong></p>
+<ul>
+<li>主要輸入為 PDF 轉出的 markdown，另有 10 張圖頁 PNG 可視覺判讀（Fig 1、3A、3B、4、5、6、Table 1、2、3 與 Central Illustration 皆已實際檢視）。</li>
+<li><strong>Supplemental Methods、Supplemental Tables 1–11、Supplemental Figures 1–3 皆未提供</strong>。因此下列項目無法核實：分割模型的完整效能表（S-Table 1）、基線特徵數值表（S-Tables 2–3）、指數的 SD 與分布（S-Table 4）、C-statistic 絕對值與完整增量分析（S-Table 5）、敏感度分析全表（S-Tables 6–7）、loci 與心血管性狀的重疊（S-Table 8）、基因優先化評分（S-Tables 9–10）、轉錄體 fold change（S-Table 11）、表型驗證的散布圖與相關係數是否分性別（S-Figure 1）、Bland-Altman 圖（S-Figure 2）、loci 韋恩圖（S-Figure 3）。</li>
+<li><strong>同期社論（JACC 2026;88:707–709, DOI 10.1016/j.jacc.2026.05.038）的全文擷取兩次失敗</strong>（<code>fetch_editorial.py</code> 全部 7 條路徑失敗，遭 Cloudflare 攔截；WebFetch 回傳 403）。SECTION-0 第 7 項的外部專業意見層實質缺席。</li>
+<li>Figure 1（分割示例）、Figure 6（熱圖）已視覺檢視；Figure 6 熱圖的色階單位（log FC 或 z-score）在圖說中未定義，<strong>無法精確量化各格數值</strong>，僅能判讀「絕大多數格子接近白色、少數飽和」的整體型態。</li>
+</ul>
+<hr />
+<p><strong>Sources:</strong></p>
+<ul>
+<li><a href="https://www.jacc.org/doi/10.1016/j.jacc.2026.05.022">Imaging-Derived Sarcopenic Obesity and Cardiovascular Outcomes | JACC</a></li>
+<li><a href="https://www.jacc.org/doi/10.1016/j.jacc.2026.05.038">Reframing Cardiometabolic Risk and Frailty Through Sarcopenic Obesity | JACC</a> — 社論全文無法取得；書目資料據 PubMed（PMID 42383942），DOI: <a href="https://doi.org/10.1016/j.jacc.2026.05.038">10.1016/j.jacc.2026.05.038</a></li>
+<li><a href="https://www.acc.org/Latest-in-Cardiology/Journal-Scans/2026/06/29/15/38/Novel-Sarcopenic-Obesity-Index">Novel Sarcopenic Obesity Index Predicts CV Risk — American College of Cardiology Journal Scan</a></li>
+<li><a href="https://researchpublications.its.qmul.ac.uk/publications/staff/53453.html">Publications: Mihir Sanghvi — Queen Mary University of London</a></li>
+<li><a href="https://journals.plos.org/plosone/article?id=10.1371%2Fjournal.pone.0185114">The impact of cardiovascular risk factors on cardiac structure and function: UK Biobank imaging enhancement study — PLOS One</a></li>
+<li><a href="https://www.acc.org/latest-in-cardiology/articles/2026/06/17/17/26/just-announced">2025 Journal Impact Factor Scores Announced — American College of Cardiology</a></li>
+<li><a href="https://www.acc.org/PublishinJACC">Publish in JACC — American College of Cardiology</a></li>
+</ul>
+<p><em>本節引用之 PubMed 檢索結果依 PubMed 使用規範標註來源；社論書目資料取自 PubMed。</em></p>
+
+<footer class="appraisal-meta">評讀資訊：模型：claude-opus-5 (claude)  ·  route：observational  ·  產出時間：2026-08-16 20:35 CST</footer>
+</main>
+</body>
+</html>
