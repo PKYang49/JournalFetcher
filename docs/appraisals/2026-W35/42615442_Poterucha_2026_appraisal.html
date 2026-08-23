@@ -1,0 +1,1150 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI-ECG Detection of Structural Heart Disease in the Community Setting: Transportability and Spectrum Effects in the PREVUE-VALVE Study.</title>
+<style>
+  :root {
+    --bg: #fafafa;
+    --card: #ffffff;
+    --text: #1a1a1a;
+    --muted: #6b6b6b;
+    --border: #e5e5e5;
+    --accent: #0b5fff;
+  }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang TC",
+      "Microsoft JhengHei", sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    margin: 0;
+    padding: 24px 16px 64px;
+    line-height: 1.72;
+  }
+  main {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    margin: 0 auto;
+    max-width: 840px;
+    padding: 22px 26px;
+  }
+  nav {
+    margin: 0 auto 14px;
+    max-width: 840px;
+    color: var(--muted);
+    font-size: 14px;
+  }
+  a { color: var(--accent); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  h1, h2, h3, h4 { line-height: 1.35; }
+  h1 { font-size: 26px; margin-top: 0; }
+  h2 { border-top: 1px solid var(--border); padding-top: 18px; }
+  code {
+    background: rgba(127, 127, 127, 0.12);
+    border-radius: 4px;
+    padding: 1px 4px;
+  }
+  table {
+    border-collapse: collapse;
+    table-layout: auto;
+    width: 100%;
+    max-width: 100%;
+  }
+  th, td {
+    border: 1px solid var(--border);
+    overflow-wrap: anywhere;
+    padding: 6px 8px;
+    text-align: left;
+    vertical-align: top;
+  }
+  blockquote {
+    border-left: 3px solid var(--accent);
+    color: var(--muted);
+    margin-left: 0;
+    padding-left: 14px;
+  }
+  .appraisal-meta {
+    border-top: 1px solid var(--border);
+    margin-top: 28px;
+    padding-top: 14px;
+    color: var(--muted);
+    font-size: 13px;
+  }
+  @media (max-width: 600px) {
+    body {
+      padding: 12px 8px 40px;
+    }
+    main {
+      padding: 16px 12px;
+    }
+    h1 {
+      font-size: 22px;
+    }
+    table {
+      font-size: 12px;
+      table-layout: fixed;
+    }
+    th, td {
+      padding: 4px 5px;
+    }
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #1a1a1a;
+      --card: #242424;
+      --text: #e8e8e8;
+      --muted: #999;
+      --border: #333;
+      --accent: #6ea8ff;
+    }
+  }
+</style>
+</head>
+<body>
+<nav><a href="../../2026-W35.html">← 回到 2026-W35 週報</a></nav>
+<main>
+<h1>AI-ECG Detection of Structural Heart Disease in the Community Setting: Transportability and Spectrum Effects in the PREVUE-VALVE Study.</h1>
+<h1>醫學文獻批判性評讀</h1>
+<p><strong>AI-ECG Detection of Structural Heart Disease in the Community Setting: Transportability and Spectrum Effects in the PREVUE-VALVE Study</strong></p>
+<hr />
+<h2>SECTION-0：文章全面描述</h2>
+<h3>0. 文章身份證</h3>
+<table>
+<thead>
+<tr>
+<th>項目</th>
+<th>內容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>標題</td>
+<td>AI-ECG Detection of Structural Heart Disease in the Community Setting: Transportability and Spectrum Effects in the PREVUE-VALVE Study</td>
+</tr>
+<tr>
+<td>期刊</td>
+<td><em>Journal of the American College of Cardiology</em> (JACC) 2026;88(7):752–764</td>
+</tr>
+<tr>
+<td>DOI</td>
+<td>10.1016/j.jacc.2026.06.013｜PMID 42615442</td>
+</tr>
+<tr>
+<td>授權</td>
+<td>CC BY-NC-ND 4.0（Open Access）</td>
+</tr>
+<tr>
+<td>註冊</td>
+<td>NCT05357404</td>
+</tr>
+<tr>
+<td>文章類型</td>
+<td><strong>診斷準確度 / AI 模型外部驗證研究（transportability study）</strong>，巢狀於一個前瞻性社區流行病學世代（PREVUE-VALVE）之內</td>
+</tr>
+<tr>
+<td>路由判斷</td>
+<td><strong>SKILL-C</strong>（Diagnostic accuracy + AI/ML 模型評估）</td>
+</tr>
+</tbody>
+</table>
+<p>這不是一般的「模型表現很好」型 AI 論文，而是罕見的<strong>由模型發明人自己執行、且結果對自家模型不利的 domain-shift 驗證研究</strong>。這個定位本身就值得先記在心裡，後面 COI 段落會回來討論。</p>
+<hr />
+<h3>1. 作者團隊評論</h3>
+<p><strong>通訊作者</strong>：David J. Cohen, MD, MSc — Cardiovascular Research Foundation (CRF) / St Francis Hospital, Roslyn NY。介入心臟學結果研究與健康經濟學領域的核心人物。</p>
+<p><strong>共同第一作者</strong>：Timothy J. Poterucha（現任 Mayo Clinic，原 Columbia）與 John Weston Hughes, PhD（Columbia）。
+<strong>共同資深作者</strong>：Pierre Elias（Columbia / NewYork-Presbyterian）與 David J. Cohen。</p>
+<p><strong>團隊構成</strong>：這是一個罕見的三方混合團隊——</p>
+<ul>
+<li><strong>AI 開發端</strong>：Poterucha、Hughes、Elias、Hartzel、Ruhl、vanMaanen（NYP 資訊團隊）</li>
+<li><strong>結構性心臟病臨床試驗端</strong>：Leon、Mack、Granada、Lindman、Brener（PARTNER / COAPT / TAVR 世代的核心人物）</li>
+<li><strong>外部驗證端</strong>：Rogers、Perez（Stanford）、Avram、Tastet（HeartWise.ai / Montreal Heart Institute）</li>
+<li><strong>抽樣方法學端</strong>：Raphael Nishimura, PhD（University of Michigan Institute for Social Research）——一位調查抽樣統計學家出現在作者名單中，說明 PREVUE-VALVE 的隨機抽樣設計有正規調查方法學支撐，這是本研究的重要品質保證。</li>
+</ul>
+<p><strong>團隊過往研究</strong>［外部］：</p>
+<ul>
+<li>Poterucha TJ, Jing L, Ricart RP, et al. <strong>Detecting structural heart disease from electrocardiograms using AI.</strong> <em>Nature</em>. 2025;644:221–230.（即 EchoNext v1 原始論文，本文評估對象的前身）</li>
+<li>Elias P, Jain SS, Poterucha T, et al. AI for cardiovascular care–part 1: advances. <em>JACC</em>. 2024;83:2472–2486.</li>
+<li>Jain SS, Elias P, Poterucha T, et al. AI in cardiovascular care–part 2: applications. <em>JACC</em>. 2024;83:2487–2496.</li>
+<li>Brener MI, Chuang ML, Nishimura R, et al. <strong>Population prevalence of valvular heart disease in the United States: the PREVUE-VALVE study.</strong> <em>JACC</em>. 2026;87:3227–3239.（本文的母研究，同期刊 2026 年 6 月刊出）</li>
+</ul>
+<p>這是該領域的<strong>核心研究團隊</strong>，不是跨領域首次切入。EchoNext 的訓練資料集也已公開於 PhysioNet［外部: physionet.org/content/echonext/］。</p>
+<p><strong>⚠️ 利益揭露評估（本文最需要留意的一段）</strong></p>
+<p>［文內］：</p>
+<ul>
+<li><strong>研究經費</strong>：PREVUE-VALVE 由 Cardiovascular Research Foundation 主辦，經費來自 <strong>Edwards Lifesciences、Abbott、Philips</strong> 的 investigator-initiated grants。這三家都是瓣膜器材／影像設備廠商，對「證明社區中有大量未診斷 VHD」有直接商業利益。</li>
+<li><strong>模型專利</strong>：Poterucha 與 Elias 是 EchoNext 的<strong>發明人，可能收取權利金或授權費</strong>。</li>
+<li><strong>公司持股</strong>：Hughes（共同第一作者）、Long、Rocha、Ruhl 持有 <strong>Pathway Labs</strong> 股權；Elias 亦持有 Pathway Labs 股權。</li>
+<li><strong>主辦單位</strong>：Granada 為 CRF 執行長，同時是 Cephea Valve Technologies（已被 Abbott 收購）共同創辦人。</li>
+<li><strong>共同資深/通訊作者 Cohen</strong>：接受 Edwards、Abbott、Boston Scientific、Philips、CathWorks、Zoll 的機構研究經費與顧問費。</li>
+<li>Leon、Mack、Lindman：PARTNER / COAPT / EARLY TAVR / Apollo 等主要瓣膜試驗主持人，與 Edwards / Abbott / Medtronic 深度連結。</li>
+</ul>
+<p>［外部: NewYork-Presbyterian Advances、Businesswire 2026-06-23、Medical Economics］：<strong>Pathway Labs 由 Pierre Elias 創立，EchoNext 於 2026 年 6 月 23 日取得 FDA 510(k) clearance</strong>，宣稱為全球首個多病症心臟 AI 認證產品，並與 OpenEvidence 建立合作。</p>
+<p><strong>［評估］利益關係的方向性分析（重要且需要細緻處理）</strong></p>
+<p>這裡有兩個方向相反的訊號，必須同時陳述：</p>
+<ol>
+<li>
+<p><strong>有利於可信度</strong>：本文結論<strong>不利於自家產品的最大化宣稱</strong>。發明人與持股人主動發表「我們的模型在社區族群表現從 AUC 0.83 掉到 0.71、PPV 只有 14%、不支持廣泛篩檢」，這在 AI 醫材文獻中相當罕見，方法學誠信值得肯定。</p>
+</li>
+<li>
+<p><strong>需要留意的時序與定位吻合</strong>：本文 <strong>2026-06-12 accepted</strong>，FDA clearance <strong>2026-06-23</strong>［外部］，正式出版 <strong>2026-08-18</strong>。文章的核心臨床建議是「近期價值來自 targeted deployment 而非 broad screening，特別是<strong>已經在做 ECG 的既有臨床流程中的 opportunistic use</strong>」——這<strong>恰好就是 FDA 核准的使用情境</strong>，也恰好是產品目前有適應症的範圍。同時，文章結尾推薦的「AI-ECG + focused TTE 的分層偵測策略」，在商業上對三家出資廠商（Edwards、Abbott 的瓣膜器材；Philips 的超音波設備）都是有利的下游情境。</p>
+</li>
+</ol>
+<p>這不是指控，而是讀者必須自己校正的框架效應：<strong>這篇文章看起來是在「自我設限」，但它設限的方向正好把讀者導向產品已獲核准、且對出資者有利的那個使用情境</strong>，同時把「廣泛篩檢」這個目前無適應症、且會招致監管與成本效益質疑的路徑主動排除。研究本身的數據是可信的；需要警覺的是<strong>論述框架的選擇</strong>，而非數字。</p>
+<hr />
+<h3>2. 文獻 Metadata 整理</h3>
+<table>
+<thead>
+<tr>
+<th>項目</th>
+<th>內容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Received</td>
+<td>2026-03-17［文內］</td>
+</tr>
+<tr>
+<td>Revised received</td>
+<td>2026-06-11［文內］</td>
+</tr>
+<tr>
+<td>Accepted</td>
+<td>2026-06-12［文內］</td>
+</tr>
+<tr>
+<td><strong>投稿至接受總天數</strong></td>
+<td><strong>87 天</strong>（自行計算）</td>
+</tr>
+<tr>
+<td>修訂後至接受</td>
+<td><strong>1 天</strong>（自行計算）</td>
+</tr>
+<tr>
+<td>正式出版</td>
+<td>2026-08-18</td>
+</tr>
+<tr>
+<td>Impact Factor</td>
+<td><strong>22.3</strong>（2026-06-17 發布，基於 2025 引用資料）［外部: journalmetrics.org / manusights］</td>
+</tr>
+<tr>
+<td>期刊分區</td>
+<td>JCR Q1，心臟科頂尖期刊</td>
+</tr>
+<tr>
+<td>Open Access</td>
+<td>是（CC BY-NC-ND）</td>
+</tr>
+<tr>
+<td>邀稿 vs 投稿</td>
+<td>文內未揭露；無 &quot;invited&quot; 標記，格式為 ORIGINAL RESEARCH［文內］</td>
+</tr>
+</tbody>
+</table>
+<p><strong>［評估］審查速度</strong>：JACC 官方公布的平均「至接受天數」我無法從可靠來源取得——搜尋僅得到一個部落格型來源宣稱 first decision 14–21 天［外部: manusights，<strong>來源品質偏低，不宜作為基準</strong>］。因此無法給出「相對平均值快或慢」的定量判斷，此欄標註為 <strong>[無法取得可靠比較基準]</strong>。</p>
+<p>可以說的是：87 天含一輪修訂、且修訂後隔天即接受，屬於順暢的審查流程；考量本文是同期刊兩個月前（JACC 2026;87:3227–3239）已刊出之 PREVUE-VALVE 主論文的<strong>姊妹論文</strong>，且 JACC 同時安排了 companion editorial（第 765 頁），編輯部對這個研究計畫顯然有既定的投入，走得比一般外部投稿順暢是合理的。</p>
+<hr />
+<h3>3. 研究背景［僅根據文內］</h3>
+<p><strong>既有事實</strong>：</p>
+<ul>
+<li>AI 診斷模型在多種心血管疾病展現優異表現，包括從 ECG 偵測結構性心臟病（SHD）［ref 1-4］。</li>
+<li>這些模型幾乎都在<strong>院內族群</strong>開發驗證，該族群因臨床適應症驅動檢查而富集了較嚴重、表型較鮮明的疾病［ref 5］。</li>
+<li>一般假設此表現可外推至社區或篩檢情境［ref 6］。</li>
+</ul>
+<p><strong>知識缺口</strong>：
+作者指出，院內與社區族群的差異<strong>不只是盛行率</strong>，還包括疾病譜（disease spectrum）與臨床脈絡（clinical context）［ref 7, 8］。院內檢查是由症狀、異常發現或臨床醫師疑慮所驅動，因此模型學到的可能同時包含「疾病生物學」與「選擇病人做檢查的那個脈絡」［ref 9-11］。這種落差在開發階段完全看不見，只有部署後才顯現［ref 12, 13］。</p>
+<p><strong>Research question</strong>［文內明確陳述］：三個具體目標——</p>
+<ol>
+<li>評估 AI 診斷模型從院內到社區的 transportability；</li>
+<li>量化 disease spectrum 與 case mix 對表現差異的貢獻；</li>
+<li>找出社區族群中表現得以保留的次族群。</li>
+</ol>
+<hr />
+<h3>4. 研究設計與方法</h3>
+<p><strong>PICO</strong></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>內容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>P</strong></td>
+<td>美國社區居住成人，65–85 歲，曾在 CVS 或 Walgreens 零售藥局領過處方；<strong>隨機抽樣</strong>後以 email、簡訊、直接郵寄邀請。唯一排除條件：複雜先天性心臟病史。<strong>未</strong>因 SHD 病史或心臟手術史而排除</td>
+</tr>
+<tr>
+<td><strong>I（Index test）</strong></td>
+<td><strong>EchoNext v2</strong> AI-ECG 模型——卷積神經網路，輸入 ECG 波形 + 年齡 + 性別，輸出 0–1 分數</td>
+</tr>
+<tr>
+<td><strong>C（Reference standard）</strong></td>
+<td><strong>居家 transthoracic echocardiography（TTE）</strong>，Siemens Acuson Bonsai 或 GE Vivid iQ；由<strong>中央核心實驗室</strong>依 ASE 標準判讀</td>
+</tr>
+<tr>
+<td><strong>O</strong></td>
+<td><strong>SHD 複合終點</strong>：中度以上 VHD、LVEF ≤45%、中/重度 RV 收縮功能不良、肺高壓（估計 PASP ≥45 mmHg 或 TR jet ≥3.2 m/s）、嚴重 LVH（後壁或中隔 ≥1.5 cm）、中/大量心包膜積液</td>
+</tr>
+</tbody>
+</table>
+<p><strong>關鍵設計細節</strong></p>
+<ul>
+<li><strong>設計類型</strong>：前瞻性、去中心化（decentralized）、居家收案的橫斷面診斷準確度研究，巢狀於流行病學世代之內</li>
+<li><strong>收案期間</strong>：2022 年 4 月 – 2025 年 4 月</li>
+<li><strong>ECG 取得</strong>：居家，GE MUSE 或 <strong>QT Medical</strong> 系統（QT Medical 佔 70.8%）</li>
+<li><strong>ECG 判讀</strong>：由三位研究者（T.J.P.、M.B.、P.A.E.）以標準準則判讀為 normal / abnormal</li>
+<li><strong>模型版本</strong>：EchoNext <strong>v2</strong>，與 <em>Nature</em> 2025 發表的 v1 不同——加入 training-time noise augmentation、<strong>移除 tabular 變項輸入（如 ECG intervals）</strong>、終點移除「中度增厚的 LV wall thickness」。作者稱 v2 與 v1 test characteristics 相似，但<strong>未提供 v1 vs v2 的 head-to-head 數據</strong></li>
+<li><strong>模型訓練規模</strong>：735,821 組 ECG-TTE 配對，來自 NYP 系統 177,769 位成人；另有 3 個外部驗證站點</li>
+<li><strong>主要分析</strong>：多參數評估——AUC、AUPRC、sensitivity、specificity、PPV、NPV</li>
+<li><strong>兩個操作點</strong>：(a) balanced threshold（sens = spec）；(b) 固定 75% sensitivity</li>
+<li><strong>對照基準模型</strong>：以 PREVUE-VALVE 資料自建的 logistic regression（年齡、性別、ECG 異常與否、KCCQ-OS &lt;90）</li>
+<li><strong>案例組合調整</strong>：以 logistic regression 建 propensity score（年齡、性別、各 SHD 亞型嚴重度、LVEF、LV 壁厚、PASP），1:1 nearest-neighbor <strong>無 caliper</strong>、不放回配對（PsmPy）</li>
+<li><strong>統計檢定</strong>：AUC 差異用 Venkatraman permutation test（雙尾，α=0.05）；AUC CI 用 1,000 次 bootstrap；test characteristics CI 用 Wald</li>
+</ul>
+<p><strong>主要變項操作型定義</strong>：SHD 為上述六類的<strong>複合終點</strong>，各成分嚴重度依 ASE 標準的 none/mild/moderate/severe 序位分級。</p>
+<hr />
+<h3>5. 研究結果重點整理</h3>
+<p><strong>5.1 收案流程（自行驗算，數字一致 ✓）</strong></p>
+<p>3,000 收案 − 36（XML 遺失）− 351（波形品質差/毀損）− 53（節律器）− 125（TTE 品質不足以測 LVEF）− 33（曾接受瓣膜修補/置換）= <strong>2,402</strong> 分析世代。</p>
+<blockquote>
+<p><strong>值得注意</strong>：排除率 19.9%（598/3,000）。其中 <strong>351 例（11.7%）因 ECG 波形品質差或毀損</strong>被排除——這個比例對一個標準 12 導程 ECG 而言相當高，暗示居家取得的技術挑戰。</p>
+</blockquote>
+<p><strong>5.2 分析世代基本特徵</strong>［Table 1］</p>
+<p>年齡中位數 71 歲（IQR 67–75），女性 57.9%，NH White 73.6%、NH Black 14.7%、Hispanic 9.2%。<strong>SHD 盛行率 7.5%（181/2,402）</strong>。</p>
+<p><strong>SHD 成分分布</strong>（成分和 208 &gt; 181，反映重疊）：</p>
+<table>
+<thead>
+<tr>
+<th>成分</th>
+<th>n (%)</th>
+<th>佔 SHD 病例比例</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>≥中度 TR</strong></td>
+<td><strong>76 (3.2)</strong></td>
+<td><strong>42.0%</strong></td>
+</tr>
+<tr>
+<td>≥中度 AS</td>
+<td>39 (1.6)</td>
+<td>21.5%</td>
+</tr>
+<tr>
+<td>≥中度 MR</td>
+<td>26 (1.1)</td>
+<td>14.4%</td>
+</tr>
+<tr>
+<td>肺高壓</td>
+<td>22 (0.9)</td>
+<td>12.2%</td>
+</tr>
+<tr>
+<td>LVEF ≤45%</td>
+<td>18 (0.7)</td>
+<td>9.9%</td>
+</tr>
+<tr>
+<td>≥中度 AR</td>
+<td>15 (0.6)</td>
+<td>8.3%</td>
+</tr>
+<tr>
+<td>LV 壁厚 ≥1.5 cm</td>
+<td>7 (0.4)ᵃ</td>
+<td>3.9%</td>
+</tr>
+<tr>
+<td>≥中度 RVSD</td>
+<td>4 (0.2)</td>
+<td>2.2%</td>
+</tr>
+<tr>
+<td>心包膜積液</td>
+<td>1 (0.04)</td>
+<td>0.6%</td>
+</tr>
+<tr>
+<td>≥中度 PR</td>
+<td>0</td>
+<td>0</td>
+</tr>
+</tbody>
+</table>
+<p>ᵃ 472 位因試驗前導期採用不同 TTE protocol 而未測 LV 壁厚，已從分母排除［文內］。</p>
+<p><strong>⚠️ 這張表最重要的訊息</strong>：SHD 複合終點的<strong>最大單一貢獻者是中度 TR（42%）</strong>——在 65–85 歲社區族群中，中度 TR 多為年齡相關/功能性，其臨床可處置性（actionability）高度存疑。詳見 SKILL-C E 節。</p>
+<p><strong>5.3 主要診斷表現</strong>［Table 2］</p>
+<p>PREVUE-VALVE 全世代，balanced threshold = <strong>0.181</strong>：</p>
+<table>
+<thead>
+<tr>
+<th>指標</th>
+<th>數值（95% CI）</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>AUC</strong></td>
+<td><strong>71.0% (66.3–75.5)</strong></td>
+</tr>
+<tr>
+<td>AUPRC</td>
+<td>23.1% (17.4–29.8)</td>
+</tr>
+<tr>
+<td>Sensitivity</td>
+<td>66.9% (60.0–73.7)</td>
+</tr>
+<tr>
+<td>Specificity</td>
+<td>66.9% (64.9–68.8)</td>
+</tr>
+<tr>
+<td><strong>PPV</strong></td>
+<td><strong>14.1% (11.8–16.5)</strong></td>
+</tr>
+<tr>
+<td>NPV</td>
+<td>96.1% (95.2–97.1)</td>
+</tr>
+</tbody>
+</table>
+<p>固定 75% sensitivity 時：Spec 54.8%、PPV 11.9%、NPV 96.4%。</p>
+<p><strong>對照基準 logistic model</strong>（年齡+性別+ECG 異常+KCCQ）：AUC <strong>65.6%</strong> (60.9–70.0)，AI vs 基準 <strong>P = 0.02</strong>。</p>
+<p><strong>5.4 跨世代比較</strong></p>
+<table>
+<thead>
+<tr>
+<th>世代</th>
+<th>SHD 盛行率</th>
+<th>AUC (95% CI)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>PREVUE-VALVE（社區）</strong></td>
+<td><strong>7.5%</strong></td>
+<td><strong>71.0 (66.3–75.5)</strong></td>
+</tr>
+<tr>
+<td>NYP internal test（65–85 歲，n=15,071）</td>
+<td>42.8%</td>
+<td>82.5 (81.9–83.1)</td>
+</tr>
+<tr>
+<td>NYP propensity-matched（n=2,402）</td>
+<td>7.2%</td>
+<td>76.3 (72.3–80.5)</td>
+</tr>
+<tr>
+<td>Stanford</td>
+<td>33.2%</td>
+<td>76.0–79.3 區間內［文內未逐一標示］</td>
+</tr>
+<tr>
+<td>Montreal Heart Institute</td>
+<td>58.5%</td>
+<td>同上區間</td>
+</tr>
+<tr>
+<td>NYP Queens</td>
+<td>33.3%</td>
+<td>同上區間</td>
+</tr>
+</tbody>
+</table>
+<p>所有院內世代 vs PREVUE-VALVE：<strong>P &lt; 0.0001</strong>。</p>
+<p><strong>疾病譜差異</strong>［Supplemental Table 8 引用］：重度 SHD 佔 SHD 病例比例 PREVUE 16% vs NYP 56%；中度 TR 佔比 36% vs 17%；收縮性心衰竭佔比 10% vs 43%（all P &lt; 0.001）。</p>
+<p><strong>Propensity matching 殘留不平衡</strong>（absolute SMD）：肺高壓 0.36、PASP 0.27、AR 0.24、LVH 0.20；其餘 &lt;0.2。</p>
+<p><strong>Balanced threshold 跨站點差異</strong>：PREVUE 0.181 → Montreal 0.583。</p>
+<p><strong>5.5 次族群分析</strong>［Table 3］</p>
+<table>
+<thead>
+<tr>
+<th>次族群</th>
+<th>n</th>
+<th>SHD 盛行率</th>
+<th>AUC (95% CI)</th>
+<th>PPV</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>全世代</td>
+<td>2,402</td>
+<td>7.5%</td>
+<td>71.0 (66.3–75.5)</td>
+<td>14.1%</td>
+</tr>
+<tr>
+<td><strong>異常 ECG</strong></td>
+<td>1,275</td>
+<td>8.9%</td>
+<td><strong>79.3 (75.1–83.4)</strong></td>
+<td>20.4%</td>
+</tr>
+<tr>
+<td><strong>KCCQ-OS &lt;90</strong></td>
+<td>708</td>
+<td>11.7%</td>
+<td><strong>76.3 (70.2–82.0)</strong></td>
+<td>25.5%</td>
+</tr>
+<tr>
+<td>異常 ECG 或 KCCQ&lt;90</td>
+<td>1,567</td>
+<td>8.4%</td>
+<td>76.9 (71.9–81.1)</td>
+<td>18.2%</td>
+</tr>
+<tr>
+<td><strong>男性</strong></td>
+<td>1,011</td>
+<td>—</td>
+<td><strong>82.4 (77.7–86.3)</strong></td>
+<td>—</td>
+</tr>
+<tr>
+<td><strong>女性</strong></td>
+<td>1,391</td>
+<td>—</td>
+<td><strong>63.3 (56.9–69.7)</strong></td>
+<td>—</td>
+</tr>
+<tr>
+<td>年齡 65–74</td>
+<td>1,697</td>
+<td>—</td>
+<td>67.0 (60.2–73.5)</td>
+<td>—</td>
+</tr>
+<tr>
+<td>年齡 75–85</td>
+<td>705</td>
+<td>—</td>
+<td>71.3 (65.1–77.2)</td>
+<td>—</td>
+</tr>
+<tr>
+<td>QT Medical</td>
+<td>1,701</td>
+<td>—</td>
+<td>70.8 (65.1–76.0)</td>
+<td>—</td>
+</tr>
+<tr>
+<td>GE</td>
+<td>701</td>
+<td>—</td>
+<td>71.6 (62.0–79.5)</td>
+<td>—</td>
+</tr>
+</tbody>
+</table>
+<p><strong>性別差異</strong>：男 82.4% vs 女 63.3%，<strong>P &lt; 0.0001</strong>。作者的敏感度分析：排除所有中重度 TR 後差距縮小至 82.8% vs 72.3%；再限定於臨床異常 ECG 者則「完全消失」（84.0% vs 86.4%）。</p>
+<hr />
+<h3>6. 作者討論與評論重點</h3>
+<p><strong>作者的三個主要訊息</strong>［文內］：</p>
+<ol>
+<li>社區族群表現大幅下降（AUC 82.5 → 71.0）。</li>
+<li>下降<strong>主要不是</strong>因為盛行率降低，而是<strong>疾病譜位移</strong>——表型分布改變、有病/無病重疊增加、預測風險系統性位移。propensity matching 只能部分縮小差距（71.0 → 76.3），殘留部分歸因於「臨床脈絡的殘留干擾」。</li>
+<li>限縮於高風險次族群（異常 ECG 或 KCCQ&lt;90）時，表現回升至接近原始開發/驗證世代水準。</li>
+</ol>
+<p><strong>與現有文獻的異同</strong>：作者主張此結果<strong>挑戰了 Bayes 定理框架下「sensitivity/specificity 跨族群穩定、只有 predictive value 隨盛行率變動」的假設</strong>［ref 21, 22］。</p>
+<p><strong>作者自陳限制</strong>［文內，六項］：</p>
+<ol>
+<li>參與者較高教育程度、較都市化、可能較健康，非全美代表性</li>
+<li>僅測試 GE 與 QT Medical 兩種 ECG 廠牌</li>
+<li>LV 收縮功能不良盛行率 0.7%，低於既往無症狀族群估計［ref 27, 28］</li>
+<li>Propensity matching 無 caliper，殘留共變數不平衡</li>
+<li><strong>排除無法分析的 ECG 與 TTE 者，可能造成偏差</strong>；估計值是條件於可分析資料而非完整目標族群</li>
+<li>部分次族群樣本數小，應視為探索性</li>
+</ol>
+<p><strong>［評估］作者的解釋是否合理？</strong></p>
+<ul>
+<li><strong>限制陳述相當完整且誠實</strong>，第 5 點（條件於可分析資料）尤其是很多 AI 論文會略過的自我批判。</li>
+<li><strong>但第 5 點只承認存在、未量化方向與幅度</strong>。這一點很關鍵，見下方 6.1。</li>
+<li>臨床建議<strong>未超出數據支持範圍</strong>，甚至偏保守（明確說「這些表現特徵不支持廣泛部署」）。這是本文的重要優點。</li>
+<li><strong>但有一處明確的概念性過度宣稱</strong>，見 SKILL-C E 節紅旗 #1（recalibration 的範疇錯誤）。</li>
+</ul>
+<p><strong>6.1 ［推論］排除族群的疾病富集問題（作者未量化）</strong></p>
+<p>［外部: PREVUE-VALVE 主論文 <em>JACC</em> 2026;87:3227–3239 及 tctmd/ACC 報導］主論文報告全世代（n=3,000）<strong>中度以上 VHD 盛行率 8.2%（95% CI 7.0–9.5）</strong>。本文分析世代（n=2,402）的中度以上 VHD 為 <strong>5.8%</strong>，整體 SHD 為 7.5%。</p>
+<p>若 8.2% 為粗比例，則 3,000 人中約 246 例；分析世代 139 例（5.8%）；推得<strong>被排除的 598 人中約有 107 例（≈17.9%）</strong>，是分析世代的 <strong>3 倍富集</strong>。這完全符合預期——被排除者包含節律器（53）、曾接受瓣膜手術（33）、TTE 品質不足以測 LVEF（125，本身常因體型/肺氣腫/心臟結構異常）。</p>
+<p>⚠️ <strong>但需謹慎</strong>：主論文的 8.2% 很可能是<strong>調查加權後的全國推估值</strong>（作者群含 U Michigan 調查抽樣統計學家 Nishimura），而非粗比例；本文則使用未加權的樣本比例。因此上述反推屬 <strong>[推論]</strong>，僅能說明方向（排除族群疾病富集）而非精確幅度。</p>
+<p>即便如此，<strong>方向本身就構成一個未被處理的偏差</strong>：本研究從社區世代移除了「最像院內病人」的那群人（節律器、術後瓣膜、影像困難者），卻<strong>沒有證據顯示對 NYP 院內對照世代施加了對等的排除條件</strong>——文中從未提及 NYP 世代排除節律器或人工瓣膜患者。若確實未對等排除，則「疾病譜差異」的量測本身就被<strong>不對稱的排除條件</strong>放大了。這是本文核心比較的一個結構性弱點。</p>
+<hr />
+<h3>7. 外部專業意見</h3>
+<p><strong>同期 editorial 已確認存在</strong>［外部］：</p>
+<blockquote>
+<p>Sahashi Y, Mishell J, Ouyang D. <strong>The Opportunities and Challenges in AI Opportunistic Disease Detection in General Populations.</strong> <em>J Am Coll Cardiol</em>. 2026;88(7):765–767. DOI: 10.1016/j.jacc.2026.07.006</p>
+</blockquote>
+<p>（本文第 753 頁的 &quot;<strong>SEE PAGE 765</strong>&quot; 標記即指向此篇。）</p>
+<p><strong>[無法取得全文]</strong>：已依指示執行 <code>fetch_editorial.py 10.1016/j.jacc.2026.07.006</code>，七種擷取途徑（Direct PDF、DOI redirect、Elsevier API、ScienceDirect browser session、Unpaywall、PMC、nodriver）<strong>全數失敗</strong>；WebFetch 對 sciencedirect.com 與 jacc.org 兩處均回傳 <strong>HTTP 403</strong>。網頁搜尋僅能取得書目資訊與付費牆外的摘要片段，且搜尋引擎回傳的「內容摘要」實際上是<strong>原始論文的文字被誤植</strong>，並非 editorial 本身的論點。</p>
+<p><strong>因此，我只陳述可確認的書目事實</strong>：該 editorial 由 Cedars-Sinai 的 David Ouyang 團隊撰寫（Ouyang 是心血管 AI／深度學習超音波領域的獨立主要研究者，與 EchoNext 團隊無共同作者關係，屬適當的獨立評論者）。<strong>其實際論點、對本文的肯定與質疑、方法學批評，我無法據實轉述，不予臆測。</strong></p>
+<p><strong>其他外部脈絡</strong>［外部，非專業同儕評論但與判讀直接相關］：</p>
+<ul>
+<li>EchoNext 於 <strong>2026-06-23 取得 FDA 510(k) clearance</strong>，由 <strong>Pathway Labs</strong> 商業化，宣稱可標示右/左側心衰竭、瓣膜疾病、與浸潤性心肌病相符的嚴重肥厚、肺高壓［外部: Businesswire、NYP News、Medical Economics］。</li>
+<li>EchoNext v1 原始論文為 <em>Nature</em> 2025;644:221–230；訓練資料集已公開於 PhysioNet［外部］。</li>
+<li>產業新聞與投資人資訊未作為專業意見來源採計。</li>
+</ul>
+<hr />
+<h3>8. 臨床建議</h3>
+<p><strong>可採用本研究結論的情境</strong></p>
+<ul>
+<li>評估任何 AI-ECG／AI 診斷工具是否適合導入<strong>自己所在機構的實際族群</strong>時，本文提供了強力的實證警示：廠商提供的院內 AUC <strong>不可直接外推</strong>至低盛行率、輕症為主的門診或健檢族群。</li>
+<li>醫院在採購或導入 AI-ECG 前，用本文作為要求廠商提供「intended-use population 內驗證資料」的依據。</li>
+<li>對 65–85 歲社區/健檢族群，若考慮以 AI-ECG 做 SHD 篩檢，本文提供了可直接引用的 PPV（14%）與 number needed to test（約 7）數據來說明成本效益疑慮。</li>
+</ul>
+<p><strong>不建議直接套用的情境</strong></p>
+<ul>
+<li><strong>不可外推至 &lt;65 歲或有症狀的門診族群</strong>——本研究僅納入 65–85 歲無檢查適應症者。</li>
+<li><strong>不可外推至其他 ECG 廠牌或非居家取得情境</strong>——僅測試 GE 與 QT Medical，且兩者皆為居家取得。</li>
+<li><strong>不可用來否定 AI-ECG 在住院/門診 opportunistic 情境的價值</strong>——本研究並未測試該情境的臨床結果。</li>
+<li><strong>不可用來推論女性 AI-ECG 一律無效</strong>——次族群分析為探索性，且是同一世代內的事後切割。</li>
+</ul>
+<p><strong>給臨床醫師的三點實務建議</strong></p>
+<ol>
+<li>
+<p><strong>不要把 AI-ECG 陽性當作「疑似結構性心臟病」看待。</strong> 在社區/健檢族群中，陽性結果的 LR+ 僅約 2.0，把 pre-test 7.5% 推到 post-test 14%——<strong>七個陽性中六個是偽陽性</strong>。這個訊息強度不足以驅動任何自動化的轉診流程；必須搭配病史、理學檢查（心雜音、頸靜脈壓、水腫）與症狀共同判讀。</p>
+</li>
+<li>
+<p><strong>更不要把 AI-ECG 陰性當作 rule-out。</strong> LR− 約 0.50，只把 7.5% 降到 3.9%——<strong>每 26 位陰性者仍有 1 位有中度以上 SHD</strong>。若病人有勞動性呼吸困難、新出現雜音或不明原因水腫，<strong>AI-ECG 陰性不應延遲心臟超音波</strong>。</p>
+</li>
+<li>
+<p><strong>對 65 歲以上女性病人尤其要保留判斷。</strong> 本研究中女性 AUC 僅 63.3%（95% CI 56.9–69.7），CI 下界幾乎觸及隨機猜測。而依 PREVUE-VALVE 主論文，社區中輕度以上 VHD 患者近三分之二為女性［外部］。<strong>負擔最重的族群，恰好是模型最不準的族群</strong>——在女性身上請把權重放回臨床評估與超音波，而非 AI 分數。</p>
+</li>
+</ol>
+<p><strong>研究證據強度分級：中–強</strong></p>
+<p><strong>強的部分</strong>：前瞻性隨機抽樣、所有人皆接受參考標準（<strong>無 verification bias</strong>，這在診斷研究中相當罕見）、中央核心實驗室判讀、多個外部院內世代對照、預設多參數評估、限制陳述誠實。
+<strong>扣分的部分</strong>：單一社區世代無重複驗證、次族群分析為探索性且部分表格有數據異常、排除條件在兩個比較世代間可能不對等、關鍵的殘餘差異未做統計檢定（詳見 SKILL-C）。</p>
+<hr />
+<hr />
+<h1>SKILL-C：診斷研究與 AI 模型評讀</h1>
+<h2>A. 補充技術細節</h2>
+<ul>
+<li><strong>Reference standard 品質</strong>：TTE 由<strong>中央核心實驗室</strong>依 ASE 標準判讀，屬於本領域公認標準。<strong>優點顯著</strong>：核心實驗室判讀消除了多站點判讀者差異，這比多數 AI-ECG 研究（常用各院臨床報告的自然語言擷取）嚴謹一個等級。</li>
+<li><strong>Reference standard 的獨立性</strong>：<strong>完全獨立</strong>。TTE 與 ECG 於同一次居家訪視取得，TTE 判讀不可能受 AI 分數影響——AI-ECG 分析是在另一個 IRB（Columbia AAAU0043）下<strong>事後</strong>施行的［文內］。</li>
+<li><strong>Verification bias（部分驗證偏差）</strong>：<strong>不存在</strong>。全部 2,402 位參與者皆同時接受 index test 與 reference standard，與典型院內回溯世代（只有被下單做 echo 的人才有 reference standard）形成鮮明對比。<strong>這是本研究相對於 EchoNext 原始 Nature 論文最大的方法學升級</strong>，也讓「社區表現較差」的結論更值得相信——因為它不是被 verification bias 人為壓低的。</li>
+<li><strong>⚠️ 致盲層級的缺口</strong>：ECG 的 normal/abnormal 判讀由三位研究者執行，其中 <strong>T.J.P.（Poterucha）與 P.A.E.（Elias）正是模型發明人</strong>。文中<strong>未陳述判讀者是否對 AI 分數保持盲性</strong>。由於「異常 ECG」正是本文最重要的次族群定義變項，且該次族群的正面結果（AUC 79.3%）是「targeted deployment」建議的主要依據，<strong>此處缺乏明確的致盲聲明是一個實質缺口</strong>。若 ECG 判讀是在 AI 分析之前完成（時序上很可能如此），問題不大；但文章沒說，讀者無從確認。</li>
+<li><strong>Spectrum bias</strong>：這是本文的<strong>主題</strong>而非缺陷，處理得當。納入的是完整社區疾病譜（含 2,130 位輕度 SHD 者），未做「明顯正常 vs 明顯異常」的極端對比。</li>
+<li><strong>Cut-off 設定方式</strong>：<strong>⚠️ 重要問題</strong>。balanced threshold（0.181）與 75%-sensitivity threshold 都是<strong>在 PREVUE-VALVE 資料本身上事後求出的</strong>，不是預先指定、也不是從開發世代帶過來的。這正是 JAMA ML Users' Guide 明確警告的情形——「<strong>Cutoff selection using the validation set may hide calibration issues</strong>」［參考: jama_liu_2019_ug_190001.md, &quot;Development of Machine Learning Models&quot; 節］。實務意義：一個真正部署的系統必須使用<strong>固定</strong>閾值；本文報告的 sens/spec/PPV 是<strong>在該資料集上最優化過的</strong>，真實部署表現只會更差，不會更好。作者在跨世代 threshold 差異（0.181 vs 0.583）的討論中其實觸及了這個問題，但沒有明說「因此本文報告的操作特性帶有樂觀偏差」。</li>
+<li><strong>模型版本可重複性</strong>：EchoNext <strong>v2</strong> 與 <em>Nature</em> 2025 的 v1 有三處實質變更（noise augmentation、移除 tabular 輸入、終點定義改變）。作者僅稱「test characteristics 相似」，<strong>未提供 v1 vs v2 的並列數據</strong>。這意味著本文的數字<strong>無法與 Nature 論文直接比較</strong>，也無法與 FDA 核准版本對應（核准的是哪一版？文中未說）。這是 reproducibility 的一個缺口。</li>
+</ul>
+<hr />
+<h2>B. 診斷準確度核心評估</h2>
+<h3>B.1 完整測試特性與 likelihood ratio</h3>
+<p>文章通篇<strong>未報告任何 likelihood ratio</strong>——這是一個實質性的報告缺失，因為 LR 是唯一能讓臨床醫師把結果直接搬到自己族群的指標。以下由文內 sensitivity / specificity <strong>自行計算</strong>（LR+ = sens/(1−spec)；LR− = (1−sens)/spec）：</p>
+<table>
+<thead>
+<tr>
+<th>世代／次族群</th>
+<th>盛行率</th>
+<th>Sens</th>
+<th>Spec</th>
+<th><strong>LR+</strong>（計算）</th>
+<th><strong>LR−</strong>（計算）</th>
+<th>臨床解讀</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>PREVUE 全世代</strong>（balanced, 0.181）</td>
+<td>7.5%</td>
+<td>66.9%</td>
+<td>66.9%</td>
+<td><strong>2.02</strong></td>
+<td><strong>0.49</strong></td>
+<td>均為「小幅改變」——接近臨床無用門檻</td>
+</tr>
+<tr>
+<td>PREVUE 全世代（75% sens）</td>
+<td>7.5%</td>
+<td>75.1%</td>
+<td>54.8%</td>
+<td><strong>1.66</strong></td>
+<td><strong>0.45</strong></td>
+<td>LR+ 幾近無資訊量</td>
+</tr>
+<tr>
+<td>PREVUE 異常 ECG</td>
+<td>8.9%</td>
+<td>72.6%</td>
+<td>72.5%</td>
+<td><strong>2.64</strong></td>
+<td><strong>0.38</strong></td>
+<td>小–中度改變</td>
+</tr>
+<tr>
+<td>PREVUE KCCQ&lt;90</td>
+<td>11.7%</td>
+<td>72.3%</td>
+<td>72.0%</td>
+<td><strong>2.58</strong></td>
+<td><strong>0.39</strong></td>
+<td>小–中度改變</td>
+</tr>
+<tr>
+<td>PREVUE 異常 ECG 或 KCCQ&lt;90</td>
+<td>8.4%</td>
+<td>70.5%</td>
+<td>70.9%</td>
+<td><strong>2.42</strong></td>
+<td><strong>0.42</strong></td>
+<td>小–中度改變</td>
+</tr>
+<tr>
+<td><strong>NYP 院內</strong>（模型「最佳」情境）</td>
+<td>42.8%</td>
+<td>74.6%</td>
+<td>74.6%</td>
+<td><strong>2.94</strong></td>
+<td><strong>0.34</strong></td>
+<td><strong>即使在最佳情境也只是中度</strong></td>
+</tr>
+<tr>
+<td>NYP propensity-matched</td>
+<td>7.2%</td>
+<td>69.9%</td>
+<td>69.9%</td>
+<td><strong>2.32</strong></td>
+<td><strong>0.43</strong></td>
+<td>小–中度改變</td>
+</tr>
+</tbody>
+</table>
+<p><strong>［這張表是本次評讀最重要的重新框架］</strong></p>
+<p>依 LR 分級標準（&gt;10 或 &lt;0.1 = 大幅改變；2–5 或 0.2–0.5 = 中度；接近 1 = 幾乎不提供資訊）：</p>
+<ul>
+<li>社區情境 LR+ <strong>2.02</strong>、LR− <strong>0.49</strong> — <strong>兩端都在「中度」區間的最下緣</strong>，實質上是一個弱訊號測試。</li>
+<li><strong>關鍵洞見：即使在模型表現「最好」的院內世代（AUC 82.5%），LR+ 也只有 2.94、LR− 0.34。</strong> 也就是說，「AUC 0.83」聽起來很強，但轉譯成臨床決策語言後，<strong>EchoNext 在任何情境下都不是一個能單獨改變診斷機率的工具</strong>。本文（以及整個 AI-ECG 文獻）習慣以 AUC 作為主要溝通指標，這系統性地讓讀者高估了工具的臨床決策力。這個結論不只適用於社區，<strong>也適用於院內</strong>——而這一點作者並未指出，因為它會削弱模型在其核心適應症上的說服力。</li>
+</ul>
+<h3>B.2 Pre-test → post-test probability（Fagan nomogram 概念，文字描述）</h3>
+<p>以 PREVUE 全世代 balanced threshold（LR+ 2.02、LR− 0.49）為例：</p>
+<table>
+<thead>
+<tr>
+<th>Pre-test probability</th>
+<th>陽性後 post-test</th>
+<th>陰性後 post-test</th>
+<th>臨床意涵</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>3%</strong>（較年輕、無症狀健檢）</td>
+<td>5.9%</td>
+<td>1.5%</td>
+<td>兩個方向都不改變處置</td>
+</tr>
+<tr>
+<td><strong>7.5%</strong>（本研究社區實際值）</td>
+<td><strong>14.1%</strong></td>
+<td><strong>3.9%</strong></td>
+<td>陽性仍在「不太可能」區；陰性無法安全排除</td>
+</tr>
+<tr>
+<td><strong>20%</strong>（有症狀門診）</td>
+<td>33.6%</td>
+<td>10.9%</td>
+<td>陽性推向「值得做 echo」，但本來就該做</td>
+</tr>
+<tr>
+<td><strong>43%</strong>（NYP 院內，用 LR+ 2.94 / LR− 0.34）</td>
+<td>68.9%</td>
+<td>20.4%</td>
+<td>唯一 LR 有實質貢獻的情境，但這正是「臨床已決定要做 echo」的族群</td>
+</tr>
+</tbody>
+</table>
+<p><strong>臨床判讀</strong>：這個測試在<strong>低 pre-test（&lt;10%）時陽性無法驅動處置、陰性無法排除</strong>；在<strong>高 pre-test（&gt;40%）時雖有較大位移，但該族群本來就已有 echo 適應症</strong>。這正是文章討論中那句誠實但輕描淡寫的話所指——「Whether AI-ECG has utility in these settings might be questioned, because echocardiography may already be warranted in many of these individuals」。<strong>這句話其實是對整個 targeted-deployment 建議的自我否定，但被放在段落中間、未加以展開。</strong></p>
+<h3>B.3 由 PPV 推導的實際檢查負擔（自行計算）</h3>
+<p><strong>策略一：全社區部署（balanced threshold）</strong></p>
+<p>在 2,402 人中：真陽性 = 0.669 × 181 ≈ <strong>121</strong>；偽陽性 = 0.331 × 2,221 ≈ <strong>735</strong>；<strong>總陽性 856（佔 35.6%）</strong>。
+→ <strong>做 856 次超音波，找到 121 例 SHD</strong>（NNT ≈ 7.1，與文內 PPV 14.1% 一致 ✓）。</p>
+<p><strong>策略二：作者推薦的兩階段 targeted 策略（異常 ECG 或 KCCQ&lt;90 → AI-ECG）</strong></p>
+<ul>
+<li>第一階段閘門納入 1,567 人（65.2%），其中含 132/181 = <strong>72.9% 的 SHD 病例</strong></li>
+<li>第二階段 AI（sens 70.5%、spec 70.9%）：TP = 93、FP = 418，<strong>總陽性 511</strong></li>
+<li><strong>整體方案敏感度 = 0.729 × 0.705 = 51.4%</strong></li>
+</ul>
+<blockquote>
+<p><strong>這是本文從未計算、但對臨床決策最關鍵的數字：作者所推薦的 targeted 策略，在社區中只能偵測到約一半（51%）的中度以上 SHD。</strong> 相較於「全部做超音波」（2,402 次檢查，偵測 100%），此策略把檢查量降到 511 次（減少 79%），代價是<strong>漏掉 49% 的病例</strong>。這個 trade-off 是否可接受，取決於漏掉的是哪些病例——而文章沒有提供依嚴重度分層的敏感度數據（見下方 E 節紅旗 #4）。</p>
+</blockquote>
+<p><strong>［推論］嚴重疾病的偵測效率</strong>：全世代僅 28 例重度 SHD。由 Figure 2 觀察，PREVUE 重度病例的分數多數落在 0.181 閾值之上，假設重度病例敏感度約 75–85%，則策略一的 856 次超音波約可找出 21–24 例重度 SHD，即<strong>每 36–41 次超音波找到 1 例重度病例</strong>。此為 [推論]，因文章未報告分層敏感度。</p>
+<hr />
+<h2>C. AI / ML 診斷模型評估（三階段）</h2>
+<h3>① 建模（Derivation）— 由 <em>Nature</em> 2025 / 本文方法段推知</h3>
+<table>
+<thead>
+<tr>
+<th>項目</th>
+<th>評估</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>任務定義</td>
+<td>✅ 明確：二元分類，SHD 有/無</td>
+</tr>
+<tr>
+<td>訓練規模</td>
+<td>✅ 735,821 組 ECG-TTE 配對 / 177,769 位成人；深度學習的資料量充足</td>
+</tr>
+<tr>
+<td>Reference standard</td>
+<td>✅ TTE（開發階段為臨床報告；本驗證階段升級為核心實驗室）</td>
+</tr>
+<tr>
+<td>Overfitting 防護</td>
+<td>⚠️ <strong>部分</strong>：v2 提及 training-time augmentation（一種 regularization），但<strong>本文未描述 train/tune/validation 三分割、hyperparameter tuning set、或 cross-validation 的細節</strong>。JAMA ML Users' Guide 明確要求：「If neither a tuning set nor cross-validation is described, the reader should assess whether the validation set was inadvertently used for tuning hyperparameters」［參考: jama_liu_2019_ug_190001.md, Figure 2 及 &quot;Development of Machine Learning Models&quot; 節］。本文屬於<strong>外部驗證論文</strong>，讀者需回溯 <em>Nature</em> 原文才能查證——在本文脈絡下可接受，但不是可自足查證的</td>
+</tr>
+<tr>
+<td>特徵選擇透明度</td>
+<td>⚠️ 黑箱 CNN；無 saliency map、無可解釋性分析</td>
+</tr>
+<tr>
+<td>模型版本控管</td>
+<td>⚠️ v1 → v2 有三項實質變更但無並列比較數據</td>
+</tr>
+</tbody>
+</table>
+<h3>② 驗證（Validation）— <strong>本文的核心貢獻，執行品質高</strong></h3>
+<table>
+<thead>
+<tr>
+<th>項目</th>
+<th>評估</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>外部機構驗證</td>
+<td>✅ <strong>優異</strong>：Stanford、Montreal Heart Institute、NYP Queens（held out）三個獨立醫療系統</td>
+</tr>
+<tr>
+<td><strong>不同「臨床脈絡」驗證</strong></td>
+<td>✅ <strong>本文最大價值</strong>：PREVUE-VALVE 是<strong>真正的 intended-use-mismatch 測試</strong>——不同族群、不同盛行率、不同疾病譜、不同取得環境</td>
+</tr>
+<tr>
+<td>Reference standard 一致性</td>
+<td>⚠️ <strong>不一致但方向有利</strong>：驗證階段用中央核心實驗室（更嚴格），開發階段用臨床 TTE 報告。依 Krause et al. 的研究，更嚴格的 reference standard 通常會<strong>降低</strong>測得的誤差［參考: jama_liu_2019_ug_190001.md, &quot;Is the Reference Standard High Quality?&quot; 節］。因此若有偏差，方向是<strong>低估</strong>社區表現下降幅度——本文結論因此更為保守可信</td>
+</tr>
+<tr>
+<td>Repeatability / Reproducibility</td>
+<td>❌ <strong>未評估</strong>。JAMA ML Users' Guide 特別強調：「the machine learning predictions to differences in imaging hardware, operators, and protocol between institutions should be quantified」［參考: jama_liu_2019_ug_190001.md, &quot;Are Machine Learning Model Predictions Repeatable and Reproducible?&quot; 節］。本文有 vendor 次族群分析，但<strong>無同一受試者重複取得 ECG 的一致性測試</strong>——這正好是本文最大替代解釋（見 E 節紅旗 #2）所需要的關鍵數據</td>
+</tr>
+<tr>
+<td>公平性（fairness）</td>
+<td>⚠️ <strong>有分析但結果令人擔憂且處理不足</strong>：性別 AUC 差距 19.1 個百分點（P&lt;0.0001）；種族次族群分析受限於樣本數</td>
+</tr>
+<tr>
+<td>可解釋性</td>
+<td>❌ 未評估</td>
+</tr>
+</tbody>
+</table>
+<h3>③ 臨床有效性（Clinical Effectiveness）— <strong>完全未達成</strong></h3>
+<ul>
+<li>❌ 無前瞻性試驗證明使用此模型改善臨床決策或病人結果</li>
+<li>❌ 無 failure mode 分析（哪些情況下會錯？文章只做到「哪些族群 AUC 較低」的層次，未做錯誤案例的表型分析）</li>
+<li>❌ 無下游影響評估（偽陽性造成的焦慮、額外檢查、成本）</li>
+<li>⚠️ 文章<strong>引用</strong>了 Yao et al. 的 AI-ECG 低 EF 偵測 pragmatic RCT［ref 26］作為 opportunistic 應用的證據，但那是<strong>不同模型、不同終點</strong>，不能替代 EchoNext 自身的臨床有效性證據</li>
+</ul>
+<p><strong>［評估］三階段結論</strong>：EchoNext 在①與②階段（尤其②）表現扎實，本文本身就是②階段品質的展現。但<strong>③階段完全空白</strong>。依 JAMA ML Users' Guide 的框架，<strong>僅有①②的模型不足以推薦臨床常規使用</strong>。這與該產品已於 2026-06 取得 FDA 510(k)（一條基於「實質等同」而非臨床結果的核准途徑）形成值得注意的落差——<strong>法規核准 ≠ 臨床有效性證據</strong>，這一點臨床醫師必須自行區辨。</p>
+<hr />
+<h2>D. 判別力與校準度評估</h2>
+<h3>D.1 判別力（Discrimination）</h3>
+<ul>
+<li>
+<p>AUC 全數附 95% CI（bootstrap 1,000 次），跨世代比較使用 Venkatraman permutation test — <strong>統計方法選擇適當</strong>。</p>
+</li>
+<li>
+<p>✅ 同時報告 <strong>AUPRC</strong>（PREVUE 23.1% vs NYP 80.1%），這在低盛行率情境下比 AUC 更能反映實際表現，值得肯定。</p>
+</li>
+<li>
+<p>⚠️ <strong>關鍵統計缺口</strong>：文章聲稱 propensity matching「<strong>reduced but did not eliminate</strong>」表現差異，並據此推論「residual confounding related to clinical context is likely present」——<strong>但從未對這個殘餘差異做統計檢定</strong>。</p>
+<p>PREVUE 71.0% (66.3–75.5) vs matched NYP 76.3% (72.3–80.5)：<strong>兩者 95% CI 有明顯重疊</strong>（66.3–75.5 與 72.3–80.5 在 72.3–75.5 區間重疊）。文章對其他所有比較都提供了 P 值（vs 全 NYP：P&lt;0.0001；異常 ECG 次族群 vs matched NYP：P=0.33；vs pooled external：P=0.96），<strong>唯獨這個支撐第二大結論的比較沒有 P 值</strong>。</p>
+<p><strong>這個缺口的嚴重性</strong>：本文的第二個主要發現（「差異主要由疾病譜而非盛行率驅動，且有殘餘的臨床脈絡效應」）在數量上分解為——總落差 11.5 點（82.5→71.0），配對後解釋 5.3 點（→76.3），<strong>殘餘 5.3 點</strong>。如果這 5.3 點的殘餘差異在統計上不顯著，那麼「臨床脈絡的殘餘干擾」這個推論就失去了實證基礎，整個第二發現應改寫為「<strong>可測量的 case mix 差異即可解釋大部分落差</strong>」。這是一個會實質改變論文結論措辭的遺漏。</p>
+</li>
+<li>
+<p>⚠️ <strong>Propensity score 的建構方式不尋常</strong>：propensity model 納入了「各 SHD 亞型嚴重度、LVEF、LV 壁厚、PASP」——也就是<strong>把 outcome 及其嚴重度本身當作配對共變數</strong>。這在標準因果推論框架下不是 confounding adjustment，而是<strong>條件於結果的選擇</strong>。作者的目的（拉平 case mix 以隔離 spectrum effect）可以理解，但這使得配對後的 AUC 比較<strong>不具備標準傾向分數分析的解釋性</strong>，而更接近一種「重新加權的病例組合模擬」。文章未說明此點，讀者容易誤以為這是常規的混淆調整。</p>
+</li>
+<li>
+<p>⚠️ <strong>無 caliper 導致的殘餘不平衡不容忽視</strong>：肺高壓 SMD 0.36、PASP SMD 0.27 — 依慣例 SMD &gt;0.1 即視為不平衡，&gt;0.25 屬明顯不平衡。而肺高壓恰好是 ECG 上訊號較強的表型之一（右心室肥厚、右軸偏移），其殘餘不平衡會直接影響 AUC 比較。作者誠實揭露了此點但未做敏感度分析（例如加上 caliper 重做，接受樣本數損失）。</p>
+</li>
+</ul>
+<h3>D.2 校準度（Calibration）— <strong>本文最被低估、也被誤述的部分</strong></h3>
+<ul>
+<li>⚠️ <strong>校準分析僅存在於 Supplemental Figure 3，正文無 calibration plot</strong>。文內僅以一句話帶過：「Calibration analyses further demonstrated systematic shifts in predicted risk across cohorts, with lower observed SHD rates at a given predicted probability in PREVUE-VALVE compared with the derivation population」——意即模型在社區<strong>系統性高估</strong>風險。</li>
+<li>❌ 未報告 calibration slope / intercept、Brier score 或 Hosmer-Lemeshow 統計量，僅有定性描述。</li>
+<li>❌ <strong>未嘗試 recalibration</strong>。這是最遺憾的一點：既然作者已經證實存在 miscalibration，最自然的下一步就是做 intercept recalibration 或 Platt scaling，然後展示重新校準後 PPV 與臨床可用性的變化。這個分析既簡單又直接回應了「模型能否搶救」的問題，卻完全沒做——反而在討論中對 recalibration 下了一個<strong>範疇錯誤的否定結論</strong>（見 E 節紅旗 #1）。</li>
+</ul>
+<p>［限制：PDF 轉檔 markdown 未保留 Supplemental Figure 3 內容；提供的 7 張圖頁 PNG 亦不含補充資料，因此無法對校準曲線本身進行視覺判讀。］</p>
+<h3>D.3 外部驗證的層級</h3>
+<table>
+<thead>
+<tr>
+<th>驗證類型</th>
+<th>是否具備</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>內部分割驗證</td>
+<td>✅</td>
+</tr>
+<tr>
+<td>地理驗證（geographic）</td>
+<td>✅ Stanford、Montreal、NYP Queens</td>
+</tr>
+<tr>
+<td>時間驗證（temporal）</td>
+<td>❌ 未報告</td>
+</tr>
+<tr>
+<td><strong>族群/情境驗證（intended-use mismatch）</strong></td>
+<td>✅✅ <strong>本文即是</strong>，且做得比多數 AI 醫材文獻徹底</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>E. 紅旗清單</h2>
+<h3>【統計／概念】</h3>
+<p><strong>🚩 #1（最重要的概念性錯誤）— Recalibration 論述的範疇錯誤</strong></p>
+<p>文章在 Discussion 明確寫道：</p>
+<blockquote>
+<p>&quot;This finding challenges the common assumption that performance can be preserved across populations through prevalence-based recalibration.&quot;</p>
+</blockquote>
+<p><strong>這個論述在數學上不成立。</strong> AUC 對分數的任何<strong>單調轉換</strong>都是不變的（invariant to monotonic transformation）。Recalibration（無論是 intercept shift、Platt scaling 或 isotonic regression）本質上就是單調轉換，因此<strong>依定義不可能改變 AUC</strong>。作者以「AUC 從 82.5 掉到 71.0，而 propensity matching 只救回一部分」來論證「recalibration 救不了」，是把兩件不同的事混為一談：</p>
+<ul>
+<li><strong>Recalibration 處理的是</strong>：預測機率與實際風險的對應關係 → 影響 PPV、NPV、決策閾值、net benefit</li>
+<li><strong>Discrimination 下降處理的是</strong>：有病與無病者分數分布的重疊程度 → recalibration 對此<strong>完全無能為力，從來也沒有人主張它可以</strong></li>
+</ul>
+<p>因此這是一個<strong>稻草人論證</strong>——沒有嚴肅的方法學文獻主張 recalibration 能保留 discrimination。作者實際證明的（社區疾病譜導致 discrimination 下降）是真實且有價值的發現，但它「挑戰」的並不是他們所宣稱的那個假設。這個措辭問題直接出現在 Discussion 的關鍵段落，且被 Central Illustration 的 CONCLUSIONS 欄位放大（「Disease spectrum and case mix affect discrimination」），會讓不熟悉的讀者建立錯誤的概念模型。</p>
+<p><strong>同樣的稻草人結構也出現在 Bayes' theorem 的鋪陳上</strong>：作者花了整段建立「一般假設 sens/spec 跨族群穩定」的靶子，然後推翻它。但 sens/spec 隨疾病譜變動這件事，自 Ransohoff &amp; Feinstein (1978) 以來就是診斷研究的基本常識，並已由作者<strong>自己引用的兩篇文獻</strong>明確論述——Mulherin &amp; Miller (<em>Ann Intern Med</em> 2002)［ref 7］與 Leeflang et al. (<em>J Clin Epidemiol</em> 2009)［ref 8］。本文的真正貢獻是<strong>在現代深度學習模型上、用一個嚴謹的社區世代做出高品質的實證展示</strong>，這已經足夠有價值；把它包裝成「挑戰既有典範」則是不必要的過度宣稱。</p>
+<hr />
+<p><strong>🚩 #2（最重要的替代解釋，文章完全未討論）— 取得端 domain shift 無法被排除</strong></p>
+<p><strong>這是圖傳達、但文字沒講清楚的最關鍵證據。</strong></p>
+<p>觀察 <strong>Figure 2</strong>（第 759 頁）的下方 PREVUE 面板與上方 NYP 面板：</p>
+<table>
+<thead>
+<tr>
+<th>分組</th>
+<th>NYP 分數分布峰值位置</th>
+<th>PREVUE 分數分布峰值位置</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>No SHD</td>
+<td>~0.10（density ~2.5）</td>
+<td>~0.08（density ~4.7）</td>
+</tr>
+<tr>
+<td>Mild SHD</td>
+<td>~0.10（density ~2.75），有長右尾延伸至 1.0</td>
+<td>~0.08（density ~5.5），右尾在 0.5 後迅速衰減</td>
+</tr>
+<tr>
+<td>Moderate SHD</td>
+<td>寬平分布，在 ~0.85 有明顯隆起</td>
+<td>~0.35 附近低平隆起，0.7 後幾近歸零</td>
+</tr>
+<tr>
+<td><strong>Severe SHD</strong></td>
+<td><strong>~0.87（density ~2.55）</strong></td>
+<td><strong>~0.32（density ~2.4）</strong></td>
+</tr>
+</tbody>
+</table>
+<p><strong>關鍵觀察：PREVUE 世代中 28 位重度 SHD 患者，其分數分布峰值落在 ≈0.32，且幾乎沒有任何人落在 0.8 以上；而 NYP 的重度 SHD 則明確集中在 0.8–0.9 區間。</strong></p>
+<p>這個現象<strong>無法單純用「疾病譜較輕」解釋</strong>——因為這裡比較的是<strong>兩邊都被判定為「重度」的病人</strong>。若模型只是因為社區病人較輕而失去鑑別力，重度病人的分數應該維持在高檔；實際上整條分布<strong>整體向左位移了約 0.5</strong>。同樣的方向也反映在 balanced threshold 上（PREVUE 0.181 vs Montreal 0.583）。</p>
+<p><strong>這種「所有分數整體下移」的型態，是典型的 input-domain shift 特徵，而非 outcome-spectrum shift 特徵。</strong></p>
+<p><strong>可能的來源，全部指向居家取得</strong>：</p>
+<ul>
+<li>ECG 於<strong>居家</strong>由研究人員取得，而非由醫院技術員在標準化環境下取得 → 電極位置、皮膚準備、病人姿勢、環境電雜訊皆不同</li>
+<li><strong>70.8% 使用 QT Medical 系統</strong>，而模型的全部 735,821 筆訓練資料來自 NYP 醫院系統（幾乎必然是 GE MUSE）</li>
+<li><strong>3,000 例中有 351 例（11.7%）因波形品質差或毀損被排除</strong>——這個異常高的比例本身就是取得端困難的直接證據</li>
+<li>EchoNext v2 相對 v1 的改動之一正是「加入 training-time augmentations <strong>to make the model more robust to noise</strong>」——<strong>開發者自己就知道雜訊穩健性是這個模型的已知弱點</strong></li>
+</ul>
+<p><strong>作者的反駁不足以排除此解釋</strong>：文章以「GE (AUC 71.6) 與 QT Medical (AUC 70.8) 表現相近」作為廠牌無影響的證據。但<strong>兩個廠牌的 ECG 都是在居家、由同一批研究人員、以同一套流程取得的</strong>。因此這個比較只能排除「廠牌間差異」，<strong>完全無法偵測兩者共有的「居家 vs 院內取得」效應</strong>。要真正檢驗這個假說，需要的是：(a) 同一批受試者同時做居家與院內標準 ECG 的配對比較；或 (b) 在 NYP 院內世代中人為加入模擬居家雜訊後重測 AUC。兩者皆未執行。</p>
+<p><strong>為什麼這件事很重要</strong>：如果落差的相當部分來自取得端而非疾病譜，那麼<strong>本文的核心結論方向就需要修正</strong>——問題不是「社區疾病太輕，AI 本質上有極限」（這是作者的悲觀結論，且暗示重新訓練也未必有用），而是「<strong>取得流程需要標準化</strong>」（這是一個工程問題，可以解決）。這兩種歸因會導向完全不同的研發與部署策略。文章討論段落有整段在論述「即使重新訓練也可能受限於疾病生物學」，這個相當強的主張<strong>建立在一個未經檢驗的歸因之上</strong>。</p>
+<hr />
+<p><strong>🚩 #3 — 支撐第二大結論的殘餘差異未做統計檢定</strong></p>
+<p>如 D.1 所述：PREVUE 71.0 (66.3–75.5) vs propensity-matched NYP 76.3 (72.3–80.5)，CI 重疊，<strong>無 P 值</strong>，而文中其他所有跨世代比較都有 P 值。「差異被縮小但未消除」這個論斷因此缺乏統計支撐，而它正是「臨床脈絡殘餘效應」推論的唯一實證基礎。</p>
+<hr />
+<p><strong>🚩 #4 — 缺少依嚴重度分層的敏感度：最有臨床意義的分析付之闕如</strong></p>
+<p>文章反覆強調「社區偵測到的多為中度瓣膜疾病，早期偵測的臨床效益不明」，並以此弱化篩檢的正當性。但文章<strong>從未報告模型對「重度 SHD」的單獨敏感度</strong>。</p>
+<p>這個缺口的臨床意義極大：若模型對重度 SHD 的敏感度很高（例如 &gt;90%），那麼即使整體 PPV 只有 14%，「用它來揪出社區中真正需要介入的重度病例」仍可能是有價值的策略——而這正是最可能通過成本效益檢驗的使用情境。反之若重度敏感度也只有 ~70%，則篩檢價值確實有限。</p>
+<p><strong>文章提供了計算所需的一切原始資料（重度 n=28，各次族群分布皆有），卻沒有做這個最關鍵的分析。</strong> 這是一個顯著的分析遺漏，而且它遺漏的方向恰好使得「篩檢價值有限」的結論更難被挑戰。</p>
+<hr />
+<h3>【數據完整性】</h3>
+<p><strong>🚩 #5 — Table 3 種族次族群數據存在內部矛盾，疑為排版錯置</strong></p>
+<p>檢視第 760 頁 <strong>Table 3</strong> 的種族列：</p>
+<table>
+<thead>
+<tr>
+<th>列</th>
+<th>全世代</th>
+<th>異常 ECG</th>
+<th>KCCQ&lt;90</th>
+<th>異常 ECG 或 KCCQ&lt;90</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>NH White (n = 1,768)</strong></td>
+<td>71.3 <strong>(66.5–76.0)</strong></td>
+<td>77.6 <strong>(49.3–95.1)</strong></td>
+<td>80.6 <strong>(56.8–95.3)</strong></td>
+<td>81.3 <strong>(58.0–96.0)</strong></td>
+</tr>
+<tr>
+<td><strong>NH Black (n = 354)</strong></td>
+<td>73.3 <strong>(62.5–83.8)</strong></td>
+<td>80.3 <strong>(75.8–84.8)</strong></td>
+<td>75.9 <strong>(68.7–83.1)</strong></td>
+<td>77.5 <strong>(72.0–82.3)</strong></td>
+</tr>
+</tbody>
+</table>
+<p><strong>在「全世代」欄，CI 寬度符合樣本數預期</strong>（NH White n=1,768 → CI 寬 9.5 點；NH Black n=354 → CI 寬 21.3 點）。</p>
+<p><strong>但在三個次族群欄，關係完全反轉</strong>：NH White 的 CI 寬度變成 <strong>45.8 / 38.5 / 38.0 點</strong>，而 NH Black 反而只有 <strong>9.0 / 14.4 / 10.3 點</strong>。</p>
+<p>依 Table 1，異常 ECG 次族群中 NH White 有 <strong>936 人</strong>（SHD 事件約 83 例），其 AUC 的 95% CI 不可能寬達 46 個百分點——那是 n≈50–60 的量級（可對照同表「Other race/ethnicity, n=59」的 CI 為 10.0–93.5，寬 83.5 點）。</p>
+<p><strong>結論：Table 3 的 NH White 列在三個次族群欄中的數值幾乎確定發生了欄位/列錯置</strong>（最可能是與 &quot;Other race/ethnicity&quot; 或 NH Black 列互換）。這<strong>不影響本文的主要結論</strong>（種族次族群非核心分析），但屬於應向期刊反映並更正的數據完整性問題，也提醒讀者不應引用 Table 3 的種族次族群數字。</p>
+<hr />
+<p><strong>🚩 #6 — Figure 2 與 Central Illustration 所呈現的院內世代，與表格中的比較世代對不上</strong></p>
+<p><strong>Figure 2 上方 NYP 面板</strong>的分組人數為：No SHD 1,162 + Mild 12,945 + Moderate 4,662 + Severe 5,841 = <strong>24,610</strong>。</p>
+<p>但 <strong>Table 1 / Table 2 的 NYP internal test cohort 為 n = 15,071</strong>（限定 65–85 歲）。兩者相差 9,539 人。</p>
+<p>（附帶一提：Figure 2 中 moderate + severe = 10,503，佔 24,610 的 <strong>42.7%</strong>，與 Table 2 報告的 42.8% 盛行率吻合——所以盛行率對得上，<strong>人數對不上</strong>。）</p>
+<p>相對地，<strong>PREVUE 面板的人數完全正確</strong>：91 + 2,130 + 153 + 28 = <strong>2,402</strong> ✓，且 153 + 28 = 181 = SHD 總數 ✓。</p>
+<p><strong>問題所在</strong>：本文<strong>視覺論證的核心</strong>（「院內分數分離清楚 vs 社區重疊嚴重」）以及 <strong>Central Illustration 標註的「Health System Population: AUROC 0.83」</strong>，所依據的密度曲線來自一個<strong>與數值比較不同的院內族群</strong>（推測為未限定年齡的完整 NYP 測試集）。文中未對此作任何說明。</p>
+<p>由於 Figure 2 與 Central Illustration 是讀者最容易記住、也最常被二次引用的內容，這個未經標註的世代不一致值得指出。<strong>它不至於推翻結論</strong>（分離程度的定性差異依然明顯），但讀者不應假設圖中的分布就是產生 AUC 82.5% vs 71.0% 那個比較的分布。</p>
+<hr />
+<p><strong>🚩 #7 — Central Illustration 的密度曲線與 Figure 2 不一致（同資料、不同繪製）</strong></p>
+<p>比對第 761 頁 Central Illustration 與第 759 頁 Figure 2：兩者標註<strong>完全相同的分組人數</strong>，但曲線形狀明顯不同——例如 NYP/Health System 面板的 Mild SHD 峰值密度在 Figure 2 約為 2.75，在 Central Illustration 約為 4.0；PREVUE/Community 面板的 Severe SHD 峰值在 Figure 2 約 0.32，在 Central Illustration 約 0.40。</p>
+<p>推測為以不同 kernel bandwidth 重新繪製。屬輕微問題，但同一篇論文中同一組資料應有一致呈現。</p>
+<p><strong>（座標軸檢查——依要求特別確認）</strong>：Figure 2 與 Central Illustration 的兩軸皆為<strong>完整範圍且從零起始</strong>（Density 0–5，EchoNext Score 0.0–1.0），<strong>無截斷座標軸誇大效果的問題</strong>。Figure 1 的 ROC 曲線依 markdown 保留的圖說文字，兩軸亦為 0.0–1.0 完整範圍。本文<strong>無 Kaplan-Meier 曲線、無 forest plot、無 number-at-risk 表</strong>（診斷準確度研究不適用）。CONSORT/flow diagram 位於 Supplemental Figure 1，但<strong>正文所述之排除人數經自行驗算完全一致</strong>（3,000 − 36 − 351 − 53 − 125 − 33 = 2,402 ✓）。</p>
+<p>［限制：提供的 7 張圖頁 PNG 涵蓋第 752、754、756、758、759、760、761 頁；<strong>第 757 頁（Figure 1，ROC 曲線）未在擷取範圍內</strong>，因此 ROC 曲線的實際形狀、曲線交叉情形、以及低偽陽性率區段的表現無法進行視覺判讀，僅能依據 markdown 保留的圖說文字。］</p>
+<hr />
+<h3>【設計】</h3>
+<p><strong>🚩 #8 — 兩個比較世代的排除條件可能不對等</strong></p>
+<p>社區世代排除了節律器（53）、曾接受瓣膜手術（33）、TTE 無法測 LVEF（125）；<strong>文中從未說明 NYP 院內世代是否施加了對等排除</strong>。這些正是院內世代中比例必然更高的族群。若未對等排除，則「疾病譜差異」的量測本身即被<strong>不對稱的納排標準</strong>放大。結合 §6.1 所述的排除族群疾病富集（[推論] 約 3 倍），這個問題會系統性地<strong>擴大</strong>觀察到的世代間落差。</p>
+<p><strong>🚩 #9 — 複合終點的成分臨床重要性差異極大（outcome hierarchy mismatch）</strong></p>
+<p>SHD 複合終點把「LVEF ≤45%」（明確需要 GDMT，改變預後）與「中度 TR」（在 65–85 歲多為年齡相關/功能性，通常僅需追蹤）等價計算。而<strong>中度 TR 佔了社區 SHD 病例的 42%（76/181）</strong>，是最大單一貢獻者。</p>
+<p>這造成一個雙重問題：</p>
+<ol>
+<li><strong>對模型不公平</strong>：中度 TR 的 ECG 表現本就微弱，把它放進終點必然壓低 AUC。作者以此解釋性別差異（女性 TR 較多），但<strong>未反過來承認這也是整體 AUC 71% 的主要原因之一</strong>，也未報告排除 TR 後的整體 AUC（只在性別分析中做了此敏感度分析：排除 TR 後男 82.8 / 女 72.3，<strong>隱含全世代 AUC 會顯著上升</strong>，但此數字未單獨呈現）。</li>
+<li><strong>對臨床決策不公平</strong>：一個「陽性 → 找到中度 TR」的結果，其臨床價值遠低於「陽性 → 找到 LVEF 30%」。PPV 14% 這個數字把兩者混在一起計算。</li>
+</ol>
+<p><strong>🚩 #10 — 事後最佳化的操作閾值</strong></p>
+<p>如 A 節所述，balanced threshold 與 75%-sensitivity threshold 皆在驗證資料上求得，非預先指定。實際部署使用固定閾值時表現只會更差。</p>
+<p><strong>🚩 #11 — 「異常 ECG」次族群的準循環性</strong></p>
+<p>作者最主要的正面發現（異常 ECG 次族群 AUC 79.3%）建立在一個由<strong>心臟科醫師判讀同一份 ECG</strong> 所定義的篩選條件上。這意味著：要使用這個策略，你必須先讓一位心臟科醫師看過這份 ECG——而<strong>如果已經有心臟科醫師在看 ECG 了，AI 的增量價值是什麼？</strong> 作者自己在 Discussion 中承認了近似的疑慮（「echocardiography may already be warranted in many of these individuals」），但未把這個邏輯推到底。</p>
+<p>更值得注意的數字：<strong>53.1%（1,275/2,402）的社區 65–85 歲長者被判為「ECG 異常」</strong>——這個閘門的選擇性極低，卻仍會漏掉 37.6% 的 SHD 病例。</p>
+<p><strong>🚩 #12 — 判讀者致盲狀態未陳述，且判讀者含模型發明人</strong></p>
+<p>見 A 節。ECG normal/abnormal 判讀由 T.J.P.、M.B.、P.A.E. 執行，其中兩位是模型發明人與潛在權利金受益人；文中未聲明是否對 AI 輸出保持盲性。</p>
+<hr />
+<h3>【敘事／框架】</h3>
+<p><strong>🚩 #13 — 性別差異的「完全消失」宣稱建立在最狹窄的雙重次族群上</strong></p>
+<p>文章敘述：「this difference... narrowed with removal of patients with moderate or severe TR and was <strong>completely eliminated</strong> in patients with clinically abnormal ECGs.」引用數字為男 84.0% vs 女 86.4%。</p>
+<p>但這個「完全消失」是在<strong>同時</strong>排除中重度 TR <strong>且</strong>限定於臨床異常 ECG 的雙重條件下取得的——這是把 2,402 人切到剩下一個小得多的族群（未報告 n）。</p>
+<p><strong>而 Table 3 的單一條件次族群顯示差距依然存在</strong>：異常 ECG 次族群中，男性 81.9% (76.9–86.2) vs 女性 75.2% (67.1–82.8)——<strong>仍有 6.7 個百分點的落差</strong>。</p>
+<p>因此，「完全消失」的說法只在最極端的資料切割下成立，而作者選擇在正文中呈現這個最有利的版本，並用它支持「這是疾病譜而非演算法偏差」的結論。這是<strong>次族群過度詮釋</strong>的教科書案例（多層次事後切割、無交互作用檢定、未報告切割後樣本數）。</p>
+<p><strong>這件事的臨床重要性</strong>：無論機制是「疾病譜」還是「演算法偏差」，<strong>對部署而言結果是一樣的</strong>——在佔社區世代 58%、且承擔全美近三分之二輕度以上 VHD 負擔的女性族群中，這個模型的 AUC 是 63.3%，CI 下界 56.9%。把它歸因於「spectrum 而非 bias」有學理上的意義，但<strong>不改變任何一位臨床醫師面對女性病人時應有的謹慎程度</strong>。文章的論述方向（「這不是演算法偏差」）在效果上淡化了一個實質的部署風險。</p>
+<p><strong>🚩 #14 — 對照基準模型的比較方向（此點對作者有利，應予註明）</strong></p>
+<p>AI（71.0%）vs 自建 logistic model（65.6%）的 5.4 點差距（P=0.02）看似不大。但需注意：<strong>該 logistic model 是在 PREVUE-VALVE 資料上擬合後又在同一資料上評估的（apparent performance），必然帶有樂觀偏差</strong>；而 AI 是完全 out-of-sample 應用。因此 AI 的真實增量<strong>應大於 5.4 點</strong>。作者未指出這一點，屬於<strong>未主張的保守性</strong>——這是有利於作者的方法學細節，公允評讀應予註明。</p>
+<hr />
+<h2>F. 最終裁決</h2>
+<h3>診斷測試可信度：<strong>中</strong>（研究品質高，測試本身效能有限）</h3>
+<p>必須區分兩個層次：</p>
+<ul>
+<li><strong>研究的方法學可信度：中–高。</strong> 前瞻隨機抽樣、全員接受參考標準（無 verification bias）、中央核心實驗室判讀、多外部世代對照、誠實的限制陳述、由發明人自己發表不利結果。</li>
+<li><strong>測試本身的診斷效能：偏低。</strong> 社區情境 LR+ 2.02 / LR− 0.49；即使在最佳的院內情境 LR+ 也僅 2.94。<strong>這是一個弱–中度訊號的測試，不是一個能單獨改變臨床決策的工具。</strong></li>
+</ul>
+<h3>何種情境下此測試有用？</h3>
+<table>
+<thead>
+<tr>
+<th>Pre-test probability</th>
+<th>建議</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>&lt;10%</strong>（無症狀社區、一般健檢）</td>
+<td><strong>不建議</strong>。PPV 14%，7 個陽性 6 個假；陰性亦無法排除。且偵測到的病例 42% 是中度 TR</td>
+</tr>
+<tr>
+<td><strong>10–25%</strong>（有心血管危險因子、輕微症狀）</td>
+<td><strong>價值有限</strong>。PPV 約 18–26%，可作為「加權考量」但不應單獨驅動轉診</td>
+</tr>
+<tr>
+<td><strong>&gt;30–40%</strong>（明確症狀、異常理學發現）</td>
+<td><strong>AI 的增量近乎為零</strong>——此族群本來就該直接做 echo</td>
+</tr>
+<tr>
+<td><strong>影像量能受限的環境下作 echo 排程分流（triage）</strong></td>
+<td><strong>這是唯一可能有淨效益的情境</strong>，但本研究未直接測試，需前瞻性驗證</td>
+</tr>
+</tbody>
+</table>
+<h3>明確不建議使用的情境</h3>
+<ol>
+<li><strong>一般社區/健檢的 SHD 廣泛篩檢</strong> — 作者自己的結論即為如此，數據明確支持</li>
+<li><strong>65 歲以上女性的單獨判讀依據</strong> — AUC 63.3%，CI 下界幾乎觸及隨機</li>
+<li><strong>作為「排除」工具</strong> — LR− 0.49，26 位陰性者中仍有 1 位有中度以上 SHD</li>
+<li><strong>外推至 &lt;65 歲、其他 ECG 廠牌、或非居家/非本研究流程取得的 ECG</strong></li>
+<li><strong>在缺乏下游超音波量能的環境部署</strong> — balanced threshold 下會標記 35.6% 的受檢者</li>
+</ol>
+<h3>若要改觀，最需要的 3 個關鍵改進</h3>
+<ol>
+<li>
+<p><strong>拆解取得端 domain shift 與疾病譜效應（直接回應紅旗 #2）</strong>
+執行同一批受試者的<strong>居家 ECG vs 院內標準 ECG 配對比較</strong>，或在院內世代注入模擬居家雜訊後重測。若證實相當比例的落差來自取得端，則問題是可工程化解決的標準化問題，而非作者所暗示的疾病生物學極限——這會<strong>完全改變研發策略</strong>。同時應執行 repeatability 測試（同一人短時間內重複取得 ECG 的分數一致性），這是 JAMA ML Users' Guide 要求但本文完全缺漏的項目。</p>
+</li>
+<li>
+<p><strong>報告依嚴重度與亞型分層的敏感度，並嘗試 recalibration（回應紅旗 #4、#1 與 D.2）</strong>
+具體需要：(a) 模型對<strong>重度 SHD</strong> 的單獨敏感度；(b) 排除中度 TR 後的全世代 AUC 與 PPV；(c) 執行 intercept recalibration / Platt scaling 後的 calibration plot、PPV 與 decision curve analysis。這三項分析所需資料<strong>已全部在手</strong>，卻都未執行。若模型對重度 SHD 的敏感度確實很高，「以重度/可處置 SHD 為標的的社區偵測」可能是一個被本文誤判為不可行的可行策略。</p>
+</li>
+<li>
+<p><strong>完成第三階段：前瞻性臨床有效性試驗</strong>
+即使在 FDA 已核准的 opportunistic 使用情境下，仍需一個 pragmatic RCT（比照 Yao et al. <em>Nat Med</em> 2021 對低 EF 模型的做法）證明「使用 EchoNext」相較「不使用」能改善診斷率、縮短診斷延遲，且不造成過度檢查與病人焦慮的淨損害。<strong>在此之前，法規核准不應被解讀為臨床有效性的證據。</strong></p>
+</li>
+</ol>
+<h3>附帶要求</h3>
+<p>Table 3 種族次族群的數據錯置（紅旗 #5）、Figure 2 與 Central Illustration 的世代人數不符（紅旗 #6），建議向期刊提出更正。</p>
+<h3>一句話結論（給一般讀者）</h3>
+<p><strong>AI 心電圖在醫院看起來準，搬到社區長者身上準確度明顯下滑、七個陽性有六個是假警報，目前只適合輔助判斷，不適合當篩檢工具。</strong></p>
+<hr />
+<h2>評讀限制聲明</h2>
+<ul>
+<li>本次判讀依據為 PDF 轉出的 markdown 全文，加上第 752、754、756、758、759、760、761 頁的圖頁 PNG。</li>
+<li><strong>第 757 頁（Figure 1，ROC 曲線）不在提供的圖檔範圍內</strong>，ROC 曲線形狀、曲線交叉、低偽陽性率區段表現無法視覺判讀。</li>
+<li><strong>所有 Supplemental Tables 1–12 與 Supplemental Figures 1–4 均未提供</strong>（含 flow diagram、calibration plot、SMD 表、各外部世代逐一數據）。凡涉及補充資料之陳述，均僅依正文引述之數字，無法獨立驗證。</li>
+<li><strong>同期 editorial（JACC 2026;88:765–767, DOI 10.1016/j.jacc.2026.07.006）的全文擷取七種途徑全數失敗，WebFetch 兩次 403</strong>；其論點未被納入本評讀，僅陳述可確認之書目資訊。</li>
+</ul>
+<hr />
+<p><strong>Sources（外部資料來源）：</strong></p>
+<ul>
+<li><a href="https://www.sciencedirect.com/science/article/pii/S0735109726068336">AI-ECG Detection of Structural Heart Disease in the Community Setting — ScienceDirect</a></li>
+<li><a href="https://www.sciencedirect.com/science/article/abs/pii/S0735109726070798">The Opportunities and Challenges in AI Opportunistic Disease Detection in General Populations — ScienceDirect</a></li>
+<li><a href="https://www.jacc.org/doi/10.1016/j.jacc.2026.02.5137">Population Prevalence of Valvular Heart Disease in the United States: The PREVUE-VALVE Study — JACC</a></li>
+<li><a href="https://www.tctmd.com/news/prevue-valve-charts-prevalence-valve-disease-united-states">PREVUE-VALVE Charts the Prevalence of Valve Disease in the United States — tctmd.com</a></li>
+<li><a href="https://www.nyp.org/advances/article/cardiology/ai-model-echonext-receives-fda-clearance-to-aid-early-detection-of-structural-heart-disease">AI Model EchoNext Receives FDA Clearance — NewYork-Presbyterian Advances</a></li>
+<li><a href="https://www.businesswire.com/news/home/20260623150207/en/Pathway-Labs-Announces-Worlds-First-FDA-Clearance-for-Multicondition-AI-in-Cardiology-and-Partnership-with-OpenEvidence">Pathway Labs Announces World's First FDA Clearance for Multicondition AI in Cardiology — Businesswire</a></li>
+<li><a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC12328201/">Detecting structural heart disease from electrocardiograms using AI — PMC (Nature 2025)</a></li>
+<li><a href="https://physionet.org/content/echonext/1.1.1/">EchoNext dataset — PhysioNet</a></li>
+<li><a href="https://www.journalmetrics.org/journal/journal-of-the-american-college-of-cardiology">JACC Impact Factor 2026 — journalmetrics.org</a></li>
+</ul>
+
+<footer class="appraisal-meta">評讀資訊：模型：claude-opus-5 (claude)  ·  route：diagnostic  ·  產出時間：2026-08-23 13:29 CST</footer>
+</main>
+</body>
+</html>

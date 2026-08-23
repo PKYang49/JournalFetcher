@@ -1,0 +1,1343 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Myocardial Scar Assessment Using Artificial Intelligence-Powered Contrast-Free MRI: A Prospective Multicenter Study of Virtual Native Enhancement.</title>
+<style>
+  :root {
+    --bg: #fafafa;
+    --card: #ffffff;
+    --text: #1a1a1a;
+    --muted: #6b6b6b;
+    --border: #e5e5e5;
+    --accent: #0b5fff;
+  }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang TC",
+      "Microsoft JhengHei", sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    margin: 0;
+    padding: 24px 16px 64px;
+    line-height: 1.72;
+  }
+  main {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    margin: 0 auto;
+    max-width: 840px;
+    padding: 22px 26px;
+  }
+  nav {
+    margin: 0 auto 14px;
+    max-width: 840px;
+    color: var(--muted);
+    font-size: 14px;
+  }
+  a { color: var(--accent); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  h1, h2, h3, h4 { line-height: 1.35; }
+  h1 { font-size: 26px; margin-top: 0; }
+  h2 { border-top: 1px solid var(--border); padding-top: 18px; }
+  code {
+    background: rgba(127, 127, 127, 0.12);
+    border-radius: 4px;
+    padding: 1px 4px;
+  }
+  table {
+    border-collapse: collapse;
+    table-layout: auto;
+    width: 100%;
+    max-width: 100%;
+  }
+  th, td {
+    border: 1px solid var(--border);
+    overflow-wrap: anywhere;
+    padding: 6px 8px;
+    text-align: left;
+    vertical-align: top;
+  }
+  blockquote {
+    border-left: 3px solid var(--accent);
+    color: var(--muted);
+    margin-left: 0;
+    padding-left: 14px;
+  }
+  .appraisal-meta {
+    border-top: 1px solid var(--border);
+    margin-top: 28px;
+    padding-top: 14px;
+    color: var(--muted);
+    font-size: 13px;
+  }
+  @media (max-width: 600px) {
+    body {
+      padding: 12px 8px 40px;
+    }
+    main {
+      padding: 16px 12px;
+    }
+    h1 {
+      font-size: 22px;
+    }
+    table {
+      font-size: 12px;
+      table-layout: fixed;
+    }
+    th, td {
+      padding: 4px 5px;
+    }
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #1a1a1a;
+      --card: #242424;
+      --text: #e8e8e8;
+      --muted: #999;
+      --border: #333;
+      --accent: #6ea8ff;
+    }
+  }
+</style>
+</head>
+<body>
+<nav><a href="../../2026-W35.html">← 回到 2026-W35 週報</a></nav>
+<main>
+<h1>Myocardial Scar Assessment Using Artificial Intelligence-Powered Contrast-Free MRI: A Prospective Multicenter Study of Virtual Native Enhancement.</h1>
+<h1>醫學文獻批判性評讀</h1>
+<p><strong>Myocardial Scar Assessment Using Artificial Intelligence-Powered Contrast-Free MRI: A Prospective Multicenter Study of Virtual Native Enhancement</strong></p>
+<hr />
+<h1>SECTION-0：文章全面描述</h1>
+<h2>0. 文章身份證</h2>
+<table>
+<thead>
+<tr>
+<th>項目</th>
+<th>內容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>標題</td>
+<td>Myocardial Scar Assessment Using Artificial Intelligence-Powered Contrast-Free MRI: A Prospective Multicenter Study of Virtual Native Enhancement</td>
+</tr>
+<tr>
+<td>期刊</td>
+<td>Journal of the American College of Cardiology (JACC) 2026;88(7):717–735</td>
+</tr>
+<tr>
+<td>DOI / PMID</td>
+<td>10.1016/j.jacc.2026.05.029 / 42455101</td>
+</tr>
+<tr>
+<td>授權</td>
+<td>CC BY 4.0 open access [文內]</td>
+</tr>
+<tr>
+<td>文章類型</td>
+<td><strong>Diagnostic accuracy study of an AI-generated imaging biomarker（前瞻性、多中心、盲化、index test vs reference standard）→ 路由 SKILL-C</strong></td>
+</tr>
+<tr>
+<td>次要成分</td>
+<td>含 agreement / reproducibility study（Bland-Altman、ICC）與 reader study（4 位臨床判讀者）</td>
+</tr>
+</tbody>
+</table>
+<p><strong>類型判定說明</strong>：本文並非 RCT，也非預測模型（無 outcome 預測、無 calibration plot）。其核心是「以 LGE 為 reference standard，評估 AI 生成影像 VNE 的診斷準確度與量化一致性」，屬典型 diagnostic accuracy + method-comparison 混合設計。故套用 SKILL-C 主流程 + AI/ML 三階段評估。</p>
+<hr />
+<h2>1. 作者團隊評論</h2>
+<p><strong>通訊作者</strong>：Qiang Zhang, PhD（Oxford Centre for Clinical Magnetic Resonance Research, OCMR；Big Data Institute, University of Oxford）；共同通訊 Minjie Lu, MD（阜外醫院）[文內]</p>
+<p><strong>資深作者</strong>：Stefan K. Piechnik（MScEE, PhD, DSc）與 Vanessa M. Ferreira（MD, DPhil）並列 senior author [文內]</p>
+<p><strong>團隊構成與分工</strong>：三方分工是本研究設計的核心資產 [文內]</p>
+<ul>
+<li><strong>Oxford（開發方）</strong>：VNE 生成、盲化評分（V.M.F. 為 SCMR level III reader，20 年經驗）</li>
+<li><strong>Leeds（獨立驗證站）</strong>：前瞻收案、LGE ground truth 判定（P.T., P.P.S.）</li>
+<li><strong>Fuwai 阜外（獨立驗證站）</strong>：前瞻收案、LGE ground truth 判定（D.Z.）</li>
+<li><strong>追加 4 位臨床 reader</strong>：K.E.T., A.L., O.R.（Oxford）、M.L.（Fuwai），皆非 VNE 開發團隊成員</li>
+</ul>
+<p><strong>機構聲譽</strong>：Oxford OCMR 是全球心臟 T1 mapping 的發源地之一（ShMOLLI 序列即出自此團隊）；Leeds LICAMM（Sven Plein）與阜外醫院皆為國際級 CMR 中心。三方組合在 CMR 方法學領域屬頂級配置。[外部: Oxford RDM / BDI 官網]</p>
+<p><strong>團隊過往研究（VNE 系列）</strong> [外部: PubMed / Oxford RDM]</p>
+<ol>
+<li>Zhang Q, et al. <em>Circulation</em> 2021;144:589-599 — VNE 於肥厚性心肌病（HCM）的首次驗證</li>
+<li>Zhang Q, et al. <em>Circulation</em> 2022;146:1492-1503 — VNE 於慢性心肌梗塞（單中心 842 例訓練 + 內部驗證）</li>
+<li>Zhang Q, et al. <em>Int J Cardiol</em> 2021;330:251-258 — T1 phantom QA 程式（HCMR study）</li>
+<li>Gonzales RA, et al. <em>Front Cardiovasc Med</em> 2021 — MOCOnet 動態校正網路</li>
+<li>Zhang Q, et al. <em>J Cardiovasc Magn Reson</em> 2024 — AI 於 CMR 的臨床轉譯 roadmap（本文引用為 ref 14，即作者自訂的評估框架）</li>
+<li>Piechnik SK, et al. <em>JCMR</em> 2010 — ShMOLLI 原始論文</li>
+</ol>
+<p>Dr. Qiang Zhang 為 SCMR 2022 Early Career Award 得主。[外部: Oxford Cardiovascular Science 官網]</p>
+<p><strong>作者立場史</strong>：這是<strong>同一團隊、同一技術、第四篇主要驗證論文</strong>。VNE 由 Zhang / Piechnik / Ferreira 共同發明。團隊在 2021、2022 已公開主張 VNE「toward replacing LGE」，本文結論與此前立場完全一致。這構成明確的 <strong>prior commitment bias</strong>：技術的發明人同時是生成方、初次盲讀者、與結論撰寫者。</p>
+<p><strong>利益揭露</strong> [文內]</p>
+<ul>
+<li><strong>專利</strong>：Q. Zhang、Piechnik、Ferreira 對 <strong>WO2021/044153（&quot;Enhancement of Medical Images&quot;，即 VNE 本體）</strong>、WO202023457、WO2020161481 擁有著作權；Piechnik 另持有 <strong>US20120078084A1（ShMOLLI）</strong>。智財由 Oxford University Innovation 持有與管理。</li>
+<li><strong>產業關係</strong>：Plein 與 Siemens Healthineers、Philips、Circle Cardiovascular 有研究合約；Atkinson 的 iCASE studentship 由 GE Healthcare 部分資助。</li>
+<li><strong>資金</strong>：BHF、NIHR、Kusuma Trust、中國國家自然科學基金等，均為公部門或非營利。</li>
+</ul>
+<p><strong>[評估]</strong>：資助來源本身乾淨（無藥廠/影像廠商直接資助本研究），這是正面的。但<strong>專利利益是實質且直接的</strong>：本文若成功推動 VNE 進入臨床，直接增值的是作者持有著作權、Oxford University Innovation 管理的智財。文章結尾主張「positioned for clinical implementation... with vendor-led regulatory approval」與 Central Illustration 中的「Regulatory approval / Clinical adoption / Scan cost↓ / Throughput↑」商業化敘事，其語氣強度明顯高於數據所能支撐的程度。同時 VNE 綁定 ShMOLLI（Piechnik 專利）與 Siemens 平台，形成技術路徑與智財的雙重鎖定。作者已充分揭露，但讀者需自行對敘事強度打折。</p>
+<hr />
+<h2>2. 文獻 Metadata 整理</h2>
+<table>
+<thead>
+<tr>
+<th>項目</th>
+<th>內容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Received</td>
+<td>2025 年 8 月 7 日 [文內]</td>
+</tr>
+<tr>
+<td>Revised received</td>
+<td>2026 年 5 月 13 日 [文內]</td>
+</tr>
+<tr>
+<td>Accepted</td>
+<td>2026 年 5 月 15 日 [文內]</td>
+</tr>
+<tr>
+<td><strong>投稿至接受總天數</strong></td>
+<td><strong>281 天（約 9.3 個月）</strong>（自行計算）</td>
+</tr>
+<tr>
+<td><strong>修訂稿至接受</strong></td>
+<td><strong>2 天</strong>（自行計算）</td>
+</tr>
+<tr>
+<td>JACC 2025 Impact Factor</td>
+<td><strong>22.3</strong>，Q1，Medicine 領域排名 #77 [外部: ACC 官網 / JACC impact-factor 頁，2026-06-17 公布]</td>
+</tr>
+<tr>
+<td>JACC 平均審查天數</td>
+<td>[無法取得]——JACC 未公開 editorial statistics</td>
+</tr>
+<tr>
+<td>Open Access</td>
+<td>是（CC BY 4.0）[文內]</td>
+</tr>
+<tr>
+<td>邀稿 vs 投稿</td>
+<td>為 Original Research，非邀稿 [文內]</td>
+</tr>
+</tbody>
+</table>
+<p><strong>[評估] 審查時程的訊息量</strong>：281 天對 JACC 的 original research 而言偏長，強烈暗示至少一輪重大修訂。關鍵線索在 limitations：作者明言「<strong>after the review process, additional readers (K.E.T., A.L., O.R., M.L.) from Oxford and Fuwai but outside the VNE development team provided more independent validation (Table 5)</strong>」[文內]。</p>
+<p>這代表 <strong>Table 5 的 4-reader 分析是審稿人要求後補做的</strong>——審稿人顯然質疑了「開發團隊自己盲讀自己的 AI 輸出」的獨立性。這是同儕審查實質發揮功能的正面證據，值得肯定。</p>
+<p>但這也產生一個關鍵的閱讀警示：<strong>後補的 Table 5 產出了全文最不利的數字（VNE 全體 accuracy 81.1%、specificity 58.2%），而 Abstract 只採用了其中最有利的 triage 子集數字（93.7% vs 93.9%）</strong>。修訂稿到接受僅 2 天，意味著審稿人未再檢視作者如何把這批新數據寫進 Abstract。</p>
+<hr />
+<h2>3. 研究背景 [僅根據文內資料]</h2>
+<p><strong>既有事實</strong></p>
+<ul>
+<li>CMR-LGE 是評估心肌梗塞與纖維化的影像黃金標準（ref 2, Kim RJ, <em>NEJM</em> 2000）</li>
+<li>LGE 的存在與範圍指導血運重建決策、風險分層與預後判斷（ref 3, 4）</li>
+<li>LGE 需靜脈注射 gadolinium-based contrast agent（GBCA），增加掃描時間、成本，部分病人有禁忌</li>
+</ul>
+<p><strong>知識缺口（作者陳述）</strong></p>
+<ul>
+<li>VNE 已在 HCM 與慢性 MI 顯示可行性（ref 5, 6），但均為<strong>單中心</strong></li>
+<li>AI 影像解決方案的臨床轉譯普遍受阻於：generalizability、reproducibility、quality control、reliability，以及<strong>缺乏前瞻性、盲化、真實世界的驗證證據</strong></li>
+</ul>
+<p><strong>Research question</strong>：在多中心、前瞻、盲化的真實臨床環境下，VNE 偵測心肌梗塞疤痕的診斷表現如何？能否取代或分流 LGE？</p>
+<p><strong>[評估]</strong> 研究問題明確、切中要害，且作者對 AI 轉譯困境的問題意識（quality control、blinded evaluation、failure mode disclosure）在整個 AI 醫學影像文獻中屬於少見的成熟。這是本文最值得肯定的部分，與最終數據的過度銷售形成對比。</p>
+<hr />
+<h2>4. 研究設計與方法</h2>
+<h3>PICO</h3>
+<table>
+<thead>
+<tr>
+<th>元素</th>
+<th>內容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>P</strong></td>
+<td>兩個異質族群：<strong>Leeds</strong> — 因疑似缺血性心臟病臨床轉診做 CMR 者，連續收案（可能有或沒有陳舊 MI）；<strong>Fuwai</strong> — 已確診陳舊 MI 且接受過 PCI、因新發胸痛轉診者，<strong>選擇性收案</strong></td>
+</tr>
+<tr>
+<td><strong>I（Index test）</strong></td>
+<td>VNE（AI 生成之虛擬 LGE 影像），僅由 precontrast cine + T1 map + T1-weighted 影像生成</td>
+</tr>
+<tr>
+<td><strong>C（Reference standard）</strong></td>
+<td>傳統 postcontrast LGE（全 short-axis stack + 正交 long-axis views + 病歷）；由各站獨立團隊判定</td>
+</tr>
+<tr>
+<td><strong>O</strong></td>
+<td>主要：per-patient MI 有無之診斷準確度；次要：scar burden（%LV）、transmurality、梗塞區域（anterior/inferior/lateral）之一致性；4-reader 判定「是否仍需打 GBCA」的比例</td>
+</tr>
+</tbody>
+</table>
+<h3>關鍵設計細節 [文內]</h3>
+<ul>
+<li><strong>設計</strong>：前瞻性、雙中心、盲化 index test vs reference standard 比較</li>
+<li><strong>收案期間</strong>：Leeds 2023/05–2024/04；Fuwai 2023/11–2024/03</li>
+<li><strong>掃描設定</strong>：Leeds 為 <strong>1.5T Siemens MAGNETOM Aera + Gadovist（gadobutrol, macrocyclic）6–10 分鐘延遲</strong>；Fuwai 為 <strong>3T Siemens Skyra + Magnevist（gadopentetate, linear，現已下市）10 分鐘延遲</strong></li>
+<li><strong>VNE 涵蓋範圍</strong>：僅 3 個 short-axis slices（basal / mid / apical），<strong>無 long-axis views</strong>；LGE 為完整 stack + long-axis</li>
+<li><strong>盲化層級</strong>：Oxford 團隊生成 VNE 時無法取得 LGE 與臨床資料；V.M.F. 盲讀 VNE；各站盲讀 LGE；<strong>所有評分在 Oxford 取得 LGE 前鎖定</strong></li>
+<li><strong>模型</strong>：無任何額外 fine-tuning（凍結權重部署）；training set 為 Oxford 單中心 842 例，平均年齡 64 歲、81% 男性、平均梗塞年齡 7 個月</li>
+<li><strong>統計</strong>：Python 3.9.6；Pearson R、ICC(3,k) 以 mixed-effects variance-component 法計算（per-slice 分析有加入 subject random intercept 做 cluster correction）；Bland-Altman；AUC-ROC 與 Youden index；Fleiss kappa；顯著水準 P&lt;0.05</li>
+<li><strong>VNE 三級評分</strong>：definite infarct / possible infarct / no infarct。<strong>「possible infarct」為信心不足的中間類別</strong>，用於界定「confident subset」</li>
+<li><strong>多重比較處理</strong>：[無] — 未見任何多重比較校正說明</li>
+</ul>
+<h3>圖判讀補充（Figure 1，第 4 頁）</h3>
+<p>流程圖人數與正文一致：Leeds 93 掃描 → 排除 5（2 例無配對 cine、3 例嚴重 artifact：1 pacemaker lead、1 T1 map motion、1 cine mistriggering）→ <strong>88</strong>；Fuwai <strong>48</strong>，無排除；合計 <strong>136 例、389 組配對影像</strong>。CONSORT-like 流程無內部矛盾。</p>
+<p>但 Figure 1 也暴露一個未被討論的問題：<strong>136 例 × 3 slices = 408，實際只有 389 組配對（缺 19 組，4.7%）</strong>。Figure 2 顯示至少 3 個診斷不一致案例（Patient A、B、C）的灰色 panel 即為缺失 slice。<strong>VNE pipeline 的產出失敗率從未被當作獨立的技術可靠度指標報告</strong>——這對真實世界部署是實質資訊，卻只以「incomplete slice coverage」一語帶過。</p>
+<hr />
+<h2>5. 研究結果重點整理</h2>
+<h3>主要診斷表現（Table 2 / Table 3，Oxford 盲讀者）</h3>
+<table>
+<thead>
+<tr>
+<th>分析族群</th>
+<th>n</th>
+<th>Sens % (95% CI)</th>
+<th>Spec % (95% CI)</th>
+<th>PPV %</th>
+<th>NPV %</th>
+<th><strong>Accuracy %</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>全部（含 possible infarct 算陽性）</td>
+<td>136</td>
+<td>94.1 (88.8–97.0)</td>
+<td>76.5 (68.7–82.8)</td>
+<td>87.0</td>
+<td>88.6</td>
+<td><strong>87.5 (80.9–92.1)</strong></td>
+</tr>
+<tr>
+<td><strong>Confident subset</strong>（排除 29 例 possible）</td>
+<td>107</td>
+<td>92.5 (85.9–96.2)</td>
+<td>97.5 (92.5–99.2)</td>
+<td>98.4</td>
+<td>88.6</td>
+<td><strong>94.4 (88.3–97.4)</strong></td>
+</tr>
+<tr>
+<td>Leeds 全部</td>
+<td>88</td>
+<td>86.5 (77.8–92.1)</td>
+<td>76.5 (66.7–84.1)</td>
+<td>72.7</td>
+<td>88.6</td>
+<td><strong>80.7 (71.2–87.6)</strong></td>
+</tr>
+<tr>
+<td><strong>Leeds confident subset</strong></td>
+<td>66</td>
+<td>80.8 (69.7–88.5)</td>
+<td>97.5 (90.4–99.4)</td>
+<td>95.5</td>
+<td>88.6</td>
+<td><strong>90.9 (81.5–95.8)</strong></td>
+</tr>
+<tr>
+<td>Fuwai</td>
+<td>48</td>
+<td>—</td>
+<td><strong>無法計算（0 例陰性）</strong></td>
+<td>—</td>
+<td>—</td>
+<td>41 definite + 7 possible，全部 LGE 陽性</td>
+</tr>
+</tbody>
+</table>
+<h3>4-reader 盲化 matched-slice 比較（Table 5，第 10 頁）</h3>
+<table>
+<thead>
+<tr>
+<th>族群</th>
+<th>方法</th>
+<th>Sens %</th>
+<th><strong>Spec %</strong></th>
+<th>PPV %</th>
+<th>NPV %</th>
+<th><strong>Acc %</strong></th>
+<th>n</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>全部病人</strong></td>
+<td>VNE (pooled)</td>
+<td>95.2</td>
+<td><strong>58.2</strong></td>
+<td>78.6</td>
+<td>88.3</td>
+<td><strong>81.1</strong></td>
+<td>136×4</td>
+</tr>
+<tr>
+<td></td>
+<td>LGE (pooled)</td>
+<td>95.8</td>
+<td><strong>86.5</strong></td>
+<td>92.0</td>
+<td>92.8</td>
+<td><strong>92.3</strong></td>
+<td></td>
+</tr>
+<tr>
+<td><strong>VNE 判為足夠者</strong></td>
+<td>VNE (pooled)</td>
+<td>96.3</td>
+<td>87.4</td>
+<td>94.9</td>
+<td>90.7</td>
+<td><strong>93.7</strong></td>
+<td>379 (69.7%)</td>
+</tr>
+<tr>
+<td></td>
+<td>LGE (pooled)</td>
+<td>96.6</td>
+<td>87.4</td>
+<td>94.9</td>
+<td>91.5</td>
+<td><strong>93.9</strong></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>各 reader 判定 VNE 足夠、無需 GBCA 的比例：<strong>87 (64.0%)、91 (66.9%)、94 (69.1%)、107 (78.7%)</strong>——跨 reader 差距達 14.7 個百分點。</p>
+<h3>量化一致性（Figure 4，第 11 頁）</h3>
+<table>
+<thead>
+<tr>
+<th>指標</th>
+<th>族群</th>
+<th>R</th>
+<th>ICC (95% CI)</th>
+<th>Bland-Altman mean diff</th>
+<th>95% LoA</th>
+<th><strong>LoA 寬度</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Scar burden (%LV)</td>
+<td>全部</td>
+<td>0.901</td>
+<td>0.948 (0.930–0.960)</td>
+<td>+3.19</td>
+<td>−10.40 → +16.78</td>
+<td><strong>27.2</strong></td>
+</tr>
+<tr>
+<td></td>
+<td>Leeds</td>
+<td>0.830</td>
+<td>0.906 (0.860–0.940)</td>
+<td>+2.88</td>
+<td>−10.51 → +16.28</td>
+<td>26.8</td>
+</tr>
+<tr>
+<td></td>
+<td>Fuwai</td>
+<td>0.712</td>
+<td>0.830 (0.700–0.900)</td>
+<td>+3.81</td>
+<td>−10.07 → +17.69</td>
+<td>27.8</td>
+</tr>
+<tr>
+<td>Transmurality</td>
+<td>全部</td>
+<td>0.818</td>
+<td>0.899 (0.860–0.930)</td>
+<td>+6.30</td>
+<td>−13.56 → +26.15</td>
+<td><strong>39.7</strong></td>
+</tr>
+<tr>
+<td></td>
+<td>Leeds</td>
+<td>0.766</td>
+<td>0.865 (0.800–0.910)</td>
+<td>+6.40</td>
+<td>−14.03 → +26.83</td>
+<td>40.9</td>
+</tr>
+<tr>
+<td></td>
+<td><strong>Fuwai</strong></td>
+<td><strong>0.549</strong></td>
+<td><strong>0.703 (0.470–0.830)</strong></td>
+<td>+6.08</td>
+<td>−12.57 → +24.72</td>
+<td>37.3</td>
+</tr>
+</tbody>
+</table>
+<h3>分區與分層一致性（Figure 6，第 14–15 頁）</h3>
+<table>
+<thead>
+<tr>
+<th>分析層級</th>
+<th>Scar burden R (ICC)</th>
+<th>Transmurality R (ICC)</th>
+<th>Burden LoA</th>
+<th>Transmurality LoA</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Per-slice（cluster-corrected）</td>
+<td>0.865 (0.896)</td>
+<td>0.874 (0.886)</td>
+<td>−18.61 → +24.92</td>
+<td>−21.25 → +29.95</td>
+</tr>
+<tr>
+<td><strong>Anterior</strong></td>
+<td>0.892 (0.943)</td>
+<td>0.855 (0.922)</td>
+<td>−17.57 → +29.93</td>
+<td>−19.55 → +36.48</td>
+</tr>
+<tr>
+<td><strong>Inferior</strong></td>
+<td><strong>0.698 (0.820)</strong></td>
+<td><strong>0.693 (0.818)</strong></td>
+<td>−19.97 → +24.60</td>
+<td>−23.72 → +30.05</td>
+</tr>
+<tr>
+<td><strong>Lateral</strong></td>
+<td>0.804 (0.891)</td>
+<td>0.754 (0.860)</td>
+<td>−21.57 → +21.89</td>
+<td>−25.99 → +27.92</td>
+</tr>
+</tbody>
+</table>
+<p>Intermethod variability 隨層級遞增：per-patient (±0.14 / ±0.20) → per-territory (±0.23 / ±0.28) → <strong>per-segment (±0.41 / ±0.46)</strong>。Intraobserver variability（±1.96SD 為 17–18%）約佔 intermethod variability 的一半。</p>
+<h3>其他</h3>
+<ul>
+<li><strong>梗塞區域一致性</strong>（Table 4）：全體 90.0%（Leeds 90.6%、Fuwai 89.3%）</li>
+<li><strong>Transmurality 分類一致性</strong>：50% 門檻 84.6%；四級分類僅 <strong>65.4%</strong></li>
+<li><strong>AUC-ROC</strong>（Figure 5B/5C）：pooled VNE 0.936（J=0.825，cutoff <strong>15.1%</strong>）vs LGE 0.943（J=0.864，cutoff <strong>10.5%</strong>）；Leeds VNE 0.902（cutoff 12.6%）vs LGE 0.912（cutoff 8.8%）</li>
+<li><strong>CNR</strong>：VNE 6.71±2.93 vs LGE 6.76±3.18（相當）</li>
+<li><strong>Interobserver（4 readers）</strong>：梗塞有無 Fleiss κ=0.718；transmurality ICC=0.915；transmurality ≥50% 二分 Fleiss κ=0.770</li>
+<li><strong>梗塞區域分布</strong>：anterior 63%、inferior 20%、lateral 17%</li>
+</ul>
+<hr />
+<h2>6. 作者討論與評論重點</h2>
+<p><strong>作者的主要訊息</strong></p>
+<ol>
+<li>這是首次針對 CMR 診斷影像 AI 的前瞻、盲化、多中心驗證</li>
+<li>高品質 VNE 影像可在 &gt;2/3 的慢性 MI 疤痕評估轉診中免除 GBCA，且不犧牲診斷準確度</li>
+<li>本研究方法（盲化生成、結果鎖定、完整揭露所有不一致案例）可作為醫學影像 AI 安全部署的 blueprint</li>
+</ol>
+<p><strong>與現有文獻的異同</strong></p>
+<ul>
+<li>作者將 27% 的 scar burden 95% CI 寬度對照 Klem 等（ref 13）三個 core lab 之間 LGE 量化的實驗室間不一致（offset ±3%、CI 寬度 9–27%），主張 VNE-LGE 差異落在「LGE 自身臨床精度的上限」。這個 benchmark 選擇是誠實且合理的。</li>
+<li>Transmurality 高估 6%（本研究）vs 2%（Oxford 內部驗證，ref 6）——作者主動指出跨中心表現退步，值得肯定。</li>
+</ul>
+<p><strong>作者自陳限制</strong> [文內]</p>
+<ol>
+<li>VNE 以 LGE 訓練、以 LGE 驗證、ground truth 由 LGE 決定 → <strong>循環偏差（circular bias），有利於 LGE</strong></li>
+<li>LGE 是成熟技術，操作者修正取像問題的能力優於 T1 mapping</li>
+<li>本質為 <strong>internal-external validation</strong>（Oxford 開發團隊參與生成與初次判讀）；4-reader 分析為審查後補做</li>
+<li>Scar 量化時，分析者在放置 remote myocardium reference ROI 時<strong>同時看得到 VNE 與 LGE</strong>，非獨立盲化</li>
+<li>梗塞區域分布偏向前壁（63%），影響下壁/側壁量化的一般化</li>
+<li>兩站收案情境不同，無法直接跨站比較準確度</li>
+<li><strong>Fuwai 無任何陰性案例 → 該站 specificity 無法評估</strong></li>
+<li>Magnevist 已下市</li>
+<li>VNE 為離線後處理，非掃描台上即時生成</li>
+</ol>
+<p><strong>[評估]</strong> 這份 limitations 的<strong>誠實度在 AI 影像文獻中屬於前段班</strong>：主動承認循環偏差、internal-external 性質、ROI 放置的非盲化、以及 Table 5 是審查後補做——這些都是可以隱去而不被發現的事項。作者也把所有 6 個不一致案例逐一以影像揭露（Figure 2），包括一個 <strong>LGE 自己判錯、VNE 判對</strong>的案例（Patient D）。這是負責任的科學實務。</p>
+<p>但作者的解釋在三處超出數據支持範圍：</p>
+<ol>
+<li><strong>Abstract 與 Conclusions 的數字挑選</strong>：主打 94.4%（confident subset）與 93.7%（triage 後），完全不提「全體 VNE 在 4 位臨床 reader 手上 specificity 僅 58.2%、accuracy 81.1%」。Abstract 提到 87.5% 但未附特異度 76.5%。</li>
+<li><strong>「without compromising diagnostic accuracy」</strong>：此宣稱建立在 pooled 93.7% vs 93.9% 的比較上，但該比較<strong>未報告任何 CI、未做等效性檢定、未做 reader-level cluster correction</strong>。0.2 個百分點的差異在 n=379 reader-observations 下毫無統計解析力，卻被表述為「不犧牲準確度」——這是把「未偵測到差異」誤讀為「等效」的典型錯誤。</li>
+<li><strong>「positioned for clinical implementation... right away with vendor-led regulatory approval」</strong>：這句話的確定性遠超過一個 136 例、無任何臨床結果驗證、無 fairness 分析、且在真實 reader 手上特異度不到 60% 的技術所能支撐。</li>
+</ol>
+<hr />
+<h2>7. 外部專業意見</h2>
+<p><strong>同期 editorial comment（已定位，全文擷取失敗）</strong></p>
+<ul>
+<li><strong>標題</strong>：Cardiac MRI of Chronic Myocardial Infarction: Emergence of a New Era?</li>
+<li><strong>作者</strong>：Dharmakumar R, Youssef K [外部: JACC 網站書目頁、web search]</li>
+<li><strong>DOI</strong>：10.1016/j.jacc.2026.05.046</li>
+<li><strong>文內對應</strong>：本文第 718 頁標示「SEE PAGE 736」，與該 editorial 頁碼一致 [文內]</li>
+<li><strong>狀態</strong>：<strong>[無法取得全文]</strong></li>
+</ul>
+<p>已依指示執行 <code>python3 /Users/pokai/JournalFetcher/weekly/fetch_editorial.py 10.1016/j.jacc.2026.05.046</code> <strong>三次</strong>，三次皆在 ScienceDirect 階段遭遇 Cloudflare 人機驗證挑戰（需人工點擊，無法在此環境完成），Direct PDF / DOI redirect / Elsevier API / Unpaywall / PMC / nodriver 全數失敗。WebFetch 對 jacc.org 的 abstract 頁面回傳 HTTP 403。</p>
+<p><strong>依 Skill 規則，僅陳述可確認的書目資訊，不憑標題臆測其立場。</strong> 標題中的問號「Emergence of a New Era?」是唯一可見的語氣線索，但無法據此推斷 editorial 對本文的評價方向。</p>
+<p><strong>一項可驗證且與評讀相關的觀察</strong> [外部: 本文參考文獻 ref 28 + editorial 書目]：editorial 的共同作者 <strong>Youssef K 正是本文 reference 28 的第一作者</strong>——Youssef K, Zhang X, Yoosefian G, et al. &quot;Enabling reliable visual detection of chronic myocardial infarction with native T1 cardiac MRI using data-driven native contrast mapping.&quot; <em>Radiol Cardiothorac Imaging.</em> 2024;6:e230338。Dharmakumar R 團隊（Indiana University）在「不打顯影劑偵測慢性梗塞」這一題上是本文作者群的<strong>直接競爭研究群</strong>，且發展的是不同技術路徑（data-driven native contrast mapping，非生成式模型）。這不代表 editorial 有偏見，但讀者在取得該文時應意識到評論者與被評論者存在方法路線競爭關係。</p>
+<p><strong>其他外部來源</strong></p>
+<ul>
+<li>Hospital Healthcare Europe 與 Medscape 有科普報導 [外部]，但依 Skill 規則，一般醫療新聞不作為專業意見來源，不納入評估。</li>
+<li>未發現其他同期學術評論。</li>
+</ul>
+<hr />
+<h2>8. 臨床建議</h2>
+<h3>可採用本研究結論的情境</h3>
+<ul>
+<li><strong>明確的臨床問題是「這位病人有沒有陳舊性心肌梗塞疤痕」</strong>，且屬中至高盛行率轉診（例如已知冠心病、疑似缺血性心肌病）</li>
+<li><strong>VNE 影像品質良好、cine 與 T1 map 無明顯 artifact、血池-心肌界線清晰、且判讀者對「有」或「無」有明確把握</strong>——此時 VNE 陽性的 rule-in 能力極強（confident subset LR+ = 37）</li>
+<li><strong>病人有 GBCA 禁忌或拒絕注射，且無其他檢查可回答臨床問題</strong>——此時 VNE 是「有勝於無」的合理選項，優於完全不做組織特性評估</li>
+<li><strong>前壁（LAD 區）大面積梗塞的存在與大致範圍判定</strong>——Figure 6B 顯示 anterior territory 一致性最佳（R=0.892, ICC=0.943）</li>
+<li><strong>平台限制</strong>：僅適用於 <strong>Siemens 掃描儀 + ShMOLLI T1 mapping</strong>。其他廠商或其他 T1 mapping 變體（MOLLI、SASHA）尚未驗證，且不同序列的正常 T1 範圍與病理敏感度不同（作者自己在 ref 19–21 指出此問題）</li>
+</ul>
+<h3>不建議直接套用的情境</h3>
+<ul>
+<li><strong>心肌存活度（viability）決策</strong>：本研究<strong>沒有任何一例 transmurality &gt;75%</strong>（Figure 5A 該列該行全為 0），也<strong>沒有任何血運重建後功能恢復的結果數據</strong>。VNE 從未被證明保留了 LGE 的存活度預測能力。</li>
+<li><strong>下壁 / 側壁（RCA、LCx 區）的疤痕定量</strong>：R 僅 0.698 / 0.804，ICC 下界 0.75 / 0.85——單一病人的分區決策不可靠</li>
+<li><strong>小面積、薄壁、心內膜下梗塞的排除</strong>：Figure 5A 顯示 LGE 判 &lt;25% transmurality 的 50 例中，<strong>23 例（46%）被 VNE 高估至 25–50%</strong></li>
+<li><strong>低盛行率篩檢</strong>：本研究族群 MI 盛行率 62.5%（Leeds 42%、Fuwai 100%），無低風險族群數據</li>
+<li><strong>非缺血性心肌病變的組織特性評估</strong>：模型僅以缺血性 LGE pattern 訓練。Figure 3 展示的「捕捉到非缺血性斑塊狀病灶」僅為兩個 anecdotal 案例，無任何量化準確度，不足以支持臨床使用</li>
+<li><strong>急性心肌梗塞、心肌炎、澱粉樣變性、心肌病變</strong>：作者明言「further work is under way」</li>
+<li><strong>直接沿用文獻上以 LGE 為基礎的 scar burden 門檻</strong>：見下方實務建議</li>
+</ul>
+<h3>給臨床醫師的 3 點實務建議</h3>
+<ol>
+<li>
+<p><strong>把 VNE 定位為「rule-in 工具」，不要當「rule-out 工具」，尤其在高風險病人。</strong> 在 Leeds（唯一有陰性對照的 cohort）的 confident 子集，LR+ = 32.3 但 <strong>LR− = 0.20</strong>。以 80% pre-test probability 的病人為例，VNE 陰性只能把機率降到約 44%——臨床上等於沒有結論。VNE 陰性在高盛行率族群不足以停止進一步檢查。</p>
+</li>
+<li>
+<p><strong>不要把既有的 LGE-based scar burden 門檻直接套用在 VNE 數值上。</strong> ROC 分析顯示區分有無梗塞的最佳 cutoff：<strong>VNE 15.1% vs LGE 10.5%（pooled）</strong>、<strong>VNE 12.6% vs LGE 8.8%（Leeds）</strong>——VNE 系統性高估約 3–5 個百分點 %LV。文獻與臨床指引中的預後閾值（如 scar burden &gt;10% 之類）幾乎都以 LGE 建立；直接移植到 VNE 會系統性過度診斷。目前沒有 VNE 專屬的預後閾值。</p>
+</li>
+<li>
+<p><strong>建立「品質先於判讀」的作業流程，並保留低門檻改打顯影劑。</strong> 本研究最重要的實務訊息是：VNE 的表現<strong>完全取決於是否先做影像品質篩選</strong>。同一批病人，先篩品質再判讀 → accuracy 93.7%；不篩就全判 → <strong>accuracy 81.1%、specificity 58.2%</strong>（4 位臨床 reader 的實際表現，Table 5）。若無法在流程中確實執行 cine 與 T1 map 的品質把關，VNE 的淨效益是負的。務必取得<strong>完整 short-axis stack</strong>（本研究僅 3 個切面即造成 6 個不一致案例中的 3 個）並在有任何不確定時直接打 GBCA。</p>
+</li>
+</ol>
+<h3>研究證據強度分級</h3>
+<p><strong>中等（Moderate）</strong></p>
+<ul>
+<li><strong>加分</strong>：前瞻、真正盲化、結果預先鎖定、兩個地理與掃描平台獨立的中心、完整揭露全部不一致案例、審查後追加獨立 reader、對循環偏差主動標註</li>
+<li><strong>扣分</strong>：reference standard 與 index test 共享訓練來源造成的三重循環驗證；Fuwai cohort 完全無陰性對照使 pooled specificity 與 sensitivity 皆失真；無任何臨床結果或組織學驗證；無 subgroup / fairness 分析；樣本量 136 使多數子群 CI 過寬；「不犧牲準確度」無等效性檢定支撐；商業化敘事強度超過數據</li>
+</ul>
+<hr />
+<hr />
+<h1>SKILL-C：診斷研究批判性評讀</h1>
+<h2>A. 補充技術細節</h2>
+<p><strong>Reference standard 的獨立性與有效性</strong></p>
+<ul>
+<li><strong>是否為公認黃金標準</strong>：是。LGE 為 CMR 疤痕評估的公認標準（ref 2）。</li>
+<li><strong>是否獨立於 index test 施測</strong>：<strong>在取像上是，在概念上否</strong>。LGE 由各站獨立取得並判讀，Oxford 生成 VNE 時無法取得 LGE——取像與判讀流程的獨立性設計良好。<strong>但 VNE 模型本身是以 LGE 為訓練目標建構的</strong>，這使 index test 與 reference standard 在資訊層面並非獨立。</li>
+<li><strong>雙向盲化</strong>：達成。VNE 判讀者（V.M.F.）盲於 LGE 與臨床資料；LGE 判讀者（Leeds P.T./P.P.S.、Fuwai D.Z.）盲於 VNE。所有評分在 Oxford 取得 LGE 前鎖定。這是本研究方法學上最扎實的一環。</li>
+<li><strong>但資訊量不對等</strong>：LGE 判讀者擁有<strong>完整 short-axis stack + 正交 long-axis views + 病歷</strong>；VNE 判讀者只有 <strong>3 個 short-axis slices、無 long-axis、無臨床資料</strong>。這不是盲化問題，而是<strong>系統性地讓 index test 在資訊上處於劣勢</strong>。作者承認此點並主張完整覆蓋會改善表現——這是合理推測，但意味著<strong>本研究測的是「資訊受限的 VNE」，其結果既可能低估完整 VNE 的表現，也使「VNE 可取代 LGE」的宣稱缺乏對等條件下的證據</strong>。</li>
+</ul>
+<p><strong>Reference standard 本身的錯誤率（imperfect gold standard bias）</strong></p>
+<p>Figure 2 Patient D（第 8 頁圖判讀）提供了直接證據：LGE basal slice 的左心室流出道被誤判為疤痕（false positive LGE），VNE 判讀者正確歸因於 partial volume effect，事後以 4-chamber long-axis LGE 確認。<strong>這一例在所有 accuracy 計算中被記為 VNE 的錯誤</strong>，因為 LGE 是 ground truth。</p>
+<p>這具體證明 reference standard 的錯誤率非零。若更正此例，confident subset 的 specificity 將從 39/40 (97.5%) 變為 40/40 (100%)。更重要的是：<strong>所有報告的 accuracy 都是「相對於一個已被作者自己證明會出錯的標準」的一致度，不是真實準確度</strong>。此偏差方向是低估 VNE。作者揭露了案例但未討論其對 accuracy 估計的方向性影響。</p>
+<p><strong>疾病嚴重度分布與 spectrum bias</strong></p>
+<p>這是本研究<strong>最嚴重的方法學問題</strong>，且被 Abstract 的數字呈現方式所掩蓋。</p>
+<table>
+<thead>
+<tr>
+<th>Cohort</th>
+<th>n</th>
+<th>LGE 陰性</th>
+<th>LGE 陽性</th>
+<th>盛行率</th>
+<th>收案方式</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Leeds</td>
+<td>88</td>
+<td><strong>51</strong></td>
+<td>37</td>
+<td>42.0%</td>
+<td>連續、consecutive</td>
+</tr>
+<tr>
+<td><strong>Fuwai</strong></td>
+<td>48</td>
+<td><strong>0</strong></td>
+<td>48</td>
+<td><strong>100%</strong></td>
+<td><strong>選擇性、全部已確診 MI 且做過 PCI</strong></td>
+</tr>
+<tr>
+<td>合計</td>
+<td>136</td>
+<td>51</td>
+<td>85</td>
+<td>62.5%</td>
+<td>—</td>
+</tr>
+</tbody>
+</table>
+<p><strong>全部 51 例 LGE 陰性病人都來自 Leeds。Fuwai 對 specificity 的貢獻是零。</strong></p>
+<p>作者已在 limitations 承認 Fuwai 無法評估 specificity。但<strong>沒有揭露的是 Fuwai 對 pooled sensitivity 的膨脹效應</strong>。從 Table 2 可完整重建：</p>
+<p><strong>Confident subset (n=107) 的來源分解</strong></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Leeds</th>
+<th>Fuwai</th>
+<th>Pooled</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>TP</td>
+<td>21</td>
+<td><strong>41</strong></td>
+<td>62</td>
+</tr>
+<tr>
+<td>FN</td>
+<td>5</td>
+<td><strong>0</strong></td>
+<td>5</td>
+</tr>
+<tr>
+<td>TN</td>
+<td>39</td>
+<td>0</td>
+<td>39</td>
+</tr>
+<tr>
+<td>FP</td>
+<td>1</td>
+<td>0</td>
+<td>1</td>
+</tr>
+<tr>
+<td><strong>Sensitivity</strong></td>
+<td><strong>80.8%</strong></td>
+<td><strong>100%</strong></td>
+<td><strong>92.5%</strong></td>
+</tr>
+<tr>
+<td><strong>Specificity</strong></td>
+<td>97.5%</td>
+<td>不可評估</td>
+<td>97.5%</td>
+</tr>
+<tr>
+<td><strong>Accuracy</strong></td>
+<td><strong>90.9% (60/66)</strong></td>
+<td><strong>100% (41/41)</strong></td>
+<td><strong>94.4% (101/107)</strong></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Fuwai 的 41 例全部是已確診、已做過 PCI 的陳舊梗塞——即最容易偵測的一端（大面積、成熟疤痕），且完全沒有陰性對照可以扣分。這 41 例的 100% 正確率，把 pooled accuracy 從 Leeds 的 90.9% 拉抬到 94.4%，把 pooled sensitivity 從 80.8% 拉抬到 92.5%。</strong></p>
+<p><strong>Abstract 主打的 94.4% 與 92.5% 是一個高度選擇性、單向計分的 cohort 與一個真實 cohort 混合的產物。唯一具有完整疾病譜系（有陽性也有陰性、連續收案）的 Leeds cohort，其 confident subset accuracy 是 90.9%，sensitivity 只有 80.8%——Abstract 完全未提及此數字。</strong></p>
+<p>這是本文最重要的單一批判：<strong>這不是「多中心驗證強化了結論」，而是「一個沒有陰性對照的富集 cohort 稀釋了另一個真實 cohort 的不利數字」</strong>。真正的多中心一般化證據，應該是兩站在可比條件下表現一致；本研究因兩站收案標準根本不同（作者自己說「direct intersite comparison cannot be performed」），實際上只有<strong>一個</strong>具有診斷準確度解釋力的 cohort。</p>
+<p><strong>Cut-off 設定方式</strong></p>
+<ul>
+<li><strong>診斷分類（definite/possible/no infarct）</strong>：為判讀者的視覺定性判定，非預先數值定義。「possible infarct」的操作型定義（LVOT confounding、blurry signals、鄰近血池的小片增強、artifact）在方法段有描述 [文內]，但無 inter-reader 可重複性數據，且<strong>僅由一位判讀者執行</strong>。</li>
+<li><strong>Scar burden 的 AUC cutoff（15.1% / 10.5%）</strong>：以 <strong>Youden index 在同一資料集上選出</strong>，無獨立驗證集 → <strong>optimism bias</strong>，實際臨床表現會低於報告值。作者未標註此點。</li>
+<li><strong>Transmurality 分類（&lt;25 / 25-50 / 50-75 / &gt;75）</strong>：預先指定的標準臨床類別，合理。</li>
+<li><strong>量化方法</strong>：full-width-at-half-maximum (FWHM) [Figure 5 圖說]。FWHM 對小病灶與低對比病灶本身即有已知的不穩定性，這與 VNE 在小病灶的高估傾向會疊加。</li>
+</ul>
+<p><strong>測試結果的可重複性</strong></p>
+<ul>
+<li>Intraobserver（半自動量化）：R=0.96、ICC=0.96（burden 與 transmurality 皆是）</li>
+<li>Interobserver（4 readers）：梗塞有無 Fleiss κ=0.718（substantial 但非 excellent）；transmurality ICC=0.915；≥50% 二分 κ=0.770</li>
+<li><strong>關鍵</strong>：作者指出 intraobserver variability（±1.96SD 為 17–18%）約佔 intermethod variability 的<strong>一半</strong>。這是誠實且重要的：VNE-LGE 差異中有相當比例源自量化流程本身，而非 VNE 技術。但反過來說，<strong>這也代表即使 VNE 完美無缺，臨床可達的精度上限仍受限於量化流程的內在雜訊</strong>。</li>
+</ul>
+<hr />
+<h2>B. 診斷準確度核心評估</h2>
+<h3>標準診斷準確度與 likelihood ratio</h3>
+<p>文內<strong>完全未報告 likelihood ratio</strong>。以下由 Table 2 的 2×2 資料自行計算（LR+ = Sens/(1−Spec)；LR− = (1−Sens)/Spec）：</p>
+<table>
+<thead>
+<tr>
+<th>分析族群</th>
+<th>n</th>
+<th>Sens</th>
+<th>Spec</th>
+<th><strong>LR+</strong></th>
+<th><strong>LR−</strong></th>
+<th>臨床解讀</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Pooled confident subset</strong></td>
+<td>107</td>
+<td>0.925</td>
+<td>0.975</td>
+<td><strong>37.0</strong></td>
+<td><strong>0.077</strong></td>
+<td>陽性大幅改變機率；陰性大幅改變——<strong>但兩者皆受 Fuwai 41/41 全對膨脹</strong></td>
+</tr>
+<tr>
+<td><strong>Leeds confident subset</strong></td>
+<td>66</td>
+<td>0.808</td>
+<td>0.975</td>
+<td><strong>32.3</strong></td>
+<td><strong>0.197</strong></td>
+<td>陽性大幅改變（rule-in 強）；<strong>陰性僅中度改變（rule-out 弱）</strong></td>
+</tr>
+<tr>
+<td>Pooled 全部</td>
+<td>136</td>
+<td>0.941</td>
+<td>0.765</td>
+<td><strong>4.00</strong></td>
+<td><strong>0.077</strong></td>
+<td>陽性僅中度改變；陰性大幅改變</td>
+</tr>
+<tr>
+<td><strong>Leeds 全部</strong></td>
+<td>88</td>
+<td>0.865</td>
+<td>0.765</td>
+<td><strong>3.68</strong></td>
+<td><strong>0.176</strong></td>
+<td><strong>陽性與陰性皆僅中度改變——臨床價值有限</strong></td>
+</tr>
+<tr>
+<td>Fuwai</td>
+<td>48</td>
+<td>1.00</td>
+<td>不可評估</td>
+<td><strong>不可計算</strong></td>
+<td><strong>不可計算</strong></td>
+<td>無陰性對照</td>
+</tr>
+<tr>
+<td>4-reader pooled（全部病人）</td>
+<td>136×4</td>
+<td>0.952</td>
+<td>0.582</td>
+<td><strong>2.28</strong></td>
+<td><strong>0.082</strong></td>
+<td><strong>陽性幾乎不改變診斷；僅陰性有排除價值</strong></td>
+</tr>
+<tr>
+<td>4-reader pooled（VNE 判為足夠）</td>
+<td>379</td>
+<td>0.963</td>
+<td>0.874</td>
+<td><strong>7.64</strong></td>
+<td><strong>0.042</strong></td>
+<td>陽性中至大幅改變；陰性大幅改變</td>
+</tr>
+</tbody>
+</table>
+<p><strong>LR 分析揭示的三個關鍵結論（文內完全未呈現）</strong></p>
+<ol>
+<li>
+<p><strong>VNE 的診斷價值幾乎完全取決於是否先做影像品質分流。</strong> 未分流的 4-reader pooled LR+ 僅 <strong>2.28</strong>——在臨床決策上這是「幾乎不提供資訊」的等級。分流後 LR+ 躍升至 7.64（Oxford 專家判讀的 confident subset 更達 32–37）。<strong>品質分流不是錦上添花，而是這個技術能否有臨床用途的分水嶺。</strong></p>
+</li>
+<li>
+<p><strong>VNE 是 rule-in 工具，不是 rule-out 工具——在真實 cohort 中尤其如此。</strong> Leeds confident subset 的 LR− = 0.197，只達「中度改變」等級。Pooled 的 LR− = 0.077 看起來優異，但其分子（1−sensitivity）被 Fuwai 的 41/41 全對壓低。<strong>唯一具有完整疾病譜系的 cohort 顯示 VNE 排除梗塞的能力只是中等。</strong></p>
+</li>
+<li>
+<p><strong>Specificity 是 VNE 的真正弱點，而 Abstract 完全迴避了它。</strong> 未分流時，4 位臨床 reader 的 VNE specificity 僅 <strong>58.2%</strong>（vs LGE 86.5%）——<strong>超過四成的真陰性病人會被 VNE 誤判為有梗塞</strong>。Oxford 專家的未分流 specificity 也只有 76.5%。這意味著在真實部署中，VNE 的主要失效模式是<strong>過度診斷</strong>，其下游後果是不必要的後續檢查、不必要的抗血栓/抗缺血治療升級，以及病人被錯誤貼上「陳舊心肌梗塞」標籤。</p>
+</li>
+</ol>
+<h3>Pre-test / post-test probability 的臨床情境（Fagan nomogram 概念）</h3>
+<p>使用 <strong>Leeds confident subset</strong> 的 LR（LR+ = 32.3、LR− = 0.197），因為這是唯一具有真實疾病譜系的估計：</p>
+<table>
+<thead>
+<tr>
+<th>Pre-test probability</th>
+<th>情境</th>
+<th>VNE 陽性 → Post-test</th>
+<th>VNE 陰性 → Post-test</th>
+<th>臨床判讀</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>10%</strong></td>
+<td>一般 CMR 轉診、低度懷疑</td>
+<td><strong>78%</strong></td>
+<td><strong>2.1%</strong></td>
+<td>陰性可有效排除；陽性仍需確認</td>
+</tr>
+<tr>
+<td><strong>25%</strong></td>
+<td>非典型胸痛、中低風險</td>
+<td><strong>91.5%</strong></td>
+<td><strong>6.2%</strong></td>
+<td>陰性排除良好；陽性接近確診但邊緣</td>
+</tr>
+<tr>
+<td><strong>42%</strong></td>
+<td>≈ Leeds cohort 實際盛行率</td>
+<td><strong>95.9%</strong></td>
+<td><strong>12.5%</strong></td>
+<td>陽性可據以行動；<strong>陰性仍留 12.5% 殘餘風險</strong></td>
+</tr>
+<tr>
+<td><strong>60%</strong></td>
+<td>已知冠心病、疑似缺血性心肌病</td>
+<td><strong>98.0%</strong></td>
+<td><strong>22.8%</strong></td>
+<td>陽性確診；<strong>陰性完全不足以排除</strong></td>
+</tr>
+<tr>
+<td><strong>80%</strong></td>
+<td>≈ Fuwai 型族群（已確診 MI、PCI 後）</td>
+<td><strong>99.2%</strong></td>
+<td><strong>44.1%</strong></td>
+<td>陽性無新增資訊（本來就很可能有）；<strong>陰性等於無結論</strong></td>
+</tr>
+</tbody>
+</table>
+<p><strong>這張表是本篇評讀最具臨床可操作性的產出，而且是原文完全沒有提供的。</strong></p>
+<p>它揭露了一個 Abstract 敘事的根本問題：作者主張 VNE 可在 <strong>69.7% 的轉診中免除 LGE</strong>。但 VNE 最有價值的區間（低至中盛行率，陰性可有效排除）與作者實際驗證的族群（62.5% 盛行率，其中 35% 來自 100% 盛行率的 cohort）<strong>方向相反</strong>。在盛行率愈高的族群——也就是最常被轉診做疤痕評估的族群——<strong>VNE 陰性的排除能力愈差，而 VNE 陽性愈沒有新增資訊</strong>。</p>
+<p>諷刺的是：<strong>在 Fuwai 那類 100% 盛行率的族群，VNE 陰性的 post-test probability 是 44%，臨床上必須繼續打 GBCA；但研究設計恰恰使該 cohort 一個陰性案例都沒有，因此這個最重要的失效情境完全未被檢驗。</strong></p>
+<hr />
+<h2>C. AI / ML 診斷模型評估（三階段）</h2>
+<h3>① 建模（Derivation）</h3>
+<table>
+<thead>
+<tr>
+<th>評估項目</th>
+<th>結果</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>任務定義</td>
+<td>明確：由 precontrast cine + T1 map + T1w 生成 LGE-like 影像</td>
+</tr>
+<tr>
+<td>Reference standard</td>
+<td>LGE（合適，但見循環性討論）</td>
+</tr>
+<tr>
+<td>訓練資料</td>
+<td><strong>842 例、單中心（Oxford）、Siemens 1.5T + 3T</strong>；已確認陳舊 MI 且無顯著合併心肌病變者，加上急性 MI 後 6 個月追蹤者</td>
+</tr>
+<tr>
+<td>訓練族群特徵</td>
+<td>平均年齡 64 歲、<strong>81% 男性</strong>、平均梗塞年齡 7 個月</td>
+</tr>
+<tr>
+<td>Overfitting 防護</td>
+<td><strong>[文內未描述]</strong> — 本文未說明 train/validation split、regularization 或 cross-validation；引用 ref 6 為原始開發論文。<strong>在一篇自稱為 AI 驗證「blueprint」的論文中，這是不應省略的資訊</strong></td>
+</tr>
+<tr>
+<td>特徵選擇透明度</td>
+<td>生成式模型，無明確特徵選擇；架構細節指向 ref 6</td>
+</tr>
+<tr>
+<td>本研究是否重訓</td>
+<td><strong>否——凍結權重部署，無任何 fine-tuning</strong>。這是本研究方法學上的重大優點，避免了驗證階段的資料汙染</td>
+</tr>
+</tbody>
+</table>
+<p><strong>訓練/驗證族群的譜系落差</strong>：訓練集是「已確認陳舊 MI 且無顯著合併病變」的高度純化族群。本研究的 Leeds cohort 則是連續收案的疑似缺血性心臟病轉診——包含大量陰性、小病灶、以及作者未系統性排除的合併病變。<strong>VNE 在 Leeds 的 specificity 崩壞（未分流時 76.5%，在 4 位臨床 reader 手上 58.2%）幾乎可以直接歸因於此：模型從未在「真正沒有疤痕的心肌」上被充分訓練過如何說「沒有」。</strong></p>
+<p><strong>性別代表性</strong>：訓練 81% 男性 → 驗證 78.2% 男性（Leeds 73.1%、Fuwai <strong>91.7%</strong>）。<strong>族群完全沒有在性別維度上拓展。</strong> 女性心肌較薄、心內膜下小梗塞的偵測難度更高，而本研究無任何性別分層分析。</p>
+<h3>② 驗證（Validation）</h3>
+<table>
+<thead>
+<tr>
+<th>評估項目</th>
+<th>結果</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>外部驗證資料集</td>
+<td><strong>有</strong>：Leeds（英國，1.5T）、Fuwai（中國，3T），皆為 Oxford 以外機構</td>
+</tr>
+<tr>
+<td>地理與平台多樣性</td>
+<td>跨國、跨場強（1.5T / 3T）、跨顯影劑（macrocyclic / linear）——這是實質的多樣性</td>
+</tr>
+<tr>
+<td>Reference standard 一致性</td>
+<td><strong>不完全一致</strong>：Leeds 用 Gadovist 6–10 分鐘延遲；Fuwai 用 <strong>Magnevist（linear，已下市）10 分鐘延遲</strong>。Linear 與 macrocyclic agent 的 LGE 影像特性不同，兩站 ground truth 不完全可比</td>
+</tr>
+<tr>
+<td><strong>獨立性缺陷</strong></td>
+<td><strong>開發團隊深度參與</strong>：Oxford 生成所有 VNE；Q.Z.（VNE 發明人）<strong>親自赴 Fuwai 現場執行後處理</strong>；初次盲讀由 V.M.F.（VNE 共同發明人、專利持有人）執行。作者誠實地將此定性為 <strong>internal-external validation</strong></td>
+</tr>
+<tr>
+<td>補救措施</td>
+<td>審查後追加 4 位非開發團隊 reader（Table 5）——<strong>且該分析產出了顯著較差的結果</strong></td>
+</tr>
+</tbody>
+</table>
+<p><strong>「開發者現場後處理」的部署意涵</strong>：因 Fuwai 的資料出境限制，VNE 軟體在當地部署，但由 Q.Z. 親赴現場完成後處理。這在方法上維持了盲化（未接觸 LGE），但在<strong>真實世界部署的外推性上是重大限制</strong>：任何實際臨床場域都不會有技術發明人到場調校。這是 optimism bias 的直接來源，且直接削弱「real-world clinical settings」的宣稱。</p>
+<p><strong>內部一致性的驗證缺口</strong>：Table 5「All patients」區塊的 8 個 specificity 數值中，有 <strong>7 個恰好是 1/26 的整數倍</strong>（69.2%=18/26、92.3%=24/26、57.7%=15/26、84.6%=22/26、50.0%=13/26、80.8%=21/26、88.5%=23/26），暗示 reference-negative 分母約為 26。但 Table 2 明確顯示全 cohort 有 <strong>51 例 LGE 陰性</strong>。Table 5 未說明其 ground truth 分母如何定義（可能因改用 matched-slice 層級的 ground truth 而改變），兩表無法從已發表內容調和。此外 Reader 4 的 VNE specificity 55.8% 不落在該 1/26 網格上（0.558×26=14.5），與其餘 7 個值的模式不符。<strong>這不必然是錯誤，但 Table 5 的分母定義缺乏透明度，使讀者無法獨立重建其 2×2 表——對一篇宣稱要成為 AI 驗證 blueprint 的論文而言，這是實質的可重現性缺口。</strong></p>
+<h3>③ 臨床有效性（Clinical Effectiveness）</h3>
+<table>
+<thead>
+<tr>
+<th>評估項目</th>
+<th>結果</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>前瞻性證明改善臨床決策或病人結果</strong></td>
+<td><strong>完全缺失</strong></td>
+</tr>
+<tr>
+<td><strong>任何 patient outcome（MACE、血運重建後功能恢復、存活）</strong></td>
+<td><strong>完全缺失</strong></td>
+</tr>
+<tr>
+<td><strong>組織學驗證</strong></td>
+<td><strong>無</strong>（作者僅引用他人 T1 mapping 對 histology 的驗證，ref 22–24）</td>
+</tr>
+<tr>
+<td>Failure mode 分析</td>
+<td><strong>有，且品質優異</strong>：全部 6 個不一致案例以影像逐一揭露並歸因（Figure 2）。但<strong>無系統性量化</strong>（例如：fat off-resonance artifact 導致 false positive 的發生率）</td>
+</tr>
+<tr>
+<td>不同人口學次組表現（fairness）</td>
+<td><strong>完全缺失</strong>：無性別、年齡、BMI、eGFR、族裔分層。Leeds（英國）vs Fuwai（中國）本可提供族裔比較，但因收案標準不同，作者自陳無法比較</td>
+</tr>
+<tr>
+<td>可解釋性（interpretability）</td>
+<td><strong>無模型層面的驗證</strong>。Discussion 的「Mechanistic Basis」段落是<strong>文獻推論</strong>（T1 mapping 對纖維化敏感、脂肪化生影響 T1 訊號），不是對本模型內部表徵的檢驗。生成式模型的黑箱本質未被處理</td>
+</tr>
+</tbody>
+</table>
+<p><strong>這是三階段評估中最關鍵的缺口，且其嚴重性被本文的敘事結構所遮蔽。</strong></p>
+<p>LGE 之所以是黃金標準，不是因為它「看起來像疤痕」，而是因為 <strong>Kim 2000（本文 ref 2）以降的大量文獻證明 LGE 的透壁程度可預測血運重建後的功能恢復，LGE 範圍可預測預後（ref 3, 4）</strong>。LGE 的臨床價值建立在其與<strong>臨床結果</strong>的連結上。</p>
+<p>VNE 被訓練成「模仿 LGE 的外觀」，並被驗證為「與 LGE 外觀高度一致」。<strong>但從未有任何證據顯示 VNE 保留了 LGE 的預後與存活度預測資訊。</strong> 這是典型的 <strong>outcome hierarchy mismatch</strong>：以 surrogate（影像相似度）取代了真正重要的終點（臨床決策效用），而作者的結論（「obviate the need for LGE... without compromising diagnostic accuracy」）在語意上把「診斷一致度」與「臨床效用」等同了。</p>
+<p><strong>這個缺口在存活度評估的情境下尤其危險</strong>，因為（見下方 Figure 5A 判讀）VNE 的錯分方向具有臨床上不對稱的後果。</p>
+<h3>生成式 AI 特有的風險：Artifact Amplification（作者未使用此框架）</h3>
+<p>Figure 2 Patient F（第 8 頁圖判讀）是本研究最具技術教育意義的案例：VNE 產生了一個 false positive，事後歸因於對應 T1 map 與 T1w 影像上的<strong>脂肪 off-resonance artifact</strong>。圖中確實可見 T1-map 與 T1-weighted 小圖上箭頭所指的訊號異常。</p>
+<p>這揭示了生成式影像 AI 的一個特有失效模式，且與傳統影像 artifact <strong>性質不同</strong>：</p>
+<ul>
+<li>在傳統 LGE 上，artifact 通常<strong>看起來像 artifact</strong>（條紋、鬼影、訊號不均），判讀者有視覺線索可以警覺</li>
+<li>在 VNE 上，模型的任務就是「把輸入訊號轉換成看起來像 LGE 的輸出」。<strong>當輸入含有 artifact 時，模型會把 artifact 也「渲染」成一個外觀完全正常、對比清晰的疤痕</strong>——輸出端<strong>沒有任何提示這裡有問題的視覺線索</strong></li>
+</ul>
+<p>CNR 數據強化了這個擔憂：VNE 6.71±2.93 vs LGE 6.76±3.18，<strong>對比度相當</strong>。但生成模型的「對比」是合成的，CNR 相當並不代表資訊量相當——它只代表模型很擅長產生高對比的輸出，<strong>包括在不該有對比的地方</strong>。</p>
+<p>這正是為什麼未分流的 specificity 只有 58.2%：<strong>VNE 的失效模式是「自信地產生看起來完全可信的假陽性」</strong>。作者提出的解方（判讀前先檢查 cine 與 T1 map 品質，未來以 AI 自動化品管）方向正確，但這實質上意味著 <strong>VNE 無法獨立使用——判讀者必須同時判讀原始輸入影像才能安全使用輸出影像</strong>。這與「取代 LGE 以簡化流程」的價值主張之間存在張力，文中未予正視。</p>
+<h3>循環驗證的三重疊加</h3>
+<p>這是本研究無法以現有設計克服的根本限制：</p>
+<ol>
+<li><strong>訓練</strong>：VNE 以 LGE 為 target 訓練 → 模型的目標函數就是最小化與 LGE 的差異</li>
+<li><strong>驗證</strong>：以 LGE 為 reference standard 評估 VNE</li>
+<li><strong>標籤</strong>：ground truth 由 LGE 視覺判讀決定</li>
+<li><strong>量化</strong>：分析者放置 remote myocardium reference ROI 時<strong>同時看得到 VNE 與 LGE</strong>（作者自陳，非獨立盲化）</li>
+</ol>
+<p>作者在 ROC 分析處主動標註了 circular valuation bias（Figure 5 圖說明確寫出），這是誠實的。但循環性的影響遠不止於 ROC：</p>
+<p><strong>「VNE 與 LGE 高度一致」在相當程度上是「訓練目標達成度」的度量，而非「VNE 能偵測心肌疤痕」的獨立證據。</strong> 一個完美模仿 LGE 的模型會得到完美的一致度分數——包括完美複製 LGE 的錯誤（如 Patient D 的 LVOT partial volume artifact）。要打破這個循環，需要 LGE 以外的獨立參照：組織學、臨床結果、或血運重建後的功能恢復。<strong>本研究一項都沒有。</strong></p>
+<hr />
+<h2>D. 臨床預測模型評估</h2>
+<p><strong>不適用。</strong> 本研究為 diagnostic accuracy / method-agreement study，不涉及對未來臨床事件的風險預測，故無 discrimination（針對 outcome）與 calibration 之評估需求。</p>
+<p>文中的 AUC-ROC 分析（Figure 5B/5C）並非預測模型的辨別力評估，而是「以連續型 scar burden 值區分 LGE 判定的有無梗塞」，本質上仍是診斷準確度分析的延伸，已於 B 節處理。</p>
+<p>一項相關觀察：AUC 分析中 <strong>LGE burden 自己預測 LGE 視覺判讀的 AUC 只有 0.943（pooled）與 0.912（Leeds），未達 1.0</strong>。這是有意義的內部校準訊息——它量化了「LGE 視覺判讀」與「LGE 量化」之間的固有不一致。VNE 的 AUC（0.936 / 0.902）與之幾乎相同，這確實是對 VNE 的正面證據。但同時也提醒：<strong>index test 與 reference standard 共享同一資訊源時，AUC 相近不能推論可互相取代。</strong></p>
+<hr />
+<h2>E. 紅旗清單</h2>
+<h3>設計</h3>
+<ol>
+<li>
+<p><strong>Fuwai cohort 零陰性對照造成的雙向失真</strong> ⚠️⚠️⚠️
+48 例全部 LGE 陽性，對 specificity 貢獻為零，同時以 41/41 的完美 sensitivity 把 pooled 數字系統性抬高。Abstract 的 94.4% / 92.5% 皆為此混合的產物。唯一具真實疾病譜系的 Leeds confident subset 為 accuracy 90.9% / sensitivity 80.8%——此數字在 Abstract 與 Central Illustration 中皆未出現。</p>
+</li>
+<li>
+<p><strong>Index test 與 reference standard 的資訊量系統性不對等</strong>
+VNE：3 個 short-axis slices、無 long-axis、無臨床資料。LGE：完整 stack + 正交 long-axis + 病歷。6 個不一致案例中有 3 個（Figure 2 A/B/C）直接源於 VNE 影像缺失或覆蓋不足，而非 AI 判讀錯誤。</p>
+</li>
+<li>
+<p><strong>VNE pipeline 產出失敗率未被報告為技術可靠度指標</strong>
+136×3 = 408 應有切面，實得 389（缺 4.7%），另加 Leeds 排除的 5 例（3 例因 artifact）。真實部署的技術失敗率是核心可行性資訊，被埋在流程圖註腳中。</p>
+</li>
+<li>
+<p><strong>開發團隊深度介入驗證流程</strong>
+VNE 生成、Fuwai 現場後處理（由發明人 Q.Z. 執行）、初次盲讀（由共同發明人兼專利持有人 V.M.F. 執行）。作者誠實標為 internal-external validation，但這與 Abstract/Conclusions 的「independent」措辭存在張力。</p>
+</li>
+<li>
+<p><strong>兩站顯影劑不同，其中一站使用已下市的 linear GBCA</strong>
+35%（48/136）的 ground truth 來自 Magnevist（gadopentetate）。作者揭露但未討論其對 LGE 影像特性與 ground truth 可比性的影響。</p>
+</li>
+<li>
+<p><strong>無臨床結果、無組織學、無 fairness 分析</strong>
+三階段 AI 評估的第三階段（clinical effectiveness）完全缺失。</p>
+</li>
+</ol>
+<h3>統計</h3>
+<ol start="7">
+<li>
+<p><strong>未報告 likelihood ratio</strong>
+對診斷研究而言這是核心缺漏。本評讀計算後顯示：未分流的 4-reader pooled LR+ 僅 <strong>2.28</strong>（幾乎無診斷資訊）；Leeds confident subset 的 LR− 為 <strong>0.197</strong>（rule-out 能力僅中等）。這兩個數字都改變臨床解讀，且都是原文完全不可見的。</p>
+</li>
+<li>
+<p><strong>「不犧牲診斷準確度」缺乏等效性檢定支撐</strong> ⚠️⚠️
+93.7% vs 93.9% 的比較<strong>未報告任何 CI、未做等效性或非劣性檢定、未預先設定可接受差異範圍</strong>。文中僅稱「no statistically significant difference」——這是把「未偵測到差異」誤讀為「等效」的教科書級錯誤（Altman &amp; Bland 1995）。在 n=379 reader-observations 的規模下，此比較的統計解析力不足以排除臨床上有意義的差異。</p>
+</li>
+<li>
+<p><strong>4-reader pooled 分析未做 cluster correction</strong>
+379 個 observations 來自 136 位病人 × 4 位 reader，同一病人被重複計數，reader 內與 patient 內的相關性未處理。<strong>諷刺的是，作者在量化分析中確實使用了 mixed-effects 與 cluster correction（per-slice R=0.87 標為 cluster-corrected），卻在最關鍵的診斷準確度 pooling 中沒有採用同樣的嚴謹度。</strong> 「69.7% of patients」的表述也不精確——那是 reader-patient observations 的比例，個別 reader 的實際值介於 64.0% 至 78.7% 之間。</p>
+</li>
+<li>
+<p><strong>Youden index cutoff 為同一資料集導出，無獨立驗證</strong>
+15.1% / 10.5%（pooled）與 12.6% / 8.8%（Leeds）均為 optimism-biased 估計，實際表現會低於報告值。未標註。</p>
+</li>
+<li>
+<p><strong>Table 5 的 specificity 分母無法與 Table 2 調和</strong>
+7/8 個 specificity 值落在 1/26 的整數網格上（暗示分母 ~26），但 Table 2 顯示 51 例 LGE 陰性；Reader 4 的 55.8% 不落在該網格上。Table 5 未定義其 ground truth 分母，讀者無法重建 2×2 表。</p>
+</li>
+<li>
+<p><strong>Table 1 的基線資料存在明確算術錯誤與大量缺失</strong> ⚠️</p>
+<ul>
+<li><strong>標題與納入人數不符</strong>：Table 1 用 Leeds n=93 / All N=141（排除前），但研究實際納入 88 + 48 = 136</li>
+<li><strong>合併中位年齡不可能</strong>：Leeds median 64.0、Fuwai median 58.5，但 All 欄位標 <strong>68.5 (60.0–74.0)</strong>——合併中位數不可能高於兩個子群的中位數</li>
+<li><strong>吸菸史百分比不符</strong>：43/106 = 40.6%，表中標 39.4%</li>
+<li><strong>大量缺失</strong>：BMI 僅 108/141（Leeds 僅 60/93，35% 缺失）、吸菸史 106/141、eGFR 112/141
+對一篇宣稱要成為 AI 驗證 blueprint 的論文，基線表的算術錯誤削弱了整體品質印象。</li>
+</ul>
+</li>
+<li>
+<p><strong>無多重比較校正</strong>
+大量子群、分層、分區、per-slice / per-territory / per-segment 分析，未見任何多重比較處理說明。</p>
+</li>
+</ol>
+<h3>敘事</h3>
+<ol start="14">
+<li>
+<p><strong>Abstract 與 Central Illustration 的選擇性數字呈現</strong> ⚠️⚠️⚠️
+這是本文最嚴重的敘事問題。Central Illustration（第 3 頁圖判讀）呈現「<strong>94% VNE-LGE agreement on 79% confident cases</strong>」、「<strong>88% agreement on all scans</strong>」、「<strong>VNE can obviate the need for GBCA in 70% of infarct patients, with diagnostic accuracy of 94%</strong>」。</p>
+<p>完全不出現在 Central Illustration 與 Abstract 的數字：</p>
+<ul>
+<li>未分流時 4 位臨床 reader 的 VNE <strong>accuracy 81.1%、specificity 58.2%</strong>（vs LGE 92.3% / 86.5%）</li>
+<li>Oxford 專家未分流時的 <strong>specificity 76.5%</strong></li>
+<li>Leeds confident subset 的 <strong>accuracy 90.9%、sensitivity 80.8%</strong></li>
+<li>Fuwai <strong>完全無陰性對照</strong></li>
+</ul>
+<p>「79% confident cases」的表述本身也需要留意：107/136 = 78.7%，但那是 Oxford 專家的信心比例；4 位臨床 reader 的對應比例是 64.0%–78.7%，pooled 69.7%。Central Illustration 選用了較高的數字。</p>
+</li>
+<li>
+<p><strong>商業化敘事的強度超過數據支持</strong>
+「positioned for clinical implementation... right away with vendor-led regulatory approval」、Central Illustration 的「Regulatory approval / Clinical adoption / Scan cost↓ / Throughput↑ / Accessibility↑ / Sustainability↑」箭頭圖。作者持有 VNE 核心專利（WO2021/044153）與 ShMOLLI 專利，由 Oxford University Innovation 管理。COI 已充分揭露，但敘事強度與 136 例、無臨床結果、真實 reader 手上特異度 58% 的證據基礎不相稱。</p>
+</li>
+<li>
+<p><strong>Prior commitment bias</strong>
+同一團隊、同一技術的第四篇主要驗證論文，發明人同時是生成方、初次盲讀者與結論撰寫者。無任何完全獨立團隊的重複驗證。</p>
+</li>
+<li>
+<p><strong>Figure 3 的兩個 anecdotal 案例被用來支持超出範圍的主張</strong>
+模型僅以缺血性 LGE pattern 訓練，Figure 3 展示兩例「捕捉到非缺血性斑塊狀病灶」，作者據此主張「suggesting a pathway of developing generalist AI for CMR enhancement」。<strong>無任何量化準確度、無 denominator、無 false negative 分析。</strong> 這是 n=2 的觀察被用來鋪陳技術路線的擴張敘事。</p>
+</li>
+</ol>
+<h3>外推</h3>
+<ol start="18">
+<li>
+<p><strong>平台與序列鎖定</strong>
+僅 Siemens 掃描儀 + ShMOLLI T1 mapping（Piechnik 專利）。作者承認其他廠商需先部署相容 T1 mapping 方法，且不同 T1 mapping 序列的正常值範圍與病理敏感度不同（自引 ref 19–21）。</p>
+</li>
+<li>
+<p><strong>梗塞區域分布嚴重偏向前壁</strong>
+anterior 63% vs inferior 20% vs lateral 17%。Figure 6 顯示非前壁區表現實質較差（inferior burden R=0.698、transmurality R=0.693）。作者以一句「may affect the generalizability」帶過，未將 R≈0.70、ICC 下界 0.75 的臨床意涵轉譯給讀者。</p>
+</li>
+<li>
+<p><strong>性別代表性未拓展</strong>
+訓練 81% 男性 → 驗證 78.2% 男性（Fuwai 91.7%）。無性別分層分析。女性薄壁心肌的心內膜下小梗塞是已知的偵測難點。</p>
+</li>
+<li>
+<p><strong>疾病譜系狹窄</strong>
+僅慢性缺血性疤痕。急性 MI、心肌炎、澱粉樣變性、各類心肌病變、合併多重病理者皆未驗證。作者誠實列為 future work。</p>
+</li>
+<li>
+<p><strong>VNE 為離線後處理，非掃描台即時生成</strong>
+這使得「當場決定是否需要打顯影劑」的 triage workflow——即本文的核心臨床價值主張——<strong>在本研究中從未被實際執行過</strong>。所有「是否需要 LGE」的判定都是事後在資料庫上模擬的。作者揭露此點並說明 inline 實作進行中。</p>
+</li>
+</ol>
+<hr />
+<h2>F. 最終裁決</h2>
+<h3>診斷測試可信度：<strong>中等（Moderate）</strong></h3>
+<p><strong>分項評定</strong></p>
+<table>
+<thead>
+<tr>
+<th>面向</th>
+<th>評定</th>
+<th>理由</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>內部效度（盲化、結果鎖定）</td>
+<td><strong>高</strong></td>
+<td>真正的前瞻盲化、評分預先鎖定、全部不一致案例揭露</td>
+</tr>
+<tr>
+<td>Reference standard 品質</td>
+<td><strong>中</strong></td>
+<td>公認標準，但 imperfect（Patient D 證明），且跨站顯影劑不一致</td>
+</tr>
+<tr>
+<td>Spectrum representativeness</td>
+<td><strong>低</strong></td>
+<td>Fuwai 零陰性對照造成 pooled 數字雙向失真；前壁梗塞佔 63%</td>
+</tr>
+<tr>
+<td>統計嚴謹度</td>
+<td><strong>中低</strong></td>
+<td>量化分析嚴謹（mixed-effects、cluster correction），但診斷準確度分析無 LR、無等效性檢定、無 cluster correction、Table 1 有算術錯誤</td>
+</tr>
+<tr>
+<td>外部驗證的獨立性</td>
+<td><strong>中</strong></td>
+<td>兩個真實外部中心（加分），但開發團隊深度介入（扣分）；作者誠實標為 internal-external</td>
+</tr>
+<tr>
+<td>臨床有效性證據</td>
+<td><strong>無</strong></td>
+<td>零臨床結果、零組織學、零 fairness 分析</td>
+</tr>
+<tr>
+<td>報告透明度</td>
+<td><strong>中高</strong></td>
+<td>Limitations 誠實度優異，但 Abstract / Central Illustration 選擇性呈現數字</td>
+</tr>
+</tbody>
+</table>
+<h3>此測試有用的臨床情境</h3>
+<p><strong>Pre-test probability 約 10%–45% 的族群</strong>，且滿足以下<strong>全部</strong>條件：</p>
+<ul>
+<li>Siemens 掃描儀 + ShMOLLI T1 mapping</li>
+<li>取得<strong>完整 short-axis stack</strong>（非本研究的 3 個切面）</li>
+<li>cine 與 T1 map 品質經確認良好、無明顯 artifact</li>
+<li>判讀者對「有」或「無」有明確把握（相當於本研究的 confident subset）</li>
+<li>臨床問題是「有無陳舊缺血性疤痕」，<strong>不是</strong>存活度決策</li>
+<li>疑似病灶位於前壁（LAD 區）時證據較強</li>
+</ul>
+<p>在此區間，VNE 陰性可把 post-test probability 降至 2%–13%（有實用的排除價值），VNE 陽性可推升至 78%–96%。</p>
+<p><strong>額外的合理使用</strong>：GBCA 禁忌或病人拒絕注射，且無其他檢查可回答臨床問題時——此時 VNE 是「有勝於無」的選項，但結果必須與其他臨床資訊共同解讀。</p>
+<h3>不建議使用的情境</h3>
+<ol>
+<li><strong>心肌存活度 / 血運重建決策</strong> ⚠️ 這是最重要的禁用情境，理由見下方獨立段落</li>
+<li><strong>高 pre-test probability（&gt;60%）族群的排除診斷</strong>——VNE 陰性的 post-test probability 達 23%–44%，臨床上等於無結論</li>
+<li><strong>下壁 / 側壁（RCA、LCx 區）的疤痕定量</strong>——R = 0.698 / 0.804</li>
+<li><strong>小面積、薄壁、心內膜下梗塞的排除</strong></li>
+<li><strong>低盛行率篩檢</strong>——無數據</li>
+<li><strong>非缺血性心肌病變</strong>——模型未經訓練，Figure 3 僅 n=2 anecdote</li>
+<li><strong>急性心肌梗塞、心肌炎、澱粉樣變性</strong></li>
+<li><strong>無法在流程中確實執行影像品質前置把關的機構</strong>——未分流時 LR+ 僅 2.28，淨效益為負</li>
+<li><strong>非 Siemens / 非 ShMOLLI 平台</strong></li>
+<li><strong>直接沿用 LGE-based scar burden 門檻</strong>——VNE 系統性高估 3–5 個百分點 %LV</li>
+</ol>
+<h3>圖表揭露、文字未講清楚的兩項關鍵證據</h3>
+<p>以下兩點是本次圖判讀的核心產出，皆為圖中清晰可見但正文未予臨床轉譯者。</p>
+<p><strong>（一）Figure 5A confusion matrix：錯分方向具臨床上不對稱的危險性</strong> ⚠️⚠️</p>
+<p>第 12 頁的 4×4 混淆矩陣提供了正文僅以「84.6% / 65.4% 一致度」概括的完整結構（列 = LGE，行 = VNE，總計 136）：</p>
+<table>
+<thead>
+<tr>
+<th>LGE ↓ / VNE →</th>
+<th>&lt;25</th>
+<th>25–50</th>
+<th>50–75</th>
+<th>&gt;75</th>
+<th>該列合計</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>&lt;25</strong></td>
+<td>27</td>
+<td><strong>23</strong></td>
+<td>0</td>
+<td>0</td>
+<td>50</td>
+</tr>
+<tr>
+<td><strong>25–50</strong></td>
+<td>3</td>
+<td>39</td>
+<td><strong>15</strong></td>
+<td><strong>1</strong></td>
+<td>58</td>
+</tr>
+<tr>
+<td><strong>50–75</strong></td>
+<td>0</td>
+<td><strong>5</strong></td>
+<td>23</td>
+<td>0</td>
+<td>28</td>
+</tr>
+<tr>
+<td><strong>&gt;75</strong></td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td><strong>0</strong></td>
+</tr>
+<tr>
+<td>該行合計</td>
+<td>30</td>
+<td>67</td>
+<td>38</td>
+<td>1</td>
+<td>136</td>
+</tr>
+</tbody>
+</table>
+<p>三項正文未呈現的發現：</p>
+<ol>
+<li>
+<p><strong>小病灶的高估極為嚴重</strong>：LGE 判為 &lt;25% transmurality 的 50 例中，<strong>23 例（46.0%）被 VNE 高估至 25–50%</strong>。正文僅以「a bias of VNE in quantifying small lesions was observed」一語帶過，未給出這個 46% 的量值。</p>
+</li>
+<li>
+<p><strong>跨越 50% 臨床決策門檻的錯分方向不對稱</strong>：</p>
+<ul>
+<li>VNE <strong>高估</strong>跨過門檻（LGE 25–50 → VNE ≥50）：<strong>16 例</strong></li>
+<li>VNE <strong>低估</strong>跨過門檻（LGE 50–75 → VNE 25–50）：<strong>5 例</strong></li>
+<li>高估:低估 ≈ <strong>3.2 : 1</strong></li>
+</ul>
+<p>臨床後果是不對稱的：在存活度評估中，transmurality ≥50% 通常被解讀為「存活可能性低、血運重建獲益有限」。<strong>VNE 的偏誤方向是把「還有相當存活心肌、應考慮血運重建」的節段判成「不值得血運重建」。</strong> 這會導向 under-treatment——臨床上比 over-treatment 更難察覺、更難補救，因為錯過的血運重建機會不會產生可歸因的不良事件訊號。<strong>作者完全未討論此方向性。</strong></p>
+</li>
+<li>
+<p><strong><code>&gt;75%</code> 那一行與那一列全部為零</strong>：整個驗證資料集<strong>沒有任何一例被 LGE 或 VNE 判為 &gt;75% transmurality</strong>。這意味著 VNE 在<strong>接近透壁的梗塞區間完全未經檢驗</strong>——而這正是存活度決策中最關鍵、最需要準確判定的區間。結合上述兩點，<strong>「VNE 可用於存活度評估」的推論在本研究中不僅未被證實，其驗證資料集根本不包含該決策所需的病例譜系。</strong></p>
+</li>
+</ol>
+<p><strong>（二）Figure 4 與 Figure 6 的散布圖：比例性偏誤與 Fuwai transmurality 的實質不可靠</strong></p>
+<p>第 11 頁 Figure 4 的散布圖上，<strong>回歸線（實線）與單位線（虛線）的關係在文字中完全未被提及</strong>：所有 panel 的回歸線在高值端皆落於單位線<strong>下方</strong>，且偏離隨數值增大而加劇。這是明確的<strong>比例性偏誤（proportional bias）</strong>——VNE 對大範圍疤痕的高估程度大於對小範圍者，且此模式在 6 個 panel 中一致重現。單一的 Bland-Altman mean difference（+3.19 / +6.30）掩蓋了此結構：真實偏誤是隨疤痕大小遞增的，不是固定的常數偏移。</p>
+<p><strong>Fuwai transmurality panel（Figure 4B 右）是全文最弱的一組數據</strong>：R = 0.549、<strong>ICC = 0.703，95% CI 0.470–0.830</strong>。ICC 信賴區間下界 0.47 依標準判讀屬 <strong>poor</strong> 等級。圖上該 panel 的散布明顯發散，回歸線斜率遠低於 1（在 VNE = 100 附近，回歸線對應的 LGE 僅約 75），信賴帶（陰影）寬度為六個 panel 中最大。</p>
+<p>正文對此的處理是：「Scar transmurality quantification by VNE also reported strong overall correlation (R = 0.82, ICC = 0.90)」——<strong>只報告 pooled 值，「strong」的形容詞掩蓋了子群中 ICC 下界僅 0.47 的事實</strong>，而 Fuwai 恰恰是那個唯一由「已確診陳舊 MI、PCI 後」病人組成的 cohort，也就是最接近真實 viability 評估轉診族群的那一組。</p>
+<p>此外，Figure 6 各 panel 的 Bland-Altman <strong>y 軸尺度不一致</strong>（per-slice burden 為 ±20，anterior transmurality 擴至 ±50），跨 panel 目視比較會系統性低估 anterior transmurality 的變異（其 LoA 實為 −19.55 至 +36.48，寬度 <strong>56.0</strong> 個百分點）。散布圖本身 x/y 軸皆自 0 起，無截斷誇大效果。</p>
+<p><strong>未見 Kaplan-Meier 曲線或 forest plot</strong>——本研究無時間至事件分析、無次群組效果量比較，故該類判讀不適用。CONSORT-like 流程圖（Figure 1）人數完全一致，無矛盾。</p>
+<h3>若要改觀，最需要的 3 個關鍵改進</h3>
+<ol>
+<li>
+<p><strong>以臨床結果打破循環驗證。</strong> 目前 VNE 只被證明「看起來像 LGE」。必須有一項前瞻研究證明 VNE 判定的 transmurality 能預測血運重建後的節段功能恢復（對照 Kim 2000 建立 LGE 地位的設計），或 VNE scar burden 能預測 MACE。在此之前，任何取代 LGE 的主張都建立在 surrogate 之上。這也是唯一能正當化存活度使用的路徑。</p>
+</li>
+<li>
+<p><strong>在一個具有完整疾病譜系的連續收案 cohort 中，由完全獨立團隊、以完整 short-axis stack 重新驗證。</strong> 具體要求：（a）連續收案，不排除陰性；（b）<strong>開發團隊完全不參與</strong>影像生成、後處理與判讀；（c）完整 stack + long-axis，使 index test 與 reference standard 資訊量對等；（d）<strong>預先設定非劣性界限並執行正式非劣性檢定</strong>，而非事後宣稱「no significant difference」；（e）主要終點為 <strong>specificity</strong>——因為那才是 VNE 已被證明的弱點（未分流時 58.2%）。</p>
+</li>
+<li>
+<p><strong>把「影像品質前置把關」從建議升級為經驗證的自動化流程，並量化其失效模式。</strong> 全文最重要的實務發現是「有無品質分流」造成 accuracy 81.1% vs 93.7% 的差距。作者提出以 AI 自動品管為未來方向，但這必須成為<strong>同一個受監管系統的一部分並一併驗證</strong>，而非留給使用者自行判斷。同時需系統性量化各類 artifact（fat off-resonance、motion、mistriggering、pacemaker lead）導致 false positive 的發生率，以及 VNE pipeline 的整體產出失敗率——後者在本研究中約為 4.7% 的切面缺失加上 3.2% 的病人因 artifact 被排除，但從未被當作可靠度指標報告。</p>
+</li>
+</ol>
+<h3>一句話結論</h3>
+<p><strong>這是一項方法學誠實度高於平均的 AI 影像驗證研究，證明了在影像品質良好時，不打顯影劑的 VNE 能相當可靠地「認出」陳舊心肌梗塞；但它遠未證明 VNE 能取代 LGE 做臨床決策——尤其是存活度判斷。</strong></p>
+<hr />
+<h2>給讀者的三行提醒</h2>
+<ul>
+<li>Abstract 的 <strong>94.4%</strong> 與「不犧牲診斷準確度」是<strong>經過品質篩選、且被一個零陰性對照的 cohort 拉抬</strong>的數字；真實 cohort（Leeds）的對應值是 <strong>90.9%</strong>，未經篩選時 4 位臨床醫師手上的 VNE <strong>specificity 只有 58.2%</strong>。</li>
+<li><strong>VNE 是 rule-in 工具，不是 rule-out 工具</strong>——在高風險病人（pre-test probability 80%），VNE 陰性的 post-test probability 仍有 <strong>44%</strong>。</li>
+<li><strong>不要拿 VNE 做存活度決策</strong>：其錯分方向以 3.2:1 偏向「高估透壁程度」（會導向不做血運重建），且整個驗證資料集<strong>沒有任何一例 transmurality &gt;75%</strong>。</li>
+</ul>
+<hr />
+<p><strong>Sources:</strong></p>
+<ul>
+<li><a href="https://www.jacc.org/doi/10.1016/j.jacc.2026.05.029">Myocardial Scar Assessment Using Artificial Intelligence-Powered Contrast-Free MRI: A Prospective Multicenter Study of Virtual Native Enhancement | JACC</a></li>
+<li><a href="https://www.jacc.org/doi/abs/10.1016/j.jacc.2026.05.046">Cardiac MRI of Chronic Myocardial Infarction: Emergence of a New Era? | JACC</a>（同期 editorial，全文擷取失敗）</li>
+<li><a href="https://www.acc.org/Latest-in-Cardiology/Articles/2026/06/17/17/26/just-announced">2025 Journal Impact Factor Scores Announced — American College of Cardiology</a></li>
+<li><a href="https://www.jacc.org/impact-factor">2025 Journal Impact Factors | JACC</a></li>
+<li><a href="https://www.rdm.ox.ac.uk/people/qiang-zhang">Qiang Zhang — Radcliffe Department of Medicine, University of Oxford</a></li>
+<li><a href="https://www.cardioscience.ox.ac.uk/news/dr-qiang-zhang-wins-society-for-cardiovascular-magnetic-resonance-early-career-award-2022">Dr Qiang Zhang wins SCMR Early Career Award 2022 — Oxford Cardiovascular Science</a></li>
+<li><a href="https://pubmed.ncbi.nlm.nih.gov/36124774/">Artificial Intelligence for Contrast-Free MRI: Scar Assessment in Myocardial Infarction Using Deep Learning-Based Virtual Native Enhancement — PubMed</a>（本文 ref 6，模型原始開發論文）</li>
+<li><a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC8378544/">Toward Replacing Late Gadolinium Enhancement With AI Virtual Native Enhancement in HCM — PMC</a>（本文 ref 5）</li>
+</ul>
+
+<footer class="appraisal-meta">評讀資訊：模型：claude-opus-5 (claude)  ·  route：diagnostic  ·  產出時間：2026-08-23 08:22 CST</footer>
+</main>
+</body>
+</html>
