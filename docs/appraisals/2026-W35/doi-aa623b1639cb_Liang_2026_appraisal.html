@@ -1,0 +1,1889 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Joint non-linear dose–response associations of device-measured physical activity and cardiorespiratory fitness with cardiovascular disease: a cohort and Mendelian randomisation study</title>
+<style>
+  :root {
+    --bg: #fafafa;
+    --card: #ffffff;
+    --text: #1a1a1a;
+    --muted: #6b6b6b;
+    --border: #e5e5e5;
+    --accent: #0b5fff;
+  }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang TC",
+      "Microsoft JhengHei", sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    margin: 0;
+    padding: 24px 16px 64px;
+    line-height: 1.72;
+  }
+  main {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    margin: 0 auto;
+    max-width: 840px;
+    padding: 22px 26px;
+  }
+  nav {
+    margin: 0 auto 14px;
+    max-width: 840px;
+    color: var(--muted);
+    font-size: 14px;
+  }
+  a { color: var(--accent); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  h1, h2, h3, h4 { line-height: 1.35; }
+  h1 { font-size: 26px; margin-top: 0; }
+  h2 { border-top: 1px solid var(--border); padding-top: 18px; }
+  code {
+    background: rgba(127, 127, 127, 0.12);
+    border-radius: 4px;
+    padding: 1px 4px;
+  }
+  table {
+    border-collapse: collapse;
+    table-layout: auto;
+    width: 100%;
+    max-width: 100%;
+  }
+  th, td {
+    border: 1px solid var(--border);
+    overflow-wrap: anywhere;
+    padding: 6px 8px;
+    text-align: left;
+    vertical-align: top;
+  }
+  blockquote {
+    border-left: 3px solid var(--accent);
+    color: var(--muted);
+    margin-left: 0;
+    padding-left: 14px;
+  }
+  .appraisal-meta {
+    border-top: 1px solid var(--border);
+    margin-top: 28px;
+    padding-top: 14px;
+    color: var(--muted);
+    font-size: 13px;
+  }
+  @media (max-width: 600px) {
+    body {
+      padding: 12px 8px 40px;
+    }
+    main {
+      padding: 16px 12px;
+    }
+    h1 {
+      font-size: 22px;
+    }
+    table {
+      font-size: 12px;
+      table-layout: fixed;
+    }
+    th, td {
+      padding: 4px 5px;
+    }
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #1a1a1a;
+      --card: #242424;
+      --text: #e8e8e8;
+      --muted: #999;
+      --border: #333;
+      --accent: #6ea8ff;
+    }
+  }
+</style>
+</head>
+<body>
+<nav><a href="../../2026-W35.html">← 回到 2026-W35 週報</a></nav>
+<main>
+<h1>Joint non-linear dose–response associations of device-measured physical activity and cardiorespiratory fitness with cardiovascular disease: a cohort and Mendelian randomisation study</h1>
+<h1>醫學文獻批判性評讀</h1>
+<p><strong>Joint non-linear dose–response associations of device-measured physical activity and cardiorespiratory fitness with cardiovascular disease: a cohort and Mendelian randomisation study</strong></p>
+<hr />
+<h1>SECTION-0：文章全面描述</h1>
+<h2>0. 文章身份證</h2>
+<table>
+<thead>
+<tr>
+<th>項目</th>
+<th>內容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>標題</td>
+<td>Joint non-linear dose–response associations of device-measured physical activity and cardiorespiratory fitness with cardiovascular disease: a cohort and Mendelian randomisation study</td>
+</tr>
+<tr>
+<td>期刊</td>
+<td>British Journal of Sports Medicine 2026;60(16):1238–1249</td>
+</tr>
+<tr>
+<td>DOI</td>
+<td>10.1136/bjsports-2025-111351</td>
+</tr>
+<tr>
+<td>PMID</td>
+<td>42156172 [外部: PubMed]</td>
+</tr>
+<tr>
+<td>文章類型</td>
+<td>觀察性研究（UK Biobank 前瞻世代）＋ two-sample Mendelian randomisation 三角驗證</td>
+</tr>
+<tr>
+<td>路由判斷</td>
+<td>SKILL-A 主流程 ＋ 觀察性研究子模組 ＋ 因果推論 Appendix</td>
+</tr>
+<tr>
+<td>授權</td>
+<td>CC BY-NC 4.0，Open Access</td>
+</tr>
+<tr>
+<td>稿件編號提示</td>
+<td>稿號 <code>bjsports-2025-111351</code> 顯示 2025 年投稿 [推論]</td>
+</tr>
+</tbody>
+</table>
+<p><strong>混血成分警示</strong>：本文並非單純世代研究，而是「世代 + MR 三角驗證 + 預測模型（random survival forest）+ 臨床處方矩陣」四合一。其中「處方矩陣」實質上是一份<strong>臨床決策工具的宣稱</strong>，但全文未套用任何預測模型／決策工具的驗證標準（無外部驗證、無 decision curve analysis、矩陣無不確定區間）。這個落差是本文最核心的問題，後續 B4 與 C 段會展開。</p>
+<hr />
+<h2>1. 作者團隊評論</h2>
+<ul>
+<li><strong>通訊作者</strong>：Ziheng Ning 教授，Macao Polytechnic University 健康科學暨運動學院 [文內]</li>
+<li><strong>第一作者</strong>：Zhide Liang，同單位（依 ResearchGate 標示為博士生）[外部: ResearchGate 個人頁]</li>
+<li><strong>團隊構成</strong> [文內 Author Contributions]：ZL 一人負責資料取得、統計分析、製圖與初稿；ZN 監督全程；其餘六位作者提供「運動科學與心血管流行病學專業意見」與稿件修改。<strong>僅 ZL 與 ZN 有個體層級 UKB 資料存取權</strong>。實質上這是一篇一人分析、一人監督的作品，其餘六位共同作者未接觸原始資料。</li>
+</ul>
+<p><strong>團隊過往研究</strong> [外部: PubMed 作者檢索，Liang Zhide，共 31 篇符合檢索]：</p>
+<table>
+<thead>
+<tr>
+<th>年份</th>
+<th>期刊</th>
+<th>主題</th>
+<th>方法</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2026</td>
+<td>Sleep Med Rev</td>
+<td>運動與睡眠品質決定因子（200 trials, n=23,523）</td>
+<td>Bayesian multilevel meta-analysis + MetaForest + SEM</td>
+</tr>
+<tr>
+<td>2026</td>
+<td>Metabolism</td>
+<td>HIIT/MICT 與 MASLD</td>
+<td>SR/MA + 非線性 meta-regression</td>
+</tr>
+<tr>
+<td>2026</td>
+<td>Complement Ther Med</td>
+<td>運動與癌因性疲憊</td>
+<td>Bayesian NMA + MARF/SHAP</td>
+</tr>
+<tr>
+<td>2026</td>
+<td>Psychooncology</td>
+<td>運動與乳癌睡眠品質</td>
+<td>Bayesian NMA + 劑量反應</td>
+</tr>
+<tr>
+<td>2026</td>
+<td>Front Physiol</td>
+<td>運動與老年人 BDNF</td>
+<td>Bayesian NMA + 劑量反應</td>
+</tr>
+</tbody>
+</table>
+<p><strong>評估</strong>：這是一個<strong>產能極高、方法導向、主題極廣</strong>的運動科學團隊，核心專長明確落在「證據整合型統計方法」（Bayesian NMA、非線性劑量反應、機器學習調節因子分析），跨越肝病、腫瘤、神經、睡眠等彼此無關的臨床領域。就 PubMed 可檢索範圍而言，<strong>本篇是該團隊首次以 UK Biobank 個體層級世代資料 + Mendelian randomisation 進行心血管流行病學原創分析</strong>，並非其累積耕耘的主場。這與本文所展現的技術特徵一致：統計工具（Cox-GAM tensor product、RSF、MVMR、RERI/AP/S、cross-fitted residual）非常華麗，但<strong>因果推論架構上的判斷（中介變項校正、暴露時序、estimand 定義）卻相對生疏</strong>——這正是後續 B、C 段批判的集中處。</p>
+<p><strong>作者立場史</strong>：團隊過往作品高度一致地追求「非線性劑量反應」與「最適劑量」敘事（見上表五篇皆為 dose–response 主題）。本文的核心賣點同樣是「非線性 + 最適劑量」。這種方法偏好的一貫性，在本文「連續模型顯示顯著非線性交互作用、但二分法分析完全陰性」時，值得列為確認偏差的合理疑慮。</p>
+<p><strong>利益揭露</strong> [文內]：Competing interests: None declared。Funding: 未申報任何經費來源。UKB Application Number 1050630。<strong>評估：無商業資助、無器材廠商介入，產業偏差風險低，此點為本文優點。</strong></p>
+<hr />
+<h2>2. 文獻 Metadata 整理</h2>
+<table>
+<thead>
+<tr>
+<th>項目</th>
+<th>內容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Received date</td>
+<td>[markdown 未保留 received date；PDF 首頁僅列 Accepted 與 Published Online First]</td>
+</tr>
+<tr>
+<td>Accepted</td>
+<td>2026-04-06 [文內]</td>
+</tr>
+<tr>
+<td>Published Online First</td>
+<td>2026-05-19 [文內]</td>
+</tr>
+<tr>
+<td>紙本刊期</td>
+<td>2026;60(16):1238–1249</td>
+</tr>
+<tr>
+<td>審查天數</td>
+<td><strong>無法計算</strong>——缺 received date</td>
+</tr>
+<tr>
+<td>BJSM Impact Factor</td>
+<td>15.5–16.2（不同來源不一致），Sports Sciences 類別 <strong>Q1、排名第 1</strong> [外部: Clarivate JCR 引用之 BJSM 官方 X 公告 / journalmetrics.org]</td>
+</tr>
+<tr>
+<td>BJSM 平均審查天數</td>
+<td>[無法取得]——BJSM 未公開 editorial statistics</td>
+</tr>
+<tr>
+<td>Provenance</td>
+<td><strong>Not commissioned; externally peer reviewed</strong> [文內]</td>
+</tr>
+<tr>
+<td>Open Access</td>
+<td>是（CC BY-NC 4.0）</td>
+</tr>
+</tbody>
+</table>
+<p><strong>評估</strong>：非邀稿、外部同儕審查，程序上無編輯偏好疑慮。BJSM 為運動醫學領域第一名期刊，但需注意其審稿人組成以運動科學／運動醫學為主，<strong>心血管流行病學與因果推論方法學的審查深度，未必等同 Circulation、Eur Heart J 或流病專科期刊</strong>。本文最嚴重的幾個問題（中介變項校正的 estimand 錯配、外推超出資料支持、處方矩陣缺不確定度）都屬於因果流病與預測建模的專業判斷，而非運動科學判斷——這可能部分解釋為何這些問題能通過審查。</p>
+<hr />
+<h2>3. 研究背景 [僅根據文內]</h2>
+<p><strong>既有事實</strong>：MVPA 與 CRF 各自都是心血管健康的獨立預測因子；現行指引普遍建議每週 ≥150 分鐘 MVPA；CRF 已被專業學會倡議應視為「clinical vital sign」；CRF 並非 MVPA 的單純代理，而是結合習慣性活動、遺傳結構與訓練反應性的複合生理特質。</p>
+<p><strong>作者指出的知識缺口</strong>（共四項）：</p>
+<ol>
+<li>過去多數研究把 MVPA 或 CRF 當單一暴露，或只看各自的獨立關聯，<strong>少有研究在同一世代中以二維非線性劑量反應框架量化兩者的聯合效應</strong>。</li>
+<li>裝置測量研究少有產出可供臨床決策的轉譯輸出（iso-risk contour、處方矩陣）。</li>
+<li>在聯合劑量反應框架下，競爭風險、模型校準與辨別力的系統性評估仍有限。</li>
+<li>因果推論面：既有 MR 研究受限於裝置測量 PA 的弱工具變數或依賴自陳活動表型；CRF 的因果證據稀少且多集中在第二型糖尿病等代謝終點。</li>
+</ol>
+<p><strong>Research question</strong> [文內 Introduction 末段明確陳述]：如何在考量個人體適能水準下，提供個別化、可量化、能有效降低 CVD 風險的 MVPA 處方？</p>
+<p><strong>[評估]</strong> 知識缺口陳述在文獻層面是準確的，二維聯合劑量反應曲面確實少見。但缺口 (1) 與缺口 (4) 之間存在一個作者未察覺的張力：如果 CRF 是 MVPA 通往 CVD 的<strong>中介路徑</strong>（作者在 Discussion 自己承認並用來解釋效果量縮水），那麼「在固定 CRF 下求 MVPA 的處方劑量」在因果上就不是一個可執行的介入。研究問題本身的設定即已內含矛盾，見 B4 與 F 段。</p>
+<hr />
+<h2>4. 研究設計與方法</h2>
+<h3>PICO</h3>
+<table>
+<thead>
+<tr>
+<th>元素</th>
+<th>內容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>P</strong></td>
+<td>UK Biobank 加速規子世代中，同時完成有效 7 日加速規配戴、完成次極量腳踏車測功計測試、且估計 VO₂max 落在 15–55 mL/kg/min，並排除既存 CVD 與核心共變項缺失者。最終 N=17,088（占 103,567 名有效加速規參與者的 <strong>16.5%</strong>）</td>
+</tr>
+<tr>
+<td><strong>I / E</strong></td>
+<td>① 加速規測得每週 MVPA 分鐘數（連續變項；2013–2015 測量）② CRF＝次極量腳踏車測試推估之 VO₂max（<strong>UKB baseline 2006–2010 測量</strong>）</td>
+</tr>
+<tr>
+<td><strong>C</strong></td>
+<td>曲面內部參照。Figure 1 錨定於「0 min/week MVPA ＋ VO₂max 21.5（第 10 百分位）」的全域參照；Figure 2 處方矩陣則錨定於「同一 CRF 水準下 0 min/week」的體適能特異參照</td>
+</tr>
+<tr>
+<td><strong>O</strong></td>
+<td>主要：複合 CVD（AF/flutter、MI、HF、stroke 首次發生）。<strong>未預設次要終點的個別成分分析</strong>（作者言事件數不足）</td>
+</tr>
+</tbody>
+</table>
+<h3>關鍵設計細節</h3>
+<ul>
+<li><strong>設計類型</strong>：前瞻世代（time zero＝各參與者有效加速規配戴期結束日，2013–2015）＋ two-sample MR</li>
+<li><strong>追蹤</strong>：中位數 7.85 年（IQR 7.39–8.27，reverse Kaplan-Meier 法）；行政設限日 2022-10-31</li>
+<li><strong>事件確認</strong>：Hospital Episode Statistics 住院診斷與處置 ＋ 全國死亡登記連結</li>
+<li><strong>MVPA 推導</strong>：Axivity AX3 腕戴式，100 Hz，連續 7 日；官方 UKB pipeline；<strong>balanced random forest（100 trees、50 rotation-invariant features、30 秒 epoch）</strong>，訓練資料為 CAPTURE-24 的 152 位成人相機標註自由生活資料，再以 hidden Markov model 平滑。leave-one-participant-out 驗證平均準確度 88%（95% CI 87–89%），Cohen's kappa 0.80（0.79–0.82）</li>
+<li><strong>統計主模型</strong>：Cox-GAM（mgcv V.1.9，<code>cox.ph()</code> family，REML）；MVPA×CRF 以 <strong>tensor product smooth <code>te()</code></strong>，邊際基底為 thin plate regression spline，各基底維度 4；年齡 <code>bs=&quot;tp&quot;</code> k=5；Townsend <code>bs=&quot;ts&quot;</code> k=5（含 shrinkage）</li>
+<li><strong>共變項</strong>：DAG 導出之最小充分集合——年齡、性別、族裔、Townsend、抽菸、酒精、自評健康、飲食分數。<strong>BMI、靜止心率、收縮壓僅用於 robustness 分析</strong></li>
+<li><strong>競爭風險</strong>：主分析將非 CVD 死亡視為設限（cause-specific HR）；補充以 Fine-Gray 模型（SHR）</li>
+<li><strong>交互作用檢定</strong>：連續尺度以 global χ² 檢定 <code>te()</code> 項；補充以二分法（MVPA 150 min 切點 × 性別特異 VO₂max 中位數）計算 RERI、AP、synergy index（2000 次 bootstrap）與 ratio of HRs</li>
+<li><strong>比例風險假設</strong>：Schoenfeld residuals，由一個以 natural cubic spline 建構的前置 Cox 模型計算</li>
+<li><strong>缺失處理</strong>：<strong>完整病例分析</strong>。缺失率 0–5.94%（最高為酒精攝取類別），至少一項缺失者 6.22%（1,133/18,221）</li>
+<li><strong>MR 設計</strong>：p&lt;5×10⁻⁸、LD clumping r²=0.001 / 10,000 kb、allele harmonisation、palindromic 處理、Steiger directionality、優先保留 ≥3 SNP；主估計為 multiplicative random-effects IVW；補充 weighted median、MR-Egger、simple/weighted mode、MR-RAPS；工具足夠時執行 MVMR。共檢定 <strong>15 個 exposure–outcome 配對</strong></li>
+</ul>
+<h3>⚠️ 一項作者完全未討論的關鍵設計事實：兩個主要暴露相隔 3–7 年</h3>
+<p><strong>CRF 測於 UKB baseline（2006–2010）；MVPA 測於加速規子研究（2013–2015）；time zero 亦為 2013–2015。</strong></p>
+<p>也就是說，本文所謂的「聯合暴露曲面」，是把一個<strong>在觀察起點前 3–7 年測得的生理量</strong>，與一個<strong>在觀察起點當下測得的行為量</strong>，放在同一個二維平面上，宣稱它們共同定義一個人「現在」的風險位置。作者在 Limitations 只寫了「both exposures and confounders were assessed at a single time point」（單一時間點），<strong>完全沒有揭露這兩個時間點根本不是同一個時間點</strong>。此一遺漏的具體後果見 B3 與 C4。</p>
+<hr />
+<h2>5. 研究結果重點整理</h2>
+<h3>樣本流與事件（數字內部一致性已逐項核對）</h3>
+<table>
+<thead>
+<tr>
+<th>項目</th>
+<th>數值</th>
+<th>核對</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>有效加速規參與者</td>
+<td>103,567</td>
+<td>—</td>
+</tr>
+<tr>
+<td>最終分析樣本</td>
+<td>17,088</td>
+<td>保留率 16.5% ✓</td>
+</tr>
+<tr>
+<td>缺失前樣本</td>
+<td>18,221；排除 1,133</td>
+<td>18,221−1,133＝17,088 ✓</td>
+</tr>
+<tr>
+<td>總 CVD 事件</td>
+<td>1,233</td>
+<td>874+156+111+92＝1,233 ✓</td>
+</tr>
+<tr>
+<td>非 CVD 死亡</td>
+<td>558（3.3%）</td>
+<td>占所有 failure events 31.2% ✓</td>
+</tr>
+<tr>
+<td>行政設限</td>
+<td>15,297（89.5%）</td>
+<td>558+15,297＝15,855＝17,088−1,233 ✓</td>
+</tr>
+<tr>
+<td>累積 CVD 發生率</td>
+<td><strong>7.22%</strong>（中位追蹤 7.85 年）</td>
+<td>[推算]</td>
+</tr>
+</tbody>
+</table>
+<h3>⚠️ 複合終點的組成：這其實是一篇心房顫動研究</h3>
+<table>
+<thead>
+<tr>
+<th>成分</th>
+<th>事件數</th>
+<th>占複合終點比例</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>心房顫動／撲動（AF）</strong></td>
+<td><strong>874</strong></td>
+<td><strong>70.9%</strong></td>
+</tr>
+<tr>
+<td>心肌梗塞（MI）</td>
+<td>156</td>
+<td>12.7%</td>
+</tr>
+<tr>
+<td>心衰竭（HF）</td>
+<td>111</td>
+<td>9.0%</td>
+</tr>
+<tr>
+<td>中風（stroke）</td>
+<td>92</td>
+<td>7.5%</td>
+</tr>
+<tr>
+<td>動脈粥狀硬化硬終點（MI+stroke）合計</td>
+<td>248</td>
+<td>20.1%</td>
+</tr>
+</tbody>
+</table>
+<p>這個組成分布在全文正文中<strong>只出現一次</strong>（Results 首段），此後從未再被提及；摘要、Key Messages、結論、圖說、新聞稿一律以「cardiovascular disease」統稱。<strong>本文所有關於「運動 560–610 分鐘可降低 30% 心血管風險」的宣稱，其實有七成是在講心房顫動。</strong> 見 B4 與 E 段。</p>
+<h3>主要關聯結果</h3>
+<table>
+<thead>
+<tr>
+<th>分析</th>
+<th>估計值</th>
+<th>95% CI</th>
+<th>p</th>
+<th>分類</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>MVPA×CRF 連續交互作用（Cox-GAM）</td>
+<td>χ²=38.43, edf=3.07</td>
+<td>—</td>
+<td>&lt;0.001</td>
+<td>統計顯著</td>
+</tr>
+<tr>
+<td><strong>RERI（加成尺度，二分法）</strong></td>
+<td><strong>−0.09</strong></td>
+<td><strong>−0.45 到 0.22</strong></td>
+<td><strong>0.57</strong></td>
+<td><strong>INCONCLUSIVE（無交互作用證據）</strong></td>
+</tr>
+<tr>
+<td>AP（加成尺度）</td>
+<td>−0.06</td>
+<td>−0.30 到 0.15</td>
+<td>—</td>
+<td>INCONCLUSIVE</td>
+</tr>
+<tr>
+<td>Synergy index S</td>
+<td>0.84</td>
+<td>0.46 到 1.86</td>
+<td>—</td>
+<td>INCONCLUSIVE</td>
+</tr>
+<tr>
+<td><strong>乘法尺度 ratio of HRs</strong></td>
+<td><strong>0.90</strong></td>
+<td><strong>0.70 到 1.15</strong></td>
+<td><strong>0.39</strong></td>
+<td><strong>INCONCLUSIVE（無交互作用證據）</strong></td>
+</tr>
+<tr>
+<td>低 MVPA 單獨（vs 高/高）</td>
+<td>HR 1.32</td>
+<td>1.07 到 1.62</td>
+<td>—</td>
+<td>顯著</td>
+</tr>
+<tr>
+<td>低 CRF 單獨（vs 高/高）</td>
+<td>HR 1.25</td>
+<td>1.08 到 1.45</td>
+<td>—</td>
+<td>顯著</td>
+</tr>
+<tr>
+<td>兩者皆低（vs 高/高）</td>
+<td>HR 1.48</td>
+<td>1.26 到 1.73</td>
+<td>—</td>
+<td>顯著</td>
+</tr>
+<tr>
+<td>達 150 min/week（低體適能 ≤25）</td>
+<td>HR 0.92</td>
+<td>0.86 到 0.97</td>
+<td>—</td>
+<td>邊緣顯著</td>
+</tr>
+<tr>
+<td>達 150 min/week（高體適能 40）</td>
+<td>HR 0.91</td>
+<td><strong>0.84 到 0.99</strong></td>
+<td>—</td>
+<td><strong>勉強排除無效線</strong></td>
+</tr>
+<tr>
+<td>殘差 CRF（cross-fitted）</td>
+<td>HR 0.98/1 mL·kg⁻¹·min⁻¹</td>
+<td>0.97 到 0.99</td>
+<td>&lt;0.001</td>
+<td>精確、微小</td>
+</tr>
+<tr>
+<td>殘差 CRF 換算</td>
+<td>HR 0.90/5 mL·kg⁻¹·min⁻¹</td>
+<td>0.85 到 0.96</td>
+<td>—</td>
+<td>—</td>
+</tr>
+<tr>
+<td>Fine-Gray：MVPA ≥150</td>
+<td>SHR 0.86</td>
+<td>0.75 到 0.97</td>
+<td>—</td>
+<td>顯著</td>
+</tr>
+<tr>
+<td>Fine-Gray：CRF 30–40 vs &lt;30</td>
+<td>SHR 0.75</td>
+<td>0.65 到 0.86</td>
+<td>—</td>
+<td>顯著</td>
+</tr>
+<tr>
+<td>Fine-Gray：CRF &gt;40 vs &lt;30</td>
+<td>SHR 0.70</td>
+<td>0.52 到 0.95</td>
+<td>—</td>
+<td>顯著但寬</td>
+</tr>
+<tr>
+<td>C-index</td>
+<td>0.704</td>
+<td>—</td>
+<td>—</td>
+<td>中等辨別力</td>
+</tr>
+<tr>
+<td>PH 假設</td>
+<td>—</td>
+<td>—</td>
+<td>0.21</td>
+<td>未違反</td>
+</tr>
+<tr>
+<td>性別交互作用</td>
+<td>—</td>
+<td>—</td>
+<td>0.021</td>
+<td><strong>ΔAIC=+2.9（模型變差）</strong></td>
+</tr>
+<tr>
+<td>年齡、BMI 交互作用</td>
+<td>—</td>
+<td>—</td>
+<td>&gt;0.05</td>
+<td>無</td>
+</tr>
+</tbody>
+</table>
+<h3>MR 結果</h3>
+<table>
+<thead>
+<tr>
+<th>暴露 → 結果</th>
+<th>方法</th>
+<th>OR</th>
+<th>95% CI</th>
+<th>p</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>遺傳代理 CRF → <strong>HF</strong></td>
+<td>MVMR</td>
+<td><strong>0.79</strong></td>
+<td><strong>0.63 到 0.99</strong></td>
+<td><strong>0.043</strong></td>
+</tr>
+<tr>
+<td>遺傳代理 CRF → AF</td>
+<td>MVMR</td>
+<td>0.73</td>
+<td>0.49 到 1.09</td>
+<td>0.12</td>
+</tr>
+<tr>
+<td>遺傳代理 CRF → AF</td>
+<td>weighted median</td>
+<td>0.69</td>
+<td>0.53 到 0.89</td>
+<td>—</td>
+</tr>
+<tr>
+<td>遺傳代理 CRF → AF</td>
+<td>weighted mode</td>
+<td>0.67</td>
+<td>0.52 到 0.88</td>
+<td>—</td>
+</tr>
+<tr>
+<td>PA 各表型 → CAD/IHD、stroke、TIA</td>
+<td>MVMR</td>
+<td><strong>未報告點估計與 CI</strong></td>
+<td>—</td>
+<td>全部 &gt;0.05</td>
+</tr>
+</tbody>
+</table>
+<p>MR 診斷：median F 31.0–39.3（全部 &gt;10）；Steiger 12/15 通過（3 個 TIA 配對因缺樣本數資訊無法檢定）；<strong>Cochran's Q 顯著 8/15</strong>（實質異質性）；MR-Egger intercept 全部 p&gt;0.05；線性假設 15/15 通過；殘差常態 IVW 12/15、Egger 13/15；Cook's distance 在 7/15 配對找到影響力變異點，但 leave-one-out 未改變主要結論。</p>
+<hr />
+<h2>6. 作者討論與評論重點</h2>
+<p><strong>作者主要訊息</strong>（三層）：</p>
+<ol>
+<li>現行 150 min/week 指引提供「universal but modest safety margin」，在所有體適能層級一致提供約 8–9% 相對風險下降，是穩健的普世最低門檻。</li>
+<li>要達到實質保護（&gt;30% 下降）需要 3–4 倍的活動量（約 560–610 min/week）；低體適能者需比高體適能者多約 30–50 分鐘。</li>
+<li>殘差 CRF 分析與 MR 共同支持 CRF 具有獨立於行為的生理性心臟保護成分。</li>
+</ol>
+<p><strong>與現有文獻的異同</strong>：作者明確指出自陳式 PA 的大型劑量反應統合分析在 150 min/week 通常報告 20–30% 的風險下降，而本文只有 8–9%。<strong>作者的解釋是：既往研究估計的是 total effect（隱含包含經由體適能改善的中介效果），而本文的聯合模型明確校正了 CRF，因此估計的是「固定體適能下 MVPA 的 conditional／direct effect」。</strong> 這個解釋在技術上是正確且相當有洞察力的——但它同時摧毀了本文處方矩陣的臨床效度，作者未能察覺（見 B4）。</p>
+<p><strong>作者自陳限制</strong>（逐條列出並評估）：</p>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>作者陳述的限制</th>
+<th>評估</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>嚴格納入條件 → 保留率 16.5%，healthy volunteer bias，外推至衰弱長者或運動禁忌者受限</td>
+<td>✅ 誠實且具體</td>
+</tr>
+<tr>
+<td>2</td>
+<td>CRF 為推估而非氣體分析直接測量；預測誤差可能非隨機（未訓練者心率反應較難預測）</td>
+<td>⚠️ 提到了，但<strong>漏掉最關鍵的一項</strong>：UKB 次極量測試是「individually risk-stratified」，高風險者被分派較低負荷 → 測量誤差與基線心血管風險系統性相關</td>
+</tr>
+<tr>
+<td>3</td>
+<td>殘餘干擾無法排除；未校正久坐時間與輕度活動（因 24 小時時間預算的共線性／過度校正疑慮）</td>
+<td>✅ 討論細緻，且正確指出 compositional 問題</td>
+</tr>
+<tr>
+<td>4</td>
+<td>類別式共變項（抽菸、酒精）測量誤差會削弱校正效果</td>
+<td>✅ 少見的誠實</td>
+</tr>
+<tr>
+<td>5</td>
+<td>單一時間點暴露，無法校正 time-varying confounding；MVPA→CRF→未來 MVPA 的回饋迴路需 MSM 或 g-estimation</td>
+<td>✅ 概念正確，<strong>但完全未提兩個暴露相隔 3–7 年</strong></td>
+</tr>
+<tr>
+<td>6</td>
+<td>cause-specific hazard 假設競爭事件為非資訊性設限，可能違反</td>
+<td>✅ 誠實</td>
+</tr>
+<tr>
+<td>7</td>
+<td>HR 本身內建 selection bias（風險集受先前存活條件化）</td>
+<td>✅ 相當進階的自我批判</td>
+</tr>
+<tr>
+<td>8</td>
+<td>MR 部分樣本重疊 + PA 工具強度中等，<strong>「could have biased some MR estimates toward the null」</strong></td>
+<td>❌ <strong>方向判斷有誤</strong>——見 C4</td>
+</tr>
+<tr>
+<td>9</td>
+<td>複合終點混合病生理不同的疾病；個別成分事件數不足（156 MI、111 HF、92 stroke）無法估計成分特異曲面</td>
+<td>✅ 誠實揭露，<strong>但未承認 AF 占 70.9% 這件事對整篇結論詮釋的意義</strong></td>
+</tr>
+</tbody>
+</table>
+<p><strong>[評估]</strong>：本文的 Limitations 段落在方法學誠實度上<strong>高於一般 UK Biobank 論文的水準</strong>，作者主動點出 HR 的內建選擇偏差、compositional 過度校正、competing risk 的非資訊性設限假設等進階議題。這一點必須明確肯定。</p>
+<p>問題出在<strong>限制段落的誠實，沒有回饋到摘要、Key Messages 與結論的措辭</strong>。摘要與 Key Messages 完全不提交互作用在二分法分析中是陰性的、不提複合終點七成是 AF、不提 MR 的單一陽性結果是 15 次檢定中的 p=0.043。這是典型的「限制寫給審稿人看、摘要寫給媒體看」的雙軌書寫。BMJ 新聞稿的標題直接是「560-610 minutes of exercise a week needed for substantial heart benefits」，證明這個雙軌書寫達成了預期效果。</p>
+<hr />
+<h2>7. 外部專業意見</h2>
+<h3>尋找同期 editorial / commentary 的結果</h3>
+<p>已執行 PubMed 檢索（<code>&quot;bjsports-2025-111351&quot;[All Fields]</code>、<code>Comment[Publication Type]</code>、BJSM 2026 相關 editorial 檢索）與網路檢索。<strong>PubMed 僅回傳本文自身，未檢出任何針對本文的 editorial、commentary、comment 或 letter。</strong> BMJ Group 官方新聞稿亦未提及有隨文評論。</p>
+<p>→ <strong>[無法取得]——未發現同期 editorial 或期刊內公開評論</strong>（故未觸發 <code>fetch_editorial.py</code> 全文擷取；無可下載之評論 DOI）。</p>
+<h3>但有兩份具名學者的專業意見（品質高於 editorial）</h3>
+<p><strong>[外部: UK Science Media Centre, expert reaction 全文]</strong></p>
+<blockquote>
+<p><strong>Prof Aiden Doherty</strong>（University of Oxford, Professor of Biomedical Informatics）</p>
+<p><strong>這位學者的身分至關重要：他正是本文參考文獻 28（Doherty et al., PLoS One 2017）的作者，也就是本文所使用的整套 UK Biobank 加速規資料處理 pipeline 的建立者。</strong> 亦即，本文的暴露變項是用他開發的方法產生的。</p>
+<ul>
+<li>明確指出新聞稿<strong>未正確反映科學內容</strong>（&quot;does not accurately reflect the science&quot;）。</li>
+<li>「說民眾<strong>需要</strong>達到 &gt;560 分鐘（每天 1 小時 20 分）才有健康益處，是誤導性的（misleading）。」</li>
+<li>「本文的資料非常清楚地<strong>支持</strong>現行 WHO 身體活動指引」——達到 150 分鐘即與約 8–9% 較低的未來 CVD 風險相關。</li>
+<li>公共衛生訊息應維持：「民眾應持續以每週至少 150 分鐘 MVPA 為目標；<strong>more is better; every move counts</strong>。」</li>
+<li>利益揭露：研究經費來自 Wellcome Trust、Swiss Re、GSK、Boehringer Ingelheim、Google、NIH、EPSRC、BHF、CRUK、Danish National Research Foundation。</li>
+</ul>
+</blockquote>
+<blockquote>
+<p><strong>Prof Steffen Petersen</strong>（Queen Mary University of London / NIHR Barts BRC, Professor of Cardiovascular Medicine）</p>
+<ul>
+<li>正面評價：「大型、執行良好的觀察性研究，使用客觀測量」，MR 強化了因果推論的宣稱。</li>
+<li>認為「使用裝置測量的活動與體適能而非自陳，提高了對所觀察劑量反應關係的信心」。</li>
+<li>利益揭露：為 Circle Cardiovascular Imaging 提供顧問服務。</li>
+</ul>
+</blockquote>
+<p><strong>[外部: Science Media Centre España, expert reaction 全文]</strong></p>
+<table>
+<thead>
+<tr>
+<th>學者</th>
+<th>職位</th>
+<th>核心評論</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>José Luis López-Sendón Moreno</strong></td>
+<td>神經科醫師，Ramón y Cajal 醫院</td>
+<td>肯定客觀測量的優點；但點出兩項限制：<strong>「VO₂max 是推估而非直接測量」</strong>，且**「加速規測量無法直接換算為指引所依據的自陳式活動量」**。建議將 150 分鐘理解為「有效的最低門檻，而非最大心血管保護的水準」</td>
+</tr>
+<tr>
+<td><strong>Julián Pérez-Villacastín</strong></td>
+<td>心臟科主任，San Carlos 臨床醫院／Complutense 大學教授</td>
+<td>警告樣本是「一群高度選擇、無疑比一般人更健康的個體」；150 分鐘對一般人群「仍然高度有效」；認為選擇偏差可能導致本研究<strong>低估</strong>了效益</td>
+</tr>
+<tr>
+<td><strong>Ignacio Fernández Lozano</strong></td>
+<td>西班牙心臟學會理事長</td>
+<td>方法上健全，但「個人化更好，只是永遠更難解釋」；<strong>本文證據不足以支持改變現行建議</strong></td>
+</tr>
+<tr>
+<td><strong>Manuel Martínez-Sellés</strong></td>
+<td>馬德里醫師公會理事長／Gregorio Marañón 醫院心臟科主任</td>
+<td>較正面：肯定 UKB 設計與事件數，接受「約 600 分鐘／每日近 1.5 小時」提供最佳心血管防護的說法</td>
+</tr>
+</tbody>
+</table>
+<p><strong>外部意見的整體型態</strong>：五位具名專家中，<strong>四位明確反對將 560–610 分鐘當作臨床或公衛目標</strong>，只有一位（Martínez-Sellés）接受該數字的表面詮釋。最尖銳的批評來自本文所用測量方法的原始開發者。López-Sendón 獨立指出的「加速規 MVPA 無法換算為指引的自陳式 MVPA」，與本評讀在 B4 得到的結論完全一致。</p>
+<hr />
+<h2>8. 臨床建議</h2>
+<p><strong>可採用本文結論的臨床情境</strong>：</p>
+<ol>
+<li><strong>強化「達到 150 分鐘有意義」的衛教說服力</strong>。本文以客觀加速規測量、在校正體適能後，仍觀察到 8–9% 的複合 CVD 風險下降（Fine-Gray SHR 0.86, 0.75–0.97），這是對現行指引的<strong>支持證據</strong>，可用於門診勸說久坐病人。</li>
+<li><strong>把 CRF 當成獨立的臨床生命徵象看待</strong>。殘差 CRF 分析（HR 0.90 per 5 mL·kg⁻¹·min⁻¹, 0.85–0.96）與 Fine-Gray 分層結果（VO₂max 30–40 vs &lt;30：SHR 0.75）一致支持：即使在同樣的活動量下，體適能較高者風險仍較低。對於心臟復健族群，這支持將 VO₂max 改善本身視為有意義的療效指標。</li>
+<li><strong>「more is better」的方向性訊息</strong>。曲面在觀察資料範圍內單調下降，可支持鼓勵已達標者再往上增加。</li>
+</ol>
+<p><strong>不建議直接套用的情境</strong>：</p>
+<ol>
+<li><strong>絕對不要把 560–610 min/week 當成給病人的處方目標。</strong> 這個數字（a）建立在中介變項校正後的 conditional effect，其對應的因果情境（增加運動但體適能不變）在生理上不存在；（b）落在資料稀疏區的樣條外推；（c）未附任何不確定區間（見 C1 的區間推算：真實範圍可能橫跨 300 至 5,000 分鐘／週）；（d）其單位是隨機森林分類器產出的行為類別，不等同於指引所定義的 MVPA 分鐘。本文暴露方法的原始開發者 Doherty 教授直接稱此說法為 misleading。</li>
+<li><strong>不要用「體適能分層處方矩陣」做個別化調整。</strong> 矩陣中的分層差距（10–50 分鐘）源自 HR 0.92 與 0.91 之間的差異，而本文自己的加成與乘法尺度交互作用分析（RERI p=0.57、ratio of HRs p=0.39）皆無法排除零交互作用。</li>
+<li><strong>不要外推到台灣的高齡、衰弱、心衰竭或運動禁忌族群。</strong> 樣本為 96.0% 白人、UKB 基線 40–69 歲、且必須通過腳踏車測功計測試——這道篩選本身就排除了運動能力受限者。</li>
+<li><strong>不要把本文當成「運動預防心肌梗塞與中風」的證據。</strong> 複合終點 70.9% 是 AF；MI 僅 156 例、stroke 僅 92 例，作者自陳事件數不足以估計成分特異曲面。</li>
+</ol>
+<p><strong>給臨床醫師的三點實務建議</strong>：</p>
+<ol>
+<li><strong>門診訊息維持不變</strong>：每週 150 分鐘中高強度活動是有實證支持的最低門檻，多做更好；不要因為這篇論文改口說「要做 600 分鐘才有用」。</li>
+<li><strong>把 CRF 當成獨立的可追蹤指標</strong>：對心血管高風險或心臟復健病人，運動處方的目標應包含「體適能是否改善」，而非只有「活動時數是否達標」——本文的殘差分析支持這一點，且這正是本文中因果推論上最穩固的部分。</li>
+<li><strong>向病人溝通時改用絕對數字</strong>：本世代 7.85 年的累積 CVD 發生率約 7.2%；達到 150 min/week 對應約 0.65 個百分點的絕對風險下降，NNT 約 154 人／8 年 [推算，假設各成分 RRR 一致]。這比「8–9% 相對下降」誠實，也比「560 分鐘換 30%」負責。</li>
+</ol>
+<p><strong>研究證據強度分級</strong>：</p>
+<table>
+<thead>
+<tr>
+<th>宣稱</th>
+<th>強度</th>
+<th>理由</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>MVPA 與 CVD 呈反向劑量反應關係</td>
+<td><strong>中</strong></td>
+<td>客觀測量、事件數尚可、Fine-Gray 一致；但殘餘干擾與反向因果未除、MR 無支持</td>
+</tr>
+<tr>
+<td>CRF 與 CVD 獨立反向關聯</td>
+<td><strong>中</strong></td>
+<td>觀察性 + 殘差分析 + MR（HF）方向一致；但 CRF 為推估值且與 outcome（AF）有測量上的循環風險</td>
+</tr>
+<tr>
+<td>MVPA×CRF 存在臨床上有意義的交互作用</td>
+<td><strong>弱</strong></td>
+<td>連續模型顯著、二分法完全陰性、Figure 2A 四個 CI 幾乎完全重疊</td>
+</tr>
+<tr>
+<td>560–610 min/week 為達成 30% 風險下降的所需劑量</td>
+<td><strong>極弱</strong></td>
+<td>外推 + 中介校正 estimand 錯配 + 無不確定度 + 單位不可轉譯</td>
+</tr>
+<tr>
+<td>CRF 對 HF 具因果保護效果</td>
+<td><strong>弱</strong></td>
+<td>15 次檢定中的單一 p=0.043，CI 上界 0.99，樣本重疊未校正</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h1>SKILL-A：批判性評讀（觀察性研究路徑）</h1>
+<h2>A. 補充技術細節</h2>
+<h3>A（一般）補充</h3>
+<ul>
+<li><strong>樣本數估算</strong>：<strong>無事前 power calculation</strong>。作者改以「每有效參數事件數」論證模型穩定性：平滑項 14.38 edf ＋ 參數項 10 df ＝ 24.38 有效參數；1,233/24.38 ＝ <strong>50.6 events per parameter</strong>，遠高於慣用的 10 EPP 門檻。
+<ul>
+<li>⚠️ <strong>這個論證有兩層問題</strong>。第一，edf 是<strong>懲罰後</strong>的有效自由度，不是模型的真實搜尋複雜度；REML 是從基底維度上限（MVPA、CRF 各 4，te() 交互作用最多可達 ~15 edf）中「選出」3.07 edf，這個選擇過程本身消耗的自由度未被計入。第二，也是更重要的：<strong>50.6 EPP 是針對複合終點算的，而複合終點 70.9% 是 AF</strong>。這個數字完全掩蓋了 HF（111 事件）與 stroke（92 事件）在此模型中根本沒有任何有效資訊量。</li>
+</ul>
+</li>
+<li><strong>ITT / per-protocol</strong>：不適用（觀察性）</li>
+<li><strong>多重比較</strong>：主要終點單一且預先指定 → 良好。但（a）性別、年齡、BMI 三個效果修飾檢定；（b）MR 的 <strong>15 個 exposure–outcome 配對 × 7 種估計方法 × 單變量/多變量</strong>；（c）19 張補充表格的大量 robustness 分析——<strong>全文未見任何多重比較校正</strong>。</li>
+<li><strong>比例風險假設</strong>：Schoenfeld residuals，global p=0.21 → 通過。✅ 執行方式適當（從一個以 natural cubic spline 建構的前置模型計算，而非直接在 GAM 上做，這是合理的技術折衷，且作者在 eTable 16 報告完整 knot 位置——透明度值得肯定）。</li>
+<li><strong>缺失資料</strong>：完整病例分析，缺失 6.22%，集中於單一共變項（酒精），暴露與結果依設計完整觀察。作者引用文獻論證 CCA 在此情境可接受 → <strong>合理，此點無爭議</strong>。</li>
+<li><strong>模型選擇透明度</strong>：作者主動聲明「模型結構由 DAG 預先指定，非由 information criterion 選擇；AIC 僅用於評估是否加入分層偏差平滑項」，並解釋為何選 AIC 而非 BIC（BIC 在 N=17,088 時的 log(n)≈9.75 懲罰會過度懲罰平滑項）。<strong>這段方法學自覺程度相當高，應予肯定。</strong></li>
+<li><strong>預先註冊</strong>：<strong>無</strong>。文中僅提 UKB Application Number 1050630，未引用任何分析計畫書、OSF 或註冊平台。「prespecified on the basis of a DAG」的宣稱<strong>無法外部驗證</strong>。</li>
+<li><strong>程式碼可得性</strong>：「available from the corresponding author upon reasonable request」。對一篇核心貢獻就是「一個模型曲面與一張由該曲面導出的矩陣」的論文，<strong>程式碼未公開等於結論無法被重現</strong>。</li>
+</ul>
+<hr />
+<h2>A1（特殊設計子模組）— 觀察性研究，多數 RCT 專屬項目不適用</h2>
+<p>Non-inferiority / surgical RCT / platform trial / preclinical 子模組<strong>皆不適用</strong>，不套用。以下僅補充本文特有的建模設計議題。</p>
+<h3>Tensor product smooth 的實際複雜度：edf=3.07 說了什麼</h3>
+<p><code>te()</code> 由兩個維度 4 的 thin plate 邊際基底構成，理論上交互作用曲面可承載約 15 edf 的複雜度。REML 懲罰後<strong>只剩 3.07 edf</strong>。</p>
+<p>一個純粹「線性 × 線性」的雙線性交互作用項，在 tensor product 分解下大約就對應 3 edf。<strong>也就是說，這個被摘要標榜為「significant non-linear interaction」的項，其懲罰後的實際形狀，與一個單純的 MVPA×CRF 乘積項幾乎無法區分。</strong> 所謂的「非線性」在資料上幾乎沒有被支持。</p>
+<p><strong>這個推論在 Figure 1 得到直接的視覺確認</strong>（見 B3 的圖判讀）：等風險輪廓線幾乎是一組平行的直線帶，只有極輕微的凹曲。在等高線圖中，<strong>平行直線輪廓＝該函數在兩個軸上都是線性且可加</strong>。</p>
+<hr />
+<h2>觀察性研究：混淆控制方法評估</h2>
+<table>
+<thead>
+<tr>
+<th>方法</th>
+<th>本文使用</th>
+<th>強度</th>
+<th>關鍵要求是否滿足</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>多變量迴歸（DAG 導出最小充分集合）</td>
+<td>✅ 主要方法</td>
+<td>中</td>
+<td>❌ <strong>所有相關混淆因子皆已測量並納入？否</strong>——見下</td>
+</tr>
+<tr>
+<td>Propensity score</td>
+<td>❌ 未使用</td>
+<td>—</td>
+<td>—</td>
+</tr>
+<tr>
+<td>Instrumental variable</td>
+<td>✅ 以 MR 形式間接使用</td>
+<td>高（若有效）</td>
+<td>⚠️ 工具與暴露相關性成立（F 31–39），但獨立性與排除限制無法驗證；Cochran's Q 8/15 顯著顯示工具間實質異質性</td>
+</tr>
+<tr>
+<td>競爭風險（Fine-Gray）</td>
+<td>✅ 補充</td>
+<td>—</td>
+<td>✅ 執行且結果一致</td>
+</tr>
+<tr>
+<td>敏感度分析</td>
+<td>✅ 多項（排除早期事件、winsorisation、序貫加入 BMI/RHR/SBP）</td>
+<td>—</td>
+<td>⚠️ <strong>正文未報告任何數值</strong>，僅稱「remained robust」</td>
+</tr>
+</tbody>
+</table>
+<h3>未被校正、且方向明確的混淆與偏差</h3>
+<ol>
+<li><strong>未校正久坐時間與輕度活動</strong>。作者自陳並以 compositional 共線性為理由辯護。這個辯護在技術上合理，但後果同樣真實：MVPA 的估計關聯中，仍混雜了「MVPA 高的人同時久坐少」的部分。</li>
+<li><strong>靜止心率僅在 robustness 中校正</strong>。Table 1 顯示 &lt;150 組 RHR 69.3、≥150 組 66.5 bpm。RHR 同時是（a）估計 VO₂max 的直接輸入／高度相關量、（b）獨立的 CVD 預測因子、（c）次臨床疾病與自律神經失調的標記。在一個把「由心率反應推估的 VO₂max」當作主要暴露的模型裡，不在主模型校正 RHR 是重大選擇，而作者只說「結果穩健」卻<strong>在正文不給任何數字</strong>。</li>
+<li><strong>服藥狀況未進入模型</strong>。Table 1 顯示 15.4% 使用降壓藥（&lt;150 組 19.1% vs ≥150 組 13.7%），另有 12.0% 缺失。<strong>β-blocker 會直接壓抑次極量運動的心率反應，從而系統性地低估 VO₂max</strong>，而使用 β-blocker 者本身就是 CVD 高風險族群。這條路徑（服藥 → 低估 CRF ＋ 高 CVD 風險）會<strong>憑空製造出一部分「低 CRF 預測 CVD」的關聯</strong>，且完全未被處理，作者亦未在 Limitations 提及。</li>
+<li><strong>教育程度與就業狀態未進入主模型</strong>。Table 1 顯示極大的組間差異（大學學歷：≥150 組 50.8% vs &lt;150 組 37.5%），作者註明這些變項「僅供描述用途，未用於主要 Cox-GAM」。以 Townsend index 單一指標代表社經地位，在英國情境下是不足的。</li>
+</ol>
+<h3>時序性（temporality）：本文最嚴重的結構問題</h3>
+<ul>
+<li><strong>CRF 測於 2006–2010，MVPA 測於 2013–2015，time zero 為 2013–2015。</strong></li>
+<li>後果一：CRF 相對於 time zero 有 3–7 年的落差。50–65 歲成人的 VO₂max 每年約下降 0.4–0.5 mL·kg⁻¹·min⁻¹，且個體差異大。以 baseline VO₂max 代表 time zero 的體適能，等於在暴露上引入了大量非隨機的測量誤差（衰退速率本身與健康狀態相關）。</li>
+<li>後果二（更嚴重）：<strong>「cross-fitted residual VO₂max」的因果方向是反的。</strong> 作者將 residual CRF 定義為「觀測 VO₂max 減去由 MVPA 與共變項預測的值」，並詮釋為「MVPA 無法解釋的體適能盈餘」。但<strong>這個 VO₂max 測於 2006–2010，而用來預測它的 MVPA 測於 2013–2015</strong>。作者實際上是在用未來的行為去預測過去的生理量，再把預測殘差當作因果上的「獨立生理成分」。這在因果結構上不成立，而這正是摘要與結論中「surplus fitness retains independent protection」宣稱的唯一依據。</li>
+<li>後果三：<strong>存活者選擇</strong>。在 CRF 測量（2008 左右）與加速規測量（2014 左右）之間發生 CVD 者，被「排除既存 CVD」的條件剔除。這意味著低 CRF 者必須「無事度過 3–7 年」才能進入分析——這是一個以暴露為條件的存活篩選（index-event / depletion-of-susceptibles），會系統性地扭曲 CRF–CVD 的關聯。作者完全未討論。</li>
+</ul>
+<hr />
+<h2>B. 批判性評估（四大面向）</h2>
+<h3>B1. 假說與理論邏輯</h3>
+<p><strong>Q1：假說是否預先指定？</strong>
+文內依據：Introduction 末段明確陳述三段式目標（曲面 → 矩陣 → MR 三角驗證），Methods 稱共變項集合由 DAG 預先指定。<strong>但無任何註冊或分析計畫書可供驗證</strong>。
+風險方向：中。與撒網式挖掘不同，本文的主要終點與主要模型結構是明確的；但 19 張補充表格顯示分析彈性極高，「prespecified」是自我宣告而非可稽核事實。
+需要什麼才放心：公開分析計畫書與完整分析程式碼。</p>
+<p><strong>Q2：機轉是否與情境匹配？</strong>
+作者提出的機轉：CRF 的殘餘保護來自遺傳稟賦、早年心肺發育、訓練誘發的心臟重塑與內皮功能改善。<strong>這些機轉本身在生理上完全合理</strong>。
+問題在於機轉與統計操作之間的斷裂：作者用「殘差 VO₂max」去代表這些機轉，但殘差是由一個反時序迴歸產生的（見上），而且殘差同樣承載了所有測量誤差、β-blocker 效應、次臨床疾病造成的心率反應異常。<strong>「殘差＝生理稟賦」這個等式沒有任何實證支持，它只是一個命名。</strong></p>
+<p><strong>最可能的合理機轉（1–3 點）</strong>：</p>
+<ol>
+<li>MVPA → 血壓、體脂、胰島素敏感性、發炎、自律神經張力改善 → CVD 下降。標準且合理。</li>
+<li>CRF 作為心肺與骨骼肌整合功能的綜合指標，捕捉了行為量所無法捕捉的「有效生理儲備」。合理。</li>
+<li>對 AF（占 70.9% 事件）而言，較高 CRF 可能經由較低的左心房壓力負荷、較佳的體重與血壓控制而降低風險。合理，但<strong>此路徑在高活動量端存在相反方向的競爭機轉</strong>（見 B4）。</li>
+</ol>
+<p><strong>最可疑的敘事跳躍（1–3 點）</strong>：</p>
+<ol>
+<li><strong>「殘差 CRF 的保護效果」→「遺傳稟賦與早年心肺發育」</strong>：這是把一個統計殘差直接賦予生物學身分。文內無任何遺傳或發育資料支持這條詮釋（MR 部分用的是外部 GWAS，並非同一批人的殘差）。</li>
+<li><strong>「MR 顯示 CRF→HF」→「genetic findings reinforce the independent importance of CRF」（摘要結論）</strong>：從 15 次檢定中一個 p=0.043、CI 上界碰到 0.99 的結果，跳到「reinforce」這個強度的動詞。</li>
+<li><strong>「Figure 2A 四個 HR 幾乎相同」→「fitness-stratified prescription matrix」</strong>：作者在 Discussion 明確寫道此門檻「functions as a robust universal minimum that <strong>does not require fitness-based modification</strong>」，然後在同一篇論文裡把體適能分層處方矩陣當成主要轉譯貢獻。這是同篇論文內部的直接自相矛盾。</li>
+</ol>
+<hr />
+<h3>B2. 受試者與外推性</h3>
+<p><strong>受試者是否與宣稱對象一致？</strong></p>
+<p>不完全一致。摘要與 Key Messages 談的是「adults」與「clinicians setting personalised targets」，但實際樣本經過四層篩選：</p>
+<pre><code>UKB 基線招募（2006–2010，全國約 500,000 人，UKB 整體應答率約 5%）
+  ↓ 願意參加加速規子研究並提供有效資料 → 103,567
+  ↓ 完整 7 日配戴（每日皆非零配戴、MVPA 無缺失）
+  ↓ 完成次極量腳踏車測功計測試 且 估計 VO₂max ∈ [15,55]
+  ↓ 排除既存 CVD、排除核心共變項缺失
+最終 → 17,088（占加速規世代 16.5%）
+</code></pre>
+<p>作者誠實地稱之為 healthy volunteer bias。但需補一句更精確的描述：<strong>「必須能完成腳踏車測功計運動測試」這個條件，在因果上直接以「運動能力」為條件篩選樣本，而運動能力正是本研究的暴露之一。</strong> 這不只是「樣本較健康」，而是<strong>在暴露上做選擇</strong>，對劑量反應曲線在低端的形狀有直接影響。</p>
+<p><strong>基線是否平衡？</strong>（此為觀察性研究，不期待平衡，但差異方向具資訊）</p>
+<p>Table 1 中 &lt;150 vs ≥150 min/week 的差異型態<strong>全部指向同一方向</strong>：活動量低者較年長、女性比例高（67% vs 51%）、BMI 高（26.8 vs 25.5）、肥胖比例高（26.7% vs 13.5%）、自評健康差（22.9% vs 13.6%）、抽菸多（7.2% vs 5.0%）、學歷低、Townsend 較剝奪、RHR 高（69.3 vs 66.5）、降壓藥使用高（19.1% vs 13.7%）、CRF 低（26.5 vs 30.4）。</p>
+<p><strong>這是教科書級的健康行為叢集（healthy behaviour clustering）</strong>。當一個暴露的所有已測量特徵都指向同一方向時，未測量特徵指向同一方向的先驗機率極高。MVPA 的觀察性關聯（Fine-Gray SHR 0.86）在這個背景下，殘餘干擾的方向是<strong>誇大保護效果</strong>。</p>
+<p><strong>外推性分級</strong>（觀察性研究，採外推性分級）</p>
+<table>
+<thead>
+<tr>
+<th>目標族群</th>
+<th>分級</th>
+<th>可外推條件 / 不該外推原因</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>一般健康中年成人（歐洲裔）</td>
+<td><strong>中</strong></td>
+<td>方向性訊息（更多活動、更高體適能較好）可外推；具體分鐘數不可外推</td>
+</tr>
+<tr>
+<td>台灣一般成人</td>
+<td><strong>低–中</strong></td>
+<td>96.0% 白人樣本；亞洲人 VO₂max 分布、體型、AF 流行病學與 UKB 不同；VO₂max 25/30/35/40 的分層切點在台灣人群的百分位位置不同</td>
+</tr>
+<tr>
+<td>心臟復健／已知 CVD 病人</td>
+<td><strong>不可外推</strong></td>
+<td>設計上排除既存 CVD</td>
+</tr>
+<tr>
+<td>衰弱長者、運動禁忌者</td>
+<td><strong>不可外推</strong></td>
+<td>必須能完成腳踏車測功計測試；作者自陳</td>
+</tr>
+<tr>
+<td>已達高活動量者（&gt;560 min/week）</td>
+<td><strong>不可外推</strong></td>
+<td>僅 11.6% 樣本落此區；曲面在此為外推</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h3>B3. 研究設計與偏差</h3>
+<p>RCT 專屬項目（隨機化、分派隱藏、致盲、提早停止）<strong>不適用</strong>，不列。以下依觀察性設計的實質偏差來源評估，並整合圖頁判讀。</p>
+<h4>圖頁判讀（僅根據 PNG 中實際可見內容）</h4>
+<p><strong>本次提供的四張圖頁為 page_001（首頁/摘要）、page_005（Table 1）、page_006（Figure 1）、page_007（Figure 2A/2B 與 Figure 3）。</strong></p>
+<ul>
+<li><strong>無 Kaplan-Meier 曲線</strong>：全文未呈現任何 KM 圖，因此<strong>無法評估曲線分離時點，也無 number-at-risk 表可檢視後期人數是否銳減</strong>。對一篇中位追蹤 7.85 年、行政設限占 89.5% 的世代研究，不提供 KM 或累積發生率曲線是實質的呈現缺漏（作者在 Methods 稱「Cumulative incidence functions were plotted across exposure groups」，但該圖不在正文，推測位於補充資料，<strong>本次無法取得</strong>）。</li>
+<li><strong>無 forest plot</strong>：MR 的 15 個 exposure–outcome 配對結果<strong>完全沒有以 forest plot 呈現在正文</strong>，全部塞進補充表格 eTable 11/14。這使讀者無法一眼判斷「哪些點估計跨越無效線、CI 有多寬」。對一個做了 15 次檢定卻只有一個 p=0.043 的分析而言，<strong>不畫 forest plot 的效果就是讓多重比較問題在視覺上消失</strong>。</li>
+<li><strong>無 CONSORT / flow diagram</strong>：樣本推導流程圖為 eFigure 1，位於補充資料，本次無法取得。正文文字描述的人數（103,567 → 18,221 → 17,088）內部一致，但<strong>各篩選步驟的逐層排除人數無法核對</strong>。</li>
+<li><strong>座標軸</strong>：Figure 2A（y 軸 0.80–1.05）與 Figure 3（y 軸 0.60–1.60）皆為 log 尺度且清楚標示。HR 屬比值尺度，不以零為原點是慣例，<strong>不構成刻意誇大</strong>。但 Figure 2A 的軸範圍確實把 0.91 與 0.92 之間的差距在視覺上放大，配合「四個估計值分別標註數值」的呈現方式，容易誘導讀者以為四個層級之間有可辨識的差別（實際上四條 CI 幾乎完全重疊）。</li>
+</ul>
+<h4>Figure 1（等風險輪廓圖）：三個文字未講清楚的問題</h4>
+<p><strong>(1) 輪廓線幾乎是平行直線 → 視覺上直接否定「非線性交互作用」的重要性。</strong>
+圖中五條白色等風險線（標示 1.10、0.90、0.70、0.50、0.30）呈現為一組<strong>由左下往右上、彼此近乎平行、僅有極輕微凹曲的斜帶</strong>。在等高線圖裡，平行直線輪廓意味著 log-hazard 大致是 MVPA 與 CRF 的線性可加函數——<strong>也就是「沒有實質交互作用」</strong>。這與 edf=3.07 的推論、與二分法 RERI/ratio-of-HRs 皆為陰性的結果，三者完全吻合。摘要標榜的 &quot;significant non-linear interaction (p&lt;0.001)&quot;，在圖上找不到對應的視覺特徵。</p>
+<p><strong>(2) 繪圖範圍遠超資料支持範圍，且完全沒有任何不確定度呈現。</strong></p>
+<table>
+<thead>
+<tr>
+<th>軸</th>
+<th>繪圖範圍</th>
+<th>資料實際分布</th>
+<th>外推程度</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>MVPA (x)</td>
+<td>0 → 約 1,250 min/week</td>
+<td>中位數 232，IQR 115–400；僅 11.6% ≥560</td>
+<td>圖的<strong>右半部（&gt;400）位於第 75 百分位以上</strong>；&gt;600 的區域約在第 88 百分位以上</td>
+</tr>
+<tr>
+<td>VO₂max (y)</td>
+<td>15 → 55</td>
+<td>mean 29.1, SD 6.4</td>
+<td>55 約為 <strong>+4.0 SD</strong>；圖的上緣幾乎沒有人</td>
+</tr>
+</tbody>
+</table>
+<p>圖右上角（VO₂max 50–55 且 MVPA &gt;900 min/week）顯示 HR &lt; 0.30 的深紫色區域。<strong>在 17,088 人中，同時具備接近 55 mL·kg⁻¹·min⁻¹ 體適能與每週 15 小時以上 MVPA 的人，數量幾乎必然是個位數，事件數幾乎必然為零。</strong> 這片顏色是純粹的樣條外推產物。</p>
+<p><strong>整張 Figure 1 沒有任何信賴區間、標準誤、資料密度疊圖或凸包（convex hull）限制。</strong> 雙變量平滑曲面在資料稀疏角落的外推是 GAM 的已知弱點，繪圖時限制在資料支持區域或疊加密度資訊是標準做法。本文兩者皆未做，讀者無從得知哪些區域的顏色是資料、哪些是外推。</p>
+<p><strong>(3) 全域參照點（HR=1.0，0 min/week ＋ VO₂max 21.5）本身幾乎不存在於資料中。</strong>
+本世代 MVPA 中位數 232 min/week，且納入條件要求每日配戴時間非零、MVPA 非缺失——在腕戴式加速規 + 隨機森林分類下，<strong>真正「每週 0 分鐘 MVPA」的人幾乎不可能存在</strong>。Figure 1 中所有令人印象深刻的 HR 數值（0.50、0.30）都是相對於這個近乎空無一人的角落計算的。</p>
+<h4>Figure 2A：本文自己的資料否定了自己的賣點</h4>
+<p>四個體適能層級下、達成 150 min/week 相對於同體適能之久坐基準的 HR：</p>
+<table>
+<thead>
+<tr>
+<th>體適能層</th>
+<th>HR</th>
+<th>95% CI</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Low (≤25)</td>
+<td>0.92</td>
+<td>0.86–0.97</td>
+</tr>
+<tr>
+<td>Low–Mod (30)</td>
+<td>0.91</td>
+<td>0.87–0.96</td>
+</tr>
+<tr>
+<td>Mod (35)</td>
+<td>0.91</td>
+<td>0.86–0.97</td>
+</tr>
+<tr>
+<td>High (40)</td>
+<td>0.91</td>
+<td><strong>0.84–0.99</strong></td>
+</tr>
+</tbody>
+</table>
+<p>四個點估計在圖上視覺位置幾乎完全相同，四條 CI 大幅重疊，且<strong>高體適能層的 CI 上界達 0.99，勉強擦過無效線</strong>。這張圖所支持的結論只有一個：<strong>MVPA 的相對效益不隨體適能而變</strong>——這正是作者在 Discussion 所承認的（&quot;does not require fitness-based modification&quot;），也正是 RERI 與 ratio-of-HRs 檢定所顯示的。</p>
+<h4>Figure 2B：處方矩陣的數字來自 HR 0.92 與 0.91 之間的 0.01 差距</h4>
+<table>
+<thead>
+<tr>
+<th>VO₂max 層</th>
+<th>10% 目標</th>
+<th>20% 目標</th>
+<th>30% 目標</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Low (≤25)</td>
+<td>165</td>
+<td>370</td>
+<td><strong>610</strong></td>
+</tr>
+<tr>
+<td>Low–Mod (30)</td>
+<td>160</td>
+<td>360</td>
+<td>595</td>
+</tr>
+<tr>
+<td>Mod (35)</td>
+<td>155</td>
+<td>350</td>
+<td>575</td>
+</tr>
+<tr>
+<td>High (40)</td>
+<td>155</td>
+<td>340</td>
+<td><strong>560</strong></td>
+</tr>
+<tr>
+<td><strong>層間最大差距</strong></td>
+<td><strong>10 min</strong></td>
+<td><strong>30 min</strong></td>
+<td><strong>50 min</strong></td>
+</tr>
+</tbody>
+</table>
+<p>矩陣以整數印在色階格子裡，<strong>沒有任何不確定區間</strong>。而這些「10 / 30 / 50 分鐘」的體適能分層差距，其唯一來源就是 Figure 2A 中 0.92 與 0.91 的差別。隨著往外推得越遠（10% → 30% 目標），同一個微小的斜率差被放大成看似更有臨床意義的分鐘差——<strong>這是外推把雜訊轉化為「可執行處方」的教科書範例</strong>。</p>
+<h4>Figure 3：所謂「非線性劑量反應」在 CRF 軸上是一條直線</h4>
+<p>性別分層的 VO₂max–HR 曲線，在 MVPA 固定為 150 min/week 下：</p>
+<ul>
+<li>女性（紅）：從 VO₂max 約 18 的 HR ≈ 1.17，<strong>近乎完美的直線</strong>下降至約 36 的 HR ≈ 0.81</li>
+<li>男性（藍）：從 VO₂max 約 24 的 HR ≈ 1.20，<strong>同樣近乎完美的直線</strong>下降至約 43 的 HR ≈ 0.80</li>
+<li>兩性曲線在 log 尺度上<strong>看不出任何可辨識的曲率</strong>；delta method CI 帶在資料兩端變寬（女性在 VO₂max 36 處約 0.72–0.92）</li>
+</ul>
+<p><strong>論文標題第一個字就是 &quot;Joint non-linear&quot;，但正文唯一一張直接呈現劑量反應形狀的圖，畫出來的是兩條直線。</strong> 斜率換算約為每 1 mL·kg⁻¹·min⁻¹ 對應 2% 的風險變化——與殘差分析的 HR 0.98 完全一致，也就是一個單純的 log-linear 效果。</p>
+<h4>最可能造成偏差的三個設計點（含方向）</h4>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>設計點</th>
+<th>文內依據</th>
+<th>對效果估計的方向</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td><strong>反向因果／次臨床疾病 → 估計 VO₂max</strong>。VO₂max 由次極量心率反應推估；次臨床陣發性 AF、變時性不全、早期 HF、β-blocker 使用都會壓低心率反應。而<strong>複合終點 70.9% 是 AF</strong>。排除既存 CVD 僅依住院紀錄與自陳，無法排除未被診斷的陣發性 AF</td>
+<td>Methods（VO₂max 推估法）；Results（事件組成）；Table 1（RHR、降壓藥組間差異）</td>
+<td><strong>誇大</strong> CRF 的保護效果（部分關聯是「早期疾病降低 CRF」的倒果為因）</td>
+</tr>
+<tr>
+<td>2</td>
+<td><strong>中介變項校正 + 未測量的中介–結果混淆</strong>。CRF 被作者自己定義為 MVPA 的下游中介。校正中介會打開 MVPA → CRF ← U → CVD 的碰撞路徑（U＝次臨床疾病、肺疾、遺傳）</td>
+<td>Discussion 明確稱 CRF 為中介（&quot;implicitly captures benefits mediated through improved fitness&quot;）</td>
+<td><strong>方向不定</strong>（碰撞偏差方向不可預測），且被作者誤述為單純的「效果縮小」</td>
+</tr>
+<tr>
+<td>3</td>
+<td><strong>健康行為叢集造成的殘餘干擾</strong>。Table 1 中所有已測量特徵一致地偏向「活動量高者更健康」；久坐時間、輕度活動、教育、就業、服藥皆未進入主模型</td>
+<td>Table 1；Methods（共變項清單）；Limitations（作者自陳未校正久坐與輕度活動）</td>
+<td><strong>誇大</strong> MVPA 的保護效果</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h3>B4. 測量工具與實務意義</h3>
+<h4>測量工具的信度與效度</h4>
+<p><strong>MVPA（隨機森林分類器）</strong>：leave-one-participant-out 平均準確度 88%（87–89%）、kappa 0.80（0.79–0.82），訓練集為 152 位成人的相機標註自由生活資料（CAPTURE-24）。就裝置測量而言，這是目前最好的 pipeline 之一。</p>
+<p>但有兩點必須指出：</p>
+<ol>
+<li>
+<p><strong>kappa 0.80 在群體層級是好的，在個體層級的每週分鐘數上仍有相當誤差</strong>。更關鍵的是，<strong>分類誤差不太可能與 CRF 獨立</strong>：體重較重、步態較慢、心肺功能較差者，其腕部加速度訊號型態與訓練集中的健康成人不同，被誤分類的機率較高且方向系統性。<strong>當 MVPA 的測量誤差與 CRF 相關時，就會在統計上憑空製造出 MVPA×CRF 交互作用。</strong> 這是本文頭條發現（p&lt;0.001 的交互作用，但實質形狀近乎雙線性、二分法檢定陰性）的一個高度可信的替代解釋——而且它比「真實的非線性生理交互作用」更簡約。</p>
+</li>
+<li>
+<p><strong>這個 MVPA 的單位不能被搬到診間</strong>。它是機器學習分類器對腕部加速度訊號輸出的行為類別，不是 METs ≥3 的活動時間，也不是指引 150 分鐘所依據的自陳式量表單位。本世代的裝置測量 MVPA 中位數為 232 min/week、IQR 115–400——這個分布與台灣或英國自陳資料的分布性質不同。López-Sendón 教授（SMC España）獨立指出同一點：「加速規測量無法直接換算為指引所依據的自陳式活動量」；Doherty 教授（此 pipeline 的建立者）則直接稱 560 分鐘的說法為 misleading。</p>
+</li>
+</ol>
+<p><strong>CRF（次極量腳踏車測功計推估 VO₂max）</strong>：作者引用 Gonzales et al. 2021 在約 80,000 名 UKB 參與者的驗證。品質控制僅為「限制在 15–55 mL·kg⁻¹·min⁻¹ 的合理範圍」。作者承認預測誤差可能非隨機，但把原因歸於「未訓練者心率反應較難預測」。<strong>真正更嚴重、且未被提及的是：UKB 的測試協定是「individually risk-stratified」——基線心血管風險越高者被分派越低的工作負荷，其 VO₂max 推估的外推距離越長、誤差越大。這使得測量誤差的大小直接與結果風險相關（differential measurement error）。</strong></p>
+<h4>終點是否有臨床意義</h4>
+<table>
+<thead>
+<tr>
+<th>檢視點</th>
+<th>評估</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Surrogate vs 真實結果</td>
+<td>✅ 真實臨床事件（住院診斷 + 死亡登記），非 surrogate</td>
+</tr>
+<tr>
+<td>硬終點 vs 軟終點</td>
+<td>⚠️ <strong>混合</strong>。MI、stroke、HF 住院為硬終點；AF/flutter 的偵測高度依賴就醫行為與心電圖／裝置檢查頻率，屬<strong>偵測敏感終點</strong></td>
+</tr>
+<tr>
+<td>複合終點成分的病人重要性是否相當</td>
+<td>❌ <strong>明顯不相當</strong>。一次無症狀 AF 住院診斷與一次 STEMI，對病人的重要性差距極大，卻在複合終點中權重相同</td>
+</tr>
+<tr>
+<td>複合終點是否被主導</td>
+<td>❌ <strong>嚴重失衡：AF 占 70.9%</strong></td>
+</tr>
+</tbody>
+</table>
+<p><strong>AF 主導所帶來的兩個具體問題：</strong></p>
+<p>第一，<strong>偵測偏差</strong>。活動量高、體適能好的人，較可能配戴消費性穿戴裝置、較可能因運動時察覺心悸而就醫、也較可能在運動醫學情境下被做心電圖。這會使 AF 在高活動組被<strong>更容易偵測</strong>——方向上是<strong>削弱</strong>觀察到的保護效果。反之，久坐、社經較剝奪族群的 AF 較可能未被診斷。</p>
+<p>第二，也是臨床上更重要的：<strong>AF 與運動量的劑量反應形狀，在高量端是文獻上有爭議的</strong>。耐力運動員的 AF 風險升高是心臟科熟知的現象，而本文的處方矩陣把外推目標設在 560–610 min/week（<strong>每天 80–87 分鐘、全年無休</strong>）——正落在這個爭議區間。作者把四個劑量反應形狀可能不同（甚至方向相反）的疾病合併成一個終點，再從合併曲面外推出高量處方，<strong>在方法上等於用 MI/stroke 的單調保護效果，去為 AF 在高量端可能不成立的外推背書</strong>。作者自陳事件數不足以估計成分特異曲面——那麼正確的結論是「不能給高量處方」，而不是「給一個合併的高量處方」。</p>
+<h4>「就算結果是真的，真實世界可能有多大用處？」</h4>
+<p>以本世代的絕對數字計算（假設各成分 RRR 一致——此假設本身未被檢驗）[推算]：</p>
+<table>
+<thead>
+<tr>
+<th>情境</th>
+<th>RRR</th>
+<th>ARR（7.85 年）</th>
+<th>NNT</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>達 150 min/week</td>
+<td>8–9%</td>
+<td><strong>約 0.65 個百分點</strong></td>
+<td><strong>約 154 人 / 8 年</strong></td>
+</tr>
+<tr>
+<td>其中屬 AF 的部分</td>
+<td>—</td>
+<td>約 0.46 個百分點</td>
+<td>約 217 人 / 8 年</td>
+</tr>
+<tr>
+<td>其中屬 MI 或 stroke 的部分</td>
+<td>—</td>
+<td>約 0.13 個百分點</td>
+<td><strong>約 766 人 / 8 年</strong></td>
+</tr>
+<tr>
+<td>達 560–610 min/week</td>
+<td>30%</td>
+<td>約 2.16 個百分點</td>
+<td>約 46 人 / 8 年</td>
+</tr>
+</tbody>
+</table>
+<p>基準：累積 CVD 發生率 1,233/17,088 = 7.22%（中位追蹤 7.85 年）。</p>
+<p><strong>這組數字說明兩件事</strong>：（a）對一個免費、無副作用、且有大量其他健康效益的行為而言，NNT 154 完全合理，公衛價值明確——這支持維持現行指引；（b）但若把訊息換成「你要每天運動 80 分鐘，8 年後每 46 人才少一個事件，而其中七成是心房顫動」，說服力與這篇論文的媒體標題完全不同。</p>
+<p><strong>全文未報告任何一個絕對風險數字。</strong> 對一篇以「clinically actionable prescription matrix」「bridging the gap between epidemiological observation and precision medicine」自我定位的論文，這是根本性的呈現缺陷。</p>
+<hr />
+<h2>C. 統計與資料完整性</h2>
+<h3>C1. 結果分類（CI + MCID 框架）</h3>
+<p><strong>Step 1 — MCID（δ）確認</strong></p>
+<p>本文<strong>未預先指定任何 MCID</strong>，亦未定義「臨床上有意義的風險下降」門檻。作者自行設定 10%／20%／30% 三個「prespecified relative hazard reductions」作為矩陣目標值，但這三個數字<strong>沒有任何臨床依據，只是整數</strong>。</p>
+<p>依領域慣例估計 [推算]：對一項免費、可自行執行、無重大不良反應、且具多重額外健康效益的生活型態行為，人群層級的 MCID 可訂在<strong>相對風險下降約 5%</strong>（相當於 ARR 約 0.36 pp、NNT 約 277）。個人層級諮商情境下，一般認為 RRR 10% 以上才值得改變行為建議。傷害端則可取對稱的 HR 1.05。</p>
+<p><strong>Step 2 — CI 位置判讀與結果分類</strong></p>
+<pre><code>                  MCID-benefit          Null           MCID-harm
+                    HR=0.95            HR=1.00           HR=1.05
+  ←─── 有意義利益 ───┤─────── 中性區 ───────┤─── 有意義傷害 ───→
+</code></pre>
+<table>
+<thead>
+<tr>
+<th>主要估計</th>
+<th>HR / OR (95% CI)</th>
+<th>CI 相對位置</th>
+<th><strong>分類</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>MVPA ≥150 vs &lt;150（Fine-Gray SHR）</td>
+<td>0.86 (0.75–0.97)</td>
+<td>完全低於 MCID-benefit 0.95</td>
+<td>✅ <strong>POSITIVE</strong></td>
+</tr>
+<tr>
+<td>150 min/week，低體適能（≤25）</td>
+<td>0.92 (0.86–0.97)</td>
+<td>完全低於 0.95</td>
+<td>✅ <strong>POSITIVE</strong>（但緊貼門檻）</td>
+</tr>
+<tr>
+<td>150 min/week，高體適能（40）</td>
+<td>0.91 (<strong>0.84–0.99</strong>)</td>
+<td><strong>跨越 MCID-benefit 0.95</strong></td>
+<td>⚠️ <strong>IMPRECISE (+)</strong>——顯著但效果量不確定</td>
+</tr>
+<tr>
+<td>殘差 CRF（per 5 mL·kg⁻¹·min⁻¹）</td>
+<td>0.90 (0.85–0.96)</td>
+<td>完全低於 0.95</td>
+<td>✅ <strong>POSITIVE</strong>（精確且方向明確）</td>
+</tr>
+<tr>
+<td>CRF 30–40 vs &lt;30（SHR）</td>
+<td>0.75 (0.65–0.86)</td>
+<td>完全低於 0.95</td>
+<td>✅ <strong>POSITIVE</strong></td>
+</tr>
+<tr>
+<td>CRF &gt;40 vs &lt;30（SHR）</td>
+<td>0.70 (0.52–0.95)</td>
+<td>上界正好觸及 0.95</td>
+<td>⚠️ <strong>IMPRECISE (+)</strong></td>
+</tr>
+<tr>
+<td><strong>加成尺度交互作用 RERI</strong></td>
+<td><strong>−0.09 (−0.45–0.22)</strong></td>
+<td>同時涵蓋實質協同與實質拮抗</td>
+<td>❓ <strong>INCONCLUSIVE</strong></td>
+</tr>
+<tr>
+<td><strong>乘法尺度 ratio of HRs</strong></td>
+<td><strong>0.90 (0.70–1.15)</strong></td>
+<td>同時涵蓋 30% 拮抗與 15% 協同</td>
+<td>❓ <strong>INCONCLUSIVE</strong></td>
+</tr>
+<tr>
+<td>MR：CRF → HF</td>
+<td>0.79 (<strong>0.63–0.99</strong>)</td>
+<td>從 37% 下降到 1% 下降</td>
+<td>⚠️ <strong>IMPRECISE (+)</strong>——無法區分「大效果」與「無效果」</td>
+</tr>
+<tr>
+<td>MR：CRF → AF（MVMR）</td>
+<td>0.73 (0.49–1.09)</td>
+<td>跨越 null 與 MCID 雙方</td>
+<td>❓ <strong>INCONCLUSIVE</strong></td>
+</tr>
+<tr>
+<td>MR：所有 PA 表型 → 各 CVD 終點</td>
+<td><strong>點估計與 CI 未在正文報告</strong></td>
+<td>—</td>
+<td><strong>無法分類（報告缺失）</strong></td>
+</tr>
+</tbody>
+</table>
+<p><strong>兩個必須明確講出來的分類結論：</strong></p>
+<ol>
+<li>
+<p><strong>交互作用的正式效果量估計（RERI 與 ratio of HRs）是 INCONCLUSIVE，不是「有交互作用」。</strong> 摘要只寫 &quot;A significant non-linear interaction between MVPA and CRF was observed (p&lt;0.001)&quot;，完全不提本文自己算出來的 RERI −0.09（p=0.57）與 ratio of HRs 0.90（p=0.39）。這是選擇性摘要報告。</p>
+</li>
+<li>
+<p><strong>MR 的 PA 陰性結果，作者以「all MVMR p&gt;0.05」與「no consistent evidence of independent causal effects」表述，正文完全不給點估計與 CI。</strong> 這正是 <code>p &gt; 0.05 = no effect</code> 謬誤的報告形式：讀者無從得知這些估計是「窄 CI 落在中性區（NEUTRAL）」還是「寬 CI 同時跨越 null 與 MCID（INCONCLUSIVE）」。以裝置測量 PA 的 GWAS 工具強度而論，幾乎必然是後者。作者在 Discussion 用了正確的措辭（&quot;should therefore be interpreted cautiously as reflecting limited instrument strength rather than an absence of biological relevance&quot;），但<strong>正文的數據呈現方式沒有讓讀者能自行驗證這一點</strong>。</p>
+</li>
+</ol>
+<h3>⚠️ Step 2 延伸：處方矩陣的不確定度推算——本評讀最重要的一項計算</h3>
+<p>Figure 2B 把「達成 30% 風險下降所需分鐘數」印成 <strong>560</strong> 與 <strong>610</strong> 兩個整數，沒有任何區間。以下用本文自己提供的資訊，推估這兩個數字的最低限度不確定度。</p>
+<p><strong>前提</strong>：本文模型在相關範圍內近乎 log-linear——這可由矩陣自身驗證。以高體適能層為例，換算隱含斜率：</p>
+<ul>
+<li>10% 目標 155 min → ln(0.90)/155 = −6.80×10⁻⁴ / min</li>
+<li>20% 目標 340 min → ln(0.80)/340 = −6.56×10⁻⁴ / min</li>
+<li>30% 目標 560 min → ln(0.70)/560 = −6.37×10⁻⁴ / min</li>
+</ul>
+<p>三個斜率幾乎相同（僅極輕微遞減），確認曲面在此區間實質上是 log-linear，故可用線性外推做區間傳遞。</p>
+<p><strong>計算</strong>：高體適能層 HR(150) = 0.91（95% CI 0.84–0.99）</p>
+<table>
+<thead>
+<tr>
+<th>情境</th>
+<th>隱含斜率（per min）</th>
+<th>達 10% 所需</th>
+<th>達 30% 所需</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>CI 下界（HR=0.84）</td>
+<td>−1.162×10⁻³</td>
+<td><strong>約 91 min/week</strong></td>
+<td><strong>約 307 min/week</strong></td>
+</tr>
+<tr>
+<td><strong>點估計（HR=0.91）</strong></td>
+<td>−6.29×10⁻⁴</td>
+<td><strong>約 155 min/week（論文值）</strong></td>
+<td><strong>約 560 min/week（論文值）</strong></td>
+</tr>
+<tr>
+<td>CI 上界（HR=0.99）</td>
+<td>−6.70×10⁻⁵</td>
+<td><strong>約 1,573 min/week</strong></td>
+<td><strong>約 5,323 min/week</strong></td>
+</tr>
+</tbody>
+</table>
+<p><strong>[推算]</strong>——此推算假設 log-linearity（已由矩陣自身驗證）、且僅以 150 min 處的 CI 傳遞斜率不確定度。<strong>由於樣條的 CI 寬度會隨外推距離增加而放大，560 min 處的真實不確定度必然比上表更寬。上表是不確定度的下限，不是上限。</strong></p>
+<p><strong>結論</strong>：論文印在色階格子裡的「560」與「610」，其對應的 95% 合理範圍<strong>至少橫跨約 300 至 5,300 分鐘／週</strong>。兩個層級之間 50 分鐘的差距，相對於這個寬度而言，完全不具區辨意義。</p>
+<p><strong>這張矩陣被期刊、新聞稿與國際媒體當成本文的核心臨床貢獻，但它是一組沒有不確定度的外推點估計，且其不確定度寬到讓所有數字失去決策價值。</strong></p>
+<p><strong>Step 3 — 禁止的統計謬誤檢核</strong></p>
+<table>
+<thead>
+<tr>
+<th>謬誤</th>
+<th>本文是否犯</th>
+<th>說明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>p &gt; 0.05 = &quot;no difference / no effect&quot;</td>
+<td>⚠️ <strong>部分犯</strong>（僅限 MR 段）</td>
+<td>世代分析的非顯著結果處理得當（作者明確稱 AF 的 MR 結果為 &quot;suggestive rather than definitive&quot;，稱 PA 的陰性應解讀為工具強度不足而非無生物意義——這些措辭是正確的）。但正文對 PA 的 MR 陰性結果<strong>只給 p 值不給 CI</strong>，等於在報告層面實踐了該謬誤</td>
+</tr>
+<tr>
+<td>Post-hoc power</td>
+<td>✅ <strong>未犯</strong></td>
+<td>全文無 post-hoc power 計算</td>
+</tr>
+<tr>
+<td>以 post-hoc power 判斷 underpowered</td>
+<td>✅ <strong>未犯</strong></td>
+<td>作者改用「事件數不足以估計成分特異曲面」的正確論證</td>
+</tr>
+<tr>
+<td>用 underpowered positive 的效果量規劃後續試驗</td>
+<td>⚠️ <strong>實質上在做</strong></td>
+<td>作者建議「future research should validate these high-volume targets in RCTs」——若後續 RCT 用 560–610 min/week 這個外推點估計來設計，將落入 Winner's Curse（見 C2）</td>
+</tr>
+<tr>
+<td>統計顯著＝臨床重要</td>
+<td>❌ <strong>犯</strong></td>
+<td>頭條「significant non-linear interaction p&lt;0.001」在 N=17,088、1,233 事件下取得，但其實質量級為 HR 0.91 vs 0.92</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h3>C2. Underpowered 判斷與 Winner's Curse</h3>
+<p><strong>世代分析：主要終點並非 underpowered。</strong> 1,233 事件、50.6 EPP、主要 CI 寬度合理（如 SHR 0.86, 0.75–0.97）。<strong>但這只適用於 AF 主導的複合終點；MI（156）、HF（111）、stroke（92）在此模型中實質上是 underpowered，作者已誠實承認並拒絕做成分特異分析——這個克制值得肯定。</strong></p>
+<p><strong>真正的 underpowered 區域是曲面的高活動量端。</strong> 僅 11.6%（1,980 人）達到 ≥560 min/week。在此區的事件數與 CI 寬度<strong>全文未報告</strong>（Figure 1 無 CI，eTable 19 提供 grid point HR 但本次無法取得）。這正是 C1 推算所量化的問題。</p>
+<p><strong>MR 部分：15 個配對中的單一 p=0.043，是 Winner's Curse 的典型情境。</strong></p>
+<ul>
+<li>檢定次數：15 個 exposure–outcome 配對 × 多種估計方法（IVW、weighted median、MR-Egger、simple mode、weighted mode、MR-RAPS）× 單變量／多變量 → 實際執行的檢定遠超 15 次。</li>
+<li>在 α=0.05、無校正下，僅以 15 個配對計，期望假陽性約 0.75 個。<strong>本文得到的正是一個 p=0.043、CI 上界 0.99 的結果。</strong></li>
+<li>Gelman &amp; Carlin 的 Type M error：在低 power 情境下，唯有隨機偏高的估計值才能跨過顯著門檻。<strong>若 CRF→HF 的真實效果存在但較小，OR 0.79 幾乎必然是誇大值。</strong></li>
+<li>Type S error（方向錯誤）在此情境亦不可忽略。</li>
+</ul>
+<p><strong>若後續有人以 OR 0.79 作為運動介入 RCT 的效果量假設進行 power calculation，將嚴重低估所需樣本數。</strong> 這是 C1 中「作者建議以 RCT 驗證 560–610 min/week」這條建議的實質風險。</p>
+<hr />
+<h3>C3. Bayesian 補充分析（本案觸發條件成立）</h3>
+<p><strong>觸發理由</strong>：（a）MR 的 CRF→HF 結果 p=0.043，緊貼 0.05；（b）交互作用在連續尺度 p&lt;0.001 但在二分法尺度 p=0.57／0.39，「有無交互作用」的 Neutral vs Inconclusive 之分在臨床上直接決定處方矩陣是否成立。</p>
+<p><strong>本文完全未執行任何 Bayesian 分析。</strong> 這是一個具體的、可指出的方法學機會損失，因為本文最核心的兩個爭議，恰好都是頻率派框架無法回答的：</p>
+<table>
+<thead>
+<tr>
+<th>應計算但未計算的指標</th>
+<th>針對的問題</th>
+<th>若計算可回答什麼</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Pr(ROPE) for 交互作用</strong></td>
+<td>RERI 是否落在實質等效區間內？</td>
+<td>能正式區分「交互作用不存在（NEUTRAL）」與「樣本不足以判斷（INCONCLUSIVE）」。這<strong>直接決定體適能分層處方矩陣是否有存在理由</strong></td>
+</tr>
+<tr>
+<td><strong>Pr(outstanding benefit) for CRF→HF</strong></td>
+<td>在 skeptical / optimistic / non-informative 三組 prior 下，Pr(OR &lt; 0.90) 各為多少？</td>
+<td>能判斷 p=0.043 的證據強度是否穩健，或完全由 prior 主導</td>
+</tr>
+<tr>
+<td><strong>三組 prior 之間的 I²</strong></td>
+<td>結論對 prior 選擇的敏感度</td>
+<td>I² &lt; 0.20 代表資料在說話；本案因單一 GWAS、CI 觸及 0.99，<strong>極可能敏感</strong></td>
+</tr>
+</tbody>
+</table>
+<p><strong>依 Zampieri et al.（AJRCCM 2021）框架的預期判讀 [推論]</strong>：以本文交互作用的 RERI −0.09（95% CI −0.45 到 0.22）而論，若設 ROPE 為 RERI ∈ [−0.10, +0.10]，其後驗質量落在 ROPE 內的比例明顯不足以宣稱等效，但同時也遠不足以宣稱有交互作用——<strong>即 INCONCLUSIVE 而非 NEUTRAL</strong>。也就是說：本文既沒有證明交互作用存在，也沒有證明它不存在，而處方矩陣的整個存在前提是「它存在且量級可用」。</p>
+<p>這個對照具有臨床參照價值：EOLIA（p=0.09）與 ANDROMEDA-SHOCK（p=0.06）在頻率派下被誤判為 &quot;negative&quot;，Bayesian 分析卻顯示 Pr(benefit) &gt; 90%。<strong>本文是反向的鏡像案例：一個 p&lt;0.001 的交互作用，在效果量尺度上卻是 INCONCLUSIVE。</strong> p 值的大小與臨床可用性之間沒有必然關係，兩個方向都成立。</p>
+<hr />
+<h3>C4. 報告完整性與其他統計問題</h3>
+<h4>樣本數與 power 的雙向評估</h4>
+<ul>
+<li><strong>Underpowered</strong>：見 C2。主要終點足夠，高活動量端與各成分終點不足。</li>
+<li><strong>Overpowered</strong>：⚠️ <strong>成立</strong>。N=17,088、1,233 事件的規模，足以讓一個實質上等同於雙線性乘積項的交互作用達到 χ²=38.43、p&lt;0.001，而其臨床量級是 HR 0.91 對 0.92。<strong>這是統計顯著與臨床重要脫鉤的典型案例</strong>，且本文的頭條發現正是建立在這個脫鉤之上。</li>
+</ul>
+<h4>多重比較</h4>
+<p><strong>全文未見任何多重比較校正。</strong> 具體檢定清單：</p>
+<ul>
+<li>交互作用：連續尺度 1 次 + 二分法加成尺度 3 個指標 + 乘法尺度 1 次</li>
+<li>效果修飾：性別、年齡（&lt;60/≥60）、BMI 三組 factor-by-smooth</li>
+<li><strong>MR：15 個 exposure–outcome 配對 × 6–7 種估計方法 × 單變量/多變量</strong></li>
+<li>19 張補充表格的 robustness 分析</li>
+</ul>
+<p>作者在性別交互作用（p=0.021）上的處理值得肯定——他們同時報告 ΔAIC=+2.9（模型變差）並據此拒絕該發現。<strong>但同樣的克制沒有應用在 MR 的 p=0.043 上</strong>，後者反而被寫進摘要結論的 &quot;reinforce&quot;。</p>
+<h4>MR 樣本重疊的偏差方向：作者的陳述有誤</h4>
+<p>Limitations 原文：</p>
+<blockquote>
+<p>&quot;partial sample overlap between some exposure and outcome GWAS and the relatively modest instrument strength for accelerometer-based PA could have <strong>biased some MR estimates toward the null</strong>.&quot;</p>
+</blockquote>
+<p><strong>這個陳述把兩個效應混為一談，且結論方向錯誤：</strong></p>
+<table>
+<thead>
+<tr>
+<th>效應</th>
+<th>正確的偏差方向</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>兩樣本 MR 中的弱工具偏差</td>
+<td>偏向 <strong>null</strong> ✅</td>
+</tr>
+<tr>
+<td><strong>兩樣本 MR 中的樣本重疊</strong></td>
+<td>偏向 <strong>觀察性（混淆後）估計</strong>，並<strong>膨脹 type I error</strong> ❌</td>
+</tr>
+<tr>
+<td>兩者並存（本文情況）</td>
+<td>偏向觀察性估計，<strong>假陽性率上升</strong></td>
+</tr>
+</tbody>
+</table>
+<p>CRF 的 GWAS 摘要統計來源本身即以 UK Biobank 為主體，而 AF（AFGen/UKB）與 HF（HERMES）的大型 consortium GWAS 亦納入 UK Biobank。<strong>重疊程度可能相當高，而作者僅以「partial」帶過，未量化、未做重疊校正（如 MRlap 或 CAUSE）。</strong></p>
+<p><strong>結果</strong>：CRF→HF 的 OR 0.79（p=0.043）——本文唯一的陽性 MR 結果——<strong>正是最容易被樣本重疊 + 弱工具偏差推向「與觀察性結果一致」的那一個</strong>。而作者以「與世代結果方向一致」作為三角驗證成功的證據。<strong>當兩個分析共用同一批人時，方向一致不是驗證，是同義反覆。</strong></p>
+<h4>三角驗證邏輯的單向性</h4>
+<p>本文 MR 的實際結果是：<strong>世代分析顯示 MVPA 與 CVD 有強關聯；MR 對 PA 的所有 CVD 終點全部陰性。</strong></p>
+<p>作者的詮釋是：PA 的遺傳工具太弱、行為表型遺傳率低、regression dilution、MR 無法捕捉累積與時變的活動習慣 → 因此陰性結果反映工具限制，而非缺乏生物相關性。</p>
+<p><strong>這個解釋完全成立，但它不是唯一成立的解釋。</strong> 同樣與資料相容的另一個解釋是：<strong>世代中觀察到的 MVPA–CVD 關聯，有相當部分來自殘餘干擾與反向因果</strong>（久坐者本來就較不健康；次臨床疾病本來就會降低活動量）。本文的 Table 1 為這個解釋提供了大量支持（所有已測量特徵一致偏斜）。</p>
+<p>作者從未認真考慮這個對稱的可能性，而是預設「世代是對的、MR 沒抓到」，並據此宣告「<strong>the observational associations reported in this study remain the primary basis for informing activity-based recommendations</strong>」。<strong>這在方法上等於預先決定了三角驗證的答案：一致就是驗證，不一致就是工具問題。</strong> 真正的三角驗證必須讓兩種設計都有機會推翻對方。</p>
+<h4>敏感度分析的報告</h4>
+<p>排除早期事件（追蹤 ≤2 年）、winsorisation、序貫加入 BMI／RHR／SBP、替代參數化模型——<strong>全部只在正文以「remained robust」一句帶過，數值全在 eTable 9</strong>。序貫加入 RHR 的結果尤其關鍵（見 B3），卻連方向都沒有在正文提及。</p>
+<h4>統計面紅旗清單（≥5 點）</h4>
+<ol>
+<li><strong>摘要頭條的交互作用（p&lt;0.001）在效果量尺度上是 INCONCLUSIVE</strong>（RERI p=0.57、ratio of HRs p=0.39），且摘要完全不提後兩者。</li>
+<li><strong>處方矩陣的整數（155/165/340/370/560/610）無任何不確定區間</strong>；以本文自身資料推算，「30% 需 560 分鐘」的合理範圍至少為 300–5,300 分鐘／週。</li>
+<li><strong>Figure 1 曲面外推遠超資料支持範圍</strong>（VO₂max 至 +4.0 SD、MVPA 至第 88 百分位以上），且無 CI、無資料密度、無凸包限制。</li>
+<li><strong>MR 15 個配對無多重比較校正，唯一陽性為 p=0.043、CI 上界 0.99</strong>，卻被摘要結論以 &quot;reinforce&quot; 表述。</li>
+<li><strong>MR 樣本重疊的偏差方向被作者寫反</strong>，而受此影響最深的正是唯一的陽性結果。</li>
+<li><strong>PA 的 MR 陰性結果只給 p 值不給 CI 與點估計</strong>（正文層級），讀者無法區分 NEUTRAL 與 INCONCLUSIVE。</li>
+<li><strong>兩個主要暴露相隔 3–7 年</strong>，且 residual CRF 分析在因果時序上是反的（以 2013–2015 的 MVPA 預測 2006–2010 的 VO₂max）。</li>
+<li><strong>全文無任何絕對風險或 NNT</strong>，對一篇自稱 clinically actionable 的論文是根本缺陷。</li>
+<li><strong>無預先註冊、無公開程式碼</strong>，「prespecified by DAG」無法稽核，而分析彈性極高（19 張補充表）。</li>
+<li><strong>複合終點 70.9% 為 AF 的事實，在摘要、Key Messages、結論、圖說中一次都沒有出現。</strong></li>
+</ol>
+<hr />
+<h2>D. 次組分析評估</h2>
+<p>本文執行了三組預先指定的效果修飾檢定（factor-by-smooth）。依 JAMA 五項標準逐一評估：</p>
+<h3>D1. 性別（p=0.021，名義顯著）</h3>
+<table>
+<thead>
+<tr>
+<th>標準</th>
+<th>評估</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1. 有 interaction p-value？</td>
+<td>✅ 有（p=0.021），且另報告 ΔAIC=+2.9</td>
+</tr>
+<tr>
+<td>2. 方向與其他研究一致？</td>
+<td>⚠️ 部分。CRF 的性別差異在文獻中確有討論，但本文 Figure 3 兩性斜率視覺上幾乎相同</td>
+</tr>
+<tr>
+<td>3. 假說預先指定且有預期方向？</td>
+<td>⚠️ 預先指定為「prespecified tests」，但無預期方向</td>
+</tr>
+<tr>
+<td>4. 有合理生物機轉？</td>
+<td>✅ 有（心肺生理、體組成、AF 流行病學的性別差異）</td>
+</tr>
+<tr>
+<td>5. within-study 比較？</td>
+<td>✅ 是</td>
+</tr>
+<tr>
+<td><strong>可信度</strong></td>
+<td><strong>低</strong>。作者自己以 ΔAIC=+2.9（加入後模型變差）判定不改善模型配適，並據此結論劑量反應形狀「broadly generalisable」。<strong>此處理方式正確且值得肯定</strong>——這是全文中作者對抗自己發現的最佳示範</td>
+</tr>
+</tbody>
+</table>
+<h3>D2. 年齡（&lt;60 vs ≥60，p&gt;0.05）</h3>
+<table>
+<thead>
+<tr>
+<th>標準</th>
+<th>評估</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1–5</td>
+<td>有 interaction p、預先指定、機轉合理、within-study</td>
+</tr>
+<tr>
+<td><strong>可信度／結論</strong></td>
+<td><strong>陰性結果，但正文未報告點估計與 CI</strong> → 無法判斷屬 NEUTRAL 還是 INCONCLUSIVE。以年齡切點分組後的事件數（尤其 &lt;60 組）推測，較可能是 INCONCLUSIVE [推論]</td>
+</tr>
+</tbody>
+</table>
+<h3>D3. BMI 分類（p&gt;0.05）</h3>
+<table>
+<thead>
+<tr>
+<th>標準</th>
+<th>評估</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1–5</td>
+<td>同上</td>
+</tr>
+<tr>
+<td><strong>可信度／結論</strong></td>
+<td>同 D2。此外 BMI 在因果上是 MVPA 的下游中介，以 BMI 分層本身即帶有中介分層的解釋困難</td>
+</tr>
+</tbody>
+</table>
+<h3>D4. 補充：作者的「二分法交互作用分析」實質上是最重要的次組分析</h3>
+<p>MVPA（150 min 切點）× CRF（性別特異中位數）的 2×2 分析，配合 RERI／AP／S／ratio of HRs 與 2000 次 bootstrap，方法上<strong>執行得相當標準</strong>（依 Knol &amp; VanderWeele 2012 的建議）。</p>
+<table>
+<thead>
+<tr>
+<th>標準</th>
+<th>評估</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1. 有 interaction p-value？</td>
+<td>✅ 加成與乘法尺度皆有</td>
+</tr>
+<tr>
+<td>2. 方向一致？</td>
+<td>✅ 兩個尺度皆指向「無交互作用」</td>
+</tr>
+<tr>
+<td>3. 預先指定？</td>
+<td>✅ 明確以指引門檻與中位數為切點</td>
+</tr>
+<tr>
+<td>4. 生物機轉？</td>
+<td>✅ 有</td>
+</tr>
+<tr>
+<td>5. within-study？</td>
+<td>✅</td>
+</tr>
+<tr>
+<td><strong>可信度</strong></td>
+<td><strong>高（就「無交互作用」這個結論而言）</strong>。這是全文方法學執行最扎實的一段分析——<strong>而它的結論直接否定了本文的頭條賣點。作者把它放在 eTable 15，摘要一字未提。</strong></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>E. 紅旗清單</h2>
+<p><strong>設計</strong></p>
+<ul>
+<li>🚩 兩個主要暴露相隔 3–7 年（CRF 2006–2010、MVPA 2013–2015），作者未揭露此事實</li>
+<li>🚩 「residual CRF」分析因果時序倒置：以 2014 的 MVPA 預測 2008 的 VO₂max</li>
+<li>🚩 校正 CRF＝校正作者自己定義的中介變項，開啟碰撞路徑</li>
+<li>🚩 保留率 16.5%，且篩選條件（能完成腳踏車測功計測試）直接以暴露為條件</li>
+<li>🚩 兩暴露之間存在 CVD 事件者被排除 → 以暴露為條件的存活篩選</li>
+<li>🚩 無預先註冊、無公開程式碼</li>
+</ul>
+<p><strong>測量</strong></p>
+<ul>
+<li>🚩 VO₂max 為推估值，且 UKB 協定依基線風險分派負荷 → 測量誤差與結果風險相關</li>
+<li>🚩 β-blocker／降壓藥（15.4% 使用，12.0% 缺失）未進入模型，直接壓抑心率反應而低估 VO₂max</li>
+<li>🚩 靜止心率（估計 VO₂max 的核心輸入）僅在 robustness 校正，正文無數值</li>
+<li>🚩 MVPA 為隨機森林分類器輸出，<strong>單位不可轉譯為指引所依據的自陳式分鐘數</strong>（外部專家 Doherty、López-Sendón 獨立指出同一問題）</li>
+<li>🚩 MVPA 分類誤差極可能與 CRF 相關 → 足以憑空製造 MVPA×CRF 交互作用</li>
+</ul>
+<p><strong>終點</strong></p>
+<ul>
+<li>🚩 <strong>複合終點 70.9% 為 AF，此事實在摘要、Key Messages、結論、圖說中完全消失</strong></li>
+<li>🚩 AF 屬偵測敏感終點，且其高活動量端的劑量反應形狀在文獻上有爭議，而處方矩陣正是往該區外推</li>
+<li>🚩 複合終點各成分對病人的重要性差距懸殊，卻等權合併</li>
+</ul>
+<p><strong>統計</strong></p>
+<ul>
+<li>🚩 處方矩陣印整數、無不確定區間；[推算] 真實區間至少橫跨 300–5,300 min/week</li>
+<li>🚩 Figure 1 曲面外推至 VO₂max +4.0 SD 與 MVPA 第 88 百分位以上，無 CI、無資料密度、無凸包限制</li>
+<li>🚩 頭條交互作用在效果量尺度為 INCONCLUSIVE（RERI p=0.57、ratio of HRs p=0.39），摘要不提</li>
+<li>🚩 MR 15 配對無多重比較校正，唯一陽性 p=0.043、CI 上界 0.99</li>
+<li>🚩 MR 樣本重疊的偏差方向被寫反，且受影響最深的正是該唯一陽性結果</li>
+<li>🚩 PA 的 MR 陰性結果正文只給 p 值、不給 CI 與點估計</li>
+<li>🚩 全文無任何絕對風險、ARR 或 NNT</li>
+</ul>
+<p><strong>敘事</strong></p>
+<ul>
+<li>🚩 <strong>同篇論文內部直接矛盾</strong>：Discussion 稱指引門檻「does not require fitness-based modification」，Key Messages 卻主張「low-fitness individuals needing slightly more MVPA」，標題與核心貢獻皆為體適能分層處方</li>
+<li>🚩 標題第一個字為 &quot;non-linear&quot;，但正文唯一直接呈現劑量反應形狀的 Figure 3 是兩條直線；tensor 交互作用 edf=3.07 ≈ 雙線性</li>
+<li>🚩 Limitations 誠實度高，但完全未回饋到摘要與 Key Messages（雙軌書寫）</li>
+<li>🚩 三角驗證邏輯單向：一致＝驗證，不一致＝工具問題，MR 無機會推翻世代結論</li>
+</ul>
+<p><strong>COI / 資助</strong></p>
+<ul>
+<li>✅ <strong>無紅旗</strong>。無資助、無利益衝突申報、非邀稿、外部同儕審查。這是本文的實質優點，應予明確肯定</li>
+</ul>
+<hr />
+<h2>F. 反向解釋</h2>
+<h3>替代解釋 1：「顯著非線性交互作用」是暴露測量誤差的產物，而非生理現象</h3>
+<p><strong>支持線索</strong>：MVPA 由隨機森林分類器產出（kappa 0.80），而分類誤差幾乎不可能與體適能獨立——體重較重、步態較慢、心肺功能較差者的腕部訊號型態偏離訓練集（152 位健康成人）。<strong>當一個暴露的測量誤差與另一個暴露相關時，兩者的乘積項就會出現統計顯著的偽交互作用。</strong> 這與觀察到的所有特徵吻合：交互作用在連續尺度顯著（誤差為連續且與 CRF 連續相關）、在二分法尺度消失（切點粗化抹平誤差結構）、edf 僅 3.07（誤差引入的是雙線性成分而非真正的曲率）、Figure 1 輪廓近乎平行直線。</p>
+<p><strong>反對線索</strong>：χ²=38.43 的量級不算小；作者做了 winsorisation 敏感度分析並稱結果穩健（但無數值）。</p>
+<p><strong>評估</strong>：<strong>此替代解釋比作者的「真實非線性生理交互作用」更簡約，且能解釋更多觀察到的細節。</strong> 在作者提供 MVPA 分類誤差與 CRF 相關性的實證檢驗之前，無法排除。</p>
+<hr />
+<h3>替代解釋 2：8–9%（而非文獻的 20–30%）不是因為中介校正，而是因為終點組成不同</h3>
+<p><strong>作者的解釋</strong>：既往統合分析估計 total effect（含經由體適能的中介路徑），本文校正 CRF 後估計 conditional/direct effect，故縮水。</p>
+<p><strong>替代解釋</strong>：既往報告 20–30% 的大型劑量反應統合分析，其終點以 MI、stroke、CVD 死亡與總死亡為主。<strong>本文的終點 70.9% 是 AF。</strong> AF 與身體活動的關聯在文獻上本就比動脈粥狀硬化事件更弱、更平坦，且高量端方向存疑。<strong>單是終點組成的差異，就足以解釋 20–30% 縮到 8–9%，不需要引入任何中介校正的機轉。</strong></p>
+<p><strong>支持線索</strong>：Results 首段的事件組成（874 AF）；作者自陳事件數不足以做成分特異分析——亦即他們無法排除這個解釋；本文以 AF 為主的複合終點在 Fine-Gray 下的 SHR 為 0.86，與 AF 相關文獻的量級相容。</p>
+<p><strong>反對線索</strong>：中介校正確實在數學上會縮小效果，這個機轉真實存在。兩個解釋可以並存。</p>
+<p><strong>臨床意涵的差別極大</strong>：若作者的解釋為真，則「8–9% 是低估，真實 total effect 更大」；若此替代解釋為真，則「8–9% 只是說 MVPA 對 AF 的效果比對 MI 小」，而處方矩陣的整套外推適用性更差。<strong>作者只呈現了對自己有利的那一個解釋。</strong></p>
+<hr />
+<h3>替代解釋 3：CRF 的保護關聯有相當部分是次臨床疾病的反向因果</h3>
+<p><strong>支持線索</strong>：（a）VO₂max 由次極量心率反應推估——次臨床陣發性 AF、變時性不全、早期 HF、β-blocker 皆直接壓低此反應；（b）複合終點 70.9% 是 AF，而未診斷的陣發性 AF 在此年齡層盛行率不低；（c）排除既存 CVD 僅依住院紀錄與自陳，無法偵測未診斷的 AF；（d）CRF 測於 time zero 前 3–7 年，正好落在「次臨床疾病已存在但尚未診斷」的時間窗；（e）Table 1 顯示低活動組 RHR 高 2.8 bpm、降壓藥使用高 5.4 個百分點，兩者皆是此路徑的標記。</p>
+<p><strong>反對線索</strong>：（a）作者做了排除追蹤 ≤2 年事件的敏感度分析（但無數值，且 2 年對次臨床 AF 而言太短）；（b）MR 的 CRF→HF 結果方向一致，若為純反向因果不應如此——<strong>但該 MR 結果本身受樣本重疊影響，說服力有限</strong>。</p>
+<p><strong>評估</strong>：<strong>這是對「CRF 獨立保護效果」最強的替代解釋，且作者在 Limitations 完全未提及。</strong> 「殘差 CRF」分析非但不能排除它，反而可能濃縮它——殘差正是「MVPA 無法解釋的 VO₂max 變異」，而次臨床疾病造成的心率反應異常恰恰就落在這一塊。</p>
+<hr />
+<h3>替代解釋 4：MR 對 PA 的全面陰性，反映的是世代關聯本身被高估，而非工具太弱</h3>
+<p><strong>支持線索</strong>：Table 1 中所有已測量特徵一致偏向「活動量高者更健康」，強烈提示未測量特徵同向；久坐時間、輕度活動、教育、就業、服藥皆未進入主模型；MR 對五個 CVD 終點、兩種 PA 表型、單變量與多變量分析<strong>全部陰性</strong>——這種一致的陰性型態，同樣與「真實因果效果較小」相容。</p>
+<p><strong>反對線索</strong>：裝置測量 PA 的 GWAS 工具確實極弱（可解釋變異通常 &lt;0.5%），CI 寬到無法排除有意義效果；行為表型的 regression dilution 是已知現象；MR 估計終生遺傳傾向，與「中年時的每週分鐘數」不是同一個 estimand。</p>
+<p><strong>評估</strong>：<strong>兩個解釋都與資料相容，且無法用本文的資料區分。</strong> 作者選擇了對世代結論有利的那一個，並據此宣告世代結果「remain the strongest available evidence」。<strong>方法上正確的表述應該是：兩種設計不一致，因果性因此不確定。</strong></p>
+<hr />
+<h2>G. 最終裁決</h2>
+<h3>整體可信度：<strong>中</strong></h3>
+<p>分層裁決如下：</p>
+<table>
+<thead>
+<tr>
+<th>宣稱層級</th>
+<th>可信度</th>
+<th>判定理由</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>MVPA 與 CVD 呈反向關聯（方向性）</td>
+<td><strong>中</strong></td>
+<td>客觀測量、事件數足、Fine-Gray 一致；但殘餘干擾方向明確偏向誇大、MR 全面陰性、AF 主導終點</td>
+</tr>
+<tr>
+<td>CRF 與 CVD 獨立反向關聯</td>
+<td><strong>中</strong></td>
+<td>多重分析方向一致；但推估法的循環風險（心率反應 ↔ AF）與時序倒置的殘差分析嚴重削弱</td>
+</tr>
+<tr>
+<td>現行 150 min/week 指引具實質心血管效益</td>
+<td><strong>中–高</strong></td>
+<td>這是本文最穩固的發現，且與外部專家（Doherty）判讀一致</td>
+</tr>
+<tr>
+<td>MVPA×CRF 存在臨床可用的交互作用</td>
+<td><strong>低</strong></td>
+<td>本文自己的 RERI、ratio of HRs、Figure 2A 三者皆否定</td>
+</tr>
+<tr>
+<td><strong>560–610 min/week 為達成 30% 風險下降的所需劑量</strong></td>
+<td><strong>極低</strong></td>
+<td>中介校正 estimand 錯配 ＋ 外推 ＋ 無不確定度 ＋ 單位不可轉譯 ＋ AF 主導終點</td>
+</tr>
+<tr>
+<td>CRF 對 HF 具因果保護效果（MR）</td>
+<td><strong>低</strong></td>
+<td>15 次檢定的單一 p=0.043，CI 上界 0.99，樣本重疊未校正且偏差方向被寫反</td>
+</tr>
+</tbody>
+</table>
+<h3>可採用的條件</h3>
+<ol>
+<li>用於<strong>強化現行 150 分鐘指引的說服力</strong>——這是本文資料最誠實的用途，也是本文暴露方法建立者的判讀。</li>
+<li>用於<strong>支持把 CRF 當成獨立追蹤的臨床指標</strong>（Fine-Gray SHR 0.75 / 0.70 的分層結果與殘差分析方向一致），特別是在心臟復健的療效評估中。</li>
+<li>用於**「more is better」的方向性衛教**，但不指定具體上限數字。</li>
+</ol>
+<h3>不建議採用的情境</h3>
+<ol>
+<li>任何形式的「560–610 分鐘」處方或衛教訊息。</li>
+<li>依體適能分層調整運動處方分鐘數。</li>
+<li>作為「運動預防心肌梗塞／中風」的證據（該部分事件僅 248 例，作者自陳無法估計）。</li>
+<li>外推至台灣族群的具體 VO₂max 切點或分鐘數。</li>
+<li>用本文的效果量規劃後續 RCT 的樣本數（Winner's Curse 風險）。</li>
+</ol>
+<h3>若要改觀，最需要的三個關鍵改進</h3>
+<ol>
+<li><strong>在處方矩陣的每一格附上 95% 信賴區間，並把 Figure 1 的繪圖區域限制在資料凸包內、疊加資料密度或 CI 寬度圖層。</strong> 若作者做了這件事，本文的核心轉譯宣稱會自行瓦解——這正是它必須被做的理由。</li>
+<li><strong>重新定義 estimand，並承認 CRF 是中介而非可固定的共變項。</strong> 正確的做法是同時報告 total effect（不校正 CRF）與 controlled direct effect（校正 CRF），明確說明只有前者對應「勸病人多運動」這個決策；並以中介分析框架（含中介–結果混淆的敏感度分析）取代目前的單一模型。</li>
+<li><strong>拆開複合終點，或至少全程明示 AF 占 70.9%。</strong> 若事件數不足以做成分特異曲面（作者自陳如此），則結論應限縮為「MVPA 與 CRF 與較低的 AF 為主之複合心血管事件風險相關」，而非通篇以 &quot;cardiovascular disease&quot; 統稱。</li>
+</ol>
+<p><strong>補充建議</strong>：修正 MR 樣本重疊的偏差方向陳述並執行重疊校正分析（MRlap／CAUSE）；公開分析程式碼；報告絕對風險與 NNT；正文報告所有 MR 估計的點估計與 CI（含陰性結果）。</p>
+<h3>一句話結論</h3>
+<p><strong>這篇研究其實證實了「每週 150 分鐘」是有效的最低門檻，但把一條資料稀疏區的外推線包裝成「要運動 600 分鐘」的處方表，連本文所用測量方法的原始開發者都公開稱之為誤導。</strong></p>
+<hr />
+<h2>CONDITIONAL OUTPUT — 主要結果整理表</h2>
+<p><strong>觀察性研究，MCID 依 [推算] 設定：benefit HR 0.95 / harm HR 1.05</strong></p>
+<table>
+<thead>
+<tr>
+<th>指標</th>
+<th>暴露對照</th>
+<th>效果量</th>
+<th>95% CI</th>
+<th>ARR（7.85 年）[推算]</th>
+<th>NNT [推算]</th>
+<th>MCID 相對位置</th>
+<th>結果分類</th>
+<th>實務意義</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>複合 CVD（Fine-Gray）</td>
+<td>MVPA ≥150 vs &lt;150</td>
+<td>SHR 0.86</td>
+<td>0.75–0.97</td>
+<td>約 1.0 pp</td>
+<td>約 99</td>
+<td>完全低於 0.95</td>
+<td>✅ POSITIVE</td>
+<td>支持現行指引；本文最可用的估計</td>
+</tr>
+<tr>
+<td>複合 CVD（Cox-GAM）</td>
+<td>150 min vs 0 min，低體適能(≤25)</td>
+<td>HR 0.92</td>
+<td>0.86–0.97</td>
+<td>約 0.58 pp</td>
+<td>約 173</td>
+<td>完全低於 0.95</td>
+<td>✅ POSITIVE（緊貼門檻）</td>
+<td>參照點（0 min/week）在本世代近乎不存在</td>
+</tr>
+<tr>
+<td>複合 CVD（Cox-GAM）</td>
+<td>150 min vs 0 min，高體適能(40)</td>
+<td>HR 0.91</td>
+<td><strong>0.84–0.99</strong></td>
+<td>約 0.65 pp</td>
+<td>約 154</td>
+<td><strong>跨越 0.95</strong></td>
+<td>⚠️ IMPRECISE (+)</td>
+<td>效果量高度不確定</td>
+</tr>
+<tr>
+<td>複合 CVD</td>
+<td>殘差 CRF，每 5 mL·kg⁻¹·min⁻¹</td>
+<td>HR 0.90</td>
+<td>0.85–0.96</td>
+<td>—</td>
+<td>—</td>
+<td>完全低於 0.95</td>
+<td>✅ POSITIVE</td>
+<td><strong>但因果時序倒置，詮釋無效</strong></td>
+</tr>
+<tr>
+<td>複合 CVD（Fine-Gray）</td>
+<td>CRF 30–40 vs &lt;30</td>
+<td>SHR 0.75</td>
+<td>0.65–0.86</td>
+<td>約 1.8 pp</td>
+<td>約 55</td>
+<td>完全低於 0.95</td>
+<td>✅ POSITIVE</td>
+<td>受反向因果威脅最大</td>
+</tr>
+<tr>
+<td>複合 CVD（Fine-Gray）</td>
+<td>CRF &gt;40 vs &lt;30</td>
+<td>SHR 0.70</td>
+<td>0.52–0.95</td>
+<td>約 2.2 pp</td>
+<td>約 46</td>
+<td>上界觸及 0.95</td>
+<td>⚠️ IMPRECISE (+)</td>
+<td>高體適能組人數少</td>
+</tr>
+<tr>
+<td><strong>交互作用（加成尺度）</strong></td>
+<td>二分法 2×2</td>
+<td><strong>RERI −0.09</strong></td>
+<td><strong>−0.45–0.22</strong></td>
+<td>—</td>
+<td>—</td>
+<td>跨越雙側</td>
+<td>❓ <strong>INCONCLUSIVE</strong></td>
+<td><strong>處方矩陣的前提未被證實</strong></td>
+</tr>
+<tr>
+<td><strong>交互作用（乘法尺度）</strong></td>
+<td>二分法 2×2</td>
+<td><strong>ratio of HRs 0.90</strong></td>
+<td><strong>0.70–1.15</strong></td>
+<td>—</td>
+<td>—</td>
+<td>跨越雙側</td>
+<td>❓ <strong>INCONCLUSIVE</strong></td>
+<td>同上</td>
+</tr>
+<tr>
+<td>MR：CRF → HF</td>
+<td>遺傳代理（MVMR）</td>
+<td>OR 0.79</td>
+<td><strong>0.63–0.99</strong></td>
+<td>—</td>
+<td>—</td>
+<td>跨越 0.95</td>
+<td>⚠️ IMPRECISE (+)</td>
+<td>15 次檢定之單一陽性，p=0.043</td>
+</tr>
+<tr>
+<td>MR：CRF → AF</td>
+<td>遺傳代理（MVMR）</td>
+<td>OR 0.73</td>
+<td>0.49–1.09</td>
+<td>—</td>
+<td>—</td>
+<td>跨越 null 與 MCID</td>
+<td>❓ INCONCLUSIVE</td>
+<td>作者稱 &quot;suggestive&quot;，措辭恰當</td>
+</tr>
+<tr>
+<td>MR：PA 各表型 → 各 CVD 終點</td>
+<td>遺傳代理</td>
+<td><strong>正文未報告</strong></td>
+<td><strong>正文未報告</strong></td>
+<td>—</td>
+<td>—</td>
+<td>無法判定</td>
+<td><strong>報告缺失</strong></td>
+<td>只給「all p&gt;0.05」</td>
+</tr>
+</tbody>
+</table>
+<p><strong>ARR/NNT 計算基準</strong>：本世代累積 CVD 發生率 7.22%（1,233/17,088，中位追蹤 7.85 年）。假設各成分 RRR 一致——<strong>此假設本身未經檢驗，且鑑於複合終點 70.9% 為 AF，實際上很可能不成立</strong>。</p>
+<h3>非顯著結果的明確分類（依 Skill 要求，禁止以 &quot;no significant difference&quot; 作結）</h3>
+<ul>
+<li><strong>MVPA×CRF 交互作用（加成與乘法尺度）</strong>：屬 <strong>INCONCLUSIVE</strong>，非 NEUTRAL、亦非「無交互作用」。RERI 的 CI（−0.45 到 0.22）同時涵蓋實質拮抗與實質協同；ratio of HRs 的 CI（0.70–1.15）同時涵蓋 30% 拮抗與 15% 協同。<strong>要宣稱「無交互作用」（NEUTRAL），需要更窄的 CI 或正式的 Bayesian Pr(ROPE) 分析，本文兩者皆無。</strong></li>
+<li><strong>年齡（&lt;60 vs ≥60）與 BMI 的效果修飾檢定</strong>：正文僅報告 p&gt;0.05，<strong>未給點估計與 CI</strong>，因此<strong>無法分類</strong>。以次組事件數推測較可能是 INCONCLUSIVE 而非 NEUTRAL [推論]。</li>
+<li><strong>性別效果修飾（p=0.021）</strong>：雖名義顯著，但 ΔAIC=+2.9 顯示加入後模型配適變差 → 作者判定為不改善模型，此判斷正確。實質上應視為<strong>未達可採信門檻的探索性發現</strong>。</li>
+<li><strong>MR：PA → CAD/IHD、any stroke、TIA、AF</strong>：<strong>無法分類</strong>。作者僅提供「all MVMR p&gt;0.05」而不提供效果估計與 CI，讀者無從判斷這些是窄 CI 落在中性區，還是寬 CI 跨越 null 與 MCID。以裝置測量 PA 的 GWAS 工具強度推論，幾乎必然是後者（INCONCLUSIVE）[推論]。</li>
+</ul>
+<hr />
+<p><strong>Sources:</strong></p>
+<ul>
+<li><a href="https://doi.org/10.1136/bjsports-2025-111351">PubMed — Liang Z, et al. Br J Sports Med 2026;60:1238-1249</a>（本文；文獻資料來自 PubMed）</li>
+<li><a href="https://www.sciencemediacentre.org/expert-reaction-to-study-on-amount-of-exercise-done-a-week-and-benefits-to-heart-health-using-mendelian-randomisation/">Science Media Centre (UK) — expert reaction to study on amount of exercise done a week and benefits to heart health, using Mendelian randomisation</a></li>
+<li><a href="https://sciencemediacentre.es/en/recommendation-150-minutes-exercise-week-should-be-higher-greater-cardiovascular-protection">Science Media Centre España — Sobre la recomendación de 150 minutos de ejercicio semanales</a></li>
+<li><a href="https://bmjgroup.com/560-610-minutes-of-exercise-a-week-needed-for-substantial-heart-benefits/">BMJ Group press release — 560-610 minutes of exercise a week needed for substantial heart benefits</a></li>
+<li><a href="https://www.journalmetrics.org/journal/british-journal-of-sports-medicine">BJSM Impact Factor / Clarivate JCR ranking</a></li>
+<li><a href="https://research.mpu.edu.mo/en/publications/joint-non-linear-doseresponse-associations-of-device-measured-phy/fingerprints/">Macao Polytechnic University research profile — publication record</a></li>
+<li>作者過往著作（來源：PubMed）：<a href="https://doi.org/10.1016/j.smrv.2026.102239">Sleep Med Rev 2026</a>、<a href="https://doi.org/10.1016/j.metabol.2026.156677">Metabolism 2026</a>、<a href="https://doi.org/10.1016/j.ctim.2026.103392">Complement Ther Med 2026</a>、<a href="https://doi.org/10.1002/pon.70553">Psychooncology 2026</a>、<a href="https://doi.org/10.3389/fphys.2026.1777058">Front Physiol 2026</a></li>
+</ul>
+
+<footer class="appraisal-meta">評讀資訊：模型：claude-opus-5 (claude)  ·  route：observational  ·  產出時間：2026-08-26 06:40 CST</footer>
+</main>
+</body>
+</html>
