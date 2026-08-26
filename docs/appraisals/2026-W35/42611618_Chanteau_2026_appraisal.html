@@ -1,0 +1,905 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Accuracy in Step Counting Is Not Accuracy in Quantifying Walking Activity: A Criterion Validity Study of Wearable Devices Under Free-Living Conditions.</title>
+<style>
+  :root {
+    --bg: #fafafa;
+    --card: #ffffff;
+    --text: #1a1a1a;
+    --muted: #6b6b6b;
+    --border: #e5e5e5;
+    --accent: #0b5fff;
+  }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang TC",
+      "Microsoft JhengHei", sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    margin: 0;
+    padding: 24px 16px 64px;
+    line-height: 1.72;
+  }
+  main {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    margin: 0 auto;
+    max-width: 840px;
+    padding: 22px 26px;
+  }
+  nav {
+    margin: 0 auto 14px;
+    max-width: 840px;
+    color: var(--muted);
+    font-size: 14px;
+  }
+  a { color: var(--accent); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  h1, h2, h3, h4 { line-height: 1.35; }
+  h1 { font-size: 26px; margin-top: 0; }
+  h2 { border-top: 1px solid var(--border); padding-top: 18px; }
+  code {
+    background: rgba(127, 127, 127, 0.12);
+    border-radius: 4px;
+    padding: 1px 4px;
+  }
+  table {
+    border-collapse: collapse;
+    table-layout: auto;
+    width: 100%;
+    max-width: 100%;
+  }
+  th, td {
+    border: 1px solid var(--border);
+    overflow-wrap: anywhere;
+    padding: 6px 8px;
+    text-align: left;
+    vertical-align: top;
+  }
+  blockquote {
+    border-left: 3px solid var(--accent);
+    color: var(--muted);
+    margin-left: 0;
+    padding-left: 14px;
+  }
+  .appraisal-meta {
+    border-top: 1px solid var(--border);
+    margin-top: 28px;
+    padding-top: 14px;
+    color: var(--muted);
+    font-size: 13px;
+  }
+  @media (max-width: 600px) {
+    body {
+      padding: 12px 8px 40px;
+    }
+    main {
+      padding: 16px 12px;
+    }
+    h1 {
+      font-size: 22px;
+    }
+    table {
+      font-size: 12px;
+      table-layout: fixed;
+    }
+    th, td {
+      padding: 4px 5px;
+    }
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #1a1a1a;
+      --card: #242424;
+      --text: #e8e8e8;
+      --muted: #999;
+      --border: #333;
+      --accent: #6ea8ff;
+    }
+  }
+</style>
+</head>
+<body>
+<nav><a href="../../2026-W35.html">← 回到 2026-W35 週報</a></nav>
+<main>
+<h1>Accuracy in Step Counting Is Not Accuracy in Quantifying Walking Activity: A Criterion Validity Study of Wearable Devices Under Free-Living Conditions.</h1>
+<h1>批判性評讀：Chanteau 等人（2026）穿戴裝置量化真實生活步行活動之效標效度研究</h1>
+<hr />
+<h1>SECTION-0：文章全面描述</h1>
+<h2>0. 文章身份證</h2>
+<table>
+<thead>
+<tr>
+<th>項目</th>
+<th>內容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>標題</td>
+<td>Accuracy in Step Counting Is Not Accuracy in Quantifying Walking Activity: A Criterion Validity Study of Wearable Devices Under Free-Living Conditions</td>
+</tr>
+<tr>
+<td>期刊</td>
+<td><em>Medicine &amp; Science in Sports &amp; Exercise</em>（MSSE，ACSM 官方期刊）— Publish Ahead of Print</td>
+</tr>
+<tr>
+<td>年份</td>
+<td>2026（PubMed 收錄日 2026-08-18）</td>
+</tr>
+<tr>
+<td>DOI</td>
+<td>10.1249/MSS.0000000000004111</td>
+</tr>
+<tr>
+<td>PMID</td>
+<td>42611618</td>
+</tr>
+<tr>
+<td>文章類型</td>
+<td><strong>效標效度／測量準確度研究（criterion validity study）</strong>，路由歸類為 SKILL-C（診斷／預測模型評讀），需做架構調整</td>
+</tr>
+</tbody>
+</table>
+<p><strong>路由判定說明</strong>：本文不是疾病診斷測試研究，但其核心分析在方法學上完全等同於診斷準確度研究——「index test」＝18 種步數導出方法，「reference standard」＝影片人工標註，主要分析為 confusion matrix 導出的 sensitivity / specificity / balanced accuracy。因此 SKILL-C 的效標獨立性、spectrum bias、cut-off 預先指定、機器學習三階段評估等檢核點全部適用，但 LR 的臨床解讀需改寫為「epoch 分類的資訊量」。</p>
+<p><strong>設計登錄</strong>：ClinicalTrials.gov NCT05446454（VAMOS），2022-07-06 註冊、2022-09-16 開始收案 → <strong>前瞻性註冊</strong>，符合 INTERLIVE 建議。[外部: ClinicalTrials.gov API v2]</p>
+<hr />
+<h2>1. 作者團隊評論</h2>
+<p><strong>通訊作者</strong>：Alexis Le Faucheur，法國 Rennes 高等師範學校（ENS Rennes）運動科學系副教授，兼 Univ Rennes M2S 實驗室（Laboratoire Mouvement, Sport, Santé）。[文內][外部: M2S Lab 網站、ResearchGate]</p>
+<p><strong>團隊構成</strong>：4 位作者，一位為博士生（A. Chanteau，領 ENS Rennes 博士獎學金）、一位博後（G. Faity）、一位血管內科醫師（G. Mahé，CHU Rennes / Inserm CIC 1414）。文內未提供 Author Contributions 分工，但兩位受訓標註者明確為 A.C. 與 G.F.。</p>
+<p><strong>團隊過往研究</strong>（根據 PubMed 搜尋結果）：這是一個<strong>在此主題上耕耘超過十年的核心研究團隊</strong>，而非跨領域首次切入：</p>
+<table>
+<thead>
+<tr>
+<th>年份</th>
+<th>代表作</th>
+<th>期刊</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2019</td>
+<td>用穿戴裝置量化周邊動脈疾病日常步行的疼痛限制（event-based analysis 方法）</td>
+<td>Scand J Med Sci Sports (<a href="https://doi.org/10.1111/sms.13511">DOI</a>)</td>
+</tr>
+<tr>
+<td>2021</td>
+<td>比較不同活動監測器在間歇性戶外步行的準確度（開發 bout 偵測演算法）</td>
+<td>Med Sci Sports Exerc (<a href="https://doi.org/10.1249/MSS.0000000000002587">DOI</a>)</td>
+</tr>
+<tr>
+<td>2021</td>
+<td>StepWatch3 與 ActiGraph wGT3X+ 在 PAD 與長者的 step-based metrics 一致性</td>
+<td>J Aging Phys Act (<a href="https://doi.org/10.1123/japa.2020-0499">DOI</a>)</td>
+</tr>
+<tr>
+<td>2026</td>
+<td>間歇性跛行的最佳運動處方（Letter）</td>
+<td>Eur J Vasc Endovasc Surg (<a href="https://doi.org/10.1016/j.ejvs.2026.07.068">DOI</a>)</td>
+</tr>
+</tbody>
+</table>
+<p>（以上書目資訊來自 PubMed）</p>
+<p><strong>團隊立場史評估</strong>：這是本文最需要留意的一點。此團隊自 2019 年起持續主張「單看步數不足、必須做 bout-level / event-based 分析」，並且是 event-based analysis 方法的<strong>開發者</strong>（本文引用的 ref 47, 48 即其自身方法）。本文的結論（「步數準確不等於步行型態準確」）正是他們十年立場的延伸。這不構成造假疑慮，但屬於典型的 <strong>prior commitment bias</strong>：研究設計、指標選擇（event-based analysis 為自家方法）、equivalence margin 的嚴格程度，都可能在無意中朝向支持既有立場的方向偏移。下方 D 節會具體指出兩處分析選擇正好落在這個方向。</p>
+<p><strong>利益揭露</strong>：</p>
+<ul>
+<li>文內申報：「The authors declare no conflicts of interest」。資助來源為 ENS Rennes（公立高等教育研究機構）與 A.C. 的博士獎學金。[文內]</li>
+<li>明確聲明資助方對研究執行、分析、詮釋、投稿決定無任何角色。[文內]</li>
+<li><strong>評估</strong>：無廠商資助、無裝置贊助揭露、無 in-kind product supply 陳述。這在穿戴裝置驗證文獻中相對少見（該領域廠商贊助比例高），是本文可信度的實質加分。唯一殘留疑慮是文內未說明六台裝置的購置來源——若為廠商提供樣機亦應揭露，文內未提及。[限制：文內未說明裝置來源]</li>
+</ul>
+<hr />
+<h2>2. 文獻 Metadata 整理</h2>
+<ul>
+<li><strong>Received / Accepted date</strong>：[文內未提供]——PDF 轉出的 markdown 未保留投稿與接受日期，無法計算審查天數。</li>
+<li><strong>期刊平均審查天數</strong>：MSSE 官方僅公布「決定通常 4–6 週」，未公布中位審查天數。[外部: ACSM 官網 / LetPub]</li>
+<li><strong>Impact Factor</strong>：3.9（2025），5 年 IF 5.2，運動科學領域 136 名中排 17（Q1）。[外部: journalmetrics.org / Clarivate 衍生資料]</li>
+<li><strong>接受率</strong>：約 25%。[外部: LetPub]</li>
+<li><strong>時間軸推論</strong>：研究 primary completion 為 2024-10-16（ClinicalTrials.gov），線上發表為 2026-08 → 從資料收集完成到發表約 22 個月。考量 150 小時影片需逐格人工標註步伐，這個時程合理，不構成「異常快速通過」的疑慮。[推論：依據 ClinicalTrials.gov 完成日期與 PubMed 收錄日期]</li>
+<li><strong>邀稿 vs 投稿</strong>：文內無 invited review / invited submission 標示，article type 為 Journal Article，判定為一般投稿。</li>
+</ul>
+<hr />
+<h2>3. 研究背景</h2>
+<p><strong>既有事實</strong>（作者引述）：</p>
+<ol>
+<li>每日步數與多項健康結局有劑量–反應關係，且 WHO 已將步數列為穿戴裝置人口監測的核心指標，預計 2030 年的全球指引可能納入步數建議。</li>
+<li>然而目前尚無普世的步數門檻建議，步頻（cadence）強度的角色仍有爭議。</li>
+<li>Gao 等人（ref 14）顯示：不同計步演算法與健康結局的關聯相似，但<strong>步數總量差異極大</strong>，妨礙跨研究的可推廣性。</li>
+</ol>
+<p><strong>知識缺口</strong>（作者主張）：作者提出一個<strong>方法學 + 概念的雙重缺口</strong>：</p>
+<ul>
+<li>方法學面：真實生活條件下、以影片為黃金標準的效標效度研究極少（作者僅找到 2 篇：Toth 2018、Hickey）。</li>
+<li>概念面（本文核心）：穿戴裝置<strong>根本不記錄「步」</strong>——它記錄的是佩戴部位的加速度，再由專有／開源演算法轉譯為「步」。而流行病學研究常明示或默示地把步數當作「步行活動」的代理指標，卻從未驗證步數能否重建步行的完整型態（bout 時長、頻率、強度）。</li>
+</ul>
+<p><strong>Research question</strong>：18 種步數導出方法在真實生活條件下，對步數本身、以及對步行 bout 的時長／數量／強度，各自的效標效度為何？</p>
+<p><strong>評估</strong>：這個 research question 的框架是本文最強的部分。作者精準指出了一個「大家都在用但沒人驗證過」的隱含假設（steps ≈ walking pattern），且此假設正是近年 cadence–mortality 文獻（如 100 steps/min 門檻）的立論基礎。問題本身有高度公衛與方法學價值。</p>
+<hr />
+<h2>4. 研究設計與方法</h2>
+<p><strong>PICO</strong>：</p>
+<table>
+<thead>
+<tr>
+<th>元素</th>
+<th>內容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>P</strong></td>
+<td>60 位健康成人，20–80 歲，性別與每 10 歲年齡層各 5 男 5 女平衡（49.1±16.9 歲；169.5±9.3 cm；68.3±11.2 kg；<strong>BMI 23.7±2.6</strong>）；招募自大學、實驗室、園區與地方社團（convenience sample）；排除已知疾病與步態限制</td>
+</tr>
+<tr>
+<td><strong>I（Index tests）</strong></td>
+<td>18 種步數導出方法 = 6 台裝置 × 佩戴位置 / epoch 長度 / LFE 設定，加上 5 種 wrist ML 步伐偵測模型（Adept、Ducharme、Oak、StepCount、Verisense 2）</td>
+</tr>
+<tr>
+<td><strong>C（Reference standard）</strong></td>
+<td>腰掛攝影機（50 Hz、720p、朝向雙足）影片，由 2 位受訓研究者以自製 PANAMA 軟體逐步標註</td>
+</tr>
+<tr>
+<td><strong>O</strong></td>
+<td>主要：<strong>步行 bout 偵測率</strong>（登錄之 primary outcome）；本文報告：總步數、總 bout 時長、bout 數量、LPA 時間、MVPA 時間；以及 temporal / event-based confusion matrix 指標</td>
+</tr>
+</tbody>
+</table>
+<p><strong>裝置與佩戴位置</strong>：</p>
+<table>
+<thead>
+<tr>
+<th>縮寫</th>
+<th>裝置</th>
+<th>位置</th>
+<th>取樣率 / epoch</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>SW</td>
+<td>StepWatch 4</td>
+<td>右踝（外踝上方）</td>
+<td>200 Hz，step-level timestamp</td>
+</tr>
+<tr>
+<td>AP</td>
+<td>activPAL4</td>
+<td>右大腿前中線</td>
+<td>20 Hz，CREA v1.3，0.1 s 解析度 Stepping Bouts 檔</td>
+</tr>
+<tr>
+<td>AG_hip</td>
+<td>ActiGraph wGT3X-BT</td>
+<td>右髖（前腋線）</td>
+<td>30 Hz → 1 s / 60 s epoch，± LFE</td>
+</tr>
+<tr>
+<td>AG_wrist</td>
+<td>ActiGraph wGT3X-BT</td>
+<td>手腕</td>
+<td>30 Hz → 1 s / 60 s epoch ± LFE，加 5 種 ML 模型</td>
+</tr>
+<tr>
+<td>FI</td>
+<td>Fitbit Inspire 2</td>
+<td><strong>右髖</strong>（AG 內側）</td>
+<td>1 分鐘 epoch（Fitabase）</td>
+</tr>
+<tr>
+<td>FC</td>
+<td>Fitbit Charge 5</td>
+<td>手腕</td>
+<td>1 分鐘 epoch</td>
+</tr>
+<tr>
+<td>GA</td>
+<td>Garmin Vívoactive 4S</td>
+<td>手腕</td>
+<td><strong>15 分鐘 epoch</strong>（Fitabase）</td>
+</tr>
+</tbody>
+</table>
+<p>三支腕戴裝置中，每位受試者以年齡層與性別分層的平衡隨機分派，<strong>只戴其中兩支</strong>（左右手也隨機）→ 腕戴裝置的有效 n 約為髖／踝／大腿裝置的 2/3。</p>
+<p><strong>關鍵操作型定義</strong>：</p>
+<ul>
+<li><strong>步</strong>：抬腳離地並放置到新位置，且新足印與前一足印完全不重疊（採 Toth 等人定義，ref 21）。</li>
+<li><strong>Walking bout</strong>：<strong>≥3 個連續 heel strike，且相鄰步伐間隔 ≤3 秒</strong>（ref 42, 43）。</li>
+<li><strong>強度</strong>：以 bout 內平均步頻（總步數 ÷ bout 時長）套用 100 steps/min（≈3 METs）與 130 steps/min（≈6 METs）啟發式門檻，分為 LPA / moderate / vigorous。</li>
+<li><strong>1 分鐘 epoch 的 bout 轉譯規則</strong>：≥20 steps/epoch 才算 bout（因為「每 3 秒 1 步 × 60 秒 = 20 步」）；<strong>15 分鐘 epoch 則為 ≥300 steps/epoch</strong>。</li>
+<li><strong>activPAL 例外</strong>：AP 的 bout <strong>直接取自裝置的專有「Stepping Bouts」檔</strong>，未套用上述共用規則。</li>
+</ul>
+<p><strong>統計方法</strong>：MPE、MAPE、ICC(3,1) 與 95% CI；<strong>equivalence testing 以 TOST、±10% equivalence margin、α = .05</strong>（Figure 2、3 正確使用 90% CI）。另做 temporal analysis（0.1 秒 epoch 二分類）與 event-based analysis（雙向配對演算法），計算 accuracy、sensitivity、specificity、precision、F-score、balanced accuracy、Kappa。</p>
+<p><strong>Sample size</strong>：以 primary outcome（步行 bout 偵測率）估算，目標 accuracy ≥80%、95% 信心水準、5% CI 寬度，以 exact binomial 法需 <strong>每個 PA domain 至少 1,021 個 walking bout</strong>。預期每 2 小時影片產生約 30 個 bout，故 60 人各提供約 5 小時有效影片即足。</p>
+<hr />
+<h2>5. 研究結果重點整理</h2>
+<p><strong>資料量與參考標準特性</strong>：</p>
+<table>
+<thead>
+<tr>
+<th>項目</th>
+<th>數值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>收案 → 有效影片</td>
+<td>60 → 56 人（93%）</td>
+</tr>
+<tr>
+<td>有效影片總時數</td>
+<td>150 h 35 min 55 s（<strong>平均每人僅 2.69 h</strong>，遠低於規劃的 ~5 h/人、目標 8 h）</td>
+</tr>
+<tr>
+<td>環境分布</td>
+<td>室內 48% / 室外 52%</td>
+</tr>
+<tr>
+<td>PA domain（占有效影片<strong>時間</strong>）</td>
+<td>家務 41.8%、休閒 26.1%、交通 19.5%、職業 12.6%</td>
+</tr>
+<tr>
+<td>Walking bout 總數</td>
+<td>10,194</td>
+</tr>
+<tr>
+<td><strong>Walking bout 占有效影片時間</strong></td>
+<td><strong>42.1%</strong>（非 walking 57.9%）</td>
+</tr>
+<tr>
+<td>步行時間強度分布</td>
+<td>LPA 42.3%、moderate 56.3%、vigorous 1.4%</td>
+</tr>
+<tr>
+<td>影片標註 98.3% 的步發生於 bout 內</td>
+<td>是（CAM）</td>
+</tr>
+<tr>
+<td>標註者信度</td>
+<td>內部 κ 0.94±0.03、跨評 κ 0.93±0.02；bout 數 MAPE 內 3.96±1.6% / 跨 5.99±2.1%；ICC(2,1) 均 &gt;.99</td>
+</tr>
+</tbody>
+</table>
+<p><strong>主要準確度結果（文內可查證數值）</strong>：</p>
+<table>
+<thead>
+<tr>
+<th>指標</th>
+<th>通過 ±10% equivalence 的方法</th>
+<th>MAPE &lt;10%</th>
+<th>MAPE 10–20%</th>
+<th>最佳值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>總步數</td>
+<td><strong>僅 SW</strong></td>
+<td>僅 SW（8.2%）</td>
+<td>7 種：AG_hip-1s-LFE、AG_hip-60s-LFE、AG_hip-1s、AG_hip-60s、AG_wrist-StepCount、FI-60s、FC-60s、AP&lt;sup&gt;†&lt;/sup&gt;</td>
+<td>SW 8.2%</td>
+</tr>
+<tr>
+<td>總 bout 時長</td>
+<td><strong>AP、AG_wrist-StepCount</strong></td>
+<td>僅 AP（9.2%）</td>
+<td>5 種：AG_hip-1s、AG_hip-60s、AG_wrist-StepCount(12.1%)、FI-60s、SW(18.6%)</td>
+<td>AP 9.2%</td>
+</tr>
+<tr>
+<td><strong>Bout 數量</strong></td>
+<td><strong>無</strong></td>
+<td>無</td>
+<td>無</td>
+<td>AG_hip-1s <strong>24.2%</strong>（ICC .953）</td>
+</tr>
+<tr>
+<td>LPA 時間</td>
+<td><strong>無</strong></td>
+<td>—</td>
+<td>AP 19.4%（唯一 &lt;20%）</td>
+<td>全部除 Ducharme、Oak 外皆<strong>高估</strong>，範圍 <strong>+8.6% 至 +1007.3%</strong></td>
+</tr>
+<tr>
+<td>MVPA 時間</td>
+<td><strong>無</strong></td>
+<td>—</td>
+<td>SW 16.2%、AP 18.6%</td>
+<td>全部<strong>低估</strong>，範圍 <strong>−100% 至 −5.5%</strong>；腕戴最佳為 StepCount（MAPE 30%）</td>
+</tr>
+</tbody>
+</table>
+<p>&lt;sup&gt;†&lt;/sup&gt; 文內列出 8 個名稱但標為「seven additional methods」，內部計數有落差。[限制：Supplemental Table 8 未在 markdown 中，無法核對]</p>
+<p><strong>Temporal vs event-based analysis（本文最關鍵的對比）</strong>：</p>
+<table>
+<thead>
+<tr>
+<th>分析層次</th>
+<th>Balanced accuracy ≥90%</th>
+<th>≥80%</th>
+<th>最佳三名</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Temporal（0.1 s epoch，walking vs stationary）</td>
+<td>AP、SW</td>
+<td>再加 AG_hip-1s、AG_hip-1s-LFE、AG_wrist-StepCount</td>
+<td>AP ≈ SW ≈ 0.90</td>
+</tr>
+<tr>
+<td><strong>Event-based（離散 bout 配對）</strong></td>
+<td><strong>無</strong></td>
+<td><strong>無（無一超過 ~50%）</strong></td>
+<td><strong>AP 51.3%、AG_hip-1s 46.2%、SW 43.5%</strong></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Bout 正確偵測且強度分類正確的比例</strong>：AP 34.3%、AG_hip-1s 29.4%、SW 24.4%（分別涵蓋總偵測步行時間的 59.4%、52.0%、49.0%）。僅看 MVPA bout：AP 35.4%、SW 30.7%、AG_hip-1s 25.2%（涵蓋 66.2%、60.4%、56.0% 的偵測 MVPA 時間）。</p>
+<p><strong>Bout 時長對 event-based accuracy 的影響</strong>：短 bout 幾乎偵測不到；balanced accuracy 隨最短 bout 時長遞增，&gt;120 秒後達平台，AP 約達 75%。</p>
+<hr />
+<h2>6. 作者討論與評論重點</h2>
+<p><strong>作者主要訊息</strong>：步數準確度<strong>不會</strong>轉譯為步行型態準確度。愈細緻的步行型態成分（步數 → bout 時長 → bout 數量 → 強度），準確度愈系統性下滑。AP 與 SW 表現最一致；髖部最佳為 AG-1s、腕部最佳為 StepCount-SSL。<strong>所有 epoch ≥1 分鐘的方法（即多數消費級裝置的可得資料格式）對描述步行型態基本上不準確。</strong></p>
+<p><strong>與現有文獻的異同</strong>：</p>
+<ul>
+<li>一致：SW 在本樣本亦為步數最準（與 Toth 2018 一致；<a href="https://doi.org/10.1249/MSS.0000000000001569">DOI</a>），各裝置高／低估的方向型態亦大致相同。</li>
+<li>不一致：本文 AG_wrist 為輕微低估，Toth 則為高估；且本文整體誤差率高於 Toth。作者歸因於樣本更大更多元、年齡跨度更廣、涵蓋四個 PA domain、且 Toth 可能納入更廣泛的踏步活動。</li>
+<li>與 Hickey 的 Axivity（下背部）ICC(2,1) .975 相比，本文 AP .991、SW .988、AG_hip-1s .989「相當」。</li>
+</ul>
+<p><strong>作者自陳限制</strong>（5 項）：(1) 只研究步行相關動作，未納入跑步等其他 stepping 活動，且<strong>無法評估易產生偽陽性步伐之活動的 specificity</strong>；(2) event-based 配對規則為預設決策規則，改規則會改結果；(3) 腕部演算法僅在 ActiGraph 資料上驗證，可推廣性受限；(4) 固定步頻門檻（100/130）忽略個體間差異；(5) Adept、Ducharme 為非慣用手開發，但未見系統性左右手效應（Adept 例外，差異 50.48% vs 51.78%，p=0.005，實務影響可忽略）。</p>
+<p><strong>[評估]</strong>：作者的限制清單<strong>誠實但不完整</strong>。它涵蓋了外推性議題，卻<strong>完全迴避了三個會直接動搖比較公平性的內部設計選擇</strong>：(a) activPAL 使用專有 bout 分割而非共用規則；(b) ≥1 分鐘 epoch 的「≥20 步/epoch」轉譯規則是作者自創且未做敏感度分析；(c) 影片時段由受試者自行選擇並被要求「包含步行」，導致 walking 佔時 42.1%，遠高於真實一日。第 (c) 點作者僅以「無法評估 specificity」一句帶過，但其影響遠大於此。詳見 E 節。</p>
+<p>作者的臨床／研究建議（「這些發現可協助研究者選擇更能捕捉真實步行型態的方法」）<strong>大致落在數據支持範圍內</strong>，未過度外推到臨床決策。這是本文的優點之一：一篇容易寫成「請大家改用 activPAL」的論文，實際結論是「所有方法在 bout 層級都不夠好」。</p>
+<hr />
+<h2>7. 外部專業意見</h2>
+<p><strong>[無法取得]——未發現針對本文的同期 editorial、commentary 或 comment。</strong></p>
+<p>搜尋策略與結果：</p>
+<ul>
+<li>PubMed 以 <code>Med Sci Sports Exerc[Journal] AND (step count* OR wearable) AND (Editorial OR Comment[Publication Type])</code>、限 2025 年後檢索，僅回傳 3 筆（PMID 30216269、29762392、22899387），發表年份分別為 2018、2018、2012，均非針對本文。</li>
+<li>網頁搜尋文章全名 + &quot;editorial&quot; / &quot;commentary&quot;，未找到任何指向本文的評論。</li>
+</ul>
+<p>由於本文為 <strong>Publish Ahead of Print（2026 年 8 月線上）</strong>，尚未進入正式期次，此時尚無隨刊 editorial 屬正常現象。因無任何 comment 之 DOI 可用，故未呼叫 <code>fetch_editorial.py</code>（該工具僅應對「針對本文的 editorial/comment DOI」使用）。</p>
+<hr />
+<h2>8. 臨床建議</h2>
+<p><strong>可採用本研究結論的情境</strong>：</p>
+<ul>
+<li>研究或臨床計畫需要<strong>量化步行的「累積型態」</strong>（bout 時長、片段化程度、cadence-based 強度）時，本文提供目前最強的方法選擇證據。</li>
+<li>心臟／血管復健、心衰竭、PAD 的日常步行能力評估：若目標是總步數，踝戴 StepWatch 為首選；若目標是步行時間與姿勢分類，大腿 activPAL 為首選。</li>
+<li>需要重新分析既有加速度計資料庫時：本文明確指出 <strong>ActiGraph LFE 設定 + ≥60 秒 epoch</strong> 會使總步行時長高估約一倍（見 D 節圖判讀），這對 NHANES 式資料的再分析有直接意涵。</li>
+</ul>
+<p><strong>不建議直接套用的情境</strong>：</p>
+<ul>
+<li><strong>任何非健康、非正常步態的族群</strong>——受試者明確排除疾病與步態限制，且 BMI 23.7±2.6（幾乎不含肥胖者）。步數偵測誤差在慢速步態、肥胖、跛行、輔具使用者身上會顯著惡化，本文數值應視為<strong>最佳情況上限</strong>，不是臨床族群的預期表現。</li>
+<li><strong>推估「一整天」的準確度</strong>——本研究的影片時段由受試者自選且被要求包含步行，步行佔有效時間 42.1%，與真實全日（通常 &lt;10%）差距極大。詳見 E 節。</li>
+<li><strong>消費級裝置的實際佩戴方式</strong>——Fitbit Inspire 2 被戴在<strong>髖部</strong>（不是消費者的實際用法），Garmin 資料受限於 Fitabase 15 分鐘 epoch 匯出（未必是裝置本身的能力上限）。以此推論「消費級裝置不準」是超出資料支持的。</li>
+</ul>
+<p><strong>給臨床醫師的三點實務建議</strong>：</p>
+<ol>
+<li><strong>不要把手環顯示的「活躍分鐘數 / MVPA 分鐘數」當成有效測量值向病人或研究解讀。</strong> 本文顯示所有方法都<strong>系統性低估</strong> MVPA（−100% 至 −5.5%）、<strong>系統性高估</strong> LPA（最高 +1007%），這不是隨機誤差而是 epoch 聚合造成的結構性偏差。</li>
+<li><strong>若研究問題涉及「活動片段化 / 每天走了幾趟」，目前沒有任何步數導出方法可用。</strong> 最佳方法的 bout 數量 MAPE 為 24.2%、event-level balanced accuracy ≤51%（見 B 節的 LR 換算：資訊量幾近於零）。</li>
+<li><strong>若必須用步數推估強度，最短 epoch 是關鍵，不是裝置品牌。</strong> 同一台 ActiGraph 髖部，1 秒 epoch 的 temporal balanced accuracy ≈0.87、60 秒 epoch ≈0.79，而 60 秒 + LFE 使總步行時長高估近一倍。</li>
+</ol>
+<p><strong>研究證據強度分級：中至強（對「步數 ≠ 步行型態」這個核心命題為強；對「哪一台裝置最好」的排序為中）。</strong>
+理由：黃金標準（逐步影片標註）為此領域最嚴格可行的效標，標註者信度極佳（κ 0.93–0.94、ICC &gt;.99），樣本量與 bout 數超出事前計算，前瞻性註冊且登錄之 primary outcome（bout 偵測率）確實被報告且為陰性——這些構成核心命題的強證據。但裝置間的排序證據較弱，因為 activPAL 使用不同的 bout 分割規則、≥1 分鐘 epoch 的轉譯規則為作者自創且無敏感度分析、腕戴裝置有效 n 僅約 2/3。</p>
+<hr />
+<h1>SKILL-C：診斷／測量準確度研究評讀</h1>
+<h2>A. 補充技術細節</h2>
+<p><strong>Reference standard 的品質</strong>：</p>
+<table>
+<thead>
+<tr>
+<th>檢核點</th>
+<th>評估</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>是否為公認黃金標準？</td>
+<td><strong>是。</strong> 影片直接觀察在此領域被明確認可為 free-living 步數的黃金標準（作者引 ref 54 且經系統性回顧指出此類研究稀缺，ref 57, 58）。目前僅 Toth 2018 與 Hickey 兩篇達此標準。</td>
+</tr>
+<tr>
+<td>是否獨立於 index test 施測？</td>
+<td><strong>是。</strong> 攝影機與六台裝置為完全獨立的量測鏈；影片標註者在標註時無法看到裝置輸出（PANAMA 軟體僅載入影片）。<strong>同步是在標註完成後才由 cross-correlation 執行</strong>，時序上保證了獨立性。</td>
+</tr>
+<tr>
+<td>施測者盲性</td>
+<td><strong>實質達成但未明文聲明。</strong> 文內未使用「blinded」字眼，屬報告缺失而非設計缺失。[限制：文內未明確聲明盲性]</td>
+</tr>
+<tr>
+<td>參考標準本身的誤差</td>
+<td><strong>有量化，且是本文的優點。</strong> bout 數量的跨評者 MAPE 為 5.99±2.1%——這是任何裝置在此指標上可達準確度的<strong>理論地板</strong>。最佳裝置為 24.2%，遠高於地板值，故參考標準誤差<strong>不足以解釋</strong>裝置失敗。這個推論作者沒寫，但數據支持。</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Cut-off 設定方式</strong>：</p>
+<ul>
+<li>步的定義、bout 定義（≥3 步、間隔 ≤3 s）、強度門檻（100 / 130 steps/min）<strong>均引自既有文獻（ref 21, 42, 43, 44），非本資料集導出</strong>。→ 無 optimism bias。這是本文設計上的重要優點。</li>
+<li><strong>但</strong>：1 分鐘 epoch 的「≥20 steps/epoch」與 15 分鐘的「≥300 steps/epoch」轉譯規則是<strong>作者為本研究自創</strong>，無文獻依據、無敏感度分析。詳見 E 節紅旗。</li>
+</ul>
+<p><strong>Spectrum 分布</strong>：</p>
+<ul>
+<li>年齡 20–80 歲、性別平衡、四個 PA domain、室內外各半——<strong>在健康族群內的譜系覆蓋是紮實的</strong>，明顯優於 Toth 2018（n=12、平均 35±13 歲、僅 1 天）。</li>
+<li><strong>但整體譜系仍窄</strong>：BMI 23.7±2.6 表示樣本幾乎全落在正常體位（±1 SD 為 21.1–26.3）。加上排除「已知疾病與步態限制」，本研究刻意排除了步數偵測誤差最大的兩個族群（肥胖、步態異常）。這不是設計缺陷（作者的目標本就是健康族群的方法學基準），但<strong>外推邊界必須明講，而作者的限制清單沒講</strong>。</li>
+</ul>
+<p><strong>測量可重複性</strong>：intra-rater κ 0.94、inter-rater κ 0.93、ICC(2,1) &gt;.99——優異。但僅在 <strong>2 小時 / 6 個 20 分鐘片段</strong>上評估，占總 150 小時的 <strong>1.3%</strong>，且片段為隨機選取。以此推論全資料集的標註品質是合理的，但樣本偏小，且未報告不同 PA domain（尤其視野易被遮蔽的家務與職業情境）的分層信度。</p>
+<hr />
+<h2>B. 診斷準確度核心評估</h2>
+<h3>B-1. Temporal analysis 的 likelihood ratio 換算</h3>
+<p>文內僅報告 balanced accuracy，未直接給出 LR。Supplemental Table 10 未保留於 markdown。<strong>因此以下 LR 為本評讀自行推導</strong>，方法與假設完整揭露：</p>
+<blockquote>
+<p><strong>推導方法</strong>：Balanced accuracy (BA) = (Se + Sp)/2，故 Youden J = Se + Sp − 1 = <strong>2·BA − 1</strong>。在 Se = Sp 的對稱假設下，LR+ = BA/(1−BA)、LR− = (1−BA)/BA。Walking 的 pre-test probability 取自本文參考標準：<strong>42.1%</strong>（pre-test odds 0.727）。
+<strong>必要警語</strong>：LR+ 與 LR− 並非由 BA 唯一決定；只有在 Se ≈ Sp 時本推導才成立。文內明確指出「多數 ≥60 秒 epoch 的方法 specificity 低、sensitivity 高（AG_hip-60s 除外）」，故對這些方法本推導<strong>不適用</strong>，見 B-2。</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>方法</th>
+<th>Temporal BA（Figure 4 判讀）</th>
+<th>Youden J</th>
+<th>LR+</th>
+<th>LR−</th>
+<th>陽性後測機率</th>
+<th>陰性後測機率</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>AP（大腿）</td>
+<td>≈0.90</td>
+<td>0.80</td>
+<td><strong>≈9.0</strong></td>
+<td><strong>≈0.11</strong></td>
+<td>87%</td>
+<td>7.5%</td>
+</tr>
+<tr>
+<td>SW（踝）</td>
+<td>≈0.90</td>
+<td>0.80</td>
+<td>≈9.0</td>
+<td>≈0.11</td>
+<td>87%</td>
+<td>7.5%</td>
+</tr>
+<tr>
+<td>AG_hip-1s</td>
+<td>≈0.87</td>
+<td>0.74</td>
+<td>≈6.7</td>
+<td>≈0.15</td>
+<td>83%</td>
+<td>10%</td>
+</tr>
+<tr>
+<td>AG_wrist-StepCount</td>
+<td>≈0.85</td>
+<td>0.70</td>
+<td>≈5.7</td>
+<td>≈0.18</td>
+<td>81%</td>
+<td>11%</td>
+</tr>
+<tr>
+<td>AG_hip-60s</td>
+<td>≈0.79</td>
+<td>0.58</td>
+<td>≈3.8</td>
+<td>≈0.27</td>
+<td>73%</td>
+<td>16%</td>
+</tr>
+<tr>
+<td>FI（Fitbit 髖，60 s）</td>
+<td>≈0.78</td>
+<td>0.56</td>
+<td>≈3.5</td>
+<td>≈0.28</td>
+<td>72%</td>
+<td>17%</td>
+</tr>
+<tr>
+<td>GA（Garmin 腕，15 min）</td>
+<td>≈0.63</td>
+<td>0.26</td>
+<td>≈1.7</td>
+<td>≈0.59</td>
+<td>55%</td>
+<td>30%</td>
+</tr>
+<tr>
+<td>AG_wrist-Oak</td>
+<td>≈0.51</td>
+<td>0.02</td>
+<td><strong>≈1.04</strong></td>
+<td><strong>≈0.96</strong></td>
+<td>43%</td>
+<td>41%</td>
+</tr>
+<tr>
+<td>AG_wrist-Ducharme</td>
+<td>≈0.50</td>
+<td>0.00</td>
+<td><strong>≈1.0</strong></td>
+<td><strong>≈1.0</strong></td>
+<td>42%</td>
+<td>42%</td>
+</tr>
+</tbody>
+</table>
+<p><strong>臨床解讀</strong>：</p>
+<ul>
+<li>AP 與 SW 的 LR+ ≈9 落在「中度改變診斷機率」的上緣（LR 2–5 為中度、&gt;10 為大幅）。以 0.1 秒 epoch 逐格判斷「此刻是否在走路」而言，這是<strong>堪用但非決定性</strong>的表現。</li>
+<li><strong>AG_wrist-Oak 與 AG_wrist-Ducharme 的 LR 幾乎等於 1，代表這兩個模型在本設定下對「此刻是否在走路」提供的資訊量趨近於零</strong>——這比「MAPE 很大」的敘述嚴重得多，文內完全沒有用這個角度呈現。</li>
+<li>Garmin 的 LR+ 1.7 / LR− 0.59 意味著：即使它說「這 15 分鐘有走路」，後測機率也只從 42% 升到 55%。</li>
+</ul>
+<h3>B-2. ≥1 分鐘 epoch 方法的非對稱性（示例推導）</h3>
+<p>文內明言此類方法「specificity 低、sensitivity 高」。以 FI 為例，若實際為 Se = 0.95 / Sp = 0.61（BA = 0.78，與圖判讀相符）：</p>
+<ul>
+<li>LR+ = 0.95 / 0.39 = <strong>2.4</strong>（弱，僅中度改變機率）</li>
+<li>LR− = 0.05 / 0.61 = <strong>0.082</strong>（強，可有效排除步行）</li>
+</ul>
+<p>→ <strong>≥1 分鐘 epoch 的裝置是「排除步行」的好工具，但是「確認步行」的差工具</strong>。這與觀察到的總步行時長系統性高估（AG_hip-60s-LFE 約 +95%）完全吻合：它們把非步行時間誤判為步行。這個機轉推論在文內只以「傾向合併相鄰 bout、無法辨識短暫停頓」帶過，未以 Se/Sp 非對稱性明說。[推論：依據文內「low specificity offset by high sensitivity」之敘述與 Figure 2 duration panel 的高估方向]</p>
+<h3>B-3. Event-based analysis：資訊量趨近於零</h3>
+<table>
+<thead>
+<tr>
+<th>方法</th>
+<th>Event BA</th>
+<th>Youden J</th>
+<th>對稱假設下 LR+</th>
+<th>解讀</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>AP</td>
+<td>51.3%</td>
+<td>0.026</td>
+<td>≈1.05</td>
+<td>幾乎無資訊</td>
+</tr>
+<tr>
+<td>AG_hip-1s</td>
+<td>46.2%</td>
+<td>−0.076</td>
+<td>&lt;1</td>
+<td><strong>低於隨機</strong></td>
+</tr>
+<tr>
+<td>SW</td>
+<td>43.5%</td>
+<td>−0.130</td>
+<td>&lt;1</td>
+<td><strong>低於隨機</strong></td>
+</tr>
+</tbody>
+</table>
+<p><strong>這是本文最重要、也最被文字低估的一組數字。</strong> 在「把裝置偵測到的一個離散 bout 正確配對到一個真實 bout」這件事上，最佳方法的 Youden J ≈ 0.03，其餘為<strong>負值</strong>。以診斷測試的語言講，這不是「準確度不足」，而是<strong>沒有辨別力</strong>。文內僅寫「did not exceed ~50%」，未點出 &lt;50% 在 balanced accuracy 尺度上意味著低於隨機猜測。</p>
+<p><strong>但必須加註兩個重要保留</strong>：</p>
+<ol>
+<li>Event-based analysis 中「true negative」的建構方式在 markdown 中無法查證（Supplemental File 4 未保留），因此 balanced accuracy 的分母結構不透明，上述 LR 換算的嚴謹度低於 temporal analysis。<strong>temporal analysis 的 0.1 秒 epoch 有明確定義的 TN，LR 推導較可信；event-based 的推導僅供量級參考。</strong></li>
+<li>event-based 配對規則為作者自訂（作者自陳限制 2），且此方法為<strong>該團隊自行開發</strong>（ref 47, 48）。改變配對容忍度會直接改變這組數字。</li>
+</ol>
+<h3>B-4. Pre-test probability 的關鍵警訊</h3>
+<p>本研究的 walking prevalence 為 <strong>42.1%</strong>——這是因為受試者被要求「確保影片時段包含步行」。<strong>在真實的 24 小時記錄中，步行通常佔清醒時間 &lt;10%。</strong> 依 Bayes，在 pre-test 10% 時：</p>
+<ul>
+<li>AP（LR+ 9）：陽性後測機率僅 <strong>50%</strong>（而非本研究情境的 87%）</li>
+<li>Garmin（LR+ 1.7）：陽性後測機率 <strong>16%</strong></li>
+</ul>
+<p>→ <strong>本研究報告的所有絕對準確度指標，在真實全日情境下都會系統性惡化。</strong> 作者選用 balanced accuracy（而非 accuracy）來抵消類別不平衡是正確的方法學決定，但 balanced accuracy 對盛行率不敏感這件事，並不能讓 MAPE 與 equivalence testing 的結果免疫於盛行率變化——後者是絕對量的比較，而本研究的絕對量是在一個步行密度高出真實情況 4 倍的樣本上計算的。</p>
+<hr />
+<h2>C. 機器學習模型評估（Adept / Ducharme / Oak / StepCount-SSL / Verisense 2）</h2>
+<p>依 JAMA Users' Guide 的三階段框架 [參考: jama_liu_2019_ug_190001.md，&quot;a 3-step process of deriving, validating, and establishing the clinical effectiveness&quot;]：</p>
+<h3>① 建模（Derivation）— 不適用，且這正是本文的價值所在</h3>
+<p>五個模型均<strong>非本文作者開發</strong>。本文不涉及建模，因此不存在 overfitting 或特徵選擇透明度的問題。</p>
+<h3>② 驗證（Validation）— <strong>本文的核心貢獻，但存在 domain shift 的公平性爭議</strong></h3>
+<p><strong>優點</strong>：這是一次<strong>真正獨立的外部驗證</strong>——不同研究團隊、不同受試族群（法國、20–80 歲）、不同參考標準（逐步影片標註）。JAMA ML 指引特別強調 reference standard 的嚴謹度必須被檢驗；本文的參考標準嚴謹度高於多數原始建模論文所使用的標準。這正是文內所稱「WHO 已將腕部列為人口監測的首選位置，而現有計步演算法的獨立評估被列為研究優先事項（ref 4）」的缺口。</p>
+<p><strong>關鍵瑕疵——domain shift 混淆了「演算法不好」與「用錯了場景」</strong>：</p>
+<table>
+<thead>
+<tr>
+<th>模型</th>
+<th>原始開發／驗證條件</th>
+<th>本研究套用條件</th>
+<th>結果</th>
+<th>解讀</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>StepCount-SSL</td>
+<td>UK Biobank &gt;700,000 person-days 腕戴（Axivity），OxWalk 微調；預訓練時隨機旋轉與置換感測軸 → 學到方向不變特徵</td>
+<td>ActiGraph 30 Hz</td>
+<td><strong>MAPE 12.8%，重疊 equivalence zone，腕部唯一優於 ActiGraph 原生 1 s 計步器</strong></td>
+<td><strong>儘管有 domain shift 仍勝出 → 結論更強</strong></td>
+</tr>
+<tr>
+<td>Verisense 2</td>
+<td>較高取樣率驗證</td>
+<td>ActiGraph 30 Hz</td>
+<td>大幅低估（步數 ≈ −65%）</td>
+<td><strong>不確定是演算法差還是取樣率不匹配</strong></td>
+</tr>
+<tr>
+<td>Ducharme</td>
+<td>較高取樣率驗證、為非慣用手開發</td>
+<td>ActiGraph 30 Hz</td>
+<td>步數 ≈ −85%，但 <strong>bout 數量 +290%（Figure 2）</strong></td>
+<td>同上</td>
+</tr>
+<tr>
+<td>Adept</td>
+<td>—</td>
+<td>ActiGraph 30 Hz</td>
+<td>高估（誤判節律性手臂動作）；<strong>因誤差過大被排除於所有圖之外</strong></td>
+<td>同上</td>
+</tr>
+<tr>
+<td>Oak</td>
+<td>為 bout-level 步行辨識設計，非離散步伐偵測</td>
+<td>被當成計步器評比</td>
+<td>步數 ≈ −80%</td>
+<td><strong>這是明確的用途錯配，非模型失敗</strong></td>
+</tr>
+</tbody>
+</table>
+<p>作者已在限制中承認第 3 點（腕部演算法僅在 ActiGraph 資料上驗證）。但<strong>摘要與結論並未把這個保留帶進去</strong>：把 Oak（設計目的是 bout 辨識）拿來評比步數準確度，然後在結論裡宣稱「AG_wrist-StepCount 是腕部最佳」，等於用一組被系統性不利對待的對手來襯托贏家。<strong>正確的框架是：這不是五個模型的公平比較，而是五個模型的 out-of-domain 壓力測試</strong>——後者仍有價值（真實世界研究者確實會把這些開源模型套到手邊的 ActiGraph 資料上），但兩種解讀必須並陳。</p>
+<p><strong>Fairness / subgroup 表現</strong>：僅評估了慣用手 vs 非慣用手（Adept 有統計顯著但實務可忽略的差異）。<strong>未報告任何年齡層、性別、BMI 分層的模型表現</strong>——這在一個刻意做了年齡與性別平衡設計的研究中是奇怪的缺漏。老年人步態較慢、擺臂幅度小，是腕戴演算法最可能失效的族群，而本研究有 20–80 歲各 10 人的完整分層資料卻未呈現。</p>
+<p><strong>可解釋性 / failure modes</strong>：作者對各模型失敗機轉提出了合理的定性推測（Adept 誤判節律性手臂動作、長 epoch 合併相鄰 bout、LFE 誇大步數），但<strong>未做任何定量的 failure mode 分析</strong>（例如：誤差是否集中於特定 PA domain、室內 vs 室外、特定 bout 時長區間）。資料完全支持這些分析，卻未執行。</p>
+<h3>③ 臨床有效性（Clinical effectiveness）— <strong>完全未評估，且作者未宣稱</strong></h3>
+<p>無任何前瞻性試驗顯示改用某方法會改變臨床決策或健康結局。作者<strong>正確地</strong>沒有做此宣稱，結論僅限於「協助研究者選擇方法」。這是本文論證紀律的優點。</p>
+<hr />
+<h2>D. 圖表判讀（僅根據圖中實際可見內容）</h2>
+<p>已讀取 6 張圖頁 PNG。以下為<strong>文字未講清楚、但圖明確傳達</strong>的證據。</p>
+<p><strong>page_015.png</strong>：Results 章節文字頁，內容與 markdown 一致，未提供額外資訊。</p>
+<p><strong>Figure 1（page_042.png）— 「流程圖」名不副實</strong></p>
+<ul>
+<li>內容為概念性處理管線（Video recordings → Exclusion → Annotation → PA domains → Walking bout rule → Duration/Intensity/Frequency），<strong>圖中沒有任何數字</strong>。</li>
+<li><strong>這是實質的報告缺失</strong>：Results 寫「After the exclusion phase (see Figure 1) 150 hours... remained」，但 Figure 1 無法提供任何排除數量。因此<strong>原始錄影總時數、以及因「非步行移動」「私密時間」「視野遮蔽」各排除多少小時，全文無處可查</strong>。</li>
+<li>為何重要：若有相當比例的影片因「視野遮蔽」被排除，則保留下來的 150 小時可能是<strong>較容易標註（也就是步伐較清晰、較規律）的偏差子集</strong>，會系統性高估所有裝置的表現。無法排除此可能。這在 CONSORT 類比的意義上，等同於一篇 RCT 沒有報告篩選失敗人數。</li>
+</ul>
+<p><strong>Figure 2（page_043.png）— equivalence testing</strong></p>
+<ul>
+<li>座標軸誠實：三個面板的 x 軸均涵蓋 0（無效線）並清楚標示 ±10% 的紅色虛線，未見非零起點誇大效果的操作。<strong>藍色點 = 通過 equivalence，紅色 = 未通過</strong>，與文字完全一致（步數僅 SW 藍；時長 AP 與 AG_wrist-StepCount 藍；bout 數量無藍）。</li>
+<li><strong>圖中可見但文字未強調的證據 ①</strong>：<code>AG Wrist Ducharme</code> 在步數面板約 −85%（嚴重低估），卻在 bout 數量面板高達 <strong>+290%，CI 約 +180% 至 +400%</strong>（x 軸因此必須延伸到 400）。「只偵測到 15% 的步、卻報告 4 倍的 bout 數」是內部矛盾的鐵證，代表該演算法在本資料上產生的是散落的孤立偵測而非連續序列——這與文中「Ducharme showed a majority of non-bouted steps」互相印證，但文字未把兩個數字擺在一起。</li>
+<li><strong>圖中可見但文字未強調的證據 ②</strong>：<code>AG Hip 60s LFE</code> 的總步行時長約 <strong>+95%（CI 約 +75% 至 +115%）</strong>，<code>AG Wrist 60s LFE</code> 約 <strong>+160%（CI 約 +110% 至 +195%）</strong>。<strong>LFE + 60 秒 epoch 幾乎使步行時間翻倍</strong>。這正是既有流行病學資料庫最常見的 ActiGraph 設定組合，直接意涵遠比文中「LFE by exaggerating step counts consequently led to substantial overestimations」這句話沉重。</li>
+<li><strong>呈現偏差</strong>：<code>AG Wrist Adept</code> <strong>被排除於 Figure 2 與 Figure 3 的所有面板</strong>（caption 明載「due to scale incompatibility caused by large errors」）。理由技術上合理，但效果是<strong>表現最差的方法從所有主圖中消失</strong>，其數值只存在於未保留的補充資料。讀者僅看圖會低估腕部 ML 方法的失敗程度。</li>
+</ul>
+<p><strong>Figure 3（page_044.png）— LPA / MVPA</strong></p>
+<ul>
+<li>
+<p><strong>座標軸壓縮問題</strong>：LPA 面板 x 軸延伸至 <strong>+1200%</strong>（<code>AG Wrist 60s LFE</code> 點約 +810%、CI 上界約 +1230%）。在此尺度下，±10% 的 equivalence zone 縮成一條髮絲線，導致 AP、SW、AG_hip-1s、StepCount 在視覺上<strong>全部擠在零點、看起來一樣好</strong>——但實際上 AP 的 LPA MAPE 是 19.4%，其餘更差。<strong>極端離群值造成的尺度壓縮，抹除了好方法之間有臨床意義的差異。</strong> 這不是造假，但是實質的呈現缺陷。</p>
+</li>
+<li>
+<p><strong>圖中可見但文字與摘要未講的關鍵證據 ③ — 三種性質完全不同的「未達 equivalence」被寫成同一句話</strong>：</p>
+<ul>
+<li><code>AG Wrist StepCount</code>：MVPA 點估計落在 <strong>±10% 區間之內</strong>（約 −8%），但 <strong>CI 同時跨越上下兩條邊界</strong>（約 −27% 至 +13%）→ 這是<strong>精確度不足</strong>造成的失敗，不是偏差造成的失敗。</li>
+<li><code>AP</code>：點估計約 −13%，CI 整段位於 0 以下、大部分低於 −10% → <strong>系統性低估</strong>造成的失敗。</li>
+<li><code>SW</code>：點估計約 −9%，CI 較窄（約 −15% 至 −3%），僅剛好跨越 −10% → <strong>臨界、方向明確的輕度低估</strong>。</li>
+</ul>
+<p>摘要一句「no methods met equivalence [for MVPA]」把這三種截然不同的證據狀態抹平了。依 JAMA 對 margin 檢定的原則 [參考: jug120004_2605_2611.md，&quot;note the extent to which it exceeds your threshold... irrespective of whether this interval lies below or above the investigators' choice of noninferiority threshold&quot;]，正確做法是報告<strong>點估計與 CI 相對於邊界的位置</strong>，而非二元的通過／未通過。<strong>更諷刺的是</strong>：被摘要點名「MAPE &lt;20%、可接受」的 AP 與 SW，其 CI 顯示它們是<strong>方向明確的系統性低估</strong>；而未被點名的 StepCount 反而是<strong>點估計最接近真值、只是不夠精確</strong>。MAPE 排序與 equivalence 證據在此處給出相反的訊號，文中未處理這個矛盾。</p>
+</li>
+</ul>
+<p><strong>Figure 4（page_045.png）— temporal vs event balanced accuracy</strong></p>
+<ul>
+<li>兩個面板 x 軸均為 0.00–1.00，無截斷。左右對照極為有力：左圖多數方法落在 0.5–0.9，右圖<strong>全部擠在 0.0–0.5</strong>，視覺上比任何文字都更能傳達「epoch 層級的準確不等於離散 bout 的準確」。</li>
+<li><strong>圖中可見但文字軟化的證據 ④</strong>：文中稱納入強度配對後「only a marginal reduction in balanced accuracy」。但圖上紅（含強度配對）與藍（不含）的落差，在 AP 約 0.51→0.47、AG_hip-1s 約 0.50→0.44、<strong>SW 約 0.44→0.36</strong>——SW 的相對下降約 <strong>17%</strong>。稱之為 marginal 過於寬鬆。</li>
+<li><strong>圖中可見但文字未提的證據 ⑤</strong>：<code>AG Hip 1s</code> 在 event 面板的無強度配對值約 0.50，與 AP 的 0.51 幾乎重疊、CI 大幅重疊；但文中把 AP（51.3%）列為第一、AG_hip-1s（46.2%）列為第二，語氣上像是有實質差距。圖顯示這兩者在統計上無法區分。</li>
+</ul>
+<p><strong>Figure 5（page_046.png）— bout 時長對 event accuracy 的影響</strong></p>
+<ul>
+<li><strong>圖中可見但文字完全未提的證據 ⑥ — 唯一隨 bout 變長而變差的方法</strong>：<code>AG Wrist 1s</code>（青色線）從最短門檻的約 18% 起，一路平坦，並在 450→600 秒<strong>下降至約 9%</strong>。所有其他方法都隨門檻上升而改善。這在機轉上高度可解釋：ActiGraph 原生 1 秒腕部計步器在長時間步行中會因擺臂中斷（提物、插口袋、推車）而把單一長 bout 切成多段，導致長 bout 永遠配對失敗。<strong>文中對此完全未著墨</strong>，卻是對「為何腕部原生計步器不能用於片段化分析」最有說服力的單一證據。</li>
+<li><strong>證據 ⑦</strong>：<code>AG Wrist Verisense</code>（綠色）在約 50% 處觸頂，明顯低於 AP/AG_hip-1s/StepCount/SW 的 60–79%，且此差距在所有門檻上持續存在。</li>
+<li><strong>Figure 5 的方法學缺陷</strong>：<strong>全圖無任何信賴區間、無各門檻的 bout 數（n）標示</strong>。文中已述「多數 bout &lt;1 分鐘」，因此 300 秒以上門檻所依據的 bout 數必然極少。AP 曲線在 300 秒達到約 79% 的高點後回落至 76–77%，這個「峰值」在沒有 CI 的情況下<strong>無法與雜訊區分</strong>。文中「reaching a plateau for bouts longer than 120 seconds」的敘述本身是保守且可接受的，但圖右側的細部走勢不應被賦予任何解釋。</li>
+</ul>
+<hr />
+<h2>E. 紅旗清單</h2>
+<h3>設計</h3>
+<p><strong>🚩 R1（重大）— activPAL 使用專有 bout 分割，與其他 17 種方法不在同一起跑線</strong>
+Methods 明確寫道：共用的 bout 規則（≥3 步、間隔 ≤3 s）套用於 SW、1 秒 epoch 資料與腕部 ML 演算法；<strong>「For AP monitor, walking bouts were directly obtained from the device's <em>Stepping Bouts</em> file」</strong>（CREA v1.3 專有演算法）。也就是說，在 bout 時長（AP 是唯一 MAPE &lt;10% 者）與 event-based balanced accuracy（AP 第一名）這兩個 AP 勝出的指標上，<strong>AP 使用的是不同的分割邏輯</strong>。作者如實記載了此事，卻未在限制中承認這損害了比較的可比性，也未做敏感度分析（例如：把 AP 的 step timestamp 套用共用規則後重跑）。結論「AP 表現最一致」因此<strong>部分是方法選擇的產物，程度不明</strong>。</p>
+<p><strong>🚩 R2（重大）— 影片時段由受試者自選且被要求「包含步行」→ 這不是真正的 free-living</strong>
+Protocol 明載參與者「asked to wear a video camera during free-living sessions <strong>of their choice</strong>」、「provided that <strong>walking behavior was included</strong>」、且「embrace all four PA domains as far as feasible」。結果是步行佔有效影片時間 <strong>42.1%</strong>——遠高於真實日常。三重後果：</p>
+<ol>
+<li>所有絕對誤差指標（MAPE、equivalence）都是在<strong>步行密度異常高</strong>的樣本上計算的；</li>
+<li>作者自陳「could not assess the specificity of step and bout detection during activities where false positive steps may occur」——而真實一日中，裝置誤差恰恰主要來自漫長靜態時段的偽陽性；</li>
+<li>標題與結論中的「Under Free-Living Conditions」因此<strong>過度宣稱</strong>。更精確的說法是「participant-curated, walking-enriched free-living sessions」。
+本研究報告的準確度應被視為<strong>真實全日表現的樂觀上限</strong>。</li>
+</ol>
+<p><strong>🚩 R3（中等）— 每人有效影片僅 2.69 小時，遠低於事前規劃</strong>
+Sample size 段落規劃「~5 hours per participant/week」、影片目標 8 小時。實得 150.6 h ÷ 56 人 = <strong>2.69 h/人</strong>。總 bout 數（10,194）確實遠超所需的 1,021，因此<strong>統計檢定力無虞</strong>；但事前計算的 1,021 是「<strong>per a given PA domain</strong>」。文中僅報告各 domain 佔<strong>時間</strong>的比例（41.8/26.1/19.5/12.6%），<strong>從未報告各 domain 的 bout 數，也從未呈現任何 domain 分層的準確度結果</strong>——儘管樣本量正是以 domain 為單位計算的。這是明確的<strong>事前規劃分析未執行</strong>。職業情境（12.6%）是否達到 1,021 個 bout，無法從文中確認。</p>
+<p><strong>🚩 R4（中等）— Spectrum 窄化未被承認</strong>
+BMI 23.7±2.6、排除疾病與步態限制。步數偵測誤差在肥胖與慢速步態者顯著較大，是此領域的既知事實。作者的限制清單完全未提 BMI 與健康狀態的外推邊界。</p>
+<p><strong>🚩 R5（輕微）— 消費級裝置的評估設定不反映實際使用</strong>
+Fitbit Inspire 2 戴在<strong>髖部</strong>（消費者實際戴在手腕）；Garmin 資料受限於 Fitabase 匯出的 <strong>15 分鐘 epoch</strong>——這是資料取得管道的限制，未必是裝置本身的時間解析度上限。結論「all methods with an epoch length ≥1 min, <strong>such as those commonly available in consumer-grade devices</strong>, proved largely inaccurate」把<strong>資料匯出管線的限制</strong>歸因給<strong>裝置</strong>，是一次隱性的歸因偷換。</p>
+<h3>統計</h3>
+<p><strong>🚩 R6（重大）— ±10% equivalence margin 完全無理據，且偏差方向有利於作者的既有立場</strong>
+文中對 ±10% 只有一句「Equivalence testing was conducted using TOST with a ±10% equivalence margin」，<strong>未提供任何理據</strong>：不是根據臨床可容忍誤差、不是根據步數–健康結局關聯的斜率、不是根據既有共識。</p>
+<p>依 JAMA 指引，這正是讀者必須自行判斷而非接受作者門檻之處 [參考: jug120004_2605_2611.md，&quot;investigators may have an incentive to be as lenient as possible with the choice of noninferiority threshold. Thus, accepting that threshold may not serve your patients' best interests&quot;]。</p>
+<p>本文的情況是這段警語的<strong>鏡像</strong>：在藥廠試驗中，寬鬆 margin 有利於「宣稱不劣性」；在<strong>本文中，嚴格 margin 有利於「宣稱裝置失敗」</strong>——而「裝置在 bout 層級不夠好」正是此團隊十年來的核心主張（見 SECTION-0 第 1 節）。值得注意的是，<strong>該團隊自己 2021 年在 J Aging Phys Act 的論文使用的是 ±15% 與 ±20% 的 equivalence zone</strong>（<a href="https://doi.org/10.1123/japa.2020-0499">DOI</a>，PubMed 檢索所得），本文卻改用更嚴格的 ±10% 且未說明改變理由。這不代表結論錯誤（多數失敗方法的誤差遠大於 20%，換成寬鬆 margin 仍會失敗），但<strong>margin 的選擇與作者的先驗立場同向，且與自身前例不一致，卻無任何辯護——這必須被標示出來</strong>。</p>
+<p><strong>🚩 R7（重大）— TOST 失敗被當成「已證明不等價」</strong>
+摘要「no methods met equivalence for the number of walking bouts」、「no methods met equivalence [for MVPA]」。但 <strong>TOST 未通過 = 未能證明等價 ≠ 已證明不等價</strong>。Figure 3 清楚顯示至少 <code>AG Wrist StepCount</code> 的 MVPA 失敗純粹來自 CI 過寬（點估計落在區間內），而非偏差。這在腕戴裝置上尤其重要，因為每人只戴 2/3 支腕戴裝置，<strong>腕戴方法的有效 n 僅約 37</strong>，CI 必然較寬（Figure 2、3 的腕部面板 CI 明顯較寬，圖中可見）。<strong>用一個對小樣本方法系統性不利的檢定，去比較樣本量本來就不同的方法，然後以二元通過／未通過呈現結果</strong>，是本文統計呈現最需要修正之處。</p>
+<p><strong>🚩 R8（重大）— ICC(3,1) 的選擇會掩蓋系統性偏差，且與外部文獻的比較非同類</strong>
+本文對裝置–參考標準的一致性使用 <strong>ICC(3,1)</strong>（fixed rater, <strong>consistency</strong>），而對標註者信度使用 <strong>ICC(2,1)</strong>（<strong>absolute agreement</strong>）。同一篇論文採用不一致的 ICC 形式，本身即需說明。更關鍵的是：<strong>consistency ICC 依定義忽略系統性偏差</strong>。當 AP 的 LPA MAPE 為 19.4%、MVPA MAPE 為 18.6%（皆為方向一致的系統性誤差）時，其 ICC(3,1) 仍達 .991——這個數字沒有錯，但它衡量的不是準確度。</p>
+<p>進一步的問題是，Discussion 直接把本文的 ICC(3,1)（AP .991、SW .988、AG_hip-1s .989）與 Hickey 的 <strong>ICC(2,1)</strong>（.975）並列，稱「comparable」。在存在系統性偏差時，consistency ICC 系統性 ≥ absolute-agreement ICC，<strong>這不是同類比較</strong>。</p>
+<p>最後，總步數的 ICC 本就會被受試者間巨大的步行量變異灌水——ICC ≈ .99 在此類資料上幾乎是保證會出現的數字，與方法品質關係薄弱。這正是為何 MAPE 與 equivalence testing 才是正確指標。<strong>Discussion 中援引 ICC 來建立與外部文獻的可比性，是本文論證最薄弱的環節。</strong></p>
+<p><strong>🚩 R9（重大）— ≥1 分鐘 epoch 的 bout 轉譯規則是作者自創，且無敏感度分析</strong>
+「≥20 steps/epoch 即為 bout」的規則邏輯是「每 3 秒 1 步 × 60 秒 = 20 步」。但這造成一個<strong>階梯函數</strong>：一個含 19 步的 1 分鐘 epoch → 0 秒步行；含 20 步 → <strong>完整 60 秒 bout</strong>。這在數學上<strong>保證</strong>了兩件事：總步行時長大幅高估、bout 數量大幅低估——而這正是文中觀察到的結果。15 分鐘的 ≥300 步規則問題更嚴重。</p>
+<p>換言之，「epoch ≥1 分鐘的方法對描述步行型態不準確」這個結論，<strong>有多大比例來自裝置、有多大比例來自作者選擇的轉譯規則，本文無法回答</strong>，因為沒有做任何門檻敏感度分析（例如 10、15、20、30 steps/min）。這是全文<strong>最大的未檢驗分析自由度（researcher degree of freedom）</strong>。作者對 event-based 配對規則做了誠實的自陳限制（限制 2），卻對這個影響更大的規則隻字未提。</p>
+<h3>敘事</h3>
+<p><strong>🚩 R10（中等）— 建構效度混淆：「裝置不準」vs「指標不可互換」</strong>
+對於 ≥1 分鐘 epoch 的方法，參考標準的 MVPA 是以 <strong>bout-level cadence</strong> 定義的，而裝置端只能以 <strong>epoch-level step accumulation</strong> 計算。作者自己在 Discussion 中正確指出這是「two non-interchangeable metrics」（引 ref 68）。但摘要與結論的措辭（「largely inaccurate」「did not translate into comparable accuracy」）把這<strong>呈現為裝置的準確度失敗</strong>，而它至少有一部分是<strong>建構不同</strong>：Fitbit 的步數本身沒有錯，錯的是從中導出的 cadence 是另一個東西。這個區別對讀者的行動有實質差異——前者暗示「換裝置」，後者暗示「換指標定義或換資料解析度」。</p>
+<p><strong>🚩 R11（輕微）— Results 與 Conclusion 的排序不一致，且無事前指定的綜合排序規則</strong>
+Results：「the four best-performing methods <strong>from best to least accurate</strong> were AG_hip-1s, SW, AP and AG_wrist-StepCount」（AG_hip-1s 第一）。
+Abstract / Conclusion：「Overall, <strong>AP and SW</strong> showed the most consistent performance」（AP、SW 領銜）。
+兩者不矛盾（前者是三指標 MAPE 綜合、後者納入 balanced accuracy），但<strong>沒有任何事前指定的綜合排序規則</strong>，導致「誰最好」取決於作者在該段落選擇強調哪個指標。</p>
+<p><strong>🚩 R12（輕微）— 數值一致性無法核對</strong>
+步數 MAPE 10–20% 的清單文字寫「seven additional methods」卻列出 8 個名稱；bout 時長的 SW MAPE（18.6%）與 MVPA 的 AP MAPE（18.6%）數值相同。兩者都可能是巧合或排版問題，但 <strong>Supplemental Table 8 / File 9 未保留於 markdown，無法核對</strong>。[限制：PDF 轉檔 markdown 未保留補充資料]</p>
+<h3>外推</h3>
+<p><strong>🚩 R13（中等）— 對既有流行病學文獻的意涵被過度含蓄</strong>
+本文最重要的下游意涵是：<strong>近年以 cadence 為基礎的步數–死亡率文獻（100 steps/min 門檻等），若其資料來自 ≥1 分鐘 epoch 的步數累積，則其「MVPA」暴露變項存在系統性、方向一致的錯誤分類</strong>（LPA 高估、MVPA 低估）。作者在 Implication 段落點到了（「some studies report more consistent associations between true cadence—rather than step accumulation over 1-minute epochs—and health outcomes」），但語氣極為保留，且未量化這種錯誤分類對關聯估計的可能影響方向（非差別性錯誤分類通常會使關聯趨近虛無，因此既有文獻可能<strong>低估</strong>了真實的 cadence–結局關聯）。這是資料完全支持、卻未被說出的推論。</p>
+<hr />
+<h2>F. 最終裁決</h2>
+<p><strong>測量方法可信度：</strong></p>
+<table>
+<thead>
+<tr>
+<th>宣稱層次</th>
+<th>可信度</th>
+<th>理由</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>「步數準確 ≠ 步行型態準確」（核心命題）</td>
+<td><strong>高</strong></td>
+<td>黃金標準嚴謹、標註信度優異、bout 數量遠超事前計算、登錄之 primary outcome 為陰性且如實報告、temporal vs event 的落差在圖上極為清楚（Figure 4）。即使把所有紅旗的影響方向全部考慮進去，也不足以推翻此命題。</td>
+</tr>
+<tr>
+<td>「離散 bout 偵測全面失敗」</td>
+<td><strong>中至高</strong></td>
+<td>Event-level balanced accuracy ≤51%（Youden J ≈ 0.03 甚至為負）確實驚人，但 event-based 配對規則為作者自訂（且為自家開發方法），且 TN 的建構在 markdown 中無法查證。</td>
+</tr>
+<tr>
+<td>「≥1 分鐘 epoch 不能用於步行型態」</td>
+<td><strong>中</strong></td>
+<td>結論方向幾乎必然正確，但誤差的量級被作者自創的 ≥20 steps/epoch 轉譯規則放大，程度不明且無敏感度分析。</td>
+</tr>
+<tr>
+<td>「AP / SW / AG-hip-1s / AG-wrist-StepCount 排序」</td>
+<td><strong>中至低</strong></td>
+<td>activPAL 使用專有 bout 分割（R1）；腕戴 n 僅約 2/3；Adept 被排除於所有主圖；ML 模型存在 domain shift；無事前指定的綜合排序規則。</td>
+</tr>
+<tr>
+<td>「絕對準確度數值可外推至真實全日」</td>
+<td><strong>低</strong></td>
+<td>步行佔時 42.1%、影片時段由受試者自選並被要求包含步行、明確無法評估靜態時段的偽陽性。</td>
+</tr>
+</tbody>
+</table>
+<p><strong>適用情境（可放心採用）</strong>：</p>
+<ul>
+<li>方法學決策：規劃新的穿戴裝置研究時，選擇踝戴（SW）測步數、大腿（AP）測步行時間、髖部 1 秒 epoch（AG）或腕部 StepCount-SSL 作為折衷。</li>
+<li>反向使用：作為<strong>否證性證據</strong>，用以拒絕「本研究可用消費級手環量化活動片段化 / MVPA」這類研究計畫的可行性主張。</li>
+<li>既有 ActiGraph 資料庫再分析時，避免 LFE + 60 秒 epoch 組合（步行時長可高估近一倍）。</li>
+</ul>
+<p><strong>不建議使用的情境</strong>：</p>
+<ul>
+<li>推估任一裝置在<strong>真實全日</strong>、<strong>臨床族群</strong>、<strong>肥胖或步態異常者</strong>身上的準確度。</li>
+<li>據此宣稱某消費級品牌「不準確」——評估設定（髖戴 Fitbit、15 分鐘 Garmin epoch）不反映實際使用。</li>
+<li>據此對五個腕部 ML 演算法做優劣排序（domain shift 使比較不公平；Oak 更是用途錯配）。</li>
+</ul>
+<p><strong>若要改觀，最需要的 3 個關鍵改進</strong>：</p>
+<ol>
+<li><strong>對 ≥1 分鐘 epoch 的 bout 轉譯門檻做敏感度分析</strong>（10 / 15 / 20 / 30 steps/min），並將 activPAL 的 step timestamp 也套用共用 bout 規則重跑一次。這兩項可直接以現有資料完成，且決定了「裝置排序」結論的穩健性。</li>
+<li><strong>報告事前規劃的 PA domain 分層結果，以及 Figure 1 應有的資料流數量</strong>（原始錄影時數、各排除理由的時數）。前者是註冊時的樣本量依據，後者是判斷保留資料是否為偏差子集的必要條件。</li>
+<li><strong>以完整 24 小時（含長時間靜態）資料重做至少一個子樣本的驗證</strong>，或至少在腕戴子樣本上量化靜態時段的偽陽性率。沒有這一步，所有絕對誤差數值都只是樂觀上限。</li>
+</ol>
+<p><strong>一句話結論</strong>：</p>
+<blockquote>
+<p>這篇設計嚴謹、如實報告陰性主結果的研究證明了一件重要的事——穿戴裝置算得準「幾步」，不代表算得準「怎麼走」；但它對各裝置的優劣排序，因為 activPAL 用了不同規則、長 epoch 的轉譯門檻是作者自訂、且影片時段由受試者自選而步行密度異常偏高，可信度明顯低於其核心命題。</p>
+</blockquote>
+<hr />
+<p><em>本評讀之外部資料來源：PubMed（作者過往著作、Toth 2018 比較文獻、editorial 檢索）、ClinicalTrials.gov API v2（NCT05446454 註冊資訊）、journalmetrics.org 與 LetPub（期刊指標）、M2S Lab 與 ResearchGate（作者背景）。方法學參照 JAMA Users' Guides：<code>jug120004_2605_2611.md</code>（equivalence / margin 選擇）、<code>jama_liu_2019_ug_190001.md</code>（機器學習三階段評估）。文中所有 likelihood ratio 為本評讀依 balanced accuracy 推導，推導方法與假設已於 B 節完整揭露。</em></p>
+
+<footer class="appraisal-meta">評讀資訊：模型：claude-opus-5 (claude)  ·  route：diagnostic  ·  產出時間：2026-08-26 11:29 CST</footer>
+</main>
+</body>
+</html>
