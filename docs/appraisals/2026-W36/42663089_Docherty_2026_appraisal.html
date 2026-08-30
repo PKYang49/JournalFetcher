@@ -1,0 +1,975 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Personalized evaluation of NT-proBNP and clinical characteristics in suspected heart failure: the PRECISE-HF study.</title>
+<style>
+  :root {
+    --bg: #fafafa;
+    --card: #ffffff;
+    --text: #1a1a1a;
+    --muted: #6b6b6b;
+    --border: #e5e5e5;
+    --accent: #0b5fff;
+  }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang TC",
+      "Microsoft JhengHei", sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    margin: 0;
+    padding: 24px 16px 64px;
+    line-height: 1.72;
+  }
+  main {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    margin: 0 auto;
+    max-width: 840px;
+    padding: 22px 26px;
+  }
+  nav {
+    margin: 0 auto 14px;
+    max-width: 840px;
+    color: var(--muted);
+    font-size: 14px;
+  }
+  a { color: var(--accent); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  h1, h2, h3, h4 { line-height: 1.35; }
+  h1 { font-size: 26px; margin-top: 0; }
+  h2 { border-top: 1px solid var(--border); padding-top: 18px; }
+  code {
+    background: rgba(127, 127, 127, 0.12);
+    border-radius: 4px;
+    padding: 1px 4px;
+  }
+  table {
+    border-collapse: collapse;
+    table-layout: auto;
+    width: 100%;
+    max-width: 100%;
+  }
+  th, td {
+    border: 1px solid var(--border);
+    overflow-wrap: anywhere;
+    padding: 6px 8px;
+    text-align: left;
+    vertical-align: top;
+  }
+  blockquote {
+    border-left: 3px solid var(--accent);
+    color: var(--muted);
+    margin-left: 0;
+    padding-left: 14px;
+  }
+  .appraisal-meta {
+    border-top: 1px solid var(--border);
+    margin-top: 28px;
+    padding-top: 14px;
+    color: var(--muted);
+    font-size: 13px;
+  }
+  @media (max-width: 600px) {
+    body {
+      padding: 12px 8px 40px;
+    }
+    main {
+      padding: 16px 12px;
+    }
+    h1 {
+      font-size: 22px;
+    }
+    table {
+      font-size: 12px;
+      table-layout: fixed;
+    }
+    th, td {
+      padding: 4px 5px;
+    }
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #1a1a1a;
+      --card: #242424;
+      --text: #e8e8e8;
+      --muted: #999;
+      --border: #333;
+      --accent: #6ea8ff;
+    }
+  }
+</style>
+</head>
+<body>
+<nav><a href="../../2026-W36.html">← 回到 2026-W36 週報</a></nav>
+<main>
+<h1>Personalized evaluation of NT-proBNP and clinical characteristics in suspected heart failure: the PRECISE-HF study.</h1>
+<h1>醫學文獻批判性評讀</h1>
+<p><strong>Personalized evaluation of NT-proBNP and clinical characteristics in suspected heart failure: the PRECISE-HF study</strong></p>
+<hr />
+<h2>SECTION-0：文章全面描述</h2>
+<h3>0. 文章身份證</h3>
+<table>
+<thead>
+<tr>
+<th>項目</th>
+<th>內容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>標題</td>
+<td>Personalized evaluation of NT-proBNP and clinical characteristics in suspected heart failure: the PRECISE-HF study</td>
+</tr>
+<tr>
+<td>期刊</td>
+<td>European Heart Journal（advance article / accepted manuscript）</td>
+</tr>
+<tr>
+<td>年份</td>
+<td>2026</td>
+</tr>
+<tr>
+<td>DOI</td>
+<td>10.1093/eurheartj/ehag686；PMID 42663089</td>
+</tr>
+<tr>
+<td>文章類型</td>
+<td><strong>診斷模型開發與驗證研究（diagnostic prediction model development + internal split validation + external validation）</strong>，屬 SKILL-C 路由</td>
+</tr>
+<tr>
+<td>次分類</td>
+<td>機器學習（XGBoost）為基礎的診斷機率模型，以常規醫療資料庫（routinely collected EHR）建構</td>
+</tr>
+<tr>
+<td>通報規範</td>
+<td>文內未聲明遵循 TRIPOD 或 TRIPOD+AI；未見 STARD 流程圖 [文內未提供]</td>
+</tr>
+</tbody>
+</table>
+<p><strong>類別判定說明</strong>：本文同時具備「診斷準確度比較」（PRECISE-HF vs ESC 閾值的 2×2 表）與「臨床預測模型」（辨別力 + 校準度 + 外部驗證）兩種成分，故 SKILL-C 的 B、C、D 三段均需執行。</p>
+<hr />
+<h3>1. 作者團隊評論</h3>
+<p><strong>通訊作者</strong>：Kieran F. Docherty，University of Glasgow, School of Cardiovascular &amp; Metabolic Health / BHF Glasgow Cardiovascular Research Centre [文內]。</p>
+<p><strong>背景</strong>：Docherty 為 Glasgow 心臟科臨床資深講師（Clinical Senior Lecturer），研究聚焦心衰竭、心肌梗塞與心室重塑，發表逾 100 篇，含 NEJM / Lancet / JAMA，2022 年獲 ESC-HFA 年輕臨床研究者獎；為 DAPA-HF 系列分析的核心作者之一 [外部: University of Glasgow 個人頁、ResearchGate、Google Scholar]。</p>
+<p><strong>團隊構成與領域地位</strong>：這是一份極高權重的心衰竭學界名單——McMurray、Petrie、Jhund、Campbell、Gardner（Glasgow）、Køber、Schou（Copenhagen）、Solomon、Vaduganathan（Brigham）、Bayes-Genis（Badalona）、Mills（Edinburgh）、Sundström / Lindholm / Gustafsson（Uppsala）。這不是跨領域首次切入，而是該領域的核心圈層。</p>
+<p><strong>須特別指出的三層結構性關聯</strong>（這是本文最需要讀者自行留意的部分）：</p>
+<ol>
+<li>
+<p><strong>比較對象的作者就是本文作者。</strong> 本文用來當作對照的兩組閾值，其原始文獻的作者高度重疊：ESC 2021 HF Guidelines（ref 7）作者含 <strong>R.S. Gardner</strong>；HFA 年齡校正 rule-in 共識聲明（ref 8, Bayes-Genis et al. Eur J Heart Fail 2023）第一作者 <strong>Bayes-Genis</strong>、共同作者含 <strong>Docherty、Petrie、Anderson</strong>。也就是說，「宣稱優於現行指引閾值」的研究，是由制定該閾值的同一批人執行、發表於同一學會（ESC）的旗艦期刊。這未必是缺點——作者願意推翻自己先前的建議是誠實的表現——但它意味著<strong>此比較不是獨立第三方驗證</strong>，且結論與作者既有的「NT-proBNP 應個人化」立場高度一致（確認偏差風險）。</p>
+</li>
+<li>
+<p><strong>同一資料集的系列發表（prior commitment bias）。</strong> 參考文獻 4（Docherty KF, Heywood B, Bayes-Genis A, Campbell RT, Henderson AD, Jhund PS, et al. <em>Eur Heart J</em> 2026;47:927–938, ehaf675）由幾乎相同的作者群、使用同一 CPRD 資料庫，主張「社區疑似心衰竭患者早期啟動疾病修飾治療有益」[外部: Oxford Academic]。本文則主張「用模型更早、更精準地把人送去做心臟超音波，以便更早啟動疾病修飾治療」。兩篇形成互相支撐的敘事鏈，但<strong>皆源自同一筆觀察性資料，沒有獨立重複驗證</strong>。</p>
+</li>
+<li>
+<p><strong>商業關聯與敘事對齊。</strong> 作者名單中 <strong>Samuel Adamsson Eryd（AstraZeneca, CVRM Evidence Strategy, Gothenburg）</strong> 與 <strong>Katrina Mullin（AstraZeneca, CV Renal Metabolism Global Medical Affairs, Cambridge）</strong> 為藥廠員工；分析支援由 <strong>Human Data Sciences（Heywood、Morgan）提供並由 AstraZeneca 出資</strong> [文內: Funding]。AstraZeneca 為 dapagliflozin（SGLT2 抑制劑，心衰竭疾病修飾治療）的藥證持有者。本文的核心臨床訴求——「更早確診 → 更早啟動疾病修飾治療」——與擴大 SGLT2i 使用族群的商業利益方向一致。此處並非指控數據造假，而是指出<strong>研究問題的選擇與結論的框架方式（framing）與贊助者利益一致</strong>，讀者應知情。</p>
+</li>
+</ol>
+<p><strong>利益揭露的問題</strong>：轉檔 markdown 中<strong>只有 Funding 段，沒有任何 Conflict of Interest / Declaration of Interest 段落</strong>。查閱 OUP 線上頁面亦未顯示完整揭露聲明（advance article 的 accepted manuscript 版本尚未含最終揭露）[外部: academic.oup.com 文章頁]。以本文作者群普遍與多家藥廠有顧問/演講關係而言，<strong>缺少 COI 聲明是本版本一個實質的透明度缺口</strong>。[限制：accepted manuscript 未提供 COI]</p>
+<hr />
+<h3>2. 文獻 Metadata 整理</h3>
+<table>
+<thead>
+<tr>
+<th>項目</th>
+<th>內容</th>
+<th>來源</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Received</td>
+<td>2026-07-08</td>
+<td>[外部: OUP 文章頁]</td>
+</tr>
+<tr>
+<td>Revision received</td>
+<td>2026-07-30</td>
+<td>[外部: OUP 文章頁]</td>
+</tr>
+<tr>
+<td>Published (advance)</td>
+<td>2026-08-28</td>
+<td>[外部: OUP 文章頁]</td>
+</tr>
+<tr>
+<td>投稿至線上刊出</td>
+<td><strong>51 天</strong>（其中投稿至修訂稿返回僅 22 天）</td>
+<td>[自行計算]</td>
+</tr>
+<tr>
+<td>EHJ 平均審查時程</td>
+<td>首次決定約 20 天；第一輪審查約 4.7 週；投稿至接受一般為 4–8 個月</td>
+<td>[外部: manusights / LetPub / SciRev]</td>
+</tr>
+<tr>
+<td>Impact Factor</td>
+<td>45.3（2026 年 6 月發布，基於 2025 引用資料），JCR Q1</td>
+<td>[外部: journalmetrics.org]</td>
+</tr>
+<tr>
+<td>Open Access</td>
+<td>是（CC BY 4.0）</td>
+<td>[文內]</td>
+</tr>
+<tr>
+<td>邀稿 vs 投稿</td>
+<td>文內未揭露；無 invited 標示</td>
+<td>[文內未提供]</td>
+</tr>
+</tbody>
+</table>
+<p><strong>解讀</strong>：51 天從投稿到線上刊出，相對 EHJ 一般 4–8 個月的節奏屬<strong>顯著加速</strong>（可能為 fast-track 或編輯高度優先處理）。這對讀者有兩層意義：(a) 期刊認為本文具高度時效性與臨床影響力；(b) 22 天內完成同儕審查、作者修訂、再投稿，<strong>同儕審查的深度必然受限</strong>——特別是對於一個牽涉 XGBoost 超參數調校、43% 缺值處理、外部驗證閾值可轉移性等技術細節的模型論文，這樣的時程不容易支撐充分的方法學審查。這與本文下方 D 段所指出的數項未被要求補充的關鍵分析（缺 NT-proBNP 單獨基準、缺外部驗證 rule-out 分母）是相符的。[推論：依據投稿-修訂時程與期刊公告平均值]</p>
+<hr />
+<h3>3. 研究背景 [僅根據本篇文內資料]</h3>
+<p><strong>既有事實</strong>：人口老化與糖尿病、肥胖、慢性腎病盛行率上升，社區新發心衰竭疑似個案將持續增加；心臟超音波量能已飽和、等待時間長（引 NHS England 診斷等待報告）。診斷延誤導致更多病人以「住院」作為首次心衰竭診斷，而住院診斷的成本與死亡風險均高於社區診斷。</p>
+<p><strong>知識缺口</strong>：現行指引建議以利鈉肽濃度作為 rule-out 測試以決定是否轉介心臟超音波，但 NT-proBNP 濃度會受年齡、族裔、腎功能、心律（心房顫動）、BMI 等因素影響，且<strong>現行的各種「特徵校正閾值」都把 NT-proBNP 當作類別變項處理，且每次只校正一個臨床特徵</strong>。院內急性心衰竭情境已有 CoDE-HF 工具證明多變項個人化機率法優於單一閾值（ref 19），但<strong>社區/門診情境（pre-test probability 與臨床脈絡皆不同）尚無對應工具</strong>。</p>
+<p><strong>Research question</strong>：在社區疑似新發心衰竭且測量 NT-proBNP 的成人中，將 NT-proBNP 以連續變項形式結合多項常規可得臨床特徵所產生的個人化機率，能否較 ESC 固定 rule-out 閾值與 HFA 年齡校正 rule-in 閾值提供更好的診斷表現？[文內: Graphical Abstract &quot;Key Question&quot; 明確陳述]</p>
+<hr />
+<h3>4. 研究設計與方法</h3>
+<p><strong>PICO</strong></p>
+<table>
+<thead>
+<tr>
+<th>元素</th>
+<th>內容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>P</strong></td>
+<td>≥18 歲、無心衰竭病史（無基層診斷碼、無心衰竭相關住院）、2018-01-01 至 2025-03-31 間因臨床懷疑心衰竭而在社區測量 NT-proBNP、且已在該診所登記滿 12 個月、資料可與 HES 連結者。N = 535,583</td>
+</tr>
+<tr>
+<td><strong>I（Index test）</strong></td>
+<td>PRECISE-HF₁₃ / PRECISE-HF₆ 之 XGBoost 預測機率（0–100）</td>
+</tr>
+<tr>
+<td><strong>C（對照 index test）</strong></td>
+<td>① ESC rule-out：NT-proBNP ≥125 pg/mL；② ESC-HFA 年齡校正 rule-in：&lt;50 歲 ≥125、50–74 歲 ≥250、≥75 歲 ≥500 pg/mL</td>
+</tr>
+<tr>
+<td><strong>C（Reference standard）</strong></td>
+<td><strong>12 個月內首次記錄的心衰竭診斷</strong>：基層照護 SNOMED-CT 診斷碼，或住院紀錄中任一診斷欄位出現 ICD-10 心衰竭碼</td>
+</tr>
+<tr>
+<td><strong>O</strong></td>
+<td>主要：診斷表現（sensitivity / specificity / PPV / NPV / LR± / DOR）、辨別力（AUROC）、校準度（calibration slope &amp; intercept、Brier score）。次要：12 個月內全因死亡或心衰竭住院之累積發生率（依 PRECISE-HF 分組）</td>
+</tr>
+</tbody>
+</table>
+<p><strong>關鍵設計細節</strong></p>
+<ul>
+<li><strong>設計類型</strong>：回溯性世代研究，以電子病歷資料庫進行診斷模型開發與驗證（CPRD Aurum 12/2025 build + HES linkage，涵蓋約 24% 英國人口）。</li>
+<li><strong>候選模型</strong>：GLM、LASSO glmnet、Random Forest（以上三者用完整個案分析）、XGBoost（完整個案版與全資料集版）。最終選用 <strong>XGBoost 全資料集版</strong>（利用 XGBoost 原生缺值處理，<strong>不做任何插補</strong>）。</li>
+<li><strong>變項選擇</strong>：<strong>a priori 指定 13 項</strong>（NT-proBNP 連續變項 + 年齡、性別、族裔、BMI、eGFR、收縮壓、貧血、AF 病史、糖尿病、心肌梗塞、COPD、迴圈利尿劑處方），非資料驅動篩選。</li>
+<li><strong>缺值</strong>：BMI 43.0%、收縮壓 13.8%、族裔 3.8%、血紅素 3.8%、eGFR 1.7%；<strong>46.4% 的參與者至少有一項預測變項缺失</strong>。</li>
+<li><strong>驗證策略</strong>：<strong>隨機切分</strong>（derivation n=374,909 / internal validation n=160,674，70:30）；外部驗證為瑞典 REVOLUTION-HF 世代（n=4,492），<strong>直接套用模型係數與閾值、不重新校準</strong>。</li>
+<li><strong>閾值訂定</strong>：rule-out 取 sensitivity ≥90%（對應預測機率 4.7%）；rule-in 取 specificity ≥90%（對應預測機率 21.6%）。</li>
+<li><strong>樣本量</strong>：以 Riley 等人的 <code>pmsampsize</code>（17 個候選參數、預期 C-statistic 0.75、outcome prevalence 10%）計算最小需求 1,965 人 / 197 事件；實際遠超。作者自承此計算對無固定迴歸係數的 XGBoost 只是近似。</li>
+<li><strong>軟體</strong>：R 4.5.1，<code>xgboost</code> 3.2.1.1。</li>
+<li><strong>重要的排除規則</strong>：<strong>追蹤未滿 12 個月者，以及 12 個月內死亡但無心衰竭診斷紀錄且無心臟超音波紀錄者，均被排除</strong>（作者理由為避免錯誤分類）。</li>
+</ul>
+<p><strong>未報告 / 未執行的重要方法學元素</strong>（診斷模型評讀的標準要求）：</p>
+<ul>
+<li>無 STARD / 流程圖：<strong>從多少人篩選到 535,583 人、排除了多少人與排除原因的數字，全文未報告</strong>。[限制：轉檔 markdown 與 8 張圖頁均未見 flow diagram]</li>
+<li>未聲明遵循 TRIPOD 或 TRIPOD+AI。</li>
+<li>超參數調校方式僅指向 Supplementary material；<strong>是否在獨立於 internal validation set 的資料上調校，正文未說明</strong>。這是 JAMA ML 評讀指南明確要求的項目：「超參數必須在獨立於驗證集的資料上調校」[參考: jama_liu_2019_ug_190001.md，&quot;Development of Machine Learning Models&quot; 節]。</li>
+<li>未報告 NT-proBNP 單獨（連續變項）的 AUROC 作為基準（詳見 D 段）。</li>
+</ul>
+<hr />
+<h3>5. 研究結果重點整理</h3>
+<p><strong>基線特徵（總世代 N=535,583）</strong></p>
+<table>
+<thead>
+<tr>
+<th>特徵</th>
+<th>數值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>年齡（歲，mean±SD）</td>
+<td>68.8 ± 14.2</td>
+</tr>
+<tr>
+<td>男性</td>
+<td>227,871（42.5%）</td>
+</tr>
+<tr>
+<td>族裔：白人 / 亞裔 / 黑人 / 混血 / 其他 / 缺失</td>
+<td>455,981（85.1%）/ 33,367（6.2%）/ 15,505（2.9%）/ 4,284（0.8%）/ 6,211（1.2%）/ 20,235（3.8%）</td>
+</tr>
+<tr>
+<td>NT-proBNP（pg/mL，median [IQR]）</td>
+<td><strong>123（54–340）</strong></td>
+</tr>
+<tr>
+<td>≥125 pg/mL / 超過年齡校正 rule-in</td>
+<td>49.7% / 24.2%</td>
+</tr>
+<tr>
+<td>收縮壓（mmHg）</td>
+<td>135.7 ± 17.1（缺 13.8%）</td>
+</tr>
+<tr>
+<td>BMI（kg/m²）</td>
+<td>30.5 ± 7.2（缺 43.0%）；有紀錄者中 47.4% ≥30</td>
+</tr>
+<tr>
+<td>eGFR（mL/min/1.73m²）</td>
+<td>79.7 ± 20（缺 1.7%）；&lt;60 者 16.7%</td>
+</tr>
+<tr>
+<td>貧血</td>
+<td>101,558（19.0%）</td>
+</tr>
+<tr>
+<td>AF / COPD / 糖尿病 / 心肌梗塞</td>
+<td>12.2% / 13.2% / 18.7% / 5.0%</td>
+</tr>
+<tr>
+<td>迴圈利尿劑（前 12 個月）</td>
+<td>79,090（14.8%）</td>
+</tr>
+</tbody>
+</table>
+<p><strong>結果事件</strong>：12 個月內記錄心衰竭診斷 <strong>53,525 例（10.0%）</strong>〔正文寫作「5325 (10.0%)」顯係排版/轉檔缺字，因 31,460 門診 + 22,065 住院 = 53,525，且 derivation 37,373 + validation 16,152 = 53,525，算術完全自洽〕。其中門診診斷 31,460（58.8%），以住院為首次記錄者 22,065（41.2%）。中位確診時間：門診 48 天（IQR 16–104）、住院 71 天（IQR 15–188）。2018→2023 年 NT-proBNP 檢測人數增加 88%，12 個月內確診人數增加 43%。</p>
+<p><strong>主要診斷表現（internal validation cohort, n=160,674；HF n=16,152, 10.1%）</strong></p>
+<table>
+<thead>
+<tr>
+<th>指標</th>
+<th>ESC ≥125 rule-out</th>
+<th>PRECISE-HF₆ rule-out</th>
+<th>PRECISE-HF₁₃ rule-out</th>
+<th>ESC-HFA 年齡校正 rule-in</th>
+<th>PRECISE-HF₆ rule-in</th>
+<th>PRECISE-HF₁₃ rule-in</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>TP</td>
+<td>15,087</td>
+<td>14,541</td>
+<td>14,541</td>
+<td>12,791</td>
+<td>11,319</td>
+<td>11,383</td>
+</tr>
+<tr>
+<td>FN</td>
+<td>1,065</td>
+<td>1,611</td>
+<td>1,611</td>
+<td>3,361</td>
+<td>4,833</td>
+<td>4,769</td>
+</tr>
+<tr>
+<td>FP</td>
+<td>64,603</td>
+<td>43,755</td>
+<td>42,047</td>
+<td>26,160</td>
+<td>14,415</td>
+<td>14,429</td>
+</tr>
+<tr>
+<td>TN</td>
+<td>79,919</td>
+<td>100,767</td>
+<td>102,475</td>
+<td>118,362</td>
+<td>130,107</td>
+<td>130,093</td>
+</tr>
+<tr>
+<td>Sensitivity</td>
+<td>93.4 (93.0–93.8)</td>
+<td>90.0 (89.6–90.5)</td>
+<td>90.0 (89.6–90.5)</td>
+<td>79.2 (78.6–79.8)</td>
+<td>70.1 (69.4–70.8)</td>
+<td>70.5 (69.8–71.2)</td>
+</tr>
+<tr>
+<td>Specificity</td>
+<td>55.3 (55.0–55.6)</td>
+<td>69.7 (69.5–70.0)</td>
+<td><strong>70.9 (70.7–71.1)</strong></td>
+<td>81.9 (81.7–82.1)</td>
+<td>90.0 (89.9–90.2)</td>
+<td>90.0 (89.9–90.2)</td>
+</tr>
+<tr>
+<td>PPV</td>
+<td>18.9 (18.7–19.2)</td>
+<td>24.9</td>
+<td>25.7 (25.3–26.1)</td>
+<td>32.8 (32.4–33.3)</td>
+<td>44.0</td>
+<td><strong>44.1 (43.5–44.7)</strong></td>
+</tr>
+<tr>
+<td>NPV</td>
+<td>98.7 (98.6–98.8)</td>
+<td>98.4</td>
+<td>98.5 (98.4–98.5)</td>
+<td>97.2</td>
+<td>96.4</td>
+<td>96.5</td>
+</tr>
+<tr>
+<td><strong>LR+</strong></td>
+<td>2.09</td>
+<td>2.97</td>
+<td><strong>3.09 (3.06–3.12)</strong></td>
+<td>4.37</td>
+<td>7.03</td>
+<td><strong>7.06 (6.93–7.19)</strong></td>
+</tr>
+<tr>
+<td><strong>LR−</strong></td>
+<td><strong>0.12 (0.11–0.13)</strong></td>
+<td>0.14</td>
+<td>0.14 (0.13–0.15)</td>
+<td>0.25</td>
+<td>0.33</td>
+<td>0.33</td>
+</tr>
+<tr>
+<td>DOR</td>
+<td>17.5 (16.5–18.7)</td>
+<td>20.8</td>
+<td><strong>22.0 (20.9–23.2)</strong></td>
+<td>17.2 (16.5–17.9)</td>
+<td>21.1</td>
+<td><strong>21.5 (20.7–22.4)</strong></td>
+</tr>
+</tbody>
+</table>
+<p><strong>模型整體表現</strong>：PRECISE-HF₁₃ internal AUROC <strong>0.898（95% CI 0.895–0.900，見 Figure 1）</strong>〔摘要寫 0.896，正文與圖為 0.898〕；calibration slope 1.023、intercept 0.038、Brier 0.061。變項重要性：<strong>NT-proBNP 佔模型預測 &gt;80%</strong>，其次為年齡、AF、迴圈利尿劑、eGFR、BMI。精簡版 PRECISE-HF₆（僅上述六項）AUROC 0.894、Brier 0.062。</p>
+<p><strong>每 1000 人的臨床影響（Figure 3 實際數字）</strong></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>ESC 閾值</th>
+<th>PRECISE-HF₁₃</th>
+<th>差異</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Ruled out</td>
+<td>504（其中漏診 7）</td>
+<td><strong>648（其中漏診 10）</strong></td>
+<td>+144 ruled out / +3 漏診</td>
+</tr>
+<tr>
+<td>Grey zone</td>
+<td>253（HF 14）</td>
+<td>191（HF 20）</td>
+<td>−62</td>
+</tr>
+<tr>
+<td>Ruled in</td>
+<td>243（HF 80、非 HF 163）</td>
+<td>161（HF 71、非 HF 90）</td>
+<td>−73 偽陽性、−9 真陽性</td>
+</tr>
+<tr>
+<td><strong>需做心臟超音波</strong></td>
+<td><strong>496（49.6%）</strong></td>
+<td><strong>352（35.2%）</strong></td>
+<td><strong>−144（−29%）</strong></td>
+</tr>
+<tr>
+<td>心臟超音波陽性率（診斷產率）</td>
+<td>94/496 = <strong>19.0%</strong></td>
+<td>91/352 = <strong>25.9%</strong></td>
+<td>+6.9 個百分點 [自行計算]</td>
+</tr>
+</tbody>
+</table>
+<p><strong>次組表現（Supplementary Table 3；僅正文轉述可得）</strong>：ESC ≥125 的 sensitivity 從 &lt;50 歲的 75% 變動到 ≥80 歲的 97%；黑人族裔僅 81%（白人 94%、亞裔 87%）；eGFR 較佳者、無 AF 者、BMI ≥35 者 sensitivity 亦較低。年齡校正 rule-in 的 specificity 從 &lt;50 歲 88.5% 降至 ≥80 歲 69.0%。PRECISE-HF₁₃ 在各次組間的變異「較小」（Supplementary Table 5）——但<strong>具體數值未在正文呈現，無法核實其變異縮小的幅度</strong>。[限制：轉檔 markdown 未包含 Supplementary Tables 3–6 與 Supplementary Figures 1–4]</p>
+<p><strong>外部驗證（REVOLUTION-HF，瑞典，n=4,492；HF 1,235 [27.5%]）</strong></p>
+<table>
+<thead>
+<tr>
+<th>指標</th>
+<th>數值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>AUROC</td>
+<td><strong>0.757</strong>（vs internal 0.898）</td>
+</tr>
+<tr>
+<td>Calibration slope / intercept</td>
+<td>1.02 / −0.01</td>
+</tr>
+<tr>
+<td>Brier score</td>
+<td><strong>0.163</strong>（vs internal 0.061）</td>
+</tr>
+<tr>
+<td>Rule-out sensitivity / NPV</td>
+<td><strong>100% / 100%</strong>（<strong>ruled out 的百分比未報告</strong>）</td>
+</tr>
+<tr>
+<td>Rule-in specificity / PPV</td>
+<td><strong>55.5% / 40.5%</strong>（vs internal 90.0% / 44.1%）</td>
+</tr>
+</tbody>
+</table>
+<p><strong>預後分層（Figure 4，internal validation cohort）</strong>：12 個月內全因死亡或心衰竭住院事件率——ruled out 1.1（95% CI 1.0–1.2）/100 人年；grey zone 7.7（7.3–8.0）；ruled in 38.5（37.6–39.4）/100 人年。</p>
+<p><strong>線上計算器</strong>：https://uogheartfailure.shinyapps.io/precise_hf/</p>
+<hr />
+<h3>6. 作者討論與評論重點</h3>
+<p><strong>作者主要訊息</strong>：PRECISE-HF（13 變項與 6 變項版本）較現行 NT-proBNP 閾值有「favourable」診斷表現；rule-out 可減少 29% 不必要的心臟超音波（代價為每 1000 人多漏 3 例），rule-in 可減少 34% 的 rule-in 轉介量並把 PPV 從 32.8% 提升到 44.1%；模型同時具預後分層能力（grey zone 7 倍、rule-in 40 倍風險）；因此可用於<strong>優先排序</strong>心臟超音波，加速確診與疾病修飾治療的啟動。</p>
+<p><strong>與現有文獻的關係</strong>：作者定位本文為 CoDE-HF（急性住院情境）概念向社區/門診情境的延伸，並明確指出既有的各種特徵校正閾值的兩大限制——把 NT-proBNP 當類別變項、一次只校正一個特徵。</p>
+<p><strong>作者自陳的限制（文內逐條）</strong>：① 回溯性、依賴診斷碼而非標準化定義，未經專家前瞻性判定；② 英國實務使用 400 pg/mL 作為轉介門檻，低於此值者較不會被轉介、較不會被診斷，可能造成 verification bias 並虛高 rule-out sensitivity（作者辯稱本世代中 400 pg/mL 的 sensitivity 為 80%，顯示相當比例低於此值者仍被確診）；③ 外部驗證缺乏 NT-proBNP &lt;300 pg/mL 的病人；④ 無 LVEF 表型或心臟超音波資料；⑤ AF 校正是以「病史」而非測量當下心律；⑥ 未掌握 NT-proBNP 檢驗方法（assay）差異；⑦ 變項為 a priori 選定，其他變項可能改善表現；⑧ PPV/NPV 隨盛行率而異；⑨ 無法推論在無症狀 Stage B 篩檢情境的表現；⑩ 未收集會造成 NT-proBNP 上升的替代診斷（顯著瓣膜疾病、新發 AF 等）。作者亦在 Discussion 中明確表示<strong>臨床採用前應以隨機對照試驗前瞻性檢驗其效能、安全性與成本效益</strong>。</p>
+<p><strong>[評估] 對作者解釋的判讀</strong></p>
+<p>作者的限制清單是<strong>相當完整且誠實的</strong>——尤其主動點出 verification bias、缺乏獨立判定、外部驗證缺低值區段、以及必須經 RCT 檢驗，這在同類 EHR 模型論文中屬於高標準。但仍有三處避重就輕：</p>
+<ol>
+<li>
+<p><strong>對 verification bias 的辯護不成立。</strong> 作者以「400 pg/mL 閾值在本世代的 sensitivity 為 80%，故仍有相當比例低值者被確診」來淡化此偏差。但這個數字<strong>本身就受同一個偏差污染</strong>——它是在同一組（受轉介行為影響而形成的）reference standard 上計算的。用被污染的參考標準去證明污染不嚴重，是循環論證。</p>
+</li>
+<li>
+<p><strong>對外部驗證失敗的描述過度樂觀。</strong> 原文稱瑞典資料「reassuring without any need for recalibration」。實際上 rule-in specificity 從 90.0% 崩到 55.5%（見 D 段量化分析），而 rule-out 閾值在該世代根本無法被檢驗。這不是「不需要重新校準」，而是「無法判斷是否需要」。</p>
+</li>
+<li>
+<p><strong>對漏診者風險的陳述超出數據支持。</strong> Discussion 稱多漏的 3 例心衰竭「at a low risk of adverse outcomes」。此推論來自整個 ruled-out 組的<strong>平均</strong>事件率（1.1/100 人年），而非那 10 位（每 1000 人中）實際被漏掉的心衰竭患者的個別結局。<strong>被漏掉的心衰竭病人本身的預後從未被報告</strong>。這是一個明確的「宣稱超出證據」之處。</p>
+</li>
+</ol>
+<p>另需指出<strong>摘要與正文的宣稱強度不一致</strong>：Abstract Conclusions 用 &quot;<strong>superior</strong> diagnostic performance&quot;，而正文 Conclusions 與 Graphical Abstract 都用 &quot;<strong>favourable</strong> diagnostic performance&quot;。摘要是多數臨床醫師唯一會讀的部分，卻使用了正文作者自己不願意使用的最強措辭。</p>
+<hr />
+<h3>7. 外部專業意見</h3>
+<p><strong>[無法取得]——未發現針對本文的同期 editorial、commentary 或 comment。</strong></p>
+<p>檢索過程與依據：</p>
+<ul>
+<li>PubMed 以 <code>PRECISE-HF NT-proBNP heart failure primary care</code> 檢索，<code>total_count = 1</code>，僅本文自身（PMID 42663089），無 comment-on 連結。</li>
+<li>PubMed <code>find_related_articles</code>（pubmed_pubmed）回傳之相似文獻中無針對本文的社論。</li>
+<li>PubMed 以 <code>(NT-proBNP OR natriuretic peptide) AND heart failure diagnosis AND Editorial[Publication Type] AND European Heart Journal[Journal]</code>、date_from 2026 檢索，回傳 12 筆均為 2022 年以前之舊社論，無相關者。</li>
+<li>直接抓取 OUP 文章頁（advance-article/doi/10.1093/eurheartj/ehag686/8770128），頁面<strong>未列出任何連結的 editorial、comment 或 related article</strong>。</li>
+<li>網頁檢索 <code>&quot;PRECISE-HF&quot; ... editorial commentary 2026 &quot;European Heart Journal&quot;</code> 未找到任何評論性文章。</li>
+</ul>
+<p><strong>原因判讀</strong>：本文為 2026-08-28 線上刊出的 advance article（accepted manuscript 版本），距今僅 2 天。EHJ 的社論通常隨正式期次（issue）一併刊出。<strong>目前不存在可擷取的社論全文，而非擷取失敗。</strong> 由於未取得任何評論的 DOI，未呼叫 <code>fetch_editorial.py</code>（依規則不對本文自身 DOI 呼叫）。</p>
+<p><strong>可作為間接外部參照者</strong>（非針對本文的評論，僅供方法學對照）：CoDE-HF 原始論文（Lee KK, Doudesis D, et al. <em>BMJ</em> 2022;377:e068424）於急性心衰竭情境的表現為——低機率組佔 40.3%、NPV 98.6%；高機率組佔 28.0%、<strong>PPV 75.0%</strong> [外部: PMC9189738 / BMJ]。本文 rule-in 的 PPV 為 44.1%，明顯低於 CoDE-HF；但兩者盛行率與臨床情境不同（急性 vs 社區），不宜直接比較優劣。EHJ 曾為 CoDE-HF 刊出社論「Deciphering a decision support tool (CoDE-HF) to improve the diagnosis of acute heart failure」（<em>Eur Heart J</em> 2022;43:3098）[外部: Oxford Academic]，顯示該期刊對此類工具向來有社論回應的慣例，本文日後很可能會有對應社論。</p>
+<hr />
+<h3>8. 臨床建議</h3>
+<p><strong>可考慮採用本研究結論的情境</strong></p>
+<ul>
+<li>醫療體系層級的<strong>心臟超音波量能配置與優先排序</strong>決策，且該體系的臨床路徑與英國 NHS 高度相似（基層醫師開立 NT-proBNP、需排隊等候心臟超音波、等候時間以週至月計）。</li>
+<li>作為<strong>風險溝通與分流的輔助</strong>：把 PRECISE-HF 機率當作「這位病人該多快排到心臟超音波」的排序依據，而非「該不該做」的守門依據。ruled-in 組 38.5/100 人年的死亡或心衰竭住院率，本身就足以支持優先安排。</li>
+</ul>
+<p><strong>不建議直接套用的情境</strong></p>
+<ul>
+<li><strong>台灣及多數亞洲醫療體系。</strong> 三個獨立理由：(a) 模型 85.1% 為白人，亞裔僅 6.2%（n=33,367），且各族裔次組表現僅見於未取得的 Supplementary Table 5；(b) 台灣心臟超音波的可近性遠高於 NHS，<strong>「省下 29% 心臟超音波」這個核心價值主張在台灣的邊際效益低得多，但「多漏 3/1000 例心衰竭」的代價完全不變</strong>——成本效益比在台灣是不利的；(c) 模型部分學習的是英國基層照護的編碼與轉介行為（見 B/D 段），此行為模式不可轉移。</li>
+<li><strong>急性/院內疑似心衰竭</strong>（本模型的 pre-test probability 與臨床脈絡完全不同；該情境應用 CoDE-HF）。</li>
+<li><strong>無症狀者的 Stage B 心衰竭篩檢</strong>（作者已明確排除此推論）。</li>
+<li><strong>NT-proBNP 檢驗平台與英國不同的機構</strong>（作者自承無法校正 inter-assay 差異）。</li>
+<li><strong>任何以本模型取代臨床判斷、直接決定「不做心臟超音波」的用法</strong>——rule-out 的 LR− 為 0.14，並未達到「大幅改變診斷機率」的 &lt;0.1 標準。</li>
+</ul>
+<p><strong>給臨床醫師的實務建議</strong></p>
+<ol>
+<li><strong>把 PRECISE-HF 當成排序工具，不是守門工具。</strong> rule-in 的 LR+ 7.06 意味著被「ruled in」的病人仍有 <strong>55.9% 沒有心衰竭</strong>；rule-out 的殘餘機率為 1.5%。這兩個數字都不足以取代心臟超音波，但足以決定誰該在兩週內做、誰可以排到六週後。</li>
+<li><strong>記住這個換算比例：每少做約 48 次心臟超音波，就多漏掉 1 例心衰竭</strong>（144 ÷ 3 = 48）[自行計算]。這個比值是否可接受，取決於你所在體系的心臟超音波稀缺程度——在 NHS 可能划算，在台灣多數醫學中心大概不划算。這是本文最應該、卻沒有明白呈現給讀者的臨床決策數字。</li>
+<li><strong>若要使用線上計算器，務必填滿所有欄位。</strong> XGBoost 的原生缺值處理會把「欄位空白」本身當成一個有訊息量的訊號來學習（見 D 段）；在英國基層資料中「沒量 BMI」與「有量 BMI」代表不同的病人族群，但在台灣門診留白通常只代表「懶得輸入」。<strong>空白欄位在此模型中不等於「無資訊」，而等於「英國式的無紀錄」</strong>，可能導致系統性誤估。</li>
+</ol>
+<p><strong>研究證據強度分級：中（偏中上）</strong></p>
+<p>理由：樣本數極大、變項預先指定、辨別力與校準度均有報告、有外部驗證、作者限制陳述誠實、且明確要求 RCT 才可臨床採用——這些都遠優於同類 EHR 模型論文的平均水準。但<strong>參考標準為未經判定的行政編碼且與 index test 之間存在結構性的 verification / incorporation 依賴</strong>、<strong>內部驗證僅為隨機切分（未做時間或機構層級驗證）</strong>、<strong>外部驗證的操作閾值實質上未通過檢驗</strong>、且<strong>缺乏 NT-proBNP 單獨作為連續變項的基準比較</strong>（見 D 段），使其無法達到「強」。依 JAMA ML 三階段框架，本研究完成 derivation、部分完成 validation、<strong>完全未進入 clinical effectiveness 階段</strong>[參考: jama_liu_2019_ug_190001.md，&quot;Box 1 / 3-step process&quot; 節]。</p>
+<hr />
+<hr />
+<h2>SKILL-C：診斷研究與臨床預測模型評讀</h2>
+<h3>A. 補充技術細節</h3>
+<ul>
+<li>
+<p><strong>Reference standard 是否為公認黃金標準？</strong> <strong>否。</strong> 標準為「12 個月內基層照護 SNOMED-CT 心衰竭診斷碼，或住院紀錄任一診斷欄位的 ICD-10 心衰竭碼」。這既非影像學確認（無 LVEF、無任何心臟超音波參數），亦非依 ESC/通用定義的標準化條件（利鈉肽 + 結構/功能異常 + 症狀徵象）。住院端採「任一診斷欄位」（any diagnostic position）進一步降低特異度——住院期間任何被記錄的心衰竭合併症碼都會被計為 outcome。<strong>41.2% 的 outcome 來自這個低特異度的住院定義。</strong></p>
+</li>
+<li>
+<p><strong>Reference standard 是否獨立於 index test？</strong> <strong>明確不獨立，這是本研究最核心的內部效度問題。</strong> 在英國，NT-proBNP 於基層照護僅獲授權用於心衰竭診斷用途，且 NICE NG106 以 400 pg/mL 決定轉介急迫性。因此：NT-proBNP 值 → 決定是否/多快轉介心臟超音波 → 決定是否被確診並編碼 → 即為 outcome。這不是輕微的部分驗證偏差（partial verification bias），而是<strong>index test 直接位於產生 reference standard 的因果路徑上</strong>。由於 NT-proBNP 貢獻模型預測的 &gt;80%，模型在相當程度上學到的是「誰會被英國基層醫師編碼為心衰竭」，而非「誰真的有心衰竭」。</p>
+</li>
+<li>
+<p><strong>Index test 施測者是否對 reference standard 盲目（反之亦然）？</strong> 不適用於盲化設計，但實質上是<strong>反向的完全揭露</strong>——做出診斷的臨床醫師知道 NT-proBNP 值，且該值正是他做決定的主要依據。</p>
+</li>
+<li>
+<p><strong>潛在的 incorporation bias（納入偏差）</strong>：模型的第 4 重要變項為「NT-proBNP 前 12 個月內的迴圈利尿劑處方」（14.8% 的世代有此處方）。在基層照護中，開立迴圈利尿劑往往已代表醫師懷疑並經驗性治療心衰竭/體液滯留。以「醫師已經在治療心衰竭」來預測「醫師會不會把心衰竭編碼上去」，其預測力有一部分是套套邏輯而非診斷資訊。同樣的疑慮較輕微地適用於「AF 病史」（新發 AF 常同時觸發心衰竭編碼）。</p>
+</li>
+<li>
+<p><strong>疾病嚴重度分布 / spectrum bias</strong>：世代中位 NT-proBNP 僅 123 pg/mL（IQR 54–340），代表<strong>近半數受測者的 NT-proBNP 低於 ESC rule-out 閾值</strong>。這在真實社區情境是恰當的（避免只納入「明顯正常 vs 明顯異常」），是本研究的<strong>明確優點</strong>——與外部驗證世代（全部 &gt;300 pg/mL）形成鮮明對比。</p>
+</li>
+<li>
+<p><strong>Cut-off 設定方式</strong>：<strong>非預先指定，且源自同一資料集。</strong> rule-out 4.7%、rule-in 21.6% 這兩個機率閾值是在資料中搜尋以達成「sensitivity ≥90%」「specificity ≥90%」的目標而反推得出。文中未說明是在 derivation set 還是 internal validation set 上搜尋。若在 validation set 上搜尋（正文的敘述順序「The best performing model was chosen and rule-out and rule-in thresholds were identified」暗示在選定模型之後），則<strong>報告於同一 validation set 的 90.0% / 90.0% 是被最佳化過的樂觀估計</strong>（optimism bias），實際的樣本外表現會略低。[推論：依正文方法段敘述順序；未明確說明]</p>
+</li>
+<li>
+<p><strong>測試結果的可重複性</strong>：NT-proBNP 檢驗平台不明、無法校正 assay 間差異（作者自承）。BMI/血壓/eGFR 取「NT-proBNP 前 12 個月內最近一筆」，時間偏移可達 12 個月，測量情境不受控。</p>
+</li>
+</ul>
+<hr />
+<h3>B. 診斷準確度核心評估</h3>
+<h4>B-1. 核心指標與 likelihood ratio 的臨床解讀</h4>
+<table>
+<thead>
+<tr>
+<th>策略</th>
+<th>Sens</th>
+<th>Spec</th>
+<th><strong>LR+</strong></th>
+<th><strong>LR−</strong></th>
+<th>LR 臨床分級</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ESC ≥125 rule-out</td>
+<td>93.4%</td>
+<td>55.3%</td>
+<td>2.09</td>
+<td><strong>0.12</strong></td>
+<td>LR− 0.1–0.2：中至大幅降低機率；LR+ 2.09 幾乎無 rule-in 價值</td>
+</tr>
+<tr>
+<td><strong>PRECISE-HF₁₃ rule-out</strong></td>
+<td>90.0%</td>
+<td>70.9%</td>
+<td>3.09</td>
+<td><strong>0.14</strong></td>
+<td>LR− 0.1–0.2：<strong>與 ESC 同一級距，未跨越 &lt;0.1 的「大幅改變」門檻</strong></td>
+</tr>
+<tr>
+<td>ESC-HFA 年齡校正 rule-in</td>
+<td>79.2%</td>
+<td>81.9%</td>
+<td><strong>4.37</strong></td>
+<td>0.25</td>
+<td>LR+ 2–5：中度改變</td>
+</tr>
+<tr>
+<td><strong>PRECISE-HF₁₃ rule-in</strong></td>
+<td>70.5%</td>
+<td>90.0%</td>
+<td><strong>7.06</strong></td>
+<td>0.33</td>
+<td>LR+ 5–10：中度偏強，<strong>但未達 &gt;10 的「大幅改變」門檻</strong></td>
+</tr>
+</tbody>
+</table>
+<p><strong>核心判讀</strong>：本文報告的 LR 皆已由作者計算，無需自行推導；重點在解讀。依 LR 的臨床意義分級，<strong>PRECISE-HF 的 rule-out 與 ESC ≥125 落在同一個 LR− 級距（0.1–0.2），兩者在「排除心衰竭的資訊量」上沒有臨床上有意義的差別</strong>。真正改變的是 rule-out 的 <strong>specificity（55.3% → 70.9%）</strong>，也就是「少轉介多少沒病的人」，而不是「排除得多乾淨」。這一點在論文的呈現方式中被 &quot;superior diagnostic performance&quot; 的措辭模糊掉了。</p>
+<p>rule-in 端的改善較實質：LR+ 從 4.37 提升到 7.06（+62%），是本研究最紮實的增益。但 7.06 仍未達 &gt;10，意味著<strong>被「ruled in」的人裡 55.9% 沒有心衰竭</strong>——這是一個「加速排隊」的閾值，不是一個「可以開始開藥」的閾值。</p>
+<p><strong>Diagnostic odds ratio 的誠實摘要</strong>：DOR 從 17.5 → 22.0（rule-out 端）與 17.2 → 21.5（rule-in 端），即整體診斷資訊量提升約 <strong>25%</strong>。這是對「PRECISE-HF 到底好多少」最不受閾值選擇影響的一句話回答：<strong>中等幅度的改善，而非量級躍升</strong>。</p>
+<h4>B-2. Pre-test / post-test probability 情境</h4>
+<p>以 Fagan nomogram 邏輯（文字描述）：</p>
+<table>
+<thead>
+<tr>
+<th>情境</th>
+<th>Pre-test</th>
+<th>PRECISE-HF₁₃ rule-out（LR− 0.14）後</th>
+<th>PRECISE-HF₁₃ rule-in（LR+ 7.06）後</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>低盛行率（5%，如年輕、症狀非典型的社區族群）</td>
+<td>5%</td>
+<td><strong>0.7%</strong></td>
+<td>27%</td>
+</tr>
+<tr>
+<td>本研究盛行率（10%）</td>
+<td>10%</td>
+<td><strong>1.5%</strong></td>
+<td><strong>44%</strong>（= 報告之 PPV）</td>
+</tr>
+<tr>
+<td>中高盛行率（27.5%，如瑞典 REVOLUTION-HF 型的高齡、已篩過 NT-proBNP&gt;300 族群）</td>
+<td>27.5%</td>
+<td>5.0%</td>
+<td>73%</td>
+</tr>
+<tr>
+<td>高盛行率（40%，如心臟科門診轉介病人）</td>
+<td>40%</td>
+<td>8.5%</td>
+<td>82%</td>
+</tr>
+</tbody>
+</table>
+<p>[自行計算：odds 轉換]</p>
+<p><strong>臨床意涵</strong>：</p>
+<ul>
+<li><strong>rule-out 只在低至中盛行率下真正有用。</strong> 在 10% 盛行率下把機率降到 1.5%，多數臨床醫師會接受不做心臟超音波。但在 27.5% 盛行率下殘餘機率為 5.0%——對一個有有效疾病修飾治療、且延誤有預後代價的疾病，5% 的殘餘機率是否可接受，屬於價值判斷而非統計判斷。<strong>本模型的閾值是在 10% 盛行率下訂定的，直接搬到高盛行率場域會系統性地低估漏診風險。</strong></li>
+<li><strong>rule-in 在任何盛行率下都不足以確診。</strong> 即使在 40% 的高盛行率門診，post-test 也只到 82%。</li>
+<li>這也正是作者所承認的「PPV/NPV 隨盛行率而異」的具體量化。但作者只是抽象地陳述此限制，<strong>沒有提供上述任何一個換算，使讀者無法自行評估在自己的場域中該不該用</strong>。這是一個具體的呈現缺失。</li>
+</ul>
+<h4>B-3. 圖表判讀（僅根據 PNG 中實際可見內容）</h4>
+<p><strong>Figure 1（ROC，page 31）</strong>：標準 0–1 座標軸，未截斷。曲線在低 1−specificity 區段陡升，於 sensitivity ≈0.87、1−specificity ≈0.15 處出現明顯轉折（「肘部」），其後趨於平坦。AUC = 0.898（95% CI 0.895–0.900）。<strong>圖中傳達而正文未強調的訊息</strong>：曲線的肘部落在 sensitivity 約 0.87 附近；作者選定的 rule-out 點（sensitivity 90.0%）已在肘部之後、曲線開始平坦化的區段，意味著<strong>若要再往上追求更高 sensitivity，specificity 的代價會急遽上升</strong>。這反過來說明：若把 PRECISE-HF 的閾值調到與 ESC 相同的 sensitivity 93.4%，其 specificity 增益會遠小於目前呈現的 55.3% → 70.9%。<strong>這正是本文缺失的等敏感度比較（見下段）在圖中的視覺線索。</strong></p>
+<p><strong>Figure 2（校準圖，page 32）</strong>：橫縱軸皆 0–60%，含 45 度虛線（完美校準線），10 個十分位點。點幾乎完全落在對角線上。<strong>但這張圖的視覺說服力被座標軸尺度誇大了</strong>——10 個點中約 8 個擠在預測風險 &lt;6% 的左下角一小團，僅有兩個可分辨的點位於 24% 與 54%。<strong>臨床決策發生的位置（rule-out 閾值 4.7%）恰好落在那一團無法解析的密集區內</strong>。因此，「校準良好」這個結論在最關鍵的低風險區段<strong>無法從此圖判讀</strong>。若要支持 rule-out 的安全性，應提供 0–10% 區段放大的校準圖。這不是座標軸從非零起點誇大效果（軸確實從 0 開始），而是<strong>尺度選擇使得關鍵區段不可視</strong>。</p>
+<p><strong>Figure 3（Sankey 流程圖，page 33）</strong>：每 1000 人的分流，數字如上表。<strong>算術完全自洽</strong>：ESC 端 80+14+7 = 101 例心衰竭；PRECISE 端 71+20+10 = 101 例；兩側總人數皆 1000；需做超音波 496 與 352 亦與各組相加吻合。<strong>圖中傳達而正文未直接點明的訊息</strong>：PRECISE-HF 的 rule-in 組只捕捉到 71 例心衰竭，比 ESC 的 80 例<strong>少 9 例</strong>；也就是說，為了讓 rule-in 更「純」（PPV 44.1% vs 32.8%），有 9 例真正的心衰竭被降級到 grey zone。這 9 人仍會做超音波，只是不再被優先排序——在等候時間以月計的體系中，這是一個實質的延遲。正文只反覆強調「73 fewer false positives」，從未提及這 9 例真陽性的降級。</p>
+<p><strong>Figure 4（累積事件曲線 + number at risk，page 34）</strong>：y 軸 0.00–1.00 完整範圍，<strong>未截斷、未誇大</strong>（反而因尺度過大而壓縮了三條曲線的視覺差距）。x 軸 0–360 天。三條曲線<strong>自第 0–15 天起即立刻分離</strong>，rule-in（綠）在 30 天內已達約 0.08、360 天約 0.30；grey zone（灰）360 天約 0.07；rule-out（紅）全程貼近 0.01。Number at risk 起始為 rule-out 104,086 / grey zone 30,776 / rule-in 25,812，<strong>三者相加 = 160,674，與 internal validation cohort 完全一致</strong>（另可換算為 64.8% / 19.2% / 16.1%，與正文吻合）——<strong>資料一致性檢核通過</strong>。</p>
+<p>Number at risk 後期表現：rule-out 組 360 天僅降至 100,421（−3.5%，無銳減）；rule-in 組降至 15,956（<strong>−38.2%</strong>）。<strong>此處有一處未解釋的細微不一致</strong>：rule-in 組的 at-risk 下降 38.2%，但曲線在 360 天的累積事件機率僅約 0.30，兩者差距約 8 個百分點，暗示存在約 8% 的追蹤中止（censoring）。然而方法段明確聲明已排除追蹤未滿 12 個月者。可能的解釋包括診所退保、資料庫轉出，或我對曲線終點的目測讀值誤差。<strong>由於本圖僅能目測讀取曲線高度，此差距的精確程度有限，不宜過度解讀</strong>，但作者未提供 censoring 的說明。</p>
+<p><strong>Figure 4 的關鍵方法學問題（圖未揭露、正文亦未討論）</strong>：本圖的複合終點為「全因死亡<strong>或心衰竭住院</strong>」，而<strong>心衰竭住院正是模型 outcome 定義的組成部分之一</strong>（41.2% 的心衰竭診斷來自 12 個月內的住院紀錄）。因此這張「預後驗證」圖與模型的訓練目標<strong>部分重疊</strong>，其分離程度必然被高估。要證明模型具有獨立於診斷本身的預後價值，應呈現<strong>全因死亡單獨</strong>的曲線，或排除已被計為 outcome 的那次住院。正文以「7 倍與 40 倍風險」作為模型附加價值的證據，但這個倍數有相當部分是循環的。</p>
+<p><strong>Graphical Abstract（page 35）</strong>：文字與數字與正文一致；橫條圖比例正確。措辭為 &quot;favourable&quot;（與正文一致，與摘要的 &quot;superior&quot; 不一致）。</p>
+<p><strong>未能判讀的圖表</strong>：Supplementary Figures 1–4（NT-proBNP 檢測趨勢、變項重要性圖、sens/spec 對機率的曲線、外部驗證校準圖）與 Supplementary Tables 1–6 皆未包含在轉檔 markdown 或 8 張 PNG 中。[限制：無法判讀補充資料]</p>
+<p><strong>Flow diagram</strong>：<strong>全文（含 8 張圖頁）不存在任何 CONSORT/STARD 型的病人納入排除流程圖</strong>，亦無「篩選 N 人 → 排除 X 人（原因）→ 納入 535,583 人」的文字敘述。考量方法段存在一條可能有選擇性的排除規則（12 個月內死亡且無心衰竭診斷、無心臟超音波紀錄者被排除），<strong>無法評估此排除影響多少人、以及被排除者的 NT-proBNP 分布</strong>。這是本文一項明確的報告缺陷。</p>
+<hr />
+<h3>C. 機器學習診斷模型評估（JAMA 三階段框架）</h3>
+<p>[參考: jama_liu_2019_ug_190001.md，&quot;3-step process of deriving, validating, and establishing clinical effectiveness&quot; 與 Box 1]</p>
+<h4>① 建模（Derivation）— 部分達標</h4>
+<table>
+<thead>
+<tr>
+<th>項目</th>
+<th>評估</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>任務定義明確？</td>
+<td>是（二元分類：12 個月內是否記錄心衰竭診斷）。但<strong>任務本身定義的是「編碼事件」而非「疾病狀態」</strong>——這是任務定義層次的根本限制，而非執行缺陷。</td>
+</tr>
+<tr>
+<td>Reference standard 是否合適？</td>
+<td>**否。**JAMA 指南要求「reference standard 的嚴謹度必須被評估，例如對照普世接受的黃金標準或專家判讀」。本研究採未經判讀的行政編碼，且該編碼受 index test 影響。<strong>這是本研究最嚴重的方法學弱點。</strong></td>
+</tr>
+<tr>
+<td>過度配適的防護</td>
+<td>XGBoost 有內建正則化；有 70:30 切分。但<strong>超參數調校是否在獨立於 internal validation set 的資料上進行，正文未說明</strong>（僅指向 Supplementary material）。若超參數在 validation set 上調校，則 AUROC 0.898 為樂觀估計。此為 JAMA 指南明列的必查項。</td>
+</tr>
+<tr>
+<td>特徵選擇透明？</td>
+<td>**是，且為優點。**13 項變項 a priori 指定、有生物學/臨床理據、非資料驅動篩選。這顯著降低了 ML 論文常見的特徵挖掘偏差。</td>
+</tr>
+<tr>
+<td>模型比較</td>
+<td>比較了 GLM、LASSO、RF、XGBoost（Supplementary Table 4）。<strong>但四者的 AUROC 數值未在正文呈現</strong>，因此無法判斷 XGBoost 相對簡單邏輯迴歸的增益是否值得其實作複雜度。若 GLM 的 AUROC 為 0.89，則整個 ML 框架在臨床上是不必要的複雜化——一個可寫在紙上的評分表會更容易被採用、稽核與除錯。[限制：Supplementary Table 4 不可得]</td>
+</tr>
+</tbody>
+</table>
+<p><strong>缺值處理的深層問題（本研究最被低估的風險）</strong></p>
+<p>作者選用「XGBoost + 原生缺值處理 + 完全不插補」的組合，並將其宣傳為臨床便利性（「有些變項在評估當下可能取不到，XGBoost 可以處理缺值」）。但這帶來三個未被討論的後果：</p>
+<ol>
+<li>
+<p><strong>缺值本身成為預測訊號。</strong> XGBoost 的原生處理方式是為每個分裂節點學習一個「缺值往哪一邊走」的預設方向。當 43% 的 BMI 缺失、46.4% 的人至少缺一項時，模型必然學到「沒有紀錄 BMI 的人」與「有紀錄的人」在心衰竭機率上的差異。在 CPRD 中，是否有 BMI/血壓紀錄反映的是<strong>診所的資料登錄習慣、病人的就診頻率與慢性病管理計畫納入狀況</strong>——這些是英國基層照護的組織特徵，不是病人的生理特徵。</p>
+</li>
+<li>
+<p><strong>這極可能是外部驗證 AUROC 從 0.898 掉到 0.757 的重要原因之一。</strong> 瑞典的資料完整性模式與英國 CPRD 不同，模型所依賴的「缺值訊號」在瑞典代表完全不同的意義。作者將外部表現下降完全歸因於「缺乏 NT-proBNP &lt;300 的病人」，這是一個合理但<strong>未經檢驗的單一解釋</strong>；缺值模式不可轉移是同樣合理的競爭解釋，而文中完全未提。</p>
+</li>
+<li>
+<p><strong>對線上計算器使用者的實質安全疑慮。</strong> 在 https://uogheartfailure.shinyapps.io/precise_hf/ 上，「留白 BMI」與「填入實際 BMI」會走向樹的不同分支，產生不同機率。對英國以外的使用者而言，留白代表「我懶得量」，但模型會把它解讀為「英國基層資料庫中沒有 BMI 紀錄的那類病人」。<strong>這個行為差異對使用者不可見，且未在論文中警告。</strong></p>
+</li>
+</ol>
+<h4>② 驗證（Validation）— 未達標</h4>
+<p><strong>內部驗證的核心缺陷：隨機切分不等於驗證。</strong></p>
+<ul>
+<li>採<strong>簡單隨機切分</strong>（70:30）。這只檢驗了同一資料生成過程下的統計穩定性，<strong>完全沒有檢驗跨時間或跨機構的可轉移性</strong>。</li>
+<li><strong>叢集問題（clustering）未被處理</strong>：CPRD 資料以「診所（general practice）」為單位聚集，而心衰竭的編碼習慣、NT-proBNP 開單門檻、轉介行為在診所之間差異極大。隨機切分<strong>病人</strong>意味著同一家診所的病人同時出現在 derivation 與 validation set 中。模型因此可以學習並「驗證」診所層級的編碼特徵——這會系統性高估 AUROC。<strong>正確的做法應為 leave-one-practice-out 或以診所為單位的分群交叉驗證</strong>，論文未執行也未討論。</li>
+<li><strong>未做時間驗證（temporal validation）</strong>：資料橫跨 2018-01 至 2025-03，涵蓋 COVID-19 對基層照護與轉介路徑的巨大擾動；且文中自陳 NT-proBNP 檢測量在 2018→2023 增加 88%，代表<strong>受測族群的組成在研究期間持續改變</strong>（檢測門檻放寬 → 受測者 pre-test probability 下降）。在如此明顯的時間漂移下，未以早期資料訓練、晚期資料驗證，是一個實質的遺漏。</li>
+</ul>
+<p><strong>外部驗證：實際上是失敗的，但被描述成「reassuring」</strong></p>
+<p>REVOLUTION-HF 世代（n=4,492；HF 1,235 [27.5%]）與 derivation 世代差異極大：中位年齡 78.7 歲 vs 68.8 歲、<strong>全部 NT-proBNP &gt;300 pg/mL</strong> vs 中位 123 pg/mL、盛行率 27.5% vs 10% [外部: REVOLUTION-HF, Eur Heart J 2025;46:1493]。</p>
+<p><strong>(a) rule-out 閾值根本沒有被驗證。</strong> 報告的 sensitivity = 100%、NPV = 100%。<strong>但被 ruled out 的百分比從未報告。</strong> 當全體受試者的 NT-proBNP 都 &gt;300 pg/mL、而 NT-proBNP 佔模型預測 &gt;80% 時，幾乎沒有人的預測機率會低於 4.7% 的 rule-out 門檻。<strong>一個排除掉近乎零人的規則，其 sensitivity 與 NPV 必然是 100%，這在資訊上是空洞的（vacuous）。</strong> 沒有分母就無法評估一個 rule-out 閾值。這是一個<strong>必須補上而未補上的數字</strong>，而論文卻把這個空洞的 100%/100% 列為外部驗證的正面結果。</p>
+<p><strong>(b) rule-in 閾值的可轉移性實際上崩潰了。</strong> 由報告的 specificity 55.5% 與 PPV 40.5%，可反推完整的 2×2 表 [自行計算]：</p>
+<pre><code>非心衰竭 = 4492 − 1235 = 3257
+FP = 3257 × (1 − 0.555)          = 1,449
+TP = FP × PPV/(1−PPV) = 1449 × 0.405/0.595 = 986
+Sensitivity = 986 / 1235          = 79.8%
+被 ruled in 的人數 = 986 + 1449   = 2,435 (54.2% 的世代)
+LR+ = 0.798 / 0.445               = 1.79
+</code></pre>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Internal validation</th>
+<th>External validation</th>
+<th>變化</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Rule-in specificity</td>
+<td>90.0%</td>
+<td>55.5%</td>
+<td>−34.5 個百分點</td>
+</tr>
+<tr>
+<td>Rule-in 佔全體比例</td>
+<td>16.1%</td>
+<td><strong>54.2%</strong> [自行計算]</td>
+<td>3.4 倍</td>
+</tr>
+<tr>
+<td><strong>Rule-in LR+</strong></td>
+<td><strong>7.06</strong></td>
+<td><strong>≈1.79</strong> [自行計算]</td>
+<td><strong>降至幾乎無診斷資訊量</strong></td>
+</tr>
+</tbody>
+</table>
+<p><strong>LR+ 1.79 落在「接近 1」與「中度改變」的交界，臨床上幾乎不改變診斷機率。</strong> 一個把 54% 的人都標記為「高機率、應優先做超音波」的閾值，在臨床上等同於沒有分流。</p>
+<p>需要公平地說明：外部世代因 NT-proBNP &gt;300 的入選條件而被高度富集，理論上本就會有更多人越過閾值。但<strong>這正是重點</strong>——閾值是在特定 case-mix 下訂定的，換一個 case-mix 就失效。作者宣稱「without any need for recalibration」，指的是 calibration slope 1.02 / intercept −0.01；然而 <strong>slope/intercept 良好與「操作閾值可直接沿用」是兩件不同的事</strong>。前者說的是機率排序與平均水準大致對得上，後者要求整個機率分布相對於固定切點的位置不變。本研究的資料顯示後者不成立。</p>
+<p><strong>(c) Brier score 的「良好」是尺度錯覺。</strong> 這是本文最需要重新詮釋的單一數字：</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>盛行率 p</th>
+<th>無資訊模型 Brier = p(1−p)</th>
+<th>實際 Brier</th>
+<th><strong>Brier Skill Score = 1 − 實際/無資訊</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Internal</td>
+<td>0.101</td>
+<td>0.0908</td>
+<td>0.061</td>
+<td><strong>32.8%</strong></td>
+</tr>
+<tr>
+<td>External</td>
+<td>0.275</td>
+<td>0.1994</td>
+<td>0.163</td>
+<td><strong>18.3%</strong></td>
+</tr>
+</tbody>
+</table>
+<p>[自行計算]</p>
+<p><strong>內部 Brier 0.061 並不代表「excellent accuracy」——它只比「對每個人都猜 10%」這個零資訊模型好 33%。</strong> 而外部的 0.163 更只比零資訊模型好 18%。作者摘要以「excellent... calibration (Brier score 0.061)」描述，並以「retained good... calibration (Brier score 0.163)」描述外部結果——但 Brier score 未經盛行率標準化時，<strong>跨世代直接比較是沒有意義的</strong>，而標準化之後顯示的是<strong>模型的資訊增益在外部世代腰斬</strong>。這一點論文完全沒有處理。</p>
+<h4>③ 臨床有效性（Clinical Effectiveness）— 完全未執行</h4>
+<ul>
+<li><strong>無任何前瞻性試驗證明本模型改善臨床醫師決策或病人結局。</strong> 作者誠實承認並明確要求 RCT，這是加分項。</li>
+<li><strong>未分析 failure modes</strong>：哪些病人型態最容易被模型誤判？被 ruled out 卻確實有心衰竭的那 1,611 人（internal validation）的特徵完全未描述。這是評估臨床安全性的必要資訊。</li>
+<li><strong>公平性（fairness）分析不足</strong>：ESC ≥125 閾值在黑人族裔的 sensitivity 僅 81%（白人 94%、亞裔 87%），這正是本研究要解決的問題之一。作者宣稱 PRECISE-HF₁₃ 在各次組間「變異較小」，但<strong>具體的族裔別 sensitivity/specificity 只存在於無法取得的 Supplementary Table 5</strong>。以黑人 n=15,505、亞裔 n=33,367、族裔缺失 3.8% 的樣本，且英國基層照護的族裔登錄品質本身參差，這項核心宣稱<strong>在正文中不可核實</strong>。既然「族裔造成的診斷不平等」是本文 Introduction 明確舉出的動機，把驗證此動機的數據全部放進補充資料而不在正文呈現，是呈現優先順序上的問題。</li>
+<li><strong>可解釋性</strong>：僅有變項重要性排序（Supplementary Figure 2，不可得），無 SHAP 或個案層級解釋。對一個要交給基層醫師在門診使用、且要據以「不做檢查」的工具，可解釋性不足。</li>
+</ul>
+<hr />
+<h3>D. 臨床預測模型評估</h3>
+<h4>D-1. 辨別力（Discrimination）</h4>
+<ul>
+<li>Internal AUROC <strong>0.898（95% CI 0.895–0.900）</strong>；精簡版 PRECISE-HF₆ 為 0.894。External AUROC <strong>0.757</strong>（未報告 CI）。</li>
+<li>極窄的 CI 反映的是樣本量（n=160,674），不是估計的無偏性——<strong>CI 寬度無法保護模型免於系統性偏差</strong>（叢集、verification bias、閾值最佳化）。</li>
+<li><strong>AUROC 0.898 的解讀必須考慮世代的異質性。</strong> 依 JAMA 指南：「辨別力取決於模型使用族群中預測變項的分布……模型在預測變項差異極大的異質族群中可以很好地辨別，但在較同質的族群中可能失敗」[參考: jama_alba_2017_ug_170001.md，&quot;What Makes a Good Model?&quot; 節]。CPRD 世代年齡 SD 14.2 歲、NT-proBNP IQR 54–340（跨越 6 倍）、涵蓋全 eGFR 光譜——這是一個極度異質的族群。<strong>外部世代（全部 NT-proBNP &gt;300、中位年齡 78.7）較同質，AUROC 掉到 0.757 完全符合此原理。</strong> 因此 0.898 這個數字<strong>不可作為模型在任何特定臨床次族群中的表現預期</strong>。</li>
+</ul>
+<h4>D-2. 校準度（Calibration）</h4>
+<ul>
+<li>Internal：slope 1.023、intercept 0.038、Brier 0.061，Figure 2 十分位點貼合對角線。<strong>這是本研究執行得最好的部分之一</strong>（許多 ML 診斷論文只報 AUROC 不報校準）。</li>
+<li>External：slope 1.02、intercept −0.01，Brier 0.163。</li>
+<li>但如 C-② 所述：<strong>(i)</strong> Figure 2 的尺度使得臨床決策所在的 0–6% 區段無法解析；<strong>(ii)</strong> 未報告 Hosmer-Lemeshow 或等效檢定（在 n=160,674 下 H-L 檢定必然顯著，故省略尚可接受，但應明說）；<strong>(iii)</strong> external Brier 0.163 在盛行率標準化後代表資訊增益從 33% 降至 18%。</li>
+<li><strong>校準良好卻閾值失效</strong>是本研究一個值得記住的教訓：slope/intercept 是<strong>全域平均</strong>的性質，而 rule-out 4.7% / rule-in 21.6% 是<strong>局部切點</strong>的性質。兩者可以完全脫鉤。任何要以固定機率切點做決策的模型，都應額外報告<strong>該切點鄰域的局部校準</strong>，本文未做。</li>
+</ul>
+<h4>D-3. 最關鍵的缺失分析：增量價值（incremental value）從未被量化</h4>
+<p><strong>這是本文最重要的單一方法學問題。</strong></p>
+<p>論文的核心主張是「個人化（把多項臨床特徵與 NT-proBNP 整合）優於通用閾值」。但論文所做的比較是：</p>
+<blockquote>
+<p>【NT-proBNP 連續值 + 12 項臨床特徵 + XGBoost】 <strong>vs</strong> 【NT-proBNP 二分為 ≥125 pg/mL】</p>
+</blockquote>
+<p>這個比較把兩個獨立的改變綁在一起：<strong>(a) 不再把 NT-proBNP 二分化</strong>，與 <strong>(b) 加入 12 項臨床特徵</strong>。二分化一個連續生物標記本身就是眾所周知的資訊浪費；光是 (a) 就足以大幅提升表現。</p>
+<p><strong>論文全文從未報告「NT-proBNP 單獨作為連續變項」的 AUROC。</strong> 而作者自己報告 <strong>NT-proBNP 佔模型預測的 &gt;80%</strong>。因此高度可能的情況是：AUROC 0.898 當中，絕大部分來自單純把 NT-proBNP 連續化，而 12 項臨床特徵的邊際貢獻很小。支持此推論的間接證據是：把 13 變項砍到 6 變項（等於刪掉 7 個變項），AUROC 只從 0.898 掉到 0.894（<strong>−0.004</strong>）。<strong>若刪掉 7 個變項只損失 0.004，那麼從 1 個變項加到 6 個變項所帶來的增益，很可能也相當有限。</strong>[推論：依據作者報告的變項重要性 &gt;80% 與 13→6 變項的表現差異]</p>
+<p><strong>若不報告 NT-proBNP 連續值單獨的 AUROC，就無法回答本文標題所宣稱的問題（「個人化」是否有價值）。</strong> 這個分析成本極低（一行程式碼）、且是 TRIPOD 對「新模型是否優於既有預測因子」的標準要求。它的缺席，加上 22 天的審查時程，是相當顯眼的。</p>
+<p><strong>同樣缺失的等敏感度比較</strong>：正確的模型對比應在<strong>相同 sensitivity</strong> 下比較 specificity。ESC ≥125 的 sensitivity 為 93.4%；論文應報告「PRECISE-HF 在 sensitivity 設為 93.4% 時的 specificity 是多少」。Figure 1 的 ROC 顯示曲線在 sensitivity ≈0.87 之後已明顯平坦化，暗示此數值會遠低於 70.9%。目前呈現的「specificity 55.3% → 70.9%」有相當部分只是<strong>沿著 ROC 曲線往下移動所換來的</strong>，而非模型本身的優越性。</p>
+<h4>D-4. 選擇性排除的偏差方向</h4>
+<p>方法段規定：<strong>12 個月內死亡、且無心衰竭診斷紀錄、且無心臟超音波紀錄者被排除</strong>。</p>
+<p>被排除者的畫像是：測了 NT-proBNP（因懷疑心衰竭）→ 在一年內死亡 → 但從未被確診也從未做超音波。這群人<strong>高度富集於「未被診斷的心衰竭」與「高 NT-proBNP」</strong>（極高齡、末期共病、緩和醫療路徑）。把他們移除，等於系統性地移除了一群「NT-proBNP 高但 outcome 為陰性」的人——<strong>亦即移除偽陽性</strong>。</p>
+<p><strong>偏差方向明確：所有策略的 specificity 與 PPV 都被向上偏移。</strong> 這對 ESC 與 PRECISE-HF 都適用，故<strong>相對比較受影響較小</strong>；但兩者的<strong>絕對數值</strong>（特別是 rule-in PPV 44.1% 與「省下 29% 超音波」）被系統性高估。由於被排除的人數從未報告（無 flow diagram），此偏差的量級<strong>無法評估</strong>。作者將此排除規則描述為「避免錯誤分類的風險」，未討論其偏差方向。</p>
+<hr />
+<h3>E. 紅旗清單</h3>
+<p><strong>設計層面</strong></p>
+<ol>
+<li>🚩🚩🚩 <strong>Reference standard 與 index test 之間存在結構性循環</strong>：NT-proBNP 決定轉介 → 轉介決定確診 → 確診即為 outcome。模型（NT-proBNP 佔權重 &gt;80%）有相當部分在預測英國基層照護的轉介與編碼行為，而非疾病本身。作者以「400 pg/mL 的 sensitivity 為 80%」辯護，但該數字本身取自同一被污染的參考標準，屬循環論證。</li>
+<li>🚩🚩 <strong>Incorporation bias</strong>：「NT-proBNP 前 12 個月的迴圈利尿劑處方」為第 4 重要變項。以「醫師已在治療心衰竭」預測「醫師會編碼心衰竭」有套套邏輯成分。</li>
+<li>🚩🚩 <strong>內部驗證未處理診所層級叢集</strong>：同一家診所的病人同時出現在訓練與驗證集，而心衰竭的編碼與轉介習慣具強烈診所效應 → AUROC 系統性高估。應做 leave-one-practice-out。</li>
+<li>🚩🚩 <strong>無時間驗證</strong>，但資料橫跨 COVID 且檢測量增加 88%（受測族群組成明顯漂移）。</li>
+<li>🚩 <strong>選擇性排除</strong>（12 個月內死亡且無診斷無超音波者）方向性地移除偽陽性，向上偏移所有 specificity 與 PPV；<strong>排除人數未報告</strong>。</li>
+<li>🚩 <strong>無 STARD/流程圖、未聲明 TRIPOD/TRIPOD+AI</strong>；篩選至納入的完整人數鏈未見。</li>
+<li>🚩 <strong>參考標準的住院端採「任一診斷欄位」ICD-10</strong>，特異度低，卻貢獻 41.2% 的 outcome。</li>
+<li>🚩 <strong>無 LVEF 表型資訊</strong>，因此無法得知模型偵測的是 HFrEF 還是 HFpEF（兩者的 NT-proBNP 分布差異極大，臨床處置也不同）。作者已承認。</li>
+</ol>
+<p><strong>統計層面</strong></p>
+<ol start="9">
+<li>🚩🚩🚩 <strong>從未報告 NT-proBNP 單獨（連續變項）的 AUROC</strong>，因此<strong>本文標題所宣稱的「個人化的價值」在數據上從未被分離出來</strong>。13→6 變項僅損失 AUROC 0.004，強烈暗示臨床特徵的邊際貢獻有限。</li>
+<li>🚩🚩🚩 <strong>外部驗證的 rule-out 閾值實質未被檢驗</strong>：sensitivity 100% / NPV 100%，但<strong>被 ruled out 的百分比未報告</strong>；在全數 NT-proBNP &gt;300 的世代中此結果近乎空洞，卻被列為正面結果。</li>
+<li>🚩🚩🚩 <strong>外部驗證的 rule-in 閾值失效但被描述為「reassuring」</strong>：specificity 90.0% → 55.5%，反推 LR+ 由 7.06 降至 <strong>≈1.79</strong>、ruled in 比例由 16.1% 升至 <strong>54.2%</strong>（[自行計算]）。calibration slope 良好 ≠ 固定切點可沿用。</li>
+<li>🚩🚩 <strong>Brier score 未以盛行率標準化即跨世代比較</strong>：Brier Skill Score 由 32.8% 降至 18.3%（[自行計算]），實際資訊增益腰斬，被 0.061 vs 0.163 的原始數字掩蓋。</li>
+<li>🚩🚩 <strong>無等敏感度（sensitivity-matched）比較</strong>：ESC 為 93.4% 敏感度，PRECISE 為 90.0%；「specificity 55.3% → 70.9%」有相當部分是沿 ROC 曲線移動的結果，非模型優越性。</li>
+<li>🚩 <strong>閾值在資料中搜尋最佳化，且很可能在報告表現的同一 validation set 上</strong>（正文敘述順序暗示如此），造成 optimism bias；未說明超參數調校是否在獨立資料上進行（JAMA ML 指南明列的必查項）。</li>
+<li>🚩 <strong>43% BMI 缺失、46.4% 至少缺一項，完全不插補，改由 XGBoost 學習缺值模式</strong> → 缺值本身成為預測特徵；此為外部表現下降的合理競爭解釋，論文未提，且對線上計算器的使用者不可見。</li>
+<li>🚩 <strong>LR− 0.14 未達 &lt;0.1 的「大幅改變機率」門檻</strong>，與 ESC 的 0.12 同一級距，卻被冠以 &quot;superior&quot;。</li>
+<li>🚩 <strong>Figure 4 的預後驗證部分循環</strong>：複合終點包含心衰竭住院，而心衰竭住院正是 outcome 定義的組成（占 41.2%）；「7 倍/40 倍風險」被高估，且未提供全因死亡的單獨曲線。</li>
+</ol>
+<p><strong>敘事層面</strong></p>
+<ol start="18">
+<li>🚩🚩 <strong>摘要用 &quot;superior&quot;，正文結論與 Graphical Abstract 用 &quot;favourable&quot;</strong>。摘要是多數讀者唯一會讀的部分，卻使用了作者自己在正文中不願意使用的最強措辭。</li>
+<li>🚩🚩 <strong>對照組選擇偏向有利</strong>：頭條比較的是 ESC ≥125 pg/mL，但作者自己指出<strong>英國實際使用的是 NICE 的 400 pg/mL</strong>。400 pg/mL 的 sensitivity（80%）在文中只被順帶提及一句以辯護 verification bias，<strong>完整的 400 pg/mL vs PRECISE-HF 2×2 比較從未呈現</strong>。以非實務使用的閾值作為主要對照，會誇大在英國情境下的實際增益。</li>
+<li>🚩🚩 <strong>「多漏的 3 例處於低風險」超出數據支持</strong>：該推論來自整個 ruled-out 組的平均事件率，而非那些實際被漏掉的心衰竭病人的個別結局，<strong>後者從未被報告</strong>。</li>
+<li>🚩 <strong>只講「73 fewer false positives」，不講「9 fewer true positives」</strong>：Figure 3 顯示 PRECISE-HF 的 rule-in 組比 ESC 少捕捉 9 例真正的心衰竭（每 1000 人），這 9 人被降級到 grey zone、失去優先排序。正文從未提及。</li>
+<li>🚩 <strong>未提供任何 pre-test → post-test 換算</strong>，使讀者無法評估在自身盛行率下的適用性，儘管作者明確承認 PPV/NPV 依賴盛行率。</li>
+<li>🚩 <strong>族裔次組表現（本文的核心動機之一）全部放在無法取得的補充資料</strong>，正文僅以「變異較小」一句帶過。</li>
+</ol>
+<p><strong>外推層面</strong></p>
+<ol start="24">
+<li>🚩🚩 <strong>整個價值主張綁定於「心臟超音波稀缺」的 NHS 情境</strong>。在超音波可近性高的體系（含台灣），「省下 29% 檢查」的效益大幅縮水，但「多漏 3/1000」的代價不變 → <strong>成本效益方向可能反轉</strong>。論文的 Discussion 只討論「不同國家路徑不同故需進一步驗證」，未討論此不對稱性。</li>
+<li>🚩🚩 <strong>族裔組成 85.1% 白人、亞裔 6.2%、黑人 2.9%、族裔缺失 3.8%</strong>；且英國基層照護的族裔登錄品質參差。直接外推至非英國族群缺乏支持。</li>
+<li>🚩 <strong>NT-proBNP assay 不明、無法校正 inter-assay 差異</strong>（作者承認）；不同平台的絕對值差異可達 10–20%，對一個以 NT-proBNP 為 &gt;80% 權重的模型是實質風險。</li>
+<li>🚩 <strong>AF 以「病史」而非測量當下心律定義</strong>（作者承認）；而急性 AF 是造成 NT-proBNP 假性升高的最主要原因之一，這正是模型宣稱要校正的目標之一。</li>
+<li>🚩 <strong>未收集會造成 NT-proBNP 升高的替代診斷</strong>（顯著瓣膜疾病、新發 AF、肺高壓等）（作者承認）。被 PRECISE-HF「ruled out」而未做超音波的病人，也同時失去了發現這些疾病的機會——<strong>這是把 rule-out 用於「不做超音波」而非「延後超音波」時，一個被完全低估的機會成本</strong>。作者僅將此列為「值得未來研究」，但它其實直接削弱了 rule-out 的臨床安全性論證。</li>
+<li>🚩 <strong>贊助者利益與結論框架對齊</strong>：AstraZeneca 出資、兩位藥廠員工掛名；核心訴求「更早確診 → 更早啟動疾病修飾治療」與擴大 SGLT2i 使用族群方向一致。<strong>且本版本完全沒有 COI 揭露聲明。</strong></li>
+</ol>
+<hr />
+<h3>F. 最終裁決</h3>
+<h4>診斷測試可信度：<strong>中</strong></h4>
+<p><strong>支持「中」而非「低」的理由</strong>：樣本量極大且來自真實社區情境（中位 NT-proBNP 僅 123 pg/mL，避免了 spectrum bias，這是同類研究少見的優點）；變項 a priori 指定而非資料挖掘；辨別力與校準度<strong>都有</strong>報告（多數 ML 診斷論文只報前者）；有外部驗證嘗試；作者的限制清單誠實且完整，並明確表態臨床採用前需 RCT；所有可核對的內部算術（53,525 = 31,460+22,065 = 37,373+16,152；Figure 3 兩側各 101 例、各 1000 人；Figure 4 三組 at-risk 相加 = 160,674）<strong>完全一致</strong>；圖表座標軸未見任何截斷或誇大手法。</p>
+<p><strong>排除「高」的理由</strong>：參考標準為未經判定的行政編碼，且與 index test 存在結構性因果依賴；內部驗證僅為隨機切分、未處理診所叢集、未做時間驗證；外部驗證的兩個操作閾值一個空洞、一個失效；且<strong>本文標題所宣稱的核心貢獻（「個人化」的增量價值）從未被與 NT-proBNP 連續值單獨比較而分離出來</strong>。</p>
+<h4>有用的臨床情境（pre-test probability 範圍）</h4>
+<ul>
+<li><strong>最適用：pre-test probability 5–15% 的社區疑似心衰竭族群，且該體系的心臟超音波為稀缺資源。</strong> 在此範圍內，rule-out 可把機率壓到 0.7–2.3%，rule-in 可提升到 27–56%，兩端都有可操作的意義。</li>
+<li><strong>使用方式應限於「排序」而非「守門」</strong>：把它當成決定「兩週內 vs 六週後」的工具，而不是決定「做 vs 不做」的工具。這樣可以保留大部分效率增益，同時規避漏診與遺漏替代診斷（瓣膜疾病、新發 AF）的風險。</li>
+</ul>
+<h4>不建議使用的情境</h4>
+<ul>
+<li>pre-test probability &gt;25% 的族群（rule-out 後殘餘機率 ≥5%，且外部驗證顯示 rule-in 閾值在此類族群中 LR+ 僅約 1.8）。</li>
+<li>台灣及其他心臟超音波可近性高的醫療體系（效益/代價比不利）。</li>
+<li>非白人為主的族群（族裔次組數據不可核實）。</li>
+<li>急性/院內情境、無症狀篩檢情境。</li>
+<li>NT-proBNP 檢驗平台與英國常規不同的機構。</li>
+<li><strong>任何情況下都不應在線上計算器中留白欄位</strong>（缺值在此模型中是有訊息量的訊號，不是中性的「未知」）。</li>
+</ul>
+<h4>若要改觀，最需要的 3 個關鍵改進</h4>
+<ol>
+<li><strong>報告 NT-proBNP 單獨（連續變項）的 AUROC，以及等敏感度（sensitivity = 93.4%）下的 specificity。</strong> 這兩個數字成本近乎為零，卻是回答「個人化到底值多少」與「模型是否真的優於閾值移動」的唯一途徑。<strong>在補上這兩個數字之前，本文的核心宣稱在方法學上是未經檢驗的。</strong></li>
+<li><strong>以獨立的、經專家判定（含心臟超音波與 LVEF 表型）的前瞻性社區世代重新驗證</strong>，且該世代必須包含完整的 NT-proBNP 光譜（含 &lt;300 pg/mL），並以診所為單位分群、以時間切分驗證。同時報告被 ruled out 卻確有心衰竭者的後續結局與替代診斷（瓣膜疾病、新發 AF）的漏失率。</li>
+<li><strong>在真實臨床路徑中執行隨機對照試驗</strong>（PRECISE-HF 導引 vs 現行 NICE/ESC 路徑），主要終點應為病人層級結局（至確診時間、至疾病修飾治療啟動時間、12 個月心衰竭住院或死亡），而非中介的檢查量指標。作者已明確同意此點。</li>
+</ol>
+<h4>一句話結論（給一般讀者）</h4>
+<blockquote>
+<p>把 NT-proBNP 和年齡、腎功能等常規資料一起算成個人化機率，在英國五十多萬人的資料中可減少約三成不必要的心臟超音波，但代價是每省下 48 次檢查就多漏 1 例心衰竭；且此模型在英國以外的可轉移性尚未被證實，臨床採用前仍須隨機試驗檢驗。</p>
+</blockquote>
+<hr />
+<p><strong>資料來源限制總覽</strong>：本次評讀之依據為 PDF 轉出的 markdown 正文、Table 1–2、Figure 1–4 與 Graphical Abstract 之 PNG 圖頁（page_028–035）。<strong>Supplementary Tables 1–6 與 Supplementary Figures 1–4 均不在可取得範圍內</strong>，因此關於次組表現（Supp Table 3、5）、模型比較（Supp Table 4）、外部世代基線（Supp Table 6）、變項重要性圖（Supp Fig 2）與外部校準圖（Supp Fig 4）之判讀，僅能依正文轉述，無法獨立核實。全文（含圖頁）<strong>未見任何病人篩選流程圖</strong>。本版本為 accepted manuscript，<strong>未含 Conflict of Interest 揭露段落</strong>。所有標示 [自行計算] 之數值均由文中報告的 sensitivity / specificity / PPV / 盛行率反推，計算過程已於文中列出。</p>
+<p><strong>Sources</strong>（外部檢索）：</p>
+<ul>
+<li><a href="https://gla.ac.uk/researchinstitutes/icams/staff/kierandocherty">Dr Kieran Docherty — University of Glasgow</a></li>
+<li><a href="https://scholar.google.com/citations?user=5KQM_JQAAAAJ&amp;hl=en">Kieran Docherty — Google Scholar</a></li>
+<li><a href="https://academic.oup.com/eurheartj/article/47/8/927/8242485">Benefit of early initiation of disease-modifying therapy in community-based patients with suspected heart failure — Eur Heart J 2026;47:927–938</a></li>
+<li><a href="https://academic.oup.com/eurheartj/advance-article/doi/10.1093/eurheartj/ehag686/8770128">PRECISE-HF advance article page — Oxford Academic</a></li>
+<li><a href="https://www.journalmetrics.org/journal/european-heart-journal">European Heart Journal Impact Factor 2026 — journalmetrics.org</a></li>
+<li><a href="https://scirev.org/journal/european-heart-journal/">European Heart Journal review timeline — SciRev</a></li>
+<li><a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC9189738/">CoDE-HF — Development and validation of a decision support tool for the diagnosis of acute heart failure, BMJ 2022</a></li>
+<li><a href="https://academic.oup.com/eurheartj/article/43/33/3098/6648207">Deciphering a decision support tool (CoDE-HF) — Eur Heart J 2022;43:3098</a></li>
+<li><a href="https://academic.oup.com/eurheartj/article-abstract/46/16/1493/8009274">Suspected de novo heart failure in outpatient care: the REVOLUTION HF study — Eur Heart J 2025;46:1493</a></li>
+</ul>
+
+<footer class="appraisal-meta">評讀資訊：模型：claude-opus-5 (claude)  ·  route：diagnostic  ·  產出時間：2026-08-30 08:46 CST</footer>
+</main>
+</body>
+</html>

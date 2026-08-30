@@ -1,0 +1,1002 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Artificial Intelligence-Enabled Acquisition and Interpretation for Screening Aortic Stenosis.</title>
+<style>
+  :root {
+    --bg: #fafafa;
+    --card: #ffffff;
+    --text: #1a1a1a;
+    --muted: #6b6b6b;
+    --border: #e5e5e5;
+    --accent: #0b5fff;
+  }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang TC",
+      "Microsoft JhengHei", sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    margin: 0;
+    padding: 24px 16px 64px;
+    line-height: 1.72;
+  }
+  main {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    margin: 0 auto;
+    max-width: 840px;
+    padding: 22px 26px;
+  }
+  nav {
+    margin: 0 auto 14px;
+    max-width: 840px;
+    color: var(--muted);
+    font-size: 14px;
+  }
+  a { color: var(--accent); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  h1, h2, h3, h4 { line-height: 1.35; }
+  h1 { font-size: 26px; margin-top: 0; }
+  h2 { border-top: 1px solid var(--border); padding-top: 18px; }
+  code {
+    background: rgba(127, 127, 127, 0.12);
+    border-radius: 4px;
+    padding: 1px 4px;
+  }
+  table {
+    border-collapse: collapse;
+    table-layout: auto;
+    width: 100%;
+    max-width: 100%;
+  }
+  th, td {
+    border: 1px solid var(--border);
+    overflow-wrap: anywhere;
+    padding: 6px 8px;
+    text-align: left;
+    vertical-align: top;
+  }
+  blockquote {
+    border-left: 3px solid var(--accent);
+    color: var(--muted);
+    margin-left: 0;
+    padding-left: 14px;
+  }
+  .appraisal-meta {
+    border-top: 1px solid var(--border);
+    margin-top: 28px;
+    padding-top: 14px;
+    color: var(--muted);
+    font-size: 13px;
+  }
+  @media (max-width: 600px) {
+    body {
+      padding: 12px 8px 40px;
+    }
+    main {
+      padding: 16px 12px;
+    }
+    h1 {
+      font-size: 22px;
+    }
+    table {
+      font-size: 12px;
+      table-layout: fixed;
+    }
+    th, td {
+      padding: 4px 5px;
+    }
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #1a1a1a;
+      --card: #242424;
+      --text: #e8e8e8;
+      --muted: #999;
+      --border: #333;
+      --accent: #6ea8ff;
+    }
+  }
+</style>
+</head>
+<body>
+<nav><a href="../../2026-W36.html">← 回到 2026-W36 週報</a></nav>
+<main>
+<h1>Artificial Intelligence-Enabled Acquisition and Interpretation for Screening Aortic Stenosis.</h1>
+<h1>醫學文獻批判性評讀</h1>
+<p><strong>Artificial Intelligence–Enabled Acquisition and Interpretation for Screening Aortic Stenosis</strong>
+<em>JAMA Cardiology</em>, 2026. DOI: 10.1001/jamacardio.2026.3829</p>
+<hr />
+<h2>SECTION-0：文章全面描述</h2>
+<h3>0. 文章身份證</h3>
+<table>
+<thead>
+<tr>
+<th>項目</th>
+<th>內容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>標題</td>
+<td>Artificial Intelligence–Enabled Acquisition and Interpretation for Screening Aortic Stenosis</td>
+</tr>
+<tr>
+<td>期刊</td>
+<td>JAMA Cardiology（Original Investigation, AI in Cardiology）</td>
+</tr>
+<tr>
+<td>線上刊出</td>
+<td>2026年8月28日</td>
+</tr>
+<tr>
+<td>DOI / PMID</td>
+<td>10.1001/jamacardio.2026.3829 / 42661496</td>
+</tr>
+<tr>
+<td>文章類型</td>
+<td><strong>Diagnostic accuracy study + deep learning 模型開發與驗證</strong>（路由：SKILL-C）</td>
+</tr>
+<tr>
+<td>設計層次</td>
+<td>回溯性模型開發 → 地理外部驗證 → 手持超音波驗證 → <strong>前瞻性 novice-operator 驗證</strong></td>
+</tr>
+</tbody>
+</table>
+<p><strong>路由判斷說明</strong>：本文同時具備 (a) 機器學習預測模型開發/驗證特性與 (b) 前瞻性診斷準確度研究特性。作者聲明遵循 TRIPOD 與 PRIME；但前瞻性部分本質上是 diagnostic accuracy study，<strong>應以 STARD（或 STARD-AI）為報告準則，文中未提及</strong>，亦未見 TRIPOD+AI（2024 年版）。這是報告框架與研究設計之間的一處錯配。</p>
+<hr />
+<h3>1. 作者團隊評論</h3>
+<p><strong>通訊作者</strong>：Jared G. Bird, MD 與 Gal Tsaban, MD, PhD，皆為 Mayo Clinic Rochester 心血管醫學部。[文內]</p>
+<p><strong>團隊構成</strong>：全部 28 位作者皆隸屬 Mayo Clinic 心血管醫學部單一機構。[文內] 團隊涵蓋三個功能群：</p>
+<ul>
+<li><strong>AI 工程核心</strong>：Zachi I. Attia（Mayo Clinic AI 共同主任）、Eunjung Lee、Jeffrey Malins、D. M. Anisuzzaman、Seda Camalan</li>
+<li><strong>心臟超音波權威</strong>：Patricia A. Pellikka、Jae K. Oh、Vuyisile T. Nkomo、Sorin V. Pislaru、Garvan C. Kane、Jeremy Thaden（皆為 ASE 層級之瓣膜/影像領域資深學者）</li>
+<li><strong>研究執行層</strong>：多位大學部/醫學生層級人員（C. J. Kane、Kovac、Gulati、Schonfeld、Killalea），對應「9 位無臨床經驗之研究人員擔任 novice operator」的設計</li>
+</ul>
+<p><strong>機構地位</strong>：Mayo Clinic 心臟超音波實驗室是全球主動脈瓣狹窄自然史與 AI-ECG 研究的頂尖中心之一，在此領域具無可爭議的權威性。</p>
+<p><strong>團隊過往研究</strong>（此領域高度連貫的研究線）[外部]：</p>
+<ol>
+<li>Cohen-Shelly M, Attia ZI, Friedman PA, et al. <em>Electrocardiogram screening for aortic valve stenosis using artificial intelligence.</em> Eur Heart J. 2021（PMID 33748852）— 本文參考文獻 [9] 的核心</li>
+<li>Ito S, Attia ZI, Friedman PA, et al. <em>Correlation between AI-ECG and echocardiographic features in aortic stenosis.</em> Eur Heart J Digit Health. 2023;4(3):196-206</li>
+<li><strong>Killalea M, Borgeson J, Kane CJ, et al. <em>Improving structural heart disease screening: AI-ECG and novice AI-guided focused cardiac ultrasound.</em> npj Digital Medicine. 2026 Jun（PMID 42265270）</strong></li>
+<li><em>Structural heart disease screening using AI-ECG and novice handheld cardiac ultrasound: a cost analysis.</em> Eur Heart J Open. 2026;6(2):oeag049</li>
+<li><em>External assessment of an AI-ECG for aortic stenosis detection.</em> Eur Heart J Digit Health. 2025</li>
+</ol>
+<p><strong>⚠️ 重要發現 — 資料集重疊未申報 [外部]</strong>：上列第 3 篇（npj Digital Medicine, 2026年6月）描述的是：<strong>「9 位完全新手（nine complete novices）使用 Philips Lumify 搭配 UltraSight 即時 AI 導引，995 位成人，與 30 分鐘內完成的完整心臟超音波對照」</strong>，其中 ≥moderate AS 盛行率 3.5%、AI-FoCUS 可行性 97.3%。本文前瞻世代為 <strong>9 位無臨床經驗研究人員、Philips Lumify + UltraSight、1302 人、15 分鐘內完整 TTE、AS 盛行率 3.7%、可行性 96.6–97.4%</strong>。裝置、導引軟體、操作者人數、機構、對照設計、盛行率與可行性數值幾乎完全一致，且作者群高度重疊（Killalea、Borgeson、C. J. Kane 皆為本文作者）。</p>
+<p><strong>本文全文未引用、未提及、亦未申報與此 npj 研究之世代重疊。</strong> 我無法從公開資料證實重疊比例，但兩者為完全獨立收案的可能性很低。[推論，依據：裝置/軟體/操作者人數/機構/盛行率/可行性之高度吻合] 對於一項以「前瞻性新證據」為賣點的研究，這是實質的透明度缺口。兩篇的分析對象確有差異（npj 由<strong>盲化人類專家</strong>判讀 FoCUS 影像；本文則加上<strong>自動化 AS 分類器</strong>），但這正是重疊世代上的序列發表（serial publication）典型型態，讀者有權知道分母不是獨立的。</p>
+<p><strong>利益揭露評估</strong>：</p>
+<ul>
+<li>[文內] 「Drs Lee, Malins, Naser, Pislaru, G. C. Kane, and Attia <strong>invented algorithms licensed to UltraSight and may benefit from their commercialization through Mayo Clinic</strong>.」</li>
+<li><strong>UltraSight 正是本前瞻研究所使用的 FDA 核准即時影像擷取導引系統。</strong> 第一作者、多位資深作者、AI 技術負責人（Attia）皆對受驗證之技術有商業利益；Mayo Clinic 機構本身亦有授權收益。</li>
+<li>Funding/Support 僅列學生獎學金（Mayo 大學部學程、UCD Gaensler Scholarship），「Role of the Funder/Sponsor」聲明funders 無角色 —— <strong>但利益衝突並非透過 funding 而是透過授權與商業化，該聲明未涵蓋 UltraSight 在研究設計、資料分析或稿件審閱中的角色（有或無皆未說明）</strong>。</li>
+<li>文中未描述獨立統計師、獨立判讀委員會或外部稽核；亦未說明第二階段 overread 的心臟科醫師是否為上述具利益衝突之作者。[文內未說明]</li>
+<li>另有 Friedman、Lopez-Jimenez、Attia 為 Anumana（AI-ECG 商業化公司）科學顧問。</li>
+</ul>
+<p>這不是「應揭露而未揭露」，作者揭露得相當完整；問題在於<strong>治理機制的缺席</strong>：一項驗證自家授權產品的樞紐性研究，全部由利害關係人設計、執行、判讀、分析。</p>
+<hr />
+<h3>2. 文獻 Metadata 整理</h3>
+<table>
+<thead>
+<tr>
+<th>項目</th>
+<th>內容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Accepted for Publication</td>
+<td>2026年8月7日 [文內]</td>
+</tr>
+<tr>
+<td>Published Online</td>
+<td>2026年8月28日 [文內]</td>
+</tr>
+<tr>
+<td>Received date</td>
+<td><strong>[markdown 未保留 Received date；JAMA 慣例亦不刊載]</strong> — 無法計算審查天數</td>
+</tr>
+<tr>
+<td>Accept → Publish 間隔</td>
+<td>21 天</td>
+</tr>
+<tr>
+<td>會議發表</td>
+<td><strong>ESC Congress 2026，2026年8月28日，慕尼黑</strong> — 與線上刊出<strong>同日</strong> [文內]</td>
+</tr>
+<tr>
+<td>Impact Factor</td>
+<td>15.2（2025 JIF）；5-year JIF 16.3；心血管領域 Q1，排名 9/237 [外部: Journal metrics aggregator]</td>
+</tr>
+<tr>
+<td>期刊平均 submission→acceptance</td>
+<td>&gt;100 天；完整審查含修改約 12–24 週 [外部: manusights journal guide]</td>
+</tr>
+<tr>
+<td>邀稿 vs 投稿</td>
+<td>Original Investigation，非邀稿</td>
+</tr>
+</tbody>
+</table>
+<p><strong>解讀</strong>：因缺 Received date，無法直接比較審查速度。但 <strong>ESC 同日發表（simultaneous publication）</strong> 的安排在 JAMA 系列屬常見的加速路徑，通常伴隨編輯部主動協調與時程壓縮。第二次收案期在 2025年6–9月，2026年8月7日接受，資料收集結束至接受約 10–11 個月，並非異常快速。同期配有邀稿 editorial（Marwick），顯示編輯部視此為重點論文。</p>
+<hr />
+<h3>3. 研究背景 [僅根據文內]</h3>
+<p><strong>既有事實</strong>：</p>
+<ul>
+<li>AS 影響約 12% 的 ≥75 歲族群；為全球最常見之瓣膜介入適應症，但診斷不足、治療不足</li>
+<li>延遲診斷與左心室不良重塑、心衰竭、死亡率相關</li>
+<li>TTE 為診斷金標準，但因成本、設備、人力限制，不建議用於無症狀族群的常規篩檢</li>
+<li>聽診在非心臟科場域準確度變異極大</li>
+<li>AI-ECG 篩檢 AS 準確度僅約 70–75%，在低盛行率族群效用受限</li>
+</ul>
+<p><strong>知識缺口</strong>：手持 FoCUS 已廣泛使用於 point of care，但通常無 Doppler、操作者訓練有限，難以可靠辨識顯著 AS。</p>
+<p><strong>Research question</strong>：能否以純 2D（無 Doppler）深度學習模型，套用於「無任何臨床或影像經驗者在 AI 即時導引下取得」的 FoCUS 影像，準確偵測 ≥moderate AS？</p>
+<hr />
+<h3>4. 研究設計與方法</h3>
+<p><strong>PICO</strong>：</p>
+<ul>
+<li><strong>P</strong>：Mayo Clinic 因臨床適應症接受完整 TTE 之成人。前瞻世代排除複雜先天性心臟病與人工主動脈瓣</li>
+<li><strong>I（Index test）</strong>：AI 導引（UltraSight）手持 FoCUS（Philips Lumify）取像 + 深度學習 2D 影像 AS 分類器；使用 PLAX、PSAX-AV、A3C 三個切面，<strong>無 Doppler、無量測</strong></li>
+<li><strong>C（Reference standard）</strong>：同日 15 分鐘內完成之完整 Doppler TTE（GE E95），由受訓超音波技術師執行、level III 心臟超音波醫師依 ASE 準則判讀，且<strong>對 FoCUS 結果盲化</strong></li>
+<li><strong>O</strong>：≥moderate AS 之偵測</li>
+</ul>
+<p><strong>世代結構</strong>：</p>
+<table>
+<thead>
+<tr>
+<th>世代</th>
+<th>n</th>
+<th>期間</th>
+<th>AS 盛行率</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>訓練（Midwest）</td>
+<td>6753</td>
+<td>2005/01–2022/09</td>
+<td>—</td>
+</tr>
+<tr>
+<td>內部驗證（threshold 設定）</td>
+<td>852</td>
+<td>同上</td>
+<td>—</td>
+</tr>
+<tr>
+<td>內部測試</td>
+<td>844</td>
+<td>同上</td>
+<td>9.0%（76/844）</td>
+</tr>
+<tr>
+<td>Midwest 總計</td>
+<td>8449</td>
+<td></td>
+<td>11.0%</td>
+</tr>
+<tr>
+<td>外部驗證 Arizona</td>
+<td>959</td>
+<td></td>
+<td>3.7%</td>
+</tr>
+<tr>
+<td>外部驗證 Florida</td>
+<td>953</td>
+<td></td>
+<td>3.9%</td>
+</tr>
+<tr>
+<td>FoCUS by 資深技師</td>
+<td>602</td>
+<td>2022/11–2023/03</td>
+<td>6.2%</td>
+</tr>
+<tr>
+<td><strong>前瞻 novice AI-FoCUS</strong></td>
+<td><strong>1302</strong></td>
+<td><strong>2024/06–08 + 2025/06–09</strong></td>
+<td><strong>3.7%</strong></td>
+</tr>
+</tbody>
+</table>
+<p><strong>關鍵設計細節</strong>：</p>
+<ul>
+<li><strong>Novice operator</strong>：9 位無任何臨床或超音波經驗之研究人員，接受 <strong>4 小時標準化訓練</strong>後執行；嘗試取得 6 個標準 2D 切面；中位掃描時間 4 分鐘（IQR 3–5）</li>
+<li><strong>≥moderate AS 操作型定義</strong>：符合下列<strong>任一項</strong>即成立 —— AVA ≤1.5 cm²、mean gradient ≥20 mmHg、peak velocity ≥3.0 m/s、DVI ≤0.35</li>
+<li><strong>閾值設定</strong>：於內部驗證集以 Youden index 決定，<strong>其後於所有測試/驗證/前瞻世代原封不動套用</strong>（此為正確做法）</li>
+<li><strong>AI-uninterpretable 定義</strong>：三個目標切面<strong>一個都未辨識到</strong>時判為不可判讀</li>
+<li><strong>2-step hybrid</strong>：AI 判為陽性者 + AI 判為不可判讀者 → 交由心臟科專家盲化 overread（僅看 2D FoCUS 影像，不看完整 TTE）</li>
+<li><strong>統計</strong>：Wilson score 95% CI；ROC、precision-recall、calibration plot、decision curve analysis</li>
+<li>兩次收案期（相隔約 10 個月）<strong>直接合併</strong>，未報告分期表現</li>
+</ul>
+<hr />
+<h3>5. 研究結果重點整理</h3>
+<p><strong>表 A｜回溯性與 handheld 世代（Table 2；已與 page_004.png 逐格核對，混淆矩陣加總全部相符）</strong></p>
+<table>
+<thead>
+<tr>
+<th>世代</th>
+<th>n</th>
+<th>AUROC (95% CI)</th>
+<th>Sens (95% CI)</th>
+<th>Spec (95% CI)</th>
+<th>PPV</th>
+<th>TP/FN/FP/TN</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Midwest 內部測試</td>
+<td>844</td>
+<td>0.99 (0.98–1.00)</td>
+<td>95 (87–98)</td>
+<td>96 (94–97)</td>
+<td>68%</td>
+<td>72/4/34/734</td>
+</tr>
+<tr>
+<td>Arizona</td>
+<td>959</td>
+<td>0.99 (0.97–1.00)</td>
+<td>89 (74–95)</td>
+<td>97 (96–98)</td>
+<td>54%</td>
+<td>31/4/26/898</td>
+</tr>
+<tr>
+<td>Florida</td>
+<td>953</td>
+<td>0.99 (0.96–1.00)</td>
+<td>97 (86–100)</td>
+<td>95 (93–96)</td>
+<td>44%</td>
+<td>36/1/45/871</td>
+</tr>
+<tr>
+<td>FoCUS by 資深技師</td>
+<td>602</td>
+<td>0.99 (0.96–1.00)</td>
+<td>95 (82–99)</td>
+<td>97 (95–98)</td>
+<td>65%</td>
+<td>35/2/19/546</td>
+</tr>
+</tbody>
+</table>
+<p><strong>表 B｜前瞻 novice 世代三種策略（Table 3 + Figure 1A/B 混淆矩陣）</strong></p>
+<table>
+<thead>
+<tr>
+<th>指標</th>
+<th>AI 單獨</th>
+<th>專家單獨判讀 2D 影像</th>
+<th>2-step hybrid</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>可行性</td>
+<td>1258 (96.6%)</td>
+<td>1268 (97.4%)</td>
+<td>1285 (98.7%)</td>
+</tr>
+<tr>
+<td><strong>Sensitivity</strong></td>
+<td><strong>93.5 (82.1–98.6)</strong></td>
+<td><strong>91.7 (80.0–97.7)</strong></td>
+<td><strong>85.4 (72.2–93.9)</strong></td>
+</tr>
+<tr>
+<td>Specificity</td>
+<td>96.4 (95.2–97.4)</td>
+<td>99.5 (98.9–99.8)</td>
+<td>99.7 (99.2–99.9)</td>
+</tr>
+<tr>
+<td><strong>PPV</strong></td>
+<td><strong>49.4 (38.5–60.4)</strong></td>
+<td><strong>88.0 (75.7–95.5)</strong></td>
+<td><strong>91.1 (78.8–97.5)</strong></td>
+</tr>
+<tr>
+<td>NPV</td>
+<td>99.7 (99.3–100.0)</td>
+<td>99.7 (99.2–99.9)</td>
+<td>99.4 (98.8–99.8)</td>
+</tr>
+<tr>
+<td>Accuracy</td>
+<td>96.3</td>
+<td>99.2</td>
+<td>99.1</td>
+</tr>
+<tr>
+<td>TP/FN/FP/TN</td>
+<td>43/3/44/1168</td>
+<td>—</td>
+<td>41/7/4/1233</td>
+</tr>
+</tbody>
+</table>
+<p><strong>流程數字（Figure 2，取自 markdown 文字擷取；此圖不在提供的兩張 PNG 頁面中）</strong>：
+1302 → AI 陰性 1171（停止）／AI 不可判讀 44／AI 陽性 87 → 專家 overread 131 例（10.1%）→ AS 45／仍不可判讀 17／無 AS 69 → 轉介完整 TTE 62 例（4.8%）。<strong>所有分支加總完全一致（1171+44+87=1302；45+17+69=131；45+17=62=4.8%），無流程圖人數不符。</strong></p>
+<p>其他：</p>
+<ul>
+<li>影像品質：PLAX/PSAX 有 80–90% 達 complete/good/adequate；<strong>A3C 僅 65%</strong></li>
+<li>重複掃描亞研究：91 人同日重掃，91/91 分類一致</li>
+<li>敏感度分析（eResults 2）：有無合併瓣膜病、二葉瓣 vs 三葉瓣、&lt;75 歲 vs ≥75 歲間「無顯著差異」<strong>[限制：eResults 內容未在 markdown 中呈現]</strong></li>
+</ul>
+<hr />
+<h3>6. 作者討論與評論重點</h3>
+<p><strong>作者主要訊息</strong>：純 2D、無 Doppler 的深度學習模型可準確辨識 ≥moderate AS；新手在 AI 導引下取得的影像足以支撐自動化判讀；2-step workflow 僅需專家覆閱 10% 檢查即可將 PPV 由 49% 提升至 91%，且僅 4.8% 需轉介完整 TTE。作者定位為 <strong>triage 而非診斷</strong>，並多次強調此點。</p>
+<p><strong>作者自陳限制</strong>（5 條）：① 未跨醫療體系/廠商驗證；② 為臨床轉介族群而非未篩選篩檢族群，且無症狀狀態資料；③ 未評估對轉介型態、資源使用與病人結果之影響；④ 參考標準為臨床常規判讀之 Doppler TTE，部分不一致個案可能需額外檢查；⑤ AS 病因影響 2D 外觀，缺乏風濕性瓣膜病等少見病因之驗證。</p>
+<p><strong>[評估]</strong>：限制陳述<strong>誠實且相當完整</strong>，尤其第 ② 條與第 ⑤ 條直指要害。但仍有三處避重就輕：</p>
+<ol>
+<li><strong>未討論 sensitivity 的下降。</strong> 摘要有報告「PPV 由 49.4% 升至 91.1%, with sensitivity of 85.4%」，Discussion 亦提到「introduced 4 additional false-negative classifications」與「7 of 48 patients with moderate or greater AS were missed」。但 <strong>Key Points 的 Findings 與 Meaning 完全只講 PPV 大幅改善，隻字未提 sensitivity 由 93.5% 掉到 85.4%</strong>。多數讀者只讀 Key Points。這是敘事框架的不對稱。</li>
+<li><strong>未把 Table 3「Expert review alone」欄位的意義攤開講</strong>（詳見下文 B 節，這是本文最重要的被埋沒結果）。</li>
+<li><strong>未討論 calibration plot 的實際品質</strong>，Results 僅寫「calibration was assessed using a calibration plot」，然後沒有任何結論。</li>
+</ol>
+<p><strong>結論外推超出數據</strong>：Conclusions 寫「supports further evaluation of this approach as a scalable triage strategy, <strong>and possibly even screening strategy, in primary care, community, and resource-limited settings</strong>」。本研究<strong>沒有任何一位受試者來自 primary care、community 或 resource-limited setting</strong>；全部是 Mayo Clinic 已被轉介做完整 TTE 的病人（CHF 病史 40.6%、PVD 41.6%、CAD 37.4%、AF 32.6%）。作者以「盛行率 3.7% 與社區研究相近」作辯護，但<strong>盛行率相同不等於疾病譜相同</strong>（見 B 節 spectrum bias 討論）。</p>
+<hr />
+<h3>7. 外部專業意見</h3>
+<p><strong>[外部: JAMA Cardiology editorial 全文]</strong>
+Marwick TH. <em>Artificial Intelligence for Acquisition and Interpretation of Echocardiography—Closing the Loop.</em> JAMA Cardiol. Published online August 28, 2026. doi:10.1001/jamacardio.2026.3877
+（作者：Baker Heart and Diabetes Institute / University of Melbourne；COI：僅澳洲 NHMRC investigator grant，無產業利益 —— 相較本文作者群，是一位真正獨立的評論者）</p>
+<p><strong>肯定之處</strong>：</p>
+<ul>
+<li>認為本文觸及 TTE 的「下一個重大前沿」：讓超音波跳出檢查室、走入社區，不再需要資深技師與專家判讀者</li>
+<li>認為本研究非專家取像的可行性「高：超過 90%」，並將其與 PANES-HF 研究（8 位無超音波經驗護理師）並列為 AI 導引取像可行性的證據</li>
+</ul>
+<p><strong>質疑與方法學批評（相當尖銳且與本評讀高度一致）</strong>：</p>
+<ol>
+<li><strong>封閉診斷空間的 phenocopy 風險</strong>：「diagnostic neural networks operate within a closed diagnostic space defined by their training data, a classifier may interpret a phenocopy (eg, artifact, congenital abnormality, or postoperative heart) into whichever known category best resembles it... <strong>high classification confidence does not necessarily equate to diagnostic certainty</strong>」</li>
+<li><strong>富集訓練集 → 盛行率轉換 → PPV 崩塌</strong>：「A classifier with apparently excellent sensitivity and specificity in a cohort containing 30% disease may generate large numbers of false-positive results when deployed in a population where disease prevalence is 1%.」（Marwick 於文首即指出社區未診斷 AS 盛行率約 <strong>1%</strong>，遠低於本文的 3.7%）</li>
+<li><strong>AI 需要「知道何時不要下判斷」</strong>：「A key issue for future deployment is... <strong>not simply whether AI can make a correct prediction, but whether it recognizes when not to make one.</strong>」</li>
+<li><strong>模型漂移與持續監測</strong>：硬體、軟體、探頭、取像流程、族群改變皆可能造成 performance drift</li>
+<li><strong>最重要的結論性要求</strong>：「For autonomous TTE for AS detection to become credible, future studies need to establish the feasibility of this process <strong>in the community—not in an echocardiography laboratory</strong>—and move beyond defining accuracy to <strong>establishing patient benefit, quantifying abstention and failure rates, demonstrating calibrated uncertainty, examining model drift, and comparing AI against experts who have access to the complete clinical context</strong>.」</li>
+<li>最終定位：「AI is best viewed as a powerful tool for <strong>extending and standardizing TTE expertise</strong>, while the reader retains responsibility for integrating images, physiology, and the clinical story.」—— 即 automation ≠ autonomy。</li>
+</ol>
+<p><strong>[評估]</strong> 這篇 editorial 的立場明顯比本文摘要保守。Marwick 幾乎逐條預告了本評讀 E 節的紅旗。值得注意的是，Marwick 在描述本文世代時有兩處小誤（把 602 人資深技師世代描述為「prospectively evaluated... AI-guided」，實際該世代為 2022/11–2023/03 之 handheld FoCUS 且非 AI 導引；並把 Florida/Arizona 的 CI 掛在兩個約 850 人的內部世代上）。這反映本文四層世代堆疊的呈現方式即使對邀稿專家也不易一次讀清。</p>
+<p>未發現其他同期公開專業評論。</p>
+<hr />
+<h3>8. 臨床建議</h3>
+<p><strong>可採用的情境</strong>：</p>
+<ul>
+<li>心臟超音波量能受限、但<strong>盛行率不低</strong>的場域（例如老年科住院病房、TAVR 轉介前篩查、心衰竭門診）作為<strong>排除工具</strong>。LR− ≈ 0.07（AI 單獨）在此情境穩健。</li>
+<li>作為<strong>工作量分流</strong>工具：以 AI 先過濾掉 ~90% 明顯正常者，讓專家只讀 10%。這是本研究<strong>真正被數據支持的貢獻</strong>。</li>
+</ul>
+<p><strong>不建議直接套用的情境</strong>：</p>
+<ul>
+<li><strong>真正的社區/初級照護無症狀篩檢</strong> —— 這正是摘要與結論所暗示、卻完全未經測試的場域（量化理由見 B 節）</li>
+<li>非白人為主、高 BMI、慢性肺病比例高、聲窗不佳之族群（本世代 90.7% 白人、BMI 中位數 27.4）</li>
+<li>風濕性瓣膜病盛行地區</li>
+<li>任何需要「AS 嚴重度分級」或「機率化風險估計」的用途 —— 模型輸出僅可作二元旗標，不可當作機率（見 D 節 calibration）</li>
+</ul>
+<p><strong>給臨床醫師的實務建議</strong>：</p>
+<ol>
+<li><strong>陰性結果可信，陽性結果必須做完整 Doppler TTE。</strong> 這不是保守，是數學：在 3.7% 盛行率下 AI 單獨的陽性者僅約一半為真；在社區 1% 盛行率下約僅五分之一為真。</li>
+<li><strong>不要把 4 小時訓練的新手＋AI 導引，等同於本研究的 novice operator。</strong> 本研究的 9 位操作者平均各掃描約 145 人次，研究後期實質上已是熟練的 focused ultrasound 技術員；文中無 learning curve 分析、無各操作者表現分層。</li>
+<li><strong>若要在自家單位導入，第二階段的專家覆閱不是可選項而是結構必需。</strong> Precision-recall 曲線（Figure 1D）顯示單靠調整閾值，PPV 最高僅約 85%，且需犧牲一半 sensitivity；人類覆閱提供的是閾值移動無法取代的資訊。</li>
+</ol>
+<p><strong>研究證據強度分級：中</strong>
+理由：模型開發樣本量大、閾值預先鎖定、參考標準獨立且盲化、無 partial verification bias、前瞻性設計、有外部地理驗證 —— 這些都是紮實的優點。但 <strong>(a)</strong> 前瞻世代僅 48 個事件，所有關鍵 CI 寬達 16–22 個百分點；<strong>(b)</strong> 全部世代來自單一醫療體系、單一廠商、臨床轉介族群；<strong>(c)</strong> 未見獨立於利益相關者的驗證；<strong>(d)</strong> 疑似與已發表 npj 研究世代重疊而未申報；<strong>(e)</strong> 無臨床有效性（第三階段）證據。</p>
+<hr />
+<h2>SKILL-C：診斷研究與臨床預測模型評讀</h2>
+<h3>A. 補充技術細節</h3>
+<table>
+<thead>
+<tr>
+<th>面向</th>
+<th>評估</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Reference standard 有效性</strong></td>
+<td>✅ 完整 Doppler TTE（GE E95），依 ASE 準則，連續方程式求 AVA，多聲窗對位，竇性 3 心動週期／AF 5 心動週期平均 —— 執行品質高</td>
+</tr>
+<tr>
+<td><strong>Reference standard 獨立性</strong></td>
+<td>✅ 完全獨立於 index test；臨床超音波人員對 FoCUS 結果盲化 [文內]</td>
+</tr>
+<tr>
+<td><strong>Index test 判讀盲化</strong></td>
+<td>✅ 第二階段專家 overread「blinded to the comprehensive echocardiographic findings」[Table 3 footnote a]；另有一位專家在盲化臨床與 AI 結果下評分影像品質</td>
+</tr>
+<tr>
+<td><strong>Partial / differential verification bias</strong></td>
+<td>✅ <strong>無</strong>。所有前瞻受試者皆接受參考標準（本來就是來做 TTE 的）；FoCUS 於 TTE 前後 15 分鐘內完成，無疾病進展偏差。<strong>這是本研究設計上最紮實的一點</strong></td>
+</tr>
+<tr>
+<td><strong>Incorporation bias</strong></td>
+<td>✅ 無。專家 overread 僅看 2D FoCUS，不看完整 TTE</td>
+</tr>
+<tr>
+<td><strong>Cut-off 設定</strong></td>
+<td>✅ 於<strong>獨立的內部驗證集</strong>以 Youden index 預先決定，其後所有世代原封不動套用。符合 Liu 等人的要求 [參考: jama_liu_2019_ug_190001.md, &quot;Validation of Machine Learning Models&quot;]</td>
+</tr>
+<tr>
+<td><strong>Spectrum bias</strong></td>
+<td>⚠️ <strong>主要弱點</strong>（詳下）</td>
+</tr>
+<tr>
+<td><strong>Cut-off 選擇的隱性代價</strong></td>
+<td>⚠️ Youden index 是<strong>盛行率無關</strong>的準則，且是在 11% 盛行率的世代上求得。Liu 等人明確警告：「Cutoff selection using the validation set may hide calibration issues, such as when a machine learning model is trained using an enriched data set... the model may result in <strong>false-positive output when validated on a general patient population with only a small number of patients having the clinical entity</strong>」[參考: jama_liu_2019_ug_190001.md]。本文 PPV 僅 49.4% 正是此現象的教科書級實例</td>
+</tr>
+<tr>
+<td><strong>參考標準定義的寬鬆性</strong></td>
+<td>⚠️ ≥moderate AS 採 <strong>4 條準則的 OR 邏輯</strong>（AVA ≤1.5 cm² <strong>或</strong> MG ≥20 mmHg <strong>或</strong> Vmax ≥3.0 m/s <strong>或</strong> DVI ≤0.35）。此為複合式代理定義，會納入高流量狀態的輕度 AS、體型小者的 AVA 假性偏低、以及 LVOT 測量誤差導致的低 DVI。模型與參考標準共用同一定義（內部一致），但這意味著本文偵測的「AS」是一個比臨床 moderate AS <strong>更寬、更異質</strong>的實體。作者僅以「as previously described [9,14]」自我引用帶過，未做敏感度分析（例如改用 Vmax ≥3.0 m/s 單一準則會如何）</td>
+</tr>
+<tr>
+<td><strong>方法可重複性</strong></td>
+<td>⚠️ 模型架構、前處理、訓練、超參數最佳化全部推給 eMethods 2 <strong>[限制：Supplement 內容未在 markdown 中呈現，無法評估架構是否適配、tuning set 是否確實獨立、有無 ensemble/data augmentation]</strong></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h3>B. 診斷準確度核心評估</h3>
+<h4>B1. Likelihood ratio 計算（文內完全未報告，以下由混淆矩陣自行計算）</h4>
+<p><strong>計算式</strong>：LR+ = Sens / (1 − Spec)；LR− = (1 − Sens) / Spec</p>
+<table>
+<thead>
+<tr>
+<th>世代/策略</th>
+<th>Sens</th>
+<th>Spec</th>
+<th><strong>LR+</strong></th>
+<th><strong>LR−</strong></th>
+<th>臨床解讀</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Midwest 內部測試</td>
+<td>0.947</td>
+<td>0.956</td>
+<td><strong>21.4</strong></td>
+<td><strong>0.055</strong></td>
+<td>兩端皆 &gt;10 / &lt;0.1，具決策意義</td>
+</tr>
+<tr>
+<td>Arizona</td>
+<td>0.886</td>
+<td>0.972</td>
+<td><strong>31.5</strong></td>
+<td><strong>0.117</strong></td>
+<td>LR+ 佳；LR− 略遜</td>
+</tr>
+<tr>
+<td>Florida</td>
+<td>0.973</td>
+<td>0.951</td>
+<td><strong>19.8</strong></td>
+<td><strong>0.028</strong></td>
+<td>排除能力極佳</td>
+</tr>
+<tr>
+<td>FoCUS by 資深技師</td>
+<td>0.946</td>
+<td>0.966</td>
+<td><strong>28.1</strong></td>
+<td><strong>0.056</strong></td>
+<td>手持裝置未損及表現</td>
+</tr>
+<tr>
+<td><strong>前瞻 AI 單獨</strong></td>
+<td><strong>0.935</strong></td>
+<td><strong>0.964</strong></td>
+<td><strong>25.8</strong></td>
+<td><strong>0.068</strong></td>
+<td>雙向皆大幅改變機率</td>
+</tr>
+<tr>
+<td><strong>前瞻 專家單獨</strong></td>
+<td><strong>0.917</strong></td>
+<td><strong>0.995</strong></td>
+<td><strong>≈183</strong></td>
+<td><strong>0.083</strong></td>
+<td>極高 LR+</td>
+</tr>
+<tr>
+<td><strong>前瞻 2-step hybrid</strong></td>
+<td><strong>0.854</strong></td>
+<td><strong>0.9968</strong></td>
+<td><strong>≈264</strong>（極不穩定）</td>
+<td><strong>0.147</strong></td>
+<td>LR+ 名義極高但僅由 <strong>4 個 FP</strong> 決定</td>
+</tr>
+</tbody>
+</table>
+<p><strong>⚠️ 關於 2-step 的 LR+ = 264</strong>：分母僅 4/1237 個偽陽性。以 Wilson 法估計偽陽性率 95% CI 約 0.13–0.82%，對應 <strong>LR+ 的可能區間約 104 至 657</strong>。這個數字看似驚人，實際上極度脆弱 —— 再多 4 個偽陽性就會腰斬。文中 Table 2 與 Table 3 <strong>未對 PPV / NPV / accuracy 提供任何 95% CI</strong>（Table 2 完全沒有，Table 3 有但未延伸到 LR），對一篇以 PPV 為核心賣點的論文，這是明顯的報告缺口。</p>
+<p><strong>另一項報告問題</strong>：Table 2 將 Arizona、Florida、FoCUS 三個世代的 NPV 直接印為「<strong>100</strong>」。實際值分別為 898/902 = 99.6%、871/872 = 99.9%、546/548 = 99.6% —— 各自仍有 4、1、2 位被漏掉的 AS 病人。在一份螢光筆會停在「NPV 100%」的表格裡，這種取整方式會誤導。</p>
+<h4>B2. Pre-test → Post-test probability（Fagan nomogram 概念，文字推演）</h4>
+<p>以前瞻世代的 LR 值，套用到三種真實臨床盛行率：</p>
+<table>
+<thead>
+<tr>
+<th>場景</th>
+<th>Pre-test</th>
+<th>AI 單獨陽性後</th>
+<th><strong>2-step 陽性後</strong></th>
+<th>AI 單獨陰性後</th>
+<th>2-step 陰性後</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>社區 65+ 未診斷 AS</strong>（Marwick 引 D'Elia 等：約 1%）</td>
+<td>1%</td>
+<td><strong>20.7%</strong></td>
+<td><strong>72.7%</strong></td>
+<td>0.07%</td>
+<td>0.15%</td>
+</tr>
+<tr>
+<td><strong>本研究實際世代</strong></td>
+<td>3.7%</td>
+<td><strong>49.8%</strong>（與觀察到的 49.4% 吻合 ✅）</td>
+<td><strong>91.0%</strong>（與觀察到的 91.1% 吻合 ✅）</td>
+<td>0.26%</td>
+<td>0.56%</td>
+</tr>
+<tr>
+<td><strong>≥75 歲族群</strong>（文內 ref 1：約 12%）</td>
+<td>12%</td>
+<td><strong>77.9%</strong></td>
+<td><strong>97.3%</strong></td>
+<td>0.92%</td>
+<td>1.97%</td>
+</tr>
+</tbody>
+</table>
+<p><strong>這是本評讀最重要的量化推論</strong>：作者的招牌數字「PPV 91.1%」是在 3.7% 盛行率下取得的。<strong>移到 Marwick 所述的真實社區篩檢場域（1%），同一個 2-step workflow 的 PPV 會降到約 73%；AI 單獨則從 49% 降到約 21%（每 5 個陽性有 4 個是假的）。</strong> 而 1% 正是作者在 Conclusions 中所指涉的「primary care, community, and resource-limited settings」。作者從未做這個換算 —— 而 Marwick 在 editorial 中恰恰以一般性語言警告了它。</p>
+<p>反過來，<strong>排除能力在所有盛行率下都很好</strong>：即使在 12% 盛行率族群，2-step 陰性後殘餘機率僅約 2%。<strong>本工具的價值主要在 rule-out，不在 rule-in。</strong> 這與作者自陳的 triage 定位一致，但與摘要「screening strategy」的措辭不一致。</p>
+<h4>B3. 被埋沒的關鍵比較：AI 到底加了什麼？</h4>
+<p>Table 3 有三欄，作者只討論了第一欄與第三欄的對比。把第二欄放進來看：</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Sens</th>
+<th>Spec</th>
+<th>PPV</th>
+<th>NPV</th>
+<th>Accuracy</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>AI 單獨</td>
+<td>93.5</td>
+<td>96.4</td>
+<td>49.4</td>
+<td>99.7</td>
+<td>96.3</td>
+</tr>
+<tr>
+<td><strong>專家單獨讀同一批 2D FoCUS 影像（無 AI）</strong></td>
+<td><strong>91.7</strong></td>
+<td><strong>99.5</strong></td>
+<td><strong>88.0</strong></td>
+<td><strong>99.7</strong></td>
+<td><strong>99.2</strong></td>
+</tr>
+<tr>
+<td>2-step hybrid（AI → 專家覆閱）</td>
+<td>85.4</td>
+<td>99.7</td>
+<td>91.1</td>
+<td>99.4</td>
+<td>99.1</td>
+</tr>
+</tbody>
+</table>
+<p><strong>「專家單獨」這一欄在 sensitivity（91.7 vs 85.4）、NPV（99.7 vs 99.4）、accuracy（99.2 vs 99.1）上都優於或等同於 2-step hybrid，PPV 僅略低（88.0 vs 91.1），specificity 幾乎相同（99.5 vs 99.7）。</strong> 換言之：<strong>一位盲化的心臟科醫師直接讀完這 1302 份新手取得的 2D 影像，診斷表現不輸 AI+專家的兩階段流程。</strong></p>
+<p>這徹底改變了本文貢獻的性質：</p>
+<ul>
+<li><strong>AI 分類器並未提升診斷準確度</strong> —— 它與人類讀者在同一批影像上表現相當（93.5% vs 91.7% sensitivity），這也正是 Liu 等人所說的合理範圍：「machine learning methods <strong>should not be able to exceed</strong> the performance of extremely careful and experienced clinicians who have been given sufficient time」[參考: jama_liu_2019_ug_190001.md, &quot;Are the Results Unexpected?&quot;]。從這個角度，本文的結果通過了「太好而不真實」的合理性檢驗 ✅</li>
+<li><strong>AI 真正提供的是工作量分流</strong>：把需要人讀的檢查從 100% 降到 10%，換取相對於「專家全讀」約 6 個百分點的 sensitivity 損失（91.7% → 85.4%）。</li>
+<li><strong>真正的突破其實在「取像」而非「判讀」</strong> —— 讓 4 小時訓練的新手能取得可判讀影像的，是 UltraSight 導引；AS 分類器只是把人類本來就能做的判讀自動化到 90% 的檢查上。</li>
+</ul>
+<p>作者在 Discussion 確實寫了「the algorithm performs most first-pass review and limits the need for expert interpretation」，所以並非隱瞞；但摘要、Key Points 與結論的整體框架是「AI accurately detected AS」，而非「AI 節省了 90% 的判讀工時，準確度與人類讀者相當」。<strong>後者才是這份數據所支持的命題。</strong></p>
+<h4>B4. Sensitivity 的實際代價（作者未在 Key Points 呈現）</h4>
+<p>從 AI 單獨到 2-step，sensitivity 由 93.5% (82.1–98.6) 降至 85.4% (72.2–93.9)，絕對下降 8.1 個百分點。追蹤 7 個偽陰性的來源：</p>
+<ul>
+<li><strong>3 例</strong>：落在 AI 判為陰性的 1171 人中，<strong>永遠不會被覆閱</strong>，是流程的結構性盲點</li>
+<li><strong>4 例</strong>：AI 原本標記為需覆閱（陽性或不可判讀），但<strong>專家 overread 時把他們讀成陰性</strong> —— 即專家覆閱<strong>新製造了 4 個偽陰性</strong></li>
+</ul>
+<p>第二類尤其值得注意：人類介入不只是過濾偽陽性，也在剔除真陽性。作者在 Discussion 誠實寫出「introduced 4 additional false-negative classifications during expert review」，但這一點沒有進入 Key Points，也沒有被放進「這個 workflow 該不該部署」的權衡討論。</p>
+<p><strong>臨床判斷</strong>：對一個可治療、與死亡率相關、且已知診斷不足的疾病，用 8 個百分點的 sensitivity 換 PPV，其合理性取決於偽陽性的成本（一次不必要的完整 TTE，成本低、風險近乎零）與偽陰性的成本（延遲診斷的 AS，可能延誤數年）。<strong>在這個不對稱下，我認為 AI 單獨（sensitivity 93.5%、PPV 49.4%）在多數場域反而是比 2-step 更合理的操作點</strong> —— 因為「陽性」觸發的動作只是「去做一次超音波」，不是手術。作者選擇以 PPV 為優化目標而未討論這個不對稱，是價值判斷未攤開的地方。（兩者 CI 大幅重疊，統計上無法區辨；但 2-step sensitivity 的 CI 下界 72.2% 意味著<strong>最多可能漏掉近 28% 的 moderate 以上 AS</strong>，這不是可以忽略的下界。）</p>
+<h4>B5. Spectrum bias — 最關鍵的外部效度限制</h4>
+<table>
+<thead>
+<tr>
+<th>特徵</th>
+<th>前瞻世代 (n=1302)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>CHF 病史</td>
+<td>40.6%</td>
+</tr>
+<tr>
+<td>PVD 病史</td>
+<td>41.6%</td>
+</tr>
+<tr>
+<td>CAD 病史</td>
+<td>37.4%</td>
+</tr>
+<tr>
+<td>AF 病史</td>
+<td>32.6%</td>
+</tr>
+<tr>
+<td>CKD 病史</td>
+<td>24.6%</td>
+</tr>
+<tr>
+<td>慢性肺病</td>
+<td>25.4%</td>
+</tr>
+<tr>
+<td>白人</td>
+<td>90.7%</td>
+</tr>
+<tr>
+<td>非裔美國人 / 西語裔</td>
+<td>2.4% / 2.1%</td>
+</tr>
+<tr>
+<td>BMI 中位數</td>
+<td>27.4 (IQR 24.5–31.2)</td>
+</tr>
+</tbody>
+</table>
+<p>這是一個<strong>因臨床適應症被轉介做完整心臟超音波</strong>的、心血管共病極重的族群。作者以「盛行率 3.7% 與社區研究相近」作為外推的橋樑 —— <strong>但這個橋樑不成立</strong>。理由：</p>
+<ol>
+<li><strong>盛行率相同 ≠ 疾病譜相同。</strong> 在 Mayo 心臟超音波室被抓到的 moderate AS，多半是已有症狀、已被懷疑、或已在追蹤的病人，瓣膜鈣化程度較重、2D 形態學特徵較明顯。社區偶然發現的無症狀 moderate AS，瓣葉變化較細微。</li>
+<li><strong>本模型明確是形態學分類器</strong>：作者自陳「it identifies a <strong>2-dimensional morphological phenotype</strong> associated with moderate or greater AS」。形態學分類器對疾病譜的敏感度遠高於血流動力學量測 —— 這正是它最脆弱的地方。</li>
+<li>因此，<strong>真正的社區篩檢族群中，sensitivity 很可能低於本文報告的 85–93%</strong>，而 PPV 則因盛行率下降而進一步惡化（見 B2）。兩個方向的偏移都是往壞的方向。</li>
+</ol>
+<p>Marwick 在 editorial 中把這一點列為可信度的前提條件：「future studies need to establish the feasibility of this process <strong>in the community—not in an echocardiography laboratory</strong>」。</p>
+<hr />
+<h3>C. AI / ML 診斷模型三階段評估</h3>
+<h4>① 建模（Derivation）— <strong>充分</strong></h4>
+<ul>
+<li>✅ 任務定義明確（二元分類：≥moderate AS）；訓練樣本 6753 人，對深度學習影像分類屬合理規模</li>
+<li>✅ 有獨立的 training / tuning(internal validation) / test 三分割，超參數調整在 tuning set 上進行，符合 Liu 等人要求的 ML 特有雙資料集架構 [參考: jama_liu_2019_ug_190001.md, Figure 2B]</li>
+<li>✅ 有自動化 view classifier 前置，再接 AS 預測</li>
+<li>⚠️ 訓練集刻意富集（11.0% vs 部署場域 3.7%）。作者承認此為刻意設計，並以「閾值在驗證集預先設定且未變動」作為抗辯 —— 抗辯部分成立（避免了在測試集上調閾值的作弊），但<strong>無法解決富集造成的 calibration 偏移</strong>（見 D 節）</li>
+<li>⚠️ 收案橫跨 2005–2022 共 17 年，超音波硬體世代跨度極大。作者稱 eFigure 4 顯示「discrimination remained consistently high across acquisition periods and ultrasound systems」<strong>[限制：eFigure 4 內容未在 markdown 中呈現，無法核實]</strong></li>
+<li>⚠️ 架構、正規化策略、ensemble 與否全在 eMethods 2 <strong>[限制：未在 markdown 中呈現]</strong></li>
+</ul>
+<h4>② 驗證（Validation）— <strong>良好但侷限於單一體系</strong></h4>
+<ul>
+<li>✅ <strong>地理外部驗證</strong>：Arizona (n=959) 與 Florida (n=953)，AUROC 皆 0.99，表現穩定。這是真正的外部驗證（不同院區、不同族群組成 —— Florida 非裔比例 10.5% vs Midwest 2.1%）</li>
+<li>✅ <strong>裝置泛化驗證</strong>：602 位由資深技師以 Philips Lumify 手持裝置取像，AUROC 0.99、sensitivity 95%。證明模型不依賴 cart-based 系統的影像特性</li>
+<li>✅ <strong>前瞻性驗證</strong>（第 ③ 階段的前哨），而非僅回溯</li>
+<li>❌ <strong>所有驗證世代皆來自 Mayo Clinic 單一醫療體系</strong>。Arizona/Florida 雖地理分離，但共用相同的取像流程、技師訓練標準、機器設定與 level III 判讀傳統。這不是 Liu 等人所要求的「完全獨立驗證集」的最強形式</li>
+<li>❌ <strong>單一超音波廠商</strong>（Philips Lumify + GE E95），未跨廠商驗證。作者自陳為限制</li>
+<li>⚠️ <strong>Repeatability vs Reproducibility</strong>：Liu 等人區分兩者 —— repeatability 是同一硬體/流程下重複影像的一致性；reproducibility 是跨硬體、跨操作者、跨機構的一致性 [參考: jama_liu_2019_ug_190001.md, &quot;Are Machine Learning Model Predictions Repeatable and Reproducible?&quot;]。本文的 91 人同日重掃亞研究只碰到 repeatability，且以 3.7% 盛行率推算，這 91 人中約 87 人為陰性，<strong>91/91 的一致性幾乎全由「一致地判為陰性」驅動</strong>；真正有資訊量的是陽性個案的再測一致性（約 3 人），文中未報告 kappa 或分層結果。這個看似漂亮的數字<strong>對重要的個案幾乎不提供資訊</strong></li>
+<li>⚠️ <strong>兩次收案期（2024/06–08、2025/06–09，相隔約 10 個月）直接合併</strong>，未報告分期表現、未報告 UltraSight 軟體版本是否在期間內更新。這正是 Marwick 所指的 model drift 監測缺口</li>
+</ul>
+<h4>③ 臨床有效性（Clinical Effectiveness）— <strong>完全缺席</strong></h4>
+<ul>
+<li>❌ <strong>無任何前瞻性試驗證明此流程改善臨床決策或病人結果</strong>。作者誠實列為限制第 ③ 條：「its effects on referral patterns, resource utilization, and patient outcomes remain unknown」</li>
+<li>❌ <strong>無成本效益分析</strong>（雖然同團隊另有 EHJ Open 的成本分析，但用的是不同世代、不同技術組合）</li>
+<li>⚠️ <strong>Failure mode 分析</strong>：文中稱偽陽性/偽陰性細節在 eResults 1 <strong>[限制：未在 markdown 中呈現]</strong>。主文完全未描述模型在何種情況下會出錯 —— 而 Marwick 明確指出 phenocopy（人工瓣膜、術後心臟、先天異常、假影）是形態學分類器的系統性風險</li>
+<li>⚠️ <strong>公平性（fairness）</strong>：無任何依種族、性別、BMI 分層的表現分析。前瞻世代 90.7% 白人 —— 對一個宣稱要服務 resource-limited settings 的工具，這是重大空缺</li>
+<li>⚠️ <strong>可解釋性</strong>：class activation map「顯示活化集中於主動脈瓣區域，<strong>在有 AS 與無 AS 的受試者身上皆然</strong>」。這只能排除「模型抓錯解剖區域」這種粗糙的 shortcut learning，<strong>無法證明模型使用了狹窄專屬的特徵</strong>。<strong>[限制：Video 內容未在 markdown 中呈現；CAM 圖像未在提供的兩張 PNG 頁面中]</strong></li>
+<li>⚠️ <strong>Abstention 機制不足</strong>：「AI-uninterpretable」的定義是「三個目標切面一個都沒辨識到」—— 這是極度寬鬆的門檻。只要抓到<strong>一個</strong> PLAX 就算「可判讀」。考量 A3C 僅 65% 達可接受品質，「96.6% 可行性」中必然包含相當比例的單切面/雙切面研究。文中稱 eFigure 2 顯示「incorporating multiple imaging windows improved accuracy」，<strong>但主文未報告前瞻世代中依可用切面數分層的表現</strong> [限制：eFigure 2 未在 markdown 中呈現]。Marwick 對此的表述是：模型應能「quantify confidence, identify inadequate or unfamiliar data, and refer uncertain studies for expert review」—— 本模型的 abstention 機制只在「完全找不到切面」時觸發，<strong>沒有基於預測信心度的 abstention</strong></li>
+</ul>
+<p><strong>三階段總評</strong>：① 充分、② 良好但單一體系、<strong>③ 完全缺席</strong>。依 Liu 等人的框架，這代表本工具尚處於「可進入臨床效能試驗」而非「可臨床部署」的階段。</p>
+<hr />
+<h3>D. 臨床預測模型評估（辨別力與校準度）</h3>
+<h4>D1. 辨別力（Discrimination）— <strong>優異，但需正確歸因</strong></h4>
+<ul>
+<li>回溯性世代 AUROC 0.99（CI 0.96–1.00），前瞻世代 <strong>AUC 0.979</strong>（Figure 1C 標示）。</li>
+<li>⚠️ <strong>摘要的框架問題</strong>：摘要 RESULTS 首句是「excellent discrimination in the internal test cohort (AUROC, 0.99...)」，前瞻世代的 0.979 只出現在圖上，未進入摘要。技術上無誤，但讀者容易把 0.99 記成整體表現。</li>
+<li>⚠️ <strong>AUROC 在 3.7% 盛行率下是被高估其臨床意涵的指標</strong>。0.979 的 AUROC 對應到的實際 PPV 只有 49.4%。這正是為什麼 precision-recall curve（Figure 1D）在低盛行率場域比 ROC 更有資訊量 —— 作者有畫，但沒有據以討論。</li>
+</ul>
+<p><strong>Figure 1C（ROC）圖上可見、但文字未討論的內容</strong>：
+曲線在極低 FPR（約 0.02–0.03）處近乎垂直上升至 TPR 約 0.93，隨後幾乎水平；在 FPR 約 0.16 處有一小階躍升至約 0.97；<strong>直到 FPR 約 0.5 才有一階跳到 TPR = 1.0</strong>。</p>
+<p><strong>臨床意義</strong>：最後那幾例 AS 對模型而言與正常人幾乎不可區分 —— <strong>要抓到 100% 的 AS，必須接受約 50% 的偽陽性率</strong>。這在數學上封死了「乾脆把閾值調低換取更高 sensitivity」這條退路。曲線上段呈明顯階梯狀，反映僅 46 個陽性事件（每一例約造成 2 個百分點的跳動），也提醒 AUROC 的 CI 上界貼到 1.00 主要是事件數少造成的。</p>
+<p><strong>Figure 1D（Precision-Recall）圖上可見的內容</strong>：
+Precision 在 recall 約 0.35–0.55 區間達到高原（約 0.80–0.85），此後隨 recall 增加而下滑；<strong>recall 超過約 0.9 之後 precision 急速崩塌，在 recall = 1.0 時降至約 0.05</strong>。</p>
+<p><strong>臨床意義（本圖最重要的訊息，文中完全未討論）</strong>：</p>
+<ol>
+<li>本模型<strong>不存在任何一個同時具備高 sensitivity 與高 PPV 的操作點</strong>。所選操作點（recall 0.935 / precision 0.494）已位於曲線的陡降段。</li>
+<li>即使犧牲近半 sensitivity，PPV 的天花板也只有約 85% —— <strong>低於 2-step hybrid 實際達到的 91.1%</strong>。這證明專家覆閱提供的是閾值調整無法取代的獨立資訊，<strong>第二階段人類覆閱不是可選的優化，而是結構性必需</strong>。</li>
+</ol>
+<p>⚠️ <strong>Figure 1D 的圖例標示錯誤</strong>：panel D 的對角虛線標為「Ideal」，右下角另有「Calibration」字樣。對 precision-recall 曲線而言，對角線沒有意義 —— 正確的 no-skill 基準線應是位於盛行率高度（≈0.037）的<strong>水平線</strong>。「Calibration」一詞更明顯是從 panel E 誤植過來的圖例標籤。這是一處實質的製圖錯誤，會讓不熟悉 PR 曲線的讀者誤判模型相對於基準的優勢（實際優勢遠大於對角線所暗示的，因為真正的基準線只有 0.037）。</p>
+<h4>D2. 校準度（Calibration）— <strong>實質不足，且作者未做任何評述</strong></h4>
+<p><strong>Figure 1E 圖上實際可見的內容</strong>（X 軸：predicted probability 0–1.0；Y 軸：observed proportion 0–100%；固定寬度 0.1 分箱）：</p>
+<table>
+<thead>
+<tr>
+<th>預測機率</th>
+<th>觀察到的實際比例</th>
+<th>方向</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0–0.2</td>
+<td>≈0%</td>
+<td><strong>高估風險</strong>（曲線在對角線下方）</td>
+</tr>
+<tr>
+<td>≈0.45</td>
+<td>≈48%</td>
+<td>大致校準</td>
+</tr>
+<tr>
+<td>≈0.5</td>
+<td>≈50%</td>
+<td>大致校準</td>
+</tr>
+<tr>
+<td>≈0.62–0.65</td>
+<td><strong>≈92%（陡升）</strong></td>
+<td><strong>低估風險</strong>（曲線在對角線上方）</td>
+</tr>
+<tr>
+<td>≈0.85</td>
+<td><strong>≈83%（回落）</strong></td>
+<td><strong>非單調</strong></td>
+</tr>
+<tr>
+<td>1.0</td>
+<td>≈100%</td>
+<td>—</td>
+</tr>
+</tbody>
+</table>
+<p><strong>判讀</strong>：曲線呈 S 形且在高機率端<strong>非單調</strong>（0.65 → 0.85 出現下降）。這不是一條校準良好的曲線。可能的原因很明確：僅 46–48 個事件分散到 10 個固定寬度分箱，多數分箱事件數為個位數甚至 0。</p>
+<p><strong>報告缺失（多項）</strong>：</p>
+<ul>
+<li>分箱點上<strong>無 95% CI</strong></li>
+<li><strong>無 calibration slope / intercept</strong></li>
+<li><strong>無 Brier score</strong></li>
+<li><strong>無 Hosmer-Lemeshow 或等效統計量</strong></li>
+<li><strong>無各分箱樣本數</strong></li>
+<li>Results 全文對校準的敘述只有一句「calibration was assessed using a calibration plot comparing predicted probabilities with observed event rates」，Figure legend 也只描述圖怎麼畫 —— <strong>從頭到尾沒有任何一句話說明校準是否足夠</strong></li>
+</ul>
+<p>這正是 Liu 等人所警告的情境：在富集資料集上訓練、在驗證集上選閾值，「<strong>may hide calibration issues</strong>」[參考: jama_liu_2019_ug_190001.md, &quot;Development of Machine Learning Models&quot;]。而 Alba 等人的架構亦強調辨別力與校準度必須並重 —— <strong>辨別力優異但校準不良的模型，其絕對風險估計不可靠</strong> [參考: jama_alba_2017_ug_170001.md]。</p>
+<p><strong>臨床操作結論</strong>：<strong>本模型的輸出機率值不可作為病人層級的 AS 風險估計使用，只能當作二元旗標。</strong> 若日後有人試圖用「模型給的 0.6 機率」來做臨床溝通或分層追蹤，那是誤用。</p>
+<p>（附註：panel E 的 X 軸為 0–1.0 機率單位、Y 軸為 0–100 百分比單位，兩軸單位不一致但對角線仍正確對應，非錯誤，僅為閱讀上的小陷阱。）</p>
+<h4>D3. Decision Curve Analysis（Figure 1F）— 評估區間與實際決策不符</h4>
+<p><strong>圖上可見的內容</strong>：Y 軸 net benefit per 100 patients，範圍 −3 至 3；X 軸 threshold probability 0–1.0。AI model 曲線在 threshold ≈0.02 處達峰值約 2.9，隨後於 0.1–0.65 區間維持約 1.8–2.3，至 0.8 附近降至 0 並小幅震盪。<strong>[限制：treat-all（cyan）與 treat-none（orange）兩條參考線在此解析度下難以明確分辨 —— 圖中同時可見一條位於 y=0 的水平線與一條位於 y=−3 的水平線，以及一條在 threshold≈0 處近乎垂直下墜的曲線，三者與圖例的對應關係無法確定判讀。]</strong></p>
+<p><strong>可據以評論的部分（AI model 曲線本身清晰可讀）</strong>：</p>
+<ol>
+<li>
+<p><strong>理論上限</strong>：在 threshold → 0 時，net benefit 的天花板等於盛行率 = <strong>3.7 per 100</strong>。AI model 在合理區間達到約 2.0–2.3，即約為理論上限的 55–62%。這是實質但非壓倒性的效益。</p>
+</li>
+<li>
+<p><strong>⚠️ 評估的閾值區間與真實決策不匹配</strong>（本圖最重要的批判）：DCA 中的 threshold probability 隱含了臨床上願意接受的「偽陽性:真陽性」交換率。在本流程中，「陽性」所觸發的行動只是<strong>做一次完整的 Doppler 超音波</strong> —— 便宜、無輻射、無侵入性、風險近乎零。理性的閾值機率因此應該<strong>極低</strong>（約 0.02–0.05，對應願意為找到 1 例 AS 而多做 20–50 次超音波）。但圖上曲線看起來最強勢的區間是 threshold 0.2–0.6，那對應的是「只願意為找到 1 例 AS 多做 1.5–4 次超音波」—— 對一個可治療且已知診斷不足的疾病，這是不合理地嚴苛的立場。<strong>換言之，DCA 所展示的優勢，有一部分來自於在錯誤的決策區間上評估。</strong> 而在真正合適的極低閾值區間（0.02–0.05），曲線被壓縮在圖的最左緣，各策略難以區辨。</p>
+</li>
+<li>
+<p>DCA 的 y 軸下探到 −3 使 AI model 曲線在視覺上顯得壓倒性優越，但 treat-all 在中等閾值下必然崩到接近 −(1−盛行率) 的量級，這是數學必然而非有資訊量的比較。</p>
+</li>
+</ol>
+<hr />
+<h3>E. 紅旗清單</h3>
+<h4>設計層面</h4>
+<ol>
+<li><strong>🔴 所有世代（含前瞻）皆為臨床轉介做完整 TTE 的族群，無一人來自社區/初級照護</strong>，但結論明確外推至「primary care, community, and resource-limited settings」。以「盛行率相近」作為外推橋樑不成立 —— 形態學分類器對疾病譜的敏感度高於盛行率。</li>
+<li><strong>🔴 全部證據來自 Mayo Clinic 單一醫療體系、單一超音波廠商。</strong> Arizona/Florida 雖地理分離但共用取像流程與判讀標準，不構成真正意義上的獨立驗證。</li>
+<li><strong>🟠 「Novice operator」的定義隨研究進行而失效。</strong> 9 人執行 1302 次掃描，平均每人約 145 次。無 learning curve 分析、無各操作者表現分層、兩次相隔 10 個月的收案期直接合併且未報告分期表現。研究後期的操作者已非新手。這對「4 小時訓練即可部署」的推論是實質威脅。</li>
+<li><strong>🟠 疑似與已發表 npj Digital Medicine 研究（n=995，同 9 位新手、同 UltraSight+Lumify、同機構、AS 盛行率 3.5%、可行性 97.3%）世代重疊，本文全文未引用、未申報。</strong> [推論，依據見 SECTION-0 第 1 節]</li>
+<li><strong>🟠 六位作者（含第一作者與 AI 技術負責人）為 UltraSight 授權演算法之發明人並可自商業化獲益，Mayo Clinic 有機構授權利益。</strong> 揭露完整，但<strong>無任何獨立治理機制</strong>：未見獨立統計師、獨立判讀委員會、外部稽核；未說明第二階段 overread 的心臟科醫師是否即為具利益衝突之作者；「Role of the Funder/Sponsor」聲明未涵蓋 UltraSight 在設計/分析中的角色。</li>
+<li><strong>🟠 前瞻性診斷準確度研究未見前瞻註冊</strong>（無 ClinicalTrials.gov ID）；報告準則採 TRIPOD/PRIME 而非 STARD 或 TRIPOD+AI。</li>
+<li><strong>🟡 參考標準採 4 項準則的 OR 邏輯定義 ≥moderate AS</strong>，會納入高流量狀態的輕度 AS 與小體型者的假性 AVA 偏低；未做替代定義的敏感度分析。</li>
+</ol>
+<h4>統計層面</h4>
+<ol start="8">
+<li><strong>🔴 前瞻世代僅 48 個陽性事件，所有關鍵 CI 寬達 16–22 個百分點。</strong> 2-step sensitivity 的 CI 下界為 <strong>72.2%</strong>，意即最多可能漏掉近 28% 的 moderate 以上 AS。</li>
+<li><strong>🔴 Calibration 實質不良（S 形、高機率端非單調），但無 CI、無 slope/intercept、無 Brier score、無分箱樣本數，且全文對校準品質未做任何評述。</strong></li>
+<li><strong>🟠 Table 2 對 PPV / NPV / accuracy 完全未提供 95% CI</strong>，而 PPV 正是本文的核心賣點。Table 3 有 CI 但未延伸到 LR。</li>
+<li><strong>🟠 Table 2 將 NPV 取整報為「100」</strong>（實際 99.6–99.9%，各有 1–4 位漏診者），屬誤導性取整。</li>
+<li><strong>🟠 LR+ 與 LR− 全文完全未報告。</strong> 2-step 的 LR+ ≈ 264 由僅 4 個偽陽性決定，可能區間約 104–657，極度不穩定。</li>
+<li><strong>🟠 敏感度分析（二葉瓣 vs 三葉瓣、&lt;75 vs ≥75 歲、有無合併瓣膜病）以 ≤48 個事件執行，嚴重檢定力不足；「no significant differences」在此不能被解讀為「無差異」</strong>（<code>p &gt; 0.05 ≠ 無差異</code>）。無交互作用檢定，無多重比較校正。[限制：eResults 2 未在 markdown 中呈現]</li>
+<li><strong>🟠 Accuracy（95–97%）被顯著呈現，但在 3.7% 盛行率下此指標幾乎完全由真陰性驅動，不具鑑別資訊。</strong></li>
+<li><strong>🟡 91 人重掃亞研究的 91/91 一致性，主要由一致的陰性判讀驅動（約 87 人為陰性）；陽性個案的再測一致性（約 3 人）未報告，無 kappa。</strong></li>
+<li><strong>🟡 摘要 RESULTS 首句的 AUROC 0.99 來自內部測試集；前瞻世代實際為 0.979，僅出現於圖中。</strong></li>
+</ol>
+<h4>敘事層面</h4>
+<ol start="17">
+<li><strong>🔴 Key Points 的 Findings 與 Meaning 只講「PPV 大幅改善」，完全未提 sensitivity 由 93.5% 降至 85.4%。</strong> 摘要與 Discussion 有誠實報告，但多數讀者只讀 Key Points。這是選擇性強調造成的框架不對稱。</li>
+<li><strong>🔴 Table 3「Expert review alone」欄位顯示：盲化專家單獨判讀同一批 2D 影像，sensitivity 91.7%、PPV 88.0%、accuracy 99.2% —— 在 sensitivity、NPV、accuracy 上優於或等同 2-step hybrid。</strong> 作者從未把這一欄拉進正面比較，因此讀者不易看出：<strong>AI 分類器並未提升診斷準確度，它提供的是把人類判讀量從 100% 降到 10% 的工作量分流。</strong></li>
+<li><strong>🟠 「expert review... substantially improved PPV while requiring review of only approximately 10% of examinations」的敘述，把一個純粹的取捨（trade-off）呈現為單向的改善。</strong></li>
+<li><strong>🟡 Class activation map 的「活化集中於主動脈瓣區域，有無 AS 者皆然」被列為支持證據</strong>，但這只能排除粗糙的 shortcut learning，無法證明模型使用了狹窄專屬特徵。</li>
+<li><strong>🟡 Figure 1D 圖例錯誤</strong>：precision-recall 曲線標註「Ideal」對角線並殘留「Calibration」標籤；正確基準應為 y ≈ 0.037 的水平線。此錯誤會使讀者低估模型相對基準的優勢，同時顯示圖表製作與審稿的細節把關不足。</li>
+</ol>
+<h4>外推層面</h4>
+<ol start="22">
+<li><strong>🔴 在 Marwick 所述的真實社區盛行率（1%）下，2-step 的 PPV 由 91% 降至約 73%，AI 單獨由 49% 降至約 21%。</strong> 作者從未做此換算，卻在結論中指涉社區篩檢。</li>
+<li><strong>🟠 前瞻世代 90.7% 白人、BMI 中位數 27.4、無公平性分層分析</strong> —— 對一個宣稱服務 resource-limited settings 的工具，是重大空缺。</li>
+<li><strong>🟠 缺乏 phenocopy 的 failure mode 分析</strong>（人工瓣膜、術後心臟、先天異常、假影）。人工主動脈瓣被主動排除於收案之外，但在真實社區部署時不會被事先排除。</li>
+<li><strong>🟠 Abstention 機制過於粗糙</strong>：僅在「三個切面全部辨識不到」時觸發，無基於預測信心度的 abstention。Marwick 直指這是部署前的關鍵要求。</li>
+<li><strong>🟠 完全缺乏第三階段（臨床有效性）證據</strong>：無轉介型態影響、無資源使用、無病人結果、無成本效益數據。</li>
+</ol>
+<h4>不適用於本研究設計的檢查項（依指示明確聲明）</h4>
+<ul>
+<li><strong>Kaplan-Meier 曲線分離時點、number-at-risk 後期銳減</strong>：<strong>不適用</strong>。本文為診斷準確度研究，無存活分析、無時間對事件終點、無任何 KM 曲線。</li>
+<li><strong>Forest plot 點估計與 CI 是否跨越無效線</strong>：<strong>不適用</strong>。本文無 forest plot、無效應量合成、無亞群 forest 呈現（亞群分析僅以文字敘述於 eResults 2，該補充內容未在 markdown 中呈現）。</li>
+<li><strong>CONSORT flow diagram</strong>：<strong>不適用</strong>（非隨機試驗）。惟 Figure 2 之流程圖人數已逐節點核對，<strong>加總完全一致，無不符</strong>。</li>
+<li><strong>座標軸非零起點誇大效果</strong>：<strong>未發現</strong>。Figure 1 的 ROC（0–1.0）、precision-recall（0–1.0）、calibration（0–1.0 / 0–100%）三軸皆自零起始，無截斷式放大。Decision curve analysis 的 y 軸為 −3 至 3，因 net benefit 本可為負，起點非零屬合理；惟下探至 −3 使 AI 曲線在視覺上顯得壓倒性優越（見 D3 第 3 點）。</li>
+</ul>
+<hr />
+<h3>F. 最終裁決</h3>
+<h4>診斷測試可信度：<strong>中</strong></h4>
+<p><strong>支持「中」而非「低」的理由</strong>：模型開發樣本量充足、tuning/validation 分割正確、決策閾值於獨立驗證集預先鎖定且全程未變、參考標準為真正的黃金標準且完全獨立盲化、<strong>無 partial verification bias</strong>（所有受試者皆接受參考標準）、FoCUS 與 TTE 間隔 15 分鐘內排除進展偏差、具地理外部驗證與裝置泛化驗證、且有前瞻性設計。混淆矩陣與流程圖的所有算術均可核對且一致。AI 表現（sens 93.5%）與人類專家（91.7%）相當而非離譜地超越，通過 Liu 等人的「太好而不真實」合理性檢驗。</p>
+<p><strong>阻止其達到「高」的理由</strong>：前瞻世代僅 48 個事件使所有 CI 寬得驚人；全部證據來自單一醫療體系與單一廠商；校準度實質不良且未被評述；核心賣點 PPV 在 Table 2 完全無 CI；疑似與已發表研究世代重疊而未申報；驗證完全由具商業利益的團隊執行且無獨立治理；第三階段臨床有效性完全缺席。</p>
+<h4>在何種臨床情境下此測試有用（pre-test probability 範圍）</h4>
+<table>
+<thead>
+<tr>
+<th>Pre-test 範圍</th>
+<th>建議用途</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>≥5%</strong>（心衰竭門診、老年科病房、TAVR 轉介前、已有雜音或症狀者）</td>
+<td><strong>✅ 適合作為 rule-out 工具</strong>。AI 單獨 LR− ≈ 0.068，陰性後殘餘機率 &lt;1%。陽性者必須接受完整 Doppler TTE 確認</td>
+</tr>
+<tr>
+<td><strong>2–5%</strong>（本研究實際場域）</td>
+<td><strong>✅ 適合作為工作量分流</strong>。AI 先過濾，專家覆閱 10%；但應認知 2-step 的 sensitivity CI 下界僅 72.2%</td>
+</tr>
+<tr>
+<td><strong>≤1%</strong>（真正的社區無症狀篩檢）</td>
+<td><strong>❌ 目前證據不支持</strong>。2-step PPV 降至約 73%，AI 單獨降至約 21%；且形態學分類器在早期輕症譜的 sensitivity 未經測試，很可能低於報告值</td>
+</tr>
+</tbody>
+</table>
+<p><strong>不建議使用的情境</strong>：</p>
+<ul>
+<li>需要 AS 嚴重度分級或機率化風險估計（校準度不足，輸出僅可作二元旗標）</li>
+<li>風濕性瓣膜病盛行地區（訓練集以鈣化/纖維化病因為主，作者自陳）</li>
+<li>已置換人工主動脈瓣或曾行瓣膜手術者（訓練與驗證均排除，phenocopy 風險未評估）</li>
+<li>非白人為主、高 BMI、慢性肺病比例高之族群（無公平性分層數據）</li>
+<li>非 Philips Lumify / 非 UltraSight 導引之取像流程</li>
+</ul>
+<h4>若要改觀，最需要的 3 個關鍵改進</h4>
+<ol>
+<li>
+<p><strong>在真正的社區/初級照護場域執行前瞻驗證，且參與機構須獨立於 Mayo Clinic 與 UltraSight 的商業利益。</strong> 需明確報告依疾病嚴重度譜（borderline moderate vs severe）分層的 sensitivity，並公布真實盛行率下的 PPV。這是 Marwick 在 editorial 中設定的可信度門檻，也是本文與其結論之間最大的落差。</p>
+</li>
+<li>
+<p><strong>重新設計並完整報告校準與 abstention。</strong> 具體要求：calibration slope/intercept、Brier score、分箱 CI 與樣本數；並建立<strong>基於預測信心度</strong>的 abstention 機制（而非僅「三切面全找不到」），使模型能「知道何時不要下判斷」。同時公布依可用切面數（1 / 2 / 3 個）分層的表現。</p>
+</li>
+<li>
+<p><strong>執行第三階段的臨床有效性研究。</strong> 理想為隨機分派設計，終點為 AS 的診斷時間、疾病期別分布、轉介量與資源使用、以及最終的臨床結果。並在其中直接比較三個臂：AI 單獨、專家單獨讀 FoCUS、2-step hybrid —— <strong>因為本文的 Table 3 已經暗示第二臂可能不劣於第三臂，這個問題必須被正面回答，而非留在附表裡。</strong></p>
+</li>
+</ol>
+<p>（第 4 項，若要更完整：明確申報與 npj Digital Medicine 2026 研究的世代重疊比例。）</p>
+<h4>一句話結論</h4>
+<p><strong>AI 導引讓完全沒有經驗的人在四分鐘內拍出可判讀的心臟超音波，這是真突破；但 AI 判讀本身並未勝過人眼，且整套流程只在梅約診所的超音波室裡驗證過，離「社區篩檢」還很遠。</strong></p>
+<hr />
+<h2>參考來源</h2>
+<ul>
+<li><a href="https://jamanetwork.com/journals/jamacardiology/fullarticle/2853493">Lee E, Naser JA, Kane CJ, et al. Artificial Intelligence–Enabled Acquisition and Interpretation for Screening Aortic Stenosis. JAMA Cardiol. 2026</a></li>
+<li><a href="https://jamanetwork.com/journals/jamacardiology/fullarticle/2853494">Marwick TH. Artificial Intelligence for Acquisition and Interpretation of Echocardiography—Closing the Loop. JAMA Cardiol. 2026. doi:10.1001/jamacardio.2026.3877</a>（全文透過 dlbydoi 取得）</li>
+<li><a href="https://www.nature.com/articles/s41746-026-02856-3">Killalea M, Borgeson J, Kane CJ, et al. Improving structural heart disease screening: AI-ECG and novice AI-guided focused cardiac ultrasound. npj Digit Med. 2026</a></li>
+<li><a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC13069988/">Structural heart disease screening using AI-enabled ECG and novice handheld cardiac ultrasound: a cost analysis. Eur Heart J Open. 2026</a></li>
+<li><a href="https://academic.oup.com/ehjdh/article/4/3/196/7031475">Ito S, Attia ZI, et al. Correlation between AI-enabled ECG and echocardiographic features in aortic stenosis. Eur Heart J Digit Health. 2023</a></li>
+<li><a href="https://manusights.com/journals/jama-cardiology">JAMA Cardiology 期刊指標與審查時程</a></li>
+<li><a href="https://ultrasight.com/fda-clearance-across-ultrasound-systems/">UltraSight FDA clearance across ultrasound systems</a></li>
+<li>方法學參考：Liu Y, Chen PC, Krause J, Peng L. <em>How to Read Articles That Use Machine Learning: Users' Guides to the Medical Literature.</em> JAMA. 2019;322(18):1806-1816 ｜ Alba AC, et al. <em>Discrimination and Calibration of Clinical Prediction Models.</em> JAMA. 2017;318(14):1377-1384</li>
+</ul>
+
+<footer class="appraisal-meta">評讀資訊：模型：claude-opus-5 (claude)  ·  route：diagnostic  ·  產出時間：2026-08-30 13:15 CST</footer>
+</main>
+</body>
+</html>
