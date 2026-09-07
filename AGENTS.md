@@ -18,25 +18,8 @@
 
 ## 期刊清單（13 本）
 
-`modules/pubmed.py::JOURNAL_QUERIES`
-
-| Key | PubMed Journal Name |
-|---|---|
-| NEJM | N Engl J Med |
-| Lancet | Lancet |
-| JAMA | JAMA |
-| JACC | J Am Coll Cardiol |
-| EHJ | Eur Heart J |
-| EuroIntervention | EuroIntervention |
-| Circulation | Circulation |
-| BJSM | Br J Sports Med（用 90–100d window，crossref 抓）|
-| MSSE | Med Sci Sports Exerc |
-| SportsMed | Sports Med |
-| JAP | J Appl Physiol (1985) |
-| JAMACardio | JAMA Cardiol |
-| Heart | Heart（用 90–97d window）|
-
-`JOURNAL_DEFAULT_WINDOW` 為部分期刊指定歷史抓取區間（覆寫預設 7d）。
+期刊 key → PubMed journal name 的對照見 `modules/pubmed.py::JOURNAL_QUERIES`（13 本）。
+`JOURNAL_DEFAULT_WINDOW`（同檔）為部分期刊指定歷史抓取區間，覆寫預設 7d —— 目前 BJSM（90–100d，改走 crossref 抓）與 Heart（90–97d）。
 
 ## 雙後端契約（重要）
 
@@ -61,6 +44,7 @@ modules/claude_exec.py :: try_claude_or_fallback
 - `ClaudeLimitError`（錯誤訊息含 `rate_limit` / `billing` / `credit` / `monthly limit` / `usage limit` / `quota` / `agent sdk` 等子字串）→ **永久切換**：設 `_session["claude_exhausted"] = True`，本 process 之後所有呼叫直接走 codex。下個 process（下次 run）重新從 claude 嘗試。
 - 其他 `ClaudeError`（timeout、parse、暫時性 5xx）→ **單次 fallback**：本次走 codex，後續仍會繼續試 claude。
 - 設計刻意：使用者明確**不開 usage credits**，所以額度歸零時 claude 端會直接回錯，fallback 是唯一信號。**不要在程式內自己算用量**。
+- **例外：週報選文走自己的三層 cascade**（`select_top_articles`，不經 `try_claude_or_fallback`）：claude Sonnet → codex → 規則式 `_fallback_select`。因為「模型回了東西但不是合法 JSON」也要能換手，而 `try_claude_or_fallback` 只在 `ClaudeError` 時換。
 - **例外：完整評讀預設 claude-only**（`JOURNAL_FETCHER_CLAUDE_ONLY=1`），撞限不 fallback codex 而是等 ~5h 視窗重置續跑。摘要 / 短評 / classify 仍照上面的 fallback 規則。詳見 [launchd 排程 → 評讀的用量上限策略](#評讀的用量上限策略claude-only-opus--5h-續跑)。
 
 ## 模型對照
@@ -69,8 +53,11 @@ modules/claude_exec.py :: try_claude_or_fallback
 |---|---|---|---|
 | 摘要 / 短評 / classify | `claude-haiku-4-5` | `gpt-5.4` | `JOURNAL_FETCHER_CLAUDE_SUMMARY_MODEL` / `JOURNAL_FETCHER_CODEX_MODEL` |
 | 完整評讀 | `claude-opus-5` | `gpt-5.6` | `JOURNAL_FETCHER_CLAUDE_APPRAISAL_MODEL` / `JOURNAL_FETCHER_APPRAISAL_MODEL` |
+| 週報選文（curation） | `claude-sonnet-5` | `gpt-5.4` | `JOURNAL_FETCHER_CLAUDE_SELECTION_MODEL` / `JOURNAL_FETCHER_CODEX_MODEL` |
 
 **評讀用最新 Opus 5**（2026-07-25 從 Opus 4.8 升上來）：`claude-opus-5` 已實測可透過 `claude -p --model` 訂閱 CLI 服務（`modelUsage` 回報 `claude-opus-5`、非 alias；亂填 `claude-opus-99` 會 `is_error:true`）。評讀走 CLI 訂閱額度、非 raw API，故只需改 model 字串、無 API 參數變更（`modules/claude_exec.py::FALLBACK_CLAUDE_APPRAISAL_MODEL`）。⚠️ Opus 5 的正式定價與 tokenizer 尚未查證（單次小 prompt 實測成本與 4.8 同量級，但不足以當定價依據）；先前 4.8 那段「$5/$25、新 tokenizer +35% tokens」的成本估算未在 Opus 5 上重新驗證，月成本與撞限頻率需觀察首週實跑再校正。
+
+**選文用 Sonnet 5**（2026-09-07 起）：`weekly/select_articles.py` 原本是 codex-only，2026-W37 遇上 codex CLI 的 models cache 損毀 + refresh timeout，整週 7 篇全掉到 `_fallback_select` 規則式選文、卡片 reason 變成同一句樣板。現在改成 **claude Sonnet 主 → codex `gpt-5.4` 備 → 規則式**（三層都失敗才用規則式，且會印 warn）。選 Sonnet 的理由：選文要一次讀完 ~100 篇 abstract（實測 prompt ~305k 字元 / ~100k tokens），判斷比摘要重、比評讀輕，剛好夾在 Haiku 與 Opus 之間；實測單次 ~71 秒。`selection_raw.json` 多存 `backend` 欄位，事後可查當週是誰選的。
 
 ## 一個一定不能踩的雷：launchd 環境的 claude auth
 
@@ -85,53 +72,11 @@ launchd 啟動的 process env 幾乎是空的（只有 plist 裡寫的 PATH/HOME
 
 ## 檔案結構
 
-```
-JournalFetcher/
-├── AGENTS.md                   # 本文件（兩個 agent 共用）
-├── CLAUDE.md                   # symlink → AGENTS.md（本機，.gitignore）
-├── .env                        # DISCORD_WEBHOOK_URL / FEEDBACK_ENDPOINT_URL 等
-├── fetch_journals.py           # 互動模式入口
-├── modules/
-│   ├── pubmed.py               # PubMed E-utilities API；JOURNAL_QUERIES、pub_type 分類
-│   ├── crossref.py             # BJSM 走 Crossref（PubMed 索引慢）
-│   ├── claude_exec.py          # claude -p dispatcher + codex fallback；prompt cache、WebSearch、Read 工具
-│   ├── codex_model.py          # codex model 解析 + env allowlist
-│   ├── summarize.py            # 三句中文摘要（互動模式）
-│   ├── selector.py             # terminal checkbox 勾選
-│   ├── downloader.py           # PDF 下載（DOI redirect、Unpaywall 備援）
-│   └── ego_browser.py          # ego lite adapter：真實瀏覽器 profile 抓 cookie/challenge 擋住的 PDF
-├── weekly/
-│   ├── run_weekly.py           # 週報主程式（launchd 觸發）
-│   ├── summarize_weekly.py     # 四句中文摘要
-│   ├── classify_article.py     # 文章類型分類：heuristic-first → Haiku fallback → default
-│   ├── select_articles.py      # 自選每週 N 篇（讀 interest_feedback.jsonl）
-│   ├── appraise_selected.py    # 完整評讀；prompt cache + WebSearch + JAMA references
-│   ├── process_appraisal_requests.py  # on-demand「請求評讀」worker（每 15 分鐘）
-│   ├── sync_feedback.py        # 從 Cloudflare Worker + D1 同步使用者 👍/👎
-│   ├── notify_latest.py        # Discord 推播（與 run_weekly 拆開排程）
-│   ├── render.py               # Jinja2 HTML 渲染
-│   ├── publish.py              # GitHub 備份 push + Cloudflare deploy + Discord
-│   └── templates/{weekly.html,index.html}
-├── docs/                       # Cloudflare 靜態資產；同步提交到 GitHub 留存
-├── skills/literature-appraisal/
-│   ├── SKILL.md                # v3.6（全域規則 + SECTION-0 + 路由表）
-│   ├── fragments/              # 每 route 一份；appraise_selected 按 route 載入
-│   ├── references/             # 本機 local-only（.gitignore）
-│   │   ├── output_quality_style_guide.md  # 唯一 tracked
-│   │   ├── index.md                       # JAMA 檔案索引
-│   │   └── jamaevidence/                  # 18 份 JAMA Users' Guides + WhatIf 因果推論教科書
-│   └── agents/openai.yaml      # codex agent 設定（如有）
-├── data/
-│   ├── interest_feedback.jsonl # 使用者 👍/👎 歷史
-│   └── appraisal_requests_processed.jsonl  # on-demand 請求 state
-├── output/
-│   ├── pdfs/                   # 互動模式下載
-│   ├── weekly/<week>/          # articles.json / selected_articles.json / pdfs/ / appraisals/
-│   └── logs/                   # launchd 輸出
-└── scripts/
-    ├── com.pokai.weekly-journal.plist  # launchd 設定檔
-    └── feedback_relay.gs               # 舊版 Apps Script relay（不再是正式服務）
-```
+目錄結構請直接看 repo（`ls modules/ weekly/`）。兩個 `ls` 看不出來、但會影響行為的點：
+
+- `skills/literature-appraisal/references/`：**local-only**，在 `.gitignore`（JAMA 版權內容不放進 public repo），只破例追蹤 `output_quality_style_guide.md`。本機沒這目錄時 helper 自動 return ""（graceful degradation），不會炸。
+- `docs/`：Cloudflare Static Assets 的來源目錄，同時 commit 進 GitHub 留存版本。
+- `CLAUDE.md` 是指向 `AGENTS.md` 的 symlink，本身在 `.gitignore`。
 
 ## 互動模式 Phase
 

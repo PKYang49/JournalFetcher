@@ -395,7 +395,7 @@
   {% endmacro %}
 
   {% macro appraisal_card(article, feedback_endpoint, extra_class="", show_meta=true, show_feedback=true, show_summary=true) %}
-  <article class="selected-card{% if extra_class %} {{ extra_class }}{% endif %}{% if article.appraisal_state %} {{ article.appraisal_state.card_class }}{% endif %}">
+  <article class="selected-card{% if extra_class %} {{ extra_class }}{% endif %}{% if article.appraisal_state %} {{ article.appraisal_state.card_class }}{% endif %}"{% if article.appraise_request_url and not article.appraisal_url %} data-appraisal-card data-pmid="{{ article.pmid }}" data-doi="{{ article.doi }}"{% endif %}>
     <span class="tag">{{ article.journal_key }}</span>
     {% if article.pub_type %}<span class="tag pub-type {{ article.pub_type_class }}">{{ article.pub_type }}</span>{% endif %}
     <h2>{{ article.title }}</h2>
@@ -430,6 +430,15 @@
       <button class="copy-btn" type="button" data-copy="{{ article.doi }}">複製 DOI</button>
       <button class="copy-btn" type="button" data-copy="python dlbydoi.py {{ article.doi }}">複製下載指令</button>
       {% endif %}
+      {% if not article.appraisal_url and article.appraise_request_url %}
+      <a class="request-btn{% if article.appraisal_state and article.appraisal_state.chip_class == 'is-failed' %} is-failed{% endif %}"
+         href="{{ article.appraise_request_url }}"
+         data-request-url="{{ article.appraise_request_url }}"
+         data-default-label="{% if article.appraisal_state and article.appraisal_state.chip_class == 'is-failed' %}重試評讀{% else %}請求評讀{% endif %}"
+         target="_blank"
+         rel="noopener">{% if article.appraisal_state and article.appraisal_state.chip_class == 'is-failed' %}重試評讀{% else %}請求評讀{% endif %}</a>
+      <span class="request-status" aria-live="polite"></span>
+      {% endif %}
     </div>
     {% if show_feedback and feedback_endpoint and article.feedback_id %}
     <div class="feedback"
@@ -450,7 +459,7 @@
   <section class="selected-section" id="featured-appraisals">
     <h2 class="section-title">本週精選評讀</h2>
     {% for article in featured_articles %}
-    {{ appraisal_card(article, feedback_endpoint, "", true, true, false) }}
+    {{ appraisal_card(article, feedback_endpoint, "", true, true, true) }}
     {% endfor %}
   </section>
   {% endif %}
@@ -568,7 +577,7 @@
       button.href = button.dataset.requestUrl || "";
       button.target = "_blank";
       button.rel = "noopener";
-      button.textContent = "請求評讀";
+      button.textContent = button.dataset.defaultLabel || "請求評讀";
       button.classList.remove("is-processing", "is-failed", "is-done");
       button.removeAttribute("aria-disabled");
       message.textContent = "";

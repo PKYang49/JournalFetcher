@@ -36,9 +36,11 @@ BASH_GATE_HOOK = Path(__file__).resolve().parent / "bash_gate_hook.py"
 
 CLAUDE_SUMMARY_MODEL_ENV = "JOURNAL_FETCHER_CLAUDE_SUMMARY_MODEL"
 CLAUDE_APPRAISAL_MODEL_ENV = "JOURNAL_FETCHER_CLAUDE_APPRAISAL_MODEL"
+CLAUDE_SELECTION_MODEL_ENV = "JOURNAL_FETCHER_CLAUDE_SELECTION_MODEL"
 
 FALLBACK_CLAUDE_SUMMARY_MODEL = "claude-haiku-4-5"
 FALLBACK_CLAUDE_APPRAISAL_MODEL = "claude-opus-5"
+FALLBACK_CLAUDE_SELECTION_MODEL = "claude-sonnet-5"
 CLAUDE_RESET_TIME_RE = re.compile(
     r"\bresets?\s+(\d{1,2})(?::(\d{2}))?\s*(am|pm)\b",
     re.IGNORECASE,
@@ -153,6 +155,11 @@ def get_claude_summary_model() -> str:
 
 def get_claude_appraisal_model() -> str:
     return os.getenv(CLAUDE_APPRAISAL_MODEL_ENV) or FALLBACK_CLAUDE_APPRAISAL_MODEL
+
+
+def get_claude_selection_model() -> str:
+    """Weekly curation model — Sonnet, between Haiku (summaries) and Opus."""
+    return os.getenv(CLAUDE_SELECTION_MODEL_ENV) or FALLBACK_CLAUDE_SELECTION_MODEL
 
 
 def _is_limit_signal(text: str) -> bool:

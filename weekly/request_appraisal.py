@@ -38,6 +38,8 @@ EXIT_CLAUDE_ERROR = 11
 import requests
 from dotenv import load_dotenv
 
+from weekly.appraisal_status import AppraisalStatus
+
 ROOT = Path(__file__).resolve().parent.parent
 ADHOC_DIR = ROOT / "output" / "requests"
 
@@ -273,6 +275,7 @@ def run(
         print("[error] appraisal failed (no report produced)", file=sys.stderr)
         return 1
     article["appraisal_path"] = str(report_path)
+    article["appraisal_status"] = AppraisalStatus.DONE
 
     published = render.publish_appraisals([article], week)
     appraisal_url = str(article.get("appraisal_url", ""))

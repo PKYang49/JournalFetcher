@@ -1,4 +1,9 @@
-"""Select weekly highlighted articles using local feedback and Codex CLI."""
+"""Select weekly highlighted articles using local feedback.
+
+Curation runs on claude Sonnet (one tier above the Haiku that writes the
+summaries, one below the Opus that writes the appraisals); the codex CLI is
+the fallback, and a rule-based ranking is the last resort.
+"""
 
 from __future__ import annotations
 
@@ -9,6 +14,7 @@ import sys
 from pathlib import Path
 from urllib.parse import unquote
 
+from modules import claude_exec
 from modules.codex_exec import run_codex_exec
 from modules.codex_model import get_summary_model
 
@@ -122,6 +128,25 @@ def _run_codex_prompt(prompt: str, timeout: int = 240) -> str | None:
     )
 
 
+def _run_claude_prompt(prompt: str, timeout: int = 480) -> str | None:
+    """Primary curator: claude -p Sonnet.
+
+    Errors are swallowed so the caller can try codex next. A ClaudeLimitError
+    here deliberately does NOT flip the process-wide exhausted flag — selection
+    runs before the appraisal stage, which has its own wait-and-resume window.
+    """
+    try:
+        text, _cost = claude_exec.run_claude_prompt(
+            prompt,
+            model=claude_exec.get_claude_selection_model(),
+            timeout=timeout,
+        )
+    except claude_exec.ClaudeError as e:
+        print(f"  [warn] claude selection error: {str(e)[:300]}", file=sys.stderr)
+        return None
+    return text
+
+
 def _parse_selection(text: str) -> list[dict]:
     cleaned = text.strip()
     if cleaned.startswith("```"):
@@ -196,12 +221,18 @@ def _write_selection_raw(
     *,
     response: str | None,
     items: list[dict],
+    backend: str = "codex",
 ) -> Path:
     """Persist the selector's raw reply so a bad pick can be audited later."""
     out_dir.mkdir(parents=True, exist_ok=True)
     path = out_dir / "selection_raw.json"
     payload = {
-        "model": get_summary_model(),
+        "backend": backend,
+        "model": (
+            get_summary_model()
+            if backend == "codex"
+            else claude_exec.get_claude_selection_model()
+        ),
         "response": response,
         "parsed": items,
     }
@@ -277,17 +308,31 @@ def select_top_articles(
         articles_json=json.dumps(payload, ensure_ascii=False),
     )
 
-    selection_items: list[dict]
+    selection_items: list[dict] = []
     response: str | None = None
-    try:
-        response = _run_codex_prompt(prompt)
-        selection_items = _parse_selection(response) if response else []
-    except (FileNotFoundError, subprocess.TimeoutExpired, json.JSONDecodeError, ValueError) as e:
-        print(f"  [warn] selection via codex failed; using fallback: {e}", file=sys.stderr)
-        selection_items = []
+    backend = "claude"
+    for name, runner in (("claude", _run_claude_prompt), ("codex", _run_codex_prompt)):
+        try:
+            response = runner(prompt)
+            selection_items = _parse_selection(response) if response else []
+        except (
+            FileNotFoundError,
+            subprocess.TimeoutExpired,
+            json.JSONDecodeError,
+            ValueError,
+        ) as e:
+            print(f"  [warn] selection via {name} failed: {e}", file=sys.stderr)
+            selection_items = []
+        if selection_items:
+            backend = name
+            break
+        print(f"  [warn] selection via {name} produced no picks", file=sys.stderr)
+
+    if not selection_items:
+        print("  [warn] both selectors failed; using rule-based fallback", file=sys.stderr)
 
     if out_dir is not None:
-        _write_selection_raw(out_dir, response=response, items=selection_items)
+        _write_selection_raw(out_dir, response=response, items=selection_items, backend=backend)
 
     if not selection_items:
         selection_items = _fallback_select(articles, limit)

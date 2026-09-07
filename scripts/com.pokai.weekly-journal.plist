@@ -28,13 +28,13 @@
 
     <key>StartCalendarInterval</key>
     <dict>
-        <!-- Weekday: 0=Sun, 1=Mon, ..., 6=Sat. Sunday 08:50. -->
+        <!-- Weekday: 0=Sun, 1=Mon, ..., 6=Sat. Sunday 03:00. -->
         <key>Weekday</key>
         <integer>0</integer>
         <key>Hour</key>
-        <integer>8</integer>
+        <integer>3</integer>
         <key>Minute</key>
-        <integer>50</integer>
+        <integer>0</integer>
     </dict>
 
     <key>StandardOutPath</key>
