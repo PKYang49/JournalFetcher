@@ -1,0 +1,1501 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Immediate Ambulatory Electrocardiographic Monitoring in Syncope.</title>
+<style>
+  :root {
+    --bg: #fafafa;
+    --card: #ffffff;
+    --text: #1a1a1a;
+    --muted: #6b6b6b;
+    --border: #e5e5e5;
+    --accent: #0b5fff;
+  }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang TC",
+      "Microsoft JhengHei", sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    margin: 0;
+    padding: 24px 16px 64px;
+    line-height: 1.72;
+  }
+  main {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    margin: 0 auto;
+    max-width: 840px;
+    padding: 22px 26px;
+  }
+  nav {
+    margin: 0 auto 14px;
+    max-width: 840px;
+    color: var(--muted);
+    font-size: 14px;
+  }
+  a { color: var(--accent); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  h1, h2, h3, h4 { line-height: 1.35; }
+  h1 { font-size: 26px; margin-top: 0; }
+  h2 { border-top: 1px solid var(--border); padding-top: 18px; }
+  code {
+    background: rgba(127, 127, 127, 0.12);
+    border-radius: 4px;
+    padding: 1px 4px;
+  }
+  table {
+    border-collapse: collapse;
+    table-layout: auto;
+    width: 100%;
+    max-width: 100%;
+  }
+  th, td {
+    border: 1px solid var(--border);
+    overflow-wrap: anywhere;
+    padding: 6px 8px;
+    text-align: left;
+    vertical-align: top;
+  }
+  blockquote {
+    border-left: 3px solid var(--accent);
+    color: var(--muted);
+    margin-left: 0;
+    padding-left: 14px;
+  }
+  .appraisal-meta {
+    border-top: 1px solid var(--border);
+    margin-top: 28px;
+    padding-top: 14px;
+    color: var(--muted);
+    font-size: 13px;
+  }
+  @media (max-width: 600px) {
+    body {
+      padding: 12px 8px 40px;
+    }
+    main {
+      padding: 16px 12px;
+    }
+    h1 {
+      font-size: 22px;
+    }
+    table {
+      font-size: 12px;
+      table-layout: fixed;
+    }
+    th, td {
+      padding: 4px 5px;
+    }
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #1a1a1a;
+      --card: #242424;
+      --text: #e8e8e8;
+      --muted: #999;
+      --border: #333;
+      --accent: #6ea8ff;
+    }
+  }
+</style>
+</head>
+<body>
+<nav><a href="../../2026-W37.html">← 回到 2026-W37 週報</a></nav>
+<main>
+<h1>Immediate Ambulatory Electrocardiographic Monitoring in Syncope.</h1>
+<h1>醫學文獻批判性評讀</h1>
+<p><strong>Immediate Ambulatory Electrocardiographic Monitoring in Syncope（ASPIRED trial）</strong></p>
+<hr />
+<h2>⚠️ 輸入資料重大限制（請先閱讀）</h2>
+<p>本次提供的 PDF converted markdown <strong>並非 NEJM 主論文正文，而是該論文的 Supplementary Appendix</strong>，內容僅包含：</p>
+<ol>
+<li>ASPIRED 原始 protocol（V1.0, 2021/08/23）</li>
+<li>最終 protocol（V6.0, 2023/12/01）+ 版本異動摘要</li>
+<li>原始 SAP（V1.0, 2022/11/29）</li>
+<li>最終 SAP（V3.0, 2025/12/12）+ 異動摘要</li>
+</ol>
+<p>markdown 中<strong>沒有任何試驗結果</strong>：無 CONSORT flow、無 Table 1 baseline、無主要/次要終點數值、無 Kaplan-Meier 曲線、無 forest plot、無 Discussion、無 COI 聲明。</p>
+<p>隨附的 14 張 PNG（page_003–014、025、046）經逐頁判讀，<strong>全部為 protocol 內文頁</strong>（封面、目錄、縮寫表、endpoint 定義、power calculation 頁），<strong>不含任何結果圖表</strong>。因此：</p>
+<ul>
+<li>使用者要求的「KM 曲線分離時點、number-at-risk 後期銳減、forest plot CI 是否跨線、CONSORT 人數一致性、座標軸非零起點」<strong>全部無法執行</strong>——[限制：本次輸入未提供任何結果圖表，僅有 protocol 文字頁]</li>
+<li>所有結果數字一律標註 <strong>[外部]</strong>，並明確註明來源</li>
+</ul>
+<p>這個限制本身有一個正面效果：<strong>protocol + SAP + 完整版本異動史，是評估「預先指定 vs 事後決策」最有價值的原始材料</strong>，本評讀因此把重心放在設計預設值與最終數據的落差，這是單看主論文看不到的層次。</p>
+<hr />
+<h1>SECTION-0：文章全面描述</h1>
+<h2>0. 文章身份證</h2>
+<table>
+<thead>
+<tr>
+<th>項目</th>
+<th>內容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>標題</td>
+<td>Immediate Ambulatory Electrocardiographic Monitoring in Syncope</td>
+</tr>
+<tr>
+<td>期刊</td>
+<td>New England Journal of Medicine</td>
+</tr>
+<tr>
+<td>年份</td>
+<td>2026（線上發表 2026/08/31）</td>
+</tr>
+<tr>
+<td>DOI</td>
+<td>10.1056/NEJMoa2605812</td>
+</tr>
+<tr>
+<td>PMID</td>
+<td>42670977</td>
+</tr>
+<tr>
+<td>試驗名稱</td>
+<td>ASPIRED；ISRCTN10278811</td>
+</tr>
+<tr>
+<td>文章類型</td>
+<td><strong>人體隨機對照試驗（open-label, parallel-group, multicentre, pragmatic superiority RCT）</strong> → 路由：<strong>SKILL-A 主流程 + A1 特殊設計（pragmatic / 裝置策略試驗）</strong></td>
+</tr>
+<tr>
+<td>本次可判讀材料</td>
+<td>Protocol V1.0 + V6.0、SAP V1.0 + V3.0（Supplementary Appendix）</td>
+</tr>
+</tbody>
+</table>
+<p><strong>非 review 類，無混血文章議題。</strong></p>
+<hr />
+<h2>1. 作者團隊評論</h2>
+<ul>
+<li><strong>通訊/主持人（Chief Investigator）</strong>：Dr/Prof Matthew J. Reed，急診醫學，EMERGE（Emergency Medicine Research Group Edinburgh）、Usher Institute, University of Edinburgh [文內]</li>
+<li><strong>團隊構成</strong> [文內 + 外部: PubMed]：
+<ul>
+<li>急診方法學：Reed、O'Brien、Freeman、Blackstock、Clarke</li>
+<li>統計：Prof Christopher Weir（Edinburgh CTU 醫學統計教授）、Imad Adamestam、Titouan Kennel</li>
+<li>心臟電生理：Neil Grubb、Chris Lang（Royal Infirmary of Edinburgh）</li>
+<li>健康經濟：Praveen Thokala（發表時已轉至 University of York）</li>
+<li>大型試驗方法學外部支援：Prof Steve Goodacre（Sheffield，英國急診試驗界指標人物）</li>
+</ul>
+</li>
+<li><strong>機構聲譽</strong>：Edinburgh CTU 是英國 UKCRC 註冊試驗中心，急診 + 心臟電生理 + 健康經濟三方齊備，屬本領域第一梯隊團隊。這不是一個「跨界初次切入」的團隊。</li>
+</ul>
+<p><strong>團隊過往研究</strong>（依 PubMed 作者檢索，Reed MJ 在 syncope 主題共 41 篇）[外部: PubMed]：</p>
+<table>
+<thead>
+<tr>
+<th>研究</th>
+<th>年份/期刊</th>
+<th>與本試驗的關係</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ROSE study（syncope 風險分層）</td>
+<td>2010, JACC</td>
+<td>本 protocol 參考文獻 [1]、ROSE rule 直接寫入 CRF</td>
+</tr>
+<tr>
+<td>ROSE 1 年預後（決策規則失效）</td>
+<td>2011, Ann Emerg Med</td>
+<td>protocol 參考 [2]；SAP 用其死亡率估計（90 天 2.7%）</td>
+</tr>
+<tr>
+<td><strong>2018 ESC Syncope Guidelines（Brignole M, Reed MJ et al.）</strong></td>
+<td>2018, Eur Heart J</td>
+<td>protocol 參考 [3]，<strong>power calculation 的核心假設來源</strong></td>
+</tr>
+<tr>
+<td><strong>PATCH-ED（單中心 pilot，14 天 patch）</strong></td>
+<td>2018, Emerg Med J</td>
+<td>protocol 參考 [9]，<strong>intervention arm 診斷率假設來源</strong></td>
+</tr>
+<tr>
+<td>IPED（智慧型手機 event recorder RCT）</td>
+<td>2019, eClinicalMedicine</td>
+<td>追蹤方法學（簡訊/email 自我回報）來源</td>
+</tr>
+<tr>
+<td>ASPIRED-Q（質性研究）</td>
+<td>2025, BMJ Open</td>
+<td>本試驗嵌套研究</td>
+</tr>
+<tr>
+<td>High-Risk ECG in Syncope: High Risk or Overstated?</td>
+<td>2026/08, J Cardiovasc Electrophysiol（Editorial）</td>
+<td>與本文同月發表，顯示持續倡議立場</td>
+</tr>
+</tbody>
+</table>
+<p><strong>[評估] 事前立場（prior commitment）風險——這是本篇最值得注意的作者層面議題</strong>：</p>
+<p>ASPIRED 的 sample size calculation 建立在三個假設之上，而<strong>這三個假設全部來自主持人自己的既有著作</strong>：</p>
+<ul>
+<li>未治療 1 年復發率 42.5% → 來自 Reed 本人共同執筆的 2018 ESC guideline（Sup Table 10）</li>
+<li>介入組 10.5% 症狀性顯著心律不整診斷率 → 來自 Reed 本人的 PATCH-ED pilot</li>
+<li>治療後 90% 不再復發 → 來自 ISSUE-2（Brignole 團隊，與 Reed 為 ESC guideline 共同作者群）</li>
+</ul>
+<p>這不是造假，但形成一個<strong>封閉的證據循環</strong>：pilot 定假設 → guideline 背書假設 → 用假設算 power → 主試驗。當這三個假設有任何一個系統性樂觀，樣本數就會系統性不足。後文 C 節會證明其中一個假設偏差達 <strong>30–100 倍</strong>。</p>
+<ul>
+<li><strong>利益揭露</strong>：
+<ul>
+<li>資助者 British Heart Foundation（CS/F/20/190016，£1,303,649 / 4 年）+ NHS Research Scotland [文內 + 外部: EMERGE Research]</li>
+<li>裝置：Preventice BodyGuardian Mini [文內]。protocol 描述廠商角色為「患者郵寄回裝置 → Preventice UK 由 ECG technician 判讀 → 以 study number 回傳報告給 local team」（§6.1）——<strong>廠商實質執行了 intervention arm 的核心測量流程</strong>，且 protocol 圖片標註「Figures from preventicesolutions.com with permission」</li>
+<li>主論文的 COI 聲明 <strong>[無法取得]</strong>——本次輸入無主文</li>
+<li><strong>[評估]</strong> BHF 資助降低商業偏差風險；但廠商掌握 intervention arm ECG 判讀是無法忽略的結構性問題，而 protocol 未描述任何獨立 adjudication 或雙人重讀機制。對照組的心律不整由「local treating clinician 以 objective structured approach 回報」（§9.2.2），<strong>兩組的關鍵次要終點判定管道不對稱</strong>：介入組走廠商標準化判讀，對照組走各院臨床常規。這會系統性偏向介入組偵測率。</li>
+<li>病人顧問團含 Arrhythmia Alliance 的 Trudie Lobban [外部: PubMed, BMJ Open 2023 protocol paper]；protocol §13.1 明列將透過 Arrhythmia Alliance 散布結果。此類病友團體常受裝置產業贊助，屬低度但應揭露的傳播路徑議題。</li>
+</ul>
+</li>
+</ul>
+<hr />
+<h2>2. 文獻 Metadata 整理</h2>
+<ul>
+<li><strong>Received / Accepted date</strong>：<strong>[無法取得]</strong>——本次輸入無主文首頁</li>
+<li><strong>審查天數</strong>：<strong>[無法取得]</strong></li>
+<li><strong>NEJM 平均審查天數</strong>：<strong>[無法取得]</strong>——未能取得 NEJM 官方 editorial statistics</li>
+<li><strong>[推論] 發表路徑</strong>：論文於 2026/08/31 線上發表，與 ESC Congress 2026（Munich）Hot Line 10 場次同步 [外部: ESC press release / ESC congress news]。ESC/NEJM 同步發表屬 <strong>fast-track embargo 流程</strong>，實務上意味著壓縮的 peer review 時程。對本篇而言這值得記住：一個「主要終點陰性、次要終點死亡率被大幅宣傳」的試驗，在壓縮審查下更容易讓 spin 通過。</li>
+<li><strong>期刊屬性</strong>：NEJM，Q1 綜合醫學，IF 約 96（近年區間）[外部: 一般公開指標；未取得 Clarivate 原始頁面，故不引用精確年度值]</li>
+<li><strong>邀稿 vs 投稿</strong>：原始研究論文，非邀稿。</li>
+</ul>
+<hr />
+<h2>3. 研究背景 [僅依本次輸入的 protocol 文內資料]</h2>
+<p><strong>作者引用的既有事實</strong>（protocol §1.1）：</p>
+<ul>
+<li>英國每年約 650,000 名 syncope 病人到急診</li>
+<li>評估後仍有約 50% 病人診斷不明</li>
+<li>一個月內嚴重病理事件約 7/100</li>
+<li>Holter（24–48 小時）診斷率 &lt;20%</li>
+<li>已診斷並治療心律不整者，1 年復發率降至約 10%，發作次數下降 &gt;90%（引用 ISSUE-2）</li>
+<li>SYNARR-Flash：15 天內裝置的診斷 OR 6.2（95% CI 1.3–29.6, p=0.021）</li>
+<li>Canadian Syncope Risk Score 驗證研究：91.7%（176/192）心律不整事件在 index 後 15 天內出現</li>
+</ul>
+<p><strong>知識缺口</strong>（§1.1.3）：既有 ambulatory monitoring 研究多為<strong>單中心、無對照組、族群異質</strong>。作者明確指出關鍵問題——<strong>syncope 復發本來就會自發下降（可達 70%），因此觀察性資料會系統性高估任何療法效果，必須做 RCT</strong>（§1.1.3）。</p>
+<p>**[評估] 這段自我批判寫得非常好，也是本試驗最強的正當性論述。**作者完全正確地識別出 regression-to-the-mean 是這個領域的核心陷阱，並用 RCT 設計去對抗它。諷刺的是，作者隨即在 power calculation 中，把同樣來自單臂 pilot 的診斷率與同樣來自非隨機研究（ISSUE-2）的治療效果，當成確定參數餵進樣本數公式（詳見 C 節）。</p>
+<p><strong>Research question</strong>（§1.2.1）：在急診 index visit 立即施用心臟監測，是否為偵測、診斷、治療與排除潛在心律不整的最佳策略。</p>
+<hr />
+<h2>4. 研究設計與方法</h2>
+<h3>PICO [文內, protocol §3]</h3>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>內容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>P</strong></td>
+<td>≥16 歲、急性 syncope（TLoC + 無法維持姿勢張力 + 立即完全自發恢復）、經 ED/AMU 初步評估後仍<strong>原因不明</strong>；當地居民；前 1 個月自述發作 &lt;5 次；有同意能力</td>
+</tr>
+<tr>
+<td><strong>I</strong></td>
+<td>立即施用 14 天 ambulatory patch monitor（Preventice BodyGuardian Mini），貼於胸骨區，可淋浴/游泳；有症狀事件按鈕 + 紙本症狀日記；14 天後郵寄回廠商判讀</td>
+</tr>
+<tr>
+<td><strong>C</strong></td>
+<td>Standard care monitoring — 「各院對 unexplained syncope 的常規照護，加上某種形式的標準監測，<strong>包含但不限於</strong> wired inpatient telemetry、Holter、或 ILR」（V6.0 §3）</td>
+</tr>
+<tr>
+<td><strong>O（主要）</strong></td>
+<td><strong>1 年病人自述 syncope 發作次數</strong>（V6.0）；V1.0 原為「病歷記載 + 自述之複合」</td>
+</tr>
+</tbody>
+</table>
+<p><strong>排除條件</strong>（§4.3）：已有明確病因（典型 vasovagal 且無結構性心臟病、體位性低血壓、ECG 上已見心律不整、PE/AMI、CVA/TIA/SAH、出血、酒精/藥物、癲癇、低血糖、頭部外傷）、無同意能力、在監所、非當地居民、前 4 週 ≥5 次發作。懷孕<strong>不</strong>排除。</p>
+<h3>關鍵設計細節 [文內]</h3>
+<ul>
+<li><strong>設計</strong>：open-label, prospective, parallel-group, 1:1, pragmatic superiority RCT</li>
+<li><strong>中心數</strong>：protocol V1.0 寫 ~26 家 → V6.0 寫 ~35 家 → SAP V3.0 寫 ~45 家 → 主論文 45 家 [外部: PubMed abstract]。<strong>中心數在試驗期間持續向上調整，與 protocol §11.2.1 的「Amber 時擴增中心」stop-go 機制一致</strong>，屬透明的適應性招募管理，不是問題。</li>
+<li><strong>隨機化</strong>：ECTU 管理的 web-based 系統確保 allocation concealment；ECTU database programmer 以電腦產生 pseudo-random number 建立分派序列；<strong>依中心 stratify</strong>（V6.0 §3）。→ <strong>allocation concealment 描述充分且可信</strong>。</li>
+<li><strong>致盲</strong>：「參與者與治療醫師均不致盲」（§5.2）。唯一致盲層級為 <strong>central study team 打電話催收資料時對分組致盲</strong>（§6.2、§9.2.2）。</li>
+<li><strong>收案時窗</strong>：V6.0 收緊為「ED/AMU 到院後 <strong>72 小時內</strong>完成招募與隨機化」；裝置「盡可能在隨機化後儘早施用」，但明文承認「若接近 72 小時才隨機化，裝置施用可能在 index 就診後數天」，且<strong>部分中心可用郵寄方式寄裝置給已出院病人</strong>（V6.0 §6.1）。</li>
+<li><strong>追蹤</strong>：2 年；每 4 週（±14 天）自動簡訊/email 連結至網頁問卷，詢問「自上次回報以來的 syncope 次數」與「因任何原因看 GP 的次數」；連續 3 個月未回覆者由致盲的 central team 電訪；月均 ≥5 次者亦電訪確認是否為真正 syncope。EQ-5D-5L 於 baseline、1 年、2 年。</li>
+<li><strong>統計</strong>：negative binomial regression；中心為 random effect、分組為 fixed effect、追蹤時間為 offset；報告 incidence rate ratio + 95% CI。ITT。</li>
+<li><strong>多重比較</strong>：SAP 明文 <strong>「不做任何多重檢定校正」</strong>，理由是「只有一個主要終點，次要終點屬 explanatory 且已預先指定」。</li>
+<li><strong>Interim</strong>：單次 futility analysis（conditional power ≤20% 觸發討論，non-binding）；另有<strong>盲性樣本數重估（blinded sample size re-estimation）<strong>於 50% 隨機化後執行，且</strong>只准往上調</strong>。</li>
+<li><strong>DMC 停止規則</strong>：僅針對 30 天死亡率<strong>增加</strong>（V1.0：「5% level, 90% power」——寫法本身不成立；V6.0 改為單側 2.5%）。無效益方向的停止界線。</li>
+<li><strong>Adverse events</strong>：<strong>只記錄與 ambulatory ECG 記錄直接相關的 AE</strong>；「住院不記為 AE」；嚴重臨床結果改列次要終點（§10）。</li>
+</ul>
+<h3>主要變項操作型定義</h3>
+<p>「Syncope 發作次數」= 病人在每月網頁問卷自述的次數。SAP V3.0 §4.5.1 加入具體歸戶規則：使用<strong>到 1 年後第一次完成的回報為止</strong>的資料，並將該次回報的事件數<strong>依 1 年時點前後的追蹤時間比例分割、四捨五入</strong>歸入 1 年主要終點。</p>
+<hr />
+<h2>5. 研究結果重點整理</h2>
+<p><strong>[限制：本次輸入的 markdown 與 14 張 PNG 完全不含結果。以下全部為外部資料。]</strong></p>
+<h3>主要與關鍵次要結果 [外部]</h3>
+<table>
+<thead>
+<tr>
+<th>指標</th>
+<th>介入（14 天 patch）</th>
+<th>對照（standard care）</th>
+<th>效果量</th>
+<th>95% CI</th>
+<th>p</th>
+<th>來源</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>隨機化人數</td>
+<td>1123</td>
+<td>1111</td>
+<td>合計 2234</td>
+<td>—</td>
+<td>—</td>
+<td>[外部: PubMed abstract]</td>
+</tr>
+<tr>
+<td><strong>主要分析納入人數</strong></td>
+<td><strong>1004</strong></td>
+<td><strong>966</strong></td>
+<td><strong>合計 1970（88.2%）</strong></td>
+<td>—</td>
+<td>—</td>
+<td>[外部: PubMed abstract]</td>
+</tr>
+<tr>
+<td><strong>1 年自述 syncope 次數（mean±SD）</strong></td>
+<td><strong>1.37 ± 5.10</strong></td>
+<td><strong>1.58 ± 8.56</strong></td>
+<td><strong>IRR 0.89</strong></td>
+<td><strong>0.68–1.18</strong></td>
+<td><strong>0.42</strong></td>
+<td>[外部: PubMed abstract]</td>
+</tr>
+<tr>
+<td>臨床顯著心律不整偵測率</td>
+<td>22%</td>
+<td>9%</td>
+<td>約 2.4 倍</td>
+<td>未報告</td>
+<td>未報告</td>
+<td>[外部: ESC press release]</td>
+</tr>
+<tr>
+<td>診斷時間中位數</td>
+<td>22 天</td>
+<td>55 天</td>
+<td>−33 天</td>
+<td>未報告</td>
+<td>未報告</td>
+<td>[外部: ESC press release]</td>
+</tr>
+<tr>
+<td>永久節律器植入</td>
+<td>6.8%</td>
+<td>4.6%</td>
+<td>+2.2 pp</td>
+<td>未報告</td>
+<td>未報告</td>
+<td>[外部: ESC press release]</td>
+</tr>
+<tr>
+<td>抗心律不整藥物起始</td>
+<td>10.8%</td>
+<td>7.3%</td>
+<td>+3.5 pp</td>
+<td>未報告</td>
+<td>未報告</td>
+<td>[外部: ESC press release]</td>
+</tr>
+<tr>
+<td><strong>1 年全因死亡</strong></td>
+<td><strong>1.5%</strong></td>
+<td><strong>2.9%</strong></td>
+<td><strong>相對降低約 50%</strong></td>
+<td><strong>[無法取得]</strong></td>
+<td><strong>[無法取得]</strong></td>
+<td>[外部: ESC press release / HCPLive]</td>
+</tr>
+<tr>
+<td>Adverse events（總數）</td>
+<td>49</td>
+<td>8</td>
+<td>約 6 倍</td>
+<td>—</td>
+<td>—</td>
+<td>[外部: PubMed abstract]</td>
+</tr>
+<tr>
+<td>Serious adverse events</td>
+<td>1</td>
+<td>1</td>
+<td>—</td>
+<td>—</td>
+<td>—</td>
+<td>[外部: PubMed abstract]</td>
+</tr>
+<tr>
+<td>裝置可判讀紀錄</td>
+<td>930 / 1122（約 83%）</td>
+<td>—</td>
+<td>—</td>
+<td>—</td>
+<td>—</td>
+<td>[外部: St Emlyn's blog]</td>
+</tr>
+<tr>
+<td>平均配戴天數</td>
+<td>約 12 天（/14）</td>
+<td>—</td>
+<td>—</td>
+<td>—</td>
+<td>—</td>
+<td>[外部: St Emlyn's blog]</td>
+</tr>
+<tr>
+<td>index 就診住院比例</td>
+<td>約 39%（整體）</td>
+<td>—</td>
+<td>—</td>
+<td>—</td>
+<td>—</td>
+<td>[外部: St Emlyn's blog]</td>
+</tr>
+<tr>
+<td>年齡 / 性別</td>
+<td>mean 58.3 歲；52.1% 男性</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>[外部: PubMed abstract]</td>
+</tr>
+</tbody>
+</table>
+<p><strong>數字一致性提醒</strong>：ESC 新聞稿寫「2,233 patients analysed」，PubMed abstract 寫「2234 randomized，1970 included in primary analysis」。此差異無法從本次材料釐清 — [限制：無主文 CONSORT flow]。</p>
+<h3>圖表判讀</h3>
+<p><strong>[限制：本次提供的 14 張 PNG 全為 protocol 內文頁（封面、目錄、縮寫表、endpoint 定義、power calculation），不含 KM 曲線、forest plot 或 CONSORT diagram。因此無法評估曲線分離時點、number-at-risk 後期是否銳減、CI 是否跨無效線、或座標軸起點是否非零。]</strong></p>
+<hr />
+<h2>6. 作者討論與評論重點</h2>
+<p><strong>[限制：本次輸入無 Discussion 段落。以下僅能依 protocol 內的預設立場，以及外部可查證的作者公開發言。]</strong></p>
+<ul>
+<li><strong>Protocol 內預先陳述的主要訊息</strong>（§1.2.4）：早期 ambulatory monitoring 有潛力「減少發作、減少復發、減少住院、降低總醫療成本、提升生活品質」，並「將提供證據給 ESC、ACC、NICE、SIGN 等指引制定團體」。→ 這是<strong>在收案前就已寫入 protocol 的預期方向性語言</strong>，且明確以改寫國際指引為目標。</li>
+<li><strong>作者於 ESC 發表時的公開結論</strong> [外部: ESC press release]：「早期監測應被視為 unexplained syncope 急診常規照護的一部分，同時應有進一步研究探討所觀察到的存活益處。」</li>
+<li><strong>[評估] 這句話存在明確的證據—主張落差</strong>：試驗的<strong>主要終點是陰性/不確定</strong>，作者卻以「應納入急診常規照護」作結，其支撐完全來自<strong>未經多重校正的次要終點</strong>（偵測率、診斷時間、死亡率）。SAP 白紙黑字寫「secondary outcomes are for <strong>explanatory</strong> purposes」——作者自己的統計計畫已把這些終點定位為「解釋性」，卻在傳播階段把其中之一（死亡率）當成臨床行動的主要理由。<strong>這是本篇最嚴重的敘事問題。</strong></li>
+<li><strong>作者自陳限制</strong>：<strong>[無法取得]</strong>——需主文 Discussion。</li>
+</ul>
+<hr />
+<h2>7. 外部專業意見</h2>
+<p>已執行的檢索：PubMed（editorial/comment publication type + 引用檢索）、Europe PMC（<code>CITES:&quot;42670977_MED&quot;</code> 與 <code>&quot;ASPIRED&quot; AND syncope</code>）、多輪 Web 檢索（NEJMe、accompanying editorial）。</p>
+<ul>
+<li><strong>未發現 NEJM 同期 editorial 或針對本文的 comment。</strong> Europe PMC 引用檢索回傳空集合（發表僅約一週，尚無被引用紀錄）。→ <strong>[無法取得]——未發現同期 editorial 或正式期刊評論。</strong> 因無任何針對本文的 editorial/comment DOI，故未呼叫 <code>fetch_editorial.py</code>（依指示，不得以本文自身 DOI 呼叫）。</li>
+<li><strong>偽陽性排除</strong>：Europe PMC 檢出 <em>&quot;Syncope – mind the gap: it's time to build bridges in the UK&quot;</em>（Br J Cardiol，DOI 10.5837/bjc.2026.007，2026/02/04）。該文<strong>早於本文發表 7 個月</strong>，非本文之評論，不予採計。</li>
+<li><strong>NEJM 同期另有 Kenny 的 Clinical Practice review（syncope）</strong> [外部: 網頁檢索]，屬主題並行內容，非對本試驗的評論。</li>
+<li><strong>非期刊來源的獨立評讀</strong>：St Emlyn's blog（英國急診學術部落格，由臨床醫師撰寫）[外部: St Emlyn's blog]。<strong>此為部落格，非同儕審查之專業意見，僅供對照，不作為本評讀的證據依據。</strong> 其提出的三點與本評讀獨立得出的結論一致：(1) 質疑以「病人自述發作次數」作為主要終點；(2) 指出給裝置 + 反覆詢問會提高事件通報傾向（ascertainment bias）；(3) 強調死亡率為未校正之次要終點、試驗未針對死亡率設計檢定力。</li>
+</ul>
+<hr />
+<h2>8. 臨床建議</h2>
+<p><strong>可採用本研究結論的臨床情境：</strong></p>
+<ol>
+<li>急診/急診後門診面對 <strong>經完整評估仍原因不明的 syncope</strong>、且你的照護目標是「<strong>縮短取得節律診斷的時間</strong>」時——14 天 patch 讓臨床顯著心律不整偵測率由 9% 提升至 22%、診斷時間中位數由 55 天縮短至 22 天 [外部]。這是本試驗最穩健、方向一致、且與機轉相符的發現。</li>
+<li>需要<strong>縮短住院觀察 telemetry</strong> 的醫療體系決策討論（但成本效益分析尚未發表，見下）。</li>
+</ol>
+<p><strong>不建議直接套用的情境：</strong></p>
+<ol>
+<li><strong>不要用「減少昏厥復發」來說服病人或行政單位</strong>。主要終點 IRR 0.89（0.68–1.18）<strong>既未證實有益、也未排除有意義的益處</strong>（見 C1）。</li>
+<li><strong>絕對不要引用「死亡率減半」作為採用理由</strong>。這是 ≥30 個未校正次要比較之一，試驗未針對它設計檢定力，效果量的生物合理性亦有嚴重疑問（見 C4）。</li>
+<li><strong>台灣情境外推須極度保守</strong>：本試驗為 UK NHS 體系，對照組的「standard care」在部分中心已包含 ILR，在其他中心可能只有 Holter 或什麼都沒有——<strong>對照組本身異質且未量化</strong>。台灣的 syncope 照護路徑、14 天 patch 的給付狀態、以及心臟科門診可近性都不同。族群方面，收案僅限「當地居民」的英國人口，主論文摘要僅報告年齡與性別，<strong>族裔組成無法取得</strong>；protocol 有收集 ethnicity，但外推至台灣族群的依據不明。</li>
+<li><strong>成本效益尚未回答</strong>。本試驗的健康經濟分析走獨立的 HEAP，尚未發表；NICE 型的採用決策實質上懸而未決。</li>
+</ol>
+<p><strong>給臨床醫師的實務建議（3 點，直接可操作）：</strong></p>
+<ol>
+<li>把 14 天 patch 定位為<strong>診斷加速工具</strong>，不是<strong>預後改善工具</strong>。對病人的說法應是「這能讓我們更快知道你的心跳有沒有問題」，而不是「這能減少你昏倒」。</li>
+<li>若你的中心正在評估導入，<strong>要求看的是「診斷時間」與「後續檢查資源置換」數據</strong>（本試驗顯示 patch 可大幅取代後續 Holter/門診 monitoring），而非死亡率。</li>
+<li><strong>不要因為這篇 NEJM 而改變高風險 syncope 的住院決策</strong>。試驗設計上刻意<strong>不把住院記為 adverse event</strong>（protocol §10），且 protocol §1.1.4 事先就用「沒有研究證明住院能改善 syncope 預後」來預先合理化「臨床醫師因為有 patch 而更敢讓病人回家」——<strong>這意味著「因裝置而提早出院所導致的傷害」在本試驗的安全性架構中系統性地無法被偵測</strong>。</li>
+</ol>
+<p><strong>研究證據強度分級：</strong></p>
+<table>
+<thead>
+<tr>
+<th>面向</th>
+<th>分級</th>
+<th>理由</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>「14 天 patch 提高心律不整偵測、縮短診斷時間」</td>
+<td><strong>強</strong></td>
+<td>大型多中心 RCT、方向明確、效果量大、與機轉一致</td>
+</tr>
+<tr>
+<td>「14 天 patch 減少 1 年 syncope 復發」</td>
+<td><strong>弱（且證據不足以下結論）</strong></td>
+<td>CI 同時跨越無效值與預設 MCID；實際檢定力遠低於計畫值（見 C2）</td>
+</tr>
+<tr>
+<td>「14 天 patch 降低死亡率」</td>
+<td><strong>極弱 / 不應採信</strong></td>
+<td>未校正次要終點、無檢定力設計、效果量生物不合理</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h1>SKILL-A：原始研究批判性評讀</h1>
+<h2>A. 補充技術細節</h2>
+<p>以下僅補充 SECTION-0 未涵蓋、且對批判有實質作用的設計與統計細節（全部來自本次可判讀的 protocol / SAP）。</p>
+<h3>A-1. 樣本數估算的完整假設鏈（protocol §9.1.2）</h3>
+<p>作者的推導（以名目 10,000 人為單位）：</p>
+<pre><code>未治療 1 年復發率            42.5%  →  4250/10000        [來源: ESC guideline Sup Table 10]
+介入組可診斷之重要可治療心律不整  1050/10000 (10.5%)  [來源: PATCH-ED pilot]
+對照組可診斷者                200/10000 (2%)        [來源: 未明確標註]
+治療後不再復發比例            90%                    [來源: ISSUE-2]
+→ 介入組復發 3305 vs 對照組 4070 → 差 765/10000 (ERR 0.81)
+→ 保守調整為 600/10000 (ERR 0.85)
+→ 1064/組，90% power，雙側 α=0.05，overdispersion = 0.25
+→ +5% 流失 → 1117/組 → 總計 2234
+</code></pre>
+<p><strong>這條假設鏈有兩個結構性弱點，後文 B1 與 C2 分別處理。</strong></p>
+<h3>A-2. Protocol / SAP 版本異動的關鍵時序</h3>
+<table>
+<thead>
+<tr>
+<th>日期</th>
+<th>文件</th>
+<th>變更</th>
+<th>與收案的時序關係</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2021/08</td>
+<td>Protocol V1.0</td>
+<td>主要終點 = <strong>病歷 + 自述之複合</strong></td>
+<td>收案前</td>
+</tr>
+<tr>
+<td>2021/11</td>
+<td>Protocol V2.0</td>
+<td>REC 核准的初版</td>
+<td>收案前</td>
+</tr>
+<tr>
+<td>2022/03</td>
+<td>Protocol V3.0</td>
+<td>標註為「minor edits, clarifications and typos corrected」</td>
+<td>收案前</td>
+</tr>
+<tr>
+<td><strong>2022/07</strong></td>
+<td>—</td>
+<td><strong>收案開始</strong> [外部: EMERGE Research]</td>
+<td>—</td>
+</tr>
+<tr>
+<td>2022/08</td>
+<td>Protocol V4.0</td>
+<td>「minor changes to align with SAP and HEAP」</td>
+<td>收案後 1 個月</td>
+</tr>
+<tr>
+<td><strong>2022/10/28</strong></td>
+<td>—</td>
+<td><strong>統計師 Adamestam 因製作 DMC closed report 而解盲，退出 SAP 撰寫</strong></td>
+<td>收案中</td>
+</tr>
+<tr>
+<td>2022/11/29</td>
+<td>SAP V1.0</td>
+<td>主要終點確立為 <strong>僅自述</strong>；載明依據 protocol V3.0</td>
+<td>收案後 4 個月</td>
+</tr>
+<tr>
+<td>2023/04</td>
+<td>Protocol V5.0</td>
+<td>對齊 DSP</td>
+<td>收案中</td>
+</tr>
+<tr>
+<td>2023/12</td>
+<td>Protocol V6.0</td>
+<td>收案期由 18 → 24 個月</td>
+<td>收案中</td>
+</tr>
+<tr>
+<td><strong>2024/06</strong></td>
+<td>—</td>
+<td><strong>收案結束</strong> [外部]</td>
+<td>—</td>
+</tr>
+<tr>
+<td>~2025/06</td>
+<td>—</td>
+<td>最後一位受試者完成 1 年追蹤（推算）</td>
+<td>—</td>
+</tr>
+<tr>
+<td><strong>2025/08/07</strong></td>
+<td><strong>SAP V2.0</strong></td>
+<td><strong>① 新增主要終點事件歸戶規則（跨 1 年時點的比例分割 + 四捨五入）② 新增針對偏態的 outlier 排除敏感度分析 ③ 修改 ITT 族群（排除事後發現不合格者）④ 新增 adherence 指標（&lt;7 天 vs ≥7 天）⑤ 新增醫療利用分析</strong></td>
+<td><strong>1 年追蹤完成之後</strong></td>
+</tr>
+<tr>
+<td><strong>2025/12/12</strong></td>
+<td><strong>SAP V3.0</strong></td>
+<td><strong>再修改 ITT 族群（排除撤回並要求刪除資料者）</strong></td>
+<td><strong>1 年追蹤完成之後</strong></td>
+</tr>
+</tbody>
+</table>
+<p><strong>這張表是本次評讀最有價值的產物。</strong> 主要終點的<strong>定義變更</strong>（複合 → 僅自述）發生在收案開始之前，時序上可接受；但被記錄為「minor edits and typos corrected」，<strong>這是不誠實的版本標註</strong>——主要終點的組成改變絕非 typo。</p>
+<p>真正嚴重的是 <strong>SAP V2.0（2025/08）</strong>：在<strong>所有 1 年追蹤資料都已收集完畢之後</strong>，才新增主要終點的事件歸戶演算法（如何處理跨越 1 年時點的回報）與離群值排除規則。SAP 聲稱這些修訂在「未知曉 unblinded allocation」的情況下完成，且 Weir 教授全程未解盲，這一點應予採信；但<strong>盲性不等於無資訊</strong>——修訂團隊在該時點已能看到主要終點的合併分布（極端右偏、大量離群值），而正是這個分布特徵驅動了新增的 outlier 排除敏感度分析。這在方法學上屬於 <strong>data-driven 但盲性（blinded data-driven）</strong> 的決策，比純事前指定弱，比事後解盲決策強。<strong>主文若未明確揭露主要終點推導規則是在追蹤結束後才寫定，即構成報告不完整。</strong></p>
+<h3>A-3. 缺失資料處理</h3>
+<ul>
+<li>SAP 全域規則：主要終點缺失 &gt;5% 時「將考慮」multiple imputation（MAR/MCAR 假設）</li>
+<li>Protocol §9.1.3：<strong>只有當「1 年 EPR 資料」與「1 年自述資料」兩者皆缺</strong>才算 lost to follow-up；預期流失 &lt;1%（依 pilot）</li>
+<li>實際：<strong>264/2234（11.8%）因「未完成任何追蹤」而被排除於主要分析之外</strong> [外部: PubMed abstract]，是預期值的 <strong>10 倍以上</strong></li>
+<li><strong>[限制：無法從本次材料判定主文是否實際執行了 multiple imputation，或僅呈現 complete-case 分析。]</strong></li>
+</ul>
+<h3>A-4. ITT vs per-protocol</h3>
+<p>SAP 宣稱 ITT。但實際主要分析為 <strong>1970/2234 = modified ITT（complete-case）</strong>。介入組排除 119/1123（10.6%），對照組排除 145/1111（13.1%）——<strong>差異性流失 2.5 個百分點，對照組流失較多</strong>。詳見 C4。</p>
+<h3>A-5. Proportional hazards 假設</h3>
+<p>僅適用於「時間到偵測顯著心律不整」這一個 time-to-event 次要終點。SAP 有預先指定圖形檢定 PH 假設，違反時改用 restricted mean survival time——<strong>這一點寫得很好</strong>。是否實際檢定 <strong>[無法取得]</strong>。</p>
+<hr />
+<h2>A1. 特殊設計子模組：Pragmatic 裝置策略試驗</h2>
+<p>本試驗不是 non-inferiority、非手術 RCT、非 platform trial，也非前臨床研究。適用的特殊考量是 <strong>pragmatic strategy trial</strong>：</p>
+<ul>
+<li><strong>對照組未標準化</strong>：V6.0 §3 定義 standard care 為「各院常規 + 某種形式的標準監測，包含但不限於 telemetry / Holter / ILR」。protocol §6.1 承諾「我們會記錄各院的 usual care 並與 NICE guidance 比較」——<strong>這個承諾是否兌現、對照組實際接受了什麼，是解讀本試驗的關鍵，但無法從本次材料判定</strong> [限制：無主文]。
+<ul>
+<li>這一點的重要性被低估了：對照組 9% 的臨床顯著心律不整偵測率 [外部] 顯示<strong>對照組並非惰性對照</strong>。若某些中心的 standard care 已包含 ILR（診斷率遠高於 Holter），則介入效果會被稀釋；若多數中心只有 Holter，則差距會放大。<strong>未報告對照組組成，等於無法判斷這個 22% vs 9% 的差距能外推到什麼樣的基準照護環境。</strong></li>
+</ul>
+</li>
+<li><strong>策略而非裝置</strong>：介入是「立即施用 14 天監測」這個<strong>策略</strong>，不是裝置本身。策略的下游（誰判讀報告、誰決定治療、多快介入）全部「由各院 treating clinician 自行裁量」（§6.1）。這使得試驗回答的是「把 patch 放進現行照護路徑會怎樣」，而非「patch 的診斷效能有多好」——這是恰當的實用性設計，但也意味著<strong>陰性主要終點無法區分是「診斷資訊沒用」還是「診斷資訊沒被有效利用」</strong>。</li>
+<li><strong>「Immediate」的名實不符</strong>：論文標題與試驗名稱都強調 <em>Immediate</em>，但 protocol 允許到院後 72 小時內隨機化，且明文允許<strong>郵寄裝置給已出院病人</strong>，並承認施用可能在 index 就診後「數天」（V6.0 §6.1）。整個試驗的機轉論證建立在 SYNARR-Flash 的「15 天內施用診斷率較高」上——72 小時 + 郵寄延遲仍在 15 天內，因此<strong>機轉論證不受損</strong>，但<strong>標題的 &quot;Immediate&quot; 對真實介入時序有所誇大</strong>。實際的中位施用時間 <strong>[無法取得]</strong>，而這正是評估「immediate」宣稱是否成立的關鍵數字。</li>
+</ul>
+<hr />
+<h2>B. 批判性評估（四大面向）</h2>
+<h3>B1. 假說與理論邏輯</h3>
+<p><strong>問題 1：假說是否預先指定？</strong>
+→ <strong>文內證據</strong>：是。Protocol V1.0（2021/08）已明確指定單一主要終點與 superiority 假說；SAP 於解盲前定稿；「無計畫中的 subgroup analysis」寫入 protocol §9.2.1。
+→ <strong>風險方向</strong>：低。這是本試驗的明確優點。
+→ <strong>但有一個內部矛盾</strong>：Protocol V6.0 §9.2.1 仍寫「<strong>There are no planned subgroup analyses</strong>」，而同期的 SAP V1.0/V3.0 明確指定了依 CSRS 分層的主要終點與次要終點 subgroup analysis（含 interaction term）。<strong>最終版 protocol 與最終版 SAP 對「有無計畫中次組分析」的陳述直接互相牴觸</strong>，且此矛盾在 V6.0（2023/12）時仍未修正。這是文件治理的瑕疵，實務影響有限（SAP 較晚且更具體，且 subgroup 有 interaction test），但顯示 protocol 修訂並未實質校對。</p>
+<p><strong>問題 2：機轉是否與情境匹配？</strong>
+→ 因果鏈為：<strong>早期監測 → 偵測到心律不整 → 醫師採取治療 → 復發減少 → 死亡減少</strong>。這條鏈需要<strong>每一環都成立</strong>。
+→ <strong>文內證據</strong>：Protocol §9.1.2 假設第 2 環（偵測）產出 10.5%、第 3–4 環（治療 → 不復發）效率 90%。
+→ <strong>外部證據顯示第 2 環實際超額達成（22% &gt; 10.5% 的假設），但主要終點仍為陰性/不確定。</strong>
+→ <strong>[評估] 這是本試驗最有臨床價值的機轉推論</strong>：失敗（若真為失敗）不在「偵測不到」，而在「偵測到之後轉不成臨床效益」。可能的斷點有三：</p>
+<ol>
+<li><strong>偵測到的心律不整多數與 syncope 無因果關係</strong>。Protocol Table 1 的「clinically significant dysrhythmia」定義極為寬鬆——含「Mobitz I」「sinus pause ≥2.5 秒（清醒時）」「bradycardia &lt;40 bpm 持續 &lt;30 秒」「新發 AF ≥30 秒」「SVT &gt;100 bpm ≥30 秒」。這些在 14 天連續監測下，於中年、夜間、運動員、睡眠期都是常見的<strong>偶然發現</strong>。<strong>監測時間從 24–48 小時延長到 14 天（約 7–14 倍），偶然發現的機率也隨之上升</strong>。22% vs 9% 的差距，有相當比例可能是<strong>偵測到更多與症狀無因果關係的節律</strong>，而非偵測到更多真正的病因。</li>
+<li><strong>第 4 環（治療 → 不復發 90%）的來源是 ISSUE-2</strong>——一個<strong>非隨機</strong>的觀察性研究（早期植入 ILR 後給予特異性治療）。Protocol §1.1.3 自己就精準地警告過：「syncope 復發會自發下降，因此觀察性資料會讓任何療法看起來比實際有效」。**作者用自己識別出的偏差來源，去設定自己試驗的效果量假設。**這是本篇最深的邏輯裂縫。ISSUE-3（隨機、雙盲、pacemaker on vs off）顯示的效果遠比 ISSUE-2 溫和，protocol 未引用 ISSUE-3。</li>
+<li><strong>可治療族群的稀釋</strong>：即使 22% 有「顯著心律不整」，實際導向治療的只有節律器 +2.2 pp、抗心律不整藥 +3.5 pp [外部]。也就是說，<strong>在 1000 位介入組病人中，只有約 57 人因這個介入而多接受了某種治療</strong>。要靠這 57 人去改變全體 1000 人的平均發作次數，數學上幾乎不可能產生 15% 的 rate ratio 變化。</li>
+</ol>
+<p><strong>最可能合理機轉（1–3 點）：</strong></p>
+<ol>
+<li>早期 14 天連續監測確實提高「症狀—節律相關性」的捕捉機率（SYNARR-Flash + CSRS 驗證研究支持 15 天窗口），並顯著縮短診斷時間 → <strong>機轉成立且已被本試驗證實</strong></li>
+<li>提早診斷 → 提早植入節律器 → 對「真正的緩脈性 syncope」次族群有效 → <strong>機轉合理，但該次族群在全體中佔比太小，無法驅動 ITT 層級的主要終點</strong></li>
+<li>監測本身的「保證效應（reassurance）」可能降低就醫與自我通報 → 與 3 相反方向的 ascertainment 效應共存</li>
+</ol>
+<p><strong>最可疑的敘事跳躍（1–3 點）：</strong></p>
+<ol>
+<li><strong>「偵測率翻倍 → 應納入常規照護」</strong>：protocol §1.2.4 在收案前就寫下「能減少發作、減少復發、減少住院、降低成本、提升生活品質」，而試驗只證實了「偵測」。從偵測到臨床效益的跳躍，protocol 從頭到尾當成理所當然。</li>
+<li><strong>「死亡率減半」</strong>：見 C4，生物合理性不足。</li>
+<li><strong>Protocol §1.1.4 的預先免責</strong>：「若某些臨床醫師採用此策略（讓原本會住院的病人回家），<strong>不應對結果造成不利影響，因為沒有研究顯示住院能改善 syncope 預後</strong>」。用「缺乏證據」來論證「沒有風險」，是標準的邏輯謬誤，且這個假設被寫進了 AE 收集規則（住院不記為 AE），使潛在傷害在設計層次即不可偵測。</li>
+</ol>
+<hr />
+<h3>B2. 受試者與外推性</h3>
+<p><strong>問題：受試者是否與宣稱對象一致？</strong>
+→ <strong>文內證據</strong>：納入條件嚴格對應「ED/AMU 評估後仍原因不明」的目標族群，排除條件（§4.3）詳盡且臨床上合理（典型 vasovagal + 正常 ECG + 無結構性心臟病者被排除，避免稀釋）。<strong>族群定義是本試驗的強項。</strong>
+→ 但有四個限縮：</p>
+<ol>
+<li><strong>「當地居民」</strong>（inclusion #4）——排除了流動人口、遊客、跨區就醫者，這在真實急診中是可觀的一群</li>
+<li><strong>「有同意能力」</strong>（inclusion #3）——排除急性譫妄、認知障礙者；<strong>這正是 syncope 預後最差、最需要診斷的高齡族群</strong></li>
+<li><strong>前 4 週 &lt;5 次發作</strong>——排除高頻發作者</li>
+<li><strong>Mean age 58.3 歲</strong> [外部]——比典型急診 syncope 族群年輕（英國 ED syncope 中位年齡常 &gt;65 歲）。protocol §7 承認「70% 的預期參與者將 ≤75 歲」，因為追蹤方式依賴簡訊/email。<strong>追蹤方法本身篩選了族群。</strong></li>
+</ol>
+<p><strong>基線是否平衡？</strong> <strong>[無法取得]</strong>——無 Table 1。1:1 中心分層隨機化 + 中央 web 系統 + n=2234，先驗上不平衡風險低。</p>
+<p><strong>研究環境能否外推真實世界？</strong>
+→ Pragmatic 設計、45 家英國 NHS 醫院、涵蓋 tertiary 與 district hospital、對照組為各院實際常規 → <strong>英國體系內的外推性佳</strong>。</p>
+<p><strong>外推性分級：</strong></p>
+<table>
+<thead>
+<tr>
+<th>目標族群</th>
+<th>分級</th>
+<th>可外推條件 / 不該外推的原因</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>一般英國 NHS 急診 unexplained syncope 成人（16–75 歲、有同意能力、當地居民）</td>
+<td><strong>高</strong></td>
+<td>這正是收案族群；45 中心、pragmatic 設計</td>
+</tr>
+<tr>
+<td>台灣急診 unexplained syncope 成人</td>
+<td><strong>中</strong></td>
+<td>族群病理光譜（如 Brugada 盛行率差異）、給付結構、心臟科可近性、standard care 內容均不同；且對照組組成未報告，無法對照台灣基準照護</td>
+</tr>
+<tr>
+<td>&gt;75 歲 / 衰弱 / 認知障礙族群</td>
+<td><strong>低</strong></td>
+<td>同意能力要求 + 數位追蹤方式雙重排除；然而這是臨床上最需要判斷「要不要住院」的族群</td>
+</tr>
+<tr>
+<td>高頻發作（月 ≥5 次）族群</td>
+<td><strong>不適用</strong></td>
+<td>明文排除</td>
+</tr>
+<tr>
+<td>已有明確 vasovagal 診斷者</td>
+<td><strong>不適用</strong></td>
+<td>明文排除，也不應施用</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h3>B3. 研究設計與偏差</h3>
+<p><strong>(1) 隨機化與分派隱藏 —— 充分</strong>
+→ <strong>文內證據</strong>（V6.0 §3）：ECTU web-based 系統、電腦產生 pseudo-random number、中心分層。
+→ <strong>風險方向</strong>：無明顯風險。這一環做得好。</p>
+<p><strong>(2) 致盲 —— 結構性不可行，且未做任何補償設計</strong>
+→ <strong>文內證據</strong>（§5.2）：「Neither participants nor treating clinicians will be blinded to allocation.」唯一致盲是電訪的 central team。
+→ <strong>這是本試驗最大的偏差來源，且與主要終點的選擇直接相撞</strong>：主要終點是<strong>病人自述的主觀事件計數</strong>，而病人知道自己有沒有戴裝置。SAP §2.2 辯稱主要終點是「quantitative endpoint... 自動化回報直接匯入資料庫以減少 reporting bias」——<strong>這混淆了「資料傳輸的客觀性」與「事件認定的客觀性」</strong>。自動化匯入解決的是資料謄寫錯誤，完全無法解決「病人是否把一次頭暈算成一次 syncope」。SAP V1.0 原文寫「The primary outcome is an <strong>objective</strong> endpoint」，V3.0 改為「a <strong>quantitative</strong> endpoint」——<strong>作者自己在後期修訂中悄悄把「客觀」降級為「量化」，等於默認了原始說法站不住腳。</strong>
+→ <strong>風險方向（雙向，淨方向不明）</strong>：</p>
+<ul>
+<li><strong>偏向介入組不利</strong>：介入組被要求「有症狀時按裝置按鈕」+「填寫紙本症狀日記」（V6.0 §6.1）——這是<strong>明確的注意力訓練</strong>，會提高後續 12 個月對前驅症狀與輕微事件的敏感度與通報傾向。介入組觀察到 mean 1.37 vs 對照 1.58，若存在此偏差，真實差距<strong>大於</strong> 0.89。</li>
+<li><strong>偏向介入組有利</strong>：14 天監測結果正常帶來的 reassurance 可能降低通報與就醫。</li>
+<li><strong>淨效應無法判定</strong>，而 protocol 完全沒有設計任何工具去區分（例如：未收集「事件嚴重度」「是否有目擊者」「是否有外傷」等可用來校正通報閾值的變項）。這是<strong>可以事先設計卻沒有設計</strong>的缺口。</li>
+</ul>
+<p><strong>(3) 主要終點選擇本身 —— 這是設計層次的核心爭議</strong>
+→ <strong>文內證據</strong>：Protocol §1.2.3 稱其為「patient focussed primary endpoint」，並引用 James Lind Alliance 急診研究優先順序（§1.1.3）作為正當性。
+→ <strong>[評估] 選擇病人中心終點的動機值得肯定，但執行上選錯了具體指標。</strong>「1 年發作<strong>次數</strong>」有三個致命特性：</p>
+<ol>
+<li><strong>極端過度離散</strong>（見 C2，這是本篇最重要的量化發現）</li>
+<li><strong>完全依賴主觀自述，且在 open-label 設計下不可致盲</strong></li>
+<li><strong>只有一小部分病人的發作是介入可能影響的</strong>（心律不整性），其餘的 vasovagal / 未明原因發作<strong>構成了純粹的統計雜訊</strong>，稀釋任何真實訊號
+→ 更合適的選擇本應是：<strong>「達成確定診斷的時間」</strong>（作者的次要終點，且結果穩健）或**「syncope 相關再入院/再就診」**（客觀、病歷可查、對病人與體系皆重要）。</li>
+</ol>
+<p><strong>(4) 試驗是否提早停止 —— 否</strong>
+→ 單次 futility interim（CP ≤20% 觸發討論，non-binding），DMC 僅監測 30 天死亡率增加。試驗完成全額招募（2234）。<strong>無提早停止導致效果誇大的問題。</strong></p>
+<p><strong>(5) 依從性 —— 中度稀釋</strong>
+→ 1122 位分派介入者中，930 位（約 83%）產生可判讀紀錄；平均配戴約 12/14 天 [外部]。SAP V2.0（2025/08）才新增 adherence 指標定義（&lt;7 天 vs ≥7 天）。
+→ <strong>風險方向</strong>：ITT 下 17% 無資料者會把效果向無效方向拉。這是實用性試驗的合理代價，但應在主文報告 per-protocol 敏感度分析——<strong>[無法取得]</strong>。</p>
+<p><strong>(6) 對照組適當性（Gyawali 框架）</strong></p>
+<p>核心提問：「<strong>這是我日常臨床會給病人的治療嗎？</strong>」</p>
+<p>→ <strong>答案：不確定，因為對照組未被定義。</strong> V6.0 §3 的「包含但不限於 telemetry / Holter / ILR」是<strong>一個範圍，不是一個對照組</strong>。
+→ 這產生一個實務上很重要的後果：讀者無法知道 22% vs 9% 的差距，是「patch 對比 Holter」還是「patch 對比 ILR」還是「patch 對比什麼都沒做」。<strong>在不同基準照護水準下，這個差距的臨床意義完全不同。</strong>
+→ Protocol §6.1 明訂所有參與者（無論分組）都會被轉介至 syncope 評估、且「理想上 4–6 週內看診」，並依 NICE CG109 安排後續檢查 → 這使對照組<strong>優於英國真實世界的一般照護</strong>（真實世界中很多病人根本沒有結構化轉介）。<strong>對照組被試驗參與行為本身提升了</strong>（Hawthorne 效應的一種），這會系統性縮小組間差距，使主要終點偏向無效。
+→ <strong>這一點對解讀陰性主要終點很關鍵：ASPIRED 比較的是「patch + 結構化 syncope 轉介」vs「結構化 syncope 轉介」，而不是「patch」vs「現行實務」。</strong></p>
+<p><strong>(7) 前期 Phase II 支撐</strong>
+→ PATCH-ED（單中心、單臂 cohort pilot，Emerg Med J 2018）。<strong>它是單臂的</strong>——它可以支持「可行性」與「診斷率」，但<strong>在設計上不可能支持任何關於復發率的效果量估計</strong>。而 protocol 恰恰用它來設定復發率的效果量。這是「用可行性研究的資料驅動療效試驗的檢定力計算」的典型問題。</p>
+<p><strong>最可能造成偏差的設計點（3 個，含方向）：</strong></p>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>設計點</th>
+<th>文內依據</th>
+<th>效果方向</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Open-label + 病人自述主要終點 + 介入組被訓練用按鈕/日記記錄症狀</td>
+<td>§5.2、V6.0 §6.1</td>
+<td><strong>不明</strong>（通報敏感化 → 使介入組看起來更差；reassurance → 使介入組看起來更好）。無設計可區分</td>
+</tr>
+<tr>
+<td>2</td>
+<td>對照組未標準化，且所有參與者皆獲結構化 syncope 轉介</td>
+<td>V6.0 §3、§6.1</td>
+<td><strong>縮小組間差距</strong>（使介入效果被低估）</td>
+</tr>
+<tr>
+<td>3</td>
+<td>「Clinically significant dysrhythmia」定義寬鬆 + 監測時長差 7–14 倍</td>
+<td>Table 1、§6.1</td>
+<td><strong>放大介入組的偵測率優勢</strong>（22% vs 9% 有相當部分可能是偶然發現而非病因）</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h3>B4. 測量工具與實務意義</h3>
+<p><strong>(1) 測量工具的信度/變異度</strong>
+→ 主要終點沒有任何信效度評估。protocol 唯一的品質控管是「月均 ≥5 次者由致盲 central team 電訪，確認是否為真正 syncope 事件」（§6.2）——<strong>只針對高端離群者做單向確認</strong>。低估者（把 syncope 誤記為「頭暈」而未通報）沒有任何偵測機制。
+→ <strong>這個不對稱的資料清理規則值得注意</strong>：它只會下修高值，不會上修低值。若兩組的通報閾值不同（因致盲失敗），這個規則的效果也會是不對稱的。</p>
+<p><strong>(2) 終點是否有臨床意義？</strong>
+→ <strong>主要終點：中等。</strong> 「1 年發作次數」對病人重要（生活品質、駕駛、跌倒風險），但作為連續計數，它把「一次無外傷的 vasovagal 前驅暈厥」與「一次導致骨折的 asystolic syncope」等值計算。<strong>這是嚴重的 outcome hierarchy mismatch</strong>——病人在意的不是次數，是嚴重度與後果。
+→ <strong>次要終點「臨床顯著心律不整偵測」：surrogate。</strong> 它是診斷過程指標，不是病人結果。本試驗的核心弔詭就是：**surrogate 大幅改善，patient-important outcome 未改善。**這正是為什麼不能用偵測率去支持「應納入常規照護」。
+→ <strong>次要終點「診斷時間」：有意義的過程指標。</strong> 55 → 22 天的縮短，對「等 Holter 排程等三個月」的體系是真實的價值。</p>
+<p><strong>「就算結果是真的，真實世界可能有多大用處？」</strong></p>
+<p>以外部數字推算 [推算，假設每組約 1000 人]：</p>
+<ul>
+<li>多偵測到心律不整：(22% − 9%) × 1000 ≈ <strong>130 人</strong></li>
+<li>多植入節律器：(6.8% − 4.6%) × 1000 ≈ <strong>22 人</strong></li>
+<li>多起始抗心律不整藥：(10.8% − 7.3%) × 1000 ≈ <strong>35 人</strong></li>
+<li>減少的 syncope 發作：(1.58 − 1.37) × 1000 ≈ <strong>210 次</strong>（但 95% CI 涵蓋「多 250 次」到「少 500 次」）</li>
+</ul>
+<p>→ **也就是說：每 1000 位病人多做 1000 次 14 天監測、多偵測 130 個「顯著心律不整」，最終只轉化為 22 個額外節律器。約 108/130（83%）的額外偵測沒有導向任何節律介入。**這個轉化率本身就是本試驗最重要的臨床訊息：<strong>大部分被 14 天 patch 抓到的「clinically significant dysrhythmia」，臨床醫師看完之後決定不處理。</strong></p>
+<hr />
+<h2>C. 統計與資料完整性</h2>
+<h3>C1. 結果分類（CI + MCID 框架）</h3>
+<p><strong>Step 1 — MCID（δ）確認</strong></p>
+<p>→ <strong>文內預先指定</strong>（protocol §9.1.2）：試驗設計偵測 <strong>event rate ratio 0.85</strong>（保守值），對應的完整機轉假說為 <strong>0.81</strong>。作者明確稱 0.85 為「more conservative effect size」，即這是他們認為值得偵測的最小效果。
+→ 因此 <strong>MCID-benefit = IRR 0.85</strong>（文內明訂，非推算）。
+→ <strong>MCID-harm 未指定</strong>。以對稱假設取 IRR 1.18 為傷害側參考 [推算]。</p>
+<p><strong>Step 2 — CI 位置判讀</strong></p>
+<pre><code>                 MCID-benefit          Null            (對稱 MCID-harm)
+                   0.85                1.00                  1.18
+   ────┬───────────┬────────────────────┬────────────────────┬────
+      0.68        0.85       0.89      1.00                 1.18
+       └──────────────── 95% CI ──────────────────────────────┘
+                          ▲ 點估計
+</code></pre>
+<p><strong>觀察到的 CI（0.68–1.18）同時涵蓋 null（1.00）與預先指定的 MCID（0.85）。</strong></p>
+<p><strong>Step 3 — 結果分類</strong></p>
+<table>
+<thead>
+<tr>
+<th>結果類別</th>
+<th>判斷</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>POSITIVE ✅</td>
+<td>否（p=0.42）</td>
+</tr>
+<tr>
+<td>IMPRECISE (+)</td>
+<td>否</td>
+</tr>
+<tr>
+<td>HARMFUL ☠️</td>
+<td>否</td>
+</tr>
+<tr>
+<td>NEUTRAL ⚖️</td>
+<td><strong>否</strong>——CI 遠不夠窄，未能排除有意義的益處或傷害</td>
+</tr>
+<tr>
+<td>NEGATIVE ❌</td>
+<td><strong>否</strong>——MCID-benefit（0.85）<strong>未被排除</strong>，仍完全落在 CI 內</td>
+</tr>
+<tr>
+<td><strong>INCONCLUSIVE ❓</strong></td>
+<td><strong>是</strong></td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong>本試驗的主要終點結果應分類為 INCONCLUSIVE，而非 negative。</strong></p>
+<p>資料<strong>與「14 天監測帶來達到甚至超過預先設定之臨床重要益處（IRR 0.85 或更佳）」完全相容</strong>；同時也與「無效」及「輕微有害（最高多 18% 發作）」相容。</p>
+<p><strong>NEJM 摘要的用語「did not result in significantly fewer patient-reported syncope episodes」在字面上正確</strong>（確實未達統計顯著），但若被讀者理解為「14 天監測不能減少 syncope」，即是本 Skill 明列的禁止謬誤。<strong>這篇試驗沒有排除臨床上重要的益處——它只是沒有足夠精確度去偵測它。</strong></p>
+</blockquote>
+<p><strong>Neutral vs Negative vs Inconclusive 的實務差異：</strong></p>
+<ul>
+<li>若為 <strong>Neutral</strong>，臨床建議會是「兩種策略等效，選便宜的」</li>
+<li>若為 <strong>Negative</strong>，建議會是「不要為了減少復發而做」</li>
+<li><strong>實際為 Inconclusive</strong>，正確的建議是：「<strong>這個問題還沒有被回答</strong>，需要一個檢定力足夠的試驗，或改用更合適的終點」</li>
+</ul>
+<hr />
+<h3>C2. Underpowered 判斷與 Winner's Curse ⭐ 本評讀的核心量化發現</h3>
+<p><strong>Underpowered 定義</strong>：CI 同時包含 null 與 MCID → 樣本不足以回答問題。<strong>本試驗符合此定義。</strong></p>
+<p>但真正嚴重的是<strong>為什麼</strong>它 underpowered。</p>
+<p><strong>(a) Overdispersion 假設的災難性偏誤</strong></p>
+<p>Protocol §9.1.2 明訂：<code>over dispersion = 0.25</code>。在 negative binomial 的標準參數化下（Friede &amp; Schmidli 2010，即 protocol 引用之文獻 [26]）：</p>
+<p>$$\mathrm{Var}(Y) = \mu + \phi\mu^2$$</p>
+<p>以計畫假設代入（μ ≈ 1.5、φ = 0.25）：</p>
+<p>$$\mathrm{Var} = 1.5 + 0.25 \times 2.25 = 2.06 ;\Rightarrow; \mathrm{SD} \approx 1.44$$</p>
+<p><strong>實際觀察到的</strong>（NEJM 摘要）[外部]：</p>
+<table>
+<thead>
+<tr>
+<th>組別</th>
+<th>mean</th>
+<th>SD</th>
+<th>隱含 Var</th>
+<th>隱含 φ</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>介入</td>
+<td>1.37</td>
+<td><strong>5.10</strong></td>
+<td>26.0</td>
+<td>≈ 13.1</td>
+</tr>
+<tr>
+<td>對照</td>
+<td>1.58</td>
+<td><strong>8.56</strong></td>
+<td>73.3</td>
+<td>≈ 28.7</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong>真實的過度離散參數比 protocol 假設值高出約 50–115 倍。</strong></p>
+</blockquote>
+<p>這不是小幅偏差，而是<strong>根本性的分布誤判</strong>。作者在 protocol §9.1.2 中寫道「ESC Guidelines 建議發作次數對 Poisson 分布有良好配適」——<strong>實際資料離 Poisson（φ=0）遠到不能再遠</strong>。少數病人一年發作數十次（SD 8.56 搭配 mean 1.58，數學上要求存在極端長尾），主導了整個變異數。</p>
+<p><strong>(b) 由此推算的實際檢定力</strong> [推算，方法如下]</p>
+<p>從發表的 CI 反推主要分析的標準誤：</p>
+<p>$$\mathrm{SE}[\log(\mathrm{IRR})] \approx \frac{\ln(1.18/0.68)}{2 \times 1.96} = \frac{0.5517}{3.92} \approx \mathbf{0.141}$$</p>
+<p>計畫所需的標準誤（90% power、雙側 α=0.05、偵測 IRR 0.85）：</p>
+<p>$$\mathrm{SE}<em>{\text{required}} = \frac{|\ln 0.85|}{z</em>{0.975} + z_{0.90}} = \frac{0.1625}{1.96 + 1.282} = \mathbf{0.0501}$$</p>
+<p>$$\Rightarrow \text{實際 SE 為計畫值的 } \frac{0.141}{0.0501} \approx \mathbf{2.8 \text{ 倍}}$$</p>
+<p>對應的實際檢定力：</p>
+<p>$$z = \frac{0.1625}{0.141} = 1.15 ;\Rightarrow; \text{Power} = \Phi(1.15 - 1.96) = \Phi(-0.81) \approx \mathbf{21%}$$</p>
+<blockquote>
+<h3><strong>ASPIRED 在計畫階段宣稱有 90% 檢定力偵測 IRR 0.85；依發表的信賴區間反推，實際執行時對同一效果量的檢定力約為 20%。</strong></h3>
+</blockquote>
+<p>[推算依據：假設報告之 CI 為 Wald 型、對數尺度對稱；實際模型含中心 random effect 與 follow-up offset，故此為近似值。核心結論——實際精確度遠低於計畫值——對合理的模型設定變化都穩健。]</p>
+<p><strong>(c) 為什麼盲性樣本數重估沒有救到它？——這是本試驗最尖銳的方法學缺陷</strong></p>
+<p>Protocol §9.1.2 與 SAP §4.3 都預先指定了<strong>盲性樣本數重估</strong>，其目的<strong>正是為了防範 overdispersion 假設錯誤</strong>：</p>
+<blockquote>
+<p>「將對兩組合併的主要終點資料配適 negative binomial 模型，估計整體事件率與 shape parameter（反映過度離散程度），再代入標準樣本數公式取得修正後的樣本數估計。<strong>只有在盲性重估建議增加樣本數時才會修訂目標樣本數。</strong>」</p>
+</blockquote>
+<p>這個機制設計得完全正確。但：</p>
+<ol>
+<li><strong>時機錯誤</strong>：重估在「約 50% 參與者完成隨機化」時執行。收案期 24 個月（2022/07–2024/06），主要終點需 12 個月追蹤。在收案進行到一半（約 2023 年中）時，<strong>絕大多數受試者尚未完成 1 年追蹤</strong>。此時可得的主要終點計數是<strong>被截斷的部分追蹤資料</strong>——而截斷的計數資料會<strong>系統性低估</strong>長尾與過度離散。<strong>這個重估在設計上就注定會低估 φ。</strong></li>
+<li><strong>最終樣本數 = 原始目標</strong>：2234 人 [外部]，與 protocol V1.0（2021/08）的 2234 完全相同。也就是說，<strong>重估沒有觸發任何樣本數增加</strong>，儘管最終資料顯示 φ 被低估了 50–115 倍。</li>
+<li>Protocol V6.0 唯一的招募面調整是<strong>把收案期由 18 個月延長至 24 個月</strong>（V6.0 版本異動理由），這是為了達成原目標，不是增加樣本數。</li>
+</ol>
+<blockquote>
+<p>**一個為了防範特定失效模式而預先設計的保護機制，因為執行時機的選擇而在該失效模式真正發生時失去了作用。**這是本試驗最值得寫進方法學教材的一點，也是主文若未討論即構成報告缺漏之處。</p>
+</blockquote>
+<p><strong>(d) 這是 Winner's Curse 的</strong>反面<strong>情境</strong></p>
+<p>本試驗的主要終點是<strong>非顯著</strong>的，因此不存在「underpowered positive → Type M 誇大」的問題。但同樣的低精確度邏輯，直接適用於<strong>被大力宣傳的次要終點死亡率</strong>（見 C4）：在極低檢定力的環境中，<strong>唯有隨機偏高的估計值才能跨過 p&lt;0.05 的門檻</strong>。「死亡率減半」正是這樣一個估計值。</p>
+<p><strong>(e) 明確排除的錯誤做法</strong></p>
+<p>本評讀<strong>未</strong>使用、也<strong>不應</strong>使用 post-hoc power（= f(p-value)，零資訊量，CONSORT 2010 明文禁止）來判定檢定力不足。上述判定完全基於：<strong>(i) CI 同時涵蓋 null 與預先指定的 MCID；(ii) 由發表 CI 反推的實際 SE 與 protocol 明訂的計畫 SE 之比較</strong>。這兩者都是先驗設定與觀察精確度的對照，不是 p 值的重新包裝。</p>
+<hr />
+<h3>C3. Bayesian 補充分析的必要性評估</h3>
+<p>依 Zampieri / Harrell 框架，Bayesian 補充分析在兩種情境下最有價值：<strong>(1) p 接近 0.05；(2) Neutral vs Negative 的區分有臨床意義</strong>。</p>
+<p><strong>本試驗兩者皆不適用：</strong></p>
+<ul>
+<li>p = 0.42，遠離 0.05</li>
+<li>CI 寬度（0.68–1.18，比值跨幅 1.74 倍）使 <strong>Pr(ROPE) 在任何合理的 ROPE 界定下都不可能高</strong>。若以 ROPE = [0.85, 1.18]（即 MCID 之間），CI 有相當比例落在 ROPE 之外，等效性主張無法成立。</li>
+</ul>
+<p><strong>因此 C3 的正確結論是</strong>：本試驗<strong>不需要</strong>、也<strong>無法藉由</strong> Bayesian 分析從「inconclusive」升級為「neutral」。任何形式的分析都無法從這筆資料中製造出它沒有的精確度。<strong>唯一的解方是更大的樣本或更合適的終點。</strong></p>
+<p>（依 Skill 規範，本節不編造未執行的 Bayesian 數值。）</p>
+<hr />
+<h3>C4. 報告完整性與其他統計問題</h3>
+<h4>(1) 樣本數與 power——雙向評估</h4>
+<ul>
+<li><strong>Underpowered</strong>：<strong>是，嚴重</strong>（見 C2，實際檢定力約 20%）</li>
+<li><strong>Overpowered</strong>：否。相反地，若真的達成計畫精確度（SE 0.05），CI 會窄到約 0.81–0.98，屆時反而要小心「統計顯著但每年少 0.2 次發作是否臨床重要」的問題。<strong>但本試驗離這個問題還很遠。</strong></li>
+</ul>
+<h4>(2) ⭐ 主要分析族群：11.8% 的排除，且具差異性</h4>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>隨機化</th>
+<th>主要分析</th>
+<th>排除數</th>
+<th>排除率</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>介入</td>
+<td>1123</td>
+<td>1004</td>
+<td>119</td>
+<td><strong>10.6%</strong></td>
+</tr>
+<tr>
+<td>對照</td>
+<td>1111</td>
+<td>966</td>
+<td>145</td>
+<td><strong>13.1%</strong></td>
+</tr>
+<tr>
+<td>合計</td>
+<td>2234</td>
+<td>1970</td>
+<td>264</td>
+<td><strong>11.8%</strong></td>
+</tr>
+</tbody>
+</table>
+<p>[外部: PubMed abstract]</p>
+<p><strong>四個層次的問題：</strong></p>
+<ol>
+<li><strong>這不是 ITT，是 modified ITT / complete-case</strong>。SAP §3 宣稱「所有隨機化的病人依分派組別分析」，僅允許兩項排除：事後發現不合格者、撤回並要求刪除資料者。「<strong>未完成任何追蹤</strong>」不在 SAP 授權的排除清單中。<strong>排除規則與 SAP 不符，或 SAP 有未在本次材料中呈現的補充規定。</strong> [限制：無主文方法段落，無法完全確認]</li>
+<li><strong>實際流失是預期的 10 倍以上</strong>。Protocol §9.1.3 依 pilot 預期流失 &lt;1%，並僅額外招募 5% 作為緩衝。實際 11.8% 遠超緩衝，這本身就會侵蝕檢定力（與 C2 的 overdispersion 問題疊加）。</li>
+<li><strong>差異性流失 2.5 個百分點，對照組較高</strong>。方向上，這意味著對照組中「完全不回應」的病人被排除的比例較高。若不回應與健康狀態相關（重病、死亡、失能、對研究失去興趣），<strong>兩組被排除者的性質可能不同</strong>，違反 MAR 假設。</li>
+<li><strong>與死亡率分析的交互作用是關鍵未解問題</strong>：一位在第 2 個月死亡、從未完成任何月度問卷的病人，是否被排除？若主要分析排除他而死亡率分析納入他，<strong>兩個分析的分母不同</strong>；若死亡率分析也用 1970 的分母，則<strong>早期死亡者被系統性排除，而早期死亡正是可能出現組間差異之處</strong>。<strong>[無法取得]</strong>——需要主文的分析族群定義與 CONSORT flow 才能判定。<strong>這是本篇最需要被審稿人追問、而本次材料無法回答的問題。</strong></li>
+</ol>
+<p><strong>SAP 的缺失資料規則是否被執行？</strong> SAP §3 寫「若結果變項缺失 &gt;5%，<strong>將考慮</strong>（will consider）進行 multiple imputation」。缺失達 11.8%，遠超門檻。「will consider」是弱承諾用語，<strong>未預先指定觸發後必須執行</strong>。主文是否執行 MI <strong>[無法取得]</strong>。若僅呈現 complete-case 分析而未做 MI 或 tipping-point 敏感度分析，即為報告缺陷。</p>
+<h4>(3) ⭐ 多重比較：SAP 明文放棄校正，而傳播階段違反了 SAP 自己的定位</h4>
+<p>SAP（V1.0 §4.2、V3.0 §3）：</p>
+<blockquote>
+<p>「<strong>任何分析都不會對多重檢定進行校正</strong>，因為它們處理的是預先指定的目標，且只有一個主要終點。<strong>次要終點是為了解釋目的（explanatory）</strong>，且已預先指定。此外，執行的分析次數將在本試驗的任何發表中清楚記載。」</p>
+</blockquote>
+<p><strong>清點 SAP 中預先指定的正式檢定數量：</strong></p>
+<table>
+<thead>
+<tr>
+<th>類別</th>
+<th>數量</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>主要終點</td>
+<td>1（+ 3 個敏感度分析 + 3 個 CSRS 次組 + 1 個 interaction）</td>
+</tr>
+<tr>
+<td>二元次要終點</td>
+<td>3 類 × 各 3 時點 = 9</td>
+</tr>
+<tr>
+<td>計數次要終點</td>
+<td>8（自述/病歷 × 多時點）+ 住院率 + 診斷檢查/治療 ×2 = 約 11</td>
+</tr>
+<tr>
+<td>連續次要終點</td>
+<td>2</td>
+</tr>
+<tr>
+<td>Time-to-event</td>
+<td>1（+ PH 敏感度分析）</td>
+</tr>
+<tr>
+<td>滿意度問卷</td>
+<td>6 題 × 各一 common OR = 6</td>
+</tr>
+<tr>
+<td>醫療利用正式分析</td>
+<td>5 項 × 2 時點 = 10</td>
+</tr>
+<tr>
+<td>次要終點的 CSRS 次組分析</td>
+<td>5 項 × 3 次組 + interaction</td>
+</tr>
+<tr>
+<td><strong>保守總計</strong></td>
+<td><strong>≥ 40 個正式檢定</strong></td>
+</tr>
+</tbody>
+</table>
+<p>在 40 個獨立檢定、α=0.05、且無校正的情況下，<strong>在真實無效的世界中，期望有約 2 個檢定達到 p&lt;0.05 純屬偶然</strong>。</p>
+<p><strong>SAP 的立場（次要終點為 explanatory）在方法學上是可辯護的</strong>——只要<strong>傳播時忠於這個定位</strong>。</p>
+<p><strong>但實際發生的是：</strong> ESC 新聞稿標題與 HCPLive 報導標題把「死亡率減半」作為主要訊息 [外部: ESC press release / HCPLive: &quot;Immediate ECG Monitoring Cuts Mortality in Unexplained Syncope&quot;]，主持人則以「早期監測應納入急診常規照護」作結。</p>
+<blockquote>
+<p><strong>一個被試驗自己的統計分析計畫定義為「僅供解釋用途」的終點，在主要終點陰性/不確定的情況下，被推上了新聞標題、並被用來支持改變臨床實務的建議。這是本試驗最嚴重的 claim–evidence mismatch。</strong></p>
+</blockquote>
+<h4>(4) ⭐ 死亡率次要終點的定量檢驗</h4>
+<p><strong>(a) 統計脆弱性</strong> [推算]</p>
+<p>以 1.5% vs 2.9%、分母約 1004 / 966 推算：</p>
+<ul>
+<li>介入組死亡數 ≈ 15；對照組 ≈ 28</li>
+<li>$\ln(\mathrm{OR}) = \ln!\left(\frac{15/989}{28/938}\right) = \ln(0.508) = -0.677$</li>
+<li>$\mathrm{SE} = \sqrt{\tfrac{1}{15}+\tfrac{1}{989}+\tfrac{1}{28}+\tfrac{1}{938}} = 0.323$</li>
+<li><strong>95% CI ≈ 0.27 – 0.96</strong></li>
+</ul>
+<p>[推算依據：假設分母為主要分析族群、事件數由百分比回推取整；實際數值需以主文為準。]</p>
+<p>→ 即使在<strong>完全未校正</strong>的情況下，上界已逼近 0.96。**若對 40 個檢定做任何形式的多重性調整（即使只是 Holm 的前幾步），這個區間就會跨越 1。**這個發現的統計穩健度極低。</p>
+<p><strong>(b) 生物合理性——更致命的問題</strong> [推算]</p>
+<p>介入所產生的、唯一可能影響死亡率的因果路徑，是「多做的治療」：</p>
+<ul>
+<li>額外節律器植入：2.2 pp × 1000 ≈ <strong>22 人</strong></li>
+<li>額外抗心律不整治療：3.5 pp × 1000 ≈ <strong>35 人</strong></li>
+<li>需要解釋的死亡差：約 <strong>13–14 人</strong></li>
+</ul>
+<blockquote>
+<p><strong>要讓這 22 個額外節律器解釋 13 個避免的死亡，等於要求「每 1.7 個額外植入的節律器就在 1 年內救回 1 條命」。</strong></p>
+</blockquote>
+<p>這在臨床上不可信。族群平均 58.3 歲，1 年全因死亡 1.5–2.9%——這個量級的死亡絕大多數來自惡性腫瘤、感染、心衰竭、腦血管疾病等<strong>與節律毫不相關</strong>的原因。即使節律器對緩脈性猝死有 100% 的預防效果，可歸因的死亡分率也遠低於觀察到的差距。</p>
+<p><strong>(c) 反向解釋更合理</strong></p>
+<ul>
+<li>對照組 2.9% 可能是<strong>偶然偏高</strong>（28 例的 Poisson 變異相當大）</li>
+<li><strong>差異性排除</strong>（對照組多排除 145 人 vs 介入組 119 人）可能與死亡/重病相關，造成分母與事件的錯配</li>
+<li>純粹的多重比較偶然（40 個檢定中期望 2 個假陽性）</li>
+</ul>
+<p><strong>(d) 唯一誠實的表述</strong></p>
+<blockquote>
+<p>「觀察到 1 年全因死亡的數值差異（1.5% vs 2.9%）。這是一個未經多重性校正的次要終點，試驗未針對死亡率設計檢定力，效果量的大小超出可歸因於所觀察到之治療差異的合理範圍。<strong>應視為需要獨立驗證的假說產生（hypothesis-generating）發現，不得作為臨床決策依據。</strong>」</p>
+</blockquote>
+<p>主持人自己說的「further research explores the observed survival benefit」方向正確，但「survival <strong>benefit</strong>」這個名詞已經預設了結論——正確的用語是 &quot;the observed mortality difference&quot;。</p>
+<h4>(5) Adverse event 收集的系統性不足</h4>
+<ul>
+<li><strong>文內證據</strong>（protocol §10）：「唯一會記錄的 AE 是那些與初始 ambulatory ECG 記錄直接相關者」；「住院不會被記為 AE」；嚴重臨床結果改以次要終點收集；且<strong>只在第 2 個月的自動問卷詢問一次</strong>「前 2 個月是否有配戴裝置的相關併發症」。</li>
+<li>實際：<strong>49 vs 8 AE</strong>（約 6 倍）[外部]，SAE 各 1。推測主要為皮膚反應/接觸性皮膚炎。</li>
+<li><strong>[評估] 三個問題</strong>：
+<ol>
+<li>只問一次、只問前 2 個月 → 系統性低估</li>
+<li>對照組的「AE」定義是「與初始 ambulatory ECG 記錄相關」，但多數對照組病人可能根本沒戴任何裝置 → <strong>兩組的 AE 分母在概念上不對等</strong>，6 倍差距的解讀受限</li>
+<li><strong>最重要</strong>：因裝置而改變的處置決策（例如原本會住院觀察的病人被直接出院）所導致的傷害，<strong>在設計上被排除於 AE 收集之外</strong>，且 protocol §1.1.4 事先就用「沒有證據顯示住院有益」加以合理化。這是<strong>傷害的設計性盲區</strong>。</li>
+</ol>
+</li>
+</ul>
+<h4>(6) 主要終點推導規則的晚期加入</h4>
+<p>見 A-2。SAP V2.0（2025/08，1 年追蹤完成之後）才寫定：跨 1 年時點的回報事件依時間比例分割並四捨五入。SAP V1.0 的原始規則是「使用最接近 1 年時點的那次回報（不論之前或之後）」——<strong>兩者會產生不同的主要終點數值</strong>。同時新增三個敏感度分析（僅計 1 年前、全計、排除 &gt;3 SD 離群值）。</p>
+<p>→ 團隊聲稱全程對分組致盲，Weir 教授未解盲，此點應予採信。但<strong>在盲性下觀察到合併資料的極端偏態之後，才設計針對偏態的分析規則</strong>，仍屬 blinded data-driven decision，其證據等級低於真正的事前指定。<strong>主文若未揭露此時序，讀者將誤以為主要終點推導規則自始即已固定。</strong></p>
+<h4>(7) 統計面紅旗清單（≥5 點）</h4>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>紅旗</th>
+<th>依據</th>
+<th>嚴重度</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td><strong>Overdispersion 假設偏誤 50–115 倍，實際檢定力約 20%（計畫 90%）</strong></td>
+<td>protocol §9.1.2 φ=0.25 vs 發表 SD 5.10/8.56</td>
+<td>🔴 極高</td>
+</tr>
+<tr>
+<td>2</td>
+<td><strong>盲性樣本數重估在追蹤未成熟時執行，未能觸發任何樣本數增加</strong></td>
+<td>protocol §9.1.2 + 最終 n=2234 = 原目標</td>
+<td>🔴 極高</td>
+</tr>
+<tr>
+<td>3</td>
+<td><strong>≥40 個未校正檢定；SAP 定義次要終點為 explanatory，傳播階段卻以之為主要訊息</strong></td>
+<td>SAP §3 Multiplicity + ESC press release</td>
+<td>🔴 極高</td>
+</tr>
+<tr>
+<td>4</td>
+<td><strong>主要分析排除 11.8%（預期 &lt;1%），且具差異性（13.1% vs 10.6%）；與 SAP 的 ITT 定義不符</strong></td>
+<td>SAP §3 vs 發表 n=1970</td>
+<td>🟠 高</td>
+</tr>
+<tr>
+<td>5</td>
+<td><strong>死亡率次要終點：未校正 CI 上界逼近 1，且效果量生物不合理</strong></td>
+<td>推算 OR 0.50 (0.27–0.96)；22 節律器 vs 13 死亡</td>
+<td>🟠 高</td>
+</tr>
+<tr>
+<td>6</td>
+<td><strong>主要終點的事件歸戶規則與離群值處理在 1 年追蹤完成後才定稿</strong></td>
+<td>SAP V2.0 (2025/08) vs 收案結束 2024/06</td>
+<td>🟠 高</td>
+</tr>
+<tr>
+<td>7</td>
+<td><strong>主要終點自我描述由「objective」降級為「quantitative」</strong></td>
+<td>SAP V1.0 §2.2 vs V3.0 §2.2</td>
+<td>🟡 中</td>
+</tr>
+<tr>
+<td>8</td>
+<td><strong>Protocol §9.2.1「無計畫次組分析」與 SAP 的 CSRS 次組分析直接矛盾，至 V6.0 未修正</strong></td>
+<td>protocol V6.0 §9.2.1 vs SAP §4.5.3</td>
+<td>🟡 中</td>
+</tr>
+<tr>
+<td>9</td>
+<td><strong>缺失資料規則為弱承諾（&quot;will consider&quot; MI），觸發後是否執行不明</strong></td>
+<td>SAP §3</td>
+<td>🟡 中</td>
+</tr>
+<tr>
+<td>10</td>
+<td><strong>AE 僅收集裝置相關、僅問一次、住院明文排除；處置改變導致的傷害設計上不可偵測</strong></td>
+<td>protocol §10 + §1.1.4</td>
+<td>🟡 中</td>
+</tr>
+<tr>
+<td>11</td>
+<td><strong>DMC 停止規則 V1.0 寫法不成立（「statistically significant (level 5%, power 90%)」混淆 α 與 power），V6.0 才修正為單側 2.5%</strong></td>
+<td>protocol V1.0 §5.2.2 vs V6.0 §5.2.2</td>
+<td>🟢 低（已修正）</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>D. 次組分析評估</h2>
+<p>SAP 預先指定<strong>依 Canadian Syncope Risk Score 分層</strong>的次組分析：low（−3–0）、medium（1–3）、high（4–11）；套用於主要終點與選定次要終點（90 天/1 年/2 年顯著心律不整、1 年/2 年診斷檢查與治療次數）。</p>
+<p><strong>[限制：本次輸入無次組分析結果，以下僅評估其方法學設計品質。]</strong></p>
+<table>
+<thead>
+<tr>
+<th>JAMA 五標準</th>
+<th>評估</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1. 是否有 interaction p-value？</td>
+<td><strong>✅ 是</strong> — SAP §4.5.3 明訂「report the incidence rate ratio and its 95% CI <strong>within each subgroup and the p-value for the interaction term</strong>」。方法學正確</td>
+</tr>
+<tr>
+<td>2. 結果方向是否與其他研究一致？</td>
+<td><strong>無法評估</strong>（無結果）。但<strong>先驗方向明確且合理</strong>：CSRS 高分者心律不整前測機率高，最可能從監測獲益。若觀察到 high-risk 組效果較大，與先驗一致</td>
+</tr>
+<tr>
+<td>3. 假說是否預先指定並有預期方向？</td>
+<td><strong>⚠️ 部分</strong> — SAP 有預先指定分組與模型，但<strong>未書面陳述預期方向</strong>。且 protocol V6.0 §9.2.1 仍寫「無計畫次組分析」，與 SAP 矛盾</td>
+</tr>
+<tr>
+<td>4. 是否有合理的生物機轉？</td>
+<td><strong>✅ 是</strong> — CSRS 是經外部驗證的風險分層工具，高分對應較高的心律不整前測機率。這是本試驗次組假說最強的一環</td>
+</tr>
+<tr>
+<td>5. 是否為 within-study 比較？</td>
+<td><strong>✅ 是</strong> — 單一 RCT 內的隨機化組別對照，非 meta-analysis 的 between-study 比較</td>
+</tr>
+</tbody>
+</table>
+<p><strong>可信度評分：中</strong></p>
+<p>理由：設計正確（有 interaction test、預先指定、機轉合理、within-study），是本試驗方法學上做得好的部分。扣分於：(a) protocol / SAP 的書面矛盾；(b) 三個次組 × 多個終點，在無多重性校正的前提下，任何單一「顯著次組」都應視為探索性；(c) <strong>在主要終點本身檢定力僅約 20% 的情況下，次組層級的 interaction test 檢定力必然極低</strong>（通常 &lt;10%）——<strong>次組分析的陰性 interaction 結果毫無資訊量，而任何陽性 interaction 結果都極可能是偽陽性</strong>。這是 C2 的檢定力問題向下傳導的必然後果。</p>
+<hr />
+<h2>E. 紅旗清單</h2>
+<p><strong>設計</strong></p>
+<ul>
+<li>Open-label 試驗以<strong>病人自述主觀事件計數</strong>為主要終點，且介入組被訓練用按鈕與日記記錄症狀 → 通報敏感化的方向性偏差，且無任何設計可校正</li>
+<li>對照組定義為「包含但不限於 telemetry / Holter / ILR」——<strong>是一個範圍，不是一個對照組</strong>；實際組成未報告，使 22% vs 9% 無法對應到任何具體基準照護</li>
+<li>所有參與者（含對照組）均獲結構化 syncope 轉介（4–6 週內）→ 對照組優於英國真實實務，系統性縮小組間差距</li>
+<li>「Immediate」為名，實則允許 72 小時內隨機化 + 郵寄裝置 + 施用延遲「數天」；實際中位施用時間未報告</li>
+<li>「Clinically significant dysrhythmia」定義寬鬆（含 Mobitz I、清醒時 sinus pause ≥2.5 秒、bradycardia &lt;40 bpm 持續 &lt;30 秒），搭配 7–14 倍的監測時長 → 偵測率優勢有相當部分可能是偶然發現</li>
+<li>AE 僅收集裝置相關項目、僅在第 2 個月詢問一次、住院明文排除；「因裝置而提早出院所致的傷害」在設計上不可偵測，且 protocol §1.1.4 事先加以合理化</li>
+</ul>
+<p><strong>統計</strong></p>
+<ul>
+<li><strong>Overdispersion 假設偏誤 50–115 倍 → 實際檢定力約 20%（計畫 90%）</strong></li>
+<li><strong>為防範此失效模式而設計的盲性樣本數重估，因執行時機（50% 隨機化時、追蹤未成熟）而在失效真正發生時未能觸發</strong></li>
+<li><strong>≥40 個未校正檢定；SAP 自定義次要終點為 explanatory</strong></li>
+<li>主要分析排除 11.8%（預期 &lt;1%），且差異性流失（13.1% vs 10.6%）；與 SAP 的 ITT 定義不符</li>
+<li>主要終點的事件歸戶規則與離群值排除規則在全部 1 年追蹤完成後（2025/08）才寫定</li>
+<li>缺失資料處理為弱承諾（&quot;will consider&quot; MI），11.8% 缺失下是否執行不明</li>
+<li>主要終點自我描述由「objective」悄悄改為「quantitative」</li>
+</ul>
+<p><strong>敘事</strong></p>
+<ul>
+<li><strong>主要終點 inconclusive，卻以未校正的次要終點死亡率作為新聞標題與臨床建議依據</strong></li>
+<li>Protocol §1.2.4 在收案前即預先寫下五項預期效益（減少發作/復發/住院/成本 + 提升生活品質），並明列以改寫 ESC/ACC/NICE/SIGN 為目標</li>
+<li>主持人結論「早期監測應納入急診常規照護」，其支撐全部來自 explanatory 終點</li>
+<li>NEJM 摘要用語「did not result in significantly fewer」字面正確，但極易被讀成「無效」，而資料實際上並未排除臨床重要益處</li>
+</ul>
+<p><strong>COI / 治理</strong></p>
+<ul>
+<li>廠商（Preventice UK）由其 ECG technician 判讀 intervention arm 的核心測量結果；對照組則由各院 treating clinician 回報 → <strong>兩組關鍵次要終點的判定管道不對稱</strong>，且無獨立 adjudication</li>
+<li>Power calculation 的三個核心假設全部來自主持人自己的著作（ESC guideline、PATCH-ED pilot），形成封閉證據循環</li>
+<li>主要終點由「病歷 + 自述之複合」改為「僅自述」，此變更被記錄為「minor edits, clarifications and <strong>typos corrected</strong>」（V3.0）——<strong>主要終點組成的改變不是 typo</strong>（時序上在收案前，可接受；標註方式不可接受）</li>
+<li>主文 COI 聲明無法取得（本次輸入無主文）</li>
+</ul>
+<p><strong>外推</strong></p>
+<ul>
+<li>排除無同意能力者 → 排除高齡/譫妄/認知障礙族群，而這正是臨床上最需要住院決策支持的一群</li>
+<li>追蹤依賴簡訊/email，protocol 自承 70% 參與者將 ≤75 歲 → 追蹤方法本身篩選族群，mean age 58.3 歲低於典型急診 syncope 族群</li>
+<li>僅收「當地居民」</li>
+<li>族裔組成未報告；台灣族群外推依據不明</li>
+</ul>
+<hr />
+<h2>F. 反向解釋</h2>
+<p><strong>替代解釋 1：介入其實有臨床重要益處，但試驗沒有精確度看見它</strong></p>
+<ul>
+<li><strong>支持</strong>：實際檢定力約 20%（C2）；CI 完全涵蓋預先指定的 MCID 0.85 與完整機轉假說 0.81；點估計 0.89 方向與假說一致；上游機轉（偵測、診斷時間）明確達成且效果量大於計畫假設；對照組因試驗參與而被提升（結構化轉介）；17% 介入組無可判讀紀錄稀釋 ITT 效果；介入組被訓練通報症狀，偏差方向不利於介入組</li>
+<li><strong>反對</strong>：從偵測到治療的轉化率極低（130 個額外診斷僅換來 22 個節律器）；即使全部轉化，可影響的族群佔比也太小</li>
+<li><strong>[評估] 這是最有可能的解釋，且是本評讀的主要結論。</strong></li>
+</ul>
+<p><strong>替代解釋 2：介入確實無臨床重要益處，因為多數偵測到的「顯著心律不整」與 syncope 無因果關係</strong></p>
+<ul>
+<li><strong>支持</strong>：Table 1 定義寬鬆；14 天連續監測必然增加偶然發現；83% 的額外偵測未導向節律介入——<strong>臨床醫師看完報告後決定不處理，這本身就是「這些發現多半不重要」的臨床判斷</strong>；syncope 復發本就自發下降（作者自己在 §1.1.3 指出）</li>
+<li><strong>反對</strong>：診斷時間中位數 55 → 22 天的縮短是真實的；22% vs 9% 的差距太大，不太可能全是雜訊；節律器植入率確實上升</li>
+<li><strong>[評估] 部分成立。最可能的真實情況是解釋 1 與 2 的混合：介入對真正的心律不整性 syncope 次族群有效，但該次族群在全體中佔比太小，且被大量偶然發現與非心律不整性發作稀釋。</strong></li>
+</ul>
+<p><strong>替代解釋 3：主要終點的測量誤差淹沒了真實訊號</strong></p>
+<ul>
+<li><strong>支持</strong>：SD 5.10 / 8.56（mean 僅 1.37 / 1.58）顯示極端長尾——少數病人主導整個變異數，而這些高頻發作者<strong>最可能是 vasovagal 而非心律不整性</strong>（心律不整性 syncope 通常不會一年發作數十次）；SAP V2.0 需要專門新增離群值排除敏感度分析；自述計數在 open-label 下不可致盲</li>
+<li><strong>反對</strong>：negative binomial 模型正是為過度離散設計的；SAP 有預先指定敏感度分析</li>
+<li>**[評估] 高度成立，且與解釋 1 是同一件事的兩種說法：測量的雜訊淹沒了訊號 = 精確度不足以偵測效果。**這也直接指向改進方向：換終點。</li>
+</ul>
+<p><strong>替代解釋 4：觀察到的死亡率差異是偶然 + 差異性排除的產物，而非真實效果</strong></p>
+<ul>
+<li><strong>支持</strong>：未校正 CI 上界逼近 1（推算 0.27–0.96）；40 個檢定中期望 2 個假陽性；效果量生物不合理（22 個節律器解釋 13 個死亡）；對照組多排除 26 人（145 vs 119），若排除與健康狀態相關則分母失衡；主要終點方向溫和（0.89）而死亡率方向極端（0.50）——<strong>兩者的效果量不一致本身就是偶然性的訊號</strong></li>
+<li><strong>反對</strong>：方向與早期診斷的因果邏輯一致；理論上早期發現致命性心律不整（VT/VF/完全性阻斷）可救命</li>
+<li><strong>[評估] 這個解釋明顯優於「真實存活益處」。<strong>兩組主要終點差異溫和、次要終點差異極端，這種</strong>效果量的內部不一致</strong>是典型的偶然發現特徵。</li>
+</ul>
+<hr />
+<h2>G. 最終裁決</h2>
+<h3>整體可信度：<strong>中</strong></h3>
+<p><strong>評分理由：</strong></p>
+<p><strong>內部效度的執行面（試驗如何被跑）——高：</strong> 中央 web 隨機化 + 分派隱藏、中心分層、45 個 NHS 中心、獨立 CTU（Edinburgh CTU）主導分析、獨立 TSC 與 DMC、事前 SAP、預先指定的盲性樣本數重估與 futility interim、預先指定含 interaction test 的次組分析、完整的 protocol 與 SAP 版本異動史公開。<strong>這份 protocol 與 SAP 的透明度，坦白說優於多數 NEJM 論文的補充資料</strong>——本評讀之所以能做出上述診斷，正是因為作者公開了完整版本史。這一點應予明確肯定。</p>
+<p><strong>內部效度的設計面（試驗問了什麼、怎麼量）——低至中：</strong> 主要終點的選擇（open-label 下的病人自述主觀計數）與其分布特性（過度離散被低估 50–115 倍）共同摧毀了試驗回答自己主要問題的能力。實際檢定力約 20%。<strong>這不是執行失誤，是設計階段的統計誤判</strong>，而且是<strong>唯一為此設計的保護機制（盲性樣本數重估）因時機選擇而失效</strong>。</p>
+<p><strong>結論效度（從資料到主張）——低：</strong> 主要終點 inconclusive 卻被表述為陰性；SAP 自定義為 explanatory 的次要終點死亡率被推上新聞標題並用於支持臨床實務改變。</p>
+<h3>可採用的條件</h3>
+<ol>
+<li><strong>「14 天早期 patch 提高心律不整偵測率（22% vs 9%）並縮短診斷時間（55 → 22 天）」</strong> — 可採用。這是大型 RCT 的穩健發現，方向明確、效果量大、與機轉一致，且優於試驗自己的事前假設（10.5%）。</li>
+<li><strong>在缺乏及時 Holter/ILR 排程的體系中，作為診斷路徑加速工具</strong> — 可採用，但應同時告知病人「這不會減少你昏倒的次數」。</li>
+<li><strong>「14 天監測對 1 年 syncope 復發的效果尚未被回答」</strong> — 這是本試驗最誠實的可採用結論。</li>
+</ol>
+<h3>不建議採用的情境</h3>
+<ol>
+<li><strong>不得引用死亡率降低。</strong> 未校正次要終點、無檢定力設計、效果量生物不合理、內部效果量不一致。</li>
+<li><strong>不得將主要終點解讀為「證實無效」。</strong> CI 完全涵蓋預先指定的 MCID。</li>
+<li><strong>不得直接外推至台灣的成本效益或給付決策。</strong> 健康經濟分析尚未發表；對照組組成未報告；族裔與體系差異未評估。</li>
+<li><strong>不得作為改變高風險 syncope 住院決策的依據。</strong> 該方向的傷害在本試驗設計上不可偵測。</li>
+<li><strong>不得外推至 &gt;75 歲、衰弱、或無同意能力族群。</strong> 設計上被排除。</li>
+</ol>
+<h3>若要改觀，最需要的 3 個關鍵改進</h3>
+<ol>
+<li>
+<p><strong>更換主要終點。</strong> 「1 年發作次數」在 open-label 設計下不可致盲、極端過度離散、且把 vasovagal 與心律不整性事件等值計算。應改為 <strong>(a) 客觀的 syncope 相關再就診/再入院</strong>（病歷可查、對病人與體系皆重要），或 <strong>(b) 「達成確定病因診斷的時間」</strong>（本試驗已證實此終點穩健且效果量大）。若堅持用發作次數，必須採用<strong>分層或加權嚴重度</strong>的複合，而非單純計數。</p>
+</li>
+<li>
+<p><strong>修正樣本數與盲性重估的設計。</strong> 以真實的過度離散參數（φ ≈ 10–30，而非 0.25）重算；且<strong>盲性重估必須在有足夠比例受試者完成完整 1 年追蹤時執行</strong>，而非在 50% 隨機化時（此時計數被截斷，必然低估離散度）。依實際 SE 推算，要在 φ ≈ 9–29 下對 IRR 0.85 達到 90% 檢定力，所需樣本數約為本試驗的 <strong>8 倍</strong>（SE 需縮至 1/2.8，n 需增為 ~7.9 倍）[推算] — 這實際上意味著**「發作次數」作為主要終點在可行的試驗規模內不可行**，回到改進點 1。</p>
+</li>
+<li>
+<p><strong>報告端的紀律。</strong> 主文與所有新聞傳播必須：(a) 明確將主要終點表述為「未排除臨床重要益處」而非「無效」；(b) 對死亡率標註「未校正的探索性次要終點，試驗未針對其設計檢定力」；(c) 完整報告對照組實際接受的監測組成；(d) 揭露主要終點推導規則寫定於 2025/08、即全部 1 年追蹤完成之後；(e) 公開 264 位被排除者的基線特徵與死亡狀態，並提供 tipping-point 或 multiple imputation 敏感度分析。</p>
+</li>
+</ol>
+<h3>一句話結論</h3>
+<blockquote>
+<p>14 天貼片能讓你更快、更常抓到心律不整，但這篇試驗的檢定力其實只有計畫的五分之一，所以「能不能減少昏倒」根本還沒被回答，而「死亡減半」不該相信。</p>
+</blockquote>
+<hr />
+<h1>CONDITIONAL OUTPUT</h1>
+<h2>效果量與結果分類表</h2>
+<table>
+<thead>
+<tr>
+<th>指標</th>
+<th>介入組</th>
+<th>對照組</th>
+<th>效果量</th>
+<th>95% CI</th>
+<th>絕對差 (ARD)</th>
+<th>MCID</th>
+<th>結果分類</th>
+<th>實務意義</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>1 年自述 syncope 次數（主要）</strong></td>
+<td>1.37 ± 5.10 (n=1004)</td>
+<td>1.58 ± 8.56 (n=966)</td>
+<td><strong>IRR 0.89</strong></td>
+<td><strong>0.68–1.18</strong></td>
+<td>−0.21 次/人/年</td>
+<td><strong>IRR 0.85</strong>（protocol §9.1.2 明訂）</td>
+<td><strong>INCONCLUSIVE ❓</strong></td>
+<td>CI 同時涵蓋 null 與 MCID；<strong>未排除臨床重要益處，亦未證實益處</strong>。實際檢定力約 20% [推算]</td>
+</tr>
+<tr>
+<td>臨床顯著心律不整偵測</td>
+<td>22%</td>
+<td>9%</td>
+<td>RR ≈ 2.4</td>
+<td><strong>[無法取得]</strong></td>
+<td>+13 pp</td>
+<td>未指定</td>
+<td>方向明確、效果量大；未校正次要終點</td>
+<td>每 1000 人多偵測 130 例，但僅 22 例導向節律器</td>
+</tr>
+<tr>
+<td>診斷時間（中位數）</td>
+<td>22 天</td>
+<td>55 天</td>
+<td>−33 天</td>
+<td><strong>[無法取得]</strong></td>
+<td>—</td>
+<td>未指定</td>
+<td>方向明確；未校正次要終點</td>
+<td>對排程壅塞體系有真實價值</td>
+</tr>
+<tr>
+<td>永久節律器植入</td>
+<td>6.8%</td>
+<td>4.6%</td>
+<td>—</td>
+<td><strong>[無法取得]</strong></td>
+<td>+2.2 pp</td>
+<td>未指定</td>
+<td>未校正次要終點</td>
+<td>NNT ≈ 45 多植入 1 個</td>
+</tr>
+<tr>
+<td>抗心律不整藥起始</td>
+<td>10.8%</td>
+<td>7.3%</td>
+<td>—</td>
+<td><strong>[無法取得]</strong></td>
+<td>+3.5 pp</td>
+<td>未指定</td>
+<td>未校正次要終點</td>
+<td>—</td>
+</tr>
+<tr>
+<td><strong>1 年全因死亡</strong></td>
+<td><strong>1.5%</strong></td>
+<td><strong>2.9%</strong></td>
+<td><strong>OR ≈ 0.50</strong> [推算]</td>
+<td><strong>≈ 0.27–0.96</strong> [推算，未校正]</td>
+<td>−1.4 pp</td>
+<td>未指定；<strong>未設計檢定力</strong></td>
+<td><strong>⚠️ 假說產生，不可採信</strong></td>
+<td>40 個未校正檢定之一；效果量生物不合理（22 節律器 vs 13 死亡）</td>
+</tr>
+<tr>
+<td>Adverse events</td>
+<td>49 events</td>
+<td>8 events</td>
+<td>—</td>
+<td>—</td>
+<td>—</td>
+<td>—</td>
+<td>僅收裝置相關、僅問一次</td>
+<td>推測為皮膚反應；分母概念不對等</td>
+</tr>
+<tr>
+<td>Serious AE</td>
+<td>1</td>
+<td>1</td>
+<td>—</td>
+<td>—</td>
+<td>—</td>
+<td>—</td>
+<td>—</td>
+<td>—</td>
+</tr>
+</tbody>
+</table>
+<p><strong>資料來源</strong>：主要終點、樣本數、AE = [外部: PubMed abstract, DOI 10.1056/NEJMoa2605812]；心律不整偵測、診斷時間、治療率、死亡率 = [外部: ESC 2026 press release / ESC Hot Line 10 congress news]；MCID = [文內: protocol §9.1.2]。<strong>本次輸入的 markdown 與 14 張 PNG 均不含任何上述結果數值。</strong></p>
+<h2>非顯著結果的強制說明</h2>
+<p>主要終點 <strong>p = 0.42，屬 INCONCLUSIVE，非 Negative，更非 Neutral</strong>：</p>
+<ul>
+<li><strong>不是 Neutral（等效）</strong>：CI 0.68–1.18 的跨幅達 1.74 倍，遠未達到宣稱等效所需的精確度。上界 1.18 允許發作次數增加 18%。</li>
+<li><strong>不是 Negative（無有意義益處）</strong>：預先指定的 MCID（IRR 0.85）與完整機轉假說（0.81）<strong>都完全落在 CI 內</strong>，未被排除。</li>
+<li><strong>是 Inconclusive</strong>：資料與「達成預設之臨床重要益處」和「無效」同等相容。根本原因是實際檢定力約 20%（計畫 90%），源於 overdispersion 參數被低估 50–115 倍，且預先設計的盲性樣本數重估因執行時機而未能修正。</li>
+</ul>
+<p><strong>本評讀明確拒絕以「no significant difference」作為主要終點的結論。</strong></p>
+<h2>未報告效果量或 CI 的嚴重缺漏標記</h2>
+<p>以下關鍵次要終點的效果量僅有點估計，<strong>95% CI 與 p 值在本次可取得的所有來源中均未報告</strong>，構成報告不完整（已列入 E 紅旗清單）：</p>
+<ul>
+<li>臨床顯著心律不整偵測（22% vs 9%）— 無 CI</li>
+<li>**1 年全因死亡（1.5% vs 2.9%）— 無 CI。**在一個被推上新聞標題的效果宣稱上缺少不確定性量化，是最嚴重的一項。</li>
+<li>節律器植入、抗心律不整治療、診斷時間 — 均無 CI</li>
+</ul>
+<p><strong>[限制：這些缺漏可能僅存在於新聞稿與本次可取得的二手來源，主文本身或已完整報告。本次輸入無主文，無法確認。]</strong></p>
+<hr />
+<h2>附註：JAMA Users' Guides 參考之取用說明</h2>
+<p>本次評讀依 route=<code>rct</code> 檢視了 <code>/Users/pokai/JournalFetcher/skills/literature-appraisal/references/jamaevidence/jama_271_9_039.md</code>。該檔實際內容為 Users' Guides III <strong>Part B（診斷檢查結果的解讀與 likelihood ratio）</strong>，而非治療試驗效度指引，且 OCR 轉檔品質嚴重劣化（表格與內文交錯、字元斷裂），<strong>不足以支持可靠的逐節引用</strong>。本次批判中的隨機化/致盲/ITT/次組分析標準，改以本 Skill 內建的評估框架與 CONSORT 2010、ICH E9 之通行原則為依據，未引用該檔內容。其餘 route 對應檔案（<code>jug130002.md</code> 次組分析、<code>ssc160002.md</code> 手術 RCT、<code>jug120004</code> 非劣性、platform trial）與本文議題無實質關聯，未取用。</p>
+<hr />
+<h2>資料來源</h2>
+<ul>
+<li>Reed MJ, Goodacre S, Weir CJ, et al. Immediate Ambulatory Electrocardiographic Monitoring in Syncope. <em>N Engl J Med.</em> 2026. — 依 PubMed 檢索取得之摘要與作者資訊（<a href="https://doi.org/10.1056/NEJMoa2605812">DOI</a>）</li>
+<li>Reed MJ, Grubb N, Lang C, et al. Multicentre open label randomised controlled trial... the ASPIRED study. <em>BMJ Open.</em> 2023;13(2):e069530（<a href="https://doi.org/10.1136/bmjopen-2022-069530">DOI</a>）</li>
+<li>Pearsons A, Hanson CL, Neubeck L, et al. Usability and acceptability of ambulatory monitoring in undiagnosed syncope: ASPIRED-Q. <em>BMJ Open.</em> 2025;15(4):e095927（<a href="https://doi.org/10.1136/bmjopen-2024-095927">DOI</a>）</li>
+<li>Bellicini MG, Reed MJ. High-Risk ECG in Syncope: High Risk or Overstated? <em>J Cardiovasc Electrophysiol.</em> 2026（<a href="https://doi.org/10.1111/jce.70476">DOI</a>）</li>
+<li><a href="https://www.escardio.org/news/press/press-releases/wearable-monitor-improves-diagnosis-of-heart-rhythm-disorders-after-fainting/">ESC Press Release: Wearable monitor improves diagnosis of heart rhythm disorders after fainting</a></li>
+<li><a href="https://www.escardio.org/news/news-room/congress-news/hot-line-10-progress-in-syncope-and-crt/">ESC Congress News: Hot Line 10 — Progress in syncope and CRT</a></li>
+<li><a href="https://www.stemlynsblog.org/aspired-ambulatory-ecg-monitoring-after-unexplained-syncope/">St Emlyn's blog: ASPIRED — Ambulatory ECG Monitoring After Unexplained Syncope</a>（部落格，非同儕審查，僅供對照）</li>
+<li><a href="https://emergeresearch.org/trial/aspired/">EMERGE Research: ASPIRED trial page</a></li>
+<li><a href="https://www.nejm.org/doi/10.1056/NEJMoa2605812">NEJM article landing page</a>（HTTP 403，未能取得全文）</li>
+</ul>
+<p>作者背景、期刊收錄資訊與相關發表清單，係依據 PubMed 檢索結果。</p>
+
+<footer class="appraisal-meta">評讀資訊：模型：claude-opus-5 (claude)  ·  route：rct  ·  產出時間：2026-09-07 09:08 CST</footer>
+</main>
+</body>
+</html>
