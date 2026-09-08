@@ -101,23 +101,27 @@ def _crossref_metadata(doi: str) -> dict | None:
 
 
 def _week_article_by_doi(week: str, doi: str) -> dict | None:
-    """Return the week's articles.json record matching this DOI, if any.
+    """Return the week's persisted record matching this DOI, if any.
 
-    Used by --update-weekly so the appraised card reuses the real pmid /
-    journal_key / summary already on the weekly page (dedup + enrichment in
-    render_weekly key on pmid), instead of a freshly resolved dict.
+    Prefer selected_articles.json because it carries post-appraisal metadata
+    such as backend, model, route, and timestamp. Fall back to articles.json
+    for articles that have not yet been selected or appraised.
     """
-    path = ROOT / "output" / "weekly" / week / "articles.json"
-    if not doi or not path.exists():
-        return None
-    try:
-        articles = json.loads(path.read_text(encoding="utf-8"))
-    except (OSError, json.JSONDecodeError):
+    if not doi:
         return None
     target = _normalize_doi(doi).lower()
-    for article in articles if isinstance(articles, list) else []:
-        if _normalize_doi(str(article.get("doi", ""))).lower() == target:
-            return article
+    week_dir = ROOT / "output" / "weekly" / week
+    for filename in ("selected_articles.json", "articles.json"):
+        path = week_dir / filename
+        if not path.exists():
+            continue
+        try:
+            articles = json.loads(path.read_text(encoding="utf-8"))
+        except (OSError, json.JSONDecodeError):
+            continue
+        for article in articles if isinstance(articles, list) else []:
+            if _normalize_doi(str(article.get("doi", ""))).lower() == target:
+                return article
     return None
 
 
