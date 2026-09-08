@@ -1,0 +1,650 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Complete Revascularization Guided by Functional Coronary Angiography in STEMI.</title>
+<style>
+  :root {
+    --bg: #fafafa;
+    --card: #ffffff;
+    --text: #1a1a1a;
+    --muted: #6b6b6b;
+    --border: #e5e5e5;
+    --accent: #0b5fff;
+  }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang TC",
+      "Microsoft JhengHei", sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    margin: 0;
+    padding: 24px 16px 64px;
+    line-height: 1.72;
+  }
+  main {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    margin: 0 auto;
+    max-width: 840px;
+    padding: 22px 26px;
+  }
+  nav {
+    margin: 0 auto 14px;
+    max-width: 840px;
+    color: var(--muted);
+    font-size: 14px;
+  }
+  a { color: var(--accent); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  h1, h2, h3, h4 { line-height: 1.35; }
+  h1 { font-size: 26px; margin-top: 0; }
+  h2 { border-top: 1px solid var(--border); padding-top: 18px; }
+  code {
+    background: rgba(127, 127, 127, 0.12);
+    border-radius: 4px;
+    padding: 1px 4px;
+  }
+  table {
+    border-collapse: collapse;
+    table-layout: auto;
+    width: 100%;
+    max-width: 100%;
+  }
+  th, td {
+    border: 1px solid var(--border);
+    overflow-wrap: anywhere;
+    padding: 6px 8px;
+    text-align: left;
+    vertical-align: top;
+  }
+  blockquote {
+    border-left: 3px solid var(--accent);
+    color: var(--muted);
+    margin-left: 0;
+    padding-left: 14px;
+  }
+  .appraisal-meta {
+    border-top: 1px solid var(--border);
+    margin-top: 28px;
+    padding-top: 14px;
+    color: var(--muted);
+    font-size: 13px;
+  }
+  @media (max-width: 600px) {
+    body {
+      padding: 12px 8px 40px;
+    }
+    main {
+      padding: 16px 12px;
+    }
+    h1 {
+      font-size: 22px;
+    }
+    table {
+      font-size: 12px;
+      table-layout: fixed;
+    }
+    th, td {
+      padding: 4px 5px;
+    }
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #1a1a1a;
+      --card: #242424;
+      --text: #e8e8e8;
+      --muted: #999;
+      --border: #333;
+      --accent: #6ea8ff;
+    }
+  }
+</style>
+</head>
+<body>
+<nav><a href="../../2026-W37.html">← 回到 2026-W37 週報</a></nav>
+<main>
+<h1>Complete Revascularization Guided by Functional Coronary Angiography in STEMI.</h1>
+<h1>0. 文章身份證</h1>
+<ul>
+<li><strong>題名</strong>：Complete Revascularization Guided by Functional Coronary Angiography in STEMI</li>
+<li><strong>試驗名稱</strong>：AIR-STEMI</li>
+<li><strong>期刊／年份</strong>：<em>New England Journal of Medicine</em>，2026</li>
+<li><strong>DOI／PMID</strong>：10.1056/NEJMoa2605373／42670979</li>
+<li><strong>文章類型</strong>：多中心、開放標籤、盲化終點判定、平行組、優效性 RCT（PROBE-like design）</li>
+<li><strong>註冊</strong>：NCT05818475 [文內]</li>
+<li><strong>發表日期</strong>：2026 年 8 月 29 日 [文內；亦見 <a href="https://www.nejm.org/doi/abs/10.1056/NEJMoa2605373">NEJM article record</a>]</li>
+</ul>
+<hr />
+<h1>SECTION-0：文章全面描述</h1>
+<h2>1. 作者團隊評論</h2>
+<h3>團隊背景</h3>
+<p>通訊作者 Simone Biscaglia，服務於義大利 Ferrara University Hospital 心血管中心，研究重點為 PCI、冠狀動脈生理學及多血管疾病血運重建。[外部: <a href="https://pubmed.ncbi.nlm.nih.gov/37902150/">PubMed</a>]</p>
+<p>團隊以義大利介入心臟科中心為主，另納入巴基斯坦 National Institute of Cardiovascular Diseases；統計分析由 We4 Clinical Research 的統計學家參與。第一及末位作者撰寫初稿，獨立統計人員執行分析 [文內：Trial Design and Oversight]。</p>
+<h3>過往代表性研究</h3>
+<p>這不是首次切入，而是同一核心團隊長期研究方向：</p>
+<ul>
+<li>FIRE trial：高齡心肌梗塞患者，physiology-guided complete revascularization 對 culprit-only PCI，<em>NEJM</em> 2023。[外部: <a href="https://pubmed.ncbi.nlm.nih.gov/37634150/">PubMed</a>]</li>
+<li>FIRE 三年追蹤：<em>JAMA Cardiology</em> 2025。[外部: <a href="https://pubmed.ncbi.nlm.nih.gov/40879426/">PubMed</a>]</li>
+<li>AQVA-II：以生理學導引最佳化複雜 PCI，<em>JACC Cardiovascular Interventions</em> 2024。[外部: <a href="https://pubmed.ncbi.nlm.nih.gov/37902150/">PubMed</a>]</li>
+<li>冠狀動脈生理學與 post-PCI assessment 綜述，<em>JACC Cardiovascular Interventions</em> 2021。[外部: <a href="https://pubmed.ncbi.nlm.nih.gov/33541534/">PubMed</a>]</li>
+<li>Functional coronary angiography 綜述，2023。[外部: <a href="https://pubmed.ncbi.nlm.nih.gov/37326378/">PubMed</a>]</li>
+</ul>
+<p>因此，團隊可視為此領域的核心研究群，但也存在「先前理論承諾」：AIR-STEMI 的結論與團隊長期推動 functional/physiology-guided PCI 的方向高度一致，獨立團隊複製尤其重要。</p>
+<h3>資助與利益關係</h3>
+<p>[文內]</p>
+<ul>
+<li>主要資助：Italian Health Ministry。</li>
+<li>Consorzio Futuro in Ricerca 接受 Sahajanand Medical Technologies、Siemens Healthineers 的 unrestricted funding。</li>
+<li>Pulse Medical Imaging Technology 與 Pie Medical Imaging 免費提供 angiography-derived FFR 軟體授權。</li>
+<li>文中建議使用 Sahajanand 的 Supraflex Cruz 支架。</li>
+<li>贊助者聲明未參與設計、執行、分析或撰稿。</li>
+</ul>
+<p><strong>評估</strong>：主要公共資助降低直接 sponsor control，但軟體、器材與研究假說具有明顯商業一致性；尤其試驗成功會直接提高 angiography-derived FFR 軟體的臨床價值。這不否定結果，但應要求完整 COI 表、軟體平台別結果及獨立複製。</p>
+<h2>2. 文獻 metadata</h2>
+<ul>
+<li>Received／Accepted date：[無法取得——本文及公開頁面未列出]</li>
+<li>本篇審查天數：[無法計算]</li>
+<li>NEJM 平均審查或接受天數：[無法取得——官方網站未公布可比較的平均數]</li>
+<li>期刊採 editorial、external peer 與 statistical review。[外部: <a href="https://www.nejm.org/about-nejm/about-nejm">NEJM About</a>]</li>
+<li><strong>2025 Journal Impact Factor：84.5</strong>，屬 General and Internal Medicine 頂尖期刊，可判定為 Q1。[外部: <a href="https://www.nejm.org/author-center/home">NEJM Author Center</a>]</li>
+<li><strong>Open access</strong>：NEJM 並非全面 gold OA；一般 original research 可由註冊使用者存取，但完整功能及部分內容仍依訂閱層級，特定公共衛生文章才於出版時全面免費。[外部: <a href="https://www.nejm.org/about-nejm/access-levels">NEJM access policy</a>、<a href="https://www.nejm.org/about-nejm/editorial-policies">public-access policy</a>]</li>
+<li>邀稿與否：[無法判定——文內未揭露；文章為 Original Article，而非 invited review]</li>
+</ul>
+<h2>3. 研究背景</h2>
+<p>[文內]</p>
+<ul>
+<li>STEMI 合併多血管疾病，complete revascularization 已是標準策略。</li>
+<li>未解問題不是「是否處理非罪犯血管」，而是「應依血管攝影外觀或生理重要性決定處理哪些病灶」。</li>
+<li>Angiography-derived FFR 可免壓力導絲與高血流藥物，並加入 pullback-based PCI planning。</li>
+<li>既往 FLOWER-MI 與 FRAME-AMI 對 physiology-guided strategy 得出不同結果。</li>
+</ul>
+<p><strong>研究問題</strong>：在成功完成 culprit-lesion PCI 的 STEMI 多血管疾病患者中，整合 angiography-derived physiology、病灶選擇及 virtual-PCI planning，是否優於依傳統血管攝影處理所有 ≥50% 非罪犯病灶？</p>
+<h2>4. 研究設計與方法</h2>
+<h3>PICO</h3>
+<ul>
+<li><strong>P</strong>：成功接受 culprit-lesion PCI、至少一條直徑 ≥2.5 mm 且狹窄 50–99% 非罪犯血管的 STEMI 患者。</li>
+<li><strong>I</strong>：所有非罪犯病灶接受 angiography-derived FFR；FFR ≤0.80 才 PCI，並依 pullback curve 制定 virtual-PCI plan。</li>
+<li><strong>C</strong>：對所有目測狹窄 ≥50% 的非罪犯病灶進行 PCI。</li>
+<li><strong>O</strong>：
+<ul>
+<li>主要療效：全因死亡、MI、腦血管事件或 ischemia-driven revascularization 的首次複合事件。</li>
+<li>主要安全性：contrast-associated AKI 或 BARC 3–5 出血。</li>
+<li>次要：CV death/MI、各組成事件、ischemic stroke、stent thrombosis。</li>
+</ul>
+</li>
+</ul>
+<h3>設計重點</h3>
+<ul>
+<li>21 個義大利及巴基斯坦中心；收案 2023/5/8–2025/1/31。</li>
+<li>culprit PCI 後 48 小時內，1:1 中央網路隨機化。</li>
+<li>依中心、性別、年齡及非罪犯 LAD 與否分層。</li>
+<li>分派在隨機化前保持隱藏。</li>
+<li>開放標籤；獨立 clinical-events committee 對組別盲化。</li>
+<li>ITT 分析；Cox model、Kaplan–Meier；部分結果另以 Fine–Gray competing-risk model。</li>
+<li>Schoenfeld residuals 與圖形方法檢查 proportional hazards，未發現重大違反。</li>
+<li>沒有 interim analysis；次要終點及次組分析未校正多重比較。</li>
+<li>追蹤中位數 17.9 個月，完成率 98.9% 與 99.2%。</li>
+</ul>
+<h2>5. 研究結果重點整理</h2>
+<table>
+<thead>
+<tr>
+<th>指標</th>
+<th style="text-align:right">生理導引</th>
+<th style="text-align:right">血管攝影導引</th>
+<th>效果量</th>
+<th style="text-align:right">粗 ARD</th>
+<th>解讀</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>主要複合終點</td>
+<td style="text-align:right">81/913（8.9%）</td>
+<td style="text-align:right">125/910（13.7%）</td>
+<td>HR 0.62（0.47–0.83）</td>
+<td style="text-align:right">−4.8%</td>
+<td>NNT 21（13–51）</td>
+</tr>
+<tr>
+<td>CV death 或 MI</td>
+<td style="text-align:right">52（5.7%）</td>
+<td style="text-align:right">96（10.5%）</td>
+<td>HR 0.52（0.37–0.73）</td>
+<td style="text-align:right">−4.8%</td>
+<td>支持差異不只來自再介入</td>
+</tr>
+<tr>
+<td>全因死亡</td>
+<td style="text-align:right">36（3.9%）</td>
+<td style="text-align:right">46（5.1%）</td>
+<td>HR 0.77（0.50–1.20）</td>
+<td style="text-align:right">−1.2%</td>
+<td>CI 同時容許利益與傷害</td>
+</tr>
+<tr>
+<td>MI</td>
+<td style="text-align:right">35（3.8%）</td>
+<td style="text-align:right">73（8.0%）</td>
+<td>HR 0.47（0.31–0.70）</td>
+<td style="text-align:right">−4.2%</td>
+<td>主要訊號來源</td>
+</tr>
+<tr>
+<td>Procedure-related MI</td>
+<td style="text-align:right">15（1.6%）</td>
+<td style="text-align:right">33（3.6%）</td>
+<td>HR 0.45（0.24–0.83）</td>
+<td style="text-align:right">−2.0%</td>
+<td>與 PCI 數量差異高度一致</td>
+</tr>
+<tr>
+<td>Spontaneous MI</td>
+<td style="text-align:right">21（2.3%）</td>
+<td style="text-align:right">45（4.9%）</td>
+<td>HR 0.46（0.27–0.77）</td>
+<td style="text-align:right">−2.6%</td>
+<td>有支持性，但屬未校正次要結果</td>
+</tr>
+<tr>
+<td>Ischemia-driven revascularization</td>
+<td style="text-align:right">29（3.2%）</td>
+<td style="text-align:right">47（5.2%）</td>
+<td>HR 0.61（0.38–0.97）</td>
+<td style="text-align:right">−2.0%</td>
+<td>易受開放標籤影響</td>
+</tr>
+<tr>
+<td>主要安全終點</td>
+<td style="text-align:right">42（4.6%）</td>
+<td style="text-align:right">65（7.1%）</td>
+<td>HR 0.63（0.43–0.93）</td>
+<td style="text-align:right">−2.5%</td>
+<td>粗略 NNT 約 40</td>
+</tr>
+<tr>
+<td>Contrast-associated AKI</td>
+<td style="text-align:right">20（2.2%）</td>
+<td style="text-align:right">36（4.0%）</td>
+<td>HR 0.55（0.32–0.94）</td>
+<td style="text-align:right">−1.8%</td>
+<td>與較少 contrast 相符</td>
+</tr>
+<tr>
+<td>BARC 3–5 出血</td>
+<td style="text-align:right">23（2.5%）</td>
+<td style="text-align:right">33（3.6%）</td>
+<td>HR 0.69（0.41–1.18）</td>
+<td style="text-align:right">−1.1%</td>
+<td>不精確</td>
+</tr>
+</tbody>
+</table>
+<h3>程序差異</h3>
+<p>生理導引組實際上接受了遠少於對照組的介入：</p>
+<ul>
+<li>非罪犯血管 PCI：596/1147（52.0%） vs 1071/1128（94.9%）。</li>
+<li>總程序數：1332 vs 1590。</li>
+<li>staged procedures：419 vs 680。</li>
+<li>contrast 中位量：180 vs 223 ml。</li>
+<li>functional angiography 技術成功率：1132/1147（98.6%）。</li>
+<li>virtual-PCI plan 僅在 482/596（80.8%）受治療病灶落實。</li>
+</ul>
+<p>這表示 AIR-STEMI 比較的是兩個完整工作流程，不是單純比較兩種測量工具。</p>
+<h3>附圖判讀</h3>
+<p><strong>Figure 1</strong></p>
+<ul>
+<li>曲線從零開始；主圖 y 軸為 0–100%，反而壓縮了差異，內嵌圖再用 0–30% 顯示，沒有以非零起點誇大效果。</li>
+<li>差異很早出現：180 天累積事件已為 71 vs 40；360 天為 105 vs 64。早期差距約占最終差距的大部分，與 procedure-related MI 及介入強度不同的解釋相符。</li>
+<li>540 天時 number at risk 已由約 800 人降至 339 vs 358；720 天僅 234 vs 212。故兩年曲線尾端可信度明顯低於前 12–18 個月，不宜宣稱持續、晚期或長期保護。</li>
+<li>圖上沒有明顯交叉；陰影後期擴大。</li>
+</ul>
+<p><strong>Figure 2</strong></p>
+<p>所有次組點估計均偏向生理導引，但以下 CI 跨越 HR=1：</p>
+<ul>
+<li>eGFR &lt;60：0.70（0.43–1.13）</li>
+<li>Killip class ≥II：0.81（0.50–1.30）</li>
+<li>三血管疾病：0.77（0.48–1.25）</li>
+</ul>
+<p>圖中未提供 interaction p-value。因此正確說法是「沒有可見的方向性矛盾」，不是「已證明每一個次組均有效」。</p>
+<p><strong>受試者流程</strong></p>
+<p>正文交代 6131 人篩選、1823 人隨機化，兩組合計及追蹤人數一致；但 CONSORT flow diagram 位於未提供的 Figure S4，無法視覺核對各排除原因。</p>
+<h2>6. 作者討論與評論</h2>
+<h3>作者主張</h3>
+<p>作者認為效益來自：</p>
+<ol>
+<li>index procedure 即可進行生理判讀，減少 staged procedures；</li>
+<li>避免處理生理上不重要的病灶；</li>
+<li>pullback-based planning 改善 stent length 與 landing zone；</li>
+<li>減少程序、支架及 contrast exposure。</li>
+</ol>
+<h3>作者承認的限制</h3>
+<p>[文內：Discussion]</p>
+<ul>
+<li>開放標籤及主要終點含再介入，可能造成 ascertainment bias。</li>
+<li>無法區分 lesion selection 與 PCI planning 各自貢獻。</li>
+<li>只適用於解剖及影像品質適合 functional angiography 的患者。</li>
+<li>由中央 core laboratory 分析，真實世界 operator-based implementation 尚待驗證。</li>
+<li>intracoronary imaging 使用率低。</li>
+<li>不能假設其他生理工具或不同 workflow 可得到相同結果。</li>
+<li>安全事件少、需更長追蹤。</li>
+</ul>
+<h3>評估</h3>
+<p>作者限制描述大致誠實，但有兩點著墨不足：</p>
+<ul>
+<li>對照組幾乎強制處理所有 ≥50% 病灶，可能比許多醫師的日常 angiography-guided decision 更積極；這可能使對照組承受額外程序性 MI、contrast AKI 與支架事件。</li>
+<li>早期事件差異與 PCI 數量差異密切相關，因此「更精準的生理規劃改善自然病程」尚未被單獨證明。</li>
+</ul>
+<h2>7. 外部專業意見</h2>
+<p>[無法取得]——以題名、DOI、PMID、AIR-STEMI 及 NEJM editorial/comment 定向搜尋，未發現針對本文的同期 editorial、commentary 或 comment DOI，因此沒有可供全文擷取的評論文章。</p>
+<p>搜尋到的 PCR Online 內容屬會議報導，主要重述試驗結果，並非符合本評讀規格的同行 editorial，故不將其當作專業批評來源。[外部: <a href="https://www.pcronline.com/News/Congress-coverages/ESC/2026/AIR-STEMI-functional-coronary-angiography-in-STEMI">PCR Online</a>]</p>
+<h2>8. 臨床建議</h2>
+<h3>可考慮採用</h3>
+<ul>
+<li>STEMI culprit PCI 已成功、血流動力學穩定。</li>
+<li>非罪犯病灶 50–99%、血管 ≥2.5 mm。</li>
+<li>影像品質符合 angiography-derived FFR，且中心具即時運算及生理導引 PCI planning 能力。</li>
+<li>臨床原本正考慮對多條非罪犯血管進行 PCI。</li>
+</ul>
+<h3>不宜直接外推</h3>
+<ul>
+<li>cardiogenic shock、無明確 culprit、非罪犯 left-main disease。</li>
+<li>需 CABG 或複雜 left-main／高度鈣化解剖。</li>
+<li>影像品質不佳或無即時分析能力。</li>
+<li>高度依賴 bedside operator 分析、沒有 central core-lab 支援的低經驗中心。</li>
+<li>將結果外推成「所有 physiology-guided PCI 方法均有效」。</li>
+</ul>
+<h3>實務建議</h3>
+<ol>
+<li>不應僅因目測 ≥50% 就自動處理所有非罪犯病灶；先確認功能重要性是合理方向。</li>
+<li>若採用本策略，應建立影像擷取品質、軟體驗證、pullback planning 與稽核流程，而非只購買 FFR 軟體。</li>
+<li>與患者溝通時應說明主要證據是降低 MI、再介入及程序負擔，尚未證明死亡率下降。</li>
+</ol>
+<p><strong>證據強度：中等偏強。</strong> 隨機化、完整追蹤及盲化事件判定支持內部效度；但對照策略可能過度積極、核心實驗室依賴、地理與中心限制，以及長期死亡效益未明，使其尚不足以直接普遍改變所有中心流程。</p>
+<hr />
+<h1>SKILL-A：RCT 批判性評讀</h1>
+<h2>A. 補充技術細節</h2>
+<ul>
+<li><strong>樣本數估算</strong>：預期對照事件率 9%、RRR 35%（相當於約 HR/RR 0.65），80% power、雙側 α=0.05；計算 1718 人，加計 5% attrition 後目標 ≥1800，實際 1823，達標。</li>
+<li><strong>實際事件率</strong>：對照組 13.7%，高於預期 9%，使事件數與精確度優於原計畫；不是 underpowered trial。</li>
+<li><strong>隨機化／分派隱藏</strong>：中央安全網路系統、電腦序列、分層隨機化，分派至隨機當刻才揭露，品質良好。</li>
+<li><strong>致盲</strong>：患者及術者無法盲化；事件判定委員會盲化。未報告盲化成功度。</li>
+<li><strong>分析集</strong>：主要分析 ITT；正文未呈現完整 per-protocol 效果量。</li>
+<li><strong>遺失資料</strong>：很少，採 available-case，未插補。</li>
+<li><strong>多重比較</strong>：只有主要終點具正式確認性；次要、安全組成項及次組 CI 未校正。</li>
+<li><strong>PH assumption</strong>：已檢查，未見重大違反。</li>
+<li><strong>interim analysis</strong>：無。</li>
+</ul>
+<h2>B. 批判性評估</h2>
+<h3>B1. 假說與理論邏輯</h3>
+<p>合理機轉：</p>
+<ul>
+<li>少做近一半非罪犯 PCI，可直接減少 procedure-related MI。</li>
+<li>contrast 減少 43 ml，中位數由 223 降至 180 ml，可能降低 AKI。</li>
+<li>生理選擇病灶可能避免不必要支架，同時保留真正重要病灶的治療。</li>
+</ul>
+<p>最可疑的敘事跳躍：</p>
+<ul>
+<li>由整體策略有效，推成 pullback-based planning 本身有效；但只有 80.8% treated lesions 落實 virtual plan，且沒有 factorial design。</li>
+<li>由 spontaneous MI 較少，推成精準處理 focal pressure drop 改善 plaque-related natural history；此結果為未校正次要分析，機轉未直接測量。</li>
+<li>將跨試驗差異歸因於生理評估整合時機；FLOWER-MI、FRAME-AMI 與 AIR-STEMI 在族群、介入規則及終點定義上亦可能不同。</li>
+</ul>
+<h3>B2. 受試者與外推性</h3>
+<ul>
+<li>Table 1 整體平衡：年齡、糖尿病、腎功能、LVEF 等沒有重大差距。</li>
+<li>女性僅約 24%，女性外推精確度較低。</li>
+<li>只有義大利及巴基斯坦 21 中心；「international」形式上成立，但地理與醫療系統代表性有限。</li>
+<li>僅 1823/6131（29.7%）篩選者隨機化，且排除非罪犯 left-main、CABG 計畫者及影像不合適者。</li>
+</ul>
+<p><strong>外推性分級：中等。</strong> 適合具備高品質 angiography、標準化軟體與有經驗 PCI 團隊的穩定 STEMI；對休克、複雜解剖及資源較低中心較弱。</p>
+<h3>B3. 研究設計與偏差</h3>
+<p>最重要的三項：</p>
+<ol>
+<li>
+<p><strong>對照組可能過度治療</strong><br />
+對照組規定處理所有目測 ≥50% 病灶，最終處理 94.9% 非罪犯血管；其中約 20% 病灶僅 50–69% 狹窄（Table 2）。這可能不是所有中心日常採用的「臨床判斷式 angiography guidance」。<br />
+<strong>偏差方向</strong>：提高對照組 procedure-related MI、AKI 與支架事件，放大生理導引利益。<br />
+<strong>需要什麼才放心</strong>：加入 contemporary clinician-discretion angiography arm，或按 50–69%、70–89%、90–99% 分層呈現淨效益。</p>
+</li>
+<li>
+<p><strong>介入強度差異與終點耦合</strong><br />
+生理組少做 475 條非罪犯血管 PCI、少 258 個程序；MI 與安全差異早期即出現。<br />
+<strong>偏差方向</strong>：這不一定是測量偏差，但使結論限於「少做 PCI 的整合策略」，不能歸功於軟體診斷準確性或 pullback planning。<br />
+<strong>需要什麼才放心</strong>：landmark analysis 排除 index hospitalization、依程序前後區分事件，以及病灶層級 mediation analysis。</p>
+</li>
+<li>
+<p><strong>開放標籤加上軟性終點</strong><br />
+ischemia-driven revascularization 可受到醫師知道分組影響；作者亦承認 ascertainment bias。<br />
+<strong>偏差方向</strong>：較可能有利生理組。<br />
+<strong>緩解因素</strong>：獨立盲化判定；且 CV death/MI 的方向一致。<br />
+<strong>需要什麼才放心</strong>：預先規定、客觀缺血證據及盲化 angiographic core review 的再介入判定。</p>
+</li>
+</ol>
+<h3>B4. 測量與實務意義</h3>
+<p>主要複合終點混合不同重要性的事件：死亡、MI、TIA/stroke、再介入。臨床價值不能只以總 HR 表示。</p>
+<p>值得重視的是差異主要來自 MI，而非單純再介入；但死亡 HR 0.77（0.50–1.20），尚無法排除明顯死亡利益或傷害。故真實世界訊息應是：</p>
+<blockquote>
+<p>以生理學篩選可大幅減少非罪犯 PCI，約每治療 21 人少一個複合事件；目前沒有死亡率改善的證據。</p>
+</blockquote>
+<h2>C. 統計與資料完整性</h2>
+<h3>C1. CI＋MCID 分類</h3>
+<p>作者未預先指定臨床 MCID，只用 <strong>35% RRR</strong> 作樣本數假設；power-calculation effect 不等於患者層級 MCID。</p>
+<p>若以兩個務實門檻進行敏感度判讀：</p>
+<ul>
+<li>[推算] 相對 MCID：HR 0.80。</li>
+<li>[推算] 絕對 MCID：18 個月 ARD 2%。</li>
+</ul>
+<p>主要結果 HR 0.62（0.47–0.83）：</p>
+<ul>
+<li>CI 完全低於 1，確認統計利益。</li>
+<li>但上限 0.83 跨越 HR 0.80。</li>
+<li>NNT CI 13–51 約對應 ARD 7.7% 至 2.0%，恰落在 2% MCID 邊緣。</li>
+</ul>
+<p>因此分類為 <strong>IMPRECISE POSITIVE（+）</strong>：點估計具臨床重要性，但在未預先指定 MCID 的情況下，CI 尚未完全證明利益一定超過嚴格的臨床門檻。</p>
+<table>
+<thead>
+<tr>
+<th>指標</th>
+<th style="text-align:right">介入組</th>
+<th style="text-align:right">對照組</th>
+<th>效果量</th>
+<th>95% CI</th>
+<th style="text-align:right">ARD</th>
+<th>MCID</th>
+<th>分類</th>
+<th>實務意義</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>主要複合終點</td>
+<td style="text-align:right">8.9%</td>
+<td style="text-align:right">13.7%</td>
+<td>HR 0.62</td>
+<td>0.47–0.83</td>
+<td style="text-align:right">−4.8%</td>
+<td>未預先指定；[推算] 2%／HR 0.80</td>
+<td>IMPRECISE (+)</td>
+<td>NNT 21，但組成事件重要性不一</td>
+</tr>
+<tr>
+<td>全因死亡</td>
+<td style="text-align:right">3.9%</td>
+<td style="text-align:right">5.1%</td>
+<td>HR 0.77</td>
+<td>0.50–1.20</td>
+<td style="text-align:right">−1.2%</td>
+<td>未指定</td>
+<td>INCONCLUSIVE</td>
+<td>CI 跨越 null，亦容許重要利益與傷害</td>
+</tr>
+<tr>
+<td>MI</td>
+<td style="text-align:right">3.8%</td>
+<td style="text-align:right">8.0%</td>
+<td>HR 0.47</td>
+<td>0.31–0.70</td>
+<td style="text-align:right">−4.2%</td>
+<td>未指定</td>
+<td>支持性 positive</td>
+<td>未校正次要終點，需確認試驗</td>
+</tr>
+<tr>
+<td>主要安全終點</td>
+<td style="text-align:right">4.6%</td>
+<td style="text-align:right">7.1%</td>
+<td>HR 0.63</td>
+<td>0.43–0.93</td>
+<td style="text-align:right">−2.5%</td>
+<td>未指定</td>
+<td>IMPRECISE (+)</td>
+<td>事件少、複合項目，多重性未調整</td>
+</tr>
+</tbody>
+</table>
+<h3>C2. Underpowered 與 Winner’s Curse</h3>
+<p>主要終點不是 underpowered：樣本達標、對照事件率高於預期、CI 不跨 null。觀察 HR 0.62 也接近設計假設約 0.65，沒有「只因意外巨大效果才顯著」的強烈 Winner’s Curse 訊號。</p>
+<p>死亡、stroke、stent thrombosis、major bleeding 等個別終點則明顯不精確，只能列為未定，不能解讀成無差異。</p>
+<h3>C3. Bayesian 分析</h3>
+<p>主要結果 P&lt;0.001，且 CI 明確排除 HR=1，Bayesian 分析不會解決更核心的問題——MCID 未指定、對照組過度介入及整合策略無法拆解。因此不另作 prior-dependent 的偽精確計算。</p>
+<h3>C4. 統計紅旗</h3>
+<ol>
+<li>次要終點與安全組成項未校正多重比較。</li>
+<li>次組圖未呈現 interaction p-value。</li>
+<li>主要複合終點混合死亡、MI、TIA/stroke 與再介入。</li>
+<li>沒有預先指定 MCID。</li>
+<li>未在正文提供 MI 的完整操作定義，尤其 procedure-related MI 門檻會直接影響主要訊號。</li>
+<li>依中心分層隨機化，但主要 Cox model 僅納入治療組；中心聚集校正只見於 post-hoc sensitivity analysis。</li>
+<li>各軟體平台的效能與治療效果未分開報告。</li>
+<li>Figure 1 在 540 天後 number at risk 快速下降，720 天尾端不可過度解讀。</li>
+<li>主要安全結果只有 107 個事件，CI 上限接近 1。</li>
+<li>virtual-PCI plan 僅 80.8% 落實，但未清楚呈現未落實原因及其 per-protocol 結果。</li>
+</ol>
+<h2>D. 次組分析</h2>
+<p>所有分析據稱預先指定，但文章未提供預期方向或 interaction p-value。以下評估均不應取代 overall effect：</p>
+<table>
+<thead>
+<tr>
+<th>效果修飾因子</th>
+<th>視覺結果</th>
+<th>Interaction p</th>
+<th>機轉可信性</th>
+<th>判定</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>性別</td>
+<td>兩組點估計同向，CI&lt;1</td>
+<td>未提供</td>
+<td>無明確預設差異</td>
+<td>低可信度／僅支持一致方向</td>
+</tr>
+<tr>
+<td>年齡</td>
+<td>同向，CI&lt;1</td>
+<td>未提供</td>
+<td>可能影響程序風險，但未證實修飾</td>
+<td>低</td>
+</tr>
+<tr>
+<td>糖尿病</td>
+<td>同向；糖尿病 HR 0.48</td>
+<td>未提供</td>
+<td>漫性／多節段疾病可能影響生理策略</td>
+<td>推測性</td>
+</tr>
+<tr>
+<td>eGFR</td>
+<td>&lt;60 CI 跨 1</td>
+<td>未提供</td>
+<td>腎病者理論上更可能受益於少 contrast</td>
+<td>推測性；事件不足</td>
+</tr>
+<tr>
+<td>Killip class</td>
+<td>≥II HR 0.81，CI 跨 1</td>
+<td>未提供</td>
+<td>高危病人競爭風險較高</td>
+<td>推測性</td>
+</tr>
+<tr>
+<td>非罪犯 LAD</td>
+<td>兩層均同向、CI&lt;1</td>
+<td>未提供</td>
+<td>解剖上合理但無異質性證據</td>
+<td>低</td>
+</tr>
+<tr>
+<td>三血管疾病</td>
+<td>三血管組 CI 跨 1</td>
+<td>未提供</td>
+<td>病灶負荷較高可能改變效果</td>
+<td>推測性</td>
+</tr>
+<tr>
+<td>LVEF</td>
+<td>兩層同向、CI&lt;1</td>
+<td>未提供</td>
+<td>可有風險差異，但無 interaction 證據</td>
+<td>低</td>
+</tr>
+</tbody>
+</table>
+<p>結論只能是「未觀察到明顯反方向訊號」；不能依各列是否跨 1 宣稱某族群有效或無效。</p>
+<h2>E. 紅旗清單</h2>
+<ul>
+<li>對照組幾乎將所有 ≥50% 病灶支架化，可能是偏積極的 comparator。</li>
+<li>早期曲線分離與程序相關 MI、程序數量差異高度一致。</li>
+<li>一個試驗同時改變 lesion selection、PCI planning、程序數及 contrast，無法拆解有效成分。</li>
+<li>開放標籤且主要終點含再介入。</li>
+<li>中央 core-lab workflow 的可擴展性尚未證明。</li>
+<li>軟體供應商及支架廠商參與資助／實物供應，與研究敘事方向一致。</li>
+<li>死亡、stroke、stent thrombosis、出血均未獲精確回答。</li>
+<li>兩年曲線尾端在險人數少。</li>
+<li>缺乏外部獨立複製。</li>
+</ul>
+<h2>F. 反向解釋</h2>
+<ol>
+<li>
+<p><strong>真正有效成分可能只是「少做不必要 PCI」</strong><br />
+支持：非罪犯 PCI 52.0% vs 94.9%，早期 procedure-related MI 減少。<br />
+反對：spontaneous MI 亦較少，但此為未校正次要結果。</p>
+</li>
+<li>
+<p><strong>對照組的 ≥50% 全處理規則製造了部分差距</strong><br />
+支持：約五分之一對照組病灶只有 50–69%，仍幾乎全部接受 PCI。<br />
+反對：對照組確實代表一種明確、可重現的 angiography-guided complete-revascularization 策略。</p>
+</li>
+<li>
+<p><strong>較低 AKI 是 contrast exposure 減少，而非 functional angiography 的特殊保護</strong><br />
+支持：contrast 223 降至 180 ml，程序數亦較少。<br />
+這不是無效，而是策略的中介機轉；但不應包裝成軟體本身直接改善腎臟結果。</p>
+</li>
+<li>
+<p><strong>core-lab 品質控制而非技術本身造成效果</strong><br />
+支持：所有分析由中央實驗室處理，可能提升一致性及 procedural discipline。<br />
+反對：98.6% 可行率顯示技術成熟，但 bedside reproducibility 尚需實證。</p>
+</li>
+</ol>
+<h2>G. 最終裁決</h2>
+<ul>
+<li><strong>整體可信度：中等偏高</strong></li>
+<li><strong>最可採用的結論</strong>：在具備相同 workflow 與分析品質的中心，生理導引策略可減少非罪犯 PCI，並降低約 18 個月的複合事件與程序負擔。</li>
+<li><strong>不應宣稱</strong>：已證明降低死亡、所有 physiology modalities 都同樣有效，或一般 bedside implementation 能重現 core-lab 成績。</li>
+<li><strong>若要提高到高可信度，最需要</strong>：
+<ol>
+<li>由獨立團隊進行、採 clinician-discretion angiography comparator 的實用性 RCT。</li>
+<li>排除住院期／程序性 MI 的預先指定 landmark hard-outcome 分析及更長追蹤。</li>
+<li>operator-based、跨軟體平台的外部驗證，並拆解 lesion selection 與 pullback planning 的個別效果。</li>
+</ol>
+</li>
+</ul>
+<p><strong>一句話結論：生理導引可少做近半非罪犯 PCI 並減少事件，但效益部分可能源於避免對照組過度介入。</strong></p>
+
+<footer class="appraisal-meta">評讀資訊：模型：gpt-5.6-sol (codex)  ·  route：default  ·  產出時間：2026-09-08 08:06 CST</footer>
+</main>
+</body>
+</html>
