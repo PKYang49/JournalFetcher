@@ -1,0 +1,999 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Improving the diagnostic performance of troponin assays for acute myocardial infarction in renal impairment.</title>
+<style>
+  :root {
+    --bg: #fafafa;
+    --card: #ffffff;
+    --text: #1a1a1a;
+    --muted: #6b6b6b;
+    --border: #e5e5e5;
+    --accent: #0b5fff;
+  }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang TC",
+      "Microsoft JhengHei", sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    margin: 0;
+    padding: 24px 16px 64px;
+    line-height: 1.72;
+  }
+  main {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    margin: 0 auto;
+    max-width: 840px;
+    padding: 22px 26px;
+  }
+  nav {
+    margin: 0 auto 14px;
+    max-width: 840px;
+    color: var(--muted);
+    font-size: 14px;
+  }
+  a { color: var(--accent); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  h1, h2, h3, h4 { line-height: 1.35; }
+  h1 { font-size: 26px; margin-top: 0; }
+  h2 { border-top: 1px solid var(--border); padding-top: 18px; }
+  code {
+    background: rgba(127, 127, 127, 0.12);
+    border-radius: 4px;
+    padding: 1px 4px;
+  }
+  table {
+    border-collapse: collapse;
+    table-layout: auto;
+    width: 100%;
+    max-width: 100%;
+  }
+  th, td {
+    border: 1px solid var(--border);
+    overflow-wrap: anywhere;
+    padding: 6px 8px;
+    text-align: left;
+    vertical-align: top;
+  }
+  blockquote {
+    border-left: 3px solid var(--accent);
+    color: var(--muted);
+    margin-left: 0;
+    padding-left: 14px;
+  }
+  .appraisal-meta {
+    border-top: 1px solid var(--border);
+    margin-top: 28px;
+    padding-top: 14px;
+    color: var(--muted);
+    font-size: 13px;
+  }
+  @media (max-width: 600px) {
+    body {
+      padding: 12px 8px 40px;
+    }
+    main {
+      padding: 16px 12px;
+    }
+    h1 {
+      font-size: 22px;
+    }
+    table {
+      font-size: 12px;
+      table-layout: fixed;
+    }
+    th, td {
+      padding: 4px 5px;
+    }
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #1a1a1a;
+      --card: #242424;
+      --text: #e8e8e8;
+      --muted: #999;
+      --border: #333;
+      --accent: #6ea8ff;
+    }
+  }
+</style>
+</head>
+<body>
+<nav><a href="../../2026-W38.html">← 回到 2026-W38 週報</a></nav>
+<main>
+<h1>Improving the diagnostic performance of troponin assays for acute myocardial infarction in renal impairment.</h1>
+<h1>醫學文獻批判性評讀</h1>
+<p><strong>Improving the diagnostic performance of troponin assays for acute myocardial infarction in renal impairment</strong>
+Collard D, et al. <em>Heart</em> 2026 (Epub ahead of print). doi:10.1136/heartjnl-2025-327658 · PMID 42264918</p>
+<hr />
+<h2>SECTION-0：文章全面描述</h2>
+<h3>0. 文章身份證</h3>
+<table>
+<thead>
+<tr>
+<th>項目</th>
+<th>內容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>期刊</td>
+<td><em>Heart</em> (BMJ Group)，Open Access (CC BY)</td>
+</tr>
+<tr>
+<td>年份</td>
+<td>Received 2025/12/06；Accepted 2026/05/16；Epub 2026/06/09</td>
+</tr>
+<tr>
+<td>文章類型</td>
+<td><strong>診斷準確度研究（diagnostic accuracy study）+ 閾值推導（threshold derivation）</strong> → 路由 <strong>SKILL-C</strong></td>
+</tr>
+<tr>
+<td>設計</td>
+<td>回溯性、多中心、routine EHR 資料庫；non-consecutive 定義下的「全體接受檢驗者」世代</td>
+</tr>
+<tr>
+<td>註冊</td>
+<td>NCT03507309（NIHR HIC 心血管資料資源的<strong>傘式註冊</strong>，非本次診斷分析的前瞻性 protocol）</td>
+</tr>
+<tr>
+<td>報告規範</td>
+<td>作者聲明依 <strong>STROBE</strong> 撰寫 [文內]。<strong>此處有規範錯配</strong>：診斷準確度研究的正確規範是 <strong>STARD 2015</strong>，而非 STROBE——這直接解釋了下文所述「所有 sens/spec/PPV 均無 95% CI」的缺失（見 B 節）。</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h3>1. 作者團隊評論</h3>
+<ul>
+<li><strong>通訊作者</strong>：Didier Collard（Amsterdam UMC，心臟科／血管內科，兼 UCL Institute of Health Informatics）。背景為內科／血管醫學＋健康資訊學，近年於 Amsterdam UMC 完成 PhD [外部: <a href="https://www.amsterdamumc.org/en/research/researchers/didier-collard">Amsterdam UMC 研究者頁面</a>]。</li>
+<li><strong>Guarantor</strong>：Riyaz S Patel（UCL Institute of Cardiovascular Science）。</li>
+<li><strong>團隊構成</strong>：這是 <strong>NIHR Health Informatics Collaborative (NIHR HIC)</strong> 心血管工作組的標準作者陣容，橫跨 Imperial、UCL、Oxford、King's、Bristol、Southampton、Leeds、Leicester、Manchester。分工在 Author Contributions 中相當透明：DC/AK/YC 負責分析，BG/JD/AM/DPa 負責 EHR 資料抽取，其餘多數作者僅提供 critical review [文內]。</li>
+<li><strong>機構聲譽</strong>：共同作者包含 Harry Hemingway、Aroon Hingorani（UK 健康資料科學核心人物）、Ajay Shah、Divaka Perera、Keith Channon、Nick Curzen、Bryan Williams（英國心臟科重量級）。<strong>這是英國最具資格處理此問題的團隊之一</strong>，方法學能量無庸置疑。</li>
+<li><strong>團隊過往研究（同一資料集）</strong> [外部]：
+<ul>
+<li>Kaura A, et al. TROP-RISK：&gt;250,000 人 troponin 與死亡率、年齡分層（<em>BMJ</em> 2019）</li>
+<li>Kaura A, et al. SENIOR-NSTEMI：高齡 NSTEMI 侵入 vs 保守（<em><a href="https://www.thelancet.com/journals/lancet/article/PIIS0140-6736(20)30930-2/fulltext">Lancet</a></em> 2020）</li>
+<li>Kaura A, et al. <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC7428631/">TROP-AF</a>（<em>JAHA</em> 2020）</li>
+<li><a href="https://link.springer.com/article/10.1186/s40959-024-00238-w">TROP-MALIGNANCY</a>（<em>Cardio-Oncology</em> 2024）</li>
+<li><strong>[評估]</strong> 此為<strong>同一資料資源的第 N 篇衍生分析</strong>。這不是造假風險，但意味著：(a) 跨多篇分析的多重比較從未被整體校正；(b) 團隊對「troponin 在此資料集中有用」已有強烈先驗立場（prior commitment）。本篇的框架選擇（把閾值上調包裝成「improving performance」）與此立場一致。</li>
+</ul>
+</li>
+<li><strong>利益揭露</strong> [文內]：資金為 NIHR (NIHR300906)，公費。競爭利益：<strong>Nick Curzen 接受 Beckman Coulter（troponin 檢驗製造商）的 grant/research support</strong>；其餘作者聲明無。
+<ul>
+<li><strong>[評估]</strong> Beckman Coulter 的 hs-cTnI 並未出現在本研究的六種檢驗中（Roche、Abbott），且該作者非分析執行者，商業偏差風險低。但一篇「建議上調 troponin 判讀閾值」的論文中出現 troponin 廠商連結，仍應揭露於讀者眼前。真正需要注意的商業意涵是反向的：<strong>上調閾值會減少 troponin 陽性個案，不利於任何檢驗廠商的使用量</strong>，因此商業誘因並不指向本文結論。</li>
+</ul>
+</li>
+</ul>
+<hr />
+<h3>2. 文獻 Metadata 整理</h3>
+<table>
+<thead>
+<tr>
+<th>項目</th>
+<th>數值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Received → Accepted</td>
+<td>2025/12/06 → 2026/05/16 = <strong>161 天</strong> [文內，自行計算]</td>
+</tr>
+<tr>
+<td><em>Heart</em> 期刊 submission-to-acceptance 中位數</td>
+<td><strong>122 天（IQR 102–178）</strong> [外部: <a href="https://www.journalmetrics.org/journal/heart">journalmetrics.org</a>，基於 2024–2025 PubMed 資料]</td>
+</tr>
+<tr>
+<td>比較</td>
+<td>略高於中位數、落在 IQR 內 → <strong>不是快速通關</strong>，與至少一輪實質修訂相符</td>
+</tr>
+<tr>
+<td>Impact Factor</td>
+<td>5.1（2023 JCR），Cardiac &amp; Cardiovascular Systems 領域 38/222，<strong>Q1</strong> [外部: <a href="https://en.wikipedia.org/wiki/Heart_(journal)">Wikipedia/JCR</a>]</td>
+</tr>
+<tr>
+<td>Open Access</td>
+<td>是，CC BY</td>
+</tr>
+<tr>
+<td>邀稿 vs 投稿</td>
+<td><strong>Not commissioned; externally peer reviewed</strong> [文內] → 一般投稿，非邀稿</td>
+</tr>
+</tbody>
+</table>
+<p><strong>[評估]</strong> 審查時程正常，無「快速接受」的紅旗。但下文 B 節將指出多項<strong>低階數值錯誤仍存活到最終出版版本</strong>（摘要人數、摘要 AMI 比例、Table 5 女性面板整欄錯位），這對 161 天的審查與 BMJ 的編輯流程而言是不該發生的疏漏。</p>
+<hr />
+<h3>3. 研究背景 [僅文內]</h3>
+<ul>
+<li><strong>既有事實</strong>：CKD 患者心血管與冠狀動脈疾病風險升高；troponin 是 AMI 普世定義的核心；腎清除受損導致 troponin 慢性升高，造成判讀不確定性。</li>
+<li><strong>知識缺口</strong>（作者主張）：
+<ol>
+<li>既有 CKD troponin 系統性回顧使用舊世代檢驗、樣本小、裁定方法異質。</li>
+<li>RCT（High-STEACS）中腎功能次族群樣本數不足。</li>
+<li>現行指引（ESC）倚賴<strong>連續測量與 delta</strong>，但<strong>單次／首次 troponin 的判讀缺乏資料</strong>，而急診分流決策往往必須在第二次抽血前做出。</li>
+</ol>
+</li>
+<li><strong>Research question</strong>：在未經篩選的真實世界住院／急診族群中，(1) eGFR 與首次 troponin 的關係為何？(2) 不同 troponin 檢驗在腎功能不全者的診斷表現？(3) 能否導出 eGFR 特異性閾值？</li>
+</ul>
+<p><strong>[評估]</strong> 缺口陳述誠實且臨床上真實。「第二次 troponin 到來前必須做決定」是每天發生的情境，這個 research question 值得做。</p>
+<hr />
+<h3>4. 研究設計與方法</h3>
+<p><strong>PICO</strong></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>內容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>P</strong></td>
+<td>2010–2017（UCLH 自 2008）於英國 4 家三級醫學中心（Imperial、UCLH、Oxford、Guy's &amp; St Thomas'）<strong>因任何臨床原因</strong>測量 troponin，且 ±72 小時內有血清 creatinine 者；僅納入首次住院episode</td>
+</tr>
+<tr>
+<td><strong>I（Index test）</strong></td>
+<td><strong>首次</strong> troponin 值（6 種檢驗：hs-cTnT Roche 31.3%、hs-cTnI Abbott i-STAT 10.4%、contemporary cTnI/cTnT 58.3%）</td>
+</tr>
+<tr>
+<td><strong>C（Reference standard）</strong></td>
+<td><strong>出院後由 coding staff 指派的 ICD-10 診斷碼</strong>（NSTEMI + STEMI + subsequent MI）。<strong>未住院者一律歸類為無 AMI</strong>；住院但無出院診斷者排除</td>
+</tr>
+<tr>
+<td><strong>O</strong></td>
+<td>C-statistic、sensitivity（detection rate）、specificity（1−FPR）、PPV，依 KDIGO eGFR 分層（&gt;90、60–90、45–60、30–45、15–30、≤15）</td>
+</tr>
+</tbody>
+</table>
+<p><strong>關鍵設計細節</strong></p>
+<ul>
+<li>eGFR：2021 revised CKD-EPI（<strong>不含 race 校正</strong>），採<strong>就診當下</strong>數值 → 混合了 AKI 與 CKD。</li>
+<li>AKI 比例：僅能在有前後 creatinine 的 88,603 人（39.5%）子集估算 → 11.6%。</li>
+<li>閾值推導：hs 檢驗隨機切 <strong>80% derivation / 20% validation</strong>；閾值以兩法定義 —— (1) 無 AMI 者的<strong>中位數</strong>；(2) <strong>人工調整至與 eGFR&gt;90 組相同的 specificity</strong>（hs-cTnT 0.85；hs-cTnI 0.92）。</li>
+<li>Contemporary 檢驗未做 split，直接用全資料集。</li>
+<li>hs-cTnI 全程依性別分層（34/15 ng/L）；hs-cTnT 男女合併（14 ng/L）。</li>
+<li>Delta：24 小時內有第二次 troponin 者（n=58,445，26.3%），<strong>僅做描述性密度圖</strong>，無檢定、無 ROC、無準確度指標。</li>
+<li>敏感度分析：(a) 僅 STEMI；(b) 排除 STEMI 後（主要為 NSTEMI）。</li>
+<li>分析軟體 R 4.0.0。</li>
+</ul>
+<p><strong>主要變項操作型定義的關鍵缺陷</strong>：Reference standard 是<strong>臨床編碼</strong>而非獨立裁定，而 troponin <strong>本身就是該編碼診斷的構成要件</strong>（見 B 節「incorporation bias」）。</p>
+<hr />
+<h3>5. 研究結果重點整理</h3>
+<p><strong>族群</strong>（以 Table 2 / Figure 1 為準，n = <strong>222,175</strong>）</p>
+<table>
+<thead>
+<tr>
+<th>項目</th>
+<th>數值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>年齡中位數</td>
+<td>65（IQR 49–79）；AMI 組 70 vs 無 AMI 64</td>
+</tr>
+<tr>
+<td>男性</td>
+<td>55.2%</td>
+</tr>
+<tr>
+<td>族裔</td>
+<td>Caucasian 74.2%、Black 9.0%、Asian 7.6%、Other 9.1%（<strong>遺漏 35,507 人 = 16.0%</strong>）</td>
+</tr>
+<tr>
+<td>eGFR 中位數</td>
+<td>87.8</td>
+</tr>
+<tr>
+<td>eGFR &lt;60</td>
+<td><strong>20.6%</strong>（4,755 + 7,738 + 13,333 + 20,029）</td>
+</tr>
+<tr>
+<td>eGFR &lt;90</td>
+<td>53.6%</td>
+</tr>
+<tr>
+<td>住院者</td>
+<td>129,305（58.2%）→ <strong>41.8% 未住院，一律被歸為無 AMI</strong></td>
+</tr>
+<tr>
+<td>AMI</td>
+<td>10,398（<strong>4.7%</strong>）：NSTEMI 5,743、STEMI 4,358、subsequent MI 297</td>
+</tr>
+<tr>
+<td>ICD-10 編碼 CKD</td>
+<td>僅 4.9%（住院者）——遠低於 eGFR&lt;60 的 25.4%</td>
+</tr>
+</tbody>
+</table>
+<p><strong>主要診斷表現（Table 3，complete cohort）</strong></p>
+<table>
+<thead>
+<tr>
+<th>eGFR</th>
+<th>n</th>
+<th>Cases</th>
+<th>Prev %</th>
+<th>C-statistic (95% CI)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>All</td>
+<td>222,175</td>
+<td>10,398</td>
+<td>4.68</td>
+<td>0.90 (0.89–0.90)</td>
+</tr>
+<tr>
+<td>&gt;90</td>
+<td>103,073</td>
+<td>3,717</td>
+<td>3.61</td>
+<td>0.93 (0.92–0.93)</td>
+</tr>
+<tr>
+<td>60–90</td>
+<td>73,247</td>
+<td>3,928</td>
+<td>5.36</td>
+<td>0.89 (0.88–0.89)</td>
+</tr>
+<tr>
+<td>45–60</td>
+<td>20,029</td>
+<td>1,184</td>
+<td>5.91</td>
+<td>0.86 (0.85–0.87)</td>
+</tr>
+<tr>
+<td>30–45</td>
+<td>13,333</td>
+<td>780</td>
+<td>5.85</td>
+<td>0.84 (0.83–0.86)</td>
+</tr>
+<tr>
+<td>15–30</td>
+<td>7,738</td>
+<td>508</td>
+<td>6.57</td>
+<td><strong>0.85 (0.83–0.87)</strong> ← 高於 30–45</td>
+</tr>
+<tr>
+<td>≤15</td>
+<td>4,755</td>
+<td>281</td>
+<td>5.91</td>
+<td>0.81 (0.78–0.83)</td>
+</tr>
+</tbody>
+</table>
+<p>hs-cTnT ≤15 組僅 <strong>61 例</strong>、hs-cTnI ≤15 組僅 <strong>50 例</strong>。</p>
+<p><strong>hs-cTnT 閾值策略（Table 4，80% derivation，n=55,561，prev 4.3%）</strong></p>
+<table>
+<thead>
+<tr>
+<th>eGFR</th>
+<th>n</th>
+<th>Prev%</th>
+<th>傳統 14 ng/L (Sens/Spec/PPV)</th>
+<th>中位數法 (ng/L, Sens/Spec/PPV)</th>
+<th>調整後 (ng/L, Sens/Spec/PPV)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>All</td>
+<td>55,561</td>
+<td>4.3</td>
+<td>0.93 / 0.67 / 0.11</td>
+<td>— / 0.95 / 0.51 / 0.08</td>
+<td>— / <strong>0.82</strong> / 0.85 / <strong>0.19</strong></td>
+</tr>
+<tr>
+<td>&gt;90</td>
+<td>28,000</td>
+<td>3.1</td>
+<td>0.92 / 0.85 / 0.16</td>
+<td>4 / 0.98 / 0.51 / 0.06</td>
+<td>14 / 0.92 / 0.85 / 0.16</td>
+</tr>
+<tr>
+<td>60–90</td>
+<td>17,866</td>
+<td>5.2</td>
+<td>0.92 / 0.64 / 0.12</td>
+<td>9 / 0.95 / 0.50 / 0.09</td>
+<td>33 / 0.80 / 0.85 / 0.22</td>
+</tr>
+<tr>
+<td>45–60</td>
+<td>4,513</td>
+<td>6.2</td>
+<td>0.94 / 0.32 / 0.08</td>
+<td>22 / 0.89 / 0.52 / 0.11</td>
+<td><strong>73</strong> / 0.69 / 0.85 / 0.23</td>
+</tr>
+<tr>
+<td>30–45</td>
+<td>2,856</td>
+<td>6.0</td>
+<td>0.98 / 0.17 / 0.07</td>
+<td>34 / 0.88 / 0.51 / 0.10</td>
+<td><strong>112</strong> / 0.67 / 0.85 / 0.22</td>
+</tr>
+<tr>
+<td>15–30</td>
+<td>1,464</td>
+<td>6.4</td>
+<td><strong>1.00</strong> / 0.07 / 0.07</td>
+<td>55 / 0.93 / 0.50 / 0.11</td>
+<td><strong>184</strong> / 0.74 / 0.85 / 0.25</td>
+</tr>
+<tr>
+<td>≤15</td>
+<td>862</td>
+<td>5.9</td>
+<td><strong>1.00</strong> / 0.03 / 0.06</td>
+<td>81 / 0.80 / 0.51 / 0.09</td>
+<td>226 / 0.63 / 0.85 / 0.21</td>
+</tr>
+</tbody>
+</table>
+<p><strong>hs-cTnI（Table 5）</strong>：男性調整後閾值 34 → 99 → 295 → 357 → <strong>1042</strong> → 435 ng/L；女性 15 → 84 → 166 → 203 → 394 → 1213 ng/L。男性 15–30 組 sens 僅 <strong>0.46</strong>，≤15 組 sens <strong>0.37</strong>。</p>
+<p><strong>Delta</strong>：作者稱各 eGFR 分層間 delta 分布「相似」，僅以密度曲線呈現，<strong>未提供任何統計比較或診斷指標</strong>。</p>
+<hr />
+<h3>6. 作者討論與評論重點</h3>
+<ul>
+<li><strong>主要訊息</strong>：無 AMI 者的 troponin 與 eGFR 呈反向近指數關係；傳統閾值在腎功能不全者造成嚴重偽陽性；透過固定 FPR 可導出 eGFR 特異閾值，「optimise」檢驗表現；建議作為<strong>首次 troponin 的分流輔助</strong>，與 delta 策略<strong>互補</strong>而非取代。</li>
+<li><strong>與既有文獻</strong>：與 MINAP 全國稽核資料（330,367 人，CKD 者 peak cTn 高 42%，但僅限已確診 ACS、&gt;95% 非 hs 檢驗）一致；擴充 High-STEACS 次分析（eGFR&lt;60 者 99th centile 以上比例增為 3 倍，HR 1.53, 95% CI 1.31–1.78），涵蓋完整 eGFR 光譜且族群更未經篩選（High-STEACS 93% Caucasian）。</li>
+<li><strong>作者自陳限制</strong> [文內]：(1) 回溯性、無獨立裁定 MI；(2) ICD-10 無 type 2 MI 碼，可能誤分類並影響所推導閾值；(3) 重複 troponin/creatinine 者比例有限，AKI 比例僅為子集近似；(4) 閾值基於<strong>就診當下 eGFR</strong>，不應解讀為穩定 CKD 專用閾值；(5) eGFR&lt;15 組陽性數過少（hs 組 91 例、整體 281 例），應以連續 troponin 與臨床脈絡優先；(6) delta 的精確採檢時間不明；(7) 未檢視用藥、DAPT 不當使用之傷害與下游侵入性處置。作者並明言「<strong>Further validation in external cohorts is warranted before clinical adoption</strong>」。</li>
+</ul>
+<p><strong>[評估]</strong> 限制段落<strong>異常誠實且完整</strong>，遠優於同類論文的平均水準，type 2 MI 誤分類與「非 type 1 MI 生物學閾值」的自我設限尤其值得肯定。但仍有三項迴避：</p>
+<ol>
+<li><strong>完全未提供 NPV 或 likelihood ratio</strong>，因此讀者無法看出調整後閾值付出的代價究竟多大；</li>
+<li><strong>未量化「多漏掉幾個 MI」</strong>；</li>
+<li>標題與結論的用字（<em>improving</em> / <em>optimised</em> / <em>performance can be optimised</em>）<strong>在概念上誤導</strong>——移動閾值不會改變檢驗表現，只是沿同一條 ROC 曲線換一個 operating point（詳 B 節）。</li>
+<li>討論中「over a quarter of all patients... had significant renal impairment (eGFR&lt;60)」把<strong>住院者的 25.4%</strong> 講成「所有就診者」，實際全體為 20.6%；結論的「more than half had some degree of renal impairment」則是把 eGFR&lt;90（53.6%）稱為腎功能不全——在中位年齡 65 歲的族群中，eGFR 60–90 多為年齡相關，這是修辭性放大。</li>
+</ol>
+<hr />
+<h3>7. 外部專業意見</h3>
+<p><strong>[無法取得]——未發現針對本文的同期 editorial、commentary 或 comment。</strong></p>
+<p>已執行之檢索：PubMed（PMID 42264918 的 <code>pubmed_pubmed</code> link set 中無 editorial 類條目）、<a href="https://www.ebi.ac.uk/europepmc/webservices/rest/search">Europe PMC REST API</a>（以 PMID 與 DOI 反向檢索，僅回傳本文與一篇無關的 IL-8/sST2 論文，無 editorial/comment 類型）、以及多組 Google/Bing 語意檢索。本文為 Epub ahead of print（2026/06/09），尚未進入正式期號，<em>Heart</em> 的 editorial 與 &quot;Heartbeat&quot; 專欄通常隨正式期號刊出，因此目前很可能<strong>尚未產生</strong>同期評論，而非檢索失敗。由於沒有任何可用 DOI，未呼叫 <code>fetch_editorial.py</code>。</p>
+<hr />
+<h3>8. 臨床建議</h3>
+<p><strong>可採用的臨床情境</strong></p>
+<ul>
+<li>腎功能不全（eGFR&lt;60）患者的<strong>首次 hs-cTnT 值判讀</strong>，當你面對「這個 30 ng/L 到底算不算高？」時，本研究提供了<strong>該族群無 AMI 者的實際分布</strong>（中位數 22 / 34 / 55 / 81 ng/L 於 45–60 / 30–45 / 15–30 / ≤15）。<strong>這份分布資料本身，比作者提出的閾值更有價值。</strong></li>
+<li>用作<strong>rule-in 方向的機率調整</strong>：eGFR&lt;30 者若首次 hs-cTnT 僅 20–50 ng/L，本研究明確告訴你這幾乎不提供任何診斷資訊（LR+ ≈ 1.1，見 B 節），不應據此啟動 ACS pathway。</li>
+</ul>
+<p><strong>不建議直接套用的情境</strong></p>
+<ul>
+<li><strong>絕對不可用調整後閾值做 rule-out 或出院決策</strong>（見 B 節 LR− 分析）。</li>
+<li><strong>hs-cTnI 的所有數字不建議採用</strong>：使用的是 Abbott <strong>i-STAT</strong>（point-of-care）而非台灣常見的 Architect/Alinity；男性閾值序列非單調（15–30 組 1042 ng/L &gt; ≤15 組 435 ng/L），且 Table 5 女性面板存在明確資料錯位（見 B 節）。</li>
+<li><strong>不可移植到其他檢驗平台或其他 case-mix</strong>：閾值定義為「該院此族群無 AMI 者 troponin 分布的第 85 百分位」，是<strong>當地 case-mix 的性質，不是生物學性質</strong>。</li>
+<li>台灣多數醫院已全面採用 hs 檢驗與 ESC 0/1h algorithm；本研究資料為 2010–2017、僅 41.7% 使用 hs 檢驗，外推性受限。</li>
+</ul>
+<p><strong>給臨床醫師的實務建議</strong></p>
+<ol>
+<li><strong>腎功能不全時，troponin 的價值在 rule-out，不在 rule-in。</strong> 本研究最被低估的正面發現是：<strong>傳統 14 ng/L 閾值在 eGFR&lt;30 的 sensitivity 達 1.00（LR− ≈ 0）——低於 14 ng/L 的 CKD 患者幾乎可以排除 AMI。</strong> 請繼續使用傳統閾值來排除，不要換成 73/112/184。</li>
+<li><strong>把作者的「調整後閾值」當作 rule-in 的機率提示，而非診斷門檻。</strong> 即使是最佳化後的閾值，PPV 也只有 0.21–0.25——<strong>四個陽性中仍有三個不是 AMI</strong>。它把「幾乎無資訊」升級為「中度資訊」，但從來不是診斷。</li>
+<li><strong>真正的決策工具仍是 delta + ECG + 臨床脈絡。</strong> 本研究未做 delta 的診斷表現分析，因此<strong>無法</strong>宣稱單次調整閾值可與 0/1h algorithm 相比或互補；這是作者最大的未證實主張。</li>
+</ol>
+<p><strong>研究證據強度分級</strong></p>
+<table>
+<thead>
+<tr>
+<th>主張</th>
+<th>強度</th>
+<th>理由</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>eGFR 與無 AMI 者 troponin 呈反向對數線性關係</td>
+<td><strong>強</strong></td>
+<td>n=222,175，跨 6 種檢驗一致，與既有文獻方向一致，且此關聯不受 reference standard 偏差影響</td>
+</tr>
+<tr>
+<td>傳統閾值在 CKD 造成嚴重偽陽性、C-statistic 隨 eGFR 下降</td>
+<td><strong>中</strong></td>
+<td>方向確定，但<strong>幅度被 incorporation bias 與對照組光譜差異放大</strong>（見 B 節）</td>
+</tr>
+<tr>
+<td>所提出的具體 ng/L 閾值可用於臨床</td>
+<td><strong>弱</strong></td>
+<td>內部驗證（隨機切分）、無 CI、無 NPV/LR、無 decision curve、無外部驗證、極端分層事件數過少、hs-cTnI 表格有明確錯誤</td>
+</tr>
+<tr>
+<td>Delta troponin 不受腎功能影響</td>
+<td><strong>很弱／未經檢驗</strong></td>
+<td>僅描述性密度圖，無檢定；且圖 4 目視上與此宣稱不符（見 B 節）</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>SKILL-C：診斷研究與臨床預測模型評讀</h2>
+<h3>A. 補充技術細節</h3>
+<ul>
+<li><strong>Reference standard 是否為公認黃金標準？</strong> 否。使用<strong>出院後臨床編碼人員指派的 ICD-10 碼</strong>，無病歷、影像或 free-text 審查，無獨立裁定委員會。作者坦承此點。</li>
+<li><strong>Index test 是否獨立於 reference standard？</strong> <strong>否——這是本研究最根本的結構性缺陷。</strong> Troponin 是 Universal Definition of MI 的<strong>必要構成要件</strong>；臨床醫師正是根據（傳統閾值下的）troponin 值做出 NSTEMI 診斷，該診斷再被編碼成為本研究的「真相」。這是教科書式的 <strong>incorporation bias</strong>。</li>
+<li><strong>施測者盲性</strong>：不適用／不存在。編碼人員看得到 troponin 結果；troponin 由實驗室自動測定。</li>
+<li><strong>疾病嚴重度光譜</strong>：納入「因任何原因測 troponin」者，<strong>不限胸痛</strong>。AMI 盛行率僅 4.7%，遠低於典型胸痛 ED 世代（10–15%）。這既是優點（真實世界、未經篩選）也是限制（PPV 與閾值皆為此 case-mix 特有）。</li>
+<li><strong>Cut-off 設定方式</strong>：<strong>非預先指定</strong>，由資料衍生（無 AMI 者分布的第 50 或第 85 百分位）。傘式註冊 NCT03507309 不構成本分析的 pre-registration → 本質上為 <strong>exploratory</strong>。</li>
+<li><strong>可重複性</strong>：Troponin 為自動化實驗室檢驗，重複性佳；但橫跨 4 院、6 種檢驗、8–10 年，未報告跨院／跨時期的檢驗校準漂移或平台更換。</li>
+</ul>
+<hr />
+<h3>B. 診斷準確度核心評估</h3>
+<h4>B-1. 最重要的概念錯誤：移動閾值不會「改善」檢驗表現</h4>
+<p>本文標題為 <em>&quot;Improving the diagnostic performance&quot;</em>，結論為 <em>&quot;performance can be optimised by using eGFR specific cut-points&quot;</em>。</p>
+<p><strong>這在概念上是錯的。</strong> ROC 曲線（Figure 3）<strong>對閾值不變</strong>：把 hs-cTnT 的閾值從 14 移到 73 ng/L，並沒有讓 eGFR 45–60 組的 C-statistic 從 0.84 變好，它仍然是 0.84。作者做的是<strong>沿著同一條曲線把 operating point 往左下移動</strong>——用 sensitivity 換 specificity。這不是改善，是<strong>重新選擇取捨點</strong>。</p>
+<p>唯一真正改變的是 PPV（0.11 → 0.19），而 PPV 上升是移向高 specificity 端的<strong>數學必然後果</strong>，不是新資訊。「Improving / optimised」的用語掩蓋了取捨，這是 claim/evidence mismatch。</p>
+<p>[參考: jama_alba_2017_ug_170001.md，Discrimination 段：判別力取決於檢驗與族群，而非閾值；且「discrimination alone is insufficient」——本文完全未提供絕對風險校準面向的對應資訊（NPV / post-test probability），僅以 C-statistic 與 PPV 呈現。]</p>
+<h4>B-2. 作者未提供的關鍵指標：Likelihood ratio 與 NPV（本評讀自行計算）</h4>
+<p>Tables 4/5 僅報告 sens、spec、PPV。<strong>LR 與 NPV 從未出現</strong>——而這兩者正是決定臨床用途的指標。以下由 Table 4 的 sens/spec 自行推導（LR+ = Sens/(1−Spec)；LR− = (1−Sens)/Spec；NPV 以各層 prevalence 反推）：</p>
+<p><strong>hs-cTnT，傳統閾值 14 ng/L</strong></p>
+<table>
+<thead>
+<tr>
+<th>eGFR</th>
+<th>Sens/Spec</th>
+<th><strong>LR+</strong></th>
+<th><strong>LR−</strong></th>
+<th>陰性者殘餘 MI 風險</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>&gt;90</td>
+<td>0.92 / 0.85</td>
+<td>6.13</td>
+<td>0.094</td>
+<td>0.3%</td>
+</tr>
+<tr>
+<td>60–90</td>
+<td>0.92 / 0.64</td>
+<td>2.56</td>
+<td>0.125</td>
+<td>0.7%</td>
+</tr>
+<tr>
+<td>45–60</td>
+<td>0.94 / 0.32</td>
+<td><strong>1.38</strong></td>
+<td>0.188</td>
+<td>1.2%</td>
+</tr>
+<tr>
+<td>30–45</td>
+<td>0.98 / 0.17</td>
+<td><strong>1.18</strong></td>
+<td>0.118</td>
+<td>0.8%</td>
+</tr>
+<tr>
+<td>15–30</td>
+<td>1.00 / 0.07</td>
+<td><strong>1.08</strong></td>
+<td><strong>≈0</strong></td>
+<td>≈0%</td>
+</tr>
+<tr>
+<td>≤15</td>
+<td>1.00 / 0.03</td>
+<td><strong>1.03</strong></td>
+<td><strong>≈0</strong></td>
+<td>≈0%</td>
+</tr>
+</tbody>
+</table>
+<p><strong>hs-cTnT，調整後閾值（spec 固定 0.85）</strong></p>
+<table>
+<thead>
+<tr>
+<th>eGFR</th>
+<th>閾值</th>
+<th>Sens</th>
+<th><strong>LR+</strong></th>
+<th><strong>LR−</strong></th>
+<th>陰性者殘餘 MI 風險</th>
+<th>陽性者 post-test prob</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>60–90</td>
+<td>33</td>
+<td>0.80</td>
+<td>5.33</td>
+<td>0.235</td>
+<td>1.3%</td>
+<td>22%</td>
+</tr>
+<tr>
+<td>45–60</td>
+<td>73</td>
+<td>0.69</td>
+<td>4.60</td>
+<td><strong>0.365</strong></td>
+<td><strong>2.4%</strong></td>
+<td>23%</td>
+</tr>
+<tr>
+<td>30–45</td>
+<td>112</td>
+<td>0.67</td>
+<td>4.47</td>
+<td><strong>0.388</strong></td>
+<td><strong>2.4%</strong></td>
+<td>22%</td>
+</tr>
+<tr>
+<td>15–30</td>
+<td>184</td>
+<td>0.74</td>
+<td>4.93</td>
+<td><strong>0.306</strong></td>
+<td><strong>2.1%</strong></td>
+<td>25%</td>
+</tr>
+<tr>
+<td>≤15</td>
+<td>226</td>
+<td>0.63</td>
+<td>4.20</td>
+<td><strong>0.435</strong></td>
+<td><strong>2.7%</strong></td>
+<td>21%</td>
+</tr>
+</tbody>
+</table>
+<p><strong>這張表才是本研究真正的結果，而它從未被印出來。</strong> 三個推論立刻浮現：</p>
+<ol>
+<li><strong>傳統閾值在 eGFR&lt;45 的 LR+ ≈ 1.0–1.2 —— 亦即幾乎不提供任何 rule-in 資訊。</strong> 這是作者論點最有力的量化支持，比「FPR 83–93%」更能說服臨床醫師。</li>
+<li><strong>傳統閾值在 CKD 是一個極佳的 rule-out 工具</strong>（LR− 0.12–0，陰性者殘餘風險 ≈0–1.2%）。<strong>這是本研究最重要、卻被完全忽略的正面發現。</strong></li>
+<li><strong>調整後閾值把 LR− 從 ≈0–0.19 惡化到 0.31–0.44 —— 等於摧毀了 troponin 在 CKD 唯一真正可靠的功能。</strong> 陰性者殘餘 MI 風險從 0–1.2% 升到 2.1–2.7%（約 2–3 倍）。而所換得的 rule-in 能力，post-test probability 也僅 21–25%——<strong>四個陽性中三個不是 AMI，仍然不是診斷</strong>。</li>
+</ol>
+<blockquote>
+<p><strong>臨床結論</strong>：Troponin 在腎功能不全患者身上的價值是排除，不是確診。作者提出的閾值調整，是用一個很好的排除工具換一個平庸的確診工具。</p>
+</blockquote>
+<h4>B-3. 缺失的決策分析（本評讀補做）</h4>
+<p>作者宣稱 PPV 從 0.11 改善到 0.19，卻從未說明代價。以 Table 4 的 derivation set（n=55,561，prev 4.3% → 2,389 例 MI、53,172 例非 MI）反推：</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>傳統 14 ng/L</th>
+<th>調整後</th>
+<th>差異</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>True positive</td>
+<td>2,222</td>
+<td>1,959</td>
+<td><strong>−263 例 MI 被首次 troponin 漏掉</strong></td>
+</tr>
+<tr>
+<td>False positive</td>
+<td>17,547</td>
+<td>7,976</td>
+<td><strong>−9,571 例偽陽性</strong></td>
+</tr>
+</tbody>
+</table>
+<p><strong>取捨比 ≈ 每漏掉 1 例 MI，換來減少 36 例偽陽性。</strong></p>
+<p>這個數字其實<strong>對作者有利</strong>：在「等待第二次 troponin 期間的分流輔助」這個限定用途下（漏掉者仍會接受連續檢測、ECG、臨床評估），36:1 的交換很可能是划算的。<strong>但作者從未算這筆帳</strong>，因此讀者無從判斷；而且一旦有人把這些閾值用在 rule-out（作者在 Discussion 中確實寫了 <em>&quot;provisional 'rule in' and 'rule out' decisions&quot;</em>），36:1 的交換立刻變成不可接受。<strong>作者自己的措辭埋下了誤用的種子。</strong></p>
+<p>未做 decision curve analysis / net benefit，也未說明為何「與 eGFR&gt;90 組相同 specificity」是正確的錨定目標。事實上這個選擇缺乏臨床理據：CKD 患者的 AMI 盛行率更高（Table 3：3.6% → 6.6%）且漏診後果更嚴重，決策理論會建議在 CKD <strong>接受更多而非更少</strong>偽陽性。</p>
+<h4>B-4. Incorporation bias：sensitivity = 1.00 是不可能的</h4>
+<p>Table 4 顯示 eGFR 15–30 與 ≤15 組在 14 ng/L 的 <strong>sensitivity = 1.00</strong>。</p>
+<p><strong>沒有任何生物標記的 sensitivity 是 1.00。</strong> 這個數字本身就是 incorporation bias 的直接證據：在這些族群中，troponin &gt;14 ng/L 幾乎是編碼 NSTEMI 的<strong>前提條件</strong>，所以被編碼為 MI 的人必然 troponin 陽性。Reference standard 與 index test 不是獨立事件，而是同一件事的兩次讀取。</p>
+<p>其後果是雙向且嚴重的：</p>
+<ul>
+<li><strong>分子端</strong>：sensitivity 被系統性高估（尤其在低 eGFR）。</li>
+<li><strong>分母端</strong>：被算為「偽陽性」的低 eGFR 患者中，<strong>有相當比例其實是真正的 type 2 MI 或心肌損傷</strong>（作者自己承認 ICD-10 無 type 2 MI 碼）。把他們算成偽陽性，會<strong>誇大</strong>「腎功能導致偽陽性」的幅度。</li>
+<li><strong>循環性</strong>：所推導的調整後閾值，是針對一個<strong>本身建立在傳統閾值之上</strong>的 reference standard 做最佳化。這是 circular calibration。</li>
+</ul>
+<p>作者的 STEMI 敏感度分析（C-statistic 0.87 於 eGFR&lt;15）是合理的緩解嘗試，但<strong>不足以解決問題</strong>：STEMI 由 ECG 診斷、幾乎必然伴隨大量 troponin 釋放，是一個遠為簡單的分類任務，且其閾值需求與 NSTEMI 完全不同。它證明了「troponin 能辨識大梗塞」，但沒有驗證 73/112/184 ng/L 這些針對 NSTEMI 情境的閾值。</p>
+<h4>B-5. Differential verification bias 與對照組光譜（圖 2 提供的關鍵證據）</h4>
+<p><strong>41.8% 的患者未住院，被一律歸類為無 AMI</strong>，且從未接受 reference standard 檢驗。這造成兩個問題：</p>
+<ol>
+<li>這批人有極低的 troponin 與正常腎功能，<strong>大量稀釋 eGFR&gt;90 組的對照群</strong>，人為抬高該組 specificity（0.85）與 C-statistic（0.93）。</li>
+<li><strong>未住院比例必然隨 eGFR 下降而急遽下降</strong>（eGFR&lt;15 者幾乎全數住院）。作者<strong>從未報告各 eGFR 分層的住院比例</strong>——這是本研究最關鍵的缺失表格。</li>
+</ol>
+<p><strong>Figure 2 直接、視覺化地證實了這個問題。</strong> 在 hs-cTnT 面板中，eGFR&gt;90 的無 MI（藍綠色）分布是<strong>明顯雙峰</strong>：一個位於 &lt;1 ng/L 的高聳尖峰（檢測極限以下的健康就診者），加上一個約 5–10 ng/L 的次峰。這個 &lt;1 尖峰在 60–90 組縮小，到 45–60 組<strong>完全消失</strong>，之後各層均為單峰。</p>
+<blockquote>
+<p><strong>這意味著：所謂「specificity 隨 eGFR 惡化而崩潰」，其中一部分並非腎清除的生物學效應，而是對照組組成的 case-mix 假象——高 eGFR 組的對照者是回家的健康人，低 eGFR 組的對照者是住院的重病人。</strong></p>
+</blockquote>
+<p>要區分這兩種機制，最起碼應該把分析限制在住院者，或依住院狀態分層。本研究兩者皆無。這使得「腎功能導致偽陽性」的<strong>效果量被高估</strong>（方向性結論仍成立，但幅度不可信）。</p>
+<h4>B-6. 精確度：所有估計值皆無信賴區間</h4>
+<p>Tables 4 與 5 的<strong>每一個 sens、spec、PPV 都沒有 95% CI</strong>。這在診斷準確度研究是不可接受的，並直接源自作者使用 STROBE 而非 STARD。以各層事件數自行估算（Wilson/normal approximation）：</p>
+<table>
+<thead>
+<tr>
+<th>分層</th>
+<th>約略 MI 例數（derivation）</th>
+<th>報告 Sens</th>
+<th><strong>自行估算 95% CI</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>hs-cTnT ≤15</td>
+<td>~51</td>
+<td>0.63</td>
+<td><strong>≈ 0.50–0.76</strong></td>
+</tr>
+<tr>
+<td>hs-cTnT 15–30</td>
+<td>~94</td>
+<td>0.74</td>
+<td>≈ 0.65–0.83</td>
+</tr>
+<tr>
+<td>hs-cTnI 男 15–30</td>
+<td>~35</td>
+<td>0.46</td>
+<td><strong>≈ 0.30–0.63</strong></td>
+</tr>
+<tr>
+<td>hs-cTnI 男 ≤15</td>
+<td><strong>~19</strong></td>
+<td>0.37</td>
+<td><strong>≈ 0.16–0.62</strong></td>
+</tr>
+</tbody>
+</table>
+<p><strong>hs-cTnI 男性 ≤15 組的 sensitivity 0.37，實際區間橫跨 0.16–0.62——完全無資訊。</strong> 但這個 435 ng/L 的閾值仍以三位有效數字印在表格中，讀者會照著用。對應的 435 ng/L 閾值本身也只是約 279 名對照者分布的第 92 百分位，即約第 22 高的觀測值——<strong>單一離群值就能大幅移動它</strong>。</p>
+<h4>B-7. 閾值序列的非單調性 = 統計不穩定的直接證據</h4>
+<p>hs-cTnT 調整後閾值單調遞增（14 → 33 → 73 → 112 → 184 → 226），生物學上合理。</p>
+<p><strong>但 hs-cTnI 男性為 34 → 99 → 295 → 357 → 1,042 → 435 ng/L。</strong> eGFR 15–30 組的閾值（1,042）是 eGFR ≤15 組（435）的 2.4 倍。<strong>腎功能更差反而需要更低的閾值——這在生物學上不可能</strong>，只能是小樣本雜訊（該層 n=314、約 35 例 MI）。作者對此毫無評論，照常列表。這單一事實就足以說明 hs-cTnI 的所有衍生閾值不應進入臨床。</p>
+<h4>B-8. Table 5 女性面板存在可證實的資料錯位</h4>
+<p>這不是解讀差異，而是可用算術證明的錯誤：</p>
+<ul>
+<li>Table 5 女性各 eGFR 分層 n 相加 = 8,541 + 4,241 + 2,796 + 660 + 438 + 233 = <strong>16,909</strong>，但 &quot;All&quot; 列為 <strong>10,677</strong>。不可能。</li>
+<li>Table 3 的 hs-cTnI 總數為 23,192。男性 derivation &quot;All&quot; = 10,012 → 男性全體 = 10,012 ÷ 0.8 = 12,515。則女性全體 = 23,192 − 12,515 = <strong>10,677</strong>，<strong>恰為女性 &quot;All&quot; 列的數值</strong>。而 10,677 × 0.8 = <strong>8,541</strong>，<strong>恰為被標示為 &quot;&gt;90&quot; 那一列的 n</strong>。</li>
+<li><strong>結論：女性面板的 &quot;All&quot; 列放的是女性全體（非 80% derivation），而 derivation 總數 8,541 被錯置到 &quot;&gt;90&quot; 列，其下各列全部往下位移一格。</strong></li>
+<li>佐證一：依方法學定義，&gt;90 列的「傳統」與「調整後」欄位<strong>必定完全相同</strong>（男性面板確實如此：34 → 0.83/0.92/0.42 兩欄一致）。女性 &gt;90 列卻是傳統 0.90/0.80/0.15、調整後 15 / 0.86/0.92/0.17 —— 不一致；而女性 60–90 列的傳統欄（15 / 0.86/0.92/0.17）<strong>恰好等於</strong> &gt;90 列的調整後欄。位移確認。</li>
+<li>佐證二：女性 60–90 的 prevalence 為 <strong>1.79%</strong>，低於 &gt;90 的 3.66%。這與 Table 3 的 hs-cTnI（&gt;90 4.39% → 60–90 6.69%）及所有其他面板的單調上升趨勢矛盾。</li>
+</ul>
+<p><strong>這是通過 161 天審查與 BMJ 排版流程後仍存活的整欄資料錯位。</strong> 它使 Table 5 女性部分的所有數字不可引用。</p>
+<h4>B-9. 摘要與正文的數值不一致（圖 1 交叉比對）</h4>
+<table>
+<thead>
+<tr>
+<th>項目</th>
+<th>摘要</th>
+<th>正文／表格／圖</th>
+<th>判定</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>納入人數</td>
+<td><strong>221,175</strong></td>
+<td>Figure 1 最終框、Table 2、Table 3 皆為 <strong>222,175</strong>；key-points box 亦為 222,175</td>
+<td>摘要錯誤</td>
+</tr>
+<tr>
+<td>AMI 比例</td>
+<td><strong>6.4%</strong></td>
+<td>Table 2：10,398 / 222,175 = <strong>4.7%</strong></td>
+<td><strong>摘要錯誤，幅度達 36%</strong></td>
+</tr>
+<tr>
+<td>eGFR&lt;60</td>
+<td>20.6%</td>
+<td>正文 21.6%；Table 2 加總 = 20.6%</td>
+<td>正文錯誤</td>
+</tr>
+<tr>
+<td>調整後 detection rate</td>
+<td>73% / 70% / 68%</td>
+<td><strong>Table 4：0.69 / 0.67 / 0.74</strong></td>
+<td>不符（且「73%」疑似誤抄自閾值 73 ng/L）</td>
+</tr>
+<tr>
+<td>Figure 1 起始框</td>
+<td>—</td>
+<td><strong>n=253,610</strong>，但正文為 235,610，且 253,610 − 107 ≠ 235,503</td>
+<td>圖中數字位轉置錯誤</td>
+</tr>
+<tr>
+<td>Creatinine 可得比例</td>
+<td>—</td>
+<td>88,603 / 222,175 = 39.9%，正文寫 39.5%</td>
+<td>輕微</td>
+</tr>
+</tbody>
+</table>
+<p><strong>摘要中「detection rates of 73%, 70% and 68%」與 Table 4 的 0.69/0.67/0.74 不符，而這正是本文的頭條數字</strong>——也是 PubMed 摘要與所有二手引用會傳播的版本。摘要把 AMI 盛行率寫成 6.4%（實為 4.7%）會直接誤導讀者對 PPV 的判讀。</p>
+<h4>B-10. Pre-test probability 與臨床用途（Fagan 概念）</h4>
+<table>
+<thead>
+<tr>
+<th>臨床情境</th>
+<th>Pre-test</th>
+<th>用傳統 14 ng/L</th>
+<th>用調整後閾值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>低</strong>（eGFR 30，非胸痛主訴，常規 order set，pre-test ~2%）</td>
+<td>2%</td>
+<td>陽性 → 2.4%（LR+ 1.18，<strong>毫無用處</strong>）；陰性 → 0.24%（有用）</td>
+<td>陽性 → 8.4%；陰性 → 0.8%</td>
+</tr>
+<tr>
+<td><strong>中</strong>（eGFR 30，典型胸痛，pre-test ~15%）</td>
+<td>15%</td>
+<td>陽性 → 17%（<strong>幾乎不移動機率</strong>）；陰性 → 2.0%</td>
+<td>陽性 → <strong>44%</strong>；陰性 → <strong>6.4%</strong></td>
+</tr>
+<tr>
+<td><strong>高</strong>（eGFR 30，胸痛 + ECG 動態變化，pre-test ~50%）</td>
+<td>50%</td>
+<td>陽性 → 54%；陰性 → 11%</td>
+<td>陽性 → 82%；陰性 → 28%（<strong>不可用於排除</strong>）</td>
+</tr>
+</tbody>
+</table>
+<p><strong>這張表濃縮了全部的臨床訊息</strong>：調整後閾值在<strong>中等 pre-test probability 且用於 rule-in 方向</strong>時最有價值（15% → 44%）；在任何 pre-test probability 下<strong>都不能用於 rule-out</strong>（中風險者陰性後仍有 6.4%，高風險者 28%）。作者從未做這個分析。</p>
+<hr />
+<h3>C. AI / ML 診斷模型評估</h3>
+<p><strong>不適用。</strong> 本研究為單一連續變項的閾值分析，無機器學習、無多變項模型、無特徵選擇。</p>
+<hr />
+<h3>D. 臨床預測模型評估（部分適用）</h3>
+<p>雖非正式預測模型，但既然作者導出了供臨床使用的決策規則，仍應以預測模型標準檢視：</p>
+<p><strong>辨別力（Discrimination）</strong></p>
+<ul>
+<li>已報告：C-statistic 附 95% CI，依 eGFR 與檢驗分層（Table 3、Figure 3）——<strong>這部分做得好</strong>。</li>
+<li>但 C-statistic 受 case-mix 影響甚鉅：本研究對照組在高 eGFR 組含大量檢測極限以下的健康人（Figure 2 之 &lt;1 尖峰），<strong>人為膨脹了 &gt;90 組的 0.93</strong>。真正的可比基準應限於住院者。</li>
+<li><strong>Figure 3 目視判讀</strong>：座標軸 0–100%，<strong>未截斷、無誇大</strong>。eGFR&lt;15（綠線）的 95% CI 帶明顯最寬，尤其 hs-cTnI 面板。<strong>hs-cTnT 面板中 15–30（紫線）明顯位於 30–45 之上</strong>，與 Table 3 的 0.87 vs 0.83 一致——<strong>判別力並非單調下降</strong>，結論中的 &quot;steadily deteriorates&quot; 是簡化。整體趨勢方向仍成立，但各層 CI 重疊。</li>
+</ul>
+<p><strong>校準度（Calibration）</strong></p>
+<ul>
+<li><strong>完全缺失。</strong> 無 calibration plot，無 Hosmer-Lemeshow，更關鍵的是<strong>無 NPV、無 post-test probability、無 decision curve / net benefit</strong>。</li>
+<li>[參考: jama_alba_2017_ug_170001.md，Box：「Do the authors provide information about both the discrimination and calibration of the model? If not, skepticism is warranted.」——本研究僅提供判別力面向，絕對風險面向（陰性者殘餘 MI 風險、陽性者 post-test probability）付之闕如。依該 Users' Guide 的明示標準，<strong>保留態度是適當的</strong>。]</li>
+</ul>
+<p><strong>外部驗證</strong></p>
+<ul>
+<li>僅有 <strong>80/20 隨機切分</strong>——這是<strong>內部驗證</strong>，只能偵測過度配適，無法評估可移轉性。PPV 從 0.19（derivation）到 0.18（validation）幾乎不變，<strong>這是必然的，不構成驗證</strong>。</li>
+<li><strong>關鍵的錯失機會</strong>：資料來自 <strong>4 家獨立醫院</strong>，完全可以做 leave-one-site-out 的地理驗證；資料橫跨 <strong>8–10 年</strong>，可以做時間驗證（例如 2010–2014 推導、2015–2017 驗證，這也能檢驗檢驗平台演進的影響）。<strong>兩者皆未執行。</strong></li>
+<li>Contemporary 檢驗<strong>完全沒有做 split</strong>，直接以全資料集推導與評估——這部分的表現數字必然樂觀偏誤。</li>
+<li>作者自己承認「further validation in external cohorts is warranted before clinical adoption」——<strong>此語應被視為結論的一部分而非免責聲明</strong>。</li>
+</ul>
+<hr />
+<h3>E. 紅旗清單</h3>
+<p><strong>設計層面</strong></p>
+<ol>
+<li><strong>Incorporation bias（結構性、無法修補）</strong>：Index test 是 reference standard 的構成要件。<code>sensitivity = 1.00</code> 於 eGFR&lt;30 兩層即為鐵證。所推導閾值是對一個由傳統閾值定義的真相做最佳化 → circular calibration。</li>
+<li><strong>Differential verification bias</strong>：41.8% 未住院者未經 reference standard 檢驗即被判為無 AMI，且此比例必隨 eGFR 系統性變動（未報告）。</li>
+<li><strong>對照組光譜隨 eGFR 系統性改變</strong>（Figure 2 的 &lt;1 ng/L 尖峰隨 eGFR 下降而消失）→ 「specificity 崩潰」的效果量被 case-mix 混淆放大。</li>
+<li><strong>閾值非預先指定</strong>；NCT03507309 為資料資源傘式註冊，不構成本分析的 pre-registration → 本質探索性。</li>
+<li><strong>使用 STROBE 而非 STARD</strong> 撰寫診斷準確度研究 → 直接導致 CI、參與者流程（依 index test × reference standard 交叉表）缺失。</li>
+<li><strong>未做地理驗證（4 院可用）與時間驗證（8–10 年可用）</strong>；contemporary 檢驗完全無 split。</li>
+<li><strong>Type 2 MI 無法識別</strong>（ICD-10 無碼）——作者已誠實承認，但這使「偽陽性」的定義本身不可靠。</li>
+<li><strong>eGFR 為就診當下值</strong>，混合 AKI 與 CKD；AKI 比例僅由 39.9% 子集估算。作者已標示此限制。</li>
+</ol>
+<p><strong>統計層面</strong></p>
+<ol start="9">
+<li><strong>Tables 4/5 全部估計值無 95% CI</strong>；極端分層事件數僅 19–94 例，sensitivity 的真實區間可寬達 0.16–0.62。</li>
+<li><strong>從未報告 NPV 或 likelihood ratio</strong>——正是決定臨床用途的兩個指標。</li>
+<li><strong>無 decision curve / net benefit / 漏診代價量化</strong>；「85th centile」的錨定選擇無任何臨床理據。</li>
+<li><strong>hs-cTnI 男性閾值序列非單調</strong>（15–30 組 1,042 ng/L &gt; ≤15 組 435 ng/L）——生物學不可能，暴露統計不穩定。</li>
+<li><strong>Table 5 女性面板整欄資料錯位</strong>（可由 n 加總 16,909 vs 10,677、以及 &gt;90 列傳統／調整欄位不一致證明）→ 該面板數字不可引用。</li>
+<li><strong>Delta 分析無任何統計檢定</strong>，卻被用來支撐「delta 不受腎功能影響」的核心宣稱。</li>
+</ol>
+<p><strong>敘事層面</strong></p>
+<ol start="15">
+<li><strong>標題與結論的 &quot;improving / optimised&quot; 在概念上誤導</strong>：移動閾值不改變 ROC 曲線，只改變 operating point。</li>
+<li><strong>摘要三處數值錯誤</strong>：n（221,175 vs 222,175）、AMI 比例（6.4% vs 4.7%）、detection rates（73/70/68% vs Table 4 的 69/67/74%）。頭條數字錯誤將隨 PubMed 摘要擴散。</li>
+<li><strong>選擇性呈現</strong>：摘要只放 hs-cTnT 的數字（sens 0.63–0.74），完全不提 hs-cTnI 男性的 sens 0.37–0.61。</li>
+<li>**「more than half had some degree of renal impairment」<strong>把 eGFR&lt;90（53.6%）稱為腎功能不全；</strong>「over a quarter of all patients」**把住院者的 25.4% 說成全體（實為 20.6%）。兩處皆為修辭性放大問題規模。</li>
+<li><strong>Discussion 寫下 &quot;provisional 'rule in' and 'rule out' decisions&quot;</strong>——但作者自己的數據顯示這些閾值<strong>絕對不能用於 rule out</strong>。這是本文最危險的一句話。</li>
+<li><strong>本研究最重要的正面發現（傳統閾值在 CKD 仍是優異的 rule-out 工具，LR− ≈ 0）從未被明說</strong>，因為它與論文的敘事方向相反。</li>
+</ol>
+<p><strong>外推層面</strong></p>
+<ol start="21">
+<li><strong>資料為 2010–2017</strong>（部分自 2008），距今 9–18 年；僅 41.7% 使用 hs 檢驗，58.3% 為 contemporary 檢驗。現行實務已全面 hs 化並採用 ESC 0/1h algorithm。</li>
+<li><strong>hs-cTnI 使用 Abbott i-STAT（point-of-care）</strong>，非台灣／多數醫學中心常用的 Architect/Alinity；其 34/15 ng/L 閾值與分析性能不可互換。</li>
+<li><strong>閾值是當地 case-mix 的性質，非生物學性質</strong>：定義為「該院此族群無 AMI 者 troponin 分布的第 85 百分位」。在 troponin 只為胸痛而開立的醫院（對照者較健康），同樣方法會得出完全不同的數字。這比「需要外部驗證」更根本——<strong>這些閾值原則上不具可移轉性</strong>。</li>
+<li>族裔資料遺漏 16.0%；4 家皆為倫敦三級中心，operator/care pathway 特定。</li>
+<li><strong>未檢視下游後果</strong>：不當 DAPT 之傷害、侵入性處置（作者引用 ISCHEMIA-CKD 的不確定結果）、住院天數、成本。</li>
+</ol>
+<p><strong>Figure 4 專屬紅旗（圖傳達但文字未講清楚）</strong></p>
+<ol start="26">
+<li><strong>Figure 4 目視上不支持「delta 不受腎功能影響」的宣稱。</strong> 在 hs-cTnT 面板，eGFR&gt;90 的無 MI（藍綠色）delta 密度峰值明確位於 5 ng/L 虛線<strong>左側</strong>、絕大多數質量在線下；隨 eGFR 下降，該峰值逐步右移，至 15–30 與 &lt;15 兩層時峰值已落在 5–10 ng/L 區間、且有可觀質量延伸至 100 ng/L 以上。<strong>無 MI 者的 delta 分布確實隨腎功能惡化而右移。</strong> 作者僅以「distribution was similar」描述，既無統計檢定、無 CI、也無 delta 的 ROC 或 sens/spec——<strong>這個未經檢驗的宣稱正是「兩種策略互補」論證的支點</strong>，卻是全文證據最薄弱的一環。</li>
+<li><strong>重複檢測子集的選擇偏差（Figure 4 標籤可見）</strong>：該子集中 MI 盛行率隨 eGFR <strong>下降</strong>（hs-cTnT：&gt;90 為 10.4% → &lt;15 為 8.4%），而全世代則為<strong>上升</strong>（Figure 2：3.0% → 5.7%）。<strong>進入連續檢測的機制本身依腎功能而異</strong>，因此 delta 分析的族群與主分析族群不可直接類比。作者未提及。</li>
+</ol>
+<p><strong>其他圖表判讀</strong></p>
+<ul>
+<li><strong>無 Kaplan-Meier 曲線、無 forest plot、無 CONSORT 流程圖</strong>（本研究為診斷準確度研究，不適用）。</li>
+<li><strong>Figure 1 流程圖</strong>：起始框 n=253,610 與正文 235,610 不符，且 253,610 − 107 ≠ 235,503（次框數值）→ 為數字位轉置排版錯誤。其餘扣除算術正確：235,503 − 358 − 11,044 − 130 − 70 − 1,726 = <strong>222,175</strong> ✓，且下游分支加總一致（129,531 + 92,644 = 222,175；6,161 + 4,237 = 10,398）。<strong>唯一真正的矛盾在摘要的 221,175。</strong></li>
+<li><strong>Figure 2 的 hs-cTnI 面板以單一 15 ng/L 虛線標示 conventional cut-off，且各層 n 與 Table 3 的男女合併數一致</strong>（12,289 / 6,802 / 1,743 / 1,140 / 700 / 518）→ 該圖為<strong>男女合併</strong>，與方法段「hs-TnI 全程依性別分層（34 男 / 15 女）」及 Table 1 矛盾；對男性而言該虛線位置錯誤。</li>
+<li><strong>Figure 2 於 eGFR&lt;15 層，兩條密度曲線（有 MI 與無 MI）重疊範圍極大</strong>，與 C-statistic 0.78 相符——視覺上證實在末期腎病患者單次 troponin 幾乎無法分辨兩群。</li>
+<li><strong>Figure 3 座標軸未截斷</strong>，無視覺誇大。</li>
+<li>圖檔解析度足以判讀上述所有特徵；未出現需標注「解析度不足」之處。</li>
+</ul>
+<hr />
+<h3>F. 最終裁決</h3>
+<p><strong>診斷測試可信度：中（描述性發現）／低（所提出之具體閾值）</strong></p>
+<table>
+<thead>
+<tr>
+<th>主張</th>
+<th>裁決</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>無 AMI 者 troponin 與 eGFR 呈反向對數線性關係</td>
+<td><strong>可信</strong>。n=222,175、跨 6 種檢驗一致，且此關聯不受 reference standard 偏差影響。這是本研究對文獻最紮實的貢獻。</td>
+</tr>
+<tr>
+<td>傳統閾值在 eGFR&lt;45 時幾乎不提供 rule-in 資訊（LR+ 1.0–1.4）</td>
+<td><strong>可信，且比作者自己的陳述更有力</strong>。</td>
+</tr>
+<tr>
+<td>傳統閾值在 CKD 仍是優異的 rule-out 工具（LR− 0.12–0）</td>
+<td><strong>可信，但被 incorporation bias 樂觀化</strong>；方向確定、幅度存疑。本文最被低估的發現。</td>
+</tr>
+<tr>
+<td>所提出之具體 ng/L 閾值可用於臨床</td>
+<td><strong>不可信</strong>。內部驗證、無 CI、無 NPV/LR、無 net benefit、極端層事件數 19–94、hs-cTnI 閾值序列生物學不可能、Table 5 女性面板整欄錯位。</td>
+</tr>
+<tr>
+<td>Delta troponin 不受腎功能影響</td>
+<td><strong>未經檢驗</strong>，且 Figure 4 目視上與之相左。</td>
+</tr>
+</tbody>
+</table>
+<p><strong>在何種臨床情境下此測試有用（pre-test probability 範圍）</strong></p>
+<ul>
+<li><strong>最佳用途</strong>：中等 pre-test probability（約 10–30%）、eGFR 15–60、僅有首次 hs-cTnT 值時，<strong>作為 rule-in 方向的機率提示</strong>。此區間內調整後閾值可將 post-test probability 由 15% 推升至約 44%——足以合理化留觀、重複抽血、提早照會心臟科，但<strong>不足以啟動抗凝／DAPT／導管室</strong>。</li>
+<li><strong>次佳用途（其實更實用）</strong>：把 Table 4 的「50th centile」欄位（22 / 34 / 55 / 81 ng/L）當作「該 eGFR 層的正常參考值」來閱讀。這組數值保留 sens 0.80–0.93、LR− 0.14–0.39，作為分流輔助的風險-效益遠優於作者主推的第 85 百分位版本。<strong>作者把較安全的那個選項寫進了表格，卻在摘要與結論推銷較危險的那個。</strong></li>
+</ul>
+<p><strong>不建議使用的情境</strong></p>
+<ul>
+<li><strong>任何 rule-out 或出院決策</strong>——調整後閾值使陰性者殘餘 MI 風險升至 2.1–2.7%（hs-cTnT）、5.8–6.9%（hs-cTnI 男性）。</li>
+<li><strong>所有 hs-cTnI 數值</strong>（i-STAT POC 平台、閾值非單調、女性表格錯位、事件數低至 19 例）。</li>
+<li><strong>eGFR ≤15 族群</strong>（作者自己也如此建議）。</li>
+<li><strong>移植到不同檢驗平台、不同 troponin 開立政策、或不同 case-mix 的醫院</strong>。</li>
+<li>低 pre-test probability 的常規 order set 情境——此時無論用哪個閾值，陽性結果的 post-test probability 都低到不具行動價值。</li>
+</ul>
+<p><strong>若要改觀，最需要的 3 個關鍵改進</strong></p>
+<ol>
+<li><strong>獨立裁定的 reference standard</strong>（第 4 版 Universal Definition，明確區分 type 1 / type 2 MI 與 myocardial injury），並限制於實際接受 AMI 評估的族群。若做不到，至少須做 leave-one-site-out 的<strong>外部驗證</strong>與<strong>時間驗證</strong>——本研究擁有 4 家醫院與 10 年資料，這兩件事原本就做得到。</li>
+<li><strong>完整報告 NPV、LR+/LR−、各估計值的 95% CI，並執行 decision curve analysis</strong>，明確說明「每避免 1 例偽陽性需漏掉幾例 MI」及其在不同 pre-test probability 下的 net benefit。本評讀已示範此計算可行（約 36:1）——作者掌握原始資料，沒有理由不做。</li>
+<li><strong>將調整後閾值與現行 ESC 0/1h delta algorithm 做頭對頭比較</strong>（在有連續 troponin 的 58,445 人子集中完全可行），以實證支持「兩者互補」的宣稱，而非僅憑描述性密度圖。同時應對 delta 的腎功能依賴性做正式檢定。</li>
+</ol>
+<p><strong>一句話結論（給一般讀者）</strong></p>
+<blockquote>
+<p>這份 22 萬人的大數據確認了腎功能越差、troponin 基礎值越高，但作者提出的「調高判讀門檻」其實是用一個很好的排除工具換一個平庸的確診工具，在外部驗證完成前不應據以決定病人去留。</p>
+</blockquote>
+<hr />
+<p><strong>Sources（外部資料）</strong>：</p>
+<ul>
+<li><a href="https://pubmed.ncbi.nlm.nih.gov/42264918/">PubMed: PMID 42264918</a></li>
+<li><a href="https://www.ebi.ac.uk/europepmc/webservices/rest/search">Europe PMC REST API 反向引用檢索</a></li>
+<li><a href="https://www.journalmetrics.org/journal/heart">journalmetrics.org — Heart 期刊指標</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Heart_(journal)">Heart (journal) — JCR impact factor 5.1, Q1</a></li>
+<li><a href="https://www.amsterdamumc.org/en/research/researchers/didier-collard">Amsterdam UMC — Didier Collard</a></li>
+<li><a href="https://www.thelancet.com/journals/lancet/article/PIIS0140-6736(20)30930-2/fulltext">SENIOR-NSTEMI, Lancet 2020</a></li>
+<li><a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC7428631/">NIHR HIC TROP-AF, JAHA 2020</a></li>
+<li><a href="https://link.springer.com/article/10.1186/s40959-024-00238-w">NIHR HIC TROP-MALIGNANCY, Cardio-Oncology 2024</a></li>
+<li><a href="https://clinicaltrials.gov/study/NCT03507309">NCT03507309 — NIHR CV Health Informatics Collaborative</a></li>
+</ul>
+
+<footer class="appraisal-meta">評讀資訊：模型：claude-opus-5 (claude)  ·  route：diagnostic  ·  產出時間：2026-09-13 13:43 CST</footer>
+</main>
+</body>
+</html>
