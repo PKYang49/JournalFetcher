@@ -1,0 +1,1560 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Accelerated Diagnostic Pathways for Suspected Acute Coronary Syndrome in Practice: A Randomized Trial of 0/1-Hour vs 0/3-Hour Troponin Testing.</title>
+<style>
+  :root {
+    --bg: #fafafa;
+    --card: #ffffff;
+    --text: #1a1a1a;
+    --muted: #6b6b6b;
+    --border: #e5e5e5;
+    --accent: #0b5fff;
+  }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang TC",
+      "Microsoft JhengHei", sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    margin: 0;
+    padding: 24px 16px 64px;
+    line-height: 1.72;
+  }
+  main {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    margin: 0 auto;
+    max-width: 840px;
+    padding: 22px 26px;
+  }
+  nav {
+    margin: 0 auto 14px;
+    max-width: 840px;
+    color: var(--muted);
+    font-size: 14px;
+  }
+  a { color: var(--accent); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  h1, h2, h3, h4 { line-height: 1.35; }
+  h1 { font-size: 26px; margin-top: 0; }
+  h2 { border-top: 1px solid var(--border); padding-top: 18px; }
+  code {
+    background: rgba(127, 127, 127, 0.12);
+    border-radius: 4px;
+    padding: 1px 4px;
+  }
+  table {
+    border-collapse: collapse;
+    table-layout: auto;
+    width: 100%;
+    max-width: 100%;
+  }
+  th, td {
+    border: 1px solid var(--border);
+    overflow-wrap: anywhere;
+    padding: 6px 8px;
+    text-align: left;
+    vertical-align: top;
+  }
+  blockquote {
+    border-left: 3px solid var(--accent);
+    color: var(--muted);
+    margin-left: 0;
+    padding-left: 14px;
+  }
+  .appraisal-meta {
+    border-top: 1px solid var(--border);
+    margin-top: 28px;
+    padding-top: 14px;
+    color: var(--muted);
+    font-size: 13px;
+  }
+  @media (max-width: 600px) {
+    body {
+      padding: 12px 8px 40px;
+    }
+    main {
+      padding: 16px 12px;
+    }
+    h1 {
+      font-size: 22px;
+    }
+    table {
+      font-size: 12px;
+      table-layout: fixed;
+    }
+    th, td {
+      padding: 4px 5px;
+    }
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #1a1a1a;
+      --card: #242424;
+      --text: #e8e8e8;
+      --muted: #999;
+      --border: #333;
+      --accent: #6ea8ff;
+    }
+  }
+</style>
+</head>
+<body>
+<nav><a href="../../2026-W39.html">← 回到 2026-W39 週報</a></nav>
+<main>
+<h1>Accelerated Diagnostic Pathways for Suspected Acute Coronary Syndrome in Practice: A Randomized Trial of 0/1-Hour vs 0/3-Hour Troponin Testing.</h1>
+<h1>批判性評讀：MACROS-2（ESC 0/1 小時 vs 0/3 小時 troponin 路徑的實作型隨機試驗）</h1>
+<hr />
+<h1>SECTION-0：文章全面描述</h1>
+<h2>0. 文章身份證</h2>
+<ul>
+<li><strong>標題</strong>：Accelerated Diagnostic Pathways for Suspected Acute Coronary Syndrome in Practice: A Randomized Trial of 0/1-Hour vs 0/3-Hour Troponin Testing</li>
+<li><strong>期刊／年份</strong>：<em>Journal of the American College of Cardiology</em> 2026;88(11):1211–1221</li>
+<li><strong>DOI</strong>：10.1016/j.jacc.2026.02.5135　<strong>PMID</strong>：42159533　<strong>註冊</strong>：NCT05322395（MACROS-2）</li>
+<li><strong>文章類型（路由判斷）</strong>：<strong>人體隨機對照試驗（RCT）</strong>——雙中心、個案層級隨機、務實型（pragmatic）「實作試驗」（implementation trial），採<strong>非劣性</strong>設計評估安全性、<strong>優越性</strong>設計評估效率。
+<ul>
+<li>適用 SKILL-A 主流程 ＋ <strong>A1 非劣性試驗子模組</strong>。</li>
+<li>非 review、非診斷準確度研究（雖含 sensitivity/NPV，但隨機分派的是「臨床路徑」而非「檢驗」，故不走 SKILL-C）。</li>
+</ul>
+</li>
+<li><strong>混血設計警示</strong>：本試驗同時具備 RCT 與診斷準確度研究的外觀。其所報告的 sensitivity／specificity／NPV／PPV <strong>並非 troponin 演算法的診斷效能</strong>，而是「臨床醫師收治 vs 出院決策」對 30 天 MACE 的分類效能（下方 C 節詳述驗算）。此一命名容易被誤讀為演算法效能，是本文最大的溝通風險。</li>
+</ul>
+<hr />
+<h2>1. 作者團隊評論</h2>
+<ul>
+<li><strong>通訊作者</strong>：Prof. Aleem Khand，Liverpool University Hospital NHS Foundation Trust 心臟科，兼 University of Liverpool 與 Liverpool Heart and Chest Hospital [文內]。</li>
+<li><strong>第一作者</strong>：James Hatherley, MBChB（Liverpool 心臟科／University of Liverpool）[文內]。</li>
+<li><strong>團隊構成</strong>：心臟科臨床醫師 ＋ 急診專科（Raj、Ensor）＋ <strong>臨床化學／檢驗醫學</strong>（Paul Collinson 為國際 cardiac biomarker 領域重量級人物，City St George's）＋ Liverpool Clinical Laboratories 團隊（Bailey、Davies、Fearon）＋ 專職統計（Shaw）。這是一個<strong>檢驗醫學與急診／心臟科整合度罕見地高</strong>的團隊，也是本文能精準拆解「抽血→檢體→報告」時間鏈的原因 [評估]。</li>
+<li><strong>機構聲譽與領域地位</strong>：此團隊是英國 hs-cTn 加速診斷路徑（ADP）實作研究的<strong>核心團隊之一</strong>，非跨領域首次切入 [外部: ResearchGate 作者頁、Liverpool Repository]。</li>
+<li><strong>團隊過往代表作</strong>：
+<ol>
+<li>Hatherley JD, Salmon T, Collinson PO, <strong>Khand A</strong>. Implementation of the ESC 0/3-hour ADP using hs-cTnT: 3,003 patients. <em>Open Heart</em> 2023;10:e002366. [文內 ref 20；外部: Liverpool Repository]</li>
+<li><strong>Khand A</strong>, Hatherley J, Dakshi A, et al. MACROS-2 protocol. <em>Am Heart J</em> 2024;278:235–247. [文內 ref 16/17]</li>
+<li>MACROS-2 附屬研究：POC hs-cTnI 分析／臨床效能評估. <em>Clin Chem Lab Med</em> 2024 (doi:10.1515/cclm-2024-0138) [外部]</li>
+<li>Hatherley, Collinson, Abuzahra, Khand. The Evolution of Accelerated Diagnostic Protocols for Suspected MI. <em>J Clin Med</em> 2026;15:5125 [外部: PMC13363377]</li>
+</ol>
+</li>
+<li><strong>作者立場史 [評估]</strong>：這是本文最值得注意的一點。<strong>同一團隊先前以 3,003 名病人的實作研究為 0/3 小時路徑背書</strong>（ref 20），而本試驗的「對照組」正是 0/3 小時路徑。因此團隊對 comparator 存在既有的機構投資與立場。這並不必然導致結果被扭曲——但它確實讓「0/1 小時未能帶來效率優勢」這個結論，與團隊既有立場方向一致，屬於<strong>確認偏差的合理疑慮</strong>，應被讀者納入權衡。另一方面，通訊作者同時是 NHS「hs-cTn clinical champion」、領有 ADP 推廣的 transformation funding [文內]，此一角色則往相反方向推（有利於呈現 ADP 價值）。兩股力量方向相反，難以預判淨偏差方向。</li>
+<li><strong>利益揭露</strong>：
+<ul>
+<li>研究者發起（investigator-initiated），聲明「資助者未參與研究設計、資料收集、分析、詮釋或撰稿」[文內]。</li>
+<li>資助者包含 Health Innovation North-West Coast、Liverpool University Hospital NHS Trust，以及 <strong>Quidel Ortho、Siemens Healthineers、Abbott Diagnostics、Menarini</strong>——四家皆為 IVD（體外診斷）廠商 [文內]。</li>
+<li><strong>關鍵矛盾 [評估]</strong>：文內同時寫明「<strong>Abbott Diagnostics assisted in the storage, transfer, and analysis of the serum hs-cTnI samples</strong>」。hs-cTnI（Abbott Alinity）正是本試驗<strong>裁定主要安全終點（type 1 MI）的參考標準</strong>。廠商實質參與了參考標準的產生，與「funders had no role in data collection」的聲明在字面上牴觸。這不是道德指控，而是一個<strong>必須被明確標示的結構性風險</strong>：主要安全終點的分母與分子都由一家資助廠商的平台決定。</li>
+<li>Khand：Bayer、Daiichi Sankyo、AstraZeneca、Menarini、Abbott Vascular、<strong>Abbott Diagnostics</strong> 的演講費／顧問費；持有 <strong>Abbott Diagnostics 研究合約</strong>；Menarini、Bayer 研究經費 [文內]。</li>
+<li>Collinson：Siemens Healthineers 演講費；Psyros Diagnostics、Radiometer 顧問委員；IFCC CCB 顧問（無給職）[文內]。</li>
+<li>其餘作者聲明無相關利益 [文內]。</li>
+</ul>
+</li>
+</ul>
+<hr />
+<h2>2. 文獻 Metadata 整理</h2>
+<table>
+<thead>
+<tr>
+<th>項目</th>
+<th>內容</th>
+<th>來源</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Received</td>
+<td>2025-12-11</td>
+<td>[文內]</td>
+</tr>
+<tr>
+<td>Revised received</td>
+<td>2026-02-25</td>
+<td>[文內]</td>
+</tr>
+<tr>
+<td>Accepted</td>
+<td>2026-02-27</td>
+<td>[文內]</td>
+</tr>
+<tr>
+<td>收稿→接受總天數</td>
+<td><strong>78 天</strong></td>
+<td>自行計算</td>
+</tr>
+<tr>
+<td><strong>修訂版→接受天數</strong></td>
+<td><strong>2 天</strong></td>
+<td>自行計算</td>
+</tr>
+<tr>
+<td>期刊 Impact Factor</td>
+<td><strong>22.3</strong>（2025 JCR，2026-06-17 公布）</td>
+<td>[外部: ACC 官網、journalmetrics.org]</td>
+</tr>
+<tr>
+<td>期刊分區</td>
+<td>心臟科 Q1（全球心臟科前段）</td>
+<td>[外部: journalmetrics.org]</td>
+</tr>
+<tr>
+<td>JACC 宣示 first decision</td>
+<td><strong>≤3 週</strong>（14–21 天）；expedited 者 14 天內初判</td>
+<td>[外部: ACC &quot;Publish in JACC&quot;、manusights JACC review time]</td>
+</tr>
+<tr>
+<td>Open Access</td>
+<td>未於文內標示 OA licence；PDF 標準 Elsevier 版權頁</td>
+<td>[文內]</td>
+</tr>
+<tr>
+<td>邀稿 vs 投稿</td>
+<td>原創研究（Original Research），非邀稿</td>
+<td>[文內]</td>
+</tr>
+</tbody>
+</table>
+<p><strong>解讀</strong>：78 天總週期相對 JACC 宣示的審查節奏屬於<strong>正常偏快</strong>，符合 JACC 對高影響力隨機試驗的處理慣例。但 <strong>revised→accepted 僅 2 天</strong>，意味著修訂後幾乎未再送外審，僅編輯確認。這在流程上合理，但配合下方 C4 我實際查出的<strong>表 2 與表 3 之間多處分母與事件計數不一致</strong>（見紅旗清單），可以合理推論統計審查並未逐格核對主要終點的算術一致性 [推論：依據修訂週期與實際發現的數據矛盾]。</p>
+<p><strong>編輯重視程度 [外部]</strong>：本刊同期為本文配置了<strong>三篇</strong>相關文字——Crisanti 等人的 Editorial Comment（p.1222–1225）、Wasfy 的 Editor's Note（p.1226–1227），以及<strong>主編 Krumholz 親自撰寫的 Editor's Page</strong>（p.1175–1177）。一篇「效率終點為陰性」的試驗獲得主編專文，顯示 JACC 將其定位為<strong>實作科學（delivery science）的範例文本</strong>，而非單純的 troponin 路徑比較。</p>
+<hr />
+<h2>3. 研究背景 [僅依本篇文內]</h2>
+<ul>
+<li><strong>既有事實</strong>：歐洲每年約 1,000 萬人次因胸痛至急診，美國相近；其中僅約 10% 最終診斷為 AMI（ref 1–3）。</li>
+<li><strong>指引現況</strong>：ESC 給予 0/1 小時 ADP <strong>Class I</strong> 建議；ACC/AHA 2025 亦改為建議 1 或 2 小時重複採檢（ref 2, 4）。</li>
+<li><strong>知識缺口（作者明示）</strong>：支持 0/1 小時 ADP 的證據「abundant but mostly observational」。觀察性研究以預設的 assay-specific decision limit <strong>回溯套用</strong>於世代，用<strong>演算法層級表現</strong>當作真實世界臨床效能的代理指標。但「臨床醫師實際依不同 cut-off 行動」的前瞻隨機比較從未做過。</li>
+<li><strong>既有兩篇 RCT 的限制（作者明示）</strong>：RAPID-TnT（Chew 2019）對照組的 cTn 數值被遮蔽至 30 ng/L，實質上不再是 hs-cTn；Inoue 等人的 stepped-wedge 試驗對照組未一致使用 hs-cTn assay。另兩篇前瞻實作研究則分別在<strong>專屬胸痛單位</strong>或<strong>私人醫療體系</strong>進行（ref 10, 15），外推性受限。</li>
+<li><strong>Research question</strong>：在真實世界臨床實務中，ESC 0/1 小時 ADP 與 0/3 小時 ADP（<strong>兩臂皆全面使用 hs-cTn</strong>）相比，效率與安全性如何？</li>
+</ul>
+<hr />
+<h2>4. 研究設計與方法</h2>
+<h3>PICO</h3>
+<ul>
+<li><strong>P</strong>：≥18 歲、到院前 12 小時內胸痛發作或達高峰、疑似心因性胸痛之急診病人（Supplemental Figure 3 定義）。排除 ST 段上升、近期外傷、懷孕、無法同意等。</li>
+<li><strong>I</strong>：ESC <strong>0/1 小時</strong> ADP（Roche Elecsys 第五代 hs-cTnT，cobas e601/e801）。</li>
+<li><strong>C</strong>：ESC <strong>0/3 小時</strong> ADP（同一 hs-cTnT assay）。</li>
+<li><strong>O</strong>：
+<ul>
+<li><strong>主要效率終點</strong>：到院後 <strong>4 小時內出院</strong>的比例。</li>
+<li><strong>主要安全終點</strong>：<strong>已出院</strong>病人 30 天內 MACE（裁定之 index type 1 MI ＋ 30 天內再就診 type 1 MI ＋ urgent coronary revascularization ＋ 心血管死亡）。</li>
+<li>次要：總出院比例、僅 index MI 之出院安全性、出院者中位 ED LOS、路徑違背（breach）比例與其事件數、演算法層級 vs 臨床層級效能比較。</li>
+</ul>
+</li>
+</ul>
+<h3>關鍵設計細節</h3>
+<table>
+<thead>
+<tr>
+<th>項目</th>
+<th>內容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>設計</td>
+<td>雙中心（Royal Liverpool、Aintree）、個案層級隨機、務實非劣性實作試驗</td>
+</tr>
+<tr>
+<td>收案期間</td>
+<td>2021-12 至 2024-07，<strong>每日僅 09:00–21:00</strong>（研究人力限制）</td>
+</tr>
+<tr>
+<td>採檢執行者</td>
+<td><strong>全部由研究團隊人員抽血</strong>（非常規急診流程）</td>
+</tr>
+<tr>
+<td>追蹤</td>
+<td>透過 NHS 全國電子病歷連結，<strong>全國任一醫院之再就診追蹤達 100%</strong></td>
+</tr>
+<tr>
+<td>隨機化方式</td>
+<td><strong>主文未描述</strong> 序列產生方法、區組／分層、分派隱藏（allocation concealment）；僅引用已發表 protocol</td>
+</tr>
+<tr>
+<td>致盲</td>
+<td>臨床醫師與病人<strong>不可能盲</strong>（路徑本身即介入）；<strong>裁定者為雙人主治心臟專科醫師，對 hs-cTnT 結果及彼此判斷皆盲</strong>，kappa = 0.77（substantial）</td>
+</tr>
+<tr>
+<td>參考標準</td>
+<td><strong>獨立的 Abbott Alinity hs-cTnI</strong>（與 hs-cTnT 同一管血），用以降低 incorporation bias；採第四版 MI 全球定義</td>
+</tr>
+<tr>
+<td>主要分析族群</td>
+<td>安全性終點限於<strong>已出院次族群</strong>（非全隨機族群）；效率終點採全隨機族群（1,769 vs 1,774）</td>
+</tr>
+<tr>
+<td>統計方法</td>
+<td>比例比較用 chi-square；LOS 用 Kaplan-Meier ＋ log-rank（<strong>住院或死亡視為 censored</strong>）；敏感度差之 CI 用 <strong>Wilson 法、單側 97.5% CI</strong>；R 4.x (RStudio 2024.04.1)</td>
+</tr>
+<tr>
+<td>樣本數估算</td>
+<td>假設 0/1h 與 0/3h rule-out sensitivity 為 <strong>99.3% / 99.8%</strong>，NI margin 3%，出院者 30 天 MACE 率 <strong>10%</strong>，power 80%、α 5% → 3,368；加 5% 失訪 → <strong>3,536</strong>（實收 3,543）</td>
+</tr>
+<tr>
+<td>效率終點的事前假設</td>
+<td>4 小時內出院率預期 <strong>60% vs 50%</strong></td>
+</tr>
+</tbody>
+</table>
+<h3>主要變項操作型定義</h3>
+<ul>
+<li><strong>Pathway breach（違背）</strong>：ADP 判定「非 rule-out」卻被出院，或 ADP 判定可出院卻被收治。</li>
+<li><strong>Algorithm-level performance</strong>：依 hs-cTnT 數值的 ADP 建議（rule-out／observe／rule-in），與醫師決定無關。</li>
+<li><strong>Clinical performance</strong>：醫師實際的出院／收治決定。</li>
+</ul>
+<hr />
+<h2>5. 研究結果重點整理</h2>
+<h3>5.1 族群與基線</h3>
+<ul>
+<li>篩檢 13,983 → 隨機 3,750 → 排除重複就診 207 → <strong>ITT 分析 3,543</strong>（0/1h 1,769；0/3h 1,774）。<strong>篩檢納入率僅 26.8%</strong>。</li>
+<li>中位年齡 60 歲（IQR 49.5–70.5），男性 53.3%，中位 BMI 28.0。<strong>早期就診者（症狀發作／高峰至首次抽血 ≤3 小時）佔 27.1%</strong>。</li>
+<li>基線在兩臂間平衡良好（Table 1，逐項差異皆 &lt;2 個百分點）。<strong>ECG 正常者佔 73.3%</strong>、T 波倒置 24.4%、ST 下降 8.2%。</li>
+<li>13.7%（n=486）hs-cTnI 高於性別特異 99th percentile；其中 48.6% type 1 MI、9.5% type 2 MI、11.9% acute myocyte injury、<strong>30.0% chronic myocyte injury</strong>。</li>
+<li>30 天裁定最終診斷：<strong>type 1 MI 250 人（7.1%）、MACE 268 人（7.6%）</strong>。</li>
+</ul>
+<h3>5.2 主要與次要結果（含我自行推算的 95% CI）</h3>
+<table>
+<thead>
+<tr>
+<th>指標</th>
+<th>0/1 小時</th>
+<th>0/3 小時</th>
+<th>絕對差（ARD）</th>
+<th>95% CI</th>
+<th>文內 P</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>4 小時內出院（主要效率終點）</strong></td>
+<td>385/1,769 (21.8%)</td>
+<td>341/1,774 (19.2%)</td>
+<td><strong>+2.6%</strong></td>
+<td><strong>−0.1% ～ +5.3%</strong> [推算]</td>
+<td>0.07</td>
+</tr>
+<tr>
+<td>5 小時內出院</td>
+<td>41.8%</td>
+<td>32.4%</td>
+<td><strong>+9.4%</strong></td>
+<td><strong>+6.2% ～ +12.6%</strong> [推算]</td>
+<td>&lt;0.001</td>
+</tr>
+<tr>
+<td>總出院比例</td>
+<td>1,187/1,769 (67.1%)</td>
+<td>1,236/1,774 (69.7%)</td>
+<td><strong>−2.6%</strong></td>
+<td><strong>−5.7% ～ +0.5%</strong> [推算]</td>
+<td>0.11</td>
+</tr>
+<tr>
+<td>收治住院比例</td>
+<td>582/1,769 (32.9%)</td>
+<td>538/1,774 (30.3%)</td>
+<td>+2.6%</td>
+<td>−0.5% ～ +5.7% [推算]</td>
+<td>0.10</td>
+</tr>
+<tr>
+<td>出院者中位 ED LOS</td>
+<td>273 min (IQR 213–333)</td>
+<td>312 min (IQR 257–406)</td>
+<td><strong>−39 min</strong></td>
+<td>文內未報告差值 CI [限制]</td>
+<td>&lt;0.001</td>
+</tr>
+<tr>
+<td><strong>出院者 30 天 MACE（主要安全終點）</strong></td>
+<td>9/1,187 (0.8%)</td>
+<td>13/1,236 (1.1%)</td>
+<td>−0.29%</td>
+<td>−1.04% ～ +0.46% [推算]</td>
+<td>0.58</td>
+</tr>
+<tr>
+<td>出院者漏診 index type 1 MI</td>
+<td>4/1,187 (0.34%)</td>
+<td>12/1,236 (0.97%)</td>
+<td>−0.63%</td>
+<td>−1.27% ～ +0.01% [推算]</td>
+<td>0.09</td>
+</tr>
+<tr>
+<td><strong>Sensitivity（對 30 天 MACE）</strong></td>
+<td><strong>93.7% (88.4–97.1)</strong></td>
+<td><strong>89.5% (82.7–94.3)</strong></td>
+<td><strong>+4.2%</strong></td>
+<td><strong>單側 97.5% CI 下界 −2.5%</strong>（上界未報）[限制]</td>
+<td>NI margin 3% → <strong>判定非劣</strong></td>
+</tr>
+<tr>
+<td>Specificity</td>
+<td>72.4% (70.2–74.6)</td>
+<td>74.1% (71.9–76.2)</td>
+<td>−1.7%</td>
+<td>—</td>
+<td>0.32</td>
+</tr>
+<tr>
+<td>NPV</td>
+<td>99.2% (98.6–99.7)</td>
+<td>98.9% (98.2–99.4)</td>
+<td>+0.3%</td>
+<td>—</td>
+<td>0.45</td>
+</tr>
+<tr>
+<td>PPV</td>
+<td>23.0% (19.7–26.7)</td>
+<td>20.6% (17.3–24.3)</td>
+<td>+2.4%</td>
+<td>—</td>
+<td>0.34</td>
+</tr>
+<tr>
+<td><strong>全隨機族群 30 天 MACE（排除 index MI）</strong></td>
+<td>20/1,769 (1.1%)</td>
+<td>12/1,774 (0.7%)</td>
+<td><strong>+0.45%</strong></td>
+<td><strong>−0.17% ～ +1.08%</strong> [推算]</td>
+<td>0.21</td>
+</tr>
+</tbody>
+</table>
+<h3>5.3 時間鏈（本文最有價值的描述性資料）</h3>
+<ul>
+<li>到院 → 靜脈採檢：中位 <strong>47 min</strong>（IQR 32–67）</li>
+<li>採檢 → hs-cTnT 報告（中央實驗室 TAT）：中位 <strong>81 min</strong>（IQR 69–101）</li>
+<li>實際重複採檢間隔：0/1h <strong>65 min</strong>（62–71）；0/3h <strong>181 min</strong>（175–188）——兩臂皆忠實執行</li>
+<li><strong>首次結果在重複採檢時尚未可得的比例：0/1h 78.5% vs 0/3h 5.6%</strong></li>
+<li><strong>符合單次採檢 rule-out 條件者，實際僅抽一次即出院的比例：0/1h 23% vs 0/3h 70.1%</strong></li>
+</ul>
+<h3>5.4 路徑違背與演算法／臨床層級落差（Table 3）</h3>
+<ul>
+<li>違背比例：0/1h <strong>427/1,706 (25.0%)</strong> vs 0/3h <strong>348/1,562 (22.3%)</strong></li>
+<li><strong>0/1h 臂</strong>：233 人（佔出院者 20.5%）在「非 rule-out」下被出院 → 其中 <strong>8 人發生 MACE（3.4%）</strong>；194 人（佔住院者 34.2%）在 rule-out 下仍被收治 → 1 人 MACE。</li>
+<li><strong>0/3h 臂</strong>：僅 70 人（佔出院者 6.6%）在「非 rule-out」下被出院 → 4 人 MACE（5.7%）；但 <strong>278 人（佔住院者 55.9%）在 rule-out 下仍被收治 → 13 人 MACE（4.7%）</strong>。</li>
+<li>演算法層級 sensitivity（30 天 MACE）為 <strong>98.6% (95.0–99.8)</strong>，顯著高於臨床層級的 <strong>93.7% (88.4–97.1)</strong>。</li>
+</ul>
+<hr />
+<h2>6. 作者討論與評論重點</h2>
+<p><strong>作者的五項自陳新發現</strong>：(1) 0/1h 未增加 4 小時內出院比例；(2) 中位 ED LOS 縮短 39 分鐘；(3) 0/1h 安全性非劣於 0/3h；(4) 四分之一病人被違背路徑處理；(5) 臨床層級效能低於演算法層級效能。</p>
+<p><strong>與既有文獻的異同</strong>：</p>
+<ul>
+<li>LOS 縮短 39 分鐘，介於 RAPID-TnT（縮短 60 分鐘）與 Inoue 等人（無縮短）之間。</li>
+<li>與 Chiang 等人 meta-analysis（<em>Ann Intern Med</em> 2022）的 pooled sensitivity（0/1h <strong>99.2%</strong>、0/3h <strong>95.0%</strong>）相比，本試驗在出院者中的 sensitivity <strong>兩臂都明顯更低</strong>。作者將此歸因於「演算法層級外推」與「真實臨床決策」的落差。</li>
+<li>作者提出「<strong>遞減報酬律</strong>」：從 12→6→3 小時縮短採檢間隔曾有效降低 LOS，因當時 cTn 結果是 rate-limiting step；但 3→1 小時已不再如此，被實驗室 TAT 與系統壅塞抵銷（Figure 5 概念圖）。</li>
+</ul>
+<p><strong>作者自陳限制 [文內]</strong>：</p>
+<ol>
+<li>全部檢體由研究人員採集 → 兩臂皆屬<strong>最佳情境</strong>。</li>
+<li>僅日間收案，無法推論夜間。</li>
+<li>兩間英格蘭北部急診、以白人族群為主，對北美或黑人／亞洲族群之外推性可質疑。</li>
+<li>主要安全終點僅在<strong>出院次族群</strong>測量，非全隨機族群，「could introduce a bias」；但已檢查出院者基線與全試驗族群無異。</li>
+<li>排除 index MI 的全族群分析檢力不足（需 &gt;25,000 人才能分辨再就診 MI 與心因性死亡的差異），可能有 type 2 error。</li>
+<li>早期出院之分析檢力不足，因實際早期出院比例遠低於預期。</li>
+</ol>
+<p><strong>[評估] 作者詮釋是否合理？</strong></p>
+<ul>
+<li>大方向誠實，<strong>限制章節是全文寫得最好的部分之一</strong>，主動承認了效率終點的檢力不足與次族群分析的偏差風險。</li>
+<li>但有三處推論明顯超出數據支持：
+<ol>
+<li><strong>「failed to discharge more patients within 4 hours」</strong>（Conclusions 段落，已刪去 abstract 中的 &quot;significantly&quot;）——這是把 p=0.07 讀成「無差異」的典型統計謬誤。CI 上界 +5.3%，在一個以 4 小時為法定目標的 NHS 急診裡，5% 絕對差並非可忽略量。</li>
+<li><strong>「we can be confident that any differences in LOS can be attributed to the reduction in the sampling intervals between pathways」</strong>——理由是兩臂的檢體處理時距相同。但這是邏輯跳躍：兩臂的<strong>演算法結構</strong>（rule-out 比例）與<strong>醫師違背模式</strong>差異巨大（見下方 B3），LOS 差異完全可能來自這些，而非單純採檢間隔。</li>
+<li><strong>「Once patients are admitted, the impact of the randomized ADP ... is unlikely to be significant」</strong>——用以正當化只分析出院次族群。此為未經檢驗的假設，且無法修復「出院與否本身就是被介入影響的結果變項」這個結構問題。</li>
+</ol>
+</li>
+</ul>
+<hr />
+<h2>7. 外部專業意見</h2>
+<h3>7.1 JACC 主編 Editor's Page [外部: JACC Editor's Page 全文，doi:10.1016/j.jacc.2026.08.002]</h3>
+<p>Harlan M. Krumholz, MD, SM（JACC 主編）撰寫專文〈When Evidence Meets the System: The Distance From Proof to Practice〉，JACC 2026;88(11):1175–1177。<strong>已成功取得並閱讀全文</strong>，核心論點：</p>
+<ul>
+<li><strong>開場質問</strong>：「較短的排除流程理應被嚴格檢驗是否漏掉更多病人。但誰會想到要去檢驗它是否<strong>真的縮短了評估時間</strong>？這不是理所當然嗎？」——Krumholz 認為本試驗的價值正在於檢驗了一個「看似不值得檢驗」的命題。</li>
+<li><strong>對本文結果的肯定</strong>：承認 0/1h「並非沒有益處」——縮短 39 分鐘 LOS、5 小時內出院比例由 32.4% 提升至 41.8%，並達成事前指定的非劣性安全門檻。但他明確指出：「<strong>事件數限制了確定性的安慰</strong>（the number of events limited definitive reassurance）」——這與我在 C 節的檢力判讀一致。</li>
+<li><strong>對機轉的精準拆解</strong>（與本文最重要的一致之處）：「這是兩條<strong>分支路徑</strong>，不是兩個一樣的時鐘。」在 0/1h 組，<strong>近五分之四的病人在首次結果回來前就已抽了第二管血</strong>；0/3h 組只有約二十分之一。符合單次採檢 rule-out 者，0/1h 僅 23% 真的只抽一次就出院，0/3h 則有 70%。「這個不對稱似乎讓<strong>較快的路徑反而更難使用它自己的單次採檢分支</strong>，很可能是其優勢被侵蝕的原因。」</li>
+<li><strong>核心命題</strong>：「<strong>系統不只是拖慢了演算法，它改變了演算法的運作方式。實際被執行的介入，已經不完全是紙上那個介入。</strong>」</li>
+<li><strong>對配套評論的引述</strong>：Krumholz 指出 Wasfy 的 Editor's Note 強調「路徑的有效性取決於它被部署的場域」；Crisanti 等人則把<strong>營運需求具體化</strong>——「<strong>周轉時間、教育訓練、遵從度與品質保證不是周邊細節；它們決定了這條路徑在實務上究竟存不存在</strong>」。</li>
+<li><strong>自身類比</strong>：以 door-to-balloon time 為例，說明 primary PCI 從來就不是孤立的介入，其效能取決於周邊系統。</li>
+<li><strong>結論</strong>：「<strong>Discovery tells us what can work. Delivery determines what does work. 系統不只是介入的背景，它就是介入的一部分。</strong>」</li>
+</ul>
+<h3>7.2 同期 Editorial Comment（本文首頁標示 &quot;SEE PAGE 1222&quot;）</h3>
+<ul>
+<li>Crisanti L, Bima P, Lopez-Ayala P, Koechlin L, Boeddinghaus J, Mueller C. <strong>Challenges in the Implementation of Accelerated Diagnostic Pathways.</strong> <em>J Am Coll Cardiol</em> 2026;88(11):1222–1225. doi:10.1016/j.jacc.2026.03.168（PMID 42159529）[外部: 書目資訊]</li>
+<li><strong>[無法取得全文]</strong>——已依指示以 <code>fetch_editorial.py</code> 對此 DOI 嘗試三次，下載鏈於 ScienceDirect 遭 Cloudflare 驗證阻擋、Unpaywall 與 PMC 亦無全文，均回報失敗。</li>
+<li>因此<strong>不臆測其完整論點</strong>，僅轉述兩項可驗證的第三方描述：
+<ul>
+<li>Krumholz 在其 Editor's Page 中直接引述 Crisanti 等人的主張：周轉時間、教育、遵從度、品質保證共同決定路徑能否存在於實務中 [外部: Krumholz Editor's Page 全文，ref 8]。</li>
+<li>ACC Journal Scan 描述該評論「指出新型生物標記（如 cardiac myosin-binding protein C，或 hs-cTnI 與 hs-cTnT 併用）可能改善診斷鑑別力」[外部: ACC Latest in Cardiology journal scan]。</li>
+</ul>
+</li>
+<li><strong>值得注意的背景</strong>：該評論作者群為 Basel 的 Christian Mueller 團隊——即 ESC 0/1h 演算法<strong>原始衍生與驗證研究的主要來源</strong>（本文 ref 7, 9, 10, 29 皆出自該群）。由被評論路徑的原始開發者撰寫評論，其立場需以此背景閱讀。</li>
+</ul>
+<h3>7.3 同期 Editor's Note</h3>
+<ul>
+<li>Wasfy JH. <strong>Improving Cardiology Care Within Constrained and Distinctive Health Care Systems.</strong> <em>J Am Coll Cardiol</em> 2026;88(11):1226–1227. doi:10.1016/j.jacc.2026.03.073（PMID 42159536）[外部: 書目資訊]</li>
+<li><strong>[無法取得全文]</strong>——同樣以 <code>fetch_editorial.py</code> 嘗試，遭 Cloudflare 阻擋而失敗。</li>
+<li>可驗證的第三方引述：「實驗室周轉時間、臨床決策與臨床實務中的資源限制，可能挑戰即使是驗證最完善的臨床路徑的有效實作」[外部: ACC Journal Scan 引述 Wasfy 原句]。</li>
+</ul>
+<h3>7.4 小結</h3>
+<p>三篇配套文字（含主編親撰）<strong>一致聚焦於「實作落差」這個敘事</strong>，且<strong>沒有任何一篇質疑本試驗的統計或內部效度</strong>。這本身值得注意：本文在數據呈現上存在數項可查證的內部矛盾（見 C4 與 E），卻未被任何配套評論提及。</p>
+<hr />
+<h2>8. 臨床建議</h2>
+<h3>可採用本文結論的情境</h3>
+<ol>
+<li><strong>中央實驗室 hs-cTn TAT ≥60 分鐘、且採檢流程無法與報告回覆同步的急診</strong>：本文結論（縮短採檢間隔至 1 小時，不會轉化為更多 4 小時內出院）可直接參考。</li>
+<li><strong>評估是否投資 0/1h 路徑轉換時的期望值校準</strong>：本文提供了唯一一個兩臂皆全面使用 hs-cTn 的頭對頭隨機證據，應取代觀察性研究外推的樂觀預期。</li>
+<li><strong>急診流程改善的標的排序</strong>：本文的時間鏈資料（到院→抽血 47 min、抽血→報告 81 min）明確指出瓶頸不在採檢間隔。</li>
+</ol>
+<h3>不建議直接套用的情境</h3>
+<ol>
+<li><strong>台灣多數醫學中心急診</strong>：本試驗的 81 分鐘中央實驗室 TAT 明顯偏長；若貴院 hs-cTn TAT 落在 30–45 分鐘，0/1h 路徑的單次／雙次採檢分支不會像本試驗那樣被自我抵銷，效率優勢<strong>應會大於本文所測</strong>。本文「遞減報酬律」的結論<strong>是場域依賴的，不可直接移植</strong>。</li>
+<li><strong>以「4 小時目標」為主要終點的推論</strong>：4 小時是 NHS 的法規目標，台灣急診並無對等指標；本地更相關的是總 LOS、留觀床位周轉與 boarding 時間，而本文在 LOS 上<strong>是正向的</strong>（−39 分鐘、5 小時內出院 +9.4%）。</li>
+<li><strong>非白人族群、症狀發作超過 12 小時、或到院前已抽血之病人</strong>：皆被排除。</li>
+<li><strong>夜間／假日急診</strong>：未收案。</li>
+<li><strong>無專責研究人員抽血的常規流程</strong>：本試驗兩臂皆為「最佳情境」，真實常規流程的絕對出院率會更差。</li>
+</ol>
+<h3>給臨床醫師的三點可操作建議</h3>
+<ol>
+<li><strong>不要為了縮短採檢間隔而先於首次報告就抽第二管血。</strong> 本試驗最重要的可執行教訓是：0/1h 臂有 78.5% 的病人在首次 hs-cTnT 尚未回覆前就被抽了第二管，導致<strong>符合單次採檢即可 rule-out 者只有 23% 真的省下第二針</strong>（0/3h 為 70%）。若貴院 TAT &gt; 採檢間隔，<strong>應把第二次採檢排在首次報告回覆之後</strong>，否則等於用一針換零效益。</li>
+<li><strong>若要真正縮短 ED LOS，優先投資於縮短 TAT（含 POC hs-cTn）與 triage-to-venepuncture 時間，而非縮短採檢間隔。</strong> 本試驗中「到院→抽血 47 分鐘 ＋ 抽血→報告 81 分鐘」合計 128 分鐘，已吃掉 4 小時窗的一半以上。</li>
+<li><strong>0/3 小時路徑的演算法層級漏診風險值得重新審視。</strong> 依 Table 3 自行推算，<strong>被 0/3h 演算法判為 rule-out 的病人中，有 16/1,273（1.26%）被裁定為 index type 1 MI；0/1h 則為 1/1,100（0.09%）</strong>（見 C1 分析）。此一約 14 倍的差距未被摘要或結論提及，但它比效率終點更具臨床重量。惟須注意跨 assay 不一致的替代解釋（見 F 節）。</li>
+</ol>
+<h3>研究證據強度分級</h3>
+<p><strong>中等</strong>。</p>
+<p>理由：內部效度的骨幹（個案層級隨機、基線平衡、100% 全國追蹤、雙人盲性裁定 kappa 0.77、以獨立 assay 降低 incorporation bias、事前註冊並發表 protocol）<strong>相當堅實</strong>；但（i）主要安全終點限於<strong>隨機化之後才形成的出院次族群</strong>，破壞了隨機化保護；（ii）效率終點嚴重低估實際事件率而檢力不足；（iii）表間存在多處可查證的計數與分母矛盾；（iv）裁定的參考標準由資助廠商協助分析。因此不足以評為「高」。</p>
+<hr />
+<h1>SKILL-A：原始研究批判性評讀</h1>
+<h2>A. 補充技術細節</h2>
+<p>僅補充 SECTION-0 未涵蓋者：</p>
+<ul>
+<li>
+<p><strong>樣本數估算的三項假設全部與實際嚴重背離</strong>：</p>
+<table>
+<thead>
+<tr>
+<th>假設</th>
+<th>事前值</th>
+<th>實際值</th>
+<th>偏離幅度</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0/1h rule-out sensitivity</td>
+<td>99.3%</td>
+<td>93.7%（臨床層級）</td>
+<td>−5.6 個百分點</td>
+</tr>
+<tr>
+<td>0/3h rule-out sensitivity</td>
+<td>99.8%</td>
+<td>89.5%（臨床層級）</td>
+<td>−10.3 個百分點</td>
+</tr>
+<tr>
+<td>4 小時內出院率</td>
+<td>60% vs 50%</td>
+<td><strong>21.8% vs 19.2%</strong></td>
+<td>絕對值僅為預期的 1/3</td>
+</tr>
+</tbody>
+</table>
+<p>第三項偏離最為嚴重。作者事前預期 10 個百分點的差距，實際只觀察到 2.6 個百分點，且整體出院率落在預期的三分之一。這代表：(a) 研究期間（2021-12 至 2024-07，涵蓋 NHS 後疫情壅塞高峰）的系統飽和度遠超設計假設；(b) 效率終點存在<strong>地板效應</strong>，可能系統性壓縮了兩臂的真實差距。個案層級同期隨機保護了<strong>組間比較的內部效度</strong>，但<strong>絕對數值的可轉移性極低</strong>。</p>
+</li>
+<li>
+<p><strong>隨機化細節嚴重報告不足</strong>：主文從頭到尾<strong>未說明序列產生方法（區組／分層／電腦亂數）、亦未說明 allocation concealment 機制</strong>，僅以引用 protocol 帶過。以 CONSORT 標準衡量這是明確的報告缺漏。Table 1 顯示基線極度平衡（所有變項差異 &lt;2 個百分點），<strong>間接</strong>支持隨機化執行良好，但這不能取代分派隱藏的直接描述。</p>
+</li>
+<li>
+<p><strong>致盲</strong>：路徑本身無法對臨床醫師或病人致盲——這是實作試驗的固有性質，不算缺陷，但意味著<strong>所有以「醫師決策」為終點的結果都內建 performance bias</strong>，且此偏差可能不對稱（見 B3）。裁定端致盲做得很好：雙人主治心臟專科、對 hs-cTnT 盲、對彼此判斷亦盲。<strong>文內未報告盲法成功度檢查</strong>。</p>
+</li>
+<li>
+<p><strong>ITT vs per-protocol</strong>：效率終點採全隨機族群（近似 ITT）。<strong>主要安全終點的分析族群既非 ITT，亦非標準 per-protocol，而是「post-randomization 出院次族群」</strong>，文內未提供對應的 ITT 敏感度分析，也未提供 per-protocol 與此次族群結果的一致性檢核。</p>
+</li>
+<li>
+<p><strong>多重比較</strong>：兩個主要終點（效率＋安全）各自一次檢定，未見 α 分配說明。次要終點（總出院率、LOS、僅 index MI 安全性、breach 分析、早期就診者次群、演算法 vs 臨床層級比較）<strong>至少 6 項以上，全無多重比較校正</strong>，Figure 3 更一口氣呈現 8 個 P 值。</p>
+</li>
+<li>
+<p><strong>缺失資料</strong>：追蹤 100%，同意後無人退出，<strong>幾乎沒有 attrition bias</strong>——這是本文的真正強項。唯一可見缺失為 presentation ECG（n=3,531，缺 12 筆，0.34%）。</p>
+</li>
+<li>
+<p><strong>存活分析假設</strong>：LOS 的 KM 分析<strong>未檢驗任何比例風險假設</strong>（僅用 log-rank），且存在更根本的設定錯誤（見 C4）。</p>
+</li>
+<li>
+<p><strong>文獻引用錯誤</strong>：ref 16 與 ref 17 為<strong>同一篇文章</strong>（Khand A, et al. <em>Am Heart J</em> 2024;278:235–247），被重複列入參考文獻。屬於編輯層級的小瑕疵，但與 C4 的表間矛盾並列，指向整體校對強度不足。</p>
+</li>
+</ul>
+<hr />
+<h2>A1. 特殊設計子模組：Non-inferiority Trial</h2>
+<h3>(1) 非劣性 margin（Δ = 3% 絕對 sensitivity 差）是否有合理依據？</h3>
+<ul>
+<li><strong>臨床依據：薄弱。</strong> 文內僅寫「With a noninferiority margin of 3%」，<strong>完全未提供臨床正當性論證</strong>（為何 3% 的 MACE 偵測敏感度損失是病人可接受的？），僅引用 Möckel 2015（ref 18）——該文是 copeptin 早期出院試驗，其 margin 情境與本試驗不同。</li>
+<li><strong>量級問題</strong>：在事前假設的 99.3%／99.8% sensitivity 背景下，3% 的 margin 意味著允許 sensitivity 低至 96.8%——以急診胸痛 rule-out 的安全標準（普遍要求 sensitivity ≥99%、漏診率 &lt;1%）衡量，<strong>3% 是一個相當寬鬆的門檻</strong>。</li>
+<li>[參考: jug120004_2605_2611.md「Noninferiority Threshold」段] JAMA Users' Guide 明確提醒：「若非劣性試驗選擇了不夠嚴格的門檻，便有可能在許多病人一旦被告知最大可能的風險增幅後根本不願接受新療法的情況下，仍宣告非劣性」，並建議「<strong>在詮釋非劣性門檻時，請使用你自己的判斷，而非接受研究者的判斷</strong>」。同一指引亦指出，「一個非劣的治療仍可能是 inferior，只是還沒有 inferior 到令人擔心的程度」。以此標準，本文 3% 的 margin <strong>必須由讀者自行重新評估</strong>，而非照單全收。</li>
+<li><strong>本例中 margin 的實際影響有限（可減輕疑慮之處）</strong>：因為點估計方向<strong>有利於</strong>新路徑（+4.2%），margin 是否過寬在此並未直接造成「劣性被包裝成非劣」的風險。但單側 97.5% CI 下界 <strong>−2.5%</strong> 與 margin −3% <strong>僅差 0.5 個百分點</strong>，屬於明確的「貼邊過關」。若實際 MACE 事件數再少 2–3 例、或分母定義稍有更動（見 C4 的分母矛盾），結論即可能翻轉。</li>
+</ul>
+<h3>(2) Active comparator 是否以最佳方式施行？</h3>
+<p>[參考: jug120004_2605_2611.md 摘要段「Suboptimal administration of standard treatment ... may produce misleading results in noninferiority trials」]</p>
+<ul>
+<li><strong>是，而且施行得相當忠實</strong>：0/3h 臂的實際重複採檢間隔中位數 181 分鐘（IQR 175–188），幾乎完美貼合 3 小時；兩臂使用<strong>完全相同的 hs-cTnT assay 與平台</strong>。這正是本試驗相對 RAPID-TnT（對照組數值被遮蔽至 30 ng/L）與 Inoue 試驗（對照組 assay 不一致）的<strong>核心方法學優勢</strong>，此點應予高度肯定。</li>
+<li><strong>但有一項未被討論的不對稱</strong>：0/3h 臂的臨床醫師<strong>明顯不信任該路徑的 rule-out 建議</strong>——住院病人中有 <strong>55.9%（278/497）是被 ADP 判定為 rule-out 卻仍被收治</strong>。相對地，0/1h 臂只有 34.2%。這意味著「0/3h 標準照護」在實作上被醫師大幅「加保守」執行。這對非劣性判讀是<strong>保護性</strong>的（讓對照組看起來更安全），因此不構成「comparator 被劣化」的疑慮；但它確實代表兩臂的實際介入內容並不對稱。</li>
+</ul>
+<h3>(3) ITT 在非劣性設計中偏向保守——是否同時報告 per-protocol？</h3>
+<ul>
+<li><strong>未報告。</strong> 這是本文非劣性分析最實質的缺口。</li>
+<li>更嚴重的是：本文的主要非劣性分析<strong>根本不是 ITT</strong>。它是 post-randomization 的出院次族群。[參考: jug120004_2605_2611.md「ARE THE RESULTS VALID?」段] 該指引要求非劣性試驗應同時檢視 as-randomized 與 per-protocol 兩種分析的一致性；本文兩者皆無。</li>
+<li><strong>唯一保留隨機化的安全比較</strong>（全族群 30 天 MACE 排除 index MI）：<strong>20/1,769 (1.1%) vs 12/1,774 (0.7%)，ARD +0.45%（95% CI −0.17% ～ +1.08%）[推算]，方向與主要結論相反</strong>（不利 0/1h，RR ≈ 1.67）。作者以「檢力不足、需 &gt;25,000 人」帶過。這個處理在統計上正確（確實 INCONCLUSIVE），但<strong>在論述上有選擇性</strong>：唯一未被 post-randomization 選擇污染的安全比較，其點估計方向與頭條結論相反，這一點應該出現在摘要，而不只是限制段。</li>
+</ul>
+<h3>(4) 觀察到的差異相對於 margin 的臨床意義</h3>
+<ul>
+<li>觀察值 <strong>+4.2%</strong>，方向有利 0/1h；單側 97.5% CI 下界 −2.5%（未報上界）[限制：兩側 CI 與 Supplemental Figure 6 之 forest plot 皆無法取得]。</li>
+<li><strong>但這裡有一個關鍵的量綱問題</strong>：4.2% 的 sensitivity 差，換算成絕對事件數，是 0/1h 臂在 143 個 MACE 中多攔下約 6 個。而在<strong>絕對安全水準</strong>上，兩臂的表現都低於急診 rule-out 的通行標準：<strong>NPV 99.2% vs 98.9%，意即每 100 個被出院的病人中約有 0.8–1.1 人於 30 天內發生 MACE</strong>；0/3h 臂的 1.1% <strong>已超過普遍接受的 &lt;1% 漏診上限</strong>。</li>
+<li>因此本試驗真正的臨床訊息不是「0/1h 非劣」，而是——<strong>兩條路徑在真實實作中的安全性都低於觀察性研究所承諾的水準</strong>。這一點作者在結論中誠實寫出了（&quot;safety for both pathways was less than that imputed by observational studies&quot;），值得肯定。</li>
+</ul>
+<hr />
+<h2>B. 批判性評估</h2>
+<h3>B1. 假說與理論邏輯</h3>
+<table>
+<thead>
+<tr>
+<th>項目</th>
+<th>評估</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>假說是否事前指定？</td>
+<td><strong>是。</strong> NCT05322395 事前註冊，protocol 已於 <em>Am Heart J</em> 2024 全文發表（ref 16/17），主要效率終點、主要安全終點、NI margin、樣本數假設皆明確事前載明。<strong>這是本文最無爭議的強項</strong>，也讓 post-hoc 挑選的疑慮大幅降低。</td>
+</tr>
+<tr>
+<td>有無撒網後挑顯著？</td>
+<td><strong>低風險，但非零。</strong> 次要終點數量偏多且無多重比較校正（Figure 3 一頁呈現 8 個 P 值）。唯一可疑的事後切點是「5 小時內出院 41.8% vs 32.4%, p&lt;0.001」——這個時間點<strong>未在事前終點清單中</strong>，是在 4 小時終點未達顯著後才呈現的。雖然 Figure 2 顯示的是連續時間曲線（非挑選單一時點），但強調 5 小時的敘事安排屬於事後性質。</td>
+</tr>
+<tr>
+<td>機轉與情境是否匹配？</td>
+<td><strong>高度匹配。</strong> 「縮短採檢間隔 → 更早得到第二個數值 → 更早出院」在邏輯上直接。作者提出的反機轉（採檢間隔已不是 rate-limiting step）同樣站得住腳，並由其自身的時間鏈資料量化支持。</td>
+</tr>
+</tbody>
+</table>
+<p><strong>最合理的機轉解釋（3 點）</strong>：</p>
+<ol>
+<li>
+<p><strong>TAT 吞噬採檢間隔</strong>：中央實驗室 TAT 81 分鐘 &gt; 0/1h 的採檢間隔 65 分鐘。當 TAT &gt; 間隔，第二管血必然在首次結果之前抽出（實測 78.5%），<strong>單次採檢 rule-out 分支因此被結構性摧毀</strong>——符合條件者只有 23% 真的只抽一次（0/3h 為 70%）。這是 Krumholz 與本文共同強調的機轉，且有直接數據支撐。</p>
+</li>
+<li>
+<p><strong>【本文未明言、但我從 Table 3 推算出的更強機轉】兩條演算法的 rule-out 比例本質上不同</strong>。依 Table 3 自身分母計算：</p>
+<ul>
+<li>0/1h：rule-out (906 已出院 + 194 被收治) = <strong>1,100/1,706 = 64.5%</strong></li>
+<li>0/3h：rule-out (995 + 278) = <strong>1,273/1,562 = 81.5%</strong></li>
+</ul>
+<p><strong>0/3 小時演算法判定「可排除」的病人比 0/1 小時多 17 個百分點。</strong> 原因在機轉上完全合理：ESC 0/1h 有一個很大的 &quot;observe&quot; 灰色地帶（不符 rule-out 亦不符 rule-in 者），而 0/3h 幾乎沒有——3 小時時 hs-cTnT 低於 99th percentile 即可排除。因此 0/1h 的「時間優勢」被它自己<strong>更保守的判定門檻</strong>抵銷掉了。</p>
+<p><strong>這解釋了三件事實為何必然同時出現</strong>：0/1h 沒有出院更多人（總出院率甚至數值上更低，67.1% vs 69.7%）、0/1h sensitivity 較高、0/1h specificity 較低。這不是巧合，而是<strong>同一個操作點位移的三個面向</strong>。本文的敘事全押在「TAT 與系統壅塞」，卻未指出這個更基本的演算法閾值差異，是討論段最大的遺漏。</p>
+</li>
+<li>
+<p><strong>系統飽和的地板效應</strong>：整體 4 小時內出院率僅 ~20%（預期 60%/50%）。當九成病人無論如何都出不去，任何上游加速都無從表現。</p>
+</li>
+</ol>
+<p><strong>最可疑的敘事跳躍（3 點）</strong>：</p>
+<ol>
+<li>「<strong>採檢間隔的遞減報酬律</strong>」（Figure 5 概念圖 ＋ Discussion）——這個結論被寫成普遍原則，但它其實是<strong>本院 81 分鐘 TAT 條件下的局部真理</strong>。作者自己引用的 POC troponin 研究（ref 22–24）正說明 TAT 一旦縮短，結論就會改變。把場域依賴的發現寫成通則，是最明顯的過度概化。Figure 5 是純概念圖、<strong>無任何數據支撐</strong>，卻被放在主文作為論證。</li>
+<li>「<strong>any differences in LOS can be attributed to the reduction in the sampling intervals</strong>」——已於第 6 節指出的邏輯跳躍。</li>
+<li>「<strong>Once patients are admitted, the impact of the randomized ADP ... is unlikely to be significant</strong>」——用一個未檢驗的假設，去正當化一個會破壞隨機化的分析決策。</li>
+</ol>
+<h3>B2. 受試者與外推性</h3>
+<ul>
+<li><strong>篩檢納入率僅 26.8%</strong>（3,750/13,983）。最大宗排除是 <strong>6,498 人「noncardiac sounding chest pain」</strong>——這是一個在隨機化<strong>之前</strong>施加的<strong>臨床醫師主觀 gestalt 過濾器</strong>。意即：本試驗評估的不是「所有胸痛病人」，而是「已經通過醫師直覺初篩、被認為可能是心因性」的族群。真實世界 ADP 的使用範圍比這更寬。7.1% 的 type 1 MI 盛行率確實與典型 ADP 世代相符，但<strong>外推時必須記得這個前置濾網</strong>。</li>
+<li><strong>2,555 人因症狀發作／高峰 &gt;12 小時被排除</strong>——但這類病人在臨床上仍經常被套用 ADP。</li>
+<li><strong>155 人因無法提供知情同意被排除</strong>：此族群系統性偏向<strong>高齡、譫妄、重症、失智</strong>，恰是漏診後果最嚴重的一群。他們的缺席會<strong>系統性高估</strong>兩條路徑的安全性。</li>
+<li><strong>僅日間 09:00–21:00 收案</strong>：夜間 ED 的人力、實驗室配置、決策品質皆不同，且夜間通常是壅塞最嚴重的時段。</li>
+<li><strong>檢體全由研究人員抽取</strong>：作者誠實標示為「兩臂的最佳情境」。但這也意味著<strong>到院→抽血 47 分鐘已經是最佳值</strong>，常規流程只會更長，因而使「TAT 吞噬間隔」的現象在真實世界更嚴重，而非更輕。</li>
+</ul>
+<p><strong>外推性分級</strong>：</p>
+<table>
+<thead>
+<tr>
+<th>目標族群／場域</th>
+<th>分級</th>
+<th>說明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>英國／西歐 NHS 型急診，中央實驗室 TAT 60–100 分鐘，日間</td>
+<td><strong>高</strong></td>
+<td>直接可外推；本文即此情境</td>
+</tr>
+<tr>
+<td>台灣醫學中心急診（hs-cTn TAT 通常 30–60 分鐘，部分有 POC）</td>
+<td><strong>低至中</strong></td>
+<td><strong>效率結論不可直接移植</strong>。TAT &lt; 採檢間隔時，0/1h 的單次採檢分支不會被自我抵銷，效率優勢預期高於本文。安全性結論（兩條路徑實作安全性皆低於觀察性研究）<strong>可外推</strong>；演算法閾值差異（B1 第 2 點）亦可外推</td>
+</tr>
+<tr>
+<td>台灣區域醫院／地區醫院急診</td>
+<td><strong>中</strong></td>
+<td>若 TAT 長、床位緊、無專人抽血，則本文的悲觀結論可能更貼近</td>
+</tr>
+<tr>
+<td>北美急診</td>
+<td><strong>中</strong></td>
+<td>作者自陳可質疑；ACC/AHA 2025 已改建議 1–2 小時重採</td>
+</tr>
+<tr>
+<td>黑人、南亞、東亞為主之族群</td>
+<td><strong>低</strong></td>
+<td>未納入；作者明確承認</td>
+</tr>
+<tr>
+<td>高齡／失智／無法同意者</td>
+<td><strong>低</strong></td>
+<td>被系統性排除</td>
+</tr>
+<tr>
+<td>夜間／假日</td>
+<td><strong>無法判定</strong></td>
+<td>完全未收案</td>
+</tr>
+<tr>
+<td>症狀 &gt;12 小時、到院前已抽血、STEMI</td>
+<td><strong>不適用</strong></td>
+<td>排除條件</td>
+</tr>
+</tbody>
+</table>
+<h3>B3. 研究設計與偏差</h3>
+<h4>(a) 隨機化與分派隱藏</h4>
+<ul>
+<li>個案層級隨機、兩臂 1,874 vs 1,876（近乎完美均等，支持區組隨機）[推論：依據 Figure 1 數字]。</li>
+<li><strong>主文完全未描述 allocation concealment</strong>。在一個由急診研究人員即時納入、且介入無法致盲的試驗中，分派隱藏是唯一能防止選擇性納入的機制。<strong>這是最重要的單一報告缺漏。</strong> 基線極度平衡提供間接安慰，但不能取代。</li>
+</ul>
+<h4>(b) 致盲</h4>
+<ul>
+<li>臨床醫師不可能盲——此為設計本質。<strong>但後果必須被正視</strong>：主要終點是醫師的出院決定，醫師知道自己在用哪條路徑，而 0/1h 路徑在當時正被 ESC 列為 Class I 並被積極推廣（通訊作者本人即是 NHS 的「hs-cTn clinical champion」）。<strong>對 0/1h 的期待可能促使醫師在該臂更積極地違背路徑而出院</strong>（實測：0/1h 臂有 20.5% 的出院者是違背 rule-in/observe 建議出院的，0/3h 僅 6.6%——<strong>三倍差距</strong>）。</li>
+<li>裁定端致盲執行紮實（雙人、對 hs-cTnT 盲、對彼此盲、kappa 0.77）。<strong>未報告盲法成功度檢查</strong>。</li>
+</ul>
+<h4>(c) 對照組適當性（Gyawali 框架）</h4>
+<ul>
+<li><strong>核心問題「這是我日常臨床會給病人的照護嗎？」→ 是。</strong> 0/3h ADP 是英國與多數地區實際使用最廣的路徑，且使用相同 hs-cTn assay。這是本試驗相對前兩篇 RCT 的決定性優勢。</li>
+</ul>
+<h4>(d) 提早停止</h4>
+<ul>
+<li><strong>無。</strong> 收案 3,543 達成計畫的 3,536，完整執行至計畫樣本數。無「提早停止誇大效果」的風險。</li>
+</ul>
+<h4>(e) 依從性</h4>
+<ul>
+<li>採檢間隔依從性<strong>極佳</strong>（0/1h 65 min；0/3h 181 min）。</li>
+<li><strong>但路徑決策依從性極差且高度不對稱</strong>——見下。</li>
+</ul>
+<p><strong>三個最可能造成偏差的設計點（附方向）</strong>：</p>
+<ol>
+<li>
+<p><strong>【最嚴重】主要安全終點限於 post-randomization 的「出院次族群」——條件化於結果變項（collider conditioning）</strong></p>
+<ul>
+<li>出院與否本身就是被介入影響的結果（67.1% vs 69.7%）。把分析限定在此次族群，<strong>等於在隨機化之後依據結果切分樣本，隨機化的可交換性（exchangeability）保護隨之失效</strong>。</li>
+<li>作者的防禦（Supplemental Table 2 顯示出院者基線在兩臂間無差異）<strong>只能處理已測量的基線變項，無法恢復未測量風險因子的可交換性</strong>。尤其當兩臂的醫師違背模式截然相反時（見下一點），「誰被留在出院族群裡」的機制在兩臂完全不同。</li>
+<li><strong>方向</strong>：不確定，但<strong>極可能放大 0/1h 的表面安全優勢</strong>。理由：0/3h 臂的醫師把 278 名 rule-out 病人「撈回來」收治（其中 13 人發生 MACE），這些高風險病人因此<strong>離開</strong>了 0/3h 的出院分母；而 0/1h 臂只撈回 194 人（1 人 MACE）。兩臂出院族群的殘餘風險組成因此不同。</li>
+<li><strong>作者僅以一句「This could introduce a bias」帶過，嚴重輕描淡寫。</strong></li>
+</ul>
+</li>
+<li>
+<p><strong>兩臂的路徑違背模式方向相反，使「路徑比較」與「醫師對路徑的信任度比較」無法分離</strong></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>0/1 小時</th>
+<th>0/3 小時</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>出院者中「非 rule-out 卻被出院」</td>
+<td><strong>233 (20.5%)</strong></td>
+<td>70 (6.6%)</td>
+</tr>
+<tr>
+<td>└ 其中發生 MACE</td>
+<td><strong>8 (3.4%)</strong></td>
+<td>4 (5.7%)</td>
+</tr>
+<tr>
+<td>住院者中「rule-out 卻被收治」</td>
+<td>194 (34.2%)</td>
+<td><strong>278 (55.9%)</strong></td>
+</tr>
+<tr>
+<td>└ 其中發生 MACE</td>
+<td>1 (0.1%)</td>
+<td><strong>13 (4.7%)</strong></td>
+</tr>
+</tbody>
+</table>
+<p>0/1h 臂的醫師<strong>過度出院</strong>（可能因 observe 區太大、路徑被覺得過於嚴苛，或路徑判讀困難——作者自己列舉的理由）；0/3h 臂的醫師<strong>過度收治</strong>。這代表本試驗測到的不是「兩條演算法」，而是「<strong>兩條演算法 ＋ 醫師對它們各自的信任模式</strong>」的複合體。這對實作試驗來說既是特色也是限制，但作者未指出這個不對稱本身會偏移安全性比較。</p>
+<ul>
+<li><strong>關鍵事實</strong>：0/1h 出院者的 9 件 MACE 中有 <strong>8 件（89%）發生在違背路徑者身上</strong>；0/3h 的 13 件中只有 4 件（31%）。<strong>0/1h 的安全表現，很大程度上是「演算法很好，但醫師沒照做」；0/3h 則是「醫師照做了，演算法漏掉了」。</strong> 這是兩種性質完全不同的失敗，卻被同一個 sensitivity 數字吸收掉。</li>
+</ul>
+</li>
+<li>
+<p><strong>效率終點的地板效應可能遮蔽真實差異</strong></p>
+<ul>
+<li>實際 4 小時出院率僅為預期的三分之一，兩臂都撞在同一個系統天花板上。這會<strong>縮小</strong>兩臂的可觀察差距。</li>
+<li><strong>方向</strong>：讓 0/1h 的效率優勢被低估（偏向虛無）。Figure 2 支持此推論——在較不受 4 小時瓶頸壓縮的 5 小時時點，差距擴大至 +9.4%。</li>
+</ul>
+</li>
+</ol>
+<h3>B4. 測量工具與實務意義</h3>
+<ul>
+<li><strong>參考標準的信度／可比性 [本文最被低估的問題]</strong>：主要安全終點以 <strong>Abbott Alinity hs-cTnI</strong> 裁定，而兩條路徑皆以 <strong>Roche Elecsys hs-cTnT</strong> 驅動。作者以此降低 incorporation bias——<strong>這個動機正確且值得稱許</strong>，但它引入了一個作者完全未討論的替代問題：
+<ul>
+<li>hs-cTnT 與 hs-cTnI 的 99th percentile、動力學、與非 ACS 心肌損傷（腎功能不全、心衰、年齡）的相關性<strong>眾所周知並不一致</strong>。</li>
+<li><strong>這種不一致會系統性地不利於 0/3h 臂</strong>：0/3h 的 rule-out 門檻是 3 小時時 hs-cTnT &lt; 14 ng/L；0/1h 的 rule-out 門檻低至 hs-cTnT &lt; 5 ng/L（或 0h &lt; 12 且 Δ1h &lt; 3）。<strong>門檻越高，越容易放過那些 hs-cTnT 正常但 hs-cTnI 升高的病人。</strong> 因此 0/3h 臂那 12 例「被出院卻裁定為 index type 1 MI」的病例中，有多少是真正的臨床漏診、有多少只是跨 assay 判讀不一致，<strong>本試驗在設計上無法分辨</strong>。</li>
+<li>佐證：全體中 13.7%（486 人）hs-cTnI 升高，其中 <strong>30.0%（146 人）被裁定為 chronic myocyte injury</strong>——顯示低度 hs-cTnI 升高在此族群非常常見，跨 assay 重新分類的空間很大。</li>
+<li><strong>[限制：本文未報告 hs-cTnT 與 hs-cTnI 的一致性分析、Bland-Altman、或漏診病例的雙 assay 數值對照；Supplemental Table 1 僅列分析效能，本次無法取得。]</strong> 這是最需要補充的單一分析。</li>
+</ul>
+</li>
+<li><strong>終點的臨床意義（composite 的不等權重問題）</strong>：名為 MACE，實質上 <strong>≈ 漏診的 index MI</strong>。出院者 22 件 MACE 中有 <strong>16 件（73%）是 index type 1 MI</strong>；且文內自陳「所有 30 天 urgent revascularization 都發生在 index type 1 MI 事件之中」、「該例心血管死亡亦為 index type 1 MI 的一部分」。因此這個複合終點的<strong>成分高度重疊、權重極不對等</strong>——它幾乎不是「重大不良心血管事件」，而是「診斷失誤」。這對本試驗的問題意識其實是恰當的，但**「MACE」這個標籤誇大了終點的病人重要性**，且掩蓋了「被漏掉的 index MI 有多少真的導致傷害」這個未被回答的問題。</li>
+<li><strong>主要效率終點（4 小時內出院）是一個法規指標而非病人中心指標</strong>：它服務於 NHS 的 4-hour target。ED LOS 與總出院率更接近病人與系統的實際利益，而這兩者在本文的方向<strong>不一致</strong>（LOS 有利 0/1h；總出院率數值上不利 0/1h）。</li>
+<li><strong>「就算結果是真的，真實世界有多大用處？」</strong>
+<ul>
+<li>效率面：每位出院病人省下 <strong>39 分鐘 ED 時間</strong>。以本試驗規模（0/1h 出院 1,187 人）換算，約等於 <strong>771 小時</strong>的急診佔床時間。在床位極度緊繃的系統中，這<strong>不是可忽略的量</strong>——但它<strong>沒有轉化為更多病人回家</strong>（總出院率 67.1% vs 69.7%），因此系統效益是否實現，取決於省下的時間是否真被轉為床位周轉。本試驗無法回答，作者也正確地指出需要健康經濟學評估。</li>
+<li>安全面：若採信演算法層級的差距（0/1h 1/1,100 vs 0/3h 16/1,273 漏診 index type 1 MI），改用 0/1h 相當於<strong>每約 86 名被演算法排除的病人，少漏 1 例 type 1 MI</strong>（NNT ≈ 86）[推算]。這在臨床上是有意義的量級——<strong>前提是那 16 例確實是真正的漏診，而非跨 assay 假象</strong>。</li>
+</ul>
+</li>
+</ul>
+<hr />
+<h2>C. 統計與資料完整性</h2>
+<h3>C1. 結果分類（CI ＋ MCID 框架）</h3>
+<p><strong>Step 1 — MCID（δ）確認</strong></p>
+<table>
+<thead>
+<tr>
+<th>終點</th>
+<th>文內事前指定</th>
+<th>本評讀採用之 MCID</th>
+<th>依據</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>4 小時內出院</td>
+<td><strong>有隱含</strong>：power 計算假設 60% vs 50%，即預期 <strong>+10 個百分點</strong></td>
+<td>主要用 <strong>+10%</strong>（試驗自訂）；並附 <strong>+3%</strong> 的寬鬆情境</td>
+<td>[文內] Statistical Analysis 段</td>
+</tr>
+<tr>
+<td>ED LOS</td>
+<td>無</td>
+<td><strong>−30 至 −60 分鐘</strong>（ED 流程研究常用）</td>
+<td>[推算] 領域慣例</td>
+</tr>
+<tr>
+<td>出院者 30 天 MACE</td>
+<td>無明確 MCID；NI margin 3%（sensitivity 尺度）</td>
+<td><strong>絕對漏診率 1%</strong>（急診 rule-out 通行安全上限）；sensitivity 尺度採文內 3%</td>
+<td>[推算] 領域共識</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Step 2 — CI 位置判讀</strong></p>
+<table>
+<thead>
+<tr>
+<th>終點</th>
+<th>效果量</th>
+<th>95% CI</th>
+<th>vs MCID</th>
+<th><strong>結果分類</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>4 小時內出院</strong></td>
+<td>+2.6%</td>
+<td>−0.1% ～ +5.3% [推算]</td>
+<td>CI <strong>完全排除</strong> +10% MCID；但包含 0</td>
+<td><strong>NEGATIVE</strong>（對試驗自訂的 10% MCID）&lt;br&gt;<strong>INCONCLUSIVE</strong>（若 MCID 放寬至 3%）</td>
+</tr>
+<tr>
+<td>5 小時內出院</td>
+<td>+9.4%</td>
+<td>+6.2% ～ +12.6% [推算]</td>
+<td>CI 下界 6.2% 接近 10% MCID</td>
+<td><strong>POSITIVE / IMPRECISE (+)</strong>——方向明確、量級具臨床意義</td>
+</tr>
+<tr>
+<td>總出院比例</td>
+<td>−2.6%</td>
+<td>−5.7% ～ +0.5% [推算]</td>
+<td>同時跨越 0 與臨床相關負向閾值</td>
+<td><strong>INCONCLUSIVE</strong>（方向不利 0/1h，值得關注）</td>
+</tr>
+<tr>
+<td>收治住院比例</td>
+<td>+2.6%</td>
+<td>−0.5% ～ +5.7% [推算]</td>
+<td>同上</td>
+<td><strong>INCONCLUSIVE</strong>（方向不利 0/1h）</td>
+</tr>
+<tr>
+<td>ED LOS（中位）</td>
+<td>−39 min</td>
+<td>文內未報差值 CI [限制]</td>
+<td>落在 30–60 min MCID 下緣</td>
+<td><strong>POSITIVE</strong>（統計穩健，log-rank p&lt;0.001），<strong>臨床意義邊緣</strong></td>
+</tr>
+<tr>
+<td><strong>出院者 30 天 MACE</strong></td>
+<td>−0.29%</td>
+<td>−1.04% ～ +0.46% [推算]</td>
+<td>CI 跨越 0 與 ±1% MCID</td>
+<td><strong>INCONCLUSIVE</strong></td>
+</tr>
+<tr>
+<td>出院者漏診 index type 1 MI</td>
+<td>−0.63%</td>
+<td>−1.27% ～ +0.008% [推算]</td>
+<td>CI 上界貼近 0，下界超過 1% MCID</td>
+<td><strong>IMPRECISE (+)</strong>——方向有利 0/1h，量級不確定</td>
+</tr>
+<tr>
+<td><strong>Sensitivity 差（主要 NI 終點）</strong></td>
+<td>+4.2%</td>
+<td>單側 97.5% 下界 −2.5%（上界未報）[限制]</td>
+<td>margin −3%，下界 −2.5%</td>
+<td><strong>NONINFERIOR，但貼邊（margin 餘裕僅 0.5 個百分點）</strong></td>
+</tr>
+<tr>
+<td><strong>全族群 MACE（排除 index MI；唯一保留隨機化者）</strong></td>
+<td>+0.45%</td>
+<td>−0.17% ～ +1.08% [推算]</td>
+<td>跨越 0 與 MCID</td>
+<td><strong>INCONCLUSIVE，方向不利 0/1h</strong></td>
+</tr>
+<tr>
+<td><strong>【自行推算】演算法層 rule-out 漏 index type 1 MI</strong></td>
+<td>1/1,100 (0.09%) vs 16/1,273 (1.26%)；<strong>ARD −1.17%</strong></td>
+<td><strong>−1.80% ～ −0.53%</strong> [推算]</td>
+<td>CI <strong>完全超越</strong> 1% MCID</td>
+<td><strong>POSITIVE ✅ 且具臨床重要性，有利 0/1h</strong></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Step 3 — 「sensitivity」究竟是什麼？（關鍵驗算）</strong></p>
+<p>我用文內數字反推，確認這些診斷效能指標的定義：</p>
+<ul>
+<li>0/1h：Sensitivity = 134/143 = <strong>93.71%</strong> ✓；Specificity = (1,187−9)/(1,769−143) = 1,178/1,626 = <strong>72.45%</strong> ✓；PPV = 134/582 = <strong>23.02%</strong> ✓；NPV = 1,178/1,187 = <strong>99.24%</strong> ✓</li>
+<li>0/3h：Sensitivity = 111/124 = <strong>89.52%</strong> ✓；Specificity = (1,236−13)/(1,774−124) = 1,223/1,650 = <strong>74.12%</strong> ✓；PPV = 111/538 = <strong>20.63%</strong> ✓；NPV = 1,223/1,236 = <strong>98.95%</strong> ✓</li>
+</ul>
+<p><strong>四組指標全部完全吻合</strong>，因此可以確定：<strong>這裡的「檢驗」是「臨床醫師收治 vs 出院」這個決策，「sensitivity」就是「所有最終發生 MACE 的病人中，有多少比例被收治住院」。</strong></p>
+<p><strong>這個定義有一個立即的後果，而文中完全沒有討論：sensitivity 可以靠多收病人住院來提高。</strong> 0/1h 臂收治了 582 人，0/3h 收治 538 人——多 44 人（+2.6 個百分點）。閾值右移會同時推高 sensitivity 並壓低 specificity，而實測正是如此（specificity 72.4% vs 74.1%）。</p>
+<p><strong>但公平地說，這不能完全解釋 0/1h 的優勢</strong>——我用兩個與閾值無關的指標檢核：</p>
+<ul>
+<li><strong>Youden index</strong>：0/1h = 93.7 + 72.4 − 100 = <strong>66.1</strong>；0/3h = 89.5 + 74.1 − 100 = <strong>63.6</strong>（+2.5）</li>
+<li><strong>Diagnostic odds ratio</strong>：0/1h = (134/9)/(448/1,178) = <strong>39.2</strong>；0/3h = (111/13)/(427/1,223) = <strong>24.5</strong> [推算]</li>
+</ul>
+<p>兩者都顯示 0/1h 臂的<strong>鑑別力本身</strong>較佳，不只是操作點位移。<strong>結論：+4.2% 的 sensitivity 優勢中，約有一部分來自「多收 2.6% 的病人」，但仍有實質的鑑別力差異存在。</strong></p>
+<p><strong>這使得非劣性契約的單邊性成為一個真實的設計問題</strong>：試驗只對 sensitivity 設了非劣性門檻，卻沒有對 specificity 或出院率設置對稱的約束。理論上，一條「收治所有人」的路徑可以輕鬆達成非劣性。本試驗沒有走到那個極端，但它確實同時出現了「sensitivity 較高、specificity 較低、總出院率數值上較低」的組合——而<strong>效率終點又是陰性</strong>。把三者合起來，誠實的摘要應該是：<strong>0/1h 路徑用 2.6% 較高的住院率與 39 分鐘的 LOS 縮短，換到了較佳的診斷鑑別力，但沒有換到更多病人回家。</strong></p>
+<p><strong>禁止的統計謬誤檢核</strong></p>
+<table>
+<thead>
+<tr>
+<th>謬誤</th>
+<th>本文是否犯？</th>
+<th>具體位置</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>p &gt; 0.05 = &quot;no difference&quot;</td>
+<td><strong>是（部分）</strong></td>
+<td>Conclusions 段「the ESC 0/1-hour ADP <strong>failed to discharge more patients</strong> within 4 hours」——刪去了 abstract 中的 &quot;significantly&quot;。實際 CI 上界 +5.3%，無法排除臨床相關的小幅益處</td>
+</tr>
+<tr>
+<td>用 post-hoc power 判斷</td>
+<td><strong>否</strong></td>
+<td>作者以事前假設與實際事件率的落差論述檢力不足，方法正確</td>
+</tr>
+<tr>
+<td>用 underpowered positive 的效果量推導下一試驗</td>
+<td><strong>否</strong></td>
+<td>未做此推導；且作者明確指出需 &gt;25,000 人才能分辨再就診事件</td>
+</tr>
+<tr>
+<td>把非顯著讀成「等效」</td>
+<td><strong>否</strong></td>
+<td>作者未宣稱等效；NI 判定基於預設 margin，程序正確</td>
+</tr>
+</tbody>
+</table>
+<h3>C2. Underpowered 判斷與 Winner's Curse</h3>
+<p><strong>哪些終點是 underpowered？</strong>（判準：CI 同時包含虛無值與 MCID）</p>
+<ul>
+<li><strong>4 小時內出院</strong>：CI −0.1% ～ +5.3%。對 3% 的 MCID 而言，CI 同時包含 0 與 3% → <strong>underpowered</strong>。對 10% 的 MCID 而言，CI 排除了 10% → 該問題<strong>已被回答</strong>（不是 underpowered，而是真正的 NEGATIVE）。<strong>這個區分很重要，作者未做。</strong></li>
+<li><strong>總出院比例、收治比例、出院者 30 天 MACE、全族群排除 index MI 之 MACE</strong>：全部 <strong>underpowered</strong>（CI 同時跨越 0 與臨床相關閾值）。</li>
+<li><strong>主要 NI 終點</strong>：達到非劣性，但<strong>單側下界 −2.5% 與 margin −3% 僅差 0.5 個百分點</strong>——這是名副其實的「勉強過關」。事件基礎極薄：判定完全建立在 <strong>9 件 vs 13 件</strong> MACE 之上。若 0/1h 臂多發生 2 件、或 0/3h 少發生 2 件，結論即可能翻轉。Krumholz 在其 Editor's Page 中明確提醒「事件數限制了確定性的安慰」，判斷與此一致。</li>
+</ul>
+<p><strong>Winner's Curse 風險評估</strong></p>
+<ul>
+<li>本文的頭條並非一個「underpowered positive」，因此典型的 Type M 誇大風險不適用於主要結論。</li>
+<li><strong>但有一個真實的 Winner's Curse 風險，位置在「5 小時內出院 +9.4%, p&lt;0.001」</strong>：這是一個非事前指定的時點。不過該效果量大、CI 窄（+6.2% ～ +12.6%），且來自完整的連續時間曲線（Figure 2）而非單點挑選，因此 Type M/S 風險<strong>低</strong>。可以合理採信方向與大致量級。</li>
+<li><strong>另一個值得標示的風險</strong>：若後續試驗用本文的 sensitivity 差（+4.2%）來做樣本數估算，將會嚴重低估所需樣本——因為該估計建立在 22 件事件上，精確度極差（兩臂 sensitivity 的 95% CI 分別寬達 8.7 與 11.6 個百分點）。<strong>不建議以本文的點估計作為後續確認試驗的 power 假設。</strong></li>
+</ul>
+<h3>C3. Bayesian 補充分析（主要效率終點，p = 0.07）</h3>
+<p>主要效率終點 p = 0.07 落在 0.05 附近，且「NEGATIVE vs INCONCLUSIVE」的區分在此具有實質臨床意涵（決定是否值得投資路徑轉換），因此執行 Zampieri 框架的補充分析。</p>
+<p><strong>[推算：以下為我依文內公開的比例與樣本數，在風險差尺度上用常態近似自行計算，非文內報告。假設 ARD = +2.6%、SE = 1.36%。]</strong></p>
+<table>
+<thead>
+<tr>
+<th>Prior</th>
+<th>設定</th>
+<th>後驗平均</th>
+<th><strong>Pr(0/1h 更快 &gt; 0)</strong></th>
+<th><strong>Pr(達到試驗自訂 MCID +10%)</strong></th>
+<th><strong>Pr(ROPE, |ARD| &lt; 3%)</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Skeptical</strong></td>
+<td>中心 0、SD 3%</td>
+<td>+2.16%</td>
+<td><strong>96.0%</strong></td>
+<td><strong>~0.0%</strong></td>
+<td>75.2%</td>
+</tr>
+<tr>
+<td><strong>Non-informative</strong></td>
+<td>平坦</td>
+<td>+2.60%</td>
+<td><strong>97.2%</strong></td>
+<td><strong>~0.0%</strong></td>
+<td>61.6%</td>
+</tr>
+<tr>
+<td><strong>Optimistic</strong></td>
+<td>中心 +10%（試驗事前假設）、SD 5%</td>
+<td>+3.11%</td>
+<td><strong>99.1%</strong></td>
+<td><strong>~0.0%</strong></td>
+<td>46.7%</td>
+</tr>
+</tbody>
+</table>
+<p><strong>敏感度判讀</strong>：</p>
+<ul>
+<li><strong>三組 prior 下，「0/1h 在 4 小時內至少多出院一些病人」的機率都在 96–99% 之間</strong> → 方向性結論<strong>對 prior 選擇完全不敏感</strong>，資料在說話而非 prior 在說話。「failed to discharge more patients」這句話，在 Bayesian 框架下有 96–99% 的機率是<strong>錯的</strong>。</li>
+<li><strong>但三組 prior 下，「達到試驗自己假設的 +10% 效益」的機率都趨近於 0</strong>（即使給予最樂觀、以 +10% 為中心的 prior）。</li>
+<li><strong>這兩句話必須同時說</strong>，而本文只說了第二句的反面（「沒有顯著更多」）。誠實的表述是：「<strong>0/1 小時路徑幾乎確定帶來了一點效率益處，但也幾乎確定沒有帶來它所承諾的那種益處。</strong>」這比「failed」精準得多，也是臨床決策真正需要的資訊。</li>
+<li>對照參照案例：EOLIA（p=0.09，Bayesian Pr(benefit)=96%）、ANDROMEDA-SHOCK（p=0.06，各 prior 下 Pr(benefit)&gt;90%）皆曾被頻率派誤判為 &quot;negative&quot;。本文的效率終點在統計結構上與之同類。</li>
+</ul>
+<h3>C4. 報告完整性與其他統計問題</h3>
+<h4>(a) Overpowered 檢核（Gyawali）</h4>
+<ul>
+<li><strong>否，方向相反。</strong> 本試驗對效率終點是 <strong>underpowered</strong>（實際效果量遠小於設計假設）。無「刻意設計以偵測臨床無意義微小差異」的疑慮。</li>
+</ul>
+<h4>(b) Kaplan-Meier 圖判讀（Figure 4，已讀取 page_007.png）</h4>
+<p><strong>圖中實際可見的內容</strong>：</p>
+<ul>
+<li>兩條曲線在前約 200 分鐘<strong>幾乎完全重疊</strong>；約 250–450 分鐘之間分離（0/1h 下降較快，即出院較早）；約 500 分鐘後<strong>再度收斂並趨近於 0</strong>。</li>
+<li><strong>Number at risk</strong>：0/1h = 1,185 → 52（500 min）→ 0（1,000 min）→ 0（1,500 min）；0/3h = 1,238 → 77（500 min）→ 4（1,000 min）→ 0（1,500 min）。</li>
+<li>圖內標註：Total events n = 2,423；censored events n = 1,120；log-rank P &lt; 0.001。</li>
+</ul>
+<p><strong>由此產生的四項判讀</strong>：</p>
+<ol>
+<li><strong>曲線分離的時窗完全落在 250–450 分鐘（約 4.2–7.5 小時）之間</strong>——<strong>也就是在 4 小時終點之後才開始</strong>。這在視覺上直接證明：把主要效率終點訂在 4 小時，<strong>在結構上就排除了這條路徑能展現差異的時窗</strong>。搭配時間鏈（到院→抽血 47 min ＋ TAT 81 min ＋ 0/1h 重採 65 min ＝ 約 193 分鐘才拿到第二個數值，僅餘約 47 分鐘完成處置）——<strong>4 小時終點幾乎是註定失敗的</strong>。這是圖片傳達、而文字完全沒有點明的最重要訊息。</li>
+<li><strong>尾端資料極度稀薄，且 x 軸範圍嚴重浪費</strong>：500 分鐘後兩臂合計僅剩 129 人，1,000 分鐘後僅剩 4 人，但 x 軸一路畫到 1,500 分鐘——<strong>圖面約三分之二的橫向範圍幾乎沒有資料</strong>。這不構成「非零起點誇大效果」（y 軸是完整的 0.00–1.00，未截斷），但它讓兩條曲線被壓縮在左側，<strong>視覺上淡化了 250–450 分鐘那段真正有意義的分離</strong>。</li>
+<li><strong>【最嚴重】把「住院」當作無資訊性設限（censoring）處理，是競爭風險的設定錯誤。</strong> Methods 明寫「patients' hospital admissions or deaths censored」。但<strong>住院正是「出院」這個事件的競爭事件</strong>，而且是被介入直接影響的（兩臂住院率 32.9% vs 30.3%）。標準 KM 在此會<strong>高估出院機率</strong>，且當兩臂的競爭事件發生率不同時，組間比較也會被扭曲。正確做法是<strong>競爭風險分析（Fine-Gray 或累積發生函數）</strong>。1,120 件設限中絕大多數即是住院——佔全體的 31.6%，<strong>不是可忽略的比例</strong>。這是 informative censoring 的教科書案例，而 log-rank P &lt; 0.001 是在錯誤模型下得出的。</li>
+<li><strong>Number at risk 與文內 n 不一致</strong>：圖內標註 0/1h n = 1,187、0/3h n = 1,236，但 number-at-risk 第一欄卻是 <strong>1,185 與 1,238</strong>。0/3h 的起始風險人數（1,238）<strong>大於</strong>其宣稱樣本數（1,236），在數學上不可能。屬於製圖或資料串接錯誤。</li>
+</ol>
+<h4>(c) Figure 2 判讀（已讀取 page_006.png）</h4>
+<ul>
+<li>上下兩個長條圖的 <strong>y 軸皆自 0 起算</strong>，無軸線操弄。</li>
+<li>由圖可讀出：第 4 小時 0/1h 約 22% vs 0/3h 約 19%；第 5 小時約 42% vs 32%（<strong>差距最大處</strong>）；第 6 小時約 53% vs 47%；第 8 小時約 64% vs 64%（<strong>交叉點</strong>）；<strong>第 10–12 小時 0/3h 反超</strong>（約 68–69% vs 66–67%）。</li>
+<li><strong>圖傳達而文字未明說者</strong>：0/1h 的優勢是一個<strong>時窗內的暫時領先</strong>，到第 8 小時即被追平，<strong>之後由 0/3h 反超並維持到最後</strong>。文內只寫「beyond 5 hours, there remained no difference」——這句話掩蓋了末段的交叉。這個交叉與總出院率的數值差（67.1% vs 69.7%）是同一件事的兩種呈現，且與我在 B1 提出的「0/3h 演算法 rule-out 比例較高（81.5% vs 64.5%）」機轉完全吻合。</li>
+<li>上下兩個面板資訊高度重複（累積人數 vs 累積百分比，n 相近故形狀幾乎相同），資訊密度偏低。</li>
+</ul>
+<h4>(d) Figure 3 判讀（已讀取 page_007.png）</h4>
+<ul>
+<li><strong>這不是 forest plot，而是一張資訊圖（infographic）</strong>。全文主文<strong>沒有任何 forest plot</strong>；主要非劣性檢定的 CI 圖位於 <strong>Supplemental Figure 6</strong>。<strong>[限制：Supplemental Figure 6 與 Supplemental Table 1–7 本次皆無法取得，因此無法目視確認 NI 的 CI 相對無效線與 margin 的位置。]</strong></li>
+<li>Figure 3 在<strong>一個版面內呈現 8 個 P 值</strong>（4h 出院、總出院、LOS、MACE 率、sensitivity、NPV、住院率、specificity、PPV），全部未校正多重比較，且未標示哪一個是主要終點。排版上主要與次要終點<strong>視覺權重相同</strong>，容易誤導讀者以為所有比較同等可信。</li>
+<li>Figure 3 顯示 0/3h 的出院者 MACE 為 <strong>13 (1.1%)</strong>（分母 1,236），但 <strong>Table 3 同一事件寫成 13 (1.2%)</strong>（分母 1,065）——見下。</li>
+</ul>
+<h4>(e) CONSORT 一致性核對（已讀取 page_003.png Figure 1 與 page_008.png Table 3）</h4>
+<p><strong>【本次評讀查出的最實質報告問題】Figure 1／Table 2 與 Table 3 的分母無法調和：</strong></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Figure 1 / Table 2</th>
+<th>Table 3</th>
+<th>差異</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0/1h 總出院</td>
+<td><strong>1,187</strong></td>
+<td><strong>1,139</strong></td>
+<td>−48</td>
+</tr>
+<tr>
+<td>0/1h 總住院</td>
+<td><strong>582</strong></td>
+<td><strong>567</strong></td>
+<td>−15</td>
+</tr>
+<tr>
+<td>0/1h 合計</td>
+<td>1,769 ✓</td>
+<td><strong>1,706</strong></td>
+<td><strong>少 63 人</strong></td>
+</tr>
+<tr>
+<td>0/3h 總出院</td>
+<td><strong>1,236</strong></td>
+<td><strong>1,065</strong></td>
+<td><strong>−171</strong></td>
+</tr>
+<tr>
+<td>0/3h 總住院</td>
+<td><strong>538</strong></td>
+<td><strong>497</strong></td>
+<td>−41</td>
+</tr>
+<tr>
+<td>0/3h 合計</td>
+<td>1,774 ✓</td>
+<td><strong>1,562</strong></td>
+<td><strong>少 212 人</strong></td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><strong>Table 3 的欄位註腳完全沒有解釋這 63 人與 212 人去了哪裡</strong>，也沒有說明 Table 3 使用了不同的分析族群（合理推測是排除了未完成 ADP 判定者，但文內無任何說明）。</li>
+<li><strong>這個矛盾直接影響主要安全終點的可驗證性</strong>：NPV 99.2% 是用 <strong>1,187</strong> 算的（1,178/1,187 = 99.24%），但 Table 3 的 breach 分析是用 <strong>1,139</strong> 算的。<strong>同一批事件，兩個分母。</strong> 讀者無法判斷哪一個才是正確的分析族群。</li>
+<li><strong>另外三處計數矛盾</strong>：
+<ol>
+<li>Table 2 指出 0/1h 出院者有 3 件、0/3h 有 1 件 30 天 urgent revascularization；<strong>Table 3 對應格全部寫 0</strong>。</li>
+<li>Table 3 的 0/1h 住院者 MACE = <strong>132 (23.3%)</strong>；Figure 3 寫 <strong>134 (23.0%)</strong>。（用於計算 sensitivity 93.7% = 134/143 的是 <strong>134</strong>。）</li>
+<li><strong>MACE 的去重規則前後不一致</strong>：Table 2 的 MACE 總數是直接加總（0/1h：123 + 9 + 5 + 6 = <strong>143</strong> 完全吻合；0/3h：113 + 5 + 4 + 3 = <strong>125</strong> 完全吻合），<strong>顯示未做去重</strong>；但 Table 3 的註腳明寫「部分／全部事件與 index MI 同時發生，因此只能觸發一次 MACE」，<strong>顯示有去重</strong>。更進一步，sensitivity 89.5% 的反推分母是 <strong>124</strong>（111/124 = 89.52%），而非 Table 2 的 <strong>125</strong>——<strong>主要安全終點的分母，與同篇論文自己的表格差一個人。</strong></li>
+</ol>
+</li>
+<li><strong>綜合判斷</strong>：這些不是致命的科學錯誤（各項差異都很小，不足以翻轉主要結論的方向），但它們是<strong>主要終點層級的算術不一致</strong>，而且在同儕審查與統計審查中都未被攔下（呼應 revised→accepted 僅 2 天）。任何想要重現本文分析的讀者都會卡在這裡。</li>
+</ul>
+<h4>(f) 其他</h4>
+<ul>
+<li><strong>多重比較</strong>：至少 6 項次要終點 ＋ Figure 3 的 8 個 P 值，<strong>全無校正</strong>，且未事前指定次要終點的檢定階層。</li>
+<li><strong>報告完整性</strong>：主要效率終點<strong>未報告效果量的 CI</strong>（只給 P 值）；主要 NI 終點<strong>只報單側下界，未報雙側 CI 或上界</strong>（因此無法判斷 0/1h 的優勢上限有多大）；LOS 差值<strong>未報 CI</strong>。</li>
+<li><strong>統計軟體</strong>：僅報 RStudio 版本，未報 R 版本或所使用套件。</li>
+</ul>
+<h3>統計面紅旗清單（7 點）</h3>
+<ol>
+<li><strong>主要安全終點的分析族群是 post-randomization 的出院次族群</strong>，等同條件化於被介入影響的結果變項，破壞隨機化保護；且<strong>未提供任何 ITT 或 per-protocol 的一致性檢核</strong>。</li>
+<li><strong>Table 2／Table 3／Figure 1／Figure 3 之間存在至少 6 處無法調和的分母與事件計數矛盾</strong>，其中最大者為 0/3h 出院人數 1,236 vs 1,065（差 171 人），且直接牽動 NPV 與 sensitivity 的計算基礎。</li>
+<li><strong>MACE 去重規則在 Table 2（未去重）與 Table 3（有去重）之間不一致</strong>；主要 NI 終點的反推分母（124）與 Table 2 的 MACE 總數（125）相差一人。</li>
+<li><strong>Kaplan-Meier 分析把「住院」當作無資訊性設限</strong>，實為競爭事件且發生率在兩臂不同（32.9% vs 30.3%）；應使用競爭風險模型。1,120/3,543（31.6%）的觀察值受此影響。</li>
+<li><strong>主要效率終點未報告效果量 CI，主要 NI 終點未報告雙側 CI／上界，LOS 差值未報 CI</strong>——三個主要／關鍵比較都只給 P 值或單側界線。</li>
+<li><strong>NI margin（3% 絕對 sensitivity）完全缺乏臨床正當性論證</strong>，且單側下界 −2.5% 與 margin 僅差 0.5 個百分點，結論對極少數事件（9 vs 13）高度敏感。</li>
+<li><strong>至少 6 項次要終點與 Figure 3 的 8 個 P 值全無多重比較校正</strong>，且「5 小時內出院」是非事前指定的時點。</li>
+</ol>
+<hr />
+<h2>D. 次組分析評估</h2>
+<p>文內明確的次組分析僅一項：<strong>早期就診者（症狀發作／高峰至首次採檢 ≤3 小時，n = 960，27.1%）</strong>，結果置於 Supplemental Table 6，主文僅以一句「there was no signal that either pathway performed worse in this cohort」帶過。</p>
+<p>依 JAMA 次組分析 5 項標準評估：</p>
+<table>
+<thead>
+<tr>
+<th>標準</th>
+<th>評估</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1. 是否有 interaction P 值？</td>
+<td><strong>未報告。</strong> 主文只給質性描述「no signal」，無交互作用檢定、無次組內效果量、無 CI。<strong>[限制：Supplemental Table 6 本次無法取得]</strong></td>
+</tr>
+<tr>
+<td>2. 方向是否與其他研究一致？</td>
+<td><strong>部分一致。</strong> 既有文獻普遍認為 early presenters 是 ADP 的高風險族群（作者自承 &quot;notoriously challenging&quot;），因此「無額外風險」的結論<strong>與既有預期相反</strong>。作者未說明為何本試驗未重現此風險。</td>
+</tr>
+<tr>
+<td>3. 假說是否事前指定並有預期方向？</td>
+<td><strong>推測為事前指定</strong>（early presenter 的定義寫在 Table 1 註腳，且屬 ADP 領域標準次組），但主文未明確聲明為事前指定次組 [推論]。預期方向明確（早期就診者風險較高）。</td>
+</tr>
+<tr>
+<td>4. 是否有合理生物機轉？</td>
+<td><strong>有，且很強。</strong> 症狀發作 &lt;3 小時時 troponin 可能尚未上升，ESC 0/1h 的單次採檢 rule-out（hs-cTnT &lt;5 ng/L）明文要求症狀 &gt;3 小時才適用。這是一個機轉清楚的高風險次組。</td>
+</tr>
+<tr>
+<td>5. within-study 比較？</td>
+<td><strong>是</strong>（試驗內隨機化族群的次組），非 between-study。</td>
+</tr>
+</tbody>
+</table>
+<p><strong>可信度評分：低。</strong></p>
+<p>理由：機轉與事前指定都合格（第 3、4、5 項），但<strong>缺乏交互作用檢定、未報告次組內的效果量與 CI，且結論方向與既有預期相反卻未獲解釋</strong>（第 1、2 項失分）。更關鍵的是：以 960 人的次組、約 7% 的 MACE 率推算，該次組內兩臂各約 33 件事件，<strong>偵測交互作用的檢力極低</strong>——「no signal」幾乎必然是<strong>檢力不足的產物，而非等效的證據</strong>。這正是「p &gt; 0.05 ≠ 無差異」在次組分析中的典型表現。</p>
+<p><strong>臨床上不應據此放心地把任一條 ADP 套用在症狀 &lt;3 小時的病人身上。</strong></p>
+<hr />
+<h2>E. 紅旗清單</h2>
+<p><strong>設計</strong></p>
+<ol>
+<li>主要安全終點在隨機化之後才切出的「出院次族群」上測量——隨機化保護失效，作者僅以一句話帶過。</li>
+<li>唯一保留隨機化的安全比較（全族群、排除 index MI）方向<strong>相反</strong>（1.1% vs 0.7%，不利 0/1h），被以「檢力不足」淡化處理，未進入摘要。</li>
+<li>主文完全未描述隨機序列產生方法與 allocation concealment。</li>
+<li>兩臂的路徑違背模式方向相反（0/1h 過度出院、0/3h 過度收治），使「路徑效果」與「醫師對路徑的信任度」無法分離。</li>
+<li>主要效率終點（4 小時）的時窗，被自身的時間鏈（47 + 81 + 65 ≈ 193 分鐘）結構性排除——Figure 4 顯示曲線分離發生在 250–450 分鐘，<strong>終點訂在差異出現之前</strong>。</li>
+<li>篩檢納入率僅 26.8%，最大宗排除為醫師 gestalt 判定的「非心因性胸痛」（6,498 人）；155 名無法同意者（高齡／重症）被系統性排除。</li>
+</ol>
+<p><strong>統計</strong>
+7. Table 2／Table 3／Figure 1／Figure 3 之間至少 6 處分母與事件計數矛盾，最大者相差 171 人，且直接牽動 NPV 與 sensitivity。
+8. MACE 去重規則在表間不一致；NI 分母（124）與 Table 2 的 MACE 總數（125）相差一人。
+9. KM 分析把住院（競爭事件、且被介入影響）當作無資訊性設限，log-rank P&lt;0.001 建立在錯誤模型上。
+10. 主要效率終點、主要 NI 終點、LOS 差值<strong>三者皆未報告完整 CI</strong>。
+11. NI margin 3% 無臨床正當性論證；單側下界 −2.5% 距 margin 僅 0.5 個百分點。
+12. 至少 6 項次要終點無多重比較校正；「5 小時內出院」為非事前指定時點。
+13. 唯一的次組分析（early presenters）無交互作用檢定、無效果量、無 CI，且結論與既有預期相反卻未解釋。</p>
+<p><strong>測量／參考標準</strong>
+14. <strong>主要安全終點的參考標準（Abbott hs-cTnI）與被評估路徑的驅動檢驗（Roche hs-cTnT）為不同 assay，而兩者的 rule-out 門檻高低不同（&lt;14 vs &lt;5 ng/L），跨 assay 不一致會系統性地不利於 0/3h 臂。本文完全未討論此點，亦未提供任何跨 assay 一致性分析。</strong>
+15. 複合終點名為「MACE」，實質上 73% 是 index type 1 MI，且 urgent revascularization 與 CV death 幾乎完全與 index MI 重疊——成分不等權重且高度重複，標籤誇大了終點的病人重要性。
+16. 未報告致盲成功度檢查（裁定端）。</p>
+<p><strong>敘事</strong>
+17. Conclusions 段將 p = 0.07 寫成「failed to discharge more patients」（刪去 abstract 中的 &quot;significantly&quot;）——CI 上界 +5.3%，Bayesian 下 Pr(有益處) = 96–99%。
+18. 「any differences in LOS can be attributed to the reduction in the sampling intervals」——以「檢體處理時距相同」推論因果歸屬，忽略演算法結構與違背模式的差異。
+19. Figure 5（限制 LOS 縮短的因素）為<strong>純概念圖、零數據</strong>，卻置於主文作為論證支撐。
+20. <strong>本文最大的數據遺漏</strong>：依 Table 3 自行推算，<strong>0/3h 演算法判定 rule-out 者中有 16/1,273（1.26%）為裁定的 index type 1 MI，0/1h 僅 1/1,100（0.09%），ARD −1.17%（95% CI −1.80% ～ −0.53%）[推算]。這個 14 倍的演算法層級漏診差距，比任何效率終點都更具臨床重量，卻未出現在摘要、結論或任何 P 值比較中。</strong>
+21. Figure 2 顯示兩臂曲線在第 8 小時交叉、之後 0/3h 反超，文內僅寫「beyond 5 hours, there remained no difference」，未提交叉。
+22. 「遞減報酬律」被寫成通則，實為 81 分鐘 TAT 條件下的局部結論。</p>
+<p><strong>利益揭露</strong>
+23. Abbott Diagnostics 既是資助者，又「協助 hs-cTnI 檢體的儲存、轉送與分析」——即<strong>參與了主要安全終點參考標準的產生</strong>，與「funders had no role in data collection」的聲明在字面上牴觸。
+24. 通訊作者持有 Abbott Diagnostics 研究合約，且為領有 ADP 推廣經費的 NHS「hs-cTn clinical champion」；同團隊先前以 3,003 人的實作研究為本試驗的<strong>對照組</strong>（0/3h 路徑）背書。</p>
+<p><strong>其他</strong>
+25. 參考文獻 16 與 17 為同一篇文章被重複列入。</p>
+<hr />
+<h2>F. 反向解釋</h2>
+<h3>替代解釋 1：0/1h 的安全優勢，部分是<strong>跨 assay 不一致的假象</strong>，而非真正的臨床漏診差異</h3>
+<ul>
+<li><strong>支持的文內線索</strong>：
+<ul>
+<li>裁定用 Abbott hs-cTnI，路徑驅動用 Roche hs-cTnT，兩者 99th percentile 與動力學眾所周知不同。</li>
+<li><strong>0/3h 的 rule-out 門檻（3 小時 hs-cTnT &lt;14 ng/L）遠高於 0/1h（&lt;5 ng/L 或 0h&lt;12 且 Δ&lt;3）</strong>。門檻越高，越容易放過「hs-cTnT 正常但 hs-cTnI 升高」的病人。這在結構上<strong>必然</strong>讓 0/3h 在以 hs-cTnI 為標準的裁定下看起來更差。</li>
+<li>全體中 13.7% hs-cTnI 升高，其中 <strong>30.0% 被裁定為 chronic myocyte injury</strong> — 顯示低度 hs-cTnI 升高在此族群極為常見，跨 assay 重新分類的空間很大。</li>
+</ul>
+</li>
+<li><strong>反對的線索</strong>：
+<ul>
+<li>裁定採用第四版 MI 全球定義（需有缺血證據，不只是 troponin 升高），雙人主治盲性裁定 kappa = 0.77。純粹的低度生化不一致較難通過此關。</li>
+<li>作者採用獨立 assay 的動機（降低 incorporation bias）是正確的，且引用了已建立的方法學（ref 7）。</li>
+<li>若此解釋成立，它同樣削弱 0/3h 的漏診數字，但<strong>不影響</strong>「兩臂實作安全性皆低於觀察性研究」這個更重要的結論。</li>
+</ul>
+</li>
+<li><strong>判定</strong>：<strong>此解釋有相當份量，且本文在設計上無法排除。</strong> 這是最需要補充分析（漏診病例的 hs-cTnT/hs-cTnI 配對數值）的一點。<strong>[限制：Supplemental Table 3 列有個別 MACE 事件，本次無法取得，無法進一步核實。]</strong></li>
+</ul>
+<h3>替代解釋 2：0/1h 的 sensitivity 優勢，只是「收治更多病人」的操作點位移</h3>
+<ul>
+<li><strong>支持</strong>：0/1h 收治 582 人 vs 538 人（+2.6 個百分點）；specificity 相應較低（72.4% vs 74.1%）。sensitivity 在此定義下可靠多收病人買到。</li>
+<li><strong>反對</strong>：<strong>Youden index 66.1 vs 63.6、diagnostic odds ratio 39.2 vs 24.5 [推算]</strong> — 兩個與操作點無關的指標都顯示 0/1h 的鑑別力本身較佳。此外演算法層級的漏診差距（0.09% vs 1.26%）是在<strong>演算法判定</strong>層面計算的，與醫師的收治傾向無關。</li>
+<li><strong>判定</strong>：<strong>部分成立但不足以完全解釋。</strong> 應在論述中承認其貢獻，但不宜用來否定 0/1h 的鑑別力優勢。</li>
+</ul>
+<h3>替代解釋 3：兩臂真正的差異不在「時間」，而在「演算法閾值」——本文其實不是在比快慢，而是在比寬嚴</h3>
+<ul>
+<li><strong>支持</strong>：依 Table 3 自身分母，<strong>0/3h 演算法 rule-out 率 81.5%，0/1h 僅 64.5%</strong>（差 17 個百分點）。ESC 0/1h 有一個大的 observe 灰帶，0/3h 幾乎沒有。這一個事實同時解釋了：0/1h 為何沒有出院更多人（總出院率甚至數值上較低）、為何 sensitivity 較高、為何 specificity 較低、以及 Figure 2 為何在第 8 小時後由 0/3h 反超。</li>
+<li><strong>反對</strong>：時間機轉（TAT 81 min &gt; 採檢間隔 65 min，導致 78.5% 的病人在首次結果前就被抽第二管，單次採檢分支被摧毀）<strong>有直接數據支撐</strong>，且是 Krumholz 與作者共同強調的。兩個機轉並非互斥。</li>
+<li><strong>判定</strong>：<strong>這個解釋在文中完全缺席，但解釋力至少與 TAT 機轉相當，甚至更廣。</strong> 它是本評讀最重要的單一發現。<strong>實務含意截然不同</strong>：若主因是 TAT，解方是縮短 TAT（POC troponin）；若主因是演算法保守度，則縮短 TAT 也救不回總出院率，而必須重新檢視 observe 灰帶的處置流程。<strong>這兩條解方的投資方向完全不同，而本文只指向前者。</strong></li>
+</ul>
+<h3>替代解釋 4：整體結論是 2021–2024 年 NHS 系統飽和的產物，而非路徑本身的性質</h3>
+<ul>
+<li><strong>支持</strong>：實際 4 小時內出院率僅 21.8%/19.2%，<strong>只有設計假設（60%/50%）的三分之一</strong>；作者自列的 Figure 5 因素（ED 壅塞、醫師多工、等候其他檢查）皆屬系統飽和表現；收案期涵蓋後疫情 NHS 最嚴重的壅塞期。</li>
+<li><strong>反對</strong>：個案層級、同期隨機 → <strong>組間比較的內部效度不受影響</strong>；LOS 差異（−39 min）與 5 小時出院差異（+9.4%）仍然可測得。</li>
+<li><strong>判定</strong>：<strong>成立，且對台灣讀者至關重要。</strong> 此解釋不威脅內部效度，但<strong>嚴重限制絕對數值的可轉移性</strong>。在一個較不飽和、TAT 較短的系統中，0/1h 的效率優勢預期會大於本文所測。</li>
+</ul>
+<hr />
+<h2>G. 最終裁決</h2>
+<h3>整體可信度：<strong>中</strong></h3>
+<ul>
+<li><strong>內部效度的骨幹堅實</strong>：個案層級同期隨機、基線平衡極佳、事前註冊並全文發表 protocol、100% 全國電子病歷追蹤（零失訪）、雙人盲性裁定（kappa 0.77）、<strong>兩臂使用完全相同的 hs-cTn assay</strong>（這是相對 RAPID-TnT 與 Inoue 試驗的決定性優勢）、對照組忠實執行（重採間隔中位 181 分鐘）、以獨立 assay 降低 incorporation bias。</li>
+<li><strong>但四項結構性弱點使其無法評為「高」</strong>：(i) 主要安全終點建立在 post-randomization 的出院次族群上，破壞隨機化保護，且唯一保留隨機化的安全比較方向相反；(ii) 主要效率終點因系統飽和而嚴重 underpowered，且終點時窗落在曲線分離之前；(iii) 表間存在至少 6 處主要終點層級的算術矛盾，且未被同儕審查攔下；(iv) 主要安全終點的參考標準由資助廠商協助分析，且與被評估路徑使用不同 assay、不同門檻高低，存在方向明確的系統性偏移風險。</li>
+</ul>
+<h3>可採用的條件</h3>
+<ul>
+<li>作為「<strong>縮短 hs-cTn 採檢間隔，在 TAT 長且系統壅塞的急診中不會自動轉化為更多早期出院</strong>」的<strong>最佳現有隨機證據</strong>——這個結論穩健且重要。</li>
+<li>作為「<strong>觀察性研究的演算法層級效能會系統性高估真實世界臨床效能</strong>」的直接證據（臨床層級 sensitivity 93.7% vs 演算法層級 98.6%）。</li>
+<li>作為急診流程改善時<strong>排序投資標的</strong>的依據（先縮短 TAT 與 triage-to-venepuncture，而非採檢間隔）。</li>
+<li>作為「<strong>0/1h 路徑在演算法層級的漏診率優於 0/3h</strong>」的支持性（非確定性）證據。</li>
+</ul>
+<h3>不建議採用的情境</h3>
+<ul>
+<li><strong>不要</strong>用本文論證「0/1h 路徑沒有效率價值」——這是把 p = 0.07 讀成虛無。Bayesian 下 Pr(有益處) = 96–99%，且 5 小時內出院 +9.4%（95% CI +6.2% ～ +12.6%）是穩健的正向結果。</li>
+<li><strong>不要</strong>把「遞減報酬律」當作普遍原則移植到 TAT 30–45 分鐘的台灣醫學中心——該結論是 81 分鐘 TAT 的產物。</li>
+<li><strong>不要</strong>用本文的 sensitivity 點估計（93.7%／89.5%）作為後續確認試驗的 power 假設（僅 22 件事件，Winner's Curse 風險）。</li>
+<li><strong>不要</strong>據此對症狀發作 &lt;3 小時的病人放心——該次組分析檢力極低、無交互作用檢定。</li>
+<li><strong>不要</strong>把出院者的 NPV（99.2%／98.9%）當作「安全」的背書——<strong>0/3h 臂的 1.1% 漏診率已超過急診 rule-out 通行的 &lt;1% 上限</strong>。</li>
+</ul>
+<h3>若要改觀，最需要的 3 個關鍵改進</h3>
+<ol>
+<li><strong>修復主要安全終點的分析架構</strong>：提供保留隨機化的完整 ITT 安全性分析（含 index MI，全隨機族群），或使用 principal stratification／competing-risk 框架處理「出院」這個 post-randomization 事件，並與現有次族群分析並陳。同時修復 Table 2／Table 3／Figure 1 之間的分母與去重矛盾，公開可驗證的事件層級資料。</li>
+<li><strong>量化跨 assay 不一致的貢獻</strong>：報告所有「被出院卻裁定為 index type 1 MI」病例的 hs-cTnT 與 hs-cTnI 配對數值，並以 hs-cTnT 為參考標準重跑一次敏感度分析（即使會重新引入部分 incorporation bias）。若兩種參考標準下 0/1h 的優勢都存在，該結論即可升級為「高」可信度。</li>
+<li><strong>把演算法閾值差異納入正式分析並重新設計效率終點</strong>：明確報告兩條演算法的 rule-out 比例（本評讀推算為 64.5% vs 81.5%）及其對出院率的貢獻，並以<strong>總出院率 ＋ ED LOS 的競爭風險分析</strong>取代單一的 4 小時二分終點。在一個 TAT &lt; 採檢間隔的場域重做本試驗（例如搭配 POC hs-cTn），才能分離「時間機轉」與「閾值機轉」。</li>
+</ol>
+<h3>一句話結論（給一般讀者）</h3>
+<p><strong>把驗血間隔從三小時縮到一小時，在這間塞爆、檢驗報告要等 81 分鐘的急診裡，並沒有讓更多病人四小時內回家——真正的瓶頸不在時鐘，而在實驗室與整個系統。</strong></p>
+<hr />
+<h2>附：必要條件輸出</h2>
+<h3>主要與關鍵終點效果量彙整（含 MCID 與結果分類）</h3>
+<table>
+<thead>
+<tr>
+<th>指標</th>
+<th>0/1 小時</th>
+<th>0/3 小時</th>
+<th>效果量</th>
+<th>95% CI</th>
+<th>ARD</th>
+<th>MCID</th>
+<th>結果分類</th>
+<th>實務意義</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>4 小時內出院</strong>（主要效率）</td>
+<td>385/1,769 (21.8%)</td>
+<td>341/1,774 (19.2%)</td>
+<td>RD</td>
+<td>−0.1% ～ +5.3% [推算]</td>
+<td><strong>+2.6%</strong></td>
+<td>+10%（試驗自訂）</td>
+<td><strong>NEGATIVE</strong>（對 10%）／<strong>INCONCLUSIVE</strong>（對 3%）</td>
+<td>幾乎確定有一點益處（Bayes 96–99%），但幾乎確定達不到承諾的量級</td>
+</tr>
+<tr>
+<td>5 小時內出院</td>
+<td>41.8%</td>
+<td>32.4%</td>
+<td>RD</td>
+<td>+6.2% ～ +12.6% [推算]</td>
+<td><strong>+9.4%</strong></td>
+<td>+10%</td>
+<td><strong>POSITIVE / IMPRECISE (+)</strong></td>
+<td>非事前指定時點，但方向與量級可信；顯示優勢時窗在 4 小時之後</td>
+</tr>
+<tr>
+<td>總出院比例</td>
+<td>1,187/1,769 (67.1%)</td>
+<td>1,236/1,774 (69.7%)</td>
+<td>RD</td>
+<td>−5.7% ～ +0.5% [推算]</td>
+<td><strong>−2.6%</strong></td>
+<td>±3%</td>
+<td><strong>INCONCLUSIVE</strong>（方向不利 0/1h）</td>
+<td>0/1h 可能反而少送走 5.7% 的病人；與 rule-out 比例較低一致</td>
+</tr>
+<tr>
+<td>收治住院比例</td>
+<td>582/1,769 (32.9%)</td>
+<td>538/1,774 (30.3%)</td>
+<td>RD</td>
+<td>−0.5% ～ +5.7% [推算]</td>
+<td>+2.6%</td>
+<td>±3%</td>
+<td><strong>INCONCLUSIVE</strong></td>
+<td>多收治部分解釋了較高的 sensitivity</td>
+</tr>
+<tr>
+<td>ED LOS（中位，出院者）</td>
+<td>273 min (213–333)</td>
+<td>312 min (257–406)</td>
+<td>中位差</td>
+<td><strong>文內未報 CI [限制]</strong></td>
+<td>−39 min</td>
+<td>−30～−60 min</td>
+<td><strong>POSITIVE</strong>（log-rank p&lt;0.001；但模型設定有競爭風險問題）</td>
+<td>全試驗約省 771 小時 ED 時間，但未轉化為更多出院</td>
+</tr>
+<tr>
+<td><strong>出院者 30 天 MACE</strong>（主要安全）</td>
+<td>9/1,187 (0.76%)</td>
+<td>13/1,236 (1.05%)</td>
+<td>RD</td>
+<td>−1.04% ～ +0.46% [推算]</td>
+<td>−0.29%</td>
+<td>1%（漏診上限）</td>
+<td><strong>INCONCLUSIVE</strong></td>
+<td>22 件事件，精確度極低</td>
+</tr>
+<tr>
+<td>出院者漏診 index type 1 MI</td>
+<td>4/1,187 (0.34%)</td>
+<td>12/1,236 (0.97%)</td>
+<td>RD</td>
+<td>−1.27% ～ +0.008% [推算]</td>
+<td>−0.63%</td>
+<td>1%</td>
+<td><strong>IMPRECISE (+)</strong></td>
+<td>方向有利 0/1h，貼近顯著（文內 p=0.09）</td>
+</tr>
+<tr>
+<td><strong>Sensitivity 差</strong>（主要 NI 終點）</td>
+<td>93.7% (88.4–97.1)</td>
+<td>89.5% (82.7–94.3)</td>
+<td>絕對差</td>
+<td><strong>單側 97.5% 下界 −2.5%；上界未報 [限制]</strong></td>
+<td><strong>+4.2%</strong></td>
+<td>NI margin <strong>−3%</strong></td>
+<td><strong>NONINFERIOR（貼邊，餘裕 0.5 個百分點）</strong></td>
+<td>「sensitivity」＝ MACE 病人中被收治的比例，非演算法診斷效能</td>
+</tr>
+<tr>
+<td>Specificity</td>
+<td>72.4% (70.2–74.6)</td>
+<td>74.1% (71.9–76.2)</td>
+<td>絕對差</td>
+<td>文內未報 [限制]</td>
+<td>−1.7%</td>
+<td>—</td>
+<td>無 NI 約束</td>
+<td>安全性的代價端未受對稱約束</td>
+</tr>
+<tr>
+<td>NPV</td>
+<td>99.2% (98.6–99.7)</td>
+<td>98.9% (98.2–99.4)</td>
+<td>絕對差</td>
+<td>文內未報 [限制]</td>
+<td>+0.3%</td>
+<td>≥99.5%</td>
+<td><strong>兩臂皆未達急診 rule-out 通行標準</strong></td>
+<td>0/3h 的 1.1% 漏診率已超過 &lt;1% 上限</td>
+</tr>
+<tr>
+<td><strong>全族群 30 天 MACE（排除 index MI）</strong>&lt;br&gt;唯一保留隨機化者</td>
+<td>20/1,769 (1.1%)</td>
+<td>12/1,774 (0.7%)</td>
+<td>RD</td>
+<td>−0.17% ～ +1.08% [推算]</td>
+<td><strong>+0.45%</strong></td>
+<td>±0.5%</td>
+<td><strong>INCONCLUSIVE，方向不利 0/1h</strong></td>
+<td>未受 post-randomization 選擇污染的比較，方向與頭條相反</td>
+</tr>
+<tr>
+<td><strong>【自行推算】演算法層 rule-out 漏 index type 1 MI</strong></td>
+<td>1/1,100 (0.09%)</td>
+<td>16/1,273 (1.26%)</td>
+<td>RD</td>
+<td><strong>−1.80% ～ −0.53%</strong> [推算]</td>
+<td><strong>−1.17%</strong></td>
+<td>1%</td>
+<td><strong>POSITIVE ✅ 臨床重要</strong></td>
+<td>NNT ≈ 86；本文最重要卻未被報告的比較</td>
+</tr>
+<tr>
+<td><strong>【自行推算】演算法 rule-out 比例</strong></td>
+<td>1,100/1,706 (64.5%)</td>
+<td>1,273/1,562 (81.5%)</td>
+<td>RD</td>
+<td>—</td>
+<td><strong>−17.0%</strong></td>
+<td>—</td>
+<td>描述性</td>
+<td><strong>解釋了 0/1h 為何沒有出院更多人</strong>；本文完全未提</td>
+</tr>
+</tbody>
+</table>
+<p><em>注：Youden index 0/1h 66.1 vs 0/3h 63.6；Diagnostic OR 39.2 vs 24.5 [皆為推算]，用以檢核 sensitivity 優勢是否純屬操作點位移。</em></p>
+<h3>非顯著結果的明確分類（依規定，禁止以「no significant difference」作結）</h3>
+<table>
+<thead>
+<tr>
+<th>終點</th>
+<th>分類</th>
+<th>CI 相對 MCID 的位置</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>4 小時內出院</td>
+<td><strong>NEGATIVE</strong>（對試驗自訂的 10% MCID）</td>
+<td>CI (−0.1%, +5.3%) <strong>完全排除</strong> +10%，但包含 0 → 可排除「臨床上有意義的大幅益處」，<strong>不能</strong>排除小幅益處</td>
+</tr>
+<tr>
+<td>總出院比例</td>
+<td><strong>INCONCLUSIVE</strong></td>
+<td>CI (−5.7%, +0.5%) 同時跨越 0 與 −3% MCID → 樣本不足以分辨；方向提示 0/1h 可能較差</td>
+</tr>
+<tr>
+<td>收治住院比例</td>
+<td><strong>INCONCLUSIVE</strong></td>
+<td>CI (−0.5%, +5.7%) 同時跨越 0 與 +3%</td>
+</tr>
+<tr>
+<td>出院者 30 天 MACE</td>
+<td><strong>INCONCLUSIVE</strong></td>
+<td>CI (−1.04%, +0.46%) 同時跨越 0 與 ±1% MCID；僅 22 件事件</td>
+</tr>
+<tr>
+<td>全族群 MACE（排除 index MI）</td>
+<td><strong>INCONCLUSIVE，方向不利 0/1h</strong></td>
+<td>CI (−0.17%, +1.08%)；點估計 +0.45%，RR ≈ 1.67</td>
+</tr>
+<tr>
+<td>Early presenters 次組</td>
+<td><strong>INCONCLUSIVE（非「無差異」）</strong></td>
+<td>無交互作用檢定、無效果量、無 CI；檢力極低 [限制：Supplemental Table 6 無法取得]</td>
+</tr>
+</tbody>
+</table>
+<h3>圖表判讀限制聲明</h3>
+<table>
+<thead>
+<tr>
+<th>項目</th>
+<th>狀態</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Figure 1（CONSORT）、Figure 2（累積出院）、Figure 3（臨床效能資訊圖）、Figure 4（KM）、Table 1–3、Box 1</td>
+<td><strong>已由 PDF 圖頁 PNG 完整目視判讀</strong></td>
+</tr>
+<tr>
+<td>Figure 5（限制 LOS 之因素）</td>
+<td>已判讀；為<strong>純概念圖，無數據</strong></td>
+</tr>
+<tr>
+<td>Supplemental Figure 1–2（兩條 ADP 流程圖）</td>
+<td><strong>[限制：無法取得]</strong> — 因此無法獨立核實兩條演算法的確切 cut-off 與 observe 區定義；本評讀中關於閾值寬嚴的推論，係依 Table 3 的 rule-out 計數與 ESC 演算法的公開定義推得 [推論]</td>
+</tr>
+<tr>
+<td>Supplemental Figure 6（主要 NI 分析之 CI 圖）</td>
+<td><strong>[限制：無法取得]</strong> — 全文主文無任何 forest plot，故無法目視確認 NI 的 CI 相對 margin 與無效線的位置</td>
+</tr>
+<tr>
+<td>Supplemental Figure 7、9、10；Supplemental Table 1–7</td>
+<td><strong>[限制：無法取得]</strong> — 影響對 assay 分析效能、個別 MACE 事件、演算法層級效能、early presenter 次組的獨立核實</td>
+</tr>
+<tr>
+<td>頁碼引用</td>
+<td>PDF 轉檔 markdown 與圖頁 PNG 皆保留期刊頁碼（1211–1221），引用可追溯</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p><strong>Sources:</strong></p>
+<ul>
+<li><a href="https://www.jacc.org/doi/10.1016/j.jacc.2026.02.5135">Accelerated Diagnostic Pathways for Suspected Acute Coronary Syndrome in Practice — JACC</a></li>
+<li><a href="https://pubmed.ncbi.nlm.nih.gov/42159533/">PubMed 42159533 — MACROS-2</a></li>
+<li><a href="https://www.jacc.org/doi/10.1016/j.jacc.2026.08.002">Krumholz HM. When Evidence Meets the System: The Distance From Proof to Practice. JACC Editor's Page（已取得全文）</a></li>
+<li><a href="https://pubmed.ncbi.nlm.nih.gov/42159529/">Crisanti L, et al. Challenges in the Implementation of Accelerated Diagnostic Pathways. JACC 2026;88:1222-1225（全文無法取得）</a></li>
+<li><a href="https://pubmed.ncbi.nlm.nih.gov/42159536/">Wasfy JH. Improving Cardiology Care Within Constrained and Distinctive Health Care Systems. JACC 2026;88:1226-1227（全文無法取得）</a></li>
+<li><a href="https://www.acc.org/latest-in-cardiology/journal-scans/2026/05/18/18/10/macros-2">ACC Journal Scan — MACROS-2</a></li>
+<li><a href="https://clinicaltrials.gov/study/NCT05322395">ClinicalTrials.gov NCT05322395</a></li>
+<li><a href="https://www.sciencedirect.com/science/article/abs/pii/S0002870324001996">Khand A, et al. MACROS-2 protocol. Am Heart J 2024</a></li>
+<li><a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC10753736/">Hatherley JD, et al. ESC 0/3-hour ADP implementation, 3003 patients. Open Heart 2023</a></li>
+<li><a href="https://www.researchgate.net/profile/Aleem-Khand">Aleem Khand — ResearchGate 研究檔案</a></li>
+<li><a href="https://www.acc.org/latest-in-cardiology/articles/2026/06/17/17/26/just-announced">2025 Journal Impact Factor Scores Announced — ACC</a></li>
+<li><a href="https://www.journalmetrics.org/journal/journal-of-the-american-college-of-cardiology">JACC Impact Factor 2026: 22.3 — journalmetrics.org</a></li>
+<li><a href="https://www.acc.org/JACC-Journals/Features/Publish-in-JACC">Publish in JACC — 審查時程</a></li>
+</ul>
+
+<footer class="appraisal-meta">評讀資訊：模型：claude-opus-5 (claude)  ·  route：rct  ·  產出時間：2026-09-21 03:17 CST</footer>
+</main>
+</body>
+</html>
