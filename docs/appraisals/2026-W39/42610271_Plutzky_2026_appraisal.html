@@ -1,0 +1,794 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Effect of Semaglutide on the Inflammatory Biomarker High-Sensitivity CRP in Patients With Established Cardiovascular Disease and Overweight or Obesity in SELECT: A Prespecified Secondary Analysis.</title>
+<style>
+  :root {
+    --bg: #fafafa;
+    --card: #ffffff;
+    --text: #1a1a1a;
+    --muted: #6b6b6b;
+    --border: #e5e5e5;
+    --accent: #0b5fff;
+  }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang TC",
+      "Microsoft JhengHei", sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    margin: 0;
+    padding: 24px 16px 64px;
+    line-height: 1.72;
+  }
+  main {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    margin: 0 auto;
+    max-width: 840px;
+    padding: 22px 26px;
+  }
+  nav {
+    margin: 0 auto 14px;
+    max-width: 840px;
+    color: var(--muted);
+    font-size: 14px;
+  }
+  a { color: var(--accent); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  h1, h2, h3, h4 { line-height: 1.35; }
+  h1 { font-size: 26px; margin-top: 0; }
+  h2 { border-top: 1px solid var(--border); padding-top: 18px; }
+  code {
+    background: rgba(127, 127, 127, 0.12);
+    border-radius: 4px;
+    padding: 1px 4px;
+  }
+  table {
+    border-collapse: collapse;
+    table-layout: auto;
+    width: 100%;
+    max-width: 100%;
+  }
+  th, td {
+    border: 1px solid var(--border);
+    overflow-wrap: anywhere;
+    padding: 6px 8px;
+    text-align: left;
+    vertical-align: top;
+  }
+  blockquote {
+    border-left: 3px solid var(--accent);
+    color: var(--muted);
+    margin-left: 0;
+    padding-left: 14px;
+  }
+  .appraisal-meta {
+    border-top: 1px solid var(--border);
+    margin-top: 28px;
+    padding-top: 14px;
+    color: var(--muted);
+    font-size: 13px;
+  }
+  @media (max-width: 600px) {
+    body {
+      padding: 12px 8px 40px;
+    }
+    main {
+      padding: 16px 12px;
+    }
+    h1 {
+      font-size: 22px;
+    }
+    table {
+      font-size: 12px;
+      table-layout: fixed;
+    }
+    th, td {
+      padding: 4px 5px;
+    }
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #1a1a1a;
+      --card: #242424;
+      --text: #e8e8e8;
+      --muted: #999;
+      --border: #333;
+      --accent: #6ea8ff;
+    }
+  }
+</style>
+</head>
+<body>
+<nav><a href="../../2026-W39.html">← 回到 2026-W39 週報</a></nav>
+<main>
+<h1>Effect of Semaglutide on the Inflammatory Biomarker High-Sensitivity CRP in Patients With Established Cardiovascular Disease and Overweight or Obesity in SELECT: A Prespecified Secondary Analysis.</h1>
+<h1>批判性評讀：SELECT 試驗中 semaglutide 對 hsCRP 的影響（Circulation 2026；預先指定的次級分析）</h1>
+<hr />
+<h2>SECTION-0：文章全面描述</h2>
+<h3>0. 文章身份證</h3>
+<ul>
+<li><strong>標題</strong>：Effect of Semaglutide on the Inflammatory Biomarker High-Sensitivity CRP in Patients With Established Cardiovascular Disease and Overweight or Obesity in SELECT: A Prespecified Secondary Analysis</li>
+<li><strong>期刊／卷期</strong>：<em>Circulation</em>. 2026;154(11):976–991（線上 2026-08-18，紙本 2026-09-15）[文內；外部: PubMed]</li>
+<li><strong>DOI</strong>：<a href="https://doi.org/10.1161/CIRCULATIONAHA.125.074482">10.1161/CIRCULATIONAHA.125.074482</a>；PMID 42610271；PMC13574348</li>
+<li><strong>文章類型（路由結果）</strong>：RCT 的次級分析 → SKILL-A（RCT 主流程）。要注意，這篇大部分的推論其實是<strong>觀察性分析</strong>，只是分析資料剛好來自一個隨機試驗：
+<ul>
+<li>隨機比較：兩組 hsCRP 變化、依基線 hsCRP 分層的 MACE HR</li>
+<li>非隨機比較：基線 hsCRP 對預後的預測、依試驗中體重變化分組、把 hsCRP 當 time-varying covariate 的「中介」分析</li>
+<li>因此，Appendix 的因果推論框架也一併套用。</li>
+</ul>
+</li>
+</ul>
+<h3>1. 作者團隊評論</h3>
+<ul>
+<li><strong>通訊作者</strong>：Jorge Plutzky，Brigham and Women's Hospital 預防心臟學主任 [文內]，長期研究代謝與發炎的交互作用。依 PubMed 搜尋，他也是 SELECT 多篇次級分析的共同作者，包括 Lancet 2025 的肥胖指標分析、Nat Med 2026 的肝纖維化分析、JAMA Cardiol 2026 的衰弱分析 [外部: PubMed]。所以他屬於 SELECT 核心研究群，不是從外部獨立切入的研究者。</li>
+<li><strong>團隊構成</strong>：共 20 位作者。
+<ul>
+<li>5 位為 Novo Nordisk 全職員工兼持股人（Hovingh、Ekström、Hardt-Lindberg、Kalayci Oral、Rasmussen），其中 Rasmussen 應為統計負責人 [推論]。</li>
+<li>Scott Emerson 是生物統計學家，也是 SELECT／SOUL steering committee 顧問 [文內]。</li>
+<li>Paul Ridker 是 hsCRP 與「發炎假說」的代表人物，主導過 CANTOS、JUPITER。</li>
+<li>A. Michael Lincoff 是 SELECT 主要試驗的第一作者。</li>
+</ul>
+</li>
+<li><strong>團隊過往相關發表</strong> [外部: PubMed]：
+<ul>
+<li>Lincoff, NEJM 2023（SELECT 主要結果）</li>
+<li>Deanfield, Lancet 2025;406:2257（依肥胖指標與其變化分析 MACE；DOI <a href="https://doi.org/10.1016/S0140-6736(25)01375-3">10.1016/S0140-6736(25)01375-3</a>）</li>
+<li>Meyhöfer, Nat Med 2026（DOI <a href="https://doi.org/10.1038/s41591-026-04281-1">10.1038/s41591-026-04281-1</a>）</li>
+<li>Ostrominski, JAMA Cardiol 2026（DOI <a href="https://doi.org/10.1001/jamacardio.2026.3566">10.1001/jamacardio.2026.3566</a>）</li>
+<li>同一資料庫反覆產出「semaglutide 效益與 X 無關或只部分相關」這類論文，應視為 prior commitment 的風險。</li>
+</ul>
+</li>
+<li><strong>作者立場史</strong>：Ridker 數十年來推動「發炎是 ASCVD 可治療的殘餘風險」。外部資料顯示，他過去是 BWH 發炎生物標記相關專利（US 6,040,147、7,030,152）的共同發明人，已授權給 AstraZeneca 與 Siemens [外部: Ridker CV／Wikipedia]。本文揭露內容沒有列出這些專利。依專利年份，這些專利可能已過期 [推論]，但「hsCRP 很重要」這個結論和部分作者的長期學術立場高度一致。</li>
+<li><strong>利益揭露與資金</strong> [文內]：
+<ul>
+<li>試驗由 Novo Nordisk 出資，編輯協助（Apollo／OPEN Health）也由 Novo Nordisk 付費。</li>
+<li>幾乎所有學界作者都有 Novo Nordisk 的顧問費、演講費或研究經費。</li>
+<li>資料取得須經 Novo Nordisk 與其內部小組審核。</li>
+<li><strong>評估</strong>：統計分析由廠商員工執行，而且結論（semaglutide 有額外的抗發炎效益）直接支撐產品的「超越減重」敘事。這個敘事一致性值得警覺。</li>
+</ul>
+</li>
+</ul>
+<h3>2. 文獻 Metadata 整理</h3>
+<ul>
+<li><strong>Received</strong>：2025-03-01；<strong>Accepted</strong>：2026-06-16 [文內] → <strong>審查約 472 天（約 15.5 個月）</strong>。</li>
+<li><strong>期刊審查速度</strong>：<em>Circulation</em> 官方沒有公開總審查天數。非官方資料顯示送審到第一次決定約 17 天、錄取率約 7% [外部: manusights，非官方]。</li>
+<li><strong>比較與解讀</strong>：一年半以上遠長於一般流程，推測經過多輪大幅修改 [推論]。補充資料特別加了「LOCF 以及死亡病人處理方式」的說明，也有多項標示為 post hoc 的性別分析，看起來是在回應審稿人的統計質疑。</li>
+<li><strong>期刊屬性</strong>：2025 JIF 41.3 [外部: Wikipedia／JCR]，Q1，本文為 Open Access（CC BY）。</li>
+<li><strong>邀稿與否</strong>：屬於一般投稿的原著論文，由 Guest Editor Todd Brown 處理 [文內]。</li>
+</ul>
+<h3>3. 研究背景 [文內]</h3>
+<ul>
+<li><strong>既有證據</strong>：
+<ul>
+<li>hsCRP 能獨立預測 ASCVD 事件。</li>
+<li>CANTOS 顯示，降低發炎但不改變 LDL-C 就能減少 MACE。</li>
+<li>colchicine 的證據不一致（CLEAR SYNERGY 為中性結果）。</li>
+<li>肥胖與全身性發炎相關，減重會降低 hsCRP。</li>
+<li>STEP 系列試驗中，semaglutide 可降低 hsCRP 39%–48%。</li>
+</ul>
+</li>
+<li><strong>知識缺口</strong>：非糖尿病、已有 ASCVD 的肥胖族群中，hsCRP、減重與 MACE 三者的關係沒有被隨機試驗的資料檢驗過。</li>
+<li><strong>研究問題</strong>：
+<ul>
+<li>(1) 在不受 statin 與 LDL-C 影響的前提下，基線 hsCRP 能否預測 MACE？</li>
+<li>(2) semaglutide 降低 hsCRP，是否和 MACE 減少有關？</li>
+</ul>
+</li>
+</ul>
+<h3>4. 研究設計與方法</h3>
+<ul>
+<li><strong>PICO</strong>：
+<ul>
+<li>P：17,604 位 ≥45 歲、BMI ≥27、有 ASCVD（MI、中風或有症狀的 PAD）、非糖尿病（HbA1c &lt;6.5%）的病人。其中 17,485 位有基線 hsCRP。</li>
+<li>I：semaglutide 皮下注射，每週一次，16 週內逐步加量到 2.4 mg。</li>
+<li>C：安慰劑（兩組都加上標準治療）。</li>
+<li>O：
+<ul>
+<li>生物標記：第 104 週 hsCRP 相對於基線的比值（ratio-to-baseline）。</li>
+<li>臨床結局：MACE、心血管死亡、全死因死亡。</li>
+<li>其他：體重變化與 hsCRP 的關聯；把 hsCRP 當 time-varying covariate 後，療效 HR 的衰減程度。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><strong>設計細節</strong>：
+<ul>
+<li>SELECT 為 41 國、804 個中心的事件驅動雙盲 RCT；平均追蹤 39.8±9.4 個月。</li>
+<li>抽血時間點為第 0、20、52、104、156、208 週，由中央實驗室測 hsCRP。</li>
+<li>部分歐洲國家的 6,011 人在第 4–16 週有額外抽血。</li>
+</ul>
+</li>
+<li><strong>統計方法</strong>：
+<ul>
+<li>以 ITT／full analysis set 與 in-trial period 為主，first on-treatment 為敏感度分析。</li>
+<li>hsCRP 取 log 後用 ANCOVA，缺值以 500 次 multiple imputation 補；死亡不視為缺值。</li>
+<li>體重分組分析用 MMRM；次組與結局用含交互作用項的 Cox 模型。</li>
+<li>「中介」分析：Cox 模型納入治療組別、基線 LDL-C、statin 使用、基線 log hsCRP，再把 log ratio-to-baseline hsCRP 當 time-varying covariate，數值往前沿用到下一次量測（carry forward）。</li>
+<li><strong>沒有多重比較校正</strong>；性別相關分析是 post hoc。</li>
+</ul>
+</li>
+</ul>
+<h3>5. 研究結果重點整理</h3>
+<p><strong>主要結果整理</strong></p>
+<table>
+<thead>
+<tr>
+<th>面向</th>
+<th>結果 [文內]</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>基線 hsCRP（幾何平均）</td>
+<td>semaglutide 1.96、安慰劑 1.91 mg/L；中位數 1.87 與 1.80 mg/L</td>
+</tr>
+<tr>
+<td>基線 hsCRP 分布</td>
+<td>&lt;2：9,239 人；2–&lt;10：6,913 人；≥10：1,333 人</td>
+</tr>
+<tr>
+<td>第 104 週 hsCRP（相對安慰劑）</td>
+<td>−37.8%（95% CI −39.7 至 −35.9）；換一種缺值處理方式為 −37.6%</td>
+</tr>
+<tr>
+<td>早期 hsCRP 變化（歐洲子群）</td>
+<td>semaglutide 第 4 週 −12%、第 8 週 −19%；同時期體重 −1.4%、−2.8%</td>
+</tr>
+<tr>
+<td>預後（≥10 相對 &lt;2 mg/L）</td>
+<td>MACE HR 2.17（1.81–2.58）；CV 死亡 3.94（3.04–5.08）；全死因死亡 3.40（2.77–4.14）</td>
+</tr>
+<tr>
+<td>依基線 hsCRP 分層的 MACE HR</td>
+<td>&lt;2：0.72（0.61–0.86）；2–&lt;10：0.85（0.72–1.01）；≥10：0.83（0.61–1.13）；P_int = 0.38</td>
+</tr>
+<tr>
+<td>體重下降 &lt;2% 者</td>
+<td>semaglutide 0.88 vs 安慰劑 1.02；ETR 0.86（0.81–0.91）</td>
+</tr>
+<tr>
+<td>體重下降 ≥2% 者</td>
+<td>0.56 vs 0.93；ETR 0.60（0.58–0.63）</td>
+</tr>
+<tr>
+<td>納入 time-varying hsCRP 後</td>
+<td>MACE HR 0.80 → 0.86；CV 死亡 0.85 → 0.91；全死因死亡 0.81 → 0.91</td>
+</tr>
+<tr>
+<td>作者宣稱的「標記效應比例」</td>
+<td>MACE 32%、CV 死亡 42%、全死因死亡 45%</td>
+</tr>
+<tr>
+<td>性別差異</td>
+<td>女性 ETR 0.56 vs 男性 0.65（P_int &lt; 0.0001）</td>
+</tr>
+</tbody>
+</table>
+<p><strong>圖頁判讀補充（文字沒講清楚、但圖上可見的內容）</strong>：</p>
+<ul>
+<li><strong>Figure 1（第 979 頁）</strong>：
+<ul>
+<li>第 4–16 週的點只來自歐洲子群（n = 6,011），其他時間點是全體受試者，<strong>兩種不同族群畫在同一條連續曲線上</strong>。</li>
+<li>第 20 到 52 週之間沒有抽血，semaglutide 的 hsCRP 曲線在這段是直線連接。所以「第 52 週達最低點」其實無法和「更早就已到底」區分。</li>
+<li>安慰劑組 hsCRP 在第 4 週的點明顯<strong>高於 0（約 +1.8%）</strong>，但正文寫「安慰劑組第 4 週下降 1.8%」，<strong>文字和圖的方向相反</strong>。</li>
+<li>semaglutide 第 8 週的點目測約 −17%，正文寫 19%，差距小，可能是讀圖誤差。</li>
+<li>Y 軸從 0 開始，沒有用非零起點誇大效果。</li>
+</ul>
+</li>
+<li><strong>Figure 2（第 982 頁）</strong>：
+<ul>
+<li>各次組的 ETR 都在 0.56–0.65，CI 都沒碰到 1，一致性高。</li>
+<li>女性安慰劑組的比值是 1.05，男性是 0.95。<strong>性別交互作用有一部分來自安慰劑組本身的差異</strong>，不完全是藥效差異。</li>
+<li><strong>tertile 與臨床切點的數字方向互相矛盾</strong>：
+<ul>
+<li>安慰劑組 tertile 1 = 0.83、tertile 3 = 1.11；但臨床切點 &lt;2 = 0.95、≥10 = 0.85。</li>
+<li>semaglutide 組 tertile 3 = 0.70，但 2–&lt;10 = 0.65、≥10 = 0.53。</li>
+<li>理論上 tertile 3 主要由 2–&lt;10 與 ≥10 的病人組成，數值不該比這兩組都高。可能是 tertile 順序標反，或定義不同 [推論；須對照 Table S1，markdown 未收錄]。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><strong>Figure 3（第 984–985 頁）</strong>：
+<ul>
+<li>Y 軸 0–15%，從零開始。</li>
+<li>在 ≥10 mg/L 這一層，semaglutide 與安慰劑的 MACE 與死亡曲線大約在 20–40 週就分開。</li>
+<li>在 &lt;2 mg/L 這一層，CV 死亡曲線直到約 156 週都幾乎重疊。</li>
+<li>第 208 週時，≥10 層的 number at risk 只剩 semaglutide 128 人、安慰劑 113 人（MACE 圖）。semaglutide ≥10 層的全死因死亡曲線在約 195–205 週突然跳升約 2 個百分點。這發生在人數很少的尾段，屬於事件驅動設計的行政截尾，<strong>尾端不可信</strong>。</li>
+</ul>
+</li>
+<li><strong>Figure 4（第 986 頁）</strong>：MACE 相對效益的點估計<strong>在 hsCRP 最低的一層（&lt;2）反而最強（0.72）</strong>。2–&lt;10 與 ≥10 兩層的 CI 都跨過 1。</li>
+<li><strong>Figure 5（第 987 頁）</strong>：只用觀察到的資料。第 104 週有體重加 hsCRP 資料的人數：semaglutide 7,424、安慰劑 7,344，約占隨機分派人數的 84%。安慰劑組體重下降 ≥15% 的只有 125 人。</li>
+<li><strong>Figure 6（第 988 頁）</strong>：
+<ul>
+<li>全死因死亡 HR 從 0.81 變成 0.91，依圖上數字在 log HR 尺度計算約為 <strong>51%–59%</strong>（考慮四捨五入範圍），<strong>和正文的 45% 對不上</strong>。</li>
+<li>MACE（32%）和 CV 死亡（42%）可以在四捨五入範圍內重現。</li>
+<li>文中沒有說明計算公式，也<strong>沒有提供任何比例的 CI</strong>。</li>
+</ul>
+</li>
+</ul>
+<h3>6. 作者討論與評論重點</h3>
+<ul>
+<li><strong>作者主訊息</strong>：
+<ul>
+<li>基線 hsCRP 可以預測風險。</li>
+<li>semaglutide 能快速降低 hsCRP，而且不完全透過減重。</li>
+<li>發炎下降「部分」解釋了 MACE 的減少。</li>
+</ul>
+</li>
+<li><strong>與既有文獻的比較</strong>：
+<ul>
+<li>hsCRP 降幅和 STEP-HFpEF（−39%）接近。</li>
+<li>比 STEP 1–3（−44% 至 −48%）略小；作者解釋是 SELECT 的基線 hsCRP 較低，而且沒有減重輔導。</li>
+</ul>
+</li>
+<li><strong>作者列出的限制</strong>：hsCRP 是單一標記、不是致病因子；未做多重比較校正；SELECT 不是減重試驗。</li>
+<li><strong>[評估]</strong>：
+<ul>
+<li>作者用「多種方法結果一致」來抵銷 hsCRP 易受干擾的問題，但這<strong>不能取代對因果結構的處理</strong>。多種模型如果共用同一種偏差（例如反向因果），結果一致並沒有意義。</li>
+<li>限制段落<strong>完全沒提</strong>以下幾點：
+<ul>
+<li>以試驗後變數分組或調整，會破壞隨機化的保護。</li>
+<li>死亡前 CRP 上升的反向因果。</li>
+<li>中介比例沒有 CI。</li>
+<li>同一資料庫的腰圍分析也「解釋」了 33%。</li>
+</ul>
+</li>
+<li>Clinical Perspective 寫「測 hsCRP 可幫助辨識可能受益於減重介入的病人」，但本文資料顯示<strong>相對效益並不隨 hsCRP 改變</strong>。這句話已經超出資料能支持的範圍。</li>
+</ul>
+</li>
+</ul>
+<h3>7. 外部專業意見</h3>
+<ul>
+<li><strong>[無法取得]</strong>：PubMed、期刊站台與網路搜尋都沒有找到針對本文的同期 editorial 或 commentary，所以沒有 DOI 可抓全文。</li>
+<li>可參照的相關外部證據：同一團隊在 Lancet 2025 的肥胖指標分析 [外部: PubMed，DOI <a href="https://doi.org/10.1016/S0140-6736(25)01375-3">10.1016/S0140-6736(25)01375-3</a>]：
+<ul>
+<li>用 time-varying 腰圍變化調整後，MACE HR 同樣衰減到 <strong>0.86（0.77–0.97）</strong>，作者估計「33% 的效益經由腰圍減少中介」。</li>
+<li>安慰劑組<strong>體重下降反而和 MACE 增加相關</strong>（paradoxical）。</li>
+<li>這兩點對解讀本文非常關鍵，見 B3 與 F 節。</li>
+</ul>
+</li>
+<li>新聞報導（News-Medical 2026-08-24）只轉述作者觀點，不列為專業意見。</li>
+</ul>
+<h3>8. 臨床建議</h3>
+<ul>
+<li><strong>可採用的情境</strong>：
+<ul>
+<li>已有 ASCVD、BMI ≥27、非糖尿病的病人，基線 hsCRP 可以當作「絕對風險分層」的輔助資訊。hsCRP ≥10 的病人，全死因死亡風險約為 &lt;2 者的 3.4 倍（僅調整治療組別）。</li>
+<li>semaglutide 會讓 hsCRP 下降約 38%，追蹤時應預期這個變化。</li>
+</ul>
+</li>
+<li><strong>不建議直接套用的情境</strong>：
+<ul>
+<li>用 hsCRP 挑選「誰該用 semaglutide」：各層相對效益沒有差異，&lt;2 mg/L 的點估計反而最佳。</li>
+<li>用 hsCRP 下降幅度當作療效替代指標，或據此調整治療。</li>
+<li>把「抗發炎」當作 semaglutide 相對其他減重方式的機轉優勢。</li>
+</ul>
+</li>
+<li><strong>實務建議</strong>：
+<ol>
+<li>決定是否用 semaglutide 時不需要先測 hsCRP；若已測得 ≥10 mg/L，先排除急性感染或發炎後複測，再當作高殘餘風險的訊號。</li>
+<li>hsCRP 高的病人絕對效益可能較大（MACE 事件率差：≥10 為每 100 人年 0.8，&lt;2 為 0.6），可以作為優先順序參考，但證據屬於假說層級。</li>
+<li>不要跟病人說「這個藥是靠抗發炎保護心臟」。目前只能說發炎下降「和效益並存」。</li>
+</ol>
+</li>
+<li><strong>證據強度</strong>：
+<ul>
+<li>semaglutide 降低 hsCRP：<strong>強</strong>（隨機比較，CI 窄）。</li>
+<li>基線 hsCRP 可預測預後：<strong>中</strong>（只調整治療組別，有殘餘混淆）。</li>
+<li>發炎是中介路徑：<strong>弱</strong>（試驗後變數調整，有反向因果，沒有 CI）。</li>
+</ul>
+</li>
+</ul>
+<hr />
+<h2>SKILL-A：批判性評讀</h2>
+<h3>A. 補充技術細節</h3>
+<ul>
+<li><strong>樣本數估算</strong>：這個子研究沒有事前 power calculation；樣本數由主試驗決定 [文內未提供]。</li>
+<li><strong>隨機化與分派隱藏</strong>：本文沒有描述，只引用主試驗 [文內未提供]。</li>
+<li><strong>盲法</strong>：雙盲；hsCRP 由中央實驗室測量，對結局評估者的影響不大。不過 GLP-1 RA 的腸胃副作用與體重變化可能讓受試者和研究者猜出分組 [推論]。</li>
+<li><strong>ITT 與 per-protocol</strong>：以 in-trial ITT 為主，first on-treatment 為敏感度分析。兩者方向一致；體重下降 &lt;2% 這組在 on-treatment 分析中效果更強（ETR 0.81）。</li>
+<li><strong>多重比較</strong>：作者明言不校正。整篇至少有 20 個以上的次組、交互作用與模型比較 [推算]。</li>
+<li><strong>比例風險假設</strong>：沒有報告 PH 檢定 [文內未提供]。time-varying covariate 模型對 PH 假設特別敏感。</li>
+<li><strong>缺失資料</strong>：
+<ul>
+<li>基線 hsCRP 缺 119 人（0.7%）。</li>
+<li>第 104 週資料以 MI 補值；死亡者不補，意味著估計對象實質上是「存活者」（見 B3）。</li>
+<li>Figure 5 只用觀察值，約 16% 的人未進入分析。</li>
+</ul>
+</li>
+</ul>
+<h3>B. 批判性評估</h3>
+<h4>B1. 假說與理論邏輯</h4>
+<ul>
+<li><strong>假說是否預先指定</strong>：作者宣稱是 prespecified，但 Results 中有大量分析方式（tertile、連續模型、sex post hoc、相關係數、Table S7–S11）。<strong>預先指定的是主題，不見得是每一個分析方法</strong>；可能有撒網式分析，無法由文內判定。</li>
+<li><strong>合理機轉</strong>：
+<ul>
+<li>(1) 內臟脂肪與肝臟脂肪減少，使 IL-6 → CRP 軸下降。</li>
+<li>(2) 熱量攝取下降（負能量平衡）在體重明顯改變前就降低 CRP。</li>
+<li>(3) GLP-1 受體對免疫細胞的直接作用（證據較弱）。</li>
+</ul>
+</li>
+<li><strong>最可疑的敘事跳躍</strong>：
+<ol>
+<li><strong>「hsCRP 在體重下降前就下降」不等於「與體重無關」</strong>：
+<ul>
+<li>第 4 週體重已減 1.4%，第 8 週減 2.8%（Results）。</li>
+<li>體重是負能量平衡的<strong>落後指標</strong>；熱量限制本身就能快速降低 CRP。</li>
+<li>早期資料也只來自歐洲子群。</li>
+</ul>
+</li>
+<li><strong>「部分中介」的推論邏輯有問題</strong>：
+<ul>
+<li>Figure 6 的衰減可能反映 CRP 是事件前的疾病標記（反向因果），而不是中介路徑。</li>
+<li>同一資料庫中，腰圍也能產生<strong>完全相同</strong>的衰減（HR 0.86），「發炎」與「肥胖」無法區分。</li>
+</ul>
+</li>
+<li><strong>分層結果的方向不支持發炎假說</strong>：
+<ul>
+<li>如果效益主要靠降低發炎，hsCRP 高的人理應有更大的相對效益。</li>
+<li>實際上 &lt;2 mg/L 那層的 HR 0.72 最好（Figure 4）。</li>
+<li>交互作用雖不顯著，但<strong>方向不支持</strong>作者的敘事。</li>
+</ul>
+</li>
+</ol>
+</li>
+</ul>
+<h4>B2. 受試者與外推性</h4>
+<ul>
+<li><strong>族群特徵</strong>：
+<ul>
+<li>約 72% 為男性；hsCRP &lt;2 那層中男性占 79%。</li>
+<li>白人約 84%；亞洲人 hsCRP 最低（在 &lt;2 層占 10.4%，≥10 層只占 4.7%）。</li>
+<li>statin 使用率 88%，LDL-C 中位數 78 mg/dL（Table、Discussion）。</li>
+</ul>
+</li>
+<li><strong>外推性分級</strong>：
+<ol>
+<li>一般族群：<strong>不可外推</strong>（研究族群是次級預防、非糖尿病）。</li>
+<li>ASCVD 合併肥胖的病人：<strong>可外推</strong>「降低 hsCRP」與「hsCRP 可預測預後」這兩個發現。</li>
+<li>特殊族群：
+<ul>
+<li>台灣／東亞病人基線 hsCRP 較低，且 ≥10 mg/L 層幾乎沒有亞洲人，<strong>高 hsCRP 的相關結論不能外推到亞洲</strong>。</li>
+<li>女性只占 24%、MACE 事件的 21%，女性的連續模型結果不穩定（Table S9 顯示非線性，P = 0.045）。</li>
+<li>糖尿病病人被排除。</li>
+</ul>
+</li>
+</ol>
+</li>
+</ul>
+<h4>B3. 研究設計與偏差</h4>
+<p><strong>最可能造成偏差的設計點：</strong></p>
+<ol>
+<li><strong>以試驗後變數分組或調整，破壞了隨機化</strong>（Figure 5、Figure 6）：
+<ul>
+<li>依第 104 週體重變化分組，等於用受治療影響的變數分組。</li>
+<li>semaglutide 組體重下降 &lt;2% 的人（n = 1,461），可能包含停藥者、依從性差者、罹患其他疾病者。</li>
+<li>安慰劑組體重下降 ≥15% 的 125 人，很可能是因病消瘦。Lancet 2025 的分析也顯示安慰劑組體重下降和 MACE 增加相關 [外部]。</li>
+<li><strong>偏差方向</strong>：可能高估或低估「與體重無關的 hsCRP 下降」，方向無法確定。</li>
+</ul>
+</li>
+<li><strong>反向因果與疾病標記效應</strong>：
+<ul>
+<li>臨床事件前的亞臨床惡化（心衰、癌症、感染）都會讓 CRP 上升。</li>
+<li>hsCRP 數值每天往前沿用，而第 52 週之後每年才量一次。</li>
+<li>全死因死亡（包含非心血管死亡）的「解釋比例」最高（45%，依圖實算甚至超過 50%），<strong>這和「CRP 是瀕死標記」的解釋更一致，而不是動脈硬化的中介</strong>。</li>
+<li><strong>偏差方向</strong>：高估中介比例。</li>
+</ul>
+</li>
+<li><strong>只看存活者的估計（死亡不補值）</strong>：
+<ul>
+<li>第 104 週的 hsCRP 比值只反映活到第 104 週的人。</li>
+<li>semaglutide 組死亡較少，比較的是兩組不同的存活者。</li>
+<li>因為死亡人數相對樣本很少（全死因死亡 833 人／17,604 人），對 −37.8% 這個數字的影響應該有限 [推論]。</li>
+</ul>
+</li>
+</ol>
+<p><strong>其他設計面：</strong></p>
+<ul>
+<li><strong>對照組適當性</strong>：安慰劑加標準治療。在 2018–2021 年的非糖尿病肥胖 ASCVD 族群中，這是合理的標準治療對照。</li>
+<li><strong>Crossover／後續治療</strong>：研究期間安慰劑組是否開始使用其他 GLP-1 RA 或減重藥物，文中沒有報告 [文內未提供]。這可能縮小兩組差距。</li>
+<li><strong>提前終止</strong>：主試驗是事件驅動，按計畫完成。</li>
+</ul>
+<h4>B4. 測量工具與實務意義</h4>
+<ul>
+<li><strong>hsCRP 的變異</strong>：個體內變異很大。本文 placebo 組第 104 與 208 週比值的相關只有 0.536（Table S6）。<strong>單次基線量測造成的分類錯誤，會讓 hsCRP 分組與體重相關分析都偏向變弱</strong>。</li>
+<li><strong>相關係數比較的陷阱</strong>：
+<ul>
+<li>semaglutide 組體重變化與 hsCRP 變化的相關為 0.266，安慰劑組為 0.080；作者說兩者差異顯著。</li>
+<li>但<strong>安慰劑組體重變化的變異範圍很窄</strong>（平均約 −1%），range restriction 本身就會壓低相關係數。「相關係數顯著較高」不能直接解讀成藥物有特殊的共同路徑。</li>
+</ul>
+</li>
+<li><strong>可能的標示錯誤</strong>：Table S7A 以「HR 0.87 per 5% decrease in body weight」描述 hsCRP 這個連續變數，HR 的標示應為誤植（應為比值）[推論]。</li>
+<li><strong>臨床意義</strong>：
+<ul>
+<li>就算發炎真的是中介路徑，本文也沒有提供任何「測 hsCRP 會改變處置」的證據。</li>
+<li>semaglutide 的適應症與效益在所有 hsCRP 層都一樣，<strong>hsCRP 對用藥決策沒有增加資訊</strong>。</li>
+</ul>
+</li>
+</ul>
+<h3>C. 統計與資料完整性</h3>
+<h4>C1. 結果分類（CI + MCID）</h4>
+<ul>
+<li><strong>MCID 設定</strong>：
+<ul>
+<li>hsCRP 沒有公認的 MCID。</li>
+<li>MACE 採 [推算] HR 0.85（相對風險下降 15%）作為臨床重要門檻，依據是心血管結局試驗常見的設計假設。本文沒有提供 MCID。</li>
+</ul>
+</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>指標</th>
+<th>semaglutide</th>
+<th>安慰劑</th>
+<th>效果量</th>
+<th>95% CI</th>
+<th>ARD（每 100 人年）</th>
+<th>MCID</th>
+<th>結果分類</th>
+<th>實務意義</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>第 104 週 hsCRP 比值</td>
+<td>約 0.62</td>
+<td>約 0.97–1.0</td>
+<td>−37.8%</td>
+<td>−39.7 至 −35.9</td>
+<td>—</td>
+<td>無公認</td>
+<td>生物標記 <strong>POSITIVE</strong>（替代指標）</td>
+<td>效果確定，但臨床意義取決於它是否為中介，目前未證實</td>
+</tr>
+<tr>
+<td>MACE，hsCRP &lt;2</td>
+<td>IR 1.5（228 件）</td>
+<td>2.1（317 件）</td>
+<td>HR 0.72</td>
+<td>0.61–0.86</td>
+<td>−0.6</td>
+<td>HR 0.85 [推算]</td>
+<td><strong>IMPRECISE (+)</strong>（上限僅微幅跨過 MCID）</td>
+<td>低發炎者照樣受益</td>
+</tr>
+<tr>
+<td>MACE，hsCRP 2–&lt;10</td>
+<td>2.3（257 件）</td>
+<td>2.7（300 件）</td>
+<td>HR 0.85</td>
+<td>0.72–1.01</td>
+<td>−0.4</td>
+<td>同上</td>
+<td>單層為 <strong>INCONCLUSIVE</strong>；因 P_int = 0.38，應採整體 HR 0.80</td>
+<td>不應解讀為「無效」</td>
+</tr>
+<tr>
+<td>MACE，hsCRP ≥10</td>
+<td>3.5（78 件）</td>
+<td>4.3（82 件）</td>
+<td>HR 0.83</td>
+<td>0.61–1.13</td>
+<td>−0.8</td>
+<td>同上</td>
+<td>單層為 <strong>INCONCLUSIVE</strong>（160 件事件，精確度不足）</td>
+<td>絕對效益可能最大；用藥後 IR 3.5 仍高於未用藥 &lt;2 層的 2.1</td>
+</tr>
+<tr>
+<td>CV 死亡，≥10</td>
+<td>1.8</td>
+<td>2.5</td>
+<td>HR 0.73</td>
+<td>0.48–1.10</td>
+<td>−0.7</td>
+<td>同上</td>
+<td><strong>INCONCLUSIVE</strong></td>
+<td>—</td>
+</tr>
+<tr>
+<td>全死因死亡，≥10</td>
+<td>2.8</td>
+<td>3.8</td>
+<td>HR 0.76</td>
+<td>0.54–1.05</td>
+<td>−1.0</td>
+<td>同上</td>
+<td><strong>INCONCLUSIVE</strong></td>
+<td>以約 3.3 年計，絕對差約 3% [推算]</td>
+</tr>
+<tr>
+<td>預後：≥10 vs &lt;2（MACE）</td>
+<td>—</td>
+<td>—</td>
+<td>HR 2.17</td>
+<td>1.81–2.58</td>
+<td>—</td>
+<td>—</td>
+<td>預後關聯明確（只調整治療組別）</td>
+<td>有混淆</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><strong>次組不應單獨解讀</strong>：本文沒有任何一層可以宣稱「無效」。三層的 HR 應解讀為「與整體 HR 0.80 一致」。</li>
+<li><strong>Figure 6 的「調整後 HR」不是療效估計，不應套用 CI + MCID 分類</strong>。
+<ul>
+<li>例如 CV 死亡調整後 HR 0.91（0.76–1.10）跨過 1，不代表「扣掉發炎後就沒效」。</li>
+<li>未調整的 CV 死亡 HR 0.85（0.71–1.01）本身在主試驗就已經是 INCONCLUSIVE。</li>
+</ul>
+</li>
+</ul>
+<h4>C2. Underpowered 與 Winner's Curse</h4>
+<ul>
+<li>主試驗有 1,270 件 MACE，不屬於 underpowered positive，Winner's Curse 風險低。</li>
+<li>≥10 mg/L 這層只有 160 件 MACE、90 件 CV 死亡，CI 同時包含 null 與 MCID，<strong>這層是 underpowered</strong>，不能用來宣稱 hsCRP 高的人效果「較好」或「較差」。</li>
+<li>沒有使用 post-hoc power。</li>
+</ul>
+<h4>C3. Bayesian 補充</h4>
+<p>不適用。本文的核心爭議不在「主要終點 p 值接近 0.05」，而在因果結構（中介分析是否成立）。Bayesian 重新分析沒辦法處理這個問題。</p>
+<h4>C4. 統計紅旗清單</h4>
+<ol>
+<li><strong>中介比例（32%、42%、45%）沒有 CI</strong>：對「treatment effect 被解釋的比例」這類指標而言，這是嚴重缺漏。這類比例本身極不穩定；CV 死亡的原始 HR CI 還跨過 1，比例可能從負值到超過 100%。</li>
+<li><strong>全死因死亡的 45% 無法由 Figure 6 的 HR 重現</strong>：用 log HR 計算約為 51%–59%，用 1−HR 計算約 53%。可能是計算方式不同，但文中沒有說明公式。</li>
+<li><strong>調整前後模型的共變項不同</strong>：調整後模型另外加了基線 LDL-C、statin、基線 log hsCRP，所以衰減混雜了共變項調整的效果。Cox 模型的 non-collapsibility 通常會讓加入預後共變項後 HR 更遠離 1，因此實際衰減可能被低估，但兩個模型不是同一基準比較。</li>
+<li><strong>大量未校正的多重比較</strong>：性別交互作用（P &lt; 0.0001）雖強，但是 post hoc；女性的 hsCRP 變化與 MACE 關係 P = 0.045（非線性），屬於典型的邊緣假陽性。</li>
+<li><strong>文與圖不一致</strong>：
+<ul>
+<li>Figure 1 安慰劑組第 4 週 hsCRP 為正值，正文寫「下降 1.8%」。</li>
+<li>Figure 2 的 tertile 數字方向和臨床切點互相矛盾。</li>
+</ul>
+</li>
+<li><strong>基線預後模型只調整治療組別</strong>：≥10 mg/L 層女性、黑人、中風與 PAD 比例較高，BMI 與 LDL-C 也較高（Table）。HR 2.17 與 3.94 包含這些混淆。</li>
+<li><strong>Kaplan-Meier 尾端</strong>：第 208 週 ≥10 層每組只剩 113–128 人，尾端的跳升不可解讀。雖然是行政截尾而非 informative censoring，但精確度極低。</li>
+<li><strong>沒有報告比例風險檢定</strong>。</li>
+</ol>
+<h3>D. 次組分析評估（JAMA 次組可信度標準）</h3>
+<table>
+<thead>
+<tr>
+<th>次組</th>
+<th>有交互作用檢定</th>
+<th>與外部一致</th>
+<th>預先指定且有預期方向</th>
+<th>生物合理性</th>
+<th>可信度</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>依基線 hsCRP 分層的 MACE HR（無交互作用）</td>
+<td>有（P_int 0.38／0.82／0.75）</td>
+<td>與 SELECT 其他次組一致</td>
+<td>有</td>
+<td>—</td>
+<td><strong>高</strong>（結論為「效果一致」）</td>
+</tr>
+<tr>
+<td>性別對 hsCRP 降幅的影響（女性較大）</td>
+<td>有（P &lt; 0.0001）</td>
+<td>作者稱與其他研究一致（ref 30）</td>
+<td>否，post hoc 且未預期方向</td>
+<td>中；有一部分來自安慰劑組女性比值 1.05 vs 男性 0.95</td>
+<td><strong>中</strong></td>
+</tr>
+<tr>
+<td>依體重變化分組（ETR 0.81 → 0.59）</td>
+<td>有（P_int &lt; 0.001）</td>
+<td>與「減重降 CRP」一致</td>
+<td>部分</td>
+<td>高</td>
+<td><strong>低</strong>：分組依據是試驗後變數，失去隨機化保護</td>
+</tr>
+<tr>
+<td>體重下降 &lt;2% 仍有 hsCRP 下降（ETR 0.86）</td>
+<td>有</td>
+<td>不明</td>
+<td>部分</td>
+<td>中</td>
+<td><strong>低到推測性</strong>：同樣是試驗後分組，體重也不能代表脂肪分布</td>
+</tr>
+<tr>
+<td>女性 hsCRP 變化與 MACE 呈非線性</td>
+<td>有（P = 0.045）</td>
+<td>否</td>
+<td>否，post hoc</td>
+<td>低</td>
+<td><strong>推測性</strong></td>
+</tr>
+</tbody>
+</table>
+<h3>E. 紅旗清單</h3>
+<ul>
+<li><strong>設計</strong>：試驗後分組與 time-varying 調整破壞隨機化；死亡不補值，估計對象變成存活者。</li>
+<li><strong>統計</strong>：中介比例沒有 CI；45% 無法重現；調整前後模型共變項不同；多重比較未校正。</li>
+<li><strong>敘事</strong>：
+<ul>
+<li>「在體重下降前」被寫成接近「與體重無關」。</li>
+<li>Clinical Perspective 建議用 hsCRP 辨識受益者，但資料顯示效益不隨 hsCRP 改變。</li>
+<li>分層結果的點估計方向不支持發炎假說，卻沒有討論。</li>
+</ul>
+</li>
+<li><strong>遺漏的關鍵對照</strong>：同一資料庫中，腰圍調整後 HR 同樣變成 0.86（Lancet 2025），本文沒有引用或比較，也沒有做 hsCRP 與腰圍的聯合模型。</li>
+<li><strong>COI</strong>：廠商出資，5 位廠商員工作者，編輯協助由廠商付費，結論與產品「超越減重」的行銷敘事一致；hsCRP 代表人物為共同作者。</li>
+<li><strong>報告</strong>：圖文數字不一致（Figure 1、Figure 2）；Table S7A 的 HR 標示誤植。</li>
+<li><strong>外推</strong>：≥10 mg/L 層的亞洲人極少；女性只占 24%。</li>
+</ul>
+<h3>F. 反向解釋</h3>
+<ol>
+<li><strong>CRP 是疾病嚴重度或瀕死的標記，不是中介</strong>：
+<ul>
+<li>支持線索：全死因死亡（含非心血管死亡）的「解釋比例」最高；hsCRP 往前沿用，而量測間隔長達一年。</li>
+<li>反對線索：作者稱不補值的分析結果相似（Table S11），但這不能排除反向因果。</li>
+</ul>
+</li>
+<li><strong>hsCRP 只是肥胖改善的替代量測，沒有獨立的發炎路徑</strong>：
+<ul>
+<li>支持線索：semaglutide 組體重與 hsCRP 的相關較高；腰圍調整也得到完全相同的 HR 0.86；早期 hsCRP 下降可以用熱量限制解釋。</li>
+<li>反對線索：體重下降 &lt;2% 者仍有 ETR 0.86（但這是試驗後分組）。</li>
+</ul>
+</li>
+<li><strong>hsCRP 與 MACE 是兩個平行、各自獨立的藥物效果</strong>，兩者之間沒有因果路徑：
+<ul>
+<li>支持線索：hsCRP &lt;2 mg/L 的病人 MACE 相對效益最好；作者自己也承認無法區分「共同路徑」與「平行路徑」（Discussion）。</li>
+</ul>
+</li>
+<li><strong>安慰劑組大幅減重者的 hsCRP 下降較少，是因為這些人本身生病</strong>，而不是減重不能降 CRP：
+<ul>
+<li>支持線索：Lancet 2025 顯示安慰劑組體重下降和 MACE 增加相關；作者自己也提到可能有其他健康問題。</li>
+</ul>
+</li>
+</ol>
+<h3>G. 最終裁決</h3>
+<ul>
+<li><strong>整體可信度</strong>：
+<ul>
+<li>「semaglutide 降低 hsCRP 約 38%」與「基線 hsCRP 可預測預後」：<strong>高／中</strong>。</li>
+<li>「發炎下降部分中介了 MACE 效益」：<strong>低</strong>。</li>
+</ul>
+</li>
+<li><strong>可採用的條件</strong>：
+<ul>
+<li>把 hsCRP 當作 ASCVD 肥胖病人絕對風險的輔助指標。</li>
+<li>預期 semaglutide 會降低 hsCRP。</li>
+</ul>
+</li>
+<li><strong>不建議採用的情境</strong>：
+<ul>
+<li>以 hsCRP 決定是否用 semaglutide。</li>
+<li>以 hsCRP 降幅評估療效。</li>
+<li>宣稱 semaglutide 的心血管效益來自抗發炎。</li>
+</ul>
+</li>
+<li><strong>若要改觀，最需要的 3 個改進</strong>：
+<ol>
+<li>用正式的因果中介方法（例如以 target trial 框架設計、處理 mediator–outcome confounding、做 lag 分析，排除事件前 6–12 個月的 CRP 值），並報告中介比例的 CI。</li>
+<li>把 hsCRP、腰圍與體重放進同一個聯合模型，分辨發炎與肥胖各自的角色。</li>
+<li>用機轉更明確的發炎標記（IL-6 等），並找到「不減重但降低發炎」的 GLP-1 RA 作用證據，或做 Mendelian randomization 等外部驗證。</li>
+</ol>
+</li>
+<li><strong>一句話結論</strong>：semaglutide 確實能降低 hsCRP，hsCRP 也能預測風險，但「藥物靠抗發炎保護心臟」目前只是假說，尚未被證實。</li>
+</ul>
+<hr />
+<p><strong>Sources</strong>：</p>
+<ul>
+<li>本文：<a href="https://pubmed.ncbi.nlm.nih.gov/42610271/">PubMed 42610271</a>；DOI <a href="https://doi.org/10.1161/CIRCULATIONAHA.125.074482">10.1161/CIRCULATIONAHA.125.074482</a>（依 PubMed 資料）</li>
+<li><a href="https://doi.org/10.1016/S0140-6736(25)01375-3">Deanfield et al. Lancet 2025（SELECT 肥胖指標分析）</a></li>
+<li><a href="https://doi.org/10.1038/s41591-026-04281-1">Meyhöfer et al. Nat Med 2026</a></li>
+<li><a href="https://doi.org/10.1001/jamacardio.2026.3566">Ostrominski et al. JAMA Cardiol 2026</a></li>
+<li><a href="https://www.news-medical.net/news/20260824/Semaglutidee28099s-heart-benefits-may-partly-involve-reduced-inflammation.aspx">News-Medical 2026-08-24</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Circulation_(journal)">Circulation (journal) – Wikipedia</a></li>
+<li><a href="https://manusights.com/blog/circulation-review-time">Circulation Review Time – manusights</a></li>
+<li><a href="https://manusights.com/blog/circulation-acceptance-rate">Circulation Acceptance Rate – manusights</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Paul_Ridker">Paul Ridker – Wikipedia</a></li>
+<li><a href="https://www.fda.gov/media/138746/download">Ridker CV (FDA)</a></li>
+</ul>
+
+<footer class="appraisal-meta">評讀資訊：模型：claude-opus-5 (claude)  ·  route：rct  ·  產出時間：2026-09-21 10:40 CST</footer>
+</main>
+</body>
+</html>
