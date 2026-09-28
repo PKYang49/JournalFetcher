@@ -1,0 +1,1484 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Semaglutide and cardiovascular risk reduction: a mediation analysis of the SELECT trial.</title>
+<style>
+  :root {
+    --bg: #fafafa;
+    --card: #ffffff;
+    --text: #1a1a1a;
+    --muted: #6b6b6b;
+    --border: #e5e5e5;
+    --accent: #0b5fff;
+  }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang TC",
+      "Microsoft JhengHei", sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    margin: 0;
+    padding: 24px 16px 64px;
+    line-height: 1.72;
+  }
+  main {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    margin: 0 auto;
+    max-width: 840px;
+    padding: 22px 26px;
+  }
+  nav {
+    margin: 0 auto 14px;
+    max-width: 840px;
+    color: var(--muted);
+    font-size: 14px;
+  }
+  a { color: var(--accent); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  h1, h2, h3, h4 { line-height: 1.35; }
+  h1 { font-size: 26px; margin-top: 0; }
+  h2 { border-top: 1px solid var(--border); padding-top: 18px; }
+  code {
+    background: rgba(127, 127, 127, 0.12);
+    border-radius: 4px;
+    padding: 1px 4px;
+  }
+  table {
+    border-collapse: collapse;
+    table-layout: auto;
+    width: 100%;
+    max-width: 100%;
+  }
+  th, td {
+    border: 1px solid var(--border);
+    overflow-wrap: anywhere;
+    padding: 6px 8px;
+    text-align: left;
+    vertical-align: top;
+  }
+  blockquote {
+    border-left: 3px solid var(--accent);
+    color: var(--muted);
+    margin-left: 0;
+    padding-left: 14px;
+  }
+  .appraisal-meta {
+    border-top: 1px solid var(--border);
+    margin-top: 28px;
+    padding-top: 14px;
+    color: var(--muted);
+    font-size: 13px;
+  }
+  @media (max-width: 600px) {
+    body {
+      padding: 12px 8px 40px;
+    }
+    main {
+      padding: 16px 12px;
+    }
+    h1 {
+      font-size: 22px;
+    }
+    table {
+      font-size: 12px;
+      table-layout: fixed;
+    }
+    th, td {
+      padding: 4px 5px;
+    }
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #1a1a1a;
+      --card: #242424;
+      --text: #e8e8e8;
+      --muted: #999;
+      --border: #333;
+      --accent: #6ea8ff;
+    }
+  }
+</style>
+</head>
+<body>
+<nav><a href="../../2026-W40.html">← 回到 2026-W40 週報</a></nav>
+<main>
+<h1>Semaglutide and cardiovascular risk reduction: a mediation analysis of the SELECT trial.</h1>
+<h1>醫學文獻批判性評讀</h1>
+<p><strong>Semaglutide and cardiovascular risk reduction: a mediation analysis of the SELECT trial</strong></p>
+<hr />
+<h2>SECTION-0：文章全面描述</h2>
+<h3>0. 文章身份證</h3>
+<table>
+<thead>
+<tr>
+<th>項目</th>
+<th>內容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>標題</td>
+<td>Semaglutide and cardiovascular risk reduction: a mediation analysis of the SELECT trial</td>
+</tr>
+<tr>
+<td>期刊</td>
+<td>European Heart Journal（advance article，尚未編入卷期）</td>
+</tr>
+<tr>
+<td>年份</td>
+<td>2026（線上發表 2026-09-23）</td>
+</tr>
+<tr>
+<td>DOI</td>
+<td><a href="https://doi.org/10.1093/eurheartj/ehag524">10.1093/eurheartj/ehag524</a></td>
+</tr>
+<tr>
+<td>PMID</td>
+<td>42777687</td>
+</tr>
+<tr>
+<td>文章類型</td>
+<td><strong>RCT 的預先指定次級分析（pre-specified mediation analysis）</strong> → 路由至 SKILL-A 主流程</td>
+</tr>
+</tbody>
+</table>
+<p><strong>路由補充說明</strong>：本文並非新的隨機試驗，而是 SELECT（NCT03574597）的中介分析。隨機分派保障的是「治療 → MACE」這條路徑；但中介分析真正要估計的是「中介物 → MACE」這一段，而<strong>這一段並未被隨機化</strong>，本質上是嵌在 RCT 內部的觀察性因果推論。因此本文在 SKILL-A 主流程之外，另行套用 Appendix 因果推論框架（可識別性條件）進行評估。這一點是本文所有方法學問題的共同源頭。</p>
+<hr />
+<h3>1. 作者團隊評論</h3>
+<p><strong>通訊作者</strong>：Helen M. Colhoun 教授，University of Edinburgh, Institute of Genetics and Cancer [文內]。持有 AXA Research Fund 醫學資訊與生命歷程流行病學講座教席，兼任 NHS Fife 公共衛生顧問醫師，領導該校糖尿病醫學資訊與流行病學研究群；曾在 Dundee、UCL、UCD 擔任流行病學教授 [外部: University of Edinburgh Research Explorer / edwebprofiles.ed.ac.uk]。研究主軸為糖尿病併發症的族群層級病理機轉與預防，曾共同主持 IMI SUMMIT 計畫 [外部: ed.ac.uk Colhoun Group]。就「用大型資料做風險因子—結局關聯的複雜統計建模」這個技能組合而言，她是本題目高度適配的第一作者。</p>
+<p><strong>作者團隊構成</strong>：18 位作者中，<strong>5 位（Hovingh、Hardt-Lindberg、Kalayci Oral、Weeke、Linder）明確申報為 Novo Nordisk 員工兼持股人</strong> [文內, Disclosure of Interest]。另有 Novo Nordisk 的 Dr Signe Stensen 在誌謝中被列為對稿件有貢獻者，醫學寫作由 OPEN Health Communications 的 Carolyn Bowler 提供、Novo Nordisk 資助 [文內, Acknowledgements]。學術端則涵蓋 SELECT 指導委員會核心成員（Lincoff、Deanfield、Ryan、Lingvay、Kahn、Plutzky）與一位資深生物統計學者（Scott S. Emerson, University of Washington）。文內<strong>未提供 Author Contributions 分工</strong>，因此無法判定實際執行統計分析者為學術端或藥廠端 — 考量個案層級資料由 Novo Nordisk 掌控（見 Data Availability），[推論] 主分析極可能由藥廠統計團隊執行。</p>
+<p><strong>作者立場史</strong>：SELECT 主論文（Lincoff 等，NEJM 2023）與後續一系列次級分析（腎臟結局、心衰次群、腰圍次群分析）多由同一核心團隊發表，屬典型的「同一資料集、同一團隊反覆產出」模式。這在大型 CVOT 是常態，但意味著<strong>對 SELECT 整體敘事的既有承諾（prior commitment）偏差</strong>存在：該團隊過往已公開主張 semaglutide 的心血管益處不能單純歸因於減重（ref 10 的腰圍次群分析即為此立場的前身），本文結論與該既有立場高度一致。</p>
+<p><strong>利益揭露評估</strong> [文內 + 評估]：</p>
+<ul>
+<li>資助者：Novo Nordisk。文內明確寫明「<strong>The funder was responsible for the study design, along with the academic steering committee, and contributed to data collection, analysis, and interpretation</strong>」— 資助者參與了分析與詮釋，而非僅提供經費。</li>
+<li>第一作者 Colhoun 申報擔任 Novo Nordisk 顧問團成員、並持有 Roche 與 Eli Lilly 股票。幾乎所有學術作者均申報接受 Novo Nordisk 顧問費或演講費。</li>
+<li><strong>關鍵評估</strong>：本文的核心結論（「已知風險因子無法完整解釋 MACE 益處」）在商業上並非中性。它把 semaglutide 從「減重藥」重新定位為「心血管保護藥」，這正是 Colhoun 在 ESC 新聞稿中的原話 —「semaglutide should be considered as a cardiovascular disease reduction drug and not just as a weight loss drug」[外部: ESC press release, 2026-09-24]。這個定位直接關係到適應症擴張與給付論述。<strong>一個精確度極差、統計上不確定的結果，被用來支持一個商業價值極高的定位主張</strong> — 這是本文最需要警覺的結構性問題（詳見 E 紅旗清單）。</li>
+</ul>
+<hr />
+<h3>2. 文獻 Metadata 整理</h3>
+<table>
+<thead>
+<tr>
+<th>項目</th>
+<th>數值</th>
+<th>來源</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Received</td>
+<td>2025-08-29</td>
+<td>[文內]</td>
+</tr>
+<tr>
+<td>Revised</td>
+<td>2026-02-12</td>
+<td>[文內]</td>
+</tr>
+<tr>
+<td>Accepted</td>
+<td>2026-06-20</td>
+<td>[文內]</td>
+</tr>
+<tr>
+<td>Published online</td>
+<td>2026-09-23</td>
+<td>[外部: OUP 文章頁]</td>
+</tr>
+<tr>
+<td><strong>收稿至接受</strong></td>
+<td><strong>296 天（約 9.7 個月）</strong></td>
+<td>自行計算</td>
+</tr>
+<tr>
+<td><strong>收稿至上線</strong></td>
+<td><strong>390 天（約 12.8 個月）</strong></td>
+<td>自行計算</td>
+</tr>
+<tr>
+<td>EHJ 期刊 Impact Factor</td>
+<td>45.3（2025 JIF）；5-year JIF 42.2；Q1，心臟與心血管系統領域排名 2/237</td>
+<td>[外部: Clarivate 數據經 manusights.com 彙整]</td>
+</tr>
+<tr>
+<td>EHJ 接受率 / 首次決議時間</td>
+<td>接受率約 10%；desk rejection 約 70%；<strong>中位首次決議約 20 天</strong></td>
+<td>[外部: manusights.com EHJ Journal Guide 2026]</td>
+</tr>
+<tr>
+<td>Open Access 狀態</td>
+<td>Open Access（CC BY 4.0）</td>
+<td>[文內]</td>
+</tr>
+<tr>
+<td>邀稿 vs 投稿</td>
+<td>文內未揭露；[推論] 由正常收稿—修訂—接受流程判斷為一般投稿</td>
+<td>—</td>
+</tr>
+</tbody>
+</table>
+<p><strong>審查速度解讀</strong>：EHJ 的首次決議中位數約 20 天，本文卻歷經 296 天才被接受，且明確記錄了一次正式修訂（2025-08-29 收稿 → 2026-02-12 修訂回稿，間隔 167 天；修訂後再花 128 天才接受）。這個時程<strong>遠慢於期刊平均</strong>。[推論] 修訂後再等四個多月才接受，最合理的解釋是經歷了兩輪以上的審查往返，或需要額外的統計審查。對一篇由藥廠共同執行、方法學爭議性高的中介分析而言，這反而是編輯部把關較嚴的正向訊號。</p>
+<p><strong>一個必須指出的時間線問題</strong>：本分析的結果早在 <strong>ESC Congress 2024（2024 年 8–9 月）</strong> 即以摘要形式公開發表（Eur Heart J 2024;45(Suppl_1):ehae666.2792）[外部: OUP 摘要頁]。該摘要所報告的數值 — 腰圍 64.0%、hsCRP 42.1%、HbA1c 29.0%、體重 19.5%、聯合中介 31.4%（−30.1, 143.6）— <strong>與本文最終發表數字完全一致</strong>。意即：分析在 2024 年年中即已定稿，但直到 2025 年 8 月才投稿、2026 年 9 月才發表，從公開發表到正式論文間隔約兩年。正面看，這代表同儕審查未能動搖點估計（分析本身穩定）；但也代表<strong>這兩年間臨床界已在引用一組從未經過同儕審查的數字</strong>。</p>
+<hr />
+<h3>3. 研究背景 [僅根據文內]</h3>
+<p><strong>既有事實</strong>：</p>
+<ol>
+<li>SELECT 主試驗顯示 semaglutide 2.4 mg 每週皮下注射，在 BMI ≥27、已有心血管疾病、無糖尿病病史的成人中，將 3-point MACE 降低 20%（6.5% vs 8.0%；HR 0.80, 95% CI 0.72–0.90, <em>P</em> &lt; .001）[文內, Introduction, ref 1]。</li>
+<li>同一試驗中，semaglutide 同時改善了體重、脂肪分布、血糖、血壓、hsCRP、血脂與腎功能 [文內]。</li>
+<li>GLP-1 RA 對動脈粥樣硬化的作用可能經由多重機轉（脂質沉積減少、血流動力學壓力降低、內皮功能改善）[文內, ref 3–7]。</li>
+<li>其他 GLP-1 RA 的中介分析：LEADER（liraglutide）指出 HbA1c 為主要中介、UACR 次之；REWIND（dulaglutide）同樣指向 HbA1c 與 UACR [文內, ref 8, 9]。</li>
+</ol>
+<p><strong>知識缺口</strong>：這些風險因子的綜合改變，是否足以解釋 MACE 的益處，尚不清楚 [文內]。SELECT 排除糖尿病，故基線 HbA1c 與 UACR 分布與既往 GLP-1 RA 糖尿病試驗不同，既有中介結論不能直接外推。</p>
+<p><strong>先前內部分析</strong>：SELECT 曾做過一次 Cox 迴歸校正分析，結果是「校正體重幾無影響，但校正腰圍使治療效果估計下降三分之一」[文內, ref 10]。本文自我定位為該初步分析的正式升級版。</p>
+<p><strong>Research question</strong>：在 SELECT 族群中，已測量的心血管風險因子變化，能在多大程度上統計性地解釋 semaglutide 對 MACE 的治療效果？</p>
+<p><strong>作者自己設下的認識論界線（值得肯定）</strong>：Introduction 明確寫出中介分析「cannot prove causality」、依賴「無未測混淆」等強假設、且「cannot differentiate between a biological mediator and biomarkers of the protective mechanism」。這段自我設限寫得很清楚 — 但如後文所示，<strong>這條界線在 Discussion、Graphical Abstract 與新聞稿中逐步失守</strong>。</p>
+<hr />
+<h3>4. 研究設計與方法</h3>
+<h4>PICO</h4>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>內容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>P</strong></td>
+<td>17 604 位 ≥45 歲、BMI ≥27 kg/m²、已有心血管疾病、無糖尿病病史之成人。排除：篩選前 60 天內 MI/stroke/不穩定心絞痛住院/TIA、HbA1c ≥6.5%、NYHA class IV 心衰、末期腎病或需透析。平均年齡 62 歲、72% 男性、72% BMI ≥30、<strong>66.4% 為 prediabetes（HbA1c 5.7–6.4%）</strong>、68% 曾有 MI</td>
+</tr>
+<tr>
+<td><strong>I</strong></td>
+<td>皮下 semaglutide，16 週內劑量遞增至目標劑量 2.4 mg 每週（n = 8803）。24 個月時約 77% 達最大劑量</td>
+</tr>
+<tr>
+<td><strong>C</strong></td>
+<td>安慰劑（n = 8801）。1:1 隨機、雙盲</td>
+</tr>
+<tr>
+<td><strong>O（本文終點）</strong></td>
+<td>3-point MACE：首次非致死性 MI、非致死性 stroke，或心血管死亡（EAC 判定）。<strong>本文的分析標的是 36 個月時的 MACE-free survival 機率差</strong>（絕對效果，非相對效果）</td>
+</tr>
+<tr>
+<td><strong>中介物（12 項）</strong></td>
+<td>體重、腰圍、hsCRP、HbA1c、總膽固醇、HDL-C、LDL-C、三酸甘油酯、SBP、DBP、eGFR、UACR</td>
+</tr>
+</tbody>
+</table>
+<h4>關鍵統計方法細節</h4>
+<ul>
+<li><strong>主分析方法</strong>：Vansteelandt repeated regression（counterfactual 架構）[文內, ref 13]。邏輯為：估計「若 semaglutide 組的中介物軌跡被替換成安慰劑組的軌跡，其 MACE-free survival 會是多少」（= adjusted semaglutide survival）；直接效果 = adjusted semaglutide survival − placebo survival；% mediation = 100 × (1 − 直接效果 / 總效果)。</li>
+<li><strong>評估時點</strong>：36 個月（預先指定，為完成試驗者的預期最短追蹤時間）。平均追蹤 39.8 個月。</li>
+<li><strong>中介物資料</strong>：使用至少到 24 個月的重複測量值；所有模型均納入該中介物的基線值作為潛在混淆因子。</li>
+<li><strong>遺失值處理</strong>：<strong>LOCF（last observation carried forward）</strong>。各次訪視經 LOCF 填補的比例為 8%–23%，兩組相近 [文內, Table S3]。</li>
+<li><strong>主分析族群</strong>：ITT（隨機分派至最終追蹤訪視）；另有 on-treatment 補充分析（停藥定義為連續 5 週未用藥）。</li>
+<li><strong>補充分析 1：reverse counterfactual</strong> — 改以「安慰劑組若經歷 semaglutide 組的中介物值」估計直接效果。兩者差距大時，可能代表真實的 treatment–mediator 交互作用、隱藏混淆，或中介物—結局關係非線性。</li>
+<li><strong>補充分析 2：time-dependent Cox regression</strong> — 以中介物的 updated mean（AUC/time）為時間相依共變項，% mediation 以 log HR 計算。</li>
+<li><strong>收斂問題的後果</strong>：體重、SBP、DBP 僅納入部分訪視（週 12, 20, 39, 52, 78, 104, 130）「以避免收斂問題」；多變量模型中血壓只留 SBP、血脂只留 LDL-C，同樣因為「納入太多變項會造成收斂問題」[文內, Methods &amp; Results]。</li>
+<li><strong>軟體</strong>：SAS 9.4 TS1M5，基於個案層級資料。</li>
+<li><strong>CI 計算</strong>：1000 次 bootstrap 重抽的百分位數。</li>
+</ul>
+<h4>預先指定程度的實際檢視 [評估]</h4>
+<p>文章反覆強調此為「pre-specified」「full pre-specified mediation analysis」，候選中介物為「selected <em>a priori</em>」。但 Methods 同時寫道：「<strong>After unblinding, the treatment effect on each candidate was evaluated to confirm its viability as a potential mediator</strong>」— 這是一個<strong>解盲後對中介物清單進行的篩選步驟</strong>。加上多變量模型中「留哪個血壓變項、留哪個血脂變項」與「體重/血壓納入哪幾次訪視」均由收斂性事後決定，實際的分析者自由度（analyst degrees of freedom）明顯高於「pre-specified」一詞所暗示的程度。<strong>文內未提供統計分析計畫（SAP）的版本、日期或可查閱連結</strong>，因此外部讀者無法驗證哪些是真正預先寫定、哪些是事後調整。</p>
+<hr />
+<h3>5. 研究結果重點整理</h3>
+<h4>主要結果（Vansteelandt counterfactual，36 個月，單一中介物；數值經 Table 1 原圖核對）</h4>
+<table>
+<thead>
+<tr>
+<th>中介物</th>
+<th>Semaglutide 存活機率</th>
+<th>Adjusted semaglutide</th>
+<th>Placebo</th>
+<th>總效果 (95% CI)</th>
+<th>直接效果 (95% CI)</th>
+<th><strong>% mediation (95% CI)</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>腰圍</strong></td>
+<td>0.941</td>
+<td>0.934</td>
+<td>0.930</td>
+<td>0.012 (0.004, 0.020)</td>
+<td>0.004 (−0.004, 0.013)</td>
+<td><strong>64.0 (27.5, 179.6)</strong></td>
+</tr>
+<tr>
+<td><strong>hsCRP</strong></td>
+<td>0.941</td>
+<td>0.936</td>
+<td>0.929</td>
+<td>0.013 (0.005, 0.020)</td>
+<td>0.007 (−0.001, 0.016)</td>
+<td><strong>42.1 (17.9, 110.5)</strong></td>
+</tr>
+<tr>
+<td><strong>HbA1c</strong></td>
+<td>0.941</td>
+<td>0.938</td>
+<td>0.929</td>
+<td>0.012 (0.004, 0.019)</td>
+<td>0.008 (−0.001, 0.018)</td>
+<td><strong>29.0 (−20.7, 120.5)</strong></td>
+</tr>
+<tr>
+<td><strong>體重</strong></td>
+<td>0.941</td>
+<td>0.939</td>
+<td>0.929</td>
+<td>0.012 (0.004, 0.019)</td>
+<td>0.009 (−0.001, 0.019)</td>
+<td><strong>19.5 (−33.0, 110.7)</strong></td>
+</tr>
+<tr>
+<td>三酸甘油酯</td>
+<td>0.942</td>
+<td>0.939</td>
+<td>0.929</td>
+<td>0.012 (0.005, 0.020)</td>
+<td>0.010 (0.002, 0.018)</td>
+<td>18.6 (−0.5, 65.5)</td>
+</tr>
+<tr>
+<td>UACR</td>
+<td>0.942</td>
+<td>0.940</td>
+<td>0.930</td>
+<td>0.012 (0.005, 0.020)</td>
+<td>0.010 (0.003, 0.018)</td>
+<td>14.6 (5.2, 39.0)</td>
+</tr>
+<tr>
+<td>SBP</td>
+<td>0.941</td>
+<td>0.940</td>
+<td>0.929</td>
+<td>0.012 (0.004, 0.019)</td>
+<td>0.010 (0.002, 0.018)</td>
+<td>14.3 (−6.1, 51.7)</td>
+</tr>
+<tr>
+<td>LDL-C</td>
+<td>0.942</td>
+<td>0.940</td>
+<td>0.930</td>
+<td>0.012 (0.005, 0.020)</td>
+<td>0.011 (0.003, 0.018)</td>
+<td>10.9 (0.8, 36.0)</td>
+</tr>
+<tr>
+<td>HDL-C</td>
+<td>0.941</td>
+<td>0.940</td>
+<td>0.930</td>
+<td>0.012 (0.004, 0.019)</td>
+<td>0.011 (0.003, 0.018)</td>
+<td>9.3 (−8.4, 42.3)</td>
+</tr>
+<tr>
+<td>總膽固醇</td>
+<td>0.941</td>
+<td>0.940</td>
+<td>0.929</td>
+<td>0.012 (0.005, 0.020)</td>
+<td>0.011 (0.003, 0.019)</td>
+<td>7.6 (−10.8, 36.1)</td>
+</tr>
+<tr>
+<td>eGFR</td>
+<td>0.941</td>
+<td>0.940</td>
+<td>0.929</td>
+<td>0.012 (0.005, 0.020)</td>
+<td>0.011 (0.004, 0.019)</td>
+<td>6.9 (2.1, 21.3)</td>
+</tr>
+<tr>
+<td>DBP</td>
+<td>0.941</td>
+<td>0.941</td>
+<td>0.929</td>
+<td>0.012 (0.004, 0.019)</td>
+<td>0.012 (0.005, 0.020)</td>
+<td>−1.8 (−10.6, 4.0)</td>
+</tr>
+</tbody>
+</table>
+<p><strong>總效果的絕對尺度</strong>：36 個月 MACE-free survival 差距為 <strong>0.012（1.2 個百分點）</strong>，95% CI 0.004–0.020（0.4–2.0 個百分點）。這個分母本身就跨越 5 倍範圍 — 這是後續所有 % mediation 估計極度不穩定的<strong>結構性根源</strong>。</p>
+<h4>多變量聯合中介（Table 2）</h4>
+<table>
+<thead>
+<tr>
+<th>模型</th>
+<th>% mediation (95% CI)</th>
+<th>Reverse counterfactual % mediation (95% CI)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>全部 8 項（體重、腰圍、HbA1c、hsCRP、SBP、LDL-C、eGFR、UACR）</td>
+<td><strong>31.4 (−30.1, 143.6)</strong></td>
+<td>52.6 (−55.1, 192.6)</td>
+</tr>
+<tr>
+<td>排除體重與腰圍（HbA1c、hsCRP、SBP、LDL-C、eGFR、UACR）</td>
+<td><strong>46.0 (−6.0, 161.0)</strong></td>
+<td>60.4 (1.2, 165.0)</td>
+</tr>
+<tr>
+<td><strong>僅體重 + 腰圍</strong></td>
+<td><strong>12.3 (−42.6, 92.6)</strong></td>
+<td>12.2 (−121.1, 134.7)</td>
+</tr>
+</tbody>
+</table>
+<p><strong>內部矛盾的核心數字</strong>：體重單獨 19.5%、腰圍單獨 64.0%，兩者合併卻只剩 <strong>12.3%</strong> — 低於任一單項。</p>
+<h4>時間相依 Cox 補充分析（Table 3）</h4>
+<table>
+<thead>
+<tr>
+<th>中介物</th>
+<th>校正後 HR (95% CI)</th>
+<th>% mediation (95% CI)</th>
+<th>與 Vansteelandt 比較</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>未校正</td>
+<td>0.801 (0.717, 0.895)</td>
+<td>—</td>
+<td>—</td>
+</tr>
+<tr>
+<td>腰圍</td>
+<td>0.860 (0.764, 0.968)</td>
+<td><strong>32.0 (12.6, 73.9)</strong></td>
+<td>64.0 → 32.0（<strong>減半</strong>）</td>
+</tr>
+<tr>
+<td>hsCRP</td>
+<td>0.858 (0.767, 0.961)</td>
+<td><strong>31.0 (16.1, 65.4)</strong></td>
+<td>42.1 → 31.0</td>
+</tr>
+<tr>
+<td>HbA1c</td>
+<td>0.825 (0.729, 0.933)</td>
+<td><strong>13.0 (−11.7, 45.4)</strong></td>
+<td>29.0 → 13.0（<strong>減半，且變為跨越 0</strong>）</td>
+</tr>
+<tr>
+<td>體重</td>
+<td>0.818 (0.718, 0.931)</td>
+<td><strong>9.1 (−23.5, 49.3)</strong></td>
+<td>19.5 → 9.1（<strong>減半</strong>）</td>
+</tr>
+<tr>
+<td>UACR</td>
+<td>0.818 (0.730, 0.915)</td>
+<td>9.1 (−0.5, 25.4)</td>
+<td>14.6 → 9.1（<strong>由顯著轉為跨越 0</strong>）</td>
+</tr>
+<tr>
+<td>LDL-C</td>
+<td>0.813 (0.726, 0.911)</td>
+<td>6.7 (−5.0, 22.6)</td>
+<td>10.9 → 6.7（<strong>由顯著轉為跨越 0</strong>）</td>
+</tr>
+<tr>
+<td>eGFR</td>
+<td>0.798 (0.714, 0.892)</td>
+<td><strong>−1.7 (−9.9, 5.1)</strong></td>
+<td>6.9 → −1.7（<strong>符號翻轉</strong>）</td>
+</tr>
+<tr>
+<td>HDL-C</td>
+<td>0.800 (0.715, 0.895)</td>
+<td>−0.6 (−10.4, 8.2)</td>
+<td>9.3 → −0.6（<strong>符號翻轉</strong>）</td>
+</tr>
+<tr>
+<td>8 項聯合</td>
+<td>0.853 (0.743, 0.979)</td>
+<td>28.0 (−8.4, 87.3)</td>
+<td>31.4 → 28.0</td>
+</tr>
+<tr>
+<td>6 項（排除體重腰圍）</td>
+<td>0.862 (0.758, 0.980)</td>
+<td><strong>32.8 (2.7, 90.1)</strong></td>
+<td>46.0 → 32.8</td>
+</tr>
+<tr>
+<td>僅體重 + 腰圍</td>
+<td>0.814 (0.714, 0.927)</td>
+<td>6.9 (−27.0, 46.4)</td>
+<td>12.3 → 6.9</td>
+</tr>
+</tbody>
+</table>
+<h4>治療組別分層的 Cox 分析（Table S5，僅見於正文描述）</h4>
+<ul>
+<li>時間更新後的<strong>體重</strong>與 MACE：<strong>兩組皆無顯著關聯</strong>。</li>
+<li>時間更新後的<strong>腰圍</strong>與 MACE：<strong>僅在 semaglutide 組</strong>呈顯著關聯。</li>
+<li>時間更新後的 <strong>hsCRP</strong> 與 MACE：<strong>兩組皆呈顯著關聯</strong>。</li>
+</ul>
+<hr />
+<h3>5b. 圖頁判讀（僅根據可見內容）</h3>
+<p>我讀取了 5 張圖頁 PNG（page_002、005、006、007、009），以下為 markdown 轉檔文字未保留、但圖中清楚可見的證據：</p>
+<h4>① Figure 1（page_006.png）— <strong>本文最重要、卻只存在於圖中的證據</strong></h4>
+<p>markdown 正文只以文字描述「reverse counterfactual 對腰圍的估計明顯較低」，但<strong>實際數值只印在圖上</strong>。圖中清楚可讀：</p>
+<table>
+<thead>
+<tr>
+<th>中介物</th>
+<th>正向 counterfactual</th>
+<th><strong>Reverse counterfactual</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>A. 體重</td>
+<td>19.5% (−33.0, 110.7)</td>
+<td><strong>18.9% (−119.2, 158.4)</strong></td>
+</tr>
+<tr>
+<td>B. 腰圍</td>
+<td>64.0% (27.5, 179.6)</td>
+<td><strong>21.5% (−18.3, 83.1)</strong></td>
+</tr>
+<tr>
+<td>C. hsCRP</td>
+<td>42.1% (17.9, 110.5)</td>
+<td><strong>43.1% (22.3, 106.8)</strong></td>
+</tr>
+<tr>
+<td>D. HbA1c</td>
+<td>29.0% (−20.7, 120.5)</td>
+<td><strong>13.1% (−51.2, 84.5)</strong></td>
+</tr>
+</tbody>
+</table>
+<p><strong>這組圖內數字翻轉了本文的敘事重心</strong>：</p>
+<ul>
+<li><strong>腰圍</strong>：64.0% → 21.5%，<strong>點估計掉了三分之二，且 reverse CI 跨越 0</strong>。摘要把腰圍列為第一大中介物（64.0%），但這個數字在反向情境下站不住腳。</li>
+<li><strong>體重</strong>：反向 CI 為 <strong>(−119.2, 158.4)</strong> — 寬達 278 個百分點，<strong>完全無資訊量</strong>。</li>
+<li><strong>HbA1c</strong>：29.0% → 13.1%，且反向 CI 跨越 0。</li>
+<li><strong>hsCRP</strong>：42.1% → 43.1%，CI 幾乎重疊（17.9–110.5 vs 22.3–106.8），<strong>是唯一在正反兩個反事實方向下都穩定、且兩者下界都明顯大於 0 的中介物</strong>。</li>
+</ul>
+<p><strong>臨床解讀</strong>：把 Figure 1 的四組數字、Table 3 的 Cox 結果、以及 Table S5 的分組分析三者疊在一起看，<strong>hsCRP 是本文中唯一通過全部三項穩健性檢驗的中介物</strong>（正反反事實一致、兩種統計方法皆顯著、兩個治療組別皆有關聯）。腰圍則三項全部失敗其中兩項。但摘要與 Graphical Abstract 的排序仍以腰圍 64.0% 領銜 — <strong>論文的呈現順序與其自身穩健性證據的方向相反</strong>。</p>
+<h4>② Figure 1 的圖形呈現問題</h4>
+<ul>
+<li><strong>Y 軸自 0.90 起，非零起點</strong>，僅顯示 0.90–1.00 這 10% 的範圍。在絕對差距僅 1.2 個百分點的情境下，這會視覺上放大曲線分離程度。此為事件驅動型 CVOT 的慣例，不算蓄意誤導，但<strong>與本文自身「效果小且不確定」的核心訊息背道而馳</strong>。</li>
+<li><strong>無 number-at-risk 列</strong>。這是實質缺漏：全文的中介估計都錨定在 36 個月這個 landmark，而讀者無從判斷 36 個月時各組尚有多少人在觀察中。由於平均追蹤 39.8 個月，36 個月時剩餘人數應仍相當可觀，[推論] 尾端不穩定風險不高 — 但這是推論，不是圖上可驗證的事實。<strong>[限制：Figure 1 未提供 number at risk，無法直接核實 36 個月時的在險人數]</strong></li>
+<li>曲線在 0–3 個月即開始分離，之後大致維持平行分離至 36 個月；<strong>未見曲線交叉</strong>。這與比例風險假設大致相容（文內未報告正式的 proportional hazards 檢定 — 見 E 紅旗）。</li>
+<li>所有八張小圖（四中介物 × 正/反方向）的曲線分離模式<strong>肉眼上幾乎無法區辨</strong>：semaglutide 0.941、adjusted 0.934–0.939、placebo 0.929–0.930。整個「中介 vs 直接效果」的區分，發生在存活機率小數點後第三位。<strong>這是 % mediation 估計極不穩定最直觀的視覺證據。</strong></li>
+</ul>
+<h4>③ Graphical Abstract（page_002.png）— <strong>發現一處可驗證的事實錯誤</strong></h4>
+<p>Key Finding 段落原文可清楚讀到：</p>
+<blockquote>
+<p>「…the treatment effect on major adverse CV events could not be ascribed to these changes with certainty, <strong>body weight reduction explaining only 31% of risk reduction</strong>.」</p>
+</blockquote>
+<p><strong>這句話是錯的</strong>。31%（31.4%）是 <strong>Table 2 中八項中介物聯合模型</strong>的估計值；<strong>體重單獨的估計是 19.5%</strong>（Table 1），Cox 法下更只有 9.1%（Table 3）。論文把「所有中介物合計」誤植為「體重」。</p>
+<p>這不是無關緊要的排版瑕疵：</p>
+<ol>
+<li>Graphical Abstract 是本文流通最廣的元件（社群媒體、簡報、二手引用的主要來源）。</li>
+<li>它<strong>系統性地誇大了體重的中介角色達 1.6 倍</strong>，而「體重減輕不足以解釋益處」正是本文的核心賣點 — 錯誤的方向恰好<strong>削弱</strong>了作者自己的論點，但也同時製造了一個容易被錯誤引用的數字。</li>
+<li>ESC 新聞稿與後續媒體報導反而是正確的（「約 20% 由體重中介、約 30% 由全部風險因子合計中介」）[外部: ESC press release]，可見 Graphical Abstract 是此處唯一的離群錯誤。</li>
+</ol>
+<h4>④ Graphical Abstract 的「31% / 69%」二分圖 — <strong>本文最具誤導性的單一元件</strong></h4>
+<p>圖中以兩個並列色塊呈現「Explained effect (<strong>31%</strong>)」與「Unexplained effect (<strong>69%</strong>)」，並在右側放一個巨大問號。</p>
+<p>問題在於：這個 31.4% 的 <strong>95% CI 是 −30.1 到 143.6</strong>。也就是說，資料同樣相容於「這些中介物讓結果變差」以及「這些中介物解釋了全部效果的 1.4 倍」。把一個橫跨 174 個百分點、包含 0 也包含 100 的估計值，畫成一個乾淨俐落的 31/69 兩格切分圖，<strong>在視覺上把 100% 的確定性賦予了一個 0% 確定性的數字</strong>。正文 Discussion 反覆強調不確定性（做得相當好），但 Graphical Abstract 把這些警語全部抹除。</p>
+<h4>⑤ Table 1、Table 3 原圖核對（page_005.png、page_009.png）</h4>
+<p>原圖核對確認 markdown 轉檔的負號有錯位（例如 markdown 寫作「HbA1c 29.0% [95% CI 20.7, 120.5]」，原表實為「(−20.7, 120.5)」）。上方第 5 節所有數值均以<strong>原圖為準</strong>重建。</p>
+<h4>⑥ CONSORT / flow diagram</h4>
+<p>本文為次級分析，未附獨立的參與者流程圖（主試驗流程見 ref 1，屬合理做法）。可核對的人數在全文一致：8803 + 8801 = 17 604，正文、Graphical Abstract、Table 標題均相符，<strong>未發現人數矛盾</strong>。</p>
+<hr />
+<h3>6. 作者討論與評論重點</h3>
+<p><strong>作者的主要訊息</strong>：在 SELECT 中，已知心血管風險因子的改變無法有把握地完整解釋 semaglutide 對 MACE 的效果；值得進一步探索其他生物標記與機轉。</p>
+<p><strong>與現有文獻的異同</strong>：</p>
+<ul>
+<li><strong>HbA1c</strong>：LEADER 估計高達 83%（Vansteelandt 法）、REWIND 估計 36%（time-updated Cox）；本文 Vansteelandt 為 29%、Cox 僅 13%。作者歸因於 SELECT 排除糖尿病、基線 HbA1c 分布不同。此解釋合理。</li>
+<li><strong>UACR</strong>：LEADER 33%、REWIND 29%；本文僅 14.6%。作者歸因於 SELECT 基線正常白蛋白尿比例較高（84% vs LEADER 63%、REWIND 65%）。此解釋同樣合理且有具體數據支撐。</li>
+<li>作者並提及 FLOW 試驗基線白蛋白尿較高，但 FLOW 未觀察到基線白蛋白尿與 MACE 效果的交互作用。</li>
+</ul>
+<p><strong>限制（作者觀點）</strong> [文內, Discussion 末段] — 逐條列出：</p>
+<ol>
+<li>SELECT 未針對任何中介分析做效力計算（not powered for mediation）。</li>
+<li>中介物測量頻率不足；若更頻繁，估計會更精確。</li>
+<li>COVID-19 疫情導致共變項遺失（幅度不大且兩組相當），降低精確度。</li>
+<li>競爭風險：部分病人可能在中介物效果顯現前死於非心血管原因，且兩組頻率可能不同；SELECT 已知 semaglutide 減少 COVID-19 與感染死亡，這些非 CV 死亡在安慰劑組構成 CV 死亡的競爭風險。</li>
+<li><strong>最重要</strong>：所有中介分析都依賴「無未測混淆」這個無法檢驗的假設；當中介物包含體重與體脂分布時，此問題尤其嚴重，因為體重變化與結局的關係取決於<strong>體重為何改變</strong>。混淆可能導致 % mediation 被高估或低估。</li>
+<li>明確聲明：「all mediation analyses are exploratory, and the results should therefore be interpreted with caution」。</li>
+</ol>
+<p><strong>[評估] 作者限制陳述的完整度</strong>：這份限制清單<strong>罕見地誠實且具體</strong>，特別是第 5 點直指問題核心，並在 Discussion 中用 Table S5 的分組分析、reverse counterfactual 的不一致、以及 ref 10 中「安慰劑組第 20 週減重 &gt;5% 反而 MACE 增加」的觀察，三條線索交叉論證「非意圖性體重減輕（frailty / 共病驅動）是隱藏混淆因子」。這是一段<strong>方法學水準很高</strong>的自我批判，值得肯定。</p>
+<p><strong>但有三項重要限制未被列出</strong>：</p>
+<ul>
+<li><strong>未討論 LOCF 對中介估計的偏差方向</strong>。作者只說遺失比例兩組相當 —「兩組平衡」保護的是總效果的無偏性，<strong>完全不保護中介物—結局關聯的估計</strong>。LOCF 會壓縮個體內變異、衰減中介物—結局關聯，<strong>系統性地把 % mediation 往下拉</strong>。8%–23% 的填補比例並非小數目。</li>
+<li><strong>未討論 % mediation 這個指標本身在小總效果情境下的病態行為</strong>。作者把寬 CI 歸因於「未針對中介分析做效力計算」與「測量頻率不足」，但真正的主因是：% mediation 是一個比值，分母（總效果 = 0.012, CI 0.004–0.020）自身就跨越 5 倍範圍且逼近 0。分母接近 0 時比值會爆炸 — 這就是為什麼 CI 會出現 (−119.2, 158.4) 這種數值。這是<strong>指標選擇的結構性問題</strong>，而非樣本數問題。</li>
+<li><strong>未對競爭風險做任何敏感度分析</strong>。作者識別了問題（第 4 點），但僅止於陳述，未執行 cause-specific 分解或 Fine-Gray 模型。在一個橫跨 COVID-19 疫情、且已知非 CV 死亡兩組不均衡的試驗中，這是可以做而未做的分析。</li>
+</ul>
+<p><strong>[評估] 臨床建議是否超出數據支持範圍</strong> — <strong>是，且超出得相當明顯</strong>：</p>
+<p>論文正文的措辭克制（「could not fully ascribe… with any certainty」），但<strong>同一組作者在三個不同載體上逐步放大結論</strong>：</p>
+<table>
+<thead>
+<tr>
+<th>載體</th>
+<th>表述</th>
+<th>評估</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Abstract / Conclusions</td>
+<td>「Mediation analyses could not fully ascribe the effects… with any certainty」</td>
+<td>✅ 準確。這是對資料的忠實描述</td>
+</tr>
+<tr>
+<td>Graphical Abstract / Take Home</td>
+<td>「These data suggest that <strong>other unidentified mechanisms could contribute</strong>」</td>
+<td>⚠️ 已越界。資料<strong>未提供</strong>支持未知機轉存在的證據；資料只是<strong>無法區辨</strong></td>
+</tr>
+<tr>
+<td>ESC 新聞稿（Colhoun 引言）</td>
+<td>「semaglutide <strong>should be considered as a cardiovascular disease reduction drug and not just as a weight loss drug</strong>」</td>
+<td>❌ 嚴重越界。這是一個藥物定位主張，卻建立在一個 CI 橫跨 −30% 到 +144% 的估計值上</td>
+</tr>
+</tbody>
+</table>
+<p><strong>核心邏輯謬誤</strong>：本文得到的是一個<strong>不精確</strong>的結果，而非一個<strong>陰性</strong>的結果。四個主要中介物的<strong>直接效果 CI 全部包含 0</strong>（體重 −0.001–0.019、腰圍 −0.004–0.013、HbA1c −0.001–0.018、hsCRP −0.001–0.016）。形式上，這代表<strong>對這四者中的任何一個，都無法排除「完全中介」</strong>。作者自己也承認 CI 涵蓋 100%。但接著推論「因此存在未被辨識的機轉」，這在邏輯上是把「證據不足」（absence of evidence）當成「不存在的證據」（evidence of absence）反向使用 — <strong>把無法證明中介，說成證明了非中介</strong>。</p>
+<hr />
+<h3>7. 外部專業意見</h3>
+<h4>同期社論（已取得全文）</h4>
+<p><strong>Verma S, Guzik TJ, Cosentino F. Semaglutide mechanisms of action: the missing pieces. Eur Heart J. 2026.</strong> DOI <a href="https://doi.org/10.1093/eurheartj/ehag602">10.1093/eurheartj/ehag602</a>（PMID 42777686）。根據 PubMed 檢索確認為本文的同期配套社論，並已透過本機工具取得<strong>完整全文</strong>。[外部: European Heart Journal editorial 全文]</p>
+<p><strong>社論的核心論點</strong>：</p>
+<ol>
+<li>
+<p><strong>對方法學的肯定</strong>：稱本文為「elegant pre-specified mediation analysis」，並明確背書 Vansteelandt 法為「current gold standard… designed for exact time-to-event mediation with covariates measured repeatedly over follow-up」。肯定其隨機分派、長期追蹤、多時點生物標記、反事實方法，以及「reverse / on-treatment 分析加 Cox 模型」的三角驗證設計。</p>
+</li>
+<li>
+<p><strong>對結論措辭的肯定</strong>：「The conclusion of this paper is <strong>appropriately humble</strong>. Known risk factor changes could not, with any confidence, explain all of the GLP-1RA effects on MACE.」</p>
+</li>
+<li>
+<p><strong>對內部矛盾的獨立評論（最有價值的一段）</strong>：社論特別點名體重+腰圍聯合模型只得到 12.3% 這個結果：「Perhaps most strikingly of all, a model including body weight and waist circumference alone reported <strong>a paltry 12.3% of mediation—less than either alone provided, with point estimates too wide to offer any meaningful insight</strong>.」並指出反向反事實分析與治療組別分層 Cox（時間更新體重在兩組皆無關聯）共同構成了「a fingerprint of an unmeasured confounder」，且認同作者對 frailty 驅動非意圖性體重減輕的解釋，引用 ref 5（即本文 ref 10）中安慰劑組早期減重 &gt;5% 伴隨 MACE 增加的觀察作為佐證。</p>
+</li>
+<li>
+<p><strong>對限制的獨立確認</strong>：逐條複述並認可作者列出的限制 — 未為中介分析設計效力、生物標記測量不連續、疫情期間遺失值、競爭風險（非 CV 死亡本身被 semaglutide 降低）、以及「mediation is contingent on the assumption of no unmeasured confounding, which becomes <strong>very delicate</strong> when the mediators include body weight and the relationship to outcome is dependent on <strong>why</strong> the patient lost weight」。</p>
+</li>
+<li>
+<p><strong>對結論的重新框架（關鍵）</strong>：「The correct reading of this paper is <strong>not so much that we failed to find the mediator but that 'the measured risk factors are insufficient and the search must broaden'</strong>.」社論隨後提出「八大機轉支柱」（抗發炎、直接血管/斑塊效應、內源性血管修復、血壓、血流動力學減充血、微血管結構與功能、抗纖維化、粒線體效應），並引用 STEP 1/2/3（semaglutide 2.4 mg 使 hsCRP 下降 39%–48%，與基線 BMI/體重/血糖參數無關）與 STEP-HFpEF（hsCRP 下降非由減重驅動）支持「weight-independent 抗發炎效應」的假說，明確指出「The fact that hs-CRP in SELECT was responsible for the second biggest mediation signalling fits here.」</p>
+</li>
+<li>
+<p><strong>對臨床採用的明確立場</strong>：「<strong>The lack of clear mechanistic understanding should not be a barrier to therapeutic adoption to reduce vascular events.</strong>」</p>
+</li>
+<li>
+<p><strong>結語</strong>：「while the magic of semaglutide and GLP-1RAs on cardiometabolic outcomes is real, our search for the mechanistic underpinnings continues.」</p>
+</li>
+</ol>
+<h4><strong>[評估] 這份社論的獨立性有嚴重限制 — 必須標注</strong></h4>
+<p>從社論自身的 Disclosure of Interest 可確認：</p>
+<ul>
+<li><strong>Subodh Verma（第一作者）明確申報：「He was a National Lead Investigator of the SELECT trial」</strong>，且接受 Novo Nordisk 的研究支持/演講費/顧問費。<strong>換言之，本文「同期外部評論」的第一作者，本身就是被評論試驗的國家主持人之一。</strong></li>
+<li><strong>Tomasz Guzik</strong> 任職於 University of Edinburgh, Centre for Cardiovascular Science — 與本文通訊作者 Colhoun <strong>同屬愛丁堡大學</strong>（不同研究所）。</li>
+<li><strong>Francesco Cosentino</strong> 申報為 Novo Nordisk 的顧問/講者。</li>
+<li>社論大幅推廣三位作者自己的試驗 <strong>SEMA-VR CardioLink-15</strong>（Verma 團隊）作為「未被辨識機轉」的候選答案，並自陳「this is our recent contribution」。</li>
+<li>社論承認使用 AI 工具（Claude Opus 4.6）潤飾語言、AI 協助草擬圖表（已聲明未用於產生科學內容或結論）。</li>
+</ul>
+<p><strong>結論</strong>：這不是一份獨立的第三方評論，而是<strong>一份由試驗共同體內部人士撰寫、兼具自我推廣功能的配套社論</strong>。它在方法學層面的批判（尤其是 12.3% 那段）仍然有價值且準確，但它<strong>完全沒有質疑本文從「不精確」推論到「存在未知機轉」的邏輯跳躍</strong> — 相反地，它把這個跳躍當作既定前提，直接進入「那麼未知機轉是什麼」的討論，並提供八個候選答案。<strong>截至評讀時點（2026-09-28），尚未檢索到任何真正獨立於 SELECT 試驗與 Novo Nordisk 的批判性評論。</strong></p>
+<h4>其他外部資訊</h4>
+<ul>
+<li>ESC 官方新聞稿（2026-09-24）與後續媒體報導（medicalxpress、cardiovascularbusiness、news-medical）[外部]。這些屬一般媒體，不作為專業意見來源，但值得注意的是：<strong>媒體報導的數字（「約 20% 由體重、約 30% 由全部合計」）比論文自己的 Graphical Abstract 更準確</strong>。</li>
+<li>PubMed 檢索（<code>(semaglutide mediation SELECT) AND (Editorial[PT] OR Comment[PT])</code>，2026 起）回傳 0 筆；本文 PubMed 記錄的 article_types 僅標為 &quot;Journal Article&quot;，尚未建立 Comment-in 連結 — [推論] 因本文與社論同日（2026-09-23）上線為 advance article，索引關聯尚未建立。<strong>[以上引用之 PubMed 書目資料來源為 PubMed]</strong></li>
+</ul>
+<hr />
+<h3>8. 臨床建議</h3>
+<p><strong>可採用本文結論的情境</strong>：</p>
+<ol>
+<li><strong>在向病人解釋 semaglutide 的心血管益處時，可以說明「益處似乎不只來自減重」</strong> — 但務必同時說明這是一個不確定的推論，不是已證實的機轉。</li>
+<li><strong>不要把「體重下降幅度」當成心血管保護的療效指標或治療目標</strong>。本文最可靠的單一發現是 Table S5：<strong>時間更新後的體重與 MACE 在兩個治療組中皆無顯著關聯</strong>。臨床上這意味著：不應因為某位病人減重幅度不如預期，就推論他沒有得到心血管保護，或據此停藥。這一點的實務意義甚至高於論文的主結論。</li>
+<li><strong>在 SELECT 族群（≥45 歲、BMI ≥27、已有 ASCVD、無糖尿病）繼續依主試驗結果處方 semaglutide 2.4 mg</strong>。本文完全沒有削弱 SELECT 主要結果（HR 0.80, 95% CI 0.72–0.90）的效力 — 它只是無法解釋那個結果是怎麼來的。用不用藥的決策，不依賴機轉是否已知。</li>
+</ol>
+<p><strong>不建議直接套用的情境</strong>：</p>
+<ol>
+<li><strong>不要把任何一個 % mediation 數字引用為定量事實</strong>。「腰圍解釋 64%」「減重只解釋 31%」這類說法都不應進入臨床論述 — 前者在反向分析下掉到 21.5%、在 Cox 法下掉到 32.0%；後者在論文自己的 Graphical Abstract 中就是誤植。</li>
+<li><strong>不要外推至糖尿病族群</strong>。LEADER 的 HbA1c 中介估計高達 83%，本文為 13%–29%。在糖尿病病人身上，血糖控制的中介角色很可能遠大於本文所示。</li>
+<li><strong>不要外推至初級預防、口服 semaglutide、tirzepatide 或其他 GLP-1 RA</strong>。SELECT 為次級預防族群、72% 為男性、66.4% 為 prediabetes、68% 曾有 MI。</li>
+<li><strong>不要用本文支持「應把 hsCRP 當作 semaglutide 治療的監測指標」</strong>。hsCRP 雖是本文最穩健的中介訊號，但中介分析無法證明「降 hsCRP 會降 MACE」的因果方向，更無法支持以 hsCRP 為治療目標（target）。</li>
+</ol>
+<p><strong>給臨床醫師的實務建議（三點，直接可操作）</strong>：</p>
+<ol>
+<li><strong>把這篇論文讀成「一篇誠實的陰性方法學報告」，而不是「一個新機轉的發現」</strong>。它真正證明的事情是：SELECT 的資料量不足以回答「為什麼有效」這個問題。這不是壞事，但也不是新發現。</li>
+<li><strong>若要從本文挑一個可信的訊號，挑 hsCRP，不要挑腰圍</strong>。hsCRP 是唯一在正反反事實方向、兩種統計方法、兩個治療組別中都保持一致的中介物（42.1% vs 43.1%；Cox 31.0%；兩組皆顯著）。腰圍雖然點估計最大，卻在這三項檢驗中失敗兩項。<strong>論文摘要的排序與其自身的穩健性證據方向相反</strong>。</li>
+<li><strong>處方決策不需要等機轉釐清</strong>。這一點與社論立場一致：SELECT 的隨機化結果本身就是充分的處方依據；機轉知識的價值在於未來的藥物開發與精準分層，不在於當下的用藥決定。</li>
+</ol>
+<p><strong>研究證據強度分級</strong>：</p>
+<table>
+<thead>
+<tr>
+<th>分項</th>
+<th>分級</th>
+<th>理由</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>SELECT 主要結果（semaglutide 降低 MACE 20%）</td>
+<td><strong>強</strong></td>
+<td>大型雙盲 RCT，效果精確（HR 0.80, 95% CI 0.72–0.90），本文未動搖此結論</td>
+</tr>
+<tr>
+<td><strong>本中介分析的定量結論（各 % mediation 數值）</strong></td>
+<td><strong>弱</strong></td>
+<td>所有 CI 極寬、跨越 0 與 100；兩種方法點估計差距達 2 倍；多變量模型內部矛盾；關鍵假設（無未測混淆）明確不成立且作者自承</td>
+</tr>
+<tr>
+<td>「hsCRP 為最穩健中介訊號」這個定性結論</td>
+<td><strong>中</strong></td>
+<td>三項獨立穩健性檢驗一致；但仍無法區辨「發炎標記」與「體脂量標記」</td>
+</tr>
+<tr>
+<td>「存在尚未辨識的機轉」這個主張</td>
+<td><strong>弱（未被本文證明）</strong></td>
+<td>資料無法排除完全中介；此為假說，非發現</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<hr />
+<h2>SKILL-A：原始研究批判性評讀</h2>
+<h3>A. 補充技術細節</h3>
+<p>SECTION-0 第 4 節已涵蓋 PICO、設計、統計方法。以下僅補充未涵蓋項目：</p>
+<ul>
+<li><strong>樣本數估算</strong>：SELECT 主試驗設計為事件驅動，預定於累積至少 1225 個主要 MACE 終點時終止 [文內]。<strong>本中介分析無任何獨立的效力計算</strong>，作者明確承認「SELECT was not powered with respect to any mediation analysis」。</li>
+<li><strong>隨機化細節</strong>：1:1 隨機、雙盲 [文內]。分派隱藏（allocation concealment）的具體方法、區塊/分層設計未在本文描述，須參照主論文 ref 1 與 11。<strong>[限制：本次輸入之 markdown 未包含主論文，無法核實隨機化實作細節]</strong></li>
+<li><strong>致盲細節</strong>：雙盲。<strong>本文未報告盲法成功度檢查（blinding integrity assessment）</strong>。值得注意的是，semaglutide 具有明顯的胃腸道副作用與可見的體重下降，<strong>實質破盲（functional unblinding）的可能性很高</strong>。對硬終點（EAC 判定的 MI、stroke、CV death）影響有限，但對中介物的測量行為（例如病人自我調整飲食、醫師調整他汀劑量）可能有影響 — 而這些正是本文的分析對象。</li>
+<li><strong>ITT vs per-protocol</strong>：主分析採 ITT（隨機分派至最終追蹤訪視）；補充 on-treatment 分析結果大致相似，例外為 HbA1c（29.0% → 43.0%，上升）、SBP（14.3% → 5.5%，下降）、三酸甘油酯（18.6% → 9.5%，下降），但 CI 均寬且重疊 [文內]。</li>
+<li><strong>多重比較處理</strong>：<strong>無任何校正</strong>。本文對 12 個中介物各執行一次 Vansteelandt 分析、一次 reverse counterfactual、一次 on-treatment 分析、一次 Cox 分析，再加 3 個多變量模型 × 2 方法 — 保守估計超過 50 次的 % mediation 估計，<strong>無任何多重性控制</strong>。作者將全文定位為 exploratory，這在原則上可接受，但下一節會說明為何在此仍是問題。</li>
+<li><strong>比例風險假設</strong>：<strong>文內未報告任何 proportional hazards 檢定</strong>，儘管補充分析大量使用 Cox 模型。從 Figure 1 目視，曲線未交叉、分離大致平行，[推論] 嚴重違反的可能性不高 — 但這是圖形推論，非統計檢定。</li>
+<li><strong>Crossover / washout</strong>：不適用（平行組設計）。</li>
+<li><strong>試驗提早停止</strong>：SELECT 為事件驅動設計，達預定事件數後終止，非因療效提早停止 [文內]。</li>
+<li><strong>缺失資料處理</strong>：<strong>LOCF</strong>，各訪視填補比例 8%–23%，兩組相近 [文內, Table S3]。未使用多重插補（multiple imputation）或任何考量遺失機制的方法。</li>
+</ul>
+<h4>依因果推論框架的補充評估（本文為 RCT 內嵌的觀察性中介推論）</h4>
+<p>這是本文方法學評估的核心。三大可識別性條件逐一檢視：</p>
+<table>
+<thead>
+<tr>
+<th>條件</th>
+<th>對「治療 → MACE」</th>
+<th><strong>對「中介物 → MACE」（本文真正需要的）</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Exchangeability（無未測混淆）</strong></td>
+<td>✅ 由隨機分派保障</td>
+<td>❌ <strong>明確不成立</strong>。作者自承且以三條證據證實：(1) reverse counterfactual 對腰圍給出截然不同的估計；(2) 體重+腰圍聯合模型的中介比例低於任一單項；(3) 分組 Cox 顯示腰圍—MACE 關聯僅存在於 semaglutide 組。最可能的混淆因子是<strong>由共病或 frailty 驅動的非意圖性體重減輕</strong>（ref 10 顯示安慰劑組第 20 週減重 &gt;5% 反而 MACE 增加）</td>
+</tr>
+<tr>
+<td><strong>Positivity</strong></td>
+<td>✅ 1:1 隨機，成立</td>
+<td>⚠️ <strong>未評估</strong>。中介分析要求「在各共變項層中，semaglutide 組能達到安慰劑組的中介物數值範圍，反之亦然」。但 semaglutide 組平均減重約 9.4%、安慰劑組約 0.9% — <strong>兩組的體重軌跡分布重疊有限</strong>。反事實情境「若 semaglutide 組的體重軌跡等同安慰劑組」對大多數受試者而言是一個<strong>外推（extrapolation）而非內插</strong>。文內完全未報告 overlap 或 positivity 診斷</td>
+</tr>
+<tr>
+<td><strong>Consistency</strong></td>
+<td>✅ 介入定義明確</td>
+<td>⚠️ <strong>有疑慮</strong>。「體重下降 5 kg」在 semaglutide 組（藥理性、以脂肪為主、伴隨食慾抑制）與在安慰劑組（可能為疾病相關、伴隨肌肉流失）是<strong>不同的暴露版本</strong>（treatment version heterogeneity）。這正是作者所說「the relationship of body weight change to outcomes varies by the cause of the change」的另一種表述，也直接違反 consistency</td>
+</tr>
+<tr>
+<td><strong>Cross-world independence（自然直接/間接效果分解所需的額外假設）</strong></td>
+<td>—</td>
+<td>❌ <strong>不可檢驗且極可能不成立</strong>。當中介物—結局關係在兩組間不同（Table S5 已證實腰圍即如此），自然直接/間接效果的分解在因果上無定義，「% mediation」這個量本身失去明確的因果詮釋</td>
+</tr>
+</tbody>
+</table>
+<p><strong>結論</strong>：本文所報告的 % mediation，<strong>在因果層次上不是「中介比例」，而是「統計上的解釋比例」</strong>。作者在 Introduction 已誠實指出中介分析「cannot prove causality」，但全文（包含 Graphical Abstract、Discussion 與新聞稿）的敘事仍以因果語彙運作。</p>
+<hr />
+<h3>B. 批判性評估</h3>
+<h4>B1. 假說與理論邏輯</h4>
+<p><strong>問題一：候選中介物清單在解盲後被篩選過</strong></p>
+<ul>
+<li><strong>文內證據</strong>：「Candidate mediators had been selected <em>a priori</em>… <strong>After unblinding, the treatment effect on each candidate was evaluated to confirm its viability as a potential mediator</strong>」[Methods, Statistical analyses]。</li>
+<li><strong>風險方向</strong>：解盲後篩選會<strong>選擇性保留 semaglutide 有顯著效果的中介物</strong>，這正是結果所報告的（「Semaglutide significantly (<em>P</em> &lt; .05) improved all potential mediators investigated」— 12 個中介物全部顯著，沒有任何一個被報告為無效）。若有候選中介物因治療效果不顯著而被剔除，讀者無從得知。</li>
+<li><strong>需要什麼才放心</strong>：公開 SAP 的版本與日期，列出原始候選清單及任何被剔除項目與剔除理由。</li>
+</ul>
+<p><strong>問題二：多變量模型的變項選擇由收斂性事後決定</strong></p>
+<ul>
+<li><strong>文內證據</strong>：「Since including too many variables causes convergence issues in such models, in this multivariable model we included only one of the blood pressure variables (SBP) and one of the lipid variables (LDL cholesterol)」[Results]；以及體重、SBP、DBP「a subset of the assessments (weeks 12, 20, 39, 52, 78, 104, 130) was included in order to avoid convergence issues」[Methods]。</li>
+<li><strong>風險方向</strong>：由收斂性決定模型規格，等於讓<strong>演算法的數值行為</strong>而非<strong>生物學假說</strong>決定分析內容。若 LDL 與 TG、SBP 與 DBP 的替換會改變聯合中介估計，讀者無從判斷 31.4% 這個數字對這些選擇有多敏感。</li>
+<li><strong>需要什麼才放心</strong>：報告替換血脂/血壓變項後的聯合中介估計（敏感度分析）。</li>
+</ul>
+<p><strong>問題三：最合理的生物機轉排序，與論文的呈現順序相反</strong></p>
+<p>綜合本文全部內部證據，機轉假說的可信度排序應為：</p>
+<ol>
+<li><strong>抗發炎（hsCRP 路徑）— 最可信</strong>。三項穩健性檢驗全部通過（正反反事實 42.1% vs 43.1%；Cox 法仍達 31.0% 且 CI 不跨 0；兩個治療組別皆顯著）。且有獨立外部證據支持：STEP 1/2/3 顯示 hsCRP 下降 39%–48% 與基線 BMI 無關、STEP-HFpEF 顯示 hsCRP 下降非由減重驅動 [外部: EHJ editorial 全文轉述]。</li>
+<li><strong>血糖（HbA1c）— 中等可信</strong>。與 LEADER/REWIND 方向一致，但在無糖尿病族群中幅度大幅縮小（13%–29% vs LEADER 83%），且 Cox 法下 CI 跨越 0。</li>
+<li><strong>腎臟/內皮（UACR）— 弱</strong>。14.6%（Vansteelandt）→ 9.1%（Cox，CI 跨 0）。作者對「基線正常白蛋白尿比例較高故中介較小」的解釋合理且有數據。</li>
+<li><strong>脂肪量/體脂分布（體重、腰圍）— 不可判定</strong>。估計值在各種分析下劇烈擺盪，且已被作者自己診斷為受混淆汙染。</li>
+</ol>
+<p><strong>敘事跳躍（最可疑的三處）</strong>：</p>
+<ol>
+<li><strong>「無法證明中介」→「存在未知機轉」</strong>。Take Home Message：「These data suggest that other unidentified mechanisms could contribute」。但四個主要中介物的直接效果 CI <strong>全部包含 0</strong> — 資料同樣相容於「其中任一者完全中介」。從一個雙向都無法排除的結果，只朝單一方向推論，是選擇性詮釋。</li>
+<li><strong>「腰圍是最大中介物」的呈現</strong>。摘要與 Discussion 均以腰圍 64.0% 領銜，但論文自己的 reverse counterfactual（21.5%，CI 跨 0）、Cox 法（32.0%）與分組分析（僅 semaglutide 組顯著）三重證據都指向這個數字不可靠。作者在 Discussion 中確實討論了這個不穩定性 — 但<strong>摘要沒有</strong>，<strong>Graphical Abstract 沒有</strong>，新聞稿也沒有。</li>
+<li><strong>「因為機轉未明，所以 semaglutide 應被重新定位為心血管藥」</strong>。這個推論在邏輯上是斷裂的：藥物定位取決於療效證據（SELECT 主結果，已充分），而非機轉是否已知。把一個<strong>方法學上的失敗</strong>轉譯為一個<strong>商業定位上的成功</strong>，是本文最值得警覺的敘事操作。</li>
+</ol>
+<h4>B2. 受試者與外推性</h4>
+<p><strong>基線特徵與宣稱對象一致性</strong>：✅ 本文族群即 SELECT 全體隨機族群（full analysis set, n = 17 604），無額外選樣。基線由隨機分派保障平衡（本文未重列基線表，引用 ref 1，做法合理）。</p>
+<p><strong>族群限制</strong>：平均年齡 62 歲、<strong>72% 為男性</strong>、72% BMI ≥30、<strong>66.4% 為 prediabetes</strong>、68% 曾有 MI。</p>
+<p><strong>外推性分級</strong>：</p>
+<table>
+<thead>
+<tr>
+<th>目標族群</th>
+<th>分級</th>
+<th>理由</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>SELECT 同型次級預防族群（≥45 歲、BMI ≥27、已有 ASCVD、無糖尿病）</strong></td>
+<td><strong>可外推（但僅限定性結論）</strong></td>
+<td>即為研究族群本身。然而即使在此族群內，% mediation 的<strong>定量</strong>數值仍不可用</td>
+</tr>
+<tr>
+<td><strong>女性</strong></td>
+<td><strong>有限</strong></td>
+<td>僅 28% 為女性。體脂分布、腰圍與 MACE 的關係具明顯性別差異，而本文的核心爭議正是腰圍 — 未見性別分層分析</td>
+</tr>
+<tr>
+<td><strong>糖尿病族群</strong></td>
+<td><strong>不可外推</strong></td>
+<td>LEADER/REWIND 的 HbA1c 中介估計（83%、36%）遠高於本文（13%–29%）。中介結構本身不同</td>
+</tr>
+<tr>
+<td><strong>初級預防（無已知 CVD）</strong></td>
+<td><strong>不可外推</strong></td>
+<td>基線風險與競爭風險結構完全不同</td>
+</tr>
+<tr>
+<td><strong>老年（&gt;75 歲）／frailty 族群</strong></td>
+<td><strong>明確不可外推，且方向相反</strong></td>
+<td>本文的核心混淆因子<strong>正是</strong> frailty 驅動的非意圖性體重減輕。在 frailty 盛行率高的族群中，這個混淆會更嚴重，體重相關的中介估計只會更不可信</td>
+</tr>
+<tr>
+<td><strong>其他 GLP-1 RA / tirzepatide / 口服 semaglutide</strong></td>
+<td><strong>不可外推</strong></td>
+<td>分子、劑量、給藥途徑皆不同</td>
+</tr>
+</tbody>
+</table>
+<h4>B3. 研究設計與偏差</h4>
+<p><strong>隨機化與分派隱藏</strong>：由 SELECT 保障，本文不重新評估。對總效果而言充分。</p>
+<p><strong>致盲</strong>：雙盲，但無盲法成功度檢查。semaglutide 的胃腸道副作用與可見減重使<strong>實質破盲風險高</strong>。對 EAC 判定的硬終點影響有限；對中介物（尤其病人行為驅動的體重、腰圍）則<strong>可能有影響</strong>。文內未討論。</p>
+<p><strong>對照組適當性</strong>：安慰劑對照。SELECT 執行期間（2018–2023），在無糖尿病的 BMI ≥27 次級預防族群中，並無其他核准的心血管減重藥物作為活性對照，<strong>安慰劑對照合理</strong>。且所有受試者均接受標準心血管照護（他汀、抗血小板等）。此項無疑慮。</p>
+<p><strong>最可能造成偏差的三個設計點（依嚴重程度排序）</strong>：</p>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>設計點</th>
+<th>文內證據</th>
+<th>偏差方向</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>1</strong></td>
+<td><strong>中介物—結局關聯的未測混淆（frailty 驅動的非意圖性減重）</strong></td>
+<td>Discussion 明確承認；reverse counterfactual 腰圍 64.0% → 21.5%（Figure 1）；體重+腰圍聯合模型 12.3% &lt; 任一單項；分組 Cox 顯示腰圍—MACE 關聯僅存在於 semaglutide 組；ref 10 顯示安慰劑組早期減重 &gt;5% 伴隨 MACE 增加</td>
+<td><strong>方向不定</strong>。安慰劑組中「減重 = 生病」會削弱減重與 MACE 的保護性關聯 → <strong>低估</strong>體重/腰圍的中介比例；但 semaglutide 組中同樣的混淆被藥效遮蔽 → 兩組關聯不對稱，使整個分解失去意義。<strong>作者的結論「其他機轉存在」其實可能是這個混淆的產物</strong></td>
+</tr>
+<tr>
+<td><strong>2</strong></td>
+<td><strong>LOCF 填補中介物軌跡</strong></td>
+<td>各訪視 8%–23% 經 LOCF [Table S3]；中介物僅測至 24 個月，但結局評估在 36 個月</td>
+<td><strong>單向：低估 % mediation</strong>。LOCF 壓縮個體內變異、衰減中介物—結局關聯。兩組填補比例平衡保護總效果，<strong>不保護中介估計</strong>。文內完全未討論此偏差方向。這個偏差恰好把結果推向「無法解釋」的方向</td>
+</tr>
+<tr>
+<td><strong>3</strong></td>
+<td><strong>競爭風險未處理</strong></td>
+<td>Discussion 承認：semaglutide 減少 COVID-19 與感染死亡，這些非 CV 死亡在安慰劑組構成 CV 死亡的競爭風險 [ref 25]</td>
+<td><strong>方向不定但可能不小</strong>。試驗橫跨疫情期，兩組非 CV 死亡不均衡。Vansteelandt 法假設 censoring 非資訊性；差異性競爭死亡違反此假設。<strong>已識別但未執行任何敏感度分析</strong></td>
+</tr>
+</tbody>
+</table>
+<h4>B4. 測量工具與實務意義</h4>
+<p><strong>測量信度與變異度</strong>：</p>
+<ul>
+<li><strong>體重、腰圍</strong>：腰圍測量的 test-retest 變異度遠大於體重（依測量者、測量位置、呼吸相位而異）。文內僅稱方法「已於先前報告」[ref 1, 11, 12]，<strong>未在本文提供任何測量標準化或再現性數據</strong>。在一個把腰圍當作最大中介物的分析中，這是實質缺漏 — 測量誤差會系統性地<strong>衰減</strong>中介估計，這與觀察到的方向不符（腰圍估計反而最大），暗示腰圍的高估計更可能來自混淆而非真實效應。</li>
+<li><strong>hsCRP</strong>：個體內生物變異大、對間發感染極度敏感。log 轉換有助處理偏態 [文內]，但單點測量的可靠性仍有限，且疫情期間的感染事件會製造大量離群值。文內未報告任何離群值處理。</li>
+<li><strong>HbA1c</strong>：在<strong>無糖尿病</strong>族群中，HbA1c 的動態範圍極窄（納入條件為 &lt;6.5%，66.4% 落在 5.7–6.4%）。在如此窄的範圍內估計 HbA1c—MACE 的劑量反應關係，統計效力先天低下。</li>
+</ul>
+<p><strong>終點的臨床意義</strong>：3-point MACE（非致死性 MI、非致死性 stroke、CV 死亡）皆為硬終點，<strong>臨床意義明確</strong>，這是本文的重要優點。但<strong>本文分析的量不是 MACE 本身，而是 % mediation</strong> — 這是一個純粹的統計建構，沒有直接的臨床對應物，也沒有公認的「臨床重要差異」門檻。</p>
+<p><strong>「就算結果是真的，真實世界可能有多大用處？」</strong></p>
+<p>以文內數字直接推算：</p>
+<ul>
+<li>36 個月 MACE-free survival 絕對差 = <strong>0.012</strong>，即每 1000 位治療 3 年的病人避免約 <strong>12 次</strong> MACE（NNT ≈ 83/3 年）。這是 SELECT 的價值所在，本文未改變它。</li>
+<li>若聯合中介 31.4% 為真，則 12 次中約 <strong>3.8 次</strong>由已測風險因子解釋、約 <strong>8.2 次</strong>「無法解釋」。但 31.4% 的 CI 為 −30.1 到 143.6，換算後「可解釋的次數」區間為 <strong>−3.6 到 17.2 次</strong> — <strong>即區間包含「中介物讓結果變差」與「中介物解釋了全部並超出」兩種情形</strong>。</li>
+<li><strong>臨床用處的誠實評估：接近於零。</strong> 沒有任何臨床決策（處方、監測、劑量調整、停藥）會因為 % mediation 是 12% 還是 46% 而改變。這篇論文的價值在<strong>研究議程設定</strong>（提示要去看 proteomics、發炎路徑），而非<strong>臨床應用</strong>。</li>
+</ul>
+<hr />
+<h3>C. 統計與資料完整性</h3>
+<h4>C1. 結果分類（CI + MCID 框架）</h4>
+<p><strong>Step 1 — MCID（δ）確認</strong></p>
+<p><strong>文內未預先指定任何「有臨床意義的中介比例」門檻</strong>。這本身是一個方法學缺漏：在沒有門檻的情況下，任何點估計都可以被詮釋為「大」或「小」。</p>
+<p>[推算] 依中介分析文獻的慣例與臨床決策需求，我設定以下門檻並明確標注為外部推算：</p>
+<ul>
+<li><strong>δ_meaningful = 25%</strong>：一個中介物若要改變臨床推理（例如支持以該指標作為療效監測或治療目標），其中介比例的 <strong>95% CI 下界需 &gt; 25%</strong>。</li>
+<li><strong>δ_negligible = 10%</strong>：若 CI 上界 &lt; 10%，可視為實質無中介。</li>
+<li>判定「殘餘未解釋效果存在」的門檻：<strong>直接效果的 CI 需排除 0</strong>（否則無法排除完全中介）。</li>
+</ul>
+<p><strong>Step 2 — CI 位置判讀</strong></p>
+<pre><code>0%              δ_negligible(10%)        δ_meaningful(25%)              100%
+|_____________________|_______________________|__________________________|
+← 無中介 →      ← 不確定 →          ← 有意義中介 →              ← 完全中介 →
+</code></pre>
+<p><strong>Step 3 — 逐項分類（Vansteelandt 主分析）</strong></p>
+<table>
+<thead>
+<tr>
+<th>中介物</th>
+<th>% mediation (95% CI)</th>
+<th><strong>結果分類</strong></th>
+<th>判讀</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>hsCRP</strong></td>
+<td>42.1 (17.9, 110.5)</td>
+<td><strong>IMPRECISE (+)</strong></td>
+<td>CI 下界 17.9% 落在 δ_negligible 與 δ_meaningful 之間；上界達 110.5%。<strong>唯一在 reverse counterfactual（43.1%, 22.3–106.8）、Cox 法（31.0%, 16.1–65.4）與兩組分層分析下皆維持的訊號</strong>。可判定為「有中介，幅度不確定」</td>
+</tr>
+<tr>
+<td><strong>腰圍</strong></td>
+<td>64.0 (27.5, 179.6)</td>
+<td><strong>IMPRECISE (+)，但被穩健性檢驗推翻</strong></td>
+<td>主分析 CI 下界（27.5%）雖 &gt; δ_meaningful，但 reverse counterfactual 掉至 21.5%（−18.3, 83.1，<strong>CI 跨 0</strong>）、Cox 法掉至 32.0%、分組分析顯示關聯僅存在於 semaglutide 組。<strong>綜合判定為 INCONCLUSIVE ❓</strong></td>
+</tr>
+<tr>
+<td><strong>HbA1c</strong></td>
+<td>29.0 (−20.7, 120.5)</td>
+<td><strong>INCONCLUSIVE ❓</strong></td>
+<td>CI 同時跨越 0 與 100；Cox 法降至 13.0（−11.7, 45.4），reverse 降至 13.1（−51.2, 84.5）</td>
+</tr>
+<tr>
+<td><strong>體重</strong></td>
+<td>19.5 (−33.0, 110.7)</td>
+<td><strong>INCONCLUSIVE ❓</strong></td>
+<td>CI 跨 0 與 100；reverse CI (−119.2, 158.4) <strong>完全無資訊量</strong>；Cox 法 9.1（−23.5, 49.3）；<strong>分組 Cox 顯示兩組皆無顯著的體重—MACE 關聯</strong></td>
+</tr>
+<tr>
+<td>UACR</td>
+<td>14.6 (5.2, 39.0)</td>
+<td><strong>INCONCLUSIVE ❓</strong></td>
+<td>主分析 CI 不跨 0，但落在 δ_negligible 與 δ_meaningful 之間且 Cox 法轉為 9.1（−0.5, 25.4）跨 0</td>
+</tr>
+<tr>
+<td>LDL-C</td>
+<td>10.9 (0.8, 36.0)</td>
+<td><strong>INCONCLUSIVE ❓</strong></td>
+<td>下界 0.8% 幾乎貼齊 0；Cox 法 6.7（−5.0, 22.6）跨 0</td>
+</tr>
+<tr>
+<td>eGFR</td>
+<td>6.9 (2.1, 21.3)</td>
+<td><strong>方法間符號翻轉 → 無法判定</strong></td>
+<td>Cox 法 −1.7（−9.9, 5.1）。<strong>兩種方法給出相反符號</strong>，此估計為雜訊</td>
+</tr>
+<tr>
+<td>SBP</td>
+<td>14.3 (−6.1, 51.7)</td>
+<td><strong>INCONCLUSIVE ❓</strong></td>
+<td>CI 跨 0</td>
+</tr>
+<tr>
+<td>三酸甘油酯</td>
+<td>18.6 (−0.5, 65.5)</td>
+<td><strong>INCONCLUSIVE ❓</strong></td>
+<td>CI 貼近 0</td>
+</tr>
+<tr>
+<td>HDL-C</td>
+<td>9.3 (−8.4, 42.3)</td>
+<td><strong>方法間符號翻轉 → 無法判定</strong></td>
+<td>Cox 法 −0.6（−10.4, 8.2）</td>
+</tr>
+<tr>
+<td>總膽固醇</td>
+<td>7.6 (−10.8, 36.1)</td>
+<td><strong>NEGATIVE/可忽略</strong></td>
+<td>兩法皆小且跨 0</td>
+</tr>
+<tr>
+<td><strong>DBP</strong></td>
+<td>−1.8 (−10.6, 4.0)</td>
+<td><strong>NEUTRAL ⚖️</strong></td>
+<td>CI 窄且完全落在 [−10, +10] 內；Cox 法 −0.2（−2.0, 1.2），HR 完全未變（0.801 → 0.801）。<strong>唯一可明確判定為「無中介」的變項</strong></td>
+</tr>
+</tbody>
+</table>
+<p><strong>聯合模型分類</strong>：</p>
+<table>
+<thead>
+<tr>
+<th>模型</th>
+<th>% mediation (95% CI)</th>
+<th>分類</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>全部 8 項（<strong>摘要與 Graphical Abstract 的頭條數字</strong>）</td>
+<td>31.4 (−30.1, 143.6)</td>
+<td><strong>INCONCLUSIVE ❓</strong> — CI 同時跨越 0 與 100，寬度 174 個百分點</td>
+</tr>
+<tr>
+<td>排除體重腰圍（6 項）</td>
+<td>46.0 (−6.0, 161.0)</td>
+<td><strong>INCONCLUSIVE ❓</strong> — CI 跨 0</td>
+</tr>
+<tr>
+<td>僅體重 + 腰圍</td>
+<td>12.3 (−42.6, 92.6)</td>
+<td><strong>INCONCLUSIVE ❓</strong> — 且與單項估計邏輯矛盾</td>
+</tr>
+</tbody>
+</table>
+<p><strong>對作者核心主張的正式檢驗</strong>：</p>
+<p>作者主張「存在未被已知風險因子解釋的效果」。要支持這個主張，<strong>直接效果的 CI 必須排除 0</strong>。實際：</p>
+<table>
+<thead>
+<tr>
+<th>中介物</th>
+<th>直接效果 (95% CI)</th>
+<th>是否排除 0？</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>體重</td>
+<td>0.009 (−0.001, 0.019)</td>
+<td>❌ 否</td>
+</tr>
+<tr>
+<td>腰圍</td>
+<td>0.004 (−0.004, 0.013)</td>
+<td>❌ 否</td>
+</tr>
+<tr>
+<td>HbA1c</td>
+<td>0.008 (−0.001, 0.018)</td>
+<td>❌ 否</td>
+</tr>
+<tr>
+<td>hsCRP</td>
+<td>0.007 (−0.001, 0.016)</td>
+<td>❌ 否</td>
+</tr>
+<tr>
+<td>8 項聯合</td>
+<td>0.008 (−0.003, 0.019)</td>
+<td>❌ 否</td>
+</tr>
+<tr>
+<td>6 項聯合</td>
+<td>0.007 (−0.004, 0.016)</td>
+<td>❌ 否</td>
+</tr>
+</tbody>
+</table>
+<p><strong>四個主要中介物與兩個聯合模型，直接效果的 CI 全部包含 0。</strong></p>
+<p><strong>⚠️ 這是本文最重要的單一統計事實，而它未被摘要、未被 Graphical Abstract、未被新聞稿、也未被同期社論明確指出：資料無法排除「已測風險因子完全中介了 MACE 效果」這個假說。</strong> 作者提出的「存在未知機轉」在形式上是一個<strong>未被檢驗力所支持的推測</strong>，而非一個發現。</p>
+<p>同時值得注意的是：四個不同的單一中介物<strong>各自都無法排除完全中介</strong>（100% 皆落在各自 CI 內）— 這在邏輯上不可能同時為真（總和將遠超 100%）。<strong>這個內部不可能性本身，就是模型欠定（underdetermined）的直接證明</strong>，也是最簡潔的診斷：資料量根本不足以做這個分解。</p>
+<p><strong>Step 4 — 統計謬誤檢查</strong></p>
+<ul>
+<li>❌ <strong>「p &gt; 0.05 = no difference」</strong>：作者<strong>未犯此錯</strong>。全文使用 CI 而非 p 值來描述中介估計，並明確說明「CIs that encompass 100% of mediation mean that it is possible that such risk factors may explain the entirety of the drug effect」。這一點做得正確且值得肯定。</li>
+<li>❌ <strong>Post-hoc power</strong>：作者<strong>未使用</strong>。僅陳述「not powered for mediation」，未計算事後檢定力。正確。</li>
+<li>⚠️ <strong>但作者犯了一個相關的錯誤</strong>：在正確陳述「CI 涵蓋 100%，故完全中介有可能」之後，緊接著寫「<strong>the point estimates for the most likely value of the % mediation are well below 100%, consistent with alternative factors mediating at least some of the effect</strong>」— 這是在一個 CI 橫跨 174 個百分點的情境下，<strong>訴諸點估計來支撐方向性結論</strong>。當 CI 如此之寬時，點估計並非「最可能值」，而只是一個幾乎不帶資訊的位置參數。這是實質上的「以點估計取代區間估計」謬誤。</li>
+</ul>
+<h4>C2. Underpowered 判斷與 Winner's Curse</h4>
+<p><strong>Underpowered 判定</strong>：✅ <strong>確定為嚴重 underpowered</strong>。</p>
+<p>依定義（CI 同時包含 null 與 MCID）：</p>
+<ul>
+<li>12 個單一中介物中，<strong>9 個</strong>的 CI 同時包含 0% 與 25%。</li>
+<li>3 個聯合模型的 CI <strong>全部</strong>同時包含 0% 與 100%。</li>
+<li>總效果本身：0.012（0.004, 0.020）— 分母跨越 5 倍範圍。</li>
+</ul>
+<p><strong>更根本的觀察</strong>：這個分析<strong>在執行之前就註定無法給出精確答案</strong>。當總效果的 CI 橫跨 5 倍範圍時，任何以它為分母的比值都必然有極寬的區間。作者把不精確歸因於「未為中介分析設計效力」與「測量頻率不足」— 但即使測量頻率加倍，分母的不確定性仍在，CI 仍會很寬。這是<strong>指標選擇的結構問題</strong>，不是樣本數問題。更穩健的做法是報告<strong>絕對尺度的間接效果</strong>（例如「經由 hsCRP 中介的存活機率差 = 0.006, 95% CI …」），而非比值。</p>
+<p><strong>Winner's Curse 風險評估</strong>：</p>
+<p>本文<strong>無</strong>傳統意義上的 underpowered positive（沒有任何「陽性主結果」），因此不存在典型的 Type M 誇大風險。但存在一個<strong>變體風險</strong>：</p>
+<ul>
+<li>在 12 個中介物 × 至少 4 種分析方式（正向、反向、on-treatment、Cox）的<strong>超過 50 次估計</strong>中，未做任何多重性校正。</li>
+<li>在這個規模的估計下，即使全部真值都很小，<strong>最大的幾個點估計也必然被隨機高估</strong>。</li>
+<li>腰圍 64.0% 恰好是全部估計中的最大值 — 而它同時也是<strong>最不穩定</strong>的（reverse 掉至 21.5%、Cox 掉至 32.0%）。<strong>這正是 Type M error 的典型指紋：極端值 + 在獨立檢驗下大幅回歸</strong>。</li>
+<li><strong>實務警告</strong>：任何後續研究若以「腰圍中介 64%」作為效果量假設來計算樣本數，將嚴重低估所需樣本數。<strong>這個數字不應被用於任何後續試驗設計。</strong></li>
+</ul>
+<h4>C3. Bayesian 補充分析</h4>
+<p>本文的核心主張在形式上是一個<strong>等效性 vs 非等效性</strong>的判斷：「直接效果是否實質為零？」（即：已測中介物是否完全解釋了效果？）。頻率派的區間估計無法正面回答這個問題 — 它只能說「無法排除」。</p>
+<p><strong>因此本案例正是 Bayesian 分析最能發揮作用的情境</strong>（依 Zampieri 等 AJRCCM 2021 框架）。若對聯合模型的直接效果計算：</p>
+<table>
+<thead>
+<tr>
+<th>指標</th>
+<th>定義</th>
+<th>對本文的意義</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Pr(ROPE)</strong></td>
+<td>Pr(直接效果落在實質等效區間內，例如 |直接效果| &lt; 0.003)</td>
+<td><strong>唯一能正式量化「已測中介物已完全解釋效果」機率的方法</strong></td>
+</tr>
+<tr>
+<td><strong>Pr(substantial direct effect)</strong></td>
+<td>Pr(直接效果 &gt; 0.006，即 &gt; 總效果一半)</td>
+<td>直接量化作者主張的「存在實質未解釋效果」</td>
+</tr>
+</tbody>
+</table>
+<p>以三組 prior（skeptical：假設無殘餘直接效果／optimistic：假設存在大量未解釋效果／non-informative）執行，並計算三者間的 I²，即可判斷結論究竟由資料驅動還是由先驗驅動。</p>
+<p><strong>[限制：本文未執行任何 Bayesian 分析，且未提供逐次 bootstrap 樣本，故無法由外部重建上述後驗機率。以上為方法學建議，非本文結果。]</strong></p>
+<p><strong>評估</strong>：作者採用 1000 次 bootstrap 建立 CI，技術上完全有能力從同一組 bootstrap 樣本直接讀出「直接效果 &lt; 某門檻」的比例 — 這幾乎是零額外成本的分析。<strong>未做此分析，使得本文的核心主張始終停留在「無法排除」的層次，而無法給出任何正面的機率陳述。</strong> 這是本文最可惜的方法學缺口：一個幾乎免費、且能直接回答其核心問題的分析被略過了。</p>
+<h4>C4. 報告完整性與其他統計問題</h4>
+<p><strong>樣本數與 power 雙向評估</strong>：</p>
+<ul>
+<li><strong>Underpowered</strong>：✅ 確認（見 C2）。</li>
+<li><strong>Overpowered</strong>：❌ 不適用 — 本文並未宣稱任何統計顯著的微小差異。</li>
+</ul>
+<p><strong>Kaplan-Meier 圖細節判讀（Figure 1，page_006.png）</strong>：</p>
+<ul>
+<li><strong>Numbers at risk</strong>：<strong>未提供</strong>。這是實質缺漏。全部中介估計錨定於 36 個月 landmark，讀者無從判斷該時點的在險人數。<strong>[限制：Figure 1 無 number-at-risk 列，無法核實 36 個月時的在險人數與尾端穩定性]</strong></li>
+<li><strong>Informative censoring</strong>：semaglutide 組因不良反應（主要為胃腸道）停藥率較高（受試藥使用時間佔比 82.5% vs 安慰劑 87.7%）。ITT 分析對此有保護，但<strong>對中介物軌跡的估計沒有保護</strong> — 停藥者的後續中介物值由 LOCF 填補，等於假設停藥後體重/hsCRP 維持在停藥當下的水準，這在生理上明顯不成立（停藥後體重會回升）。<strong>此偏差會使 semaglutide 組的中介物軌跡被過度樂觀地估計，方向上會高估 % mediation</strong> — 與 LOCF 的整體衰減效應方向相反，淨效果不明。文內未討論。</li>
+<li><strong>Crossing curves</strong>：<strong>未見交叉</strong>，曲線自 0–3 個月起分離並大致平行延續至 36 個月。</li>
+<li><strong>任意時間點選擇</strong>：36 個月為<strong>預先指定</strong>（作為完成試驗者的預期最短追蹤時間）[文內]。選擇合理，非事後挑選。</li>
+</ul>
+<p><strong>多重比較</strong>：超過 50 次 % mediation 估計，<strong>零校正</strong>。作者以 exploratory 定位規避 — 在原則上可接受，但當其中的最大值（腰圍 64.0%）被寫進摘要第一句、Graphical Abstract 與新聞稿時，exploratory 的免責就不再成立。</p>
+<p><strong>分析策略與遺失資料</strong>：ITT 為主分析（正確）；LOCF 為唯一填補方法（見下）。</p>
+<p><strong>報告完整性</strong>：正面評價 — 12 個中介物<strong>全部報告</strong>（包含 DBP 的 −1.8%、HDL 的 −0.6% 等無效或負值），未見選擇性報告的證據。Table 1、2、3 完整呈現總效果、直接效果與 % mediation 三欄，讓讀者能自行驗算。這一點做得<strong>優於多數藥廠資助的次級分析</strong>。</p>
+<hr />
+<h4>統計面紅旗清單（7 項）</h4>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>紅旗</th>
+<th>文內/圖內依據</th>
+<th>嚴重度</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>1</strong></td>
+<td><strong>直接效果 CI 全部包含 0，故無法排除完全中介 — 但論文結論反向推論「存在未知機轉」</strong></td>
+<td>Table 1 直接效果欄：體重 (−0.001, 0.019)、腰圍 (−0.004, 0.013)、HbA1c (−0.001, 0.018)、hsCRP (−0.001, 0.016)；Table 2 聯合模型 (−0.003, 0.019)</td>
+<td><strong>最嚴重</strong></td>
+</tr>
+<tr>
+<td><strong>2</strong></td>
+<td><strong>% mediation 為比值，分母（總效果 0.012, CI 0.004–0.020）跨越 5 倍範圍，比值先天不穩定</strong></td>
+<td>Table 1 總效果欄；CI 出現 (−119.2, 158.4) 等病態值（Figure 1）</td>
+<td><strong>最嚴重</strong></td>
+</tr>
+<tr>
+<td><strong>3</strong></td>
+<td><strong>多變量模型內部數學矛盾：體重(19.5%) + 腰圍(64.0%) 聯合 = 12.3%，低於任一單項；Cox 法同樣（9.1% + 32.0% → 6.9%）</strong></td>
+<td>Table 2、Table 3</td>
+<td><strong>嚴重</strong> — 作者僅以「未測混淆」單一解釋帶過，未檢驗模型誤設或非收斂</td>
+</tr>
+<tr>
+<td><strong>4</strong></td>
+<td><strong>兩種「有效」方法的點估計系統性差兩倍，且小中介物出現符號翻轉</strong></td>
+<td>Vansteelandt vs Cox：腰圍 64.0/32.0、HbA1c 29.0/13.0、體重 19.5/9.1；<strong>eGFR 6.9 → −1.7、HDL 9.3 → −0.6（符號翻轉）</strong></td>
+<td><strong>嚴重</strong> — 符號翻轉是純雜訊的確證</td>
+</tr>
+<tr>
+<td><strong>5</strong></td>
+<td><strong>LOCF 填補 8%–23% 的時間相依中介物，偏差方向（衰減 → 低估中介）未被討論</strong></td>
+<td>Methods；Table S3</td>
+<td><strong>中等</strong> — 此偏差恰好把結果推向論文想要的方向</td>
+</tr>
+<tr>
+<td><strong>6</strong></td>
+<td><strong>超過 50 次 % mediation 估計，零多重性校正；最大值（腰圍 64.0%）同時是最不穩定者 — Type M error 指紋</strong></td>
+<td>12 中介物 × 4 分析取向 + 3 聯合模型 × 2 法</td>
+<td><strong>中等</strong></td>
+</tr>
+<tr>
+<td><strong>7</strong></td>
+<td><strong>競爭風險已識別但零敏感度分析；未報告 proportional hazards 檢定</strong></td>
+<td>Discussion 限制第 4 點；Table 3 大量使用 Cox 但無 PH 檢定</td>
+<td><strong>中等</strong></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h3>D. 次組分析評估</h3>
+<p>本文<strong>未執行傳統意義的臨床次組分析</strong>（未按年齡、性別、BMI 分層）。但有一項功能等同於次組分析、且<strong>具決定性意義</strong>的分析：<strong>治療組別分層的時間相依 Cox 迴歸</strong>（Table S5，僅見於正文描述，<strong>[限制：Table S5 未在本次輸入的 markdown 或圖頁中呈現，以下評估基於正文轉述]</strong>）。</p>
+<p>依 JAMA 次組分析 5 標準評估：</p>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>標準</th>
+<th>評估</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td><strong>是否有 interaction p-value？</strong></td>
+<td>❌ <strong>未報告</strong>。正文僅描述「顯著 / 不顯著」的模式差異（腰圍在 semaglutide 組顯著、安慰劑組不顯著），<strong>這正是最經典的次組分析錯誤</strong> — 以兩組各自的顯著性差異推論交互作用存在，而未做正式的交互作用檢定</td>
+</tr>
+<tr>
+<td>2</td>
+<td><strong>方向是否與其他研究一致？</strong></td>
+<td>⚠️ <strong>部分一致</strong>。ref 10 的 SELECT 腰圍次群分析顯示安慰劑組早期減重 &gt;5% 反而 MACE 增加，與「兩組體重—結局關係不同」一致。但這兩項分析來自<strong>同一資料集</strong>，不構成獨立驗證</td>
+</tr>
+<tr>
+<td>3</td>
+<td><strong>假說是否預先指定並有預期方向？</strong></td>
+<td>❌ <strong>否</strong>。此為事後探索（「We <strong>further</strong> performed…」），目的是解釋主分析的異常結果</td>
+</tr>
+<tr>
+<td>4</td>
+<td><strong>是否有合理生物機轉？</strong></td>
+<td>✅ <strong>是，且相當有力</strong>。frailty / 共病驅動的非意圖性減重在安慰劑組製造反向關聯、而在 semaglutide 組被藥效遮蔽 — 生物學與流行病學上都高度合理</td>
+</tr>
+<tr>
+<td>5</td>
+<td><strong>是否為 within-study 比較？</strong></td>
+<td>✅ <strong>是</strong>。同一試驗內的組別間比較</td>
+</tr>
+</tbody>
+</table>
+<p><strong>可信度評分：中（但其用途極重要）</strong></p>
+<p><strong>關鍵評估</strong>：這項分析在<strong>推論強度</strong>上只有中等（無交互作用檢定、事後、單一資料集），但它在<strong>論證功能</strong>上是本文最重要的一環 — <strong>它是唯一一個能診斷出主分析為何不可靠的內部證據</strong>。作者把它放在補充資料而非正文表格，[評估] 是一個呈現上的選擇失當：<strong>用來推翻自己頭條數字的證據，不應該藏在 supplement。</strong></p>
+<p>另外必須指出一項語意上的不一致：正文寫「A lower time-updated waist circumference was <strong>significantly</strong> associated with lower MACE incidence <strong>only in the semaglutide arm</strong>」。這句話同時也意味著：<strong>腰圍在安慰劑組與 MACE 無關</strong>。若腰圍縮小在沒有 semaglutide 的情況下不帶來心血管益處，那麼把腰圍稱為「中介物」在因果語意上就有問題 — 它更像是一個<strong>效果修飾（effect modification）或共同結果（common effect）</strong>，而非因果路徑上的中間變項。作者未明確處理這個概念區分。</p>
+<hr />
+<h3>E. 紅旗清單</h3>
+<p><strong>設計層面</strong></p>
+<ol>
+<li><strong>中介分析的核心假設（中介物—結局無未測混淆）明確不成立，且被作者自己的三項分析證實</strong> — 這使得所有 % mediation 在因果上失去明確詮釋。</li>
+<li><strong>Positivity 與 consistency 未評估</strong>：兩組體重軌跡分布重疊有限，反事實情境對多數受試者是外推而非內插；且「減重 5 kg」在兩組是不同的暴露版本。</li>
+<li><strong>中介物僅測至 24 個月，結局評估在 36 個月</strong>，中間 12 個月的軌跡全部由 LOCF 外推。</li>
+<li><strong>「Pre-specified」的宣稱名實不符</strong>：候選中介物在<strong>解盲後</strong>經過篩選；多變量模型的變項選擇與訪視選擇由<strong>收斂性事後決定</strong>；SAP 版本、日期與內容均未公開。</li>
+</ol>
+<p><strong>統計層面</strong></p>
+<ol start="5">
+<li><strong>直接效果 CI 全部包含 0 — 完全中介無法被排除 — 但論文結論朝反方向推論。</strong> 此為本文最嚴重的邏輯問題，且<strong>未被任何摘要、圖形摘要、新聞稿或同期社論指出</strong>。</li>
+<li><strong>四個不同的單一中介物「各自都無法排除完全中介」— 邏輯上不可能同時為真，此內部不可能性即為模型欠定的確證。</strong></li>
+<li><strong>% mediation 比值的分母跨越 5 倍範圍且逼近 0</strong>，導致 (−119.2, 158.4) 這類無資訊量的 CI。指標選擇本身即為錯誤，應改報絕對尺度的間接效果。</li>
+<li><strong>多變量模型數學矛盾</strong>：19.5% + 64.0% → 12.3%。</li>
+<li><strong>方法間符號翻轉</strong>（eGFR 6.9 → −1.7；HDL 9.3 → −0.6）。</li>
+<li><strong>超過 50 次估計零多重性校正</strong>，而最大值（腰圍 64.0%）恰是最不穩定者。</li>
+<li><strong>LOCF 的偏差方向未討論</strong>，且該方向恰好有利於論文結論。</li>
+<li><strong>競爭風險識別而未分析</strong>；<strong>未報告 proportional hazards 檢定</strong>。</li>
+<li><strong>1000 次 bootstrap 樣本已在手，卻未計算任何後驗/區間機率陳述</strong>（例如 Pr(直接效果 &lt; 某門檻)）— 一個近乎零成本、且能直接回答核心問題的分析被略過。</li>
+</ol>
+<p><strong>敘事層面</strong></p>
+<ol start="14">
+<li><strong>Graphical Abstract 存在可驗證的事實錯誤</strong>：「body weight reduction explaining only 31% of risk reduction」— 31.4% 是八項聯合估計，體重單獨為 19.5%（Cox 法 9.1%），誇大達 1.6 倍。</li>
+<li><strong>Graphical Abstract 把 CI 橫跨 −30.1 到 143.6 的估計值，畫成乾淨的「31% / 69%」二分色塊</strong> — 在視覺上賦予一個零確定性的數字 100% 的確定性。這是全文最具誤導性的單一元件。</li>
+<li><strong>摘要與 Graphical Abstract 以腰圍 64.0% 領銜，而論文自己的三項穩健性檢驗（reverse counterfactual、Cox、分組分析）都指向這個數字不可靠。呈現順序與證據方向相反。</strong></li>
+<li><strong>最穩健的訊號（hsCRP）被排在第二位</strong>，且論文<strong>完全未引用 CANTOS 或任何 IL-6/CRP 路徑的獨立試驗證據</strong> — 這是一個明顯的文獻缺口，因為那正是支持「hsCRP 中介」最有力的外部證據來源。</li>
+<li><strong>結論在三個載體上逐級放大</strong>：Abstract（準確）→ Take Home Message（越界）→ 新聞稿「應被視為心血管疾病減少藥物而非減重藥」（嚴重越界）。</li>
+<li><strong>用來推翻主分析的關鍵證據（Table S5 分組分析、Figure 1 的 reverse counterfactual 數值）放在補充資料或僅印在圖上</strong>，未進入正文表格或摘要。</li>
+</ol>
+<p><strong>COI 與獨立性層面</strong></p>
+<ol start="20">
+<li><strong>5/18 作者為 Novo Nordisk 員工兼持股人；資助者明文參與研究設計、資料收集、分析與詮釋；個案層級資料由 Novo Nordisk 掌控（見 Data Availability），無獨立統計複核。</strong></li>
+<li><strong>文內未提供 Author Contributions</strong>，無法判定分析執行者。</li>
+<li><strong>結論方向與商業利益高度一致</strong>：一個不精確的結果被用來支持「semaglutide 是心血管藥而非減重藥」的定位，直接關係到適應症範圍與給付論述。</li>
+<li><strong>同期社論並非獨立評論</strong>：第一作者 Verma 自陳為 <strong>SELECT 試驗的國家主持人</strong>、Novo Nordisk 顧問；第二作者 Guzik 與通訊作者同屬愛丁堡大學；社論並推廣自身試驗（SEMA-VR CardioLink-15）作為候選機轉。<strong>截至評讀時點，尚無真正獨立於 SELECT 與 Novo Nordisk 的批判性評論。</strong></li>
+</ol>
+<p><strong>外推層面</strong></p>
+<ol start="24">
+<li><strong>72% 男性</strong>，而核心爭議變項（腰圍、體脂分布）與 MACE 的關係具明顯性別差異 — 無性別分層分析。</li>
+<li><strong>結果明確不可外推至糖尿病族群</strong>（LEADER HbA1c 中介 83% vs 本文 13%–29%）、初級預防、老年/frailty 族群、或其他 GLP-1 RA。</li>
+</ol>
+<hr />
+<h3>F. 反向解釋</h3>
+<p>除了作者主張的「存在尚未辨識的心血管保護機轉」之外，以下四個替代解釋在本文資料下同樣（或更）相容：</p>
+<h4>替代解釋 1：<strong>已測風險因子其實完全解釋了效果，只是統計上無法證明</strong></h4>
+<ul>
+<li><strong>支持線索</strong>：四個主要中介物與兩個聯合模型的<strong>直接效果 CI 全部包含 0</strong>；所有 % mediation 的 CI 上界都遠超 100%（腰圍達 179.6%、6 項聯合模型達 161.0%）。若真有大量未解釋效果，直接效果的 CI 下界應明顯高於 0 — 事實並非如此。此外，LOCF 的衰減偏差、中介物測量誤差（尤其腰圍與 hsCRP）都會<strong>系統性低估</strong> % mediation。</li>
+<li><strong>反對線索</strong>：所有點估計都低於 100%；Cox 法（CI 較窄）的聯合估計僅 32.8%（2.7, 90.1），上界未達 100%。</li>
+<li><strong>評估</strong>：<strong>這個解釋與資料的相容度至少不低於作者的解釋。</strong> 作者對它的處理只有一句「CIs that encompass 100%… mean that it is possible」，隨即以點估計為由略過。這是本文最重要的未被充分討論的可能性。</li>
+</ul>
+<h4>替代解釋 2：<strong>整個分解是混淆的產物，% mediation 這個量在本資料中無因果意義</strong></h4>
+<ul>
+<li><strong>支持線索</strong>：作者自己提供的三條證據（reverse counterfactual 不一致、聯合模型低於單項、分組 Cox 關聯不對稱）全部指向中介物—結局關係受混淆汙染且在兩組間不同。當 treatment × mediator 交互作用存在時，<strong>自然直接/間接效果的分解在因果上無定義</strong> — 此時「31.4%」不是一個被不精確估計的真值，而是一個<strong>根本不存在的量的樣本估計</strong>。</li>
+<li><strong>反對線索</strong>：hsCRP 在所有檢驗下保持穩定，顯示至少部分中介物的分解仍有意義。</li>
+<li><strong>評估</strong>：<strong>對體重與腰圍，此解釋幾乎確定為真</strong>（作者自己也接近這個結論）。對 hsCRP 則不成立。這意味著論文應該做的是<strong>分別處理</strong>兩類中介物，而不是把它們丟進同一個聯合模型後得到 31.4% 並當作頭條。</li>
+</ul>
+<h4>替代解釋 3：<strong>hsCRP 路徑就是主要機轉，而它已被測到</strong></h4>
+<ul>
+<li><strong>支持線索</strong>：hsCRP 是唯一通過三重穩健性檢驗的中介物（42.1% vs reverse 43.1%；Cox 31.0% 且 CI 不跨 0；<strong>兩個治療組別皆顯著</strong>）。外部證據支持 weight-independent 的抗發炎效應（STEP 1/2/3 中 hsCRP 下降 39%–48% 與基線 BMI 無關；STEP-HFpEF 中 hsCRP 下降非由減重驅動）[外部: EHJ editorial 轉述]。且 CANTOS 已獨立證明單純降低 IL-6/CRP 軸可降低 MACE — <strong>本文完全未引用 CANTOS</strong>。</li>
+<li><strong>反對線索</strong>：hsCRP 點估計為 42%（Cox 31%），未達 100%；且作者正確指出無法區辨 hsCRP 是「發炎標記」還是「體脂量標記」。</li>
+<li><strong>評估</strong>：<strong>這個解釋被論文系統性地低估了。</strong> 若把 hsCRP 的 42% 與其在正反方向的一致性放在頭條，論文的訊息會變成「<strong>發炎是最可信的中介路徑，而體脂相關指標的估計不可靠</strong>」— 這與現有文獻高度相容，也比「存在未知機轉」保守得多。但這個版本的故事在商業上遠不如「未知機轉」有吸引力。</li>
+</ul>
+<h4>替代解釋 4：<strong>LOCF 與測量頻率不足造成的系統性稀釋</strong></h4>
+<ul>
+<li><strong>支持線索</strong>：中介物僅測至 24 個月，結局評估在 36 個月；8%–23% 經 LOCF 填補；停藥者（semaglutide 組佔比較高）的中介物值被凍結在停藥當下。時間相依中介物的測量誤差與外推<strong>在數學上必然衰減</strong>中介物—結局關聯，進而低估 % mediation。作者自己也把「測量頻率不足」列為限制之一。</li>
+<li><strong>反對線索</strong>：填補比例兩組相當；作者認為幅度「not very large」。</li>
+<li><strong>評估</strong>：<strong>部分成立，且偏差方向明確有利於論文結論。</strong> 論文承認此限制存在，但從未說明它的<strong>方向</strong>。若明說「LOCF 會讓 % mediation 被低估」，「存在未解釋效果」的論點就會被實質削弱 — 論文對此保持沉默。</li>
+</ul>
+<hr />
+<h3>G. 最終裁決</h3>
+<h4>整體可信度：<strong>中</strong></h4>
+<p>需分層判定：</p>
+<table>
+<thead>
+<tr>
+<th>分項</th>
+<th>可信度</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>資料來源與試驗品質</strong>（SELECT 本身：隨機化、雙盲、17 604 人、EAC 判定硬終點、39.8 個月追蹤）</td>
+<td><strong>高</strong></td>
+</tr>
+<tr>
+<td><strong>統計方法選擇</strong>（Vansteelandt counterfactual 為此情境的適當方法；三角驗證設計 — 正反反事實 + on-treatment + Cox — 規劃完善）</td>
+<td><strong>高</strong></td>
+</tr>
+<tr>
+<td><strong>報告透明度</strong>（12 個中介物全部報告含無效值；總效果/直接效果/% mediation 三欄完整；限制清單誠實且具體）</td>
+<td><strong>高</strong>（優於多數藥廠資助次級分析）</td>
+</tr>
+<tr>
+<td><strong>定量結論的可信度</strong>（各 % mediation 數值）</td>
+<td><strong>低</strong></td>
+</tr>
+<tr>
+<td><strong>「存在未辨識機轉」這個核心主張</strong></td>
+<td><strong>低 — 未被資料支持，屬假說而非發現</strong></td>
+</tr>
+<tr>
+<td><strong>摘要／Graphical Abstract 的呈現</strong></td>
+<td><strong>低 — 含可驗證的事實錯誤，且系統性抹除不確定性</strong></td>
+</tr>
+<tr>
+<td><strong>外部評論的獨立性</strong></td>
+<td><strong>低 — 社論由試驗國家主持人撰寫</strong></td>
+</tr>
+</tbody>
+</table>
+<p><strong>一句話定性</strong>：這是一份<strong>方法學執行良好、報告誠實、但結論被過度詮釋</strong>的分析。它最誠實的版本是「SELECT 的資料不足以回答為什麼有效」；它被包裝成的版本是「我們發現了一個未知機轉」。</p>
+<h4>可採用的條件</h4>
+<ol>
+<li>採用其<strong>定性結論</strong>：「MACE 益處無法單純歸因於減重」，並同時說明此為不確定的推論。</li>
+<li>採用 <strong>Table S5 的臨床推論</strong>：時間更新後的體重與 MACE 在兩組皆無顯著關聯 → <strong>減重幅度不應作為心血管保護的療效指標或停藥依據</strong>。這是本文最可靠、也最具實務價值的發現。</li>
+<li>採用 <strong>hsCRP 為最穩健中介訊號</strong>這個定性判斷，用於研究議程規劃（而非臨床監測）。</li>
+<li>採用其<strong>研究議程設定價值</strong>：支持投入 proteomics、發炎路徑與血管修復機轉的研究。</li>
+</ol>
+<h4>不建議採用的情境</h4>
+<ol>
+<li><strong>不引用任何 % mediation 的具體數字</strong>作為定量事實 — 包含 64.0%、42.1%、31.4%、19.5%。</li>
+<li>**不使用「腰圍是最大中介物」**這個說法 — 論文自身的三項穩健性檢驗已否定它。</li>
+<li><strong>不以本文支持「semaglutide 應被重新分類為心血管藥」</strong> — 藥物定位應依療效證據（SELECT 主結果），而非機轉是否已知。</li>
+<li><strong>不外推至糖尿病、初級預防、老年/frailty、女性為主族群或其他 GLP-1 RA。</strong></li>
+<li><strong>不以本文任何效果量作為後續試驗的樣本數估算依據</strong>（Winner's Curse 風險）。</li>
+</ol>
+<h4>若要改觀，最需要的三個關鍵改進</h4>
+<ol>
+<li>
+<p><strong>改報絕對尺度的間接效果，並以 Bayesian 後驗機率正面回答核心問題。</strong> 捨棄比值形式的 % mediation，改報「經由 hsCRP 中介的 36 個月存活機率差 = X (95% CI …)」。並利用<strong>現成的 1000 次 bootstrap 樣本</strong>直接計算 Pr(直接效果 &lt; 總效果的 10%)、Pr(直接效果 &gt; 總效果的一半)，以三組 prior（skeptical / optimistic / non-informative）檢驗結論對先驗的敏感度（I² &lt; 0.20 為穩健）。這幾乎零額外成本，卻能把「無法排除」升級為可量化的機率陳述。</p>
+</li>
+<li>
+<p><strong>以敏感度分析正面量化三個已識別但未處理的偏差。</strong> (a) 用多重插補或聯合模型取代 LOCF，並明確報告 % mediation 變化的方向與幅度；(b) 執行 cause-specific 或 Fine-Gray 競爭風險分析；(c) 執行未測混淆的 <strong>E-value</strong> 或 bias analysis — 亦即「要有多強的未測混淆（如 frailty）才能把 64% 的腰圍中介解釋掉？」這個數字比「我們懷疑有混淆」有用得多。</p>
+</li>
+<li>
+<p><strong>重寫摘要、Graphical Abstract 與對外溝通，使其與內部證據方向一致。</strong> 具體而言：(a) <strong>修正 Graphical Abstract 中「body weight explaining only 31%」的事實錯誤</strong>；(b) 移除「31% / 69%」二分色塊，改以區間或明確標示 CI；(c) 把 hsCRP（最穩健）而非腰圍（最不穩健）列為主要發現；(d) 把 Table S5 分組分析與 Figure 1 的 reverse counterfactual 數值移入正文；(e) 在結論中明確陳述「直接效果的 CI 包含 0，故無法排除已測風險因子完全中介」。</p>
+</li>
+</ol>
+<h4>一句話結論（給一般讀者）</h4>
+<p><strong>這份研究沒能查出 semaglutide 護心的真正原因，但「查不出」不等於「另有原因」——用藥該不該開，SELECT 早已給了答案，機轉未明不影響處方。</strong></p>
+<hr />
+<h2>關鍵數據總表（供快速查閱）</h2>
+<table>
+<thead>
+<tr>
+<th>項目</th>
+<th>數值（95% CI）</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>SELECT 主要結果 3P-MACE</td>
+<td>HR 0.80 (0.72, 0.90)；6.5% vs 8.0%</td>
+</tr>
+<tr>
+<td><strong>36 個月 MACE-free survival 絕對差（總效果）</strong></td>
+<td><strong>0.012 (0.004, 0.020)</strong> ← <strong>所有不穩定性的根源</strong></td>
+</tr>
+<tr>
+<td>最大單一中介（腰圍，Vansteelandt）</td>
+<td>64.0% (27.5, 179.6) → <strong>reverse 21.5% (−18.3, 83.1)</strong>；Cox 32.0%</td>
+</tr>
+<tr>
+<td><strong>最穩健中介（hsCRP）</strong></td>
+<td><strong>42.1% (17.9, 110.5) → reverse 43.1% (22.3, 106.8)</strong>；Cox 31.0% (16.1, 65.4)；<strong>兩組分層皆顯著</strong></td>
+</tr>
+<tr>
+<td>體重（單獨）</td>
+<td>19.5% (−33.0, 110.7) → reverse 18.9% <strong>(−119.2, 158.4)</strong>；Cox 9.1%；<strong>兩組分層皆不顯著</strong></td>
+</tr>
+<tr>
+<td><strong>摘要頭條：8 項聯合中介</strong></td>
+<td><strong>31.4% (−30.1, 143.6)</strong> ← CI 寬度 174 個百分點</td>
+</tr>
+<tr>
+<td>排除體重腰圍（6 項）</td>
+<td>46.0% (−6.0, 161.0)；Cox 32.8% (2.7, 90.1)</td>
+</tr>
+<tr>
+<td>體重 + 腰圍（僅兩項）</td>
+<td><strong>12.3% (−42.6, 92.6)</strong> ← 低於任一單項</td>
+</tr>
+<tr>
+<td><strong>聯合模型直接效果</strong></td>
+<td><strong>0.008 (−0.003, 0.019)</strong> ← <strong>包含 0，完全中介無法排除</strong></td>
+</tr>
+<tr>
+<td>唯一可判定為無中介者</td>
+<td>DBP：−1.8% (−10.6, 4.0)；Cox −0.2% (−2.0, 1.2)；HR 0.801 → 0.801</td>
+</tr>
+<tr>
+<td>LOCF 填補比例</td>
+<td>8%–23%（兩組相當）</td>
+</tr>
+<tr>
+<td>審查時程</td>
+<td>收稿 2025-08-29 → 接受 2026-06-20（296 天，遠慢於 EHJ 平均首次決議約 20 天）</td>
+</tr>
+<tr>
+<td>結果首次公開</td>
+<td>ESC Congress 2024（數值與最終發表完全相同）</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p><strong>資料來源說明</strong>：本評讀之書目資料與同期社論檢索結果引用自 <strong>PubMed</strong>。本文 DOI：<a href="https://doi.org/10.1093/eurheartj/ehag524">10.1093/eurheartj/ehag524</a>（PMID 42777687）。同期社論 DOI：<a href="https://doi.org/10.1093/eurheartj/ehag602">10.1093/eurheartj/ehag602</a>（PMID 42777686，已取得全文）。</p>
+<p><strong>Sources</strong>：</p>
+<ul>
+<li><a href="https://academic.oup.com/eurheartj/advance-article/doi/10.1093/eurheartj/ehag524/8774585">Semaglutide and cardiovascular risk reduction: a mediation analysis of the SELECT trial — Eur Heart J</a></li>
+<li><a href="https://academic.oup.com/eurheartj/article/45/Supplement_1/ehae666.2792/7835656">Exploratory mediation analysis… SELECT randomised trial (ESC 2024 abstract) — Eur Heart J Suppl</a></li>
+<li><a href="https://www.escardio.org/news/press/press-releases/weight-loss-alone-does-not-explain-lower-heart-disease-for-those-on-semaglutide/">Weight loss alone does not explain lower heart disease for those on semaglutide — ESC press release</a></li>
+<li><a href="https://www.research.ed.ac.uk/en/persons/helen-colhoun">Helen Colhoun — University of Edinburgh Research Explorer</a></li>
+<li><a href="https://manusights.com/journals/european-heart-journal">European Heart Journal Journal Guide 2026 — impact factor, acceptance rate, review timelines</a></li>
+</ul>
+
+<footer class="appraisal-meta">評讀資訊：模型：claude-opus-5 (claude)  ·  route：rct  ·  產出時間：2026-09-28 09:12 CST</footer>
+</main>
+</body>
+</html>
