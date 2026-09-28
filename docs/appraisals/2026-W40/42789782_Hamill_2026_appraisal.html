@@ -1,0 +1,1518 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Is a Runner&#x27;s Footfall Pattern a Risk Factor for a Running-Related Injury? Using Data from the 4HAIE Cohort Study.</title>
+<style>
+  :root {
+    --bg: #fafafa;
+    --card: #ffffff;
+    --text: #1a1a1a;
+    --muted: #6b6b6b;
+    --border: #e5e5e5;
+    --accent: #0b5fff;
+  }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang TC",
+      "Microsoft JhengHei", sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    margin: 0;
+    padding: 24px 16px 64px;
+    line-height: 1.72;
+  }
+  main {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    margin: 0 auto;
+    max-width: 840px;
+    padding: 22px 26px;
+  }
+  nav {
+    margin: 0 auto 14px;
+    max-width: 840px;
+    color: var(--muted);
+    font-size: 14px;
+  }
+  a { color: var(--accent); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  h1, h2, h3, h4 { line-height: 1.35; }
+  h1 { font-size: 26px; margin-top: 0; }
+  h2 { border-top: 1px solid var(--border); padding-top: 18px; }
+  code {
+    background: rgba(127, 127, 127, 0.12);
+    border-radius: 4px;
+    padding: 1px 4px;
+  }
+  table {
+    border-collapse: collapse;
+    table-layout: auto;
+    width: 100%;
+    max-width: 100%;
+  }
+  th, td {
+    border: 1px solid var(--border);
+    overflow-wrap: anywhere;
+    padding: 6px 8px;
+    text-align: left;
+    vertical-align: top;
+  }
+  blockquote {
+    border-left: 3px solid var(--accent);
+    color: var(--muted);
+    margin-left: 0;
+    padding-left: 14px;
+  }
+  .appraisal-meta {
+    border-top: 1px solid var(--border);
+    margin-top: 28px;
+    padding-top: 14px;
+    color: var(--muted);
+    font-size: 13px;
+  }
+  @media (max-width: 600px) {
+    body {
+      padding: 12px 8px 40px;
+    }
+    main {
+      padding: 16px 12px;
+    }
+    h1 {
+      font-size: 22px;
+    }
+    table {
+      font-size: 12px;
+      table-layout: fixed;
+    }
+    th, td {
+      padding: 4px 5px;
+    }
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #1a1a1a;
+      --card: #242424;
+      --text: #e8e8e8;
+      --muted: #999;
+      --border: #333;
+      --accent: #6ea8ff;
+    }
+  }
+</style>
+</head>
+<body>
+<nav><a href="../../2026-W40.html">← 回到 2026-W40 週報</a></nav>
+<main>
+<h1>Is a Runner&#x27;s Footfall Pattern a Risk Factor for a Running-Related Injury? Using Data from the 4HAIE Cohort Study.</h1>
+<h1>醫學文獻批判性評讀</h1>
+<p><strong>Is a Runner's Footfall Pattern a Risk Factor for a Running-Related Injury? Using Data from the 4HAIE Cohort Study</strong></p>
+<hr />
+<h2>SECTION-0：文章全面描述</h2>
+<h3>0. 文章身份證</h3>
+<table>
+<thead>
+<tr>
+<th>項目</th>
+<th>內容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>標題</td>
+<td>Is a Runner's Footfall Pattern a Risk Factor for a Running-Related Injury? Using Data from the 4HAIE Cohort Study</td>
+</tr>
+<tr>
+<td>期刊</td>
+<td>Medicine &amp; Science in Sports &amp; Exercise（MSSE，ACSM 官方期刊）</td>
+</tr>
+<tr>
+<td>年份</td>
+<td>2026（Publish Ahead of Print，頁面帶 &quot;ACCEPTED&quot; 浮水印）</td>
+</tr>
+<tr>
+<td>DOI</td>
+<td>10.1249/MSS.0000000000004155</td>
+</tr>
+<tr>
+<td>PMID</td>
+<td>42789782</td>
+</tr>
+<tr>
+<td>文章類型</td>
+<td><strong>前瞻性世代研究的次級分析（observational cohort, secondary analysis）</strong> → 路由：SKILL-A 主流程 + 觀察性子模組 + 因果推論 Appendix</td>
+</tr>
+</tbody>
+</table>
+<p><strong>路由註記</strong>：本文自述為 &quot;secondary analysis of the data collection from 4HAIE study&quot;，暴露（footfall pattern）在基線以實驗室 3D 動作分析測量，結果（running-related injury, RRI）於後續 1 年前瞻收集。屬於典型的前瞻性世代研究，非 RCT，<strong>不套用隨機化 / 分派隱藏 / ITT 等試驗專屬標準</strong>，改以混淆控制、暴露錯分、選擇偏差、因果可識別性為核心。</p>
+<hr />
+<h3>1. 作者團隊評論</h3>
+<p><strong>通訊作者</strong>：Joseph Hamill，PhD，University of Massachusetts Amherst 運動學系（Professor Emeritus）。[外部: UMass IALS / ResearchGate 個人頁]</p>
+<p><strong>團隊構成</strong>：第一與通訊作者為美方生物力學專家；其餘 5 位（Skypala、Plesek、Urbaczka、Sustkova、Jandacka）均來自捷克 Ostrava 大學人體運動學系，為 4HAIE 世代的實際執行團隊。Jandacka 為 4HAIE 計畫主持人（PI）。[外部: 4HAIE 計畫資料]</p>
+<p><strong>機構聲譽</strong>：UMass Amherst 生物力學實驗室為跑步力學領域的歷史重鎮；Ostrava 大學近年因 4HAIE 大型世代而成為跑步傷害流行病學的活躍中心。兩者在此領域均屬核心研究者，非跨領域首次切入。</p>
+<p><strong>團隊過往研究（外部搜尋，與本主題直接相關）</strong>：</p>
+<table>
+<thead>
+<tr>
+<th>年份</th>
+<th>代表作</th>
+<th>相關性</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2017</td>
+<td>Hamill J, Gruber AH. <em>Is changing footstrike pattern beneficial to runners?</em> J Sport Health Sci</td>
+<td><strong>通訊作者本人的立場文</strong>，明確結論：改為前足/中足著地「不改善跑步經濟性、不消除衝擊、不降低傷害風險」</td>
+</tr>
+<tr>
+<td>2025</td>
+<td>Plesek, <strong>Hamill</strong>, …, Jandacka. <em>Running Distance and Biomechanical Risk Factors for Plantar Fasciitis: A 1-yr Prospective 4HAIE Cohort Study.</em> MSSE 57(4):756-766</td>
+<td><strong>同一世代、同一追蹤期</strong>；已報告「strike index 與初始接觸踝角度與足底筋膜炎風險無關聯」</td>
+</tr>
+<tr>
+<td>2025</td>
+<td><em>Biomechanical insights into Achilles tendinopathy risk and protection in runners: a large prospective study 4HAIE.</em> BJSM</td>
+<td>同一世代，報告阿基里斯腱病變的生物力學預測因子</td>
+</tr>
+<tr>
+<td>2026</td>
+<td>Cipryan, Skypala, … <em>Baseline Inflammatory Markers as Predictors of Running-Related Injuries: A One-Year Prospective 4HAIE Cohort Study.</em> Scand J Med Sci Sports</td>
+<td>同一世代、同一 RRI 結果變項</td>
+</tr>
+<tr>
+<td>2023</td>
+<td>Skypala, Monte, <strong>Hamill</strong> et al. <em>Achilles tendon dimensions, ankle stiffness and footfall patterns in recreational runners.</em> J Sports Sci</td>
+<td>同一團隊的 footfall pattern 研究</td>
+</tr>
+</tbody>
+</table>
+<p><strong>作者立場史 [評估 — 本文最關鍵的結構性議題之一]</strong>：
+通訊作者在 2017 年即已公開主張「改變著地型態無助於降低傷害風險」（<a href="https://doi.org/10.1016/j.jshs.2017.02.004">DOI: 10.1016/j.jshs.2017.02.004</a>），且該立場在專業媒體上被明確標示為「生物力學家挑戰前足著地降低傷害率的說法」。本文的<strong>研究假說被直接寫成虛無假說</strong>（&quot;We hypothesized that: 1) there would be no differences…&quot;），Discussion 則三度使用 &quot;Confirming our hypothesis&quot; 的措辭。</p>
+<p>這不是不端行為，但它是一個明確的<strong>先驗承諾偏差（prior commitment bias）情境</strong>：一位對此議題有長期公開立場的資深作者，設計了一個以「證實虛無」為目標的研究，並在檢定不顯著時宣稱假說獲得證實。統計上，顯著性檢定<strong>在邏輯上無法「證實」虛無假說</strong>；要主張兩組等效，正確做法是預先指定等效界值（equivalence margin）並執行等效性檢定（TOST）或 Bayesian ROPE 分析。本文兩者皆無。這個結構性問題會在 C1 與 E 節反覆出現。</p>
+<p><strong>利益揭露</strong>：</p>
+<ul>
+<li>文內申報 [文內]：經費來自歐盟 LERCO 計畫（Operational Programme Just Transition）與捷克教育青年體育部 4HAIE 計畫（CZ.02.1.01/0.0/0.0/16_019/0000798）。明確聲明 &quot;No potential conflict of interest was reported by the authors.&quot;</li>
+<li>鞋具：全體受試者穿著實驗室提供的中性跑鞋（Brooks Launch, Brooks Sports）。文內<strong>未說明鞋具是廠商贊助或自購</strong>。</li>
+<li>[評估] <strong>商業性 COI 風險低</strong>。經費為公部門與歐盟來源，無鞋業或醫材利益關聯。本文的偏差風險來源不是金錢，而是上述的智識性先驗立場，以及同一資料集被反覆分析的多重性問題。</li>
+</ul>
+<hr />
+<h3>2. 文獻 Metadata 整理</h3>
+<ul>
+<li><strong>Received / Accepted date</strong>：<strong>[文內未提供]</strong> — PDF 轉出之 markdown 與圖頁均未保留投稿/接受日期，無法計算審查天數，亦無法與期刊平均值比較。</li>
+<li><strong>期刊屬性</strong> [外部: journalmetrics.org、ACSM 官網]：
+<ul>
+<li>MSSE 2025 Impact Factor 約 <strong>3.9–4.0</strong>，5 年 IF 5.2</li>
+<li>JCR <strong>Q1</strong>；ACSM 官方標示 Sports Sciences 領域排名 17/136</li>
+<li>非 Open Access（Wolters Kluwer 訂閱制），本文為 Publish Ahead of Print</li>
+</ul>
+</li>
+<li><strong>邀稿 vs 投稿</strong>：文內無 invited review / invited article 揭露，依格式（完整 Methods/Results、ACSM 標準倫理聲明）判斷為一般投稿原著。[推論]</li>
+</ul>
+<hr />
+<h3>3. 研究背景</h3>
+<p><strong>既有事實與證據 [文內]</strong>：</p>
+<ul>
+<li>規律跑步有健康效益（refs 1–5），但跑者 RRI 發生率高：文獻報告 10–92%（ref 6），較集中的估計為 35–50%（refs 7–9）</li>
+<li>公認風險因子：既往傷害、高週跑量、訓練量驟增、跑步經驗不足（ref 10 系統性回顧）；高 BMI 與較高年齡（ref 11）</li>
+<li>著地型態分三類：後足（RF）、中足（MF）、前足（FF）；約 70–80% 跑者為 RF（ref 14）。因 MF 與 FF 各自樣本小，慣例合併為非後足（nRF）</li>
+<li>支持 RF 較危險的論證：RF 產生較大衝擊負荷（refs 15, 16），推測傷害風險較高（ref 17）</li>
+</ul>
+<p><strong>知識缺口 [文內]</strong>：作者明確指出既有支持「RF → 傷害」的研究「樣本數相對小且為回溯性設計」，因此難以確立因果關聯。</p>
+<p><strong>Research question</strong>：</p>
+<ol>
+<li>RF 與 nRF 跑者的 RRI 發生率是否有差異？</li>
+<li>兩組在不同解剖部位的傷害數是否有差異？</li>
+</ol>
+<p><strong>[外部證據佐證此缺口為真]</strong>：根據 PubMed 檢索，Burke 等人 2021 年的系統性回顧（<a href="https://doi.org/10.1177/23259671211020283">DOI: 10.1177/23259671211020283</a>）納入 13 篇研究，以 GRADE 評為<strong>低品質證據</strong>支持 footstrike technique 與 RRI 的關聯；6 篇類別型研究中 3 篇發現 RF 回溯性傷害率較高、另 1 篇反而發現 MF/FF 風險較高；7 篇連續型測量研究中僅 1 篇顯著。該回顧明確呼籲「需要更多大規模前瞻性研究」。<strong>本文正是該呼籲所要求的研究類型 — 這是它真實且不容抹煞的價值。</strong></p>
+<hr />
+<h3>4. 研究設計與方法</h3>
+<p><strong>PICO（改寫為觀察性 PECO）</strong>：</p>
+<table>
+<thead>
+<tr>
+<th>要素</th>
+<th>內容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>P</strong></td>
+<td>捷克 4HAIE 世代中符合「跑者」定義者，n=738（307 女/431 男）。跑者定義：每週規律跑 ≥10 km；&gt;60 歲者 ≥6 km。自我認定為休閒跑者，非菁英或競技跑者</td>
+</tr>
+<tr>
+<td><strong>E</strong></td>
+<td>後足著地（RF），n=591（80.1%）</td>
+</tr>
+<tr>
+<td><strong>C</strong></td>
+<td>非後足著地（nRF，含中足+前足），n=147（19.9%）</td>
+</tr>
+<tr>
+<td><strong>O</strong></td>
+<td><strong>主要</strong>：1 年內是否發生任一 RRI（二元）&lt;br&gt;<strong>次要</strong>：13 個解剖部位的傷害發生（足、踝、脛、小腿、膝、大腿前、大腿後、鼠蹊、髖、臀、下背、背、其他）</td>
+</tr>
+</tbody>
+</table>
+<p><strong>關鍵設計細節</strong>：</p>
+<ul>
+<li><strong>設計</strong>：單中心前瞻性世代研究之次級分析；母世代自捷克高/低空汙地區招募（1500 人目標，1315 人納入）</li>
+<li><strong>暴露測量</strong>：基線第 2 天，17 m 跑道 overground 跑步，自選訓練配速（±5% 容許區間，光電閘監控），8 次有效試驗；10 台 Qualisys Oqus 攝影機 @240 Hz + Kistler 測力板 @2160 Hz；<strong>僅分析右腳</strong>（足部 13 標記，實際僅用跟部三標記 + 第 1/5 蹠骨頭）；全體穿實驗室提供的 Brooks Launch</li>
+<li><strong>暴露分類規則</strong>：三準則的 <strong>2-of-3 判定法</strong>
+<ol>
+<li>Strike index（壓力中心位置佔足長 %）&lt;33% → RF；&gt;33% → nRF</li>
+<li>初始接觸踝角度（背屈 → RF；蹠屈 → nRF）</li>
+<li>垂直地面反作用力有無 impact peak（有 → RF；無 → nRF）
+文內明言 &quot;Not all of the runners fell neatly into this classification&quot;，滿足 3 項中的 2 項即歸組</li>
+</ol>
+</li>
+<li><strong>結果測量</strong>：1 年追蹤，三管道 RRI 通報 — (1) 4HAIE App 自主通報；(2) 每週日固定問卷；(3) Fitbit Charge 3/4 偵測活動量下降時觸發問卷。三管道使用同一份標準化問卷。通報不清楚時由 4HAIE 物理治療師電訪確認；RRI 定義採 Yamato 等人共識定義（ref 36）</li>
+<li><strong>統計方法</strong>：
+<ul>
+<li>基線比較：Mann-Whitney U</li>
+<li>主要分析：Fisher's exact test（總體 + 13 部位）+ Cramér's V</li>
+<li>多變項：二元 logistic regression，共變項為年齡（連續）、性別（類別）、訓練量（連續）、既往傷害史（類別，無傷為參考組）；建立「不含」與「含」footfall pattern 兩個模型比較</li>
+</ul>
+</li>
+<li><strong>樣本數估算 [文內]</strong>：宣稱執行 &quot;power analysis&quot;，依據「每個自變項至少需 10 個最少見結果事件」的通則（ref 22）；5 個預測變項 → 最少需 50 名受傷跑者</li>
+</ul>
+<hr />
+<h3>5. 研究結果重點整理</h3>
+<p><strong>主要結果整理（含本評讀之推算）</strong></p>
+<table>
+<thead>
+<tr>
+<th>指標</th>
+<th>後足 RF (n=591)</th>
+<th>非後足 nRF (n=147)</th>
+<th>效果量</th>
+<th>95% CI</th>
+<th>絕對風險差</th>
+<th>p</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>1 年 RRI 累積發生率</strong></td>
+<td>216/591 = <strong>36.5%</strong></td>
+<td>54/147 = <strong>36.7%</strong></td>
+<td>crude OR 0.992</td>
+<td>—</td>
+<td><strong>−0.2 pp</strong></td>
+<td>1.000 (Fisher)</td>
+</tr>
+<tr>
+<td><strong>校正後 OR</strong>（年齡、性別、訓練量、既往傷）</td>
+<td>—</td>
+<td>—</td>
+<td><strong>OR 1.003</strong></td>
+<td><strong>0.681 – 1.477</strong></td>
+<td><strong>−8.4 ~ +9.5 pp</strong> [推算]</td>
+<td>0.988</td>
+</tr>
+</tbody>
+</table>
+<p><strong>校正後共變項（Table 3B）</strong>：</p>
+<table>
+<thead>
+<tr>
+<th>變項</th>
+<th>OR</th>
+<th>95% CI</th>
+<th>p</th>
+<th>臨床轉譯</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>年齡（每 1 歲）</td>
+<td>1.029</td>
+<td>1.014 – 1.043</td>
+<td>&lt;0.001</td>
+<td>每 +1 SD（11 歲）OR ≈ 1.37 [推算]</td>
+</tr>
+<tr>
+<td>性別（男 vs 女）</td>
+<td>0.958</td>
+<td>0.695 – 1.321</td>
+<td>0.795</td>
+<td>無差異</td>
+</tr>
+<tr>
+<td>訓練量（km/週）</td>
+<td>1.010</td>
+<td>0.996 – 1.023</td>
+<td>0.185</td>
+<td>CI 跨 1，無關聯</td>
+</tr>
+<tr>
+<td><strong>既往傷害史（有 vs 無）</strong></td>
+<td><strong>2.479</strong></td>
+<td><strong>1.687 – 3.643</strong></td>
+<td><strong>&lt;0.001</strong></td>
+<td><strong>≈ RR 1.78、ARD ≈ +21 pp</strong> [推算]</td>
+</tr>
+</tbody>
+</table>
+<p>模型表現：AUC 0.648（含與不含 footfall 完全相同）；pseudo R² 0.040 vs 0.039。</p>
+<p><strong>部位別結果（Table 2；CI 為本評讀推算，原文未提供）</strong></p>
+<table>
+<thead>
+<tr>
+<th>部位</th>
+<th>RF 發生率</th>
+<th>nRF 發生率</th>
+<th>Fisher OR</th>
+<th><strong>95% CI [推算]</strong></th>
+<th>p</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>足</td>
+<td>12.0%</td>
+<td>12.2%</td>
+<td>0.979</td>
+<td>—</td>
+<td>1.000</td>
+</tr>
+<tr>
+<td>踝</td>
+<td>8.0%</td>
+<td>6.1%</td>
+<td>1.325</td>
+<td>—</td>
+<td>0.601</td>
+</tr>
+<tr>
+<td><strong>脛（tibial stress 假說核心）</strong></td>
+<td><strong>4.1%</strong></td>
+<td><strong>2.7%</strong></td>
+<td><strong>1.513</strong></td>
+<td><strong>0.52 – 4.43</strong></td>
+<td>0.630</td>
+</tr>
+<tr>
+<td>小腿</td>
+<td>10.8%</td>
+<td>12.2%</td>
+<td>0.870</td>
+<td>—</td>
+<td>0.660</td>
+</tr>
+<tr>
+<td><strong>膝（最大訊號）</strong></td>
+<td><strong>13.9%</strong></td>
+<td><strong>19.0%</strong></td>
+<td><strong>0.685</strong></td>
+<td><strong>0.43 – 1.10</strong></td>
+<td>0.121</td>
+</tr>
+<tr>
+<td>鼠蹊</td>
+<td>3.7%</td>
+<td>2.0%</td>
+<td>1.856</td>
+<td>—</td>
+<td>0.446</td>
+</tr>
+<tr>
+<td>其餘 7 部位</td>
+<td>—</td>
+<td>—</td>
+<td>0.911–1.390</td>
+<td>—</td>
+<td>0.543–1.000</td>
+</tr>
+<tr>
+<td>背</td>
+<td>1/590</td>
+<td>0/147</td>
+<td>NA</td>
+<td>NA</td>
+<td>事件數不足</td>
+</tr>
+<tr>
+<td><strong>全部</strong></td>
+<td>36.5%</td>
+<td>36.7%</td>
+<td>0.992</td>
+<td>—</td>
+<td>1.000</td>
+</tr>
+</tbody>
+</table>
+<p>Cramér's V 範圍 0.002–0.058，作者據此稱「效果量可忽略」。</p>
+<p><strong>圖頁判讀（PNG 實際可見內容）</strong></p>
+<ul>
+<li><strong>Figure 1（p.29）</strong>：兩組長條圖，y 軸 0–80%，<strong>由零起點、無截斷誇大</strong>。標示值：RF 受傷 <strong>35.5%</strong> / 未受傷 63.5%；nRF 受傷 36.7% / 未受傷 63.3%。
+<ul>
+<li>⚠️ <strong>內部數字不一致</strong>：RF 兩欄相加 = 99.0%，不等於 100%。且 Table 2 的 216/591 = <strong>36.5%</strong>，與圖上 35.5% 矛盾。這是一個明確的排印或計算錯誤，方向上讓兩組差距看起來比實際大 6 倍（1.2 百分點 vs 真實的 0.2 百分點）。雖不影響結論，但屬應在校稿階段攔下的錯誤。</li>
+</ul>
+</li>
+<li><strong>Figure 2（p.30）</strong>：13 部位分組長條圖，y 軸 0–20%，<strong>由零起點、無截斷</strong>。
+<ul>
+<li>⚠️ <strong>軸標籤錯誤</strong>：y 軸標為 &quot;Percentage of Injuries&quot;，但實際繪的是「該組中發生此部位傷害者的比例」（膝：nRF ≈19% = 28/147；RF ≈14% = 82/591），即組內期間盛行率，不是「佔所有傷害的百分比」。</li>
+<li><strong>圖傳達但正文未講清楚的證據</strong>：膝部是全圖視覺落差最大的一格，且<strong>方向是 nRF 高於 RF（19.0% vs 13.9%）</strong>。這與「前足著地可降低膝關節負荷」的主流推廣論述方向相反。正文在 Discussion 完全未提及此方向性，僅以「所有部位皆無顯著差異」帶過。這是選擇性敘事。</li>
+</ul>
+</li>
+<li><strong>Figure 1/2 圖例配色不一致</strong>（Fig 1 黑=Injury、Fig 2 黑=Non-Rearfoot），Fig 1 圖例中 &quot;No Injury&quot; 標記呈綠色但長條為白色空心。屬編輯層級瑕疵。</li>
+<li><strong>無 CONSORT/STROBE flow diagram</strong>：本文僅有 2 張長條圖，<strong>沒有任何受試者流程圖</strong>。1315 → 738 的篩選過程、追蹤期流失人數皆無圖示亦無文字交代（詳見 B2、C4）。</li>
+<li><strong>無 Kaplan-Meier 曲線、無 number-at-risk 表、無 forest plot</strong>：本文採末端二元 logistic regression，不存在時間-事件圖形。因此「曲線分離時點」「尾端人數銳減」「CI 跨越無效線」等 KM/forest plot 專屬判讀項目<strong>在本文中不適用</strong>，非遺漏判讀。</li>
+</ul>
+<hr />
+<h3>6. 作者討論與評論重點</h3>
+<p><strong>作者主要訊息</strong>：</p>
+<ol>
+<li>大樣本、前瞻設計下，RF 與 nRF 的 RRI 百分比無差異 → 第一假說獲證實</li>
+<li>各解剖部位傷害百分比亦無差異 → 第二假說獲證實</li>
+<li>logistic regression 顯示 footfall pattern 非顯著預測因子（OR 1.0，CI 0.7–1.5），加入模型後 AUC 與 pseudo R² 皆未改善</li>
+<li>年齡與既往傷害史才是顯著預測因子</li>
+<li><strong>結論</strong>：「跑者的著地型態既不增加也不減少受傷機率」</li>
+</ol>
+<p><strong>與現有文獻的異同（作者自述）</strong>：</p>
+<ul>
+<li>一致：一篇系統性回顧（ref 30）同樣認為整體傷害率在不同著地型態間相似</li>
+<li>不一致：refs 15、31、32、33 報告 RF 有較高垂直負荷率、約 2 倍重複性壓力傷害率、較大膝關節負荷；ref 15 並指出 RF 組多脛骨疲勞性骨折、nRF 組多蹠骨疲勞性骨折</li>
+<li>作者的解釋：生物力學文獻中「反對」與「支持」RF-傷害關聯的論證強度相當（ref 29 指出 nRF 其實也有衝擊，只是發生時點較晚）；且反面文獻「均非前瞻性設計且樣本數 &lt;50」</li>
+</ul>
+<p><strong>作者自陳限制 [文內]</strong>：</p>
+<ol>
+<li>RRI 採 Yamato 定義並基於自我通報，「並非所有傷害都經醫師確認」</li>
+<li>採 logistic regression，將傷害建模為追蹤結束時的二元結果，<strong>未納入傷害發生時間，亦未處理競爭風險</strong>；先前研究使用競爭風險比例風險模型（ref 37），建模策略差異可能影響結果詮釋與跨研究可比性</li>
+</ol>
+<p><strong>[評估] 作者解釋是否合理？</strong></p>
+<p><strong>合理之處</strong>：限制 1 與 2 都是真實且重要的問題，作者誠實揭露，尤其第 2 點主動點出自己的方法弱於既有文獻，值得肯定。</p>
+<p><strong>避重就輕之處（限制段嚴重不完整）</strong>：以下方法學問題完全未被列入限制，但每一項都比作者列出的兩項更能威脅結論：</p>
+<table>
+<thead>
+<tr>
+<th>未揭露的限制</th>
+<th>為何重要</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>暴露僅單次實驗室測量</strong></td>
+<td>著地型態隨速度、鞋具、疲勞、地面而變；以實驗室配發鞋、17 m 跑道的單次評估，代表 1 年訓練的慣常型態</td>
+</tr>
+<tr>
+<td><strong>分組準則納入 impact peak</strong></td>
+<td>把假說中的中介變項寫進暴露定義，構成循環</td>
+</tr>
+<tr>
+<td><strong>中足與前足合併且比例未報告</strong></td>
+<td>整場爭議針對的是<strong>前足</strong>著地，本文無法回答</td>
+</tr>
+<tr>
+<td><strong>13 次未校正檢定、且無任何 CI</strong></td>
+<td>部位別分析既無多重性處理也無精確度呈現</td>
+</tr>
+<tr>
+<td><strong>追蹤流失、問卷回覆率完全未報告</strong></td>
+<td>1 年每週問卷的世代，不可能零流失</td>
+</tr>
+<tr>
+<td><strong>無等效性界值、無等效性檢定</strong></td>
+<td>卻做出等效性宣稱</td>
+</tr>
+<tr>
+<td><strong>既往傷害史的組間分布未呈現</strong></td>
+<td>模型中最強的共變項，其平衡性從未被檢視</td>
+</tr>
+<tr>
+<td><strong>訓練量變項來源矛盾（基線 vs 追蹤期 Fitbit）</strong></td>
+<td>若為追蹤期衍生，即為受結果影響的變項</td>
+</tr>
+</tbody>
+</table>
+<p><strong>臨床建議是否超出數據支持？——是，且幅度顯著。</strong>
+Abstract 與 Conclusion 的措辭「a runner's footfall pattern <strong>neither increases nor decreases</strong> the probability of injury」「the odds of injury <strong>are the same</strong> in both groups」是<strong>等效性宣稱</strong>。但本文執行的是虛無假說顯著性檢定，其 95% CI（0.681–1.477）換算成絕對風險，容許從<strong>降低 8.4 個百分點到增加 9.5 個百分點</strong>的真實差異（相當於 NNT/NNH ≈ 11）。以 1 年 RRI 基線風險 36.6% 而言，這不是臨床上可忽略的區間。正確的結論措辭應是「未觀察到關聯，且可排除大幅度效果，但無法排除中度效果」。詳見 C1。</p>
+<hr />
+<h3>7. 外部專業意見</h3>
+<ul>
+<li>
+<p><strong>同期 editorial / commentary</strong>：經多輪外部檢索（含以 DOI 10.1249/MSS.0000000000004155 與標題關鍵字搜尋），<strong>未發現任何針對本文的社論、評論或 comment</strong>。本文為 Publish Ahead of Print 狀態，期刊尚未安排配套評論，此為合理解釋。標注 <strong>[無法取得]——未發現同期 editorial 或公開評論</strong>。</p>
+<ul>
+<li>依作業規範，<code>fetch_editorial.py</code> 僅於取得「針對本文之 editorial/comment DOI」時呼叫；本次無此 DOI，故未執行該指令。</li>
+</ul>
+</li>
+<li>
+<p><strong>相關外部證據（PubMed 檢索，非針對本文之評論，但為關鍵三角驗證）</strong>：</p>
+</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>來源</th>
+<th>設計</th>
+<th>與本文的關係</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Burke et al. 2021, <em>Orthop J Sports Med</em>（<a href="https://doi.org/10.1177/23259671211020283">DOI: 10.1177/23259671211020283</a>）</td>
+<td>系統性回顧，13 篇，GRADE 評級</td>
+<td><strong>GRADE 低證據</strong>支持 FST–RRI 關聯；批評既有文獻「回溯性設計、樣本數低、FSP 評估方法差」；明確呼籲大規模前瞻研究。<strong>支持本文的存在價值，也支持本文「不宜逕稱推翻既有結論」</strong></td>
+</tr>
+<tr>
+<td><strong>Helton et al. 2025, <em>Orthop J Sports Med</em>（<a href="https://doi.org/10.1177/23259671241296148">DOI: 10.1177/23259671241296148</a>）</strong></td>
+<td><strong>前瞻世代，827 名西點軍校學員，9 週，Kaplan-Meier + Cox 比例風險模型</strong></td>
+<td><strong>獨立的前瞻性複製：「foot-strike pattern 或 cadence 與 MSKI 風險無顯著差異」</strong>。但同一研究中，<strong>觸地時間最長者傷害風險 HR 2.15（95% CI 1.06–4.37）</strong>、步幅最短者 overuse 傷害風險高 45%。<strong>這是本文最重要的外部佐證，同時也是對本文分析策略最有力的反證 — 類別化的 FSP 是空的，連續型時空步態參數卻有訊號。本文未引用此研究。</strong></td>
+</tr>
+<tr>
+<td>Hollander, Davis et al. 2021, <em>MSSE</em>（<a href="https://doi.org/10.1249/MSS.0000000000002455">DOI: 10.1249/MSS.0000000000002455</a>）</td>
+<td>回溯性病例對照，550 名受傷跑者</td>
+<td><strong>中足著地 → 阿基里斯腱傷害 OR 2.27（90% CI 1.17–4.41）；前足著地 → 後小腿傷害 OR 2.59（90% CI 1.50–4.47）</strong>。發表於同一期刊，是先前最大型的部位別研究，且方向為 <strong>nRF 風險較高</strong>（與 RF-衝擊假說相反）。本文 &quot;Calf&quot; 部位方向確實一致（nRF 12.2% vs RF 10.8%）但遠未達可偵測程度</td>
+</tr>
+<tr>
+<td><strong>Plesek, Hamill, Jandacka et al. 2025, <em>MSSE</em> 57(4):756-766（同一 4HAIE 世代）</strong></td>
+<td>前瞻，1206 人，28 例足底筋膜炎，<strong>Firth 懲罰式 logistic regression</strong></td>
+<td><strong>該文已報告「strike index 與初始接觸踝角度與足底筋膜炎風險無關聯」</strong>；並明確報告 1315 人中 <strong>62 人流失（32 人停止傷害通報、29 人退出、1 人死於 COVID-19）</strong>，訓練量採<strong>基線自填分級</strong>（0–5/6–20/21–40/≥41 km 週）。→ 本文的部分結論在同一世代已先行發表，且姊妹論文有揭露流失、本文卻無</td>
+</tr>
+</tbody>
+</table>
+<p><strong>[評估]</strong> 外部證據的整體圖像是：本文的方向性結論（類別化著地型態不是重要 RRI 風險因子）<strong>很可能是對的</strong>，且獲得獨立前瞻證據（Helton 2025）支持。但同一批外部證據也顯示，<strong>連續型步態參數（觸地時間、步幅）與部位別診斷確實帶有訊號</strong> — 而這正是本文丟棄的資訊。</p>
+<hr />
+<h3>8. 臨床建議</h3>
+<p><strong>可採用本研究結論的情境</strong>：</p>
+<ul>
+<li>面對「我是不是該改成前足著地來避免受傷」的休閒跑者諮詢時，可據本文與 Helton 2025 告知：<strong>目前最佳的前瞻性證據不支持為了預防傷害而主動改變著地型態</strong>；把有限的行為改變資源投注在訓練量管理與既往傷害的完整復健上，效益明確得多。</li>
+<li>族群條件：18–65 歲、每週 10–40 km、BMI 約 24、穿中性跑鞋的休閒跑者（與本研究樣本一致）。</li>
+</ul>
+<p><strong>不建議直接套用的情境</strong>：</p>
+<ul>
+<li><strong>菁英/競技跑者、週跑量 &gt;40 km 者</strong>（本研究樣本平均僅 21–24 km/週，SD 10–13，暴露範圍窄）</li>
+<li><strong>真正的前足著地者</strong>：本文 nRF 組混合中足+前足且比例未報告，無法針對前足著地給出建議</li>
+<li><strong>正在進行或考慮步態再訓練者</strong>：本研究比較的是<strong>慣常型態</strong>，不是<strong>改變型態的介入</strong>。步態轉換期的小腿/阿基里斯腱/蹠骨負荷急遽改變，本設計完全無法捕捉（見 B2、F）</li>
+<li><strong>特定診斷的風險評估</strong>：本文的「部位」不是「診斷」，無法回答「RF 是否增加脛骨疲勞性骨折」這類具體問題</li>
+</ul>
+<p><strong>給臨床醫師的實務建議</strong>：</p>
+<ol>
+<li><strong>把問診重點放在既往傷害史</strong>：本文中既往 RRI 是最強預測因子（OR 2.48，約等於絕對風險增加 21 個百分點 [推算]）。這是本文最有臨床價值、卻被埋在 Discussion 裡的數字。</li>
+<li><strong>不要主動建議改變著地型態以預防傷害</strong>，但<strong>也不要反向宣稱「著地型態完全無關」</strong> — 本研究的精確度不足以支持後者（可能的真實效果仍達 ±9 個百分點）。</li>
+<li><strong>對已受傷者評估步態時，測量連續型參數（觸地時間、步頻、步幅、負荷率）比分類 RF/nRF 更有資訊量</strong>（依 Helton 2025 的 HR 2.15 證據）。</li>
+</ol>
+<p><strong>研究證據強度分級</strong>：<strong>中</strong></p>
+<p>理由：前瞻設計、樣本大（n=738）、事件多（270）、暴露以實驗室 3D 動力學測量、結果採三管道監測 — 這些都是真實優點，且結論方向與獨立前瞻證據一致。但降級為「中」而非「強」的理由：暴露為單次實驗室評估且分類規則自訂、無等效性界值卻做等效宣稱、CI 寬到容許臨床相關效果、追蹤流失完全未報告、13 次未校正且無 CI 的部位別檢定、無法區分中足與前足。</p>
+<hr />
+<h2>SKILL-A：批判性評讀</h2>
+<h3>A. 補充技術細節</h3>
+<p>以下僅補充 SECTION-0 未涵蓋者：</p>
+<ul>
+<li><strong>樣本數估算的性質</strong>：文內稱 &quot;A power analysis was conducted&quot;，但實際描述的是 <strong>events-per-variable（EPV）≥10 的通則</strong>（5 個預測變項 → 需 50 名受傷者）。<strong>EPV 是迴歸係數估計穩定性的經驗法則，不是統計檢定力分析</strong> — 它不涉及任何待偵測效果量、α 或 1−β。本文實得 270 事件，EPV = 54，模型穩定性無虞；但<strong>對於「能偵測多大的 OR」這個問題，本文從未回答</strong>。這是本文最明確的單一統計學錯誤（詳見 C2）。</li>
+<li><strong>共變項為何僅 4 個</strong>：年齡、性別、訓練量、既往傷害史。<strong>未納入</strong>：跑步年資、近期訓練量變化（作者自己引用的 ref 10 明列為最重要風險因子之一）、自選跑速（已測量但未報告）、慣常鞋款/極簡鞋史、跑步地面、既往傷害的<strong>部位</strong>、BMI（僅列於 Table 1，未入模型）、步頻（已測量但未報告）。</li>
+<li><strong>既往傷害史的定義與盛行率均未報告</strong>：僅為 yes/no 類別變項，未說明時間窗（終生？過去 1 年？）、部位、嚴重度，<strong>且 Table 1 未呈現此變項在 RF/nRF 兩組的分布</strong>。</li>
+<li><strong>未檢驗年齡的線性 log-odds 假設</strong>，亦無交互作用項（如 footfall × 性別、footfall × 訓練量）。</li>
+<li><strong>缺失資料處理完全未描述</strong>：無多重插補、無完整案例分析說明、無追蹤期問卷回覆率。</li>
+<li><strong>模型比較的統計量錯誤</strong>：文內寫「Using a Fisher's Exact test, we compared both analyses. Both analyses were statistically significant (χ²(4 variables) = 44.02, p &lt; 0.001 and χ²(5 variables) = 44.02, p &lt; 0.001)」。巢狀 logistic 模型的比較應使用<strong>概似比檢定（LRT）</strong>，不是 Fisher's exact test；報告的統計量是 χ² 卻冠以 Fisher's exact 之名；自由度標記為 &quot;(4 variables)&quot; 亦非標準寫法。實質上，加入 footfall 後 χ² 完全不變（44.02 vs 44.02），代表 LRT χ²(1) ≈ 0、p ≈ 1.0 — <strong>這個才是真正該報告的數字，但從未以正確形式呈現</strong>。</li>
+</ul>
+<h4>觀察性研究混淆控制方法評估</h4>
+<table>
+<thead>
+<tr>
+<th>方法</th>
+<th>本文採用</th>
+<th>強度</th>
+<th>關鍵要求是否滿足</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>多變量 logistic 迴歸</td>
+<td>✅ 4 個共變項</td>
+<td>中</td>
+<td><strong>❌ 未滿足</strong> — 關鍵混淆因子（跑速、步頻、跑步年資、近期訓練量變化、既往傷害部位、鞋款史）未測量或未納入</td>
+</tr>
+<tr>
+<td>Propensity score</td>
+<td>❌ 未使用</td>
+<td>—</td>
+<td>—</td>
+</tr>
+<tr>
+<td>Instrumental variable</td>
+<td>❌ 未使用</td>
+<td>—</td>
+<td>—</td>
+</tr>
+<tr>
+<td>敏感度分析 / E-value</td>
+<td>❌ <strong>完全沒有</strong></td>
+<td>—</td>
+<td>未執行任何殘餘混淆的量化評估</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><strong>殘餘混淆</strong>：無任何討論或敏感度分析。</li>
+<li><strong>時序性</strong>：暴露（基線測量）確實早於結果（1 年追蹤），時序滿足 — 這是本設計相對回溯性文獻的核心優勢，應予肯定。但<strong>暴露的「穩定性」未驗證</strong>：沒有任何重複測量確認參與者在 1 年間維持同一著地型態。</li>
+</ul>
+<hr />
+<h3>B. 批判性評估（四大面向）</h3>
+<h4>B1. 假說與理論邏輯</h4>
+<p><strong>問題 1：以虛無假說作為預先指定的研究假說，在邏輯上無法被「證實」</strong></p>
+<ul>
+<li>文內證據：Introduction 末段「We hypothesized that: 1) there would be <strong>no</strong> differences…; 2) there would be <strong>no</strong> differences…」；Discussion「<strong>Confirming our first hypothesis</strong>, we found no difference」「<strong>Confirming our hypothesis</strong>, there were no statistically significant differences」(Discussion)</li>
+<li>風險方向：<strong>系統性地讓結論看起來比數據支持的更確定</strong>。顯著性檢定的不顯著結果是「未能拒絕虛無」，不是「證實虛無」。</li>
+<li>需要什麼才放心：預先指定等效界值（例如 OR 0.80–1.25 或絕對風險差 ±5 pp），執行 TOST 等效性檢定或 Bayesian ROPE 分析；或改以「精確度為目標」的樣本數規劃（precision-based sample size）。</li>
+</ul>
+<p><strong>問題 2：分組準則納入 impact peak，使暴露定義與待檢驗的中介機轉循環</strong></p>
+<ul>
+<li>文內證據：Methods–Participants「showed an impact peak in the vertical ground reaction force component → RF」「the vertical component of the ground reaction force did not have an impact peak → nRF」</li>
+<li>待檢驗的因果鏈是：RF 著地 → 衝擊峰/負荷率↑ → 傷害↑。<strong>把「有無 impact peak」寫進暴露的操作型定義，等於把假說中的中介變項摻入暴露本身。</strong></li>
+<li>風險方向：方向不確定，但使本文的「RF/nRF」與既有文獻（多數僅用 strike index 或足部角度分類）<strong>不等價</strong>，削弱了跨研究可比性；同時讓「RF 組必然衝擊較大」變成部分是定義的結果而非實證發現。</li>
+<li>需要什麼才放心：以單純 strike index 三分法重做主要分析作為敏感度分析；報告有多少人需要動用 2-of-3 裁決、三準則之間的一致性（kappa）。</li>
+</ul>
+<p><strong>問題 3：作者論證中的敘事跳躍 — 從「未觀察到關聯」跳到「改變著地型態無用」</strong></p>
+<ul>
+<li>文內證據：Conclusions「footfall pattern does not appear to be a significant risk factor」與 Abstract「a runner's footfall pattern neither increases nor decreases the probability of injury」</li>
+<li>本研究比較的是<strong>慣常型態的跑者之間</strong>，不是<strong>改變型態前後的同一跑者</strong>。這是兩個完全不同的因果問題（見 F 節的 target trial 分析）。</li>
+<li>需要什麼才放心：結論限定在「慣常型態的橫斷對比」，並明言本設計不能推論步態再訓練的效果。</li>
+</ul>
+<p><strong>最可能的合理機轉（1–3 點）</strong>：</p>
+<ol>
+<li>RF 與 nRF 的差異主要是<strong>負荷在時間與組織間的重新分配</strong>，而非總負荷的增減 — RF 較多垂直衝擊與膝關節負荷，nRF 較多阿基里斯腱與蹠骨負荷。若總風險相似而部位分布不同，則「整體 RRI 率無差異」與「部位別有差異」可以同時為真。本文的整體結果與此一致，但其部位別分析精確度不足以檢驗之（Hollander 2021 的 OR 2.27/2.59 正是這個型態）。</li>
+<li>著地型態在 RRI 的多因子致病中屬於低權重變項，被訓練量、既往傷害、恢復狀態等高權重因子淹沒。本文年齡 OR 1.03/年、既往傷 OR 2.48 而 footfall OR 1.00，與此一致。</li>
+<li><strong>存活者效應</strong>：能長期維持某一著地型態而仍在跑的人，已是該型態的適應成功者（見 B2）。</li>
+</ol>
+<hr />
+<h4>B2. 受試者與外推性</h4>
+<p><strong>問題 1：盛行跑者世代的「存活者/易感者耗竭」偏差 — 本文最根本的因果推論限制</strong></p>
+<ul>
+<li>文內證據：受試條件為「regularly ran at least 10 km per week」的<strong>現行跑者</strong>（Methods–Participants）。暴露於基線橫斷測量。</li>
+<li>機制：著地型態部分是<strong>對既往傷害的反應性選擇</strong> — 膝痛者常被建議改前足著地，阿基里斯腱/小腿問題者常改回後足著地。任何因著地型態不適配而受傷、進而停跑的人，<strong>在基線就已不在世代中</strong>。這使 nRF 組富集了「轉換成功且仍在跑」的人。</li>
+<li>風險方向：<strong>系統性偏向虛無</strong>。這正是本文報告的結果方向。</li>
+<li>需要什麼才放心：報告跑步年資、是否曾改變過著地型態、改變的原因與時間點；或改以新手跑者（inception cohort）為對象。</li>
+</ul>
+<p><strong>問題 2：基線平衡檢定被誤用為排除混淆的證據</strong></p>
+<ul>
+<li>文內證據：Results 第一段「The Mann-Whitney U test revealed no significant differences in the demographics between RF and nRF groups (p &gt; 0.05), <strong>thereby minimizing the likelihood of confounding factors and supporting the validity of the study outcomes</strong>」</li>
+<li>這是觀察性研究中的教科書級錯誤，有三層問題：
+<ol>
+<li><strong>不顯著 ≠ 平衡</strong>。nRF 組僅 147 人，基線檢定本身檢定力低。且訓練量 p=0.064、BMI p=0.100 都在邊緣 — 以 nRF 訓練量高出 2.3 km/週（23.7 vs 21.43）而言，方向是 nRF 暴露量較高，若訓練量確為風險因子，此不平衡會把 nRF 的風險往上推，部分抵銷任何 RF 的不利效果。</li>
+<li><strong>Table 1 列出的根本不是本研究的關鍵混淆因子</strong>。真正重要的是跑速、步頻、跑步年資、近期訓練量變化、鞋款史、既往傷害部位 — 全數缺席。</li>
+<li><strong>⚠️ 最嚴重：模型中最強的預測因子「既往傷害史」（OR 2.48），其組間分布從未在 Table 1 呈現。</strong> 作者用來宣稱「無混淆」的表格，恰好漏掉了唯一被證實有強效果的變項。</li>
+</ol>
+</li>
+<li>風險方向：使讀者高估內部效度。</li>
+<li>需要什麼才放心：在 Table 1 加入既往傷害史盛行率（及部位）、跑速、步頻、跑步年資的組間分布，並以標準化平均差（SMD）而非 p 值呈現平衡。</li>
+</ul>
+<p><strong>問題 3：1315 → 738 的篩選與追蹤流失完全不可稽核</strong></p>
+<ul>
+<li>文內證據：「a sub-sample of 738 … of the 1315 4HAIE participants participated in this study based on meeting the criteria of being a runner」；591 + 147 = 738，<strong>恰好等於全數</strong>。</li>
+<li>兩個推論：
+<ol>
+<li><strong>沒有任何人被判為「無法分類」</strong>。但 Methods 明言「Not all of the runners fell neatly into this classification」。2-of-3 規則把所有模稜兩可者（特別是中足著地）強制二分，卻未報告有多少人落入此類，也無排除模糊個案的敏感度分析。</li>
+<li><strong>追蹤流失為零？</strong> 文內從未提及任何流失、退出或問卷未回覆。但同一世代、同一追蹤期的姊妹論文（Plesek et al., MSSE 2025）明確報告 1315 人中 <strong>62 人流失</strong>（32 人停止傷害通報、29 人退出、1 人死亡）[外部: PMC11878588]。本文的 738 名跑者不可能完全不受影響，卻零字交代。</li>
+</ol>
+</li>
+<li>風險方向：若停止通報者（n=32）系統性地是傷後失聯或無傷而失去動機，會造成結果錯分；方向不明但可能非隨機。</li>
+<li>需要什麼才放心：STROBE 流程圖、每週問卷回覆率、流失者與留存者的基線比較。</li>
+</ul>
+<p><strong>問題 4：中足與前足合併，使本文無法回答它宣稱要解決的爭議</strong></p>
+<ul>
+<li>文內證據：「Midfoot and forefoot pattern runners are usually analyzed together because of the small number of runners in each group」（Introduction）；nRF 定義為 strike index &gt;33%</li>
+<li>Cavanagh &amp; Lafortune 原始三分法為 RF 0–33%、MF 34–67%、FF 68–100%。本文的 nRF = MF + FF。<strong>整場「該不該改前足著地」的爭議，針對的是 FF，不是 MF。</strong></li>
+<li>文內從未報告 strike index 的分布、也未報告 nRF 組中 MF 與 FF 的人數比例。依一般跑者分布推估，147 名 nRF 中真正的 FF 可能僅 30–50 人 [推論]。</li>
+<li>風險方向：若 FF 確有獨特風險而 MF 無，合併會把訊號稀釋至不可偵測。<strong>偏向虛無。</strong></li>
+<li>需要什麼才放心：報告 strike index 的完整分布直方圖、MF/FF 各自的人數與傷害率，並以 strike index 作為<strong>連續變項</strong>重做迴歸。</li>
+</ul>
+<p><strong>外推性分級</strong>：</p>
+<table>
+<thead>
+<tr>
+<th>族群</th>
+<th>可否外推</th>
+<th>理由</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>一般休閒跑者（18–65 歲，10–40 km/週，中性鞋）</strong></td>
+<td>✅ <strong>可外推</strong></td>
+<td>與研究樣本高度吻合；為本文最有效的適用範圍</td>
+</tr>
+<tr>
+<td><strong>菁英/競技跑者、高里程者（&gt;40 km/週）</strong></td>
+<td>❌ 不可</td>
+<td>本樣本明確排除菁英與競技跑者；訓練量分布窄（21–24 ± 10–13 km/週），暴露範圍不足</td>
+</tr>
+<tr>
+<td><strong>真正的前足著地者 / 極簡鞋或赤足跑者</strong></td>
+<td>❌ 不可</td>
+<td>FF 與 MF 合併且比例未報告；全體穿統一中性跑鞋，極簡鞋族群未被代表</td>
+</tr>
+<tr>
+<td><strong>考慮或正在進行步態再訓練者</strong></td>
+<td>❌ <strong>明確不可</strong></td>
+<td>設計比較慣常型態，非介入效果；轉換期風險完全未被捕捉</td>
+</tr>
+<tr>
+<td><strong>青少年、&gt;65 歲、傷後復健期跑者</strong></td>
+<td>❌ 不可</td>
+<td>母世代年齡限 18–65；&gt;60 歲者跑量門檻放寬至 6 km，人數未報告</td>
+</tr>
+<tr>
+<td><strong>地域外推</strong></td>
+<td>⚠️ 需注意</td>
+<td>捷克高/低空汙地區招募；空汙暴露與 RRI 的關係未在本文調整，但方向性影響應小 [推論]</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h4>B3. 研究設計與偏差</h4>
+<p><strong>偏差 1：暴露的非差異性錯分 — 本文最重要的方法學問題</strong></p>
+<ul>
+<li>文內證據：暴露以<strong>單次、實驗室內、17 m overground 跑道、實驗室配發 Brooks Launch、自選配速、僅右腳</strong>的評估決定（Methods–Experimental Setup / Protocol），並用以代表隨後 <strong>12 個月</strong>的慣常著地型態。</li>
+<li>為什麼這是嚴重問題：
+<ol>
+<li>著地型態隨<strong>跑速</strong>改變（速度↑ 傾向前移）— 而本文的配速是「自報典型訓練配速」，非比賽或間歇配速</li>
+<li>著地型態隨<strong>鞋具</strong>改變 — 全體改穿實驗室鞋，而非自己的慣用鞋</li>
+<li>著地型態隨<strong>疲勞</strong>改變 — 8 次短跑道試驗無疲勞狀態</li>
+<li><strong>測力板瞄準效應</strong>：文內要求「landed with their entire right foot approximately near the center of the force plate」（Methods–Protocol）。強制踩板是已知會改變步態的實驗假影，文中未討論</li>
+<li><strong>僅右腳</strong> — 著地型態可能左右不對稱</li>
+<li><strong>零次重複測量</strong>驗證 1 年間型態穩定</li>
+</ol>
+</li>
+<li><strong>風險方向：非差異性錯分 → 系統性地把 OR 拉向 1.0。</strong></li>
+<li><strong>這是本文結構上最深的問題</strong>：本研究設計的主要弱點，其偏差方向恰好與作者所報告的結論一致。當一個研究的主要偏差方向指向它的主要發現時，該發現的可信度必須相應調降。</li>
+<li>需要什麼才放心：慣用鞋 + 多配速的重複測量；或以穿戴裝置在真實訓練中驗證型態；至少提供 1 年後的重測一致性。</li>
+</ul>
+<p><strong>偏差 2：訓練量共變項的來源矛盾，且可能是受結果影響的變項</strong></p>
+<ul>
+<li>文內證據衝突：
+<ul>
+<li>Table 1 將 &quot;Training Volume (km/week) 21.43±10.4 vs 23.7±13.0&quot; 列為<strong>基線 demographics</strong></li>
+<li>但 Methods–Data Analysis 寫：「Weekly running distance was derived using a custom Python script based on <strong>minute-to-minute accelerometer data from Fitbit Charge 3/4</strong>. These data were calculated as <strong>weekly averages from the runner's active running weeks</strong>」；而 Fitbit 是「worn continuously for <strong>one year after</strong> the testing protocol」</li>
+</ul>
+</li>
+<li>若迴歸中的 training volume 是追蹤期 Fitbit 平均，則它是<strong>基線後變項，且直接受結果（受傷 → 減量）影響</strong>。調整此類變項會引入反向因果/對撞偏差。</li>
+<li>一個佐證訊號：訓練量是文獻公認最強的 RRI 風險因子之一（作者自己的 ref 10 明列），本文卻得到 OR 1.010（95% CI 0.996–1.023，p=0.185）— <strong>近乎虛無</strong>。兩個可能解釋：(a) 暴露範圍過窄（全體 ≥10 km/週，SD 僅 10–13）；(b) 變項被結果污染而衰減。兩者都應被討論，本文一個都沒討論。</li>
+<li>另一個細節：「active running week」定義為每週 ≥75 分鐘或 ≥6 km 的週。傷後停跑 3 個月者，那 3 個月<strong>不計入分母</strong>，平均值因而維持高檔 — 這雖部分緩和反向因果，卻引入另一層選擇性。</li>
+<li>風險方向：不確定；但若為追蹤期變項，則主模型的校正是不當的。</li>
+<li>需要什麼才放心：明確說明迴歸使用的是基線自填量或追蹤期 Fitbit 量；若為後者，改用基線值重做並報告。</li>
+</ul>
+<p><strong>偏差 3：結果認定的不完整與不透明</strong></p>
+<ul>
+<li>文內證據：「not all of injuries were confirmed by medical doctors」（Limitations）；「confirmed by a medical professional for <strong>the majority</strong> of the injured participants」（Methods–Participants）</li>
+<li><strong>「大多數」是多少？文內從未給出數字。</strong> 這是一個可以一句話解決、卻付之闕如的關鍵透明度缺口。</li>
+<li>部位別分析更依賴診斷準確度：受試者自報「膝」「脛」「小腿」的區域歸屬，在無統一理學檢查下的可靠度不明。<strong>沒有任何部位的重測信度或評分者間信度資料。</strong></li>
+<li>三管道通報（App + 每週問卷 + Fitbit 觸發）是設計優點，但若 nRF 跑者（較年輕、跑量略高）在依從性或通報行為上不同，會造成差異性錯分；文中無任何組間通報率比較。</li>
+<li>風險方向：非差異性錯分 → 偏向虛無；差異性錯分 → 方向不明。</li>
+<li>需要什麼才放心：報告醫師確認比例（分組呈現）、每週問卷回覆率（分組呈現）、三管道各自貢獻的個案數。</li>
+</ul>
+<p><strong>偏差 4：部位事件的組內叢集未被處理</strong></p>
+<ul>
+<li>由 Table 2 計算 [推算]：RF 組 13 個部位的受傷人次合計 = <strong>481</strong>，但受傷者僅 216 人 → <strong>每位受傷者平均 2.2 個部位</strong>；nRF 組 118 vs 54 人 → 2.19。</li>
+<li>也就是說，同一個人會同時出現在多個部位的分子中。13 個 2×2 表彼此<strong>高度相關且非獨立</strong>，而 Fisher's exact test 假設獨立。</li>
+<li>風險方向：使部位別檢定的名目 p 值與實際型 I 錯誤率脫節。本文因無任何顯著結果，此問題不製造偽陽性，但削弱了「各部位皆無差異」這個結論的統計基礎。</li>
+<li>需要什麼才放心：以多項式（multinomial）或人-部位層級的廣義估計方程（GEE）處理；或明確說明每位受傷者的部位數分布。</li>
+</ul>
+<p><strong>最可能造成偏差的三個設計點（依嚴重度排序）</strong>：</p>
+<table>
+<thead>
+<tr>
+<th>排序</th>
+<th>設計點</th>
+<th>效果方向</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>單次實驗室、配發鞋、瞄準測力板的暴露評估，代表 1 年慣常型態</td>
+<td><strong>→ OR 拉向 1.0（放大虛無）</strong></td>
+</tr>
+<tr>
+<td>2</td>
+<td>盛行跑者世代 + 著地型態對既往傷害的反應性選擇（易感者耗竭）</td>
+<td><strong>→ OR 拉向 1.0（放大虛無）</strong></td>
+</tr>
+<tr>
+<td>3</td>
+<td>MF 與 FF 合併、strike index 二分於 33%</td>
+<td><strong>→ 稀釋任何 FF 特異訊號（放大虛無）</strong></td>
+</tr>
+</tbody>
+</table>
+<p><strong>⚠️ 三個主要偏差全部指向同一方向：使結果看起來比真實更「無差異」。</strong> 這是本評讀最核心的判斷。</p>
+<hr />
+<h4>B4. 測量工具與實務意義</h4>
+<p><strong>測量信度</strong>：</p>
+<ul>
+<li>暴露端：文內宣稱簡化的三標記足部模型「provided greater reliability and objectivity compared to the full multi-segmental model」（引 ref 25），但<strong>未提供本研究自身的任何信度數據</strong>（無 ICC、無 test-retest、無分類一致性 kappa）。2-of-3 裁決規則的評分者間一致性完全未報告。</li>
+<li>結果端：無任何信度資料（見 B3 偏差 3）。</li>
+</ul>
+<p><strong>終點的臨床意義</strong>：</p>
+<ul>
+<li>主要終點「1 年內任一自報 RRI」是<strong>軟性、異質、粗糙</strong>的複合終點：它把肌腱病變、疲勞性骨折、髂脛束症候群、下背痛、甚至「其他」全部合併為同一個二元事件。</li>
+<li><strong>這是本文與它所宣稱要解決的爭議之間最根本的錯配。</strong> 既有文獻的核心主張從來不是「RF 整體傷害更多」，而是<strong>特定診斷的分布不同</strong>：Daoud/Lieberman 主張 RF 多脛骨疲勞性骨折、nRF 多蹠骨疲勞性骨折（本文自己在 Discussion 引為 ref 15）；Hollander/Davis 2021 在同一期刊報告中足著地 → 阿基里斯腱傷害 OR 2.27、前足著地 → 後小腿傷害 OR 2.59（<a href="https://doi.org/10.1249/MSS.0000000000002455">DOI: 10.1249/MSS.0000000000002455</a>）。</li>
+<li>本文的「部位」（足/踝/脛/小腿/膝…）<strong>不是診斷</strong>。「小腿」同時涵蓋阿基里斯腱病變、腓腸肌拉傷、後側腔室症候群；「足」同時涵蓋足底筋膜炎與蹠骨疲勞性骨折 — 而這兩者在對立假說中的預測方向<strong>相反</strong>。把它們合併在同一格，任何真實的相反訊號都會互相抵銷。</li>
+<li><strong>結論：本文回答的問題，比它宣稱要解決的爭議粗糙一個層級。</strong></li>
+</ul>
+<p><strong>「就算結果是真的，真實世界可能有多大用處？」</strong></p>
+<p>有用處，但遠小於摘要暗示的程度。具體而言：</p>
+<ul>
+<li>可用來<strong>反駁</strong>「所有後足跑者都該改前足以防傷」這個強論述 — 因為 CI 上界 1.477 讓「RF 風險高出 50% 以上」變得不太可能。</li>
+<li><strong>不足以支持</strong>「著地型態與傷害無關」這個等效論述 — 因為 CI 容許真實 OR 落在 0.68–1.48，換算成 1 年絕對風險是 <strong>28.3% 至 46.2%</strong>（基線 36.7%），即 <strong>−8.4 至 +9.5 個百分點</strong>。以 NNT/NNH 表達約為 11 — 在跑步醫學的語境下，一個 NNH 11 的可改變因子絕非「無關」。</li>
+<li><strong>本文真正最有臨床用處的數字反而不是主結果</strong>：既往傷害史 OR 2.479（95% CI 1.687–3.643），換算約 RR 1.78、絕對風險增加約 21 個百分點 [推算，假設既往傷盛行率約 50%；文內未報告實際盛行率]。這個數字被放在 Discussion 中段，且被錯誤表述為「2.48 倍的可能性」（見 C4）。</li>
+</ul>
+<hr />
+<h3>C. 統計與資料完整性</h3>
+<h4>C1. 結果分類（CI + MCID 框架）</h4>
+<p><strong>Step 1 — MCID（δ）確認</strong></p>
+<ul>
+<li><strong>文內預先指定的 MCID：無。</strong> 本文從未定義任何臨床重要差異界值，亦無等效性界值。這本身就是一個關鍵缺陷 — <strong>一篇以「證明無差異」為目標的論文，卻沒有定義「多小才算沒差」。</strong></li>
+<li>[推算] 依跑步傷害預防領域的慣例設定兩組候選界值：
+<ul>
+<li><strong>寬鬆界值</strong> δ = OR 0.67–1.50（≈ 絕對風險差 ±10 pp）</li>
+<li><strong>嚴格界值</strong> δ = OR 0.77–1.30（≈ 絕對風險差 ±6 pp，NNH ≈ 16）。對於一個被主張值得花數月進行步態再訓練的可改變因子，6 個百分點的 1 年絕對風險差已具臨床意義。</li>
+</ul>
+</li>
+</ul>
+<p><strong>Step 2 — CI 位置判讀</strong></p>
+<p>主要終點：校正後 OR = 1.003，95% CI <strong>0.681 – 1.477</strong>（Table 3B）</p>
+<pre><code>        0.67        0.77         1.0        1.30      1.50
+         |           |            |           |         |
+   ←傷害區(嚴格)  ←中性區(嚴格)→         ←中性區(嚴格)  傷害區(嚴格)→
+  [--------------- 95% CI: 0.681 ────●1.003──────── 1.477 -----]
+         ↑                                              ↑
+    僅略高於寬鬆下界 0.67                      僅略低於寬鬆上界 1.50
+</code></pre>
+<table>
+<thead>
+<tr>
+<th>採用的 δ</th>
+<th>分類</th>
+<th>說明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>寬鬆（OR 0.67–1.50）</strong></td>
+<td><strong>NEUTRAL ⚖️（勉強成立）</strong></td>
+<td>CI 完全落在 [0.67, 1.50] 內，但兩端均僅差一線（0.681 vs 0.667；1.477 vs 1.500）。可稱「已排除大效果」</td>
+</tr>
+<tr>
+<td><strong>嚴格（OR 0.77–1.30）</strong></td>
+<td><strong>INCONCLUSIVE ❓</strong></td>
+<td>CI 同時跨越 δ_benefit（0.77）與 δ_harm（1.30），且包含 null。樣本不足以區分「真無差異」與「中度差異」</td>
+</tr>
+</tbody>
+</table>
+<p><strong>本評讀的判定：分類是 δ 依賴的，且恰好落在分界線上。</strong></p>
+<p>在最寬鬆的界值下可勉強稱為 NEUTRAL；在臨床上更恰當的嚴格界值下則為 INCONCLUSIVE。<strong>無論採哪一組界值，本文摘要的措辭「the odds of injury are the same in both groups」都不成立</strong> — 那是一個只有在 CI 極窄（例如 0.90–1.11）時才能說的話。</p>
+<p><strong>Neutral 與 Negative 的關鍵差異在此的應用</strong>：作者實際上聲稱的是 <strong>Neutral（兩組實質相同，雙向）</strong>，這是比 Negative 更強的宣稱，需要更窄的 CI 或正式的等效性檢定/Bayesian Pr(ROPE)。本文兩者皆未提供。</p>
+<p><strong>Step 3 — 本文是否觸犯禁止的統計謬誤</strong></p>
+<table>
+<thead>
+<tr>
+<th>謬誤</th>
+<th>本文是否觸犯</th>
+<th>文內證據</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>p &gt; 0.05 = &quot;no difference&quot; / &quot;no effect&quot;</td>
+<td><strong>✅ 觸犯，且是核心結論</strong></td>
+<td>Abstract: &quot;neither increases nor decreases the probability of injury&quot;；Discussion: &quot;the odds of injury <strong>are the same</strong> in both groups&quot;</td>
+</tr>
+<tr>
+<td>Post-hoc power</td>
+<td>❌ 未觸犯</td>
+<td>本文無 post-hoc power 計算（此點作者做對了）</td>
+</tr>
+<tr>
+<td>以 post-hoc power 判斷檢定力不足</td>
+<td>❌ 未觸犯</td>
+<td>—</td>
+</tr>
+<tr>
+<td>Winner's Curse（以 underpowered positive 的效果量規劃後續研究）</td>
+<td>❌ 不適用</td>
+<td>本研究無顯著的主要結果</td>
+</tr>
+<tr>
+<td><strong>[額外] 把 EPV 法則當成 power analysis</strong></td>
+<td><strong>✅ 觸犯</strong></td>
+<td>Methods: &quot;A power analysis was conducted and was based on… at least 10 cases… for each independent variable&quot;</td>
+</tr>
+<tr>
+<td><strong>[額外] 以基線平衡的不顯著推論無混淆</strong></td>
+<td><strong>✅ 觸犯</strong></td>
+<td>Results: &quot;no significant differences in the demographics… thereby minimizing the likelihood of confounding factors&quot;</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h4>C2. Underpowered 判斷與 Winner's Curse</h4>
+<p><strong>Underpowered 判定</strong>：依「CI 是否同時包含 null 與 MCID」的標準：</p>
+<ul>
+<li>對寬鬆 δ（1.50）：CI 上界 1.477 &lt; 1.50，<strong>未包含</strong> → 非 underpowered（勉強）</li>
+<li>對嚴格 δ（1.30）：CI 上界 1.477 &gt; 1.30，<strong>同時包含 null 與 δ</strong> → <strong>Underpowered</strong></li>
+</ul>
+<p><strong>本研究實際的可偵測效果量 [推算]</strong></p>
+<p>由 Table 2 的 crude 2×2（216/375 vs 54/93）計算 log OR 的標準誤：</p>
+<p>SE(log OR) = √(1/216 + 1/375 + 1/54 + 1/93) = √0.0366 ≈ <strong>0.191</strong></p>
+<p>（此值與 Table 3B 報告的 CI 寬度完全吻合：exp(±1.96 × 0.191) = 0.687–1.455，對照實測 0.681–1.477 ✓）</p>
+<p>在 α=0.05 雙尾、80% power 下：</p>
+<ul>
+<li><strong>最小可偵測 OR ≈ exp(2.80 × 0.191) = 1.71</strong>（或其倒數 0.58）</li>
+</ul>
+<p><strong>這是本文對 Methods 最重要的一句批評</strong>：這項研究<strong>只有能力偵測 OR ≥ 1.71 的效果</strong>。而在跑步傷害的多因子致病脈絡下，<strong>沒有任何人認真主張著地型態的效果會大到 OR 1.7</strong>。本研究因此是針對一個<strong>沒有人提出的假說</strong>設計的檢定力。</p>
+<p>作者所謂的 &quot;power analysis&quot;（EPV ≥ 10 → 需 50 事件）與此完全無關：EPV 保證的是迴歸係數估計不會不穩定，<strong>不保證任何檢定力</strong>。作者混淆了「模型能不能收斂」與「研究能不能偵測到效果」。</p>
+<p>要在 80% power 下偵測 OR 1.30，在相同 80:20 的組別比例與 36.6% 事件率下，所需樣本約為現有的 <strong>6–7 倍</strong>（因所需 SE 需縮小至約 0.095，樣本量與 SE² 成反比）[推算]。這意味著：<strong>以本文的組別比例，這個問題可能根本無法用單一世代回答，需要跨世代的個案資料統合分析（IPD meta-analysis）。</strong> 這是本文最應該、卻完全沒有說出口的結論。</p>
+<p><strong>「隱性檢定力不足」的證據 — 部位別分析</strong></p>
+<table>
+<thead>
+<tr>
+<th>部位</th>
+<th>事件總數</th>
+<th>OR</th>
+<th><strong>95% CI [推算]</strong></th>
+<th>詮釋</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>脛（tibial stress 假說核心）</strong></td>
+<td><strong>28</strong></td>
+<td>1.513</td>
+<td><strong>0.52 – 4.43</strong></td>
+<td>資料無法區分「風險減半」與「風險增為 4 倍」。<strong>這是整場 RF-衝擊爭議最核心的部位，而本文對它幾乎零資訊量。</strong></td>
+</tr>
+<tr>
+<td><strong>膝（最大訊號，方向與主流論述相反）</strong></td>
+<td>110</td>
+<td>0.685</td>
+<td><strong>0.43 – 1.10</strong></td>
+<td>與「nRF 膝傷害風險高達 2.3 倍」相容。稱其為「可忽略」不成立</td>
+</tr>
+<tr>
+<td>鼠蹊</td>
+<td>25</td>
+<td>1.856</td>
+<td>極寬</td>
+<td>無資訊量</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Table 2 最大的報告缺陷：13 個 OR，沒有任何一個附上信賴區間。</strong> 作者改以 Cramér's V（0.002–0.058）宣稱「效果量可忽略」。但在 2×2 表中 Cramér's V 就是 |φ|，而 <strong>φ 對邊際分布極度敏感、在罕見結果下天生趨近於 0</strong> — 用它來為風險問題下「效果可忽略」的結論，是錯誤的效果量選擇。正確的做法是報告 OR 及其 CI，而本文有 OR 卻刻意不報 CI。</p>
+<p><strong>多重性</strong>：13 個部位別檢定 + 1 個總體檢定，<strong>無任何多重比較校正</strong>。本文因無顯著結果，多重性不製造偽陽性；但它確實意味著「13 項全部不顯著」這件事，在每項檢定力都極低的前提下，<strong>毫無資訊價值</strong>。</p>
+<p><strong>Winner's Curse</strong>：不適用（無顯著主結果）。但<strong>反向的風險存在</strong>：若後續研究者把本文的 OR 1.003 當作真實效果量來規劃樣本，將得出「不需要再研究」的結論，從而終結一個其實尚未被充分檢驗的問題。</p>
+<hr />
+<h4>C3. Bayesian 補充分析</h4>
+<p>本文主要終點 p = 0.988（幾乎完全居中），且「Neutral vs Negative vs Inconclusive」的區分在此具有直接的臨床意涵（是否應建議步態再訓練），故執行本節。</p>
+<p><strong>[推算] 方法</strong>：以 crude 2×2 的 log OR 為概似（點估計 log OR = 0.003，SE = 0.191），常態近似。</p>
+<p><strong>三個 Bayesian 核心指標（non-informative prior）</strong></p>
+<table>
+<thead>
+<tr>
+<th>指標</th>
+<th>ROPE 定義</th>
+<th>機率</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Pr(ROPE)</strong> — 實質等效</td>
+<td>OR 0.80 – 1.25</td>
+<td><strong>≈ 76%</strong></td>
+</tr>
+<tr>
+<td><strong>Pr(ROPE)</strong> — 較寬鬆等效</td>
+<td>OR 0.75 – 1.33</td>
+<td><strong>≈ 87%</strong></td>
+</tr>
+<tr>
+<td><strong>Pr(RF 風險較高且具臨床意義)</strong></td>
+<td>OR &gt; 1.25</td>
+<td><strong>≈ 12.5%</strong></td>
+</tr>
+<tr>
+<td><strong>Pr(nRF 風險較高且具臨床意義)</strong></td>
+<td>OR &lt; 0.80</td>
+<td><strong>≈ 11.8%</strong></td>
+</tr>
+<tr>
+<td>Pr(大幅有害)</td>
+<td>OR &gt; 1.50</td>
+<td>≈ 2.1%</td>
+</tr>
+<tr>
+<td>Pr(大幅有益)</td>
+<td>OR &lt; 0.67</td>
+<td>≈ 1.7%</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Prior 敏感度</strong>：</p>
+<ul>
+<li><strong>Skeptical prior</strong>（以 log OR ~ N(0, 0.1²) 為中心，即強烈先驗認為無效）：後驗更緊縮於 1.0，Pr(ROPE 0.80–1.25) 升至 &gt; 90%</li>
+<li><strong>Optimistic prior</strong>（先驗認為 RF 有害，log OR ~ N(0.35, 0.3²)，即 OR ≈ 1.42）：後驗 log OR ≈ 0.10（OR ≈ 1.11），Pr(OR &gt; 1.25) 仍僅約 25% [推算]</li>
+<li>三組 prior 均指向「大效果不太可能」的同一方向 → <strong>此部分結論穩健</strong></li>
+</ul>
+<p><strong>Bayesian 分析的正確白話結論</strong>：</p>
+<blockquote>
+<p>資料顯示真實 OR 落在 0.80–1.25 之間的機率約 <strong>76%</strong>；但仍有約 <strong>1/8 的機率</strong> 後足著地者的傷害勝算高出 25% 以上，以及約 <strong>1/8 的機率</strong> 非後足著地者反而更高。<strong>大幅度的效果（OR &gt; 1.5 或 &lt; 0.67）基本可排除（各約 2%）。</strong></p>
+</blockquote>
+<p>這個陳述<strong>才是</strong>本文資料所支持的結論，而它與摘要的「neither increases nor decreases」有實質差距。作者只需執行這一步（或一個 TOST 等效性檢定），就能把一個過度宣稱的結論變成一個精確、誠實且更有說服力的結論。</p>
+<p><strong>參照案例對比</strong>：本文與 EOLIA/ANDROMEDA-SHOCK 的情形相反 — 那些試驗是「被頻率派誤判為 negative 的實為 probably beneficial」；本文則是「被作者誤判為 equivalent 的實為 inconclusive-leaning-neutral」。方向相反，但根源是同一個：<strong>以 p 值取代 CI + 界值做結果分類。</strong></p>
+<hr />
+<h4>C4. 報告完整性與其他統計問題</h4>
+<p><strong>樣本數與 power（雙向評估）</strong></p>
+<ul>
+<li><strong>Underpowered</strong>：✅ 見 C2。僅有能力偵測 OR ≥ 1.71。</li>
+<li><strong>Overpowered</strong>：❌ 不適用。本研究的問題恰好相反。</li>
+</ul>
+<p><strong>Kaplan-Meier 圖細節判讀</strong> — <strong>不適用</strong>。本文採末端二元結果的 logistic regression，無存活分析、無 KM 曲線、無 number-at-risk 表、無 censoring 說明。這本身就是限制（作者已自陳），但也意味著以下項目無從判讀：</p>
+<ul>
+<li>曲線分離時點：<strong>不適用（本文無時間-事件分析）</strong></li>
+<li>number-at-risk 後期銳減：<strong>不適用</strong></li>
+<li>Informative censoring：<strong>無法評估</strong> — 因無存活分析，且流失人數完全未報告。這是實質缺口：因傷停跑者若同時停止問卷回覆，即為 informative censoring，本文無任何機制偵測之</li>
+<li>曲線交叉 / 任意時間點選擇性報告：<strong>不適用</strong></li>
+</ul>
+<p><strong>Forest plot 判讀</strong> — <strong>不適用</strong>（本文無 forest plot）。但 Table 2 的 13 個 OR <strong>應該</strong>以 forest plot 呈現並附 CI；以現行的「OR 無 CI + Cramér's V」呈現方式，是本文圖表設計最可改進之處。</p>
+<p><strong>座標軸判讀</strong> — Figure 1 與 Figure 2 <strong>y 軸皆自 0 起點，無截斷誇大</strong>。此點作者做對了，應予肯定。</p>
+<p><strong>其他具體的報告與計算錯誤</strong></p>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>問題</th>
+<th>文內位置</th>
+<th>嚴重度</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td><strong>Figure 1 標示 RF 受傷率 35.5%，但 Table 2 為 216/591 = 36.5%；且 35.5 + 63.5 = 99.0 ≠ 100</strong></td>
+<td>Figure 1 (p.29) vs Table 2</td>
+<td>中（數字不一致，需勘誤）</td>
+</tr>
+<tr>
+<td>2</td>
+<td><strong>以 Fisher's exact test 比較巢狀 logistic 模型，並報告 χ²=44.02</strong>；應為概似比檢定</td>
+<td>Results 末段</td>
+<td>高（方法名稱與統計量錯配）</td>
+</tr>
+<tr>
+<td>3</td>
+<td>兩模型 χ² 完全相同（44.02 vs 44.02），<strong>真正該報的 LRT χ²(1) ≈ 0, p ≈ 1.0 從未以正確形式呈現</strong></td>
+<td>Results 末段</td>
+<td>中</td>
+</tr>
+<tr>
+<td>4</td>
+<td><strong>「the observed injury risk was explained by the covariates」</strong> — 但 pseudo R² 僅 0.040、AUC 僅 0.648（判別力差）。<strong>共變項其實也幾乎什麼都沒解釋</strong></td>
+<td>Results 末段</td>
+<td>中（過度詮釋）</td>
+</tr>
+<tr>
+<td>5</td>
+<td><strong>「an increase of 1 year in age would correspond to a 2.90% greater chance of being injured」</strong> — OR 是<strong>勝算</strong>比，不是機率；應為「勝算增加 2.9%」</td>
+<td>Discussion</td>
+<td>中</td>
+</tr>
+<tr>
+<td>6</td>
+<td><strong>「a history of a running-related injury relates to a 2.48 times higher likelihood」</strong> — 結果非罕見（36.6%），OR 2.479 換算 <strong>RR ≈ 1.78</strong>，「2.48 倍的可能性」高估約 40% [推算]</td>
+<td>Discussion</td>
+<td>中</td>
+</tr>
+<tr>
+<td>7</td>
+<td>Table 3A 排印錯誤：「2.47*9」應為 2.479</td>
+<td>Table 3A</td>
+<td>低</td>
+</tr>
+<tr>
+<td>8</td>
+<td>Table 3A/3B 同一變項 CI 不一致（訓練量 0.996–1.024 vs 0.996–1.023；既往傷 3.644 vs 3.643）</td>
+<td>Table 3</td>
+<td>低（捨入不一致）</td>
+</tr>
+<tr>
+<td>9</td>
+<td><strong>Table 2 的 13 個 OR 全部無 95% CI</strong></td>
+<td>Table 2</td>
+<td><strong>高</strong></td>
+</tr>
+<tr>
+<td>10</td>
+<td>Figure 2 y 軸標籤 &quot;Percentage of Injuries&quot; 實為組內期間盛行率</td>
+<td>Figure 2 (p.30)</td>
+<td>中</td>
+</tr>
+<tr>
+<td>11</td>
+<td>Table 2 表註「Data, other than for sex, are presented as mean ± standard deviation」— 此表<strong>完全沒有任何 mean ± SD 的欄位</strong>，表註為 Table 1 的殘留複製</td>
+<td>Table 2 表註</td>
+<td>低（校稿疏失）</td>
+</tr>
+<tr>
+<td>12</td>
+<td>「A systematic review (30) agreed with these results」與「none of these studies were <strong>prospective</strong> and with sample sizes less than 50 participants」— 後句用來描述一篇 <strong>meta-analysis</strong>（ref 34），語句邏輯混亂</td>
+<td>Discussion</td>
+<td>低</td>
+</tr>
+</tbody>
+</table>
+<p><strong>統計面紅旗清單（≥5 點）</strong></p>
+<ol>
+<li><strong>有效檢定力僅及 OR ≥ 1.71，卻對 OR 1.003 做等效性宣稱</strong> [推算；C2]</li>
+<li><strong>把 EPV ≥ 10 的經驗法則誤稱為 power analysis</strong>（Methods）</li>
+<li><strong>13 個部位別 OR 全無 CI</strong>，改用對罕見結果天生趨零的 Cramér's V 宣稱「效果可忽略」（Table 2）</li>
+<li><strong>以基線平衡檢定不顯著推論「minimizing the likelihood of confounding factors」</strong>（Results 首段）— 觀察性研究中的教科書級錯誤，且最強共變項（既往傷害史）根本不在 Table 1</li>
+<li><strong>以 Fisher's exact test 比較巢狀迴歸模型，報告 χ² 統計量</strong>（Results 末段）</li>
+<li><strong>13 次部位別檢定無多重性校正，且部位事件在個體內叢集</strong>（每位受傷者平均 2.2 個部位）[推算]</li>
+<li><strong>無等效性界值、無 TOST、無 Bayesian ROPE</strong>，卻做出等效性結論</li>
+<li><strong>AUC 0.648、pseudo R² 0.040 的模型被描述為「injury risk was explained by the covariates」</strong></li>
+<li><strong>OR 被當作機率與風險比陳述</strong>（年齡 2.90%、既往傷 2.48 倍）</li>
+<li><strong>追蹤流失、問卷回覆率、醫師確認比例全部未報告</strong>，且姊妹論文證實同世代同追蹤期確有 62 人流失 [外部: PMC11878588]</li>
+</ol>
+<hr />
+<h3>D. 次組分析評估</h3>
+<p><strong>本文無正式的次組分析。</strong> 13 個部位別分析在形式上類似次組分析（同一世代切分為不同結果），故套用 JAMA 五標準評估：</p>
+<table>
+<thead>
+<tr>
+<th>標準</th>
+<th>本文表現</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1. 是否有 interaction p-value？</td>
+<td><strong>❌ 無。</strong> 13 次獨立的 2×2 檢定，無任何 footfall × 部位的交互作用檢定</td>
+</tr>
+<tr>
+<td>2. 結果方向是否與其他研究一致？</td>
+<td><strong>⚠️ 部分。</strong> 膝部方向（nRF 19.0% &gt; RF 13.9%）與「前足著地降低膝負荷」的主流推廣相反，但<strong>與 Hollander 2021 的方向（nRF 相關於後側/阿基里斯傷害）大致相容</strong>。小腿部位方向（nRF 12.2% &gt; RF 10.8%）亦與 Hollander 一致，但差距遠未達可偵測</td>
+</tr>
+<tr>
+<td>3. 假說是否預先指定並有預期方向？</td>
+<td><strong>⚠️ 部分。</strong> 第二假說（部位間無差異）有預先陳述，但<strong>是虛無方向</strong>；13 個部位中哪些「應該」有差異（脛、足、小腿）從未預先指定</td>
+</tr>
+<tr>
+<td>4. 是否有合理生物機轉？</td>
+<td><strong>✅ 有。</strong> RF → 脛骨/膝負荷；nRF → 阿基里斯腱/蹠骨負荷，是既有文獻明確的機轉假說。但本文的「部位」粗糙到無法對應這些機轉（見 B4）</td>
+</tr>
+<tr>
+<td>5. 是否為 within-study 比較？</td>
+<td><strong>✅ 是。</strong> 同一世代內比較，非跨研究比較</td>
+</tr>
+</tbody>
+</table>
+<p><strong>可信度評分：低（推測性）</strong></p>
+<p>理由：無交互作用檢定、無多重性校正、無 CI、事件數在關鍵部位（脛 n=28）極低、部位定義為解剖區域而非診斷、事件在個體內叢集未處理。<strong>「13 個部位皆無差異」這句話，應被理解為「13 個檢定皆無足夠檢定力」，而非「13 個部位皆無真實差異」。</strong></p>
+<hr />
+<h3>E. 紅旗清單</h3>
+<p><strong>設計層</strong></p>
+<ol>
+<li>🔴 <strong>暴露為單次實驗室評估（配發鞋、17 m 跑道、要求踩中測力板、僅右腳、零重複測量），卻用以代表 1 年慣常型態 → 非差異性錯分，系統性偏向虛無</strong></li>
+<li>🔴 <strong>盛行跑者世代 + 著地型態常是對既往傷害的反應性改變 → 易感者耗竭/存活者偏差，同樣偏向虛無</strong></li>
+<li>🔴 <strong>三個主要偏差方向全部與作者所報告的結論一致</strong></li>
+<li>🟠 <strong>中足與前足合併，且 MF/FF 比例與 strike index 分布均未報告 → 無法回答「前足著地」這個真正的爭議</strong></li>
+<li>🟠 <strong>分組準則納入 impact peak，使暴露定義摻入待檢驗的中介變項（循環定義）</strong></li>
+<li>🟠 <strong>1315 → 738 的篩選無流程圖；零人「無法分類」，但 Methods 自承分類不乾淨</strong></li>
+</ol>
+<p><strong>統計層</strong></p>
+<ol start="7">
+<li>🔴 <strong>有效檢定力僅及 OR ≥ 1.71，卻做出「odds are the same」的等效宣稱；無界值、無 TOST、無 ROPE</strong> [推算]</li>
+<li>🔴 <strong>Table 2 的 13 個 OR 全無 CI；改用對邊際分布敏感的 Cramér's V 宣稱「effect sizes negligible」</strong></li>
+<li>🔴 <strong>以基線平衡不顯著宣稱「minimizing the likelihood of confounding factors」</strong></li>
+<li>🟠 <strong>以 Fisher's exact test 比較巢狀 logistic 模型並報告 χ²</strong></li>
+<li>🟠 <strong>EPV 法則被誤稱為 power analysis</strong></li>
+<li>🟠 <strong>13 次未校正檢定，且部位事件在個體內叢集（每人 2.2 個部位）</strong>[推算]</li>
+<li>🟡 <strong>OR 被當作機率（年齡 2.90%）與風險比（既往傷 2.48 倍）陳述</strong></li>
+<li>🟡 <strong>Figure 1 的 35.5% 與 Table 2 的 36.5% 不一致；35.5 + 63.5 = 99.0</strong></li>
+</ol>
+<p><strong>報告層</strong></p>
+<ol start="15">
+<li>🔴 <strong>追蹤流失、每週問卷回覆率、「majority」醫師確認的實際比例，全部未報告 — 而同世代姊妹論文已證實有 62 人流失</strong>[外部]</li>
+<li>🟠 <strong>既往傷害史（模型中最強預測因子，OR 2.48）的組間分布與盛行率從未呈現</strong></li>
+<li>🟠 <strong>訓練量共變項來源矛盾：Table 1 列為基線，Methods 描述為追蹤期 Fitbit 平均（受結果影響的變項）</strong></li>
+<li>🟠 <strong>已測量卻從未報告的變項：自選跑速、步頻、步幅、觸地時間、垂直負荷率、strike index 連續分布</strong> — 而 Discussion 恰好援引步頻作為機轉論證</li>
+<li>🟡 <strong>Limitations 僅列 2 項，遺漏上述 1–5、15–18 的每一項</strong></li>
+</ol>
+<p><strong>敘事層</strong></p>
+<ol start="20">
+<li>🔴 <strong>Abstract 與 Conclusion 使用等效性措辭（&quot;neither increases nor decreases&quot;、&quot;are the same&quot;），超出 CI 所能支持的範圍（真實效果可達 ±9 個百分點）</strong></li>
+<li>🟠 <strong>研究假說以虛無形式預先指定，並三度宣稱「Confirming our hypothesis」— 顯著性檢定在邏輯上無法證實虛無</strong></li>
+<li>🟠 <strong>Figure 2 中膝部的最大視覺落差（nRF 19.0% vs RF 13.9%，方向與主流推廣相反）在 Discussion 中完全未被提及</strong></li>
+<li>🟡 <strong>未引用與本題最直接相關的兩篇文獻</strong>：Helton 2025（827 人前瞻、Cox 模型、FSP 同樣為虛無，但觸地時間 HR 2.15 顯著）與 Hollander/Davis 2021（同期刊、550 人、部位別 OR 2.27–2.59）[外部]</li>
+</ol>
+<p><strong>COI / 資料重複使用層</strong></p>
+<ol start="24">
+<li>🟠 <strong>先驗承諾偏差</strong>：通訊作者自 2017 年起公開主張改變著地型態無益，本文以虛無假說設計並宣稱證實 [外部: DOI 10.1016/j.jshs.2017.02.004]</li>
+<li>🟠 <strong>同一 4HAIE 世代已反覆產出多篇 RRI 論文</strong>（足底筋膜炎 MSSE 2025、阿基里斯腱 BJSM 2025、發炎指標 SJMSS 2026）。<strong>其中 MSSE 2025 已報告「strike index 與足底筋膜炎風險無關聯」，與本文結論實質重疊，但本文未揭露此重疊</strong>[外部]</li>
+<li>🟢 <strong>商業性 COI 風險低</strong> — 經費為歐盟與捷克公部門，無鞋業/醫材利益</li>
+</ol>
+<hr />
+<h3>F. 反向解釋</h3>
+<p><strong>替代解釋 1：真實效果存在，但被三重偏差稀釋至不可見（最可能）</strong></p>
+<ul>
+<li><strong>支持線索</strong>：暴露為單次實驗室評估（配發鞋、踩板瞄準、僅右腳、零重測，Methods–Protocol）；盛行跑者世代；MF 與 FF 合併；「部位」而非診斷。<strong>四者的偏差方向一致指向虛無。</strong></li>
+<li><strong>支持線索（外部）</strong>：Helton 2025 在 827 人的前瞻世代中，同樣發現 FSP 類別無關聯，<strong>但連續型的觸地時間 HR 2.15（95% CI 1.06–4.37）、步幅顯著</strong> — 顯示訊號存在於連續變項而非二分類別（<a href="https://doi.org/10.1177/23259671241296148">DOI: 10.1177/23259671241296148</a>）</li>
+<li><strong>支持線索（外部）</strong>：Hollander/Davis 2021 在 550 名受傷跑者中，以<strong>診斷別</strong>（非區域別）分析時，中足→阿基里斯腱 OR 2.27、前足→後小腿 OR 2.59（<a href="https://doi.org/10.1249/MSS.0000000000002455">DOI: 10.1249/MSS.0000000000002455</a>）</li>
+<li><strong>支持線索（內部）</strong>：Figure 2 中膝部（nRF 19.0% vs RF 13.9%，OR 0.685，CI 約 0.43–1.10 [推算]）與小腿（nRF 12.2% vs RF 10.8%）的方向，都與 Hollander 的部位模式相容</li>
+<li><strong>反對線索</strong>：主結果的點估計 OR = 1.003 幾乎完美居中，若有強烈稀釋，通常仍會殘留方向性；Bayesian 分析顯示大效果（OR &gt; 1.5）機率僅約 2% [推算]</li>
+</ul>
+<p><strong>替代解釋 2：著地型態確實與整體 RRI 無關，但與特定診斷的分布有關（高度可能，且與解釋 1 相容）</strong></p>
+<ul>
+<li><strong>支持線索（內部）</strong>：本文自己在 Discussion 引述 ref 15 指出 RF 多脛骨疲勞性骨折、nRF 多蹠骨疲勞性骨折 — <strong>這正是「總量相同、分布不同」的模型</strong></li>
+<li><strong>支持線索（內部）</strong>：ref 29 指出 nRF 也有衝擊，只是發生時點較晚（Discussion）— 支持「負荷重分配而非增減」</li>
+<li><strong>支持線索（內部）</strong>：同世代姊妹論文對足底筋膜炎（strike index 無關）與阿基里斯腱病變（有生物力學預測因子）得到不同結論[外部]</li>
+<li><strong>反對線索</strong>：本文的 13 個部位別檢定確實全部不顯著。但因 CI 未報告且事件數極低（脛僅 28 例），<strong>這些「不顯著」不構成反對此解釋的有效證據</strong></li>
+<li><strong>關鍵推論</strong>：若解釋 2 為真，則本文選擇「任一 RRI」為主要終點的設計，<strong>本身就決定了會得到虛無結果</strong></li>
+</ul>
+<p><strong>替代解釋 3：存活者/易感者耗竭 — 本世代已是「型態適配成功者」的集合</strong></p>
+<ul>
+<li><strong>支持線索</strong>：納入條件為現行規律跑者（≥10 km/週，Methods–Participants）；暴露於基線橫斷測量，無跑步年資資料</li>
+<li><strong>支持線索</strong>：nRF 僅佔 19.9%，與文獻的 20–25% 相符 — 但文獻中這個比例本身就是存活後的分布</li>
+<li><strong>反對線索</strong>：本世代招募自一般社區（空汙研究框架）而非跑步俱樂部，理論上較不極端；年齡中位約 37 歲、跑量僅 21–24 km/週，屬低度篩選族群</li>
+<li><strong>需要什麼才能檢驗</strong>：跑步年資、是否曾改變著地型態及其原因</li>
+</ul>
+<p><strong>替代解釋 4：暴露對比不足 — 兩組的實際生物力學差異小於標籤所暗示</strong></p>
+<ul>
+<li><strong>支持線索</strong>：nRF 定義僅需 strike index &gt; 33%；strike index 34% 與 90% 被放在同一組。<strong>文內從未報告兩組的 strike index 平均值或分布</strong> — 因此讀者無從得知兩組的實際力學差異有多大</li>
+<li><strong>支持線索</strong>：全體穿統一的中性跑鞋（Brooks Launch，非極簡鞋），可能壓縮組間的實際著地差異</li>
+<li><strong>反對線索</strong>：作者要求三準則中符合兩項，理論上應能排除最模糊的個案</li>
+<li><strong>需要什麼才能檢驗</strong>：報告兩組的 strike index、初始接觸踝角度、垂直負荷率的平均值與分布 — <strong>這些資料全部已被測量</strong></li>
+</ul>
+<p><strong>Target Trial 框架下的核心問題（因果推論 Appendix）</strong></p>
+<table>
+<thead>
+<tr>
+<th>可識別性條件</th>
+<th>本研究的滿足程度</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Exchangeability（無未測混淆）</strong></td>
+<td><strong>❌ 明確不滿足。</strong> 未測量：跑步年資、跑速、步頻、近期訓練量變化、既往傷害部位、鞋款史、步態再訓練史。且既往傷害史（唯一測到的強混淆）其組間分布未呈現。無敏感度分析、無 E-value</td>
+</tr>
+<tr>
+<td><strong>Positivity</strong></td>
+<td>⚠️ 大致滿足，但 nRF 組僅 147 人；若依年齡×性別×訓練量分層，部分層可能人數極少甚至為零。文內無任何 overlap 檢查</td>
+</tr>
+<tr>
+<td><strong>Consistency（治療版本明確）</strong></td>
+<td><strong>❌ 不滿足。</strong> 「非後足著地」包含中足與前足兩種力學上顯著不同的版本，比例未報告 → 典型的 treatment version irrelevance 違反</td>
+</tr>
+</tbody>
+</table>
+<p><strong>最關鍵的 target trial 錯配</strong>：臨床上真正要問的是——</p>
+<blockquote>
+<p>「若一位後足著地的跑者<strong>改成</strong>非後足著地，其 1 年傷害風險會改變嗎？」</p>
+</blockquote>
+<p>這是一個<strong>介入性</strong>問題。本研究實際回答的是：</p>
+<blockquote>
+<p>「在<strong>目前仍在跑</strong>的跑者中，慣常後足著地者與慣常非後足著地者的 1 年傷害風險是否不同？」</p>
+</blockquote>
+<p>這是一個<strong>橫斷對比</strong>問題。兩者之間隔著至少三道鴻溝：(1) 轉換期的急性適應風險（小腿/阿基里斯腱/蹠骨負荷驟增），(2) 轉換失敗而停跑者不在世代中，(3) 慣常型態者已完成數年的組織適應，而新轉換者沒有。</p>
+<p><strong>本文的結論措辭在這兩個問題之間滑動而未加標記</strong> — Abstract 的「a runner's footfall pattern neither increases nor decreases the probability of injury」會被絕大多數讀者理解為前者（介入性），但資料只支持後者（橫斷性），而且後者也只支持到「排除大效果」的程度。</p>
+<hr />
+<h3>G. 最終裁決</h3>
+<h4>整體可信度：<strong>中</strong></h4>
+<p><strong>本文做對的事（不容抹煞）</strong>：</p>
+<ol>
+<li><strong>真正的前瞻設計</strong>，1 年追蹤，n=738、270 個事件 — 規模與設計優於 Burke 2021 系統性回顧所批評的全部既有文獻，正是該回顧明確呼籲的研究類型</li>
+<li><strong>暴露以實驗室 3D 動作捕捉 + 測力板測量</strong>（240 Hz / 2160 Hz），遠優於既有文獻常用的自報或低速攝影分類</li>
+<li><strong>三管道主動傷害監測</strong>（每週問卷 + App 自主通報 + Fitbit 活動下降觸發），並有物理治療師電訪確認 — 這是本文設計上最紮實的一環，大幅降低回憶偏差</li>
+<li><strong>預先陳述假說</strong>（即使方向有問題），並誠實報告虛無結果</li>
+<li><strong>Limitations 主動承認自己的建模策略弱於既有的競爭風險模型</strong> — 少見的誠實</li>
+<li><strong>圖表座標軸未截斷</strong></li>
+<li><strong>內建的陽性對照</strong>：模型偵測到年齡（OR 1.029）與既往傷害史（OR 2.479）的預期效果，證明結果認定與分析流程有能力偵測真實關聯
+<ul>
+<li>⚠️ <strong>但此陽性對照只證明了對 OR ≈ 2.5 量級效果的敏感度，不證明對 OR 1.2–1.4 量級的敏感度 — 而著地型態的問題正落在後者</strong></li>
+</ul>
+</li>
+</ol>
+<p><strong>降級為「中」而非「強」的理由</strong>：見 E 節 26 項紅旗，核心為三點 —</p>
+<ul>
+<li>有效檢定力僅及 OR ≥ 1.71，卻做出等效性宣稱</li>
+<li>三個主要設計偏差的方向全部與所報告的結論一致</li>
+<li>結果變項（區域而非診斷）比它宣稱要解決的爭議粗糙一個層級</li>
+</ul>
+<h4>可採用的條件</h4>
+<p>✅ <strong>可用於</strong>：</p>
+<ul>
+<li>反駁「所有後足跑者都應改為前足著地以預防傷害」這類<strong>強式主張</strong>（CI 上界 1.477 使「RF 風險高 50% 以上」變得不太可能）</li>
+<li>支持「先處理訓練量與既往傷害，不急著改步態」的臨床優先順序</li>
+<li>作為未來個案資料統合分析（IPD meta-analysis）的一個高品質資料來源</li>
+</ul>
+<p>❌ <strong>不可用於</strong>：</p>
+<ul>
+<li>宣稱「著地型態與跑步傷害無關」（資料只支持「無大效果」，不支持「無效果」）</li>
+<li>回答「前足著地」的特異風險（MF/FF 合併）</li>
+<li>回答任何<strong>特定診斷</strong>的風險（脛骨疲勞性骨折 CI 約 0.52–4.43 [推算]）</li>
+<li>推論<strong>步態再訓練介入</strong>的安全性或效果（設計無法回答）</li>
+<li>外推至菁英跑者、高里程者、極簡鞋使用者、青少年或 &gt;65 歲族群</li>
+</ul>
+<h4>若要改觀，最需要的 3 個關鍵改進</h4>
+<ol>
+<li>
+<p><strong>把二分類改回連續變項，並報告已測量卻被丟棄的資料。</strong> 以連續 strike index（及步頻、觸地時間、步幅、垂直負荷率）入模型，並報告兩組 strike index 的實際分布與 MF/FF 人數。這既能大幅提升檢定力，也能檢驗 Helton 2025 的發現（FSP 類別為虛無但觸地時間 HR 2.15）。<strong>所有必要資料都已經在硬碟裡，成本趨近於零。</strong></p>
+</li>
+<li>
+<p><strong>預先指定等效性界值並執行正式的等效性推論。</strong> 以 TOST（例如 OR 0.80–1.25）或 Bayesian Pr(ROPE) 取代「p &gt; 0.05 故相同」。若 Pr(ROPE) 約 76% [推算]，就誠實寫 76%，並把結論改為「已排除大效果，但無法排除中度效果」。同時把摘要的「neither increases nor decreases / are the same」改為精確措辭。</p>
+</li>
+<li>
+<p><strong>補齊可稽核性：STROBE 流程圖 + 追蹤完整度 + 關鍵混淆因子的組間分布。</strong> 具體包括：1315→738 的篩選流程、追蹤流失人數與原因（同世代姊妹論文已有此資料）、每週問卷回覆率（分組）、醫師確認比例（分組）、<strong>既往傷害史的盛行率與組間分布</strong>、跑步年資、自選跑速，並釐清訓練量共變項究竟是基線還是追蹤期衍生。另請以診斷別（至少阿基里斯腱病變、脛骨壓力性傷害、髕股疼痛、足底筋膜炎）取代或補充區域別分析，並附 CI。</p>
+</li>
+</ol>
+<h4>一句話結論（給一般讀者）</h4>
+<p><strong>這項大型前瞻研究沒找到後足與前足著地跑者的受傷率差異，但它的精確度只夠排除大差距、不足以證明兩者真的一樣——結論該是「別為了防傷特地改步態」，而不是「著地方式完全不重要」。</strong></p>
+<hr />
+<h2>必須輸出：效果量與結果分類表</h2>
+<table>
+<thead>
+<tr>
+<th>指標</th>
+<th>後足 RF</th>
+<th>非後足 nRF</th>
+<th>效果量</th>
+<th>95% CI</th>
+<th>絕對風險差 (ARD)</th>
+<th>MCID (δ)</th>
+<th>結果分類</th>
+<th>實務意義</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>1 年任一 RRI（未校正）</strong></td>
+<td>216/591&lt;br&gt;36.5%</td>
+<td>54/147&lt;br&gt;36.7%</td>
+<td>OR 0.992</td>
+<td>未報告&lt;br&gt;[推算 0.69–1.46]</td>
+<td>−0.2 pp</td>
+<td>—</td>
+<td>—</td>
+<td>點估計幾乎完全重疊</td>
+</tr>
+<tr>
+<td><strong>1 年任一 RRI（校正年齡、性別、訓練量、既往傷）</strong></td>
+<td>—</td>
+<td>—</td>
+<td><strong>OR 1.003</strong></td>
+<td><strong>0.681 – 1.477</strong></td>
+<td><strong>−8.4 ~ +9.5 pp</strong>&lt;br&gt;[推算]</td>
+<td>寬鬆 0.67–1.50&lt;br&gt;嚴格 0.77–1.30&lt;br&gt;（<strong>文內未指定</strong>）</td>
+<td><strong>寬鬆 δ → NEUTRAL ⚖️（勉強）</strong>&lt;br&gt;<strong>嚴格 δ → INCONCLUSIVE ❓</strong></td>
+<td>可排除「風險差 50%」；無法排除「風險差 30%」。NNT/NNH ≈ 11</td>
+</tr>
+<tr>
+<td><strong>膝部傷害</strong></td>
+<td>82/591&lt;br&gt;13.9%</td>
+<td>28/147&lt;br&gt;19.0%</td>
+<td>OR 0.685</td>
+<td><strong>未報告</strong>&lt;br&gt;[推算 0.43–1.10]</td>
+<td>−5.1 pp</td>
+<td>—</td>
+<td><strong>INCONCLUSIVE ❓</strong></td>
+<td>方向與「前足護膝」的主流論述<strong>相反</strong>；與 nRF 膝傷害勝算高 2.3 倍相容</td>
+</tr>
+<tr>
+<td><strong>脛部傷害</strong>（tibial stress 假說核心）</td>
+<td>24/591&lt;br&gt;4.1%</td>
+<td>4/147&lt;br&gt;2.7%</td>
+<td>OR 1.513</td>
+<td><strong>未報告</strong>&lt;br&gt;[推算 0.52–4.43]</td>
+<td>+1.3 pp</td>
+<td>—</td>
+<td><strong>INCONCLUSIVE ❓</strong></td>
+<td>僅 28 個事件；無法區分風險減半與增為 4 倍</td>
+</tr>
+<tr>
+<td><strong>小腿傷害</strong></td>
+<td>64/591&lt;br&gt;10.8%</td>
+<td>18/147&lt;br&gt;12.2%</td>
+<td>OR 0.870</td>
+<td><strong>未報告</strong></td>
+<td>−1.4 pp</td>
+<td>—</td>
+<td><strong>INCONCLUSIVE ❓</strong></td>
+<td>方向與 Hollander 2021（nRF→後小腿 OR 2.59）一致但遠未達可偵測</td>
+</tr>
+<tr>
+<td><strong>年齡（每 1 歲）</strong></td>
+<td>—</td>
+<td>—</td>
+<td>OR 1.029</td>
+<td>1.014 – 1.043</td>
+<td>每 +11 歲 OR ≈ 1.37 [推算]</td>
+<td>—</td>
+<td><strong>POSITIVE ✅</strong></td>
+<td>小但穩健；符合既有文獻</td>
+</tr>
+<tr>
+<td><strong>既往傷害史（有 vs 無）</strong></td>
+<td>—</td>
+<td>—</td>
+<td><strong>OR 2.479</strong></td>
+<td><strong>1.687 – 3.643</strong></td>
+<td><strong>≈ +21 pp</strong>&lt;br&gt;[推算，假設盛行率 50%；文內未報告]</td>
+<td>—</td>
+<td><strong>POSITIVE ✅</strong></td>
+<td><strong>本文最具臨床價值的數字</strong>，約等於 RR 1.78</td>
+</tr>
+<tr>
+<td>性別（男 vs 女）</td>
+<td>—</td>
+<td>—</td>
+<td>OR 0.958</td>
+<td>0.695 – 1.321</td>
+<td>—</td>
+<td>—</td>
+<td><strong>INCONCLUSIVE ❓</strong></td>
+<td>CI 跨越 null 與任何合理界值</td>
+</tr>
+<tr>
+<td>訓練量（每 km/週）</td>
+<td>—</td>
+<td>—</td>
+<td>OR 1.010</td>
+<td>0.996 – 1.023</td>
+<td>—</td>
+<td>—</td>
+<td><strong>INCONCLUSIVE ❓</strong></td>
+<td>與文獻公認的強風險因子不符；疑為暴露範圍窄或變項受結果污染</td>
+</tr>
+</tbody>
+</table>
+<p><strong>非顯著結果的明確分類聲明（依 SKILL 規範，禁止以 &quot;no significant difference&quot; 作結）</strong>：</p>
+<p>本研究的主要終點在<strong>寬鬆界值（OR 0.67–1.50）下屬 NEUTRAL（勉強成立，CI 兩端各僅差一線）</strong>；在<strong>臨床上更恰當的嚴格界值（OR 0.77–1.30）下屬 INCONCLUSIVE</strong>。CI（0.681–1.477）同時跨越 null 與嚴格界值的兩側，且換算為絕對風險容許 <strong>−8.4 至 +9.5 個百分點</strong>的真實差異。此結果<strong>不構成等效性證據</strong>；作者「the odds of injury are the same in both groups」的措辭超出資料支持範圍。所有部位別次要終點均為 <strong>INCONCLUSIVE</strong>（無 CI、事件數低、無多重性校正、個體內叢集未處理）。</p>
+<hr />
+<h3>資料來源</h3>
+<p><strong>外部搜尋來源</strong></p>
+<ul>
+<li><a href="https://www.umass.edu/ials/people/joseph-hamill">Joseph Hamill | Institute for Applied Life Sciences, UMass Amherst</a></li>
+<li><a href="https://www.researchgate.net/profile/Joseph-Hamill-2">Joseph Hamill — ResearchGate research profile</a></li>
+<li><a href="https://lermagazine.com/issues/may/biomechanist-challenges-idea-that-forefoot-strike-pattern-reduces-runners-injury-rate">Biomechanist challenges idea that forefoot strike pattern reduces runners' injury rate — Lower Extremity Review</a></li>
+<li><a href="https://www.journalmetrics.org/journal/medicine-and-science-in-sports-and-exercise">Medicine &amp; Science in Sports &amp; Exercise Impact Factor (2025) — journalmetrics.org</a></li>
+<li><a href="https://acsm.org/education-resources/journals/medicine-science-in-sports-exercise/">Medicine &amp; Science in Sports &amp; Exercise — ACSM 官方頁</a></li>
+<li><a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC11878588/">Running Distance and Biomechanical Risk Factors for Plantar Fasciitis: A 1-yr Prospective 4HAIE Cohort Study — PMC11878588</a></li>
+<li><a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC7730319/">Running and Physical Activity in an Air-Polluted Environment: 4HAIE 研究方案 — PMC7730319</a></li>
+<li><a href="https://haie-lerco.cz/wp-content/uploads/2025/12/bjsports-2025-110260.full_.pdf">Biomechanical insights into Achilles tendinopathy risk and protection in runners: 4HAIE — BJSM</a></li>
+<li><a href="https://onlinelibrary.wiley.com/doi/10.1111/sms.70225">Baseline Inflammatory Markers as Predictors of Running-Related Injuries: 4HAIE — Scand J Med Sci Sports</a></li>
+</ul>
+<p><strong>PubMed 引用文獻</strong>（根據 PubMed 檢索取得）</p>
+<ul>
+<li>Burke A, Dillon S, O'Connor S, Whyte EF, Gore S, Moran KA. Risk Factors for Injuries in Runners: A Systematic Review of Foot Strike Technique and Its Classification at Impact. <em>Orthop J Sports Med.</em> 2021;9(9). <a href="https://doi.org/10.1177/23259671211020283">DOI: 10.1177/23259671211020283</a></li>
+<li>Helton GL, Cameron KL, Goss DL, Florkiewicz E. Association Between Running Characteristics and Lower Extremity Musculoskeletal Injuries in United States Military Academy Cadets. <em>Orthop J Sports Med.</em> 2025;13(1). <a href="https://doi.org/10.1177/23259671241296148">DOI: 10.1177/23259671241296148</a></li>
+<li>Hollander K, Johnson CD, Outerleys J, Davis IS. Multifactorial Determinants of Running Injury Locations in 550 Injured Recreational Runners. <em>Med Sci Sports Exerc.</em> 2021;53(1):102-107. <a href="https://doi.org/10.1249/MSS.0000000000002455">DOI: 10.1249/MSS.0000000000002455</a></li>
+<li>Hamill J, Gruber AH. Is changing footstrike pattern beneficial to runners? <em>J Sport Health Sci.</em> 2017;6(2):146-153. <a href="https://doi.org/10.1016/j.jshs.2017.02.004">DOI: 10.1016/j.jshs.2017.02.004</a></li>
+</ul>
+
+<footer class="appraisal-meta">評讀資訊：模型：claude-opus-5 (claude)  ·  route：observational  ·  產出時間：2026-09-28 10:06 CST</footer>
+</main>
+</body>
+</html>
