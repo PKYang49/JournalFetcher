@@ -1,0 +1,1348 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cardiovascular-Kidney-Metabolic Overlap in Patients Hospitalized for Heart Failure.</title>
+<style>
+  :root {
+    --bg: #fafafa;
+    --card: #ffffff;
+    --text: #1a1a1a;
+    --muted: #6b6b6b;
+    --border: #e5e5e5;
+    --accent: #0b5fff;
+  }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang TC",
+      "Microsoft JhengHei", sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    margin: 0;
+    padding: 24px 16px 64px;
+    line-height: 1.72;
+  }
+  main {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    margin: 0 auto;
+    max-width: 840px;
+    padding: 22px 26px;
+  }
+  nav {
+    margin: 0 auto 14px;
+    max-width: 840px;
+    color: var(--muted);
+    font-size: 14px;
+  }
+  a { color: var(--accent); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  h1, h2, h3, h4 { line-height: 1.35; }
+  h1 { font-size: 26px; margin-top: 0; }
+  h2 { border-top: 1px solid var(--border); padding-top: 18px; }
+  code {
+    background: rgba(127, 127, 127, 0.12);
+    border-radius: 4px;
+    padding: 1px 4px;
+  }
+  table {
+    border-collapse: collapse;
+    table-layout: auto;
+    width: 100%;
+    max-width: 100%;
+  }
+  th, td {
+    border: 1px solid var(--border);
+    overflow-wrap: anywhere;
+    padding: 6px 8px;
+    text-align: left;
+    vertical-align: top;
+  }
+  blockquote {
+    border-left: 3px solid var(--accent);
+    color: var(--muted);
+    margin-left: 0;
+    padding-left: 14px;
+  }
+  .appraisal-meta {
+    border-top: 1px solid var(--border);
+    margin-top: 28px;
+    padding-top: 14px;
+    color: var(--muted);
+    font-size: 13px;
+  }
+  @media (max-width: 600px) {
+    body {
+      padding: 12px 8px 40px;
+    }
+    main {
+      padding: 16px 12px;
+    }
+    h1 {
+      font-size: 22px;
+    }
+    table {
+      font-size: 12px;
+      table-layout: fixed;
+    }
+    th, td {
+      padding: 4px 5px;
+    }
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #1a1a1a;
+      --card: #242424;
+      --text: #e8e8e8;
+      --muted: #999;
+      --border: #333;
+      --accent: #6ea8ff;
+    }
+  }
+</style>
+</head>
+<body>
+<nav><a href="../../2026-W41.html">← 回到 2026-W41 週報</a></nav>
+<main>
+<h1>Cardiovascular-Kidney-Metabolic Overlap in Patients Hospitalized for Heart Failure.</h1>
+<h1>醫學文獻批判性評讀</h1>
+<p><strong>Cardiovascular-Kidney-Metabolic Overlap in Patients Hospitalized for Heart Failure</strong></p>
+<hr />
+<h1>SECTION-0：文章全面描述</h1>
+<h2>0. 文章身份證</h2>
+<table>
+<thead>
+<tr>
+<th>項目</th>
+<th>內容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>標題</td>
+<td>Cardiovascular-Kidney-Metabolic Overlap in Patients Hospitalized for Heart Failure</td>
+</tr>
+<tr>
+<td>期刊</td>
+<td><em>JAMA Cardiology</em>（線上先行，2026-09-30）</td>
+</tr>
+<tr>
+<td>DOI</td>
+<td>10.1001/jamacardio.2026.4215；PMID 42814450</td>
+</tr>
+<tr>
+<td>文章類型</td>
+<td><strong>觀察性研究 — 回溯性世代研究（retrospective cohort），註冊資料庫 + 保險給付資料串接</strong></td>
+</tr>
+<tr>
+<td>路由判斷</td>
+<td>SKILL-A 主流程 + 觀察性研究子模組 + Appendix 因果推論框架</td>
+</tr>
+<tr>
+<td>研究屬性</td>
+<td>描述流行病學（prevalence）＋ 預後關聯分析（prognostic association），非療效評估</td>
+</tr>
+</tbody>
+</table>
+<p><strong>判讀資料可見性限制（全文適用）</strong></p>
+<ul>
+<li>本次輸入為 PDF 轉出 markdown ＋ 7 張圖頁 PNG（page_004–008、010–011）。Figure 1、Figure 2、Table 1、Table 2、Table 3 均已逐格判讀原圖。</li>
+<li><strong>Supplement 1 全部未提供</strong>：eTable 1–16、eFigure 1–6 皆無法檢視。本文多項關鍵資訊（共變項完整清單、Kaplan-Meier 曲線、CART heat map、6-condition 敏感度分析細節、依 CKM 組合型態分層的結果）僅能依正文敘述轉述，<strong>不得視為已驗證</strong>。</li>
+<li><strong>主文無 Kaplan-Meier 曲線</strong>（作者將其置於 eFigure 3），因此「曲線分離時點」「number at risk 後期是否銳減」「informative censoring」皆<strong>無法判讀</strong>。此為本次評讀的實質盲區，詳見 C4。</li>
+<li>主文<strong>無 STROBE flow diagram</strong>；收案與排除的逐層人數僅在 eTable 1（未提供）。</li>
+</ul>
+<hr />
+<h2>1. 作者團隊評論</h2>
+<p><strong>通訊作者</strong>：Stephen J. Greene, MD — Duke Clinical Research Institute / Duke University Medical Center，心衰竭臨床研究 [文內]。</p>
+<p><strong>團隊構成與角色</strong>（依 Author Contributions [文內]）：</p>
+<ul>
+<li>Kittipibul（第一作者，Duke 進階心衰竭與移植 fellow [外部: Duke Medicine / HFSA profile]）負責 concept &amp; design 與 drafting，研究興趣為 HFpEF 的 CPET 與侵入性運動血流動力學。</li>
+<li>Ayodele、Alhanti（DCRI 生統）執行統計分析；Van Spall 亦列名 statistical analysis。</li>
+<li><strong>Fonarow 負責 &quot;Obtained funding&quot; 與 &quot;Supervision&quot;</strong>，且為 UCLA 心衰竭領域的 GWTG 核心研究者。</li>
+<li>Alhanti 與 Greene「had full access to all of the data... take responsibility for the integrity of the data」[文內]。</li>
+</ul>
+<p><strong>關鍵結構性觀察（本文最需要被標示的脈絡）</strong>：Greene 為 <strong>AHA GWTG-HF registry 的協調中心主持人（coordinating center Principal Investigator）</strong>[外部: <a href="https://scholars.duke.edu/person/stephen.greene/publications">Duke Scholars</a>]。換言之，<strong>本研究團隊同時是資料庫的管理者與其代表性的評估者</strong>。文中第 E9 頁明確主張「these data for CKM overlap in the GWTG-HF registry could serve as a benchmark when assessing the representativeness of global HF trials」——由資料庫管理者自行宣告自家資料庫為「代表性基準」，屬於典型的 prior commitment / 資料監管者自評，讀者應自行折價。這不等於資料造假，但應被明講。</p>
+<p><strong>團隊過往研究</strong>：Greene 累計 340 篇以上同儕審查論文，長期以 GWTG-HF、CHAMP-HF、VICTORIA 等註冊資料庫產出心衰竭共病與 GDMT 使用率分析 [外部: Duke Scholars]。Fonarow 與 Greene 另於 <em>Eur J Heart Fail</em> 2026 共同發表 GLP-1 RA 跨 CKM 共病之心衰竭結果分析（PMID 41771103）[外部: PubMed 檢索]。<strong>本篇與該團隊既有的「CKM 共病重、GDMT 用太少」敘事高度一致</strong>，屬於同一研究線的延伸，而非獨立驗證。</p>
+<p><strong>利益揭露評估</strong> [文內]：</p>
+<ul>
+<li>Fonarow：Abbott、Amgen、AstraZeneca、Bayer、Boehringer Ingelheim、Cytokinetics、Eli Lilly、J&amp;J、Medtronic、Merck、Novartis、Pfizer 個人費用。</li>
+<li>Greene：AstraZeneca、Boehringer Ingelheim、Bayer、Novartis、Novo Nordisk、Lilly 等個人費用，並自 AstraZeneca、Boehringer Ingelheim、Novartis 取得研究經費。</li>
+<li>Pandey：極長的產業名單，含 AstraZeneca、Bayer、Novo Nordisk、Boehringer Ingelheim。</li>
+<li><strong>Fonarow 為 <em>JAMA Cardiology</em> Associate Editor，已聲明未參與本稿審查決策</strong> [文內 Disclaimer]。揭露與迴避程序合規。</li>
+</ul>
+<p>[評估] COI 的實質方向性問題不在於「有沒有揭露」，而在於<strong>敘事對齊</strong>：本文的臨床結論直指應擴大使用 SGLT2i、MRA/finerenone、incretin 類藥物，而上述藥物的主要藥廠（AstraZeneca、Boehringer Ingelheim、Bayer、Novo Nordisk、Lilly）同時是多位核心作者的費用與經費來源。Introduction 以 SGLT2i / 非類固醇 MRA / incretin 的跨適應症療效作為「CKM 是統一症候群」的論證支柱 [文內, Introduction]，而本研究<strong>完全沒有檢驗任何藥物的療效</strong>。此為方向一致的敘事偏差風險，應標注。</p>
+<p><strong>資助者角色（重要且常被忽略）</strong> [文內]：「The American Heart Association <strong>had a role in the collection of the data and review and approval of the manuscript</strong>.」——資助者（同時是 GWTG 計畫擁有者）參與了資料收集<strong>與稿件審閱核准</strong>。雖然同段聲明 AHA 未參與設計、分析、詮釋與投稿決定，但「review and approval of the manuscript」已超出一般純資助角色。</p>
+<hr />
+<h2>2. 文獻 Metadata 整理</h2>
+<table>
+<thead>
+<tr>
+<th>項目</th>
+<th>內容</th>
+<th>來源</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Received date</td>
+<td><strong>文內未提供</strong></td>
+<td>[文內未提供]</td>
+</tr>
+<tr>
+<td>Accepted for Publication</td>
+<td>2026-08-16</td>
+<td>[文內]</td>
+</tr>
+<tr>
+<td>Published Online</td>
+<td>2026-09-30</td>
+<td>[文內]</td>
+</tr>
+<tr>
+<td>投稿→接受天數</td>
+<td><strong>無法計算</strong>（缺 received date）</td>
+<td>—</td>
+</tr>
+<tr>
+<td>接受→線上刊登</td>
+<td><strong>45 天</strong></td>
+<td>自行計算</td>
+</tr>
+<tr>
+<td>期刊接受→刊登中位數</td>
+<td>63 天</td>
+<td>[外部: <a href="https://manusights.com/journals/jama-cardiology">Manusights / JAMA Cardiology 2025 editorial stats</a>]</td>
+</tr>
+<tr>
+<td>期刊 peer review 收稿→首次決定（含審查）中位數</td>
+<td>51 天</td>
+<td>[外部: 同上]</td>
+</tr>
+<tr>
+<td>收稿→刊登中位數</td>
+<td>139 天</td>
+<td>[外部: 同上]</td>
+</tr>
+<tr>
+<td>Impact Factor</td>
+<td>14.1（2024 JCR，2025 公布）</td>
+<td>[外部: 同上]</td>
+</tr>
+<tr>
+<td>期刊分區</td>
+<td>Q1（Cardiac &amp; Cardiovascular Systems）</td>
+<td>[外部]</td>
+</tr>
+<tr>
+<td>接受率</td>
+<td>整體 9%；Original Science 5%</td>
+<td>[外部: 同上]</td>
+</tr>
+<tr>
+<td>Open Access</td>
+<td>否（本 PDF 由成大機構帳號下載）</td>
+<td>[文內 footer]</td>
+</tr>
+<tr>
+<td>邀稿 vs 投稿</td>
+<td>文內未揭露；就 Original Investigation 體例推定為投稿</td>
+<td>[推論]</td>
+</tr>
+</tbody>
+</table>
+<p><strong>解讀</strong>：接受→刊登 45 天，較期刊中位數 63 天為快，屬編輯端加速處理，與「主題熱門 ＋ 樣本數龐大 ＋ 作者群為該領域核心」一致，<strong>不構成品質疑慮</strong>。真正的缺口是<strong>未報告 received date</strong>，使外部讀者無法評估審查歷時——以 JAMA 體系一貫揭露標準而言，這是一個可見的透明度缺漏。</p>
+<p><strong>同期編輯脈絡</strong> [外部: <a href="https://jamanetwork.com/journals/jamacardiology/newonline">JAMA Cardiology new online</a>]：2026-09-30 同日另有 Fonarow 與 McMurray 合著之 editorial「A Polypill Strategy to Close the Heart Failure Treatment Gap」，但該篇<strong>配對的是同日的 polypill 研究，非本文</strong>。</p>
+<hr />
+<h2>3. 研究背景 [僅依文內]</h2>
+<p><strong>既有事實</strong>：CKM 各條件（HF、ASCVD、CKD、糖尿病、肥胖）在族群層級高度盛行且彼此重疊；多向性病理生理可能造成「風險相乘而非相加」；SGLT2i、非類固醇 MRA、incretin 類藥物可同時改善多個 CKM 條件；AHA 科學聲明已提出 CKM 定義與分期系統（HF 歸為 stage 4）[文內, ref 1-7]。</p>
+<p><strong>知識缺口（作者陳述）</strong>：</p>
+<ol>
+<li>既有 CKM overlap 研究主要來自<strong>選擇過的臨床試驗族群</strong>，嚴重多重共病與不利社會決定因素者常被排除 [文內, ref 4, 9, 10]。</li>
+<li>美國真實世界住院心衰竭族群的 CKM 重疊負擔不明。</li>
+<li>CKM overlap 的流行病學與預後意義<strong>是否隨 EF 光譜變化</strong>未知。</li>
+</ol>
+<p><strong>Research question</strong>：住院心衰竭病人中，CKM 多重共病的盛行率為何？其與院內及出院後結果的關聯如何？此關聯是否因 EF 表型而異？[文內, Introduction 末段，陳述明確，無需推論]</p>
+<hr />
+<h2>4. 研究設計與方法</h2>
+<h3>PICO（本研究為暴露—結果關聯，非介入）</h3>
+<table>
+<thead>
+<tr>
+<th>項目</th>
+<th>內容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>P</strong></td>
+<td>美國 GWTG-HF 參與醫院、主診斷為 HF 之住院成人（≥18 歲）。院內分析：2019-01-01 至 2025-06-30，N=725,205。出院後分析：≥65 歲、2019-01-01 至 2023-12-31 存活出院並成功串接 Medicare fee-for-service claims，N=123,271。趨勢分析起始世代：2015-2025，N=895,327，747 家醫院。</td>
+</tr>
+<tr>
+<td><strong>E（暴露）</strong></td>
+<td>額外 CKM 條件數目（0–4）：ASCVD、CKD、糖尿病、肥胖</td>
+</tr>
+<tr>
+<td><strong>C（比較）</strong></td>
+<td>「HF only」= 4 項皆無者（院內世代 n=48,732，6.7%）</td>
+</tr>
+<tr>
+<td><strong>O</strong></td>
+<td>主要：院內死亡、1 年全因死亡、1 年 HF 再住院。次要：LOS &gt;4 天、1 年全因再住院、ESKD/透析住院、MI 住院、stroke 住院</td>
+</tr>
+</tbody>
+</table>
+<h3>暴露定義細節 [文內, Definitions of CKM Conditions]</h3>
+<ul>
+<li><strong>ASCVD</strong>：CAD、既往 MI、既往 PCI、既往 CABG、stroke/TIA、或 PVD 任一之病史。</li>
+<li><strong>CKD</strong>：<strong>出院前最接近之單次 eGFR &lt;60 mL/min/1.73 m²</strong>，或 renal insufficiency 病史、慢性透析、住院中透析。</li>
+<li><strong>DM</strong>：第 1 或第 2 型糖尿病之病史或新診斷（<strong>無 HbA1c / 空腹血糖佐證</strong>，作者於 Limitations 自承）。</li>
+<li><strong>Obesity</strong>：BMI ≥30；優先採<strong>出院時體重</strong>計算（以降低鬱血對 BMI 的影響——此設計考量正確且值得肯定）。</li>
+<li>敏感度分析另納入高血壓、高血脂為第 5、6 項（6-condition model）。</li>
+</ul>
+<h3>統計方法 [文內, Statistical Analysis]</h3>
+<ul>
+<li>趨勢：Mantel-Haenszel trend test，三個預先指定時期（2015-2018 / 2019-2021 / 2022-2025）。</li>
+<li>院內結果：logistic regression，依 EF 表型分層；<strong>GEE + exchangeable working correlation</strong> 處理院內與跨院變異（叢集校正，方法適當）。</li>
+<li>出院後結果：Cox regression；再住院採 <strong>cause-specific Cox</strong>，以死亡為競爭事件；描述性則用 cumulative incidence function + <strong>Gray test</strong>，死亡用 KM + log-rank。</li>
+<li>共變項：「prespecified covariates including demographic data, other medical history, and hospital characteristics <strong>similar to previous GWTG-HF analyses</strong>[13]」——<strong>主文未列出任何一個共變項名稱</strong>。</li>
+<li>CART / random forest 計算 <strong>out-of-bag Gini importance</strong>，以 heat map 呈現（eFigure 4，未提供）。</li>
+<li>缺失值：「Variables with missing data were not imputed in univariate tables. <strong>Observations with greater than 25% missing were excluded.</strong>」</li>
+<li>雙尾 P&lt;.05 為顯著；SAS 9.4。</li>
+</ul>
+<h3>收案與排除 [文內, Study Populations]</h3>
+<p>排除：性別、年齡、eGFR、EF 任一缺失者；心臟移植或 durable VAD 病史者；出院至安寧、自動出院（AMA）、或轉院至其他急性照護機構者。</p>
+<hr />
+<h2>5. 研究結果重點整理</h2>
+<h3>5.1 盛行率（N=725,205，2019-2025）</h3>
+<table>
+<thead>
+<tr>
+<th>條件</th>
+<th>n (%)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ASCVD</td>
+<td>423,072 (58.3%)</td>
+</tr>
+<tr>
+<td>CKD</td>
+<td>451,982 (62.3%)</td>
+</tr>
+<tr>
+<td>糖尿病</td>
+<td>363,773 (50.2%)</td>
+</tr>
+<tr>
+<td>肥胖（BMI ≥30）</td>
+<td>345,551 (47.6%)</td>
+</tr>
+<tr>
+<td><strong>HF only（0 項）</strong></td>
+<td><strong>48,732 (6.7%)</strong></td>
+</tr>
+<tr>
+<td>≥2 項額外 CKM</td>
+<td>521,739 (71.9%)</td>
+</tr>
+<tr>
+<td>4 項全有</td>
+<td>92,222 (12.7%)</td>
+</tr>
+</tbody>
+</table>
+<p>依 EF：HF only 比例 HFrEF 8.6% &gt; HFpEF 5.4% ≈ HFmrEF 5.2%；4 項全有比例 HFpEF 14.6% &gt; HFmrEF 14.3% &gt; HFrEF 10.2%。6-condition 模型下，HF only 僅 14,295 (2.0%)，≥2 項達 666,020 (91.8%)。</p>
+<h3>5.2 院內結果（Table 2 原圖已逐格核對）</h3>
+<table>
+<thead>
+<tr>
+<th>EF</th>
+<th>HF only 死亡率</th>
+<th>4-CKM 死亡率</th>
+<th><strong>絕對差（pp）</strong></th>
+<th>未校正 OR</th>
+<th>校正後 aOR (95% CI)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>HFrEF</td>
+<td>281/26,046 (1.1%)</td>
+<td>1,396/30,916 (4.5%)</td>
+<td><strong>+3.4</strong></td>
+<td>4.73 (4.09-5.46)</td>
+<td><strong>5.08 (4.43-5.83)</strong></td>
+</tr>
+<tr>
+<td>HFmrEF</td>
+<td>51/3,869 (1.3%)</td>
+<td>251/10,650 (2.4%)</td>
+<td><strong>+1.1</strong></td>
+<td>1.92 (1.34-2.75)</td>
+<td><strong>2.37 (1.68-3.34)</strong></td>
+</tr>
+<tr>
+<td>HFpEF</td>
+<td>277/18,817 (1.5%)</td>
+<td>1,054/50,656 (2.1%)</td>
+<td><strong>+0.6</strong></td>
+<td>1.51 (1.30-1.77)</td>
+<td><strong>2.05 (1.77-2.38)</strong></td>
+</tr>
+</tbody>
+</table>
+<p>P for interaction &lt;.001。</p>
+<p><strong>圖/表交叉比對揭露、正文未明說者</strong>：HFpEF 的<strong>未校正</strong>院內死亡率在 1 項之後即<strong>不再上升</strong>：1.5% → 2.0% → 2.3% → 2.2% → 2.1%；對應未校正 OR 1.40 → 1.62 → <strong>1.57 → 1.51</strong>（於 2 項達峰後下降）。<strong>單調遞增的 HFpEF 梯度完全是多變量校正製造出來的</strong>（校正後 1.50 → 1.86 → 2.00 → 2.05）。正文僅以「These patterns were consistent after multivariable adjustment」帶過，與原始數據不符。</p>
+<p>LOS &gt;4 天：HFrEF 43.1% → 57.0%（aOR 1.75），HFmrEF 40.1% → 52.8%（1.68），HFpEF 41.8% → 53.3%（1.55）；P for interaction = .004。此終點的梯度在三種 EF 皆單調且穩健，為本文最一致的院內發現。</p>
+<h3>5.3 出院後 1 年結果（Medicare，N=123,271；Table 3 原圖逐格核對）</h3>
+<p><strong>1 年全因死亡——本文最關鍵、也最被低報的結果</strong></p>
+<table>
+<thead>
+<tr>
+<th>EF</th>
+<th>HF only</th>
+<th>1</th>
+<th>2</th>
+<th>3</th>
+<th>4</th>
+<th>絕對變化</th>
+<th>未校正 HR (4 項)</th>
+<th>校正 aHR (4 項)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>HFrEF</td>
+<td>24.2%</td>
+<td>32.2%</td>
+<td>39.0%</td>
+<td>40.6%</td>
+<td>40.8%</td>
+<td><strong>+16.6 pp</strong></td>
+<td>1.87 (1.72-2.04)</td>
+<td>2.10 (1.93-2.29)</td>
+</tr>
+<tr>
+<td>HFmrEF</td>
+<td>29.8%</td>
+<td>33.6%</td>
+<td>36.1%</td>
+<td>35.7%</td>
+<td>33.2%</td>
+<td><strong>+3.4 pp（非單調，峰在 2 項）</strong></td>
+<td><strong>1.13 (0.96-1.33)</strong> ← 跨越 1</td>
+<td>1.38 (1.17-1.63)</td>
+</tr>
+<tr>
+<td>HFpEF</td>
+<td>34.0%</td>
+<td>34.5%</td>
+<td>33.9%</td>
+<td>32.4%</td>
+<td><strong>30.0%</strong></td>
+<td><strong>−4.0 pp（下降）</strong></td>
+<td><strong>0.85 (0.80-0.91)</strong> ← <strong>顯著保護</strong></td>
+<td>1.09 (1.03-1.17)</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong>這是本文最重要的單一發現，而作者在正文中從未直接陳述</strong>：在 HFpEF，CKM 條件越多，<strong>原始 1 年死亡率越低</strong>；未校正 HR 在 3 項（0.94, 0.89-0.99）與 4 項（0.85, 0.80-0.91）<strong>達到統計顯著的保護方向</strong>。只有在多變量校正之後，方向才被翻轉為 1.09 (1.03-1.17)。HFmrEF 的未校正 HR 同樣在 4 項時回落並跨越無效線。</p>
+</blockquote>
+<p><strong>1 年 HF 再住院——本文最穩健的發現</strong></p>
+<table>
+<thead>
+<tr>
+<th>EF</th>
+<th>HF only</th>
+<th>4 項</th>
+<th>絕對差</th>
+<th>aHR (4 項)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>HFrEF</td>
+<td>20.4%</td>
+<td>39.8%</td>
+<td><strong>+19.4 pp</strong></td>
+<td>2.33 (2.12-2.56)</td>
+</tr>
+<tr>
+<td>HFmrEF</td>
+<td>18.7%</td>
+<td>36.4%</td>
+<td><strong>+17.7 pp</strong></td>
+<td>2.20 (1.82-2.66)</td>
+</tr>
+<tr>
+<td>HFpEF</td>
+<td>19.9%</td>
+<td>34.7%</td>
+<td><strong>+14.8 pp</strong></td>
+<td>1.91 (1.77-2.06)</td>
+</tr>
+</tbody>
+</table>
+<p>三種 EF 的未校正與校正估計方向一致、單調遞增、絕對差皆 &gt;14 個百分點。<strong>此終點的結論可信。</strong></p>
+<p><strong>1 年 ESKD/透析住院——結構性同義反覆（見 C4）</strong></p>
+<p>HF only 0.2–0.8% vs 4 項 14.6–15.1%；aHR 自 12.37 (8.96-17.08)〔HFpEF〕至 <strong>50.00 (12.63-197.94)</strong>〔HFmrEF〕。CI 橫跨近 16 倍。</p>
+<p><strong>MI / Stroke</strong>：MI 隨 CKM 數遞增（HFpEF aHR 3.55, 2.48-5.08；P for interaction &lt;.001），stroke 則<strong>跨 EF 一致且多數跨越無效線</strong>（HFrEF 4 項 1.55, 1.03-2.35；HFmrEF 1.00, 0.51-1.97；HFpEF 1.34, 0.99-1.81；P for interaction = .74）。</p>
+<h3>5.4 基線特徵的關鍵不對稱（Table 1 原圖）</h3>
+<table>
+<thead>
+<tr>
+<th>特徵</th>
+<th>HF only (n=48,732)</th>
+<th>4 CKM (n=92,222)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>年齡中位數</td>
+<td>69 (57-83)</td>
+<td>71 (63-78)</td>
+</tr>
+<tr>
+<td><strong>近一年吸菸</strong></td>
+<td><strong>29.3%</strong></td>
+<td><strong>11.4%</strong></td>
+</tr>
+<tr>
+<td><strong>自費/無保險/未記錄</strong></td>
+<td><strong>7.3%</strong></td>
+<td><strong>1.6%</strong></td>
+</tr>
+<tr>
+<td>BMI 中位數（入院/出院）</td>
+<td>25.0 / <strong>24.4</strong></td>
+<td>36.5 / 36.0</td>
+</tr>
+<tr>
+<td>eGFR 中位數（出院）</td>
+<td>82</td>
+<td>35</td>
+</tr>
+<tr>
+<td>入院心率</td>
+<td>95 bpm</td>
+<td>80 bpm</td>
+</tr>
+<tr>
+<td>入院 SBP</td>
+<td>135</td>
+<td>142</td>
+</tr>
+<tr>
+<td><strong>BNP 中位數</strong></td>
+<td><strong>1,021</strong></td>
+<td><strong>636</strong></td>
+</tr>
+<tr>
+<td>血紅素</td>
+<td>12.9</td>
+<td>10.8</td>
+</tr>
+<tr>
+<td>既往 HF</td>
+<td>56.0%</td>
+<td>89.0%</td>
+</tr>
+<tr>
+<td>ICD (ICD/CRT-D)</td>
+<td>5.6%</td>
+<td>15.2%</td>
+</tr>
+<tr>
+<td>高血壓</td>
+<td>66.0%</td>
+<td>94.0%</td>
+</tr>
+</tbody>
+</table>
+<p><strong>GDMT 出院處方</strong>：ARNI 18.1% → 11.3%；ACEI/ARB 42.9% → 26.9%；<strong>MRA 36.3% → 21.9%</strong>；β-blocker 76.2% → <strong>81.3%</strong>（反向）；<strong>SGLT2i 20.9% → 19.7%（幾乎無梯度，整體僅 20.3%）</strong>。</p>
+<hr />
+<h2>6. 作者討論與評論重點</h2>
+<p><strong>作者主要訊息</strong>：</p>
+<ol>
+<li>真實世界住院 HF 族群的 CKM 重疊<strong>遠高於臨床試驗族群</strong>（GWTG-HF 中 HFmrEF/HFpEF 近 95% 有 ≥1 項 CKM，vs 5 個主要 RCT 合併分析約 75%；TOPCAT 27.3% 無額外 CKM vs FINEARTS-HF 16.6%）。</li>
+<li>「isolated HF has become a clinical rarity」，應從 heart-centric 轉向 holistic multiorgan 架構。</li>
+<li>存在 <strong>risk-treatment paradox</strong>：CKM 負擔越重者反而越少拿到 RAASi 與 MRA。</li>
+<li>CKM 多重共病的預後衝擊<strong>在 HFrEF 最陡、HFpEF 最弱</strong>；作者以「HFrEF 基線 CKM 負擔較低，故每增加一項的相對衝擊被放大」及「HFpEF 與 CKM 經由 adipokine hypothesis 病理生理交織、界線本就模糊」解釋。</li>
+</ol>
+<p><strong>作者自陳限制</strong> [文內, Limitations]：</p>
+<ol>
+<li>出院後分析僅限 fee-for-service Medicare，外推至年輕族群與其他保險不明。</li>
+<li>GWTG-HF 參與為自願，醫院代表性有限（但引用 ref 23 主張具廣泛代表性）。</li>
+<li>CKM 條件依現有註冊變項判定，<strong>無法捕捉次臨床疾病</strong>（無症狀 ASCVD、以 albuminuria 定義的 CKD）；糖尿病無客觀實驗室標記；高血壓/高血脂依病史記錄，可靠度較低且可能高估——故主分析採 4-condition 定義。</li>
+</ol>
+<p><strong>[評估] 限制段的誠實度與遺漏</strong></p>
+<p>作者誠實處：明確承認 CKM 定義不完整會<strong>低估</strong>真實重疊，並以此合理化 4-condition 主分析；此推理方向正確且自我不利，值得肯定。</p>
+<p>但限制段<strong>完整遺漏了四項對結論威脅最大的問題</strong>：</p>
+<ol>
+<li><strong>完全未提及 HFpEF 的未校正死亡率隨 CKM 增加而下降、且 4 項未校正 HR 為 0.85 (0.80-0.91)</strong>。作者在 Results 僅寫 HFmrEF/HFpEF「appeared to be a plateau of risk between 2 and 4」——以「plateau（持平）」描述一個達統計顯著的<strong>下降</strong>，是明顯的淡化措辭。</li>
+<li><strong>未揭露校正模型的共變項清單</strong>（主文僅以 ref 13「similar to previous GWTG-HF analyses」帶過）。既然結論的方向性在 HFpEF 完全取決於校正，不揭露校正集等於讀者無法複核最關鍵的那一步。</li>
+<li><strong>未討論殘餘混淆與未測混淆</strong>；無 E-value、無負對照、無任何定量偏差分析。</li>
+<li><strong>未討論 ESKD 終點的循環性</strong>（CKD 同時是暴露成分與結果的直接前驅）。</li>
+</ol>
+<p><strong>作者解釋是否合理</strong>：對 HFrEF 梯度最陡的「基線負擔較低、相對衝擊放大」解釋在相對尺度上成立，但作者未檢驗<strong>絕對尺度</strong>。就 1 年死亡而言，絕對風險差為 HFrEF +16.6pp、HFmrEF +3.4pp、HFpEF <strong>−4.0pp</strong>——不是「程度不同」，而是<strong>方向不同</strong>。因此「Although these associations spanned the EF spectrum」（Conclusions）這句話，就 1 年死亡率而言是<strong>不成立的</strong>。</p>
+<p><strong>臨床建議是否超出數據</strong>：是。Conclusions 的「<strong>Strategies aimed at optimizing GDMT utilization... are warranted to improve clinical outcomes</strong>」是一個介入性因果主張，本研究沒有任何療效比較設計、沒有 target trial、沒有處理治療選擇偏差，無法支持此句。</p>
+<hr />
+<h2>7. 外部專業意見</h2>
+<p><strong>[無法取得]</strong>——經以下途徑檢索，<strong>未發現任何針對本文的同期 editorial / invited commentary / comment</strong>：</p>
+<ul>
+<li>PubMed 以 <code>find_related_articles</code> 查詢 PMID 42814450 之連結文獻：無 comment-on 關係之編輯評論 [外部: PubMed]。</li>
+<li>PubMed 限定 <em>JAMA Cardiol</em>、2026-09-30 之後、Publication Type = Editorial 或 Comment：<strong>0 筆</strong> [外部: PubMed]。</li>
+<li>PubMed 以 CKM + heart failure + Editorial/Comment 檢索（2026 起）僅得 4 筆，均為其他文章之評論（JACC Heart Fail、Eur J Heart Fail），<strong>與本文無 comment-on 關係</strong> [外部: PubMed]。</li>
+<li>檢視 <em>JAMA Cardiology</em> online-first 頁面：2026-09-30 同日確有一篇 editorial（Fonarow &amp; McMurray, &quot;A Polypill Strategy to Close the Heart Failure Treatment Gap&quot;），但其配對對象為同日之 polypill 研究，<strong>非本文</strong> [外部: <a href="https://jamanetwork.com/journals/jamacardiology/newonline">JAMA Cardiology new online</a>]。</li>
+</ul>
+<p>由於<strong>未取得任何針對本文之評論 DOI</strong>，依指示未對任何 DOI 執行全文擷取。本文目前無可引用的第三方專業評論。</p>
+<hr />
+<h2>8. 臨床建議</h2>
+<p><strong>可採用的情境</strong></p>
+<ol>
+<li><strong>醫療品質與資源規劃</strong>：以「住院 HF 病人中 ≥2 項額外 CKM 條件者約 72%、單純 HF 不到 7%」作為科內/院內共病負擔的基準數據，用以設計跨科（心臟—腎臟—內分泌）共管流程與人力配置。此為描述性數據，偏差風險最低。</li>
+<li><strong>出院前風險分層與衛教強度分配</strong>：CKM 條件數與 <strong>1 年 HF 再住院</strong> 的關聯在三種 EF 皆穩健（絕對差 +14.8 至 +19.4 pp）。可直接用於決定出院後追蹤密度、遠距監測、心衰竭護理師介入優先序。</li>
+<li><strong>HFrEF 病人的短期風險溝通</strong>：HFrEF 合併 4 項 CKM 者院內死亡率 4.5%（vs 單純 HFrEF 1.1%）、1 年死亡 40.8%（vs 24.2%）。此為未校正的真實事件率，可直接用於與病人及家屬的預後討論與 advance care planning 啟動時機。</li>
+<li><strong>檢視自家 SGLT2i 處方率</strong>：本研究中 SGLT2i 出院處方僅 20.3%，且<strong>不隨 CKM 負擔上升</strong>——即使對同時有 CKD 與糖尿病、理當三重受益的病人亦然。這是本文最具可操作性的品質缺口。</li>
+</ol>
+<p><strong>不建議直接套用的情境</strong></p>
+<ol>
+<li><strong>不要用本文宣稱「HFpEF 的 CKM 共病數可預測死亡」</strong>。原始數據方向相反（CKM 越多，1 年死亡率越低，30.0% vs 34.0%），1.09 (1.03-1.17) 的「風險」完全由模型校正產生。在門診面對 HFpEF 病人時，用 CKM 條件數預測死亡<strong>沒有實證基礎</strong>。</li>
+<li><strong>不要外推至台灣族群</strong>。GWTG-HF 為美國自願參與醫院；出院後分析限 ≥65 歲 fee-for-service Medicare（中位年齡 80 歲、女性 52.2%、以非西班牙裔白人為主 62.7%）。台灣 HF 族群在年齡結構、BMI 分布（肥胖盛行率遠低於美國 47.6%）、CKD 盛行率與健保給付環境皆顯著不同；其中<strong>肥胖</strong>作為 CKM 條件之一，在 BMI 分布迥異的族群中權重完全不可轉移。</li>
+<li><strong>不要將「CKM 多重共病 → 死亡」理解為因果，也不要將「GDMT 用得少 → 結果差」理解為因果</strong>。本研究無法支持任何一項介入能改變結果。</li>
+<li><strong>不要用 ESKD 的 aHR（最高 50.00）做任何臨床溝通</strong>——該數字是定義循環的產物（見 C4）。</li>
+<li><strong>不要據此認為「CKM 負擔重者應更積極用 RAASi/MRA」就是單純的品質缺口</strong>。該族群 eGFR 中位數僅 35、45.8% 有 renal insufficiency 病史、8.3% 已在慢性透析；RAASi/MRA 使用率下降有相當部分屬<strong>臨床適當的禁忌與安全考量</strong>，不等同於照護品質不良。真正難以用禁忌解釋的是 SGLT2i。</li>
+</ol>
+<p><strong>給臨床醫師的 3 點實務建議</strong></p>
+<ol>
+<li><strong>對住院 HF 病人，把「有幾項 CKM 條件」當作出院後再住院風險的分層工具，而非死亡風險工具</strong>；4 項全有者應視為 1 年 HF 再住院率 35–40% 的高風險群，出院前即安排 7–14 天內回診。</li>
+<li><strong>把 SGLT2i 的處方決策與腎功能脫鉤重新檢視</strong>。本研究顯示 SGLT2i 處方率在各 CKM 階層皆僅約 20%，是唯一一個「越該用、卻沒有越常用」且缺乏禁忌理由的藥物類別——這是科內稽核最值得先切入的單一指標。</li>
+<li><strong>在 HFpEF 病人身上，不要把共病數目當作預後指標</strong>；該族群中真正驅動 1 年死亡的更可能是非 CKM 因素（衰弱、惡病質、類澱粉沉積、非心因性死因），本研究的「HF only」HFpEF 組 1 年死亡率高達 34.0%、高於 HFrEF 的 24.2%，本身就是這個訊號。</li>
+</ol>
+<p><strong>研究證據強度分級</strong></p>
+<table>
+<thead>
+<tr>
+<th>面向</th>
+<th>分級</th>
+<th>理由</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>CKM 重疊之<strong>盛行率</strong>描述</td>
+<td><strong>中—強</strong></td>
+<td>樣本極大、前瞻性標準化 CRF 收案、定義透明；受限於 CKD 以單次 eGFR 判定、糖尿病無實驗室佐證</td>
+</tr>
+<tr>
+<td>CKM 負擔 ↔ <strong>1 年 HF 再住院</strong></td>
+<td><strong>中</strong></td>
+<td>未校正與校正一致、三 EF 皆單調、絕對差大；受限於觀察性設計與殘餘混淆</td>
+</tr>
+<tr>
+<td>CKM 負擔 ↔ <strong>HFrEF 死亡</strong></td>
+<td><strong>中</strong></td>
+<td>未校正絕對差 +16.6pp、方向穩定；但 3→4 項在未校正下已持平（1.87 → 1.87）</td>
+</tr>
+<tr>
+<td>CKM 負擔 ↔ <strong>HFpEF/HFmrEF 死亡</strong></td>
+<td><strong>弱</strong></td>
+<td>未校正方向相反或無效；結論完全由未揭露的校正模型決定</td>
+</tr>
+<tr>
+<td>CKM 負擔 ↔ <strong>ESKD</strong></td>
+<td><strong>不可採信</strong></td>
+<td>定義循環</td>
+</tr>
+<tr>
+<td>「擴大 GDMT 可改善結果」</td>
+<td><strong>無（本研究不提供證據）</strong></td>
+<td>無療效設計</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<hr />
+<h1>SKILL-A：觀察性研究批判性評讀</h1>
+<h2>A. 補充技術細節</h2>
+<table>
+<thead>
+<tr>
+<th>項目</th>
+<th>本文狀態</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>樣本數估算 / power</td>
+<td>無，亦不需要（既有資料庫全量分析）。但<strong>反向問題存在</strong>：n=725,205 下，任何微小差異皆達 P&lt;.001，詳見 C4 overpowered 評估</td>
+</tr>
+<tr>
+<td>共變項完整清單</td>
+<td><strong>主文完全未列出</strong>；僅「prespecified covariates including demographic data, other medical history, and hospital characteristics similar to previous GWTG-HF analyses[13]」。<strong>嚴重透明度缺漏</strong></td>
+</tr>
+<tr>
+<td>是否校正連續 eGFR / 連續 BMI</td>
+<td><strong>未說明</strong>。若有，構成 over-adjustment（校正掉暴露本身），見 B3</td>
+</tr>
+<tr>
+<td>叢集校正</td>
+<td>GEE + exchangeable working correlation（院內結果）；出院後 Cox 模型是否做叢集校正<strong>未說明</strong></td>
+</tr>
+<tr>
+<td>競爭風險</td>
+<td>再住院採 cause-specific Cox；描述用 CIF + Gray test。<strong>推論模型與描述方法不一致</strong>（cause-specific vs subdistribution），見 C4</td>
+</tr>
+<tr>
+<td>比例風險假設檢驗</td>
+<td><strong>完全未報告</strong>。1 年追蹤、事件率 30-40%，PH 違反可能性高</td>
+</tr>
+<tr>
+<td>缺失資料</td>
+<td>「Variables with missing data were not imputed in univariate tables. Observations with greater than 25% missing were excluded.」——<strong>語意不清</strong>（是變項還是觀察值？25% 的分母為何？）；主模型是否插補<strong>未說明</strong></td>
+</tr>
+<tr>
+<td>多重比較</td>
+<td><strong>無任何校正</strong>。本文含 7 個終點 × 3 個 EF 層 × 5 個暴露層 ＋ 15 種 CKM 組合型態（eTables 4-11）＋ 6-condition 敏感度分析，推估數百個檢定</td>
+</tr>
+<tr>
+<td>Sensitivity / bias analysis</td>
+<td>僅 6-condition 模型。<strong>無 E-value、無負對照、無未測混淆定量評估、無 propensity 法交叉驗證</strong></td>
+</tr>
+<tr>
+<td>STROBE flow</td>
+<td>主文無圖；eTable 1（未提供）。<strong>無法核對任一層排除人數</strong></td>
+</tr>
+</tbody>
+</table>
+<h3>混淆控制方法評估（觀察性子模組）</h3>
+<table>
+<thead>
+<tr>
+<th>方法</th>
+<th>本文是否採用</th>
+<th>強度</th>
+<th>關鍵要求是否滿足</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>多變量迴歸</td>
+<td>✅ 唯一方法</td>
+<td>中</td>
+<td><strong>無法判定</strong>——共變項清單未揭露；且核心混淆因子（衰弱、認知功能、社經、HF 病程、心因性 vs 非心因性死因、NYHA、營養狀態）在 GWTG-HF CRF 中本就不存在</td>
+</tr>
+<tr>
+<td>Propensity score</td>
+<td>❌</td>
+<td>—</td>
+<td>—</td>
+</tr>
+<tr>
+<td>Instrumental variable</td>
+<td>❌</td>
+<td>—</td>
+<td>—</td>
+</tr>
+<tr>
+<td>定量偏差分析</td>
+<td>❌</td>
+<td>—</td>
+<td>—</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>依 JAMA Users' Guide 的三項檢核 [參考: <code>jama_agoritsas_2017_ug_160001.md</code>, Box 1「Users' Guide to an Adjusted Analysis」]：(1) 是否辨識所有已知預後因子？——<strong>否</strong>，衰弱、惡病質、非心因性死因、腫瘤共病等皆未收集；(2) 是否準確測量？——<strong>部分否</strong>，CKD 以單次 eGFR 判定、DM 無實驗室佐證；(3) 是否全數納入校正？——<strong>無法判定</strong>，清單未揭露。三項皆未能通過。</p>
+</blockquote>
+<blockquote>
+<p>同一份 Users' Guide 並明確指出：「<strong>Adjustment can also work the other way around, by increasing or revealing an association when the unadjusted analysis showed little or no apparent effect</strong>」[參考: <code>jama_agoritsas_2017_ug_160001.md</code>, &quot;Understanding Stratification and Adjustment&quot; 節]。本文 HFpEF 的 1 年死亡結果正是這段敘述的教科書實例——而作者未將其識別為需要特別檢驗的情境。該 Guide 另引用 meta-epidemiologic 證據指出，使用常規收集資料的觀察性研究其死亡率估計較後續 RCT 系統性地<strong>更有利 31%</strong>（relative OR 1.31, 95% CI 1.03-1.65），提醒讀者對此類估計整體折價。</p>
+</blockquote>
+<hr />
+<h2>B. 批判性評估（四大面向）</h2>
+<h3>B1. 假說與理論邏輯</h3>
+<p><strong>(1) 暴露的操作化與其所宣稱的構念不匹配</strong></p>
+<ul>
+<li>問題：作者以「CKM 條件數（0-4）」作為「CKM syndrome 嚴重度」的代理，隱含<strong>四個條件等權重</strong>。</li>
+<li>文內證據：Table 2、Table 3 皆以條件「數目」為主要暴露；但 eTables 4-11 的型態分析（僅見正文轉述）顯示「for a given number of CKM conditions, the presence of CKD was associated with worse outcomes than profiles without CKD」[文內, E9]，CART 亦顯示 CKD 在幾乎所有終點 Gini importance 最高。</li>
+<li><strong>作者自己的數據證明等權重假設不成立</strong>，卻仍以條件數作為主要暴露與摘要結論。具體例證（文內 E9）：ASCVD+CKD 兩項組合的院內死亡 aOR 在 HFpEF 為 2.48 (2.14-2.88)，<strong>高於該 EF 層任何四項全有的 2.05 (1.77-2.38)</strong>——條件「更少」卻風險更高，直接否證劑量—反應的詮釋。</li>
+<li>風險方向：使摘要與結論的「stepwise」敘事看起來比實際更乾淨。</li>
+<li>需要什麼才放心：以加權分數（或至少以 CKD 有無分層）為主要暴露，並在摘要陳述 CKD 的主導地位。</li>
+</ul>
+<p><strong>(2) 肥胖被編碼為「風險條件」，與 HF 族群的既知流行病學方向相反</strong></p>
+<ul>
+<li>問題：在住院心衰竭族群中，高 BMI 與<strong>較低</strong>死亡率穩定相關（obesity paradox）；將 BMI≥30 計為一個「有害」CKM 條件，在數學上必然把低風險者推入高暴露組。</li>
+<li>文內證據：HF only 組出院 BMI 中位數 <strong>24.4</strong>（IQR 21.6-27.1），4-CKM 組 36.0；而 HFpEF 的未校正 1 年死亡在 4-CKM 組為 30.0% vs HF only 34.0%。</li>
+<li>風險方向：<strong>在 HFpEF/HFmrEF 使未校正關聯趨向保護</strong>；作者的校正把它翻正，但校正是否恰當無從檢驗。</li>
+<li>作者僅在討論盛行率時承認「our inclusion of obesity as a defining CKM condition may have led to a higher estimated CKM burden」[文內, E12]——只談盛行率的影響，<strong>完全未談對結果估計方向的影響</strong>。</li>
+<li>需要什麼才放心：預先指定的 obesity-excluded 敏感度分析（3-condition: ASCVD/CKD/DM）並報告結果估計，而非僅報告盛行率。作者明確提到有做此計算但<strong>只報告了盛行率</strong>：「Even under a more restrictive definition incorporating only ASCVD, diabetes, and CKD, the prevalence of isolated HF remains lower than...」[文內, E12]——<strong>選擇性報告的明確痕跡</strong>。</li>
+</ul>
+<p><strong>最可能成立的機轉（1-3 點）</strong></p>
+<ol>
+<li>腎功能惡化（CKD）作為共同終末路徑，同時反映鬱血嚴重度、神經荷爾蒙活化與 GDMT 可用性受限——此機轉有本文數據直接支持（CART 中 CKD 於絕大多數終點居首；給定條件數下含 CKD 者結果較差）。</li>
+<li>共病累積限制 GDMT 可用劑量與種類（MRA 36.3% → 21.9%），形成「風險—治療反向關係」。</li>
+<li>HFrEF 中 CKM 條件與心肌損傷機轉（缺血性病因 84.5% vs HF only 0%）直接重疊，使 CKM 計數在 HFrEF 實質上也是「缺血性心肌病變」的代理。</li>
+</ol>
+<p><strong>最可疑的敘事跳躍（1-3 點）</strong></p>
+<ol>
+<li><strong>「risk-treatment paradox」的標籤化</strong>：文中以「<strong>paradoxically</strong> less likely to receive GDMT」[文內, E12] 描述 RAASi/MRA 使用下降，但 4-CKM 組出院 eGFR 中位數 35、45.8% 有腎功能不全病史、8.3% 已慢性透析——<strong>這在很大程度上是適應症與安全性的正當結果，不是矛盾</strong>。作者雖引用 ref 16,17 主張 GDMT 在 CKD/DM 中仍有效安全，但那些試驗的 eGFR 入選下限普遍高於本族群的中位數。把它命名為 paradox，是把臨床判斷重新框架為品質缺失。</li>
+<li><strong>從「HF only 罕見」跳到「應轉向 holistic multiorgan framework」</strong>：盛行率高本身不蘊含任何照護模式的優越性；此處把描述性事實當作介入建議的充分理由。</li>
+<li><strong>Introduction 以 SGLT2i/finerenone/incretin 的跨適應症療效論證「CKM 是統一症候群」</strong>[文內, ref 2-7]，但本研究未檢驗任何藥物療效；該論證對本文結果不具支持關係，功能上是在為 Discussion 的用藥呼籲鋪路。</li>
+</ol>
+<h3>B2. 受試者與外推性</h3>
+<p><strong>代表性</strong>：GWTG-HF 涵蓋 747 家美國醫院、895,327 人次，為自願參與的品質改善註冊，作者引用 ref 23 主張具廣泛代表性 [文內]。此主張的證據來自外部文獻，但<strong>由資料庫管理團隊自行引用以支持自家資料庫</strong>，應保留折扣。</p>
+<p><strong>出院後世代的三重選擇</strong>（Medicare 分析 N=123,271）：</p>
+<ol>
+<li><strong>年齡 ≥65 歲</strong>（中位 80 歲，IQR 73-87）；</li>
+<li><strong>fee-for-service</strong>（排除 Medicare Advantage，後者在美國已超過半數老年人口，且 MA 參加者的健康狀態與社經分布系統性不同）；</li>
+<li><strong>存活出院</strong>。</li>
+</ol>
+<p>第 3 點值得特別說明方向：院內死亡率在 HFrEF 4-CKM 組達 4.5%、HF only 僅 1.1%，因此<strong>最高風險的 HFrEF 高 CKM 病人被差別性地從出院後世代移除</strong>。這會使出院後的 HFrEF 梯度<strong>向無效方向偏移</strong>——而該梯度<strong>仍是三組中最陡</strong>。這點<strong>強化</strong>（而非削弱）HFrEF 結論的可信度，作者未指出此有利於自己的論點，屬於未善用的辯護。</p>
+<p>另外，<strong>Medicare 串接率完全未報告</strong>：文中僅述「linked... using a validated approach[12]」，未給出符合資格者分母、成功串接比例、或串接失敗者與成功者的特徵比較。若串接率與醫院特性或社經狀態相關，將引入未評估的選擇偏差。</p>
+<p><strong>外推性分級</strong></p>
+<table>
+<thead>
+<tr>
+<th>目標族群</th>
+<th>分級</th>
+<th>說明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>美國住院 HF 病人（盛行率）</td>
+<td><strong>高</strong></td>
+<td>設計目的即此，樣本涵蓋面廣</td>
+</tr>
+<tr>
+<td>美國 ≥65 歲 FFS Medicare 出院 HF 病人（預後）</td>
+<td><strong>中—高</strong></td>
+<td>與研究族群一致</td>
+</tr>
+<tr>
+<td>美國 &lt;65 歲 / Medicare Advantage / 商業保險 HF 病人</td>
+<td><strong>低—中</strong></td>
+<td>作者自承；且 HF only 組自費/無保險比例 7.3% vs 4-CKM 組 1.6%，保險狀態與暴露強烈相關</td>
+</tr>
+<tr>
+<td><strong>台灣住院 HF 病人</strong></td>
+<td><strong>低</strong></td>
+<td>肥胖盛行率（本文 47.6%）與台灣差距極大，直接改變暴露的組成與分布；年齡結構、透析盛行率、GDMT 給付規則皆不同</td>
+</tr>
+<tr>
+<td>門診 / 慢性穩定期 HF</td>
+<td><strong>低</strong></td>
+<td>本文為住院世代，BNP 中位數 831 pg/mL，為急性失代償族群</td>
+</tr>
+<tr>
+<td>任何「改變治療可改善結果」的推論</td>
+<td><strong>不適用</strong></td>
+<td>設計不支持</td>
+</tr>
+</tbody>
+</table>
+<h3>B3. 研究設計與偏差（最可能造成偏差的三個設計點）</h3>
+<h4>偏差點 1（最嚴重）：校正模型未揭露，而結論方向性完全取決於它</h4>
+<ul>
+<li><strong>文內證據</strong>：方法學僅寫「prespecified covariates including demographic data, other medical history, and hospital characteristics similar to previous GWTG-HF analyses[13]」[文內, Statistical Analysis]。主文、Table 1-3、Figure 1-2 均無共變項清單。</li>
+<li><strong>為何致命</strong>：Table 3 顯示 HFpEF 1 年死亡的未校正 HR 為 1.02 / 0.99 / <strong>0.94 (0.89-0.99)</strong> / <strong>0.85 (0.80-0.91)</strong>，校正後翻轉為 1.03 / 1.06 / 1.12 / 1.09。<strong>這不是衰減，是反號</strong>。讀者若要判斷哪一個版本更接近真相，唯一的途徑就是檢視校正集——而該資訊不在論文裡。</li>
+<li><strong>最可能的機制（[推論]，依據 Table 1 數據）</strong>：若模型納入<strong>連續 BMI</strong> 與<strong>連續 eGFR</strong> 作為共變項，則等於在校正「肥胖」與「CKD」這兩個暴露成分本身（over-adjustment / adjusting away the exposure）。校正掉連續 BMI 會移除 obesity paradox 的保護效果，剩餘的「肥胖」指標便可能呈現殘餘有害關聯。本文無法排除此解釋，因為 Table 1 同時列出連續 BMI 與連續 eGFR，暗示它們是可用的模型輸入。</li>
+<li><strong>風險方向</strong>：在 HFpEF/HFmrEF 使關聯由無效/保護<strong>人為轉為有害</strong>；在 HFrEF 使關聯<strong>放大</strong>（未校正 1.87 → 校正 2.10）。注意：在所有三個 EF 層，校正一律把估計推向「更有害」，<strong>無一例外</strong>。一個校正集若在每一層、每一個終點都朝同一方向移動估計，這本身就是需要解釋的訊號。</li>
+<li><strong>需要什麼才放心</strong>：完整共變項清單、明確聲明是否納入連續 eGFR / BMI、以及一組刻意排除暴露成分變項的敏感度模型。</li>
+</ul>
+<h4>偏差點 2：「HF only」參考組不是乾淨的對照，而是一個被定義出來的異質高風險群</h4>
+<ul>
+<li><strong>文內證據（Table 1 原圖）</strong>：HF only 組的近一年吸菸率 <strong>29.3%</strong>（全世代最高，4-CKM 組僅 11.4%）、自費/無保險 <strong>7.3%</strong>（4-CKM 組 1.6%）、出院 BMI 中位數 <strong>24.4</strong>、入院心率 95 bpm（最快）、<strong>BNP 中位數 1,021 pg/mL（全世代最高）</strong>、既往 HF 僅 56.0%（最低，即最多新發 HF）、ICD/CRT-D 僅 5.6%。</li>
+<li><strong>構念上的問題</strong>：本研究的「0 項 CKM」不是「健康的 HF」，而是「<strong>沒有 ASCVD、eGFR≥60、沒有糖尿病、BMI&lt;30 的 HF</strong>」。符合這四項的美國住院 HF 病人，實務上富集了：吸菸相關/酒精性/病毒性/化療相關心肌病變、心臟類澱粉沉積、惡病質、惡性腫瘤共病、以及未受保險照護者。這些都是<strong>與高死亡率相關但未被測量</strong>的狀態。</li>
+<li><strong>直接佐證</strong>：HFpEF 的「HF only」組 1 年死亡率 <strong>34.0%</strong>，<strong>高於 HFrEF 的「HF only」組 24.2%</strong>。瘦、腎功能正常、無糖尿病、無 ASCVD 的 HFpEF 老年住院病人死亡率高達三分之一——這幾乎只能以非 CKM 因素（類澱粉、衰弱、惡病質、腫瘤）解釋。參考組被污染，整個 HFpEF 梯度的基準即不可靠。</li>
+<li><strong>風險方向</strong>：<strong>壓低所有 aOR/aHR</strong>（參考組事件率被抬高），在 HFpEF 層尤其嚴重，可能是未校正梯度呈現保護方向的主因之一。</li>
+<li><strong>需要什麼才放心</strong>：報告 HF 病因學分布（特別是心臟類澱粉、化療相關心肌病變）、惡性腫瘤共病、衰弱指標，並以之敏感度分析。</li>
+</ul>
+<h4>偏差點 3：單次出院前 eGFR 定義 CKD，使「CKD」同時成為急性嚴重度指標</h4>
+<ul>
+<li><strong>文內證據</strong>：「CKD was defined as an eGFR less than 60 mL/min/1.73 m² <strong>at the time closest to discharge</strong>, or history of renal insufficiency, chronic dialysis, or in-hospital dialysis」[文內, Definitions]。Table 1 顯示 renal insufficiency <strong>病史</strong>僅 24.2%，而 CKD 判定為 <strong>62.3%</strong>——即約<strong>六成的 CKD 標記來自單次 eGFR 值，而非既有腎病診斷</strong>。</li>
+<li><strong>為何致命</strong>：在急性失代償心衰竭住院中，出院前 eGFR 深受鬱血、利尿劑反應、心腎症候群、低灌流影響。單次 eGFR&lt;60 無法區分「慢性腎病」與「本次住院的急性腎損傷 / 嚴重血流動力學障礙」。KDIGO 要求 ≥3 個月持續性方可診斷 CKD——本文無此條件，亦無 albuminuria（作者僅在限制段提及缺 albuminuria 會<strong>低估</strong> CKD，卻未提及缺持續性判準會<strong>高估</strong>並污染構念）。</li>
+<li><strong>風險方向</strong>：使 CKD 成為「本次住院嚴重度」的代理，<strong>系統性放大 CKD 的表觀預後重要性</strong>。這同時可解釋為何 CART 分析中 CKD 在幾乎所有終點 Gini importance 居首——該結果可能部分是測量方式的產物，而非生物學。</li>
+<li><strong>需要什麼才放心</strong>：以 ≥2 次相隔 ≥3 個月的 eGFR，或限用 renal insufficiency 病史，重做敏感度分析。</li>
+</ul>
+<h3>B4. 測量工具與實務意義</h3>
+<p><strong>終點的臨床意義分級</strong></p>
+<table>
+<thead>
+<tr>
+<th>終點</th>
+<th>硬/軟</th>
+<th>評估</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>院內死亡</td>
+<td>硬</td>
+<td>客觀、對病人最重要</td>
+</tr>
+<tr>
+<td>1 年全因死亡</td>
+<td>硬</td>
+<td>Medicare claims 死亡資料準確度高</td>
+</tr>
+<tr>
+<td>1 年 HF 再住院</td>
+<td>硬—中</td>
+<td>對病人重要；但受保險給付、醫院再入院懲罰政策、觀察床 (observation stay) 編碼實務影響</td>
+</tr>
+<tr>
+<td>1 年全因再住院</td>
+<td>中</td>
+<td>高度受非心臟因素與系統因素驅動</td>
+</tr>
+<tr>
+<td><strong>LOS &gt;4 天</strong></td>
+<td><strong>軟</strong></td>
+<td>二分法切點為資料驅動（中位數 4 天），非預先指定的臨床閾值；受出院安置、保險、週末效應強烈影響。作者將其與死亡率並列於 Figure 2，視覺上賦予過高權重</td>
+</tr>
+<tr>
+<td>ESKD/透析住院</td>
+<td><strong>不可用</strong></td>
+<td>定義循環（見 C4）</td>
+</tr>
+<tr>
+<td>MI / Stroke 住院</td>
+<td>中</td>
+<td>事件數少（stroke 1.3-2.5%），CI 寬</td>
+</tr>
+</tbody>
+</table>
+<p><strong>測量可靠度的具體缺口</strong>：</p>
+<ul>
+<li>EF 為各醫院臨床報告值，<strong>無核心實驗室判讀、無測量時點標準化</strong>；而 EF 是本文最關鍵的效果修飾因子。EF 在三類之間的誤分類會直接稀釋交互作用的真實性。</li>
+<li>肥胖以出院體重計算 BMI（設計考量正確），但 BMI 無法區分肌少型肥胖與單純肥胖，而這正是 HF 族群中決定預後的關鍵區別。</li>
+</ul>
+<p><strong>「就算結果是真的，真實世界可能有多大用處？」</strong></p>
+<p>以最實用的終點計算絕對效益，才看得出真實量級：</p>
+<ul>
+<li><strong>1 年 HF 再住院</strong>：HFrEF 4-CKM 39.8% vs HF only 20.4% → <strong>NNH ≈ 5</strong>（每 5 位 4-CKM 的 HFrEF 病人，較單純 HFrEF 多 1 次 HF 再住院）。臨床上<strong>確實有用</strong>，足以支撐分層照護資源配置。</li>
+<li><strong>院內死亡（HFpEF）</strong>：2.1% vs 1.5% → 絕對差 0.6 pp，<strong>NNH ≈ 167</strong>。aOR 2.05 看起來很大，但換算成床邊決策，意義近乎零。這正是為何必須同時看絕對尺度。</li>
+<li><strong>1 年死亡（HFpEF）</strong>：未校正絕對差 <strong>−4.0 pp</strong>（方向相反）。無任何臨床用途。</li>
+</ul>
+<blockquote>
+<p><strong>Figure 2 的視覺設計放大了這個落差</strong>：panel A（院內死亡）與 panel C（1 年死亡）共用 0.7–6 的對數刻度，HFpEF 在 panel A 的點估計被畫在 2 附近、看來與 HFrEF 同屬「明顯升高」，但其絕對差僅 0.6 個百分點。forest plot 本身無可指摘（對數刻度正確、未截軸、無效線清楚），問題在於<strong>全文、摘要與圖表一律只以相對尺度陳述，從未在任何一處並列絕對風險差</strong>。</p>
+</blockquote>
+<hr />
+<h2>C. 統計與資料完整性</h2>
+<h3>C1. 結果分類（CI + 臨床意義閾值）</h3>
+<p>本研究為<strong>觀察性預後關聯</strong>，非療效比較，傳統 MCID 不直接適用。依 Skill 要求改以<strong>預後標記的臨床行動閾值</strong>作為對應標準。</p>
+<p><strong>閾值設定 [推算]</strong>：一個預後標記要能改變住院心衰竭的臨床決策（追蹤密度、安寧討論時機、資源配置），需約略滿足 <strong>aHR/aOR ≥1.5</strong> 且 <strong>1 年絕對風險差 ≥5 個百分點</strong>（院內終點則 ≥2 個百分點）。依據：此量級約相當於 HF 風險分數（如 GWTG-HF risk score）跨一個風險四分位的效應，為臨床實務上公認可操作的區分度。此為推算值，非文內預先指定；作者<strong>未指定任何臨床意義閾值</strong>，這本身是方法學缺口。</p>
+<table>
+<thead>
+<tr>
+<th>終點（4 CKM vs HF only）</th>
+<th>效果量 (95% CI)</th>
+<th>絕對差</th>
+<th>跨越閾值？</th>
+<th><strong>分類</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>院內死亡 — HFrEF</td>
+<td>aOR 5.08 (4.43-5.83)</td>
+<td>+3.4 pp</td>
+<td>是／是</td>
+<td><strong>POSITIVE ✅</strong> 統計與臨床均明確</td>
+</tr>
+<tr>
+<td>院內死亡 — HFmrEF</td>
+<td>aOR 2.37 (1.68-3.34)</td>
+<td>+1.1 pp</td>
+<td>是／否</td>
+<td><strong>統計明確、臨床幅度不足</strong>（NNH≈91）</td>
+</tr>
+<tr>
+<td>院內死亡 — HFpEF</td>
+<td>aOR 2.05 (1.77-2.38)</td>
+<td>+0.6 pp</td>
+<td>是／否</td>
+<td><strong>統計明確、臨床幅度微小</strong>（NNH≈167）；且<strong>未校正事件率在 2 項後反向下降</strong>（2.3→2.2→2.1%），梯度為校正產物</td>
+</tr>
+<tr>
+<td>1 年死亡 — HFrEF</td>
+<td>aHR 2.10 (1.93-2.29)</td>
+<td>+16.6 pp</td>
+<td>是／是</td>
+<td><strong>POSITIVE ✅</strong>，但未校正 3 項與 4 項完全持平（1.87 vs 1.87），劑量—反應在高端消失</td>
+</tr>
+<tr>
+<td>1 年死亡 — HFmrEF</td>
+<td>aHR 1.38 (1.17-1.63)</td>
+<td>+3.4 pp（非單調）</td>
+<td>否／否</td>
+<td><strong>INCONCLUSIVE ❓</strong> 未校正 HR 1.13 (0.96-1.33) 跨越無效線；絕對風險在 2 項達峰後回落</td>
+</tr>
+<tr>
+<td><strong>1 年死亡 — HFpEF</strong></td>
+<td>aHR 1.09 (1.03-1.17)</td>
+<td><strong>−4.0 pp</strong></td>
+<td>否／方向相反</td>
+<td><strong>不可採信</strong>。未校正 HR <strong>0.85 (0.80-0.91)，顯著保護</strong>；6-condition 模型下校正後仍為 <strong>0.87 (0.77-0.98)，顯著保護</strong>。校正與未校正、4-condition 與 6-condition 之間<strong>方向互相矛盾</strong></td>
+</tr>
+<tr>
+<td>1 年 HF 再住院 — HFrEF</td>
+<td>aHR 2.33 (2.12-2.56)</td>
+<td>+19.4 pp</td>
+<td>是／是</td>
+<td><strong>POSITIVE ✅</strong></td>
+</tr>
+<tr>
+<td>1 年 HF 再住院 — HFmrEF</td>
+<td>aHR 2.20 (1.82-2.66)</td>
+<td>+17.7 pp</td>
+<td>是／是</td>
+<td><strong>POSITIVE ✅</strong></td>
+</tr>
+<tr>
+<td>1 年 HF 再住院 — HFpEF</td>
+<td>aHR 1.91 (1.77-2.06)</td>
+<td>+14.8 pp</td>
+<td>是／是</td>
+<td><strong>POSITIVE ✅</strong></td>
+</tr>
+<tr>
+<td>1 年 ESKD/透析</td>
+<td>aHR 12.37 – 50.00</td>
+<td>+13.8～14.9 pp</td>
+<td>—</td>
+<td><strong>不可解釋（定義循環）</strong></td>
+</tr>
+<tr>
+<td>1 年 stroke</td>
+<td>aHR 0.98–1.55，多數跨 1</td>
+<td>+0.1～0.4 pp</td>
+<td>否／否</td>
+<td><strong>NEGATIVE / 無關聯</strong>；P for interaction = .74</td>
+</tr>
+</tbody>
+</table>
+<p><strong>本表揭示的核心訊息</strong>：本文有<strong>兩個完全不同強度的結論</strong>被摘要合併為一個。</p>
+<ul>
+<li><strong>HF 再住院</strong>：三個 EF 層皆穩健、單調、絕對差大、未校正與校正一致 → 可信。</li>
+<li><strong>死亡率</strong>：僅在 HFrEF 成立；在 HFmrEF 不確定；在 HFpEF <strong>原始資料方向相反</strong>。</li>
+</ul>
+<p>摘要的「Although these associations spanned the EF spectrum, the prognostic impact of CKM multimorbidity was greatest in HFrEF and least in HFpEF」把一個<strong>方向性的斷裂</strong>描述為一個<strong>程度上的連續光譜</strong>。這是本文最實質的過度宣稱。</p>
+<h3>C2. Underpowered 判斷與 Winner's Curse</h3>
+<p><strong>不適用於本研究的傳統意義</strong>：n=725,205（院內）、123,271（出院後），無 underpowered 問題。無 Winner's Curse（效果量不是因為跨越顯著門檻才被發表）。</p>
+<p><strong>但存在鏡像問題 — overpowered 導致的臨床無意義顯著</strong>：</p>
+<ul>
+<li>HFpEF 院內死亡 aOR 2.05 (1.77-2.38)，CI 極窄、P 極小，但絕對差 0.6 pp。</li>
+<li>HFpEF 1 年死亡 aHR 1.09 (1.03-1.17)，在 n=69,738 下達顯著，絕對差 −4.0 pp（方向相反）。</li>
+<li><strong>所有 P for interaction 皆 &lt;.001</strong>（除 stroke 的 .74 與 MI 的 .17）。在 725,205 的樣本下，<strong>任何非零的層間差異都必然 P&lt;.001</strong>。P for interaction &lt;.001 在此處<strong>幾乎不攜帶資訊</strong>，但在摘要中被用作「EF 修飾效果」的主要證據。</li>
+<li>作者<strong>從未報告任何交互作用的效果量</strong>（例如 ratio of ORs 及其 CI），僅報告 P 值。這正是 ASA 2016 聲明所警示的以 P 值取代效果量的用法。</li>
+</ul>
+<p><strong>另一個被 overpowering 掩蓋的問題：OR 的不可塌縮性（non-collapsibility）</strong>。跨 EF 層比較 aOR 時，基線風險不同本身就會造成 OR 大小差異，即使底層的絕對效應相同。本文 HF only 的院內死亡率為 HFrEF 1.1%、HFmrEF 1.3%、HFpEF 1.5%——基線風險並不相同。所幸在<strong>院內死亡</strong>這個終點，絕對風險差也呈現 HFrEF (3.4pp) &gt; HFmrEF (1.1pp) &gt; HFpEF (0.6pp) 的相同排序，故「HFrEF 最陡」的結論在院內死亡上<strong>在絕對尺度上也成立</strong>。但作者從未做此檢查，是運氣而非方法。而在 1 年死亡上，絕對尺度直接推翻了相對尺度的結論。</p>
+<h3>C3. Bayesian 補充分析</h3>
+<p><strong>不需執行</strong>。本研究無接近 0.05 的邊界 P 值需要釐清，亦非 Neutral vs Negative 的等效性判定情境。本文的核心不確定性<strong>不是統計精確度問題，而是結構性偏差問題</strong>（校正集未知、參考組被污染、暴露定義循環）。Bayesian 重新分析無法解決其中任何一項——更窄的 credible interval 只會讓一個可能有偏的估計看起來更有說服力。</p>
+<h3>C4. 報告完整性與其他統計問題</h3>
+<p><strong>(1) ESKD 終點的定義循環 — 本文最嚴重的單一分析錯誤</strong></p>
+<ul>
+<li>CKD 是暴露的 4 個成分之一；「HF only」依定義即 eGFR ≥60、無腎功能不全病史、無透析。</li>
+<li>於是 HF only 組的 1 年 ESKD/透析住院累積發生率為 HFrEF 0.6%、HFmrEF <strong>0.2%</strong>、HFpEF 0.8%——這不是流行病學發現，而是<strong>納入條件的算術後果</strong>。</li>
+<li>結果：HFmrEF 的 aHR <strong>50.00 (95% CI 12.63-197.94)</strong>，CI 橫跨近 16 倍；HFrEF 23.97 (14.79-38.84)；HFpEF 12.37 (8.96-17.08)。</li>
+<li>作者不但未標注此為同義反覆，還據此得出「CKM multimorbidity had the strongest impact on hospitalization for ESKD/dialysis in HFmrEF, an intermediate impact in HFrEF, and a lesser impact in HFpEF」[文內, E9]——<strong>對一個由分母人工壓低所產生的數字，做跨 EF 的實質比較</strong>。此段應整段撤除或徹底重寫。</li>
+</ul>
+<p><strong>(2) 多重比較完全未處理</strong></p>
+<p>主文 ＋ 補充資料含：7 個終點 × 3 個 EF 層 × 5 個暴露層（條件數）＋ 15 種 CKM 組合型態（eTables 4-11）＋ 6-condition 敏感度分析的全套重複 ＋ CART 分析。保守估計數百次檢定，<strong>無任何校正、無預先指定的主要終點階層</strong>。</p>
+<p><strong>最像偽陽性的結果</strong>（依效果量小 ＋ CI 貼近 1 ＋ 未校正方向不一致排序）：</p>
+<ol>
+<li>HFpEF 1 年全因死亡 aHR 1.09 (1.03-1.17)——未校正為 0.85 (0.80-0.91)</li>
+<li>HFpEF 1 年死亡 1-CKM aHR 1.03 (0.98-1.09)——跨越無效線（Figure 2 panel C 可見）</li>
+<li>HFrEF 1 年 stroke aHR 1.55 (1.03-2.35)——下界貼 1，且 P for interaction = .74 顯示跨 EF 無差異，三層中僅此一格顯著</li>
+<li>HFmrEF 院內死亡 1-CKM aOR 1.40 (1.00-1.98)——<strong>下界恰為 1.00</strong>（Figure 2 panel A 明確可見誤差線觸及無效線）</li>
+</ol>
+<p><strong>(3) 比例風險假設從未檢驗</strong></p>
+<p>1 年追蹤、死亡事件率 24-41%、再住院 50-72%。在如此高的事件率與長追蹤下，PH 違反為常態而非例外。文中無 Schoenfeld residual 檢定、無 log-log plot、無時間依變效果分析的任何提及。所有 aHR 皆應視為「平均 1 年期的加權平均危險比」，其臨床詮釋遠不如作者呈現的乾淨。</p>
+<p><strong>(4) 競爭風險處理的內在不一致</strong></p>
+<ul>
+<li>描述性：以 <strong>Gray test</strong> 比較 cumulative incidence function（subdistribution 架構）。</li>
+<li>推論性：以 <strong>cause-specific Cox</strong>（etiologic 架構）。</li>
+<li>兩者回答不同問題：cause-specific HR 回答「在仍存活者中事件發生率的比值」，而非「絕對再住院風險」。作者在 Results 與 Discussion 中一律以「risk of readmission」詮釋 cause-specific HR，<strong>是對模型輸出的錯誤語意轉換</strong>。</li>
+<li>這在本研究中有具體後果：HFpEF 高 CKM 組的死亡競爭風險<strong>較低</strong>（未校正 1 年死亡 30.0% vs 34.0%），存活更久者有更多時間再住院。HFpEF 的再住院梯度因此<strong>部分由較低的死亡競爭所驅動</strong>。作者未做此檢查。</li>
+</ul>
+<p><strong>(5) 缺失資料處理敘述不可解讀</strong></p>
+<p>「Variables with missing data were not imputed in univariate tables. Observations with greater than 25% missing were excluded.」——「greater than 25% missing」的分母未定義（是某觀察值缺超過 25% 的變項？還是某變項缺超過 25% 而被剔除？）。主要迴歸模型是否使用完整個案分析 (complete-case) 或插補，<strong>完全未說明</strong>。</p>
+<p>更具體的證據顯示資料不完整且具差別性：<strong>Table 2 中 LOS 分析的分母一律小於同組死亡率分析的分母</strong>：</p>
+<ul>
+<li>HFrEF HF only：26,046（死亡）vs <strong>24,019</strong>（LOS）→ 遺失 2,027 人（<strong>7.8%</strong>）</li>
+<li>HFrEF 4-CKM：30,916 vs 29,062 → 遺失 1,854 人（6.0%）</li>
+<li>HFpEF HF only：18,817 vs 18,047 → 遺失 770 人（4.1%）</li>
+</ul>
+<p><strong>遺失比例在 HFrEF 的 HF only 組最高，而該組正是所有關鍵比較的參考組</strong>。此差別性遺失在全文中未被提及、未被解釋、亦未做敏感度分析。</p>
+<p><strong>(6) 無 STROBE flow diagram；無排除人數可核對</strong></p>
+<p>主文完全無流程圖；起始世代 895,327 與分析世代 725,205 之間的差異主要為時間窗限制（2015-2018 期間被排除），但<strong>各項排除條件（缺失 EF/eGFR/性別/年齡、心臟移植/VAD、安寧/AMA/轉院）各自移除多少人，無任何數字可查</strong>。Medicare 串接的分母與串接成功率同樣缺失。eTable 1 未提供，因此<strong>無法驗證任一層的人數一致性</strong>。</p>
+<p><strong>(7) 隨機森林變項重要性的方法學侷限</strong></p>
+<ul>
+<li>使用 <strong>out-of-bag Gini importance</strong>。Gini importance 對<strong>盛行率較高</strong>的預測因子存在系統性偏好——而 CKD 正是四者中盛行率最高（62.3%）。「CKD 最重要」的結論與「CKD 最常見」在方法上無法分離。</li>
+<li>未使用 permutation importance 作為交叉驗證，<strong>未提供重要性排序的不確定性區間</strong>，無外部/保留樣本驗證。</li>
+<li>對 ESKD 終點而言，此分析完全循環。</li>
+<li>作者仍以「CKD had the strongest importance for in-hospital mortality, 1-year mortality, all-cause readmission, HF readmission, and hospitalization for ESKD/dialysis across EF spectrum」[文內, E9] 陳述，語氣遠超方法所能支持。</li>
+</ul>
+<p><strong>(8) 圖表判讀的正面確認與無法判讀項</strong></p>
+<p>已確認無誤的部分：</p>
+<ul>
+<li><strong>Figure 1</strong>（page_004 原圖）：三個 panel 的 y 軸皆為 0–16%，<strong>自零起點、無截斷、刻度一致</strong>，三 panel 可直接比較。無效果誇大。panel 間可見的實質訊息：HFrEF 的最高單一長條為 ASCVD+CKD+DM（約 12.9%），而 HFpEF 的最高長條為四項全有（約 14.6%）；糖尿病單獨存在在三個 panel 皆為最罕見（約 1.5–2.6%）。</li>
+<li><strong>Figure 2</strong>（page_008 原圖）：x 軸 0.7–6 <strong>對數刻度</strong>，對比值測量正確；無效線（1）以虛線清楚標示；<strong>無軸截斷</strong>。誤差線與表格數值一致。</li>
+</ul>
+<p>圖中可見但正文未強調者：</p>
+<ul>
+<li>panel C（1 年全因死亡）的 HFpEF 區塊，五個點估計視覺上<strong>幾乎疊在無效線上</strong>，與 HFrEF 區塊明顯右移形成強烈對比。此視覺訊息比文字結論誠實。</li>
+<li><strong>非單調性在圖上直接可見</strong>：panel C 的 HFmrEF 1.40 → <strong>1.38</strong>（4 項低於 3 項）、HFpEF 1.12 → <strong>1.09</strong>（4 項低於 3 項）。摘要的 &quot;stepwise increases&quot; 在 5 個分層中有 2 個 EF 層於最高暴露層反轉。</li>
+<li><strong>Figure 2 只呈現校正後估計</strong>。未校正估計（含 HFpEF 的 0.85, 0.80-0.91 保護效果）僅存在於 Table 3 的密集表格中。只讀摘要＋圖的讀者<strong>無從得知原始資料的方向</strong>。</li>
+</ul>
+<p><strong>無法判讀項（必須標注）</strong>：</p>
+<ul>
+<li><strong>[限制：主文無 Kaplan-Meier 曲線]</strong>。eFigure 3 位於 Supplement 1，本次未提供。因此<strong>無法評估曲線分離時點、曲線是否交叉、number at risk 後期是否銳減、尾端是否因人數過少而不可靠、以及 informative censoring 的跡象</strong>。考量 HFpEF 的未校正死亡率隨 CKM 增加而下降，曲線型態（特別是早期 vs 晚期分離）本可提供關鍵資訊，此盲區實質影響本評讀的完整度。</li>
+<li><strong>[限制：eTable 1-16、eFigure 1-2、4-6 未提供]</strong>，故排除流程人數、共變項清單、CKM 組合型態分析、CART heat map 與 Gini 數值、6-condition 完整結果均無法獨立驗證。</li>
+<li><strong>[限制：markdown 與圖頁均未保留 received date]</strong>，審查歷時無法計算。</li>
+</ul>
+<hr />
+<h2>D. 次組分析評估</h2>
+<p>本文的 <strong>EF 表型分層</strong>是全文的核心架構，形同一個貫穿所有終點的次組分析，應依 JAMA 五標準評估。</p>
+<table>
+<thead>
+<tr>
+<th>標準</th>
+<th>評估</th>
+<th>說明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>1. 是否有 interaction P 值？</strong></td>
+<td>✅ 有，但近乎無資訊</td>
+<td>幾乎所有終點 P&lt;.001。在 n=725,205 下必然如此。<strong>從未報告交互作用的效果量（ratio of ORs/HRs）或其 CI</strong>，無法判斷層間差異的量級與精確度</td>
+</tr>
+<tr>
+<td><strong>2. 方向是否與其他研究一致？</strong></td>
+<td>⚠️ <strong>部分矛盾</strong></td>
+<td>作者自承「there is currently little data regarding the impact of CKM multimorbidity within HFrEF clinical trial populations」[文內, E12]——即最強的發現（HFrEF）<strong>恰好是外部證據最薄弱的一格</strong>。而 HFpEF 的弱關聯方向與 TOPCAT/FINEARTS-HF 的「3 項 CKM 約 2 倍複合終點風險」[文內, E12] <strong>不一致</strong>，作者未處理此矛盾</td>
+</tr>
+<tr>
+<td><strong>3. 假說是否預先指定並有預期方向？</strong></td>
+<td>⚠️ 預先指定但<strong>無方向性預期</strong></td>
+<td>EF 分層明確寫入方法，屬預先指定（加分）。但 Introduction 僅寫「whether the epidemiology and prognostic importance of CKM overlap varies among patients with HF across the EF spectrum <strong>is unknown</strong>」——探索性措辭，<strong>無預先指定的方向假說</strong>。因此「HFrEF 最陡」屬於資料導出的發現，而非驗證</td>
+</tr>
+<tr>
+<td><strong>4. 是否有合理生物機轉？</strong></td>
+<td>⚠️ 事後建構</td>
+<td>作者提出兩套機轉：(a)「HFrEF 基線 CKM 負擔較低，相對衝擊被放大」——此為<strong>統計性而非生物性</strong>解釋，且未經檢驗；(b) HFpEF 與 CKM 經由 adipokine hypothesis 病理生理交織 [文內, ref 18]。兩者皆在看到結果後提出，且<strong>互相不獨立</strong>（若 (b) 成立，HFpEF 的 CKM 不應被當作獨立暴露，則整個 HFpEF 分析的構念即崩解——作者未意識到此內部張力）</td>
+</tr>
+<tr>
+<td><strong>5. within-study 還是 between-study？</strong></td>
+<td>✅ <strong>within-study</strong></td>
+<td>同一世代內的分層，為最強形式。此項明確加分</td>
+</tr>
+</tbody>
+</table>
+<p><strong>可信度評分（分終點）</strong></p>
+<table>
+<thead>
+<tr>
+<th>次組發現</th>
+<th>可信度</th>
+<th>理由</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>HF 再住院的 CKM 梯度在 HFrEF &gt; HFmrEF &gt; HFpEF</strong></td>
+<td><strong>中</strong></td>
+<td>within-study、方向在未校正與校正下一致、絕對尺度與相對尺度排序相同（+19.4 / +17.7 / +14.8 pp）。但層間差距不大，交互作用的實質重要性可能被 P&lt;.001 誇大</td>
+</tr>
+<tr>
+<td><strong>院內死亡的 CKM 梯度在 HFrEF 最陡</strong></td>
+<td><strong>中</strong></td>
+<td>within-study、相對與絕對尺度排序一致（3.4 / 1.1 / 0.6 pp）。但 HFpEF 的未校正梯度在 2 項後即反轉下降，削弱「連續光譜」的詮釋</td>
+</tr>
+<tr>
+<td><strong>1 年死亡的 CKM 梯度「跨越 EF 光譜」</strong></td>
+<td><strong>低</strong></td>
+<td>未校正數據在 HFpEF <strong>方向相反且統計顯著</strong>；6-condition 模型下 HFpEF 校正後仍為 0.87 (0.77-0.98)。此結論在兩套模型間自相矛盾</td>
+</tr>
+<tr>
+<td><strong>MI/stroke 的影響「跨 EF 一致」</strong></td>
+<td><strong>低—推測性</strong></td>
+<td>stroke 事件稀少（1.3-2.5%）、多數 CI 跨 1、P for interaction = .74；MI 的 P for interaction &lt;.001（Table 3）與 6-condition 模型的 .17（文內 E11）<strong>互相矛盾</strong>。作者在 Discussion 中統一詮釋為「atherosclerotic pathways largely independent of EF」，屬事後敘事</td>
+</tr>
+<tr>
+<td><strong>ESKD 的影響「HFmrEF 最強」</strong></td>
+<td><strong>不可信</strong></td>
+<td>定義循環 ＋ CI 橫跨 16 倍（12.63-197.94）</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>E. 紅旗清單</h2>
+<p><strong>設計</strong></p>
+<ol>
+<li>暴露採四條件等權重計數，但作者自身數據顯示 CKD 主導、且兩項組合（ASCVD+CKD，HFpEF aOR 2.48）可高於四項全有（2.05）——劑量—反應詮釋被自己的補充分析否證。</li>
+<li>肥胖被編碼為有害條件，與 HF 族群 obesity paradox 方向相反；作者計算過排除肥胖的版本，<strong>只報告盛行率、不報告結果估計</strong>（選擇性報告的明確痕跡）。</li>
+<li>CKD 以單次出院前 eGFR 判定（約六成 CKD 標記無既有腎病診斷），使 CKD 成為急性嚴重度的代理，並可能人為抬高其 CART 重要性排名。</li>
+<li>「HF only」參考組富集吸菸者（29.3%）、無保險者（7.3%）、低 BMI 者（出院 BMI 24.4）、最高 BNP（1,021）、最多新發 HF（既往 HF 僅 56.0%）——不是乾淨對照。</li>
+<li>出院後世代受年齡 ≥65、FFS Medicare、存活出院三重選擇；<strong>Medicare 串接成功率完全未報告</strong>。</li>
+</ol>
+<p><strong>統計</strong>
+6. <strong>校正模型的共變項一個都沒列出</strong>，而 HFpEF 的結論方向完全取決於它。
+7. HFpEF 1 年死亡的未校正 HR 為 <strong>0.85 (0.80-0.91)（顯著保護）</strong>，校正後翻轉為 1.09 (1.03-1.17)；作者以「appeared to be a plateau of risk」描述一個達統計顯著的<strong>下降</strong>。
+8. 6-condition 敏感度分析中 HFpEF 1 年死亡 aHR <strong>0.87 (0.77-0.98)——校正後仍顯著保護</strong>，與主分析的 1.09 方向相反；作者未指出此為結論不穩健的直接證據。
+9. ESKD 終點定義循環，aHR 達 50.00 (12.63-197.94)，仍被用於跨 EF 實質比較。
+10. 數百次檢定，零多重比較校正，無預先指定的主要終點階層。
+11. 比例風險假設完全未檢驗（1 年追蹤、事件率 24-72%）。
+12. 競爭風險架構內在不一致（Gray test 描述 vs cause-specific Cox 推論），且 cause-specific HR 被誤譯為「absolute risk」。
+13. 缺失資料敘述語意不明；Table 2 的 LOS 分母差別性遺失達 7.8%（集中於參考組），未被提及。
+14. 所有 P for interaction &lt;.001 在 n=725,205 下近乎自動成立，卻被當作效果修飾的主要證據；<strong>從未報告交互作用的效果量</strong>。
+15. 全文無任何一處並列絕對風險差；Figure 2 僅呈現校正後估計。
+16. 無 E-value、無負對照、無任何未測混淆的定量偏差分析。
+17. 無 STROBE flow diagram，各層排除人數不可核對。</p>
+<p><strong>敘事</strong>
+18. 摘要與結論的「Although these associations spanned the EF spectrum」把 1 年死亡率的<strong>方向性斷裂</strong>（HFrEF +16.6 pp vs HFpEF −4.0 pp）描述為程度上的連續差異。
+19. 「risk-treatment paradox」把 eGFR 中位數 35、8.3% 已透析族群的 RAASi/MRA 減量，重新框架為照護品質缺失。
+20. Conclusions 的「Strategies aimed at optimizing GDMT utilization... are warranted <strong>to improve clinical outcomes</strong>」是介入性因果主張，本設計完全不支持。
+21. Introduction 以 SGLT2i/finerenone/incretin 的療效論證 CKM 統一性，但本研究未檢驗任何藥物。</p>
+<p><strong>COI / 治理</strong>
+22. 通訊作者為 GWTG-HF 協調中心主持人，研究團隊同時是資料庫管理者與其「代表性基準」地位的宣告者。
+23. 資助者（AHA）「had a role in the collection of the data <strong>and review and approval of the manuscript</strong>」。
+24. 核心作者與論文所倡議藥物類別（SGLT2i、MRA/finerenone、incretin）的主要藥廠有廣泛費用與經費關係；方向與論文建議一致。
+25. 無獨立團隊以其他資料庫複製本結果。</p>
+<hr />
+<h2>F. 反向解釋</h2>
+<p><strong>替代解釋 1：HFpEF 的「CKM → 死亡」關聯是 over-adjustment 的人工產物</strong></p>
+<ul>
+<li><em>內容</em>：若模型納入連續 BMI 與連續 eGFR，則等同於校正掉「肥胖」與「CKD」這兩個暴露成分本身。移除連續 BMI 會抹去 obesity paradox 的保護效果，使殘餘的二分「肥胖」標記呈現虛假有害關聯。</li>
+<li><em>支持線索</em>：(a) Table 1 同時列出連續 BMI 與連續 eGFR，顯示兩者為可用的模型輸入；(b) 校正在<strong>所有三個 EF 層、所有死亡終點</strong>一致地把估計推向更有害（HFrEF 1.87→2.10；HFmrEF 1.13→1.38；HFpEF 0.85→1.09），此單一方向性難以用隨機混淆解釋；(c) 方法學僅稱共變項「similar to previous GWTG-HF analyses」，而既有 GWTG-HF 風險模型確實常規納入連續 BMI 與 eGFR。</li>
+<li><em>反對線索</em>：若真的完全校正掉 eGFR 與 BMI，殘餘關聯應趨近 1 而非 2.10（HFrEF）；HFrEF 的大效果量顯示 ASCVD/DM 仍貢獻獨立訊號。</li>
+<li><em>判定</em>：<strong>對 HFpEF/HFmrEF 高度可能，對 HFrEF 僅部分適用</strong>。這是本文最需要作者回應的單一問題。</li>
+</ul>
+<p><strong>替代解釋 2：「HF only」參考組的高死亡率來自未測量的非 CKM 疾病</strong></p>
+<ul>
+<li><em>內容</em>：被定義為「無 ASCVD、eGFR≥60、無 DM、BMI&lt;30」的住院 HF 病人，實質上富集了心臟類澱粉沉積、化療相關心肌病變、酒精性/病毒性心肌病變、惡病質與惡性腫瘤共病。觀察到的 CKM 梯度有一部分是「參考組太差」而非「暴露組太差」。</li>
+<li><em>支持線索</em>：(a) HFpEF 的 HF only 組 1 年死亡率 <strong>34.0%，高於 HFrEF HF only 的 24.2%</strong>——瘦、腎功能正常、無糖尿病的 HFpEF 老人不應有這麼高的死亡率，除非混入了其他重症；(b) HF only 組出院 BMI 中位數 24.4、血紅素 12.9 但 BNP 最高（1,021）、心率最快（95 bpm）、既往 HF 最少（56.0%）——符合「較急性、較瘦、較少慢性照護」的輪廓；(c) 吸菸率 29.3%（全世代最高）與無保險率 7.3%（最高）。</li>
+<li><em>反對線索</em>：HFrEF 的梯度在絕對尺度上達 +16.6 pp，單靠參考組污染難以全部解釋。</li>
+<li><em>判定</em>：<strong>對 HFpEF 的解釋力強（可完全解釋其未校正的反向梯度），對 HFrEF 為部分貢獻</strong>。</li>
+</ul>
+<p><strong>替代解釋 3：CKM 計數實質上是「缺血性心肌病變 + 腎功能不全」的代理，而非「CKM 症候群」</strong></p>
+<ul>
+<li><em>內容</em>：ASCVD 的定義（CAD/MI/PCI/CABG/stroke/PVD）本身就標定了缺血性心肌病變；CKD 則標定腎功能。CKM 計數在 HFrEF 中可能主要是在重新測量「缺血性 HFrEF 合併腎病」這個早已知的高風險表型。</li>
+<li><em>支持線索</em>：Table 1 顯示 ischemic etiology 在 HF only 組為 <strong>3 人（0%）</strong>，在 4-CKM 組為 <strong>84.5%</strong>——暴露與病因學幾乎完全共線。</li>
+<li><em>反對線索</em>：若純屬缺血病因代理，則 CKM 計數在 HFpEF（缺血比例較低）不應有任何訊號；但再住院終點在 HFpEF 仍有 +14.8 pp 的穩健梯度。</li>
+<li><em>判定</em>：<strong>對 HFrEF 死亡率的解釋力中等，對再住院終點解釋力弱</strong>。意味著「CKM 作為獨立構念」的增量價值主要體現在再住院，而非死亡。</li>
+</ul>
+<p><strong>替代解釋 4：HFpEF 再住院的梯度部分由較低的死亡競爭驅動</strong></p>
+<ul>
+<li><em>內容</em>：HFpEF 高 CKM 組未校正 1 年死亡率較低（30.0% vs 34.0%），存活者有更多暴露時間累積再住院事件。cause-specific Cox 不會自動校正此效應在絕對尺度上的影響，而作者以「absolute risk of readmission」語彙詮釋之。</li>
+<li><em>支持線索</em>：HFpEF 是三個 EF 層中唯一死亡率隨 CKM 下降者，也是再住院 aHR 最低者（1.91）——與該機轉方向一致。</li>
+<li><em>反對線索</em>：HFrEF 的死亡率隨 CKM <strong>大幅上升</strong>（+16.6 pp），死亡競爭更強，再住院 aHR 卻<strong>更高</strong>（2.33）。若競爭風險主導，應呈現相反排序。</li>
+<li><em>判定</em>：<strong>可能為次要貢獻，非主要驅動</strong>。再住院的發現整體仍穩健。</li>
+</ul>
+<hr />
+<h2>G. 最終裁決</h2>
+<h3>整體可信度：<strong>中</strong>（分層判定）</h3>
+<table>
+<thead>
+<tr>
+<th>結論成分</th>
+<th>可信度</th>
+<th>一句話說明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>CKM 重疊在美國住院 HF 極為普遍（≥2 項 72%，單純 HF &lt;7%）</td>
+<td><strong>中—高</strong></td>
+<td>本文最紮實的貢獻；n 大、定義透明；僅受 CKD/DM 測量方式侷限</td>
+</tr>
+<tr>
+<td>真實世界 CKM 負擔遠高於 RCT 族群</td>
+<td><strong>中</strong></td>
+<td>比較對象與定義不同（作者自承），但方向可信且具政策意義</td>
+</tr>
+<tr>
+<td>CKM 負擔 ↔ 1 年 HF 再住院（三 EF 皆然）</td>
+<td><strong>中</strong></td>
+<td>未校正與校正一致、單調、絕對差 +14.8～19.4 pp</td>
+</tr>
+<tr>
+<td>CKM 負擔 ↔ HFrEF 死亡（院內與 1 年）</td>
+<td><strong>中</strong></td>
+<td>絕對差大且方向穩定；但未校正 3 項與 4 項已持平</td>
+</tr>
+<tr>
+<td>CKM 負擔 ↔ HFpEF / HFmrEF <strong>死亡</strong></td>
+<td><strong>低</strong></td>
+<td>未校正方向相反；6-condition 模型下校正後仍為保護；結論由未揭露的校正集決定</td>
+</tr>
+<tr>
+<td>「CKM 預後衝擊跨越整個 EF 光譜，程度不同」</td>
+<td><strong>低</strong></td>
+<td>1 年死亡率是方向斷裂，不是程度差異</td>
+</tr>
+<tr>
+<td>CKM 負擔 ↔ ESKD</td>
+<td><strong>不可採信</strong></td>
+<td>定義循環</td>
+</tr>
+<tr>
+<td>「risk-treatment paradox」為可改善的品質缺口</td>
+<td><strong>低—中</strong></td>
+<td>RAASi/MRA 部分屬正當禁忌；<strong>唯 SGLT2i 的缺口（20.3%、無梯度）成立</strong></td>
+</tr>
+<tr>
+<td>「優化 GDMT 可改善結果」</td>
+<td><strong>無證據</strong></td>
+<td>本設計不提供任何療效資訊</td>
+</tr>
+</tbody>
+</table>
+<h3>可採用的條件</h3>
+<ol>
+<li>用於<strong>流行病學描述與服務規劃</strong>：CKM 共病盛行率數據可直接引用，是目前美國住院 HF 族群最大規模的同類數據。</li>
+<li>用於 <strong>HF 再住院的風險分層</strong>：CKM 條件數與 1 年 HF 再住院的關聯在三種 EF 皆穩健，可用於決定出院後追蹤密度與資源配置。</li>
+<li>用於 <strong>HFrEF 的短期預後溝通</strong>：以未校正事件率（院內 4.5%、1 年 40.8%）進行預後討論與 ACP 時機判斷。</li>
+<li>用於<strong>稽核自家 SGLT2i 處方率</strong>：本文最具行動力的單一發現。</li>
+</ol>
+<h3>不建議採用的情境</h3>
+<ol>
+<li>不得用於宣稱 <strong>HFpEF 的 CKM 共病數可預測死亡</strong>（原始數據方向相反）。</li>
+<li>不得據此做任何<strong>治療介入可改善結果</strong>的推論。</li>
+<li>不得引用 <strong>ESKD 的 aHR</strong>。</li>
+<li>不得直接外推至<strong>台灣族群</strong>（肥胖為暴露成分之一，分布差異過大）、&lt;65 歲族群、或門診穩定期 HF。</li>
+<li>不應將 RAASi/MRA 於重度 CKD 族群的減量，單純認定為照護品質不良。</li>
+</ol>
+<h3>若要改觀，最需要的 3 個關鍵改進</h3>
+<ol>
+<li><strong>完整揭露多變量校正的共變項清單，並明確聲明是否納入連續 eGFR 與連續 BMI</strong>；同時提供一組刻意排除暴露成分變項的敏感度模型。本文 HFpEF 的全部結論方向取決於此，而讀者目前無法檢核。這是單一最重要的補正。</li>
+<li><strong>對 HFpEF 的未校正保護性關聯（1 年死亡 HR 0.85, 95% CI 0.80-0.91；6-condition 模型校正後 0.87, 0.77-0.98）給出明確處理</strong>：明說、解釋、並以 obesity-excluded（ASCVD/CKD/DM 三條件）模型重做主要結果估計——作者已有此計算，只報告了盛行率而未報告結果。</li>
+<li><strong>移除或徹底重寫 ESKD 終點分析</strong>，並在全文並列絕對風險差；對 EF 交互作用報告效果量（ratio of HRs 及其 CI）而非僅報告在 n=725,205 下毫無鑑別力的 P&lt;.001。</li>
+</ol>
+<h3>一句話結論（給一般讀者）</h3>
+<p><strong>住院心衰竭病人九成以上合併心腎代謝共病，共病越多再住院風險越高；但「共病越多死亡越多」只在收縮功能下降的病人身上成立，在收縮功能保留的病人身上，原始數據其實是相反的。</strong></p>
+<hr />
+<h3>外部資料來源</h3>
+<ul>
+<li><a href="https://jamanetwork.com/journals/jamacardiology/newonline">JAMA Cardiology — New Online（2026-09-30 刊出清單，確認無配對 editorial）</a></li>
+<li><a href="https://manusights.com/journals/jama-cardiology">Manusights — JAMA Cardiology 期刊指標（IF 14.1、接受率 9%／原著 5%、收稿→刊登中位 139 天、接受→刊登中位 63 天）</a></li>
+<li><a href="https://scholars.duke.edu/person/stephen.greene/publications">Duke Scholars — Stephen J. Greene 著作與 GWTG-HF 協調中心主持人身分</a></li>
+<li><a href="https://medicine.duke.edu/profile/mark-kittipibul">Duke University School of Medicine — Veraprapas (Mark) Kittipibul 簡介</a></li>
+<li><a href="https://scholars.duke.edu/publication/1689321">Duke Scholars — 本文著錄</a></li>
+<li>PubMed（經 <code>find_related_articles</code>、Editorial/Comment publication-type 檢索與 <em>JAMA Cardiol</em> 期刊限定檢索，均未發現針對本文之同期評論）。檢索過程中確認的 CKM 相關編輯評論均屬其他文章，與本文無 comment-on 關係，例如 Grant &amp; Kelsey, <em>JACC Heart Fail</em> 2026（<a href="https://doi.org/10.1016/j.jchf.2026.103315">DOI: 10.1016/j.jchf.2026.103315</a>）、Siddiqi et al., <em>Eur J Heart Fail</em> 2026（<a href="https://doi.org/10.1093/ejhf/xuaf004">DOI: 10.1093/ejhf/xuaf004</a>）。</li>
+</ul>
+<h3>方法學參考</h3>
+<ul>
+<li>[參考: <code>jama_agoritsas_2017_ug_160001.md</code>，Box 1「Users' Guide to an Adjusted Analysis」三項檢核；&quot;Understanding Stratification and Adjustment&quot; 節關於校正可反向製造關聯之論述；&quot;The Challenge of Prognostic Imbalance&quot; 節關於常規收集資料之觀察性研究估計較後續 RCT 系統性有利 31% 之 meta-epidemiologic 證據（Agoritsas T, et al. <em>JAMA</em>. 2017;317(7):748-759）]</li>
+</ul>
+
+<footer class="appraisal-meta">評讀資訊：模型：claude-opus-5 (claude)  ·  route：observational  ·  產出時間：2026-10-04 08:31 CST</footer>
+</main>
+</body>
+</html>
