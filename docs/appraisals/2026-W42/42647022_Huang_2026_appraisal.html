@@ -1,0 +1,1249 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Predictive Utility of Coronary Artery Calcium Score Added to the PREVENT Atherosclerotic Cardiovascular Disease Equations.</title>
+<style>
+  :root {
+    --bg: #fafafa;
+    --card: #ffffff;
+    --text: #1a1a1a;
+    --muted: #6b6b6b;
+    --border: #e5e5e5;
+    --accent: #0b5fff;
+  }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang TC",
+      "Microsoft JhengHei", sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    margin: 0;
+    padding: 24px 16px 64px;
+    line-height: 1.72;
+  }
+  main {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    margin: 0 auto;
+    max-width: 840px;
+    padding: 22px 26px;
+  }
+  nav {
+    margin: 0 auto 14px;
+    max-width: 840px;
+    color: var(--muted);
+    font-size: 14px;
+  }
+  a { color: var(--accent); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  h1, h2, h3, h4 { line-height: 1.35; }
+  h1 { font-size: 26px; margin-top: 0; }
+  h2 { border-top: 1px solid var(--border); padding-top: 18px; }
+  code {
+    background: rgba(127, 127, 127, 0.12);
+    border-radius: 4px;
+    padding: 1px 4px;
+  }
+  table {
+    border-collapse: collapse;
+    table-layout: auto;
+    width: 100%;
+    max-width: 100%;
+  }
+  th, td {
+    border: 1px solid var(--border);
+    overflow-wrap: anywhere;
+    padding: 6px 8px;
+    text-align: left;
+    vertical-align: top;
+  }
+  blockquote {
+    border-left: 3px solid var(--accent);
+    color: var(--muted);
+    margin-left: 0;
+    padding-left: 14px;
+  }
+  .appraisal-meta {
+    border-top: 1px solid var(--border);
+    margin-top: 28px;
+    padding-top: 14px;
+    color: var(--muted);
+    font-size: 13px;
+  }
+  @media (max-width: 600px) {
+    body {
+      padding: 12px 8px 40px;
+    }
+    main {
+      padding: 16px 12px;
+    }
+    h1 {
+      font-size: 22px;
+    }
+    table {
+      font-size: 12px;
+      table-layout: fixed;
+    }
+    th, td {
+      padding: 4px 5px;
+    }
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #1a1a1a;
+      --card: #242424;
+      --text: #e8e8e8;
+      --muted: #999;
+      --border: #333;
+      --accent: #6ea8ff;
+    }
+  }
+</style>
+</head>
+<body>
+<nav><a href="../../2026-W42.html">← 回到 2026-W42 週報</a></nav>
+<main>
+<h1>Predictive Utility of Coronary Artery Calcium Score Added to the PREVENT Atherosclerotic Cardiovascular Disease Equations.</h1>
+<h1>文獻批判性評讀</h1>
+<p><strong>Predictive Utility of Coronary Artery Calcium Score Added to the PREVENT Atherosclerotic Cardiovascular Disease Equations</strong></p>
+<hr />
+<h2>SECTION-0：文章全面描述</h2>
+<h3>0. 文章身份證</h3>
+<table>
+<thead>
+<tr>
+<th>項目</th>
+<th>內容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>標題</td>
+<td>Predictive Utility of Coronary Artery Calcium Score Added to the PREVENT Atherosclerotic Cardiovascular Disease Equations</td>
+</tr>
+<tr>
+<td>期刊</td>
+<td><em>JAMA</em> 2026;336(13):1126-1134</td>
+</tr>
+<tr>
+<td>DOI</td>
+<td><a href="https://doi.org/10.1001/jama.2026.13233">10.1001/jama.2026.13233</a>（PMID 42647022；PMC13643583）</td>
+</tr>
+<tr>
+<td>文章類型</td>
+<td>Original Investigation — <strong>縱貫性觀察型世代研究</strong>（MESA 次級分析），本質是<strong>預後預測模型的增量價值評估（incremental value / added predictive utility study）</strong></td>
+</tr>
+<tr>
+<td>路由判定</td>
+<td>SKILL-A 主流程 + 觀察性子模組；因核心是 prediction model performance，另引用 JAMA Users' Guide 之 discrimination/calibration 框架</td>
+</tr>
+</tbody>
+</table>
+<p><strong>類型標注的重要性</strong>：本文雖掛「observational cohort study」且宣告遵循 <strong>STROBE</strong>，但其研究問題（新變項加入既有模型後的 discrimination / calibration / reclassification 改變）屬於預測模型領域，正確的報告準則應是 <strong>TRIPOD</strong>，而非 STROBE。這不是形式問題——TRIPOD 要求報告的樣本量合理性、過度配適（optimism）校正、模型更新策略、以及 calibration-in-the-large，本文都缺漏（詳見 C 節）。[文內：Methods 段]</p>
+<hr />
+<h3>1. 作者團隊評論</h3>
+<p><strong>通訊作者</strong>：Nilay S. Shah, MD, MPH，Northwestern University Feinberg School of Medicine 預防醫學系。[文內]
+[外部: Northwestern Feinberg 教員頁 / APAMSA / Stanford Asian Health] 心臟科醫師，兼任 Cardiology、Preventive Medicine、Medical Social Sciences，研究主軸為亞裔（尤其南亞裔）美國人的心血管健康與一級預防，主持 MASALA 世代第二代研究分支，2025 年獲 National Academy of Medicine 的 Gilbert S. Omenn Fellowship。</p>
+<p><strong>團隊構成與權力結構（本篇最關鍵的背景事實）</strong></p>
+<p>這不是一個中立的第三方團隊，而是<strong>PREVENT 方程式的開發與擁護陣營</strong>：</p>
+<ul>
+<li><strong>Sadiya S. Khan、Donald M. Lloyd-Jones、Xiaoning Huang、Lucia C. Petito、Josef Coresh、Chiadi E. Ndumele</strong>——[外部: PubMed 作者檢索] Khan SS 與 Lloyd-Jones DM 合計有 38 篇與 PREVENT 方程式相關的發表。其中 Khan 為 2026 年 <em>Circ Popul Health Outcomes</em> <strong>〈External Validation of the PREVENT Equations in a National Sample of US Adults〉</strong> 的第一作者（<a href="https://doi.org/10.1161/CIRCOUTCOMES.125.012988">DOI</a>，PMID 42554063），共同作者包含本篇的 Huang、Petito、Coresh、Ndumele、Lloyd-Jones——<strong>同一組人，同一年，先發表「PREVENT 外部驗證表現良好」，再發表「CAC 加進 PREVENT 幫助不大」。</strong></li>
+<li><strong>Philip Greenland</strong>——[外部: PubMed] 有 31 篇 CAC 風險預測相關發表，是 CAC 文獻的奠基者之一，長期立場偏向「CAC 的增量價值被高估」。[文內] 同時為 <em>JAMA</em> Senior Editor，已申報並聲明未參與本稿審查決策。</li>
+<li><strong>Ron Blankstein</strong>（心臟影像）、<strong>Roger S. Blumenthal</strong>（Johns Hopkins Ciccarone 預防中心，CAC 的長期倡議者）、<strong>Amit Khera</strong>、<strong>James H. Stein</strong>（血管影像）——構成影像端的平衡力量。值得注意：Blumenthal <strong>同時是立場相反的競爭論文</strong>（JACC, Rikhi/Shapiro 等，<a href="https://doi.org/10.1016/j.jacc.2026.05.039">DOI</a>）的共同作者。</li>
+<li><strong>Josef Coresh、Janani Rangaswami</strong>——腎臟/心腎代謝，對應 UACR add-on 分析。</li>
+</ul>
+<p><strong>作者立場史（本篇的核心偏差風險）</strong>
+本文結論可壓縮成一句：「<strong>PREVENT 自己就夠好了，CAC 只在邊緣地帶有限補強。</strong>」這與作者群（PREVENT 的智慧財產擁有者）既有的公開立場<strong>高度自我一致</strong>。Style Guide 列舉的「prior commitment bias from the same research group repeatedly publishing from the same dataset」在此幾乎是教科書案例：<strong>同一批人、同一個資料集（MESA 已納入 PREVENT 的推導）、同一年、連續產出鞏固自家模型地位的論文</strong>。這不代表結果錯誤，但代表「結論方向與作者既有利益一致」這件事本身不構成對結論的額外支持。</p>
+<p><strong>利益揭露評估</strong> [文內: Conflict of Interest Disclosures]</p>
+<ul>
+<li>Blankstein 揭露收受 Amgen、Novartis、<strong>HeartFlow、Caristo、Nanox AI、Artya</strong> 之個人費用，並自 <strong>HeartFlow、Nanox AI 獲研究經費</strong>——這些全是心臟 CT 影像／AI 影像公司，與 CAC 的臨床擴張<strong>有直接商業利益</strong>。在一篇評估「CAC 該不該做」的論文裡，這是必須被讀者看見的。</li>
+<li>其餘揭露（Petito-Omron；Ho-Eli Lilly；Stein-DSMB；Khan-NHLBI）與本主題關聯較低。</li>
+<li><strong>資助者</strong>：NHLBI 合約 + K23HL157766 + AHA 24CDA1266732；明確聲明資助者無角色。AHA 同時是 PREVENT 的母機構，這層關係文內未評論。</li>
+<li><strong>方向性評估</strong>：影像端的商業利益若發揮作用，應該把結論推向「CAC 有用」；但本文結論偏保守。<strong>COI 的方向與結論方向相反</strong>，這反而是本文可信度的一個正面訊號。真正的風險來自另一端——PREVENT 作者群的學術既得利益。</li>
+</ul>
+<hr />
+<h3>2. 文獻 Metadata 整理</h3>
+<table>
+<thead>
+<tr>
+<th>項目</th>
+<th>內容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Received date</td>
+<td><strong>[文內未提供]</strong>——JAMA 僅刊 Accepted date，因此<strong>無法計算真實審查天數</strong>，不得推估</td>
+</tr>
+<tr>
+<td>Accepted for Publication</td>
+<td>2026-06-23 [文內]</td>
+</tr>
+<tr>
+<td>Published Online</td>
+<td>2026-08-26 [文內]；Accepted → Online = <strong>64 天</strong></td>
+</tr>
+<tr>
+<td>Print</td>
+<td>2026-10-06（336卷13期，pp.1126-1134）；Online → Print = 41 天</td>
+</tr>
+<tr>
+<td>期刊 Impact Factor</td>
+<td>[外部: 第三方彙整站 impactfactorforjournal.com / journalmetrics] 列為 JCR 2026 發布之 2025 JIF ≈ 65.4；其他彙整站給 55.0 / 56.3。<strong>各來源互相矛盾，未取得 Clarivate 原始 JCR</strong>，僅能確認屬一般醫學 Q1 頂端</td>
+</tr>
+<tr>
+<td>平均審查天數</td>
+<td>[外部: JAMA 投稿指引彙整] 中位數：未外審即決 2 天；經外審首次決定 25–31 天（來源間不一致）。研究論文接受率 ~2%</td>
+</tr>
+<tr>
+<td>Open Access</td>
+<td>非完全 OA；PMC13643583 有延後釋出版本</td>
+</tr>
+<tr>
+<td>邀稿 vs 投稿</td>
+<td>[文內未揭露]。無 &quot;invited&quot; 標記，應為一般投稿</td>
+</tr>
+</tbody>
+</table>
+<p><strong>解讀</strong>：Accepted → Online 的 64 天在 JAMA 屬一般速度，看不出加速處理的痕跡。但整篇文章的時序值得注意——<strong>2026 年 ACC/AHA 血脂指引才剛把 PREVENT + 選擇性 CAC 寫進建議，本文（以及 JACC 的平行論文）隨即在同年出現，為一個「已經先寫進指引、事後才補證據」的建議提供回溯性驗證。</strong> 文章自己在 Introduction 誠實承認了這個順序：指引的建議「extrapolate available data for the improvement in prediction with CAC based on the PCEs」。這份誠實值得肯定。</p>
+<hr />
+<h3>3. 研究背景 [僅依文內]</h3>
+<p><strong>既有事實與證據</strong></p>
+<ol>
+<li>一級預防指引以多變項風險方程式決定介入強度。[文內 ref 1-3]</li>
+<li>AHA 推導並驗證了 PREVENT 方程式。[ref 4,5]</li>
+<li><strong>2026 ACC/AHA/Multisociety 血脂指引</strong>以 PREVENT-ASCVD 取代 Pooled Cohort Equations（PCE），重新定義風險分層：低（&lt;3%）／邊緣（3%–&lt;5%）／中度（5%–&lt;10%）／高（≥10%），並對中度風險者給予 <strong>Class 1</strong> 之中強度 statin 建議。[ref 3]</li>
+<li>同指引對<strong>邊緣或中度風險、且 statin 決策仍不確定者</strong>，給 Class 1 建議「考慮 CAC」。</li>
+<li><strong>關鍵缺口</strong>：PCE 高估風險約 2 倍 [ref 6,7]；CAC 增量價值的既有證據（ΔC +0.09、NRI 0.19）<strong>全部建立在 PCE 之上</strong>，而非 PREVENT。</li>
+</ol>
+<p><strong>知識缺口</strong>（作者明述）：CAC 搭配 PREVENT 的增量價值未知；既有一篇以臨床轉介接受 coronary CTA 者為對象的研究 [ref 8] 不足以代表社區一級預防族群。</p>
+<p><strong>Research question</strong>：在社區型一級預防族群中，把 CAC 加進 PREVENT-ASCVD 方程式，discrimination、calibration、reclassification 改變多少？特別是在指引指定的「邊緣／中度風險」族群？[文內 Introduction 末段，明確陳述]</p>
+<hr />
+<h3>4. 研究設計與方法</h3>
+<p><strong>PICO</strong></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>內容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>P</strong></td>
+<td>MESA 世代，2000-2002 年於美國 6 中心收案、基線無臨床 CVD、年齡 45–79 歲且風險因子落在 PREVENT 驗證範圍內之成人（n=6098，由 6814 篩出）</td>
+</tr>
+<tr>
+<td><strong>I</strong></td>
+<td>PREVENT-ASCVD 方程式 <strong>+ CAC</strong>（ln[CAC+1]）</td>
+</tr>
+<tr>
+<td><strong>C</strong></td>
+<td>PREVENT-ASCVD base 方程式（未重新校正）；次要比較為 PREVENT-ASCVD UACR add-on</td>
+</tr>
+<tr>
+<td><strong>O</strong></td>
+<td>10 年內經判定（adjudicated）之<strong>致死或非致死性心肌梗塞或中風</strong>；非 CVD 死亡為競爭事件</td>
+</tr>
+</tbody>
+</table>
+<p><strong>關鍵設計細節</strong></p>
+<ul>
+<li><strong>樣本流程</strong> [Figure 1]：6814 → 排除 622 不符資格（334 風險因子超出 PREVENT 驗證範圍；288 年齡 &lt;30 或 &gt;79）→ 排除 94 缺失資料 → <strong>6098</strong>。數字完全一致（334+288=622；6814−622−94=6098）✓</li>
+<li><strong>CAC 測量</strong>：基線取得；Chicago/LA/NY 用 electron-beam 型（文中寫 &quot;noncontrast cardiac-gated CT scanner&quot;），Baltimore/Winston-Salem/St Paul 用 multidetector CT；中央判讀；以 phantom 校正跨機差異。</li>
+<li><strong>模型建構（最關鍵的統計設計）</strong>：Cox proportional hazards，<strong>以 ln(CAC+1) 為唯一預測因子，PREVENT 風險估計值以 complementary log-log 轉換後作為固定 offset</strong>。此設計強制 PREVENT 線性預測子的係數為 1，不重新校正 PREVENT——這是<strong>保守且正確的選擇</strong>，值得肯定（見 B3）。</li>
+<li><strong>CI 估計</strong>：200 次 bootstrap resample（僅用於 CI，<strong>未用於 optimism 校正</strong>）。</li>
+<li><strong>NRI 分層</strong>：&lt;3% / 3%–&lt;5% / ≥5%（合併中度與高度，因 ≥5% 一律建議降脂治療）。</li>
+<li><strong>Calibration</strong>：預測風險十分位的觀察 vs 預測比較圖 + Cox calibration slope。</li>
+<li><strong>軟體</strong>：Stata 18.5；雙尾 P&lt;.05。</li>
+<li><strong>預先指定之次群分析</strong>：性別、自述種族／族裔（Black / Chinese / Hispanic / White）。</li>
+</ul>
+<p><strong>主要變項定義</strong></p>
+<ul>
+<li>CAC：Agatston score，中央判讀，phantom 校正，分層 0 / 1–&lt;100 / 100–&lt;300 / ≥300；迴歸中用 ln(CAC+1)。</li>
+<li>Outcome：adjudicated 致死或非致死 MI 或 stroke。<strong>注意：此定義不等同 PREVENT 推導時的 ASCVD 定義</strong>（PREVENT-ASCVD 通常為非致死 MI + 非致死 stroke + <strong>CVD 死亡</strong>）。本文未納入非 MI/stroke 之 CVD 死亡（如猝死、致死性心衰竭）。[推論：基於 Outcome Ascertainment 段落的字面定義；文內未明確比對兩者定義差異]</li>
+</ul>
+<hr />
+<h3>5. 研究結果重點整理 ＋ 圖頁判讀</h3>
+<h4>5.1 基線（Table，第 1129 頁）</h4>
+<table>
+<thead>
+<tr>
+<th>特徵</th>
+<th>CAC=0 (n=3123)</th>
+<th>CAC&gt;0 (n=2975)</th>
+<th>全體 (n=6098)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>年齡（平均, SD）</td>
+<td>57.8 (8.8)</td>
+<td><strong>65.2 (8.8)</strong></td>
+<td>61.4 (9.6)</td>
+</tr>
+<tr>
+<td>女性</td>
+<td>1968 (63.0%)</td>
+<td>1221 (41.0%)</td>
+<td>3189 (52.3%)</td>
+</tr>
+<tr>
+<td>白人</td>
+<td>1034 (33.1%)</td>
+<td>1318 (44.3%)</td>
+<td>2352 (38.6%)</td>
+</tr>
+<tr>
+<td>華裔</td>
+<td>372 (11.9%)</td>
+<td>361 (12.1%)</td>
+<td>733 (12.0%)</td>
+</tr>
+<tr>
+<td>Non–HDL-C (mg/dL)</td>
+<td>143 (33)</td>
+<td>147 (33)</td>
+<td>145 (33)</td>
+</tr>
+<tr>
+<td>收縮壓 (mmHg)</td>
+<td>123 (19)</td>
+<td>130 (20.4)</td>
+<td>126 (20)</td>
+</tr>
+<tr>
+<td>糖尿病</td>
+<td>320 (10.2%)</td>
+<td>501 (16.8%)</td>
+<td>821 (13.5%)</td>
+</tr>
+<tr>
+<td>目前吸菸</td>
+<td>397 (12.7%)</td>
+<td>394 (13.2%)</td>
+<td>791 (13.0%)</td>
+</tr>
+<tr>
+<td><strong>Statin 使用</strong></td>
+<td>309 (9.9%)</td>
+<td>592 (19.9%)</td>
+<td><strong>901 (14.8%)</strong></td>
+</tr>
+<tr>
+<td>eGFR</td>
+<td>81 (15)</td>
+<td>76 (16)</td>
+<td>78 (16)</td>
+</tr>
+<tr>
+<td>CAC 中位數 (IQR)</td>
+<td>0 (0–0)</td>
+<td>82 (20–279)</td>
+<td>0 (0–77)</td>
+</tr>
+<tr>
+<td>PREVENT base 10 年風險</td>
+<td>4.5 (3.8)</td>
+<td>8.4 (5.0)</td>
+<td>6.4 (4.8)</td>
+</tr>
+</tbody>
+</table>
+<p><strong>可疑的排版瑕疵</strong>：UACR 中位數 (IQR) 欄位 CAC&gt;0 組印為「6 (7–13)」——<strong>中位數 6 卻落在 IQR 7–13 之外，數學上不可能</strong>。全體列亦為「5 (3–11)」而 CAC=0 為「5 (3–9)」。這幾乎確定是排版或轉檔錯誤（應為 6 [3–13] 之類），但它出現在 <em>JAMA</em> 正式排版的表格圖像中（非 markdown 轉檔造成）。[依據：page_004.png 之 Table 原始影像]</p>
+<h4>5.2 主要效能指標</h4>
+<table>
+<thead>
+<tr>
+<th>模型</th>
+<th>Harrell C (95% CI)</th>
+<th>ΔC (95% CI)</th>
+<th>Calibration slope (95% CI)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>PREVENT-ASCVD base</td>
+<td>0.73 (0.70–0.75)</td>
+<td>—</td>
+<td>1.09 (0.93–1.25)</td>
+</tr>
+<tr>
+<td>base + CAC</td>
+<td>0.75 (0.73–0.77)</td>
+<td><strong>0.02 (0.01–0.03)</strong></td>
+<td>0.92 (0.81–1.03)</td>
+</tr>
+<tr>
+<td>UACR add-on</td>
+<td>0.73 (0.71–0.75)</td>
+<td>—</td>
+<td>1.03 (0.89–1.18)</td>
+</tr>
+<tr>
+<td>UACR add-on + CAC</td>
+<td>0.75 (0.73–0.78)</td>
+<td><strong>0.02 (0.01–0.03)</strong></td>
+<td>0.90 (0.79–1.01)</td>
+</tr>
+</tbody>
+</table>
+<p>事件數：366 / 6098（6.0%）。追蹤敘述：「Over 10 (median, 5.8) years」。</p>
+<h4>5.3 分層事件率（Table + Figure 3）</h4>
+<table>
+<thead>
+<tr>
+<th>PREVENT 風險層</th>
+<th>n</th>
+<th>CAC=0 事件率 (95% CI)</th>
+<th>CAC&gt;0 事件率 (95% CI)</th>
+<th>CAC 0 / 1-99 / 100-299 / ≥300 分層率</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>低 (&lt;3%)</td>
+<td>1885</td>
+<td><strong>1.0 (0.5–1.5)</strong></td>
+<td>2.4 (0.9–3.8)</td>
+<td>~1.0 / ~1.2 / ~5.3 / <strong>~8.2</strong></td>
+</tr>
+<tr>
+<td>邊緣 (3–&lt;5%)</td>
+<td>1115</td>
+<td><strong>1.9 (0.8–3.0)</strong></td>
+<td><strong>5.7 (3.7–7.8)</strong></td>
+<td>1.9 / 3.9 / 7.4 / <strong>14.3</strong></td>
+</tr>
+<tr>
+<td>中度 (5–&lt;10%)</td>
+<td>1788</td>
+<td>4.9 (3.3–6.4)</td>
+<td>8.6 (6.9–10.3)</td>
+<td>~4.9 / ~6.9 / ~9.9 / ~11.2</td>
+</tr>
+<tr>
+<td>高 (≥10%)</td>
+<td>1310</td>
+<td><strong>6.8 (3.9–9.7)</strong></td>
+<td>15.2 (13.0–17.5)</td>
+<td>~6.8 / ~12.6 / ~15.0 / ~18.3</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>邊緣組四分層數值來自摘要原文（精確）；其餘四分層數值為 <strong>Figure 3 長條圖目視讀值（約略）</strong>，文內未以數字列出。</p>
+</blockquote>
+<h4>5.4 圖頁判讀（依使用者指定逐項核對）</h4>
+<p><strong>本文沒有 Kaplan-Meier 曲線，也沒有 forest plot。</strong> 這本身就是一個發現——一篇以 10 年事件預測為主題的論文，<strong>完全沒有呈現任何時間─事件曲線、沒有 number-at-risk 表、沒有累積發生率函數圖</strong>。因此使用者要求檢查的「曲線分離時點」「number-at-risk 後期銳減」「點估計 CI 是否跨越無效線」<strong>在本文圖頁中無對應物可判讀</strong>。這不是解析度問題，是圖根本不存在。見 C4 對此缺漏的評價。</p>
+<table>
+<thead>
+<tr>
+<th>項目</th>
+<th>判讀結果</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>CONSORT/flow 人數一致性</strong>（Figure 1, page_003 之文字版）</td>
+<td>✓ 完全一致：6814 − (334+288) − 94 = 6098。缺失值明列 9 項並註明「非互斥」，誠實。唯一瑕疵：流程圖寫「Age &lt;30 or &gt;79 y」但 MESA 僅收 45–84 歲，&lt;30 歲欄位是沿用 PREVENT 年齡範圍的標籤殘留，無實質影響</td>
+</tr>
+<tr>
+<td><strong>座標軸起點</strong>（Figure 2, page_005）</td>
+<td>✓ 兩個子圖 y 軸皆 0–100%，自 0 起點，無誇大</td>
+</tr>
+<tr>
+<td><strong>座標軸起點</strong>（Figure 3, page_005）</td>
+<td>✓ y 軸 0–20%，自 0 起點，無截斷誇大</td>
+</tr>
+<tr>
+<td><strong>Figure 4 列算一致性</strong>（page_006）</td>
+<td>✓ 全部核對通過。事件列：25+40+301=366；非事件列：1860+1075+2797=5732。事件欄：31/49/286 皆與格內數字加總相符；非事件欄：2365/934/2433 同樣相符</td>
+</tr>
+</tbody>
+</table>
+<p><strong>圖頁傳達、但正文輕描淡寫的三個證據</strong></p>
+<ol>
+<li>
+<p><strong>Figure 3 最右組（高風險 ≥10%）的 CAC=0 柱子高約 6.8%</strong>——明顯高於 5% 的治療門檻。也就是說，<strong>在高風險族群中「CAC=0」並不能把人拉回不需治療的區間</strong>。這正是同期 JACC 論文（Rikhi/Shapiro，<a href="https://doi.org/10.1016/j.jacc.2026.05.039">DOI</a>）明文強調的結論：「CAC 0 should not generally be used to withhold statin therapy in these individuals」。本文的 Figure 3 完全支持這個論點，但 JAMA 正文從未把這句話說出來。</p>
+</li>
+<li>
+<p><strong>Figure 2 左側（低風險組）的最右兩根柱子</strong>：低風險組中有約 3.0%（n=57）CAC 100–299、約 1.9%（n=36）CAC ≥300；<strong>對照 Figure 3，這兩群的 10 年事件率約 5.3% 與 8.2%，雙雙跨過 5% 的治療門檻。</strong> 指引不建議對低風險者測 CAC，本文的選擇性再分類分析也刻意把低風險組凍結不動——<strong>但圖本身顯示這群人裡藏著近百位會被漏掉的高風險個體。</strong> 正文僅以一句「opportunistic CAC identification is growing」帶過，沒有把自己圖裡的數字拿出來討論。（必要警示：n=36 的 8.2% 僅約 3 個事件，CI 極寬，不足以改變實務。）</p>
+</li>
+<li>
+<p><strong>Figure 4A 的紅色格子分布</strong>是全文最重要、卻最被弱化的訊息。見 C1 的完整拆解。</p>
+</li>
+</ol>
+<hr />
+<h3>6. 作者討論與評論重點</h3>
+<p><strong>作者主要訊息</strong></p>
+<ol>
+<li>全風險譜套用 CAC，對 PREVENT 的增益只是「modest」（ΔC 0.02、NRI 0.095）。</li>
+<li>與 PCE 時代的 ΔC +0.09 / NRI 0.19 相比大幅縮水；作者歸因於 PREVENT 校正較佳 + 指引新門檻較低。</li>
+<li>邊緣風險族（3%–&lt;5%）是 CAC 最有價值之處：有事件者 50% 正確上調，無事件者 61% 正確下調。</li>
+<li>UACR add-on 模型的 CAC 增益「更小」，凸顯腎臟指標的重要性，應推廣 UACR 篩檢。</li>
+<li>不在各風險層內計算 C statistic，因為條件化於 PREVENT 分數本身會壓縮預測子變異、使 C 無法比較；NRI 亦有類似疑慮 [ref 22,23]。</li>
+</ol>
+<p><strong>作者自列限制</strong> [文內 Limitations]</p>
+<ol>
+<li>MESA 本身被納入 PREVENT 的推導 → PREVENT 在本樣本表現可能偏好 → 「may result in a <strong>more conservative</strong> estimate of the additive utility of CAC」。</li>
+<li>僅 45–79 歲；30–44 歲的表現未知（但年輕族群 CAC 盛行率低）。</li>
+<li>使用研究計畫等級的 CAC，臨床實務取得的 CAC 是否結果相同未評估。</li>
+</ol>
+<p><strong>[評估]：作者限制清單避重就輕，且第 1 點的方向性論證有嚴重瑕疵</strong></p>
+<ul>
+<li><strong>第 1 點的邏輯只走了一半，而且走錯方向。</strong> 作者說「MESA 在 PREVENT 推導集內 → PREVENT 在此表現偏好 → ΔC 被低估」。這在 base model 那一側成立。但他們<strong>完全沒提</strong>：CAC 模型（Cox 含 ln[CAC+1]，PREVENT 為 offset）<strong>的係數是在這同一批 6098 人身上估計出來，再拿同一批人評估</strong>。這是 <strong>apparent performance</strong>，未做 split-sample、cross-validation 或 bootstrap optimism 校正（200 次 bootstrap 只用來算 CI）。因此比較結構是：<strong>外部指定、未重估係數的 base model</strong>，對上<strong>內部配適、在同一資料最佳化的 CAC 模型</strong>。這個不對稱<strong>系統性地偏袒 CAC 模型</strong>。兩個方向的偏差同時存在，淨效應無法判定——作者卻只呈現對自己結論有利（讓 ΔC=0.02 顯得「保守」）的那一半。<strong>這是本文最嚴重的論證缺陷。</strong>
+<ul>
+<li>旁證：加入 CAC 後 calibration slope 由 1.09 掉到 0.92（UACR 組 1.03 → 0.90），<strong>兩次都往 &lt;1 的方向移動</strong>。slope &lt;1 是過度配適／預測值過度極端的典型訊號，與「CAC 模型在本樣本被過度最佳化」相符。</li>
+</ul>
+</li>
+<li><strong>缺漏的限制（作者完全未提）</strong>：
+<ul>
+<li><strong>CAC 測量於 2000–2002 年</strong>，距今約 24 年。掃描技術、Agatston 與現代掃描器的可比性、以及當代 statin 普及度（基線僅 14.8%）全都不同。作者只提「研究用 CAC vs 臨床 CAC」，卻未提<strong>時代差異</strong>。</li>
+<li><strong>追蹤期間的 statin 啟動未納入分析</strong>。基線 statin 使用是 PREVENT 的變項之一，但 10 年追蹤中新啟動的 statin 完全未處理。若 CAC 結果曾回報給參與者或其醫師（MESA 的作法文內未交代），高 CAC 者將更可能被處方 statin，<strong>反而會壓低高 CAC 組的觀察事件率，使 CAC 的預測價值被低估</strong>。這個 informative-treatment 問題文內隻字未提。[推論：基於文內未交代結果回報政策；需查 MESA 原始 protocol 確認]</li>
+<li><strong>Outcome 定義與 PREVENT 推導時的 ASCVD 定義可能不一致</strong>（見上）。</li>
+<li><strong>未報告 calibration-in-the-large（O/E ratio）</strong>，全篇只有 slope 與視覺化圖（在 Supplement，本次 markdown 未提供）。</li>
+</ul>
+</li>
+<li><strong>第 4 點（UACR）的論述與自己的數據矛盾。</strong> 作者說「CAC 的增益在 UACR add-on 模型中<strong>更微小</strong>」，但正文給的數字是 <strong>ΔC 0.02 (0.01–0.03) 對 ΔC 0.02 (0.01–0.03)——完全相同，CI 也完全相同</strong>。唯一可能支持「更微小」的是 eTable 2 的 NRI，而該表未在正文呈現。接著作者從這個無數據支撐的比較，跳到「應推廣 UACR 篩檢（目前 &lt;20%）」的公衛呼籲。<strong>本研究完全沒有評估 UACR 篩檢是否改善結局</strong>；這是脫離數據的倡議。</li>
+<li><strong>第 5 點（不算分層內 C statistic）的理由在技術上正確</strong>，且作者主動引用 NRI 的方法學批評文獻 [ref 22,23]。但這份懷疑<strong>只套用在他們不想做的分析上，沒有套用在自己的主要指標 NRI 上</strong>。這是選擇性的方法學嚴謹。</li>
+</ul>
+<hr />
+<h3>7. 外部專業意見</h3>
+<p><strong>[無法取得]——未發現同期 editorial 或 invited commentary。</strong></p>
+<p>搜尋程序與結果：</p>
+<ul>
+<li><em>JAMA</em> 文章頁（jamanetwork.com/journals/jama/article-abstract/2853347）的 Related Articles 僅列出兩篇 <em>JAMA Cardiology</em> 文章（Zheutlin 等人之 Special Communication &quot;Coronary Artery Calcium Testing—Too Early, Too Late, Too Often&quot;；Krishnan/Huang 等人之 Research Letter &quot;PREVENT Risk Age Equations&quot;），<strong>無 Editorial 連結</strong>。</li>
+<li>PubMed 書目（PMID 42647022）的 article_types 為 Journal Article / Observational Study / Multicenter Study，<strong>無 &quot;Comment in&quot; 連結</strong>。</li>
+<li>多輪網路檢索（含 extended mode）未找到針對本文的期刊評論。</li>
+<li>因未取得任何 editorial/comment 的 DOI，<strong>未呼叫 <code>fetch_editorial.py</code></strong>（該工具僅應用於針對本文的評論 DOI）。</li>
+</ul>
+<p><strong>可取得的平行獨立證據（非 editorial，但方法學上更有價值）</strong></p>
+<p>[外部: PubMed] <strong>Rikhi R, …, Blumenthal RS, Shapiro MD. &quot;The Role of Coronary Artery Calcium in Statin Eligibility Based on the AHA's PREVENT Calculator: Insights From MESA.&quot; <em>J Am Coll Cardiol.</em> 2026;88(7):739-748.</strong> <a href="https://doi.org/10.1016/j.jacc.2026.05.039">DOI</a>（PMID 42455102，線上早於本文一週）</p>
+<ul>
+<li><strong>同一個 MESA 世代</strong>（n=5698，LDL-C 70–189 且非糖尿病者分層），<strong>同一個主題</strong>，<strong>大致同一時間</strong>，<strong>部分重疊作者（Blumenthal）</strong>。</li>
+<li>其結論與本文<strong>互補但重心不同</strong>：「CAC provided its greatest clinical value when statin treatment decisions were uncertain, particularly among individuals with borderline predicted risk」——這一點與本文一致。</li>
+<li><strong>但關鍵的補充是本文沒說的</strong>：「Among participants who already met guideline-based treatment thresholds, observed ASCVD event rates remained elevated even when CAC was absent, suggesting that <strong>CAC 0 should not generally be used to withhold statin therapy in these individuals.</strong>」</li>
+<li><strong>方法學意涵</strong>：兩篇論文用同一個世代、同一批事件，產出兩篇獨立發表。這<strong>不是獨立複製（independent replication）</strong>，而是<strong>同一資料的雙重發表</strong>。讀者容易誤以為「兩篇研究都支持」，實際上是<strong>同一組事件資料被計算兩次</strong>。這一點兩篇論文都未相互標注。</li>
+</ul>
+<p>本文結論性段落強調「reclassification results support selective use of CAC」；JACC 版本則強調「CAC 0 不應用來不給 statin」。<strong>同一批數據支撐兩個方向不同的臨床訊息，取決於作者想強調哪一端。</strong> 這本身就是對本文「結論穩健性」最有力的外部檢驗。</p>
+<p>一般醫學新聞（Medscape、STAT、MedicalXpress 等）均有報導但多為作者本人受訪轉述，<strong>依 Skill 規定不列為專業意見來源</strong>（且 Medscape 全文為付費牆，WebFetch 回傳 HTTP 402，未能取得具名獨立專家評論內容）。</p>
+<hr />
+<h3>8. 臨床建議（詳細理由見後段評讀）</h3>
+<p><strong>可採用的情境</strong></p>
+<ol>
+<li>45–79 歲、無 ASCVD、以 PREVENT 估得 <strong>3%–&lt;5%（邊緣風險）</strong>、且醫病雙方對是否開始 statin<strong>真的猶豫不決</strong>時——CAC 是可被數據支持的「決勝局」檢查。此族群中 CAC=0 者 10 年事件率 1.9%（95% CI 0.8–3.0），CAC&gt;0 者 5.7%（3.7–7.8）。</li>
+<li>作為<strong>風險溝通工具</strong>（而非治療門檻的自動開關），用來提升猶豫者的治療意願或讓 CAC=0 者安心延後藥物。</li>
+<li>以 <strong>PREVENT 取代 PCE</strong> 做為 10 年風險估計的起點——本研究再次確認 PREVENT 在 MESA 的 C=0.73、calibration slope 1.09，表現可接受（<strong>但請注意 MESA 是 PREVENT 的推導來源之一，此非獨立驗證</strong>）。</li>
+</ol>
+<p><strong>不建議直接套用的情境</strong></p>
+<ol>
+<li><strong>台灣／東亞一般門診族群</strong>。這是美國世代、美國推導模型。MESA 的華裔子群僅 733 人（12.0%），且「Chinese-American」與台灣居民在飲食、環境、基線事件率上差異巨大；本文更明言華裔子群的 ΔC 不具統計顯著性且可能檢定力不足。<strong>PREVENT 在台灣未經驗證，CAC 在 PREVENT 之上的增量價值在台灣更屬未知。</strong></li>
+<li><strong>低風險（&lt;3%）族群的常規 CAC 篩檢</strong>。本研究刻意不對此族群做再分類，也沒有提供支持證據。</li>
+<li><strong>高風險（≥10%）族群用 CAC=0 來停掉 statin</strong>。本文 Figure 3 顯示此族群 CAC=0 者 10 年事件率仍 6.8%（3.9–9.7），遠高於 5% 治療門檻；JACC 平行分析明確反對此作法。</li>
+<li><strong>南亞裔、菲律賓裔族群</strong>（作者自承無資料）；<strong>30–44 歲</strong>（本研究排除）；<strong>&gt;79 歲</strong>（本研究排除）。</li>
+<li><strong>任何把「再分類」等同於「改善臨床結局」的推論</strong>。沒有任何 RCT 顯示 CAC 導向的 statin 決策能降低事件率。</li>
+</ol>
+<p><strong>給臨床醫師的三點實務建議</strong></p>
+<ol>
+<li><strong>CAC 只用在 3%–&lt;5% 且決策真的卡住的病人身上</strong>。在 ≥5% 的人身上測 CAC 幾乎不改變該做的事（指引已是 Class 1 給 statin，且 CAC=0 也不足以停藥）；在 &lt;3% 的人身上則缺乏支持證據且需承擔輻射與後續檢查成本。</li>
+<li><strong>把「CAC=0 → 可以不吃藥」這句話說得更保守。</strong> 在邊緣風險族群，CAC=0 的 10 年事件率點估計 1.9%，但<strong>95% CI 上界剛好觸及 3.0%</strong>——統計上並不能有把握地把病人送進 &lt;3% 的安全區。更重要的是（見 C1），在<strong>實際後來發生事件</strong>的邊緣風險病人中，<strong>有 33% 被 CAC 錯誤地往下調級</strong>。CAC=0 是「暫時安心」，不是「確定無風險」。</li>
+<li><strong>決策門檻應納入 statin 本身的風險效益不對稱性。</strong> 中強度 statin 便宜、安全、可逆；漏掉一個未來會心梗或中風的病人則不可逆。本研究的再分類淨效益<strong>完全建立在「正確地讓無事件者免於用藥」上</strong>，而在有事件者身上是<strong>淨負向</strong>的。只有當你把「避免不必要用藥」看得比「避免漏掉事件」更重要時，CAC 的整體再分類才是划算的。</li>
+</ol>
+<p><strong>研究證據強度分級：中</strong>
+理由：大型、良好判定、前瞻性的社區世代，主要效能指標報告完整且 CI 明確；但（a）評估樣本與模型推導樣本重疊，（b）CAC 模型未做 optimism 校正，（c）關鍵的邊緣風險結論僅建立在 40 個事件上，（d）為單一世代、無獨立外部驗證，（e）無任何結局導向（outcome-driven）證據。</p>
+<hr />
+<h1>SKILL-A：原始研究批判性評讀（觀察性／預測模型路徑）</h1>
+<hr />
+<h2>A. 補充技術細節</h2>
+<table>
+<thead>
+<tr>
+<th>項目</th>
+<th>本文狀態</th>
+<th>評價</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>事前樣本量／檢定力估算</strong></td>
+<td><strong>完全未提供</strong></td>
+<td>⚠️ 本文是次級分析，樣本量由 MESA 既定。但一篇以「ΔC 是否顯著」為主要結果的論文，應至少說明 366 個事件對偵測特定 ΔC 的充分性，或對次群分析的檢定力限制。作者僅在 Discussion 對華裔子群提了一句「the possibility remains that the estimates were underpowered」，未量化</td>
+</tr>
+<tr>
+<td><strong>Optimism / 過度配適校正</strong></td>
+<td><strong>未執行</strong>。200 bootstrap 僅用於 CI</td>
+<td>❌ <strong>最嚴重的方法學缺陷</strong>。CAC 模型在評估樣本內配適，無 split-sample、無 k-fold CV、無 bootstrap 樂觀度校正。TRIPOD 明確要求</td>
+</tr>
+<tr>
+<td><strong>Base model 處理</strong></td>
+<td>PREVENT <strong>未重新校正</strong>，以 cloglog offset 固定係數=1</td>
+<td>✅ <strong>正確且保守的設計</strong>。避免了「在同一資料重新擬合 base model 再比較」這種會人為縮小 ΔC 的錯誤。值得肯定</td>
+</tr>
+<tr>
+<td><strong>比例風險假設檢驗</strong></td>
+<td><strong>未報告</strong></td>
+<td>⚠️ 使用 Cox 模型但未提 proportional hazards 檢驗。CAC 的 hazard 是否隨時間成比例（CAC 的「warranty period」概念暗示可能不成比例）未經驗證</td>
+</tr>
+<tr>
+<td><strong>競爭風險處理</strong></td>
+<td>宣告非 CVD 死亡為競爭事件；但 discrimination/calibration 用 Cox</td>
+<td>⚠️ <strong>內部不一致</strong>。Methods 另寫「10-year incidence rate was calculated as the number of events in 10 years expressed as a percentage」——這是<strong>未校正設限的粗比例</strong>，與競爭風險框架不相容。PREVENT 本身是競爭風險校正模型，而加 CAC 的模型是 Cox；兩者預測尺度的可比性文內未交代</td>
+</tr>
+<tr>
+<td><strong>缺失資料處理</strong></td>
+<td><strong>完全刪除（complete-case）</strong>，排除 94 人（1.5%）</td>
+<td>✅ 比例低，影響小；缺失項目逐一列出且註明非互斥，誠實</td>
+</tr>
+<tr>
+<td><strong>追蹤時間報告</strong></td>
+<td>「Over 10 (median, 5.8) years」</td>
+<td>❌ <strong>語意歧義</strong>：5.8 年究竟是（a）全體追蹤時間中位數，還是（b）有事件者的事件發生時間中位數？兩者意涵天差地別。若是 (a)，則有大量行政設限，粗比例會<strong>低估</strong> 10 年發生率、污染 calibration 評估；若是 (b)，則無此問題。論文未釐清，且未提供 reverse Kaplan-Meier 或中位追蹤的正式定義</td>
+</tr>
+<tr>
+<td><strong>報告準則</strong></td>
+<td>宣告 STROBE</td>
+<td>⚠️ 應為 <strong>TRIPOD</strong>（見文章身份證段）</td>
+</tr>
+<tr>
+<td><strong>多重比較處理</strong></td>
+<td>無正式校正</td>
+<td>主要結果僅 ΔC 與 NRI 兩項；次要分析（UACR、性別、種族、三種選擇性再分類情境）未校正。作者未宣稱次群差異，故風險可控，但仍應標注</td>
+</tr>
+</tbody>
+</table>
+<h3>A-觀察性子模組：混淆控制與因果適用性</h3>
+<p><strong>關鍵判斷：本文不是因果推論研究，而是預測研究。</strong> 因此「殘餘混淆」「exchangeability」等因果框架<strong>在主要分析上不適用</strong>——預測模型不要求變項與結局之間是因果關係，只要求關聯穩定且可外推。對此類文章套用「沒有調整 XX 混淆因子」的批判是類別錯誤。本次評讀不採此路線。</p>
+<p><strong>但本文確實在一個地方跨進了因果／決策領域</strong>，此時三大可識別性條件才有意義：</p>
+<table>
+<thead>
+<tr>
+<th>條件</th>
+<th>本文狀況</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Consistency（治療版本一致性）</strong></td>
+<td>❌ 結論主張 CAC「guide statin initiation」「inform a patient's decision to start medication」。但本研究中<strong>無人的治療是依 CAC 指派的</strong>。從「CAC 能分層風險」跳到「依 CAC 分配治療能改善結局」，需要的是 Target trial（CAC-guided vs 不測 CAC 的隨機分派），本研究完全沒有這種設計</td>
+</tr>
+<tr>
+<td><strong>Positivity</strong></td>
+<td>在邊緣風險層中，CAC ≥300 僅 n=56（5.0%）、CAC 100–299 僅 n=95（8.5%）。這些格子極稀疏，是整個「選擇性 CAC」結論的實質支撐</td>
+</tr>
+<tr>
+<td><strong>Exchangeability</strong></td>
+<td>不適用於預測目的；但若要主張「CAC=0 者可安全延後 statin」，則必須處理追蹤期間的 statin 啟動（本文未做，見上）</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Target trial 思維下的本文定位</strong>：理想試驗是「邊緣風險者隨機分派至 CAC 導向 statin 策略 vs 直接依 PREVENT 決策，比較 10 年 ASCVD 與用藥負擔」。本文只提供了這個試驗的<strong>前置分層資訊</strong>，不是試驗本身的替代品。[參考: jama_alba_2017_ug_170001.md「Comparison of 2 Models」節 — NRI 與 C statistic 皆無法回答「使用此模型是否改善病人結局」]</p>
+<hr />
+<h2>B. 批判性評估（四大面向）</h2>
+<h3>B1. 假說與理論邏輯</h3>
+<p><strong>假說是否預先指定？</strong> 研究問題明確且在 Introduction 末段清楚陳述三個目標，次群分析宣告為 a priori（性別、種族）。<strong>無撒網式探索的跡象</strong>，這點做得好。但「選擇性再分類」的三種情境（僅邊緣、僅中度、邊緣+中度合併）是否全部預先指定、還是在看到整體 NRI 平淡後才加做，文內未說明。eTables 7、8 的存在暗示是完整預先規劃，但無註冊文件可查（<strong>未提供研究計畫註冊編號或分析計畫</strong>）。</p>
+<p><strong>機轉是否與情境匹配？</strong> 高度匹配。CAC 是亞臨床動脈粥狀硬化的直接解剖學測量，與傳統危險因子（間接、上游）提供的是不同層次的資訊，在生物學上有充分理由提供增量預測價值。</p>
+<p><strong>最可能的合理機轉（2 點）</strong></p>
+<ol>
+<li>CAC 捕捉的是<strong>累積終生暴露的整合結果</strong>，而 PREVENT 捕捉的是<strong>單一時間點的危險因子橫斷面</strong>。兩者資訊互補，故 CAC 有真實增量價值（ΔC 顯著 &gt;0 支持此點）。</li>
+<li>增量幅度之所以小於 PCE 時代，部分真的是因為 PREVENT 的校正更佳、分層門檻更低（3%/5% vs 7.5%），使得再分類的「空間」變小——作者此解釋合理。</li>
+</ol>
+<p><strong>最可疑的敘事跳躍（3 點）</strong></p>
+<ol>
+<li>
+<p><strong>「ΔC 0.09 → 0.02 全部歸因於 PREVENT 較好」的單因歸因。</strong> 文內自己寫明：PCE 時代的 ΔC +0.09 / NRI 0.19 是「<strong>for coronary heart disease outcomes</strong>」[ref 17]，而本文的 outcome 是 <strong>MI + stroke 的複合</strong>。CAC 是冠狀動脈鈣化，對冠心病事件的預測力遠強於中風。<strong>把 stroke 混進複合終點，必然稀釋 CAC 的訊號。</strong> 這個 outcome 差異與 base model 差異<strong>完全交絡</strong>，無法分離。作者明明寫出了這個差異，卻在 Discussion 中僅以 PREVENT 的校正改善來解釋全部落差。這是一個不完整、對自家模型有利的歸因。</p>
+</li>
+<li>
+<p><strong>「UACR add-on 讓 CAC 的增益更微小」→「應推廣 UACR 篩檢」。</strong> 前提與自家數據矛盾（ΔC 兩者皆 0.02，CI 完全相同），結論跳到一個本研究未評估的公衛介入。</p>
+</li>
+<li>
+<p><strong>「再分類 → 指導治療決策」的無橋跳躍。</strong> 全文最終的臨床主張是 CAC「can help stratify individuals into lower or higher risk categories <strong>to guide statin initiation</strong>」。再分類統計量只證明「分類標籤變了」，不證明「照新標籤行動會更好」。這中間缺的是 decision-analytic 評估（decision curve / net benefit）與結局導向試驗，兩者皆無。</p>
+</li>
+</ol>
+<hr />
+<h3>B2. 受試者與外推性</h3>
+<p><strong>受試者是否與宣稱對象一致？</strong> 大致一致，但有兩層收窄：</p>
+<ul>
+<li>MESA 原收 45–84 歲，本分析砍到 45–79 歲（排除 288 人），再排除 334 人因危險因子超出 PREVENT 驗證範圍。<strong>被排除的 334 人正是風險最極端的一群</strong>——他們的排除會縮小風險分布的全距，而 <strong>C statistic 對 case-mix 高度敏感</strong>：[參考: jama_alba_2017_ug_170001.md「Measuring Discrimination」節 — 「Discrimination depends on the distribution of patient characteristics in the population... a model could fail to discriminate patients in a more homogenous population」]。排除極端值會<strong>壓低</strong>所有模型的 C，同時也壓縮 CAC 可展現增量價值的空間。文內未討論此方向性影響。</li>
+<li>基線 statin 使用 14.8%（2000-2002 年水準）。當代同齡族群的 statin 使用率遠高於此，當代事件率也更低。本研究的絕對事件率（因此也是 calibration 與再分類的門檻跨越行為）<strong>可能不適用於 2026 年的病人</strong>。</li>
+</ul>
+<p><strong>基線是否平衡？</strong> 不適用（非比較性設計）。但 Table 顯示 CAC&gt;0 組年齡大 7.4 歲、男性多、危險因子負擔重——證實 CAC 與 PREVENT 的輸入變項高度相關（Figure 2 與 eFigure 1 的 spline 亦證實非線性正相關）。<strong>這種高度共線性正是 ΔC 偏小的另一個結構性原因</strong>，文內有提及關聯但未連結到增量價值的解釋。</p>
+<p><strong>外推性分級</strong></p>
+<table>
+<thead>
+<tr>
+<th>族群</th>
+<th>分級</th>
+<th>理由</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>美國 45–79 歲、四大族裔、無 ASCVD 之社區成人</td>
+<td><strong>中–高</strong></td>
+<td>設計對象即為此群；但 MESA 在 PREVENT 推導集內，非獨立驗證；收案年代久遠</td>
+</tr>
+<tr>
+<td>美國女性</td>
+<td><strong>中</strong></td>
+<td>ΔC「minimal」、NRI 0.075 (0.03–0.146) 下界貼近 0；作者自承可能檢定力不足</td>
+</tr>
+<tr>
+<td>美國華裔</td>
+<td><strong>低–中</strong></td>
+<td>n=733；ΔC <strong>未達統計顯著</strong>；作者提出兩種互斥解釋（模型本來就好 vs 檢定力不足）卻無法區辨</td>
+</tr>
+<tr>
+<td><strong>台灣／東亞一般人口</strong></td>
+<td><strong>低</strong></td>
+<td>PREVENT 未在台驗證；台灣基線 ASCVD 事件率顯著低於美國，絕對風險門檻（3%/5%）的轉譯本身即有疑問；MESA 華裔子群非台灣人口的替代品</td>
+</tr>
+<tr>
+<td>南亞裔、菲律賓裔</td>
+<td><strong>無資料</strong></td>
+<td>作者明確承認</td>
+</tr>
+<tr>
+<td>30–44 歲、&gt;79 歲</td>
+<td><strong>無資料</strong></td>
+<td>設計上排除</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h3>B3. 研究設計與偏差</h3>
+<p>本段不適用隨機化／分派隱藏／致盲／提早停止等 RCT 專屬要求（本文為觀察性預測研究）。以下聚焦<strong>會讓結果「看起來變好」的設計偏差</strong>。</p>
+<p><strong>設計上做對的事（應明確肯定）</strong></p>
+<ol>
+<li><strong>PREVENT 以固定 offset 納入、不重新擬合</strong>。這防止了一個常見的作弊模式（在評估資料中重擬合 base model，人為降低其 C，放大 ΔC）。</li>
+<li>結局為<strong>經判定（adjudicated）</strong>，非 claims code；追蹤機制為每 9–12 個月電訪 + 每 2–4 年回診。</li>
+<li>同時報告 discrimination <strong>與</strong> calibration——[參考: jama_alba_2017_ug_170001.md Box「Do the authors provide information about both the discrimination and calibration of the model? If not, skepticism is warranted」]。該指南引述的系統性回顧指出僅 36% 的心血管預測模型研究報告 calibration；本文做到了，應記一功。</li>
+<li>主動引用 NRI 的方法學批評文獻。</li>
+</ol>
+<p><strong>最可能造成偏差的三個設計點（含方向）</strong></p>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>偏差來源</th>
+<th>方向</th>
+<th>說明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>1</strong></td>
+<td><strong>CAC 模型在評估樣本內配適（apparent performance，無 optimism 校正）</strong></td>
+<td><strong>→ 使 ΔC 與 NRI 偏大（偏袒 CAC）</strong></td>
+<td>唯一被重新估計的參數是 ln(CAC+1) 的係數，而它就是在這 6098 人、366 個事件上估出來的。Calibration slope 從 1.09 降至 0.92 是此過度配適的客觀足跡</td>
+</tr>
+<tr>
+<td><strong>2</strong></td>
+<td><strong>MESA 在 PREVENT 推導集內</strong></td>
+<td><strong>→ 使 base model C 偏高、ΔC 偏小（不利 CAC）</strong></td>
+<td>作者唯一承認的偏差。方向正確，但他們把它當成唯一的偏差來源</td>
+</tr>
+<tr>
+<td><strong>3</strong></td>
+<td><strong>複合終點稀釋 + 排除極端風險值（case-mix 壓縮）</strong></td>
+<td><strong>→ 使 ΔC 偏小（不利 CAC）</strong></td>
+<td>加入 stroke 稀釋 CAC 訊號；排除 334 名超出驗證範圍者壓縮預測子全距</td>
+</tr>
+</tbody>
+</table>
+<p><strong>淨方向無法判定。</strong> #1 與 #2、#3 方向相反且皆未量化。本文無法主張 ΔC=0.02 是「保守估計」，也無法主張它是「樂觀估計」。<strong>唯一誠實的陳述是：這個數字的偏差方向未知，且缺乏獨立外部驗證來釐清。</strong> 作者的 Limitations 只呈現了 #2。</p>
+<p><strong>其他未處理的偏差</strong></p>
+<ul>
+<li><strong>追蹤期間 statin 啟動的 informative treatment</strong>（見上）：方向為<strong>低估</strong> CAC 價值。</li>
+<li><strong>掃描器異質性</strong>：六個中心用兩種不同 CT 技術，以 phantom 校正。phantom 校正降低但不消除分類漂移；錯誤分類若為非差異性，方向為<strong>低估</strong> CAC 價值。</li>
+<li><strong>雙重發表的錯覺</strong>：本文與 JACC 的 Rikhi 等人用同一批 MESA 事件資料，卻在不同期刊各自發表且互不引用。讀者會誤以為存在兩份獨立證據。</li>
+</ul>
+<hr />
+<h3>B4. 測量工具與實務意義</h3>
+<p><strong>測量信度</strong></p>
+<ul>
+<li>CAC：中央判讀 + phantom 校正，是此領域的最佳實務。但<strong>未報告 inter-reader 或 scan-rescan 的變異係數</strong>。Agatston 分數的重測變異可達 10–20%，在 CAC 100 與 300 的切點附近會造成分層不穩定——而<strong>這兩個切點正是邊緣風險族群再分類的依據</strong>。</li>
+<li>PREVENT 輸入變項：單次測量的收縮壓、血脂、eGFR。單次血壓測量的迴歸趨中（regression dilution）會低估真實風險分層能力——此問題對 base model 與 CAC 模型<strong>不對稱</strong>（CAC 不受此影響），因此會<strong>高估</strong> CAC 的相對增量價值。此點文內未提。</li>
+</ul>
+<p><strong>終點的臨床意義</strong></p>
+<ul>
+<li>主要終點為 <strong>hard outcome</strong>（判定過的致死／非致死 MI 或 stroke），不是代理指標。✅ 這是本文的實質強項。</li>
+<li>但 <strong>CAC 本身是代理指標</strong>，其臨床價值完全取決於「因為測了它而改變的治療決策，是否改善這些 hard outcome」。本研究沒有、也不可能回答這個問題。</li>
+</ul>
+<p><strong>「就算結果是真的，真實世界可能有多大用處？」</strong></p>
+<p>以文內數字直接換算（邊緣風險族群，n=1115，Figure 4B）：</p>
+<ul>
+<li>對 <strong>1000 位</strong> PREVENT 邊緣風險的病人做 CAC：
+<ul>
+<li>約 <strong>605 人</strong>（60.4%）會被正確再分類</li>
+<li>約 <strong>260 人</strong>（26.0%）會被<strong>錯誤</strong>再分類</li>
+<li>約 <strong>135 人</strong>（13.5%）留在原地，CAC 白做</li>
+</ul>
+</li>
+<li>在這 1000 人中約 36 人（3.6%）未來 10 年會發生 ASCVD 事件。其中：
+<ul>
+<li>約 <strong>18 人</strong>被正確上調（可能因此獲得治療）</li>
+<li>約 <strong>12 人</strong>被<strong>錯誤下調至 &lt;3%</strong>（可能因此被取消治療）</li>
+<li>淨獲益 ≈ 6 人。</li>
+</ul>
+</li>
+<li>同時約 964 位不會發生事件的人中，約 <strong>586 人</strong>被正確下調（免於不必要用藥），約 <strong>248 人</strong>被錯誤上調（承受不必要用藥）。</li>
+</ul>
+<p><strong>結論</strong>：CAC 在邊緣風險族群的主要真實世界效用，是<strong>大規模地讓不會發病的人免於用藥</strong>（約 59% 的人），代價是<strong>每 3 位未來會發病的人中就有 1 位被錯誤地安撫</strong>。這個交換是否划算，取決於你如何評價 statin 的成本與傷害——而中強度 statin 的成本與傷害相當低。</p>
+<hr />
+<h2>C. 統計與資料完整性</h2>
+<h3>C1. 結果分類（CI + 決策門檻框架）</h3>
+<p>本文為預測模型研究，無治療效果量，故 MCID 的操作定義需改寫。以下 δ 為 <strong>[推算]</strong>，依據標示於各項。</p>
+<h4>Step 1 — 決策相關門檻（δ）界定</h4>
+<table>
+<thead>
+<tr>
+<th>指標</th>
+<th>採用門檻 δ</th>
+<th>依據</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>ΔC</strong></td>
+<td><strong>≥ 0.05</strong> 方為有意義的 discrimination 改善</td>
+<td>[推算] 文內自身提供的參照：PCE + CAC 的 ΔC 為 <strong>+0.09</strong> 被視為「substantially improved」[ref 17]。以此為上錨、取約一半作為最低有意義值</td>
+</tr>
+<tr>
+<td><strong>C statistic 絕對值</strong></td>
+<td><strong>&gt;0.75 = clearly useful；0.60–0.75 = possibly helpful</strong></td>
+<td>[參考: jama_alba_2017_ug_170001.md「Measuring Discrimination」節，引用文獻 21,22]</td>
+</tr>
+<tr>
+<td><strong>Calibration slope</strong></td>
+<td>1.0 ± 0.2 可接受</td>
+<td>[推算] 常規慣例</td>
+</tr>
+<tr>
+<td><strong>邊緣風險層的事件率</strong></td>
+<td>必須能<strong>有把握地</strong>跨越 3%（治療考慮門檻）或 5%（治療建議門檻）</td>
+<td>文內 ref 3,11,13 之指引門檻</td>
+</tr>
+</tbody>
+</table>
+<h4>Step 2 — CI 位置判讀</h4>
+<p><strong>（1）主要終點 ΔC = 0.02（95% CI 0.01–0.03）</strong></p>
+<pre><code>  0 (null)                  δ = 0.05
+   |________[0.01──0.03]________|_______________→
+            ↑ CI 完整落在此區間
+         確定非零，但確定遠低於決策門檻
+</code></pre>
+<p><strong>分類：統計顯著，但 CI 完整落在臨床無意義區 → 「確定性次臨床效果（definitive sub-MCID）」</strong></p>
+<p>此結果<strong>不符合</strong> Skill C1 六分類表中的任何一格：它不是 POSITIVE（CI 未超越 δ）、不是 IMPRECISE(+)（CI 未跨越 δ，反而完整低於 δ）、不是 NEUTRAL/NEGATIVE/INCONCLUSIVE（CI 排除 null）。這是第七種情形：<strong>精確地確認了一個臨床上微不足道的真實效果</strong>。</p>
+<p><strong>臨床意涵</strong>：CAC 的增量 discrimination 價值是<strong>真實存在的、但確定很小</strong>。這是一個<strong>強聲明</strong>，不是「證據不足」。CI 寬度僅 0.02，樣本數足以排除 ΔC ≥0.05 的可能性。作者使用「only modestly improved」是<strong>準確</strong>的描述，應予肯定——他們沒有把顯著性包裝成重要性。</p>
+<p><strong>配套解讀</strong>：base model C = 0.73（0.70–0.75）<strong>正落在 Alba 指南「possibly helpful」與「clearly useful」的交界上</strong>，CI 上界剛好碰到 0.75。加入 CAC 後 C = 0.75（0.73–0.77），<strong>剛剛跨進「clearly useful」門檻</strong>。[參考: jama_alba_2017_ug_170001.md] 因此「0.02 的改善無足輕重」這個直覺在邊界效應上略有打折——但 ΔC 的 CI 仍完整低於決策門檻，結論不變。</p>
+<p><strong>（2）Calibration slope</strong></p>
+<table>
+<thead>
+<tr>
+<th>模型</th>
+<th>Slope (95% CI)</th>
+<th>判讀</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>base</td>
+<td>1.09 (0.93–1.25)</td>
+<td>✅ CI 含 1.0，落在 1.0±0.2 內（上界 1.25 略出界）</td>
+</tr>
+<tr>
+<td>base + CAC</td>
+<td>0.92 (0.81–1.03)</td>
+<td>✅ CI 含 1.0</td>
+</tr>
+<tr>
+<td>UACR add-on</td>
+<td>1.03 (0.89–1.18)</td>
+<td>✅</td>
+</tr>
+<tr>
+<td>UACR + CAC</td>
+<td>0.90 (0.79–1.01)</td>
+<td>✅ 但 CI 上界僅 1.01，<strong>幾乎排除 slope &gt;1</strong></td>
+</tr>
+</tbody>
+</table>
+<p><strong>分類：NEUTRAL（兩模型校正皆可接受）</strong>，但有訊號：<strong>加 CAC 一致地讓 slope 往下移</strong>（1.09→0.92；1.03→0.90），符合內部配適造成的輕度過度配適。單一比較不足為證，<strong>兩次一致的同向移動</strong>才是值得注意的模式。</p>
+<p><strong>重大缺漏</strong>：<strong>全文未報告 calibration-in-the-large（observed/expected ratio）</strong>。slope 只描述預測風險與觀察風險之間的<strong>斜率</strong>，不描述<strong>平均層級的偏移</strong>。一個整體高估 50% 的模型仍可有 slope = 1.0。鑑於本文的核心論述之一就是「PREVENT 比 PCE 校正更好」，缺少 O/E 比值是論證上的實質缺口。視覺化校正圖在 eFigure 2–5，<strong>[限制：PDF 轉檔 markdown 與圖頁 PNG 均未包含 Supplement 內容，無法判讀]</strong>。</p>
+<p><strong>（3）邊緣風險族群的事件率（本文最關鍵的臨床數字）</strong></p>
+<pre><code>                    3% (考慮治療)      5% (建議治療)
+                         |                 |
+CAC = 0 :    [0.8 ──1.9── 3.0]            |      ← CI 上界剛好觸及 3%
+CAC &gt; 0 :                |  [3.7──5.7──7.8]      ← CI 橫跨 5%
+</code></pre>
+<table>
+<thead>
+<tr>
+<th>族群</th>
+<th>事件率 (95% CI)</th>
+<th>分類</th>
+<th>臨床意涵</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>邊緣 + CAC=0</td>
+<td><strong>1.9% (0.8–3.0)</strong></td>
+<td><strong>INCONCLUSIVE（對 3% 門檻）</strong></td>
+<td>點估計在門檻下，但 <strong>CI 上界精確落在 3.0%</strong>。<strong>無法有把握地宣稱此族群屬於低風險。</strong> 這是本文最被低估的不確定性</td>
+</tr>
+<tr>
+<td>邊緣 + CAC&gt;0</td>
+<td><strong>5.7% (3.7–7.8)</strong></td>
+<td><strong>INCONCLUSIVE（對 5% 門檻）</strong></td>
+<td>CI 橫跨 5%。無法有把握地宣稱此族群達到建議治療門檻</td>
+</tr>
+<tr>
+<td>邊緣 + CAC≥300</td>
+<td>14.3%（n=56，約 8 個事件）</td>
+<td>點估計遠超門檻，但 <strong>n 極小、CI 未報告</strong></td>
+<td>方向明確，精確度極差</td>
+</tr>
+<tr>
+<td><strong>高風險 + CAC=0</strong></td>
+<td><strong>6.8% (3.9–9.7)</strong></td>
+<td><strong>POSITIVE（超越 5% 門檻）</strong></td>
+<td>CI 下界 3.9% 仍 &gt;3%；<strong>CAC=0 不足以把高風險者拉出治療區間</strong></td>
+</tr>
+</tbody>
+</table>
+<p><strong>這四行是整篇論文最有臨床價值的內容，而摘要只呈現了其中的點估計、沒有 CI。</strong> 摘要寫「incident ASCVD occurred in 1.9% of those with CAC score of 0」讀起來像一個確定的低風險判決；加上 CI 之後，它其實是「可能低到 0.8%，也可能高到剛好 3.0%」。</p>
+<p><strong>（4）NRI = 0.095（95% CI 0.053–0.137）— 必須拆解</strong></p>
+<p>這是本次評讀最重要的發現。[參考: jama_alba_2017_ug_170001.md「Comparison of 2 Models」與 Figure 3/4 — 該指南明確警告：「The major limitation of the additive NRI is that it does not consider the prevalence of the events and nonevents in the population... When the incidence of events is low, the additive NRI can be misleading, whereas the absolute NRI better reflects the model's limitations.」]</p>
+<p>依 Figure 4A 的原始格子數自行拆解 additive NRI 的兩個組成：</p>
+<table>
+<thead>
+<tr>
+<th>組成</th>
+<th>計算</th>
+<th>數值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>有事件者（n=366）</strong></td>
+<td>正確上調 18（4+14） − 錯誤下調 39（10+29） = <strong>淨 −21</strong></td>
+<td><strong>−21/366 = −5.7%</strong></td>
+</tr>
+<tr>
+<td><strong>無事件者（n=5732）</strong></td>
+<td>正確下調 1097（583+514) − 錯誤上調 224（74+4+146） = <strong>淨 +873</strong></td>
+<td><strong>+873/5732 = +15.2%</strong></td>
+</tr>
+<tr>
+<td><strong>Additive NRI</strong></td>
+<td>−0.057 + 0.152</td>
+<td><strong>= 0.095</strong> ✓ 與文內完全相符</td>
+</tr>
+<tr>
+<td><strong>Absolute NRI</strong>（本評讀自行計算，文內未報告）</td>
+<td>(−21 + 873) / 6098</td>
+<td><strong>= +14.0%</strong></td>
+</tr>
+</tbody>
+</table>
+<p><strong>核心發現：整體 NRI 的「事件端」是負的。</strong></p>
+<blockquote>
+<p><strong>在實際發生 ASCVD 的 366 位病人中，加入 CAC 使 39 人（10.7%）被錯誤地下調風險等級，而只有 18 人（4.9%）被正確上調。淨值為每 100 位未來的事件病人，多 5.7 位被錯誤地安撫。整個正向 NRI 完全由「正確地把不會發病的人往下調」所驅動。</strong></p>
+</blockquote>
+<p>文內 Results 段<strong>確實誠實地報告了 18 與 39 這兩個數字</strong>（這點必須肯定），但：</p>
+<ul>
+<li><strong>摘要沒有</strong>。摘要只有「categorical NRI was 0.095」。</li>
+<li><strong>Key Points 沒有</strong>。</li>
+<li><strong>Conclusions 沒有</strong>。</li>
+<li><strong>Discussion 把它重新包裝成</strong>「both correct reclassification (18% of the entire sample) and incorrect reclassification (4% of the entire sample)」——這個框架把 39 位未來的事件病人，和 224 位不會發病的人，一起塞進同一個「4%」的分母裡，<strong>把不對稱性徹底抹平</strong>。</li>
+</ul>
+<p>Alba 等人的 JAMA Users' Guide 用的示範案例（CCTA 加入 Revised Cardiac Risk Index）方向剛好相反：additive NRI +11 看似改善，但 absolute NRI −8%，因為它<strong>改善了事件者、惡化了非事件者</strong>。本文是<strong>鏡像案例</strong>：additive NRI +0.095 且 absolute NRI 也是正的（+14.0%），但<strong>惡化的是事件者那一端</strong>。該指南對此情境的判準非常明確：</p>
+<blockquote>
+<p>「If the misclassification of patients with the event leads to more serious consequences than the misclassification of those without the event, one might value the model that does better classifying patients with the event.」</p>
+</blockquote>
+<p><strong>換算成臨床交換率</strong>：每多錯誤安撫 1 位未來的事件病人，可換得約 <strong>42 位</strong>（873/21）不會發病者免於不必要用藥。若你認為「漏掉一次心梗或中風」比「多吃十年中強度 statin」嚴重 42 倍以上，則<strong>本文的整體再分類在淨效益上是負的</strong>。這個權衡判斷必須交給臨床醫師，而本文沒有把它呈現出來。</p>
+<p><strong>（5）邊緣風險層的選擇性再分類 = 0.085（95% CI 0.052–0.117）</strong></p>
+<p>同樣拆解（Figure 4B）：</p>
+<ul>
+<li>事件端：正確上調 20 − 錯誤下調 13 = <strong>淨 +7</strong>；<strong>+7/366 = +1.9%</strong></li>
+<li>非事件端：正確下調 654 − 錯誤上調 277 = <strong>淨 +377</strong>；<strong>+377/5732 = +6.6%</strong></li>
+<li>合計 <strong>= 0.085</strong> ✓ 相符</li>
+</ul>
+<p><strong>此處的重要觀察（兩點）</strong></p>
+<ol>
+<li><strong>事件端轉為正值（+1.9%）</strong>。這是支持「選擇性使用 CAC」最硬的證據，也是本文結論的真正基礎。<strong>不是整體 NRI 0.095，而是這個 +7。</strong></li>
+<li><strong>分母的選擇值得注意</strong>：0.085 使用的是<strong>全世代</strong>分母（366 與 5732），儘管只有邊緣風險層的人能移動。若改用邊緣風險層自身的分母，事件端為 +7/40 = <strong>+17.5%</strong>、非事件端 +377/1075 = <strong>+35.1%</strong>，合計 <strong>+52.6%</strong>。作者採用全世代分母使此數字（0.085）看起來與整體 NRI（0.095）相當，這在與整體比較時是<strong>正確且保守</strong>的作法——但也讓讀者難以看出「在邊緣風險層內部，CAC 的再分類效果其實極為巨大」。作者在圖註有說明計算方式，未隱瞞。</li>
+</ol>
+<p><strong>（6）脆弱性：整個指引建議的證據基礎是 40 個事件</strong></p>
+<p>邊緣風險層中共 <strong>40 位</strong>發生事件。正確上調 20、錯誤下調 13、不變 7。</p>
+<ul>
+<li>若其中 4 位被錯誤下調的病人改為正確上調，事件端淨值由 +7 變為 +15（翻倍）。</li>
+<li>若其中 4 位被正確上調的病人改為錯誤下調，事件端淨值由 +7 降至 <strong>−1</strong>（<strong>翻轉為負</strong>）。</li>
+</ul>
+<p><strong>也就是說，支持 2026 指引 Class 1「邊緣風險者考慮 CAC」建議的核心證據，其事件端淨效益會被 4 位病人的分類翻轉所推翻。</strong> 這個脆弱性文內完全未討論，摘要與結論亦無任何關於事件數的警示。</p>
+<hr />
+<h3>C2. 檢定力、Winner's Curse 與精確度</h3>
+<p><strong>本研究不屬於 underpowered positive</strong>：主要結果 ΔC 的 CI（0.01–0.03）既排除 null、又<strong>完整排除</strong>決策門檻，兩端皆有把握。這是<strong>高精確度</strong>的結果，不存在 Winner's Curse 的典型情境（低檢定力下只有偏高估計能跨過 p&lt;0.05）。</p>
+<p><strong>但 Winner's Curse 的風險存在於兩處</strong>：</p>
+<ol>
+<li><strong>CAC 係數在本樣本內估計</strong>（apparent performance）。在單一資料集最佳化得到的增量效能，在外部資料中幾乎必然縮水（optimism shrinkage）。<strong>即使 ΔC=0.02 這麼小的數字，在真正的外部驗證中仍可能更小。</strong> 本文未做任何 optimism 校正，因此 ΔC 與 NRI 都應被視為<strong>上界</strong>。</li>
+<li><strong>邊緣風險層的 +7 淨事件再分類</strong>。這個數字來自一個未經外部驗證的 40 事件子集。若未來以此為基礎設計實證研究，直接沿用此效果量估算樣本數會<strong>嚴重低估所需樣本</strong>。</li>
+</ol>
+<p><strong>次群分析的檢定力</strong>：作者對華裔子群（n=733）的 ΔC 不顯著提出兩種解釋，並誠實承認「the possibility remains that the estimates were underpowered」。<strong>正確的作法是看 CI 是否同時包含 null 與決策門檻</strong>——但 eTable 1 的分層 ΔC 與 CI <strong>[限制：Supplement 未提供，無法判讀]</strong>，只能依作者文字描述接受「ΔC minimal and not statistically significant」的陳述。</p>
+<p><strong>❌ 未見 post-hoc power 誤用</strong>。全文未出現 post-hoc power 計算，符合 CONSORT/方法學規範。✅</p>
+<hr />
+<h3>C3. Bayesian 補充分析（條件性）</h3>
+<p><strong>主要分析不觸發</strong>：ΔC 的 p 值遠離 0.05（CI 0.01–0.03 明確排除 0），且問題不是「Neutral vs Negative 的區分」，因此 Bayesian 三指標（Pr(outstanding benefit) / Pr(ROPE) / Pr(severe harm)）對主要結果不增加資訊。</p>
+<p><strong>但有兩處若做 Bayesian 分析會實質改變解讀</strong>：</p>
+<ol>
+<li><strong>邊緣風險 + CAC=0 的 1.9%（CI 0.8–3.0）是否真的 &lt;3%？</strong> 這是典型的「等效／低於門檻」問題。頻率派只能說「點估計 1.9%，CI 上界觸及 3.0%」；Bayesian 則能直接給出 <strong>Pr(真實 10 年風險 &lt;3%)</strong>。這個機率才是臨床醫師真正想知道的（「我有多大把握告訴這位病人他不需要吃藥？」）。以觀察到的約 12/627 粗略推算，Pr(&lt;3%) 大約在 0.9 附近——<strong>不是確定，是「相當可能」</strong>。[推算；精確值需原始生存資料]</li>
+<li><strong>華裔子群的 ΔC 不顯著</strong>：Pr(ΔC &gt; 0) 與 Pr(ΔC ∈ ROPE) 能區辨「模型本來就夠好」與「樣本不足」這兩個作者自己無法區辨的解釋。這正是 Zampieri 等人框架設計來解決的情境。</li>
+</ol>
+<p>本文未做任何 Bayesian 分析。對一篇以決策門檻為核心的論文，這是可以理解但略嫌保守的選擇。</p>
+<hr />
+<h3>C4. 報告完整性與統計紅旗清單</h3>
+<p><strong>統計面紅旗（7 點）</strong></p>
+<ol>
+<li>
+<p><strong>❌ 無 optimism / overfitting 校正。</strong> CAC 模型在評估樣本內擬合、同樣本評估；200 次 bootstrap 僅用於 CI 而非樂觀度校正。無 split-sample、無交叉驗證。ΔC 與 NRI 應視為上界。<strong>最嚴重的一項。</strong></p>
+</li>
+<li>
+<p><strong>❌ 無 decision curve analysis / net benefit。</strong> 本文的研究問題本質是「在 3% 與 5% 門檻上，加做 CAC 是否帶來淨臨床效益」——這正是 decision curve analysis 設計來回答的問題。Alba 等人的 JAMA Users' Guide 明確點名「relative utility, standardized net benefit」是用來量化偽陽性與偽陰性相對臨床影響的工具 [參考: jama_alba_2017_ug_170001.md 結論前段]。作者有能力做、也引用了 NRI 的批評文獻，卻仍以 NRI 作為唯一的再分類指標。<strong>這是最可修補、也最關鍵的分析缺口。</strong></p>
+</li>
+<li>
+<p><strong>❌ 摘要與結論未揭露 NRI 的事件端為負值。</strong> 整體 NRI = 0.095 完全由非事件端驅動；事件端為 −5.7%。Results 有報數字，但摘要／Key Points／Conclusions 全部略過。<strong>這是最具臨床後果的報告選擇性。</strong></p>
+</li>
+<li>
+<p><strong>❌ 未報告 absolute NRI 或 calibration-in-the-large（O/E ratio）。</strong> 前者在事件率低（6%）時是必要的補充指標；後者對「PREVENT 校正比 PCE 好」的核心論述不可或缺。</p>
+</li>
+<li>
+<p><strong>⚠️ 「Over 10 (median, 5.8) years」語意歧義。</strong> 無法判斷是追蹤中位數還是事件時間中位數。若為前者，則「10-year incidence rate calculated as the number of events in 10 years expressed as a percentage」這種未校正設限的粗比例會低估真實發生率，污染全部的 calibration 與門檻跨越判讀。</p>
+</li>
+<li>
+<p><strong>⚠️ 競爭風險處理內部不一致。</strong> 宣告非 CVD 死亡為競爭事件，但事件率用粗比例、模型用 Cox；PREVENT 本身是競爭風險校正模型。跨尺度可比性未交代。</p>
+</li>
+<li>
+<p><strong>⚠️ 「UACR add-on 中 CAC 增益更微小」的陳述與自家 ΔC 數據（兩者皆 0.02，CI 相同）矛盾</strong>，支撐證據（eTable 2）未在正文呈現。</p>
+</li>
+</ol>
+<p><strong>圖表呈現面紅旗（2 點，由圖頁判讀得出）</strong></p>
+<ol start="8">
+<li>
+<p><strong>❌ 全文無任何時間─事件曲線、無 number-at-risk、無累積發生率函數圖。</strong> 對一篇宣稱評估「10 年風險預測」的論文，這是結構性缺漏：</p>
+<ul>
+<li>讀者無從判斷 CAC 分層的曲線何時開始分離（CAC 的預測價值是均勻分布於 10 年，還是集中在後期？這直接關係到 CAC 的「warranty period」與重複掃描間隔）。</li>
+<li>讀者無從判斷後期 at-risk 人數是否銳減（這正是「median 5.8 years」歧義的要害）。</li>
+<li>比例風險假設無法由讀者目視檢核。</li>
+<li>沒有 forest plot 意味著次群的 ΔC / NRI 點估計與 CI 全部被推進 Supplement，正文讀者看不到任何次群的精確度。</li>
+</ul>
+</li>
+<li>
+<p><strong>⚠️ Table 中 UACR 的 CAC&gt;0 欄位「6 (7–13)」中位數落在 IQR 之外，數學上不可能</strong>（見 §5.1）。此為正式排版圖像中的瑕疵，非轉檔造成。影響微小（UACR 非主要變項），但代表校稿疏漏。</p>
+</li>
+</ol>
+<p><strong>報告面做得好的（必須記錄）</strong></p>
+<ul>
+<li>✅ 同時報告 discrimination 與 calibration（符合 Alba 指南首要檢核項）</li>
+<li>✅ 所有主要指標皆附 95% CI</li>
+<li>✅ Figure 4 完整呈現 2×3 列聯表原始格子數，使外部讀者能自行重算 NRI（本評讀的 C1 拆解正是因此才可能）——<strong>這是真正的透明度，應予高度肯定</strong></li>
+<li>✅ 流程圖人數完全一致，缺失值逐項列明並註記非互斥</li>
+<li>✅ 座標軸無截斷誇大</li>
+<li>✅ 未使用 post-hoc power</li>
+<li>✅ 用詞精準（「only modestly improved」而非「significantly improved」）</li>
+</ul>
+<hr />
+<h2>D. 次組分析評估</h2>
+<p>本文有兩組預先指定的次群分析。依 JAMA 五項標準逐一評估：</p>
+<h3>D1. 性別分層（NRI：女 0.075 [0.03–0.146] vs 男 0.112 [0.062–0.162]）</h3>
+<table>
+<thead>
+<tr>
+<th>標準</th>
+<th>回答</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1. 有 interaction p-value？</td>
+<td><strong>❌ 無</strong>。僅並列兩組 NRI，未做交互作用檢定</td>
+</tr>
+<tr>
+<td>2. 方向與其他研究一致？</td>
+<td>部分一致——CAC 在男性盛行率與分數皆較高（本文 Table：男性佔 CAC&gt;0 組 59.0%），既有文獻亦顯示 CAC 在男性的再分類空間較大</td>
+</tr>
+<tr>
+<td>3. 假說預先指定且有預期方向？</td>
+<td><strong>✅ 預先指定</strong>（文內明述 a priori），但<strong>未宣告預期方向</strong></td>
+</tr>
+<tr>
+<td>4. 有合理生物機轉？</td>
+<td>✅ 有。女性 CAC 盛行率低、發病年齡晚，冠狀動脈鈣化外的機轉（微血管疾病、自發性冠狀動脈剝離）佔比較高</td>
+</tr>
+<tr>
+<td>5. within-study 比較？</td>
+<td>✅ 是</td>
+</tr>
+</tbody>
+</table>
+<p><strong>兩組 CI 大幅重疊</strong>（0.03–0.146 vs 0.062–0.162），無任何證據支持真實的性別差異。作者在 Discussion 說「minimal differences by sex」——<strong>這個描述是正確且克制的</strong>，沒有過度詮釋。</p>
+<p><strong>可信度評分：低（作為差異的證據）／中（作為「無顯著差異」的證據）</strong></p>
+<h3>D2. 種族／族裔分層（Black / Chinese / Hispanic / White）</h3>
+<table>
+<thead>
+<tr>
+<th>標準</th>
+<th>回答</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1. 有 interaction p-value？</td>
+<td><strong>❌ 無</strong></td>
+</tr>
+<tr>
+<td>2. 方向與其他研究一致？</td>
+<td><strong>無法判定</strong>——正文僅寫「There was variation in NRI across race and ethnicity groups」，<strong>完全沒有給任何數字</strong>，全部推給 eTable 5/6。<strong>[限制：Supplement 未提供]</strong></td>
+</tr>
+<tr>
+<td>3. 假說預先指定？</td>
+<td>✅ 預先指定，理由為「prior evidence of differences in risk prediction model performance across sociodemographic groups」[ref 14]</td>
+</tr>
+<tr>
+<td>4. 有合理生物機轉？</td>
+<td>✅ 有。CAC 盛行率與分數在族裔間差異明確（本文 Table：白人佔 CAC&gt;0 組 44.3%，佔 CAC=0 組僅 33.1%）</td>
+</tr>
+<tr>
+<td>5. within-study 比較？</td>
+<td>✅ 是</td>
+</tr>
+</tbody>
+</table>
+<p><strong>華裔子群是唯一被正文點名的</strong>：「the change in the Harrell C statistic was minimal and not statistically significant among Chinese participants」。作者提出兩個互斥解釋（PREVENT 在該族群本來就表現很好 vs 估計值檢定力不足）<strong>並明確承認無法區辨</strong>。這是<strong>負責任的處理方式</strong>。</p>
+<p>但整體而言：<strong>宣稱「there was variation」卻不在正文給任何數字，是報告上的規避。</strong> 若變異確實存在且具臨床意義，它應該出現在正文；若不具意義，則不該用 &quot;variation&quot; 這種暗示性措辭。</p>
+<p><strong>可信度評分：推測性（speculative）</strong>——缺數字、缺交互作用檢定、n 最小的子群（華裔 733）事件數極少。</p>
+<p><strong>對台灣讀者的特別提醒</strong>：華裔子群正是台灣臨床醫師最想看的那一組，而它恰好是<strong>檢定力最弱、結果不顯著、且正文未提供任何數字</strong>的一組。<strong>不能用本文來支持 CAC 在華人族群的增量價值。</strong></p>
+<hr />
+<h2>E. 紅旗清單</h2>
+<p><strong>設計</strong></p>
+<ol>
+<li><strong>CAC 模型在評估樣本內配適，零 optimism 校正</strong>——ΔC/NRI 皆為上界，作者卻只論證反方向的偏差。</li>
+<li><strong>MESA 同時是 PREVENT 的推導來源與本文的評估資料</strong>——不是獨立驗證。</li>
+<li><strong>CAC 影像取得於 2000–2002 年</strong>，與 2026 年的掃描技術、statin 普及度、事件率皆不可比；作者只提「研究 vs 臨床 CAC」，未提時代。</li>
+<li><strong>追蹤期間的 statin 啟動完全未納入</strong>；MESA 是否回報 CAC 結果給參與者，文內未交代。</li>
+<li><strong>排除 334 名危險因子超出 PREVENT 驗證範圍者</strong>——壓縮 case-mix，對 C statistic 的影響方向未討論。</li>
+<li><strong>Outcome 定義（MI + stroke）可能與 PREVENT 推導時的 ASCVD 定義不符</strong>（缺非 MI/stroke 之 CVD 死亡）。[推論]</li>
+</ol>
+<p><strong>統計</strong>
+7. <strong>整體 NRI 的事件端為 −5.7%</strong>，摘要／Key Points／結論全部未揭露。
+8. <strong>無 decision curve analysis / net benefit</strong>——對一個純粹的門檻決策問題，這是核心工具的缺席。
+9. <strong>無 absolute NRI、無 calibration-in-the-large（O/E）</strong>。
+10. <strong>「median 5.8 years」語意不明</strong>；競爭風險處理內部不一致（粗比例 vs Cox vs PREVENT 的競爭風險校正）。
+11. <strong>邊緣風險層的事件端淨效益僅 +7 人（40 個事件）</strong>——4 位病人的分類翻轉即可歸零或翻負。
+12. <strong>無任何時間─事件曲線、無 number-at-risk 表、無 forest plot</strong>；所有次群精確度被推進 Supplement。
+13. <strong>比例風險假設未檢驗</strong>（CAC 的 hazard 隨時間可能衰減）。</p>
+<p><strong>敘事</strong>
+14. <strong>「ΔC 從 0.09 掉到 0.02」單因歸咎於 PREVENT 校正較佳</strong>，刻意略過自己寫出來的 outcome 差異（CHD vs MI+stroke 複合終點）。
+15. <strong>「UACR add-on 中 CAC 增益更微小」與自家 ΔC 數據直接矛盾</strong>，再據此跳到推廣 UACR 篩檢的公衛呼籲。
+16. <strong>Discussion 把 39 位被誤判的未來事件病人與 224 位被誤判的非事件者合併為「incorrect reclassification 4%」</strong>，抹平了唯一具臨床後果的不對稱性。
+17. <strong>從「再分類改變」跳到「guide statin initiation」</strong>，中間缺乏任何結局導向證據。
+18. <strong>Figure 3 顯示高風險 + CAC=0 者事件率仍 6.8%</strong>（遠超 5% 門檻）——這個臨床上極重要的訊息只存在於圖裡，正文一句話都沒說；而同一資料的 JACC 版本把它寫進了結論。</p>
+<p><strong>COI / 結構</strong>
+19. <strong>PREVENT 的開發者群評估外部標記能否打敗 PREVENT</strong>，結論「PREVENT 自己就夠好」與團隊既有利益完全同向。同組人同年先發表 PREVENT 外部驗證論文。
+20. <strong>Blankstein 自 HeartFlow、Nanox AI 收受個人費用與研究經費</strong>（心臟 CT/AI 影像公司），在 CAC 效用評估論文中屬直接商業利益（方向與結論相反，風險較低但須揭露）。
+21. <strong>Greenland 為 JAMA Senior Editor</strong>（已申報並聲明迴避審查決策）。
+22. <strong>與 JACC 的 Rikhi/Shapiro 論文使用同一批 MESA 事件資料、共享作者（Blumenthal）、互不引用</strong>——造成「兩份獨立證據」的錯覺。</p>
+<p><strong>外推</strong>
+23. <strong>無南亞裔、菲律賓裔資料</strong>（作者承認）；<strong>無 30–44 歲、&gt;79 歲資料</strong>。
+24. <strong>華裔子群 ΔC 不顯著且正文無數字</strong>——對台灣讀者最相關的一組恰好最薄弱。
+25. <strong>宣告 STROBE 而非 TRIPOD</strong>——報告準則選錯，導致多項預測模型專屬要求未被檢核。</p>
+<hr />
+<h2>F. 反向解釋</h2>
+<p><strong>替代解釋 1：ΔC = 0.02 之所以這麼小，主要不是因為 PREVENT 好，而是因為終點選得不利於 CAC</strong></p>
+<ul>
+<li><strong>支持</strong>：文內自己寫明 PCE 時代的 ΔC +0.09 是 for <strong>coronary heart disease outcomes</strong> [ref 17]，而本文終點是 MI <strong>+ stroke</strong> 複合。CAC 是冠狀動脈的解剖測量，對中風（大部分為心源性栓塞、小血管病變、頸動脈來源）的預測力本就弱得多。把 stroke 混入必然稀釋。</li>
+<li><strong>支持</strong>：CAC 與 PREVENT 輸入變項高度共線（Table 顯示 CAC&gt;0 組年齡大 7.4 歲、危險因子全面較重；eFigure 1 的 spline 顯示非線性正相關），共線性本身就壓縮增量空間。</li>
+<li><strong>反對</strong>：PREVENT 的 calibration slope（1.09）確實比文獻報告的 PCE（高估約 2 倍）好得多，且門檻由 7.5% 降至 3%/5% 確實減少了再分類的可動空間——作者的解釋有其道理。</li>
+<li><strong>判定</strong>：<strong>兩者皆成立且交絡，無法分離。</strong> 作者只講一半，這是論證的不完整，不是錯誤。</li>
+</ul>
+<p><strong>替代解釋 2：ΔC = 0.02 不是低估，而是高估</strong></p>
+<ul>
+<li><strong>支持</strong>：CAC 係數在評估樣本內估計，無 optimism 校正 → apparent performance 系統性偏高。</li>
+<li><strong>支持</strong>：加入 CAC 後 calibration slope <strong>兩次都往 &lt;1 移動</strong>（1.09→0.92；1.03→0.90），是過度配適的客觀足跡。</li>
+<li><strong>支持</strong>：PREVENT 的輸入變項（單次血壓、血脂）受測量誤差與迴歸趨中影響，CAC 不受——此不對稱性<strong>人為放大</strong> CAC 的相對增量。</li>
+<li><strong>反對</strong>：MESA 在 PREVENT 推導集內確實會抬高 base model 的 C（作者唯一承認的方向）。</li>
+<li><strong>反對</strong>：掃描器異質性與終點稀釋都會壓低 CAC 的表現。</li>
+<li><strong>判定</strong>：<strong>淨方向真的無法判定。</strong> 這正是本文需要但沒有的東西——<strong>獨立世代的外部驗證</strong>。作者在 Limitations 把它寫成單向（「more conservative estimate」），不誠實。</li>
+</ul>
+<p><strong>替代解釋 3：CAC 在邊緣風險族群的「價值」，大部分其實是年齡在說話</strong></p>
+<ul>
+<li><strong>支持</strong>：CAC&gt;0 組平均年齡 65.2 歲 vs CAC=0 組 57.8 歲，<strong>相差 7.4 歲</strong>。年齡已經在 PREVENT 裡，但 CAC 作為「累積暴露的整合指標」與年齡高度相關；在邊緣風險這個被 PREVENT 壓縮得很窄的切片中，CAC 可能主要在重新引入年齡的殘餘變異。</li>
+<li><strong>反對</strong>：PREVENT 的 offset 固定係數為 1，年齡的主效應已完全扣除；CAC 的係數反映的是<strong>年齡調整後</strong>的增量。</li>
+<li><strong>反對</strong>：Figure 3 顯示在每一個風險層內部，CAC 分層都呈現單調遞增的事件率梯度（低風險層 1.0→8.2%；邊緣層 1.9→14.3%），這個梯度不太可能只是年齡殘餘。</li>
+<li><strong>判定</strong>：<strong>不成立作為主要解釋</strong>，但可能貢獻一部分。CAC 的增量價值在邊緣風險層是真實的。</li>
+</ul>
+<p><strong>替代解釋 4：邊緣風險層的正向事件端再分類（+7）只是隨機波動</strong></p>
+<ul>
+<li><strong>支持</strong>：整個數字建立在 <strong>40 個事件</strong>上；4 位病人的分類翻轉即可歸零或翻負。文內未報告此統計量的事件端 CI。</li>
+<li><strong>支持</strong>：邊緣風險層中 CAC ≥300 僅 n=56、CAC 100–299 僅 n=95——驅動上調的格子極度稀疏。</li>
+<li><strong>反對</strong>：Borderline group reclassification = 0.085 的 95% CI（0.052–0.117）<strong>排除 0</strong>，且下界距 0 有相當距離。</li>
+<li><strong>反對</strong>：方向與既有大量 CAC 文獻、以及同一世代的 JACC 平行分析一致。</li>
+<li><strong>判定</strong>：<strong>方向可信，幅度極不精確。</strong> 「邊緣風險者 CAC 有用」這個質性結論站得住腳；「有多少用」則遠未確定。</li>
+</ul>
+<hr />
+<h2>G. 最終裁決</h2>
+<h3>整體可信度：<strong>中</strong></h3>
+<p>這是一篇<strong>執行紮實、報告大致誠實、但論證框架有系統性偏袒傾向</strong>的研究。它的數據是可信的，它的透明度（尤其 Figure 4 完整呈現列聯表格子數）值得稱許——本評讀中最重要的發現（NRI 事件端為負）<strong>正是靠作者自己提供的數字重算出來的</strong>。但它在三個地方讓讀者走向比數據所支持的更樂觀的結論：摘要略去 NRI 的事件端負值、Limitations 的偏差論證只走單向、以及從再分類統計跳到「指導 statin 起始」的臨床主張。</p>
+<h3>可採用的條件</h3>
+<ol>
+<li><strong>PREVENT 在美國 45–79 歲社區族群的 discrimination（C=0.73）與 calibration（slope 1.09, CI 0.93–1.25）可接受</strong>——雖非獨立驗證，但與 Khan 等人 68 萬人的 EHR 外部驗證（C=0.774, slope 1.07；<a href="https://doi.org/10.1161/CIRCOUTCOMES.125.012988">DOI</a>）方向一致。</li>
+<li><strong>「CAC 在全風險譜的常規加做，只帶來極微小的 discrimination 改善」這個結論是穩健的</strong>——ΔC 的 CI（0.01–0.03）同時排除了 null 與任何有意義的門檻。這是一個精確的、負向的、有用的結論。</li>
+<li><strong>「邊緣風險（3%–&lt;5%）是 CAC 最有價值之處」的方向可採用</strong>，但必須附帶幅度極不精確的警語（40 個事件）。</li>
+<li><strong>Figure 3 的分層事件率表可直接用於病人溝通</strong>（附 CI），這是本文最實用的臨床產出。</li>
+</ol>
+<h3>不建議採用的情境</h3>
+<ol>
+<li>把 ΔC = 0.02 或 NRI = 0.095 當作「CAC 對所有人都有用」的證據。</li>
+<li>用本文支持對低風險（&lt;3%）者做 CAC 篩檢。</li>
+<li>用 CAC=0 在高風險（≥10%）者身上停用 statin——本文 Figure 3 直接反駁（6.8%, CI 3.9–9.7）。</li>
+<li><strong>在台灣或東亞族群直接套用</strong>——PREVENT 未經在地驗證，華裔子群是本文最弱的一組。</li>
+<li>把本文當作「CAC 導向的治療策略能改善結局」的證據——它完全沒有回答這個問題。</li>
+</ol>
+<h3>若要改觀，最需要的三個關鍵改進</h3>
+<ol>
+<li><strong>在未參與 PREVENT 推導的獨立世代中做外部驗證，並對 CAC 模型執行 optimism 校正</strong>（split-sample 或 bootstrap shrinkage）。這一步能同時解決目前最大的兩個偏差（apparent performance 的上偏、推導集重疊的下偏），把 ΔC=0.02 從「方向未知的估計」變成可信的數字。</li>
+<li><strong>做 decision curve analysis / net benefit 分析，並在 3% 與 5% 門檻上明確量化偽陽性與偽陰性的交換率。</strong> 本文的研究問題本質上是決策問題，NRI 是錯誤的工具。同時應報告 absolute NRI 與 calibration-in-the-large，並把 NRI 的事件端／非事件端拆解放進摘要。</li>
+<li><strong>提供時間─事件曲線（含 number-at-risk）與次群 forest plot。</strong> 這能回答三個目前完全無法回答的問題：CAC 分層曲線何時分離（決定 CAC 的 warranty period 與重測間隔）、後期 at-risk 人數是否足以支撐 10 年推論（解決「median 5.8 years」的歧義）、以及各次群 ΔC/NRI 的精確度（特別是華裔子群）。</li>
+</ol>
+<h3>一句話結論</h3>
+<p><strong>PREVENT 已經夠準，CAC 只在「3–5% 風險、醫病猶豫不決」這一小塊真正派得上用場——而且它讓不會發病的人免於吃藥的本事，遠大於它找出未來病人的本事。</strong></p>
+<hr />
+<h3>評讀限制聲明</h3>
+<ul>
+<li>本次評讀之依據為 PDF 轉出之 markdown 全文，加上第 1129–1131 頁三張原始圖頁 PNG（Table、Figure 2、Figure 3、Figure 4）。</li>
+<li><strong>[限制：Supplement 1 之 eTable 1–8 與 eFigure 1–5 完全未提供]</strong>，因此下列內容無法獨立查核，僅能依正文文字轉述：分性別／族裔之 ΔC 數值與 CI（eTable 1）、UACR add-on 之 NRI 列聯表（eTable 2、4、6）、分族裔 NRI（eTable 5、6）、中度風險與合併邊緣-中度風險之選擇性再分類（eTable 7、8）、全部校正圖（eFigure 2–5）、CAC 盛行率 spline 圖（eFigure 1）。</li>
+<li><strong>[限制：Figure 1 流程圖僅以 markdown 轉出之文字形式判讀]</strong>，但人數可完整核對且一致。</li>
+<li>外部資料中，JAMA 之 Impact Factor 與平均審查天數<strong>僅取得第三方彙整站數值且各來源互相矛盾</strong>，未取得 Clarivate JCR 原始資料，已於第 2 節標注。</li>
+<li><strong>未發現任何針對本文的同期 editorial 或 invited commentary</strong>（經 JAMA 文章頁 Related Articles、PubMed 書目連結、多輪網路檢索三重確認），因此未呼叫 editorial 全文擷取工具。</li>
+</ul>
+<blockquote>
+<p>本評讀之部分書目與相關文獻資訊取自 <strong>PubMed</strong>。相關文章 DOI：本文 <a href="https://doi.org/10.1001/jama.2026.13233">10.1001/jama.2026.13233</a>；JACC 平行分析 <a href="https://doi.org/10.1016/j.jacc.2026.05.039">10.1016/j.jacc.2026.05.039</a>；PREVENT 外部驗證 <a href="https://doi.org/10.1161/CIRCOUTCOMES.125.012988">10.1161/CIRCOUTCOMES.125.012988</a>。</p>
+</blockquote>
+<p><strong>Sources:</strong></p>
+<ul>
+<li><a href="https://jamanetwork.com/journals/jama/article-abstract/2853347">Predictive Utility of CAC Score Added to the PREVENT ASCVD Equations (JAMA)</a></li>
+<li><a href="https://pubmed.ncbi.nlm.nih.gov/42647022/">PubMed: PMID 42647022</a></li>
+<li><a href="https://www.jacc.org/doi/10.1016/j.jacc.2026.05.039">The Role of CAC in Statin Eligibility Based on PREVENT: Insights From MESA (JACC)</a></li>
+<li><a href="https://doi.org/10.1161/CIRCOUTCOMES.125.012988">External Validation of the PREVENT Equations (Circ Popul Health Outcomes)</a></li>
+<li><a href="https://www.preventivemedicine.northwestern.edu/faculty/profile.html?xid=47814">Nilay S. Shah — Northwestern Feinberg Preventive Medicine</a></li>
+<li><a href="https://impactfactorforjournal.com/jama-impact-factor/">JAMA Impact Factor (third-party aggregator)</a></li>
+<li><a href="https://manusights.com/blog/jama-review-time">JAMA Review Time (third-party aggregator)</a></li>
+</ul>
+
+<footer class="appraisal-meta">評讀資訊：模型：claude-opus-5 (claude)  ·  route：observational  ·  產出時間：2026-10-11 08:33 CST</footer>
+</main>
+</body>
+</html>
