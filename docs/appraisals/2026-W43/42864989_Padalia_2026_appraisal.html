@@ -1,0 +1,1240 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Genotype and arrhythmic risk in dilated cardiomyopathy.</title>
+<style>
+  :root {
+    --bg: #fafafa;
+    --card: #ffffff;
+    --text: #1a1a1a;
+    --muted: #6b6b6b;
+    --border: #e5e5e5;
+    --accent: #0b5fff;
+  }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang TC",
+      "Microsoft JhengHei", sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    margin: 0;
+    padding: 24px 16px 64px;
+    line-height: 1.72;
+  }
+  main {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    margin: 0 auto;
+    max-width: 840px;
+    padding: 22px 26px;
+  }
+  nav {
+    margin: 0 auto 14px;
+    max-width: 840px;
+    color: var(--muted);
+    font-size: 14px;
+  }
+  a { color: var(--accent); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  h1, h2, h3, h4 { line-height: 1.35; }
+  h1 { font-size: 26px; margin-top: 0; }
+  h2 { border-top: 1px solid var(--border); padding-top: 18px; }
+  code {
+    background: rgba(127, 127, 127, 0.12);
+    border-radius: 4px;
+    padding: 1px 4px;
+  }
+  table {
+    border-collapse: collapse;
+    table-layout: auto;
+    width: 100%;
+    max-width: 100%;
+  }
+  th, td {
+    border: 1px solid var(--border);
+    overflow-wrap: anywhere;
+    padding: 6px 8px;
+    text-align: left;
+    vertical-align: top;
+  }
+  blockquote {
+    border-left: 3px solid var(--accent);
+    color: var(--muted);
+    margin-left: 0;
+    padding-left: 14px;
+  }
+  .appraisal-meta {
+    border-top: 1px solid var(--border);
+    margin-top: 28px;
+    padding-top: 14px;
+    color: var(--muted);
+    font-size: 13px;
+  }
+  @media (max-width: 600px) {
+    body {
+      padding: 12px 8px 40px;
+    }
+    main {
+      padding: 16px 12px;
+    }
+    h1 {
+      font-size: 22px;
+    }
+    table {
+      font-size: 12px;
+      table-layout: fixed;
+    }
+    th, td {
+      padding: 4px 5px;
+    }
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #1a1a1a;
+      --card: #242424;
+      --text: #e8e8e8;
+      --muted: #999;
+      --border: #333;
+      --accent: #6ea8ff;
+    }
+  }
+</style>
+</head>
+<body>
+<nav><a href="../../2026-W43.html">← 回到 2026-W43 週報</a></nav>
+<main>
+<h1>Genotype and arrhythmic risk in dilated cardiomyopathy.</h1>
+<h1>醫學文獻批判性評讀</h1>
+<h2>SECTION-0：文章全面描述</h2>
+<h3>0. 文章身份證</h3>
+<table>
+<thead>
+<tr>
+<th>項目</th>
+<th>內容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>標題</td>
+<td>Genotype and arrhythmic risk in dilated cardiomyopathy</td>
+</tr>
+<tr>
+<td>期刊</td>
+<td>European Heart Journal（2026, advance article, pp.1–13）</td>
+</tr>
+<tr>
+<td>DOI / PMID</td>
+<td>10.1093/eurheartj/ehag648 / 42864989</td>
+</tr>
+<tr>
+<td>文章類型</td>
+<td><strong>多中心回溯－前瞻混合登錄資料庫的觀察性世代研究（registry-based cohort）</strong></td>
+</tr>
+<tr>
+<td>路由判斷</td>
+<td>SKILL-A 主流程 ＋ 觀察性子模組 ＋ 因果推論補充框架</td>
+</tr>
+<tr>
+<td>註冊狀態</td>
+<td>文內明述「Pre-registered Clinical Trial Number: Not applicable」；<strong>無任何前瞻性分析計畫註冊</strong></td>
+</tr>
+</tbody>
+</table>
+<p><strong>輸入可見性限制</strong>：本次判讀來源為 PDF→markdown 轉檔加上 9 張圖頁 PNG。Figure 1–6 與 Table 1–3 已可實際視覺判讀；<strong>但全部 Supplementary 內容（Figure S1 收案流程圖、Figures S2–S5、Tables S1–S5、File S1 變異清單、Supplementary Methods）均未提供</strong>，涉及這些檔案的敏感度分析、VUS 分析、交互作用檢定（Table S2）、死因分布（Table S4）只能依正文轉述，無法獨立查核。</p>
+<hr />
+<h3>1. 作者團隊評論</h3>
+<ul>
+<li>
+<p><strong>通訊作者</strong>：Lisa D. Wilsbacher（Northwestern University Feinberg School of Medicine, Medicine-Cardiology ＋ Pharmacology 合聘）。[外部: Northwestern Feinberg 教職頁、Wilsbacher Lab 網頁] 其實驗室主軸為<strong>心肌細胞生長與增殖的細胞訊息傳遞</strong>（動物模式、細胞培養、影像學），屬基礎／轉譯取向；臨床為 ABIM cardiovascular disease 認證。她在 DCM 大型臨床流行病學的個人發表紀錄相對不如共同資深作者深厚。</p>
+</li>
+<li>
+<p><strong>共同資深作者</strong>：Luisa Mestroni（University of Colorado Anschutz）。[外部: PubMed 作者檢索] 與 Matthew R.G. Taylor 為 DCM 遺傳學領域長期核心團隊，兩人合著 DCM 遺傳相關文獻逾 59 篇（PubMed 檢索 Mestroni L + Taylor MRG + dilated cardiomyopathy genetics），近期仍持續發表（例：Boslough M, Taylor MRG, Mestroni L, Lombardi R. <em>Genetic Dilated Cardiomyopathy: A Review</em>. Methodist Debakey Cardiovasc J. 2026;22(4):68-77，<a href="https://doi.org/10.14797/mdcvj.1849">DOI</a>，據 PubMed 檢索取得）。<strong>這是本領域最具代表性的核心研究者之一，不是跨領域初次切入。</strong></p>
+</li>
+<li>
+<p><strong>團隊構成</strong>：共同作者涵蓋 SHaRe 11 個創始中心的主要研究者（Ho、Lakdawala、Olivotto、Sinagra/Merlo、Prasad/Tayal、Heymans/Verdonschot、Ingles、Parikh、Owens、Wheeler、Stevenson 等），幾乎是歐美心肌病遺傳學的全明星名單。這同時是優點（資料品質與臨床判讀專業度）與風險（<strong>本領域既有立場高度一致，缺乏來自外部的對抗性觀點</strong>）。</p>
+</li>
+<li>
+<p><strong>作者立場史</strong>：Mestroni/Taylor 團隊與 ESC 2023 心肌病指引作者群（Olivotto、Sinagra、Prasad、Heymans）長期主張「基因型應納入 DCM 風險分層」。本篇結論與該既有立場完全一致。<strong>[推論] 存在確認偏差（confirmation bias）的結構性條件：作者群同時是現行指引的制定者，而本文的政策訴求正是擴張該指引的適應症範圍。</strong> 這不等於結論錯誤，但解讀「作者如何挑選與強調數據」時必須納入考量。</p>
+</li>
+<li>
+<p><strong>利益揭露</strong>：</p>
+<ul>
+<li>[文內] 多位作者有藥廠關係：N.K.L.（BMS、Pfizer 無限制研究經費；BMS/Pfizer/Alexion/Akros/Cytokinetics/Tenaya/Bayer/Nuevocor 顧問費）、L.M.（Greenstone Bio、Pfizer、Alexion 研究支持；Tenaya、Rocket Pharmaceuticals、Alexion 顧問委員）、I.O.（BMS、Cytokinetics 等）、N.R.（BMS 等機構研究經費）、J.R.（BMS 等顧問）、J.I.（Kardigan 顧問）。</li>
+<li>[文內] Funding 僅列 NIH/NHLBI、EU Horizon、荷蘭心臟基金會、NHMRC 等公部門經費。</li>
+<li><strong>[外部: CU Boulder Venture Partners、MyoKardia 公開資料、BioSpace] 重大未揭露的結構性利益：SHaRe 登錄資料庫本身係 2014 年由 MyoKardia Inc. 參與成立並出資建置；MyoKardia 於 2020 年 11 月 17 日以 131 億美元被 Bristol Myers Squibb 全額併購，成為 BMS 全資子公司。</strong> 本文 Funding 段落完全未提及登錄資料庫的產業出資來源。</li>
+<li><strong>[評估]</strong>：基因型是與生俱來、不受藥廠影響的暴露變項，因此直接扭曲效果量的風險低。但本文的政策訴求是「擴大基因檢測與 ICD 植入」，對基因檢測產業、ACM/DCM 標的藥物開發（Tenaya、Rocket、Alexion、BMS 皆有心肌病管線）具商業價值；<strong>登錄資料庫的產業起源屬於 EHJ 層級期刊應要求揭露的資訊，此處的缺漏是透明度缺陷</strong>。Rocket Pharmaceuticals（L.M. 顧問委員）正在開發 <em>PKP2</em> 與 <em>BAG3</em> 基因治療，而 <em>BAG3</em> 恰好被本文歸入「低致心律不整風險」組——此點與本文方法學選擇相關，值得讀者自行權衡。</li>
+</ul>
+</li>
+</ul>
+<hr />
+<h3>2. 文獻 Metadata 整理</h3>
+<table>
+<thead>
+<tr>
+<th>項目</th>
+<th>數值</th>
+<th>解讀</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Received</td>
+<td>2025-09-02 [文內]</td>
+<td></td>
+</tr>
+<tr>
+<td>Revised</td>
+<td>2026-03-03 [文內]</td>
+<td>投稿→改稿 <strong>182 天</strong></td>
+</tr>
+<tr>
+<td>Accepted</td>
+<td>2026-08-04 [文內]</td>
+<td>改稿→接受 <strong>154 天</strong>；<strong>投稿至接受共 336 天（約 11 個月）</strong></td>
+</tr>
+<tr>
+<td>EHJ 平均審查時程</td>
+<td>[無法取得]</td>
+<td>搜尋僅得到商業網站（Manusights）互相矛盾的估計（首次決定 ~20 天 vs 90–120 天），非官方統計，不足採信</td>
+</tr>
+<tr>
+<td>Impact Factor</td>
+<td>45.3–45.6（2025 citation data）[外部: OUP 期刊頁、Journal Metrics，兩來源有小幅落差]</td>
+<td>心血管領域 237 本中排名第 2，Q1</td>
+</tr>
+<tr>
+<td>邀稿 vs 投稿</td>
+<td>[文內] 標示為 CLINICAL RESEARCH 原著，非邀稿</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong>[評估]</strong> 336 天的審稿週期在 EHJ 原著中屬於<strong>偏長</strong>，且有一次長達半年的大幅改稿。這通常代表審查者提出了實質方法學質疑並要求補做分析（文內確實出現多個敏感度分析與 restricted cubic spline、交互作用檢定，具補做痕跡）。從品質把關角度，這是正面訊號——與「指引作者投稿自家期刊被快速放行」的疑慮相反。</p>
+<p>另需注意：<strong>資料抽取日為 2025-02-26，但接受日為 2026-08-04</strong>，數據在刊出時已約 18 個月前，期間 SHaRe 已持續收案。</p>
+<hr />
+<h3>3. 研究背景 [僅依文內]</h3>
+<p><strong>既有事實</strong>：</p>
+<ul>
+<li>非缺血性 DCM 仍是心律不整、心衰竭與心臟移植的主要原因之一；SCD 占死亡約 30%（ref 2）。</li>
+<li>DANISH 試驗（ref 3）顯示非缺血性心肌病以 LVEF 為唯一依據植入預防性 ICD，未能降低全因死亡率。</li>
+<li>HRS 2019（ref 4）、AHA/ACC（ref 5,6）、ESC 2023（ref 7）已承認存在「高致心律不整基因型」（<em>LMNA, DSP, FLNC, RBM20, PLN, SCN5A, DES, TMEM43</em>）。</li>
+<li>現行 HRS/ESC 僅對 <em>PLN</em>、<em>FLNC</em>（LVEF&lt;45%）與 <em>LMNA</em>（LVEF&lt;45% ＋ NSVT／男性／需節律器）給予 Class IIa 建議。</li>
+</ul>
+<p><strong>知識缺口</strong>：作者明述「risk magnitude for arrhythmogenic genes remains unknown」——指引承認高風險基因型存在，但缺乏大型縱貫世代量化其<strong>風險幅度</strong>。</p>
+<p><strong>Research question</strong>：在 DCM 族群中，高致心律不整風險基因的 P/LP 變異對 MVA、SCD、AF、HF 的風險幅度為何，且是否獨立於年齡、性別與 LVEF？</p>
+<hr />
+<h3>4. 研究設計與方法</h3>
+<p><strong>PICO</strong></p>
+<ul>
+<li><strong>P</strong>：2660 名 ≥18 歲、經 11 個 DCM/ACM-SHaRe 中心臨床判定為 DCM 或 ACM/NDLVC、有基因檢測結果與基線 LVEF 的成人（2005/01–2025/01 收案；排除 ARVC-only、缺血性、代謝性、症候群性、急性發炎性、浸潤性、高血壓性、原發性 LV non-compaction、HCM）</li>
+<li><strong>I（暴露）</strong>：高致心律不整風險基因 P/LP 變異（依 HRS 2019 八基因清單）</li>
+<li><strong>C</strong>：(a) 低致心律不整風險基因 P/LP（以 <em>TTN</em> 截斷變異為主）；(b) gene-elusive（含 VUS 與完全陰性）</li>
+<li><strong>O</strong>：MVA composite（持續性 VT／VF／SCA 或 SCD／適當 ICD 治療）、AF、HF composite（移植／LVAD／門診強心劑／HF 死亡／HF 住院）、死亡、整體複合終點（MVA/HF/AF/D）；另加 ICD 植入、完全房室傳導阻滯、LVEF&lt;35%、中風</li>
+</ul>
+<p><strong>關鍵設計細節</strong></p>
+<ul>
+<li>設計：回溯 ＋ 前瞻混合登錄；DCM-SHaRe 自 2022 年開始建檔，<strong>但系統性回溯病歷納入「enrolment 前已發生的臨床事件」</strong></li>
+<li>追蹤：中位 5.2 年（IQR 1.7–10.0）</li>
+<li>基因判讀：各中心 NGS/Sanger，依 ACMG 分類，各中心遺傳專家確認；<strong>僅 missense P/LP 與 A-band 以外的 <em>TTN</em> 截斷變異由 Garvan Institute 中央再判讀</strong>（即 <em>LMNA</em>/<em>DSP</em>/<em>FLNC</em> 的截斷變異未經中央再判讀）</li>
+<li>統計：**以「出生日期」為時間原點（age-as-timescale）**的 KM 與 log-rank；Cox PH 模型，多變量校正年齡（診斷時）、性別、基線 LVEF、臨床中心；restricted cubic splines（以 LVEF 50% 為參考，knots 數以 AIC 最小化選擇）；事件時間缺漏者僅排除於該特定事件分析</li>
+<li>軟體：SPSS 29、Stata 19、R 4.6</li>
+</ul>
+<p><strong>明確未做的事</strong>：無事前 power calculation、無多重比較校正、無比例風險假設檢定、無競爭風險分析、無家族叢集（clustering）校正、無區辨度指標（C-index / NRI / IDI）、無校準度評估、無與既有基因專屬風險計算器（LMNA-risk VTA、PLN、DSP、FLNC）的比較。</p>
+<hr />
+<h3>5. 研究結果重點整理</h3>
+<p><strong>基線（Table 1）</strong></p>
+<table>
+<thead>
+<tr>
+<th>變項</th>
+<th>高致心律不整 (n=434)</th>
+<th>低致心律不整 (n=451)</th>
+<th>Gene-elusive (n=1775)</th>
+<th>P</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>女性</td>
+<td>236 (54.4%)</td>
+<td>151 (33.5%)</td>
+<td>673 (37.9%)</td>
+<td>&lt;.001</td>
+</tr>
+<tr>
+<td>診斷年齡 (歲)</td>
+<td>41 ± 15</td>
+<td>44 ± 16</td>
+<td>49 ± 15</td>
+<td>&lt;.001</td>
+</tr>
+<tr>
+<td>追蹤 (年, 中位)</td>
+<td>4.7 (1.6–9.2)</td>
+<td>5.5 (1.5–10.7)</td>
+<td>5.2 (1.8–10.1)</td>
+<td>.403</td>
+</tr>
+<tr>
+<td>LVEF (%, 中位)</td>
+<td><strong>50 (36–58)</strong></td>
+<td>37 (25–48)</td>
+<td>39 (25–49)</td>
+<td>&lt;.001</td>
+</tr>
+<tr>
+<td>LVIDd indexed (mm/m²)</td>
+<td>28 (25–31)</td>
+<td>29 (27–33)</td>
+<td>30 (27–33)</td>
+<td>&lt;.001</td>
+</tr>
+</tbody>
+</table>
+<p><strong>粗事件發生率（Table 1）—— 這張表比摘要誠實得多</strong></p>
+<table>
+<thead>
+<tr>
+<th>終點</th>
+<th>高致心律不整</th>
+<th>低致心律不整</th>
+<th>Gene-elusive</th>
+<th>P</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>整體複合終點</strong></td>
+<td><strong>235 (54.1%)</strong></td>
+<td><strong>240 (53.2%)</strong></td>
+<td><strong>913 (51.4%)</strong></td>
+<td><strong>.533</strong></td>
+</tr>
+<tr>
+<td>MVA composite</td>
+<td>142 (32.7%)</td>
+<td>76 (16.9%)</td>
+<td>307 (17.3%)</td>
+<td>&lt;.001</td>
+</tr>
+<tr>
+<td>HF composite</td>
+<td>106 (24.4%)</td>
+<td>144 (31.9%)</td>
+<td>446 (25.1%)</td>
+<td>.009</td>
+</tr>
+<tr>
+<td>AF</td>
+<td>130 (30.0%)</td>
+<td>101 (22.4%)</td>
+<td>378 (21.3%)</td>
+<td>.001</td>
+</tr>
+<tr>
+<td><strong>全因死亡</strong></td>
+<td><strong>34 (7.8%)</strong></td>
+<td><strong>40 (8.9%)</strong></td>
+<td><strong>231 (13.0%)</strong></td>
+<td><strong>.002</strong></td>
+</tr>
+<tr>
+<td>SCA 或 SCD</td>
+<td>33 (7.6%)</td>
+<td>11 (2.4%)</td>
+<td>58 (3.3%)</td>
+<td>&lt;.001</td>
+</tr>
+<tr>
+<td>ICD 植入</td>
+<td><strong>280 (64.5%)</strong></td>
+<td>179 (39.7%)</td>
+<td>707 (39.8%)</td>
+<td>&lt;.001</td>
+</tr>
+<tr>
+<td>適當 ICD 治療</td>
+<td>99/280 (35.4%)</td>
+<td>46/179 (25.7%)</td>
+<td>169/707 (23.9%)</td>
+<td>.001</td>
+</tr>
+<tr>
+<td>完全房室傳導阻滯</td>
+<td>27 (6.2%)</td>
+<td>2 (0.4%)</td>
+<td>19 (1.1%)</td>
+<td>&lt;.001</td>
+</tr>
+<tr>
+<td>LVAD 或移植</td>
+<td>66 (15.2%)</td>
+<td>41 (9.1%)</td>
+<td>104 (5.9%)</td>
+<td>&lt;.001</td>
+</tr>
+<tr>
+<td>LVEF&lt;35%</td>
+<td>137 (31.6%)</td>
+<td>236 (52.3%)</td>
+<td>919 (51.8%)</td>
+<td>&lt;.001</td>
+</tr>
+<tr>
+<td>中風</td>
+<td>29 (6.7%)</td>
+<td>24 (5.3%)</td>
+<td>113 (6.4%)</td>
+<td>.656</td>
+</tr>
+</tbody>
+</table>
+<p><strong>主要 HR 結果</strong></p>
+<table>
+<thead>
+<tr>
+<th>分析</th>
+<th>MVA composite</th>
+<th>AF</th>
+<th>HF composite</th>
+<th>死亡</th>
+<th>整體複合</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>單變量，高致 vs gene-elusive (Fig 4A)</td>
+<td><strong>3.25 (2.63–4.01)</strong></td>
+<td>2.42 (1.96–2.98)</td>
+<td>2.46 (1.89–3.19)</td>
+<td>1.23 (0.86–1.77)</td>
+<td>1.97 (1.69–2.29)</td>
+</tr>
+<tr>
+<td>單變量，低致 vs gene-elusive (Fig 4B)</td>
+<td>1.21 (0.92–1.58)</td>
+<td>1.31 (1.04–1.64)</td>
+<td>1.48 (1.11–1.98)</td>
+<td>0.80 (0.57–1.13)</td>
+<td>1.22 (1.04–1.43)</td>
+</tr>
+<tr>
+<td><strong>多變量</strong>（年齡/性別/LVEF/中心），高致 (Table 3)</td>
+<td><strong>2.15 (1.72–2.70)</strong></td>
+<td>1.99 (1.58–2.50)</td>
+<td>1.75 (1.32–2.33)</td>
+<td>1.33 (0.90–1.96)</td>
+<td>1.78 (1.51–2.09)</td>
+</tr>
+<tr>
+<td><strong>多變量</strong>，低致 (Table 3)</td>
+<td><strong>0.74 (0.57–0.98)</strong></td>
+<td>1.13 (0.89–1.42)</td>
+<td>0.72 (0.53–0.99)</td>
+<td><strong>0.59 (0.42–0.84)</strong></td>
+<td>0.96 (0.81–1.13)</td>
+</tr>
+<tr>
+<td>LVEF &lt;50%，高致 (Table 2)</td>
+<td>4.00 (3.11–5.14)</td>
+<td>2.48 (1.88–3.28)</td>
+<td>3.16 (2.40–4.17)</td>
+<td>1.63 (1.12–2.40)</td>
+<td>2.27 (1.88–2.75)</td>
+</tr>
+<tr>
+<td><strong>LVEF ≥50%，高致 (Table 2)</strong></td>
+<td><strong>2.36 (1.59–3.51)</strong></td>
+<td>1.98 (1.42–2.77)</td>
+<td>2.22 (0.99–5.00), p=.054</td>
+<td>0.54 (0.19–1.55)</td>
+<td>1.63 (1.25–2.12)</td>
+</tr>
+<tr>
+<td>LVEF ≥50%，低致 (Table 2)</td>
+<td>0.52 (0.23–1.21)</td>
+<td>0.77 (0.44–1.32)</td>
+<td>0.66 (0.18–2.42)</td>
+<td>0.44 (0.16–1.20)</td>
+<td>0.62 (0.40–0.97)</td>
+</tr>
+</tbody>
+</table>
+<p>交互作用：genotype × LVEF 分層對 MVA composite，multiplicative interaction <strong>P=.041</strong>（Supplementary Table S2，未提供）。</p>
+<p><strong>基因組成（Figure 1 實測判讀）</strong>：<em>LMNA</em> 169 (38.9%)、<em>DSP</em> 140 (32.3%)、<em>FLNC</em> 76 (17.5%)、<em>RBM20</em> 16、<em>SCN5A</em> 16、<em>PLN</em> 11、<em>DES</em> 6 ＝ 434。<strong>Figure 1B 中完全沒有 <em>TMEM43</em> 的長條——該基因貢獻 0 名病人。</strong></p>
+<hr />
+<h3>6. 作者討論與評論重點</h3>
+<p><strong>主要訊息</strong>：臨床醫師目前仍以 LVEF 這把「鈍器」決定 ICD；高致心律不整基因型賦予獨立於年齡、性別、LVEF 的 MVA/AF/HF 風險，且<strong>在 LVEF ≥50% 仍維持</strong>——此族群「rarely considered for primary prevention ICD therapy」。作者主張現行 45% cut-off「lacks robust evidence-based support」，建議強化心律監測、重新評估 ICD 適應症。</p>
+<p><strong>與現有文獻的異同</strong>：作者自述與 <em>LMNA</em>、<em>PLN</em> p.Arg14del、<em>DSP</em>、<em>FLNC</em> 既有風險計算器一致（SCD 風險獨立於 LV 功能程度）。對「高致心律不整基因型未增加全因死亡」提出兩個解釋：(a) gene-elusive 組年紀較大、非心因性死亡競爭風險較高（Table S4，未提供）；(b) 高致組 ICD 植入率與適當治療率顯著較高，可能已預防額外 SCD。</p>
+<p><strong>作者自列限制</strong>（相當完整，值得肯定）：回溯／觀察性無法推論因果；11 個三級轉診中心的 referral 與 selection bias；基因檢測為 opt-in 造成額外選擇偏差；各中心檢測平台不一可能漏檢變異；IRB 協定差異造成抽樣偏差；八基因清單未納入 <em>BAG3</em> 等新興基因；多數致心律不整基因人數不足以做基因層級分析；未收錄重複／多次事件；事件時間缺漏造成樣本縮減與選擇偏差；排除無基線 LVEF 者（已做敏感度分析 Table S5）；<strong>明確引用 Hernán 的 built-in selection bias（ref 31）</strong>；未測量混淆；未納入高血壓/糖尿病等共病；<strong>LGE 僅 52% 病人有記錄</strong>；未記錄 SCA/SCD 當下的心律（若 PEA/asystole 比例偏高則高估 ICD 效益）。</p>
+<p><strong>[評估]</strong>：限制段落的誠實度在同類登錄研究中屬於上游水準，尤其主動引用 built-in selection bias 與 LGE 缺漏。<strong>但「誠實列出」不等於「已經處理」——沒有任何一項限制被轉換為量化的偏差分析（bias analysis）或 E-value。</strong> 更關鍵的是，下列三項對本研究結論威脅最大的問題，作者<strong>完全未提及</strong>：(1) 以出生為時間原點而未處理 left truncation；(2) ICD 植入率差異對 MVA 複合終點的偵測偏差；(3) 登錄資料庫明文納入「病人與其家屬」卻未校正家族叢集。詳見 B3、C4。</p>
+<p>同時，<strong>臨床建議明顯超出數據支持範圍</strong>：從「預後標記」跳到「earlier ICD implantation for prevention of SCD」是從 prognostic 推論到 therapeutic，中間缺少的是治療效果證據。作者自己也寫「future studies are needed confirm improved outcomes after early genetic diagnosis」，但摘要與 Take Home Message 並未保留這層保留。</p>
+<hr />
+<h3>7. 外部專業意見</h3>
+<ul>
+<li>
+<p><strong>同期 editorial</strong>：文內明確指出有 editorial comment「Genotype refines risk stratification in dilated cardiomyopathy」by A. Bondue and L. Chomette, DOI 10.1093/eurheartj/ehag647。</p>
+<ul>
+<li>已執行 <code>fetch_editorial.py 10.1093/eurheartj/ehag647</code>：五種取得路徑（Direct PDF / DOI redirect / Unpaywall / PMC / Playwright OUP session）全數失敗。</li>
+<li>WebFetch 該 DOI 時被導向 <strong>Crossref「pending publication」頁面</strong>，確認該 DOI 已註冊但<strong>尚未正式上線</strong>；PubMed 亦查無此篇。</li>
+<li><strong>[無法取得全文]</strong> —— 僅能確認書目資訊（題名、作者 A. Bondue 與 L. Chomette、DOI）。<strong>不依題名臆測其立場。</strong> 唯一可從題名確定的是 EHJ 編輯部將本文定位為「基因型<em>精煉</em>（refines）風險分層」，用詞較本文摘要的「powerful risk stratification」保守。</li>
+</ul>
+</li>
+<li>
+<p><strong>外部可比較證據（獨立團隊）</strong>：據 PubMed 檢索，同為 EHJ 2025 年刊登的西班牙 19 中心世代（Mora-Ayestarán N, et al. <em>Arrhythmic genotypes in dilated cardiomyopathy and risk of advanced heart failure</em>. Eur Heart J. 2025;46(48):5222-5233，<a href="https://doi.org/10.1093/eurheartj/ehaf605">DOI</a>）納入 1203 名基因型確定的 DCM 病人，高風險致心律不整基因型 185 人（15.4%），中位追蹤 5.7 年。結果方向一致：MVA HR 2.52 (1.81–3.51)、advanced HF HR 1.85 (1.31–2.61)。<strong>關鍵差異：該研究同時納入 LGE，發現高風險基因型與 LGE 為 MVA 的雙重獨立預測因子，且報告了區辨度——加入基因型後 C-index 由 .760 升至 .786（增幅僅 +0.026）。</strong> 這是評估本文「powerful risk stratification」宣稱時最有價值的外部錨點。</p>
+</li>
+<li>
+<p>另有韓國單中心 239 人世代（Hong D, et al. <em>Genotype-Driven Prognostication in Dilated Cardiomyopathy</em>. Korean Circ J. 2025;56(5):422-434，<a href="https://doi.org/10.4070/kcj.2025.0216">DOI</a>，據 PubMed 檢索）同樣顯示 genotype-positive 預後較差（HR 1.80, 1.10–2.95），且 VUS 組呈現階梯式中間風險（no variant 22.3% → VUS 43.9% → genotype-positive 42.9%），<strong>與本文的 VUS 中間風險發現獨立重現</strong>。</p>
+</li>
+<li>
+<p>產業新聞、投資人資訊與網路論壇未納入。</p>
+</li>
+</ul>
+<hr />
+<h3>8. 臨床建議</h3>
+<p><strong>可採用的情境</strong></p>
+<ol>
+<li>所有新診斷非缺血性 DCM 或 NDLVC 病人（含 LVEF 保留者）進行基因檢測——本文為「基因檢測具預後價值」提供了迄今最大規模的量化支持，且方向與西班牙、韓國獨立世代一致。</li>
+<li>確認 <em>LMNA</em> P/LP 的病人：本文數據最紮實（n=169），AF HR 3.96、MVA HR 3.15、HF HR 2.64、死亡 HR 2.78、中風 HR 2.45（皆 vs 低致心律不整組）。應啟動積極的心律監測、傳導系統追蹤（完全房室傳導阻滯 HR 7.31）、抗凝評估與早期 advanced HF 轉介。</li>
+<li>確認 <em>DSP</em> P/LP 且 LVEF 保留的病人：加強心室心律不整監測（MVA HR 2.77、SCA/SCD HR 4.33 vs 低致組），但<strong>不要</strong>據此加強 AF 或 HF 的擔憂（見下）。</li>
+<li>家族級聯篩檢（cascade screening）的優先順序排定。</li>
+</ol>
+<p><strong>不建議直接套用的情境</strong></p>
+<ol>
+<li><strong>不可</strong>依本文將原發預防 ICD 適應症擴張至 LVEF ≥50% 的所有「高致心律不整基因型」病人。本文提供的是<strong>相對風險（HR）</strong>，<strong>完全沒有報告該族群的絕對年化 MVA 發生率</strong>，而 ICD 決策需要的是絕對風險門檻。</li>
+<li><strong>不可</strong>把結論外推至 <em>TMEM43</em>（n=0）、<em>DES</em>（n=6）、<em>PLN</em>（n=11）、<em>SCN5A</em>（n=16）、<em>RBM20</em>（n=16）。這些基因在本研究中完全沒有統計效力。</li>
+<li><strong>不可</strong>依本文對 <em>FLNC</em> 的 MVA 風險做臨床決策——其 MVA composite HR 1.70 (0.97–2.99) <strong>未達統計顯著</strong>（Figure 6C），只有 SCA/SCD HR 3.57 (1.32–9.67) 顯著，而該 CI 極寬，事件數極少。</li>
+<li>非三級轉診中心、未經完整次世代定序與 ACMG 專家判讀的場域，陽性預測值會顯著低於本研究。</li>
+<li><strong>不可</strong>依 VUS 改變臨床處置。ACMG 指引明確禁止，本文的 VUS 中間風險屬探索性發現。</li>
+</ol>
+<p><strong>給臨床醫師的實務建議</strong></p>
+<ol>
+<li><strong>把這篇文章當成「擴大基因檢測」的證據，不要當成「擴大 ICD 植入」的證據。</strong> 兩者證據強度差距極大。</li>
+<li>遇到 LVEF ≥50% 的高致心律不整基因型帶因者，正確做法是：<strong>使用該基因既有的驗證過風險計算器（LMNA-risk VTA、PLN p.Arg14del、DSP、FLNC 模型）＋ 心臟 MRI 評估 LGE ＋ 動態心電圖</strong>，而非直接以本文 HR 推翻現行 45% 門檻。本文自己也建議用這些工具，卻沒有在自己的世代中驗證或比較它們。</li>
+<li><strong>補做心臟 MRI</strong>：本文最大的實務漏洞是 LGE 僅 52% 有紀錄且未納入模型；西班牙世代顯示 LGE 與基因型是<strong>各自獨立</strong>的預測因子。臨床上兩者應並用，不是二選一。</li>
+</ol>
+<p><strong>研究證據強度分級：中等（Moderate）</strong>
+理由：樣本量大、多中心國際、終點定義標準化、基因判讀有部分中央再判讀、方向與兩個獨立世代一致、敏感度分析相對完整——這些支持「中等」。但設計為回溯－前瞻混合登錄、存在嚴重的時間原點／左截斷處理問題、終點偵測受 ICD 植入率差異污染、未校正家族叢集、未校正 LGE、超過 80 次假說檢定未做多重比較校正、缺乏任何區辨度或校準度指標——這些阻止它達到「強」。</p>
+<hr />
+<hr />
+<h2>SKILL-A：原始研究批判性評讀</h2>
+<h3>A. 補充技術細節</h3>
+<table>
+<thead>
+<tr>
+<th>項目</th>
+<th>文內狀況</th>
+<th>評估</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>事前 power calculation</td>
+<td><strong>無</strong></td>
+<td>登錄研究常態，但本文做了 &gt;80 次假說檢定，等於完全未控制 Type I error</td>
+</tr>
+<tr>
+<td>隨機化／分派隱藏</td>
+<td>不適用（觀察性）</td>
+<td>—</td>
+</tr>
+<tr>
+<td>致盲</td>
+<td><strong>無任何致盲</strong>。終點由「primary cardiologist for each patient during clinical encounters」記錄並直接輸入資料庫</td>
+<td><strong>主治醫師在知道基因檢測結果的情況下判定並登錄終點</strong>。這對軟性終點（HF hospitalization、outpatient inotropes、sustained VT 的判定）是明確的 ascertainment bias 來源</td>
+</tr>
+<tr>
+<td>ITT vs per-protocol</td>
+<td>不適用</td>
+<td>—</td>
+</tr>
+<tr>
+<td>多重比較處理</td>
+<td><strong>無</strong>。Fig 4 (11 終點×2 比較)、Fig 6 (11×3)、Table 2 (5×2×2)、Table 3 (5×2)、Fig S5、各敏感度分析 → 粗估 <strong>&gt;80 次檢定</strong></td>
+<td>嚴重缺漏，詳見 C4</td>
+</tr>
+<tr>
+<td>比例風險假設檢定</td>
+<td><strong>文內完全未提及</strong></td>
+<td>Figure 2D 死亡曲線在約 55–65 歲交叉；Figure 5 整體複合終點 non-linearity P=.011 → PH 假設高度可疑</td>
+</tr>
+<tr>
+<td>競爭風險</td>
+<td><strong>未處理</strong>。死亡 305 例、LVAD/移植 211 例均為 MVA/AF/HF 的競爭事件</td>
+<td>使用 cause-specific Cox 而無 Fine-Gray 或 cumulative incidence function</td>
+</tr>
+<tr>
+<td>缺失資料處理</td>
+<td>「事件時間缺漏者僅排除於該特定事件分析」；<strong>無填補、未報告缺漏比例</strong></td>
+<td>見 C4 與圖表判讀</td>
+</tr>
+<tr>
+<td>家族叢集</td>
+<td><strong>完全未提及</strong>。SHaRe 明文收錄「patients with DCM <strong>and their families</strong>」</td>
+<td>見 B3——本文最被低估的統計缺陷</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h3>觀察性研究混淆控制評估</h3>
+<table>
+<thead>
+<tr>
+<th>本文採用的方法</th>
+<th>強度</th>
+<th>達成狀況</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>多變量 Cox 迴歸（年齡、性別、基線 LVEF、臨床中心）</td>
+<td><strong>弱－中</strong></td>
+<td><strong>關鍵混淆因子未納入：LGE（僅 52% 有紀錄）、NSVT/PVC burden、NYHA class、藥物治療（β-blocker、RAASi、SGLT2i、MRA、amiodarone）、共病（HTN、DM）、家族 SCD 病史、是否為 proband vs cascade-screened 個案、基線時是否已植入 ICD</strong></td>
+</tr>
+<tr>
+<td>Propensity score</td>
+<td><strong>未使用</strong></td>
+<td>—</td>
+</tr>
+<tr>
+<td>Instrumental variable</td>
+<td><strong>未使用</strong></td>
+<td>—</td>
+</tr>
+<tr>
+<td>敏感度分析</td>
+<td>有（排除 <em>LMNA</em>、移動 <em>MYH7</em> HCM-P/LP、納入無基線 LVEF 者）</td>
+<td>方向正確，但全部位於未提供的 Supplementary，無法查核；且無量化偏差分析（E-value、negative control outcome）</td>
+</tr>
+</tbody>
+</table>
+<p><strong>殘餘混淆討論</strong>：作者僅以一句「Unmeasured confounding also cannot be excluded」帶過，<strong>未做任何量化敏感度分析</strong>。</p>
+<p><strong>時間序列（temporality）</strong>：<strong>這是本研究最嚴重的結構性問題。</strong> 暴露（基因型）確實先於結果，但<strong>結果的觀測並未先於基因檢測</strong>——多數病人是在發生心律不整事件之後才接受基因檢測，而該事件又被計為本研究的終點。詳見 B3。</p>
+<hr />
+<h3>因果推論補充框架（Target Trial ＋ 三大可識別性條件）</h3>
+<p><strong>Target trial 思維</strong>：基因型不可隨機分派，傳統「暴露試驗」不存在。對臨床真正有意義的假想試驗是：</p>
+<blockquote>
+<p>在 DCM/NDLVC 且 LVEF ≥50%、帶有高致心律不整基因 P/LP 變異的成人中，隨機分派「依基因型植入原發預防 ICD」vs「依現行 LVEF 標準處置」，主要終點為全因死亡與 SCD。</p>
+</blockquote>
+<p><strong>本研究無法模擬此試驗的關鍵環節</strong>：</p>
+<ul>
+<li>無法定義「treatment assignment at time zero」——基因檢測時間點不一致且與臨床事件糾纏</li>
+<li>無 grace period 定義、無 eligibility 的時間一致性</li>
+<li>最重要的是，<strong>本研究測量的是 prognosis（誰會發生事件），不是 treatment effect（介入能否改變事件）</strong>。這兩者之間的落差，正是 DANISH 試驗的教訓：LVEF≤35% 確實能辨識高風險，但 ICD 並未改善存活。</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>可識別性條件</th>
+<th>評估</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Exchangeability</strong></td>
+<td><strong>不滿足</strong>。基因型本身雖在受孕時即決定（因此不受生活型態混淆——這是本研究相對於一般觀察性研究的真正優勢），但<strong>進入世代的機率</strong>與基因型強烈相關：基因檢測為 opt-in、以心律不整表現的病人更可能被檢測、家族成員因親屬 SCD 事件而被級聯篩檢。這是 <strong>collider-stratification（選入世代即為 collider）</strong>，而非一般混淆</td>
+</tr>
+<tr>
+<td><strong>Positivity</strong></td>
+<td>大致滿足於 <em>LMNA</em>/<em>DSP</em>/<em>FLNC</em>；<strong>對 <em>TMEM43</em>（n=0）為結構性違反（structural positivity violation）</strong>，對 <em>DES</em>（n=6）、<em>PLN</em>（n=11）為隨機性違反。LVEF≥50% 分層中，低致心律不整組事件極少（HF composite HR 0.66, CI 0.18–2.42），positivity 亦近乎違反</td>
+</tr>
+<tr>
+<td><strong>Consistency</strong></td>
+<td>「高致心律不整基因型」不是單一、定義明確的暴露，而是 <strong>7 個異質基因的人為集合</strong>，其中兩個基因佔 71.2%。Figure 6 已證明這些「版本」的效果彼此矛盾（<em>LMNA</em> AF HR 3.96 vs <em>DSP</em> AF HR <strong>0.41</strong>）。這是典型的 <strong>treatment version irrelevance 違反</strong>——「暴露」本身定義不一致，所謂的平均效果沒有對應的真實介入</td>
+</tr>
+</tbody>
+</table>
+<p><strong>[參考: hernanrobins_WhatIf_2jan25.md] 相關概念（collider stratification bias、structural positivity violation、treatment version irrelevance）取自 Hernán &amp; Robins 因果推論框架之標準定義。</strong></p>
+<hr />
+<h3>B. 批判性評估</h3>
+<h4>B1. 假說與理論邏輯</h4>
+<p><strong>合理機轉（1–3 點）</strong></p>
+<ol>
+<li><em>LMNA</em> 編碼核膜 lamin A/C，功能喪失導致核膜脆弱與傳導系統纖維化——這與本文觀察到的完全房室傳導阻滯 HR 7.31 (4.03–13.23)、AF HR 3.96、MVA HR 3.15 高度一致。<strong>這是本文中機轉與數據最匹配的部分。</strong></li>
+<li><em>DSP</em> 編碼 desmoplakin，desmosome 功能失常導致心肌細胞脫耦合與纖維脂肪替換，可在 LV 功能尚佳時即出現心律不整基質——這解釋了 <em>DSP</em> MVA HR 2.77、SCA/SCD HR 4.33，同時 <em>DSP</em> 的 LVEF&lt;35% HR 僅 0.65 (0.47–0.91)（即較少嚴重收縮功能障礙）。<strong>機轉與數據一致。</strong></li>
+<li><em>FLNC</em> 截斷變異導致細胞骨架－sarcomere 連結破壞，與心肌纖維化及心律不整表現型相關。</li>
+</ol>
+<p><strong>最可疑的敘事跳躍（1–3 點）</strong></p>
+<ol>
+<li><strong>「高致心律不整基因型」被當成一個同質的生物實體。</strong> 這在機轉上站不住腳：<em>LMNA</em>（核膜）、<em>DSP</em>（desmosome）、<em>SCN5A</em>（鈉離子通道）、<em>PLN</em>（鈣調控）、<em>DES</em>（中間絲）、<em>RBM20</em>（RNA splicing）、<em>TMEM43</em>（核膜）分屬完全不同的細胞生物學路徑。作者自己的 Figure 6 就推翻了這個合併假設。文內依據：Figure 6B <em>DSP</em> vs 低致組 AF <strong>HR 0.41 (0.22–0.80)</strong>，方向與整組的 AF HR 2.42 完全相反。</li>
+<li><strong>「AF 與 HF 風險由高致心律不整基因型賦予」是過度推廣。</strong> 作者在 Discussion 誠實承認「Sensitivity analyses revealed that <em>LMNA</em> P/LP variants drive AF risk and much (but not all) of HF risk」，Results 段也寫排除 <em>LMNA</em> 後「did eliminate the increased incidence of AF and markedly attenuate the HF composite」。<strong>但摘要、Structured Graphical Abstract 與 Take Home Message 完全沒有保留這層限定</strong>，仍宣稱「risk stratification for arrhythmias and HF」。這是摘要與內文的實質不一致。</li>
+<li><strong>從「預後關聯」直接推到「earlier ICD implantation」。</strong> 作者引用 DANISH 證明 LVEF 不夠好，卻忽略 DANISH 真正證明的是——<strong>即使正確辨識出高風險族群，ICD 也未必改善全因死亡</strong>。更尖銳的是，本研究自己的數據顯示高致心律不整基因型的全因死亡 HR 1.23 (0.86–1.77)（單變量）與 1.33 (0.90–1.96)（多變量）<strong>皆未達顯著</strong>，且粗死亡率反而較低（7.8% vs 13.0%, P=.002）。用「沒有死亡率差異」的數據支持「應更早植入 ICD 以降低死亡」在邏輯上是倒退的。</li>
+</ol>
+<h4>B2. 受試者與外推性</h4>
+<ul>
+<li><strong>受試者與宣稱對象不一致</strong>：摘要說的是「patients with DCM」，實際納入的是「11 個國際級三級轉診中心、自願接受基因檢測、且至少完成一次臨床訪視與一次影像檢查的 DCM/NDLVC/ACM 病人」。這與社區或一般心臟科門診的 DCM 族群差距極大。</li>
+<li><strong>基線嚴重不平衡</strong>：高致心律不整組女性多 16–21 個百分點、年輕 3–8 歲、LVEF 高 11–13 個百分點、LVIDd 小 1–2 mm/m²。這不是隨機波動，而是<strong>不同的疾病階段與不同的發現途徑</strong>。作者將「LVEF 較高卻事件較多」詮釋為基因型的生物學威力，但更簡潔的解釋是：<strong>高致心律不整基因型的病人透過家族級聯篩檢在表型尚輕時即被發現</strong>（所以 LVEF 高、LVIDd 小、年輕、女性多——女性在家族篩檢中參與度較高），<strong>而家族之所以被篩檢，正是因為有親屬發生過心律不整事件</strong>。文內沒有提供 proband vs cascade-screened 的人數拆分，無法排除這個解釋。</li>
+</ul>
+<p><strong>外推性分級</strong></p>
+<table>
+<thead>
+<tr>
+<th>族群</th>
+<th>分級</th>
+<th>理由</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>歐美三級轉診中心的 DCM 族群</td>
+<td><strong>可外推</strong></td>
+<td>與研究 setting 一致</td>
+</tr>
+<tr>
+<td>一般心臟科／區域醫院 DCM 門診</td>
+<td><strong>謹慎外推</strong></td>
+<td>基因檢測陽性率、變異判讀品質、終點偵測強度皆較低；相對風險方向可借用，絕對風險不可</td>
+</tr>
+<tr>
+<td>亞洲族群（含台灣）</td>
+<td><strong>外推性不明</strong></td>
+<td>文內未提供種族／族裔組成；SHaRe 中心全位於北美、西歐、澳洲。<em>TTN</em>、<em>LMNA</em> 變異頻譜有族群差異。韓國世代（n=239）方向一致但規模小</td>
+</tr>
+<tr>
+<td>LVEF ≥50% 的無症狀帶因者</td>
+<td><strong>僅限相對風險，絕對風險完全不可外推</strong></td>
+<td>該分層的絕對事件率未報告</td>
+</tr>
+<tr>
+<td>兒童／青少年</td>
+<td><strong>不可外推</strong></td>
+<td>明確排除 &lt;18 歲</td>
+</tr>
+<tr>
+<td><em>TMEM43</em> 帶因者</td>
+<td><strong>完全不可外推</strong></td>
+<td>n=0</td>
+</tr>
+</tbody>
+</table>
+<h4>B3. 研究設計與偏差</h4>
+<p><strong>最可能造成偏差的三個設計點（含方向判定）</strong></p>
+<p><strong>(1) 以出生為時間原點（age-as-timescale）但未處理 left truncation ──【圖表揭露，文字完全未提】</strong></p>
+<p>Methods 寫「Primary analysis was performed with date of birth as the origin and start time until event or censoring」。<strong>Figure 2 的 numbers-at-risk 列證實了關鍵事實：在 Age = 0 時，三組的 at-risk 人數分別是 427 / 443 / 1730（MVA）、434 / 451 / 1775（死亡），幾乎等於各組全部人數。</strong></p>
+<p>這代表<strong>模型把每一位病人從出生那一刻就算作「處於風險中」，完全沒有做 delayed entry（左截斷）校正</strong>。若正確處理左截斷，Age 0 的 at-risk 人數應該接近 0，並隨各人進入世代的年齡逐步增加。</p>
+<p>後果：</p>
+<ul>
+<li>從出生到首次接觸 SHaRe 中心（中位診斷年齡 41–49 歲）之間的數十年全部被計為「觀察到且無事件」的 person-time，但這段期間根本沒有人在觀察他們。這是教科書等級的 <strong>immortal time bias</strong>。</li>
+<li>Figure 2 的 KM 曲線無法被解讀為任何母體的事件發生率——它只是「存活到足以進入三級轉診中心的人」的條件分布。</li>
+<li><strong>偏差方向雙向且無法互相抵銷</strong>：高致心律不整組診斷年齡較輕（41 vs 49 歲），貢獻的不朽時間較少 → <strong>HR 被高估</strong>；但同時高致心律不整基因的致命事件發生更早，在進入世代前就死亡的病人更多（最嚴重的個案被系統性排除）→ <strong>HR 被低估</strong>。兩個方向的淨效應無法從現有數據判定。</li>
+<li><strong>這一點作者從頭到尾未提及，Limitations 也沒有。</strong> 他們引用了 Hernán 的 built-in selection bias（ref 31），卻沒有意識到更基本的時間原點設定問題。</li>
+</ul>
+<p><strong>(2) ICD 植入率差異污染 MVA 複合終點 ──【Figure 4A / Table 1 揭露，文字僅在死亡率段落順帶一提】</strong></p>
+<p>MVA composite 的定義包含「appropriate ICD therapy」。而高致心律不整組的 ICD 植入率為 <strong>64.5% vs 39.8%</strong>（HR 2.77, 2.40–3.20），且作者自承這是因為現行 HRS/ESC 指引對 <em>LMNA</em>/<em>PLN</em>/<em>FLNC</em> 給予 Class IIa 建議——<strong>亦即 ICD 的植入本身就是基因型的下游結果</strong>。</p>
+<pre><code>基因型 ──► 指引建議植入 ICD ──► 持續心律監測 ──► 偵測到 VT/VF ──► 計為 MVA 事件
+   │                                                                      ▲
+   └──────────────────── 真實的生物學效果 ────────────────────────────────┘
+</code></pre>
+<p>同理，「sustained VT」的偵測也依賴監測強度，而作者自己建議高致心律不整病人應接受「intensified arrhythmia surveillance with ambulatory monitoring」——這種臨床實務差異在資料收集期間就已存在。</p>
+<p><strong>偏差方向：明確高估 MVA composite 的 HR 3.25。</strong></p>
+<p><strong>反證（重要且應給作者肯定）</strong>：<strong>SCA 或 SCD</strong> 是不依賴 ICD 的硬終點，其 HR 為 <strong>3.18 (2.06–4.92)</strong>（Figure 4A），粗發生率 7.6% vs 3.3%（P&lt;.001）。這個數值與 MVA composite 的 3.25 幾乎相同，<strong>強烈暗示 MVA 的訊號主體是真實的生物學效果，而非單純的偵測偏差</strong>。這是本研究內部效度最有力的支撐點，可惜作者沒有把它提升到前景論述。</p>
+<p><strong>(3) ACM 表型納入標準與終點定義的循環（incorporation bias）</strong></p>
+<p>Methods 定義納入的 ACM 為「symptoms or documentation of <strong>AF, conduction disease, and/or ventricular arrhythmias</strong> were the predominant and often the <strong>initial</strong> clinical manifestations」——<strong>而 AF 與 ventricular arrhythmia 正是本研究的兩個主要終點</strong>。再加上：</p>
+<ul>
+<li>「Detailed systematic review of medical records was performed to include clinical events occurring <strong>prior to enrolment</strong>」</li>
+<li>時間原點為出生，所以入組前的事件全部被計入</li>
+<li>「Analyses were performed agnostic to the initial clinical diagnosis」——<strong>完全沒有依 DCM vs ACM/NDLVC 分層或校正</strong></li>
+<li>文中從未報告 434 名高致心律不整病人中有多少被歸類為 ACM</li>
+</ul>
+<p>結果是：一位 35 歲因 VF 猝死復甦而被送到 SHaRe 中心、檢出 <em>LMNA</em> 變異、被標記為 ACM 的病人，會在 Age=35 貢獻一個 MVA 事件。而一位因漸進性心衰竭轉診、無心律不整的 gene-elusive 病人則不會。<strong>暴露（基因型）、納入條件（ACM 表型）、終點（MVA/AF）三者在部分病人身上是同一件事。</strong></p>
+<p><strong>偏差方向：明確高估 MVA 與 AF 的 HR。</strong></p>
+<p><strong>(4) 家族叢集未校正 ──【方法學缺陷，作者完全未提】</strong></p>
+<p>SHaRe 明文收錄「patients with DCM <strong>and their families</strong>」，且作者在 Discussion 多次談到 proband「and their families」。169 名 <em>LMNA</em> 帶因者中必然包含多個同家族、攜帶同一變異的成員；<em>DSP</em>、<em>FLNC</em> 亦然。這些觀測<strong>不是獨立的</strong>（共享變異、共享修飾基因、共享環境、共享臨床照護者）。</p>
+<p>Cox 模型僅校正了 clinical site，<strong>未使用 robust/clustered standard errors、frailty model 或 GEE</strong>。後果：<strong>標準誤被低估 → 95% CI 過窄 → P 值過於樂觀</strong>。在一個做了 &gt;80 次檢定、多個關鍵結果位於邊緣顯著（interaction P=.041、stroke P=.019、低致組 MVA P=.032）的研究中，這個問題不是學術潔癖——它直接影響哪些結論站得住腳。</p>
+<p><strong>偏差方向：所有 CI 皆比呈現的更寬；邊緣顯著的結果最可能是假陽性。</strong></p>
+<h4>B4. 測量工具與實務意義</h4>
+<ul>
+<li><strong>終點的硬度參差</strong>：MVA composite 混合了硬終點（SCD、VF）與高度依賴監測與醫師判斷的軟終點（sustained VT、appropriate ICD therapy）。HF composite 混合了硬終點（移植、LVAD、HF 死亡）與極度主觀的「HF hospitalization」與「outpatient inotropes」——後者在不同國家（美、義、荷、英、澳）的使用閾值差異巨大，雖已校正 clinical site，但 site 是固定效應而非隨機效應，且無法處理 site 內的判定差異。</li>
+<li><strong>終點由非盲的主治醫師在臨床遭遇中直接登錄</strong>，無中央裁定委員會（central adjudication committee）。對 EHJ 等級的研究，這是明顯低於當代標準的終點品質控制。</li>
+<li><strong>複合終點的成分重要性極不對等</strong>：整體複合終點把 AF（通常可控、不致命）與 SCD、心臟移植並列計為「一個事件」。AF 在三組發生率為 30.0% / 22.4% / 21.3%，是複合終點的主要驅動者之一——<strong>病人心目中「中風風險略增的心房顫動」與「猝死」不是同一件事</strong>。</li>
+<li><strong>「就算結果是真的，真實世界可能有多大用處？」</strong>：
+<ul>
+<li>對 <em>LMNA</em>：<strong>很大用處</strong>。粗 SCA/SCD 7.6% vs 3.3%、完全房室傳導阻滯 6.2% vs 1.1%、LVAD/移植 15.2% vs 5.9%——這些絕對差距足以改變監測頻率、節律器策略與移植轉介時機。</li>
+<li>對 <strong>LVEF ≥50% 的 ICD 決策</strong>：<strong>無法判定用處</strong>。HR 2.36 配上未知的基線絕對風險，無法算出 NNT 或與 ICD 併發症率（約 3–5%/年的不適當電擊、導線問題、感染）權衡。<strong>[限制：文內與圖表皆未提供 LVEF≥50% 分層的事件數與 person-time，無法推算絕對年化發生率，拒絕自行臆測。]</strong></li>
+<li>對<strong>整體複合終點</strong>：<strong>幾乎沒有用處</strong>。見 C1。</li>
+</ul>
+</li>
+</ul>
+<hr />
+<h3>C. 統計與資料完整性</h3>
+<h4>C1. 結果分類（CI ＋ 決策閾值框架）</h4>
+<p><strong>Step 1 — 閾值（δ）確認</strong></p>
+<p>本研究為預後／風險分層研究而非治療試驗，傳統 MCID 不直接適用。對應的決策門檻是：<strong>基因型資訊能否把病人的絕對風險推過某個會改變處置的臨界值</strong>。</p>
+<ul>
+<li>對「是否進行基因檢測」：門檻極低（檢測安全、一次性、可用於家族篩檢），任何可靠的風險區分都有價值。</li>
+<li>對「是否原發預防 ICD」：臨床慣用門檻約為<strong>年化 SCD/MVA 風險 ≥1–2%</strong>（各指引與模型略異）。<strong>[推算] 依據：現行 HRS/ESC 對 <em>PLN</em>/<em>FLNC</em>/<em>LMNA</em> 的 Class IIa 門檻約對應此量級。</strong></li>
+<li>對「作為風險模型的增益」：慣例門檻為 <strong>ΔC-index ≥0.02 且具臨床淨效益（decision curve analysis）</strong>。</li>
+</ul>
+<p><strong>Step 2 — CI 位置判讀</strong></p>
+<table>
+<thead>
+<tr>
+<th>終點（多變量，高致 vs gene-elusive）</th>
+<th>HR (95% CI)</th>
+<th>分類</th>
+<th>說明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>MVA composite</td>
+<td>2.15 (1.72–2.70)</td>
+<td><strong>POSITIVE ✅（關聯層次）</strong></td>
+<td>CI 完全在 1 之上且下界 1.72 遠離無效線；但終點受偵測偏差污染</td>
+</tr>
+<tr>
+<td>SCA/SCD（單變量）</td>
+<td>3.18 (2.06–4.92)</td>
+<td><strong>POSITIVE ✅（最可信）</strong></td>
+<td>ICD 無關的硬終點，CI 完全排除無效</td>
+</tr>
+<tr>
+<td>AF</td>
+<td>1.99 (1.58–2.50)</td>
+<td><strong>POSITIVE ✅但歸因錯置</strong></td>
+<td>整組顯著，惟排除 <em>LMNA</em> 後消失；<em>DSP</em> 方向相反（0.41）</td>
+</tr>
+<tr>
+<td>HF composite</td>
+<td>1.75 (1.32–2.33)</td>
+<td><strong>IMPRECISE (+)</strong></td>
+<td>顯著但排除 <em>LMNA</em> 後「markedly attenuate」；真實的非-<em>LMNA</em> 效果量不確定</td>
+</tr>
+<tr>
+<td>全因死亡</td>
+<td>1.33 (0.90–1.96)</td>
+<td><strong>INCONCLUSIVE ❓</strong></td>
+<td>CI 同時跨越 1 與任何有意義的傷害閾值（上界 1.96 具臨床意義、下界 0.90 具保護意義）→ 樣本不足以回答</td>
+</tr>
+<tr>
+<td>整體複合終點</td>
+<td>1.78 (1.51–2.09)</td>
+<td><strong>統計顯著但臨床無意義</strong></td>
+<td>見下方</td>
+</tr>
+<tr>
+<td>LVEF≥50% MVA（單變量）</td>
+<td>2.36 (1.59–3.51)</td>
+<td><strong>IMPRECISE (+)</strong></td>
+<td>CI 寬（倍數跨度 2.2 倍），且缺絕對風險</td>
+</tr>
+<tr>
+<td>LVEF≥50% HF（單變量）</td>
+<td>2.22 (0.99–5.00), P=.054</td>
+<td><strong>INCONCLUSIVE ❓</strong></td>
+<td>CI 下界觸及 1，上界 5.00</td>
+</tr>
+<tr>
+<td>LVEF≥50% 死亡（單變量）</td>
+<td>0.54 (0.19–1.55)</td>
+<td><strong>INCONCLUSIVE ❓</strong></td>
+<td>CI 跨度 8 倍，毫無資訊量</td>
+</tr>
+<tr>
+<td>低致組 MVA（多變量）</td>
+<td>0.74 (0.57–0.98)</td>
+<td><strong>IMPRECISE (+/保護)</strong></td>
+<td>上界緊貼 0.98，單次檢定 P=.032，在 &gt;80 次檢定中不穩健</td>
+</tr>
+</tbody>
+</table>
+<p><strong>⚠️ 最關鍵的解讀警示：整體複合終點的 HR 1.78–1.97 具有嚴重誤導性。</strong></p>
+<p>Table 1 顯示整體複合終點的<strong>粗發生率在三組幾乎完全相同：54.1% vs 53.2% vs 51.4%，組間比較 P = .533。</strong></p>
+<p>HR 之所以是 1.97，完全是因為模型以<strong>年齡</strong>為時間尺度，而高致心律不整組<strong>較早</strong>達到終點（診斷年齡 41 vs 49 歲），不是<strong>較常</strong>達到終點。對臨床醫師而言，「HR 1.97」會被讀成「風險加倍」，但在本研究的觀察窗內，三組遭遇複合事件的比例沒有差別。</p>
+<p>摘要把 composite HR 1.97 與 MVA HR 3.25 並列呈現，<strong>沒有任何地方提及 P=.533 的粗比例無差異</strong>。這是本文最嚴重的呈現問題。同樣地，高致組的<strong>粗死亡率反而顯著較低</strong>（7.8% vs 13.0%, P=.002），摘要也未提。</p>
+<p><strong>Step 3 — 統計謬誤檢核</strong></p>
+<ul>
+<li>✅ 作者<strong>沒有</strong>把 P&gt;.05 說成「no effect」——對死亡的處理相對克制（「not associated with an increased risk of all-cause mortality」），並提出合理的競爭風險與 ICD 保護解釋。</li>
+<li>✅ <strong>沒有</strong>使用 post-hoc power。</li>
+<li>❌ <strong>但犯了相反的錯誤</strong>：把統計顯著（且源於時間尺度選擇）的 composite HR 當成臨床重要的風險加倍。</li>
+<li>❌ <strong>選擇性強調</strong>：Results 寫「we also observed an increased risk of SCD (HR 3.57) and ICD implantation (HR 1.85) in <em>FLNC</em> P/LP patients」，<strong>卻完全沒寫 <em>FLNC</em> 的主要 MVA composite HR 1.70 (0.97–2.99) 未達顯著</strong>（Figure 6C 清楚可見）。同一段落中對 <em>DSP</em> 也只寫「increased risk of the MVA composite」，<strong>未提 <em>DSP</em> 的 AF HR 0.41 (0.22–0.80) 是顯著的保護方向</strong>，而該數值直接推翻整組的 AF 論述。</li>
+</ul>
+<h4>C2. Underpowered 判斷與 Winner's Curse</h4>
+<p><strong>Underpowered 的終點（CI 同時包含無效值與臨床重要值）</strong>：全因死亡（所有分析）、LVEF≥50% 分層的 HF 與死亡、低致組在 LVEF≥50% 的所有終點、<em>FLNC</em> 的 MVA composite。</p>
+<p><strong>Winner's Curse 風險評估（Gelman &amp; Carlin 框架）</strong>：</p>
+<table>
+<thead>
+<tr>
+<th>結果</th>
+<th>事件數</th>
+<th>CI 倍數跨度</th>
+<th>Type M 風險</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><em>FLNC</em> SCA/SCD HR 3.57 (1.32–9.67)</td>
+<td><em>FLNC</em> n=76，SCA/SCD 事件極少</td>
+<td><strong>7.3 倍</strong></td>
+<td><strong>極高</strong>。這是典型的低 power 顯著結果，效果量幾乎確定被嚴重誇大</td>
+</tr>
+<tr>
+<td><em>DSP</em> SCA/SCD HR 4.33 (1.94–9.69)</td>
+<td><em>DSP</em> n=140</td>
+<td><strong>5.0 倍</strong></td>
+<td><strong>高</strong></td>
+</tr>
+<tr>
+<td><em>DSP</em> 死亡 HR 0.16 (0.02–1.18)</td>
+<td>極少事件</td>
+<td><strong>59 倍</strong></td>
+<td>無任何資訊量</td>
+</tr>
+<tr>
+<td>高致組 完全房室傳導阻滯 HR 7.31 (4.03–13.23)</td>
+<td>27 vs 19 事件</td>
+<td>3.3 倍</td>
+<td>中。機轉（<em>LMNA</em> 傳導疾病）高度合理，但 7.31 的點估計應視為上限</td>
+</tr>
+<tr>
+<td>高致組 中風 HR 1.64 (1.09–2.48)</td>
+<td>29 vs 113 事件</td>
+<td>2.3 倍，P=.019</td>
+<td><strong>高</strong>。在 &gt;80 次檢定中，這是最可能的假陽性之一；且 Table 1 的粗中風率三組無差異（6.7% / 5.3% / 6.4%, <strong>P=.656</strong>）。<strong>HR 顯著但粗比例完全無差異——與 composite 相同的時間尺度假象</strong></td>
+</tr>
+<tr>
+<td>低致組 MVA HR 0.74 (0.57–0.98)</td>
+<td>—</td>
+<td>1.7 倍，P=.032</td>
+<td><strong>高</strong>。上界 0.98</td>
+</tr>
+<tr>
+<td>genotype × LVEF 交互作用 P=.041</td>
+<td>—</td>
+<td>—</td>
+<td><strong>高</strong>。這是支撐「LVEF≥50% 仍有風險」此一核心政策主張的關鍵檢定，而它是數十次檢定中的一次邊緣顯著</td>
+</tr>
+</tbody>
+</table>
+<p><strong>實務警告</strong>：若後續研究以 <em>FLNC</em> SCA/SCD HR 3.57 或 <em>DSP</em> SCA/SCD HR 4.33 作為樣本數估算的假設效果量，將嚴重低估所需樣本數。這些數值應視為上限而非點估計。</p>
+<h4>C3. Bayesian 補充分析考量</h4>
+<p>幾個關鍵結果落在「頻率派判定模糊、但臨床意義重大」的區間，若能補做 Bayesian 分析將大幅提升可詮釋性：</p>
+<table>
+<thead>
+<tr>
+<th>問題</th>
+<th>為何需要 Bayesian</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>高致心律不整基因型與<strong>全因死亡</strong>（HR 1.33, 0.90–1.96）</td>
+<td>這是 <strong>Neutral vs Inconclusive</strong> 的典型爭議點。作者主張「無死亡差異是因為 ICD 保護與競爭風險」，但頻率派無法區分「真的沒差」與「樣本不足」。Pr(ROPE)（例：HR 0.9–1.1）才能正式量化等效機率</td>
+</tr>
+<tr>
+<td><strong>LVEF≥50% 分層的 HF composite</strong>（HR 2.22, 0.99–5.00, P=.054）</td>
+<td>以 P=.054 判定為「no difference」是錯誤的。Skeptical / optimistic / non-informative 三組 prior 下的 Pr(HR&gt;1.5) 會是遠比「P=.054」有用的臨床輸入</td>
+</tr>
+<tr>
+<td><strong>genotype × LVEF 交互作用</strong>（P=.041）</td>
+<td>整個政策主張（擴張至 LVEF≥50%）的統計支撐。在 &gt;80 次檢定的脈絡下，skeptical prior 下的後驗機率才是誠實的評估</td>
+</tr>
+</tbody>
+</table>
+<p>典型對照案例（EOLIA P=.09 但 Pr(benefit)=96%、ANDROMEDA-SHOCK P=.06 但所有 prior 下 Pr(benefit)&gt;90%）顯示：<strong>邊緣 P 值的頻率派二分法會系統性地誤導臨床判斷</strong>。本文未做任何 Bayesian 分析，屬於可改進項目而非致命缺陷。</p>
+<h4>C4. 報告完整性與其他統計問題</h4>
+<p><strong>多重比較（最嚴重的統計缺漏）</strong></p>
+<p>粗估檢定次數：Figure 4（11 終點 × 2 比較 = 22）＋ Figure 6（11 × 3 基因 = 33）＋ Figure S5（11 × 3 = 33）＋ Table 2（5 × 2 × 2 = 20）＋ Table 3（5 × 2 = 10）＋ Table 1 的 17 個基線/事件比較 ＋ KM log-rank（5 圖 × 4 比較 × 2 組 Figure = 40）＋ 各敏感度分析 → <strong>粗估超過 150 次假說檢定，零校正。</strong></p>
+<p>在 α=.05 下，單憑機率就預期有約 7–8 個假陽性。前述所有 P 值介於 .01–.05 的結果（stroke P=.019、低致組 MVA P=.032、低致組 LVEF≥50% composite P=.035、交互作用 P=.041、<em>DSP</em> AF P=.008、<em>DSP</em> LVEF&lt;35% P=.013、<em>FLNC</em> SCA/SCD P=.012、<em>FLNC</em> LVEF&lt;35% P=.007）<strong>全部落在這個高風險區間</strong>。</p>
+<p>作者連一句「未做多重比較校正」的聲明都沒有。</p>
+<p><strong>比例風險假設</strong></p>
+<ul>
+<li><strong>從未檢定或報告。</strong></li>
+<li><strong>Figure 2D（死亡）清楚顯示違反</strong>：紅色（高致）曲線在約 55 歲前與其他兩組重疊或略低，之後急轉直下，於約 60–65 歲與另兩條曲線交叉。整體 log-rank P=.190，但曲線形狀明確非比例。在此情形下報告單一「死亡 HR 1.23」在數學上是無意義的——它是隨時間變動的風險比的加權平均。</li>
+<li><strong>Figure 3D</strong>（P/LP vs VUS vs genotype-negative 的死亡）整體 log-rank P=.005，但三條曲線在 55–70 歲間多次交叉。</li>
+<li><strong>Figure 5E</strong>（整體複合終點的 LVEF 樣條）non-linearity <strong>P=.011</strong>，證實 LVEF 與結果的關係本身非線性且非單調——這也連帶質疑「以 LVEF 為線性共變項」的 Table 3 校正是否充分（雖然 Figure 5 的樣條分析部分緩解了這個疑慮）。</li>
+</ul>
+<p><strong>競爭風險</strong></p>
+<p>死亡（305 例）與 LVAD/移植（211 例）都會使病人退出 MVA、AF、HF 的風險集合。本文全部使用 cause-specific Cox 而無 Fine-Gray 次分布模型或累積發生率函數。<strong>特別關鍵的是</strong>：gene-elusive 組死亡率最高（13.0%）且年齡最大（49 歲），<strong>較高的競爭死亡會人為壓低該組的 MVA/AF 事件率 → 誇大高致組的 HR</strong>。作者在 Discussion 中提到競爭風險來解釋「為何死亡沒有差異」，<strong>卻沒有意識到同一個機制會誇大其他所有終點的 HR</strong>。這是論證上的雙重標準。</p>
+<p><strong>資料缺漏 ──【Figure 2 numbers-at-risk 揭露的差異性缺漏，正文完全未量化】</strong></p>
+<p>從 Figure 2 各面板 Age=0 的 at-risk 人數，可反推各終點因「事件時間缺漏」而被排除的人數：</p>
+<table>
+<thead>
+<tr>
+<th>終點</th>
+<th>高致 (總 434)</th>
+<th>低致 (總 451)</th>
+<th>Gene-elusive (總 1775)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>死亡</td>
+<td>434（0%）</td>
+<td>451（0%）</td>
+<td>1775（0%）</td>
+</tr>
+<tr>
+<td>MVA</td>
+<td>427（−1.6%）</td>
+<td>443（−1.8%）</td>
+<td>1730（−2.5%）</td>
+</tr>
+<tr>
+<td>AF</td>
+<td>424（−2.3%）</td>
+<td>447（−0.9%）</td>
+<td>1746（−1.6%）</td>
+</tr>
+<tr>
+<td><strong>HF composite</strong></td>
+<td><strong>409（−5.8%）</strong></td>
+<td><strong>約 367（−約 19%）</strong></td>
+<td><strong>約 1523（−約 14%）</strong></td>
+</tr>
+<tr>
+<td>整體複合</td>
+<td>419（−3.5%）</td>
+<td>396（−12.2%）</td>
+<td>1521（−14.3%）</td>
+</tr>
+</tbody>
+</table>
+<p><em>[判讀限制：numbers-at-risk 列字體極小，HF 與 composite 的低致組數字（367、396）與 gene-elusive（1523、1521）存在個位數誤讀可能；但三組缺漏幅度的量級差異（約 6% vs 約 19% vs 約 14%）明確可辨。]</em></p>
+<p><strong>這是一個未被討論的差異性缺失（differential missingness）</strong>：HF composite 的分析中，<strong>高致心律不整組幾乎完整保留（缺約 6%），而低致組流失約 19%</strong> —— 偏偏低致組的粗 HF 發生率最高（31.9%）。若流失者系統性地偏向「有 HF 事件但時間記錄不全」者，則比較組的事件被不成比例地刪除 → <strong>HF composite 的 HR 2.46 被高估</strong>。同樣的模式也見於整體複合終點（高致 −3.5% vs 低致 −12.2% vs gene-elusive −14.3%）。</p>
+<p>作者的限制段只寫「there were some missing data with timing of historical events, which variably reduced the sample size... and introduced selection bias」，<strong>既未量化也未指出缺漏的方向性差異</strong>。正文與表格無從得知這件事——<strong>只有在 Figure 2 的 numbers-at-risk 列裡才看得到。</strong></p>
+<p><strong>KM 曲線尾端的可靠性 ──【圖表判讀】</strong></p>
+<p>Figure 2 顯示在 Age=75 時，at-risk 人數為：MVA 11 / 28 / 156；AF 8 / 24 / 120；HF 13 / 28 / 152；整體複合 6 / 20 / 97。</p>
+<p><strong>換言之，所有 KM 曲線在約 60 歲之後的部分，是由個位數到二十幾名病人支撐的。</strong> Figure 2A 顯示高致組「freedom from MVA」在 75 歲降至約 35%，但該點 n=11。<strong>曲線末段 15 年的視覺落差極具說服力，統計上卻毫無意義。</strong> Structured Graphical Abstract 把三張 KM 圖放在正中央，其中最醒目的曲線分離恰好發生在這個最不可靠的區段。這是圖像傳達的訊息強度與底層資料強度嚴重脫節的例子。</p>
+<p>曲線開始分離的時點約在 <strong>30–35 歲</strong>（MVA）與 <strong>35–40 歲</strong>（AF、composite），該時點的 at-risk 人數尚充足；但由於時間原點問題（見 B3-1），這些早期事件多數是回溯擷取的入組前事件。</p>
+<p><strong>座標軸檢查（圖表誠實度）</strong>：Figure 2、3 與 Structured Graphical Abstract 的 KM 圖 <strong>y 軸皆為完整 0–100%，未截斷</strong>；Figure 4、6 的 forest plot 無效線位置正確（HR=1 虛線），x 軸為對數尺度並清楚標示；Figure 5 的 y 軸為對數尺度並標示。<strong>圖表繪製本身沒有刻意誇大的痕跡，這點應予肯定。</strong></p>
+<p><strong>內部一致性核對（可核對的部分）</strong></p>
+<ul>
+<li>434 + 451 + 1775 = 2660 ✅</li>
+<li>Figure 1B 高致基因加總：169+140+76+16+16+11+6 = <strong>434</strong> ✅，<strong>且證實 <em>TMEM43</em> = 0</strong></li>
+<li>Gene-elusive 拆分：1775 − 258（高致 VUS）− 245（低致 VUS）= 1272 = Figure 3D 的 G(−) at-risk 人數 ✅</li>
+<li><strong>Figure 1C 不一致</strong>：y 軸標示為「Number of <strong>variants</strong>」（Figure 1B 為「Number of <strong>patients</strong>」），加總 381+27+16+12+6+5+3+1+1+1 = <strong>453</strong>，但低致組為 <strong>451 名病人</strong>。暗示有 2 名複合型帶因者（compound/double heterozygote），<strong>文內完全未說明這類病人如何歸組</strong>。圖說卻寫「Number of patients with P/LP variants in the specified low-arrhythmogenic risk genes」——圖說與座標軸標示互相矛盾。</li>
+<li><strong>[限制：Supplementary Figure S1 收案流程圖未提供，無法核對從原始資料庫篩選至 2660 人的各階段排除人數與原因。]</strong></li>
+</ul>
+<p><strong>未報告的關鍵數據（嚴重缺漏）</strong></p>
+<ol>
+<li><strong>任何分層的絕對事件率或年化發生率</strong> —— 整篇文章沒有一個 events/person-year 的數字。</li>
+<li><strong>區辨度（C-index / Harrell's C）、NRI、IDI、校準度（calibration plot）</strong> —— 一篇標題宣稱「powerful risk stratification」的文章，<strong>零個區辨度指標</strong>。對照西班牙 EHJ 世代報告加入基因型後 C-index 由 .760 → .786（+0.026），本文的「powerful」一詞缺乏任何量化基礎。</li>
+<li><strong>Proband vs cascade-screened 的人數拆分</strong> —— 直接決定了「LVEF 較高」是生物學還是確認偏差。</li>
+<li><strong>DCM vs ACM/NDLVC 臨床診斷在三組的分布</strong> —— 決定了循環論證的嚴重程度。</li>
+<li><strong>任何藥物治療資料</strong>（β-blocker、RAASi、SGLT2i、MRA、抗心律不整藥、導管燒灼術）。</li>
+<li><strong>種族／族裔組成</strong> —— 影響外推性，且與作者自己呼籲的「populations underrepresented in validation studies」主張自相矛盾。</li>
+<li><strong>基線時已植入 ICD 的人數</strong> —— 影響 MVA 偵測偏差的量級。</li>
+</ol>
+<p><strong>統計面紅旗清單（≥5 點）</strong></p>
+<ol>
+<li>以出生為時間原點但未做 left truncation 校正 → 系統性 immortal time bias（Figure 2 numbers-at-risk 實證）</li>
+<li>
+<blockquote>
+<p>150 次假說檢定，零多重比較校正，無任何聲明</p>
+</blockquote>
+</li>
+<li>比例風險假設從未檢定；Figure 2D 曲線明確交叉</li>
+<li>競爭風險未處理，且作者對競爭風險的論述存在雙重標準</li>
+<li>家族叢集未校正 → 所有 95% CI 系統性過窄</li>
+<li>HF composite 與整體複合終點存在量級不同的差異性資料缺漏（約 6% vs 約 19% vs 約 14%），未量化亦未討論</li>
+<li>完全沒有絕對風險、區辨度或校準度指標，卻宣稱「powerful risk stratification」</li>
+<li>KM 曲線末段由個位數病人支撐，卻在 Graphical Abstract 中居於核心位置</li>
+<li>整體複合終點與中風的 HR 顯著但粗比例完全無差異（P=.533、P=.656），摘要未揭露</li>
+</ol>
+<hr />
+<h3>D. 次組分析評估</h3>
+<p>本文的次組分析包括：(1) LVEF 分層（&lt;50% vs ≥50%）；(2) 基因層級（<em>LMNA</em>、<em>DSP</em>、<em>FLNC</em>）；(3) VUS 次組。依 JAMA 五項標準逐一評估：</p>
+<p><strong>次組 1：LVEF ≥50%（核心政策主張所在）</strong></p>
+<table>
+<thead>
+<tr>
+<th>標準</th>
+<th>評估</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1. 有 interaction P 值？</td>
+<td><strong>有</strong>，MVA composite 的 multiplicative interaction <strong>P=.041</strong>（Supplementary Table S2，未提供無法查核）。但只對 MVA 一個終點報告交互作用，AF、HF、死亡、composite 的交互作用未報告</td>
+</tr>
+<tr>
+<td>2. 方向與其他研究一致？</td>
+<td><strong>部分一致</strong>。<em>LMNA</em>、<em>PLN</em> p.Arg14del、<em>DSP</em>、<em>FLNC</em> 的既有風險模型確實顯示 SCD 風險不隨 LV 功能單調變化（作者引用 ref 22–25）。但那些模型是針對<strong>單一基因</strong>建立的，與本文的「八基因合併」次組不是同一件事</td>
+</tr>
+<tr>
+<td>3. 事前指定且有預期方向？</td>
+<td><strong>無法判定</strong>。無分析計畫註冊；LVEF 50% 的切點選擇未說明理由（既非指引常用的 35%，也非 ESC 的 45%，而是正好等於高致組的中位 LVEF —— <strong>[推論] 高度疑似資料驅動的切點選擇</strong>）</td>
+</tr>
+<tr>
+<td>4. 合理生物機轉？</td>
+<td><strong>有</strong>。desmosome 與核膜疾病的心律不整基質（纖維脂肪替換、纖維化）可先於收縮功能下降出現，Figure 5A 的樣條分析（MVA 的 LVEF 效應在 25–55% 間平坦）與此一致</td>
+</tr>
+<tr>
+<td>5. within-study 比較？</td>
+<td><strong>是</strong></td>
+</tr>
+</tbody>
+</table>
+<p><strong>可信度：中</strong>。交互作用檢定存在且方向有機轉支持，是真正的優點；但 P=.041 位於 &gt;150 次檢定之中、切點疑似資料驅動、且<strong>絕對風險未報告使其無法轉換為臨床決策</strong>。</p>
+<p><strong>次組 2：基因層級（<em>LMNA</em> / <em>DSP</em> / <em>FLNC</em>）</strong></p>
+<table>
+<thead>
+<tr>
+<th>基因</th>
+<th>可信度</th>
+<th>理由</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><em><strong>LMNA</strong></em> (n=169)</td>
+<td><strong>高</strong></td>
+<td>樣本量最大、效果量一致地大（MVA 3.15、AF 3.96、HF 2.64、死亡 2.78、CHB、中風 2.45）、機轉明確、與數十年既有文獻完全一致、CI 相對窄。<strong>這是本文最站得住腳的發現</strong></td>
+</tr>
+<tr>
+<td><em><strong>DSP</strong></em> (n=140)</td>
+<td><strong>中</strong></td>
+<td>MVA 2.77 (1.90–4.06) 與 SCA/SCD 4.33 (1.94–9.69) 方向一致且有機轉。但 <strong>AF HR 0.41 (0.22–0.80) 與整組的 AF 論述方向相反</strong>，而作者未在正文討論此點。無事前假說。多重比較未校正</td>
+</tr>
+<tr>
+<td><em><strong>FLNC</strong></em> (n=76)</td>
+<td><strong>低</strong></td>
+<td><strong>主要 MVA composite 未達顯著（1.70, 0.97–2.99）</strong>；唯一顯著的 SCA/SCD 3.57 (1.32–9.67) CI 跨度 7.3 倍，Winner's Curse 風險極高；整體複合終點 1.07 (0.72–1.59) 完全無效。<strong>作者在正文選擇性報告了顯著項而略過不顯著的主要終點</strong></td>
+</tr>
+<tr>
+<td><em>RBM20</em>/<em>SCN5A</em>/<em>PLN</em>/<em>DES</em>/<em>TMEM43</em></td>
+<td><strong>不適用</strong></td>
+<td>n=16/16/11/6/0，作者正確地未做基因層級分析（值得肯定）</td>
+</tr>
+</tbody>
+</table>
+<p><strong>次組 3：高致心律不整基因 VUS（Figure 3、S4）</strong></p>
+<table>
+<thead>
+<tr>
+<th>標準</th>
+<th>評估</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1. interaction P？</td>
+<td><strong>無</strong>。僅做 pairwise log-rank 與 Cox</td>
+</tr>
+<tr>
+<td>2. 外部一致？</td>
+<td><strong>是</strong>。韓國 Korean Circ J 世代獨立觀察到相同的階梯式風險（no variant 22.3% → VUS 43.9% → P/LP 42.9%，<a href="https://doi.org/10.4070/kcj.2025.0216">DOI</a>，據 PubMed 檢索）</td>
+</tr>
+<tr>
+<td>3. 事前指定？</td>
+<td><strong>否</strong>。屬探索性</td>
+</tr>
+<tr>
+<td>4. 生物機轉？</td>
+<td><strong>部分合理</strong>。部分 VUS 日後會重分類為 P/LP；部分可能為修飾作用。<strong>但同樣合理的替代解釋是確認偏差</strong>：心律不整表型較重的病人更可能被安排廣泛 panel 檢測 → 更可能在長基因（<em>LMNA</em>/<em>DSP</em>/<em>FLNC</em> 皆屬大基因）中檢出 VUS</td>
+</tr>
+<tr>
+<td>5. within-study？</td>
+<td><strong>是</strong></td>
+</tr>
+</tbody>
+</table>
+<p><strong>可信度：中（因外部獨立重現而提升）</strong>，但<strong>不足以改變臨床處置</strong>。作者在 Discussion 中的措辭（「our findings suggest a potential prognostic role」）大致克制，<strong>唯一值得警惕的是它緊接在呼籲「refining variant interpretation frameworks... guiding tailored surveillance and therapeutic interventions」之後</strong>，讀者容易誤讀為支持依 VUS 行動。ACMG 立場應被更明確地保留。</p>
+<p><strong>整體次組評估的結構性問題</strong>：本文的次組分析揭露了一個<strong>比任何單一次組結果都更重要的事實 —— 主分析的「高致心律不整基因型」這個分組本身在生物學上是不成立的。</strong> Figure 6 顯示三個基因在 AF（3.96 vs 0.41 vs 0.85）、死亡（2.78 vs 0.16 vs 1.40）、HF（2.64 vs 0.71 vs 1.08）、LVEF&lt;35%（0.77 vs 0.65 vs 0.53）上的表現南轅北轍。<strong>唯一在三個基因間方向一致的是心室心律不整相關終點</strong>（MVA/SCA-SCD/ICD therapy），而這恰好是 HRS 2019 清單原本的設計意圖。<strong>本文的數據其實支持一個比作者宣稱更窄、但更可靠的結論：這八個基因共享的是心室心律不整風險，不共享 AF 或 HF 風險。</strong></p>
+<hr />
+<h3>E. 紅旗清單</h3>
+<p><strong>設計</strong></p>
+<ol>
+<li>以出生為時間原點卻未處理 left truncation；Figure 2 numbers-at-risk 證實全部病人自 Age 0 即被計入風險集合 → 數十年 immortal time</li>
+<li>ACM 的納入條件（AF／傳導疾病／心室心律不整為主要表現）與研究終點（AF、MVA）重疊；入組前事件被計入 → incorporation bias</li>
+<li>基因檢測為 opt-in，心律不整表現者更可能被檢測 → 暴露與結果的共同原因進入選樣</li>
+<li>終點由非盲的主治醫師臨床登錄，無中央裁定委員會</li>
+<li>登錄資料庫明文收錄家族成員，但完全未校正家族叢集</li>
+</ol>
+<p><strong>統計</strong>
+6. 粗估 &gt;150 次假說檢定，零多重比較校正，零聲明
+7. 比例風險假設從未檢定；Figure 2D 死亡曲線明確交叉卻仍報告單一 HR
+8. 競爭風險未處理；作者用競爭風險解釋「死亡無差異」卻不承認同一機制會誇大其他終點
+9. HF composite 存在量級不同的差異性缺漏（高致約 6% vs 低致約 19%），且缺漏最多的組 HF 事件率最高
+10. 零個絕對風險、零個區辨度指標、零個校準度評估，標題卻稱「powerful risk stratification」</p>
+<p><strong>敘事</strong>
+11. <strong>摘要完全未揭露整體複合終點的粗發生率三組無差異（54.1%/53.2%/51.4%, P=.533）與高致組死亡率反而較低（7.8% vs 13.0%, P=.002）</strong>
+12. <strong>摘要、Take Home Message 與 Structured Graphical Abstract 宣稱 AF 與 HF 風險，但內文自承排除 <em>LMNA</em> 後 AF 效應「eliminated」、HF「markedly attenuated」</strong>
+13. <strong><em>TMEM43</em> 在摘要、方法、討論、Graphical Abstract 中反覆列為八基因之一，但 Figure 1B 顯示其 n=0</strong>；另有四個基因 n≤16。「a P/LP variant in any of the other high-arrhythmogenic genes portends increased likelihood of life-threatening ventricular arrhythmia」在這些基因上無任何證據支持
+14. 選擇性報告 <em>FLNC</em>（只提顯著的 SCA/SCD 與 ICD 植入，略過不顯著的主要 MVA composite）與 <em>DSP</em>（略過方向相反的 AF HR 0.41）
+15. 章節標題「High-arrhythmogenic genetic risk is <strong>modified by male sex</strong>」宣稱性別具效果修飾，但該節正文與 Table 3 <strong>從未報告任何性別 HR 或 genotype×sex 交互作用檢定</strong>。[限制：Table 3 僅列基因型組別的 HR，性別僅為校正共變項]
+16. 從預後關聯直接推導出治療建議（earlier ICD implantation），而本研究自身的死亡率數據（HR 1.33, 0.90–1.96）與所引用的 DANISH 試驗都不支持此推論
+17. 中風 HR 1.64 (1.09–2.48) P=.019 被列入 Figure 4A，但 Table 1 的粗中風率 P=.656，摘要與討論皆未調和此矛盾</p>
+<p><strong>COI / 透明度</strong>
+18. SHaRe 登錄資料庫由 MyoKardia（現為 BMS 全資子公司）出資建置，Funding 段落完全未揭露 [外部: CU Boulder、MyoKardia/BMS 公開資料]
+19. 作者群與現行 HRS/ESC 指引制定者高度重疊，而本文的政策訴求正是擴張該指引適應症
+20. 資料無法共享（「Data cannot be made available... because of constraints related to human subjects' research」），且 Supplementary 中承載了多數敏感度分析與交互作用檢定，外部可驗證性低</p>
+<hr />
+<h3>F. 反向解釋</h3>
+<p><strong>替代解釋 1：所謂「高致心律不整基因型在 LVEF 保留時仍高風險」，主要反映的是發現途徑（cascade screening）而非生物學。</strong></p>
+<ul>
+<li><em>支持</em>：高致組女性 54.4%（家族篩檢參與度性別差異的典型模式）、診斷年齡年輕 8 歲、LVEF 中位數 50%（接近正常）、LVIDd 最小（28 mm/m²）、LVEF&lt;35% 比例最低（31.6% vs 51.8%）。這些全都是「尚未發病或剛發病的家族成員」的特徵。而家族之所以被篩檢，典型的觸發事件正是親屬的猝死或心律不整。</li>
+<li><em>反對</em>：SCA/SCD HR 3.18 (2.06–4.92) 是不依賴偵測強度的硬終點；完全房室傳導阻滯 HR 7.31 與 <em>LMNA</em> 的已知機轉完全吻合；西班牙 19 中心獨立世代（不同的收案脈絡）得到方向一致的結果。</li>
+<li><em>無法判定的關鍵數據</em>：文內從未報告 proband 與 cascade-screened 個案的比例。<strong>這是本文最值得作者在 correspondence 中補充的單一數字。</strong></li>
+</ul>
+<p><strong>替代解釋 2：MVA composite 的 HR 3.25 主要由偵測強度差異驅動。</strong></p>
+<ul>
+<li><em>支持</em>：ICD 植入率 64.5% vs 39.8%（HR 2.77）；MVA composite 的兩個成分（appropriate ICD therapy、sustained VT）皆需要裝置或監測才能偵測；ICD 的植入本身是由基因型經由指引建議所決定。</li>
+<li><em>反對</em>：<strong>SCA/SCD 的 HR 3.18 與 MVA composite 的 3.25 幾乎完全相同</strong>。若偵測偏差是主因，兩者應有明顯落差。這個比較強力支持訊號的真實性。</li>
+<li><em>淨判斷</em>：偵測偏差很可能<strong>部分</strong>膨脹了 MVA HR，但核心訊號是真的。</li>
+</ul>
+<p><strong>替代解釋 3：「gene-elusive」作為參考組本身是污染的，導致 HR 被系統性低估。</strong></p>
+<ul>
+<li><em>支持</em>：1775 名 gene-elusive 中有 503 人（28.3%）攜帶 VUS，其中 258 人的 VUS 位於高致心律不整基因。Figure S4 顯示這些 VUS 帶因者的 MVA HR 1.48 (1.08–2.04)、AF HR 1.58 (1.19–2.09) 高於 genotype-negative。把他們混入參考組會<strong>稀釋對比 → HR 被低估</strong>。</li>
+<li><em>反對</em>：稀釋幅度有限（VUS 組的 HR 僅約 1.5，且僅占參考組 14.5%）。</li>
+<li><em>意義</em>：這是<strong>朝向保守方向的偏差</strong>，是本研究少數幾個會讓真實效果比報告值更大的因素。對高致心律不整基因型的核心訊號而言，這增加了可信度。</li>
+</ul>
+<p><strong>替代解釋 4：低致心律不整組（主要是 <em>TTN</em>）在多變量模型中呈現保護效果（MVA HR 0.74、死亡 HR 0.59），不是因為 <em>TTN</em> 有保護性，而是因為 gene-elusive 組混雜了誤分類的病因。</strong></p>
+<ul>
+<li><em>支持</em>：gene-elusive 組年紀最大（49 歲）、死亡率最高（13.0%）、LVEF&lt;35% 比例高（51.8%）。「排除缺血性心肌病」在臨床實務中並不完美，特別是未全部接受冠狀動脈攝影或心臟 MRI 的病人。<em>TTN</em> 截斷變異的 DCM 則是相對良性、對藥物治療反應良好的已知表型。</li>
+<li><em>反對</em>：Table 3 已校正年齡與 LVEF。</li>
+<li><em>意義</em>：若此解釋成立，則「gene-elusive」不是一個乾淨的參考組，所有以它為基準的 HR（包括主要結果）都帶有難以估計方向的誤差。<strong>改用 genotype-negative 作為參考組會更乾淨</strong>，而該分析確實存在（Figure S4）卻未被提升為主分析。</li>
+</ul>
+<hr />
+<h3>G. 最終裁決</h3>
+<p><strong>整體可信度：中等（Moderate）</strong></p>
+<p>這是一篇<strong>資料規模與臨床專業度一流、但統計方法學處理不足、且結論呈現超出數據支持範圍</strong>的研究。核心訊號（高致心律不整基因型，特別是 <em>LMNA</em>，與心室心律不整及 SCD 的強烈關聯）<strong>很可能是真實的</strong>——它有機轉支持、有獨立世代重現、且在不依賴偵測的硬終點（SCA/SCD HR 3.18）上同樣成立。但本文所宣稱的風險幅度幾乎確定被高估，而「AF 與 HF 風險」、「LVEF ≥50% 應重新考慮 ICD」這兩項訴求，前者在作者自己的次組分析中就已瓦解，後者缺乏做出決策所必需的絕對風險數據。</p>
+<p><strong>可採用的條件</strong></p>
+<ul>
+<li>作為「DCM/NDLVC 病人應常規接受基因檢測」的<strong>強力佐證</strong></li>
+<li>作為「<em>LMNA</em> 心肌病需要獨立、積極的監測與處置路徑」的<strong>可靠依據</strong></li>
+<li>作為「高致心律不整基因型帶因者即使 LVEF 保留，心室心律不整風險不可忽視」的<strong>定性警示</strong>（定性，不是定量）</li>
+<li>作為設計前瞻性「基因型導向 ICD 策略」隨機試驗的<strong>假說生成依據</strong></li>
+</ul>
+<p><strong>不建議採用的情境</strong></p>
+<ul>
+<li>任何以本文 HR 為基礎、針對 LVEF ≥50% 族群的原發預防 ICD 決策</li>
+<li><em>TMEM43</em>、<em>DES</em>、<em>PLN</em>、<em>SCN5A</em>、<em>RBM20</em> 帶因者的任何量化風險溝通</li>
+<li>依 <em>DSP</em> 或 <em>FLNC</em> 基因型加強 AF 或 HF 的擔憂（兩者在本文數據中對 AF/HF 均無增加風險，<em>DSP</em> 的 AF 甚至顯著較低）</li>
+<li>向病人溝通「您的風險是兩倍」（整體複合終點的粗發生率三組無差異）</li>
+<li>依 VUS 調整臨床處置</li>
+</ul>
+<p><strong>若要改觀，最需要的 3 個關鍵改進</strong></p>
+<ol>
+<li>
+<p><strong>報告絕對風險，並以正確的時間原點重做分析。</strong> 具體要求：(a) 改以「進入世代（或診斷）」為時間原點，或保留 age-as-timescale 但加入 delayed entry 校正；(b) 報告每個基因型 × LVEF 分層的 events/100 person-years 與 95% CI，特別是高致心律不整 ＋ LVEF ≥50% 這一格。<strong>沒有這個數字，整篇文章的政策訴求無法被檢驗。</strong></p>
+</li>
+<li>
+<p><strong>放棄「高致心律不整基因型」這個合併暴露，改以基因層級報告；並加入 LGE。</strong> 作者自己的 Figure 6 已經證明合併是不成立的。同時納入 LGE（即使只在 52% 的子樣本中）並與基因型共同建模，才能回答臨床真正的問題：<strong>在已有心臟 MRI 的情況下，基因型還提供多少額外資訊？</strong> 西班牙世代已示範這個做法（C-index .760 → .786，<a href="https://doi.org/10.1093/eurheartj/ehaf605">DOI</a>）。</p>
+</li>
+<li>
+<p><strong>補上基本的統計衛生：家族叢集的 robust SE、比例風險假設檢定、競爭風險分析（Fine-Gray）、多重比較的明確聲明與至少對主要次組的校正、以及 C-index/NRI/calibration。</strong> 另需補報 proband vs cascade-screened 比例、DCM vs ACM 臨床診斷在三組的分布，以及缺漏資料的量化描述。</p>
+</li>
+</ol>
+<p><strong>一句話結論</strong></p>
+<blockquote>
+<p>基因檢測確實能在 DCM 中找出心室心律不整的高危險群（尤以 <em>LMNA</em> 最明確），但本文誇大了風險幅度、把 AF 與心衰竭的 <em>LMNA</em> 專屬效應說成全體基因型的效應，且缺乏做出 ICD 決策所必需的絕對風險數據。</p>
+</blockquote>
+<hr />
+<h3>外部資料來源</h3>
+<ul>
+<li>Northwestern Feinberg 教職頁與 Wilsbacher Lab：<a href="https://labs.feinberg.northwestern.edu/wilsbacher/about/index.html">labs.feinberg.northwestern.edu/wilsbacher</a>、<a href="https://www.feinberg.northwestern.edu/faculty-profiles/az/profile.html?xid=31923">feinberg.northwestern.edu faculty profile</a></li>
+<li>European Heart Journal 期刊指標：<a href="https://academic.oup.com/eurheartj">OUP 期刊頁</a>、<a href="https://www.journalmetrics.org/journal/european-heart-journal">Journal Metrics</a></li>
+<li>SHaRe 登錄資料庫與 MyoKardia／BMS：<a href="https://www.colorado.edu/venturepartners/2020/10/22/bristol-myers-squibb-acquires-myokardia-co-founded-cu-boulder-faculty-131-billion-cash">CU Boulder Venture Partners</a>、<a href="https://www.biospace.com/bristol-myers-squibb-completes-acquisition-of-myokardia-strengthening-company-s-leading-cardiovascular-franchise">BioSpace：BMS 完成併購 MyoKardia</a>、<a href="https://clinicalresearch.pennmedicine.org/us/en/listing/7652/share-registry/">SHaRe Registry（Penn Medicine）</a></li>
+<li>同期 editorial（Bondue A, Chomette L. <em>Genotype refines risk stratification in dilated cardiomyopathy</em>. DOI 10.1093/eurheartj/ehag647）：經 <code>fetch_editorial.py</code> 五路徑擷取失敗；DOI 於 Crossref 顯示為 pending publication，PubMed 未收錄 → <strong>[無法取得全文]</strong></li>
+<li>外部可比較文獻（據 PubMed 檢索）：Mora-Ayestarán N, et al. Eur Heart J. 2025;46(48):5222-5233，<a href="https://doi.org/10.1093/eurheartj/ehaf605">DOI</a>；Hong D, et al. Korean Circ J. 2025;56(5):422-434，<a href="https://doi.org/10.4070/kcj.2025.0216">DOI</a>；Boslough M, Taylor MRG, Mestroni L, Lombardi R. Methodist Debakey Cardiovasc J. 2026;22(4):68-77，<a href="https://doi.org/10.14797/mdcvj.1849">DOI</a></li>
+</ul>
+
+<footer class="appraisal-meta">評讀資訊：模型：claude-opus-5 (claude)  ·  route：observational  ·  產出時間：2026-10-18 04:20 CST</footer>
+</main>
+</body>
+</html>
