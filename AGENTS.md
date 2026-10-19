@@ -42,6 +42,7 @@ modules/claude_exec.py :: try_claude_or_fallback
 **切換規則**：
 
 - `ClaudeLimitError`（錯誤訊息含 `rate_limit` / `billing` / `credit` / `monthly limit` / `usage limit` / `quota` / `agent sdk` 等子字串）→ **永久切換**：設 `_session["claude_exhausted"] = True`，本 process 之後所有呼叫直接走 codex。下個 process（下次 run）重新從 claude 嘗試。
+- `ClaudeAuthError`（`Failed to authenticate` / `Not logged in` / `api_error_status` 401）→ OAuth 過期，**等不會好、要人工 `claude /login`**。claude-only 評讀不當成撞限：on-demand worker 記 `deferred`（reason `claude_auth_expired`，~10 分鐘後重試；仍過期時每輪只打一次 Haiku 探測 `verify_claude_auth`），週報 `appraise_with_resume` 每 15 分鐘探測、最多等 20h；兩者都經 `weekly/claude_auth_alert.py` 推 Discord 提醒（每 6h 最多一次，標記檔 `data/claude_auth_alert.json`）。⚠️ limit 判斷只看 `result` 訊息與 `api_error_status`，**不可對整段 raw JSON 比對**：CLI 的 JSON 永遠帶 `fallback_credit` 欄位，會誤中 `credit`（2026-W43 因此把 OAuth 過期誤判成撞限、白等 5h）。
 - 其他 `ClaudeError`（timeout、parse、暫時性 5xx）→ **單次 fallback**：本次走 codex，後續仍會繼續試 claude。
 - 設計刻意：使用者明確**不開 usage credits**，所以額度歸零時 claude 端會直接回錯，fallback 是唯一信號。**不要在程式內自己算用量**。
 - **例外：週報選文走自己的三層 cascade**（`select_top_articles`，不經 `try_claude_or_fallback`）：claude Sonnet → codex → 規則式 `_fallback_select`。因為「模型回了東西但不是合法 JSON」也要能換手，而 `try_claude_or_fallback` 只在 `ClaudeError` 時換。

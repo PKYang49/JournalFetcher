@@ -54,6 +54,13 @@ APPRAISAL_RESET_BUFFER_SECONDS = int(
 APPRAISAL_RETRY_MAX_CYCLES = int(
     os.getenv("JOURNAL_FETCHER_APPRAISAL_RETRY_MAX_CYCLES", "5")
 )
+# Expired claude OAuth login: poll (cheap Haiku probe) until the user re-runs
+# `claude /login`, up to a deadline that still leaves room before the Mon 08:00
+# Discord push. Auth waits do not consume the usage-limit retry cycles.
+AUTH_POLL_SECONDS = int(os.getenv("JOURNAL_FETCHER_AUTH_POLL", str(15 * 60)))
+AUTH_WAIT_MAX_SECONDS = int(
+    os.getenv("JOURNAL_FETCHER_AUTH_WAIT_MAX", str(20 * 60 * 60))
+)
 
 
 def fetch_all(journals: list[str], days: int | None, count: int) -> list[dict]:
@@ -108,12 +115,14 @@ def appraise_with_resume(
     usage-limit raises ClaudeLimitError instead of silently producing a codex
     appraisal. On that error we sleep until Claude's reported reset time
     (plus a short buffer) and re-run appraise_selected; finished reports are
-    skipped cheaply on re-entry.
+    skipped cheaply on re-entry. An expired OAuth login (ClaudeAuthError)
+    instead alerts Discord and polls until the user re-runs `claude /login`.
     """
     import time
 
     from modules import claude_exec
     from weekly import appraise_selected
+    from weekly.appraisal_status import AppraisalStatus
 
     os.environ["JOURNAL_FETCHER_CLAUDE_ONLY"] = "1"
     # Summaries (Haiku) may have tripped the process-local exhausted flag and
@@ -121,7 +130,8 @@ def appraise_with_resume(
     # attempt before deciding to wait.
     claude_exec.reset_claude_exhausted()
 
-    for cycle in range(APPRAISAL_RETRY_MAX_CYCLES + 1):
+    limit_cycles = 0
+    while True:
         try:
             appraise_selected.appraise_selected(
                 selected_articles,
@@ -129,8 +139,15 @@ def appraise_with_resume(
                 appraisal_dir,
             )
             return
+        except claude_exec.ClaudeAuthError as e:
+            pending = sum(
+                1 for a in selected_articles
+                if a.get("appraisal_status") != AppraisalStatus.DONE
+            )
+            if not _wait_for_claude_login(str(e), pending):
+                return
         except claude_exec.ClaudeLimitError as e:
-            if cycle >= APPRAISAL_RETRY_MAX_CYCLES:
+            if limit_cycles >= APPRAISAL_RETRY_MAX_CYCLES:
                 print(
                     f"[warn] appraisal hit claude usage limit and exhausted "
                     f"{APPRAISAL_RETRY_MAX_CYCLES} retry cycle(s); leaving "
@@ -138,6 +155,7 @@ def appraise_with_resume(
                     file=sys.stderr,
                 )
                 return
+            limit_cycles += 1
             wait, reset_at = claude_exec.retry_wait_seconds(
                 str(e),
                 fallback_seconds=APPRAISAL_RETRY_WAIT_SECONDS,
@@ -151,12 +169,50 @@ def appraise_with_resume(
             print(
                 f"[info] appraisal hit claude usage limit ({str(e)[:120]}); "
                 f"sleeping {wait}s (~{wait / 3600:.1f}h{reset_note}) then resuming the "
-                f"unfinished articles (cycle {cycle + 1}/"
+                f"unfinished articles (cycle {limit_cycles}/"
                 f"{APPRAISAL_RETRY_MAX_CYCLES}).",
                 file=sys.stderr,
             )
             time.sleep(wait)
             claude_exec.reset_claude_exhausted()
+
+
+def _wait_for_claude_login(error: str, pending: int) -> bool:
+    """Alert on Discord and poll until `claude /login` is redone.
+
+    Returns True once claude authenticates again (caller resumes), False when
+    AUTH_WAIT_MAX_SECONDS passes first (caller gives up on the remainder).
+    """
+    import time
+
+    from modules import claude_exec
+    from weekly import claude_auth_alert
+
+    deadline = time.time() + AUTH_WAIT_MAX_SECONDS
+    print(
+        f"[warn] appraisal: claude login expired ({error[:120]}); polling every "
+        f"{AUTH_POLL_SECONDS // 60} min for up to "
+        f"{AUTH_WAIT_MAX_SECONDS / 3600:.0f}h.",
+        file=sys.stderr,
+    )
+    while True:
+        claude_auth_alert.report_auth_expired("週報評讀", error, pending)
+        if time.time() + AUTH_POLL_SECONDS > deadline:
+            print(
+                "[warn] claude login still expired at the wait deadline; leaving "
+                "remaining articles un-appraised.",
+                file=sys.stderr,
+            )
+            return False
+        time.sleep(AUTH_POLL_SECONDS)
+        try:
+            claude_exec.verify_claude_auth()
+        except claude_exec.ClaudeAuthError as e:
+            error = str(e)
+            continue
+        claude_auth_alert.clear_auth_blocked()
+        print("[info] claude login restored; resuming appraisals.", file=sys.stderr)
+        return True
 
 
 def journal_count_summary(articles: list[dict], journals: list[str]) -> list[dict]:

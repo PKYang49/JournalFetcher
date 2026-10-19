@@ -18,6 +18,7 @@ load_dotenv(ROOT / ".env")
 PAGES_BASE_URL = os.getenv("JOURNAL_FETCHER_PAGES_BASE_URL", "").strip().rstrip("/")
 
 DISCORD_EMBED_COLOR = 0x0B5FFF
+DISCORD_ALERT_COLOR = 0xD93025
 HIGHLIGHT_COUNT = 3
 TITLE_MAX = 110
 
@@ -265,6 +266,48 @@ def send_appraisal_notice(label: str, article: dict, appraisal_url: str) -> bool
 
     if resp.status_code in (200, 204):
         print(f"[discord] appraisal webhook sent OK ({resp.status_code})")
+        return True
+    print(f"[discord] webhook failed: {resp.status_code} {resp.text[:200]}")
+    return False
+
+
+def send_claude_auth_alert(context: str, error: str, pending: int) -> bool:
+    """Ask the user (via Discord) to re-run `claude /login` on this Mac."""
+    load_dotenv(ROOT / ".env")
+    webhook_url = os.getenv("DISCORD_WEBHOOK_URL")
+    if not webhook_url:
+        print("[discord] DISCORD_WEBHOOK_URL not set in .env; skip")
+        return False
+
+    payload = {
+        "embeds": [
+            {
+                "title": "⚠️ Claude 登入已過期，評讀暫停",
+                "description": (
+                    "本機 `claude -p` 無法驗證（OAuth 過期或已登出），評讀改為"
+                    "每 15 分鐘檢查一次，重新登入後自動續跑。\n"
+                    "請在這台 Mac 的 terminal 執行 `claude` 然後輸入 `/login`。"
+                ),
+                "color": DISCORD_ALERT_COLOR,
+                "fields": [
+                    {"name": "觸發來源", "value": context, "inline": True},
+                    {"name": "待評讀", "value": f"{pending} 篇", "inline": True},
+                    {"name": "錯誤訊息", "value": _truncate(error, 200), "inline": False},
+                ],
+                "footer": {"text": "JournalFetcher"},
+                "timestamp": datetime.now(timezone.utc).isoformat(),
+            }
+        ]
+    }
+
+    try:
+        resp = requests.post(webhook_url, json=payload, timeout=15)
+    except requests.RequestException as e:
+        print(f"[discord] webhook request failed: {type(e).__name__}")
+        return False
+
+    if resp.status_code in (200, 204):
+        print(f"[discord] auth alert sent OK ({resp.status_code})")
         return True
     print(f"[discord] webhook failed: {resp.status_code} {resp.text[:200]}")
     return False

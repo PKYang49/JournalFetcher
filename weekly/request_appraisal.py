@@ -272,6 +272,13 @@ def run(
         # claude-only mode: usage limit hit, no codex fallback produced.
         print(f"[claude-limit] {str(e)[:160]}", file=sys.stderr)
         return EXIT_CLAUDE_LIMIT
+    except claude_exec.ClaudeAuthError as e:
+        print(
+            f"[claude-auth] {str(e)[:160]}\n"
+            "  → claude 登入已過期，請執行 `claude` 後輸入 /login 再重跑。",
+            file=sys.stderr,
+        )
+        return EXIT_CLAUDE_ERROR
     except claude_exec.ClaudeError as e:
         print(f"[claude-error] {str(e)[:160]}", file=sys.stderr)
         return EXIT_CLAUDE_ERROR

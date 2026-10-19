@@ -28,6 +28,8 @@ from urllib.parse import parse_qs, urlparse
 import requests
 from dotenv import load_dotenv
 
+from modules import claude_exec
+from weekly import claude_auth_alert
 from weekly.relay_client import access_headers
 
 from weekly.appraisal_status import (
@@ -51,6 +53,14 @@ APPRAISAL_RETRY_WAIT_SECONDS = int(
 )
 APPRAISAL_RESET_BUFFER_SECONDS = int(
     os.getenv("JOURNAL_FETCHER_APPRAISAL_RESET_BUFFER", "120")
+)
+
+# Expired claude OAuth login: only a manual `claude /login` fixes it, so retry
+# on (roughly) the next 15-minute run instead of waiting a 5h usage window.
+# While the login stays expired, process_requests probes with one cheap Haiku
+# call per run (weekly.claude_auth_alert) rather than re-running the pipeline.
+AUTH_RETRY_WAIT_SECONDS = int(
+    os.getenv("JOURNAL_FETCHER_AUTH_RETRY_WAIT", str(10 * 60))
 )
 
 # Transient appraisal errors (non-limit claude error + codex fallback also
@@ -509,7 +519,6 @@ def _process_one(
     prev_error_retries: int = 0,
     prev_ovid_deferrals: int = 0,
 ) -> bool:
-    from modules import claude_exec
     from modules.downloader import download_articles
     from weekly import appraise_selected, render
 
@@ -534,6 +543,24 @@ def _process_one(
     download_results = download_articles([article], out_dir=pdf_dir)
     try:
         result = appraise_selected.appraise_selected([article], download_results, appraisal_dir)
+    except claude_exec.ClaudeAuthError:
+        _append_state(
+            {
+                "week": week,
+                "identifier": identifier,
+                **row,
+                "status": RequestStatus.DEFERRED,
+                "retry_after": time.time() + AUTH_RETRY_WAIT_SECONDS,
+                "reason": "claude_auth_expired",
+            }
+        )
+        _report_remote_status(
+            row,
+            RequestStatus.DEFERRED,
+            "Claude 登入已過期，重新登入後會自動重試。",
+        )
+        print(f"[appraisal-request] deferred {identifier}: claude login expired")
+        raise
     except claude_exec.ClaudeLimitError as e:
         wait, reset_at = claude_exec.retry_wait_seconds(
             str(e),
@@ -717,6 +744,22 @@ def _update_existing_weekly_html_appraisal_link(week: str, article: dict) -> Non
     html_path.write_text(str(soup), encoding="utf-8")
 
 
+def _claude_auth_ready(pending: int) -> bool:
+    """While a previous run recorded an expired login, probe claude once with
+    a cheap Haiku call before running the full pipeline. Returns False (and
+    re-alerts, throttled) if the login is still expired."""
+    if not claude_auth_alert.is_auth_blocked():
+        return True
+    try:
+        claude_exec.verify_claude_auth()
+    except claude_exec.ClaudeAuthError as exc:
+        print("[appraisal-request] claude login still expired; skip this run")
+        claude_auth_alert.report_auth_expired("on-demand 請求評讀", str(exc), pending)
+        return False
+    claude_auth_alert.clear_auth_blocked()
+    return True
+
+
 def process_requests(
     *,
     limit: int,
@@ -733,6 +776,13 @@ def process_requests(
     known = _known_articles()
     state = _load_state()
     processed = 0
+    pending = sum(
+        1
+        for row in rows
+        if str(row.get("status", RequestStatus.REQUESTED)).strip()
+        in {"", RequestStatus.REQUESTED, RequestStatus.DEFERRED}
+    )
+    auth_checked = False
 
     for row in rows:
         week = str(row.get("week", "")).strip()
@@ -781,6 +831,10 @@ def process_requests(
             print(f"[dry-run] would appraise {week} {matched_identifier}: {article.get('title', '')}")
             processed += 1
         else:
+            if not auth_checked:
+                auth_checked = True
+                if not _claude_auth_ready(pending):
+                    break
             prev_record = next(
                 (rec for candidate in identifiers if (rec := state.get((week, candidate)))),
                 None,
@@ -802,6 +856,12 @@ def process_requests(
                     prev_ovid_deferrals=prev_ovid_deferrals,
                 ):
                     processed += 1
+            except claude_exec.ClaudeAuthError as exc:
+                # Every later request would fail the same way; stop this run.
+                claude_auth_alert.report_auth_expired(
+                    "on-demand 請求評讀", str(exc), pending
+                )
+                break
             except Exception as exc:
                 _report_remote_status(
                     row,

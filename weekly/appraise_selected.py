@@ -1157,10 +1157,11 @@ def appraise_selected(
             article["appraisal_path"] = ""
             article["appraisal_status"] = AppraisalStatus.TOO_LARGE
             continue
-        except claude_exec.ClaudeLimitError:
-            # claude-only mode: hit the usage-limit. Don't mark this article
-            # failed — let the caller wait for the window to reset and resume
-            # (appraise_pdf skips the already-finished reports on re-entry).
+        except (claude_exec.ClaudeLimitError, claude_exec.ClaudeAuthError):
+            # claude-only mode: hit the usage-limit or the OAuth login expired.
+            # Don't mark this article failed — let the caller wait (limit
+            # window / re-login) and resume (appraise_pdf skips the
+            # already-finished reports on re-entry).
             raise
         except Exception as e:
             print(f"  [warn] appraisal failed: {e}", file=sys.stderr)

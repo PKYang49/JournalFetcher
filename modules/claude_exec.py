@@ -69,6 +69,19 @@ LIMIT_ERROR_SIGNALS = (
     "quota",
 )
 
+# Substrings (lowercased) meaning the keychain OAuth login itself is gone
+# (expired refresh token, logged out). Unlike a usage limit this never resets
+# on its own: the user must run `claude /login`, so callers alert instead of
+# waiting out a 5h window.
+AUTH_ERROR_SIGNALS = (
+    "failed to authenticate",
+    "not logged in",
+    "please run /login",
+    "oauth session expired",
+    "oauth token has expired",
+    "invalid authentication credentials",
+)
+
 
 # Process-local: flips to True on first ClaudeLimitError, stays True for the
 # rest of this process. The Agent SDK credit refreshes monthly, so the next
@@ -109,6 +122,11 @@ class ClaudeError(RuntimeError):
 class ClaudeLimitError(ClaudeError):
     """Claude -p reported rate-limit / credit exhaustion. Caller switches
     permanently to codex for the remainder of this process."""
+
+
+class ClaudeAuthError(ClaudeError):
+    """Claude -p could not authenticate (OAuth expired / logged out). Only a
+    manual `claude /login` fixes it; waiting for a usage window does not."""
 
 
 def resolve_claude_cli() -> str:
@@ -167,8 +185,19 @@ def _is_limit_signal(text: str) -> bool:
     return any(signal in lower for signal in LIMIT_ERROR_SIGNALS)
 
 
-def _claude_error_details(stdout: str, stderr: str) -> tuple[str, bool]:
-    """Extract an error before truncation and detect JSON-wrapped 429 limits."""
+def _is_auth_signal(text: str) -> bool:
+    lower = text.lower()
+    return any(signal in lower for signal in AUTH_ERROR_SIGNALS)
+
+
+def _claude_error_details(stdout: str, stderr: str) -> tuple[str, type[ClaudeError]]:
+    """Extract an error message before truncation and pick its error class.
+
+    For JSON output only the `result` message and `api_error_status` are
+    inspected — never the raw JSON, whose field names (e.g. `fallback_credit`)
+    would otherwise match a limit signal and misreport every failure as a
+    usage limit.
+    """
     raw = (stderr or stdout or "").strip()
     payload: dict[str, object] | None = None
     for candidate in (stdout, stderr):
@@ -180,17 +209,18 @@ def _claude_error_details(stdout: str, stderr: str) -> tuple[str, bool]:
             payload = parsed
             break
 
-    if payload is not None:
-        result = str(payload.get("result", "")).strip()
-        message = result or raw
-        is_limit = (
-            payload.get("api_error_status") == 429
-            or _is_limit_signal(message)
-            or _is_limit_signal(raw)
-        )
-        return message[:400], is_limit
+    if payload is None:
+        message = raw
+        status = None
+    else:
+        message = str(payload.get("result", "")).strip() or (stderr or "").strip()
+        status = payload.get("api_error_status")
 
-    return raw[:400], _is_limit_signal(raw)
+    if status == 401 or _is_auth_signal(message):
+        return message[:400], ClaudeAuthError
+    if status == 429 or _is_limit_signal(message):
+        return message[:400], ClaudeLimitError
+    return message[:400], ClaudeError
 
 
 def retry_wait_seconds(
@@ -378,10 +408,10 @@ def run_claude_prompt(
                     pass
 
     if result.returncode != 0:
-        msg, is_limit = _claude_error_details(result.stdout, result.stderr)
-        if is_limit:
+        msg, error_cls = _claude_error_details(result.stdout, result.stderr)
+        if error_cls is ClaudeLimitError:
             raise ClaudeLimitError(msg or "rate_limit")
-        raise ClaudeError(f"claude -p exit {result.returncode}: {msg}")
+        raise error_cls(f"claude -p exit {result.returncode}: {msg}")
 
     try:
         payload = json.loads(result.stdout)
@@ -392,6 +422,8 @@ def run_claude_prompt(
 
     if payload.get("is_error"):
         err_text = str(payload.get("result", "")).strip()
+        if payload.get("api_error_status") == 401 or _is_auth_signal(err_text):
+            raise ClaudeAuthError(f"claude -p reported error: {err_text[:400]}")
         if _is_limit_signal(err_text):
             raise ClaudeLimitError(err_text or "rate_limit (no message)")
         raise ClaudeError(f"claude -p reported error: {err_text[:400]}")
@@ -485,6 +517,25 @@ def try_claude_or_fallback(
                 file=sys.stderr,
             )
     return fallback(), "codex"
+
+
+def verify_claude_auth(timeout: int = 120) -> None:
+    """Cheap Haiku round-trip proving the OAuth login works.
+
+    Raises ClaudeAuthError if still logged out. Any other outcome (success,
+    usage limit, transient error) returns normally: those are not auth
+    problems, and the real call that follows will surface them itself.
+    """
+    try:
+        run_claude_prompt(
+            "Reply with OK.",
+            model=get_claude_summary_model(),
+            timeout=timeout,
+        )
+    except ClaudeAuthError:
+        raise
+    except ClaudeError:
+        return
 
 
 def claude_exhausted_this_run() -> bool:
