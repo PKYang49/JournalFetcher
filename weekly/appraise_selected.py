@@ -1,6 +1,6 @@
 """Generate weekly appraisals for selected downloaded PDFs.
 
-Primary backend: `claude -p` with Opus 5 (latest Opus; Agent SDK credit).
+Primary backend: `claude -p` with Opus 5.5 (latest Opus; Agent SDK credit).
 Fallback: `codex exec` with GPT 5.6, used automatically when claude reports
 a rate-limit / credit-exhausted error.
 
@@ -511,7 +511,7 @@ def _run_appraisal_prompt(
     codex_extra: str = "",
     codex_editorial_fetch: bool = False,
 ) -> tuple[str | None, str, str]:
-    """Try claude -p Opus 5 first (with cached system prompt + WebSearch +
+    """Try claude -p Opus 5.5 first (with cached system prompt + WebSearch +
     optional reference Read access); fall back to codex GPT 5.6 on rate /
     credit error.
 

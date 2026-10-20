@@ -36,7 +36,7 @@ modules/claude_exec.py :: try_claude_or_fallback
    ▼         ▼
  claude -p   codex exec   ← Codex 是這條路徑
  (Haiku 4.5  (GPT 5.4 摘要
-  Opus 5)     GPT 5.6 評讀)
+  Opus 5.5)   GPT 5.6 評讀)
 ```
 
 **切換規則**：
@@ -53,10 +53,10 @@ modules/claude_exec.py :: try_claude_or_fallback
 | 角色 | Claude（主） | Codex（fallback） | 覆寫 env |
 |---|---|---|---|
 | 摘要 / 短評 / classify | `claude-haiku-4-5` | `gpt-5.4` | `JOURNAL_FETCHER_CLAUDE_SUMMARY_MODEL` / `JOURNAL_FETCHER_CODEX_MODEL` |
-| 完整評讀 | `claude-opus-5` | `gpt-5.6` | `JOURNAL_FETCHER_CLAUDE_APPRAISAL_MODEL` / `JOURNAL_FETCHER_APPRAISAL_MODEL` |
+| 完整評讀 | `claude-opus-5-5` | `gpt-5.6` | `JOURNAL_FETCHER_CLAUDE_APPRAISAL_MODEL` / `JOURNAL_FETCHER_APPRAISAL_MODEL` |
 | 週報選文（curation） | `claude-sonnet-5` | `gpt-5.4` | `JOURNAL_FETCHER_CLAUDE_SELECTION_MODEL` / `JOURNAL_FETCHER_CODEX_MODEL` |
 
-**評讀用最新 Opus 5**（2026-07-25 從 Opus 4.8 升上來）：`claude-opus-5` 已實測可透過 `claude -p --model` 訂閱 CLI 服務（`modelUsage` 回報 `claude-opus-5`、非 alias；亂填 `claude-opus-99` 會 `is_error:true`）。評讀走 CLI 訂閱額度、非 raw API，故只需改 model 字串、無 API 參數變更（`modules/claude_exec.py::FALLBACK_CLAUDE_APPRAISAL_MODEL`）。⚠️ Opus 5 的正式定價與 tokenizer 尚未查證（單次小 prompt 實測成本與 4.8 同量級，但不足以當定價依據）；先前 4.8 那段「$5/$25、新 tokenizer +35% tokens」的成本估算未在 Opus 5 上重新驗證，月成本與撞限頻率需觀察首週實跑再校正。
+**評讀用最新 Opus 5.5**（2026-10-20 從 Opus 5 升上來；Opus 5 則是 2026-07-25 從 4.8 升）：`claude-opus-5-5` 已實測（2026-10-20，`modelUsage` 回報 `claude-opus-5-5`）。先前 Opus 5 的紀錄：可透過 `claude -p --model` 訂閱 CLI 服務（`modelUsage` 回報 `claude-opus-5`、非 alias；亂填 `claude-opus-99` 會 `is_error:true`）。評讀走 CLI 訂閱額度、非 raw API，故只需改 model 字串、無 API 參數變更（`modules/claude_exec.py::FALLBACK_CLAUDE_APPRAISAL_MODEL`）。⚠️ Opus 5 / 5.5 的正式定價與 tokenizer 尚未查證（單次小 prompt 實測成本與 4.8 同量級，但不足以當定價依據）；先前 4.8 那段「$5/$25、新 tokenizer +35% tokens」的成本估算未在 Opus 5 上重新驗證，月成本與撞限頻率需觀察首週實跑再校正。
 
 **選文用 Sonnet 5**（2026-09-07 起）：`weekly/select_articles.py` 原本是 codex-only，2026-W37 遇上 codex CLI 的 models cache 損毀 + refresh timeout，整週 7 篇全掉到 `_fallback_select` 規則式選文、卡片 reason 變成同一句樣板。現在改成 **claude Sonnet 主 → codex `gpt-5.4` 備 → 規則式**（三層都失敗才用規則式，且會印 warn）。選 Sonnet 的理由：選文要一次讀完 ~100 篇 abstract（實測 prompt ~305k 字元 / ~100k tokens），判斷比摘要重、比評讀輕，剛好夾在 Haiku 與 Opus 之間；實測單次 ~71 秒。`selection_raw.json` 多存 `backend` 欄位，事後可查當週是誰選的。
 
@@ -162,7 +162,7 @@ route ∈ {rct, observational, preclinical, sr, nma, cpg, consensus, narrative, 
   ↓ _load_skill_for_route：SKILL.md + 對應 fragment
   ↓ _build_references_section(route)：列出該 route 對應的 JAMA Users' Guides 絕對路徑（cached）
   ↓ APPRAISAL_SYSTEM_PROMPT + APPRAISAL_USER_PROMPT
-  ↓ claude -p Opus 5（--append-system-prompt-file + WebSearch + Read on references）
+  ↓ claude -p Opus 5.5（--append-system-prompt-file + WebSearch + Read on references）
   ↓   fallback：codex GPT 5.6（CODEX_REFERENCE_INSTRUCTIONS 前置）
 appraisal.md → render.publish_appraisals → docs/<pmid>.html → git push → Discord
 ```
@@ -282,7 +282,7 @@ Mon 08:00   python3 -m weekly.notify_latest                   # Discord 推播
 
 ### 評讀的用量上限策略（claude-only Opus + 5h 續跑）
 
-- **週報評讀預設 claude-only**：`run_weekly` 進評讀階段前設 `JOURNAL_FETCHER_CLAUDE_ONLY=1`（摘要階段仍維持 Haiku→codex fallback，不受影響），全部用 Opus 5，**不 fallback codex**。
+- **週報評讀預設 claude-only**：`run_weekly` 進評讀階段前設 `JOURNAL_FETCHER_CLAUDE_ONLY=1`（摘要階段仍維持 Haiku→codex fallback，不受影響），全部用 Opus 5.5，**不 fallback codex**。
 - 撞 `ClaudeLimitError` 時 `appraise_with_resume` 同 process `time.sleep` 一個滾動視窗（預設 5h，`JOURNAL_FETCHER_APPRAISAL_RETRY_WAIT` 覆寫）後 reset exhausted flag、續跑沒評完的篇目（`appraise_pdf` 用 report 檔案存在判斷跳過已完成的，不重複燒 Opus）。最多 `JOURNAL_FETCHER_APPRAISAL_RETRY_MAX_CYCLES`（預設 5）輪，之後放棄剩餘篇目。
 - 想退回舊的 codex fallback 行為：`run_weekly --appraise-allow-codex`。
 - **on-demand「請求評讀」也 claude-only Opus**：`process_appraisal_requests` 開頭設同一 env。15 分鐘 worker 不能 in-process 睡 5h，所以撞限時寫 `status=deferred` + `retry_after`（now+5h）到 state，視窗未到就跳過、到了由後續 run 自動重試（`_state_blocks`）。

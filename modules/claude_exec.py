@@ -2,9 +2,8 @@
 
 Primary backend for the weekly pipeline:
 - summaries:  claude -p with Haiku 4.5
-- appraisals: claude -p with Opus 5 (latest Opus; verified reachable on the
-  subscription CLI. Pricing/tokenizer not yet re-verified vs 4.8 — see
-  AGENTS.md model table.)
+- appraisals: claude -p with Opus 5.5 (latest Opus; verified reachable on the
+  subscription CLI 2026-10-20 — see AGENTS.md model table.)
 
 Fallback: when claude reports a rate-limit / credit-exhausted error the
 caller switches to the existing `codex exec` path for the rest of this
@@ -39,7 +38,7 @@ CLAUDE_APPRAISAL_MODEL_ENV = "JOURNAL_FETCHER_CLAUDE_APPRAISAL_MODEL"
 CLAUDE_SELECTION_MODEL_ENV = "JOURNAL_FETCHER_CLAUDE_SELECTION_MODEL"
 
 FALLBACK_CLAUDE_SUMMARY_MODEL = "claude-haiku-4-5"
-FALLBACK_CLAUDE_APPRAISAL_MODEL = "claude-opus-5"
+FALLBACK_CLAUDE_APPRAISAL_MODEL = "claude-opus-5-5"
 FALLBACK_CLAUDE_SELECTION_MODEL = "claude-sonnet-5"
 CLAUDE_RESET_TIME_RE = re.compile(
     r"\bresets?\s+(\d{1,2})(?::(\d{2}))?\s*(am|pm)\b",
