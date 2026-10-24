@@ -298,10 +298,22 @@ SUPPLEMENT_KINDS: tuple[tuple[str, re.Pattern[str], re.Pattern[str]], ...] = (
         re.compile(r"^\s*(?:Disclosure Forms?|ICMJE)", re.IGNORECASE | re.MULTILINE),
         re.compile(r"disclosure", re.IGNORECASE),
     ),
+    # Investigator / nonauthor-collaborator rosters (JAMA ships them as their
+    # own "Supplemental Online Content: Nonauthor Collaborators" file). Must
+    # precede appendix, whose cover phrase they share.
+    (
+        "collaborators",
+        re.compile(
+            r"^\s*(?:Supplement(?:al|ary)? Online Content:\s*)?(?:Nonauthor Collaborators|"
+            r"Collaborators\b|(?:Study |Trial )?(?:Group Members|Investigators)\b)",
+            re.IGNORECASE | re.MULTILINE,
+        ),
+        re.compile(r"collaborator|investigators", re.IGNORECASE),
+    ),
     (
         "appendix",
         re.compile(
-            r"^\s*(?:Supplementary Appendix|Supplement to:|Supplementary Online Content|"
+            r"^\s*(?:Supplementary Appendix|Supplement to:|Supplement(?:al|ary) Online Content|"
             r"Supplement(?:al|ary)? (?:Material|Data|Information)|Online Supplement|"
             r"Supplement\s*\d+\.?\s*e(?:Methods|Tables?|Figures?|Appendix))",
             re.IGNORECASE | re.MULTILINE,
@@ -313,7 +325,7 @@ SUPPLEMENT_KINDS: tuple[tuple[str, re.Pattern[str], re.Pattern[str]], ...] = (
 
 def classify_supplement(content: bytes | None, url: str) -> str:
     """Classify a supplement file as protocol / data_sharing / disclosure /
-    appendix, or "unknown". PDFs are judged by their cover lines, then by URL;
+    collaborators / appendix, or "unknown". PDFs are judged by their cover lines, then by URL;
     other formats (docx, zip) by URL only."""
     if content is not None and _is_pdf(content):
         try:

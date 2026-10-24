@@ -254,9 +254,17 @@ const task = await useOrCreateTaskSpace(__TASK_SPACE__)
 try {
   await openOrReuseTab(__NAV_URL__, { wait: true, timeout: __NAV_TIMEOUT__ })
   await wait(__SETTLE__)
+  // A first visit to a Cloudflare-fronted site (JAMA) can sit on a
+  // "Just a moment..." interstitial served at the article URL itself, so an
+  // empty link list is re-polled before it is believed.
+  let links = (await js(__LINKS_JS__)) || []
+  for (let i = 0; i < __EMPTY_POLLS__ && links.length === 0; i++) {
+    await wait(5)
+    links = (await js(__LINKS_JS__)) || []
+  }
   const info = await pageInfo()
-  cliLog('EGO_PAGE ' + JSON.stringify({ url: info.url || '' }))
-  const links = (await js(__LINKS_JS__)) || []
+  const title = await js('document.title')
+  cliLog('EGO_PAGE ' + JSON.stringify({ url: info.url || '', title: title || '' }))
   cliLog('EGO_LINKS ' + links.length)
   const fetchTpl = __FETCH_JS__
   for (let i = 0; i < Math.min(links.length, __MAX_FILES__); i++) {
@@ -319,6 +327,7 @@ class SupplementLink:
 @dataclass(frozen=True)
 class SupplementScan:
     landing_url: str | None
+    landing_title: str | None
     links: list[SupplementLink]
 
 
@@ -328,6 +337,7 @@ def fetch_supplements_via_ego(
     *,
     max_files: int = 12,
     settle: float = 5.0,
+    empty_polls: int = 4,
     nav_timeout: int = 60,
     timeout: int = 420,
 ) -> SupplementScan | None:
@@ -355,6 +365,7 @@ def fetch_supplements_via_ego(
                 _SUPPLEMENT_FETCH_JS.replace("__MAX_BYTES__", str(MAX_PDF_BYTES))
             ),
             "__MAX_FILES__": str(max_files),
+            "__EMPTY_POLLS__": str(empty_polls),
             "__OUT_DIR__": json.dumps(str(out_dir.resolve())),
         },
     )
@@ -372,11 +383,14 @@ def fetch_supplements_via_ego(
 
     output = f"{proc.stdout or ''}\n{proc.stderr or ''}"
     landing_url: str | None = None
+    landing_title: str | None = None
     links: list[SupplementLink] = []
     saw_links_line = False
     for line in output.splitlines():
         if line.startswith("EGO_PAGE "):
-            landing_url = json.loads(line[len("EGO_PAGE "):]).get("url") or None
+            page = json.loads(line[len("EGO_PAGE "):])
+            landing_url = page.get("url") or None
+            landing_title = page.get("title") or None
         elif line.startswith("EGO_LINKS "):
             saw_links_line = True
         elif line.startswith("EGO_FILE "):
@@ -396,4 +410,4 @@ def fetch_supplements_via_ego(
     if not saw_links_line:
         logger.debug(f"ego supplement scan failed for {nav_url}: {output.strip()[:300]}")
         return None
-    return SupplementScan(landing_url=landing_url, links=links)
+    return SupplementScan(landing_url=landing_url, landing_title=landing_title, links=links)

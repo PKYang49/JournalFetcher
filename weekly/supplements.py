@@ -232,6 +232,7 @@ def record_supplements(
         "route": route,
         "status": "scan_failed" if scan is None else ("ok" if files else "no_links"),
         "landing_url": scan.landing_url if scan else None,
+        "landing_title": scan.landing_title if scan else None,
         "elapsed_s": round(time.monotonic() - started, 1),
         "main": _main_metrics(main_pdf, main_markdown_chars),
         "by_kind": _summarize_by_kind(files),
