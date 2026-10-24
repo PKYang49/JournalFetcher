@@ -44,6 +44,7 @@ from modules.codex_model import get_appraisal_model
 from weekly.appraisal_status import AppraisalStatus
 from weekly import classify_article
 from weekly.editorial_lookup import find_editorial_candidates
+from weekly import supplements
 from weekly.figure_extract import extract_figure_pages
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -982,6 +983,20 @@ def appraise_pdf(article: dict, pdf_path: Path, out_dir: Path) -> Path | None:
         article["appraisal_route"] = route
         article["appraisal_route_source"] = source
         print(f"  [classify] route={route} (source={source})")
+
+    # Record-only: fetch, classify and size the supplements so their inline
+    # caps can be set from real data. Nothing from them reaches the prompt yet,
+    # and a failure here must never block the appraisal itself.
+    if supplements.supplement_logging_enabled():
+        try:
+            supplements.record_supplements(
+                article,
+                main_pdf=pdf_path,
+                route=route,
+                main_markdown_chars=len(article_markdown),
+            )
+        except Exception as e:
+            print(f"  [warn] supplement recording failed: {e}", file=sys.stderr)
 
     skill_text = _load_skill_for_route(route)
 

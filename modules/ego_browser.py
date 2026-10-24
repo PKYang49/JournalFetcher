@@ -23,6 +23,7 @@ import shutil
 import subprocess
 import tempfile
 import logging
+from dataclasses import dataclass
 from functools import lru_cache
 from pathlib import Path
 
@@ -197,3 +198,202 @@ def fetch_pdf_via_ego(
         return None
     finally:
         out_path.unlink(missing_ok=True)
+
+
+# Supplement links on an article landing page. A candidate must look like a
+# downloadable file (so in-page "#supplementary-materials" anchors and
+# reference DOIs such as 10.2337/dc24-0491 drop out) and carry a supplement
+# hint in either its URL or its link text. The article PDF itself is excluded.
+# Covers NEJM/AHA (/doi/suppl/.../suppl_file/), JAMA (cdn ...supp1...pdf),
+# Elsevier (mmcN), Springer (MOESM), BMJ (DCN/inline-supplementary-material).
+_SUPPLEMENT_LINKS_JS = """(() => {
+  const URL_HINT = /supp|appendix|protocol|MOESM|mmc\\d|\\/DC\\d|data[-_]?sharing|disclosure/i;
+  const TEXT_HINT = /supplement|appendix|protocol|statistical analysis plan|data sharing|disclosure|eMethods|eTable|eFigure|supporting information/i;
+  const FILE = /\\.(pdf|docx?|xlsx?|zip|pptx?)(\\?|#|$)|\\/suppl_file\\//i;
+  const meta = document.querySelector('meta[name="citation_pdf_url"]');
+  const articlePdf = meta && meta.content;
+  const seen = new Set();
+  const out = [];
+  for (const a of document.querySelectorAll('a[href]')) {
+    const h = a.href;
+    if (!h || seen.has(h) || h === articlePdf || /\\/doi\\/(e?pdf|epdf|pdfdirect)\\//i.test(h)) continue;
+    if (!FILE.test(h)) continue;
+    const text = [a.textContent, a.getAttribute('aria-label'), a.title]
+      .filter(Boolean).join(' ').replace(/\\s+/g, ' ').trim();
+    if (!URL_HINT.test(h) && !TEXT_HINT.test(text)) continue;
+    seen.add(h);
+    out.push({ url: h, text: text.slice(0, 200) });
+  }
+  return out;
+})()"""
+
+# Like _PAGE_FETCH_JS but never throws: a cross-origin CDN without CORS
+# headers rejects the fetch, and the caller retries those from Python.
+_SUPPLEMENT_FETCH_JS = """(async () => {
+  try {
+    const r = await fetch(__URL__, { credentials: 'include' });
+    const buf = new Uint8Array(await r.arrayBuffer());
+    if (buf.length > __MAX_BYTES__) {
+      return { status: r.status, type: r.headers.get('content-type'), size: buf.length, error: 'oversized' };
+    }
+    let bin = '';
+    for (let i = 0; i < buf.length; i += 0x8000) {
+      bin += String.fromCharCode.apply(null, buf.subarray(i, i + 0x8000));
+    }
+    return { status: r.status, type: r.headers.get('content-type'), size: buf.length, b64: btoa(bin) };
+  } catch (e) {
+    return { error: String(e) };
+  }
+})()"""
+
+_SUPPLEMENT_DRIVER_JS = """
+import fs from 'fs'
+import path from 'path'
+
+const task = await useOrCreateTaskSpace(__TASK_SPACE__)
+try {
+  await openOrReuseTab(__NAV_URL__, { wait: true, timeout: __NAV_TIMEOUT__ })
+  await wait(__SETTLE__)
+  const info = await pageInfo()
+  cliLog('EGO_PAGE ' + JSON.stringify({ url: info.url || '' }))
+  const links = (await js(__LINKS_JS__)) || []
+  cliLog('EGO_LINKS ' + links.length)
+  const fetchTpl = __FETCH_JS__
+  for (let i = 0; i < Math.min(links.length, __MAX_FILES__); i++) {
+    const link = links[i]
+    let res = await js(fetchTpl.replace('__URL__', JSON.stringify(link.url)))
+    let via = 'fetch'
+    // NEJM (Cloudflare) answers an in-page fetch of suppl_file with a
+    // "Just a moment..." challenge; a real navigation to the file clears it.
+    // Attachments (docx/zip) start a download instead, so the re-fetch is
+    // accepted only if it is a non-HTML 200.
+    const blocked = res.status !== 200 || /text\\/html/i.test(res.type || '')
+    if (blocked && res.error !== 'oversized') {
+      try {
+        await gotoAndWait(link.url, { timeout: __NAV_TIMEOUT__ })
+        await wait(__SETTLE__)
+        const again = await js(fetchTpl.replace('__URL__', 'location.href'))
+        if (again.status === 200 && !/text\\/html/i.test(again.type || '')) {
+          res = again
+          via = 'nav'
+        }
+      } catch (e) {
+        res.error = (res.error || 'http_' + res.status) + '; nav: ' + String(e)
+      }
+    }
+    const rec = { url: link.url, text: link.text, status: res.status ?? null, via,
+                  type: res.type ?? null, size: res.size ?? null, error: res.error ?? null, path: null }
+    if (res.b64 && res.status === 200 && !/text\\/html/i.test(res.type || '')) {
+      rec.error = null
+      rec.path = path.join(__OUT_DIR__, 'supp_' + String(i + 1).padStart(2, '0') + '.bin')
+      fs.writeFileSync(rec.path, Buffer.from(res.b64, 'base64'))
+    } else if (!rec.error) {
+      rec.error = 'http_' + res.status
+    }
+    cliLog('EGO_FILE ' + JSON.stringify(rec))
+  }
+} finally {
+  await completeTaskSpace(task.id, { keep: false })
+}
+"""
+
+
+@dataclass(frozen=True)
+class SupplementLink:
+    """One supplement link found on a landing page, and what fetching it gave.
+
+    `path` is set when ego fetched the bytes in-page; otherwise `error` says
+    why (typically a CORS rejection from a publisher CDN).
+    """
+
+    url: str
+    text: str
+    status: int | None
+    via: str
+    content_type: str | None
+    size: int | None
+    error: str | None
+    path: Path | None
+
+
+@dataclass(frozen=True)
+class SupplementScan:
+    landing_url: str | None
+    links: list[SupplementLink]
+
+
+def fetch_supplements_via_ego(
+    nav_url: str,
+    out_dir: Path,
+    *,
+    max_files: int = 12,
+    settle: float = 5.0,
+    nav_timeout: int = 60,
+    timeout: int = 420,
+) -> SupplementScan | None:
+    """Open `nav_url` in ego lite, collect supplement links, fetch each in-page.
+
+    Files are written to `out_dir` as supp_NN.bin; the caller sniffs the real
+    format. Returns None when ego is unavailable or the run failed outright
+    (timeout, crash); a scan with no links means the page loaded but listed
+    no supplements (or a challenge page was served instead).
+    """
+    if not ego_available():
+        logger.debug("ego-browser not available; skipping supplement scan")
+        return None
+
+    out_dir.mkdir(parents=True, exist_ok=True)
+    script = _render(
+        _SUPPLEMENT_DRIVER_JS,
+        {
+            "__TASK_SPACE__": json.dumps(TASK_SPACE),
+            "__NAV_URL__": json.dumps(nav_url),
+            "__NAV_TIMEOUT__": str(nav_timeout),
+            "__SETTLE__": str(settle),
+            "__LINKS_JS__": json.dumps(_SUPPLEMENT_LINKS_JS),
+            "__FETCH_JS__": json.dumps(
+                _SUPPLEMENT_FETCH_JS.replace("__MAX_BYTES__", str(MAX_PDF_BYTES))
+            ),
+            "__MAX_FILES__": str(max_files),
+            "__OUT_DIR__": json.dumps(str(out_dir.resolve())),
+        },
+    )
+    try:
+        proc = subprocess.run(
+            [EGO_BIN, "nodejs"],
+            input=script,
+            capture_output=True,
+            text=True,
+            timeout=timeout,
+        )
+    except subprocess.TimeoutExpired:
+        logger.debug(f"ego supplement scan timed out after {timeout}s for {nav_url}")
+        return None
+
+    output = f"{proc.stdout or ''}\n{proc.stderr or ''}"
+    landing_url: str | None = None
+    links: list[SupplementLink] = []
+    saw_links_line = False
+    for line in output.splitlines():
+        if line.startswith("EGO_PAGE "):
+            landing_url = json.loads(line[len("EGO_PAGE "):]).get("url") or None
+        elif line.startswith("EGO_LINKS "):
+            saw_links_line = True
+        elif line.startswith("EGO_FILE "):
+            rec = json.loads(line[len("EGO_FILE "):])
+            links.append(
+                SupplementLink(
+                    url=rec["url"],
+                    text=rec.get("text") or "",
+                    status=rec.get("status"),
+                    via=rec.get("via") or "fetch",
+                    content_type=rec.get("type"),
+                    size=rec.get("size"),
+                    error=rec.get("error"),
+                    path=Path(rec["path"]) if rec.get("path") else None,
+                )
+            )
+    if not saw_links_line:
+        logger.debug(f"ego supplement scan failed for {nav_url}: {output.strip()[:300]}")
+        return None
+    return SupplementScan(landing_url=landing_url, links=links)

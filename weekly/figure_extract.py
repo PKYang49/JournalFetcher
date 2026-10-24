@@ -92,6 +92,49 @@ def _is_vector_figure_page(
     return _drawings_coverage(draws, page.rect) >= min_caption_coverage
 
 
+def _is_figure_page(
+    doc: fitz.Document,
+    page: fitz.Page,
+    *,
+    min_dim: int,
+    min_drawings: int,
+    min_caption_drawings: int,
+    min_caption_coverage: float,
+) -> bool:
+    """True if a page holds a meaningful raster image, enough vector drawing
+    operations, or a captioned page-spanning vector figure."""
+    for img in page.get_images(full=True):
+        pix = fitz.Pixmap(doc, img[0])
+        if min(pix.width, pix.height) >= min_dim:
+            return True
+    draws = page.get_drawings()
+    return len(draws) >= min_drawings or _is_vector_figure_page(
+        page, draws, min_caption_drawings, min_caption_coverage
+    )
+
+
+def count_figure_pages(pdf_path: Path) -> int:
+    """Number of pages extract_figure_pages would consider, before any budget.
+
+    Uses the default thresholds; the caption-based vector check only knows
+    "Figure N" / key-figure captions, so supplement-style "eFigure 3" or
+    "Figure S3" vector plots are counted only when they pass the raw
+    drawing-count or raster checks.
+    """
+    with fitz.open(pdf_path) as doc:
+        return sum(
+            _is_figure_page(
+                doc,
+                page,
+                min_dim=DEFAULT_MIN_DIM,
+                min_drawings=DEFAULT_MIN_DRAWINGS,
+                min_caption_drawings=DEFAULT_MIN_CAPTION_DRAWINGS,
+                min_caption_coverage=DEFAULT_MIN_CAPTION_COVERAGE,
+            )
+            for page in doc
+        )
+
+
 def extract_embedded(
     pdf_path: Path,
     out_dir: Path,
@@ -161,24 +204,16 @@ def extract_figure_pages(
         candidates: list[tuple[int, bool, bool]] = []
         unparsed_tables: list[int] = []
         for page in doc:
-            has_big_raster = False
-            for img in page.get_images(full=True):
-                pix = fitz.Pixmap(doc, img[0])
-                if min(pix.width, pix.height) >= min_dim:
-                    has_big_raster = True
-                    break
-
             text = page.get_text()
-            draws = page.get_drawings()
             is_key, has_caption = _caption_kind(text)
-            is_figure_page = (
-                has_big_raster
-                or len(draws) >= min_drawings
-                or _is_vector_figure_page(
-                    page, draws, min_caption_drawings, min_caption_coverage
-                )
-            )
-            if is_figure_page:
+            if _is_figure_page(
+                doc,
+                page,
+                min_dim=min_dim,
+                min_drawings=min_drawings,
+                min_caption_drawings=min_caption_drawings,
+                min_caption_coverage=min_caption_coverage,
+            ):
                 candidates.append((page.number, is_key, has_caption))
             if (
                 parsed_table_pages is not None

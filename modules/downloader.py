@@ -275,6 +275,67 @@ def _is_supplement_pdf(content: bytes) -> bool:
     return bool(_SUPPLEMENT_COVER_RE.search(cover))
 
 
+# Supplement kinds, checked in priority order against the cover lines first and
+# the file URL second. Order matters: a JAMA protocol cover reads "Supplement 1.
+# Trial Protocol", so protocol must win over the generic appendix phrases.
+SUPPLEMENT_KINDS: tuple[tuple[str, re.Pattern[str], re.Pattern[str]], ...] = (
+    (
+        "protocol",
+        re.compile(
+            r"^\s*(?:Supplement\s*\d+\.?\s*)?(?:Protocol for:|(?:Trial |Study )?Protocol\b|"
+            r"Statistical Analysis Plan)",
+            re.IGNORECASE | re.MULTILINE,
+        ),
+        re.compile(r"protocol|[-_]sap\b|statistical[-_]analysis", re.IGNORECASE),
+    ),
+    (
+        "data_sharing",
+        re.compile(r"^\s*(?:Supplement\s*\d+\.?\s*)?Data Sharing Statement", re.IGNORECASE | re.MULTILINE),
+        re.compile(r"data[-_]?sharing", re.IGNORECASE),
+    ),
+    (
+        "disclosure",
+        re.compile(r"^\s*(?:Disclosure Forms?|ICMJE)", re.IGNORECASE | re.MULTILINE),
+        re.compile(r"disclosure", re.IGNORECASE),
+    ),
+    (
+        "appendix",
+        re.compile(
+            r"^\s*(?:Supplementary Appendix|Supplement to:|Supplementary Online Content|"
+            r"Supplement(?:al|ary)? (?:Material|Data|Information)|Online Supplement|"
+            r"Supplement\s*\d+\.?\s*e(?:Methods|Tables?|Figures?|Appendix))",
+            re.IGNORECASE | re.MULTILINE,
+        ),
+        re.compile(r"appendix|supp|MOESM|mmc\d|/DC\d", re.IGNORECASE),
+    ),
+)
+
+
+def classify_supplement(content: bytes | None, url: str) -> str:
+    """Classify a supplement file as protocol / data_sharing / disclosure /
+    appendix, or "unknown". PDFs are judged by their cover lines, then by URL;
+    other formats (docx, zip) by URL only."""
+    if content is not None and _is_pdf(content):
+        try:
+            import fitz
+
+            with fitz.open(stream=content, filetype="pdf") as doc:
+                first_page = doc[0].get_text() if doc.page_count else ""
+        except Exception as e:
+            logger.debug(f"Supplement classify could not read PDF: {e}")
+            first_page = ""
+        lines = [line for line in first_page.splitlines() if line.strip()]
+        cover = "\n".join(lines[:_SUPPLEMENT_COVER_LINES])
+        for kind, cover_re, _ in SUPPLEMENT_KINDS:
+            if cover_re.search(cover):
+                return kind
+    name = urlparse(url).path.rsplit("/", 1)[-1]
+    for kind, _, url_re in SUPPLEMENT_KINDS:
+        if url_re.search(name):
+            return kind
+    return "unknown"
+
+
 def _is_article_pdf(content: bytes) -> bool:
     """A PDF that is plausibly the article body, not a stub or supplement."""
     return (
