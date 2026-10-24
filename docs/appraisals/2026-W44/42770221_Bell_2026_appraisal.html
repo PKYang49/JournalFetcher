@@ -1,0 +1,921 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Prognostic Value of Coronary Computed Tomography Angiography-Derived Fractional Flow Reserve From a Large Nationwide Cohort.</title>
+<style>
+  :root {
+    --bg: #fafafa;
+    --card: #ffffff;
+    --text: #1a1a1a;
+    --muted: #6b6b6b;
+    --border: #e5e5e5;
+    --accent: #0b5fff;
+  }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang TC",
+      "Microsoft JhengHei", sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    margin: 0;
+    padding: 24px 16px 64px;
+    line-height: 1.72;
+  }
+  main {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    margin: 0 auto;
+    max-width: 840px;
+    padding: 22px 26px;
+  }
+  nav {
+    margin: 0 auto 14px;
+    max-width: 840px;
+    color: var(--muted);
+    font-size: 14px;
+  }
+  a { color: var(--accent); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  h1, h2, h3, h4 { line-height: 1.35; }
+  h1 { font-size: 26px; margin-top: 0; }
+  h2 { border-top: 1px solid var(--border); padding-top: 18px; }
+  code {
+    background: rgba(127, 127, 127, 0.12);
+    border-radius: 4px;
+    padding: 1px 4px;
+  }
+  table {
+    border-collapse: collapse;
+    table-layout: auto;
+    width: 100%;
+    max-width: 100%;
+  }
+  th, td {
+    border: 1px solid var(--border);
+    overflow-wrap: anywhere;
+    padding: 6px 8px;
+    text-align: left;
+    vertical-align: top;
+  }
+  blockquote {
+    border-left: 3px solid var(--accent);
+    color: var(--muted);
+    margin-left: 0;
+    padding-left: 14px;
+  }
+  .appraisal-meta {
+    border-top: 1px solid var(--border);
+    margin-top: 28px;
+    padding-top: 14px;
+    color: var(--muted);
+    font-size: 13px;
+  }
+  @media (max-width: 600px) {
+    body {
+      padding: 12px 8px 40px;
+    }
+    main {
+      padding: 16px 12px;
+    }
+    h1 {
+      font-size: 22px;
+    }
+    table {
+      font-size: 12px;
+      table-layout: fixed;
+    }
+    th, td {
+      padding: 4px 5px;
+    }
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #1a1a1a;
+      --card: #242424;
+      --text: #e8e8e8;
+      --muted: #999;
+      --border: #333;
+      --accent: #6ea8ff;
+    }
+  }
+</style>
+</head>
+<body>
+<nav><a href="../../2026-W44.html">← 回到 2026-W44 週報</a></nav>
+<main>
+<h1>Prognostic Value of Coronary Computed Tomography Angiography-Derived Fractional Flow Reserve From a Large Nationwide Cohort.</h1>
+<h1>批判性評讀：FFR-CT 在全國性世代中的預後價值（FISH&amp;CHIPS 次分析）</h1>
+<hr />
+<h2>SECTION-0：文章全面描述</h2>
+<h3>0. 文章身份證</h3>
+<ul>
+<li><strong>標題</strong>：Prognostic Value of Coronary Computed Tomography Angiography–Derived Fractional Flow Reserve From a Large Nationwide Cohort</li>
+<li><strong>期刊／年份</strong>：<em>Circulation</em>. 2026;154:1580–1591（2026 年 10 月 20 日刊期）</li>
+<li><strong>DOI</strong>：10.1161/CIRCULATIONAHA.126.081264；PMID 42770221</li>
+<li><strong>文章類型（路由結果）</strong>：觀察性研究，屬回溯性多中心世代研究。本文是 FISH&amp;CHIPS quasi-experimental cohort 的<strong>預後次分析</strong>，原始研究目的是評估全國 FFR-CT 導入計畫。依 SKILL-A 主流程、觀察性子模組與因果推論附錄執行。</li>
+<li><strong>研究性質</strong>：本質上是 <strong>prognostic factor study</strong>，探討 FFR-CT 數值與未來事件的關聯，並附帶 incremental discrimination 分析，屬於部分 prediction model 性質。本文<strong>不是</strong>治療效果研究，無法回答「依 FFR-CT 治療能否改善預後」。</li>
+</ul>
+<h3>1. 作者團隊評論</h3>
+<ul>
+<li><strong>通訊作者</strong>：Timothy A. Fairbairn，任職於 Liverpool Centre for Cardiovascular Science／Liverpool Heart and Chest Hospital 及 University of Liverpool [文內]。他主持 FISH&amp;CHIPS 計畫，長期從事 CCTA 與 FFR-CT 研究。</li>
+<li><strong>團隊構成</strong>：
+<ul>
+<li>英國 CCTA 核心研究者：Nicol、Weir-McCall（King's College London／Royal Brompton）</li>
+<li>丹麥 FFR-CT 研究者：Nørgaard（Aarhus）</li>
+<li>國際 CCTA 學者：Leipsic（UBC）</li>
+<li>統計：Tidbury、Shaw（Liverpool）</li>
+<li><strong>HeartFlow 員工兩名</strong>：Rogers、S. Mullen [文內]</li>
+<li>文內未提供 Author Contributions 分工 [限制：markdown 未保留作者貢獻段落]。</li>
+</ul>
+</li>
+<li><strong>團隊過往研究</strong>（依 PubMed 檢索）：
+<ul>
+<li>Fairbairn TA et al. <em>Nat Med</em> 2025：FISH&amp;CHIPS 主分析。結論是導入 FFR-CT 安全，且減少侵入性血管攝影。該文 FFR-CT 人數記為 <strong>n=7,863</strong>，本文為 7,836，兩者相差 27 人且文內未解釋。<a href="https://doi.org/10.1038/s41591-025-03620-y">DOI</a></li>
+<li>Weir-McCall JR, …, Nørgaard BL, Fairbairn TA, …, Nicol ED. SCCT/SCAI FFR-CT expert consensus. <em>J Cardiovasc Comput Tomogr</em> 2026。本文 4 位作者同時是這份共識文件的作者。<a href="https://doi.org/10.1016/j.jcct.2026.05.006">DOI</a></li>
+<li>Madsen KT, …, Fairbairn TA, …, Rogers C, Mullen S, Leipsic J. FFR-CT 與復發性心絞痛 3 年追蹤. <em>J Cardiovasc Comput Tomogr</em> 2024。<a href="https://doi.org/10.1016/j.jcct.2024.01.010">DOI</a></li>
+<li>Iraqi N, …, Fairbairn TA, …, Nørgaard BL. FFR-CT test-retest reproducibility. <em>JACC Cardiovasc Imaging</em> 2025。<a href="https://doi.org/10.1016/j.jcmg.2025.02.009">DOI</a></li>
+<li>這個團隊是 FFR-CT 領域的核心研究群，不是跨領域首次切入的團隊。</li>
+</ul>
+</li>
+<li><strong>作者立場史</strong>：團隊多年來持續支持 FFR-CT 臨床導入。2025 年 12 月 EACVI 發表本結果時，HeartFlow 同步發布新聞稿，標題強調「four-fold MI risk」「three-fold CV death」[外部: ESC press release／HeartFlow IR]。本篇結論與作者既有立場高度一致，有確認偏差風險。</li>
+<li><strong>利益揭露</strong>：
+<ul>
+<li>[文內] 經費來自 UK MRC（MR/T024933/1）。Sponsor 為 Liverpool Heart and Chest Hospital，並與 HeartFlow 簽有 MRC 產業合作協議。HeartFlow 負責執行 FFR-CT 分析。Rogers 與 S. Mullen 是 HeartFlow 員工；Leipsic 持有 HeartFlow 股票選擇權並擔任顧問。</li>
+<li><strong>評估</strong>：致謝欄寫明 HeartFlow「未參與資料分析或解讀」，但兩名 HeartFlow 員工列為作者。依 ICMJE 作者資格，作者必須參與詮釋或撰寫，因此這兩項敘述有內在矛盾。此外，本文主要結論（FFR-CT 具獨立預後價值、應延伸用於預後與治療強度決策）直接擴大產品適應範圍，屬於商業敘事一致性的紅旗。</li>
+</ul>
+</li>
+</ul>
+<h3>2. 文獻 Metadata 整理</h3>
+<ul>
+<li><strong>Received／Accepted</strong>：2026/05/08 → 2026/07/21，<strong>審查 74 天</strong> [文內，自行計算]。</li>
+<li><strong>期刊平均審查天數</strong>：[無法取得]。</li>
+<li><strong>審查速度解讀</strong>：無法和期刊平均值比較。74 天對旗艦期刊來說不算異常快。</li>
+<li><strong>期刊屬性</strong>：
+<ul>
+<li><em>Circulation</em>（AHA 旗艦期刊），2025 Impact Factor 約 38.6，Q1 [外部: Journal Metrics 轉載，未經 Clarivate JCR 直接核實]。</li>
+<li>本文以 CC BY 開放取用 [文內]。</li>
+</ul>
+</li>
+<li><strong>邀稿 vs 投稿</strong>：文內未揭露，推測為一般投稿 Original Research Article [推論：版面標示]。</li>
+<li><strong>先行發表</strong>：本結果已於 EACVI 2025（2025 年 12 月）口頭發表並發布新聞稿 [外部: ESC press release]。</li>
+</ul>
+<h3>3. 研究背景［文內］</h3>
+<ul>
+<li><strong>既有事實</strong>：FFR-CT 對 invasive FFR 的診斷準確度已有驗證。試驗顯示 FFR-CT 策略可減少不必要的侵入性血管攝影，且成本中性。指引已將 FFR-CT 列為 CCTA 的輔助診斷工具。</li>
+<li><strong>知識缺口</strong>：
+<ul>
+<li>既有預後研究樣本小、使用 composite outcome、追蹤短。</li>
+<li>不同研究的量測點不一致（stenosis-specific 或 distal）。</li>
+<li>FFR-CT 是否在危險因子與狹窄嚴重度之外提供增量預後資訊仍未知。</li>
+<li>背後還有「缺血本身是否具預後意義」的爭議（ISCHEMIA 系列後設分析）。</li>
+</ul>
+</li>
+<li><strong>研究問題</strong>：
+<ol>
+<li>FFR-CT 是否與個別結局（MI、CV death、all-cause death、revascularization）獨立相關？</li>
+<li>stenosis-specific 與 distal-vessel 哪一個預後價值較高？</li>
+<li>FFR-CT 加在危險因子與 CAD-RADS 之上，能否提升 discrimination？</li>
+</ol>
+</li>
+</ul>
+<h3>4. 研究設計與方法</h3>
+<ul>
+<li><strong>PICO</strong>：
+<ul>
+<li><strong>P</strong>：2017–2020 年英格蘭 27 家醫院因疑似穩定 CAD 接受 CCTA，且臨床團隊<strong>自行決定</strong>送 FFR-CT 分析並成功完成者，n=7,836。這群人只佔 CCTA 母群 90,553 人的 8.7%。</li>
+<li><strong>I／Exposure</strong>：每位病人最低的 stenosis-specific FFR-CT（≥30% 狹窄遠端 2 cm），以及最低 distal-vessel FFR-CT。分為 &gt;0.80、0.71–0.80、0.51–0.70、≤0.50 四組；完全阻塞歸入 ≤0.50。</li>
+<li><strong>C</strong>：FFR-CT &gt;0.80 為參考組；另有「無 ≥30% 狹窄」組（N/A，n=752）。</li>
+<li><strong>O</strong>：MI（ICD-10 I21/I22）、CV death（I00–I99）、all-cause death、revascularization（OPCS-4 K40–46、K69–70）。模型比較使用的 composite 為 nonfatal MI + CV death。</li>
+</ul>
+</li>
+<li><strong>設計細節</strong>：
+<ul>
+<li>回溯性世代，以 NHS HES 與 ONS 死亡登記連結取得結局。</li>
+<li>用藥資料取自 CCTA 後 <strong>2 年內</strong>的處方（BSA）。</li>
+<li>中位追蹤 3.1 年（IQR 2.8–3.5）。</li>
+</ul>
+</li>
+<li><strong>統計方法</strong>：
+<ul>
+<li>Kaplan-Meier／log-rank；Cox 模型（以 Schoenfeld residuals 檢驗 PH，結果未報告）。</li>
+<li>Fine-Gray 只用在 distal revascularization 分析。</li>
+<li>校正變項：年齡、性別、高血壓、糖尿病、血脂異常、CAD-RADS。</li>
+<li>4 個巢狀模型比較 Harrell's C、AIC、Brier score。</li>
+<li>3-knot restricted cubic spline。</li>
+<li>未提及多重比較校正、site clustering、缺失值處理方式。</li>
+</ul>
+</li>
+<li><strong>主要變項定義</strong>：MI 依 HES 編碼，未區分 type 1、type 2、type 4a（周術期）。CV death 定義涵蓋所有 I00–I99，包含中風與心衰竭等。</li>
+</ul>
+<h3>5. 研究結果重點整理</h3>
+<p><strong>⚠️ 重大發現：Table 1「Outcomes at 3 y」四列中有三列的標籤互相錯置。</strong></p>
+<p>依正文、Supplement Table S4 各欄加總、Figure 6 各欄加總與 Figure 2 KM 終點交叉核對：</p>
+<ul>
+<li>Table 1 標為「MI」的列（261 例）實為 <strong>all-cause death</strong>。</li>
+<li>標為「All-cause mortality」的列（1573 例）實為 <strong>revascularization</strong>。</li>
+<li>標為「Revascularization」的列（191 例）實為 <strong>MI</strong>。</li>
+</ul>
+<p>核對依據：</p>
+<ul>
+<li>Table S4 加總：MI 102+36+48+5=191；全死因 154+38+55+14=261；血運重建 1003+267+295+8=1573。</li>
+<li>Figure 6 中 &gt;0.80 組：MI 17+9+0+0=26，與 Table 1「revasc」列的 26 相符；Revasc 51+35+1=87，與「all-cause」列的 87 相符。</li>
+</ul>
+<p>下表依校正後標籤整理：</p>
+<p><strong>主要結果整理（3 年事件，依 stenosis-specific FFR-CT 分組，已校正 Table 1 標籤錯置）</strong></p>
+<table>
+<thead>
+<tr>
+<th>組別</th>
+<th>n</th>
+<th>MI</th>
+<th>CV death</th>
+<th>All-cause death</th>
+<th>Revascularization</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>無狹窄</td>
+<td>752</td>
+<td>5 (0.7%)</td>
+<td>5 (0.7%)</td>
+<td>14 (1.9%)</td>
+<td>8 (1.1%)</td>
+</tr>
+<tr>
+<td>&gt;0.80</td>
+<td>2699</td>
+<td>26 (1.0%)</td>
+<td>15 (0.6%)</td>
+<td>79 (2.9%)</td>
+<td>87 (3.2%)</td>
+</tr>
+<tr>
+<td>0.71–0.80</td>
+<td>1553</td>
+<td>31 (2.0%)</td>
+<td>13 (0.8%)</td>
+<td>46 (3.0%)</td>
+<td>224 (14.4%)</td>
+</tr>
+<tr>
+<td>0.51–0.70</td>
+<td>1456</td>
+<td>57 (3.9%)</td>
+<td>16 (1.1%)</td>
+<td>60 (4.1%)</td>
+<td>494 (33.9%)</td>
+</tr>
+<tr>
+<td>≤0.50</td>
+<td>1376</td>
+<td>72 (5.2%)</td>
+<td>25 (1.8%)</td>
+<td>62 (4.5%)</td>
+<td>760 (55.2%)</td>
+</tr>
+<tr>
+<td>全體</td>
+<td>7836</td>
+<td>191 (2.4%)</td>
+<td>74 (0.9%)</td>
+<td>261 (3.3%)</td>
+<td>1573 (20.1%)</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><strong>絕對風險差（≤0.50 vs &gt;0.80）</strong>：MI +4.2%、CV death +1.2%、all-cause death +1.6%（3 年）。</li>
+<li><strong>多變量校正 HR</strong>（Table 2，stenosis-specific）：
+<ul>
+<li>MI：0.71–0.80 為 1.72（0.98–3.01）；0.51–0.70 為 3.13（1.90–5.17）；≤0.50 為 3.13（1.86–5.25）。</li>
+<li>CV death：0.51–0.70 為 2.24（0.98–5.13）；≤0.50 為 2.92（1.19–7.19）。</li>
+<li>All-cause death：0.51–0.70 為 1.49（1.01–2.20）；≤0.50 為 1.43（0.91–2.27）。</li>
+<li>Revascularization：4.39、12.61、22.30。</li>
+</ul>
+</li>
+<li><strong>Discrimination</strong>（nonfatal MI + CV death）：
+<ul>
+<li>C index：模型 1 為 0.758，模型 2（+CAD-RADS）為 0.771，模型 3（+FFR-CT）為 0.783（Δ0.012，P&lt;0.001），模型 4（+delta FFR-CT）為 0.782。</li>
+<li>Brier score 四個模型都是 0.033。</li>
+<li>AIC：3692 → 3686 → 3669 → 3670 [Figure 3 圖內表格]。</li>
+</ul>
+</li>
+<li><strong>Cutoff</strong>：spline 分析得出「最佳」cutoff 為 0.67（Figure 4）。</li>
+<li><strong>Discordance</strong>：stenosis-specific &gt;0.80 的 2,699 人中，distal 為 &gt;0.80 者 63.4%、0.71–0.80 者 35.1%、0.51–0.70 者 1.3%（n=35）（Figure 6）。</li>
+</ul>
+<h3>6. 作者討論與評論重點</h3>
+<ul>
+<li>
+<p><strong>主要訊息</strong>：</p>
+<ul>
+<li>FFR-CT 與 MI、CV death、all-cause death 獨立相關，且呈連續風險梯度。</li>
+<li>0.67 是最佳風險閾值。</li>
+<li>stenosis-specific 與 distal 的 discrimination 相近，臨床上可聚焦 stenosis-specific。</li>
+</ul>
+</li>
+<li>
+<p><strong>與文獻比較</strong>：</p>
+<ul>
+<li>作者稱本研究比 ADVANCE registry 多出約 10 倍事件數。</li>
+<li>與 ISCHEMIA 後設分析「解剖比缺血更重要」的結論對立，作者則引用觀察性研究支持缺血具獨立預後價值。</li>
+<li>以 ORBITA-FIRE 與既往 invasive FFR 0.67 支持較低閾值。</li>
+</ul>
+</li>
+<li>
+<p><strong>作者自述限制</strong>［文內］：</p>
+<ul>
+<li>FFR-CT 結果影響後續處置（特別是 revascularization）。</li>
+<li>MI 無法區分周術期 type 4 事件。</li>
+<li>缺 plaque burden、吸菸、家族史。</li>
+</ul>
+</li>
+<li>
+<p><strong>［評估］</strong>：作者的限制段<strong>明顯避重就輕</strong>，未討論以下問題：</p>
+<ol>
+<li>送 FFR-CT 由臨床醫師自行決定，造成選擇偏差。</li>
+<li>revascularization 作為結局有循環論證，因為 FFR-CT 本身就驅動血運重建。</li>
+<li>CV death 只有 74 例，卻放進高自由度模型，有過度配適風險。</li>
+<li>0.67 cutoff 由資料驅動、未經驗證。</li>
+<li>多重比較未校正。</li>
+<li>摘要與正文數字多處不一致。</li>
+</ol>
+<p>結論寫「FFR-CT predicts … all-cause death independent of …」，但連續變項分析中 all-cause death 不顯著，≤0.50 組 aHR 的 CI 也跨越 1。這個結論<strong>超出數據支持範圍</strong>。</p>
+</li>
+</ul>
+<h3>7. 外部專業意見</h3>
+<ul>
+<li><strong>同期 editorial</strong>：[無法取得]——搜尋 <em>Circulation</em> 同期刊物、PubMed 與網路，均未發現針對本文的同期 editorial 或 comment，因此沒有 DOI 可供全文擷取。</li>
+<li><strong>專家部落格評論</strong>：Filippo Cademartiri（Synlab, Naples），<em>Diagnostic Imaging</em> radiology blog，2026 年 10 月 1 日，改寫自其 LinkedIn 貼文；屬個人意見，未經同儕審查 [外部: Diagnostic Imaging 網頁全文]。
+<ul>
+<li><strong>肯定</strong>：真實世界規模大；結果支持 FFR-CT 在明顯異常時具預後角色；認為 FFR-CT 終將成為 CCTA 的一部分。</li>
+<li><strong>質疑</strong>：
+<ol>
+<li>ΔC=0.012 雖統計顯著，但是否構成有意義的預後資訊值得懷疑。</li>
+<li>關聯不等於機轉，低 FFR-CT 部分反映整體動脈粥樣硬化負擔與 diffuse disease。</li>
+<li>缺 plaque burden 是<strong>最重要的限制</strong>；下一步應比較「plaque burden + phenotype + stenosis + physiology」。</li>
+</ol>
+</li>
+</ul>
+</li>
+<li><strong>其他背景</strong>：一篇 2026 年統合 22 項研究（20,067 人）的 systematic review／meta-analysis 報告 FFR-CT ≤0.80 對 MACE 的 HR 為 3.94 [外部: PMC13202077 搜尋摘要；未讀全文]。</li>
+</ul>
+<h3>8. 臨床建議</h3>
+<ul>
+<li><strong>可採用的情境</strong>：
+<ul>
+<li>已因臨床適應症做了 FFR-CT 的穩定胸痛病人，可用 stenosis-specific FFR-CT ≤0.70 作為「風險較高」的<strong>輔助敘述</strong>，並據此強化以指引為基礎的預防治療（statin 強度、抗血小板、危險因子控制）。這類措施本來就低成本、低風險。</li>
+<li>stenosis-specific &gt;0.80 時，3 年 MI 為 1.0%、CV death 為 0.6%，可作為安撫與避免進一步檢查的依據。</li>
+</ul>
+</li>
+<li><strong>不建議直接套用的情境</strong>：
+<ol>
+<li>以 FFR-CT 數值（含 0.67 cutoff）作為「是否血運重建以改善預後」的依據；本研究完全無法回答治療效果。</li>
+<li>把 revascularization HR（最高 22.3）解讀為 FFR-CT 的「預後力」。</li>
+<li>推廣到未被送 FFR-CT 的 CCTA 族群、使用其他 FFR-CT 平台的族群，或非英國 NHS 體系。</li>
+<li>把 0.71–0.80 灰色地帶當作已確立的 MI 風險因子；校正後 CI 跨越 1。</li>
+</ol>
+</li>
+<li><strong>實務建議</strong>：
+<ol>
+<li>報告 FFR-CT 時，以 stenosis-specific 值為主；0.51–0.70 與 ≤0.50 應在報告中提醒預防治療強化。</li>
+<li>不要以 0.67 取代 0.80 作為診斷或介入閾值，前者未經外部驗證。</li>
+<li>單純 distal 0.71–0.80 而 stenosis-specific 正常者，不必因此升級檢查。</li>
+</ol>
+</li>
+<li><strong>證據強度</strong>：<strong>中偏弱</strong>。
+<ul>
+<li>支持面：樣本大、全國多中心、結局以登記資料客觀取得。</li>
+<li>扣分面：
+<ol>
+<li>暴露受臨床選擇影響，結局又受暴露驅動的治療影響。</li>
+<li>CV death 事件少。</li>
+<li>增量 discrimination 很小，且沒有 calibration 或 reclassification 改善。</li>
+<li>摘要、正文、表格之間有多處數字錯誤。</li>
+</ol>
+</li>
+</ul>
+</li>
+</ul>
+<hr />
+<h2>SKILL-A：批判性評讀</h2>
+<h3>A. 補充技術細節</h3>
+<ul>
+<li><strong>樣本數</strong>：無事前 power calculation，樣本由既有 FISH&amp;CHIPS 世代決定。
+<ul>
+<li>MI 191 例尚可。</li>
+<li>CV death 只有 74 例。校正模型參數估計約 14 df（5 個危險因子 + CAD-RADS 若為 4–5 個 dummy + FFR-CT 4 個 dummy；CAD-RADS 編碼方式文內未說明 [推算]），events per variable 約 5，低於常用門檻 10。這說明 CV death 的 HR CI 為何極寬（例如 1.19–7.19）。</li>
+</ul>
+</li>
+<li><strong>比例風險假設</strong>：Methods 稱已以 Schoenfeld residuals 檢驗，但<strong>未報告結果</strong>。
+<ul>
+<li>Figure 2D 的 revascularization 曲線在前 6 個月急升後幾乎平坦，明顯違反 PH，單一 HR 不能代表整段追蹤期。</li>
+<li>Figure 2A 的 MI 曲線（≤0.50 組）前 3–6 個月也較陡。</li>
+</ul>
+</li>
+<li><strong>競爭風險</strong>：Fine-Gray 只用在 distal revascularization。MI 與 CV death 未處理非心血管死亡的競爭風險；但因 all-cause death 只有 3.3%，影響應有限。</li>
+<li><strong>缺失資料</strong>：年齡缺 5 筆、性別缺 24 筆，其餘標示 0 缺失（Table 1）。缺失處理方式未說明。「完全無缺失」在登記資料中偏樂觀，可能代表「未編碼 = 無疾病」，造成危險因子 misclassification。</li>
+<li><strong>聚集效應</strong>：27 家醫院的轉介閾值與處置文化不同，模型未納入 site random effect 或 robust SE。</li>
+<li><strong>校正變項選擇</strong>：
+<ul>
+<li>Table 1 已有既往 MI（4.1%）、心衰竭（8.7%）、心絞痛症狀，三者都隨 FFR-CT 降低而上升，卻未納入校正。</li>
+<li>吸菸、腎功能、LDL 數值、plaque burden、CAC 不可得。</li>
+</ul>
+</li>
+<li><strong>用藥資料時序</strong>：用藥取自 CCTA 後 2 年處方，屬於<strong>暴露後變項</strong>（受 FFR-CT 結果影響）。不能當基線混淆因子，也確實未校正；但在 Table 1 以「Medication」呈現會讓讀者誤以為是基線特徵。</li>
+</ul>
+<h4>觀察性研究混淆控制</h4>
+<table>
+<thead>
+<tr>
+<th>方法</th>
+<th>本研究使用</th>
+<th>評估</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>多變量 Cox</td>
+<td>是</td>
+<td>只校正 5 個危險因子 + CAD-RADS；重要預後因子（plaque burden、既往 MI、HF、吸菸、腎功能）未校正</td>
+</tr>
+<tr>
+<td>Propensity score</td>
+<td>否</td>
+<td>本研究為預後研究，不一定需要；但若宣稱「獨立」，至少應做 E-value 或殘餘混淆敏感度分析</td>
+</tr>
+<tr>
+<td>IV</td>
+<td>否</td>
+<td>—</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><strong>殘餘混淆方向</strong>：FFR-CT 與 plaque burden、diffuse disease 高度相關，未校正 plaque burden 會<strong>高估</strong> FFR-CT 的「獨立」貢獻。</li>
+<li><strong>時序</strong>：FFR-CT 在基線取得，結局在其後，時序正確。</li>
+</ul>
+<h3>B. 批判性評估</h3>
+<h4>B1. 假說與理論邏輯</h4>
+<ul>
+<li><strong>假說預先指定</strong>：
+<ul>
+<li>本文為母研究的次分析，無獨立 protocol 或 SAP 可查；supplement 只有 STROBE checklist，全部勾「Yes」。</li>
+<li>分組閾值（0.80／0.70／0.50）與 4 個結局 × 2 種量測點 × 多種分析，<strong>撒網程度高</strong>。</li>
+<li>0.67 cutoff 與 delta FFR-CT ≥0.12 的閾值來源均未說明是否預先指定。</li>
+</ul>
+</li>
+<li><strong>合理機轉</strong>：
+<ol>
+<li>流量受限病灶通常是較嚴重、斑塊負荷較高的病灶，自然與 MI 風險相關（Discussion）。</li>
+<li>distal FFR-CT 反映 diffuse disease 與整體斑塊負荷（Discussion，引用 total plaque volume 文獻）。</li>
+<li>低 FFR-CT 觸發血運重建，而 PCI 本身會帶來周術期 MI（Limitations）。這一點是<strong>醫源性路徑</strong>，不是疾病自然史。</li>
+</ol>
+</li>
+<li><strong>最可疑的敘事跳躍</strong>：
+<ol>
+<li>從「與 MI 相關」跳到「identifying high-risk patients who may benefit most from preventive therapy」（Clinical Perspective）。沒有任何治療效果數據支持。</li>
+<li>從「0.67 為 spline 最佳 cutoff」跳到「呼應 invasive FFR 0.67 與 ORBITA-FIRE」（Discussion）。ORBITA-FIRE 討論的是症狀閾值，與預後閾值是不同問題。</li>
+<li>「FFR-CT predicts … all-cause death independent of risk factors」（Conclusion），與正文連續變項 all-cause 不顯著（P=0.23）直接矛盾。</li>
+</ol>
+</li>
+</ul>
+<h4>B2. 受試者與外推性</h4>
+<ul>
+<li><strong>受試者選擇</strong>：90,553 人中只有 8.7% 被送 FFR-CT，由臨床團隊自行決定（Methods）。這群人以中度狹窄為主（FFR-CT 原設計就是處理 30–90% 狹窄）。
+<ul>
+<li>「無狹窄」組（n=752）仍被送 FFR-CT，代表轉介標準不一致。</li>
+<li>已排除 697 例 FFR-CT 無法處理者（motion 42.9% 等，Figure 1）。影像品質差的族群可能本身較胖、心律較快或有心律不整，風險分布不同。</li>
+</ul>
+</li>
+<li><strong>基線不平衡</strong>：組間差異極大。≤0.50 組女性 24.9%、心絞痛 56.0%、既往 MI 7.3%；&gt;0.80 組依序為 45.4%、17.9%、2.3%（Table 1）。在預後研究中這是預期現象，但會提高殘餘混淆的影響。</li>
+<li><strong>外推性分級</strong>：
+<ol>
+<li><strong>一般健康族群</strong>：不可外推。研究族群為有症狀、已做 CCTA 且被選送 FFR-CT 的病人。</li>
+<li><strong>穩定胸痛且 CCTA 顯示中度狹窄的病人</strong>：<strong>近</strong>。在 NHS 體系、HeartFlow 平台、2017–2020 年的治療標準下最適用。</li>
+<li><strong>特殊族群</strong>（亞洲人、腎功能不全、已知 CAD 且有支架或 CABG 者，後者在 flow diagram 中被排除）：<strong>遠</strong>。文內沒有族裔資料。</li>
+</ol>
+</li>
+</ul>
+<h4>B3. 研究設計與偏差</h4>
+<ol>
+<li><strong>處置混淆／治療介導（最重要）</strong>：FFR-CT 結果直接決定血運重建（≤0.50 組 3 年 55% 接受血運重建）與藥物強化（statin 91.9% vs 76.7%，Table 1）。
+<ul>
+<li>觀察到的關聯是「在 FFR-CT 引導處置下的風險」。</li>
+<li>若治療有效，自然史風險梯度被<strong>低估</strong>；若 PCI 引發周術期 MI，MI 風險梯度被<strong>高估</strong>。</li>
+<li><strong>圖像證據</strong>：Figure 2A 中 ≤0.50 組 MI 曲線在前約 3–4 個月由 0 急升至約 2%，同一時段 Figure 2D 的 revascularization 曲線由 0 升到約 40%。兩者時間高度重疊，強烈提示相當比例的早期 MI 與處置相關。作者自承無法區分 type 4 MI（Limitations），但沒有做「排除 revascularization 後 30 天內 MI」或「在 revascularization 時 censor」等敏感度分析。</li>
+</ul>
+</li>
+<li><strong>Revascularization 作為結局的循環論證</strong>：FFR-CT 本身就是血運重建的決策工具，revascularization HR 4.4–22.3 主要反映醫師行為（incorporation bias），<strong>不是預後</strong>。摘要卻把它和 MI、死亡並列為 FFR-CT「associated outcomes」，會誤導讀者。</li>
+<li><strong>選擇偏差</strong>：只納入被選送且成功分析的病人，即 conditioning on 臨床判斷。若醫師對「看起來較嚴重」者較常送檢，FFR-CT 正常組也可能是「臨床上較擔心」的人，讓參考組風險偏高，<strong>縮小</strong>梯度。方向不確定。</li>
+</ol>
+<p><strong>對照組適當性</strong>：參考組 &gt;0.80 合理；「無狹窄」組 MI 0.7% 可作為更低風險的錨點。作者稱「negative FFR-CT 等同 minimal CAD」，但 &gt;0.80 組 MI 1.0% vs 0.7%，CV death 0.6% vs 0.7%，all-cause death 2.9% vs 1.9%，且事件數小、沒有直接比較。</p>
+<h3>B4. 測量工具與實務意義</h3>
+<ul>
+<li><strong>FFR-CT 測量變異</strong>：作者團隊自己的 test-retest 研究（2025）強調影像品質重要。0.80 附近 ±0.05 的變異會讓灰色地帶分類不穩定，正是 0.71–0.80 組結果 inconclusive 的原因之一。</li>
+<li><strong>結局可靠度</strong>：
+<ul>
+<li>HES 的 ICD I21/I22 編碼未區分 type 1、type 2、type 4a，且不知是否只取主診斷。</li>
+<li>CV death 用 I00–I99 範圍過寬，包含中風、心衰竭、肺栓塞等。</li>
+</ul>
+</li>
+<li><strong>硬終點 vs 軟終點</strong>：MI 與死亡是硬終點；revascularization 是處置變項。</li>
+<li><strong>就算關聯為真，真實世界用處有多大？</strong>
+<ul>
+<li>≤0.50 vs &gt;0.80 的 3 年 MI 絕對差 4.2%（約 24 人需被識別才多「找到」1 次 MI），CV death 差 1.2%。</li>
+<li>加入 FFR-CT 後 C index 只增加 0.012，Brier score 完全不變（0.033），也沒有 NRI 或 calibration plot。</li>
+<li>結論：資訊增量小，主要價值在「已經做了 FFR-CT 時順便判讀」，不足以支持為了預後目的而額外送 FFR-CT。</li>
+</ul>
+</li>
+</ul>
+<h3>C. 統計與資料完整性</h3>
+<h4>C1. 結果分類（CI + 臨床重要性閾值）</h4>
+<p>本研究是預後研究，沒有傳統 MCID。以下以 <strong>HR ≥2.0 視為臨床上重要的獨立風險上升</strong> [推算：預後因子常用的「強」關聯門檻；屬評讀者設定，非文內指定]，HR 1.0 為 null。</p>
+<table>
+<thead>
+<tr>
+<th>指標（校正，stenosis-specific）</th>
+<th>高 FFR-CT 組事件率</th>
+<th>&gt;0.80 組事件率</th>
+<th>aHR</th>
+<th>95% CI</th>
+<th>ARD（3 年，未校正）</th>
+<th>閾值</th>
+<th>結果分類</th>
+<th>實務意義</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>MI，0.71–0.80</td>
+<td>2.0%</td>
+<td>1.0%</td>
+<td>1.72</td>
+<td>0.98–3.01</td>
+<td>+1.0%</td>
+<td>HR 2.0</td>
+<td><strong>INCONCLUSIVE ❓</strong>（同時涵蓋 null 與 2.0）</td>
+<td>灰色地帶的 MI 風險未定；作者在 Clinical Perspective 寫「weak association」較妥，但正文稱「associated with MI」不當</td>
+</tr>
+<tr>
+<td>MI，0.51–0.70</td>
+<td>3.9%</td>
+<td>1.0%</td>
+<td>3.13</td>
+<td>1.90–5.17</td>
+<td>+2.9%</td>
+<td>HR 2.0</td>
+<td><strong>IMPRECISE (+)</strong>（排除 null，下界 1.90 略低於 2.0）</td>
+<td>實質風險上升</td>
+</tr>
+<tr>
+<td>MI，≤0.50</td>
+<td>5.2%</td>
+<td>1.0%</td>
+<td>3.13</td>
+<td>1.86–5.25</td>
+<td>+4.2%</td>
+<td>HR 2.0</td>
+<td><strong>IMPRECISE (+)</strong></td>
+<td>同上；但含周術期 MI 污染</td>
+</tr>
+<tr>
+<td>CV death，0.51–0.70</td>
+<td>1.1%</td>
+<td>0.6%</td>
+<td>2.24</td>
+<td>0.98–5.13</td>
+<td>+0.5%</td>
+<td>HR 2.0</td>
+<td><strong>INCONCLUSIVE ❓</strong></td>
+<td>不能說「無關聯」，只是事件太少</td>
+</tr>
+<tr>
+<td>CV death，≤0.50</td>
+<td>1.8%</td>
+<td>0.6%</td>
+<td>2.92</td>
+<td>1.19–7.19</td>
+<td>+1.2%</td>
+<td>HR 2.0</td>
+<td><strong>IMPRECISE (+)</strong></td>
+<td>方向一致，但 CI 極寬，EPV 不足</td>
+</tr>
+<tr>
+<td>All-cause death，0.51–0.70</td>
+<td>4.1%</td>
+<td>2.9%</td>
+<td>1.49</td>
+<td>1.01–2.20</td>
+<td>+1.2%</td>
+<td>HR 2.0</td>
+<td><strong>IMPRECISE (+)</strong>（下界貼近 1）</td>
+<td>排除阻塞者後變為 1.40（0.95–2.07）[Supplement Table S2]，結果脆弱</td>
+</tr>
+<tr>
+<td>All-cause death，≤0.50</td>
+<td>4.5%</td>
+<td>2.9%</td>
+<td>1.43</td>
+<td>0.91–2.27</td>
+<td>+1.6%</td>
+<td>HR 2.0</td>
+<td><strong>INCONCLUSIVE ❓</strong></td>
+<td>0.51–0.70 顯著而 ≤0.50 不顯著，梯度不單調，不支持「劑量反應」</td>
+</tr>
+<tr>
+<td>Revascularization，≤0.50</td>
+<td>55.2%</td>
+<td>3.2%</td>
+<td>22.30</td>
+<td>16.71–29.76</td>
+<td>+52%</td>
+<td>—</td>
+<td>不適用（處置結局，有循環論證）</td>
+<td>不應視為預後指標</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><strong>禁止的統計謬誤檢查</strong>：
+<ul>
+<li>作者寫 0.71–0.80 「was associated with increased risk of future MI … but not survival」（Discussion）。前半句在校正後不成立（P=0.06），後半句是「p&gt;0.05 = 無關聯」的謬誤；CV death 的 CI 為 0.61–3.32，無法排除倍增風險。</li>
+<li>作者沒有使用 post-hoc power。</li>
+</ul>
+</li>
+</ul>
+<h4>C2. Underpowered 判斷與 Winner's Curse</h4>
+<ul>
+<li>CV death（74 例）與 0.71–0.80 組 MI 的 CI 同時涵蓋 null 與臨床重要效應，<strong>屬 underpowered</strong>。</li>
+<li><strong>資料驅動的 cutoff 屬 Winner's Curse 同類問題</strong>：0.67 是從同一份資料「找出」的最佳點，沒有 bootstrap 內部驗證、沒有 CI、沒有外部驗證。依統計常識，資料驅動的最佳 cutoff 會系統性高估其區辨力。</li>
+<li><strong>Figure 4 圖像判讀</strong>：
+<ul>
+<li>spline 曲線在 0.5–0.95 區間大致單調下降、近乎線性。0.67 附近看不到明顯拐點或閾值效應。</li>
+<li>log relative hazard = 0 的參考點約在 0.76（應為中位數或參考值），而 0.67 處的 log HR 約 0.4（HR 約 1.5）。</li>
+<li>文內完全沒有說明「optimal」是依什麼準則（Youden？最大 χ²？）選出。</li>
+<li>結論：<strong>0.67 是在連續梯度上任意切出的一點，不是生物學閾值</strong>。作者在同一段寫「continuum 最適當」又提出單一 cutoff，自相矛盾。</li>
+</ul>
+</li>
+<li>0.50 以下（含阻塞，被設定為 0.50）在 spline 中被截斷，邊界 CI 寬。</li>
+</ul>
+<h4>C3. Bayesian 補充分析</h4>
+<p>本研究的爭議點不在 p≈0.05 的二分法，而在偏差結構，Bayesian 重分析無法修正處置混淆。只需指出：0.71–0.80 組 MI（P=0.06）與 0.51–0.70 組 CV death（P=0.06）的點估計 1.7–2.2 都指向風險上升，以 Bayesian 角度不應稱為「無關聯」。但文內數據不足以計算 Pr(HR&gt;2)。[未執行完整三組 prior 分析：文內無 log-HR SE 以外的必要資訊，且偏差主導不確定性]</p>
+<h4>C4. 報告完整性與其他統計問題</h4>
+<p><strong>K-M 圖判讀（Figure 2、5、Supplement Figure 1）</strong>：</p>
+<ul>
+<li><strong>Number at risk 後段銳減</strong>：Figure 2A（MI）中，≤0.50 組在第 3 年由 1376 降至 400，&gt;0.80 組降至 994。這是行政截尾（中位追蹤 3.1 年，IQR 2.8–3.5）。Figure 2B 的 CV death 曲線末端（≤0.50 組約 1.5% 跳升到約 2.0%）落在 risk set 變小的區段，尾端不可靠。</li>
+<li><strong>未解釋的 censoring 不一致</strong>：同一組（≤0.50）在第 3 年，MI 面板 number at risk 為 400，CV mortality 面板卻是 715；&gt;0.80 組分別為 994 與 1692。MI 分析在第 1 年時不是在 revascularization 時 censor（1301 vs revasc 面板 682），所以第 3 年差距這麼大的原因不明。文內未說明各結局的 censoring 規則 [限制：無法由圖或正文判定]。</li>
+<li><strong>Y 軸範圍</strong>：MI 面板 0–6%、CV death 面板 0–2.5%，都從 0 起算，沒有截斷誇大。但窄的刻度會讓 0.5–1% 的絕對差在視覺上看起來分離很大；讀者應回到絕對數字。</li>
+<li><strong>曲線交叉與重疊</strong>：
+<ul>
+<li>Figure 2C（全死因）中，各組在前 1 年互相交錯；0.71–0.80（灰）與 &gt;0.80（綠）全程交纏，&gt;0.80 與 0.51–0.70 在約 1.5 年後才分開。</li>
+<li>Figure 5C（distal）中，≤0.50 與 0.51–0.70 交錯，0.71–0.80 與 &gt;0.80 幾乎重合。</li>
+<li>結果：全死因的「梯度」主要由少數組別驅動，不是清楚的劑量反應。</li>
+</ul>
+</li>
+<li><strong>Supplement Figure 1 追蹤期</strong>：只畫到 2 年，正文卻是 3 年；「no distal pin」組（n=159）的 CV death 曲線以數個大階梯上升到約 3.2%，事件數極少（推算約 4–5 例）。作者 Discussion 據此提出「distal stenosis 死亡率最高、挑戰 proximal dogma」，屬過度解讀 [Supplement Figure 1]。</li>
+</ul>
+<p><strong>數字不一致清單</strong>（正文、摘要、圖表、supplement 互相矛盾）：</p>
+<ol>
+<li><strong>Table 1 結局列標籤錯置</strong>（見 SECTION-0 第 5 節），屬重大排版或數據錯誤。</li>
+<li><strong>摘要的 aHR 與 Table 2 不符</strong>：
+<ul>
+<li>摘要「≤0.7 對 MI aHR 2.94–3.39」，Table 2 為 3.13／3.13；3.37 出自 Table S2。</li>
+<li>摘要「≤0.8 對 revascularization aHR 3.02–9.42」，Table 2 為 4.39–22.30；Table S2 為 3.01–9.29。</li>
+<li>摘要「≤0.5 對 all-cause death aHR 1.49，P=0.045」，但 Table 2 中 1.49（P=0.045）屬於 <strong>0.51–0.70</strong> 組；≤0.50 組為 1.43（P=0.12），不顯著。</li>
+<li>摘要數字似乎混用了「排除阻塞」的敏感度分析與主分析。</li>
+</ul>
+</li>
+<li><strong>連續變項 aHR 數學上不可能</strong>：
+<ul>
+<li>CV death aHR 1.08（95% CI 1.008–1.73）：點估計貼近下界，在 log scale 上不對稱。</li>
+<li>All-cause death aHR <strong>1.50（0.16–1.56）</strong>：點估計幾乎等於上界，不可能是正確的 Wald CI。</li>
+<li>Methods 稱「per 0.01 unit」，Results 卻寫「per 0.1-unit」；revascularization 的 1.006 顯然是另一種單位。</li>
+</ul>
+</li>
+<li><strong>基線描述不一致</strong>：正文寫女性 37.4%、糖尿病 16.9%、高血壓 52%、血脂異常 35.4%、年齡 IQR 56–71；Table 1 為 38.7%、16.2%、50.0%、33.5%、55–71。</li>
+<li><strong>Flow 人數</strong>：正文寫送檢 8,532 人，Figure 1 寫 8,533（90,553 − 82,021 = 8,532；8,533 − 697 = 7,836）。</li>
+<li><strong>與 <em>Nat Med</em> 母研究不同</strong>：FFR-CT 人數 7,863 vs 7,836。</li>
+<li><strong>Discordance 事件率</strong>：Results 寫 1.4%，摘要寫 1.5%。</li>
+<li><strong>Figure 6 「MACE」欄定義與計算不符</strong>：
+<ul>
+<li>圖說定義「MACE = MI + CV death + revasc」。</li>
+<li>但「MACE excluding revasc」實際等於 MI + <strong>all-cause</strong> death：normal 組 (17+51)/1710 = 3.98%、borderline 組 (9+23)/946 = 3.4%、reduced 組 5/35 = 14.3%。</li>
+<li>「MACE including revasc」（normal 組 5.6%）無法由任何組合重現。</li>
+</ul>
+</li>
+<li><strong>Table S4</strong>：LCx 的 CV death 列為「1.1 (1.1)」，是明顯的打字錯誤（推算應為 18 例）。</li>
+</ol>
+<p><strong>Discrimination 報告問題</strong>：</p>
+<ul>
+<li>Figure 3 以二元 ROC 曲線呈現，忽略 time-to-event 與截尾。Methods 寫的是 Harrell's C，兩者混用。</li>
+<li>模型 2 與模型 3 的 C index CI 大幅重疊（0.742–0.800 vs 0.756–0.810）。</li>
+<li>Brier score 完全沒有改變。</li>
+<li>沒有 calibration plot、沒有 NRI 或 IDI，卻在 Clinical Perspective 宣稱「reclassifying risk」，屬於<strong>沒有數據支持的宣稱</strong>。</li>
+<li>在同一資料上建模又評估，沒有交叉驗證或 optimism correction。</li>
+<li>模型 2→3 的 ΔAIC 為 17.5，代表模型擬合確有改善，這是較站得住腳的證據。</li>
+</ul>
+<p><strong>Stenosis-specific vs distal 比較</strong>：</p>
+<ul>
+<li>Table 2 AIC：MI 為 2839.8 vs 2866.4（stenosis-specific 較佳）；CV death 為 1064.8 vs <strong>1061.3（distal 較佳）</strong>；all-cause 為 4018.1 vs 4010.8（distal 較佳）。</li>
+<li>但 Clinical Perspective 寫「stenosis-specific FFR-CT having a stronger association with … cardiovascular death」，與 AIC 結果矛盾。</li>
+<li>distal revascularization 改用 Fine-Gray，AIC 已不可與 Cox 模型比較。</li>
+</ul>
+<p><strong>多重比較</strong>：4 個結局 × 2 種量測 × 3–4 個類別 × unadjusted、adjusted 與敏感度分析，加上 spline、delta、平均 distal 值（Table S3）、vessel 位置（Table S4），超過 60 個檢定，完全沒有校正。</p>
+<p><strong>統計紅旗清單</strong>（≥5 點）：</p>
+<ol>
+<li>Table 1 結局列標籤錯置。</li>
+<li>摘要的 HR 與主表不符，且把不顯著組誤報為顯著。</li>
+<li>連續變項 CI 數學上不可能。</li>
+<li>CV death 的 EPV 約 5，有過度配適風險。</li>
+<li>0.67 cutoff 由資料驅動且未驗證。</li>
+<li>PH 假設檢驗結果未報告，revascularization 明顯違反 PH。</li>
+<li>無多重比較校正。</li>
+<li>未考慮 site clustering。</li>
+<li>宣稱有 reclassification 卻沒有 NRI。</li>
+</ol>
+<h3>D. 次組分析評估</h3>
+<table>
+<thead>
+<tr>
+<th>次組或次分析</th>
+<th>interaction test</th>
+<th>與其他研究一致</th>
+<th>預先指定</th>
+<th>生物機轉</th>
+<th>within-study</th>
+<th>可信度</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0.71–0.80 灰色地帶與 MI</td>
+<td>無（只有各組 vs 參考組）</td>
+<td>部分（ADVANCE 以 0.80 二分）</td>
+<td>不明</td>
+<td>合理</td>
+<td>是</td>
+<td><strong>低</strong></td>
+</tr>
+<tr>
+<td>Distal vs stenosis-specific discordance（distal 0.51–0.70，n=35，CV death 2 例）</td>
+<td>無</td>
+<td>無可比較資料</td>
+<td>不明</td>
+<td>部分合理（diffuse disease）</td>
+<td>是</td>
+<td><strong>推測性</strong>：P=0.004 只建立在 2 例 CV death 上</td>
+</tr>
+<tr>
+<td>Distal stenosis 子群（n=159）死亡率最高</td>
+<td>無</td>
+<td>與「proximal 病灶才有預後意義」的傳統觀念相反</td>
+<td>否（作者自稱 hypothesis-generating）</td>
+<td>不明</td>
+<td>是</td>
+<td><strong>推測性</strong></td>
+</tr>
+<tr>
+<td>依血管系統（LAD/RCA/LCx）分組</td>
+<td>無</td>
+<td>—</td>
+<td>不明</td>
+<td>—</td>
+<td>是</td>
+<td><strong>低</strong>：事件少，且 Table S4 有打字錯誤</td>
+</tr>
+<tr>
+<td>Delta FFR-CT ≥0.12 無增量價值</td>
+<td>—</td>
+<td>與既有 delta FFR-CT 研究不一致</td>
+<td>閾值來源不明</td>
+<td>合理</td>
+<td>是</td>
+<td><strong>低</strong>：閾值任意，且與最低 FFR-CT 高度共線</td>
+</tr>
+</tbody>
+</table>
+<h3>E. 紅旗清單</h3>
+<ul>
+<li><strong>設計</strong>：
+<ul>
+<li>FFR-CT 結果驅動處置（55% 血運重建），預後關聯與治療效應無法分離。</li>
+<li>早期 MI 與早期血運重建在時間上重疊（Figure 2A／2D）。</li>
+<li>revascularization 作為結局有循環論證。</li>
+</ul>
+</li>
+<li><strong>選擇</strong>：只有 8.7% 的 CCTA 被選送 FFR-CT，轉介標準由臨床自行決定，「無狹窄」者也被送檢。</li>
+<li><strong>統計</strong>：
+<ul>
+<li>CV death 74 例卻放進高自由度模型。</li>
+<li>資料驅動的 0.67 cutoff 未驗證。</li>
+<li>無多重比較校正。</li>
+<li>連續變項 CI 錯誤。</li>
+</ul>
+</li>
+<li><strong>報告</strong>：
+<ul>
+<li>Table 1 結局標籤錯置。</li>
+<li>摘要數字與主表不符，並把不顯著的 ≤0.50 all-cause death 報為顯著。</li>
+<li>正文基線百分比與表格不符。</li>
+</ul>
+</li>
+<li><strong>敘事</strong>：
+<ul>
+<li>結論宣稱「predicts all-cause death independent of …」，與連續變項 P=0.23 及 ≤0.50 組不顯著相矛盾。</li>
+<li>宣稱「reclassifying risk」但沒有 NRI。</li>
+<li>「may benefit most from preventive therapy」沒有治療效果證據。</li>
+</ul>
+</li>
+<li><strong>COI</strong>：
+<ul>
+<li>兩名 HeartFlow 員工列為作者，與「HeartFlow 未參與解讀」的聲明矛盾。</li>
+<li>產業新聞稿以相對風險（「four-fold」）強調結果。</li>
+<li>4 位作者同時是 2026 SCCT/SCAI FFR-CT 共識文件作者。</li>
+</ul>
+</li>
+<li><strong>外推</strong>：單一平台（HeartFlow）、單一國家、2017–2020 年的治療標準；沒有族裔資料。</li>
+</ul>
+<h3>F. 反向解釋</h3>
+<ol>
+<li><strong>FFR-CT 只是斑塊負荷與 diffuse atherosclerosis 的代理指標</strong>。
+<ul>
+<li>支持：未校正 plaque burden；CAD-RADS 只是最大狹窄的粗分類；distal FFR-CT（反映 diffuse disease）的預測力與 stenosis-specific 相近，而且 distal 對全死因的模型擬合更好。</li>
+<li>反對：加入 CAD-RADS 後 FFR-CT 仍有 ΔAIC 17.5 的擬合改善。</li>
+<li>判斷：最可能部分成立；需要和 quantitative plaque volume 正面比較。</li>
+</ul>
+</li>
+<li><strong>MI 梯度部分是醫源性的</strong>。低 FFR-CT 引發 PCI 或 CABG，帶來 type 4a／5 MI。
+<ul>
+<li>支持：Figure 2A 的早期 MI 急升與 Figure 2D 的早期血運重建急升同步；作者承認無法區分周術期 MI。</li>
+<li>反對：≤0.50 組 MI 曲線在 6 個月後仍持續上升，部分晚期 MI 不太可能是周術期事件。</li>
+</ul>
+</li>
+<li><strong>治療遮蔽</strong>。低 FFR-CT 組接受更積極的 statin、抗血小板與血運重建，可能削弱自然史風險，使死亡關聯偏小。
+<ul>
+<li>支持：Table 1 的用藥梯度；CV death 與全死因的 HR 普遍較 MI 弱。</li>
+<li>反對：無直接數據可量化。</li>
+</ul>
+</li>
+<li><strong>病人層級混淆</strong>。低 FFR-CT 組心絞痛較多、既往 MI 與心衰竭較多、男性較多，而這些變項（除性別外）都未校正。
+<ul>
+<li>支持：Table 1 的組間差異極大，模型只校正 5 個危險因子。</li>
+<li>反對：MI 的 HR 在校正後只由 5.73 降到 3.13，關聯仍然存在。</li>
+</ul>
+</li>
+</ol>
+<h3>G. 最終裁決</h3>
+<ul>
+<li><strong>整體可信度</strong>：<strong>中（偏低）</strong>。
+<ul>
+<li>「FFR-CT 越低、MI 風險越高」的<strong>描述性關聯</strong>大致可信，但幅度可能被周術期 MI 與斑塊負荷混淆放大。</li>
+<li>「獨立於危險因子與狹窄嚴重度」的宣稱只對 MI 合理成立；對 CV death 與 all-cause death 不穩定。</li>
+<li>0.67 cutoff 與 reclassification 宣稱缺乏支撐。</li>
+<li>多處數字錯誤會降低對整體資料處理品質的信心。</li>
+</ul>
+</li>
+<li><strong>可採用的條件</strong>：已做 FFR-CT 的穩定胸痛病人，以 stenosis-specific ≤0.70 作為強化預防治療的提醒；&gt;0.80 作為低風險的再保證。</li>
+<li><strong>不建議採用的情境</strong>：
+<ul>
+<li>以 FFR-CT 或 0.67 決定血運重建以改善預後。</li>
+<li>為預後目的而額外送 FFR-CT。</li>
+<li>把灰色地帶或 distal-only 異常當作已確立的風險因子。</li>
+<li>引用 revascularization HR 作為預後證據。</li>
+</ul>
+</li>
+<li><strong>最需要的 3 個改進</strong>：
+<ol>
+<li>在 revascularization 時 censor，或排除處置後 30 天內的 MI，並以 time-varying revascularization 處理處置路徑；區分自發性 MI 與周術期 MI。</li>
+<li>加入 quantitative plaque volume 或 CAC 再評估增量價值，並以 internal-external cross-validation 報告 calibration、NRI 與 decision curve。</li>
+<li>0.67 閾值在獨立世代（如 ADVANCE 或其他國家登記資料）做外部驗證，並更正摘要、Table 1 與連續變項 CI 的錯誤（建議期刊發布 erratum）。</li>
+</ol>
+</li>
+<li><strong>一句話結論</strong>：FFR-CT 越低，未來心肌梗塞風險越高，但額外預測力有限，也不能據此決定是否置放支架。</li>
+</ul>
+<hr />
+<p><strong>資料來源</strong></p>
+<ul>
+<li>According to PubMed：
+<ul>
+<li>Fairbairn TA et al. <em>Nat Med</em> 2025 — <a href="https://doi.org/10.1038/s41591-025-03620-y">DOI</a></li>
+<li>Weir-McCall JR et al. SCCT/SCAI FFR-CT consensus. <em>J Cardiovasc Comput Tomogr</em> 2026 — <a href="https://doi.org/10.1016/j.jcct.2026.05.006">DOI</a></li>
+<li>Madsen KT et al. <em>J Cardiovasc Comput Tomogr</em> 2024 — <a href="https://doi.org/10.1016/j.jcct.2024.01.010">DOI</a></li>
+<li>Iraqi N et al. <em>JACC Cardiovasc Imaging</em> 2025 — <a href="https://doi.org/10.1016/j.jcmg.2025.02.009">DOI</a></li>
+<li>van Rosendael SE et al. <em>Am J Cardiol</em> 2023 — <a href="https://doi.org/10.1016/j.amjcard.2023.04.025">DOI</a></li>
+<li>Pundziute-do Prado G et al. <em>J Cardiovasc Comput Tomogr</em> 2022 — <a href="https://doi.org/10.1016/j.jcct.2022.02.007">DOI</a></li>
+</ul>
+</li>
+<li><a href="https://www.diagnosticimaging.com/view/raising-questions-prognostic-value-fractional-flow-reserve-ccta">Cademartiri F. Raising Questions on the Prognostic Value of Fractional Flow Reserve from CCTA – Diagnostic Imaging</a></li>
+<li><a href="https://www.escardio.org/news/press/press-releases/ai-based-tool-predicts-future-cardiovascular-events-in-patients-with-angina/">ESC press release: AI-based tool predicts future cardiovascular events in patients with angina</a></li>
+<li><a href="https://ir.heartflow.com/news-releases/news-release-details/heartflow-ffrct-analysis-delivers-prognostic-power-and">HeartFlow IR news release</a></li>
+<li><a href="https://www.renalandurologynews.com/news/eacvi-coronary-ct-angiography-fractional-flow-reserve-prognostic-in-coronary-artery-disease/">Renal and Urology News: EACVI FFR-CT prognostic</a></li>
+<li><a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC13202077/">Prognostic value of CT-derived FFR for MACE: systematic review and meta-analysis (PMC)</a></li>
+<li><a href="https://www.journalmetrics.org/journal/circulation">Journal Metrics – Circulation</a></li>
+</ul>
+
+<footer class="appraisal-meta">評讀資訊：模型：claude-opus-5-5 (claude)  ·  route：observational  ·  產出時間：2026-10-25 03:48 CST</footer>
+</main>
+</body>
+</html>
