@@ -146,6 +146,9 @@ def _is_usable_pdf_file(path: Path, doi: str) -> bool:
 
     if not _is_pdf(content):
         return False
+    if _is_supplement_pdf(content):
+        logger.debug(f"Existing PDF is a publisher supplement, not the article: {path}")
+        return False
     if doi.startswith("10.1016/") and _is_incomplete_elsevier_pdf(content, doi):
         return False
     return True
@@ -227,6 +230,60 @@ def _is_lww_paywall_pdf(content: bytes) -> bool:
     return _LWW_STUB_PRODUCER_MARKER in content
 
 
+# Publisher supplement files (trial protocol, SAP, supplementary appendix,
+# data-sharing statement) sit on the same landing page as the article PDF and
+# are often linked first. NEJM's retatrutide paper (10.1056/NEJMoa2604169)
+# resolved to an 818-page protocol bundle that way and blew the appraisal
+# size backstop.
+_SUPPLEMENT_URL_RE = re.compile(
+    r"/suppl|suppl_file|supplement|protocol|appendix|data[-_]?sharing|disclosure",
+    re.IGNORECASE,
+)
+
+# Cover-page phrases that mark a supplement rather than the article itself.
+# Only the first few lines are checked: the article's own first page mentions
+# "Supplementary Appendix" in its sidebar, wrapped onto a line of its own.
+_SUPPLEMENT_COVER_LINES = 6
+_SUPPLEMENT_COVER_RE = re.compile(
+    r"^\s*(Protocol for:|Supplementary Appendix|Supplement to:|"
+    r"Supplementary Online Content|Data Sharing Statement|"
+    r"Disclosure Forms?|Statistical Analysis Plan)",
+    re.IGNORECASE | re.MULTILINE,
+)
+
+
+def _is_supplement_url(url: str) -> bool:
+    return bool(_SUPPLEMENT_URL_RE.search(urlparse(url).path))
+
+
+def _is_supplement_pdf(content: bytes) -> bool:
+    """True if the PDF's first page is a publisher supplement cover sheet."""
+    if not _is_pdf(content):
+        return False
+    try:
+        import fitz
+
+        with fitz.open(stream=content, filetype="pdf") as doc:
+            if not doc.page_count:
+                return False
+            first_page = doc[0].get_text()
+    except Exception as e:
+        logger.debug(f"Supplement check could not read PDF: {e}")
+        return False
+    lines = [line for line in first_page.splitlines() if line.strip()]
+    cover = "\n".join(lines[:_SUPPLEMENT_COVER_LINES])
+    return bool(_SUPPLEMENT_COVER_RE.search(cover))
+
+
+def _is_article_pdf(content: bytes) -> bool:
+    """A PDF that is plausibly the article body, not a stub or supplement."""
+    return (
+        _is_pdf(content)
+        and not _is_lww_paywall_pdf(content)
+        and not _is_supplement_pdf(content)
+    )
+
+
 def _is_sports_medicine_article(article: dict) -> bool:
     """Adis/Springer Sports Medicine (Auckland). The s40279 prefix is the
     safe discriminator — both MSSE and BJSM contain "sports medicine" in
@@ -300,7 +357,7 @@ def _try_direct(doi: str, journal: str) -> bytes | None:
     for url in _direct_pdf_urls(doi, journal):
         try:
             resp = _get(url, allow_redirects=True)
-            if resp.status_code == 200 and _is_pdf(resp.content):
+            if resp.status_code == 200 and _is_article_pdf(resp.content):
                 logger.debug(f"Direct PDF hit: {url}")
                 return resp.content
         except Exception as e:
@@ -2148,7 +2205,7 @@ def _try_doi_redirect(doi: str) -> bytes | None:
     try:
         resp = _get(f"https://doi.org/{doi}", allow_redirects=True)
         resp.raise_for_status()
-        if _is_pdf(resp.content):
+        if _is_article_pdf(resp.content):
             return resp.content
 
         final_url = resp.url
@@ -2162,8 +2219,10 @@ def _try_doi_redirect(doi: str) -> bytes | None:
         if pdf_url:
             pdf_resp = _get(pdf_url, allow_redirects=True)
             pdf_resp.raise_for_status()
-            if _is_pdf(pdf_resp.content):
+            if _is_article_pdf(pdf_resp.content):
                 return pdf_resp.content
+            if _is_supplement_pdf(pdf_resp.content):
+                logger.debug(f"DOI redirect for {doi} led to a supplement: {pdf_url}")
     except Exception as e:
         logger.debug(f"DOI redirect failed for {doi}: {e}")
     return None
@@ -2184,11 +2243,18 @@ def _find_pdf_link(html: str, base: str, page_url: str) -> str | None:
         m = re.search(r'content=["\']([^"\']+)["\'][^>]*citation_pdf_url', html)
     if m:
         url = m.group(1)
-        if url.startswith("http") and not _is_lww_stub_url(url):
+        if (
+            url.startswith("http")
+            and not _is_lww_stub_url(url)
+            and not _is_supplement_url(url)
+        ):
             return url
 
-    # 2. href patterns
+    # 2. href patterns. Atypon's /doi/pdf/ (NEJM, AHA, JACC) is the article
+    # PDF itself, so it outranks the generic ".pdf" match that would otherwise
+    # pick up a protocol or appendix linked earlier on the page.
     patterns = [
+        r'href=["\']([^"\']*/doi/pdf/[^"\']*)["\']',
         r'href=["\']([^"\']*\.pdf[^"\']*)["\']',
         r'href=["\']([^"\']*[Pp][Dd][Ff][^"\']*)["\']',
         r'href=["\']([^"\']*/pdf/[^"\']*)["\']',
@@ -2196,7 +2262,7 @@ def _find_pdf_link(html: str, base: str, page_url: str) -> str | None:
     ]
     for pattern in patterns:
         for match in re.findall(pattern, html):
-            if _is_lww_stub_url(match):
+            if _is_lww_stub_url(match) or _is_supplement_url(match):
                 continue
             if match.startswith("http"):
                 return match
