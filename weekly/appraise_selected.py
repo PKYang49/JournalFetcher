@@ -984,12 +984,13 @@ def appraise_pdf(article: dict, pdf_path: Path, out_dir: Path) -> Path | None:
         article["appraisal_route_source"] = source
         print(f"  [classify] route={route} (source={source})")
 
-    # Record-only: fetch, classify and size the supplements so their inline
-    # caps can be set from real data. Nothing from them reaches the prompt yet,
-    # and a failure here must never block the appraisal itself.
-    if supplements.supplement_logging_enabled():
+    # Fetch, classify and size the supplements (also logged, to keep tuning
+    # the inline caps). They are packaged into the prompt further down; a
+    # failure here must never block the appraisal itself.
+    supplement_record: dict | None = None
+    if supplements.supplement_logging_enabled() or supplements.supplement_appraisal_enabled():
         try:
-            supplements.record_supplements(
+            supplement_record = supplements.record_supplements(
                 article,
                 main_pdf=pdf_path,
                 route=route,
@@ -1050,13 +1051,44 @@ def appraise_pdf(article: dict, pdf_path: Path, out_dir: Path) -> Path | None:
                     + "\n"
                 )
 
+        supplement_ctx: supplements.SupplementContext | None = None
+        if supplement_record is not None and supplements.supplement_appraisal_enabled():
+            try:
+                supplement_ctx = supplements.build_supplement_context(
+                    supplement_record,
+                    route=route,
+                    budget_chars=ARTICLE_CHAR_BACKSTOP - len(article_markdown),
+                    convert=_convert_pdf_to_markdown,
+                    image_dir=figure_dir,
+                )
+            except Exception as e:
+                print(f"  [warn] supplement packaging failed: {e}", file=sys.stderr)
+            if supplement_ctx is not None:
+                print(
+                    f"  [supplements] inline={len(supplement_ctx.inlined)} "
+                    f"read-only={len(supplement_ctx.read_only)} "
+                    f"images={len(supplement_ctx.image_paths)}"
+                )
+                user_prompt = user_prompt.rstrip() + "\n\n" + supplement_ctx.prompt_block + "\n"
+                article["appraisal_supplements"] = {
+                    "inline": supplement_ctx.inlined,
+                    "read_only": supplement_ctx.read_only,
+                    "images": len(supplement_ctx.image_paths),
+                }
+        supplement_images = supplement_ctx.image_paths if supplement_ctx else []
+        image_paths = figure_paths + supplement_images
+
         # Give claude Read access to the references dir only when this route
-        # actually has corresponding JAMA guides. Figure pages, when enabled,
-        # are added as a separate temporary Read directory. Codex receives the
-        # same figures via explicit `-i <path>` flags.
+        # actually has corresponding JAMA guides. Figure pages (article and
+        # supplement), when enabled, are added as a separate temporary Read
+        # directory; on-demand supplement text files get their own. Codex
+        # receives the same images via explicit `-i <path>` flags and reads
+        # the supplement text files through its read-only shell.
         read_dirs = [REFERENCES_DIR] if references_block else []
-        if figure_dir is not None and figure_paths:
+        if figure_dir is not None and image_paths:
             read_dirs.append(figure_dir)
+        if supplement_ctx is not None and supplement_ctx.read_dir is not None:
+            read_dirs.append(supplement_ctx.read_dir)
 
         # Editorial full-text fetch: expose the dlbydoi-backed helper so the
         # backend can read paywalled same-issue editorials it finds during the
@@ -1102,7 +1134,7 @@ def appraise_pdf(article: dict, pdf_path: Path, out_dir: Path) -> Path | None:
                 user_prompt,
                 read_dirs=read_dirs or None,
                 has_references=bool(references_block),
-                image_paths=figure_paths or None,
+                image_paths=image_paths or None,
                 bash_commands=bash_commands,
                 claude_extra=claude_extra,
                 codex_extra=codex_extra,

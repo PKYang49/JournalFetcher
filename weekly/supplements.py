@@ -1,14 +1,19 @@
-"""Fetch, classify and measure an article's supplementary files (record-only).
+"""Fetch, classify, measure and package an article's supplementary files.
 
-This is the measurement phase for feeding supplements into appraisal: every
-appraised article gets its supplements downloaded, classified (appendix /
-protocol / data_sharing / disclosure / unknown) and sized, and one line is
-appended to SUPPLEMENT_LOG. Nothing here is sent to the model yet — the logged
-page / char / figure-page counts are what the inline caps will be set from.
+Every appraised article gets its supplements downloaded, classified
+(appendix / protocol / data_sharing / disclosure / collaborators / unknown)
+and sized; one line per article goes to SUPPLEMENT_LOG. `build_supplement_
+context` then turns them into appraisal input:
 
-Files are kept under output/supplements/<key>/ with a manifest.json, so a later
-phase can reuse them without hitting the publisher again, and a re-run of the
-same appraisal skips the fetch.
+- appendix → converted to markdown and inlined in the user prompt, within
+  SUPPLEMENT_INLINE_CHAR_CAP and the article backstop; its labelled eFigure
+  pages and unparsed eTable pages are rendered under their own image budget.
+- protocol / SAP / unknown, and any appendix over the cap → page-marked text
+  file the model reads on demand (claude Read, codex rg/sed).
+- disclosure / data_sharing / collaborators → dropped.
+
+Files are kept under output/supplements/<key>/ with a manifest.json, so a
+re-run of the same appraisal reuses them without hitting the publisher.
 
     python3 -m weekly.supplements --doi 10.1056/NEJMoa2608397
     python3 -m weekly.supplements --doi <DOI> --pdf output/pdfs/x.pdf --force
@@ -22,6 +27,7 @@ import os
 import re
 import shutil
 import time
+from collections.abc import Callable
 from dataclasses import asdict, dataclass
 from datetime import datetime, timezone
 from pathlib import Path
@@ -31,22 +37,69 @@ import fitz  # PyMuPDF
 
 from modules.downloader import _get, _is_pdf, classify_supplement
 from modules.ego_browser import fetch_supplements_via_ego
-from weekly.figure_extract import count_figure_pages
+from weekly.figure_extract import (
+    _SUPP_FIGURE_CAPTION_RE,
+    _SUPP_TABLE_CAPTION_RE,
+    count_figure_pages,
+    extract_supplement_pages,
+)
 
 SUPPLEMENT_DIR = Path("output/supplements")
 SUPPLEMENT_LOG = Path("output/logs/supplements.jsonl")
 
-# Unique supplement figure / table labels: "eFigure 3", "Figure S3",
-# "Supplementary Table 2", "eTable 12". Counted as distinct labels, since a
-# label is repeated in the table of contents and in running text.
-_SUPP_FIGURE_RE = re.compile(
-    r"^\s*((?:e|Supplementa(?:l|ry)\s+)?(?:Figure|Fig\.?)\s*S?\d+)",
-    re.IGNORECASE | re.MULTILINE,
+# Inline budget for appendix markdown. First two measured appendices were
+# 61k (JAMA) and 76k (NEJM) chars, about the size of the article itself, so
+# 400k (~100k tokens) leaves room for SR/NMA appendices with long search
+# strategies and RoB tables. Over the cap the appendix is offered for Read
+# instead — never truncated, for the same reason as ARTICLE_CHAR_BACKSTOP.
+SUPPLEMENT_INLINE_CHAR_CAP = int(
+    os.getenv("JOURNAL_FETCHER_SUPPLEMENT_INLINE_CHARS", "400000")
 )
-_SUPP_TABLE_RE = re.compile(
-    r"^\s*((?:e|Supplementa(?:l|ry)\s+)?Table\s*S?\d+)",
-    re.IGNORECASE | re.MULTILINE,
+# Image budget for supplement pages, separate from the article's own figure
+# budget so a figure-heavy appendix cannot crowd out the main figures.
+SUPPLEMENT_MAX_IMAGE_PAGES = int(
+    os.getenv("JOURNAL_FETCHER_SUPPLEMENT_MAX_IMAGES", "8")
 )
+_DROPPED_KINDS = frozenset({"disclosure", "data_sharing", "collaborators"})
+# Guideline supplements are evidence tables running to hundreds of pages;
+# offer them for lookup rather than inlining.
+_READ_ONLY_APPENDIX_ROUTES = frozenset({"cpg", "consensus"})
+
+_KIND_LABELS = {
+    "appendix": "Supplementary Appendix",
+    "protocol": "Protocol / Statistical Analysis Plan",
+    "unknown": "其他 supplement",
+}
+
+SUPPLEMENT_CONTEXT = """\
+本文 supplement（程式已從出版社頁面下載並分類；disclosure、data sharing、
+研究者名單已排除）：
+
+{sections}
+
+使用規則：
+- Supplementary appendix 是評讀證據的一部分：subgroup、sensitivity、
+  per-protocol / as-treated、missing data 處理、eTable 的 baseline 與次要結果，
+  與正文結論相關時要納入，並標注出處（例如 [Supplement eTable 3]）。
+- 正文與 supplement 數字不一致時要明說。
+- 標為「按需讀取」的檔案不在 prompt 內，請用 Read 工具（或 shell 的 rg / sed）
+  讀取相關段落，不要逐頁讀完。檔內以「=== page N ===」標頁碼。
+- 有 Protocol / SAP 時，至少查核：事前登錄的 primary outcome 與正文是否一致
+  （outcome switching）、樣本數計算假設、事前指定的分析族群與 subgroup，
+  以及正文分析是否偏離 SAP；引用時標注 [Protocol p.N] 或 [SAP p.N]。
+- 只根據實際讀到的內容評讀；某檔讀不到就明說，不要臆測。
+"""
+
+
+@dataclass(frozen=True)
+class SupplementContext:
+    """What one article's supplements contribute to the appraisal call."""
+
+    prompt_block: str
+    read_dir: Path | None
+    image_paths: list[Path]
+    inlined: list[str]
+    read_only: list[str]
 
 _ZIP_MAGIC = b"PK\x03\x04"
 
@@ -73,10 +126,19 @@ class SupplementFile:
     error: str | None
 
 
-def supplement_logging_enabled() -> bool:
-    """Read JOURNAL_FETCHER_SUPPLEMENT_LOG; default on (record-only, no model input)."""
-    raw = os.getenv("JOURNAL_FETCHER_SUPPLEMENT_LOG", "1").strip().lower()
+def _env_flag(name: str) -> bool:
+    raw = os.getenv(name, "1").strip().lower()
     return raw not in ("0", "false", "no", "off", "")
+
+
+def supplement_logging_enabled() -> bool:
+    """Read JOURNAL_FETCHER_SUPPLEMENT_LOG; default on (fetch + log)."""
+    return _env_flag("JOURNAL_FETCHER_SUPPLEMENT_LOG")
+
+
+def supplement_appraisal_enabled() -> bool:
+    """Read JOURNAL_FETCHER_APPRAISAL_SUPPLEMENT; default on (feed the model)."""
+    return _env_flag("JOURNAL_FETCHER_APPRAISAL_SUPPLEMENT")
 
 
 def _article_key(article: dict) -> str:
@@ -104,8 +166,8 @@ def _pdf_metrics(path: Path) -> dict[str, int]:
         "pages": pages,
         "text_chars": len(text),
         "figure_pages": count_figure_pages(path),
-        "figure_labels": len({m.lower() for m in _SUPP_FIGURE_RE.findall(text)}),
-        "table_labels": len({m.lower() for m in _SUPP_TABLE_RE.findall(text)}),
+        "figure_labels": len({m.lower() for m in _SUPP_FIGURE_CAPTION_RE.findall(text)}),
+        "table_labels": len({m.lower() for m in _SUPP_TABLE_CAPTION_RE.findall(text)}),
     }
 
 
@@ -203,10 +265,10 @@ def record_supplements(
 ) -> dict | None:
     """Fetch + classify + measure supplements for one article and log them.
 
-    Returns the logged record, or None when the article has no DOI or was
-    already recorded (manifest present). A failed ego run, or one that left
-    any file unfetched, is logged but writes no manifest, so the next
-    appraisal of the same article tries again.
+    Returns the record — freshly logged, or the cached manifest when this
+    article was already fetched — or None when the article has no DOI. A
+    failed ego run, or one that left any file unfetched, is logged but writes
+    no manifest, so the next appraisal of the same article tries again.
     """
     doi = article.get("doi")
     if not doi:
@@ -214,8 +276,8 @@ def record_supplements(
     out_dir = SUPPLEMENT_DIR / _article_key(article)
     manifest = out_dir / "manifest.json"
     if manifest.exists():
-        print(f"  [supplements] already recorded: {manifest}")
-        return None
+        print(f"  [supplements] reusing {manifest}")
+        return json.loads(manifest.read_text(encoding="utf-8"))
 
     started = time.monotonic()
     scan = fetch_supplements_via_ego(f"https://doi.org/{doi}", out_dir)
@@ -252,6 +314,101 @@ def record_supplements(
     ) or "none"
     print(f"  [supplements] {record['status']} ({record['elapsed_s']}s): {kinds}")
     return record
+
+
+def _page_marked_text(pdf_path: Path) -> Path:
+    """Write (once) a plain-text copy with page markers for on-demand reads.
+
+    Plain fitz text rather than pymupdf4llm: protocol bundles run to hundreds
+    of pages, and the model only greps them for specific sections.
+    """
+    out = pdf_path.with_suffix(".txt")
+    if not out.exists():
+        with fitz.open(pdf_path) as doc:
+            parts = [f"=== page {page.number + 1} ===\n{page.get_text()}" for page in doc]
+        out.write_text("\n".join(parts), encoding="utf-8")
+    return out
+
+
+def _describe(f: dict) -> str:
+    label = _KIND_LABELS.get(f["kind"], f["kind"])
+    pages = f"，{f['pages']} 頁" if f.get("pages") else ""
+    return f"{label}（{Path(f['path']).name}{pages}）"
+
+
+def build_supplement_context(
+    record: dict,
+    *,
+    route: str | None,
+    budget_chars: int,
+    convert: Callable[[Path], tuple[str, frozenset[int]]],
+    image_dir: Path | None,
+) -> SupplementContext | None:
+    """Package a supplement record as prompt text, a Read dir and images.
+
+    `budget_chars` is what the article backstop leaves after the main text;
+    the inline cap is the smaller of it and SUPPLEMENT_INLINE_CHAR_CAP.
+    `convert` is the appraisal's own PDF→markdown pass (reference stripping,
+    table-survival detection), passed in to avoid a circular import.
+    Supplement page images are rendered into `image_dir` (the appraisal's
+    figure temp dir); None skips them. Returns None when nothing usable
+    remains after dropping disclosure / data-sharing / roster files.
+    """
+    remaining = min(SUPPLEMENT_INLINE_CHAR_CAP, budget_chars)
+    sections: list[str] = []
+    read_only: list[str] = []
+    inlined: list[str] = []
+    images: list[Path] = []
+    read_dir: Path | None = None
+
+    for f in record.get("files", []):
+        if f.get("format") != "pdf" or not f.get("path") or f["kind"] in _DROPPED_KINDS:
+            continue
+        path = Path(f["path"]).resolve()
+        if not path.exists():
+            continue
+
+        if f["kind"] == "appendix" and route not in _READ_ONLY_APPENDIX_ROUTES:
+            markdown, parsed_tables = convert(path)
+            if len(markdown) <= remaining:
+                remaining -= len(markdown)
+                inlined.append(path.name)
+                sections.append(f"### {_describe(f)}\n\n{markdown}")
+                if image_dir is not None:
+                    images += extract_supplement_pages(
+                        path,
+                        image_dir,
+                        prefix=path.stem,
+                        max_pages=SUPPLEMENT_MAX_IMAGE_PAGES - len(images),
+                        parsed_table_pages=parsed_tables,
+                    )
+                continue
+            print(
+                f"  [supplements] {path.name}: {len(markdown):,} chars over the "
+                f"{remaining:,}-char inline budget; offering for Read instead"
+            )
+
+        text_path = _page_marked_text(path)
+        read_dir = text_path.parent
+        read_only.append(text_path.name)
+        sections.append(f"### {_describe(f)}——按需讀取\n\n檔案：{text_path}")
+
+    if not sections:
+        return None
+    if images:
+        listing = "\n".join(f"- {p.name}" for p in images)
+        sections.append(
+            f"### Supplement 圖頁（{len(images)} 張 PNG，位於 {image_dir}）\n\n"
+            f"{listing}\n\n這些是 supplement 的 eFigure，以及未能轉成文字表格的 eTable "
+            f"頁面。請用 Read 讀取並判讀，與上方 appendix 文字對照；看不清楚就明說。"
+        )
+    return SupplementContext(
+        prompt_block=SUPPLEMENT_CONTEXT.format(sections="\n\n".join(sections)),
+        read_dir=read_dir,
+        image_paths=images,
+        inlined=inlined,
+        read_only=read_only,
+    )
 
 
 def main() -> None:

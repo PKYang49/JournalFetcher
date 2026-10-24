@@ -247,3 +247,75 @@ def extract_figure_pages(
             pix.save(out)
             saved.append(out)
     return saved
+
+
+# Supplement figure / table captions: "eFigure 3", "Figure S3",
+# "Supplementary Figure 2". The main-article caption regex deliberately does
+# not match these, so supplements get their own selection rule.
+_SUPP_FIGURE_CAPTION_RE = re.compile(
+    r"^\s*((?:e|Supplementa(?:l|ry)\s+)(?:Figure|Fig\.?)\s*S?\d+|(?:Figure|Fig\.?)\s*S\d+)",
+    re.IGNORECASE | re.MULTILINE,
+)
+_SUPP_TABLE_CAPTION_RE = re.compile(
+    r"^\s*((?:e|Supplementa(?:l|ry)\s+)Table\s*S?\d+|Table\s*S\d+)",
+    re.IGNORECASE | re.MULTILINE,
+)
+# A page naming more distinct labels than this is a table of contents, not a
+# figure or table page — supplements open with one listing every eFigure.
+_SUPP_TOC_LABELS = 3
+
+
+def extract_supplement_pages(
+    pdf_path: Path,
+    out_dir: Path,
+    *,
+    prefix: str,
+    max_pages: int,
+    parsed_table_pages: Collection[int],
+    zoom: float = DEFAULT_ZOOM,
+) -> list[Path]:
+    """Render a supplement's labelled figure pages, then its unparsed tables.
+
+    Supplements are mostly tables with ruling lines, which the main-article
+    drawing-count rule reads as figures (a 43-page NEJM appendix had 15
+    "figure" pages for 4 figures). Here a figure page must carry an
+    eFigure / Figure S caption *and* pass the figure check; a table page is
+    rendered only when its eTable did not survive PDF→markdown
+    (`parsed_table_pages`, 1-indexed). Figures take the budget first.
+    Files are named `<prefix>_page_NNN.png`.
+    """
+    if max_pages <= 0:
+        return []
+    out_dir.mkdir(parents=True, exist_ok=True)
+    figures: list[int] = []
+    tables: list[int] = []
+    with fitz.open(pdf_path) as doc:
+        for page in doc:
+            text = page.get_text()
+            figure_labels = {m.lower() for m in _SUPP_FIGURE_CAPTION_RE.findall(text)}
+            table_labels = {m.lower() for m in _SUPP_TABLE_CAPTION_RE.findall(text)}
+            if len(figure_labels) + len(table_labels) > _SUPP_TOC_LABELS:
+                continue
+            if figure_labels and _is_figure_page(
+                doc,
+                page,
+                min_dim=DEFAULT_MIN_DIM,
+                min_drawings=DEFAULT_MIN_DRAWINGS,
+                min_caption_drawings=DEFAULT_MIN_CAPTION_DRAWINGS,
+                min_caption_coverage=DEFAULT_MIN_CAPTION_COVERAGE,
+            ):
+                figures.append(page.number)
+            elif table_labels and page.number + 1 not in parsed_table_pages:
+                tables.append(page.number)
+
+        selected = sorted((figures + tables)[:max_pages])
+        saved: list[Path] = []
+        mat = fitz.Matrix(zoom, zoom)
+        for page_no in selected:
+            pix = doc[page_no].get_pixmap(matrix=mat)
+            if pix.n - pix.alpha >= 4:
+                pix = fitz.Pixmap(fitz.csRGB, pix)
+            out = out_dir / f"{prefix}_page_{page_no + 1:03d}.png"
+            pix.save(out)
+            saved.append(out)
+    return saved
