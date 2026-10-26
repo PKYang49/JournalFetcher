@@ -1,16 +1,17 @@
 """Fetch, classify, measure and package an article's supplementary files.
 
 Every appraised article gets its supplements downloaded, classified
-(appendix / protocol / data_sharing / disclosure / collaborators / unknown)
-and sized; one line per article goes to SUPPLEMENT_LOG. `build_supplement_
+(appendix / protocol / data_sharing / disclosure / collaborators / checklist
+/ unknown) and sized; one line per article goes to SUPPLEMENT_LOG. `build_supplement_
 context` then turns them into appraisal input:
 
-- appendix → converted to markdown and inlined in the user prompt, within
-  SUPPLEMENT_INLINE_CHAR_CAP and the article backstop; its labelled eFigure
-  pages and unparsed eTable pages are rendered under their own image budget.
-- protocol / SAP / unknown, and any appendix over the cap → page-marked text
-  file the model reads on demand (claude Read, codex rg/sed).
-- disclosure / data_sharing / collaborators → dropped.
+- appendix (PDF or docx) → converted to markdown and inlined in the user
+  prompt, within SUPPLEMENT_INLINE_CHAR_CAP and the article backstop; its
+  labelled eFigure pages and unparsed eTable pages (PDF) or embedded images
+  (docx) go in under their own image budget.
+- protocol / SAP / unknown, any appendix over the cap, and every xlsx →
+  text file the model reads on demand (claude Read, codex rg/sed).
+- disclosure / data_sharing / collaborators / checklist → dropped.
 
 Files are kept under output/supplements/<key>/ with a manifest.json, so a
 re-run of the same appraisal reuses them without hitting the publisher.
@@ -22,6 +23,7 @@ re-run of the same appraisal reuses them without hitting the publisher.
 from __future__ import annotations
 
 import argparse
+import io
 import json
 import os
 import re
@@ -34,8 +36,11 @@ from pathlib import Path
 from urllib.parse import urlparse
 
 import fitz  # PyMuPDF
+import mammoth
+import openpyxl
+from markdownify import markdownify
 
-from modules.downloader import _get, _is_pdf, classify_supplement
+from modules.downloader import _get, _is_pdf, classify_supplement, classify_supplement_text
 from modules.ego_browser import fetch_supplements_via_ego
 from weekly.figure_extract import (
     _SUPP_FIGURE_CAPTION_RE,
@@ -60,7 +65,11 @@ SUPPLEMENT_INLINE_CHAR_CAP = int(
 SUPPLEMENT_MAX_IMAGE_PAGES = int(
     os.getenv("JOURNAL_FETCHER_SUPPLEMENT_MAX_IMAGES", "8")
 )
-_DROPPED_KINDS = frozenset({"disclosure", "data_sharing", "collaborators"})
+_DROPPED_KINDS = frozenset({"disclosure", "data_sharing", "collaborators", "checklist"})
+_USABLE_FORMATS = frozenset({"pdf", "docx", "xlsx"})
+# Embedded docx images the appraisal models can read; EMF/WMF/TIFF are skipped.
+_DOCX_IMAGE_TYPES = {"image/png": "png", "image/jpeg": "jpg"}
+_EMPTY_IMAGE_RE = re.compile(r"!\[([^\]]*)\]\(\)")
 # Guideline supplements are evidence tables running to hundreds of pages;
 # offer them for lookup rather than inlining.
 _READ_ONLY_APPENDIX_ROUTES = frozenset({"cpg", "consensus"})
@@ -73,7 +82,7 @@ _KIND_LABELS = {
 
 SUPPLEMENT_CONTEXT = """\
 本文 supplement（程式已從出版社頁面下載並分類；disclosure、data sharing、
-研究者名單已排除）：
+研究者名單、reporting checklist 已排除）：
 
 {sections}
 
@@ -83,7 +92,8 @@ SUPPLEMENT_CONTEXT = """\
   與正文結論相關時要納入，並標注出處（例如 [Supplement eTable 3]）。
 - 正文與 supplement 數字不一致時要明說。
 - 標為「按需讀取」的檔案不在 prompt 內，請用 Read 工具（或 shell 的 rg / sed）
-  讀取相關段落，不要逐頁讀完。檔內以「=== page N ===」標頁碼。
+  讀取相關段落，不要逐頁讀完。檔內以「=== page N ===」標頁碼；
+  試算表以「=== sheet 名稱 ===」分隔工作表，欄位以 tab 分隔。
 - 有 Protocol / SAP 時，至少查核：事前登錄的 primary outcome 與正文是否一致
   （outcome switching）、樣本數計算假設、事前指定的分析族群與 subgroup，
   以及正文分析是否偏離 SAP；引用時標注 [Protocol p.N] 或 [SAP p.N]。
@@ -206,7 +216,12 @@ def _materialize(index: int, link, out_dir: Path) -> SupplementFile:
         )
 
     fmt = _sniff_format(content, link.url)
-    kind = classify_supplement(content, link.url)
+    docx_text = _docx_raw_text(content) if fmt == "docx" else None
+    kind = (
+        classify_supplement_text(docx_text, link.url)
+        if fmt == "docx"
+        else classify_supplement(content, link.url)
+    )
     dest = out_dir / f"supp_{index:02d}_{kind}.{fmt}"
     dest.write_bytes(content)
     if link.path is not None and link.path != dest:
@@ -220,6 +235,8 @@ def _materialize(index: int, link, out_dir: Path) -> SupplementFile:
             metrics.update(_pdf_metrics(dest))
         except Exception as e:
             error = f"measure_failed: {e}"
+    elif fmt == "docx" and docx_text is not None:
+        metrics["text_chars"] = len(docx_text)
     elif fmt == "html":
         # A challenge / login page came back instead of the file.
         error = error or "got_html"
@@ -228,6 +245,15 @@ def _materialize(index: int, link, out_dir: Path) -> SupplementFile:
         url=link.url, link_text=link.text, kind=kind, format=fmt, source=source,
         bytes=len(content), path=str(dest), error=error, **metrics,
     )
+
+
+def _docx_raw_text(content: bytes) -> str | None:
+    """Plain body text of a docx, for classification and sizing."""
+    try:
+        return mammoth.extract_raw_text(io.BytesIO(content)).value
+    except Exception as e:
+        print(f"  [warn] supplement docx unreadable: {e}")
+        return None
 
 
 def _main_metrics(pdf_path: Path | None, markdown_chars: int | None) -> dict:
@@ -330,6 +356,65 @@ def _page_marked_text(pdf_path: Path) -> Path:
     return out
 
 
+def _docx_to_markdown(
+    docx_path: Path, image_dir: Path | None, *, max_images: int
+) -> tuple[str, list[Path]]:
+    """Convert a docx to markdown, saving up to `max_images` embedded PNG /
+    JPEG images (in document order) into `image_dir` and pointing the
+    markdown at them by file name. Images past the budget, or of formats
+    the models cannot read, become a text placeholder."""
+    saved: list[Path] = []
+    seen = 0
+
+    def convert_image(image) -> dict[str, str]:
+        nonlocal seen
+        seen += 1
+        ext = _DOCX_IMAGE_TYPES.get(image.content_type)
+        if image_dir is None or ext is None or len(saved) >= max_images:
+            return {"alt": f"內嵌圖 {seen}：未附"}
+        dest = image_dir / f"{docx_path.stem}_img_{len(saved) + 1:02d}.{ext}"
+        with image.open() as stream:
+            dest.write_bytes(stream.read())
+        saved.append(dest)
+        return {"src": dest.name, "alt": f"內嵌圖 {seen}"}
+
+    with docx_path.open("rb") as fh:
+        html = mammoth.convert_to_html(
+            fh, convert_image=mammoth.images.img_element(convert_image)
+        ).value
+    # An <img> without src comes out as "![alt]()"; leave just the label.
+    markdown = _EMPTY_IMAGE_RE.sub(r"[\1]", markdownify(html, heading_style="ATX"))
+    return markdown, saved
+
+
+def _docx_text_file(docx_path: Path) -> Path:
+    """Write (once) the docx as markdown, without images, for on-demand reads."""
+    out = docx_path.with_suffix(".md")
+    if not out.exists():
+        markdown, _ = _docx_to_markdown(docx_path, None, max_images=0)
+        out.write_text(markdown, encoding="utf-8")
+    return out
+
+
+def _sheet_text_file(xlsx_path: Path) -> Path:
+    """Write (once) every worksheet as tab-separated text with sheet markers."""
+    out = xlsx_path.with_suffix(".txt")
+    if not out.exists():
+        workbook = openpyxl.load_workbook(xlsx_path, read_only=True, data_only=True)
+        try:
+            parts = []
+            for sheet in workbook.worksheets:
+                rows = (
+                    "\t".join("" if v is None else str(v) for v in row).rstrip("\t")
+                    for row in sheet.iter_rows(values_only=True)
+                )
+                parts.append(f"=== sheet {sheet.title} ===\n" + "\n".join(r for r in rows if r))
+        finally:
+            workbook.close()
+        out.write_text("\n".join(parts), encoding="utf-8")
+    return out
+
+
 def _describe(f: dict) -> str:
     label = _KIND_LABELS.get(f["kind"], f["kind"])
     pages = f"，{f['pages']} 頁" if f.get("pages") else ""
@@ -362,33 +447,53 @@ def build_supplement_context(
     read_dir: Path | None = None
 
     for f in record.get("files", []):
-        if f.get("format") != "pdf" or not f.get("path") or f["kind"] in _DROPPED_KINDS:
+        fmt = f.get("format")
+        if fmt not in _USABLE_FORMATS or not f.get("path") or f["kind"] in _DROPPED_KINDS:
             continue
         path = Path(f["path"]).resolve()
         if not path.exists():
             continue
 
-        if f["kind"] == "appendix" and route not in _READ_ONLY_APPENDIX_ROUTES:
-            markdown, parsed_tables = convert(path)
+        if (
+            fmt != "xlsx"
+            and f["kind"] == "appendix"
+            and route not in _READ_ONLY_APPENDIX_ROUTES
+        ):
+            image_budget = SUPPLEMENT_MAX_IMAGE_PAGES - len(images)
+            docx_images: list[Path] = []
+            if fmt == "pdf":
+                markdown, parsed_tables = convert(path)
+            else:
+                markdown, docx_images = _docx_to_markdown(
+                    path, image_dir, max_images=image_budget
+                )
             if len(markdown) <= remaining:
                 remaining -= len(markdown)
                 inlined.append(path.name)
                 sections.append(f"### {_describe(f)}\n\n{markdown}")
-                if image_dir is not None:
+                if fmt == "pdf" and image_dir is not None:
                     images += extract_supplement_pages(
                         path,
                         image_dir,
                         prefix=path.stem,
-                        max_pages=SUPPLEMENT_MAX_IMAGE_PAGES - len(images),
+                        max_pages=image_budget,
                         parsed_table_pages=parsed_tables,
                     )
+                images += docx_images
                 continue
+            for image in docx_images:
+                image.unlink(missing_ok=True)
             print(
                 f"  [supplements] {path.name}: {len(markdown):,} chars over the "
                 f"{remaining:,}-char inline budget; offering for Read instead"
             )
 
-        text_path = _page_marked_text(path)
+        if fmt == "pdf":
+            text_path = _page_marked_text(path)
+        elif fmt == "docx":
+            text_path = _docx_text_file(path)
+        else:
+            text_path = _sheet_text_file(path)
         read_dir = text_path.parent
         read_only.append(text_path.name)
         sections.append(f"### {_describe(f)}——按需讀取\n\n檔案：{text_path}")
@@ -399,8 +504,9 @@ def build_supplement_context(
         listing = "\n".join(f"- {p.name}" for p in images)
         sections.append(
             f"### Supplement 圖頁（{len(images)} 張 PNG，位於 {image_dir}）\n\n"
-            f"{listing}\n\n這些是 supplement 的 eFigure，以及未能轉成文字表格的 eTable "
-            f"頁面。請用 Read 讀取並判讀，與上方 appendix 文字對照；看不清楚就明說。"
+            f"{listing}\n\n這些是 supplement 的 eFigure、未能轉成文字表格的 eTable 頁面，"
+            f"或 docx appendix 的內嵌圖（文中以檔名標示位置）。請用 Read 讀取並判讀，"
+            f"與上方 appendix 文字對照；看不清楚就明說。"
         )
     return SupplementContext(
         prompt_block=SUPPLEMENT_CONTEXT.format(sections="\n\n".join(sections)),

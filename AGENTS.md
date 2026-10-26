@@ -184,13 +184,14 @@ appraisal.md → render.publish_appraisals → docs/<pmid>.html → git push →
   - **Local-only**：`references/jamaevidence/` 跟 `references/index.md` 在 `.gitignore`，本機沒這目錄時 helper 自動 return ""（graceful degradation）
 - **Supplement（2026-10-24 起）**：`weekly/supplements.py`，classify 後執行，失敗只 warn、不擋評讀。
   - 抓取：`ego_browser.fetch_supplements_via_ego` 開一次文章頁、收集 supplement 連結、頁內逐檔 fetch；遇 Cloudflare challenge（NEJM `suppl_file`）改導覽到檔案再抓，CDN 擋 CORS 的改從 Python 抓。存到 `output/supplements/<pmid>/`，全部檔案都抓到才寫 `manifest.json` 快取；每篇一行記到 `output/logs/supplements.jsonl`。
-  - 分類（`downloader.classify_supplement`，封面優先、URL 次之）→ 處理方式：
-    - `appendix` → pymupdf4llm 轉 markdown **直接放進 user prompt**，上限 `JOURNAL_FETCHER_SUPPLEMENT_INLINE_CHARS`（預設 400k），且正文 + appendix 不超過 backstop；超過就改按需讀取，不截斷。cpg / consensus 的 appendix 一律按需讀取（多是幾百頁 evidence table）。
+  - 分類（`downloader.classify_supplement`，PDF 看首頁、docx 看正文開頭，封面優先、URL 次之）→ 處理方式：
+    - `appendix`（PDF 或 docx）→ PDF 用 pymupdf4llm、docx 用 mammoth + markdownify 轉 markdown，**直接放進 user prompt**，上限 `JOURNAL_FETCHER_SUPPLEMENT_INLINE_CHARS`（預設 400k），且正文 + appendix 不超過 backstop；超過就改按需讀取，不截斷。cpg / consensus 的 appendix 一律按需讀取（多是幾百頁 evidence table）。
     - `protocol`（含 SAP）/ `unknown` → 寫成帶 `=== page N ===` 標記的 `.txt`，**按需讀取**（claude `--add-dir` + Read；codex 用 rg / sed），prompt 要求查核 outcome switching、樣本數假設、事前指定分析。
-    - `disclosure` / `data_sharing` / `collaborators` → 丟棄。
-  - 圖頁：`figure_extract.extract_supplement_pages`，**獨立額度** `JOURNAL_FETCHER_SUPPLEMENT_MAX_IMAGES`（預設 8），只取有 `eFigure` / `Figure S` caption 的圖頁，再補沒轉成 markdown 表格的 `eTable` 頁；同頁超過 3 個 label 視為目錄頁跳過。正文的圖頁規則不適用（supplement 表格格線會被誤判成圖）。
+    - `xlsx`（不論分類）→ openpyxl 轉成 tab 分隔、帶 `=== sheet 名稱 ===` 標記的 `.txt`，按需讀取（多是逐變異 / 逐病人大表）。
+    - `disclosure` / `data_sharing` / `collaborators` / `checklist`（STROBE、CONSORT 等 reporting checklist）→ 丟棄。
+  - 圖頁：`figure_extract.extract_supplement_pages`，**獨立額度** `JOURNAL_FETCHER_SUPPLEMENT_MAX_IMAGES`（預設 8），只取有 `eFigure` / `Figure S` caption 的圖頁，再補沒轉成 markdown 表格的 `eTable` 頁；同頁超過 3 個 label 視為目錄頁跳過。正文的圖頁規則不適用（supplement 表格格線會被誤判成圖）。docx appendix 則依文件順序取內嵌的 PNG / JPEG（同一額度），markdown 內以檔名標出位置，超額的標「未附」。
   - 開關：`JOURNAL_FETCHER_APPRAISAL_SUPPLEMENT=0` 不送模型；`JOURNAL_FETCHER_SUPPLEMENT_LOG=0` 且前者也關才完全不抓。單獨測試：`python3 -m weekly.supplements --doi <DOI> [--pdf 正文.pdf] [--force]`。
-  - 已實測：NEJM（Atypon）、JAMA（Silverchair）。Elsevier 撞 Turnstile 時預期記成 `no_links`。
+  - 已實測：NEJM（Atypon）、JAMA（Silverchair）、Circulation（AHA，封面「Supplemental Appendix」、docx / xlsx、STROBE checklist）。Elsevier 撞 Turnstile 時記成 `no_links`（2026-W44 JACC 實際如此）。
 - **Article size backstop**：`ARTICLE_CHAR_BACKSTOP=1,500,000`（可用 `JOURNAL_FETCHER_APPRAISAL_CHAR_BACKSTOP` 覆寫）。一般論文（4–9 萬字元）與完整 ACC/AHA 指引（~1.05M 字元）都完整送進去。超過 → `ArticleTooLargeError` → `appraisal_status = "too_large"`，不產出。
 - **Route cache**：`appraise_pdf` 把 classify 結果寫進 `article["appraisal_route"]`，後續 manual re-run 跳過 LLM。
 
