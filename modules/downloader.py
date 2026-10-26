@@ -310,10 +310,22 @@ SUPPLEMENT_KINDS: tuple[tuple[str, re.Pattern[str], re.Pattern[str]], ...] = (
         ),
         re.compile(r"collaborator|investigators", re.IGNORECASE),
     ),
+    # Reporting-guideline checklists (AHA attaches the STROBE / CONSORT form as
+    # its own file). The line must name the guideline *and* say statement or
+    # checklist, so an appendix TOC entry like "CONSORT diagram" stays appendix.
+    (
+        "checklist",
+        re.compile(
+            r"^\s*(?:(?:STROBE|CONSORT|PRISMA|TRIPOD|STARD|SPIRIT|CHEERS|ARRIVE|MOOSE|"
+            r"STREGA|RECORD|SQUIRE)\b[^\n]*\b(?:Statement|Checklist)|Reporting Checklist)",
+            re.IGNORECASE | re.MULTILINE,
+        ),
+        re.compile(r"checklist|strobe|consort|prisma", re.IGNORECASE),
+    ),
     (
         "appendix",
         re.compile(
-            r"^\s*(?:Supplementary Appendix|Supplement to:|Supplement(?:al|ary) Online Content|"
+            r"^\s*(?:Supplement(?:al|ary)? Appendix|Supplement to:|Supplement(?:al|ary) Online Content|"
             r"Supplement(?:al|ary)? (?:Material|Data|Information)|Online Supplement|"
             r"Supplement\s*\d+\.?\s*e(?:Methods|Tables?|Figures?|Appendix))",
             re.IGNORECASE | re.MULTILINE,
@@ -324,9 +336,9 @@ SUPPLEMENT_KINDS: tuple[tuple[str, re.Pattern[str], re.Pattern[str]], ...] = (
 
 
 def classify_supplement(content: bytes | None, url: str) -> str:
-    """Classify a supplement file as protocol / data_sharing / disclosure /
-    collaborators / appendix, or "unknown". PDFs are judged by their cover lines, then by URL;
-    other formats (docx, zip) by URL only."""
+    """Classify a supplement PDF by its first page, then by URL. Non-PDF
+    content is judged by URL only; see classify_supplement_text."""
+    first_page: str | None = None
     if content is not None and _is_pdf(content):
         try:
             import fitz
@@ -335,8 +347,15 @@ def classify_supplement(content: bytes | None, url: str) -> str:
                 first_page = doc[0].get_text() if doc.page_count else ""
         except Exception as e:
             logger.debug(f"Supplement classify could not read PDF: {e}")
-            first_page = ""
-        lines = [line for line in first_page.splitlines() if line.strip()]
+    return classify_supplement_text(first_page, url)
+
+
+def classify_supplement_text(text: str | None, url: str) -> str:
+    """Classify a supplement as one of SUPPLEMENT_KINDS, or "unknown", from
+    the leading lines of its extracted text (PDF first page, docx body), then
+    from the URL filename."""
+    if text:
+        lines = [line for line in text.splitlines() if line.strip()]
         cover = "\n".join(lines[:_SUPPLEMENT_COVER_LINES])
         for kind, cover_re, _ in SUPPLEMENT_KINDS:
             if cover_re.search(cover):
