@@ -1,0 +1,913 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vitamin K2 and D3 Supplementation in Patients With Severe Coronary Artery Calcification: The DANCODE Trial.</title>
+<style>
+  :root {
+    --bg: #fafafa;
+    --card: #ffffff;
+    --text: #1a1a1a;
+    --muted: #6b6b6b;
+    --border: #e5e5e5;
+    --accent: #0b5fff;
+  }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang TC",
+      "Microsoft JhengHei", sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    margin: 0;
+    padding: 24px 16px 64px;
+    line-height: 1.72;
+  }
+  main {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    margin: 0 auto;
+    max-width: 840px;
+    padding: 22px 26px;
+  }
+  nav {
+    margin: 0 auto 14px;
+    max-width: 840px;
+    color: var(--muted);
+    font-size: 14px;
+  }
+  a { color: var(--accent); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  h1, h2, h3, h4 { line-height: 1.35; }
+  h1 { font-size: 26px; margin-top: 0; }
+  h2 { border-top: 1px solid var(--border); padding-top: 18px; }
+  code {
+    background: rgba(127, 127, 127, 0.12);
+    border-radius: 4px;
+    padding: 1px 4px;
+  }
+  table {
+    border-collapse: collapse;
+    table-layout: auto;
+    width: 100%;
+    max-width: 100%;
+  }
+  th, td {
+    border: 1px solid var(--border);
+    overflow-wrap: anywhere;
+    padding: 6px 8px;
+    text-align: left;
+    vertical-align: top;
+  }
+  blockquote {
+    border-left: 3px solid var(--accent);
+    color: var(--muted);
+    margin-left: 0;
+    padding-left: 14px;
+  }
+  .appraisal-meta {
+    border-top: 1px solid var(--border);
+    margin-top: 28px;
+    padding-top: 14px;
+    color: var(--muted);
+    font-size: 13px;
+  }
+  @media (max-width: 600px) {
+    body {
+      padding: 12px 8px 40px;
+    }
+    main {
+      padding: 16px 12px;
+    }
+    h1 {
+      font-size: 22px;
+    }
+    table {
+      font-size: 12px;
+      table-layout: fixed;
+    }
+    th, td {
+      padding: 4px 5px;
+    }
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #1a1a1a;
+      --card: #242424;
+      --text: #e8e8e8;
+      --muted: #999;
+      --border: #333;
+      --accent: #6ea8ff;
+    }
+  }
+</style>
+</head>
+<body>
+<nav><a href="../../2026-W45.html">← 回到 2026-W45 週報</a></nav>
+<main>
+<h1>Vitamin K2 and D3 Supplementation in Patients With Severe Coronary Artery Calcification: The DANCODE Trial.</h1>
+<h1>DANCODE 試驗批判性評讀：Vitamin K2 + D3 用於嚴重冠狀動脈鈣化</h1>
+<hr />
+<h2>SECTION-0：文章全面描述</h2>
+<h3>0. 文章身份證</h3>
+<ul>
+<li><strong>標題</strong>：Vitamin K2 and D3 Supplementation in Patients With Severe Coronary Artery Calcification: The DANCODE Trial</li>
+<li><strong>期刊／年份</strong>：<em>Circulation</em> 2026;154:1656–1665（2026 年 10 月 27 日刊期；同步發表於 ESC Congress 2026）</li>
+<li><strong>DOI</strong>：10.1161/CIRCULATIONAHA.126.082363；PMID 42661461；NCT05500443</li>
+<li><strong>文章類型（路由判斷）</strong>：多中心、雙盲、安慰劑對照、平行兩組 RCT → <strong>SKILL-A 主流程</strong></li>
+<li><strong>研究性質</strong>：主要終點是影像生物標記（Agatston CAC 進展），不是臨床事件。這篇屬於「替代終點 RCT」。</li>
+</ul>
+<h3>1. 作者團隊評論</h3>
+<ul>
+<li><strong>通訊作者</strong>：Axel Diederichsen，MD, PhD，Odense University Hospital 心臟科，並任職 University of Southern Denmark 臨床研究系 [文內]</li>
+<li><strong>團隊構成</strong>：心臟科醫師（Odense、Svendborg、Vejle 三院）、生物統計（Mejldal、Gerke）、臨床生化（Rasmussen，MGP／血管鈣化背景），以及 Cedars-Sinai 的 Damini Dey（文中所用 AutoPlaque 深度學習斑塊定量軟體出自 Cedars-Sinai）[文內]</li>
+<li><strong>團隊過往研究</strong>：
+<ul>
+<li>AVADEC 主試驗（<em>Circulation</em> 2022;145:1387–1397）：MK-7 + vitamin D 未能減緩主動脈瓣鈣化進展；CAC 屬次要終點，亦無顯著差異 [外部: katalog.lib.cas.cz／bohrium 書目紀錄]</li>
+<li>AVADEC 冠狀動脈子研究（304 名男性）：整體 CAC 進展無差異，只有 CAC ≥400 AU 子群出現減緩趨勢 [外部: Daubert &amp; Blaha editorial 全文；nutraceuticalsworld 報導]</li>
+<li>DANCODE 設計論文（BMJ Open 2023;13:e073233）[外部: bmjopen.bmj.com]</li>
+</ul>
+</li>
+<li><strong>作者立場史</strong>：同一團隊從 AVADEC 的子群訊號出發，設計本試驗來驗證。這是正確的科學路徑（從子群產生假說，再做驗證性 RCT），但也代表團隊對這個假說有持續投入，存在 prior commitment 風險。不過主要終點與 SAP 都在收案前登錄，可大幅抵銷這個疑慮。</li>
+<li><strong>利益揭露</strong>：
+<ul>
+<li>財務支持來自 Kappa Bioscience AS（Balchem 子公司，即試驗所用 K2VITAL DELTA 原料商）；研究錠劑由 Kappa Bioscience 與 Orkla Health 捐贈 [文內]</li>
+<li>但 Disclosures 欄寫「None」[文內]。廠商資助試驗本身，個人揭露卻為無，形式上相容，實質上讀者需要自行把廠商資助納入考量。</li>
+<li>Balchem 在論文發表後隨即發布「Landmark Circulation Publication Validates K2VITAL DELTA」新聞稿 [外部: balchem.com]，顯示廠商在商業敘事上高度利用本結果。</li>
+<li>評估：文內聲明廠商未參與設計、分析與撰稿。終點為客觀影像、SAP 事前登錄，資助方直接影響數據的空間有限；風險主要落在「後續如何被行銷解讀」。</li>
+</ul>
+</li>
+</ul>
+<h3>2. 文獻 Metadata 整理</h3>
+<ul>
+<li><strong>Received</strong>：2026-07-04；<strong>Accepted</strong>：2026-07-31 → <strong>審查 27 天</strong> [文內，自行計算]</li>
+<li><strong>期刊平均審查天數</strong>：[無法取得]</li>
+<li><strong>比較</strong>：27 天明顯偏快。[推論] 這與配合 ESC Congress（2026-08-28~31）同步發表的 fast-track 流程相符，代表審查時間被壓縮，製圖校對可能不足；本文 Figure 2 正好有圖面錯置（見 C4、E）。</li>
+<li><strong>期刊屬性</strong>：<em>Circulation</em>（AHA 旗艦期刊），IF 約 38.6，Q1 [外部: journalmetrics.org、manusights；未經 Clarivate 直接核實]</li>
+<li><strong>投稿形式</strong>：原著投稿，非邀稿；同期配有 3 篇 editorial [文內]</li>
+</ul>
+<h3>3. 研究背景［僅根據文內］</h3>
+<ul>
+<li><strong>既有事實</strong>：
+<ul>
+<li>CAC 是冠狀動脈粥樣硬化負荷的強力預測因子，跨種族都有額外預後價值。</li>
+<li>CAC 進展與後續冠心病事件相關（ref 5）。</li>
+<li>MGP 是血管礦化的強力抑制劑，需要 vitamin K 依賴的 γ-carboxylation 才會活化；vitamin D 可增加 MGP 表現；高濃度 inactive MGP 與心血管風險相關。</li>
+</ul>
+</li>
+<li><strong>知識缺口</strong>：
+<ul>
+<li>不確定針對「鈣化路徑本身」的介入能否減緩 CAC 進展。</li>
+<li>AVADEC 子研究與 VitaK-CAC（輕中度 CAC，K2 單方）有初步訊號，但嚴重 CAC、含女性族群的驗證性 RCT 仍欠缺。</li>
+</ul>
+</li>
+<li><strong>研究問題</strong>：在 CAC ≥400 AU 的患者，vitamin K2 720 μg/d + D3 25 μg/d 連續 24 個月，能否比安慰劑減少 CAC 進展？</li>
+</ul>
+<h3>4. 研究設計與方法</h3>
+<p><strong>PICO</strong></p>
+<ul>
+<li><strong>P</strong>：Western Denmark Heart Registry 中，過去 3 年內因疑似冠心病接受 cardiac CT（非篩檢）、CAC ≥400 AU 的成人。
+<ul>
+<li>主要排除：任何冠狀動脈血行重建（含 index CT 之後所做者）、VKA 使用者、VTE/PE 病史、凝血或鈣磷代謝異常、預期壽命 &lt;5 年、具生育能力女性。</li>
+<li>AF 與 DOAC 使用者<strong>不排除</strong>。</li>
+</ul>
+</li>
+<li><strong>I</strong>：MK-7（vitamin K2）720 μg/d + vitamin D3 25 μg（1000 IU）/d，共 24 個月。</li>
+<li><strong>C</strong>：外觀、味道相同的安慰劑；兩組均接受常規照護。</li>
+<li><strong>O</strong>：
+<ul>
+<li>主要終點：0→24 個月 Agatston CAC 變化。</li>
+<li>次要終點：性別與基線 CAC（400–999 vs ≥1000 AU）子群、CCTA 斑塊組成（僅 CAC &lt;1000 AU 子集）、MACE（非致死 MI、非致死中風、冠狀動脈血行重建）。</li>
+<li>探索性終點：dp-ucMGP、25-OH vitamin D。</li>
+<li>安全性：死亡、出血、VTE、癌症、實驗室數據。</li>
+</ul>
+</li>
+</ul>
+<p><strong>關鍵設計細節</strong></p>
+<ul>
+<li>3 家丹麥醫院；2023-02 至 2024-02 收案；最後追蹤 2026-02。</li>
+<li>1:1 電腦亂數，由 Odense 醫院藥局保管分派序列。文內未描述 block 或分層。</li>
+<li>受試者、研究者、評估者、CT 判讀者全盲；試驗期間不向受試者與主治醫師揭露 CT 結果。</li>
+<li>統計：
+<ul>
+<li>線性混合效應模型，固定效應為組別、時間、組別×時間，加上個人隨機截距與隨機斜率。</li>
+<li>依變項是各時間點的重複測量值（不是 change score），在 MAR 假設下有效。</li>
+<li>ITT，398 人全納入。</li>
+</ul>
+</li>
+<li>Sensitivity：log 轉換、校正基線 CAC、校正基線 statin；斑塊另以「24 個月值校正基線值」分析。</li>
+<li><strong>主要變項定義</strong>：Agatston 法，非顯影 ECG-gated CT；在 core lab 盲性判讀，同一受試者的三次掃描於同一次判讀階段完成。</li>
+</ul>
+<h3>5. 研究結果重點整理</h3>
+<p><strong>收案流程（Figure 1 圖頁判讀）</strong></p>
+<ul>
+<li>784 人評估 → 386 人拒絕 → 398 人隨機分派（安慰劑 198、介入 200）。</li>
+<li>中途退出：安慰劑 17 人（收案後排除 2、撤回同意 14、死亡 1）；介入 18 人（收案後排除 3、撤回同意 15、死亡 0）。</li>
+<li>分析：198 / 200（ITT）；24 個月非顯影 CT 為 176 / 180；CCTA 為 67 / 76。</li>
+</ul>
+<p><strong>基線特徵</strong></p>
+<ul>
+<li>中位年齡 71 歲，女性 30%；statin 使用率 86.7%，LDL 中位 1.7–1.8 mmol/L。</li>
+<li>25-OH-D 約 65 nmol/L，多數已屬充足。</li>
+<li>中位 CAC 903 AU（IQR 628–1442），44% ≥1000 AU。</li>
+</ul>
+<p><strong>主要與次要結果</strong></p>
+<table>
+<thead>
+<tr>
+<th>終點</th>
+<th>安慰劑</th>
+<th>K2+D3</th>
+<th>組間差（95% CI）</th>
+<th>P</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>CAC 變化，24 個月（主要）</strong></td>
+<td>+248（225–271）</td>
+<td>+196（178–214）</td>
+<td><strong>−52（−79 to −24）</strong></td>
+<td>&lt;0.001</td>
+</tr>
+<tr>
+<td>男性</td>
+<td>+263</td>
+<td>+216</td>
+<td>−47（−83 to −11）</td>
+<td>P_int 0.63</td>
+</tr>
+<tr>
+<td>女性</td>
+<td>+213</td>
+<td>+151</td>
+<td>−61（−103 to −20）</td>
+<td></td>
+</tr>
+<tr>
+<td>基線 CAC 400–999</td>
+<td>+171</td>
+<td>+132</td>
+<td>−39（−63 to −15）</td>
+<td>P_int 0.31</td>
+</tr>
+<tr>
+<td>基線 CAC ≥1000</td>
+<td>+351</td>
+<td>+281</td>
+<td>−70（−126 to −14）</td>
+<td></td>
+</tr>
+<tr>
+<td>總斑塊體積（mm³，n=143）</td>
+<td>+30.5</td>
+<td>+21.0</td>
+<td>−9.5（−28.8 to 9.8）</td>
+<td>0.34</td>
+</tr>
+<tr>
+<td>鈣化斑塊體積</td>
+<td>+22.8</td>
+<td>+15.0</td>
+<td><strong>−7.8（−13.5 to −2.2）</strong></td>
+<td>0.007</td>
+</tr>
+<tr>
+<td>非鈣化斑塊體積</td>
+<td>+7.7</td>
+<td>+5.9</td>
+<td>−1.8（−19.5 to 16.0）</td>
+<td>0.85</td>
+</tr>
+<tr>
+<td>MACE</td>
+<td>3/198（1.5%）</td>
+<td>2/200（1.0%）</td>
+<td>未報效果量</td>
+<td>—</td>
+</tr>
+<tr>
+<td>dp-ucMGP（pmol/L）</td>
+<td>560→591</td>
+<td>558→383</td>
+<td>顯著（Table S5）</td>
+<td>—</td>
+</tr>
+<tr>
+<td>25-OH-D（nmol/L）</td>
+<td>65→68</td>
+<td>65→90</td>
+<td>顯著</td>
+<td>—</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>相對減少 21%。各子群的<strong>相對效果相當一致</strong>：
+<ul>
+<li>400–999 AU 子群：39/171 ≈ 23%</li>
+<li>≥1000 AU 子群：70/351 ≈ 20%</li>
+<li>這表示 ≥1000 子群的絕對效果較大，主要反映基線進展速度較快，而不是效果修飾。</li>
+</ul>
+</li>
+<li>安全性：
+<ul>
+<li>任何不良事件：安慰劑 8.1% vs 介入 4.5%。</li>
+<li>死亡：安慰劑 1 例，介入 0 例。</li>
+<li>無嚴重出血；VTE 1 例（安慰劑）。</li>
+<li>癌症「9 vs 5」，文內未清楚標示哪一組是 9 [限制：markdown 與圖頁均未保留 Table S11]。</li>
+</ul>
+</li>
+</ul>
+<h3>6. 作者討論與評論重點</h3>
+<ul>
+<li><strong>主要訊息</strong>：K2+D3 可減緩嚴重 CAC 患者的鈣化進展，dp-ucMGP 下降支持 target engagement，且非鈣化斑塊沒有增加。</li>
+<li><strong>與文獻比較</strong>：
+<ul>
+<li>延伸 AVADEC 子研究（男性）與 VitaK-CAC（CAC 50–400 AU，K2 單方，差 22 AU，95% CI 13–31）。</li>
+<li>作者把本試驗較大的絕對效果歸因於基線負荷較高或 K2 劑量較高，並自承跨試驗比較需謹慎。</li>
+</ul>
+</li>
+<li><strong>作者自承限制</strong>：
+<ol>
+<li>CAC 不是經驗證的替代終點；</li>
+<li>24 個月太短；</li>
+<li>只納入嚴重 CAC；</li>
+<li>斑塊分析是選擇性子集；</li>
+<li>依從性未量化。</li>
+</ol>
+</li>
+<li><strong>[評估]</strong>：
+<ul>
+<li>限制列舉大致完整，Clinical Perspective 也明言「不建立常規補充角色」，敘事算克制。</li>
+<li><strong>遺漏的限制</strong>：
+<ul>
+<li>D3 與 K2 的個別貢獻無法拆解（Discussion 有提，但未列入限制段）；</li>
+<li>斑塊子集基線不平衡，已破壞隨機化；</li>
+<li>安全性追蹤期短、事件少，無法排除罕見傷害；</li>
+<li>廠商資助。</li>
+</ul>
+</li>
+<li>摘要與結論寫「not associated with an increase in noncalcified plaque volume」：在 CI −19.5 到 +16.0 mm³（基線非鈣化斑塊約 109–145 mm³）的情況下，這屬<strong>無法排除</strong>，不是<strong>已排除</strong>。措辭超出數據。</li>
+</ul>
+</li>
+</ul>
+<h3>7. 外部專業意見</h3>
+<p>本期 3 篇同期 editorial 均已取得全文 [外部: <em>Circulation</em> editorial 全文]。</p>
+<p><strong>(1) Davis JW, Manson JE.</strong> &quot;Cholecalciferol and Menaquinone Supplementation: Does Prevention of CAC Progression Mean Heart Benefit?&quot; <em>Circulation</em> 2026;154:1666–1668. DOI 10.1161/CIRCULATIONAHA.126.082639</p>
+<ul>
+<li><strong>代表性疑慮</strong>：
+<ul>
+<li>受試者治療強度高（86% statin、LDL 約 65 mg/dL、65% 使用 aspirin、89% 腎功能正常）。</li>
+<li>多數 vitamin D 並不缺乏（中位 26 ng/mL）。</li>
+</ul>
+</li>
+<li><strong>三大方法學質疑</strong>：
+<ol>
+<li>固定複方對安慰劑，無法分離 D3 與 K2 的貢獻，需要 2×2 factorial 設計；</li>
+<li>Agatston 變異隨鈣化負荷增加而上升，高負荷下再現性較差，400 AU 固定閾值可能造成誤分類；</li>
+<li>背景進展 200–250 AU 下，52 AU 的差異「與高負荷下的掃描間變異相當」。</li>
+</ol>
+</li>
+<li>事件幾乎為零（2 vs 3）。他們推測積極的危險因子控制可能正在改變 CAC 進展的預後意義。</li>
+<li>引用 statin 使 CAC 增加卻減少事件的例子，提出「減緩鈣化甚至可能增加急性事件」的理論疑慮。</li>
+<li>結論：本試驗屬假說產生；目前補充劑只應用於有明確缺乏的患者。</li>
+</ul>
+<p><strong>(2) Daubert MA, Blaha MJ.</strong> &quot;Coronary Calcium Regression With Vitamin Supplementation: A Therapeutic Target or Too Good to be True?&quot; <em>Circulation</em> 2026;154:1669–1671. DOI 10.1161/CIRCULATIONAHA.126.082640</p>
+<ul>
+<li><strong>肯定</strong>：族群風險高、介入低成本且機轉合理、dp-ucMGP 下降 31%。</li>
+<li><strong>質疑</strong>：
+<ul>
+<li>這群患者本來就以 statin 處理過、鈣化斑塊緻密；高密度鈣化斑塊在型態上較穩定。</li>
+<li>事件與非鈣化斑塊（尤其是低衰減斑塊）負荷相關；PAV 每降 1% 約對應事件下降 20%。</li>
+<li>目前沒有前瞻性證據顯示「減少 CAC 進展」能降低事件。</li>
+<li>提出「機轉是否重要」：直接抑制鈣化 vs 透過去脂化（delipidation）使斑塊成熟，兩者意義可能不同。</li>
+</ul>
+</li>
+<li>結論：不應優先於或取代已證實能改善結局的預防措施。</li>
+<li>註：此文寫 24 個月 CAC 追蹤為 363 人（91%），與原文 356 人不一致，應以原文為準。</li>
+</ul>
+<p><strong>(3) Lauer MS.</strong> &quot;Coronary Artery Calcium (CAC): From Marker to Treatment Target?&quot; <em>Circulation</em> 2026;154:1672–1674. DOI 10.1161/CIRCULATIONAHA.126.082642</p>
+<ul>
+<li>立場最正面：認為試驗「well-done、powered sufficiently、low risk of bias」，結果穩健。</li>
+<li>以 CAST（抗心律不整藥）、inotrope、HDL、homocysteine 為例，提醒替代終點的失敗史：
+<ul>
+<li>220 篇心血管替代終點試驗中，157 篇陽性試驗僅 28% 有後續結局試驗；</li>
+<li>這些結局試驗中僅 55% 為陽性。</li>
+</ul>
+</li>
+<li>以 Mendelian randomization 證據（基因決定的 inactive MGP、CAC 與冠心病的因果訊號）支持進一步研究。</li>
+<li>結論：下一步是大型臨床結局試驗，可考慮 registry-based RCT。</li>
+</ul>
+<p><strong>本報告對 editorial 論點的方法學補評</strong></p>
+<p>Davis &amp; Manson 的第 3 點（效果與掃描間變異相當）在<strong>隨機化比較</strong>的脈絡下並不成立：</p>
+<ul>
+<li>非差異性測量誤差會被平均掉，已反映在 CI 寬度裡；只要 CI 排除 0，就不是測量雜訊造成的假象。</li>
+<li>真正該擔心的是<strong>差異性</strong>測量偏差。Agatston 會以密度加權，若 K2 改變鈣化密度，Agatston 變化可能不等於鈣化量的變化。</li>
+<li>然而 CCTA 鈣化斑塊<strong>體積</strong>也同步減少 7.8 mm³，部分緩解了這個疑慮。</li>
+</ul>
+<h3>8. 臨床建議</h3>
+<ul>
+<li><strong>可參考的情境</strong>：
+<ul>
+<li>與 CAC ≥400 AU、已接受最佳化 statin 與危險因子控制、無 VKA 的患者討論。</li>
+<li>可以說明「目前有 RCT 證據顯示能減緩影像上的鈣化進展，但沒有證據顯示能減少心肌梗塞或死亡」。</li>
+<li>若患者無論如何都想自費服用，安全性在 24 個月內未見明顯訊號。</li>
+</ul>
+</li>
+<li><strong>不建議直接套用的情境</strong>：
+<ul>
+<li>使用 VKA 者（藥物交互作用，試驗排除）。</li>
+<li>把它當作 statin、降壓、戒菸的替代品。</li>
+<li>以「降低事件」為訴求開立。</li>
+<li>CAC 0–399 的族群（本試驗未納入）。</li>
+<li>把追蹤 CAC 數字下降當成療效目標。</li>
+</ul>
+</li>
+<li><strong>給臨床醫師的實務建議</strong>：
+<ol>
+<li>不要因為本試驗而常規處方 K2+D3。先把 LDL、血壓、血糖、戒菸做到位。</li>
+<li>對自行服用 K2 的患者，主要風險是與 warfarin 併用。DOAC 使用者在本試驗中有納入，且未見出血訊號。</li>
+<li>服用 K2+D3 期間，追蹤 CAC 分數的變化<strong>不能</strong>用來判斷心血管風險是否下降。</li>
+</ol>
+</li>
+<li><strong>證據強度</strong>：
+<ul>
+<li>對「減緩 CAC 進展」：<strong>中–強</strong>。設計嚴謹、預先登錄、CI 排除 0。</li>
+<li>對「臨床效益」：<strong>弱／無</strong>。終點為未驗證的替代指標，事件僅 5 件。</li>
+</ul>
+</li>
+</ul>
+<hr />
+<h2>SKILL-A：原始研究批判性評讀</h2>
+<h3>A. 補充技術細節</h3>
+<ul>
+<li><strong>樣本數估算</strong>：
+<ul>
+<li>依 AVADEC 假設：安慰劑 380 AU、介入 288 AU（Δ92，約 24% 相對減少），合併 SD 311 → 360 人有 80% power，擴充到 400 人以容納約 10% 退出。</li>
+<li>實際：398 人，24 個月有 CAC 者 356 人（89.4%），接近設計值。</li>
+<li>實際觀察到的安慰劑組進展（248）遠低於假設的 380，但相對效果（21%）接近設計的 24%。</li>
+<li>由組內 CI 回推：安慰劑組 SE ≈ 11.7，n=176 → 變化量 SD 約 155，<strong>遠小於假設的 311</strong>。因此雖然絕對差只有 52 AU，精確度仍高於預期。這不是 underpowered positive。</li>
+</ul>
+</li>
+<li><strong>隨機化</strong>：1:1 電腦亂數，由醫院藥局集中管理，屬有效的分派隱藏。block、分層因子 [文內未提供]。</li>
+<li><strong>致盲</strong>：
+<ul>
+<li>四方盲；CT 結果在試驗期間不揭露；錠劑外觀相符。</li>
+<li>未報告盲法成功度檢查。不過終點是 core lab 盲性判讀的客觀影像，受盲法破功影響有限。</li>
+</ul>
+</li>
+<li><strong>ITT vs per-protocol</strong>：只做 ITT（混合模型，所有可得觀測值），未報告 per-protocol。依從性未量化，per-protocol 也無從定義。</li>
+<li><strong>多重比較</strong>：主要終點只有單一項；次要終點與子群未校正，Methods 也未說明階層檢定（hierarchical testing）。</li>
+<li><strong>缺失資料</strong>：
+<ul>
+<li>24 個月 CAC 缺失 42/398（10.6%），兩組相近（安慰劑 22、介入 20）。</li>
+<li>混合模型在 MAR 假設下有效，未做 MNAR（如 tipping point）敏感度分析。</li>
+<li>兩組缺失比例相當，偏差方向不易判斷。</li>
+</ul>
+</li>
+<li><strong>模型</strong>：
+<ul>
+<li>時間以類別變數納入，與組別交互作用；隨機斜率在只有 3 個時間點時穩定性有限。</li>
+<li>常態性不符時改以 cluster bootstrap 求 CI，主文未說明是否啟用。</li>
+<li>Figure 2 與 Table 3 標示為「adjusted」差異，但 Methods 主要模型並未列出校正共變項，用詞不一致。</li>
+</ul>
+</li>
+</ul>
+<h4>A1. 特殊設計子模組</h4>
+<ul>
+<li>不適用 non-inferiority、surgical 或 platform 設計。</li>
+<li><strong>Factorial 缺席</strong>：K2 與 D3 綁在一起，與單一安慰劑比較，無法估計各自效果或交互作用。這是設計層面的根本限制，不只是報告限制。</li>
+</ul>
+<h3>B. 批判性評估</h3>
+<h4>B1. 假說與理論邏輯</h4>
+<ul>
+<li><strong>假說預先指定</strong>：有。主要終點與 SAP 在第一位受試者收案前已上傳 ClinicalTrials.gov（Methods &quot;Trial Design&quot;），不屬撒網式設計。</li>
+<li><strong>最可能的合理機轉</strong>：
+<ol>
+<li>MK-7 提供 γ-carboxylation 受質 → MGP 活化 → 抑制血管鈣化。dp-ucMGP 從 558 降到 383 pmol/L，安慰劑組則從 560 升到 591，target engagement 明確。</li>
+<li>D3 增加 MGP 表現。但基線 25-OH-D 為 65 nmol/L，多數已充足，D3 的邊際效果存疑。</li>
+</ol>
+</li>
+<li><strong>最可疑的敘事跳躍</strong>：
+<ol>
+<li>從「CAC 進展減少」跳到「pathway modifiable → 可能有臨床效益」。Statin 增加 CAC 卻減少事件，說明 CAC 變化方向與風險方向可能脫鉤（作者自己也引用了這點）。</li>
+<li>從「非鈣化斑塊無顯著差異」寫成「not associated with an increase」：CI 上界 +16 mm³，無法排除臨床上有意義的增加（見 C1）。</li>
+<li>從 dp-ucMGP 下降寫成「indicating improved vitamin K status」：這只代表生化暴露，Discussion 卻用來支撐「biologically plausible treatment effect」，屬循環論證的邊緣。</li>
+</ol>
+</li>
+</ul>
+<h4>B2. 受試者與外推性</h4>
+<ul>
+<li><strong>受試者</strong>：
+<ul>
+<li>有症狀、轉介做 CT、未接受血行重建的丹麥人，族群單一（推測以白人為主，文內未報告種族）。</li>
+<li>Statin 87%、LDL 約 1.75 mmol/L，屬積極治療中的族群。</li>
+<li>784 人受邀，49% 拒絕參加，存在自我選擇偏差（較健康、較願意服用補充劑的人較可能參加）。</li>
+<li>預期壽命 &lt;5 年者與 VKA 使用者被排除。</li>
+</ul>
+</li>
+<li><strong>基線平衡</strong>：
+<ul>
+<li>主要特徵平衡良好。</li>
+<li>數值上的差異：NOAC 15.7% vs 21.5%（介入組較多）、糖尿病 23.2% vs 18.5%（安慰劑組較多）、高血壓 66.2% vs 61.0%。</li>
+<li>糖尿病與高血壓傾向使安慰劑組 CAC 進展較快，可能使效果<strong>略被高估</strong>。不過子群分析顯示糖尿病與高血壓沒有交互作用，且已做校正基線 CAC 的敏感度分析。</li>
+</ul>
+</li>
+<li><strong>外推性分級</strong>：
+<ol>
+<li><strong>一般健康族群</strong>：<strong>遠</strong>。CAC 0–399 未納入；VitaK-CAC 雖有輕中度 CAC 數據，但為 K2 單方。不應外推。</li>
+<li><strong>特定病患族群（CAC ≥400、穩定、已用 statin）</strong>：<strong>近</strong>，但僅限替代終點層面。</li>
+<li><strong>特殊族群</strong>：
+<ul>
+<li>慢性腎病：eGFR &lt;60 僅約 11%，透析患者未納入（這類患者的血管鈣化機轉不同）。</li>
+<li>VKA 使用者：排除。</li>
+<li>已血行重建者：排除，因此不能外推到已知 CAD 的次級預防主族群。</li>
+<li>非白人族群：資料不足。</li>
+</ul>
+</li>
+</ol>
+</li>
+</ul>
+<h4>B3. 研究設計與偏差</h4>
+<ul>
+<li>隨機化與分派隱藏充分；四方盲；未提前終止。</li>
+<li><strong>對照組適當性（Gyawali 框架）</strong>：
+<ul>
+<li>安慰劑加常規照護是合理對照。目前標準照護本來就沒有「抗鈣化」治療，所以這是「A vs 無」的乾淨比較。</li>
+<li>前期支持：AVADEC 子群與 VitaK-CAC。然而 AVADEC 本身的主要終點（主動脈瓣鈣化）與 CAC 次要終點都是陰性，DANCODE 等於是用前一個陰性試驗的子群訊號建立假說。DANCODE 確認成功，提高了訊號的可信度，但也提醒我們 AVADEC 整體族群的結果並不支持。</li>
+</ul>
+</li>
+<li><strong>最可能造成偏差的設計點</strong>：
+<ol>
+<li><strong>CCTA 斑塊子集的選擇偏差</strong>（方向不定）。
+<ul>
+<li>只納入 CAC &lt;1000 且兩次影像品質可接受者：143/398（36%）。這是隨機化後條件化的子集。</li>
+<li>基線總斑塊體積 237 vs 193 mm³、非鈣化斑塊 145 vs 109 mm³，安慰劑組明顯較高，隨機化平衡已經破壞。</li>
+<li>斑塊越多，進展的絕對值可能越大，介入組的斑塊效果可能<strong>被高估</strong>。作者做了校正基線的敏感度分析（Table S9），結論不變，但只能處理已測量的不平衡。</li>
+</ul>
+</li>
+<li><strong>Agatston 密度加權與介入的交互作用</strong>（可能讓效果變大）。
+<ul>
+<li>若 K2 改變新生鈣化的密度，Agatston（面積 × 密度係數）的變化會與鈣化量的變化脫鉤。</li>
+<li>文內未報告 CAC volume score 或 density score。CCTA 鈣化斑塊體積同步下降是部分佐證，但僅限於上述選擇性子集。</li>
+</ul>
+</li>
+<li><strong>依從性與暴露未量化</strong>（偏向無效）。
+<ul>
+<li>如果依從性差，效果會被<strong>稀釋</strong>，表示真實的生物效果可能更大，但對 ITT 結論不構成威脅。</li>
+</ul>
+</li>
+</ol>
+</li>
+<li><strong>Crossover／後續治療</strong>：不適用。追蹤期間的 statin 調整、新增藥物等共同介入 [文內未提供]。</li>
+</ul>
+<h4>B4. 測量工具與實務意義</h4>
+<ul>
+<li><strong>信度</strong>：
+<ul>
+<li>Agatston 掃描間變異隨負荷增加而上升（Davis &amp; Manson editorial 指出）。</li>
+<li>本試驗以同一判讀階段、盲性 core lab 降低判讀變異，但未報告 inter-scan 或 intra-reader 的 CV。</li>
+</ul>
+</li>
+<li><strong>終點性質</strong>：純替代終點，<strong>未經驗證</strong>。作者在 Clinical Perspective 與 Limitations 中都明確承認。</li>
+<li><strong>就算結果是真的，真實世界可能有多大用處？</strong>
+<ul>
+<li>24 個月少長 52 AU，相對於基線中位 903 AU 約 5.8%，相對於自然進展少 21%。</li>
+<li>沒有任何資料能把「少 52 AU」換算成事件風險。</li>
+<li>CAC 進展與事件的觀察性關聯（MESA 時代）在積極 statin 時代可能已經減弱（Davis &amp; Manson）。</li>
+<li>CAC 增加也可能代表斑塊穩定化（statin 的例子）。</li>
+<li>因此臨床價值<strong>目前無法估計</strong>，正負方向都有可能。</li>
+</ul>
+</li>
+</ul>
+<h3>C. 統計與資料完整性</h3>
+<h4>C1. 結果分類（CI + MCID 框架）</h4>
+<p><strong>Step 1：MCID 確認</strong></p>
+<p>文內<strong>未預先指定 MCID</strong>。以下用兩個替代參照 [推算]：</p>
+<ul>
+<li>(a) 設計時假設的效果 Δ = 92 AU（相對 24%）；</li>
+<li>(b) 相對效果 20–25%。</li>
+</ul>
+<p><strong>Step 2：CI 位置判讀</strong></p>
+<table>
+<thead>
+<tr>
+<th>終點</th>
+<th>效果（95% CI）</th>
+<th>參照</th>
+<th>分類</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>CAC 變化（主要）</td>
+<td>−52（−79 to −24）</td>
+<td>絕對 δ = 92 AU</td>
+<td>CI 排除 0，但<strong>完全落在 0 與 δ 之間</strong>，也就是排除了設計時預期的絕對效果。表格中沒有完全對應的類別，可稱為「<strong>統計顯著、精確估計、但小於設計預期絕對值</strong>」</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>相對 δ（約 21% vs 設計 24%）</td>
+<td>相對尺度上與設計預期一致，可視為 <strong>POSITIVE（替代終點層面）</strong></td>
+</tr>
+<tr>
+<td>鈣化斑塊體積</td>
+<td>−7.8（−13.5 to −2.2）</td>
+<td>無 MCID</td>
+<td>統計顯著；臨床意義未知（基線約 84–92 mm³，約 8–9%）</td>
+</tr>
+<tr>
+<td>非鈣化斑塊體積</td>
+<td>−1.8（−19.5 to +16.0）</td>
+<td>合理傷害門檻約 +10 mm³ [推算]</td>
+<td><strong>INCONCLUSIVE</strong>：CI 同時涵蓋有益與可能有害的區間。<strong>不能</strong>寫成「未增加」</td>
+</tr>
+<tr>
+<td>總斑塊體積</td>
+<td>−9.5（−28.8 to +9.8）</td>
+<td>—</td>
+<td>INCONCLUSIVE</td>
+</tr>
+<tr>
+<td>MACE</td>
+<td>2/200 vs 3/198</td>
+<td>—</td>
+<td><strong>INCONCLUSIVE</strong>（事件數極少，CI 必然極寬，任何方向都無法下結論）</td>
+</tr>
+</tbody>
+</table>
+<p>關鍵觀察：絕對差比設計小，原因是安慰劑組進展（248）遠低於 AVADEC 估計（380）；相對效果其實符合預期。這種結果符合「真實但溫和的生物效果」，不是運氣造成的假陽性。</p>
+<p><strong>Step 3：統計謬誤檢查</strong></p>
+<ul>
+<li>作者對斑塊結果用「no significant between-group differences」，基本未踩「p &gt; 0.05 = 無差異」的雷。</li>
+<li>但摘要的「was not associated with an increase」實際上把非顯著結果解讀成排除傷害，屬輕度的「absence of evidence」謬誤。</li>
+<li>未使用 post-hoc power。</li>
+</ul>
+<h4>C2. Underpowered 與 Winner's Curse</h4>
+<ul>
+<li>主要終點 CI 窄且排除 0，觀察到的效果<strong>小於</strong>設計假設 → <strong>無 Winner's Curse 訊號</strong>。</li>
+<li>斑塊與 MACE 終點明顯 underpowered：MACE 只有 5 件，任何方向的結論都不可靠。</li>
+</ul>
+<h4>C3. Bayesian 補充</h4>
+<p>主要終點 p &lt; 0.001，CI 遠離 0，不需要做 prior 敏感度分析來判定方向。真正的不確定性在於「替代終點與臨床結局的連結」，Bayesian 重新分析無法解決這個問題。</p>
+<h4>C4. 報告完整性與其他統計問題</h4>
+<ul>
+<li><strong>【嚴重】Figure 2 圖面與圖說錯置</strong>（依 page_007 圖頁判讀）：
+<ul>
+<li><strong>Panel A</strong>（圖說：全體，248 vs 196）：實際畫出的 24 個月點約為安慰劑 <strong>~350</strong>、介入 <strong>~281</strong>，y 軸到 400。這是 ≥1000 AU 子群的數值。</li>
+<li><strong>Panel B</strong>（圖說：400–999，171 vs 132）：實際畫出約 <strong>~248 vs ~196</strong>。這是全體的數值。</li>
+<li><strong>Panel C</strong>（圖說：≥1000，351 vs 281）：y 軸只到 200，畫出約 <strong>~172 vs ~131</strong>。這是 400–999 子群的數值。</li>
+<li>三個 panel 的數據與標題、圖說互相錯置。Table 2 數字與文字一致，所以結論不受影響，但這反映 27 天 fast-track 審查與校對的品質問題。讀者若只看圖，會把 ≥1000 子群的進展誤認為全體。</li>
+<li>三個 panel 的 y 軸都從 0 起始，沒有截斷軸誇大效果的問題。Figure 3 有清楚標示 0 線，CI 呈現正確。</li>
+</ul>
+</li>
+<li><strong>摘要與正文不一致</strong>：摘要寫「400 participants … were randomly assigned」，實際隨機分派 398 人（Figure 1）。</li>
+<li><strong>Table 1 子群人數不合</strong>：CAC 分組 109+85 = 194（安慰劑），107+87 = 194（介入），合計 388，與 398 相差 10 人。但正文稱所有人都有基線 CAC 掃描，這 10 人的分類去向未說明。</li>
+<li><strong>流程圖與 24 個月 CT 數不完全吻合</strong>：
+<ul>
+<li>安慰劑組中途退出 17 人，但 24 個月 CT 缺 22 人（198−176）；介入組退出 18 人，缺 20 人（200−180）。</li>
+<li>約 7 人沒有退出卻缺少 24 個月掃描，原因只在 Table S2 [限制：markdown 未保留 supplement]。</li>
+<li>「Excluded after inclusion」共 5 人，在 ITT 中仍被分析，排除理由未說明。</li>
+<li>Daubert &amp; Blaha editorial 引用的 363 人也與原文的 356 人不同。</li>
+</ul>
+</li>
+<li><strong>零篩選失敗</strong>：784 人評估，386 人拒絕，398 人全部隨機分派，表示同意者沒有任何一人在篩選訪視被排除，這不尋常。可能是 registry 預篩已非常精準，但流程圖未呈現篩選步驟。</li>
+<li><strong>Table 1 註腳順序錯誤</strong>：
+<ul>
+<li>斑塊可得人數寫「67（33.7%）and 76（38.2%）respectively」，且延續前句「intervention, placebo」的順序。</li>
+<li>但 67 應是安慰劑組（Table 3），百分比計算也有出入：67/198 = 33.8%，76/200 = 38.0%。</li>
+</ul>
+</li>
+<li><strong>安全性報告模糊</strong>：癌症「9 versus 5」未標示組別；不良事件的定義與分級在主文中不清楚。</li>
+<li><strong>閾值設定</strong>：P ≤ 0.05 視為顯著（通常為 &lt; 0.05），屬細節，不影響結論。</li>
+<li><strong>統計面紅旗</strong>：
+<ol>
+<li>無預先指定 MCID；</li>
+<li>次要終點、子群、斑塊多重比較未校正；</li>
+<li>斑塊子集為隨機化後的選擇性子集，且基線不平衡；</li>
+<li>未做 MNAR 敏感度分析；</li>
+<li>未報告 Agatston 的 volume 或 density 拆解；</li>
+<li>圖表數據錯置與多處人數不一致。</li>
+</ol>
+</li>
+</ul>
+<h3>D. 次組分析評估</h3>
+<table>
+<thead>
+<tr>
+<th>子群</th>
+<th>Interaction P</th>
+<th>方向一致</th>
+<th>預先指定</th>
+<th>生物機轉</th>
+<th>可信度</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>性別（女 −61 vs 男 −47）</td>
+<td>0.63</td>
+<td>是（AVADEC 只有男性）</td>
+<td>是</td>
+<td>無特別預期</td>
+<td>結論為「無異質性」，可信度<strong>中–高</strong></td>
+</tr>
+<tr>
+<td>基線 CAC（≥1000 −70 vs 400–999 −39）</td>
+<td>0.31</td>
+<td>是</td>
+<td>是</td>
+<td>進展速度隨負荷增加（絕對值）；相對效果約 20–23%，一致</td>
+<td>結論為「無異質性」，可信度<strong>中–高</strong></td>
+</tr>
+<tr>
+<td>年齡、DM、HTN、腎功能、statin、NOAC、dp-ucMGP</td>
+<td>均 &gt; 0.05</td>
+<td>大致一致</td>
+<td>部分（列為額外分析）</td>
+<td>—</td>
+<td>子群樣本小，僅能說「沒有明顯異質性」，可信度<strong>低–中</strong></td>
+</tr>
+</tbody>
+</table>
+<p>Davis &amp; Manson 指出 ≥1000 子群「效果較大」。從相對效果來看，兩個子群其實幾乎相同，不應過度解讀為劑量反應或族群選擇的依據。另外 400 AU 分界在高變異下可能有誤分類，會讓子群差異更趨向 0。</p>
+<h3>E. 紅旗清單</h3>
+<ul>
+<li><strong>【設計】</strong> K2 與 D3 綁成固定複方，無法拆解個別效果；D3 用在多數不缺乏的族群。</li>
+<li><strong>【終點】</strong> 主要終點是未經驗證的替代終點，而且歷史上有「鈣化增加但事件減少」（statin）的反例。</li>
+<li><strong>【敘事】</strong> 摘要的「not associated with an increase in noncalcified plaque」超出 CI（−19.5 to +16.0）所能支持的範圍。</li>
+<li><strong>【斑塊子集】</strong> 36% 的選擇性子集，基線不平衡，已失去隨機化保護。</li>
+<li><strong>【COI】</strong> 原料商 Kappa Bioscience（Balchem）出資並提供藥品，個人揭露卻寫「None」；廠商隨即發布行銷新聞稿。</li>
+<li><strong>【報告品質】</strong> Figure 2 三個 panel 數據與圖說錯置；摘要 400 vs 實際 398；Table 1 CAC 分組少 10 人；24 個月 CT 數與退出數不符；Table 1 註腳組別順序錯誤；癌症數字未標組別。</li>
+<li><strong>【審查】</strong> 27 天 fast-track 並配合 ESC 同步發表，與上述報告品質問題吻合。</li>
+<li><strong>【外推】</strong> 單一國家、族群單一；49% 拒絕參加；已血行重建者、VKA 使用者、透析患者均被排除。</li>
+<li><strong>【安全】</strong> 2 年、約 400 人，無法偵測罕見傷害；癌症數字的組別歸屬不明。</li>
+</ul>
+<h3>F. 反向解釋</h3>
+<ol>
+<li><strong>Agatston 測量假象（密度效應）</strong>：K2 可能改變新生鈣化的結晶型態或密度，使 Agatston 的密度加權分數下降，但實際鈣化量並沒有同比例減少。
+<ul>
+<li>支持：文內未報告 volume 或 density score。</li>
+<li>反對：CCTA 鈣化斑塊<strong>體積</strong>也下降 7.8 mm³，方向一致（但只在選擇性子集中）。</li>
+</ul>
+</li>
+<li><strong>鈣化減少代表斑塊穩定化受阻，而不是疾病減緩</strong>：如果 CAC 增加部分反映 statin 介導的斑塊癒合，K2 減少鈣化反而可能抵銷穩定化。
+<ul>
+<li>支持：statin 的先例；86.7% 受試者使用 statin。</li>
+<li>反對：非鈣化斑塊未見增加（但 CI 寬）；事件 2 vs 3，方向未見傷害，但數量完全不足以判斷。</li>
+</ul>
+</li>
+<li><strong>效果主要來自 D3，或來自 K2 修正亞臨床缺乏，而不是藥理性抗鈣化</strong>：
+<ul>
+<li>支持：無法拆解成分；基線 dp-ucMGP 約 560 pmol/L，[推論] 提示相當比例受試者有功能性 vitamin K 不足。</li>
+<li>反對：VitaK-CAC 的 K2 單方也有效；但 D3 在過去的試驗中沒有降低 CAC。</li>
+<li>臨床意涵：如果效果只存在於 K 不足者，就不能外推到 vitamin K 充足的族群。不過 dp-ucMGP 子群分析未顯示交互作用（Figure S3，未見圖）。</li>
+</ul>
+</li>
+<li><strong>安慰劑組基線危險因子較多（DM、HTN）造成高估</strong>：
+<ul>
+<li>反對：差距小；子群分析無交互作用；有校正基線 CAC 的敏感度分析。對 CAC 進展的影響應該很小。</li>
+</ul>
+</li>
+</ol>
+<h3>G. 最終裁決</h3>
+<ul>
+<li><strong>整體可信度</strong>：
+<ul>
+<li>「K2+D3 在 24 個月內減緩 CAC（Agatston）進展」：<strong>高</strong>。</li>
+<li>「此效果具有臨床效益」：<strong>低</strong>（目前沒有證據）。</li>
+</ul>
+</li>
+<li><strong>可採用的條件</strong>：
+<ul>
+<li>作為設計臨床結局 RCT 的依據；</li>
+<li>與 CAC ≥400、已接受最佳化治療、未用 VKA 的患者進行知情討論（明確說明只證實了影像效果）。</li>
+</ul>
+</li>
+<li><strong>不建議採用的情境</strong>：
+<ul>
+<li>常規處方；</li>
+<li>取代或延後 statin、降壓等已證實有效的治療；</li>
+<li>以 CAC 數字變化作為療效監測；</li>
+<li>CAC &lt;400 族群；</li>
+<li>VKA 使用者。</li>
+</ul>
+</li>
+<li><strong>若要改觀，最需要的 3 個改進</strong>：
+<ol>
+<li>足夠檢定力的 MACE 結局試驗（可採 registry-based 設計，如 Lauer 建議）；</li>
+<li>2×2 factorial 設計，分離 K2 與 D3 的效果；</li>
+<li>預先指定 CCTA 全體斑塊表型終點（低衰減斑塊、PAV），並同時報告 Agatston volume 與 density 拆解。</li>
+</ol>
+</li>
+<li><strong>一句話結論</strong>：Vitamin K2 加 D3 確實讓冠狀動脈鈣化長得慢一些，但這是否能減少心肌梗塞，目前完全未知。</li>
+</ul>
+<hr />
+<h3>主要數據彙整表</h3>
+<table>
+<thead>
+<tr>
+<th>指標</th>
+<th>介入組</th>
+<th>對照組</th>
+<th>效果量</th>
+<th>95% CI</th>
+<th>相對差</th>
+<th>MCID</th>
+<th>結果分類</th>
+<th>實務意義</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>CAC 變化 24 個月（AU）</td>
+<td>+196</td>
+<td>+248</td>
+<td>−52</td>
+<td>−79 to −24</td>
+<td>−21%</td>
+<td>未指定（設計 Δ=92 [推算]）</td>
+<td>替代終點層面陽性；絕對值小於設計預期</td>
+<td>影像效果明確；臨床意義未知</td>
+</tr>
+<tr>
+<td>鈣化斑塊體積（mm³，n=143）</td>
+<td>+15.0</td>
+<td>+22.8</td>
+<td>−7.8</td>
+<td>−13.5 to −2.2</td>
+<td>約 −34%（變化量）</td>
+<td>無</td>
+<td>統計顯著（選擇性子集）</td>
+<td>機轉支持；有選擇偏差</td>
+</tr>
+<tr>
+<td>非鈣化斑塊體積</td>
+<td>+5.9</td>
+<td>+7.7</td>
+<td>−1.8</td>
+<td>−19.5 to +16.0</td>
+<td>—</td>
+<td>無</td>
+<td><strong>INCONCLUSIVE</strong></td>
+<td>不能宣稱「未增加」</td>
+</tr>
+<tr>
+<td>總斑塊體積</td>
+<td>+21.0</td>
+<td>+30.5</td>
+<td>−9.5</td>
+<td>−28.8 to +9.8</td>
+<td>—</td>
+<td>無</td>
+<td>INCONCLUSIVE</td>
+<td>—</td>
+</tr>
+<tr>
+<td>MACE</td>
+<td>2/200（1.0%）</td>
+<td>3/198（1.5%）</td>
+<td>ARD −0.5%</td>
+<td>未報告（必然極寬）</td>
+<td>—</td>
+<td>—</td>
+<td><strong>INCONCLUSIVE</strong></td>
+<td>無法評估</td>
+</tr>
+<tr>
+<td>任何不良事件</td>
+<td>4.5%</td>
+<td>8.1%</td>
+<td>—</td>
+<td>未報告</td>
+<td>—</td>
+<td>—</td>
+<td>無傷害訊號</td>
+<td>24 個月內耐受良好</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p>Sources:</p>
+<ul>
+<li><a href="https://doi.org/10.1161/CIRCULATIONAHA.126.082639">Davis &amp; Manson editorial, DOI 10.1161/CIRCULATIONAHA.126.082639</a></li>
+<li><a href="https://doi.org/10.1161/CIRCULATIONAHA.126.082640">Daubert &amp; Blaha editorial, DOI 10.1161/CIRCULATIONAHA.126.082640</a></li>
+<li><a href="https://doi.org/10.1161/CIRCULATIONAHA.126.082642">Lauer editorial, DOI 10.1161/CIRCULATIONAHA.126.082642</a></li>
+<li><a href="https://balchem.com/news/hnh-publication-largest-clinical-trial-vitamin-k2-mk-7-and-d3/">Balchem press release</a></li>
+<li><a href="https://www.nutraingredients.com/Article/2026/09/25/balchems-vitamin-k2-linked-to-21-slower-cac-progression/">NutraIngredients coverage</a></li>
+<li><a href="https://katalog.lib.cas.cz/KNAV/EdsRecord/edsair,edsair.doi.dedup.....18b435dfa21dbe0a09ab7305805588eb">AVADEC record (katalog.lib.cas.cz)</a></li>
+<li><a href="https://bohrium.dp.tech/paper/arxiv/36460034">AVADEC record (bohrium)</a></li>
+<li><a href="https://nutraceuticalsworld.com/contents/view_breaking-news/2024-02-01/vitamin-k2-and-d-may-be-beneficial-in-coronary-artery-calcification/">AVADEC coronary substudy coverage (nutraceuticalsworld)</a></li>
+<li><a href="https://bmjopen.bmj.com/content/13/7/e073233">DANCODE protocol, BMJ Open 2023</a></li>
+<li><a href="https://www.tctmd.com/news/vitamin-k-supplementation-may-reduce-coronary-calcification-vitak-cac">VitaK-CAC coverage, TCTMD</a></li>
+<li><a href="https://www.journalmetrics.org/journal/circulation">Circulation metrics (journalmetrics.org)</a></li>
+<li><a href="https://manusights.com/blog/circulation-impact-factor">Circulation impact factor (manusights)</a></li>
+<li><a href="https://api.crossref.org/works">Crossref API</a></li>
+</ul>
+
+<footer class="appraisal-meta">評讀資訊：模型：claude-opus-5-5 (claude)  ·  route：rct  ·  產出時間：2026-11-01 13:07 CST</footer>
+</main>
+</body>
+</html>

@@ -1,0 +1,913 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Immediate Ambulatory Electrocardiographic Monitoring in Syncope.</title>
+<style>
+  :root {
+    --bg: #fafafa;
+    --card: #ffffff;
+    --text: #1a1a1a;
+    --muted: #6b6b6b;
+    --border: #e5e5e5;
+    --accent: #0b5fff;
+  }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang TC",
+      "Microsoft JhengHei", sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    margin: 0;
+    padding: 24px 16px 64px;
+    line-height: 1.72;
+  }
+  main {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    margin: 0 auto;
+    max-width: 840px;
+    padding: 22px 26px;
+  }
+  nav {
+    margin: 0 auto 14px;
+    max-width: 840px;
+    color: var(--muted);
+    font-size: 14px;
+  }
+  a { color: var(--accent); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  h1, h2, h3, h4 { line-height: 1.35; }
+  h1 { font-size: 26px; margin-top: 0; }
+  h2 { border-top: 1px solid var(--border); padding-top: 18px; }
+  code {
+    background: rgba(127, 127, 127, 0.12);
+    border-radius: 4px;
+    padding: 1px 4px;
+  }
+  table {
+    border-collapse: collapse;
+    table-layout: auto;
+    width: 100%;
+    max-width: 100%;
+  }
+  th, td {
+    border: 1px solid var(--border);
+    overflow-wrap: anywhere;
+    padding: 6px 8px;
+    text-align: left;
+    vertical-align: top;
+  }
+  blockquote {
+    border-left: 3px solid var(--accent);
+    color: var(--muted);
+    margin-left: 0;
+    padding-left: 14px;
+  }
+  .appraisal-meta {
+    border-top: 1px solid var(--border);
+    margin-top: 28px;
+    padding-top: 14px;
+    color: var(--muted);
+    font-size: 13px;
+  }
+  @media (max-width: 600px) {
+    body {
+      padding: 12px 8px 40px;
+    }
+    main {
+      padding: 16px 12px;
+    }
+    h1 {
+      font-size: 22px;
+    }
+    table {
+      font-size: 12px;
+      table-layout: fixed;
+    }
+    th, td {
+      padding: 4px 5px;
+    }
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #1a1a1a;
+      --card: #242424;
+      --text: #e8e8e8;
+      --muted: #999;
+      --border: #333;
+      --accent: #6ea8ff;
+    }
+  }
+</style>
+</head>
+<body>
+<nav><a href="../../2026-W45.html">← 回到 2026-W45 週報</a></nav>
+<main>
+<h1>Immediate Ambulatory Electrocardiographic Monitoring in Syncope.</h1>
+<h1>ASPIRED 試驗批判性評讀：急診不明原因昏厥立即 14 天門診心電圖監測</h1>
+<h2>SECTION-0：文章全面描述</h2>
+<h3>0. 文章身份證</h3>
+<ul>
+<li><strong>標題</strong>：Immediate Ambulatory Electrocardiographic Monitoring in Syncope（ASPIRED trial）</li>
+<li><strong>期刊／卷期</strong>：N Engl J Med 2026;395(17):1691–702。2026 年 8 月 31 日線上發表 [文內]。同步在 ESC Congress 2026 Hot Line 發表 [外部: News-Medical、ACC]</li>
+<li><strong>DOI</strong>：10.1056/NEJMoa2605812；註冊號 ISRCTN10278811 [文內]</li>
+<li><strong>文章類型（路由）</strong>：多中心、開放標籤、平行組、實用性隨機對照優越性試驗 → SKILL-A（RCT）</li>
+<li><strong>證據素材</strong>：正文 markdown、圖頁 PNG（Figure 1、Figure 2、Supplement Figure S1）、Supplementary Appendix（Tables S1–S13），以及 Protocol（V1.0、V6.0、修訂史）與 SAP（V1.0、V3.0）中與分析相關的段落。Disclosure 表格未提供 [限制]</li>
+</ul>
+<h3>1. 作者團隊評論</h3>
+<ul>
+<li><strong>通訊作者</strong>：Matthew J. Reed，愛丁堡大學 Usher Institute／愛丁堡皇家醫院急診醫學研究群（EMERGE），急診醫師 [文內]。</li>
+<li><strong>代表性研究</strong>：本研究主題是 Reed 長期經營的路線，屬於該領域核心研究者，不是跨領域首次進入。
+<ul>
+<li>ROSE syncope 風險分層研究：pilot 刊於 Emerg Med J 2007，主研究刊於 J Am Coll Cardiol 2010 [外部: UiTM ETHOS 摘要、EMJ；Protocol 參考文獻 1、2]。</li>
+<li>ROSE 1 年預後研究，刊於 Ann Emerg Med 2011 [Protocol 參考文獻]。</li>
+<li>PATCH-ED 先導研究：在急診不明原因昏厥病人身上貼 Zio XT 14 天 patch，刊於 Emerg Med J 2018，結論是「需要大型試驗」[外部: ClinicalTrials.gov NCT02683174、EMJ]。</li>
+<li>2018 ESC Syncope Guidelines 共同作者 [Protocol 參考文獻 3：Brignole M, Reed MJ et al.]。</li>
+<li>本試驗還有質性子研究 ASPIRED-Q [外部: PMC]。</li>
+</ul>
+</li>
+<li><strong>團隊構成</strong> [文內／Supplement]：
+<ul>
+<li>急診醫學：Reed、Goodacre（Sheffield ScHARR）。</li>
+<li>臨床試驗統計：Weir（Edinburgh CTU）。</li>
+<li>心臟電生理：Lang、Grubb（愛丁堡皇家醫院）。</li>
+<li>衛生經濟：Thokala（York）。</li>
+<li>研究護理團隊。</li>
+<li>有一個值得肯定的細節：原統計師 Adamestam 在 2022/10 為了準備 DMC closed report 而解盲，之後即退出 SAP 撰寫 [SAP V3.0 p.1]。</li>
+</ul>
+</li>
+<li><strong>作者立場史</strong>：PATCH-ED 先導研究的結論是「routine, early ambulatory ECG monitoring … is probably warranted」，本試驗正是延續這個主張。本次主要終點未達顯著，但 Discussion 花了大量篇幅鋪陳死亡率與心律不整偵測的正面發現。作者先前已表態支持此介入，<strong>確認偏差風險中等</strong>。</li>
+<li><strong>資金與利益</strong>：
+<ul>
+<li>資金來自 British Heart Foundation（CS/F/20/190016）與 NHS Research Scotland（Reed 個人研究獎助）[文內]。</li>
+<li><strong>Boston Scientific 免費提供全部 BodyGuardian Mini 裝置</strong>，作者聲明廠商沒有其他參與 [文內; Supplement p.15]。</li>
+<li>Protocol 寫的是「Preventice BodyGuardian Mini」，正文則寫 Boston Scientific。[推論] 兩者應為同一產品在不同時期的商業標示，本次未外部查證。</li>
+<li>個人 COI disclosure 表格 [無法取得]。</li>
+</ul>
+</li>
+<li><strong>評估</strong>：學術資金主導，實物供應屬低至中度利益關聯。不過 Discussion 的敘事方向（暗示可擴大使用 patch）與廠商商業利益一致，需要留意。</li>
+</ul>
+<h3>2. 文獻 Metadata 整理</h3>
+<ul>
+<li><strong>Received／Accepted date</strong>：[文內未提供]，審查天數無法計算；NEJM 平均審查天數 [無法取得]。</li>
+<li><strong>發表節奏</strong>：2026/8/31 線上發表，同步 ESC Hot Line 發表，2026/10/29 刊出紙本 [文內; 外部: ACC]。屬學會同步快速發表的模式。依 SAP 修訂史，V3.0 於 2025/12/12 定稿 [SAP V3.0 p.2]，因此從分析定稿到發表約 8.5 個月。</li>
+<li><strong>Impact Factor</strong>：各來源數字不一致（84.5 或 78.5，均出自轉載網站），未經 Clarivate JCR 直接驗證 [外部: Wolters Kluwer Ovid 頁面、journalmetrics.org；未驗證]。期刊屬 General &amp; Internal Medicine Q1。</li>
+<li><strong>邀稿 vs 投稿</strong>：原始研究論文，非邀稿。</li>
+</ul>
+<h3>3. 研究背景（文內）</h3>
+<ul>
+<li><strong>既有事實</strong>：
+<ul>
+<li>英國每年約 65 萬人次、美國約 120 萬人次因昏厥到急診。</li>
+<li>約 50% 在急診評估後原因不明，約 7% 在 1 個月內被找出重要病因。</li>
+<li>1 年再發率約 50%；心律不整確診並治療後，再發率降到約 10%。</li>
+<li>越早開始監測，越可能抓到症狀與節律的對應。</li>
+</ul>
+</li>
+<li><strong>知識缺口</strong>：傳統監測的可近性與診斷率都低，很多病人住院觀察後仍帶著「原因不明」出院。目前沒有 RCT 檢驗「在急診當次就開始 14 天 patch 監測」是否能改善病人層級結果。</li>
+<li><strong>研究問題</strong>：急診評估後仍不明原因的成人昏厥病人，於急診當次即開始 14 天門診心電圖監測，與各院標準照護相比，能否減少 1 年內病人自述的昏厥次數？</li>
+</ul>
+<h3>4. 研究設計與方法</h3>
+<ul>
+<li><strong>PICO</strong>：</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>項目</th>
+<th>內容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>P</td>
+<td>≥16 歲、急診或急性內科單位評估後仍不明原因的昏厥病人。排除項目：有明顯病因（典型血管迷走、ECG 已見心律不整、姿勢性低血壓、PE/AMI、中風、出血、癲癇、低血糖等）、無同意能力、非在地居民、過去 1 個月自述昏厥 ≥5 次 [Table S1]</td>
+</tr>
+<tr>
+<td>I</td>
+<td>隨機分派後儘快貼上 BodyGuardian Mini，連續記錄 14 天。病人昏厥恢復後按鈕並寫日誌；報告由心臟生理技師判讀後送交主治醫師，嚴重心律不整 24 個工作小時內通知</td>
+</tr>
+<tr>
+<td>C</td>
+<td>各院標準照護：可包含住院 telemetry、Holter、ILR 等，依 NICE 或地方指引；兩組都可轉介昏厥專科（理想上 6 週內）</td>
+</tr>
+<tr>
+<td>O（主要）</td>
+<td>1 年內病人自述昏厥次數（每 4 週以簡訊／電郵／電話問卷收集）</td>
+</tr>
+<tr>
+<td>O（次要）</td>
+<td>病歷記載的昏厥次數與再發、臨床顯著心律不整（嚴重或有症狀）、全死因死亡、偵測時間、住院、檢查與治療次數、滿意度等</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><strong>設計細節</strong>：
+<ul>
+<li>45 家英國 NHS 醫院，2022/7/15 至 2024/6/24 收案。</li>
+<li>以 site 分層，1:1 網路電腦隨機，隨機需在急診就診後 72 小時內完成。</li>
+<li>開放標籤。主要分析為 ITT 原則下的負二項迴歸（site 為隨機效應，追蹤時間為 offset）。</li>
+<li>18 個月時做過一次 futility interim analysis。</li>
+</ul>
+</li>
+<li><strong>主要變項操作型定義</strong>：
+<ul>
+<li>每份 4 週問卷回報「自上次以來」的次數。</li>
+<li>跨越 1 年邊界的區間，按時間比例分配後四捨五入。</li>
+<li>中途漏填的區間由下一次回報補回 [Table 3 footnote; SAP 4.5.1]。</li>
+</ul>
+</li>
+</ul>
+<h3>5. 研究結果重點整理</h3>
+<p><strong>收案流程</strong>：</p>
+<ul>
+<li>篩選 6260 人，隨機 2234 人，其中 1 人撤回並要求刪除所有資料。分派結果為介入組 1122 人、標準組 1111 人。</li>
+<li>主要分析納入 1970 人（88.2%）：介入 1004 人、標準 966 人。</li>
+</ul>
+<p><strong>主要結果</strong>：</p>
+<table>
+<thead>
+<tr>
+<th>指標</th>
+<th>介入</th>
+<th>標準</th>
+<th>效果量（95% CI）</th>
+<th>出處</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>自述昏厥次數／1 年（mean±SD）</td>
+<td>1.37±5.10</td>
+<td>1.58±8.56</td>
+<td>IRR 0.89（0.68–1.18），P=0.42</td>
+<td>Table 3</td>
+</tr>
+<tr>
+<td>多重插補（2233 人）</td>
+<td>1.36</td>
+<td>1.53</td>
+<td>IRR 0.91（0.71–1.16）</td>
+<td>Supplement p.14</td>
+</tr>
+<tr>
+<td>排除 11 名離群者</td>
+<td>—</td>
+<td>—</td>
+<td>IRR 1.07（0.83–1.38）</td>
+<td>Table S6</td>
+</tr>
+<tr>
+<td>排除離群者＋多重插補</td>
+<td>1.11</td>
+<td>1.08</td>
+<td>IRR 1.05（0.83–1.33）</td>
+<td>Supplement p.14</td>
+</tr>
+<tr>
+<td>病歷記載昏厥次數</td>
+<td>0.22±0.64</td>
+<td>0.25±0.82</td>
+<td>IRR 0.90（0.71–1.15）</td>
+<td>Table 3</td>
+</tr>
+<tr>
+<td>1 年昏厥再發（人）</td>
+<td>280/1004（27.9%）</td>
+<td>276/966（28.6%）</td>
+<td>OR 0.97（0.79–1.17）</td>
+<td>Table 3</td>
+</tr>
+</tbody>
+</table>
+<p><strong>次要結果（未做多重比較校正）</strong>：</p>
+<table>
+<thead>
+<tr>
+<th>指標</th>
+<th>介入</th>
+<th>標準</th>
+<th>OR（95% CI）</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>臨床顯著心律不整</td>
+<td>241/1095（22.0%）</td>
+<td>98/1085（9.0%）</td>
+<td>2.95（2.28–3.81）</td>
+</tr>
+<tr>
+<td>其中非持續性 VT</td>
+<td>109（10.0%）</td>
+<td>13（1.2%）</td>
+<td>9.50（5.29–17.06）</td>
+</tr>
+<tr>
+<td>持續性 VT</td>
+<td>16（1.5%）</td>
+<td>6（0.6%）</td>
+<td>2.67（1.04–6.86）</td>
+</tr>
+<tr>
+<td>Pause ≥6 秒</td>
+<td>30（2.7%）</td>
+<td>13（1.2%）</td>
+<td>2.32（1.20–4.48）</td>
+</tr>
+<tr>
+<td>完全房室阻斷</td>
+<td>11（1.0%）</td>
+<td>8（0.7%）</td>
+<td>1.36（0.55–3.41）</td>
+</tr>
+<tr>
+<td>有症狀心律不整</td>
+<td>102（9.3%）</td>
+<td>64（5.9%）</td>
+<td>1.66（1.20–2.31）</td>
+</tr>
+<tr>
+<td>全死因死亡（1 年）</td>
+<td>16/1095（1.5%）</td>
+<td>31/1085（2.9%）</td>
+<td>0.50（0.27–0.93）</td>
+</tr>
+<tr>
+<td>30 天死亡</td>
+<td>1/1095</td>
+<td>3/1085</td>
+<td>— [Table S7]</td>
+</tr>
+<tr>
+<td>起始抗心律不整藥</td>
+<td>117/1085（10.8%）</td>
+<td>79/1078（7.3%）</td>
+<td>1.47（1.11–1.95）</td>
+</tr>
+<tr>
+<td>心律調節器植入</td>
+<td>74（6.8%）</td>
+<td>50（4.6%）</td>
+<td>1.49（1.04–2.13）</td>
+</tr>
+<tr>
+<td>ICD</td>
+<td>7（0.6%）</td>
+<td>4（0.4%）</td>
+<td>1.74（0.51–5.97）</td>
+</tr>
+<tr>
+<td>ILR 植入</td>
+<td>81（7.5%）</td>
+<td>82（7.6%）</td>
+<td>0.96（0.70–1.33）</td>
+</tr>
+<tr>
+<td>心臟超音波</td>
+<td>39.7%</td>
+<td>35.6%</td>
+<td>1.21（1.01–1.44）</td>
+</tr>
+<tr>
+<td>短期監測器（件／人）</td>
+<td>0.29±0.74</td>
+<td>0.40±0.55</td>
+<td>IRR 0.72（0.63–0.84）</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><strong>偵測時間</strong>：中位數 22.0 天 vs 54.5 天（只計算已偵測到心律不整的人）。</li>
+<li><strong>依從性</strong>：介入組 930/1122（82.9%）有可分析紀錄；平均配戴 11.7±3.1 天；89.1% 配戴 ≥7 天。</li>
+<li><strong>不良事件</strong>：49 vs 8 件，以皮膚刺激為主；嚴重不良事件各 1 件，均判定與介入無關。</li>
+</ul>
+<h3>6. 作者討論與評論重點</h3>
+<ul>
+<li><strong>主要訊息</strong>：主要終點未改善；但早期監測偵測到更多心律不整、帶來更多治療、1 年死亡率較低。</li>
+<li><strong>作者對主要終點陰性的解釋</strong>：昏厥是多因性的，只有 22% 找到心律不整；介入組可能有「注意力效應」，導致回報次數增加。</li>
+<li><strong>作者列出的限制</strong>：開放標籤帶來的 performance／detection bias；主觀的主要終點；未回覆者；事件率低於預期而降低 power。</li>
+<li><strong>[評估] 作者避重就輕之處</strong>：
+<ul>
+<li>沒有說明「實際過度離散遠大於設計假設」對 power 的毀滅性影響（見 C2）。</li>
+<li>沒有交代 Protocol 預設的 blinded sample size review 是否執行、結果如何。</li>
+<li>沒有報告 SAP 預設的 CSRS 次群組分析。</li>
+<li>對死亡率下降提出「心律調節器治療嚴重傳導病變」的機轉，但沒有提供死因資料，也沒有檢驗數量級是否合理（見 B1、F）。</li>
+<li>Discussion 用了整段篇幅描述 Kaplan-Meier「持續分離」，雖然最後加上 cautious 一句，但整體敘事超出次要終點應有的分量。</li>
+</ul>
+</li>
+</ul>
+<h3>7. 外部專業意見</h3>
+<ul>
+<li><strong>同期 editorial／comment</strong>：以一般與擴充模式搜尋，均未找到 NEJM 針對 ASPIRED 的同期 editorial 或 Perspective。ACC 新聞頁提到的 Shun-Shin &amp; Whinnett editorial 對應的是 DANISH-CRT，不是本文 [外部: ACC]。因未取得 DOI，未呼叫全文擷取 → <strong>[無法取得]——未發現同期 editorial</strong>。</li>
+<li><strong>其他公開評論</strong>：St Emlyn's（急診教育部落格）有一篇評讀文章，但全文擷取時遭遇使用額度限制，<strong>[無法取得全文]</strong>，此處不轉述其立場。</li>
+<li><strong>媒體框架（非專業意見，僅作警示）</strong>：HCPLive 標題為「Immediate ECG Monitoring Cuts Mortality in Unexplained Syncope」，把未校正多重比較的次要終點寫成主訊息。這正是本文 Discussion 敘事容易被放大解讀的例證 [外部: HCPLive]。</li>
+</ul>
+<h3>8. 臨床建議</h3>
+<ul>
+<li><strong>可採用的情境</strong>：
+<ul>
+<li>目的是<strong>提高與加速心律不整診斷</strong>時：急診評估後仍原因不明、特別是有結構性心臟病、傳導異常或高 CSRS 的病人。14 天 patch 約每 8 人多抓到 1 例臨床顯著心律不整（ARD 13.0 個百分點 [推算]）。</li>
+<li>可減少後續短期 Holter 的使用。</li>
+</ul>
+</li>
+<li><strong>不建議直接套用的情境</strong>：
+<ul>
+<li>以「減少昏厥再發」或「降低死亡」為目的、把它當成例行處置：前者沒有證據支持，後者證據脆弱。</li>
+<li>年輕、低風險、典型反射性昏厥族群：已被排除，且偵測到的多為 NSVT 等意義不明的發現，有過度診斷的風險。</li>
+</ul>
+</li>
+<li><strong>給臨床醫師的實務建議</strong>：
+<ol>
+<li>把 14 天 patch 定位為<strong>診斷工具</strong>，不要對病人宣稱可預防昏厥或延長壽命。</li>
+<li>對偵測到的無症狀 NSVT，應依結構性心臟病評估決定處置，避免一連串的連鎖檢查。</li>
+<li>建立報告快速回傳流程：Figure 2B 顯示偵測曲線上升延續到約第 30 天，代表 14 天監測結束後的判讀與通知還有延遲。</li>
+</ol>
+</li>
+<li><strong>證據強度</strong>：
+<ul>
+<li>心律不整偵測率：<strong>強</strong>（大型 RCT、效果大且一致）。</li>
+<li>昏厥次數無改善：<strong>中</strong>（點估計接近 1，但精確度不足以排除設計效果）。</li>
+<li>死亡率：<strong>弱</strong>（次要終點、未校正、fragility 低、機轉數量級不符）。</li>
+</ul>
+</li>
+</ul>
+<hr />
+<h2>SKILL-A：批判性評讀</h2>
+<h3>A. 補充技術細節</h3>
+<p><strong>樣本數估算</strong></p>
+<ul>
+<li>設計目標：IRR 0.85（再發 34% vs 40%），90% power，雙尾 α=0.05，<strong>過度離散參數假設為 0.25</strong>，每組 1064 人，加 5% 失訪後為 1117 人 [Protocol §9.1.2]。</li>
+<li><strong>實際觀察的離散度遠大於假設</strong> [推算]。以 NB 變異數 = μ + αμ² 粗估：
+<ul>
+<li>介入組變異數 5.10² ≈ 26.0，μ=1.37 → α ≈ 13。</li>
+<li>標準組 8.56² ≈ 73.3，μ=1.58 → α ≈ 29。</li>
+<li>兩者都是設計假設的 50 倍以上。</li>
+</ul>
+</li>
+<li>Protocol 與 SAP 都預設在收案 50% 時做 <strong>blinded sample size review</strong>，使用 Friede–Schmidli 方法 [Protocol §9.1.2; SAP V3.0 §4.3]。正文<strong>完全沒有交代</strong>是否執行、估出多少樣本數、為何沒有擴大樣本。正文只提到 18 個月時的 futility interim analysis。</li>
+<li><strong>[推算] 實際 power</strong>：從主要 CI 反推 log IRR 的 SE ≈ (ln1.18 − ln0.68)/3.92 ≈ 0.14。若真實 IRR 為 0.85，z ≈ 0.1625/0.14 ≈ 1.16，<strong>實際 power 約 20%</strong>。</li>
+</ul>
+<p><strong>隨機化與分派隱藏</strong></p>
+<ul>
+<li>網路中央隨機、電腦產生、依 site 分層、分派隱藏方式恰當 [文內; Protocol V6.0 §3]。</li>
+<li>病人在急診當下或出院後以電話同意後才隨機，72 小時窗口內完成。</li>
+</ul>
+<p><strong>致盲</strong></p>
+<ul>
+<li>開放標籤，病人、臨床醫師都知道分組。</li>
+<li>中央追蹤團隊對分組設盲（例如頻繁回報者的電話核實）[Protocol §6.2]，但主要終點是病人自填，評估者設盲的效果有限。</li>
+</ul>
+<p><strong>ITT vs per-protocol</strong></p>
+<ul>
+<li>所謂 ITT 實為「至少完成一份 4 週問卷者」的 modified ITT：排除 263 人（11.8%，介入 118 人、標準 145 人）。</li>
+<li>有做多重插補的補充分析 [Supplement p.14]。</li>
+<li>沒有 per-protocol 或 CACE 分析，而介入組有 17.1% 沒有可分析紀錄。</li>
+</ul>
+<p><strong>多重比較</strong></p>
+<ul>
+<li>次要終點 CI 未校正，文內明言不可用來推論效果 [Table 3 footnote ¶]。</li>
+</ul>
+<p><strong>缺失資料</strong></p>
+<ul>
+<li>4 週問卷完成率只有 59–69% [Table S4]。主要結果高度依賴 offset 假設：把未觀察期間的事件率視為與已觀察期間相同。</li>
+<li>被排除者較年輕（55.4 vs 58.7 歲），心悸（12.0% vs 9.4%）與胸痛（13.9% vs 10.8%）比例較高 [Table S12]。</li>
+</ul>
+<p><strong>Protocol／SAP 的時序與修改</strong>（重要）：</p>
+<ul>
+<li><strong>主要終點定義有變更</strong>：
+<ul>
+<li>Protocol V1.0（2021/8/23）的主要終點是「病歷記載＋自述」的合併昏厥次數 [Protocol p.12, §2.2.1]。</li>
+<li>V6.0（2023/12）改為「<strong>僅病人自述</strong>」昏厥次數 [Protocol V6.0 §3]。</li>
+<li>修訂史顯示 V1.0「Amended during REC review – not implemented」[Protocol p.68]。[推論] 變更很可能發生在收案前的 V2.0，屬於事前而非結果驅動的變更。但修訂史<strong>沒有列出這項變更與理由</strong>，正文也沒有揭露主要終點曾經修改。</li>
+<li>正文 Discussion 說選擇自述終點是受病人與公眾參與（PPI）及資助者意見影響。</li>
+</ul>
+</li>
+<li><strong>SAP V2.0 在追蹤結束後修訂</strong>：SAP V2.0 定稿於 2025/8/7，此時 1 年追蹤已全部結束（末位收案 2024/6/24）。新增項目包括「考慮主要終點偏態並加入敏感度分析」，也就是排除離群者的分析 3 [SAP V3.0 p.2]。
+<ul>
+<li>正文稱所有敏感度分析均為 prespecified，技術上是在資料鎖定、解盲前定義，但時間點已在資料收齊之後，嚴格來說不是設計期預設。</li>
+<li>值得注意的是，這項「後加」的分析把點估計從 0.89 推向 1.07，方向對介入<strong>不利</strong>。因此可以排除「為了做出顯著而新增分析」的疑慮。</li>
+</ul>
+</li>
+</ul>
+<h3>B. 批判性評估</h3>
+<h4>B1. 假說與理論邏輯</h4>
+<ul>
+<li><strong>假說是預先指定的</strong>：主要終點、樣本數邏輯、次要終點在 2021 年 Protocol 已明列，沒有撒網後挑結果的情形。</li>
+<li><strong>因果鏈過長，可預期會稀釋效果</strong>。介入要降低昏厥，必須依序滿足：
+<ol>
+<li>偵測到心律不整；</li>
+<li>該心律不整確實是昏厥原因；</li>
+<li>接受有效治療；</li>
+<li>治療阻止再發。</li>
+</ol>
+</li>
+<li>設計假設本身就指出效果上限：10.5% vs 2% 的「有症狀顯著心律不整」比例 × 90% 治療有效 → 絕對差約 7.6 個百分點 [Protocol §9.1.2]。</li>
+<li>實際上：
+<ul>
+<li>介入組有症狀心律不整只有 9.3%，標準組卻有 5.9%（遠高於假設的 2%）。差距只有 3.4 個百分點，<strong>不到設計假設的一半</strong>。</li>
+<li>基線再發率 28% 也低於假設的 40%。</li>
+<li>[推算] 按 Protocol 的邏輯重算：3.4% × 90% ≈ 3 個百分點的再發差，在 28% 的基線下對應的相對效果約 IRR 0.89。<strong>這恰好就是觀察到的點估計</strong>。也就是說，本試驗從結構上就不可能偵測到這麼小的效果。</li>
+</ul>
+</li>
+<li><strong>最可疑的敘事跳躍</strong>：
+<ol>
+<li><strong>死亡率機轉在數量級上不符</strong>（Discussion p.1700）。介入組多植入 24 台心律調節器、3 台 ICD；若要解釋少 15 例死亡，需要有超過一半的「多做的植入」各自救回一條命，這在 1 年內不合理。而且「完全房室阻斷」僅 11 vs 8，「Mobitz II」13 vs 7，嚴重傳導病變的差距本身就很小。</li>
+<li>「greater detection … support the mechanistic rationale for early cardiac monitoring」（Discussion）：偵測增加只證明「檢查做得更多會找到更多」，不等於機轉被驗證，因為病人層級結果並未改善。</li>
+<li>「attention effect 導致介入組回報較多」是在替陰性結果找理由。但標準組也有日誌，且病歷記載的昏厥次數（較客觀）同樣是 IRR 0.90，<strong>沒有證據顯示自述終點被系統性高估</strong>。</li>
+</ol>
+</li>
+</ul>
+<h4>B2. 受試者與外推性</h4>
+<ul>
+<li>族群合理：平均 58 歲；男性 52%；白人約 90%；CHF 約 2%；AF 約 8%；Rockwood frailty 約 85% 屬「健康到尚可」[Table 1; Table S5]。屬於混合中低風險族群，<strong>高風險心因性昏厥病人可能大多已在急診被診斷而遭排除</strong>。</li>
+<li>篩選 6260 人，3157 人不符資格，收案率約 36%，選擇性不低。</li>
+<li><strong>結構性限制</strong>：排除「非在地居民」與過去 1 個月昏厥 ≥5 次者；只納入「尚未在急診出院時常規使用監測」的醫院 [文內 Methods]，代表標準照護的監測強度偏低。</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>族群</th>
+<th>可外推條件</th>
+<th>不該外推的原因</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>一般急診不明原因昏厥（UK/歐洲型系統）</td>
+<td>有轉介昏厥專科路徑、patch 判讀量能</td>
+<td>無</td>
+</tr>
+<tr>
+<td>高風險族群（結構性心臟病、CSRS 高、傳導異常）</td>
+<td>診斷產出可能更高</td>
+<td>SAP 預設的 CSRS 次群組結果<strong>未報告</strong>，無法判斷異質性</td>
+</tr>
+<tr>
+<td>美國等已常規使用出院監測的系統</td>
+<td>有限</td>
+<td>對照組基線監測強度不同，效果幅度不可移植</td>
+</tr>
+<tr>
+<td>亞洲族群（含台灣）</td>
+<td>有限</td>
+<td>非白人只占約 10%，且醫療流程不同</td>
+</tr>
+</tbody>
+</table>
+<h4>B3. 研究設計與偏差</h4>
+<ul>
+<li><strong>隨機與分派隱藏</strong>：充分。基線大致平衡，但多項小差異都偏向介入組較健康：
+<ul>
+<li>心衰竭 1.6% vs 2.6%；</li>
+<li>慢性腎病 4.3% vs 5.4%；</li>
+<li>慢性肺病 7.5% vs 9.1%；</li>
+<li>心肌梗塞 5.3% vs 6.4% [Table 1]。</li>
+<li>單看都不顯著，但對<strong>死亡率這類低事件終點</strong>可能有累積影響（見 F）。</li>
+</ul>
+</li>
+<li><strong>致盲</strong>：主觀的主要終點加上開放標籤，偏差方向不確定。介入組可能更警覺而多報（低估效果），也可能因安心效應而少報（高估效果）。</li>
+<li><strong>對照組適當性（Gyawali）</strong>：對照組是真實 NHS 標準照護，有 ILR（7.6%）、Holter 等工具，回答了「我日常會怎麼做」的問題，<strong>設計恰當</strong>。但這也意味著介入的增量只限於「早期、系統性」的監測。</li>
+<li><strong>交叉污染</strong>：標準組也有人使用 14 天 patch，Table S9 中有 21 名回覆者用過。正文未報告標準組 14 天 patch 的使用率 → 可能<strong>稀釋效果</strong>。</li>
+<li><strong>介入未完全執行</strong>：17.1% 未配戴或未寄回；329 人缺乏可分析時長資料 → ITT 下效果被<strong>稀釋</strong>。</li>
+<li><strong>偵測時間的定義</strong>：以「通知醫師」為準。Figure 2B 中介入組的上升延續到約第 30–40 天，與 14 天配戴不符，反映報告回傳延遲。「立即」監測在流程上其實是「2–4 週後才知道結果」，削弱了早期治療的假設。</li>
+<li><strong>最可能造成偏差的三個設計點</strong>：
+<ol>
+<li><strong>過度離散導致精確度崩塌</strong>：讓結果偏向「無法判定」，屬於精確度問題而非偏差方向問題。</li>
+<li><strong>主要分析排除 11.8% 無問卷者，並以 offset 外推未觀察期間</strong>：被排除者的心悸與胸痛較多。這些人若較常是心律不整性昏厥，偏差方向不定。</li>
+<li><strong>次要的心律不整終點採用不對稱的偵測強度</strong>：介入組系統性連續監測，對照組依臨床需要監測。「偵測率」本身就是介入的一部分，不能被解讀為「心律不整盛行率不同」。這會讓偵測相關結果<strong>看起來很大</strong>。</li>
+</ol>
+</li>
+</ul>
+<h4>B4. 測量工具與實務意義</h4>
+<ul>
+<li><strong>主要終點</strong>：自述次數的信度沒有驗證。分布極度右偏（SD 是平均值的 4–5 倍），只排除 11 人就讓 IRR 從 0.89 變成 1.07。<strong>用平均次數描述極偏分布並不恰當</strong>；應同時報告中位數或 0 次比例，但文內未提供。</li>
+<li><strong>「臨床顯著心律不整」的組成高度依賴 NSVT</strong>：
+<ul>
+<li>介入組 177 名嚴重心律不整病人中，有 109 名（約 62%，[推算]）是 ≥4 跳、≥120 bpm 的 NSVT [Table S8]。</li>
+<li>這個門檻非常寬，大量 3–10 跳的無症狀 NSVT 在 14 天監測中很常見，臨床意義有限。</li>
+<li>「22% vs 9%」的偵測差距中，NSVT 一項就貢獻了 96 人的差異。<strong>扣掉 NSVT 之後，真正可能改變處置的心律不整差距小得多</strong>。</li>
+</ul>
+</li>
+<li><strong>就算結果是真的，實務用處有多大</strong>：
+<ul>
+<li>每監測約 8 人多找到 1 名「臨床顯著」心律不整（ARD 13.0 個百分點 [推算]）。</li>
+<li>每約 46 人多 1 台心律調節器（ARD 2.2 個百分點 [推算]）。</li>
+<li>每約 29 人多 1 人開始抗心律不整藥（ARD 3.5 個百分點 [推算]）。</li>
+<li>但昏厥再發與次數都沒有改變。</li>
+</ul>
+</li>
+</ul>
+<h3>C. 統計與資料完整性</h3>
+<h4>C1. 結果分類（CI + MCID）</h4>
+<ul>
+<li><strong>MCID 的選定</strong>：文內預設 IRR 0.85，對應再發絕對差 6 個百分點；作者稱之為「more conservative and clinically meaningful」[文內 Statistical Analysis]。傷害端 MCID 未定義；[推算] 對稱取 IRR 1.18。</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>結果</th>
+<th>估計（95% CI）</th>
+<th>相對 MCID 的位置</th>
+<th>分類</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>主要終點（自述次數）</td>
+<td>IRR 0.89（0.68–1.18）</td>
+<td>同時包含 1.0 與 0.85，也觸及 1.18</td>
+<td><strong>INCONCLUSIVE ❓</strong></td>
+</tr>
+<tr>
+<td>排除離群者</td>
+<td>IRR 1.07（0.83–1.38）</td>
+<td>下界 0.83 勉強包含 0.85，大部分落在無益區</td>
+<td>偏向 NEGATIVE</td>
+</tr>
+<tr>
+<td>1 年再發（人）</td>
+<td>27.9% vs 28.6%，[推算] RD −0.7 pp（約 −4.7 至 +3.3）</td>
+<td>排除 6 pp 的設計效果</td>
+<td><strong>NEGATIVE ❌</strong>（排除有意義的利益，但無法排除小傷害）</td>
+</tr>
+<tr>
+<td>病歷記載次數</td>
+<td>IRR 0.90（0.71–1.15）</td>
+<td>包含 0.85 與 1.0</td>
+<td>INCONCLUSIVE</td>
+</tr>
+<tr>
+<td>全死因死亡（次要）</td>
+<td>OR 0.50（0.27–0.93）</td>
+<td>下界極大效果、上界近乎無效</td>
+<td>IMPRECISE (+)，屬假說生成</td>
+</tr>
+<tr>
+<td>心律不整偵測（次要、過程指標）</td>
+<td>OR 2.95（2.28–3.81）</td>
+<td>明確超越</td>
+<td>POSITIVE（診斷產出）</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><strong>綜合判讀</strong>：作者以「did not result in significantly fewer」作結，用詞正確，沒有誤說成 no difference。但嚴格來說，主要終點本身是 <strong>INCONCLUSIVE</strong>。真正排除有臨床意義利益的是次要的「再發人數」分析，以及排除離群者的敏感度分析。</li>
+<li><strong>謬誤檢查</strong>：作者沒有使用 post-hoc power，也沒有宣稱「no difference」。</li>
+</ul>
+<h4>C2. Underpowered 判斷與 Winner's Curse</h4>
+<ul>
+<li><strong>主要終點屬 underpowered</strong>：CI 同時包含 null 與 MCID。根本原因不是作者說的「事件率低於預期」，而是<strong>過度離散被低估了兩個數量級</strong>（見 A）。</li>
+<li><strong>Blinded SSR 有交代缺失</strong>：這個機制正是設計來在中途偵測這類問題，結果去向成謎，是本文最主要的方法學交代缺失。</li>
+<li><strong>Winner's Curse 的方向在死亡率</strong>：
+<ul>
+<li>死亡率不在 power 設計範圍內：總共 47 例死亡，OR 0.50。</li>
+<li>[推算] <strong>Fragility 約 2</strong>：若介入組多 2 例死亡（16→18），OR 約 0.57，95% CI 上界約 1.02，就不再顯著。</li>
+<li>在低 power 下達到 p&lt;0.05 的效果量通常被系統性誇大（Type M error）。真實效果若存在，很可能遠小於 50%。<strong>不應用 OR 0.50 去設計下一個死亡率試驗的樣本數</strong>。</li>
+</ul>
+</li>
+</ul>
+<h4>C3. Bayesian 補充（常態近似，[推算]，非作者分析）</h4>
+<p><strong>主要終點</strong>（log IRR −0.117，SE 0.14，flat prior）：</p>
+<ul>
+<li>Pr(IRR&lt;1) ≈ 80%；Pr(IRR&lt;0.85) ≈ 37%。</li>
+<li>改用排除離群者的估計（log IRR 0.068，SE 0.13）：Pr(IRR&lt;1) ≈ 30%，Pr(IRR&lt;0.85) ≈ 4%。</li>
+<li>結論對離群者處理高度敏感。資料本身無法穩定支持任何方向。</li>
+</ul>
+<p><strong>死亡率</strong>（log OR −0.69，SE 0.32）：</p>
+<table>
+<thead>
+<tr>
+<th>Prior</th>
+<th>Pr(OR&lt;1)</th>
+<th>Pr(OR&lt;0.8)</th>
+<th>後驗中位 OR</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Non-informative</td>
+<td>≈99%</td>
+<td>≈92%</td>
+<td>0.50</td>
+</tr>
+<tr>
+<td>Skeptical（95% 機率 OR 落在 0.8–1.25）</td>
+<td>≈77%</td>
+<td>≈9%</td>
+<td>≈0.92</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>兩組 prior 的結論差距很大，代表<strong>死亡率訊號主要是資料稀少下 prior 的選擇在說話</strong>。在合理的懷疑性 prior 下，「死亡率降低 20% 以上」的機率不到一成。</li>
+</ul>
+<h4>C4. 報告完整性與其他統計問題</h4>
+<ul>
+<li><strong>Kaplan-Meier（Figure 2）</strong>：
+<ul>
+<li><strong>沒有 number-at-risk 表、沒有 CI 帶、沒有 log-rank 或 HR</strong>，無法判讀後期風險集與 censoring。</li>
+<li>Panel A 的 y 軸範圍 0–0.10，從 0 起算，沒有截斷誇大，但壓縮刻度讓 1.4 個百分點的差距看起來很明顯。</li>
+<li>依圖判讀：前約 50 天兩條曲線幾乎重疊（30 天死亡 1 vs 3）；標準組約在第 80–100 天開始上升，之後維持分離；介入組在接近 365 天時有一個小上升。</li>
+<li><strong>分離時點在 14 天監測與中位 22 天偵測之後</strong>，與「早期偵測 → 治療 → 存活」的時間序列並非不相容，但缺乏植入時間與死因資料佐證。</li>
+</ul>
+</li>
+<li><strong>Panel B</strong>：介入組在前約 30 天陡升到約 0.19，之後平台到約 0.22；標準組平緩上升到約 0.09。y 軸從 0 起算。</li>
+<li><strong>Figure S1</strong>：第 7 天累計 131 例，第 14 天 183 例。第 8–14 天每天約新增 7 例，第 1–7 天每天約 19 例，<strong>第 14 天仍未進入平台</strong>。這顯示若延長監測可能還有增量，作者暗示「7 天已足夠」的推論證據不足。</li>
+<li><strong>偵測時間的效果量標示不清</strong>：Table 3 的偵測時間效果量 0.35（0.28–0.44）沒有標示是什麼指標。腳註說「除另註明外為 OR」，但時間資料不該用 OR 表示。SAP 預設的是 Cox 或 RMST [SAP V1.0 §5.5.4]。而且中位數只在已偵測者中比較，屬條件於結果的比較，應以 Figure 2B 的完整 KM 為準。</li>
+<li><strong>數字不一致</strong>：
+<ul>
+<li>摘要寫介入組分派 1123 人，正文與 Figure 1 寫 1122 人（差 1 名撤回者，摘要未說明）。</li>
+<li>撤出比例：正文 7.4%，Table S4 7.3%。</li>
+<li>姿勢性血壓下降：Table 1 為 41/530（7.7%）vs 48/529（9.1%），Table S5 同樣分子分母卻標 3.7% vs 4.3%，Table S12 則是 80/1967（4.1%）。</li>
+<li>Table S12「&gt;1 episode in last year」473/1970 標為 53.6%（實為約 24%）。</li>
+</ul>
+</li>
+<li><strong>死亡率分母</strong>：分母為 1095/1085，比 ITT 少 27/26 人。由病歷取得的死亡資料理應接近完整，缺失原因未說明。</li>
+<li><strong>死因</strong>：完全沒有報告心因性、猝死或非心因性的分類，這是解讀死亡率訊號最關鍵的缺漏。</li>
+<li><strong>統計紅旗</strong>：
+<ol>
+<li>過度離散假設與實際差約 50 倍，blinded SSR 去向未揭露。</li>
+<li>主要終點以平均值描述極偏分布，11 名離群者決定效果方向。</li>
+<li>主要終點定義從「病歷＋自述」改為「自述」，正文未揭露。</li>
+<li>SAP 預設的 CSRS 次群組分析（主要與次要終點）未報告。</li>
+<li>死亡率屬次要終點、未校正、fragility 約 2、無死因、分母有缺。</li>
+<li>偵測時間的效果量種類未標示，分析方法與 SAP 不一致。</li>
+<li>4 週問卷完成率約 60%，主要結果高度依賴 offset 外推。</li>
+<li>2 年結果與成本效益分析尚未發表（SAP 明列為分階段報告）。</li>
+</ol>
+</li>
+</ul>
+<h3>D. 次群組分析評估</h3>
+<ul>
+<li>本文<strong>沒有報告任何次群組分析</strong>。但 SAP V1.0 與 V3.0 都預先指定：
+<ul>
+<li>主要終點依 CSRS 分低（−3 至 0）、中（1–3）、高（4–11）三組，並報告交互作用 p 值 [SAP V3.0 §4.5.3]；</li>
+<li>心律不整偵測與治療次數也做同樣分析 [§5.5.6]。</li>
+</ul>
+</li>
+<li><strong>評估</strong>：屬預設分析的選擇性不報告（outcome reporting bias）。這組資料正是臨床上最關鍵的問題：高風險病人是否受益？目前無從評估，可信度標為「<strong>無法判定——文內未提供</strong>」。</li>
+</ul>
+<h3>E. 紅旗清單</h3>
+<ul>
+<li><strong>設計</strong>：功效計算的離散度假設嚴重錯估；blinded SSR 結果未揭露。</li>
+<li><strong>終點</strong>：主要終點定義變更未在正文揭露；「臨床顯著心律不整」被 NSVT 主導。</li>
+<li><strong>統計</strong>：平均值加離群者決定方向；死亡率 fragility 約 2，且無死因。</li>
+<li><strong>選擇性報告</strong>：預設的 CSRS 次群組未報告。</li>
+<li><strong>敘事</strong>：Discussion 把次要死亡率包裝成機轉合理的發現，媒體已放大成「cuts mortality」。</li>
+<li><strong>COI</strong>：裝置由廠商免費提供；作者群先前已公開支持此介入。</li>
+<li><strong>外推</strong>：只納入未常規使用出院監測的醫院；白人約 90%；排除高頻昏厥者。</li>
+</ul>
+<h3>F. 反向解釋</h3>
+<ol>
+<li><strong>死亡率差異是機遇加上基線小失衡</strong>：
+<ul>
+<li>支持：47 例死亡，fragility 約 2；在 skeptical prior 下效果大幅縮小；心衰竭、腎病、肺病、心肌梗塞比例都偏向介入組較健康。</li>
+<li>反對：30 天後持續分離，且有可能的治療路徑。</li>
+</ul>
+</li>
+<li><strong>死亡率差異來自治療（心律調節器／ICD）</strong>：
+<ul>
+<li>支持：介入組心律調節器多 24 台，有 class I 適應症的可能。</li>
+<li>反對：完全房室阻斷與 Mobitz II 的差距只有個位數；15 例死亡差距在數量級上難以由約 27 台額外植入在 1 年內解釋；沒有死因與植入時間資料。</li>
+</ul>
+</li>
+<li><strong>主要終點的真實效果約 IRR 0.9，只是試驗做不出來</strong>：
+<ul>
+<li>支持：Protocol 自身的效果鏈推算約 0.89；點估計方向一致；病歷記載次數的 IRR 也是 0.90。</li>
+<li>反對：再發人數的 RD 只有 −0.7 個百分點，排除離群者後 IRR 1.07。</li>
+</ul>
+</li>
+<li><strong>「偵測增加」主要反映無症狀 NSVT 等意義不明節律，屬過度診斷</strong>：
+<ul>
+<li>支持：NSVT 占嚴重心律不整約六成；ILR 使用率兩組相同；昏厥無改善；介入組心臟超音波做得較多（39.7% vs 35.6%），提示有連鎖檢查。</li>
+<li>反對：持續性 VT 與 pause ≥6 秒也較多。</li>
+</ul>
+</li>
+</ol>
+<h3>G. 最終裁決</h3>
+<ul>
+<li><strong>整體可信度</strong>：<strong>中</strong>。執行品質良好，隨機、規模、實用性設計都到位。但主要終點精確度嚴重不足，最吸睛的發現（死亡率）證據等級低。</li>
+<li><strong>可採用的條件</strong>：在類似 NHS 流程、以「提早取得診斷」為目標的急診不明原因昏厥病人身上，可把 14 天 patch 當成取代部分短期 Holter 的診斷策略。</li>
+<li><strong>不建議採用的情境</strong>：
+<ul>
+<li>以降低再發或死亡為理由，全面例行化使用；</li>
+<li>低風險、典型反射性昏厥族群；</li>
+<li>缺乏 NSVT 等發現後續處置規範的機構。</li>
+</ul>
+</li>
+<li><strong>要改觀，最需要的三件事</strong>：
+<ol>
+<li>公布 CSRS 次群組結果與交互作用檢定，以及 blinded SSR 的執行紀錄；</li>
+<li>提供死因分類、心律調節器與 ICD 植入時間及 2 年追蹤，並以 REMOSYNCED 等獨立試驗驗證死亡率訊號；</li>
+<li>公布自述次數的中位數與 0 次比例、per-protocol 或 CACE 分析，以及成本效益。</li>
+</ol>
+</li>
+<li><strong>一句話結論</strong>：急診當下貼 14 天心電圖貼片能更早找到更多心律不整，但沒有減少昏厥；死亡率下降只是待驗證的線索。</li>
+</ul>
+<hr />
+<h3>主要數據彙整（條件輸出）</h3>
+<table>
+<thead>
+<tr>
+<th>指標</th>
+<th>介入組</th>
+<th>對照組</th>
+<th>效果量</th>
+<th>95% CI</th>
+<th>ARD [推算]</th>
+<th>MCID</th>
+<th>結果分類</th>
+<th>實務意義</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>自述昏厥次數／年</td>
+<td>1.37</td>
+<td>1.58</td>
+<td>IRR 0.89</td>
+<td>0.68–1.18</td>
+<td>−0.21 次</td>
+<td>IRR 0.85</td>
+<td>INCONCLUSIVE</td>
+<td>無法證明減少昏厥</td>
+</tr>
+<tr>
+<td>昏厥再發</td>
+<td>27.9%</td>
+<td>28.6%</td>
+<td>OR 0.97</td>
+<td>0.79–1.17</td>
+<td>−0.7 pp</td>
+<td>6 pp</td>
+<td>NEGATIVE</td>
+<td>排除 ≥6 pp 的利益</td>
+</tr>
+<tr>
+<td>臨床顯著心律不整</td>
+<td>22.0%</td>
+<td>9.0%</td>
+<td>OR 2.95</td>
+<td>2.28–3.81</td>
+<td>+13.0 pp（NNM 約 8）</td>
+<td>—</td>
+<td>POSITIVE（診斷產出）</td>
+<td>多數差異來自 NSVT</td>
+</tr>
+<tr>
+<td>心律調節器</td>
+<td>6.8%</td>
+<td>4.6%</td>
+<td>OR 1.49</td>
+<td>1.04–2.13</td>
+<td>+2.2 pp</td>
+<td>—</td>
+<td>IMPRECISE (+)</td>
+<td>約 46 人多 1 台</td>
+</tr>
+<tr>
+<td>全死因死亡</td>
+<td>1.5%</td>
+<td>2.9%</td>
+<td>OR 0.50</td>
+<td>0.27–0.93</td>
+<td>−1.4 pp</td>
+<td>未定義</td>
+<td>IMPRECISE (+)，假說生成</td>
+<td>fragility 約 2，不可作為採用依據</td>
+</tr>
+<tr>
+<td>皮膚相關不良事件</td>
+<td>49 件</td>
+<td>8 件</td>
+<td>—</td>
+<td>—</td>
+<td>—</td>
+<td>—</td>
+<td>—</td>
+<td>輕微、可逆</td>
+</tr>
+</tbody>
+</table>
+<p>Sources:</p>
+<ul>
+<li><a href="https://www.hcplive.com/view/immediate-ecg-monitoring-cuts-mortality-in-unexplained-syncope">HCPLive: Immediate ECG Monitoring Cuts Mortality in Unexplained Syncope</a></li>
+<li><a href="https://www.news-medical.net/news/20260831/Early-cardiac-monitoring-reveals-hidden-arrhythmias-in-patients-with-unexplained-fainting.aspx">News-Medical: Early cardiac monitoring reveals hidden arrhythmias</a></li>
+<li><a href="https://www.acc.org/Latest-in-Cardiology/Articles/2026/08/29/08/48/mon-315am-comboep-esc-2026">ACC: ASPIRED, DANISH-CRT, and His-Alternative II</a></li>
+<li><a href="https://www.escardio.org/news/press/press-releases/wearable-monitor-improves-diagnosis-of-heart-rhythm-disorders-after-fainting/">ESC press release: Wearable monitor improves diagnosis after fainting</a></li>
+<li><a href="https://www.stemlynsblog.org/aspired-ambulatory-ecg-monitoring-after-unexplained-syncope/">St Emlyn's: ASPIRED（未能取得全文）</a></li>
+<li><a href="https://clinicaltrials.gov/study/NCT02683174">ClinicalTrials.gov: PATCH-ED NCT02683174</a></li>
+<li><a href="https://emj.bmj.com/content/24/4/270">EMJ: ROSE pilot study</a></li>
+<li><a href="https://openaccess.library.uitm.edu.my/Record/ndltd-bl.uk-oai-ethos.bl.uk-660998/Description">ROSE study thesis record</a></li>
+<li><a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC11979494/">ASPIRED-Q qualitative study (PMC)</a></li>
+<li><a href="https://www.wolterskluwer.com/en/solutions/Ovid/new-england-journal-of-medicine-624">Wolters Kluwer Ovid: NEJM listing</a></li>
+<li><a href="https://www.journalmetrics.org/journal/new-england-journal-of-medicine">journalmetrics.org: NEJM</a></li>
+</ul>
+
+<footer class="appraisal-meta">評讀資訊：模型：claude-opus-5-5 (claude)  ·  route：rct  ·  產出時間：2026-11-01 03:49 CST</footer>
+</main>
+</body>
+</html>
