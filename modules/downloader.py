@@ -134,7 +134,36 @@ def _is_incomplete_elsevier_pdf(content: bytes, doi: str) -> bool:
         )
         return True
 
+    # Online-first articles have no Crossref page span yet, so the check above
+    # cannot fire (Lancet 2026-W45 IPD-MA went to appraisal as a 1-page stub).
+    # A preview stub is the article's first page: no reference list. Genuine
+    # one-page items (Comment, Correspondence) carry theirs on that page.
+    if not _first_page_has_references(content):
+        logger.debug(
+            f"Elsevier PDF is one page without references, treating as preview "
+            f"for {doi}: size={len(content)}"
+        )
+        return True
+
     return False
+
+
+def _first_page_has_references(content: bytes) -> bool:
+    try:
+        import fitz
+
+        with fitz.open(stream=content, filetype="pdf") as doc:
+            text = doc[0].get_text() if doc.page_count else ""
+    except Exception as e:
+        logger.debug(f"Cannot read PDF text for preview check: {e}")
+        return True  # unreadable: don't reject on this rule alone
+    return re.search(r"^\s*References?\s*$", text, re.MULTILINE | re.IGNORECASE) is not None
+
+
+def _elsevier_api_preview_only(resp: requests.Response) -> bool:
+    """Elsevier flags non-entitled responses: 'Response limited to first page'."""
+    status = resp.headers.get("X-ELS-Status", "")
+    return "first page" in status.lower() or "not entitled" in status.lower()
 
 
 def _is_usable_pdf_file(path: Path, doi: str) -> bool:
@@ -2006,6 +2035,12 @@ def _try_elsevier_api(doi: str) -> bytes | None:
         )
         pdf_resp = _get(pdf_url, allow_redirects=True)
         if pdf_resp.status_code == 200 and _is_pdf(pdf_resp.content):
+            if _elsevier_api_preview_only(pdf_resp):
+                logger.debug(
+                    f"Elsevier API not entitled for {pii}: "
+                    f"{pdf_resp.headers.get('X-ELS-Status')}"
+                )
+                return None
             if _is_incomplete_elsevier_pdf(pdf_resp.content, doi):
                 return None
             return pdf_resp.content
