@@ -32,6 +32,7 @@ from typing import Callable
 from zoneinfo import ZoneInfo
 
 BASH_GATE_HOOK = Path(__file__).resolve().parent / "bash_gate_hook.py"
+READ_AUDIT_HOOK = Path(__file__).resolve().parent / "read_audit_hook.py"
 
 CLAUDE_SUMMARY_MODEL_ENV = "JOURNAL_FETCHER_CLAUDE_SUMMARY_MODEL"
 CLAUDE_APPRAISAL_MODEL_ENV = "JOURNAL_FETCHER_CLAUDE_APPRAISAL_MODEL"
@@ -267,6 +268,7 @@ def run_claude_prompt(
     enable_web_search: bool = False,
     read_dirs: list[Path | str] | None = None,
     bash_commands: list[str] | None = None,
+    read_log: Path | None = None,
 ) -> tuple[str, float]:
     """Run `claude -p --model <model> --output-format json` once.
 
@@ -296,6 +298,10 @@ def run_claude_prompt(
     A `Bash(prefix:*)` allowlist alone does NOT restrict Bash in headless
     mode, so the hook is what makes this a tight, single-helper capability
     (e.g. the editorial-fetch helper) rather than a general shell.
+
+    `read_log`: with `read_dirs`, a PostToolUse hook appends the path of
+    every file the model Reads to this file, so the caller can check whether
+    the files it asked for (e.g. figure pages) were actually opened.
 
     Returns (result_text, total_cost_usd).
     Raises ClaudeLimitError on rate/credit exhaustion; ClaudeError otherwise.
@@ -340,6 +346,7 @@ def run_claude_prompt(
     # --tools alone still hits permission gating in non-interactive runs.
     tool_names: list[str] = []
     allowed: list[str] = []
+    hooks: dict[str, list[dict]] = {}
     settings_file: tempfile._TemporaryFileWrapper | None = None
     if enable_web_search:
         tool_names.extend(["WebSearch", "WebFetch"])
@@ -349,6 +356,14 @@ def run_claude_prompt(
             cmd.extend(["--add-dir", str(d)])
         tool_names.append("Read")
         allowed.append("Read")
+        if read_log is not None:
+            audit_cmd = " ".join(
+                shlex.quote(part)
+                for part in (sys.executable or "python3", str(READ_AUDIT_HOOK), str(read_log))
+            )
+            hooks["PostToolUse"] = [
+                {"matcher": "Read", "hooks": [{"type": "command", "command": audit_cmd}]}
+            ]
     if bash_commands:
         # Expose Bash (--tools) but gate it with a PreToolUse hook that allows
         # only the listed command prefixes — a Bash(prefix:*) allowlist does
@@ -358,16 +373,13 @@ def run_claude_prompt(
             [shlex.quote(sys.executable or "python3"), shlex.quote(str(BASH_GATE_HOOK))]
             + [shlex.quote(prefix) for prefix in bash_commands]
         )
-        settings_payload = {
-            "hooks": {
-                "PreToolUse": [
-                    {
-                        "matcher": "Bash",
-                        "hooks": [{"type": "command", "command": hook_cmd}],
-                    }
-                ]
+        hooks["PreToolUse"] = [
+            {
+                "matcher": "Bash",
+                "hooks": [{"type": "command", "command": hook_cmd}],
             }
-        }
+        ]
+    if hooks:
         settings_file = tempfile.NamedTemporaryFile(
             mode="w",
             encoding="utf-8",
@@ -376,7 +388,7 @@ def run_claude_prompt(
             delete=False,
         )
         try:
-            json.dump(settings_payload, settings_file)
+            json.dump({"hooks": hooks}, settings_file)
             settings_file.flush()
         finally:
             settings_file.close()
@@ -445,6 +457,7 @@ def try_claude_or_fallback(
     enable_web_search: bool = False,
     read_dirs: list[Path | str] | None = None,
     bash_commands: list[str] | None = None,
+    read_log: Path | None = None,
 ) -> tuple[str | None, str]:
     """Try claude first; on error fall back to `fallback()`.
 
@@ -486,6 +499,7 @@ def try_claude_or_fallback(
                 enable_web_search=enable_web_search,
                 read_dirs=read_dirs,
                 bash_commands=bash_commands,
+                read_log=read_log,
             )
             return text, "claude"
         except ClaudeLimitError as e:

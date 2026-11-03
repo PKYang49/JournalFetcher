@@ -20,6 +20,7 @@ from dotenv import load_dotenv
 load_dotenv()
 
 from modules.ego_browser import ego_available, fetch_pdf_via_ego
+from modules.pdf_text import OcrUnavailableError, doc_text_unreadable, ocr_page
 
 try:
     from curl_cffi import requests
@@ -344,7 +345,17 @@ def classify_supplement(content: bytes | None, url: str) -> str:
             import fitz
 
             with fitz.open(stream=content, filetype="pdf") as doc:
-                first_page = doc[0].get_text() if doc.page_count else ""
+                if not doc.page_count:
+                    first_page = ""
+                elif doc_text_unreadable(doc):
+                    # A broken-font cover reads as glyph garbage and would fall
+                    # through to the URL rule, which calls every JAMA
+                    # "...supp1_prod.pdf" an appendix — protocols included.
+                    first_page = ocr_page(doc[0])
+                else:
+                    first_page = doc[0].get_text()
+        except OcrUnavailableError as e:
+            logger.warning(f"Supplement cover unreadable and OCR unavailable: {e}")
         except Exception as e:
             logger.debug(f"Supplement classify could not read PDF: {e}")
     return classify_supplement_text(first_page, url)

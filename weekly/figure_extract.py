@@ -3,7 +3,7 @@
 from __future__ import annotations
 
 import re
-from collections.abc import Collection
+from collections.abc import Collection, Sequence
 from pathlib import Path
 
 import fitz  # PyMuPDF
@@ -272,6 +272,7 @@ def extract_supplement_pages(
     prefix: str,
     max_pages: int,
     parsed_table_pages: Collection[int],
+    page_texts: Sequence[str] | None = None,
     zoom: float = DEFAULT_ZOOM,
 ) -> list[Path]:
     """Render a supplement's labelled figure pages, then its unparsed tables.
@@ -282,6 +283,8 @@ def extract_supplement_pages(
     eFigure / Figure S caption *and* pass the figure check; a table page is
     rendered only when its eTable did not survive PDF→markdown
     (`parsed_table_pages`, 1-indexed). Figures take the budget first.
+    `page_texts` (OCR output for a PDF whose text layer does not decode)
+    replaces each page's own text when looking for caption labels.
     Files are named `<prefix>_page_NNN.png`.
     """
     if max_pages <= 0:
@@ -291,7 +294,7 @@ def extract_supplement_pages(
     tables: list[int] = []
     with fitz.open(pdf_path) as doc:
         for page in doc:
-            text = page.get_text()
+            text = page_texts[page.number] if page_texts is not None else page.get_text()
             figure_labels = {m.lower() for m in _SUPP_FIGURE_CAPTION_RE.findall(text)}
             table_labels = {m.lower() for m in _SUPP_TABLE_CAPTION_RE.findall(text)}
             if len(figure_labels) + len(table_labels) > _SUPP_TOC_LABELS:

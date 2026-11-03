@@ -13,6 +13,10 @@ context` then turns them into appraisal input:
   text file the model reads on demand (claude Read, codex rg/sed).
 - disclosure / data_sharing / collaborators / checklist → dropped.
 
+A PDF whose text layer does not decode (broken subset fonts, scans) is read
+with tesseract OCR instead (modules/pdf_text.py), both for classification and
+for its prompt text; without OCR it is listed as unreadable, never inlined.
+
 Files are kept under output/supplements/<key>/ with a manifest.json, so a
 re-run of the same appraisal reuses them without hitting the publisher.
 
@@ -42,6 +46,7 @@ from markdownify import markdownify
 
 from modules.downloader import _get, _is_pdf, classify_supplement, classify_supplement_text
 from modules.ego_browser import fetch_supplements_via_ego
+from modules.pdf_text import OcrUnavailableError, ocr_page_texts, text_layer_unreadable
 from weekly.figure_extract import (
     _SUPP_FIGURE_CAPTION_RE,
     _SUPP_TABLE_CAPTION_RE,
@@ -97,6 +102,8 @@ SUPPLEMENT_CONTEXT = """\
 - 有 Protocol / SAP 時，至少查核：事前登錄的 primary outcome 與正文是否一致
   （outcome switching）、樣本數計算假設、事前指定的分析族群與 subgroup，
   以及正文分析是否偏離 SAP；引用時標注 [Protocol p.N] 或 [SAP p.N]。
+- 標為「OCR 轉檔」的檔案是程式以 OCR 從影像重建的文字，偶有錯字；
+  引用其中數字時對照上下文，明顯不合理的值要註明可能是辨識錯誤。
 - 只根據實際讀到的內容評讀；某檔讀不到就明說，不要臆測。
 """
 
@@ -134,6 +141,9 @@ class SupplementFile:
     table_labels: int | None
     path: str | None
     error: str | None
+    # PDFs only: "text" (own text layer), "ocr" or "unreadable"; see
+    # _pdf_page_texts. Absent in manifests written before 2026-11-03.
+    text_layer: str | None = None
 
 
 def _env_flag(name: str) -> bool:
@@ -168,11 +178,35 @@ def _sniff_format(content: bytes, url: str) -> str:
     return ext or "bin"
 
 
-def _pdf_metrics(path: Path) -> dict[str, int]:
+def _pdf_page_texts(path: Path) -> tuple[list[str], str]:
+    """Per-page text and where it came from: "text" (the PDF's own layer),
+    "ocr" (tesseract, because that layer does not decode) or "unreadable"
+    (it does not decode and OCR is unavailable; the list is then empty)."""
     with fitz.open(path) as doc:
-        text = "\n".join(page.get_text() for page in doc)
+        texts = [page.get_text() for page in doc]
+        pages = doc.page_count
+    if not text_layer_unreadable("\n".join(texts), pages):
+        return texts, "text"
+    if not path.with_suffix(".ocr.json").exists():
+        print(f"  [supplements] {path.name}: text layer unreadable; running OCR ({pages} pages)")
+    try:
+        return ocr_page_texts(path), "ocr"
+    except OcrUnavailableError as e:
+        print(f"  [warn] {path.name}: OCR unavailable: {e}")
+        return [], "unreadable"
+
+
+def _page_marked(texts: list[str]) -> str:
+    return "\n".join(f"=== page {i} ===\n{text}" for i, text in enumerate(texts, 1))
+
+
+def _pdf_metrics(path: Path) -> dict[str, int | str]:
+    texts, layer = _pdf_page_texts(path)
+    text = "\n".join(texts)
+    with fitz.open(path) as doc:
         pages = doc.page_count
     return {
+        "text_layer": layer,
         "pages": pages,
         "text_chars": len(text),
         "figure_pages": count_figure_pages(path),
@@ -227,8 +261,8 @@ def _materialize(index: int, link, out_dir: Path) -> SupplementFile:
     if link.path is not None and link.path != dest:
         link.path.unlink(missing_ok=True)
 
-    metrics: dict[str, int | None] = dict.fromkeys(
-        ("pages", "text_chars", "figure_pages", "figure_labels", "table_labels")
+    metrics: dict[str, int | str | None] = dict.fromkeys(
+        ("pages", "text_chars", "figure_pages", "figure_labels", "table_labels", "text_layer")
     )
     if fmt == "pdf":
         try:
@@ -342,17 +376,15 @@ def record_supplements(
     return record
 
 
-def _page_marked_text(pdf_path: Path) -> Path:
+def _page_marked_text(pdf_path: Path, texts: list[str]) -> Path:
     """Write (once) a plain-text copy with page markers for on-demand reads.
 
-    Plain fitz text rather than pymupdf4llm: protocol bundles run to hundreds
-    of pages, and the model only greps them for specific sections.
+    Plain fitz (or OCR) text rather than pymupdf4llm: protocol bundles run to
+    hundreds of pages, and the model only greps them for specific sections.
     """
     out = pdf_path.with_suffix(".txt")
     if not out.exists():
-        with fitz.open(pdf_path) as doc:
-            parts = [f"=== page {page.number + 1} ===\n{page.get_text()}" for page in doc]
-        out.write_text("\n".join(parts), encoding="utf-8")
+        out.write_text(_page_marked(texts), encoding="utf-8")
     return out
 
 
@@ -453,6 +485,19 @@ def build_supplement_context(
         path = Path(f["path"]).resolve()
         if not path.exists():
             continue
+        describe = _describe(f)
+        texts: list[str] = []
+        layer = "text"
+        if fmt == "pdf":
+            texts, layer = _pdf_page_texts(path)
+            if layer == "unreadable":
+                sections.append(
+                    f"### {describe}——無法讀取\n\n此 PDF 的文字層無法解碼"
+                    f"（字型缺 Unicode 對照或為掃描檔），OCR 也不可用，本次未提供內容。"
+                )
+                continue
+            if layer == "ocr":
+                describe += "（OCR 轉檔，可能有辨識誤差）"
 
         if (
             fmt != "xlsx"
@@ -461,7 +506,9 @@ def build_supplement_context(
         ):
             image_budget = SUPPLEMENT_MAX_IMAGE_PAGES - len(images)
             docx_images: list[Path] = []
-            if fmt == "pdf":
+            if fmt == "pdf" and layer == "ocr":
+                markdown, parsed_tables = _page_marked(texts), frozenset()
+            elif fmt == "pdf":
                 markdown, parsed_tables = convert(path)
             else:
                 markdown, docx_images = _docx_to_markdown(
@@ -470,7 +517,7 @@ def build_supplement_context(
             if len(markdown) <= remaining:
                 remaining -= len(markdown)
                 inlined.append(path.name)
-                sections.append(f"### {_describe(f)}\n\n{markdown}")
+                sections.append(f"### {describe}\n\n{markdown}")
                 if fmt == "pdf" and image_dir is not None:
                     images += extract_supplement_pages(
                         path,
@@ -478,6 +525,7 @@ def build_supplement_context(
                         prefix=path.stem,
                         max_pages=image_budget,
                         parsed_table_pages=parsed_tables,
+                        page_texts=texts if layer == "ocr" else None,
                     )
                 images += docx_images
                 continue
@@ -489,14 +537,14 @@ def build_supplement_context(
             )
 
         if fmt == "pdf":
-            text_path = _page_marked_text(path)
+            text_path = _page_marked_text(path, texts)
         elif fmt == "docx":
             text_path = _docx_text_file(path)
         else:
             text_path = _sheet_text_file(path)
         read_dir = text_path.parent
         read_only.append(text_path.name)
-        sections.append(f"### {_describe(f)}——按需讀取\n\n檔案：{text_path}")
+        sections.append(f"### {describe}——按需讀取\n\n檔案：{text_path}")
 
     if not sections:
         return None
@@ -505,8 +553,9 @@ def build_supplement_context(
         sections.append(
             f"### Supplement 圖頁（{len(images)} 張 PNG，位於 {image_dir}）\n\n"
             f"{listing}\n\n這些是 supplement 的 eFigure、未能轉成文字表格的 eTable 頁面，"
-            f"或 docx appendix 的內嵌圖（文中以檔名標示位置）。請用 Read 讀取並判讀，"
-            f"與上方 appendix 文字對照；看不清楚就明說。"
+            f"或 docx appendix 的內嵌圖（文中以檔名標示位置）。動筆前請用 Read 逐一讀取"
+            f"**每一張**（全部讀完，不可跳過），與上方 appendix 文字對照；看不清楚就明說。"
+            f"程式會核對實際讀取了哪些檔案。"
         )
     return SupplementContext(
         prompt_block=SUPPLEMENT_CONTEXT.format(sections="\n\n".join(sections)),

@@ -217,7 +217,8 @@ FIGURE_APPRAISAL_INSTRUCTIONS = """\
 圖檔:
 {filelist}
 
-請在完成文字評讀時一併讀取並判讀這些圖頁,把「圖傳達但文字沒講清楚的證據」整合進正文。
+動筆前,請用 Read 逐一讀取上列**每一張**圖檔(全部讀完,不可跳過或只挑幾張),
+把「圖傳達但文字沒講清楚的證據」整合進正文。程式會核對實際讀取了哪些檔案。
 尤其留意:Kaplan-Meier 曲線分離時點與 number-at-risk 後期是否銳減、forest plot
 點估計與 CI 是否跨越無效線、CONSORT/flow diagram 人數是否一致、座標軸是否從非零起點
 誇大效果。只根據圖中實際可見內容評讀;看不清楚就明說「圖解析度不足無法判讀」,不要臆測。
@@ -500,6 +501,26 @@ def _build_figure_instruction(figdir: Path, files: list[Path]) -> str:
     )
 
 
+def _record_image_reads(article: dict, image_paths: list[Path], read_log: Path) -> None:
+    """Record which figure pages claude actually Read. Codex needs no check:
+    it gets the images attached with `-i`."""
+    read = {
+        Path(line).name
+        for line in read_log.read_text(encoding="utf-8").splitlines()
+        if line
+    }
+    unread = [p.name for p in image_paths if p.name not in read]
+    article["appraisal_figure_reads"] = {"provided": len(image_paths), "unread": unread}
+    if unread:
+        print(
+            f"  [warn] claude skipped {len(unread)}/{len(image_paths)} figure "
+            f"page(s): {', '.join(unread)}",
+            file=sys.stderr,
+        )
+    else:
+        print(f"  [figures] claude read {len(image_paths)}/{len(image_paths)} figure page(s)")
+
+
 def _run_appraisal_prompt(
     system_prompt: str,
     user_prompt: str,
@@ -511,6 +532,7 @@ def _run_appraisal_prompt(
     claude_extra: str = "",
     codex_extra: str = "",
     codex_editorial_fetch: bool = False,
+    read_log: Path | None = None,
 ) -> tuple[str | None, str, str]:
     """Try claude -p Opus 5.5 first (with cached system prompt + WebSearch +
     optional reference Read access); fall back to codex GPT 5.6 on rate /
@@ -519,6 +541,7 @@ def _run_appraisal_prompt(
     `claude_extra` is appended only to the claude prompt; `codex_extra` is
     appended only to the codex prompt. Both are used for backend-specific
     operational details around the shared editorial full-text fetch helper.
+    `read_log` collects the paths claude Reads (see read_audit_hook).
 
     WebSearch lets claude actually fulfil SKILL.md SECTION-0's external-
     search requirements (author background, journal IF, editorial). When
@@ -559,6 +582,7 @@ def _run_appraisal_prompt(
         enable_web_search=enable_web,
         read_dirs=read_dirs,
         bash_commands=bash_commands,
+        read_log=read_log,
     )
     model = claude_model if backend == "claude" else get_appraisal_model()
     return text, backend, model
@@ -795,6 +819,10 @@ def _convert_with_pymupdf4llm(pdf_path: Path) -> ConvertedPdf | None:
             ignore_images=True,
             show_progress=False,
             page_chunks=True,
+            # pymupdf4llm OCRs image regions by default once tesseract is
+            # installed (it is, for modules/pdf_text). Figure pages already go
+            # to the model as images, so keep the text-layer-only behaviour.
+            use_ocr=False,
         )
     except Exception as e:
         print(
@@ -1128,28 +1156,43 @@ def appraise_pdf(article: dict, pdf_path: Path, out_dir: Path) -> Path | None:
         report = ""
         backend = ""
         model = ""
-        for attempt in range(REPORT_TRUNCATION_RETRIES + 1):
-            report, backend, model = _run_appraisal_prompt(
-                system_prompt,
-                user_prompt,
-                read_dirs=read_dirs or None,
-                has_references=bool(references_block),
-                image_paths=image_paths or None,
-                bash_commands=bash_commands,
-                claude_extra=claude_extra,
-                codex_extra=codex_extra,
-                codex_editorial_fetch=codex_editorial_fetch,
-            )
-            report = _strip_preamble(report)
-            if not report or _is_report_complete(report):
-                break
-            if attempt < REPORT_TRUNCATION_RETRIES:
-                print(
-                    f"  [retry] backend returned {len(report):,} chars "
-                    f"(< {REPORT_CHAR_FLOOR:,}); regenerating "
-                    f"({attempt + 1}/{REPORT_TRUNCATION_RETRIES})",
-                    file=sys.stderr,
+        # Outside the Read dirs, so the model cannot see its own audit trail.
+        read_log: Path | None = None
+        if image_paths:
+            fd, log_name = tempfile.mkstemp(prefix="appraisal_reads_", suffix=".log")
+            os.close(fd)
+            read_log = Path(log_name)
+        try:
+            for attempt in range(REPORT_TRUNCATION_RETRIES + 1):
+                if read_log is not None:
+                    read_log.write_text("", encoding="utf-8")
+                report, backend, model = _run_appraisal_prompt(
+                    system_prompt,
+                    user_prompt,
+                    read_dirs=read_dirs or None,
+                    has_references=bool(references_block),
+                    image_paths=image_paths or None,
+                    bash_commands=bash_commands,
+                    claude_extra=claude_extra,
+                    codex_extra=codex_extra,
+                    codex_editorial_fetch=codex_editorial_fetch,
+                    read_log=read_log,
                 )
+                report = _strip_preamble(report)
+                if not report or _is_report_complete(report):
+                    break
+                if attempt < REPORT_TRUNCATION_RETRIES:
+                    print(
+                        f"  [retry] backend returned {len(report):,} chars "
+                        f"(< {REPORT_CHAR_FLOOR:,}); regenerating "
+                        f"({attempt + 1}/{REPORT_TRUNCATION_RETRIES})",
+                        file=sys.stderr,
+                    )
+            if read_log is not None and report and backend == "claude":
+                _record_image_reads(article, image_paths, read_log)
+        finally:
+            if read_log is not None:
+                read_log.unlink(missing_ok=True)
     if not report:
         return None
     if not _is_report_complete(report):

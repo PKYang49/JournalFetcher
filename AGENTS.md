@@ -190,8 +190,10 @@ appraisal.md → render.publish_appraisals → docs/<pmid>.html → git push →
     - `xlsx`（不論分類）→ openpyxl 轉成 tab 分隔、帶 `=== sheet 名稱 ===` 標記的 `.txt`，按需讀取（多是逐變異 / 逐病人大表）。
     - `disclosure` / `data_sharing` / `collaborators` / `checklist`（STROBE、CONSORT 等 reporting checklist）→ 丟棄。
   - 圖頁：`figure_extract.extract_supplement_pages`，**獨立額度** `JOURNAL_FETCHER_SUPPLEMENT_MAX_IMAGES`（預設 8），只取有 `eFigure` / `Figure S` caption 的圖頁，再補沒轉成 markdown 表格的 `eTable` 頁；同頁超過 3 個 label 視為目錄頁跳過。正文的圖頁規則不適用（supplement 表格格線會被誤判成圖）。docx appendix 則依文件順序取內嵌的 PNG / JPEG（同一額度），markdown 內以檔名標出位置，超額的標「未附」。
+  - **文字層壞掉的 PDF 走 OCR**（`modules/pdf_text.py`，2026-11-03）：subset 字型缺 ToUnicode 時 fitz 抽出的是字形編號亂碼（2026-W45 LEAP-Block 的 protocol / SAP，310k 字元亂碼被當 appendix 塞進 prompt）。以英文虛詞比例 < 2%（或掃描檔每頁 < 50 字元）判定，改用 tesseract（`brew install tesseract`）OCR，分類與 prompt 文字都用 OCR 結果，快取為 `<檔名>.ocr.json`；prompt 標「OCR 轉檔」。tesseract 不在時不送內容、標「無法讀取」。正文 `pymupdf4llm` 明確設 `use_ocr=False`，維持原行為。
   - 開關：`JOURNAL_FETCHER_APPRAISAL_SUPPLEMENT=0` 不送模型；`JOURNAL_FETCHER_SUPPLEMENT_LOG=0` 且前者也關才完全不抓。單獨測試：`python3 -m weekly.supplements --doi <DOI> [--pdf 正文.pdf] [--force]`。
   - 已實測：NEJM（Atypon）、JAMA（Silverchair）、Circulation（AHA，封面「Supplemental Appendix」、docx / xlsx、STROBE checklist）。Elsevier 撞 Turnstile 時記成 `no_links`（2026-W44 JACC 實際如此）。
+- **圖頁讀取稽核**：claude 路徑的圖頁是「給目錄、請模型 Read」，模型可能跳過（2026-W45 六張只讀兩張）。prompt 要求逐張讀完，並由 `modules/read_audit_hook.py`（PostToolUse hook，經 `run_claude_prompt(read_log=...)` 掛上）記錄實際 Read 的檔案；評讀後寫入 `article["appraisal_figure_reads"]`（`provided` / `unread`），有漏讀會印 `[warn]`。codex 用 `-i` 直接附圖，不需稽核。
 - **Article size backstop**：`ARTICLE_CHAR_BACKSTOP=1,500,000`（可用 `JOURNAL_FETCHER_APPRAISAL_CHAR_BACKSTOP` 覆寫）。一般論文（4–9 萬字元）與完整 ACC/AHA 指引（~1.05M 字元）都完整送進去。超過 → `ArticleTooLargeError` → `appraisal_status = "too_large"`，不產出。
 - **Route cache**：`appraise_pdf` 把 classify 結果寫進 `article["appraisal_route"]`，後續 manual re-run 跳過 LLM。
 
