@@ -376,6 +376,27 @@ def _build_appraisal_footer(
     )
 
 
+_TABLE_RE = re.compile(r"<table>.*?</table>", re.DOTALL)
+_HEADER_ROW_RE = re.compile(r"<tr>(.*?)</tr>", re.DOTALL)
+# Tables with at least this many columns break out of the 840px prose column.
+WIDE_TABLE_MIN_COLUMNS = 5
+
+
+def _wrap_tables(body_html: str) -> str:
+    """Wrap each <table> in a horizontally scrollable container; tables with
+    many columns get the `wide` class so they can extend past the prose
+    width instead of squeezing English words into per-letter breaks."""
+
+    def _wrap(match: re.Match[str]) -> str:
+        table_html = match.group(0)
+        header = _HEADER_ROW_RE.search(table_html)
+        columns = header.group(1).count("<th") if header else 0
+        css_class = "table-wrap wide" if columns >= WIDE_TABLE_MIN_COLUMNS else "table-wrap"
+        return f'<div class="{css_class}">{table_html}</div>'
+
+    return _TABLE_RE.sub(_wrap, body_html)
+
+
 def _render_appraisal_page(
     title: str,
     week_label: str,
@@ -388,6 +409,7 @@ def _render_appraisal_page(
     safe_title = escape(title)
     safe_week = escape(week_label)
     footer_html = _build_appraisal_footer(backend, model, route, appraised_at)
+    body_html = _wrap_tables(body_html)
     return f"""<!DOCTYPE html>
 <html lang="zh-Hant">
 <head>
@@ -436,15 +458,40 @@ def _render_appraisal_page(
     border-radius: 4px;
     padding: 1px 4px;
   }}
+  .table-wrap {{
+    margin: 1em 0;
+    overflow-x: auto;
+  }}
+  .table-wrap.wide {{
+    /* Break out of the 840px prose column, centred on the viewport. */
+    width: min(1040px, calc(100vw - 32px));
+    margin-left: calc(50% - min(520px, 50vw - 16px));
+  }}
   table {{
     border-collapse: collapse;
     table-layout: auto;
     width: 100%;
-    max-width: 100%;
+  }}
+  .table-wrap.wide {{
+    /* Opaque so the <main> card border does not show through the table. */
+    background: var(--card);
+  }}
+  /* Width hints go on <th> as percentages: Chrome's auto table layout
+     mis-sizes columns (and overflows) when cells carry min-width. */
+  .table-wrap.wide th:first-child {{
+    /* Variable + plain-language definition, e.g. "NCPV (noncalcified ...)". */
+    width: 26%;
+  }}
+  .table-wrap.wide th:last-child {{
+    /* Last column is usually a one-line interpretation. */
+    width: 20%;
   }}
   th, td {{
     border: 1px solid var(--border);
-    overflow-wrap: anywhere;
+    /* Wrap only at spaces: never split an English word mid-letter. */
+    overflow-wrap: normal;
+    word-break: normal;
+    hyphens: manual;
     padding: 6px 8px;
     text-align: left;
     vertical-align: top;
@@ -474,7 +521,10 @@ def _render_appraisal_page(
     }}
     table {{
       font-size: 12px;
-      table-layout: fixed;
+    }}
+    .table-wrap.wide {{
+      width: calc(100vw - 16px);
+      margin-left: calc(50% - 50vw + 8px);
     }}
     th, td {{
       padding: 4px 5px;
