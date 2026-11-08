@@ -1,0 +1,848 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TAVR in Patients with Moderate Aortic Stenosis with At-Risk Features.</title>
+<style>
+  :root {
+    --bg: #fafafa;
+    --card: #ffffff;
+    --text: #1a1a1a;
+    --muted: #6b6b6b;
+    --border: #e5e5e5;
+    --accent: #0b5fff;
+  }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang TC",
+      "Microsoft JhengHei", sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    margin: 0;
+    padding: 24px 16px 64px;
+    line-height: 1.72;
+  }
+  main {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    margin: 0 auto;
+    max-width: 840px;
+    padding: 22px 26px;
+  }
+  nav {
+    margin: 0 auto 14px;
+    max-width: 840px;
+    color: var(--muted);
+    font-size: 14px;
+  }
+  a { color: var(--accent); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  h1, h2, h3, h4 { line-height: 1.35; }
+  h1 { font-size: 26px; margin-top: 0; }
+  h2 { border-top: 1px solid var(--border); padding-top: 18px; }
+  code {
+    background: rgba(127, 127, 127, 0.12);
+    border-radius: 4px;
+    padding: 1px 4px;
+  }
+  .table-wrap {
+    margin: 1em 0;
+    overflow-x: auto;
+  }
+  .table-wrap.wide {
+    /* Break out of the 840px prose column, centred on the viewport. */
+    width: min(1040px, calc(100vw - 32px));
+    margin-left: calc(50% - min(520px, 50vw - 16px));
+  }
+  table {
+    border-collapse: collapse;
+    table-layout: auto;
+    width: 100%;
+  }
+  .table-wrap.wide {
+    /* Opaque so the <main> card border does not show through the table. */
+    background: var(--card);
+  }
+  /* Width hints go on <th> as percentages: Chrome's auto table layout
+     mis-sizes columns (and overflows) when cells carry min-width. */
+  .table-wrap.wide th:first-child {
+    /* Variable + plain-language definition, e.g. "NCPV (noncalcified ...)". */
+    width: 26%;
+  }
+  .table-wrap.wide th:last-child {
+    /* Last column is usually a one-line interpretation. */
+    width: 20%;
+  }
+  th, td {
+    border: 1px solid var(--border);
+    /* Wrap only at spaces: never split an English word mid-letter. */
+    overflow-wrap: normal;
+    word-break: normal;
+    hyphens: manual;
+    padding: 6px 8px;
+    text-align: left;
+    vertical-align: top;
+  }
+  blockquote {
+    border-left: 3px solid var(--accent);
+    color: var(--muted);
+    margin-left: 0;
+    padding-left: 14px;
+  }
+  .appraisal-meta {
+    border-top: 1px solid var(--border);
+    margin-top: 28px;
+    padding-top: 14px;
+    color: var(--muted);
+    font-size: 13px;
+  }
+  @media (max-width: 600px) {
+    body {
+      padding: 12px 8px 40px;
+    }
+    main {
+      padding: 16px 12px;
+    }
+    h1 {
+      font-size: 22px;
+    }
+    table {
+      font-size: 12px;
+    }
+    .table-wrap.wide {
+      width: calc(100vw - 16px);
+      margin-left: calc(50% - 50vw + 8px);
+    }
+    th, td {
+      padding: 4px 5px;
+    }
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #1a1a1a;
+      --card: #242424;
+      --text: #e8e8e8;
+      --muted: #999;
+      --border: #333;
+      --accent: #6ea8ff;
+    }
+  }
+</style>
+</head>
+<body>
+<nav><a href="../../2026-W46.html">← 回到 2026-W46 週報</a></nav>
+<main>
+<h1>TAVR in Patients with Moderate Aortic Stenosis with At-Risk Features.</h1>
+<h1>PROGRESS 試驗評讀：中度主動脈瓣狹窄合併高風險特徵者接受 TAVR vs 臨床監測</h1>
+<hr />
+<h2>SECTION-0：文章全面描述</h2>
+<h3>0. 文章身份證</h3>
+<ul>
+<li><strong>標題</strong>：TAVR in Patients with Moderate Aortic Stenosis with At-Risk Features</li>
+<li><strong>期刊／年份</strong>：<em>N Engl J Med</em> 2026；2026-11-02 線上刊出，與 TCT 2026 late-breaking 同步發表</li>
+<li><strong>DOI</strong>：10.1056/NEJMoa2607326；PMID 42970708；NCT04889872</li>
+<li><strong>文章類型</strong>：國際多中心、open-label、1:1 隨機對照試驗（device pivotal trial），走 SKILL-A 主流程加 A1 特殊設計子模組</li>
+<li><strong>設計特徵</strong>：有效性採 superiority RCT；安全性用單臂 performance goal 比較，沒有和對照組直接比</li>
+</ul>
+<h3>1. 作者團隊評論</h3>
+<ul>
+<li><strong>通訊作者</strong>：Philippe Généreux（Atlantic Health, Gagnon Cardiovascular Institute, Morristown）[文內]。他也是 EARLY TAVR 試驗（無症狀嚴重 AS 早期 TAVR，<em>NEJM</em> 2025;392:217-27）的第一作者 [外部: Otto editorial 參考文獻 4]，同時提出了「cardiac damage staging」分期系統（本文 ref 28）。</li>
+<li><strong>團隊組成</strong>：national PI 為 Généreux、Makkar、Bax；steering committee executive chair 為 Martin B. Leon；Michael Mack 為共同作者。這兩位長期主導 PARTNER 系列試驗（例如 PARTNER 3 七年結果，<em>NEJM</em> 2026）[外部: editorial ref 7]。Echo core lab 主任 Pibarot、CT core lab 主任 Blanke、biomarker core lab 主任 Lindman 都名列作者 [Supplement Section A]。<strong>Case Review Board 由 Généreux 本人擔任成員</strong> [Supplement p.7]。</li>
+<li><strong>領域地位</strong>：作者群是 TAVR／瓣膜研究的核心人物，不是跨領域新手。</li>
+<li><strong>作者立場史（關鍵）</strong>：Généreux 長期主張「moderate AS is not benign」並推動提早介入；從 cardiac damage staging、EARLY TAVR 到本試驗，方向一致 [推論：依文內 ref 28 與 editorial ref 4]。本文結論與團隊既有立場高度一致，有 confirmation bias 的風險。</li>
+<li><strong>利益揭露</strong>：
+<ul>
+<li>全額由 Edwards Lifesciences 資助。Edwards 參與試驗設計（與 FDA、steering committee 共同制定）、選擇試驗中心、監督資料蒐集與監測，並<strong>依 SAP 執行統計分析</strong> [Supplement Section B]。</li>
+<li>兩位作者（B. Park、H. Prince）是 Edwards 員工；Park 是 lead statistician [Protocol p.154]。</li>
+<li>Sponsor 在投稿前享有「advance review of publications」的權利 [Supplement Section B]。</li>
+<li>個別作者的 disclosure form 未收錄在 markdown 中 [無法取得]。</li>
+</ul>
+</li>
+<li><strong>評估</strong>：這是器械 pivotal trial，目的明確是取得 moderate AS 適應症（protocol 寫明 secondary endpoints「tested to support labeling claims」[Protocol v8.0 p.45]）。分析由 sponsor 執行、作者群與立場高度同質，結論呈現（例如摘要強調「superior」，卻沒提 death 無差異）需要特別審慎。</li>
+</ul>
+<h3>2. 文獻 Metadata 整理</h3>
+<ul>
+<li><strong>Received／Accepted date</strong>：[markdown 未保留，無法取得]，所以無法計算審查天數。</li>
+<li><strong>期刊屬性</strong>：<em>NEJM</em> 2025 JIF 約 84.5（JCR 2026 版，二手來源，未直接查證 Clarivate）[外部: Wolters Kluwer Ovid listing]；Q1，General &amp; Internal Medicine。</li>
+<li><strong>發表型態</strong>：配合 TCT 同步發表，屬典型 embargo 快速通道 [推論]；附同期 editorial。</li>
+<li><strong>時間軸（自行從 protocol 整理）</strong>：
+<ul>
+<li>Protocol v1.0：2021-04-09</li>
+<li>收案：2021-10 至 2024-01</li>
+<li>Protocol v8.0：2025-09-11</li>
+<li>Publication SAP v1.0：<strong>2026-03-03</strong>，各 PI 簽署日期為 2026-03-20 至 03-25 [Protocol p.147, p.153–154]</li>
+<li>最後一位受試者約在 2026-01 完成 2 年追蹤 [推論]，所以<strong>論文 SAP 是在全部 2 年資料蒐集完成之後才定稿</strong>。</li>
+</ul>
+</li>
+</ul>
+<h3>3. 研究背景（文內）</h3>
+<ul>
+<li><strong>既有事實</strong>：65 歲以上族群中 AS 盛行率超過 3%。對 moderate AS，指引建議每 1–2 年 echo 追蹤，等到進展成 severe 再介入。不過 moderate AS 的進展異質性大，部分合併 at-risk features 的病人預後接近 severe AS（觀察性資料）。</li>
+<li><strong>知識缺口</strong>：沒有大型 RCT 檢驗 moderate AS 早期 TAVR；TAVR UNLOAD（n=178，HFrEF）樣本不足而無定論。</li>
+<li><strong>研究問題</strong>：對 ≥65 歲、moderate AS 且至少有一項 at-risk feature 的病人，transfemoral balloon-expandable TAVR 能否比指引建議的臨床監測更降低 2 年的死亡或心衰竭事件？</li>
+</ul>
+<h3>4. 研究設計與方法</h3>
+<p><strong>PICO</strong></p>
+<ul>
+<li><strong>P</strong>：年齡 ≥65 歲；core lab 判定為 moderate AS（AVA 1.0–1.5 cm²，或依 AVAi／BMI 校正；加上 Vpeak 3.0–&lt;4.0 m/s 或 MG 20–&lt;40 mmHg；discordant 者需輔以 DSE 或 calcium score）；至少一項 at-risk feature（NYHA ≥II 或瓣膜相關症狀、LVEF &lt;60%、diastolic dysfunction ≥grade 2、SVi &lt;35、6 個月內 AF、NT-proBNP &gt;3×ULN、valve calcium 升高）；解剖適合 TF-TAVR；排除 LVEF &lt;20%、需血管再通的 CAD、明顯衰弱、預期壽命 &lt;24 個月。</li>
+<li><strong>I</strong>：隨機分派後建議 14 天內完成 TF-TAVR（SAPIEN 3／3 Ultra／3 Ultra RESILIA）。</li>
+<li><strong>C</strong>：指引建議的臨床監測。出現 AVR 適應症時送 case review board，最後由在地 heart team 決定。</li>
+<li><strong>O</strong>：
+<ul>
+<li>主要有效性終點：2 年 death 或 HF event（含與不含住院），nonhierarchical composite，ITT。</li>
+<li>主要安全性終點：30 天 composite，as-treated TAVR 組，與 performance goal 13.7% 比較。</li>
+<li>次要終點：五項，hierarchical gatekeeping。</li>
+</ul>
+</li>
+</ul>
+<p><strong>關鍵設計細節</strong></p>
+<ul>
+<li><strong>隨機化</strong>：電子系統，依 site、LVEF（&lt;50%／≥50%）、Vpeak（&lt;3／≥3 m/s）分層，permuted block size 4 [Supplement Section D]。</li>
+<li><strong>盲法</strong>：open-label；<strong>CEC 知道分組</strong> [文內 Methods]。</li>
+<li><strong>主分析</strong>：Wald test 比較 2 年 KM 差，Greenwood variance，雙側 α 0.05；Cox HR 為輔助呈現；PH 假設檢定 P=0.69。</li>
+<li><strong>缺失資料</strong>：假設 non-informative censoring；連續變項不做 imputation。</li>
+<li><strong>期中分析</strong>：第 225 位 AT TAVR 病人完成 30 天追蹤時做 sample size re-estimation（針對 safety），結果未修改樣本數 [Supplement Section F3]。</li>
+</ul>
+<p><strong>HF event 的操作型定義（關鍵）</strong></p>
+<p>改編自 HFC-ARC，需同時符合三項 [Supplement Section E]：</p>
+<ol>
+<li>新出現或惡化的症狀（呼吸困難、運動耐受度下降、疲倦等）；</li>
+<li>至少兩項客觀證據。清單相當寬，包括 BNP 上升、<strong>KCCQ 下降 ≥10 分</strong>、<strong>新出現 ≥moderate MR／TR</strong>、LVEF 下降 ≥10% 等；</li>
+<li>接受針對 HF 的治療，包括口服利尿劑加倍、單次 IV 利尿劑，<strong>或 AVR</strong>。</li>
+</ol>
+<p>HF hospitalization 的定義是「因 HF event 住院 ≥24 小時或跨日曆日」。</p>
+<h3>5. 研究結果重點整理</h3>
+<div class="table-wrap wide"><table>
+<thead>
+<tr>
+<th>變項（代表什麼）</th>
+<th style="text-align:right">TAVR（N=373）</th>
+<th style="text-align:right">臨床監測（N=371）</th>
+<th style="text-align:right">組間差（95% CI）</th>
+<th style="text-align:right">p 值</th>
+<th>如何解讀</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>主要有效性終點</strong>：2 年 death 或 HF event（KM）</td>
+<td style="text-align:right">60 例，<strong>16.7%</strong></td>
+<td style="text-align:right">85 例，<strong>23.9%</strong></td>
+<td style="text-align:right"><strong>−7.2 pp（−13.1 to −1.3）</strong>；HR 0.67（0.48–0.93）</td>
+<td style="text-align:right">0.02</td>
+<td>統計顯著；約 NNT 14（2 年）[自行計算]</td>
+</tr>
+<tr>
+<td>全因死亡</td>
+<td style="text-align:right">30 例，<strong>8.4%</strong></td>
+<td style="text-align:right">26 例，<strong>7.3%</strong></td>
+<td style="text-align:right">+1.0 pp（−2.9 to 5.0）；HR 1.14（0.67–1.93）</td>
+<td style="text-align:right">未檢定</td>
+<td>死亡沒有減少，點估計反而偏向 TAVR 較差</td>
+</tr>
+<tr>
+<td><strong>HF event</strong>（含／不含住院）</td>
+<td style="text-align:right">38 例，<strong>10.8%</strong></td>
+<td style="text-align:right">66 例，<strong>19.0%</strong></td>
+<td style="text-align:right">−8.2 pp（−13.4 to −2.9）；HR 0.55（0.37–0.81）</td>
+<td style="text-align:right">未檢定</td>
+<td>主要終點的效益完全由這一項驅動</td>
+</tr>
+<tr>
+<td>不需住院的 HF event</td>
+<td style="text-align:right"><strong>4.6%</strong></td>
+<td style="text-align:right"><strong>4.9%</strong></td>
+<td style="text-align:right">未報告</td>
+<td style="text-align:right">未報告</td>
+<td>門診 HF 事件幾乎相同，差異集中在 HF 住院</td>
+</tr>
+<tr>
+<td>心血管死亡</td>
+<td style="text-align:right">11 例，3.2%</td>
+<td style="text-align:right">14 例，4.0%</td>
+<td style="text-align:right">HR 0.78（0.35–1.71）[Fig S3A]</td>
+<td style="text-align:right">未報告</td>
+<td>CI 極寬</td>
+</tr>
+<tr>
+<td>非心血管死亡</td>
+<td style="text-align:right">19 例，5.4%</td>
+<td style="text-align:right">12 例，3.4%</td>
+<td style="text-align:right">HR 1.57（0.76–3.23）[Fig S3B]</td>
+<td style="text-align:right">未報告</td>
+<td>TAVR 組較多，可能是機遇；不能排除有害</td>
+</tr>
+<tr>
+<td><strong>主要安全性終點</strong>：30 天 composite（as-treated）</td>
+<td style="text-align:right">21/358，<strong>5.9%</strong>（3.9–8.8）</td>
+<td style="text-align:right">—</td>
+<td style="text-align:right">上限 8.8% &lt; performance goal 13.7%</td>
+<td style="text-align:right">&lt;0.001</td>
+<td>只和 performance goal 比，沒有對照</td>
+</tr>
+<tr>
+<td>次要 1：death／stroke／HF 住院</td>
+<td style="text-align:right">64 例，17.7%</td>
+<td style="text-align:right">83 例，23.3%</td>
+<td style="text-align:right">−5.6 pp（−11.5 to 0.3）</td>
+<td style="text-align:right"><strong>0.07</strong></td>
+<td>未達顯著，<strong>gatekeeping 在此停止</strong></td>
+</tr>
+<tr>
+<td>次要 2：存活且 <strong>KCCQ-OS</strong>（心衰竭生活品質量表，0–100）持續改善 ≥10 分</td>
+<td style="text-align:right">134/344，<strong>39.0%</strong></td>
+<td style="text-align:right">76/327，<strong>23.2%</strong></td>
+<td style="text-align:right">+15.7 pp（8.8 to 22.6）</td>
+<td style="text-align:right">未正式檢定</td>
+<td>open-label 的主觀量表，只能當探索性結果</td>
+</tr>
+<tr>
+<td>次要 3：HF 住院（KM）</td>
+<td style="text-align:right">26 例，<strong>7.4%</strong></td>
+<td style="text-align:right">52 例，<strong>14.9%</strong></td>
+<td style="text-align:right">−7.5 pp（−12.2 to −2.9）；HR 0.48（0.30–0.77）[Fig S5]</td>
+<td style="text-align:right">未正式檢定</td>
+<td>HF 住院約減半</td>
+</tr>
+<tr>
+<td>HF 住院總次數（recurrent）</td>
+<td style="text-align:right">43 次，6.2/100 人年</td>
+<td style="text-align:right">83 次，12.0/100 人年</td>
+<td style="text-align:right">HR 0.52（0.35–0.78），joint frailty</td>
+<td style="text-align:right">未報告</td>
+<td>差距主要在第 2 年拉開（見下方圖表判讀）</td>
+</tr>
+<tr>
+<td><strong>LVMI</strong>（左心室質量指數）</td>
+<td style="text-align:right">97.1±28.3 g/m²</td>
+<td style="text-align:right">101.1±30.1 g/m²</td>
+<td style="text-align:right">−3.7（−7.8 to 0.5）</td>
+<td style="text-align:right">未檢定</td>
+<td>沒有明確差異；心肌結構保護的機轉證據薄弱</td>
+</tr>
+<tr>
+<td>Diastolic dysfunction ≥grade 2（2 年）</td>
+<td style="text-align:right">107/275，38.9%</td>
+<td style="text-align:right">97/266，36.5%</td>
+<td style="text-align:right">+2.4 pp（−5.7 to 10.6）</td>
+<td style="text-align:right">未檢定</td>
+<td>沒有改善</td>
+</tr>
+<tr>
+<td>2 年 stroke（ITT）</td>
+<td style="text-align:right">20 例，5.6%</td>
+<td style="text-align:right">16 例，4.7%</td>
+<td style="text-align:right">未報告</td>
+<td style="text-align:right">未報告</td>
+<td>TAVR 組數字略高，disabling 2.8% vs 2.0%</td>
+</tr>
+<tr>
+<td>2 年新植入永久心律調節器（<strong>PPM</strong>）</td>
+<td style="text-align:right">55 例，<strong>17.3%</strong></td>
+<td style="text-align:right">29 例，<strong>9.3%</strong></td>
+<td style="text-align:right">−／+8.0 pp [自行計算]</td>
+<td style="text-align:right">未報告</td>
+<td>TAVR 的已知代價，差距約 8 個百分點</td>
+</tr>
+<tr>
+<td>2 年 NYHA III／IV</td>
+<td style="text-align:right"><strong>3.9%</strong></td>
+<td style="text-align:right"><strong>10.9%</strong></td>
+<td style="text-align:right">未報告</td>
+<td style="text-align:right">未報告</td>
+<td>open-label 的主觀評估</td>
+</tr>
+<tr>
+<td>2 年 KCCQ-OS 個人內變化</td>
+<td style="text-align:right">+14.3 分</td>
+<td style="text-align:right">+7.7 分</td>
+<td style="text-align:right">約 6.6 分 [自行計算]</td>
+<td style="text-align:right">未報告</td>
+<td>超過一般 MCID（約 5 分），但有 open-label bias</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>補充重點</strong></p>
+<ul>
+<li><strong>追蹤完整度</strong>：主要終點可分析人數為 356（95.4%）vs 341（91.9%）。監測組退出較多（30 vs 17），其中 22 人在 delayed AVR 前退出 [Fig S1 CONSORT]。CONSORT 人數經核對一致：373−13−4=356；371−10−20=341。</li>
+<li><strong>監測組交叉</strong>：監測組 1 年內 27.0%、2 年內 <strong>57.4%</strong>（204 人）接受 delayed AVR，其中 97.5% 是 TAVR。進行 AVR 時 core lab 數值的平均為 AVA 0.9 cm²、MG 37.5 mmHg、Vpeak 3.9 m/s，換言之相當多人在核心實驗室標準下仍處於 severe 邊緣 [Table S8]。</li>
+<li><strong>關鍵數據</strong>：監測組 66 位 HF event 病人中，有 <strong>28 位（42.4%）是「delayed AVR 伴隨 HF 住院、AVR 作為 HF 治療」</strong> [文內 Results]。這一點見 B3 的詳細批判。</li>
+<li><strong>Baseline 不平衡</strong>：previous CABG（16.9% vs 11.6%）與 SVi &lt;35（14.2% vs 8.4%）P&lt;0.05，兩者方向都對 TAVR 組不利。</li>
+</ul>
+<p><strong>圖表判讀（依實際讀取的 PNG）</strong></p>
+<ul>
+<li><strong>Fig 1A</strong>：兩條曲線在前 3 個月內就開始分離，之後持續擴大，沒有晚期交叉。24 個月時 number-at-risk 為 296 vs 256，監測組下降較多，反映事件較多加上退出。
+<ul>
+<li>主圖 y 軸是 0–100%，另附 0–30% 放大 inset，屬 NEJM 標準格式，沒有誤導性截斷。</li>
+</ul>
+</li>
+<li><strong>Fig 1B</strong>：死亡曲線在整整 24 個月內幾乎完全重疊，末端 TAVR 組略高。</li>
+<li><strong>Fig S6（recurrent HF 住院累積數）</strong>：12 個月時監測組 34 次、TAVR 組 27 次，差距很小。<strong>差距主要在第 2 年拉開</strong>，到 24 個月是 83 vs 43；監測組在 18–24 個月曲線特別陡。這個時段正好是監測組 delayed AVR 最多的時期（第 2 年 105 例）[自行比對 Fig S1／Fig S6]。這個時間上的重疊支持「AVR 相關住院被計為 HF 住院」的疑慮，但不能證明。</li>
+<li><strong>Fig S5（首次 HF 住院 KM）</strong>：分離較早，前 6 個月監測組就明顯較陡，所以差異並非全部來自第 2 年。</li>
+<li><strong>Fig S8（KCCQ）</strong>：y 軸在 0–40 之間有斷軸，視覺上會放大組間差；實際差距是 2 年平均 79.4 vs 73.8。</li>
+<li><strong>Fig S2</strong>：Vpeak 分布中約 8.7% 的人 &lt;2.9 m/s（bin 2.2–2.8 加總）；MG 分布中約 5% 的人 &lt;19 mmHg [自行計算]。代表收案涵蓋部分接近 mild 的病人，也有約 10% 的人 Vpeak 已接近 4 m/s。</li>
+<li><strong>Fig 3</strong>（delayed AVR 時間曲線）與 <strong>Fig S9</strong> 沒有在提供的圖檔中，只能依 markdown 文字判讀。</li>
+</ul>
+<h3>6. 作者討論與評論重點</h3>
+<ul>
+<li><strong>作者主要訊息</strong>：TAVR 降低 death／HF event，HF 住院約減半，安全性達標；作者認為 TAVR「may represent an appropriate therapeutic strategy」，並建議將病人轉介到瓣膜門診。</li>
+<li><strong>與既有文獻</strong>：作者以 TAVR UNLOAD 族群較小、為 HFrEF 且 power 不足來解釋兩者結果的差異。</li>
+<li><strong>作者自承的限制</strong>：
+<ul>
+<li>open-label，CEC 未盲；</li>
+<li>只適用 ≥65 歲且解剖適合 TF-TAVR 的病人；</li>
+<li>medical therapy 優化可能減少 HF 事件，但作者辯稱 HFpEF 的 SGLT2i 證據排除了瓣膜病。</li>
+</ul>
+</li>
+<li><strong>作者的論點與我的評估</strong>：
+<ul>
+<li>作者辯稱 57.4% 交叉「可能低估」TAVR 效益。這只講了一半：交叉的同時也製造了 HF 事件（AVR 住院被計為 HF 住院），方向不一定是低估。</li>
+<li><strong>作者沒有討論</strong>：主要終點在試驗中途被更換（v6.0）；SAP 在資料完成後才定稿；HF event 定義寬鬆，而且容許 AVR 作為「HF 治療」條件；death 數值偏向 TAVR 較差；PPM 增加；瓣膜 durability 與未來 TAV-in-TAV 的終身處置。</li>
+<li>結論句「superior … in lowering death or HF event」技術上正確，但沒有說清楚效益完全來自 HF event。限制段避重就輕。</li>
+</ul>
+</li>
+</ul>
+<h3>7. 外部專業意見</h3>
+<p><strong>Catherine M. Otto, &quot;Management of Moderate Aortic Stenosis in Older Adults — The P in PICOT.&quot; <em>N Engl J Med</em> 2026；DOI 10.1056/NEJMe2613400</strong> [外部: NEJM editorial 全文]</p>
+<ul>
+<li><strong>肯定</strong>：承認試驗依假說顯示 death／HF 降低（HR 0.67）。</li>
+<li><strong>主要質疑</strong>：
+<ul>
+<li>明確指出差異「driven largely by heart-failure events; the incidence of death did not differ meaningfully」。</li>
+<li><strong>收案病人「atypical」</strong>：96% 有症狀、90% 高血壓，而 moderate AS 通常不會引起症狀或 LV 功能異常。</li>
+<li>大多數 moderate AS 成人更年輕、無症狀，應繼續監測。</li>
+</ul>
+</li>
+<li><strong>對類似本試驗病人的建議</strong>：
+<ol>
+<li>先確認不是 severe AS，包括 low-flow low-gradient、混合狹窄與逆流的情況，並測 calcium，必要時重複影像；</li>
+<li>評估並治療共病，持續症狀要在 GDMT 之後才較能歸因於 AS；</li>
+<li>與病人和家屬做 shared decision making。</li>
+</ol>
+</li>
+<li><strong>核心結論</strong>：「Clearly, TAVR is not appropriate for most adults with moderate aortic stenosis」。只在 GDMT 無效、合併多重共病的高風險老年人「may be considered」；需要確認性研究、更長追蹤、durability 與成本效益資料。她也指出這群病人「大多 2 年內本來就會有標準 AVR 適應症」，所以問題是「何時」而非「是否」。</li>
+<li><strong>Otto 沒有觸及的部分</strong>：endpoint 更換、HF event 定義、CEC 未盲等方法學問題。</li>
+</ul>
+<p><strong>其他公開評論</strong>（研討會報導，非同儕審查）</p>
+<ul>
+<li><strong>TCTMD</strong>：Windecker 主張放棄 severe／non-severe 二分法；外科醫師 Kaneko 認為 SAVR 可能有類似效益，並指出試驗只收 TF 解剖合適的病人 [外部: TCTMD]。</li>
+<li><strong>Medscape podcast</strong>：有評論認為設計偏頗，類比 EARLY TAVR [外部: 搜尋摘要，未讀全文，僅供參考]。</li>
+</ul>
+<h3>8. 臨床建議</h3>
+<ul>
+<li><strong>可考慮採用的情境</strong>：
+<ul>
+<li>≥65 歲（實際平均 78 歲），core lab 等級確認為 <strong>concordant</strong> moderate AS，且偏上段（Vpeak ≥3 m/s）；</li>
+<li>有明確症狀（NYHA II–III）而且<strong>已優化 HFpEF 治療（含 SGLT2i、利尿劑）後仍持續</strong>；</li>
+<li>TF 解剖合適、三葉瓣、預期壽命與 durability 考量可接受，並經 heart team 與 shared decision making。</li>
+</ul>
+</li>
+<li><strong>不建議直接套用的情境</strong>：
+<ul>
+<li>無症狀 moderate AS（本試驗只有 27 人）；</li>
+<li>年輕病人（&lt;75 歲次群組 CI 跨 1，而且 durability 的終身風險較高）；</li>
+<li>bicuspid（n=55，HR 1.15）；discordant moderate AS（HR 0.88，CI 0.38–2.05）；</li>
+<li>解剖不適合 TF 者；</li>
+<li>尚未嘗試 HFpEF GDMT 者；</li>
+<li>只因「at-risk feature」是影像或生物標記（例如單純 calcium score 升高）而沒有症狀的病人。</li>
+</ul>
+</li>
+<li><strong>實務建議</strong>：
+<ol>
+<li>有症狀的 moderate AS 先重新確認嚴重度：core lab 等級的 echo、calcium score，排除 LFLG severe。約 16% 被轉介為 moderate 的人其實分級不對。</li>
+<li>先治療 HFpEF 共病並縮短追蹤間隔（例如 6 個月）。本試驗監測組 2 年內 57% 會達到 AVR 適應症，所以「密切追蹤、適時 TAVR」仍是合理的預設。</li>
+<li>與病人討論時要明說：<strong>TAVR 不會讓人活更久</strong>（2 年死亡無差異），換來的是較少 HF 住院與症狀改善，但 PPM 約多 8 個百分點，並提早承擔瓣膜終身風險。</li>
+</ol>
+</li>
+<li><strong>證據強度</strong>：<strong>中</strong>。單一 sponsor RCT、open-label、終點組成偏軟、主要終點曾於試驗中途更換、死亡無效益；但隨機化、規模中等、追蹤完整度可接受。</li>
+</ul>
+<hr />
+<h2>SKILL-A：批判性評讀</h2>
+<h3>A. 補充技術細節</h3>
+<ul>
+<li><strong>樣本數與 power（終點更換史）</strong>：
+<ul>
+<li><strong>v1.0</strong>（2021-04）：主要終點為 <strong>death、stroke、unplanned cardiovascular hospitalization</strong>；假設 2 年 10% vs 20%，一側 α 0.025、power 85%，需 450 人；分析族群為 <strong>mITT</strong> [Protocol p.38–39]。</li>
+<li><strong>v6.0</strong>（日期 [markdown 未保留]）：主要終點改為 death + HF event，理由是「align with the primary endpoints of similar trials on moderate AS」；同時更新 HF event 定義 [Protocol Appendix E]。</li>
+<li><strong>v7.0</strong>：樣本數改由 safety performance goal 驅動（298 名 AT TAVR → 628 人）；effectiveness 假設 15% vs 30%，power &gt;99%。</li>
+<li><strong>實際收案 744 人，比計畫的 628 多 18%</strong>，文內沒有解釋。期中分析也聲稱未修改樣本數。</li>
+</ul>
+</li>
+<li><strong>觀察效果約為假設的一半</strong>：觀察到 7.2 pp，而假設是 15 pp。以 SE 約 3.0 回推，對 7.2 pp 的實際 power 約 67% [自行計算]。這不是 underpowered positive 的 Winner's Curse 型態，反而是效果比預期小。</li>
+<li><strong>ITT vs per-protocol</strong>：只報 ITT。protocol 有定義 AT 與 VI 族群，但正文沒有報告有效性的 AT 分析（[Protocol v8.0 Section 10.3.8 Sensitivity Analysis] 未見於正文）。</li>
+<li><strong>多重比較</strong>：
+<ul>
+<li>次要終點正文採雙側 0.05；protocol v8.0 與 SAP 寫的是「one-sided 0.05」[Protocol p.45；SAP p.151]。</li>
+<li>若依 protocol，第一個次要終點 p=0.07（雙側），換算單側約 0.035，<strong>會判為通過</strong>，KCCQ 等後續終點就能「宣稱顯著」。作者改採 NEJM 標準反而比較保守，這點值得肯定。但也顯示 protocol 原本的 α 設定偏寬鬆，是為 labeling 量身打造。</li>
+</ul>
+</li>
+<li><strong>Cox PH</strong>：P=0.69，沒有違反。</li>
+<li><strong>缺失資料</strong>：假設 non-informative censoring。但監測組在 delayed AVR 前退出 22 人，這些人可能在試驗外接受 TAVR 或因病況惡化而退出，<strong>可能是 informative censoring</strong>，方向不明。</li>
+<li><strong>其他</strong>：沒有 sensitivity analysis（例如 tipping point、排除 AVR 相關 HF 住院）。</li>
+</ul>
+<h3>A1. 特殊設計子模組</h3>
+<p><strong>器械 pivotal trial 與 performance goal 安全終點</strong></p>
+<ul>
+<li>安全性只和 13.7% 的 historical performance goal 比較，所以「達標」只代表 TAVR 程序本身安全，不代表 TAVR 策略比監測安全。</li>
+<li>Performance goal 在 v7.0「Updated … to better align with the study population」[Protocol Appendix E]，是在收案過程中調整的。</li>
+<li>30 天程序結果（死亡 0%、disabling stroke 0%）確實優秀，但這是專家中心加上 Edwards 代表在場的結果 [Protocol 9.2.1]，外推到一般中心需要保留。</li>
+</ul>
+<p><strong>Strategy trial 的交叉特性</strong></p>
+<ul>
+<li>這實質上是「立即 TAVR」vs「有適應症再 TAVR」的比較，平均延後時間 [文內未報告中位數]。所以 2 年結果衡量的是「提早數月到一年多」的增量價值。</li>
+</ul>
+<h3>B. 批判性評估</h3>
+<h4>B1. 假說與理論邏輯</h4>
+<ul>
+<li><strong>機轉假說</strong>：解除後負荷可以預防心肌損傷與 HF。
+<ul>
+<li>文內證據：LVMI 差 −3.7（CI 跨 0），diastolic dysfunction 沒有改善（38.9% vs 36.5%）[Table 2]。<strong>預期的結構性中介指標沒有改善</strong>，機轉鏈不完整。</li>
+<li>合理機轉 1：症狀性病人中 AS 是部分的血流動力學負擔，提早移除後症狀與充血減少。</li>
+<li>合理機轉 2：減少因 AS 惡化而需急性住院的事件。</li>
+</ul>
+</li>
+<li><strong>可疑的敘事跳躍</strong>：
+<ol>
+<li>從「at-risk features 與不良預後相關（觀察性）」跳到「提早介入可以改變預後」，但 cardiac damage stage 0–1 的效益反而最大（HR 0.22），stage 2–4 只有 0.75 [Fig 2]，與「預防損傷」的敘事相反。</li>
+<li>討論段稱監測組「may have been prevented with an earlier intervention」的健康狀態下降，但這是事後推論。</li>
+</ol>
+</li>
+<li><strong>假說是否預先指定</strong>：主要終點雖在結果揭曉前定案（v6.0），<strong>但並非原始設計</strong>。次要終點在 v8.0（2025-09，收案結束 20 個月後）大幅刪減重排，而且 sponsor 執行 open-label 試驗的資料監測。存在 data-informed 修改的空間，[無法判定] sponsor 是否接觸過分組彙總資料。</li>
+</ul>
+<h4>B2. 受試者與外推性</h4>
+<ul>
+<li><strong>實際族群</strong>：96.4% 有症狀，平均 78 歲，90% 高血壓、36% 糖尿病、33% AF 史、BMI 29.5，<strong>典型的 HFpEF 表型合併 moderate AS</strong>。正如 Otto 所說，這群人是 atypical。</li>
+<li><strong>選擇過程</strong>：1,294 位簽署同意後篩選，550 人篩選失敗；有 TF 解剖排除、CRB 審查；排除衰弱與預期壽命 &lt;2 年者；87% 在美國；92.7% 白人 [Supplement Section H]。</li>
+<li><strong>外推性分級</strong>：
+<ol>
+<li><strong>一般 moderate AS 族群</strong>：不可外推。多數無症狀、較年輕。</li>
+<li><strong>有症狀、HFpEF 樣、TF 合適的老年 moderate AS</strong>：有條件外推。前提是已做 GDMT 優化，並由有經驗的中心執行。</li>
+<li><strong>特殊族群</strong>：
+<ul>
+<li>bicuspid：不可外推，n=55。</li>
+<li>&lt;75 歲：CI 跨 1，且 durability 風險大。</li>
+<li>亞洲人：日本 36 人，資料極少。</li>
+<li>台灣情境：給付與術者量不同，需另行評估。</li>
+</ul>
+</li>
+</ol>
+</li>
+</ul>
+<h4>B3. 研究設計與偏差</h4>
+<ol>
+<li><strong>HF event 判定存在結構性不對稱</strong>（最嚴重，讓效果變大）
+<ul>
+<li><strong>問題</strong>：HF event 的「治療」條件包含 AVR，HF hospitalization 定義為因 HF event 住院 ≥24 小時或跨日。監測組病人進展到有症狀時，常見的程序是「症狀加劇 → NT-proBNP 上升或 KCCQ 下降 ≥10（就算兩項客觀證據）→ 住院做 TAVR」，就可能被判為 HF 住院。TAVR 組已經置換瓣膜，不會有這種事件。</li>
+<li><strong>文內證據</strong>：監測組 66 位 HF event 病人中，<strong>28 位（42.4%）是 delayed AVR 伴隨 HF 住院</strong> [Results]。若把這 28 例完全扣除，監測組 HF event 為 38 例，<strong>與 TAVR 組的 38 例相同</strong> [自行計算；假設這 28 例的首次 HF event 只來自 AVR 相關住院，文內未提供可驗證的資料]。另外，不需住院的 HF event 兩組幾乎相同（4.6% vs 4.9%）。</li>
+<li><strong>需要什麼才放心</strong>：預先指定的 sensitivity analysis，排除「以 AVR 作為唯一 HF 治療且為計畫性住院」的事件；並在主要終點以外報告 IV 利尿劑或急診型 HF 住院。</li>
+</ul>
+</li>
+<li><strong>Open-label 加上 CEC 未盲</strong>（讓效果變大）
+<ul>
+<li>HF event 的三項條件都有主觀成分：症狀回報、醫師判定的徵象、醫師決定的利尿劑調整。監測組病人知道自己「沒治療」，回報門檻較低；醫師也較警覺。KCCQ 與 NYHA 同樣受影響。</li>
+<li><strong>需要</strong>：盲性 CEC，或以 IV 治療、住院這類硬性 HF 子終點做分析。</li>
+</ul>
+</li>
+<li><strong>主要終點更換、SAP 後定</strong>（方向不明，但增加 analytic flexibility）
+<ul>
+<li>原始終點包含 stroke 與 unplanned CV hospitalization。對應的次要終點 1（death／stroke／HF 住院）<strong>沒有達到顯著</strong>（p=0.07）。TAVR 組 stroke 較多（5.6% vs 4.7%），納入 stroke 會稀釋效益。</li>
+<li><strong>需要</strong>：公開 v6.0 的日期、當時已累積的事件數，以及 sponsor 是否接觸過非盲資料的聲明。</li>
+</ul>
+</li>
+<li><strong>對照組適當性（Gyawali 框架）</strong>
+<ul>
+<li>臨床監測符合指引，所以「是 SoC」。但 HFpEF 的 GDMT 沒有優化：baseline SGLT2i 只有 1.3–1.9%，<strong>追蹤期用藥沒有報告</strong>。2022 年後 SGLT2i 已是 HFpEF 減少 HF 住院的標準治療 [推論]。</li>
+<li>對照組 HF 住院可能因 undertreatment 而偏高，讓效果變大。作者以「HFpEF trials 排除瓣膜病」辯護，但這也代表在 moderate AS 中 SGLT2i 與 TAVR 的相對價值仍未知。</li>
+</ul>
+</li>
+<li><strong>交叉與後續治療</strong>
+<ul>
+<li>57.4% 交叉會稀釋 ITT 效果（讓效果變小）；但如第 1 點，交叉同時製造 HF 事件（讓效果變大）。兩者淨方向 [無法判定]。</li>
+</ul>
+</li>
+<li><strong>其他</strong>：沒有提早停止；隨機化與 allocation concealment 充分；baseline 小幅不平衡，對 TAVR 不利。</li>
+</ol>
+<h4>B4. 測量工具與實務意義</h4>
+<ul>
+<li><strong>終點性質</strong>：主要終點約 87% 的效益由 HF event 貢獻，而 HF event 的定義寬鬆，客觀證據清單包括 KCCQ 下降、新出現 moderate MR、BNP 上升；死亡是硬終點卻沒有差異。屬於「軟成分驅動的 composite」，各成分對病人的重要性不相等。</li>
+<li><strong>實際臨床意義</strong>：2 年 NNT 約 14 可以避免一次 death／HF event（主要是 HF 住院，NNT 約 13），代價是 NNH 約 12–13 多一例 PPM [自行計算：8.0 pp]。另外是提早 1–2 年開始瓣膜退化計時，以及未來可能需要 TAV-in-TAV。對 78 歲、預期餘命 9–11 年（Otto）的病人，這個取捨需要個別化。</li>
+<li><strong>Echo 測量</strong>：core lab 判讀，可信度高；但 at-risk feature 由各中心自行回報 [Table 1 註‡‡]，「瓣膜相關症狀」的判定本身就是主觀的。</li>
+</ul>
+<h3>C. 統計與資料完整性</h3>
+<h4>C1. 結果分類（CI 加 MCID）</h4>
+<p><strong>MCID 設定</strong>：文內沒有預先指定臨床 MCID。設計假設是 15 pp。我以 <strong>2 年 death／HF event 絕對降低 5 pp</strong> 作為最小臨床重要差異 [推算：介入具侵入性且不可逆，NNT 20 被普遍視為可接受上限]；死亡的 MCID 取 ±3 pp [推算]。</p>
+<div class="table-wrap wide"><table>
+<thead>
+<tr>
+<th>指標</th>
+<th>TAVR</th>
+<th>監測</th>
+<th>效果量</th>
+<th>95% CI</th>
+<th>ARD</th>
+<th>MCID</th>
+<th>結果分類</th>
+<th>實務意義</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Death／HF event</td>
+<td>16.7%</td>
+<td>23.9%</td>
+<td>HR 0.67</td>
+<td>差 −13.1 to −1.3 pp</td>
+<td>−7.2 pp</td>
+<td>−5 pp [推算]</td>
+<td><strong>IMPRECISE (+)</strong></td>
+<td>確有利益，但可能小到 1.3 pp（NNT 77）</td>
+</tr>
+<tr>
+<td>全因死亡</td>
+<td>8.4%</td>
+<td>7.3%</td>
+<td>HR 1.14</td>
+<td>差 −2.9 to +5.0 pp</td>
+<td>+1.0 pp</td>
+<td>±3 pp [推算]</td>
+<td><strong>INCONCLUSIVE</strong></td>
+<td>既無法排除有意義的傷害，也無法排除小幅利益</td>
+</tr>
+<tr>
+<td>HF event</td>
+<td>10.8%</td>
+<td>19.0%</td>
+<td>HR 0.55</td>
+<td>−13.4 to −2.9 pp</td>
+<td>−8.2 pp</td>
+<td>−5 pp [推算]</td>
+<td>IMPRECISE (+)（未校正多重比較）</td>
+<td>受判定偏差影響最大</td>
+</tr>
+<tr>
+<td>Death／stroke／HF 住院</td>
+<td>17.7%</td>
+<td>23.3%</td>
+<td>—</td>
+<td>−11.5 to +0.3 pp</td>
+<td>−5.6 pp</td>
+<td>−5 pp</td>
+<td><strong>INCONCLUSIVE</strong></td>
+<td>不能寫成「沒有差異」；CI 同時含 0 與 MCID</td>
+</tr>
+<tr>
+<td>KCCQ 持續改善 ≥10</td>
+<td>39.0%</td>
+<td>23.2%</td>
+<td>—</td>
+<td>+8.8 to +22.6 pp</td>
+<td>+15.7 pp</td>
+<td>回應者定義已含 MCID</td>
+<td>POSITIVE（探索性，open-label）</td>
+<td>生活品質訊號強，但盲法缺失會高估</td>
+</tr>
+<tr>
+<td>HF 住院</td>
+<td>7.4%</td>
+<td>14.9%</td>
+<td>HR 0.48</td>
+<td>−12.2 to −2.9 pp</td>
+<td>−7.5 pp</td>
+<td>−5 pp</td>
+<td>IMPRECISE (+)（探索性）</td>
+<td>見 B3 第 1 點</td>
+</tr>
+<tr>
+<td>LVMI</td>
+<td>97.1</td>
+<td>101.1</td>
+<td>HL 差</td>
+<td>−7.8 to 0.5</td>
+<td>−3.7 g/m²</td>
+<td>約 10 g/m² [推算]</td>
+<td>NEGATIVE</td>
+<td>排除了有意義的逆重塑</td>
+</tr>
+</tbody>
+</table></div>
+<ul>
+<li>次要終點 1 不應被解讀為「TAVR 對包含 stroke 的 composite 無效」。正確解讀是<strong>資料不足以判定</strong>。</li>
+</ul>
+<h4>C2. Underpowered 與 Winner's Curse</h4>
+<ul>
+<li>主要終點觀察效果 7.2 pp，只有設計假設 15 pp 的一半，沒有 Winner's Curse 的誇大訊號。</li>
+<li>但死亡、次要 composite 與多數次群組都是 inconclusive。<strong>用本試驗的 HR 0.67 規劃後續試驗時，必須考慮 HF 判定偏差可能已經放大效果</strong>。</li>
+<li>設計假設 15% vs 30%（相對減少 50%）本身就過度樂觀。</li>
+</ul>
+<h4>C3. Bayesian 補充</h4>
+<ul>
+<li>主要終點 p=0.02，不在 0.05 邊緣；而且沒有個體資料，所以不做正式的三 prior 分析。</li>
+<li><strong>定性判斷</strong>：若以 skeptical prior（例如以 TAVR UNLOAD 的中性結果為中心）加上本試驗終點的偏差考量，後驗的 Pr(ARD &gt; 5 pp) 會明顯低於頻率派印象 [推論]。</li>
+</ul>
+<h4>C4. 報告完整性與統計紅旗</h4>
+<ol>
+<li>主要終點在試驗中途由 death／stroke／unplanned CV hospitalization 改為 death／HF event（v6.0），<strong>正文完全沒有揭露</strong>。</li>
+<li>Publication SAP 在 2026-03 定稿，晚於全部 2 年資料完成；次要終點在 2025-09（v8.0）刪減重排。</li>
+<li>實際收案 744 人，超出計畫的 628 人 18%，沒有解釋。</li>
+<li>沒有排除 AVR 相關 HF 住院的 sensitivity analysis，也沒有報告 as-treated 有效性分析。</li>
+<li>次群組全部沒有報告 interaction p 值，正文卻宣稱「appeared to be consistent」。</li>
+<li>追蹤期 GDMT／SGLT2i 使用情形沒有報告。</li>
+<li>CEC 未盲，HF event 定義有多項主觀客觀證據（KCCQ 下降、症狀）。</li>
+<li>KCCQ 圖斷軸放大視覺差異 [Fig S8]。</li>
+</ol>
+<p><strong>KM 細節</strong>：24 個月 number-at-risk 296／256，尾端人數足夠；沒有 crossing；但監測組 censoring 較多，可能具資訊性（見 A）。</p>
+<h3>D. 次群組分析評估</h3>
+<div class="table-wrap wide"><table>
+<thead>
+<tr>
+<th>次群組</th>
+<th>結果</th>
+<th>Interaction p</th>
+<th>方向一致性</th>
+<th>預先指定</th>
+<th>生物機轉</th>
+<th>可信度</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Cardiac damage stage 0–1 vs 2–4</td>
+<td>0.22（0.06–0.79）vs 0.75（0.52–1.08）</td>
+<td>未報告</td>
+<td>與「損傷愈重愈受益」假說相反</td>
+<td>是（SAP）</td>
+<td>反向，不合理</td>
+<td><strong>低</strong>：stage 0–1 只有 3 vs 13 件事件</td>
+</tr>
+<tr>
+<td>手術風險 low vs intermediate vs high</td>
+<td>0.41 vs 0.86 vs 0.58</td>
+<td>未報告</td>
+<td>非單調</td>
+<td>是（v8.0 才改 cut point）</td>
+<td>不明</td>
+<td><strong>低</strong>：而且 cut point 在 2025-09 才更改</td>
+</tr>
+<tr>
+<td>Bicuspid vs tricuspid</td>
+<td>1.15（0.26–5.12）vs 0.65</td>
+<td>未報告</td>
+<td>—</td>
+<td>否（本次新增）</td>
+<td>有可能（解剖複雜）</td>
+<td>推測性，n=55</td>
+</tr>
+<tr>
+<td>Discordant vs concordant</td>
+<td>0.88 vs 0.62</td>
+<td>未報告</td>
+<td>—</td>
+<td>否</td>
+<td>合理（discordant 可能分級錯誤）</td>
+<td>推測性</td>
+</tr>
+<tr>
+<td>Symptomatic no</td>
+<td>0.35（0.04–3.13），n=27</td>
+<td>—</td>
+<td>—</td>
+<td>是</td>
+<td>—</td>
+<td>無法評估；<strong>本試驗對無症狀者沒有資訊</strong></td>
+</tr>
+<tr>
+<td>年齡 &lt;75</td>
+<td>0.52（0.22–1.24）</td>
+<td>未報告</td>
+<td>與整體一致</td>
+<td>是</td>
+<td>—</td>
+<td>低（CI 寬）</td>
+</tr>
+</tbody>
+</table></div>
+<h3>E. 紅旗清單</h3>
+<ul>
+<li><strong>[設計]</strong> HF event 定義容許 AVR 作為 HF 治療，造成監測組獨有的事件來源；28／66 監測組 HF event 與 delayed AVR 住院相關。</li>
+<li><strong>[設計]</strong> Open-label、CEC 未盲，終點以軟性 HF 事件為主。</li>
+<li><strong>[統計]</strong> 主要終點中途更換，正文未揭露；SAP 在資料完成後定稿；次要終點與次群組 cut point 在 2025-09 更改。</li>
+<li><strong>[統計]</strong> 沒有 interaction 檢定，卻宣稱次群組一致；沒有關鍵 sensitivity analysis。</li>
+<li><strong>[敘事]</strong> 「superior」的結論沒有在摘要結論句提到死亡無差異（點估計 HR 1.14）、非心血管死亡數字偏高。</li>
+<li><strong>[對照]</strong> HFpEF GDMT（SGLT2i）未優化，追蹤期用藥沒有報告。</li>
+<li><strong>[COI]</strong> Sponsor 執行分析、享有發表前審閱權；作者群立場同質；CRB 成員兼 PI。</li>
+<li><strong>[外推]</strong> 96% 有症狀、92.7% 白人、只限 TF 合適與專家中心；沒有 durability 與 TAV-in-TAV 的終身資料；PPM 17.3% vs 9.3%。</li>
+</ul>
+<h3>F. 反向解釋</h3>
+<ol>
+<li><strong>判定不對稱</strong>：效益主要來自監測組「計畫性 TAVR 住院被歸為 HF 住院」。
+<ul>
+<li>支持：28／66 的 HF event 與 AVR 相關；Fig S6 第 2 年的分岔與 delayed AVR 高峰同時發生；門診 HF event 相同。</li>
+<li>反對：Fig S5 首次 HF 住院在前 6 個月就分離，當時 delayed AVR 只有 10.6%（Fig 3 文字）。</li>
+</ul>
+</li>
+<li><strong>期待效應與偵測偏差</strong>（open-label）：監測組回報症狀、醫師加利尿劑的門檻較低。
+<ul>
+<li>支持：KCCQ、NYHA、HF event 全是主觀，硬終點死亡無差異。</li>
+<li>反對：HF 住院（需要住院）差距仍大，較不易單純由回報偏差造成。</li>
+</ul>
+</li>
+<li><strong>對照組 HFpEF 治療不足</strong>：如果監測組有積極的 SGLT2i 與利尿劑調整，HF 住院可能大幅減少。
+<ul>
+<li>支持：baseline SGLT2i &lt;2%，族群呈 HFpEF 表型。</li>
+<li>反對：作者指出 HFpEF 試驗沒有涵蓋明顯瓣膜病，直接證據不足。</li>
+</ul>
+</li>
+<li><strong>真實效益</strong>：在有症狀、接近 severe 的病人中，提早移除阻塞確實減少 HF 失代償。
+<ul>
+<li>支持：效果方向在多數次群組一致；KCCQ 與 NYHA 平行改善；監測組 2 年內 57% 進展到需要 AVR，代表很多人其實處於 severe 前期。</li>
+<li>反對：LVMI 與 diastolic function 沒有改善；死亡沒有差異。</li>
+</ul>
+</li>
+</ol>
+<h3>G. 最終裁決</h3>
+<ul>
+<li><strong>整體可信度</strong>：<strong>中</strong>。隨機化與執行品質好，安全數據優秀；但主要終點的效益集中在定義寬鬆、判定未盲、且結構上偏向 TAVR 的 HF 事件；主要終點曾在試驗中更換；死亡沒有效益。</li>
+<li><strong>可採用的條件</strong>：
+<ul>
+<li>有症狀、core lab 確認為 concordant moderate AS（偏上段）的 ≥75 歲病人；</li>
+<li>已優化 HFpEF 治療（SGLT2i、利尿劑）後仍有症狀或反覆 HF 住院；</li>
+<li>TF 合適、三葉瓣，由高量能中心執行，並經 shared decision making，告知這是為了減少 HF 住院與改善症狀，不是延長壽命。</li>
+</ul>
+</li>
+<li><strong>不建議採用的情境</strong>：
+<ul>
+<li>無症狀 moderate AS；</li>
+<li>只因影像或生物標記異常；</li>
+<li>&lt;75 歲或預期壽命長、durability 顧慮大者；</li>
+<li>bicuspid；discordant 而未確認嚴重度者；</li>
+<li>非 TF 解剖；</li>
+<li>未嘗試 GDMT 者。</li>
+</ul>
+</li>
+<li><strong>最需要的三項改進</strong>：
+<ol>
+<li>預先指定並公開的 sensitivity analysis：排除「AVR 作為 HF 治療」與計畫性 AVR 住院後的 HF event，並由<strong>盲性 CEC</strong> 重新判定。</li>
+<li>公開 protocol v6.0 更換主要終點的日期、當時累積的事件數與 sponsor 資料接觸紀錄，並報告原始主要終點（death／stroke／unplanned CV hospitalization）的結果。</li>
+<li>獨立（非同一器械廠商）的確認性 RCT，例如 EXPAND TAVR II（NCT05149755，Medtronic，active not recruiting）[外部: ClinicalTrials.gov]；控制組要有 HFpEF GDMT 優化，並追蹤 ≥5 年，納入 durability、PPM 與成本效益。</li>
+</ol>
+</li>
+<li><strong>一句話結論</strong>：中度主動脈瓣狹窄合併症狀的老年人提早做 TAVR，可以減少心衰竭住院，但不會延長壽命；效益可能因判定方式而被高估，目前只適合經篩選的少數病人。</li>
+</ul>
+<hr />
+<p><strong>Sources:</strong></p>
+<ul>
+<li><a href="https://www.nejm.org/doi/full/10.1056/NEJMe2613400">Otto CM. Management of Moderate Aortic Stenosis in Older Adults — The P in PICOT. NEJM 2026 (DOI 10.1056/NEJMe2613400)</a></li>
+<li><a href="https://www.tctmd.com/news/progress-tavi-effective-safe-moderate-risk-features">TCTMD: PROGRESS: TAVI Is Effective, Safe in Moderate AS With At-Risk Features</a></li>
+<li><a href="https://www.acc.org/latest-in-cardiology/articles/2026/11/01/00/11/mon-1240pm-progress-tct-2026">ACC: PROGRESS TCT 2026 summary</a></li>
+<li><a href="https://www.medscape.com/p04/nov-06-2026-this-week-cardiology-podcast-2026a10016k1">Medscape: Nov 06, 2026 This Week in Cardiology Podcast</a></li>
+<li><a href="https://clinicaltrials.gov/study/NCT04889872">ClinicalTrials.gov NCT04889872 (PROGRESS)</a></li>
+<li><a href="https://clinicaltrials.gov/study/NCT05149755">ClinicalTrials.gov NCT05149755 (Evolut EXPAND TAVR II)</a></li>
+<li><a href="https://www.wolterskluwer.com/en/solutions/Ovid/new-england-journal-of-medicine-624">Wolters Kluwer Ovid: NEJM journal metrics</a></li>
+<li><a href="https://www.edwards.com/newsroom/news/2026-11-02-progress-trial-demonstrates-edwards-tavr-is-superi">Edwards Lifesciences press release (sponsor framing)</a></li>
+</ul>
+
+<footer class="appraisal-meta">評讀資訊：模型：claude-opus-5-5 (claude)  ·  route：rct  ·  產出時間：2026-11-08 03:52 CST</footer>
+</main>
+</body>
+</html>

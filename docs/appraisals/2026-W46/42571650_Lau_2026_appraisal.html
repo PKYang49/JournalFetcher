@@ -1,0 +1,764 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sudden cardiac death risk after myocardial infarction across the spectrum of left ventricular ejection fraction: a meta-analysis.</title>
+<style>
+  :root {
+    --bg: #fafafa;
+    --card: #ffffff;
+    --text: #1a1a1a;
+    --muted: #6b6b6b;
+    --border: #e5e5e5;
+    --accent: #0b5fff;
+  }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang TC",
+      "Microsoft JhengHei", sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    margin: 0;
+    padding: 24px 16px 64px;
+    line-height: 1.72;
+  }
+  main {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    margin: 0 auto;
+    max-width: 840px;
+    padding: 22px 26px;
+  }
+  nav {
+    margin: 0 auto 14px;
+    max-width: 840px;
+    color: var(--muted);
+    font-size: 14px;
+  }
+  a { color: var(--accent); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  h1, h2, h3, h4 { line-height: 1.35; }
+  h1 { font-size: 26px; margin-top: 0; }
+  h2 { border-top: 1px solid var(--border); padding-top: 18px; }
+  code {
+    background: rgba(127, 127, 127, 0.12);
+    border-radius: 4px;
+    padding: 1px 4px;
+  }
+  .table-wrap {
+    margin: 1em 0;
+    overflow-x: auto;
+  }
+  .table-wrap.wide {
+    /* Break out of the 840px prose column, centred on the viewport. */
+    width: min(1040px, calc(100vw - 32px));
+    margin-left: calc(50% - min(520px, 50vw - 16px));
+  }
+  table {
+    border-collapse: collapse;
+    table-layout: auto;
+    width: 100%;
+  }
+  .table-wrap.wide {
+    /* Opaque so the <main> card border does not show through the table. */
+    background: var(--card);
+  }
+  /* Width hints go on <th> as percentages: Chrome's auto table layout
+     mis-sizes columns (and overflows) when cells carry min-width. */
+  .table-wrap.wide th:first-child {
+    /* Variable + plain-language definition, e.g. "NCPV (noncalcified ...)". */
+    width: 26%;
+  }
+  .table-wrap.wide th:last-child {
+    /* Last column is usually a one-line interpretation. */
+    width: 20%;
+  }
+  th, td {
+    border: 1px solid var(--border);
+    /* Wrap only at spaces: never split an English word mid-letter. */
+    overflow-wrap: normal;
+    word-break: normal;
+    hyphens: manual;
+    padding: 6px 8px;
+    text-align: left;
+    vertical-align: top;
+  }
+  blockquote {
+    border-left: 3px solid var(--accent);
+    color: var(--muted);
+    margin-left: 0;
+    padding-left: 14px;
+  }
+  .appraisal-meta {
+    border-top: 1px solid var(--border);
+    margin-top: 28px;
+    padding-top: 14px;
+    color: var(--muted);
+    font-size: 13px;
+  }
+  @media (max-width: 600px) {
+    body {
+      padding: 12px 8px 40px;
+    }
+    main {
+      padding: 16px 12px;
+    }
+    h1 {
+      font-size: 22px;
+    }
+    table {
+      font-size: 12px;
+    }
+    .table-wrap.wide {
+      width: calc(100vw - 16px);
+      margin-left: calc(50% - 50vw + 8px);
+    }
+    th, td {
+      padding: 4px 5px;
+    }
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #1a1a1a;
+      --card: #242424;
+      --text: #e8e8e8;
+      --muted: #999;
+      --border: #333;
+      --accent: #6ea8ff;
+    }
+  }
+</style>
+</head>
+<body>
+<nav><a href="../../2026-W46.html">← 回到 2026-W46 週報</a></nav>
+<main>
+<h1>Sudden cardiac death risk after myocardial infarction across the spectrum of left ventricular ejection fraction: a meta-analysis.</h1>
+<h1>評讀：Lau EYM et al. 心肌梗塞後各 LVEF 區間的 SCD 風險 meta-analysis（<em>Heart</em> 2026）</h1>
+<p><strong>結論先講：</strong> 這篇的證據只夠支持「LVEF 36–50% 的心梗病人仍有一定的 SCD 風險」。它支持不了「這是 ICD 可預防的死亡」，也算不出可靠的 NNT。</p>
+<ul>
+<li>主要合併值 1.74%/年 的四個來源研究，收案年代多在 1986–1996 年。這個數字對 SCD 定義、合併了哪些研究都很敏感。</li>
+<li>跟 LVEF ≤35%、&gt;50% 的比較不是系統性檢索的結果，作者自己也承認。</li>
+<li>5 年 NNT 19 的 CI 只反映了 MADIT-II HR 的不確定性，沒有放入基線事件率的不確定性與研究間的大幅異質性。</li>
+</ul>
+<p>本評讀用到的外部資料：</p>
+<ul>
+<li><strong>同期 editorial：</strong> 在 PubMed 與網路都沒有找到，所以沒有呼叫全文擷取指令。</li>
+<li><strong>JAMA CMR GUIDE RCT（2026-08-28 線上發表）：</strong> 本文沒有引用。它直接隨機分派 LVEF 36–50% 合併心肌瘢痕的病人接受 ICD 或植入式心律監測器（ILR）。在 SCD 加上血行動力學明顯不穩的心室性心律不整（以下簡稱 HSVA）的主要終點上，兩組沒有顯著差異；全死因死亡也相同（11.1% vs 11.0%）。這是跟本文推論方向最直接相關的外部證據。</li>
+</ul>
+<hr />
+<h2>SECTION-0：文章全面描述</h2>
+<h3>0. 文章身份證</h3>
+<ul>
+<li><strong>標題</strong>：Sudden cardiac death risk after myocardial infarction across the spectrum of left ventricular ejection fraction: a meta-analysis</li>
+<li><strong>期刊／年份</strong>：<em>Heart</em>，2026（Epub，PDF 頁首註明 2026-08-03 首次線上發表）[文內]</li>
+<li><strong>DOI</strong>：10.1136/heartjnl-2026-327792；PMID 42571650</li>
+<li><strong>文章類型</strong>：Systematic review + 比例／發生率型 meta-analysis（prognostic incidence），走 SKILL-B／A1</li>
+<li><strong>子型</strong>：Systematic review。有 PROSPERO 註冊（CRD42024551830）、PRISMA flow、雙人篩選與資料擷取、隨機效應合併</li>
+<li><strong>方法學落差警示</strong>：形式上符合 systematic review，實際執行有三處落差：
+<ol>
+<li>標題與摘要都寫「across the spectrum of LVEF」，但作者在討論中承認 LVEF ≤35% 與 &gt;50% 的資料「並非系統性檢視文獻」，只供參考 [文內 Strengths and limitations]。標題涵蓋的範圍大於系統性回顧實際檢索的範圍。</li>
+<li>Supplement 目錄列了「Supplemental Material 8. Certainty assessment」，頁碼卻是「Error! Bookmark not defined」，內容也不存在。等於沒有報告 GRADE 或其他證據確定性評估 [Supplement p.1]。</li>
+<li>摘要的「9345 patients」包含不在 36–50% 範圍的病人（見第 5 節）。</li>
+</ol>
+</li>
+</ul>
+<h3>1. 作者團隊評論</h3>
+<ul>
+<li>
+<p><strong>通訊作者</strong>：Professor G André Ng，University of Leicester 心血管科學部、Glenfield Hospital、BHF Leicester Centre of Research Excellence [文內]。專長為心臟電生理與 SCD 風險分層。</p>
+</li>
+<li>
+<p><strong>團隊過往研究</strong> [外部: PubMed / Leicester figshare / cardiacrhythmnews]：</p>
+<ul>
+<li>LifeMap 計畫與 R2I2（Regional Restitution Instability Index）心電圖生物標記：Nicolson WB, …Ng GA. <em>Heart</em> 2014（本文 ref 32）。</li>
+<li>LifeMap-QUEST 前瞻研究的病人參與（PPI）文章：Clayton DC, …Ng GA. <em>Res Involv Engagem</em> 2026。</li>
+<li>Magneto-SCD（磁心圖預測 ICD 治療）：Lachlan T, …Ng GA. <em>JACC Clin Electrophysiol</em> 2026。</li>
+<li>第一作者 Lau 與 Ng 的 editorial：「Sudden Cardiac Death Prevention in General Population Cohorts: Prospects of Machine Learning」，<em>Eur J Prev Cardiol</em> 2026（本文 ref 34）。</li>
+<li>AI 與心室性心律不整回顧：Antoun I, …Ng GA. <em>Indian Pacing Electrophysiol J</em> 2025。</li>
+</ul>
+<p>Ng 團隊是英國 SCD 風險分層的核心研究群，不是跨領域首次切入。</p>
+</li>
+<li>
+<p><strong>作者立場史</strong>：這個團隊長期主張「單靠 LVEF 的 ICD 篩選不夠精準，需要新的生物標記」。本文結論「LVEF 36–50% 是未被滿足的需求，需要更好的風險分層」與團隊既有立場高度一致，而且討論段直接引用團隊自己的 R2I2 研究（ref 32）與 ML editorial（ref 34）作為解方方向。這是<strong>先前立場一致性的偏差風險</strong>，不等於數據有誤，但在詮釋「需求有多大」時要特別警覺。</p>
+</li>
+<li>
+<p><strong>利益揭露</strong>：</p>
+<ul>
+<li>文內申報「Competing interests: None declared」[文內]。</li>
+<li>經費 [文內]：EYML 由 Kusuma Trust 研究獎助支持；GAN 有 BHF Research Excellence Award、BHF Programme Grant、MRC Biomedical Catalyst Developmental Pathway Funding Scheme（MR/S037306/1）、NIHR i4i grant（NIHR204553）。</li>
+<li>[推論] MRC Biomedical Catalyst 與 NIHR i4i 屬於產品／技術開發導向的經費機制，外部報導也顯示 LifeMap 是要發展成臨床 SCD 風險評估工具。「LVEF 36–50% 有大量未被辨識的 SCD 風險」這個敘事，與團隊開發的新型風險分層技術在商業與學術上有方向一致性。屬於非財務性（或潛在財務性）的利益衝突，文內沒有討論。</li>
+</ul>
+</li>
+</ul>
+<h3>2. 文獻 Metadata 整理</h3>
+<ul>
+<li><strong>Received</strong>：2026-01-05；<strong>Accepted</strong>：2026-07-11 [文內] → 審查期 <strong>187 天</strong> [自行計算]</li>
+<li><strong>期刊審查速度</strong>：<em>Heart</em> 官網各頁面列出的「有送審的首次決定時間」中位數為 27–45 天，各頁數字不一 [外部: heart.bmj.com about 頁面]。「投稿到接受」的平均天數 [無法取得]。187 天比首次決定時間長得多，[推論] 應經過至少一輪大修，可能與異質性、certainty assessment 缺漏有關，但無法驗證。</li>
+<li><strong>Impact Factor</strong>：2025 IF 4.4、5 年 IF 5.0 [外部: Journal Metrics；heart.bmj.com about 頁亦列 4.4，首頁列 4.5，數字不一]</li>
+<li><strong>期刊分區</strong>：[無法取得]</li>
+<li><strong>Open Access</strong>：是，CC BY 4.0 [文內]</li>
+<li><strong>邀稿或投稿</strong>：「Not commissioned; externally peer reviewed」[文內]，為一般投稿</li>
+</ul>
+<h3>3. 研究背景 [文內]</h3>
+<ul>
+<li><strong>既有事實</strong>：
+<ul>
+<li>ICD 對 post-MI 且 LVEF ≤35%（MADIT、MUSTT、MADIT-II）的病人有存活益處，指引給 Class I 建議。</li>
+<li>約 60% 依指引植入 ICD 的病人在裝置壽命內從未需要電擊。</li>
+<li>瘢痕本身就是心律不整的基質。</li>
+</ul>
+</li>
+<li><strong>知識缺口</strong>：LVEF 36–50% 的病人有缺血性損傷，但不符合 ICD 適應症，其 SCD 風險負擔沒有被量化過。</li>
+<li><strong>Research question</strong>：心肌梗塞後 LVEF 36–50%、未經額外風險分層或介入的病人，SCD 與全死因死亡的年發生率是多少？</li>
+</ul>
+<h3>4. 研究設計與方法</h3>
+<ul>
+<li><strong>PICO</strong>：
+<ul>
+<li><strong>P</strong>：成人心肌梗塞後 LVEF 36–50%。排除遺傳性心臟病、離子通道病、經額外風險分層篩選的族群，以及試驗介入組</li>
+<li><strong>I/E</strong>：LVEF 36–50%（暴露分層）</li>
+<li><strong>C</strong>：LVEF ≤35%、&gt;50%（從同一批納入文章中擷取，「事前指定分析」但非系統性檢索）</li>
+<li><strong>O</strong>：主要結局為 SCD 或等同的惡性心室性心律不整（sustained VT、VF），以及全死因死亡</li>
+</ul>
+</li>
+<li><strong>檢索</strong>：MEDLINE（Ovid）、Embase、Cochrane，不限年代與語言，由臨床圖書館員協助設計，另做順向引用追蹤 [文內]。
+<ul>
+<li><strong>最後檢索日期沒有報告</strong>，只寫「until the present／original search date」。這是 PRISMA 必報項目的缺漏。</li>
+</ul>
+</li>
+<li><strong>篩選</strong>：標題／摘要由 EYML 與 XL 雙人篩選，全文由 5 人篩選，雙人擷取資料（EYML、AAbo），爭議由第三人裁決。沒有報告 κ 值。</li>
+<li><strong>品質評估</strong>：NIH Quality Assessment Tool，雙人獨立評估。</li>
+<li><strong>統計</strong>：Stata 18；發生率取 log 轉換後以隨機效應（REML）合併；異質性用 Cochran Q 與 I²；子群以「pairwise meta-regression」比較 LVEF 分層；單變項 meta-regression 以逆變異數加權並報 R²。
+<ul>
+<li><strong>探索性 NNT</strong>：以合併基線率建構累積發生函數（考慮非 SCD 死亡的競爭風險），假設風險恆定，套用 MADIT-II 的 ICD 效果（HR 0.33，95% CI 0.20–0.53），算出 1 年與 5 年 NNT。</li>
+</ul>
+</li>
+</ul>
+<h3>5. 研究結果重點整理</h3>
+<p><strong>主要結果表</strong>（組別欄改為「研究數／人數」與 I²）</p>
+<div class="table-wrap wide"><table>
+<thead>
+<tr>
+<th>變項（代表什麼）</th>
+<th style="text-align:right">研究數／人數</th>
+<th style="text-align:right">I²</th>
+<th style="text-align:right">合併值（95% CI）</th>
+<th style="text-align:right">p 值</th>
+<th>如何解讀</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>年化 SCD 率，LVEF 36–50%</strong></td>
+<td style="text-align:right">4 研究、5 個 cohort／<strong>2,954</strong> [自行計算]</td>
+<td style="text-align:right"><strong>88.9%</strong></td>
+<td style="text-align:right"><strong>1.74%/年（1.02–2.95）</strong></td>
+<td style="text-align:right">θ=0 檢定 0.04</td>
+<td>各研究落在 0.78%–3.10%，彼此差距將近 4 倍</td>
+</tr>
+<tr>
+<td>SCD 率，僅臨床描述型 SCD 定義</td>
+<td style="text-align:right">未明確報告</td>
+<td style="text-align:right">未報告</td>
+<td style="text-align:right"><strong>1.38%/年（0.64–2.96）</strong></td>
+<td style="text-align:right">未報告</td>
+<td>定義一收緊就降約兩成，CI 跨越 1%</td>
+</tr>
+<tr>
+<td>SCD 率，排除 Yap</td>
+<td style="text-align:right">3 研究、4 cohort</td>
+<td style="text-align:right">未報告</td>
+<td style="text-align:right">1.47%/年（0.85–2.57）</td>
+<td style="text-align:right">0.170（圖 3A）</td>
+<td>拿掉 1990 年代 RCT 匯總後，估計值明顯下降</td>
+</tr>
+<tr>
+<td>SCD 率，排除 Macchia 46–50%</td>
+<td style="text-align:right">4 cohort</td>
+<td style="text-align:right">未報告</td>
+<td style="text-align:right">2.13%/年；正文寫（1.18–3.12），<strong>圖 3A 寫（1.36–3.35）</strong></td>
+<td style="text-align:right">0.001</td>
+<td>正文與圖的 CI 不一致</td>
+</tr>
+<tr>
+<td><strong>年化全死因死亡，LVEF 36–50%</strong></td>
+<td style="text-align:right">5 研究、6 cohort／<strong>4,321</strong> [自行計算]</td>
+<td style="text-align:right"><strong>96.8%</strong></td>
+<td style="text-align:right"><strong>2.76%/年（1.54–4.94）</strong></td>
+<td style="text-align:right">θ=0 檢定 &lt;0.01</td>
+<td>Savic 0.85% 到 Yap 6.78%，相差 8 倍</td>
+</tr>
+<tr>
+<td>年化 SCD，<strong>LVEF ≤35%</strong></td>
+<td style="text-align:right"><strong>1 研究（Yap）</strong>／1,973</td>
+<td style="text-align:right">—</td>
+<td style="text-align:right">6.34%/年（5.60–7.17）</td>
+<td style="text-align:right">vs 36–50%：0.03</td>
+<td>只有單一 1990 年代 RCT 匯總，不是系統性資料</td>
+</tr>
+<tr>
+<td>年化 SCD，<strong>LVEF &gt;50%</strong></td>
+<td style="text-align:right">2 研究／3,051</td>
+<td style="text-align:right">76.0%</td>
+<td style="text-align:right">0.55%/年（0.26–1.14）</td>
+<td style="text-align:right">vs 36–50%：0.02</td>
+<td>只有 2 個研究，CI 很寬</td>
+</tr>
+<tr>
+<td>年化全死因，LVEF ≤35%</td>
+<td style="text-align:right">1／1,973</td>
+<td style="text-align:right">—</td>
+<td style="text-align:right">13.58%/年（12.48–14.78）</td>
+<td style="text-align:right">—</td>
+<td>單一來源</td>
+</tr>
+<tr>
+<td>年化全死因，LVEF &gt;50%</td>
+<td style="text-align:right"><strong>3 研究</strong>（含 Savic &gt;50%）</td>
+<td style="text-align:right">93.6%</td>
+<td style="text-align:right">1.03%/年（0.45–2.35）</td>
+<td style="text-align:right">—</td>
+<td><strong>Savic &gt;50% 組的人數表 1 沒有列出</strong></td>
+</tr>
+<tr>
+<td><strong>SCD 佔死亡比例</strong></td>
+<td style="text-align:right">三個 LVEF 分層</td>
+<td style="text-align:right">—</td>
+<td style="text-align:right">≤35%：47%；36–50%：55%；&gt;50%：40%</td>
+<td style="text-align:right"><strong>0.79</strong></td>
+<td>比例相近，但分子、分母來自不同的研究組合（見下）</td>
+</tr>
+<tr>
+<td><strong>ICD 1 年 NNT，LVEF 36–50%</strong></td>
+<td style="text-align:right">模型推算</td>
+<td style="text-align:right">—</td>
+<td style="text-align:right"><strong>87.2（73.0–124.5）</strong></td>
+<td style="text-align:right">—</td>
+<td>一年約 87 人植入 ICD 才能預防 1 例 SCD</td>
+</tr>
+<tr>
+<td><strong>ICD 5 年 NNT，LVEF 36–50%</strong></td>
+<td style="text-align:right">模型推算</td>
+<td style="text-align:right">—</td>
+<td style="text-align:right"><strong>19（15.5–26.8）</strong></td>
+<td style="text-align:right">—</td>
+<td>CI 只反映 HR 的不確定性，見 SKILL-B D 推論 3</td>
+</tr>
+<tr>
+<td>ICD 5 年 NNT，≤35% / &gt;50%</td>
+<td style="text-align:right">模型推算</td>
+<td style="text-align:right">—</td>
+<td style="text-align:right">7（5.6–10.0）／56（46.8–80.0）</td>
+<td style="text-align:right">—</td>
+<td>1 年 NNT 分別為 26 與 273（圖 6）</td>
+</tr>
+</tbody>
+</table></div>
+<p>表後補充：</p>
+<ul>
+<li>
+<p><strong>「9,345 人」不等於 LVEF 36–50% 的人數。</strong> 依表 1 加總：36–50% 族群 145 + 467 + 919 + 568 + 1,367 + 855 = <strong>4,321</strong>；&gt;50% 為 372 + 2,679 = 3,051；≤35% 為 1,973；合計正好 9,345 [自行計算]。摘要說「five studies with 9345 patients were included」，再接 LVEF 36–50% 的合併率，會讓讀者誤以為主分析有 9,345 人。實際上 SCD 主分析只有 <strong>2,954 人</strong>，而且其中 1,487 人（約 50%）來自 Macchia 這一個研究。</p>
+</li>
+<li>
+<p><strong>SCD 佔死亡比例的分子與分母來自不同研究組合。</strong> SCD 合併率來自 4 個研究（不含 Savic），全死因死亡率來自 5 個研究（含 Savic）。表 2 的「annual competing hazard」直接用全死因減 SCD（2.76 − 1.74 = 1.0；13.58 − 6.34 = 7.2；1.03 − 0.55 = 0.5 [自行計算核對相符]）。用兩個不同研究集合的合併值相減，得到的是混合量，不能當作同一族群的競爭風險。表 2 標示為「weighted proportion」的 55%，與直接相除的 1.74 / 2.76 = 63% 也不一致；&gt;50% 組直接相除為 53%，表 2 卻寫 40%。加權方式沒有交代 [文內未說明]。</p>
+</li>
+<li>
+<p><strong>I² 數值前後不一</strong>：摘要與討論寫 SCD I² = 89.9%，結果段與圖 2A／圖 4 為 88.9%（88.93%）[文內 vs 圖]。</p>
+</li>
+<li>
+<p><strong>研究年代標示不一</strong>：圖 2–4 把 Copie 標成「1998」，表 1 與參考文獻為 1996 [圖 vs 文]。</p>
+</li>
+<li>
+<p><strong>檢定的虛無值不是零發生率</strong> [推論]：θ 是 log 轉換後的發生率，所以森林圖的「Test of θ=0」檢定的是「年化率是否不同於 <strong>1%/年</strong>」(ln 1 = 0)。因此：</p>
+<ul>
+<li>主分析 p = 0.04，只代表 1.74% 勉強不同於 1%/年。</li>
+<li>圖 3A 排除 Copie、Karabag 或 Yap 任一研究後 p 分別為 0.149、0.123、0.170，意思是<strong>拿掉任何一個研究，合併 SCD 率就與 1%/年無法區分</strong>。</li>
+<li>LVEF &gt;50% 組 p = 0.11 也是同樣的含義。</li>
+</ul>
+<p>作者沒有解讀這個檢定，但它直接反映主要估計值的脆弱程度。</p>
+</li>
+</ul>
+<p><strong>圖像判讀（PNG 頁面實際可見內容）</strong>：</p>
+<ul>
+<li><strong>圖 1 PRISMA</strong>：資料庫檢索 7,435 筆，去重 552 筆，篩選 6,883 筆，排除 6,809 筆，送全文 318 篇，1 篇取不到，評估 317 篇，排除 313 篇；引用追蹤 50 篇中排除 49 篇；最後納入 5 篇。數字前後一致。
+<ul>
+<li>但資料庫來源只有 4 篇進入最終分析（317 − 313），另一篇（Copie 1996）來自引用追蹤。這表示<strong>主檢索策略漏掉了符合條件的研究</strong>，其他漏網研究的機率不低。</li>
+<li>取不到全文的是 KYSMI Study（日本，約 1,000 名心梗病人的 SCD 研究，1995）[Supplement 2]。如果它有 LVEF 分層資料，以這篇 meta-analysis 的規模，1,000 人是不小的權重。</li>
+</ul>
+</li>
+<li><strong>圖 2A 森林圖</strong>：x 軸為對數刻度（1、2、4），沒有誇大的問題。5 個點估計中，Copie 3.10（1.61–5.96）與 Yap 3.10（2.37–4.06）的 CI，跟 Macchia* 0.78（0.53–1.15）、Macchia 1.21（0.81–1.80）<strong>完全不重疊</strong>。這是真實的研究間差異，不是抽樣誤差。τ² = 0.32，Q(4) = 39.69。權重相當平均（17–22%），隨機效應模型把各研究幾乎等權處理。</li>
+<li><strong>圖 2B</strong>：全死因 τ² = 0.51，Q(5) = 198.45。Savic 0.85（0.68–1.08）與 Yap 6.78（5.65–8.14）相差 8 倍。</li>
+<li><strong>圖 3（leave-one-out）</strong>：數值如上表。排除 Macchia 46–50% 後的 CI，圖中寫 [1.36, 3.35]，正文寫 1.18 to 3.12，兩者不符。</li>
+<li><strong>圖 4／圖 5</strong>：LVEF ≤35% 只有 Yap 一個方塊；&gt;50% 的 SCD 只有 Karabag 0.84（0.44–1.62）與 Macchia 0.39（0.29–0.54），兩者的 CI 也幾乎不重疊。圖 4 底部的「Test of group differences Q_b(2) = 60.99」是在 I² 96.93% 下做的分層比較，各層研究數分別為 1、5、2。</li>
+<li><strong>圖 6</strong>：y 軸從 0 起算（0–400），沒有截斷誇大。1 年 NNT：≤35% 為 26，36–50% 為 88，&gt;50% 為 273（CI 上緣約 390）。5 年 NNT 為 7、19、56。須注意 36–50% 的 1 年 NNT（88）比 ≤35%（26）大了 3 倍多，這個差距在摘要的「NNT 19」敘事中被淡化了。</li>
+<li><strong>表 1／表 2</strong>：圖檔中可見內容與 markdown 一致。</li>
+<li><strong>Supplement 4（NIH 品質評估圖）、5（子群森林圖）、6（meta-regression bubble plot）的圖像在 markdown 中被省略，本次提供的 5 張 PNG 只有正文頁。</strong> [限制：無法判讀 NIH 各項評分、子群森林圖的實際數值、bubble plot 各點分布]</li>
+</ul>
+<h3>6. 作者討論與評論重點</h3>
+<ul>
+<li><strong>主要訊息</strong>：LVEF 36–50% 的病人年化 SCD 率 1.74%，SCD 佔死亡比例（55%）與 LVEF ≤35% 相近，代表現行 ICD 篩選標準外存在「未被滿足的臨床需求」。</li>
+<li><strong>與文獻的關係</strong>：作者說 LVEF 36–50% 以外的參考估計值「與其他已發表資料一致」，引用 PROFID IPD（Peek 2024, <em>EHJ</em>，ref 30）。但沒有拿 PROFID 中 LVEF &gt;35% 非 ICD 族群的 SCD 率，跟本文的 1.74% 直接比較。</li>
+<li><strong>作者自承的限制</strong> [文內 Strengths and limitations]：
+<ol>
+<li>研究少、異質性極高（I² 89.9% / 96.8%）；</li>
+<li>研究少時 meta-regression 與子群檢定 power 不足；</li>
+<li>只取臨床定義的 SCD 時估計值降為 1.38%；</li>
+<li>異質性的主要來源無法推斷；</li>
+<li>LVEF 36–50% 以外的資料不是系統性檢索；</li>
+<li>結果應謹慎解讀，屬於產生假說的發現。</li>
+</ol>
+</li>
+<li><strong>沒有提到的重要限制</strong>：
+<ul>
+<li>納入研究的<strong>收案年代</strong>為 1986–1988、1990–1996、1993–1995、2006–2010、2013–2016 [Supplement 7]，主分析 5 個 SCD cohort 中有 4 個來自 1990 年代或更早。</li>
+<li>沒有現代 GDMT（SGLT2i、ARNI）、系統性 beta-blocker、MRA 的時代背景；作者在討論中只輕描淡寫提了一句「contemporary heart failure therapeutics」。</li>
+<li><strong>LVEF 測量時點</strong>（MI 後幾天？3 個月？）各研究不同，有沒有後續 LV 恢復也沒有處理。</li>
+<li><strong>「SCD」不等於「心律不整死亡」，也不等於「ICD 可預防的死亡」</strong>（見推論 2）。</li>
+<li>Macchia 族群是否包含 n-3 PUFA 治療組（見 C 節）。</li>
+<li>沒有做證據確定性評估。</li>
+<li>沒有報告預測區間（prediction interval）。</li>
+</ul>
+</li>
+<li><strong>[評估]</strong>：作者在討論段有適度保留，但<strong>結論段的措辭超出數據</strong>。「SCD remains a significant cause of <strong>preventable</strong> mortality in this population」直接預設了 ICD 或其他介入能預防這些死亡。全文沒有任何數據支持這一點，而且 2026 年 8 月發表的 CMR GUIDE RCT 在近似族群中顯示 ICD 並未降低全死因死亡（見第 7 節）。</li>
+</ul>
+<h3>7. 外部專業意見</h3>
+<ul>
+<li><strong>同期 editorial / commentary</strong>：[無法取得]。檢索過 PubMed（Heart 期刊 + editorial/comment 類型 + 主題詞，以及 Ng GA 作者近期發表），也做了網頁搜尋，都沒有發現針對本文的同期 editorial 或 comment，所以沒有可交給全文擷取指令的 DOI。</li>
+<li>醫學新聞網站 thelimbic.com 有報導本文（標題大意為「現行 ICD 標準排除了高風險病人」），但網頁回應 403 無法讀取全文；而且新聞報導不算專業意見來源，這裡不採用其內容。</li>
+<li><strong>直接相關的外部證據（不是針對本文的評論，但與本文推論方向直接相關）</strong> [外部: JAMA 全文頁面]：
+<ul>
+<li><strong>研究</strong>：Selvanayagam JB, Cleland JGF, Hillis GS, et al. <em>CMR GUIDE Randomized Clinical Trial</em>。<em>JAMA</em>，2026-08-28 線上發表，doi:10.1001/jama.2026.17078。</li>
+<li><strong>族群與設計</strong>：LVEF 36–50% 且 CMR 證實有瘢痕的病人，約 72% 為缺血性、68% 有心梗病史。隨機分派 ICD（n = 180）或 ILR（n = 173），中位追蹤 6.3 年。</li>
+<li><strong>主要終點</strong>（SCD 或 HSVA）：7.8% vs 9.2%，HR 0.77（0.37–1.59），p = 0.48，未達顯著。</li>
+<li><strong>SCD 單項</strong>：1.7% vs 5.8%，HR 0.26（0.07–0.95）。</li>
+<li><strong>全死因死亡</strong>：11.1% vs 11.0%。</li>
+<li><strong>年齡交互作用</strong>（P_int = 0.01）：&lt;70 歲 HR 0.28（0.09–0.89）；≥70 歲 HR 2.33（0.75–7.26）。</li>
+<li><strong>跟本文的關係</strong>：
+<ol>
+<li>即使是經 CMR 瘢痕篩選、理論上風險較高的族群，ILR 組 6.3 年 SCD 為 5.8%，粗略相當於 <strong>約 0.9%/年</strong> [自行計算，以累積率除以中位追蹤年數粗估]，明顯低於本文的 1.74%；</li>
+<li>ICD 降低 SCD，但沒有轉化成全死因死亡的差異，這正是本文 NNT 模型忽略的「SCD 降低 ≠ 死亡降低」問題；</li>
+<li>本文 2026 年 7 月接受，因時序關係沒有引用 CMR GUIDE。這是時間上的不可抗力，但讀者解讀本文時必須一併考慮。</li>
+</ol>
+</li>
+</ul>
+</li>
+</ul>
+<h3>8. 臨床建議</h3>
+<ul>
+<li><strong>可用情境</strong>：在跟病人溝通或做研究設計時，當作「LVEF 36–50% 的心梗病人每年 SCD 風險大約在 1–3% 之間」的粗略背景值。須註明數據多來自 1990 年代、異質性極高。</li>
+<li><strong>不建議直接套用的情境</strong>：
+<ul>
+<li>用來支持對 LVEF 36–50% 的心梗病人放寬 primary prevention ICD 適應症；</li>
+<li>拿「5 年 NNT 19」做醫病共享決策或衛生經濟評估；</li>
+<li>套用到接受現代 primary PCI 加上四大 GDMT、LVEF 在 3 個月後才重新評估的病人。</li>
+</ul>
+</li>
+<li><strong>給臨床醫師的實務建議</strong>：
+<ol>
+<li>心梗後 LVEF 36–50% 的病人，<strong>按指引在 6–12 週後重新評估 LVEF</strong>，並把 GDMT 調到最佳化。不要因為這篇文章提早或額外植入 ICD。</li>
+<li>想進一步分層時，CMR 瘢痕、EP study 等工具目前仍屬研究或個案決策層級。CMR GUIDE 的年齡交互作用（&lt;70 歲可能獲益）屬於子群發現，需要驗證。</li>
+<li>向病人或同儕引用本文時，要講「1.74%/年（95% CI 1.02–2.95），只限臨床定義 SCD 時為 1.38%」，<strong>不要引用「NNT 19」</strong>。</li>
+</ol>
+</li>
+<li><strong>證據強度</strong>：<strong>弱</strong>。觀察性預後資料，研究數少（主分析 k = 4），異質性極高，多為過時世代，SCD 定義不一，缺證據確定性評估，間接性高。</li>
+</ul>
+<hr />
+<h2>SKILL-B：批判性評讀</h2>
+<h3>A. 補充技術細節</h3>
+<ul>
+<li><strong>宣稱的適用範圍</strong>：族群定義為「post-MI LVEF 36–50%、未經額外風險分層」，但各研究的 LVEF 切點不一：36–49%、40–49%、41–45%、46–50%、40–50%、36–40% [表 1]。沒有任何一個研究完整涵蓋 36–50%。作者說「合起來涵蓋了 36–50%」，但各子區間的權重完全取決於哪個研究恰好報了哪一段。例如 36–40% 只來自 Yap，而 Yap 的 SCD 率最高（3.10%）。</li>
+<li><strong>引用文獻的時間範圍</strong>：納入研究發表於 1996–2019 年，<strong>收案年代 1986–2016</strong>。只有 Karabag（2013–2016）與 Savic（2006–2010）有 primary PCI 時代資料，而 Savic 沒有 SCD 資料。所以<strong>有 SCD 資料的現代 primary PCI 研究只有 Karabag 一篇（n = 467）</strong>。</li>
+</ul>
+<h4>A1. Systematic Review / Meta-analysis 子模組</h4>
+<p><strong>搜尋策略與選擇流程</strong></p>
+<ul>
+<li>搜尋策略完整揭露 [Supplement 1]。檢索式是「MI 相關詞 AND LV 功能不全相關詞 AND 心律不整／猝死詞」三段交集。
+<ul>
+<li>[推論] 這個結構會漏掉只在結果表中依 LVEF 分層報 SCD、摘要與 MeSH 卻沒有標示 LV 功能不全的大型世代。PRISMA 圖也顯示，最終 5 篇中有 1 篇（Copie）來自引用追蹤，佐證主檢索的敏感度不足。</li>
+</ul>
+</li>
+<li><strong>最後檢索日期沒有報告</strong>。PROSPERO 於 2024 年註冊，2026 年 1 月投稿，但 2024 年發表、作者自己引用的 PROFID IPD（Peek 2024 <em>EHJ</em>，約 140,000 名心梗病人）有沒有被評估納入，文中沒有交代。</li>
+<li><strong>雙人篩選</strong>：有，但沒有報告 κ 值，Methods 也寫得不清楚（「Double blinded article screening was conducted until congruency」）。</li>
+<li><strong>PROSPERO 預先註冊</strong>：有（CRD42024551830）。但本次沒有查核註冊內容與實際執行的比較分析是否有差異（例如 LVEF ≤35% / &gt;50% 比較與 NNT 模型是否事前指定）[無法取得]。</li>
+<li>依 JAMA Users' Guide，systematic review 的可信度取決於四件事：檢索是否詳盡、篩選與評估是否可重現、結果呈現是否有用，以及在此之上對證據確定性的判斷 [參考: jug140001.md 摘要段]。本文在「檢索詳盡性」（漏網證據）與「確定性評估」（GRADE 缺漏）兩點有明確缺口。</li>
+</ul>
+<p><strong>GRADE 五大降級因素</strong>（本文未做，以下為評讀者評估）</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>因素</th>
+<th>評估</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>偏差風險</td>
+<td><strong>嚴重</strong>。NIH 評分圖像無法判讀 [限制：Supplement 4 圖像省略]。可見的問題：Karabag 是單中心回溯性、SCD 定義為「VT/VF 紀錄」而非死亡；Copie 只收完成 2 年追蹤的病人（[推論] 可能有存活者偏差）；Macchia 的族群可能含介入組（見 C 節）；各研究的 SCD 判定方法不同，只有 Macchia 與 Yap 有盲性判定委員會 [Supplement 7]。</td>
+</tr>
+<tr>
+<td>不一致性</td>
+<td><strong>極嚴重</strong>。SCD 的 I² = 88.9%、τ² = 0.32，各研究點估計相差 4 倍，CI 不重疊。[自行計算] 以 τ² 與合併標準誤粗估，<strong>95% 預測區間約 0.5%–5.9%/年</strong>（以 z 值估算；以 df = 3 的 t 值估算則更寬，約 0.2%–13%）。代表下一個新族群的真實 SCD 率可能落在這整個範圍內。</td>
+</tr>
+<tr>
+<td>間接性</td>
+<td><strong>嚴重</strong>。族群多在 1990 年代或更早；LVEF 子區間覆蓋不均；SCD 定義混用「死亡」與「VT/VF 事件」；NNT 套用的是 LVEF ≤30% 族群（MADIT-II）的 HR。</td>
+</tr>
+<tr>
+<td>不精確性</td>
+<td><strong>中度</strong>。主估計的 CI 為 1.02–2.95（相差約 3 倍）；LVEF ≤35% 只有單一研究；&gt;50% 的 CI 跨越 1%。</td>
+</tr>
+<tr>
+<td>發表偏差</td>
+<td><strong>無法評估</strong>，而且文中完全沒有提到。k &lt; 10，正式檢定無意義；但小型、高事件率的研究（Copie n = 145，3.10%）容易被發表與被引用追蹤找到。</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>整體確定性</strong>：[評讀者判斷] <strong>很低（very low）</strong>。</p>
+<p><strong>NMA</strong>：不適用。</p>
+<hr />
+<h3>B. 論證架構重建（第一階段：純描述）</h3>
+<p><strong>主論點</strong>：心肌梗塞後 LVEF 36–50% 的病人不符合現行 ICD 標準，但承受相當大的 SCD 負擔，是未被滿足的臨床需求，需要更好的風險分層，並驗證介入是否有益。</p>
+<pre><code>1. 前提 A：現行 ICD 篩選以 LVEF ≤35% 為主，特異性有限
+   └─ 支撐依據：MADIT、MADIT-II、MUSTT、DINAMIT；約 60% 的 ICD 從未放電（ref 4, 5）
+   └─ 推論步驟：LVEF 切點並非 SCD 風險的完整標記
+
+2. 前提 B：LVEF 36–50% 代表有缺血性損傷與瘢痕，構成心律不整基質
+   └─ 支撐依據：瘢痕本身足以升高 SCD 風險（ref 12）
+   └─ 推論步驟：B → 這群人應有不可忽視的 SCD 風險
+
+3. 前提 C：本 meta-analysis 量化出 LVEF 36–50% 的年化 SCD 率為 1.74%
+   └─ 支撐依據：5 個研究的隨機效應合併（圖 2A）
+   └─ 推論步驟：C 的數值介於 ≤35%（6.34%）與 &gt;50%（0.55%）之間，且彼此有統計差異
+
+4. 前提 D：SCD 佔死亡比例在各 LVEF 分層間相近（47%／55%／40%，p = 0.79）
+   └─ 支撐依據：表 2；LVEF 較低者非心律不整的競爭死亡較多（ref 27, 28）
+   └─ 推論步驟：D → LVEF 36–50% 的病人「死於 SCD 的相對比例」不輸給有 ICD 適應症的族群
+
+5. 中間結論：A + B + C + D → LVEF 36–50% 的病人 SCD 負擔大、競爭死亡少，
+   理論上 ICD 的「有效性比例」不差
+
+6. 前提 E：套用 MADIT-II 的 ICD 效果（HR 0.33），5 年 NNT 為 19
+   └─ 推論步驟：E → 臨床上可能是有意義的介入效益
+
+7. 最終結論：這是「clinically relevant unmet need」與「significant cause of preventable
+   mortality」，需要前瞻性風險分層與治療試驗（並推薦個人化生物標記，ref 31–34）
+</code></pre>
+<p><strong>敘事策略</strong>：從問題到解方。先建立現行標準的缺陷，再量化被遺漏族群的負擔，最後導向新型風險分層工具（團隊自己的研究方向）。</p>
+<p><strong>作者自承的限制</strong>：見 SECTION-0 第 6 節，位於「Strengths and limitations」段。</p>
+<hr />
+<h3>C. 引用品質評估（第二階段：開始批判）</h3>
+<div class="table-wrap wide"><table>
+<thead>
+<tr>
+<th>論點</th>
+<th>引用文獻類型</th>
+<th>證據層級</th>
+<th>與論點關聯性</th>
+<th>問題</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1（A）</td>
+<td>RCT（MADIT、MADIT-II、MUSTT、DINAMIT）</td>
+<td>高</td>
+<td>直接</td>
+<td>引用合理。但 DINAMIT 的完整訊息是<strong>心律不整死亡下降、非心律不整死亡上升，總死亡沒有差異</strong>，作者只引用了前半段。</td>
+</tr>
+<tr>
+<td>2（B）</td>
+<td>瘢痕與 SCD（ref 12）</td>
+<td>中</td>
+<td>間接</td>
+<td>「有瘢痕」不等於「每年 SCD 1.74%」。</td>
+</tr>
+<tr>
+<td>3（C）</td>
+<td>5 個觀察性或 RCT 次分析</td>
+<td>低</td>
+<td>直接但品質差</td>
+<td>見下方紅旗。</td>
+</tr>
+<tr>
+<td>4（D）</td>
+<td>本文表 2 + 競爭風險文獻（ref 27 為 HFrEF 貝氏模型、ref 28 為社區心衰竭 SR）</td>
+<td>低</td>
+<td>間接</td>
+<td>分子與分母來自不同研究集合；ref 27、28 是心衰竭族群，不是心梗後族群。</td>
+</tr>
+<tr>
+<td>5（E）</td>
+<td>MADIT-II 的 SCD HR</td>
+<td>高（原試驗）／低（外推）</td>
+<td><strong>類推</strong></td>
+<td>把 LVEF ≤30% 的 HR 外推到 LVEF 36–50%。</td>
+</tr>
+<tr>
+<td>7（結論）</td>
+<td>團隊自身研究（ref 32、34）等生物標記文獻</td>
+<td>低</td>
+<td>間接</td>
+<td>解方推薦與作者研究方向重疊。</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>引用品質紅旗</strong></p>
+<ul>
+<li><strong>大量自引</strong>：ref 32（Nicolson…Ng，R2I2）、ref 34（Lau…Ng，ML editorial）出現在解方段落，屬於方向性自引。</li>
+<li><strong>忽略的重要文獻</strong>：
+<ul>
+<li>PROFID IPD（ref 30）有被引用，但只拿來佐證「參考估計值一致」，沒有拿它在 LVEF &gt;35% 非 ICD 族群的 SCD 資料跟本文 1.74% 對照。PROFID 的主要結論（LVEF 預測 SCD 的 c-statistic 只有 0.50–0.56）[外部: ESC365 / cardiacrhythmnews] 其實同時削弱「LVEF 36–50% 是可界定的高風險群」這個前提，作者沒有討論。</li>
+<li>DINAMIT／IRIS 的「SCD 降低但總死亡沒有降低」沒有討論。</li>
+<li>CMR GUIDE（時序上無法引用）。</li>
+</ul>
+</li>
+<li><strong>族群不一致</strong>：
+<ul>
+<li>[推論，需查核原文] Macchia 2005 的標題是「…in patients with myocardial infarction <strong>treated with n-3 polyunsaturated fatty acids</strong>」，資料來源為 GISSI-Prevenzione [Supplement 7 ref 3, 4]。如果 Macchia 族群包含 n-3 PUFA（或 vitamin E）治療組，就違反本文自己「排除試驗介入組」的納入標準。GISSI-P 主要報告的是 n-3 PUFA 降低猝死。而 Macchia 的兩個 cohort 正是全部 SCD 估計中最低的兩個（0.78%、1.21%），合計權重約 41%。方向上若有偏差應是<strong>低估</strong>，但更根本的問題是<strong>納入標準執行不一致</strong>。</li>
+<li>Yap 2007 匯總 EMIAT、TRACE、DIAMOND-MI 的非介入組 [Supplement 7]，但正文說「four randomised trials（ref 17–20）」，參考文獻含 SWORD（d-sotalol，ref 19）。<strong>正文與 supplement 對來源試驗數不一致</strong>（4 vs 3）。若含 SWORD 安慰劑組，那是 d-sotalol 試驗中<strong>死亡率反而升高</strong>的背景族群，可比性需要說明。</li>
+</ul>
+</li>
+<li><strong>定義混雜</strong>：Karabag 的「SCD」實際上是「有紀錄的危及生命心律不整（VT/VF）」[Supplement 7]，不是死亡，而且可能包含 primary PCI 後住院早期的事件 [推論]。跟其他研究的「1 小時內死亡」合併，等於把不同的事件混在一起。</li>
+</ul>
+<hr />
+<h3>D. 過度推論分析</h3>
+<p><strong>推論 1：「LVEF 36–50% 的 SCD 率與 ≤35%、&gt;50% 『截然不同』（distinct）」</strong></p>
+<ul>
+<li><strong>原始資料說了什麼</strong>：≤35% 只有 1 個研究（Yap）；&gt;50% 的 SCD 只有 2 個研究，而且彼此的 CI 幾乎不重疊；作者承認這兩組「並非系統性檢視」（Strengths and limitations 段）。</li>
+<li><strong>作者結論說了什麼</strong>：「this incidence rate is distinct from SCD rates observed in both LVEF ≤35% and LVEF &gt;50%」（Discussion 首段），摘要也並列 p = 0.03、p = 0.02。</li>
+<li><strong>跳躍在哪</strong>：用非系統性、單一或兩個研究的對照組，配上 I² 96.9% 下的分層比較，宣稱分層之間有差異。LVEF 越低 SCD 越高本來就是已知事實，這裡只是用品質更差的資料重述。</li>
+<li><strong>嚴重度</strong>：<strong>輕微至中度</strong>。方向可能正確，但數值與 p 值不可信。</li>
+</ul>
+<p><strong>推論 2：「SCD 佔死亡比例相近 → LVEF 36–50% 與有 ICD 適應症者有類似的可預防負擔」→「significant cause of preventable mortality」</strong></p>
+<ul>
+<li><strong>原始資料說了什麼</strong>：SCD 比例 47%／55%／40%，p = 0.79。但分子與分母來自不同研究集合，而且「SCD」包含非心律不整性猝死（例如再梗塞、心臟破裂、無脈性電氣活動）與 VT/VF 事件（Karabag）。</li>
+<li><strong>作者結論說了什麼</strong>：「SCD remains a significant cause of <strong>preventable</strong> mortality in this population」（Conclusion 段）。</li>
+<li><strong>跳躍在哪</strong>：
+<ol>
+<li>p = 0.79 是 k 很小時的「沒有證據顯示有差異」，不等於「相等」；</li>
+<li>「SCD 佔比」不等於「心律不整性 SCD 佔比」，更不等於「ICD 可預防的佔比」；</li>
+<li><strong>全文沒有任何介入資料支持「preventable」</strong>。CMR GUIDE 顯示，即使在瘢痕篩選族群中，ICD 降低了 SCD（HR 0.26），全死因死亡仍然相同（11.1% vs 11.0%）。</li>
+</ol>
+</li>
+<li><strong>嚴重度</strong>：<strong>嚴重</strong>。引用內容不支持「可預防」這個結論。</li>
+</ul>
+<p><strong>推論 3：「ICD 5 年 NNT 為 19（95% CI 15.5–26.8）」</strong></p>
+<ul>
+<li><strong>原始資料說了什麼</strong>：SCD 基線率 1.74%（1.02–2.95），I² 88.9%；MADIT-II 的 HR 0.33 來自 LVEF ≤30% 的族群。</li>
+<li><strong>作者的計算</strong>：[自行計算核對] 1 年 ARR ≈ 1.74% × (1 − 0.33) = 1.17%，NNT ≈ 86，與文中 87.2 相符。把 HR 的 CI 上下限代入得到 NNT 約 72–122，<strong>正好等於文中 CI 73.0–124.5</strong>。所以<strong>這個 CI 只反映 HR 的不確定性，完全沒有放入基線率的不確定性與異質性</strong>。
+<ul>
+<li>只把基線率的 CI 代入（HR 固定 0.33），1 年 NNT 約 50–147；5 年 NNT 粗估約 11–30 [自行計算，近似值]。</li>
+<li>用臨床定義 SCD 1.38%，1 年 NNT 約 108、5 年約 23 [自行計算]。</li>
+<li>再疊加 HR 的不確定性與預測區間，合理範圍會在 <strong>約 10 到 &gt;50</strong> 之間。</li>
+</ul>
+</li>
+<li><strong>其他隱藏假設</strong>：
+<ul>
+<li>風險隨時間恆定。但作者自己的 meta-regression 顯示追蹤越長、年化率越低（R² = 0.94），並指出可能是早期風險集中。以早期高風險期的率外推 5 年，會<strong>高估</strong> 5 年累積 SCD，<strong>低估</strong> NNT。</li>
+<li>SCD 全部可被 ICD 預防，而且 HR 可以跨 LVEF 族群移植。</li>
+<li>ICD 不增加其他死亡或傷害（不當電擊、感染、導線併發症）。</li>
+</ul>
+</li>
+<li><strong>嚴重度</strong>：<strong>中度至嚴重</strong>。作者雖標示為「exploratory」，但摘要把 NNT 19 列在結果段最後一句，臨床讀者很容易直接引用。</li>
+</ul>
+<p><strong>推論 4：Meta-regression 的「女性、吸菸、年齡為正相關、beta-blocker 有保護效果，R² 0.62–0.94」</strong></p>
+<ul>
+<li><strong>原始資料說了什麼</strong>：4–5 個資料點的單變項研究層級回歸。</li>
+<li><strong>作者結論</strong>：「hypothesis-generating associations」，措辭還算保守。但結果段寫「Protective effects were observed in higher beta blocker usage」，暗示因果。</li>
+<li><strong>跳躍在哪</strong>：
+<ul>
+<li>研究層級共變數有生態謬誤，5 個點的 R² 極不穩定。</li>
+<li>「女性比例越高 SCD 越高」跟個人層級的已知流行病學相反，更可能是與研究年代或設計共線性的結果。</li>
+<li>女性比例、beta-blocker 使用率、追蹤時間、研究年代，在 5 個研究中高度共線。</li>
+</ul>
+</li>
+<li><strong>嚴重度</strong>：<strong>輕微至中度</strong>。作者有加註但書，但 R² 數值不該報到兩位小數。</li>
+</ul>
+<hr />
+<h3>E. 論證結構完整性評估</h3>
+<ul>
+<li><strong>隱藏假設</strong>：
+<ol>
+<li>1990 年代的 SCD 率能代表現代 primary PCI 與四大 GDMT 時代；</li>
+<li>MI 後某個時點量到的 LVEF 是穩定的分組變項；</li>
+<li>「SCD」等於心律不整死亡，也等於 ICD 可預防的死亡；</li>
+<li>MADIT-II 的 HR 可以跨族群移植。</li>
+</ol>
+</li>
+<li><strong>邏輯斷層</strong>：從前提 D（SCD 佔比相近）到中間結論（ICD 有效性相當）之間，缺少「ICD 在 LVEF 36–50% 降低全死因死亡」這一環。DINAMIT、IRIS 與 CMR GUIDE 的經驗都指出，這一環在 post-MI 族群中<strong>不能自動成立</strong>。</li>
+<li><strong>被忽略的能動搖結論的證據</strong>：
+<ul>
+<li>PROFID 顯示 LVEF 幾乎無法區辨 SCD（c-statistic 0.50–0.56），使「以 LVEF 36–50% 界定一個需要特別處理的族群」本身就有疑問。</li>
+<li>CMR GUIDE 顯示 ICD 沒有降低總死亡。</li>
+</ul>
+</li>
+<li><strong>結論是否超出證據</strong>：是。Conclusion 的「preventable mortality」與摘要並列「NNT 19」，都超出證據可支持的範圍。</li>
+</ul>
+<p><strong>替代解釋</strong></p>
+<ol>
+<li><strong>研究年代與治療時代效應</strong>：
+<ul>
+<li>1.74% 主要由 1990 年代以前的資料驅動（Copie 收案 1986–1988；Yap 1990–1996），當時沒有常規 primary PCI，beta-blocker 與 ACEi 使用率較低。</li>
+<li>meta-regression 中「beta-blocker 使用率」「追蹤時間」與研究年代高度共線（[推論] 文中「date of study publication 關聯很小」，但發表年份不等於收案年份。例如 Copie 1996 發表、1986–1988 收案；Yap 2007 發表、1990–1996 收案）。</li>
+<li>現代族群的真實 SCD 率可能接近 Karabag（1.87%，但包含 VT/VF 事件）或更低。CMR GUIDE 瘢痕族群的 ILR 組約 0.9%/年 [自行計算]。</li>
+</ul>
+</li>
+<li><strong>早期高風險期（time-dependent hazard）</strong>：MI 後 SCD 風險集中在最初幾個月，LVEF 也常在 6–12 週內恢復。把不同追蹤長度的累積事件率換算成「年化率」，短追蹤研究（Copie、Yap 都是 2 年）會把早期高風險攤成偏高的年化率。作者自己的 R² = 0.94（追蹤越長、年化率越低）正支持這個解釋，但他們沒有據此修正 NNT 模型的「恆定風險」假設。</li>
+<li><strong>結局定義造成的錯分</strong>：Karabag 把 VT/VF 事件算作「SCD 等同事件」，Yap 包含「presumed arrhythmic」死亡 [Supplement 7]。前者會把可存活的心律不整算成猝死，後者會把非心律不整性猝死算成心律不整死亡。兩者都會讓「ICD 可預防的負擔」被高估。只用臨床定義時降為 1.38%，與此方向一致。</li>
+</ol>
+<hr />
+<h3>F. 最終裁決</h3>
+<ul>
+<li><strong>論證結構完整性</strong>：<strong>弱</strong>。「SCD 負擔」到「可預防」到「NNT」這條鏈缺少關鍵的介入證據環節。</li>
+<li><strong>引用品質</strong>：<strong>部分適當</strong>。歷史 ICD 試驗的引用正確，但遺漏 DINAMIT／IRIS 的總死亡結果與 PROFID 的區辨力結論，解方段落有方向性自引，Macchia 與 Yap 的族群定義有矛盾。</li>
+<li><strong>過度推論嚴重程度</strong>：<strong>中度至嚴重</strong>。「preventable mortality」為嚴重；NNT 的 CI 呈現為中度至嚴重。</li>
+<li><strong>可採用的情境</strong>：
+<ul>
+<li>當作 LVEF 36–50% 心梗後 SCD 風險的「歷史背景範圍值」（約 1–3%/年），用於試驗設計的樣本數初估或教學討論，並附上 I² 與預測區間的但書。</li>
+<li>作為「需要現代、前瞻、以 IPD 為基礎的資料」的論據。</li>
+</ul>
+</li>
+<li><strong>不建議直接引用的情境</strong>：
+<ul>
+<li>支持對 LVEF 36–50% 的心梗病人植入 primary prevention ICD；</li>
+<li>引用「5 年 NNT 19」做醫病溝通、成本效益或指引論述；</li>
+<li>宣稱「SCD 佔比與 LVEF ≤35% 相同，所以應比照處理」；</li>
+<li>套用到現代 primary PCI 加上 GDMT 且 LVEF 會恢復的病人。</li>
+</ul>
+</li>
+<li><strong>若要改觀，最需要</strong>：
+<ol>
+<li><strong>現代族群的個人層級資料（IPD）</strong>（例如 PROFID 或大型 primary PCI 登錄資料），以 MI 後 6–12 週重測的 LVEF 分層，報告<strong>心律不整性</strong> SCD 的累積發生函數（含競爭風險與時間變化的風險函數）。</li>
+<li><strong>以全死因死亡為主要終點的 RCT</strong>（CMR GUIDE 已是第一個，需要更大型、針對 &lt;70 歲或特定瘢痕特徵的確認性試驗）。</li>
+<li><strong>本 meta-analysis 本身的修正</strong>：報告最後檢索日期、預測區間、GRADE 確定性評估；查核 Macchia 族群是否含介入組，並釐清 Yap 的來源試驗數；NNT 的不確定性要同時傳遞基線率與 HR 的變異；排除非死亡的 VT/VF 結局後重做主分析。</li>
+</ol>
+</li>
+<li><strong>一句話結論</strong>：心梗後 LVEF 36–50% 的病人仍有 SCD 風險，但這篇用老舊、極度異質的資料估計，不能據此判定植入 ICD 有效或值得做。</li>
+</ul>
+<hr />
+<p><strong>Sources:</strong></p>
+<ul>
+<li><a href="https://jamanetwork.com/journals/jama/fullarticle/2853395">JAMA — CMR GUIDE Randomized Clinical Trial (Selvanayagam et al., 2026)</a></li>
+<li><a href="https://www.escardio.org/news/press/press-releases/implantable-cardioverter-defibrillators-may-benefit-certain-younger-patients-with-mild-moderate-heart-dysfunction/">ESC press release — ICDs may benefit certain younger patients with mild-moderate heart dysfunction</a></li>
+<li><a href="https://esc365.escardio.org/journal/80396">ESC365 — Sudden cardiac death after myocardial infarction: IPD from pooled cohorts (PROFID, Peek 2024)</a></li>
+<li><a href="https://cardiacrhythmnews.com/accurate-prediction-of-sudden-cardiac-death-following-heart-attack-currently-not-feasible/">Cardiac Rhythm News — Accurate prediction of SCD following heart attack &quot;currently not feasible&quot;</a></li>
+<li><a href="https://thelimbic.com/?p=20773758">thelimbic — Current ICD criteria exclude high-risk patients（僅書目資訊，全文 403 無法讀取）</a></li>
+<li><a href="https://heart.bmj.com/pages/about/">Heart (BMJ) — About the journal</a></li>
+<li><a href="https://www.journalmetrics.org/journal/heart">Journal Metrics — Heart</a></li>
+<li><a href="https://figshare.le.ac.uk/articles/journal_contribution/LifeMap_towards_the_development_of_a_new_technology_in_sudden_cardiac_death_risk_stratification_for_clinical_use_/10230284">University of Leicester figshare — LifeMap SCD risk stratification</a></li>
+<li><a href="https://cardiacrhythmnews.com/test-to-predict-risk-of-sudden-cardiac-death-being-developed-in-leicester-uk/">Cardiac Rhythm News — Test to predict risk of SCD being developed in Leicester</a></li>
+<li>作者發表紀錄取自 PubMed：
+<ul>
+<li><a href="https://doi.org/10.1093/eurjpc/zwag152">Lau EYM, Li X, Ng GA. <em>Eur J Prev Cardiol</em> 2026</a></li>
+<li><a href="https://doi.org/10.1016/j.jacep.2026.05.020">Lachlan T, …Ng GA. <em>JACC Clin Electrophysiol</em> 2026</a></li>
+<li><a href="https://doi.org/10.1186/s40900-026-00858-9">Clayton DC, …Ng GA. <em>Res Involv Engagem</em> 2026</a></li>
+<li><a href="https://doi.org/10.1016/j.ipej.2025.09.005">Antoun I, …Ng GA. <em>Indian Pacing Electrophysiol J</em> 2025</a></li>
+</ul>
+</li>
+</ul>
+
+<footer class="appraisal-meta">評讀資訊：模型：claude-opus-5-5 (claude)  ·  route：sr  ·  產出時間：2026-11-08 08:13 CST</footer>
+</main>
+</body>
+</html>

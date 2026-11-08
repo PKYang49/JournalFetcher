@@ -1,0 +1,937 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Antithrombotic Therapy After Left Atrial Appendage Occlusion: The SIMPLAAFY Randomized Clinical Trial.</title>
+<style>
+  :root {
+    --bg: #fafafa;
+    --card: #ffffff;
+    --text: #1a1a1a;
+    --muted: #6b6b6b;
+    --border: #e5e5e5;
+    --accent: #0b5fff;
+  }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang TC",
+      "Microsoft JhengHei", sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    margin: 0;
+    padding: 24px 16px 64px;
+    line-height: 1.72;
+  }
+  main {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    margin: 0 auto;
+    max-width: 840px;
+    padding: 22px 26px;
+  }
+  nav {
+    margin: 0 auto 14px;
+    max-width: 840px;
+    color: var(--muted);
+    font-size: 14px;
+  }
+  a { color: var(--accent); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  h1, h2, h3, h4 { line-height: 1.35; }
+  h1 { font-size: 26px; margin-top: 0; }
+  h2 { border-top: 1px solid var(--border); padding-top: 18px; }
+  code {
+    background: rgba(127, 127, 127, 0.12);
+    border-radius: 4px;
+    padding: 1px 4px;
+  }
+  .table-wrap {
+    margin: 1em 0;
+    overflow-x: auto;
+  }
+  .table-wrap.wide {
+    /* Break out of the 840px prose column, centred on the viewport. */
+    width: min(1040px, calc(100vw - 32px));
+    margin-left: calc(50% - min(520px, 50vw - 16px));
+  }
+  table {
+    border-collapse: collapse;
+    table-layout: auto;
+    width: 100%;
+  }
+  .table-wrap.wide {
+    /* Opaque so the <main> card border does not show through the table. */
+    background: var(--card);
+  }
+  /* Width hints go on <th> as percentages: Chrome's auto table layout
+     mis-sizes columns (and overflows) when cells carry min-width. */
+  .table-wrap.wide th:first-child {
+    /* Variable + plain-language definition, e.g. "NCPV (noncalcified ...)". */
+    width: 26%;
+  }
+  .table-wrap.wide th:last-child {
+    /* Last column is usually a one-line interpretation. */
+    width: 20%;
+  }
+  th, td {
+    border: 1px solid var(--border);
+    /* Wrap only at spaces: never split an English word mid-letter. */
+    overflow-wrap: normal;
+    word-break: normal;
+    hyphens: manual;
+    padding: 6px 8px;
+    text-align: left;
+    vertical-align: top;
+  }
+  blockquote {
+    border-left: 3px solid var(--accent);
+    color: var(--muted);
+    margin-left: 0;
+    padding-left: 14px;
+  }
+  .appraisal-meta {
+    border-top: 1px solid var(--border);
+    margin-top: 28px;
+    padding-top: 14px;
+    color: var(--muted);
+    font-size: 13px;
+  }
+  @media (max-width: 600px) {
+    body {
+      padding: 12px 8px 40px;
+    }
+    main {
+      padding: 16px 12px;
+    }
+    h1 {
+      font-size: 22px;
+    }
+    table {
+      font-size: 12px;
+    }
+    .table-wrap.wide {
+      width: calc(100vw - 16px);
+      margin-left: calc(50% - 50vw + 8px);
+    }
+    th, td {
+      padding: 4px 5px;
+    }
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #1a1a1a;
+      --card: #242424;
+      --text: #e8e8e8;
+      --muted: #999;
+      --border: #333;
+      --accent: #6ea8ff;
+    }
+  }
+</style>
+</head>
+<body>
+<nav><a href="../../2026-W46.html">← 回到 2026-W46 週報</a></nav>
+<main>
+<h1>Antithrombotic Therapy After Left Atrial Appendage Occlusion: The SIMPLAAFY Randomized Clinical Trial.</h1>
+<h1>SIMPLAAFY 試驗批判性評讀（JAMA 2026;doi:10.1001/jama.2026.21361）</h1>
+<hr />
+<h2>SECTION-0：文章全面描述</h2>
+<h3>0. 文章身份證</h3>
+<ul>
+<li><strong>標題</strong>：Antithrombotic Therapy After Left Atrial Appendage Occlusion: The SIMPLAAFY Randomized Clinical Trial</li>
+<li><strong>期刊／年份</strong>：JAMA，2026 年 11 月 2 日線上發表，與 TCT 2026 大會同步發表 [文內]</li>
+<li><strong>DOI</strong>：10.1001/jama.2026.21361；PMID 42970643；NCT06521463；FDA IDE G240200</li>
+<li><strong>文章類型</strong>：多中心、開放標籤、三組隨機對照試驗，主要分析為非劣性設計（SKILL-A，加 A1 非劣性子模組）</li>
+<li><strong>輸入限制</strong>：正文為 PDF 轉出的 markdown；另已視覺判讀正文第 1、4–8 頁圖頁，以及 Supplement 3 的 eFigure 1–6。Supplement 1（protocol）與 Supplement 2（SAP）以文字讀取。</li>
+</ul>
+<h3>1. 作者團隊評論</h3>
+<ul>
+<li><strong>通訊作者</strong>：Vivek Y. Reddy，Mount Sinai Fuster Heart Hospital 電生理部門。Protocol 列他為「Study Chairman」，Saibal Kar（Los Robles）與 Walid Saliba（Cleveland Clinic）為 coordinating PI [Protocol p.2]。</li>
+<li><strong>團隊過往研究</strong>：以 protocol 參考文獻清單為依據 [Supplement 1 bibliography]，這是 Watchman 研發體系的核心團隊：
+<ul>
+<li>PROTECT AF（Holmes, Reddy, et al. <em>Lancet</em> 2009）</li>
+<li>PROTECT AF 長期追蹤（Reddy, et al. <em>JAMA</em> 2014）</li>
+<li>PREVAIL 與 PROTECT AF 五年合併分析（Reddy, et al. <em>JACC</em> 2017）</li>
+<li>PINNACLE FLX（Kar, et al. <em>Circulation</em> 2021）</li>
+<li>FLX Pro 氟聚合物塗層前臨床研究（Saliba, et al. <em>JACC Clin EP</em> 2023）</li>
+</ul>
+</li>
+<li><strong>作者立場史</strong>：本團隊歷來主導 Watchman 系列試驗，本篇結論（簡化術後抗栓）與 Boston Scientific 的產品策略方向一致，存在 prior commitment／確認偏差風險 [推論：依上列發表史與 funder 角色]。</li>
+<li><strong>團隊構成</strong>：共 33 位作者，其中 5 位是 Boston Scientific（BSC）員工（Leger、Matznick、Christen、Sutton、Stein）；統計分析由 Gandhi、Trulock、Matznick、Stein 負責，後兩位是 BSC 員工；資金取得列為 Stein [文內 Author Contributions]。</li>
+<li><strong>利益揭露</strong> [文內]：
+<ul>
+<li>試驗由 BSC 贊助並出資。BSC 與 FDA、PI 共同設計 protocol，並負責資料收集與「basic data analysis」，也參與資料詮釋、稿件審閱與投稿決定。</li>
+<li>文中明言試驗目的為「support market expansion of the antithrombotic regimen after implantation of the Watchman FLX Pro」。</li>
+<li>絕大多數臨床作者領有 BSC 顧問費、演講費或研究經費。</li>
+</ul>
+</li>
+<li><strong>評估</strong>：這是典型「廠商主導、為擴大仿單適應症而設計」的器材附屬藥物試驗。資金不太可能竄改硬終點，但可能影響三件事：對照組選擇、終點組合方式，以及哪些結果被強調（見 B3、E）。</li>
+</ul>
+<h3>2. 文獻 Metadata 整理</h3>
+<ul>
+<li><strong>Received date</strong>：markdown 未呈現 [無法取得]。</li>
+<li><strong>時程</strong>：Accepted 2026-09-22，Published 2026-11-02 [文內]；最後一次 6 個月追蹤在 2026 年 7 月 [文內]。資料完成到接受約 2–2.5 個月，接受後 6 週配合 TCT 同步發表 [推論]。</li>
+<li><strong>JAMA 平均審查天數</strong>：本次搜尋未取得官方統計 [無法取得]。本篇從資料鎖定到接受的速度明顯偏快，符合「大會同步發表」型 fast-track 的典型模式 [推論]。</li>
+<li><strong>期刊屬性</strong>：
+<ul>
+<li>Impact Factor：各來源不一致，有 55.0 與 65.4 兩種數字，年份標示混亂，官方值應以 Clarivate JCR 為準 [外部: journalmetrics.org；impactfactorforjournal.com]</li>
+<li>分區：Q1 [外部]</li>
+<li>Open Access 狀態：[無法取得]</li>
+</ul>
+</li>
+<li><strong>邀稿或投稿</strong>：原始研究，附同期 editorial [文內]。</li>
+<li><strong>其他</strong>：文末揭露撰稿時使用 ChatGPT 5.6 協助校對與字數調整 [文內]。</li>
+</ul>
+<h3>3. 研究背景（僅文內）</h3>
+<ul>
+<li><strong>既有證據</strong>：
+<ul>
+<li>LAAC 後需短期抗栓，讓裝置完成內皮化。</li>
+<li>NCDR LAAO Registry 顯示 DAPT 與 OAC 的出血率及 DRT 風險相近，DAPT 因此取得仿單核准。</li>
+<li>ADRIFT、ADALA、ANDES 等小型 RCT 與 2026 年統合分析（704 人）顯示 NOAC 的 DRT 與出血較少。</li>
+<li>Aspirin 單藥的證據只有單中心觀察性研究，且多用 Amulet／ACP。</li>
+</ul>
+</li>
+<li><strong>知識缺口</strong>：術後最佳抗栓方案未知，缺乏大型 RCT。單一 aspirin 從未經隨機比較。</li>
+<li><strong>Research question</strong>：在 Watchman FLX Pro 成功、無併發症植入後，低劑量 NOAC（3 個月後改 aspirin）或 aspirin 單藥，6 個月內「死亡、中風、全身性栓塞、ISTH 大出血」複合終點是否不劣於 DAPT。</li>
+</ul>
+<h3>4. 研究設計與方法</h3>
+<p><strong>PICO</strong></p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>項目</th>
+<th>內容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>P</td>
+<td>非瓣膜性 AF，Watchman FLX Pro 植入成功，植入當下 peridevice leak 為 0 mm、無圍術期併發症，且三種方案都適用</td>
+</tr>
+<tr>
+<td>I1</td>
+<td>低劑量 NOAC 3 個月：apixaban 2.5 mg bid（83.9%）或 rivaroxaban 10 mg qd（13.5%），之後 aspirin</td>
+</tr>
+<tr>
+<td>I2</td>
+<td>Aspirin 81–100 mg，全程 12 個月</td>
+</tr>
+<tr>
+<td>C</td>
+<td>DAPT（clopidogrel 75 mg 加 aspirin）6 個月，之後 aspirin</td>
+</tr>
+<tr>
+<td>O（主要）</td>
+<td>6 個月複合終點：全因死亡、所有中風、全身性栓塞、ISTH 大出血</td>
+</tr>
+<tr>
+<td>O（次要）</td>
+<td>12 個月 ischemic stroke／SE，對 5.5% performance goal 檢定，尚未完成</td>
+</tr>
+<tr>
+<td>O（探索）</td>
+<td>CRNMB、出血時程、45 天 DRT 與 seal</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>關鍵設計細節</strong></p>
+<ul>
+<li>87 個美國中心，2024-10 至 2025-12 收案。Protocol 原規劃最多 125 個中心，涵蓋美國與日本 [Protocol p.5]，最終只有美國。</li>
+<li>隨機化在植入後 1 天內進行，經 EDC 以 3–6 人的隨機區塊（permuted blocks）分派。</li>
+<li>開放標籤；終點由獨立 CEC 判定，影像由獨立 core lab 判讀。</li>
+<li>非劣性檢定：Farrington-Manning，單尾 α = .025，絕對差 margin 7.2%。</li>
+</ul>
+<p><strong>主要變項定義</strong></p>
+<ul>
+<li>ISTH 大出血：致命出血、關鍵器官出血、Hb 下降 ≥ 20 g/L，或輸血 ≥ 2 單位。</li>
+<li>CRNMB：需要醫療介入、住院，或需要面對面／視訊評估。</li>
+<li>DRT：TEE echodensity grade 2–3，或 CT HAT grade 2–3。</li>
+</ul>
+<h3>5. 研究結果重點整理</h3>
+<p><strong>主要結果表</strong>（組間差一律改寫為「單藥組減 DAPT」，負值代表單藥事件較少。Table 2 原文是 DAPT 減單藥，正負號相反。）</p>
+<div class="table-wrap wide"><table>
+<thead>
+<tr>
+<th>變項（代表什麼）</th>
+<th style="text-align:right">DAPT</th>
+<th style="text-align:right">低劑量 NOAC</th>
+<th style="text-align:right">Aspirin</th>
+<th style="text-align:right">組間差（95% CI）：NOAC／ASA 減 DAPT</th>
+<th style="text-align:right">p 值</th>
+<th>如何解讀</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>用藥遵從</strong>：≥ 80% 時間服用指定藥物</td>
+<td style="text-align:right"><strong>76.8%</strong></td>
+<td style="text-align:right"><strong>85.3%</strong></td>
+<td style="text-align:right"><strong>87.9%</strong></td>
+<td style="text-align:right">未報告</td>
+<td style="text-align:right">未報告</td>
+<td>DAPT 遵從最差，與副作用相關</td>
+</tr>
+<tr>
+<td>因不良事件停藥</td>
+<td style="text-align:right"><strong>13.0%</strong></td>
+<td style="text-align:right"><strong>3.2%</strong></td>
+<td style="text-align:right"><strong>1.8%</strong></td>
+<td style="text-align:right">未報告</td>
+<td style="text-align:right">未報告</td>
+<td>DAPT 停藥是單藥組的 4–7 倍，會稀釋組間差</td>
+</tr>
+<tr>
+<td><strong>主要複合終點</strong>：死亡、中風、SE、ISTH 大出血</td>
+<td style="text-align:right"><strong>41/596，6.9%</strong></td>
+<td style="text-align:right"><strong>31/603，5.1%</strong></td>
+<td style="text-align:right"><strong>20/598，3.3%</strong></td>
+<td style="text-align:right">NOAC：−1.74（−4.43 to 0.95），97.5% 上界 1.2；ASA：−3.53（−6.03 to −1.04），97.5% 上界 −0.8</td>
+<td style="text-align:right">非劣性 &lt;.001（兩組）；名義優越性 .21／.006</td>
+<td>兩組都明確不劣；aspirin 名義上更好</td>
+</tr>
+<tr>
+<td>全因死亡</td>
+<td style="text-align:right">2.2%</td>
+<td style="text-align:right">2.2%</td>
+<td style="text-align:right">1.3%</td>
+<td style="text-align:right">−0.03（−1.67 to 1.62）；−0.84（−2.33 to 0.65）</td>
+<td style="text-align:right">.98／.27</td>
+<td>沒有明確組間差異</td>
+</tr>
+<tr>
+<td>缺血性中風</td>
+<td style="text-align:right"><strong>4（0.7%）</strong></td>
+<td style="text-align:right"><strong>4（0.7%）</strong></td>
+<td style="text-align:right"><strong>4（0.7%）</strong></td>
+<td style="text-align:right">−0.01（−0.93 to 0.91）；0.00（−0.93 to 0.92）</td>
+<td style="text-align:right">1.00</td>
+<td>事件極少，無法排除約 0.9% 的絕對增加</td>
+</tr>
+<tr>
+<td>出血性中風</td>
+<td style="text-align:right">2（0.3%）</td>
+<td style="text-align:right">0</td>
+<td style="text-align:right">0</td>
+<td style="text-align:right">未報告</td>
+<td style="text-align:right">.25</td>
+<td>只出現在 DAPT 組，數字太少</td>
+</tr>
+<tr>
+<td><strong>ISTH 大出血</strong></td>
+<td style="text-align:right"><strong>4.5%</strong></td>
+<td style="text-align:right"><strong>2.7%</strong></td>
+<td style="text-align:right"><strong>1.7%</strong></td>
+<td style="text-align:right">−1.88（−3.98 to 0.23）；−2.86（−4.82 to −0.90）</td>
+<td style="text-align:right">.08／.004（名義）</td>
+<td>Aspirin 較少；NOAC 方向一致但 CI 跨 0</td>
+</tr>
+<tr>
+<td><strong>CRNMB</strong>：未達大出血但需處置的出血</td>
+<td style="text-align:right"><strong>8.7%</strong></td>
+<td style="text-align:right"><strong>4.8%</strong></td>
+<td style="text-align:right"><strong>3.8%</strong></td>
+<td style="text-align:right">−3.92（−6.75 to −1.08）；−4.88（−7.62 to −2.14）</td>
+<td style="text-align:right">.007／&lt;.001（名義）</td>
+<td>差異主要來自這類偏「軟」的出血</td>
+</tr>
+<tr>
+<td>大出血加 CRNMB</td>
+<td style="text-align:right"><strong>12.8%</strong></td>
+<td style="text-align:right"><strong>7.3%</strong></td>
+<td style="text-align:right"><strong>5.5%</strong></td>
+<td style="text-align:right">−5.45（−8.84 to −2.07）；−7.23（−10.48 to −3.99）</td>
+<td style="text-align:right">.002／&lt;.001（名義）</td>
+<td>NNT 19（NOAC）與 14（ASA）避免一次出血</td>
+</tr>
+<tr>
+<td><strong>DRT</strong>：45 天 core lab 判讀之裝置血栓</td>
+<td style="text-align:right"><strong>20/584，3.4%</strong></td>
+<td style="text-align:right"><strong>5/584，0.9%</strong></td>
+<td style="text-align:right"><strong>16/582，2.7%</strong></td>
+<td style="text-align:right">−2.6（−4.23 to −0.92）；−0.7（−2.67 to 1.31）</td>
+<td style="text-align:right">.01（NOAC，名義）；ASA 未報告</td>
+<td>只有 NOAC 明顯較低，aspirin 與 DAPT 相近</td>
+</tr>
+<tr>
+<td>45 天完整密封（leak 0 mm）</td>
+<td style="text-align:right">78.4%</td>
+<td style="text-align:right">78.8%</td>
+<td style="text-align:right">78.7%</td>
+<td style="text-align:right">未報告</td>
+<td style="text-align:right">未報告</td>
+<td>三組相同；植入當下約 4.6% 已非 0 mm</td>
+</tr>
+<tr>
+<td>主要終點，年齡 ≥ 75 歲</td>
+<td style="text-align:right">9.3%（34/367）</td>
+<td style="text-align:right">4.9%（18/365）</td>
+<td style="text-align:right">3.1%（12/382）</td>
+<td style="text-align:right">RR 0.53（0.31–0.93）；RR 0.34（0.18–0.64）</td>
+<td style="text-align:right">P_int 0.03</td>
+<td>高齡者單藥效益最大</td>
+</tr>
+<tr>
+<td>主要終點，年齡 &lt; 75 歲</td>
+<td style="text-align:right">3.1%（7/229）</td>
+<td style="text-align:right">5.5%（13/238）</td>
+<td style="text-align:right">3.7%（8/216）</td>
+<td style="text-align:right">RR 1.79（0.73–4.40）；RR 1.21（0.45–3.28）</td>
+<td style="text-align:right">P_int 0.03</td>
+<td>年輕者單藥點估計反而較差，作者未強調</td>
+</tr>
+</tbody>
+</table></div>
+<p>表格以外的重點：</p>
+<ul>
+<li><strong>追蹤流失不對稱</strong>：主要分析排除了「未完成追蹤且無事件」者，DAPT 28 人、NOAC 17 人、ASA 15 人。DAPT 撤回同意 18 人，對比 10 與 6 人 [Figure 1]。</li>
+<li><strong>出血曲線形狀</strong>：Figure 2C 中，DAPT 的出血曲線在第 7 天到約第 30 天陡升至約 5.5%，之後線性上升到 12%。單藥兩組一個月時約 2%。DAPT 的超額出血有很大一部分在第一個月就累積，不全是長期暴露造成。</li>
+<li><strong>NOAC 停藥後的走勢</strong>：NOAC 組在第 90 天停藥改 aspirin 後，出血曲線在約 95–150 天仍上升至約 6%，在圖上越過 aspirin 組（約 5%）[Figure 2C 視覺判讀]。這段是 NOAC 轉 aspirin 之後發生的事件，作者沒有討論。</li>
+<li><strong>DRT 的後續處置</strong>：site 偵測並治療的 DRT，DAPT 16 例、NOAC 1 例、ASA 10 例；依 protocol 會改用全劑量 OAC [Table 3；Protocol p.42]。這是一個共同介入（co-intervention）。</li>
+</ul>
+<h3>6. 作者討論與評論重點</h3>
+<ul>
+<li><strong>主要訊息</strong>：兩種單藥都不劣於 DAPT；DAPT 出血最多，DRT 也沒有比較少。作者據此認為「routine use of DAPT after LAAC is not supported」，並建議依血栓／出血風險在兩種單藥間個人化選擇。</li>
+<li><strong>與文獻比較</strong>：與 ADRIFT、ADALA、ANDES 及 2026 統合分析方向一致；aspirin 單藥的 DRT（2.7%）落在觀察性研究的 1.5–3.3% 範圍。</li>
+<li><strong>作者列出的限制</strong> [文內]：
+<ol>
+<li>開放標籤</li>
+<li>只納入無併發症、0 mm leak 的病人</li>
+<li>必須三種方案都適用</li>
+<li>觀察到的事件率遠低於假設的 15.9%</li>
+<li>未與全劑量 NOAC 比較</li>
+<li>影像只做到 45 天</li>
+<li>隨機前用藥未可靠記錄</li>
+<li>排除族群的外推性未知</li>
+</ol>
+</li>
+<li><strong>評估</strong>：
+<ul>
+<li><strong>有些限制被淡化</strong>：作者承認事件率遠低於假設，但沒有指出 7.2% 的 margin 已經大於對照組實際事件率（6.9%）。作者以「上界接近 0」帶過；結論本身禁得起檢驗，但 margin 的設定是失職的。</li>
+<li><strong>有些問題未被揭露</strong>：
+<ul>
+<li>SAP 預先規定的 tipping-point 遺失資料敏感度分析未報告 [SAP p.17 §6.4]</li>
+<li>兩個主要比較沒有做多重性校正 [SAP p.12 §3]</li>
+<li>年輕族群的反向訊號未被強調</li>
+</ul>
+</li>
+<li><strong>臨床建議超出數據的地方</strong>：「依 SEC 或 smoke 選 NOAC、依出血史選 aspirin」並沒有本試驗數據支持，屬專家意見。</li>
+</ul>
+</li>
+</ul>
+<h3>7. 外部專業意見</h3>
+<p><strong>Freeman JV. Optimal Antithrombotics After Left Atrial Appendage Closure. <em>JAMA</em> 2026; doi:10.1001/jama.2026.22275</strong> [外部: JAMA editorial 全文]</p>
+<ul>
+<li><strong>肯定</strong>：
+<ul>
+<li>主要終點事件率低，兩組單藥「essentially regardless of how stringent the noninferiority margins were set」都會達到非劣性。</li>
+<li>單藥出血較少，與 NCDR、ADRIFT、ADALA、ANDES 一致。他認為這個出血優勢應與裝置種類無關，可外推到其他裝置。</li>
+<li>結論：DAPT「generally not the preferred」。</li>
+</ul>
+</li>
+<li><strong>質疑</strong>：
+<ol>
+<li>次要分析未校正多重比較、不是為這些結果設計，開放標籤可能造成判定偏差。</li>
+<li>影像只到 45 天，許多 DRT 發生得更晚，差異可能被低估。</li>
+<li>DRT 結果與 FLX Pro 單塞設計與 PVDF-HFP 塗層有關，不應外推到其他裝置。</li>
+<li>缺少全劑量 NOAC 組，最佳療程也沒有研究。</li>
+<li>Aspirin 單藥 DRT 數值偏高，「may be concerning」。</li>
+<li>長期無限期 aspirin 的價值從未有 RCT 驗證。</li>
+</ol>
+</li>
+<li><strong>編者觀點</strong>：低劑量 NOAC 3 個月「appeared to be favorable」。</li>
+<li><strong>注意事項</strong>：Freeman 本人揭露領有 BSC 研究經費與顧問費。他把 DRT 寫成兩組抗血小板「significantly higher」於 NOAC，但 aspirin 與 NOAC 的比較屬於非預設的探索性比較 [eTable 3 註 b]。</li>
+</ul>
+<p><strong>大會評論</strong>（TCTMD 報導）[外部: TCTMD]</p>
+<ul>
+<li>Pinak Shah：因 aspirin 組 DRT 較高，傾向多數病人用低劑量 DOAC，出血高風險者才用 aspirin。</li>
+<li>Mohamad Alkhouli：認為 aspirin 是「winner」，低劑量 DOAC「jury is still out」。但 Alkhouli 是本文共同作者（列名 concept and design），<strong>並非獨立評論者</strong>。</li>
+<li>報告者 Kar 自承：aspirin 對 NOAC 的比較不是預設比較，影像在 NOAC 轉 aspirin 之前就已完成。</li>
+</ul>
+<h3>8. 臨床建議</h3>
+<ul>
+<li><strong>可採用的情境</strong>：
+<ul>
+<li>Watchman FLX Pro 植入成功、植入當下 leak 0 mm、無圍術期併發症</li>
+<li>無長期 OAC 或 P2Y12 適應症、LVEF ≥ 30%、eGFR ≥ 30</li>
+<li>符合以上條件時，術後不需要常規 DAPT</li>
+</ul>
+</li>
+<li><strong>不建議直接套用的情境</strong>：
+<ul>
+<li>其他裝置，例如 Amulet 或無塗層的 FLX</li>
+<li>有殘餘 leak 或圍術期併發症</li>
+<li>植入前影像有 dense SEC、sludge 或血栓（本試驗已排除）</li>
+<li>需要同時處理 PCI 或 ablation 的病人</li>
+<li>想以本研究取代「全劑量 NOAC 單藥」策略（兩者從未比較）</li>
+</ul>
+</li>
+<li><strong>實務建議</strong>：
+<ol>
+<li>一般病人優先考慮 apixaban 2.5 mg bid 共 3 個月，之後 aspirin。這是 DRT 最低、出血也明顯少於 DAPT 的方案。</li>
+<li>出血風險極高、難以耐受任何抗凝的病人，可考慮 aspirin 單藥，但要確實做 45 天 TEE 或 CT 確認無 DRT。Aspirin 組 DRT 與 DAPT 相當（2.7% 對 3.4%），比 NOAC 高約 3 倍。</li>
+<li>不要以「aspirin 優於 DAPT」作為選擇理由。這是非預設的優越性結果，而且主要由開放標籤下的 CRNMB 與少數死亡事件驅動。</li>
+</ol>
+</li>
+<li><strong>證據強度</strong>：
+<ul>
+<li>「DAPT 不必要且出血較多」：<strong>中–強</strong>。方向一致、與外部 RCT 吻合。</li>
+<li>「Aspirin 單藥在血栓栓塞方面安全」：<strong>弱</strong>。缺血中風每組只有 4 例，DRT 不低，12 個月資料尚未公布。</li>
+</ul>
+</li>
+</ul>
+<hr />
+<h2>SKILL-A：批判性評讀</h2>
+<h3>A. 補充技術細節</h3>
+<ul>
+<li><strong>樣本數估算</strong>：假設兩組 6 個月事件率都是 15.9%（依 SURPASS／NCDR）、margin 7.2%（假設率的 45%）、每組 600 人、power &gt; 90% [SAP p.12]。實際 DAPT 事件率只有 6.9%，不到假設的一半。</li>
+<li><strong>隨機化</strong>：EDC 產生 3–6 人的隨機區塊，分派隱藏佳。但開放標籤加上小區塊，區塊末端的分派可被預測。由於隨機化在植入後才進行，理論上存在選擇性「不隨機化」的空間：32 例植入後 screen failure 中，1 例因 investigator discretion，2 例另有程序計畫。實際風險低。</li>
+<li><strong>致盲</strong>：受試者、研究者與 site 都未致盲。CEC 與 core lab 是否對組別盲化，文內未說明 [無法判定]。Protocol 只寫 sponsor 人員在彙總資料時盲化 [Protocol p.47]。</li>
+<li><strong>分析族群與 SAP 的出入</strong>：
+<ul>
+<li>SAP 預先規定主要分析使用 ITT（全部隨機化者）[SAP p.12、p.15–16]。</li>
+<li>但事件率的分母依 SAP §8.3 只計入「有足夠追蹤或有 CEC 確認事件者」，實質是 complete-case 加上有事件者。</li>
+<li>論文改稱「primary analysis population」，ITT 實際覆蓋 95.5%–97.6%。</li>
+<li>Treated-as-assigned 敏感度分析結果一致：NOAC 差 −1.2%，上界 1.7%；ASA 差 −3.1%，上界 −0.4%。</li>
+</ul>
+</li>
+<li><strong>多重比較</strong>：
+<ul>
+<li>兩個主要非劣性比較共用同一個 DAPT 對照，各用 α .025，且「without hierarchal manner」[SAP p.12]，只要任一達標就算成功。家族錯誤率（family-wise error）理論上最高接近 .05。</li>
+<li>不過兩組 P 都 &lt; .001，對結論沒有實質影響。</li>
+<li>次要與影像終點沒有校正，作者已明示屬探索性。</li>
+</ul>
+</li>
+<li><strong>缺失資料</strong>：SAP 規定 tipping-point 分析 [SAP p.17 §6.4]，正文與 supplement 都未呈現，屬<strong>選擇性未報告</strong>。
+<ul>
+<li>我以最壞情境自行估算 [自行計算]：假設 NOAC 組 17 名缺失者全部有事件、DAPT 組 28 名全部沒有事件，NOAC 為 48/620 = 7.7%，DAPT 為 41/624 = 6.6%，差 +1.2%，單尾 97.5% 上界約 +4.0%。仍低於 7.2%，但會超過臨床上較合理的 2–3% margin。</li>
+<li>Aspirin 組即使最壞情境（35/613 = 5.7%）仍低於 DAPT。</li>
+</ul>
+</li>
+<li><strong>Site 合併性與多變量分析</strong>：SAP 規定的 site poolability 與多變量預測因子分析都未報告 [SAP p.17–18]。</li>
+<li><strong>競爭風險</strong>：Fine-Gray 累積發生率結果與 KM 一致 [eFigure 2，視覺確認]。</li>
+</ul>
+<h4>A1. 非劣性試驗子模組</h4>
+<ul>
+<li><strong>Margin 合理性</strong>：
+<ul>
+<li>7.2% 由「預期率 15.9% × 45%」推得，沒有任何臨床論證說明病人可接受多少超額的死亡、中風或大出血。</li>
+<li>實際對照事件率 6.9%，margin 已大於整個對照事件率。換言之，即使單藥組事件率是 DAPT 的 2 倍（約 14%），仍會被判為「不劣」。</li>
+<li>若以 Freeman 的觀點，或改用「觀察對照率的 45%」約 3.1% 作為 margin，兩個比較的上界（1.2% 與 −0.8%）仍都通過，<strong>結論穩健，但設計本身失職</strong>。</li>
+</ul>
+</li>
+<li><strong>Active comparator 的品質</strong>：
+<ul>
+<li>DAPT 是 FDA 核准方案，但 NCDR 資料早已顯示 DAPT 出血與 NOAC 單藥相當或更多。</li>
+<li>美國臨床的常見選擇之一是全劑量 NOAC（作者自承）。</li>
+<li>選擇出血最多的方案作為對照，再用「以出血為主」的複合終點做非劣性比較，等於結構上預設單藥容易勝出（見 B3）。</li>
+</ul>
+</li>
+<li><strong>ITT 與 per-protocol</strong>：非劣性試驗中 ITT 通常偏保守（偏向無差異），所以需要 per-protocol 對照。本文有 treated-as-assigned，但它只要求「至少服用一劑」，並非真正的 per-protocol。DAPT 有 13% 因不良事件停藥、9.1% 由醫師決定停藥 [eTable 1]，大量 DAPT 病人實際上已降為 aspirin 單藥。這種污染（contamination）讓兩組更相似，在非劣性框架下有利於宣稱「不劣」。</li>
+<li><strong>臨床意義</strong>：觀察到的差異方向有利於單藥，所以 margin 問題不改變主要結論。真正的問題在於，<strong>複合終點的「不劣」主要由出血驅動，不代表血栓保護也相當</strong>（見 B4、C1）。</li>
+</ul>
+<h3>B. 批判性評估</h3>
+<h4>B1. 假說與理論邏輯</h4>
+<ul>
+<li><strong>假說預先指定</strong>：主要終點、margin、α、次組都預先登錄 [Protocol/SAP]，沒有 outcome switching。Protocol 與 SAP 版本 B 曾依 FDA 回饋調整 performance goal 與隨機化時點 [SAP p.2]，都是收案前的變更。</li>
+<li><strong>合理機轉</strong>：
+<ol>
+<li>Clopidogrel 加 aspirin 雙重抑制血小板，在高齡（平均 76 歲）且 21% 有大出血史的族群中，出血風險可預期最高。</li>
+<li>裝置表面血栓以凝血酶與纖維蛋白為主，低劑量 Xa 抑制劑理論上比抗血小板更有效預防 DRT，與 NOAC 組 DRT 0.9% 一致。</li>
+<li>PVDF-HFP 塗層宣稱可降低血栓生成，但只有前臨床證據 [Protocol p.19]。</li>
+</ol>
+</li>
+<li><strong>可疑的敘事跳躍</strong>：
+<ol>
+<li>「Aspirin 單藥 DRT 2.7%，與觀察性研究相近，所以可行」：忽略了 aspirin 組 DRT 是 NOAC 的 3 倍 [Discussion vs. Table 3]。</li>
+<li>「塗層讓單藥可行」：本試驗沒有無塗層對照，無法分離塗層的貢獻（作者有承認，但標題與結論沒有限定裝置）。</li>
+<li>「Smoke 傾向用 NOAC、出血史傾向用 aspirin」：無數據支持，而且 dense SEC 本來就是排除條件 [Protocol 排除 #8]。</li>
+</ol>
+</li>
+</ul>
+<h4>B2. 受試者與外推性</h4>
+<ul>
+<li>族群平均 76 歲、CHA₂DS₂-VASc 4.2、HAS-BLED 2.6、91% 白人，且條件高度篩選：
+<ul>
+<li>0 mm leak</li>
+<li>無圍術期併發症</li>
+<li>LVEF ≥ 30%</li>
+<li>eGFR ≥ 30</li>
+<li>6 個月內不排程任何介入</li>
+</ul>
+</li>
+<li>2057 名篩選者中 1857 人被隨機化，比例算高，但篩選前就已經是 site 認為適合的病人。</li>
+<li><strong>外推性分級</strong>：
+<ol>
+<li><strong>一般 LAAC 病人</strong>：只能外推到「FLX Pro、無併發症、0 mm leak」的子集。真實世界有殘餘 leak 或需合併 PCI 的病人不適用。</li>
+<li><strong>高出血風險族群</strong>：近 21% 有大出血史，屬可外推的重點族群。但 30 天內大出血者被排除。</li>
+<li><strong>亞洲或台灣族群</strong>：亞洲人只有約 1%，原規劃的日本中心最後沒有收案。亞洲人在 DAPT 下的出血風險、clopidogrel CYP2C19 基因型差異，以及低劑量 apixaban 的劑量反應都無法從本試驗推論。<strong>轉譯距離：中–遠</strong>。</li>
+</ol>
+</li>
+</ul>
+<h4>B3. 研究設計與偏差</h4>
+<ol>
+<li><strong>對照組與終點結構（最關鍵）</strong>
+<ul>
+<li>DAPT 組 41 個主要終點事件中，大出血就有 27 例（約 66%，病人層級可能重疊）。</li>
+<li>用出血最多的方案當對照，加上以出血為主的複合終點，單藥「不劣」幾乎是結構上的必然。</li>
+<li><strong>風險方向</strong>：讓單藥看起來更好。能夠回答「血栓保護是否相當」的終點是缺血中風、SE 與 DRT，但這些事件太少或屬探索性。</li>
+</ul>
+</li>
+<li><strong>開放標籤加軟終點</strong>
+<ul>
+<li>CRNMB 的判定包含「促成面對面或視訊評估」，高度依賴病人與醫師的警覺。DAPT 組病人與醫師都知道自己在雙抗下，就醫與通報門檻可能較低。</li>
+<li>出血差異有約七成集中在 CRNMB（−3.9 到 −4.9 個百分點）。</li>
+<li><strong>風險方向</strong>：誇大單藥的出血優勢。大出血（Hb 下降或輸血）較客觀，其差異（−1.9 與 −2.9 個百分點）可信度較高。</li>
+</ul>
+</li>
+<li><strong>不對稱停藥與共同介入</strong>
+<ul>
+<li>DAPT 組因不良事件停藥 13.0%、醫師決定停藥 9.1% [eTable 1]，會稀釋組間差。</li>
+<li>DRT 經 site 偵測並治療（改全劑量 OAC）的有 DAPT 16 例、ASA 10 例、NOAC 1 例。若 aspirin 組 DRT 未被處理，可能有更多中風；處理本身則把出血風險加回 DAPT 與 ASA 組。</li>
+<li><strong>風險方向</strong>：遮蔽 aspirin 的血栓風險。</li>
+</ul>
+</li>
+<li><strong>追蹤時間太短</strong>
+<ul>
+<li>主要終點只到 6 個月，影像只到 45 天，且在 NOAC 轉 aspirin 之前。</li>
+<li>NOAC 組停藥後的晚期 DRT 與中風完全沒有被觀察，12 個月 secondary endpoint 尚未完成。</li>
+</ul>
+</li>
+<li><strong>對照組適當性（Gyawali 框架）</strong>
+<ul>
+<li>「DAPT 是我日常會給的嗎？」在美國是仿單選項之一，但不是唯一或最佳選項。</li>
+<li>缺少全劑量 NOAC 對照，所以結論只能是「優於或不劣於一個相對較差的選項」。</li>
+</ul>
+</li>
+<li><strong>前期證據</strong>：Aspirin 組沒有 Phase II 或 RCT 前導，只有觀察性研究。這一組的血栓安全性應持更高懷疑。</li>
+</ol>
+<h4>B4. 測量工具與實務意義</h4>
+<ul>
+<li><strong>ISTH 大出血、死亡、中風</strong>：CEC 判定，客觀性較高。CEC 是否盲化 [無法判定]。</li>
+<li><strong>DRT 判讀</strong>：
+<ul>
+<li>Core lab 判讀，但 TEE 與 CT 混用：CT 約 22–24% [eFigure 6]，CT 對 HAT 與 leak 的敏感度不同。</li>
+<li>各組 CT 比例相近，對組間比較影響有限。</li>
+<li>植入當下 site 判定為 0 mm leak，core lab 卻判出約 4.6% 有 leak [Table 3 註 b]，顯示 site 判讀的再現性有限。</li>
+</ul>
+</li>
+<li><strong>終點層級</strong>：複合終點把「死亡」與「需輸血出血」等權計算，病人重要性不等。真正能決定「單藥是否足以預防血栓」的硬終點（缺血中風加 SE），事件數每組只有 4 例。</li>
+<li><strong>真實世界效益</strong>：
+<ul>
+<li>每 14 名用 aspirin 取代 DAPT 的病人，6 個月少 1 次大出血或 CRNMB；NOAC 是每 19 名 [eTable 3]。</li>
+<li>若只看大出血，NNT 約 35 名（aspirin）與 54 名（NOAC，CI 跨無效）。</li>
+<li>代價是，每 53 名用 aspirin 而非 NOAC 的病人多 1 例 45 天 DRT [eTable 3 Panel B，探索性]。</li>
+</ul>
+</li>
+</ul>
+<h3>C. 統計與資料完整性</h3>
+<h4>C1. 結果分類（CI + MCID）</h4>
+<ul>
+<li><strong>非劣性 margin</strong>：7.2%，屬試驗預設，但臨床上過於寬鬆。我以 3% 作為臨床可接受的非劣性界線 [推算]：6 個月內若多出 3% 的死亡、中風或大出血，多數臨床醫師不會接受。</li>
+<li><strong>其他 MCID</strong> [推算]：
+<ul>
+<li>6 個月大出血：1 個百分點</li>
+<li>全部出血：2 個百分點</li>
+<li>缺血中風（傷害端）：0.5 個百分點。6 個月 0.5% 約等於年化 1%，相當於 LAAC 族群基線中風率的顯著增幅。</li>
+<li>DRT：1 個百分點</li>
+</ul>
+</li>
+</ul>
+<p><strong>效果量表</strong>（ARD 為單藥減 DAPT）</p>
+<div class="table-wrap wide"><table>
+<thead>
+<tr>
+<th>指標</th>
+<th>介入組</th>
+<th>對照組（DAPT）</th>
+<th>效果量</th>
+<th>95% CI</th>
+<th>ARD</th>
+<th>MCID</th>
+<th>結果分類</th>
+<th>實務意義</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>主要複合終點：NOAC</td>
+<td>5.1%</td>
+<td>6.9%</td>
+<td>RR 0.75</td>
+<td>0.48–1.18</td>
+<td>−1.74 pp（上界 1.2）</td>
+<td>NI 3%</td>
+<td><strong>非劣性成立</strong>；優越性屬 INCONCLUSIVE</td>
+<td>確定不比 DAPT 差，未證明更好</td>
+</tr>
+<tr>
+<td>主要複合終點：ASA</td>
+<td>3.3%</td>
+<td>6.9%</td>
+<td>RR 0.49</td>
+<td>0.29–0.82</td>
+<td>−3.53 pp（−6.03 to −1.04）</td>
+<td>NI 3%；效益 2%</td>
+<td><strong>非劣性成立</strong>；優越性屬 IMPRECISE (+)，名義</td>
+<td>非預設的優越性，屬假說生成</td>
+</tr>
+<tr>
+<td>ISTH 大出血：NOAC</td>
+<td>2.7%</td>
+<td>4.5%</td>
+<td>RR 0.59</td>
+<td>0.32–1.08</td>
+<td>−1.88 pp（−3.98 to 0.23）</td>
+<td>1 pp</td>
+<td><strong>INCONCLUSIVE</strong></td>
+<td>方向有利，但 CI 同時包含 0 與 MCID</td>
+</tr>
+<tr>
+<td>ISTH 大出血：ASA</td>
+<td>1.7%</td>
+<td>4.5%</td>
+<td>RR 0.37</td>
+<td>0.18–0.76</td>
+<td>−2.86 pp（−4.82 to −0.90）</td>
+<td>1 pp</td>
+<td><strong>IMPRECISE (+)</strong></td>
+<td>接近確定有臨床意義（上界剛好未越過 −1）</td>
+</tr>
+<tr>
+<td>全部 ISTH 出血：NOAC</td>
+<td>7.3%</td>
+<td>12.8%</td>
+<td>RR 0.57</td>
+<td>0.40–0.81</td>
+<td>−5.45 pp（−8.84 to −2.07）</td>
+<td>2 pp</td>
+<td><strong>POSITIVE</strong>（探索性、開放標籤）</td>
+<td>NNT 19</td>
+</tr>
+<tr>
+<td>全部 ISTH 出血：ASA</td>
+<td>5.5%</td>
+<td>12.8%</td>
+<td>RR 0.43</td>
+<td>0.29–0.64</td>
+<td>−7.23 pp（−10.48 to −3.99）</td>
+<td>2 pp</td>
+<td><strong>POSITIVE</strong>（探索性、開放標籤）</td>
+<td>NNT 14</td>
+</tr>
+<tr>
+<td>缺血中風：NOAC</td>
+<td>0.7%</td>
+<td>0.7%</td>
+<td>RR 0.99</td>
+<td>0.25–3.93</td>
+<td>−0.01 pp（−0.93 to 0.91）</td>
+<td>傷害 0.5 pp</td>
+<td><strong>INCONCLUSIVE</strong></td>
+<td>無法排除臨床上重要的血栓傷害</td>
+</tr>
+<tr>
+<td>缺血中風：ASA</td>
+<td>0.7%</td>
+<td>0.7%</td>
+<td>RR 1.00</td>
+<td>0.25–3.97</td>
+<td>0.00 pp（−0.93 to 0.92）</td>
+<td>傷害 0.5 pp</td>
+<td><strong>INCONCLUSIVE</strong></td>
+<td>同上；「identical」不等於等效</td>
+</tr>
+<tr>
+<td>45 天 DRT：NOAC</td>
+<td>0.9%</td>
+<td>3.4%</td>
+<td>未報告</td>
+<td>—</td>
+<td>−2.6 pp（−4.23 to −0.92）</td>
+<td>1 pp</td>
+<td><strong>IMPRECISE (+)</strong></td>
+<td>支持 NOAC 對 DRT 有保護</td>
+</tr>
+<tr>
+<td>45 天 DRT：ASA</td>
+<td>2.7%</td>
+<td>3.4%</td>
+<td>未報告</td>
+<td>—</td>
+<td>−0.7 pp（−2.67 to 1.31）</td>
+<td>1 pp</td>
+<td><strong>INCONCLUSIVE</strong></td>
+<td>Aspirin 對 DRT 與 DAPT 無法區分</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>重點</strong>：作者在討論中寫「Ischemic stroke rates were low and identical across the 3 groups」，但三組各 4 例、CI 寬約 ±0.9 個百分點。這屬於 <strong>Inconclusive</strong>，不是 Neutral（等效）。說「identical」容易讓讀者誤以為血栓安全性已被證明。</p>
+<h4>C2. Underpowered 判斷與 Winner's Curse</h4>
+<ul>
+<li>主要非劣性比較中，對照事件率下降反而讓變異變小，在固定絕對 margin 下 power 只會更高，<strong>不是 underpowered positive</strong>，也沒有 Winner's Curse 疑慮。</li>
+<li>缺血中風、出血性中風與死亡則屬嚴重 underpowered：CI 同時包含 null 與 MCID，只能歸為 Inconclusive。</li>
+<li>原規劃 12 個月 secondary endpoint 的 performance goal 是 5.5%，以 0.7% 的實際事件率而言幾乎必然通過，<strong>資訊量極低</strong>。</li>
+</ul>
+<h4>C3. Bayesian 補充</h4>
+<p>主要終點 P 值遠離 .05，不需要做。NOAC 對 DAPT 的大出血（P = .08）方向一致，若以中性先驗計算，Pr(效益 &gt; 0) 推估約 95–96% [推算：依 CI 近似常態]。但開放標籤與非預設的性質使其不足以作為確認證據，本文不另行建模。</p>
+<h4>C4. 報告完整性與其他統計問題</h4>
+<ul>
+<li><strong>KM 判讀</strong> [Figure 2B/2C、eFigure 4，視覺判讀]：
+<ul>
+<li>第 180 天 number at risk：主要終點 DAPT 558、NOAC 577、ASA 580；出血 DAPT 515、NOAC 559、ASA 563。DAPT 的 censoring 明顯較多（撤回同意 18 人）。若這些病人因副作用或不適而退出，屬 informative censoring，<strong>可能低估 DAPT 出血</strong>，方向不利於 DAPT。</li>
+<li>尾端人數仍 &gt; 500，曲線尾端可靠。</li>
+<li>主要終點 KM 在 180 天約為 DAPT 6.1%、NOAC 4.1%、ASA 2.8%。NOAC 在前 90 天低於 aspirin，90 天後上升並越過 aspirin。</li>
+<li>圖 A、B、C 縱軸都從 0 開始，沒有誇大。</li>
+</ul>
+</li>
+<li><strong>正文與 supplement 不一致</strong>：
+<ol>
+<li>45 天影像可評估人數：Table 3 為 NOAC n = 548、ASA n = 554；eFigure 6 為 NOAC 554、ASA 548，<strong>兩組互換</strong>。</li>
+<li>Aspirin 對 DAPT 的 DRT NNT：正文與 eTable 3 寫 147，eAppendix 4 寫 143。</li>
+<li>eTable 3 註腳殘留「Rates shown are from the current manuscript draft and should be updated if the final locked analysis changes」，顯示 supplement 有<strong>未清除的草稿註記</strong>，反映編修品質管控不足。</li>
+<li>Protocol §11.1.2.2 寫 aspirin 組 margin 為 9.0%，但 protocol synopsis 與 SAP 都寫 7.2% [Protocol p.9 vs p.45；SAP p.13]。論文採 7.2%（較嚴格的版本），結論不受影響，但文件內部不一致。</li>
+<li>SAP 次要終點 testing margin 同一段落中同時出現 2.9% 與 2.4% [SAP p.11]。</li>
+<li>摘要中的 97.5% 上界（NOAC 1.2%、ASA −0.8%）與 Table 2 的對稱 95% CI 推算值（0.95%、−1.04%）不同，應是 Farrington-Manning score 法與 Wald 法的差異，文中沒有說明。</li>
+<li>Protocol 寫 platelet count「≤ 100,000 × 10⁹/L」，單位錯誤（Figure 1 寫 10⁶/L）。</li>
+</ol>
+</li>
+<li><strong>其他</strong>：
+<ul>
+<li>Flow diagram 各層人數加總核對無誤：2057 → 1936 → 1889 → 1857；各組 completed 加 not completed 等於隨機化人數；primary analysis 等於 completed 加「無 6 個月追蹤但有事件」者。</li>
+<li>Supplement 未呈現最高劑量、腎功能減量規則，以及 NOAC 組 1% 未服用任何抗栓藥者的處理方式。</li>
+</ul>
+</li>
+</ul>
+<p><strong>統計紅旗</strong></p>
+<ol>
+<li>非劣性 margin 7.2% 大於對照事件率 6.9%。</li>
+<li>SAP 規定的 tipping-point 遺失資料分析未報告。</li>
+<li>兩個主要比較共用對照、無階層也無多重性校正。</li>
+<li>出血優勢主要來自開放標籤下的 CRNMB。</li>
+<li>缺血中風各 4 例卻被描述為「identical」，屬於把 Inconclusive 寫成 Neutral。</li>
+<li>次組（10 項交互作用檢定 × 2 個終點）只強調有利方向。</li>
+<li>Supplement 殘留草稿註記，且多處數字不一致。</li>
+</ol>
+<h3>D. 次組分析評估</h3>
+<div class="table-wrap wide"><table>
+<thead>
+<tr>
+<th>次組</th>
+<th>Interaction P</th>
+<th>方向與一致性</th>
+<th>預先指定且有方向假說</th>
+<th>生物機轉</th>
+<th>可信度</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>年齡 ≥ 75 對 &lt; 75（主要終點，兩個比較）</td>
+<td>0.03／0.03</td>
+<td>≥ 75 歲單藥大幅較好；&lt; 75 歲點估計反而偏向 DAPT（NOAC RR 1.79）</td>
+<td>有預先列為次組 [SAP p.17]，但未預設方向</td>
+<td>合理：高齡者 DAPT 出血風險高</td>
+<td><strong>中–低</strong></td>
+</tr>
+<tr>
+<td>性別（全部出血，NOAC 對 DAPT）</td>
+<td>0.02</td>
+<td>女性 DAPT 出血 15.6%，對比 NOAC 5.3%</td>
+<td>有預先列，未預設方向</td>
+<td>不確定</td>
+<td><strong>低</strong></td>
+</tr>
+<tr>
+<td>CHA₂DS₂-VASc、HAS-BLED、種族</td>
+<td>0.26–0.93</td>
+<td>無異質性；黑人、西語裔 n &lt; 25</td>
+<td>有預先列</td>
+<td>—</td>
+<td>只能判定「無證據顯示有差異」</td>
+</tr>
+</tbody>
+</table></div>
+<p>約 20 個交互作用檢定中，隨機出現 1 個以上 P &lt; .05 的機率不低。年齡交互作用雖有機轉支持，但 &lt; 75 歲的反向點估計（NOAC 5.5% 對 DAPT 3.1%）不能被忽略：年輕族群 DAPT 出血少，單藥的「省出血」效益可能不足以抵銷潛在的血栓風險。作者只寫高齡者「derived significantly greater benefit」，屬於選擇性詮釋。</p>
+<h3>E. 紅旗清單</h3>
+<ul>
+<li><strong>設計</strong>：對照組是出血最多的 DAPT，主要終點以出血為主；兩者合起來，結構上偏向讓單藥勝出。缺少全劑量 NOAC 對照。</li>
+<li><strong>設計</strong>：開放標籤，CRNMB 含「需面對面評估」這類軟標準。</li>
+<li><strong>統計</strong>：margin 大於對照事件率；tipping-point 未報告；主要比較無多重性校正。</li>
+<li><strong>統計</strong>：缺血中風各 4 例被寫成「identical」，屬 Inconclusive 誤作 Neutral。</li>
+<li><strong>資料完整性</strong>：supplement 殘留「current manuscript draft」註記；Table 3 與 eFigure 6 人數互換；protocol margin 9.0% 與 7.2% 不一致。</li>
+<li><strong>時間</strong>：只有 6 個月臨床追蹤與 45 天影像，NOAC 轉 aspirin 後的事件未被觀察。</li>
+<li><strong>COI</strong>：BSC 設計、收集資料並參與分析，統計作者含 BSC 員工；明言目的為擴大仿單。大會主要評論者之一是共同作者。</li>
+<li><strong>外推</strong>：只限 FLX Pro、0 mm leak、無併發症；亞洲人約 1%。</li>
+</ul>
+<h3>F. 反向解釋</h3>
+<ol>
+<li><strong>「單藥不劣」其實是「DAPT 較差」</strong>
+<ul>
+<li>支持：DAPT 的大出血、CRNMB 與停藥率最高，複合終點約 2/3 是出血。</li>
+<li>反對：死亡與中風也沒有朝 DAPT 有利的方向偏。</li>
+<li>結論：「單藥足以預防血栓」並未被證明。</li>
+</ul>
+</li>
+<li><strong>出血差異部分來自開放標籤造成的偵測與通報偏差</strong>
+<ul>
+<li>支持：差異集中在 CRNMB；第 7–30 天 DAPT 曲線陡升，正是病人最常回診或電話追蹤、最警覺的時期。</li>
+<li>反對：客觀的大出血也朝同方向，KM 曲線持續分離。</li>
+<li>結論：偏差可能放大幅度，但難以解釋全部效果。</li>
+</ul>
+</li>
+<li><strong>Aspirin 組血栓風險被共同介入遮蔽</strong>
+<ul>
+<li>支持：aspirin 組 10 例 DRT 經 site 處理改用 OAC；45 天影像抓到並治療。</li>
+<li>反對：缺血中風三組相同。但事件太少，無法反駁。</li>
+</ul>
+</li>
+<li><strong>Aspirin 組死亡較少（8 對 13）屬機遇</strong>
+<ul>
+<li>支持：CI −2.33 到 0.65 跨 0，沒有合理機轉。</li>
+<li>結論：aspirin 在複合終點「名義上優越」有一部分依賴這個機遇差異。</li>
+</ul>
+</li>
+<li><strong>塗層或嚴格選病才是單藥安全的原因，非藥物策略本身</strong>
+<ul>
+<li>支持：0 mm leak 加上排除 dense SEC，屬低 DRT 風險族群。</li>
+<li>反對：沒有無塗層或其他裝置的對照，無法分辨。</li>
+</ul>
+</li>
+</ol>
+<h3>G. 最終裁決</h3>
+<ul>
+<li><strong>整體可信度</strong>：
+<ul>
+<li><strong>中</strong>：主要結論「兩種單藥皆不劣於 DAPT」與「DAPT 出血較多」可信度中–高。</li>
+<li><strong>低</strong>：衍生論點「aspirin 單藥的血栓栓塞安全性已確立」與「aspirin 優於 DAPT」可信度低。</li>
+</ul>
+</li>
+<li><strong>可採用的條件</strong>：Watchman FLX Pro、植入成功、leak 0 mm、無圍術期併發症、無其他抗栓適應症。此時應放棄常規 DAPT，首選低劑量 apixaban 3 個月後改 aspirin；出血風險極高者可考慮 aspirin 單藥，搭配 45 天影像追蹤。</li>
+<li><strong>不建議採用的情境</strong>：其他裝置、有殘餘 leak 或併發症、植入前有 SEC 或 sludge；也不能據此推論「優於全劑量 NOAC」。亞洲族群需審慎外推。</li>
+<li><strong>最需要的 3 個改進</strong>：
+<ol>
+<li>公布 12 個月臨床事件與影像（尤其 NOAC 轉 aspirin 後的 DRT 與中風），以及 SAP 規定的 tipping-point 分析。</li>
+<li>進行以缺血中風、SE 與 DRT 為主要終點、盲化判定、有足夠事件數的試驗，並直接比較低劑量 NOAC、全劑量 NOAC 與 aspirin。</li>
+<li>在亞洲及其他裝置族群中獨立驗證，資料分析由非贊助者獨立執行。</li>
+</ol>
+</li>
+<li><strong>一句話結論</strong>：FLX Pro 植入順利後不必用雙抗；低劑量 NOAC 三個月是最均衡的選擇，aspirin 單藥出血最少，但血栓安全性仍待驗證。</li>
+</ul>
+<hr />
+<p><strong>Sources</strong></p>
+<ul>
+<li><a href="https://doi.org/10.1001/jama.2026.21361">JAMA: SIMPLAAFY original article</a></li>
+<li><a href="https://jamanetwork.com/journals/jama/newonline">JAMA online first listing (editorial DOI 10.1001/jama.2026.22275)</a></li>
+<li><a href="https://www.tctmd.com/news/simplaafy-supports-antithrombotic-monotherapy-after-laao">TCTMD: SIMPLAAFY Supports Antithrombotic Monotherapy After LAAO</a></li>
+<li><a href="https://solaci.org/en/2026/11/03/tct-2026-simplaafy-trial-antithrombotic-monotherapy-after-left-atrial-appendage-occlusion/">SOLACI: TCT 2026 SIMPLAAFY summary</a></li>
+<li><a href="https://www.healio.com/news/cardiology/20261105/data-support-monotherapy-approach-after-uncomplicated-left-atrial-appendage-closure">Healio: Data support monotherapy approach after uncomplicated LAAC</a></li>
+<li><a href="https://www.journalmetrics.org/journal/jama-journal-of-the-american-medical-association">Journal Metrics: JAMA</a></li>
+<li><a href="https://impactfactorforjournal.com/jama-impact-factor/">impactfactorforjournal.com: JAMA</a></li>
+</ul>
+
+<footer class="appraisal-meta">評讀資訊：模型：claude-opus-5-5 (claude)  ·  route：rct  ·  產出時間：2026-11-08 08:08 CST</footer>
+</main>
+</body>
+</html>

@@ -1,0 +1,830 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Coronary CT Angiography versus Intravascular Ultrasound Guidance for PCI.</title>
+<style>
+  :root {
+    --bg: #fafafa;
+    --card: #ffffff;
+    --text: #1a1a1a;
+    --muted: #6b6b6b;
+    --border: #e5e5e5;
+    --accent: #0b5fff;
+  }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang TC",
+      "Microsoft JhengHei", sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    margin: 0;
+    padding: 24px 16px 64px;
+    line-height: 1.72;
+  }
+  main {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    margin: 0 auto;
+    max-width: 840px;
+    padding: 22px 26px;
+  }
+  nav {
+    margin: 0 auto 14px;
+    max-width: 840px;
+    color: var(--muted);
+    font-size: 14px;
+  }
+  a { color: var(--accent); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  h1, h2, h3, h4 { line-height: 1.35; }
+  h1 { font-size: 26px; margin-top: 0; }
+  h2 { border-top: 1px solid var(--border); padding-top: 18px; }
+  code {
+    background: rgba(127, 127, 127, 0.12);
+    border-radius: 4px;
+    padding: 1px 4px;
+  }
+  .table-wrap {
+    margin: 1em 0;
+    overflow-x: auto;
+  }
+  .table-wrap.wide {
+    /* Break out of the 840px prose column, centred on the viewport. */
+    width: min(1040px, calc(100vw - 32px));
+    margin-left: calc(50% - min(520px, 50vw - 16px));
+  }
+  table {
+    border-collapse: collapse;
+    table-layout: auto;
+    width: 100%;
+  }
+  .table-wrap.wide {
+    /* Opaque so the <main> card border does not show through the table. */
+    background: var(--card);
+  }
+  /* Width hints go on <th> as percentages: Chrome's auto table layout
+     mis-sizes columns (and overflows) when cells carry min-width. */
+  .table-wrap.wide th:first-child {
+    /* Variable + plain-language definition, e.g. "NCPV (noncalcified ...)". */
+    width: 26%;
+  }
+  .table-wrap.wide th:last-child {
+    /* Last column is usually a one-line interpretation. */
+    width: 20%;
+  }
+  th, td {
+    border: 1px solid var(--border);
+    /* Wrap only at spaces: never split an English word mid-letter. */
+    overflow-wrap: normal;
+    word-break: normal;
+    hyphens: manual;
+    padding: 6px 8px;
+    text-align: left;
+    vertical-align: top;
+  }
+  blockquote {
+    border-left: 3px solid var(--accent);
+    color: var(--muted);
+    margin-left: 0;
+    padding-left: 14px;
+  }
+  .appraisal-meta {
+    border-top: 1px solid var(--border);
+    margin-top: 28px;
+    padding-top: 14px;
+    color: var(--muted);
+    font-size: 13px;
+  }
+  @media (max-width: 600px) {
+    body {
+      padding: 12px 8px 40px;
+    }
+    main {
+      padding: 16px 12px;
+    }
+    h1 {
+      font-size: 22px;
+    }
+    table {
+      font-size: 12px;
+    }
+    .table-wrap.wide {
+      width: calc(100vw - 16px);
+      margin-left: calc(50% - 50vw + 8px);
+    }
+    th, td {
+      padding: 4px 5px;
+    }
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #1a1a1a;
+      --card: #242424;
+      --text: #e8e8e8;
+      --muted: #999;
+      --border: #333;
+      --accent: #6ea8ff;
+    }
+  }
+</style>
+</head>
+<body>
+<nav><a href="../../2026-W46.html">← 回到 2026-W46 週報</a></nav>
+<main>
+<h1>Coronary CT Angiography versus Intravascular Ultrasound Guidance for PCI.</h1>
+<h1>P4 試驗批判性評讀：CCTA 引導 vs IVUS 引導 PCI（NEJM 2026）</h1>
+<hr />
+<h2>SECTION-0：文章全面描述</h2>
+<h3>0. 文章身份證</h3>
+<ul>
+<li><strong>標題</strong>：Coronary CT Angiography versus Intravascular Ultrasound Guidance for PCI（P4 trial）</li>
+<li><strong>期刊／年份</strong>：<em>N Engl J Med</em> 2026；2026 年 11 月 1 日線上發表 [文內]，與 TCT 2026 大會發表同步 [外部: ACC Latest in Cardiology]</li>
+<li><strong>DOI</strong>：10.1056/NEJMoa2610771；PMID 42969897；NCT05253677</li>
+<li><strong>文章類型（路由）</strong>：研究者發起、國際多中心、開放標示（open-label）、隨機分派的非劣性 RCT，終點事件以盲法判定。執行 SKILL-A 主流程，加上 A1 的非劣性子模組。</li>
+<li><strong>本次評讀依據</strong>：正文 markdown、正文 5 張圖頁 PNG（Fig 1–3、Table 1–2）、Supplementary Appendix 文字與 2 張圖頁（Fig S1、Table S3），以及 Protocol／SAP 中與方法學相關的頁面（v1.0 2021-06、v3.0 2024-12、SAP v1.0→v2.0 修訂表）。</li>
+</ul>
+<h3>1. 作者團隊評論</h3>
+<ul>
+<li><strong>通訊作者</strong>：Carlos Collet，Cardiovascular Research Foundation（New York）。過去任職 OLV Aalst，專長為冠狀動脈生理學與 CT 引導 PCI [文內]。</li>
+<li><strong>核心團隊</strong>：
+<ul>
+<li>Daniele Andreini（共同 PI，心臟 CT）</li>
+<li>Bernard De Bruyne（Steering Committee 主席，FFR 先驅）</li>
+<li>Jonathon Leipsic、Bjarne Nørgaard（CT／FFR-CT 領域）</li>
+<li>Bruno R. da Costa（主要試驗統計師）[Supplement Trial Committees]</li>
+</ul>
+</li>
+<li><strong>團隊過往研究</strong>：本團隊主持 P3 研究。設計論文發表於 <em>Clin Cardiol</em> 2021；驗證 HeartFlow FFR-CT Planner 預測 PCI 後 FFR 的主論文發表於 <em>JACC Cardiovasc Imaging</em> 2022（實測 PCI 後 FFR 0.88 vs 預測 0.86，一致性界限 −0.12 至 0.15）[外部: unimi AIR 書目／Monzino 網站]。P4 是同一團隊把 P3 的工具推進到臨床結果試驗。這是該領域的核心團隊，不是跨領域首次切入。</li>
+<li><strong>作者立場史</strong>：團隊長期主張「CT 前移 PCI 規劃」，Collet 在發表後受訪時表示「CT 應用來規劃 PCI」，並預期 5–10 年內會進入指引建議 [外部: Cardiovascular Business，搜尋摘要]。研究假說與作者既有立場高度一致，有 prior commitment／確認偏差的風險。</li>
+<li><strong>資金與 COI</strong>：
+<ul>
+<li>資金來自 GE HealthCare 與 Heartflow 給 CoreAalst 的 unrestricted grant [文內]。</li>
+<li>試驗介入本身就使用這兩家公司的產品：HeartFlow FFR-CT 與 FFR-CT Planner、GE CardIQ，以及 Medis QAngio CT [Supplement Description of Strategies]。</li>
+<li>法定 sponsor 兼核心實驗室兼統計分析單位都是 CoreAalst [Supplement Trial Oversight]。</li>
+<li>作者 COI 表格只在 NEJM 線上提供，markdown 未保留 [無法取得]。</li>
+<li>評估：資助者未參與設計與分析的聲明可以接受。但資助者的產品就是「介入」本身，Heartflow 也在發表當天發布新聞稿宣傳「CT-guided PCI matches IVUS」[外部: GlobeNewswire 轉載]，商業敘事與結論方向一致，需要獨立重複驗證。</li>
+</ul>
+</li>
+</ul>
+<h3>2. 文獻 Metadata</h3>
+<ul>
+<li><strong>Received／Accepted date</strong>：markdown 未保留 [無法取得]；NEJM 平均審查天數 [無法取得]。</li>
+<li><strong>時間軸推估</strong> [推論]：最後收案在 2025 年 8 月，12 個月追蹤（±1 個月）約在 2026 年 8–9 月結束；SAP v2.0 在 2026 年 2–3 月簽署 [Protocol PDF p.238–239]；2026 年 11 月 1 日即與 TCT 同步發表。從資料庫鎖定到刊出最多約 2 個月，屬於 NEJM 典型的大會同步快速審查。快速審查不代表品質差，但 supplement 大量「post hoc／supportive」分析（Table S12–S17）可能是在審查期間應要求補做的。</li>
+<li><strong>期刊屬性</strong>：NEJM，2025 JIF 約 84.5 [外部: Wolters Kluwer Ovid 期刊頁，未經 Clarivate 直接核實]，Q1，訂閱制。</li>
+<li><strong>邀稿／投稿</strong>：原始研究，無邀稿疑慮。</li>
+</ul>
+<h3>3. 研究背景（文內）</h3>
+<ul>
+<li><strong>已知事實</strong>：
+<ul>
+<li>血管內影像（IVUS／OCT）引導 PCI 優於單純血管攝影引導，指引建議用於複雜 PCI。</li>
+<li>IVUS 需要額外的冠狀動脈器械操作，而且資訊要等到進入導管室後才能取得，決策必須即時做。</li>
+</ul>
+</li>
+<li><strong>知識缺口</strong>：CCTA 加上 FFR-CT 可以在導管室外事先提供解剖與生理資訊，但沒有「CCTA 引導 vs IVUS 引導」的臨床結果數據。</li>
+<li><strong>研究問題</strong>：在已接受 CCTA、具 &gt;70% 狹窄且 FFR-CT ≤0.80 的病人中，CCTA 引導 PCI 策略的 12 個月 TVF 是否不劣於 IVUS 引導策略。</li>
+</ul>
+<h3>4. 研究設計與方法</h3>
+<p><strong>PICO</strong></p>
+<ul>
+<li><strong>P</strong>：18–79 歲的慢性冠心症或已穩定的 NSTE-ACS 病人，具血管重建適應症；CCTA 至少一處 &gt;70% 狹窄且 FFR-CT ≤0.80（核心實驗室確認）；RVD 2.5–4.0 mm；目標血管不超過 2 條。</li>
+<li><strong>主要排除</strong>：STEMI、左主幹、目標血管曾做 PCI、曾 CABG、eGFR ≤30、BMI ≥35、心房顫動、CCTA 影像品質不足。</li>
+<li><strong>I（CCTA 引導策略）</strong>：
+<ul>
+<li>核心實驗室製作的 CT 規劃包，內容涵蓋斑塊與鈣化、著陸區、支架尺寸、FFR-CT Planner 預測、最佳投照角度。</li>
+<li>術中以 3D CCTA 與 C-arm 角度同步顯示。</li>
+<li>支架植入後用 stent-enhancement（StentBoost 類）做最佳化。</li>
+<li>禁止選擇性血管內影像，只容許 bailout 使用。</li>
+</ul>
+</li>
+<li><strong>C（IVUS 引導策略）</strong>：PCI 前後強制做 IVUS，並依預設最佳化標準處理（擴張 ≥90% 為理想，≥80% 為最低可接受）。</li>
+<li><strong>O</strong>：
+<ul>
+<li>主要終點 TVF（心因性死亡、目標血管 MI、缺血驅動的 TVR），12 個月。</li>
+<li>關鍵次要終點：手術時間、顯影劑量、侵入性 X 光劑量（DAP）、TVF 各組成。</li>
+</ul>
+</li>
+</ul>
+<p><strong>關鍵設計細節</strong></p>
+<ul>
+<li>23 中心、8 國；2022 年 3 月至 2025 年 8 月收案。</li>
+<li>電腦亂數 1:1，依中心分層。</li>
+<li>病人與術者皆知分組；CEC 盲法判定。</li>
+<li>非劣性界值為絕對差 4.5 個百分點，one-sided α 0.025；通過後以階層方式檢定優越性。</li>
+<li>主要分析為 ITT，使用 binomial identity link 迴歸與 robust SE。</li>
+<li>缺失的主要終點視為無事件。</li>
+<li>無期中分析。</li>
+<li>PCI 後<strong>系統性</strong>抽 troponin，周術期 MI 依 Fourth UDMI 判定。</li>
+</ul>
+<h3>5. 研究結果重點整理</h3>
+<p><strong>主要結果表（ITT，CCTA n=556 vs IVUS n=549）</strong></p>
+<div class="table-wrap wide"><table>
+<thead>
+<tr>
+<th>變項（代表什麼）</th>
+<th style="text-align:right">CCTA 引導</th>
+<th style="text-align:right">IVUS 引導</th>
+<th style="text-align:right">組間差（95% CI）</th>
+<th style="text-align:right">p 值</th>
+<th>如何解讀</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>TVF</strong>（target-vessel failure）：心因死亡＋目標血管 MI＋缺血驅動 TVR</td>
+<td style="text-align:right"><strong>23（4.1%）</strong></td>
+<td style="text-align:right"><strong>25（4.6%）</strong></td>
+<td style="text-align:right"><strong>−0.42 pp（−2.82 to 1.99）</strong></td>
+<td style="text-align:right">非劣性 &lt;0.001；優越性 0.73</td>
+<td>上界 1.99 pp 遠低於 4.5 pp 界值；優越性無法判定</td>
+</tr>
+<tr>
+<td>心因性死亡</td>
+<td style="text-align:right"><strong>0</strong></td>
+<td style="text-align:right"><strong>2（0.4%）</strong></td>
+<td style="text-align:right">−0.36（−1.32 to 0.37）</td>
+<td style="text-align:right">未報告</td>
+<td>事件極少，無法比較</td>
+</tr>
+<tr>
+<td>目標血管 MI</td>
+<td style="text-align:right"><strong>16（2.9%）</strong></td>
+<td style="text-align:right"><strong>19（3.5%）</strong></td>
+<td style="text-align:right">−0.58（−2.65 to 1.48）</td>
+<td style="text-align:right">未報告</td>
+<td>TVF 的主要組成；方向略有利 CCTA</td>
+</tr>
+<tr>
+<td><strong>周術期 MI</strong>：PCI 相關 type 4a MI，依 Fourth UDMI</td>
+<td style="text-align:right"><strong>12（2.2%）</strong></td>
+<td style="text-align:right"><strong>16（2.9%）</strong></td>
+<td style="text-align:right">−0.76（−2.61 to 1.10）</td>
+<td style="text-align:right">未報告</td>
+<td>48 件 TVF 中 28 件（58%）是周術期 MI</td>
+</tr>
+<tr>
+<td>自發性 MI</td>
+<td style="text-align:right"><strong>4（0.7%）</strong></td>
+<td style="text-align:right"><strong>4（0.7%）</strong></td>
+<td style="text-align:right">−0.01（−1.01 to 0.99）</td>
+<td style="text-align:right">未報告</td>
+<td>完全相同</td>
+</tr>
+<tr>
+<td>缺血驅動 TVR</td>
+<td style="text-align:right"><strong>8（1.4%）</strong></td>
+<td style="text-align:right"><strong>8（1.5%）</strong></td>
+<td style="text-align:right">−0.02（−1.43 to 1.39）</td>
+<td style="text-align:right">未報告</td>
+<td>完全相同</td>
+</tr>
+<tr>
+<td>排除周術期 MI 的 TVF（post hoc）</td>
+<td style="text-align:right"><strong>11（2.0%）</strong></td>
+<td style="text-align:right"><strong>11（2.0%）</strong></td>
+<td style="text-align:right">−0.03（−1.67 to 1.62）</td>
+<td style="text-align:right">未報告</td>
+<td>「硬」事件兩組一樣</td>
+</tr>
+<tr>
+<td>Definite／probable 支架血栓</td>
+<td style="text-align:right"><strong>3（0.5%）</strong></td>
+<td style="text-align:right"><strong>2（0.4%）</strong></td>
+<td style="text-align:right">0.18（−0.62 to 0.97）</td>
+<td style="text-align:right">未報告</td>
+<td>事件極少</td>
+</tr>
+<tr>
+<td>全死因死亡</td>
+<td style="text-align:right"><strong>1（0.2%）</strong></td>
+<td style="text-align:right"><strong>3（0.5%）</strong></td>
+<td style="text-align:right">−0.37（−1.08 to 0.34）</td>
+<td style="text-align:right">未報告</td>
+<td>事件極少</td>
+</tr>
+<tr>
+<td>手術時間（中位數；首次至末次攝影）</td>
+<td style="text-align:right"><strong>46 min</strong></td>
+<td style="text-align:right"><strong>63 min</strong></td>
+<td style="text-align:right">中位數差 −17.0（−21.0 to −12.0）</td>
+<td style="text-align:right">未報告</td>
+<td>縮短約 17 分鐘，且不含術前 CT 規劃時間</td>
+</tr>
+<tr>
+<td>侵入性手術顯影劑（中位數）</td>
+<td style="text-align:right"><strong>150 ml</strong></td>
+<td style="text-align:right"><strong>170 ml</strong></td>
+<td style="text-align:right">中位數差 −20.0（−25.0 to 0.0）</td>
+<td style="text-align:right">未報告</td>
+<td>CI 上界碰到 0；平均差 −13.4 ml（−23.3 to −3.5）</td>
+</tr>
+<tr>
+<td>侵入性手術 X 光（DAP 中位數）</td>
+<td style="text-align:right"><strong>35.6 Gy·cm²</strong></td>
+<td style="text-align:right"><strong>38.5 Gy·cm²</strong></td>
+<td style="text-align:right">−2.91（−9.03 to 3.80）</td>
+<td style="text-align:right">未報告</td>
+<td>CI 跨 0，<strong>沒有明確組間差異</strong></td>
+</tr>
+<tr>
+<td>使用進階鈣化處理器材（IVL／旋磨／軌道旋磨）</td>
+<td style="text-align:right"><strong>45/490（9.2%）</strong></td>
+<td style="text-align:right"><strong>18/476（3.8%）</strong></td>
+<td style="text-align:right">＋5.4 pp [自行計算]</td>
+<td style="text-align:right">未報告</td>
+<td>CT 規劃使鈣化處理器材使用量增加超過一倍</td>
+</tr>
+<tr>
+<td>PCI 後侵入性 FFR</td>
+<td style="text-align:right"><strong>0.88±0.06</strong></td>
+<td style="text-align:right"><strong>0.88±0.07</strong></td>
+<td style="text-align:right">0.008（−0.005 to 0.020）</td>
+<td style="text-align:right">未報告</td>
+<td>只有 22–30% 的血管有測量</td>
+</tr>
+</tbody>
+</table></div>
+<p>補充：</p>
+<ul>
+<li><strong>Per-protocol</strong>：19/494（3.8%）vs 24/513（4.7%），RD −0.83（−3.33 to 1.66）；IPW 校正後 −0.97（−3.45 to 1.51）[Supplement Table S11]。</li>
+<li><strong>缺失資料極端情境</strong>：12 人缺主要終點（CCTA 8、IVUS 4）。假設 CCTA 組缺失者全部發生事件，RD ＋1.02（−1.56 to 3.61），上界仍低於 4.5 [Supplement Table S17]。</li>
+<li><strong>安全性</strong>：
+<ul>
+<li>臨床手術併發症 6 vs 9 人。</li>
+<li>冠狀動脈穿孔 3 vs 1，其中 CCTA 組 1 例需心包穿刺。</li>
+<li>周術期中風 0 vs 2。</li>
+<li>BARC 2/3/5 出血 8 vs 7 [Supplement Table S18]。</li>
+</ul>
+</li>
+<li><strong>與文內主張不一致處</strong>：Discussion 寫「放射劑量 appeared to be lower」，但 DAP 差異的 CI 為 −9.03 至 ＋3.80，明顯跨 0。</li>
+</ul>
+<h3>6. 作者討論與評論重點</h3>
+<p><strong>作者的主要訊息</strong></p>
+<ul>
+<li>PCI 規劃可以從導管室前移到 CCTA。</li>
+<li>有助於術前醫病共享決策。</li>
+<li>能縮短手術時間、減少顯影劑。</li>
+</ul>
+<p><strong>作者自陳的限制</strong> [文內]</p>
+<ol>
+<li>實際事件率遠低於預期，使 4.5 pp 界值相對變大。</li>
+<li>結果依賴 CCTA 影像品質。</li>
+<li>女性只佔 21.7%。</li>
+<li>不可外推到左主幹或更複雜的解剖。</li>
+<li>周術期 MI 系統性偵測，與其他試驗不可直接比較。</li>
+<li>只有 4.1% 使用 photon-counting CT。</li>
+</ol>
+<p><strong>[評估]</strong></p>
+<ul>
+<li>作者對界值問題的自我揭露相當坦白，值得肯定；也主動提供多個界值的 supportive 分析（S12–S13）。</li>
+<li>以下三點避重就輕或過度推論：
+<ul>
+<li><strong>「試驗族群並非低複雜度」</strong>：作者以平均鈣化分數約 500 為據。但 SYNTAX 中位數只有 8–9，高 SYNTAX（≥33）兩組各僅 4 人，三支病變只有 2.7–4.2%。鈣化分數只有約 59% 病人有資料，而且是中心記錄、不是核心實驗室測量 [Supplement Table S8]。</li>
+<li><strong>「在嚴重鈣化病人亦可行」</strong>：嚴重鈣化亞組只有 60 vs 87 人，RD −3.05（−10.99 to 4.90），無法支持任何結論。</li>
+<li><strong>「放射劑量較低」</strong>：如上所述，CI 跨 0。</li>
+</ul>
+</li>
+<li>未討論 IVUS 組最佳化品質（擴張 ≥80% 只佔 61.3%）對非劣性推論的影響，這是本研究最關鍵、但作者沒有處理的問題（見 B3）。</li>
+</ul>
+<h3>7. 外部專業意見</h3>
+<ul>
+<li><strong>同期 NEJM editorial</strong>：[無法取得]。經兩輪搜尋，未發現針對本文的同期 NEJM editorial 或期刊 comment，因此沒有可擷取全文的 DOI。</li>
+<li><strong>專業新聞轉述的專家意見</strong>（非同儕審查 editorial，只作參考）：
+<ul>
+<li><strong>Kevin Bainey</strong>：質疑在事件率低於預期時 4.5 pp 界值的合理性；族群缺乏 IVUS 最能發揮的複雜病變；在加拿大，術前常規 CCTA 並非標準流程 [外部: Cardiology Now／TCT 報導]。</li>
+<li><strong>B. Hadley Wilson、Emmanouil Brilakis</strong>：分析未計入術前 CCTA 本身的顯影劑與輻射；可負擔性仍未解決 [外部: Cardiology Now]。Brilakis 本身是本試驗 Minneapolis 中心的研究者 [Supplement 研究者名單]，立場不獨立。</li>
+<li><strong>Filippo Cademartiri</strong>：非劣性不等於等效；4.5% 界值幾乎等於對照組事件率；試驗驗證的是「整套 CT 策略」，不能證明 FFR-CT 本身改善預後；異常 FFR-CT 不等於需要 PCI（8.1% 病人最後只接受藥物治療）[外部: Diagnostic Imaging 評論文]。</li>
+<li><strong>Collet 的回應</strong>：亞組分析顯示「最複雜的病人獲益最多」，並據此設計 P5 試驗 [外部: Cardiology Now]。<strong>此說法與 Figure 3 不符</strong>：高 SYNTAX 只有 0/4 vs 1/4，所有亞組 CI 都跨 0，正文也沒有報告 interaction p 值。</li>
+</ul>
+</li>
+</ul>
+<h3>8. 臨床建議</h3>
+<p><strong>可採用的情境</strong>（需同時符合）：</p>
+<ul>
+<li>慢性冠心症或已穩定的 NSTE-ACS。</li>
+<li>已因臨床需要做過、且影像品質良好的 CCTA，FFR-CT ≤0.80。</li>
+<li>1–2 條血管病變、非左主幹、低 SYNTAX、RVD 2.5–4.0 mm。</li>
+<li>中心具備 CT 判讀、規劃軟體與導管室整合能力。</li>
+</ul>
+<p>在這些條件下，以 CCTA 規劃加 stent-enhancement 取代<strong>常規</strong>的術前與術後 IVUS 是合理選項。</p>
+<p><strong>不建議直接套用的情境</strong>：</p>
+<ul>
+<li>左主幹、複雜分叉、CTO 為主要目標、支架內再狹窄、ACS 為主的族群（本研究 ACS 只佔 2%）。</li>
+<li>年齡 ≥80 歲、BMI ≥35、心房顫動、CT 品質不佳。</li>
+<li>沒有核心實驗室級規劃支援的中心。</li>
+<li><strong>為了規劃 PCI 而額外安排 CCTA</strong>：本研究的 CCTA 是隨機分派前就已完成的常規檢查。平均有效劑量約 7.15 mSv、顯影劑約 69 ml [Supplement Table S7]，這部分的額外負擔沒有被評估。</li>
+</ul>
+<p><strong>實務建議</strong>：</p>
+<ol>
+<li>已有高品質 CCTA 的簡單病灶，可以把 CT 當作 PCI「藍圖」，用來預判鈣化處理、著陸區與支架長度、投照角度，再以 stent-enhancement 確認擴張。遇到擴張可疑或併發症時，仍應低門檻改用 IVUS 做 bailout。</li>
+<li>CT 規劃會讓鈣化處理器材（IVL、旋磨）的使用率增加超過一倍（9.2% vs 3.8%）。要預期耗材成本與流程改變，而且這個差異不一定代表臨床需要。</li>
+<li>複雜 PCI 仍應依現行證據使用血管內影像引導。</li>
+</ol>
+<p><strong>證據強度</strong>：中。單一非劣性 RCT，主要結果穩健（各種敏感度分析一致）；但比較組執行品質偏弱、族群低複雜度、事件率低使界值相對寬鬆，且尚無獨立重複驗證。</p>
+<hr />
+<h2>SKILL-A：批判性評讀</h2>
+<h3>A. 補充技術細節</h3>
+<p><strong>樣本數與歷次修訂</strong> [Protocol／SAP]</p>
+<ul>
+<li><strong>Protocol v1.0（2021-06）</strong>：假設事件率 8.5%，以「one-sided 95% CI」計算需 952 人，取 1000 人 [Protocol PDF p.50–51]。</li>
+<li><strong>Protocol v3.0（2024-12，收案進行中修訂）</strong>：引用 ILUMIEN IV 影像組 7.2% 的事件率，把假設事件率下修到 7.2%，樣本數增為 1090 人；並改以「two-sided 95% CI 上界 &lt;4.5%」（等同 one-sided α 0.025）定義非劣性 [Protocol PDF p.155–156]。</li>
+<li><strong>SAP v2.0（2026-01／簽署 2026-02~03）</strong>：補上樣本數段落，聲明界值、α 與檢定順序都未改變 [Protocol PDF p.238–239]。</li>
+<li><strong>評估</strong>：
+<ul>
+<li><strong>主要終點自始至終一致</strong>（心因死亡＋TV-MI＋缺血驅動 TVR，12 個月），沒有 outcome switching。</li>
+<li>4.5 pp 界值在各版本都<strong>只是直接陳述，沒有臨床或統計上的推導</strong>（沒有 M1／M2、沒有效果保留比例的論證）。</li>
+<li>假設事件率由 8.5% 降到 7.2% 時，界值沒有跟著調整，相對界值因此從 RR 約 1.53 擴大到 1.625（S14 註解也承認 1.625）。</li>
+<li>早期文件的 α 寫法（one-sided 95% CI，即 α 0.05）與後期（0.025）不一致。實際結果在兩種標準下都通過，所以不影響結論，但屬於文件管理瑕疵。</li>
+</ul>
+</li>
+</ul>
+<p><strong>其他技術細節</strong></p>
+<ul>
+<li><strong>隨機化與分派隱藏</strong>：網路平台電腦亂數，依中心分層 [Protocol PDF p.18–19]。中心固定效應校正後的 RD 為 −0.29（−2.64 to 2.07）[Supplement Table S15]。</li>
+<li><strong>致盲</strong>：病人與術者無法致盲。CEC 宣稱為盲法，但見 B3 的組織獨立性問題。</li>
+<li><strong>ITT vs PP</strong>：方向一致（−0.42 vs −0.83）。在非劣性設計中，ITT 通常較保守，兩者一致可增加可信度。但 PP 的排除比例不對等（CCTA 62/556＝11.2%、IVUS 36/549＝6.6%）[自行計算]。</li>
+<li><strong>缺失資料</strong>：1.1% 缺失，以「無事件」處理；極端情境分析仍維持非劣性（S17）。</li>
+<li><strong>多重比較</strong>：次要終點與亞組都明確定為探索性，沒有校正。這點處理得當。</li>
+<li><strong>SAP 預設的共變量校正 logistic 迴歸</strong>：正文說有做，但 markdown 和 supplement 都<strong>找不到結果</strong>。S11 是 PP 的 IPW 分析，S15 只校正中心。這是報告缺漏。</li>
+<li><strong>CONSORT 數字核對</strong>：
+<ul>
+<li>隨機分派、追蹤、PP 人數互相吻合（例如 CCTA：547 完成＋1 死亡－54 排除＝494 ✓）。</li>
+<li>但 Figure 1 中篩選排除的細項加總為 506（180+86+56+53+43+39+25+11+13），比方框標示的 519 少 13 人 [自行計算]，正文也沒有解釋。</li>
+</ul>
+</li>
+</ul>
+<h4>A1. 非劣性試驗子模組</h4>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>檢核項</th>
+<th>評估</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>界值（Δ）是否有臨床與統計依據</td>
+<td><strong>否</strong>。4.5 pp 沒有推導。依原假設，相對界值為 RR 1.625；依實際對照組事件率（4.55%），4.5 pp 等於容許風險<strong>幾乎翻倍</strong>（RR 約 1.99）[自行計算]</td>
+</tr>
+<tr>
+<td>主動對照組是否以最佳方式執行</td>
+<td><strong>存疑</strong>。IVUS 前 94.7%、IVUS 後 93.7%，但以核心實驗室判定，支架擴張 ≥80% 只有 <strong>292/476（61.3%）</strong>，平均擴張 84.4%；31.8% 有做 IVUS 後追加最佳化 [Table 1；Supplement Table S8]。比較組品質不足會使結果偏向「非劣性」</td>
+</tr>
+<tr>
+<td>ITT 與 PP 是否都報告</td>
+<td>是，兩者一致</td>
+</tr>
+<tr>
+<td>觀察差異相對界值的意義</td>
+<td>RD −0.42，上界 1.99 pp。在替代界值分析中，<strong>界值低到 2.0 pp 仍成立，1.5 pp 則不成立</strong>（S12）。若以 2.0 pp 為界值，上界 1.99 只差 0.01，等於擦邊通過</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>效果保留推算</strong> [推算]：</p>
+<ul>
+<li>若假設 IVUS 相對血管攝影引導的相對風險約 0.65（這是<strong>假設值</strong>，用來示範推論邏輯，本次外部搜尋未逐一核實），在本試驗 4.55% 的 IVUS 事件率下，血管攝影引導的預期事件率約 7.0%。也就是說，IVUS 帶來的絕對效益約 2.4 pp。</li>
+<li>4.5 pp 的界值<strong>大於 IVUS 本身的全部效益</strong>。因此單以預設界值通過，在邏輯上<strong>無法排除「CCTA 策略不比單純血管攝影引導好」</strong>。</li>
+<li>真正有說服力的是觀察到的上界 1.99 pp，大約對應保留 IVUS 效益的 15% 以上。若要求保留 50% 效益（約 1.2 pp），目前資料<strong>無法排除</strong>。</li>
+</ul>
+<h3>B. 批判性評估</h3>
+<h4>B1. 假說與理論邏輯</h4>
+<ul>
+<li><strong>假說是否預先指定</strong>：主要終點與非劣性假說都已預先登錄，沒有 post hoc 生成假說的問題。</li>
+<li><strong>合理機轉</strong>：
+<ol>
+<li>CT 能完整顯示斑塊範圍與鈣化分布（含正向重塑段），著陸區選擇可能不輸 IVUS（P3 研究已顯示 Planner 與實測 FFR 的一致性）[外部]。</li>
+<li>減少 IVUS 導管操作與手術時間，可能降低周術期 MI 與中風。CCTA 組周術期 MI 12 vs 16、中風 0 vs 2，方向一致，但事件數極少。</li>
+<li>術前即可預知鈣化，讓鈣化處理更積極（9.2% vs 3.8%）。</li>
+</ol>
+</li>
+<li><strong>最可疑的敘事跳躍</strong>：
+<ol>
+<li>由「非劣性」跳到「PCI 規劃可前移，擴展 CCTA 角色」（Discussion）。試驗驗證的是一整套方案，而且只在低複雜度族群。</li>
+<li>「可增強共享決策」完全沒有測量。</li>
+<li>試驗沒有比較「有 FFR-CT vs 沒有 FFR-CT」，因此無法支持 FFR-CT 本身的貢獻（Cademartiri 亦指出此點）[外部]。</li>
+</ol>
+</li>
+</ul>
+<h4>B2. 受試者與外推性</h4>
+<ul>
+<li><strong>篩選漏斗</strong>：1624 人篩選，排除 519 人，其中 FFR-CT &gt;0.80 有 180 人、FFR-CT 無法計算 86 人、CT 品質不足 43 人 [Fig 1]。族群朝「CT 可評估」的方向挑選。</li>
+<li><strong>族群特徵</strong>：
+<ul>
+<li>慢性冠心症佔 98%，ACS 只有 2%；IVUS-CHIP 與 RENOVATE 的 ACS 比例為 25–51% [Supplement Table S4]。</li>
+<li>SYNTAX 中位數 8–9；多支病變 35.8%；以血管攝影判讀的嚴重鈣化 11–17%。</li>
+</ul>
+</li>
+<li><strong>中心集中度</strong>：歐洲佔 95.8%。前四大中心（Monzino、ZNA、Barts、Aalst）收了 589/1105（53%）[自行計算；Supplement Table S1]，多為 CT 或 CoreAalst 網絡的專家中心。</li>
+<li><strong>外推性分級</strong>：
+<ol>
+<li><strong>一般慢性冠心症、簡單病灶、CT-first 流程的專家中心</strong>：可外推。</li>
+<li><strong>特定病人族群</strong>（ACS、左主幹、CTO 為主、ISR、重度鈣化、CKD 4–5、心房顫動、BMI ≥35）：不應外推。這些病人不是被排除，就是在試驗中人數極少。</li>
+<li><strong>特殊族群</strong>：≥80 歲被排除；女性 21.7%，女性亞組 RD ＋0.53（−4.76 to 5.81），無法判斷。</li>
+</ol>
+</li>
+<li><strong>台灣情境</strong> [推論]：多數病人並非先做 CCTA 再到導管室，且 FFR-CT 與 Planner 的可近性與給付有限。這個策略的前提（「CT 已經做過」）在台灣不一定成立。</li>
+</ul>
+<h4>B3. 研究設計與偏差</h4>
+<p><strong>1. 比較組（IVUS）最佳化品質不足，結果偏向非劣性</strong></p>
+<ul>
+<li>證據：擴張 ≥80% 只佔 61.3%，平均擴張 84.4%，major malapposition 4.6%，major edge dissection 4.4% [Supplement Table S8]。</li>
+<li>風險方向：IVUS 組若執行不夠理想，其事件率會往 CCTA 方向靠攏，使非劣性<strong>更容易成立</strong>。</li>
+<li>CCTA 組沒有任何客觀的擴張評估，兩組支架品質因此<strong>無法比較</strong>。</li>
+<li>需要什麼才放心：CCTA 組的 PCI 後支架擴張資料（例如部分病人盲法 IVUS／OCT 核心實驗室分析）。</li>
+</ul>
+<p><strong>2. 開放標示加上周術期 MI 佔主導</strong></p>
+<ul>
+<li>48 件 TVF 中 28 件是周術期 MI。Troponin 系統性抽血，算是客觀；但 type 4a 需要「至少一項附加條件」（ECG、影像、血管攝影併發症），可能受到非盲法紀錄的影響。</li>
+<li>CEC 沒有採用 protocol 原本列出的「troponin &gt;70×URL 單獨即可診斷」標準 [Supplement 終點定義註腳]，與 protocol 不一致。</li>
+<li>不過，換用 ARC-2 或 SCAI 定義時，IVUS 組事件<strong>更多</strong>（TVF 31 vs 25、30 vs 24；RD 約 −1.15）[Supplement Table S16]。這個偏離<strong>沒有讓 CCTA 看起來更好</strong>。</li>
+</ul>
+<p><strong>3. DSMB 與 CEC 的獨立性</strong></p>
+<ul>
+<li>DSMB 成員中的統計師 Bruno da Costa，同時是<strong>本文作者與 Steering Committee 的主要試驗統計師</strong>。</li>
+<li>DSMB 主席 Ihdayhid 同時是 CEC 主席；Miyazaki 同時在 DSMB 與 CEC [Supplement Trial Committees]。</li>
+<li>DSMB 可以看到未盲資料，而同一批人又負責「盲法」判定事件，CEC 的盲法在結構上因此受到削弱。</li>
+<li>風險方向不確定，但這屬於治理層面的紅旗。</li>
+</ul>
+<p><strong>4. 基線不平衡</strong>（隨機化可接受範圍內，但多數方向有利於 CCTA）</p>
+<ul>
+<li>以血管攝影判讀的嚴重鈣化：11.2% vs 16.6%。</li>
+<li>糖尿病：18.4% vs 22.8%。</li>
+<li>三支病變：2.7% vs 4.2%。</li>
+<li>反向的只有 CKD：16.9% vs 12.3%。</li>
+<li>共變量校正分析的結果未報告（見 A 段），無法確認校正後是否仍一致。</li>
+</ul>
+<p><strong>對照組適當性（Gyawali 框架）</strong></p>
+<ul>
+<li>對簡單病灶來說，「常規強制 IVUS」並不是多數導管室的日常標準；日常標準更接近血管攝影引導，必要時才用 IVUS。</li>
+<li>因此這個試驗回答的是「CT 策略 vs 最佳實踐」，而不是「CT 策略 vs 日常實務」。</li>
+<li>但 IVUS 執行品質偏弱，使這個「最佳實踐」打了折扣。</li>
+</ul>
+<p><strong>其他設計點</strong></p>
+<ul>
+<li><strong>跨組與後續治療</strong>：CCTA 組只有 5 人使用 IVUS（1 例 bailout），污染極少。</li>
+<li><strong>最可能造成偏差的設計點</strong>：
+<ol>
+<li>IVUS 最佳化不足，使效果差異變小，偏向非劣性。</li>
+<li>族群挑選偏向簡單、CT 可評估的病灶，使兩組差異變小，偏向非劣性。</li>
+<li>事件率低加上固定絕對界值，使檢定變得寬鬆，偏向非劣性。</li>
+</ol>
+</li>
+</ul>
+<h4>B4. 測量工具與實務意義</h4>
+<ul>
+<li><strong>TVF</strong>：以周術期 MI 為主，其預後意義低於自發性 MI。排除周術期 MI 後 11 vs 11，「硬」事件兩組相同，但 95% CI 為 −1.67 至 1.62，仍不精確。</li>
+<li><strong>手術時間</strong>：定義為「首次至末次攝影」[Protocol PDF p.12]，<strong>不含</strong>核心實驗室製作規劃包的時間、CT 判讀時間與 FFR-CT 計算費用。縮短 17 分鐘是導管室內的流程轉移，不是整體資源節省。</li>
+<li><strong>侵入性 FFR</strong>：只有 22–30% 的血管有測量，而且兩組測量比例不同，有選擇偏差。</li>
+<li><strong>真實世界效用</strong>：在符合條件的病人中，每例可省下 1 條 IVUS 導管與約 17 分鐘導管室時間；但每 100 例要多用約 5 次 IVL 或旋磨 [自行計算]。淨成本未知，作者也承認需要正式的經濟評估。</li>
+</ul>
+<h3>C. 統計與資料完整性</h3>
+<h4>C1. 結果分類（CI＋MCID 框架）</h4>
+<p><strong>Step 1：MCID（δ）</strong></p>
+<ul>
+<li>文內預設的非劣性界值為 4.5 pp。</li>
+<li>臨床上較合理的 δ [推算]：約 2.0 pp，依據是約等於「IVUS 相對血管攝影的絕對效益」，也約等於對照組事件率的 40–50%。</li>
+</ul>
+<p><strong>Step 2：CI 位置</strong>：RD −0.42，95% CI −2.82 至 1.99。</p>
+<ul>
+<li><strong>對預設 4.5 pp 界值</strong>：上界遠低於界值，<strong>非劣性成立，結果穩健</strong>。</li>
+<li><strong>對 δ＝2.0 pp</strong>：上界 1.99 &lt; 2.0，<strong>非劣性擦邊成立</strong>。下界 −2.82 超出 −δ，所以 CI 不完全落在 [−2, ＋2] 內，<strong>不符合 NEUTRAL（等效）</strong>。</li>
+<li><strong>對優越性</strong>：CI 同時涵蓋 0 與 −2（利益端的 MCID），屬於 <strong>INCONCLUSIVE</strong>。</li>
+<li><strong>綜合分類</strong>：<strong>在預設界值下非劣（noninferior）；在臨床界值下邊緣非劣；等效未證實；優越性無法判定。</strong></li>
+</ul>
+<p><strong>Step 3：謬誤檢查</strong></p>
+<ul>
+<li>作者沒有把 P＝0.73 解讀成「無差異」，也沒有使用 post hoc power，處理得當。</li>
+<li>但 Discussion 以「appeared to be lower」描述 DAP 差異，而其 CI 明顯跨 0，屬於措辭過度。</li>
+</ul>
+<h4>C2. Underpowered 與 Winner's Curse</h4>
+<ul>
+<li>本研究不是 underpowered 的陽性優越性試驗，不適用 Winner's Curse。</li>
+<li>但實際事件率（4.3%）遠低於假設（7.2%），使固定的 4.5 pp 界值在統計上變得非常寬鬆。即使 CCTA 真的稍差（例如 RD ＋1.5 pp），本試驗仍有很高機率宣告非劣性 [推論]。</li>
+</ul>
+<h4>C3. Bayesian 補充（近似常態、平坦先驗）[自行計算]</h4>
+<p>由 95% CI 回推 SE ≈ (1.99＋2.82)/3.92 ≈ 1.23 pp，後驗分布近似 N(−0.42, 1.23²)：</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>指標</th>
+<th>機率</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Pr(RD &lt; 0，CCTA 較好)</td>
+<td>約 63%</td>
+</tr>
+<tr>
+<td>Pr(|RD| &lt; 1 pp，實質等效區間)</td>
+<td>約 56%</td>
+</tr>
+<tr>
+<td>Pr(RD &gt; 1 pp)</td>
+<td>約 12%</td>
+</tr>
+<tr>
+<td>Pr(RD &gt; 2 pp，臨床上有意義的較差)</td>
+<td>約 2.4%</td>
+</tr>
+<tr>
+<td>Pr(RD &gt; 4.5 pp)</td>
+<td>&lt;0.1%</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>解讀</strong>：「CCTA 明顯較差（&gt;2 pp）」的機率很低，約 2–3%。但「實質等效（±1 pp）」的機率只有約一半，等效遠未確立。若改用懷疑性先驗（以 IVUS 優於簡化引導為中心），結論會更偏向不確定；本文沒有提供 Bayesian 分析。</p>
+<h4>C4. 報告完整性與其他統計問題</h4>
+<ul>
+<li><strong>Kaplan-Meier（Fig 2，圖頁判讀）</strong>：
+<ul>
+<li>主圖採 0–100% 全座標，另有放大 inset，沒有誇大效果。</li>
+<li>TVF 曲線在前約 30 天內快速上升（周術期 MI），IVUS 組略高；約 200–270 天時 CCTA 組有數件晚期事件，與 IVUS 組逐漸靠攏，最後約 4.1% vs 4.6%。</li>
+<li>Panel D 中，CCTA 組在約 20 天內就出現早期 TVR（約 0.4%），IVUS 組較晚。事件極少，但值得注意，可能與支架相關。</li>
+<li>365 天時 number at risk 為 443/435。由 527/520 降下來，主要原因是 12 個月訪視窗為 ±30 天，<strong>不是失訪</strong>；主要分析是 12 個月二項式比例，不受這個下降影響。</li>
+</ul>
+</li>
+<li><strong>Fig S1（安全性 KM）</strong>：出血曲線標示 IVUS 為 1.1%，但 crude 為 7/549＝1.3%，KM 值比 crude 低。可能的原因是追蹤超過 365 天的事件被計入 crude（中位追蹤 379 天），但 supplement 沒有說明 [推論]。</li>
+<li><strong>亞組的 interaction p 值</strong>：SAP 有預設，但正文與 supplement 都<strong>沒有報告</strong>（見 D）。</li>
+<li><strong>統計紅旗</strong>：
+<ol>
+<li>界值沒有推導，而且在事件率下修時未調整。</li>
+<li>SAP 預設的共變量校正分析沒有報告結果。</li>
+<li>亞組 interaction p 值沒有報告。</li>
+<li>次要的效率終點只分析接受 PCI 的病人，這是隨機分派後的子集合，作者在 S9 註腳中已承認。</li>
+<li>Figure 1 排除細項加總與總數差 13 人。</li>
+<li>各版本文件的 α 寫法不一致。</li>
+</ol>
+</li>
+</ul>
+<h3>D. 次組分析評估（Figure 3）</h3>
+<p>所有亞組的 CI 都跨 0。Interaction p 值未報告，因此<strong>全部屬於「推測性」</strong>。</p>
+<div class="table-wrap wide"><table>
+<thead>
+<tr>
+<th>亞組</th>
+<th>Interaction p</th>
+<th>方向一致性</th>
+<th>預先指定</th>
+<th>生物機轉</th>
+<th>可信度</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>年齡、性別、高血壓、血脂、糖尿病</td>
+<td>未報告</td>
+<td>—</td>
+<td>是</td>
+<td>弱</td>
+<td>推測性</td>
+</tr>
+<tr>
+<td>單支 vs 多支病變（−1.03 vs ＋0.56）</td>
+<td>未報告</td>
+<td>無外部資料</td>
+<td>是</td>
+<td>中（複雜度越高，IVUS 的價值可能越大）</td>
+<td>推測性</td>
+</tr>
+<tr>
+<td>SYNTAX 中（2/28 vs 2/27）、高（0/4 vs 1/4）</td>
+<td>未報告</td>
+<td>—</td>
+<td>是</td>
+<td>中</td>
+<td>推測性（n 極小）</td>
+</tr>
+<tr>
+<td>嚴重鈣化（3/60 vs 7/87；−3.05）</td>
+<td>未報告</td>
+<td>與「CT 預判鈣化」的假說方向一致</td>
+<td>是</td>
+<td>中</td>
+<td>推測性</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>結論</strong>：Collet 在外部報導中說「最複雜的病人獲益最多」，這在數據上沒有支持，不應作為臨床依據。</p>
+<h3>E. 紅旗清單</h3>
+<ul>
+<li><strong>設計</strong>：IVUS 最佳化不足（擴張 ≥80% 只有 61%），比較組被削弱；CCTA 組沒有客觀的支架擴張評估。</li>
+<li><strong>統計</strong>：4.5 pp 界值沒有推導，對 4.6% 的對照組事件率而言相對容許約 2 倍風險；校正分析與 interaction p 值缺漏。</li>
+<li><strong>終點</strong>：58% 的 TVF 是周術期 MI，開放標示；CEC 未依 protocol 的 MI 定義（但偏離方向不利 CCTA）。</li>
+<li><strong>治理</strong>：DSMB、CEC 與作者／統計師人員重疊；sponsor、核心實驗室與統計分析都由 CoreAalst 負責。</li>
+<li><strong>COI</strong>：資助者的產品（HeartFlow FFR-CT／Planner、GE 軟體）就是介入本身；發表當天即有公司新聞稿。</li>
+<li><strong>敘事</strong>：「放射較低」「在嚴重鈣化亦可行」「最複雜者獲益最多」三項主張都超出數據支持的範圍。</li>
+<li><strong>外推</strong>：ACS 只有 2%、SYNTAX 8–9、歐洲專家中心、CCTA 是試驗前就已做過的檢查。</li>
+</ul>
+<h3>F. 反向解釋</h3>
+<ol>
+<li><strong>「比較組太弱」</strong>：IVUS 執行不夠理想，使兩組都接近「近似血管攝影引導」的水準。
+<ul>
+<li>支持線索：擴張 ≥80% 只有 61.3%。</li>
+<li>反對線索：IVUS 組事件率 4.6% 與當代影像引導試驗相近，並不偏高。</li>
+</ul>
+</li>
+<li><strong>「低風險族群，什麼引導方式都差不多」</strong>：簡單病灶時引導方式的影響本來就很小，非劣性幾乎是必然。
+<ul>
+<li>支持線索：事件率遠低於預期；排除周術期 MI 後 11 vs 11。</li>
+<li>反對線索：多支病變 35.8%，且有一定比例的鈣化病灶。</li>
+</ul>
+</li>
+<li><strong>「CCTA 組的小幅優勢來自少做 IVUS，而不是 CT 規劃」</strong>：少一次導管操作，可能減少周術期 MI 與中風。
+<ul>
+<li>支持線索：周術期 MI 12 vs 16、中風 0 vs 2、手術時間較短。</li>
+<li>反對線索：事件數太少，無法區分。</li>
+</ul>
+</li>
+<li><strong>「積極的鈣化處理抵消了 CT 解析度的不足」</strong>：CT 可能過度判讀鈣化，導致更多 IVL 或旋磨，反而保護了支架擴張。
+<ul>
+<li>支持線索：CCTA 組以血管攝影判讀的嚴重鈣化較少，卻使用了 2.4 倍的鈣化器材。</li>
+</ul>
+</li>
+</ol>
+<h3>G. 最終裁決</h3>
+<ul>
+<li><strong>整體可信度</strong>：<strong>中</strong></li>
+<li><strong>可採用的條件</strong>：慢性冠心症、已有高品質 CCTA 與 FFR-CT、低複雜度的 1–2 支病變、具 CT 規劃與 stent-enhancement 整合能力的中心。在這些條件下，CT 策略可作為常規 IVUS 的替代。</li>
+<li><strong>不建議採用的情境</strong>：左主幹、ACS、CTO、ISR、高 SYNTAX 或重度鈣化（證據不足）、沒有 CT 規劃基礎設施的中心、為了 PCI 規劃而額外安排 CCTA。</li>
+<li><strong>若要改觀，最需要的三項</strong>：
+<ol>
+<li>在 CCTA 組做盲法的 PCI 後血管內影像核心實驗室分析，直接比較支架擴張與 MSA。</li>
+<li>在複雜病灶與 ACS 族群中，以有臨床依據的較窄界值（例如 ≤2 pp 或相對界值）做獨立重複試驗（如 P5）。</li>
+<li>完整的成本效益分析，計入 CCTA、FFR-CT、規劃時間與鈣化器材，並延長追蹤至 3–5 年（protocol 已規劃追蹤 5 年）。</li>
+</ol>
+</li>
+<li><strong>一句話結論</strong>：已做過高品質冠狀動脈 CT 的簡單病灶，用 CT 規劃 PCI 的一年結果不輸 IVUS，但還不能套用到複雜病人。</li>
+</ul>
+<hr />
+<h3>CONDITIONAL OUTPUT：效果量表（主要終點，ITT）</h3>
+<div class="table-wrap wide"><table>
+<thead>
+<tr>
+<th>指標</th>
+<th>介入組（CCTA）</th>
+<th>對照組（IVUS）</th>
+<th>效果量</th>
+<th>95% CI</th>
+<th>ARD</th>
+<th>MCID</th>
+<th>結果分類</th>
+<th>實務意義</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>TVF 12 個月</td>
+<td>4.1%（23/556）</td>
+<td>4.6%（25/549）</td>
+<td>RR 0.91</td>
+<td>0.52–1.58（S14）</td>
+<td>−0.42 pp（−2.82 to 1.99）</td>
+<td>預設 4.5 pp；臨床推算約 2.0 pp [推算]</td>
+<td>非劣性成立（4.5 pp 穩健；2.0 pp 擦邊）；優越性 INCONCLUSIVE</td>
+<td>可排除 CCTA 增加超過約 2 pp 的 TVF；不能宣稱等效或較佳</td>
+</tr>
+<tr>
+<td>TVF（PP）</td>
+<td>3.8%（19/494）</td>
+<td>4.7%（24/513）</td>
+<td>RR 0.82</td>
+<td>0.46–1.48</td>
+<td>−0.83 pp（−3.33 to 1.66）</td>
+<td>同上</td>
+<td>與 ITT 一致</td>
+<td>結論穩健</td>
+</tr>
+<tr>
+<td>排除周術期 MI 的 TVF（post hoc）</td>
+<td>2.0%（11）</td>
+<td>2.0%（11）</td>
+<td>—</td>
+<td>—</td>
+<td>−0.03 pp（−1.67 to 1.62）</td>
+<td>—</td>
+<td>探索性；不精確</td>
+<td>「硬」事件兩組相同</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+<p><strong>Sources:</strong></p>
+<ul>
+<li><a href="https://www.acc.org/Latest-in-Cardiology/Articles/2026/11/01/00/11/sun-207pm-combo1-tct-2026">ACC – P4 and TRANSFORM II (TCT 2026)</a></li>
+<li><a href="https://www.nejm.org/doi/full/10.1056/NEJMoa2610771">NEJM – Coronary CT Angiography versus IVUS Guidance for PCI</a></li>
+<li><a href="https://cardiologynownews.org/?p=139872">Cardiology Now – CCTA-Based PCI Planning Noninferior to IVUS Guidance: P4</a></li>
+<li><a href="https://www.diagnosticimaging.com/view/closer-look-p4-trial-ccta-guided-pci">Diagnostic Imaging – A Closer Look at the P4 Trial and CCTA-Guided PCI</a></li>
+<li><a href="https://cardiovascularbusiness.com/topics/clinical/interventional-cardiology/ccta-matches-ivus-pci-guidance-imaging-expert-carlos-collet-breaks-down-data">Cardiovascular Business – Collet interview</a></li>
+<li><a href="https://www.manilatimes.net/2026/11/02/tmt-newswire/globenewswire/tct-2026-ct-guided-pci-matches-ivus-outcomes-in-randomized-p4-trial-heartflow-pci-navigator-changes-pci-plans-in-approximately-70-of-patients/2459021">GlobeNewswire/Manila Times – Heartflow press release (TCT 2026)</a></li>
+<li><a href="https://www.wolterskluwer.com/en/solutions/Ovid/new-england-journal-of-medicine-624">Wolters Kluwer Ovid – NEJM journal listing (JIF)</a></li>
+<li><a href="https://www.cardiologicomonzino.it/en/scientific-papers/2021/03/06/rationale-and-design-of-the-precise-percutaneous-coronary-intervention/2346/">Centro Cardiologico Monzino – P3 rationale and design</a></li>
+<li><a href="https://air.unimi.it/handle/2434/1001779">University of Milan AIR – P3 clinical validation (JACC CV Imaging 2022)</a></li>
+</ul>
+
+<footer class="appraisal-meta">評讀資訊：模型：claude-opus-5-5 (claude)  ·  route：rct  ·  產出時間：2026-11-08 03:58 CST</footer>
+</main>
+</body>
+</html>

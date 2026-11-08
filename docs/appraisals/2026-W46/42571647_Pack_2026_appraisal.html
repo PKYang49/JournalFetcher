@@ -1,0 +1,792 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Effects of pharmacological blood pressure lowering in heart failure with mildly reduced or preserved ejection fraction: a meta-analysis.</title>
+<style>
+  :root {
+    --bg: #fafafa;
+    --card: #ffffff;
+    --text: #1a1a1a;
+    --muted: #6b6b6b;
+    --border: #e5e5e5;
+    --accent: #0b5fff;
+  }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang TC",
+      "Microsoft JhengHei", sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    margin: 0;
+    padding: 24px 16px 64px;
+    line-height: 1.72;
+  }
+  main {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    margin: 0 auto;
+    max-width: 840px;
+    padding: 22px 26px;
+  }
+  nav {
+    margin: 0 auto 14px;
+    max-width: 840px;
+    color: var(--muted);
+    font-size: 14px;
+  }
+  a { color: var(--accent); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  h1, h2, h3, h4 { line-height: 1.35; }
+  h1 { font-size: 26px; margin-top: 0; }
+  h2 { border-top: 1px solid var(--border); padding-top: 18px; }
+  code {
+    background: rgba(127, 127, 127, 0.12);
+    border-radius: 4px;
+    padding: 1px 4px;
+  }
+  .table-wrap {
+    margin: 1em 0;
+    overflow-x: auto;
+  }
+  .table-wrap.wide {
+    /* Break out of the 840px prose column, centred on the viewport. */
+    width: min(1040px, calc(100vw - 32px));
+    margin-left: calc(50% - min(520px, 50vw - 16px));
+  }
+  table {
+    border-collapse: collapse;
+    table-layout: auto;
+    width: 100%;
+  }
+  .table-wrap.wide {
+    /* Opaque so the <main> card border does not show through the table. */
+    background: var(--card);
+  }
+  /* Width hints go on <th> as percentages: Chrome's auto table layout
+     mis-sizes columns (and overflows) when cells carry min-width. */
+  .table-wrap.wide th:first-child {
+    /* Variable + plain-language definition, e.g. "NCPV (noncalcified ...)". */
+    width: 26%;
+  }
+  .table-wrap.wide th:last-child {
+    /* Last column is usually a one-line interpretation. */
+    width: 20%;
+  }
+  th, td {
+    border: 1px solid var(--border);
+    /* Wrap only at spaces: never split an English word mid-letter. */
+    overflow-wrap: normal;
+    word-break: normal;
+    hyphens: manual;
+    padding: 6px 8px;
+    text-align: left;
+    vertical-align: top;
+  }
+  blockquote {
+    border-left: 3px solid var(--accent);
+    color: var(--muted);
+    margin-left: 0;
+    padding-left: 14px;
+  }
+  .appraisal-meta {
+    border-top: 1px solid var(--border);
+    margin-top: 28px;
+    padding-top: 14px;
+    color: var(--muted);
+    font-size: 13px;
+  }
+  @media (max-width: 600px) {
+    body {
+      padding: 12px 8px 40px;
+    }
+    main {
+      padding: 16px 12px;
+    }
+    h1 {
+      font-size: 22px;
+    }
+    table {
+      font-size: 12px;
+    }
+    .table-wrap.wide {
+      width: calc(100vw - 16px);
+      margin-left: calc(50% - 50vw + 8px);
+    }
+    th, td {
+      padding: 4px 5px;
+    }
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #1a1a1a;
+      --card: #242424;
+      --text: #e8e8e8;
+      --muted: #999;
+      --border: #333;
+      --accent: #6ea8ff;
+    }
+  }
+</style>
+</head>
+<body>
+<nav><a href="../../2026-W46.html">← 回到 2026-W46 週報</a></nav>
+<main>
+<h1>Effects of pharmacological blood pressure lowering in heart failure with mildly reduced or preserved ejection fraction: a meta-analysis.</h1>
+<h1>批判性評讀：降血壓藥物在 HFmrEF/HFpEF 的效果（Pack SJJ 等，<em>Heart</em> 2026）</h1>
+<hr />
+<h2>SECTION-0：文章全面描述</h2>
+<h3>0. 文章身份證</h3>
+<ul>
+<li><strong>標題</strong>：Effects of pharmacological blood pressure lowering in heart failure with mildly reduced or preserved ejection fraction: a meta-analysis</li>
+<li><strong>期刊／年份</strong>：<em>Heart</em>（British Cardiac Society／BMJ Group），2026；PubMed 線上刊出日 2026-08-07 [外部: PubMed]</li>
+<li><strong>DOI</strong>：10.1136/heartjnl-2026-327872；PMID 42571647</li>
+<li><strong>文章類型</strong>：Systematic review + meta-analysis + 試驗層級 meta-regression → <strong>SKILL-B／A1（量化合成型）</strong></li>
+<li><strong>Review 子型</strong>：Systematic review／pairwise meta-analysis。作者把不同藥物類別各自與對照比較後依類別分組，<strong>不是 NMA</strong>，所以不適用 network geometry 與 transitivity 評估。</li>
+<li><strong>混血文章警示（部分適用）</strong>：本文有 PROSPERO 註冊、PRISMA flow、雙人篩選、RoB 2，形式上是完整的 SR。但核心問題是「血壓下降是不是療效的中介」，這是<strong>因果中介問題</strong>，作者卻只用試驗層級的生態型 meta-regression 回答。宣稱的推論強度與方法學能力之間有落差，詳見 D、E 節。</li>
+</ul>
+<h3>1. 作者團隊評論</h3>
+<ul>
+<li><strong>通訊作者</strong>：文首通訊作者為 Samuel J. J. Pack（Royal Prince Alfred Hospital 心臟科、The George Institute 心血管部門）[文內]。PubMed 紀錄另列 Nelson Wang 的機構信箱（nwang@georgeinstitute.org.au）[外部: PubMed]。依 Contributors 段落，<strong>Nelson Wang 才是研究設計、資料分析與統籌負責人，也是 guarantor</strong> [文內]。</li>
+<li><strong>分工</strong> [文內]：NW 與 SJJP 發起研究；NW 負責設計、分析與監督；SJJP 與 CA 擷取資料；SJJP 撰稿；SS 與 NW 做批判性修訂。資料擷取只有兩位作者，<strong>分析只由一人（NW）負責</strong>，文中也沒有提到資料擷取是否經獨立雙人核對（只有摘要篩選明確寫雙人）。</li>
+<li><strong>團隊過往研究</strong> [外部: PubMed]：
+<ul>
+<li>Wang N, et al. Efficacy and Safety of Low-Dose Triple and Quadruple Combination Pills… <em>JAMA Cardiol</em> 2023;8:606-611（<a href="https://doi.org/10.1001/jamacardio.2023.0720">DOI</a>）</li>
+<li>Wang N, et al. Low-Dose Combinations With 3 or 4 BP-Lowering Medications… <em>JACC Adv</em> 2025;4:101883（<a href="https://doi.org/10.1016/j.jacadv.2025.101883">DOI</a>）</li>
+<li>兩篇都來自 George Institute 的 Rodgers 團隊。Wang 是高血壓藥物 meta-analysis 的熟手，但在 HFpEF 專題上，以 PubMed 作者搜尋只找到本篇 [外部: PubMed]，<strong>屬於從高血壓領域延伸到心衰竭</strong>。Pack、Sawant、Abhayaratna 的過往發表 [無法取得]。</li>
+</ul>
+</li>
+<li><strong>作者立場史</strong>：George Institute 長期主張「降壓本身就是主要心血管保護機轉」。本文結論卻是「血壓下降不足以解釋新藥療效」，與該團隊一貫立場相反，<strong>看不出確認偏差</strong>。反而可能因為想清楚切割「舊降壓藥 vs 新 HF 藥」而在討論段過度推論（見 D 節）[推論]。</li>
+<li><strong>利益揭露</strong> [文內]：Funding 只有 NW 的 Heart Foundation Postdoctoral Fellowship；Competing interests 為「None declared」。沒有廠商資助，商業敘事風險低。</li>
+</ul>
+<h3>2. 文獻 Metadata 整理</h3>
+<ul>
+<li><strong>Received</strong> 2026-02-01；<strong>Accepted</strong> 2026-06-23 [文內] → 投稿到接受 <strong>142 天</strong> [自行計算]；接受到 PubMed 上線約 45 天 [自行計算]。</li>
+<li><strong>期刊平均審查速度</strong> [外部: Heart 官網 About 頁面（多個版本數字不一）]：有審查者的首次決定中位數約 27–38 天，接受到出版約 22–25 天。官網沒有公布「投稿到接受」的平均天數 [無法取得]。</li>
+<li><strong>比較</strong>：142 天大致符合「首次決定約 1 個月，再加一輪以上修訂」的典型流程，<strong>沒有異常快速審查的跡象</strong> [推論]。</li>
+<li><strong>期刊屬性</strong>：2025 Impact Factor 約 4.4，JCR Q1 [外部: Journal Metrics／Wikipedia；Clarivate 原始資料未直接取得]。BMJ hybrid 期刊；本文標示「No commercial re-use」，看起來不是 OA [推論]。</li>
+<li><strong>邀稿 vs 投稿</strong>：「Not commissioned; externally peer reviewed」[文內] → 一般投稿，經外部審查。</li>
+</ul>
+<h3>3. 研究背景 [文內]</h3>
+<ul>
+<li><strong>既有事實</strong>：
+<ul>
+<li>HFpEF 盛行率上升，預後與 HFrEF 一樣差。</li>
+<li>SGLT2i（EMPEROR-Preserved、DELIVER）、tirzepatide（SUMMIT）、semaglutide（pooled 4 trials）、finerenone（FINEARTS-HF）都已證實能減少 CV death／HF 事件，而且這些藥都會降低收縮壓。</li>
+<li>在一般族群，降壓效益不受基線血壓影響；SPRINT 次分析顯示有無 HF 病史的效益相近。</li>
+<li>先前 HFrEF 的 meta-analysis 發現血壓降幅與 CV death／HF 事件無關。</li>
+</ul>
+</li>
+<li><strong>知識缺口</strong>：HFmrEF/HFpEF 族群中，「藥物降壓」與臨床結果的關係未知。傳統降壓藥在 HFpEF 專門試驗中多半失敗或沒被測試過。</li>
+<li><strong>Research question</strong>：在 HFmrEF/HFpEF，藥物降壓對 CV death 與 HF 住院的影響為何？療效是否隨血壓降幅改變？後者是 [推論]，由 Methods 的 meta-regression 設計推得。</li>
+</ul>
+<h3>4. 研究設計與方法</h3>
+<ul>
+<li><strong>PICO</strong>：
+<ul>
+<li><strong>P</strong>：HFmrEF 或 HFpEF 病人（LVEF 收案門檻 &gt;40%、&gt;45% 或 &gt;50%，依試驗而異）</li>
+<li><strong>I</strong>：任何具降壓作用的藥物，包括 ACEi、ARB、β-blocker、CCB、利尿劑、硝酸鹽、α-blocker、ARNI、SGLT2i、MRA、GIP/GLP-1 RA；實際納入的還有 sGC stimulator</li>
+<li><strong>C</strong>：placebo、usual care 或另一藥物類別（valsartan、利尿劑）</li>
+<li><strong>O</strong>：
+<ul>
+<li>主要終點：CV death + HF 住院複合終點</li>
+<li>次要終點：全死因死亡、CV death、HF 住院</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><strong>搜尋</strong>：Medline、EMBASE、Cochrane CENTRAL，從建庫到 2025-01-31。PROSPERO CRD42025631539；遵循 PRISMA [文內]。</li>
+<li><strong>納入條件</strong>：RCT、追蹤 ≥3 個月、有 HFmrEF/HFpEF 病人。<strong>沒有報告基線與追蹤血壓（或血壓變化）的研究一律排除</strong> [文內]。</li>
+<li><strong>篩選</strong>：摘要由兩位作者獨立篩選，以討論解決歧見；沒有報告 κ 值 [文內]。</li>
+<li><strong>偏差評估</strong>：RoB 2，結果放在 supplement table 1 [文內；限制：markdown 未附 supplement]。</li>
+<li><strong>統計</strong>：
+<ul>
+<li>DerSimonian–Laird random-effects、inverse-variance 加權，效果量為 RR</li>
+<li>用 Cochran Q 檢定藥物類別間的交互作用</li>
+<li>以 log RR 對組間收縮壓差做 random-effects meta-regression</li>
+<li>零事件以 0.33 校正</li>
+<li>敏感度分析排除 SGLT2i、sGC、GLP-1、ARNI</li>
+<li>軟體為 CMA v3.1</li>
+</ul>
+</li>
+<li><strong>主要變項定義</strong>：「組間收縮壓差」沒有交代測量時間點（基線後第幾週？試驗結束時？）。Table 1 的正負號定義也與正文、圖 2B／3B 相反（見第 5 節）。</li>
+</ul>
+<h3>5. 研究結果重點整理</h3>
+<p><strong>主要結果表</strong>（組間差欄填 pooled RR；比較數從 Figure 2A／3A 圖頁實際計數）</p>
+<div class="table-wrap wide"><table>
+<thead>
+<tr>
+<th>變項（代表什麼）</th>
+<th style="text-align:right">比較數／人數</th>
+<th style="text-align:right">I²</th>
+<th style="text-align:right">合併效果 RR（95% CI）</th>
+<th style="text-align:right">p 值</th>
+<th>如何解讀</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>ΔSBP</strong>（組間收縮壓差）：治療組減對照組</td>
+<td style="text-align:right">20 組比較／39,452 人*</td>
+<td style="text-align:right">—</td>
+<td style="text-align:right">中位數 <strong>−3.5 mmHg</strong>（範圍 −13 至 ＋5）</td>
+<td style="text-align:right">—</td>
+<td>降幅很小、範圍窄，迴歸檢定力有限</td>
+</tr>
+<tr>
+<td><strong>主要複合終點</strong>（CV death + HF 住院）整體</td>
+<td style="text-align:right">20 組比較</td>
+<td style="text-align:right">0%</td>
+<td style="text-align:right"><strong>0.86（0.83–0.89）</strong></td>
+<td style="text-align:right">&lt;0.001</td>
+<td>整體有效，但混合了 7 類機轉不同的藥</td>
+</tr>
+<tr>
+<td>SGLT2i</td>
+<td style="text-align:right">3</td>
+<td style="text-align:right">0%</td>
+<td style="text-align:right"><strong>0.83（0.76–0.89）</strong></td>
+<td style="text-align:right">&lt;0.001</td>
+<td>由 EMPEROR-Preserved 與 DELIVER 主導</td>
+</tr>
+<tr>
+<td>MRA</td>
+<td style="text-align:right">4（含 RAAM-PEF）</td>
+<td style="text-align:right">0%</td>
+<td style="text-align:right"><strong>0.85（0.80–0.90）</strong></td>
+<td style="text-align:right">&lt;0.001</td>
+<td>由 FINEARTS-HF 主導，該試驗事件數是復發事件</td>
+</tr>
+<tr>
+<td>ARNI</td>
+<td style="text-align:right">2</td>
+<td style="text-align:right">0%</td>
+<td style="text-align:right"><strong>0.85（0.80–0.90）</strong></td>
+<td style="text-align:right">&lt;0.001</td>
+<td>對照組是 valsartan，屬於 add-on 效果</td>
+</tr>
+<tr>
+<td>GLP-1 RA</td>
+<td style="text-align:right">3</td>
+<td style="text-align:right">0%</td>
+<td style="text-align:right"><strong>0.62（0.42–0.91）</strong></td>
+<td style="text-align:right">0.016</td>
+<td>事件數少，CI 很寬</td>
+</tr>
+<tr>
+<td>ACEi</td>
+<td style="text-align:right">2</td>
+<td style="text-align:right">0%</td>
+<td style="text-align:right">0.93（0.74–1.18）</td>
+<td style="text-align:right">0.572</td>
+<td>CI 跨越 1，無法下結論</td>
+</tr>
+<tr>
+<td>ARB</td>
+<td style="text-align:right">4</td>
+<td style="text-align:right">0%</td>
+<td style="text-align:right">0.94（0.86–1.02）</td>
+<td style="text-align:right">0.159</td>
+<td>最多可能有 14% 效益，不能解讀為無效</td>
+</tr>
+<tr>
+<td><strong>sGC stimulator</strong>（VITALITY 高、低劑量）</td>
+<td style="text-align:right">2</td>
+<td style="text-align:right">圖未標</td>
+<td style="text-align:right"><strong>2.47（1.09–5.57）</strong></td>
+<td style="text-align:right">0.030</td>
+<td>統計上顯著的「傷害」，正文沒有提到</td>
+</tr>
+<tr>
+<td>藥物類別間交互作用</td>
+<td style="text-align:right">—</td>
+<td style="text-align:right">—</td>
+<td style="text-align:right">—</td>
+<td style="text-align:right"><strong>P_int 0.018</strong></td>
+<td>療效隨藥物類別不同</td>
+</tr>
+<tr>
+<td><strong>Meta-regression 主要終點</strong>：log RR 對 ΔSBP</td>
+<td style="text-align:right">20</td>
+<td style="text-align:right">—</td>
+<td style="text-align:right">斜率 <strong>−0.0125</strong>（截距 −0.1982）</td>
+<td style="text-align:right">0.304</td>
+<td>沒有偵測到劑量反應，但不等於沒有關係</td>
+</tr>
+<tr>
+<td><strong>HF 住院</strong>整體</td>
+<td style="text-align:right">16 組比較</td>
+<td style="text-align:right">30%</td>
+<td style="text-align:right"><strong>0.83（0.79–0.86）</strong></td>
+<td style="text-align:right">&lt;0.001</td>
+<td>效益主要落在 HF 住院</td>
+</tr>
+<tr>
+<td>GLP-1 RA</td>
+<td style="text-align:right">3</td>
+<td style="text-align:right">18%</td>
+<td style="text-align:right"><strong>0.38（0.21–0.69）</strong></td>
+<td style="text-align:right">0.001</td>
+<td>STEP-HFpEF 只有 1 vs 12 件事件，相當不穩</td>
+</tr>
+<tr>
+<td>ACEi</td>
+<td style="text-align:right">3</td>
+<td style="text-align:right">0%</td>
+<td style="text-align:right"><strong>0.66（0.45–0.95）</strong></td>
+<td style="text-align:right">0.027</td>
+<td>傳統降壓藥也能減少 HF 住院</td>
+</tr>
+<tr>
+<td>ARB</td>
+<td style="text-align:right">3</td>
+<td style="text-align:right">圖未標</td>
+<td style="text-align:right">0.90（0.80–1.01）</td>
+<td style="text-align:right">0.065</td>
+<td>邊緣，CI 幾乎全在效益側</td>
+</tr>
+<tr>
+<td>藥物類別間交互作用</td>
+<td style="text-align:right">—</td>
+<td style="text-align:right">—</td>
+<td style="text-align:right">—</td>
+<td style="text-align:right"><strong>P_int 0.021</strong></td>
+<td>—</td>
+</tr>
+<tr>
+<td><strong>Meta-regression HF 住院</strong></td>
+<td style="text-align:right">16</td>
+<td style="text-align:right">—</td>
+<td style="text-align:right">斜率 <strong>−0.0121</strong>（截距 −0.2456）</td>
+<td style="text-align:right">0.528</td>
+<td>同上，檢定力不足</td>
+</tr>
+<tr>
+<td><strong>全死因死亡</strong></td>
+<td style="text-align:right">未報告</td>
+<td style="text-align:right">9%</td>
+<td style="text-align:right">0.97（0.92–1.01）</td>
+<td style="text-align:right">0.161</td>
+<td>排除了 &gt;8% 的效益，也排除了傷害</td>
+</tr>
+<tr>
+<td><strong>CV death</strong></td>
+<td style="text-align:right">未報告</td>
+<td style="text-align:right">11%</td>
+<td style="text-align:right">0.94（0.88–1.01）</td>
+<td style="text-align:right">0.105</td>
+<td>CI 跨越 1，無法下結論</td>
+</tr>
+<tr>
+<td><strong>敏感度分析</strong>（只留傳統降壓藥＋MRA）</td>
+<td style="text-align:right">未報告</td>
+<td style="text-align:right">0%</td>
+<td style="text-align:right"><strong>0.88（0.84–0.92）</strong></td>
+<td style="text-align:right">≤0.001</td>
+<td>斜率 −0.014，p=0.483；仍以 MRA 為主</td>
+</tr>
+</tbody>
+</table></div>
+<p>*39,452 人是 Table 1 各試驗人數直接加總而來 [自行計算]。這個數字有重複計算與分母錯置的問題，詳見下方。</p>
+<p><strong>從圖頁發現、正文沒交代的重要問題</strong>（以下皆依 PNG 圖頁實際讀取）：</p>
+<ul>
+<li><strong>sGC stimulator 的傷害訊號被略過</strong>：Figure 2A 顯示 VITALITY 高劑量 8/264 vs 4/262（RR 1.98），低劑量 12/263 vs 4/262（RR 2.99，0.98–9.15）。合併 RR 2.47（1.09–5.57），p=0.030，菱形整個落在無效線右側。正文只寫「其他類別沒有效益」，把顯著的傷害方向結果改寫成「無效益」。</li>
+<li><strong>共用對照組被重複計算（unit-of-analysis error）</strong>：
+<ul>
+<li>VITALITY 兩個劑量組共用同一個 262 人的 placebo 組，被當作兩個獨立比較輸入。</li>
+<li>Yip 2008 的 ramipril 與 irbesartan 兩臂共用 50 人的利尿劑對照，也同樣重複使用（Table 1 與 Figure 2A、3A 都是如此）。</li>
+<li>這會低估合併 CI 的寬度，並讓這些試驗在 meta-regression 中多佔一個點。</li>
+</ul>
+</li>
+<li><strong>複合終點事件數比其中一個組成項還少（邏輯上不可能）</strong>：
+<ul>
+<li>STEP-HFpEF：主要複合終點 <strong>0/263 vs 1/266</strong>，但 HF 住院 <strong>1/263 vs 12/266</strong>。</li>
+<li>STEP-HFpEF DM：主要複合終點 <strong>1/310 vs 4/306</strong>，但 HF 住院 <strong>7/310 vs 18/306</strong>。</li>
+<li>CV death + HF 住院的事件人數不可能少於 HF 住院一項，這明確顯示資料擷取錯誤。</li>
+</ul>
+</li>
+<li><strong>p 值與 CI 矛盾</strong>：Figure 2A 的 STEP-HFpEF DM 列為 RR 0.25（0.03–2.20），p 值卻標「&lt;0.001」。CI 跨越 1 時不可能如此 [自行判斷]。</li>
+<li><strong>復發事件數被當成「事件人數」使用</strong>：
+<ul>
+<li>Figure 2A 的 FINEARTS-HF 為 <strong>1083/3003 vs 1283/2998</strong>。外部資料確認 1083 vs 1283 是「總事件數」，實際發生事件的病人只有 624 vs 719 人 [外部: ACC／TCTMD]。</li>
+<li>Figure 3A 的 FINEARTS-HF HF 住院 842 vs 1024，也是 total worsening HF events [外部: ACC]。</li>
+<li>EMPEROR-Preserved（415 vs 511）與 DELIVER（512 vs 610）用的則是首次事件人數。</li>
+<li>把事件數放在病人分母上算 RR，在統計上不成立，會人為縮窄 FINEARTS 的 CI、加重其權重。不同試驗計數方式也不一致。PARAGON-HF 的 HF 住院 690 vs 797 疑似同樣是總住院次數 [推論，依記憶中的 PARAGON 主要報告，未經本次外部核實]。</li>
+</ul>
+</li>
+<li><strong>TOPCAT 人數不一致</strong>：Table 1 列 1722/1723（約等於 TOPCAT 全試驗 3445 人），Figure 2A 卻用 TOPCAT-Americas 的 886/881。文首總人數 39,452 是用 Table 1 加總而來 [自行計算確認：19,753 + 19,699]，所以<strong>至少高估約 1,678 人</strong>，再加上重複計算的 312 名對照病人。</li>
+<li><strong>RAAM-PEF 不在 Table 1</strong>：它出現在 Figure 2A 與 3A（1/21 vs 2/23），但不在 Table 1 與「18 studies」的計數內；正文說 MRA 有 3 篇，圖中卻是 4 篇。ALDO-DHF 只出現在主要終點圖，沒出現在 HF 住院圖；Zi 只出現在 HF 住院圖。哪些終點納入哪些試驗，沒有交代。</li>
+<li><strong>正負號前後不一致</strong>：
+<ul>
+<li>Table 1 的「Mean between-group difference in SBP」以正值表示降壓（Zi 13、Yip ramipril −5）。</li>
+<li>正文寫「−3.5，範圍 −13 至 +5」；Discussion 又寫「範圍 −5 to 13」。</li>
+<li>Figure 2B 的 x 軸為 −10 到 +8，大泡泡多落在 −1 到 −7，可見圖中以負值代表降壓。</li>
+<li>照此推算，迴歸斜率 −0.0125 代表「<strong>血壓降越多，log RR 越接近 0，也就是效益越小</strong>」（ΔSBP = −7 時 log RR ≈ −0.11，ΔSBP = −1 時 ≈ −0.19）[自行計算]。點估計方向與「降壓是中介」的假說相反，但作者完全沒有討論方向。</li>
+</ul>
+</li>
+<li><strong>Figure 2B／3B 的視覺判讀</strong>：
+<ul>
+<li>兩圖的迴歸線近乎水平，95% 信賴帶向兩端張開成喇叭狀。Figure 3B 在 x = −12.5 處的帶寬約 −0.55 至 +0.40（log RR）。</li>
+<li>這表示資料其實無法排除具臨床意義的斜率。少數極端點（Figure 3B 的 Zi 位於 −13；log RR 約 −2.5 的 STEP-HFpEF）都是極小試驗。</li>
+<li>主要終點迴歸的 y 軸從 −2.5 到 +2.0，沒有截斷誇大的問題。</li>
+</ul>
+</li>
+<li><strong>PRISMA 流程數字一致</strong>（Figure 1）：12,148 筆紀錄，去重 7,393 筆，篩選 4,755 筆，排除 4,542 筆，全文 213 篇，排除 195 篇（「資料不足以量化合成」190 篇、急性 HF 5 篇），納入 18 篇。但「資料不足」佔全文排除的 97%，理由過於籠統。</li>
+</ul>
+<h3>6. 作者討論與評論重點 [文內]</h3>
+<ul>
+<li><strong>作者的主要訊息</strong>：降壓藥整體能減少主要終點，但效益集中在 SGLT2i、MRA、ARNI、GLP-1 RA；療效與降壓幅度無關，所以這些新藥的效益「不是只靠降壓」；傳統降壓藥在沒有合併高血壓時角色有限。</li>
+<li><strong>與既有文獻一致處</strong>：與 HFrEF 的 meta-analysis（ref 16）一致；與 SPRINT 中發生 ADHF 者的事後分析（強化降壓不影響後續死亡或再住院）一致。</li>
+<li><strong>作者自承的限制</strong>：
+<ol>
+<li>對照組異質（PARAMOUNT、PARAGON-HF、Yip 是藥對藥比較）；</li>
+<li>合併 HFmrEF 與 HFpEF；</li>
+<li>降壓幅度小，沒有試驗直接比較強化 vs 一般降壓目標；</li>
+<li>沒有個別病人資料；</li>
+<li>追蹤中位數只有 19 個月。</li>
+</ol>
+</li>
+<li><strong>[評估]</strong>：
+<ul>
+<li>限制段<strong>避重就輕</strong>。沒有提到：生態型 meta-regression 的混雜問題（藥物類別與 ΔSBP 共線）、復發事件計數、共用對照組、終點定義不一（PEP-CHF 用全死因死亡複合終點、SUMMIT 與 FINEARTS 用 worsening HF events）、sGC 的傷害訊號、沒有評估發表偏差。</li>
+<li>摘要結論寫「there was no significant association between pharmacological BP lowering and clinical outcomes」，與自己的主要結果（RR 0.86）字面矛盾；實際想說的應該是「降壓幅度與療效之間無關」。</li>
+<li>討論段說「standard antihypertensives outside these drug classes is unlikely to be beneficial」，與自己的 ACEi HF 住院 RR 0.66（0.45–0.95）相衝突，<strong>超出數據支持範圍</strong>。</li>
+</ul>
+</li>
+</ul>
+<h3>7. 外部專業意見</h3>
+<ul>
+<li><strong>[無法取得]</strong>：未發現同期 editorial 或公開評論。以 PubMed（Heart、2026、editorial/comment）與網路延伸搜尋都沒有找到針對本文的 editorial 或 comment，因此沒有 DOI 可以呼叫全文擷取。</li>
+<li><strong>相關外部證據（不是針對本文的評論，僅供脈絡）</strong>：
+<ul>
+<li>Matsumoto 等 2025 <em>Hypertension Research</em> 的 meta-analysis 顯示，HFpEF 試驗中達成 SBP &lt;130 mmHg 與較少 HF 住院相關（RR 0.80，0.69–0.93）[外部: Hypertension Research／PMC]。方向與本文「降壓幅度不重要」的推論有張力。</li>
+<li>DELIVER 的血壓次分析（<em>JACC HF</em> 2023）指出，dapagliflozin 的效益不能用其降壓作用解釋 [外部: PubMed 36599553 摘要]，這點支持本文。</li>
+</ul>
+</li>
+</ul>
+<h3>8. 臨床建議</h3>
+<ul>
+<li><strong>可採用的情境</strong>：作為「SGLT2i、finerenone、ARNI、GLP-1 RA 在 HFpEF 的效益很可能不是單純來自降壓」的<strong>佐證之一</strong>。這與各試驗內部的血壓次分析方向一致。</li>
+<li><strong>不建議直接套用的情境</strong>：
+<ul>
+<li>不能據此認定「HFpEF 合併高血壓時不必積極控壓」。</li>
+<li>不能據此認定「ACEi/ARB 對 HFpEF 無益」。ARB 的 CI 可容納 14% 效益，ACEi 的 HF 住院有顯著效果。</li>
+<li>不能據此認定 sGC stimulator 在 HFpEF 是安全的：Figure 2A 有傷害訊號，雖然事件數很少。</li>
+</ul>
+</li>
+<li><strong>實務建議</strong>：
+<ol>
+<li>HFpEF 的藥物優先順序仍依各藥物本身的 outcome RCT 決定：SGLT2i 優先，其次依表型加 finerenone、GLP-1 RA（肥胖者）、ARNI（LVEF 偏低端者）。這與本文無關，本文也沒有改變這個排序。</li>
+<li>合併高血壓時，降壓目標仍參照一般高血壓指引；本文無法回答 HFpEF 的血壓目標。</li>
+<li>引用本文的類別效果數字時，<strong>以原始單一試驗數據為準</strong>，不要引用本文的合併值，因為擷取錯誤的影響範圍無法估計。</li>
+</ol>
+</li>
+<li><strong>證據強度</strong>：<strong>弱</strong>。各類別的合併 RR 主要反映已知的大型試驗，屬中等可信；但本文的核心推論（降壓不是中介）建立在檢定力不足、混雜嚴重、且有資料擷取錯誤的生態型迴歸上。</li>
+</ul>
+<hr />
+<h2>SKILL-B：批判性評讀</h2>
+<h3>A. 補充技術細節</h3>
+<ul>
+<li><strong>宣稱的適用範疇</strong>：作者把結論推到「HFmrEF/HFpEF 全體」，但納入族群的 LVEF 門檻從 &gt;40% 到 &gt;50% 不等。各試驗的 LVEF &gt;50% 比例從 64% 到 100%，或沒有報告（Table 1 中 9 組比較標 NA）。SUMMIT 與 STEP 系列限肥胖者，SUPPORT 只收日本病人。結論的外推對象不夠明確。</li>
+<li><strong>引用文獻時間範圍</strong>：搜尋到 2025-01-31，涵蓋 FINEARTS-HF（2024）與 SUMMIT（2024/11）。β-blocker 雖然在搜尋範圍內，但<strong>沒有任何 β-blocker 試驗被納入</strong>（例如 J-DHF 的 carvedilol，LVEF &gt;40%）。可能是因為沒報告血壓而被排除，但文中沒有列出被排除的具體試驗 [推論]。</li>
+</ul>
+<h4>A1. Systematic Review / Meta-analysis 子模組</h4>
+<p><strong>搜尋策略與選擇流程</strong></p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>項目</th>
+<th>本文狀況</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>資料庫／時間</td>
+<td>Medline、EMBASE、CENTRAL，建庫到 2025-01-31；沒有搜尋試驗註冊平台與灰色文獻</td>
+</tr>
+<tr>
+<td>搜尋字串</td>
+<td>放在 supplement appendix 2 [限制：markdown 未保留]</td>
+</tr>
+<tr>
+<td>納排標準</td>
+<td>預先指定；但「必須報告血壓」這一條本身就是潛在選擇偏差（見下）</td>
+</tr>
+<tr>
+<td>篩選</td>
+<td>摘要雙人獨立篩選；全文審查與資料擷取是否雙人沒有交代；沒有 κ 值</td>
+</tr>
+<tr>
+<td>PRISMA flow</td>
+<td>有，數字內部一致</td>
+</tr>
+<tr>
+<td>預先註冊</td>
+<td>PROSPERO CRD42025631539；但沒說明分析是否與註冊計畫一致（例如 meta-regression、敏感度分析是否預先指定）[無法判定]</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>「必須報告血壓」造成的選擇偏差</strong>：會報告血壓變化的多半是血壓本身就是關注點的試驗，或降壓效果明顯的試驗。沒報告血壓的 β-blocker、利尿劑、CCB 試驗被系統性排除，使「傳統降壓藥」類別只剩 ACEi/ARB，<strong>無法代表標題所說的「pharmacological BP lowering」</strong>。</p>
+<p><strong>文獻可信度（GRADE 五大降級因素）</strong></p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>因素</th>
+<th>評估</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>偏差風險</td>
+<td>作者評為 16 篇低風險、2 篇「moderate」。RoB 2 沒有「moderate」這個等級，正式等級是 low／some concerns／high，用詞不符。細節在 supplement，無法核實。真正的偏差主要來自<strong>本文自己的擷取錯誤</strong>，而非原始試驗。→ <strong>降一級</strong></td>
+</tr>
+<tr>
+<td>不一致性</td>
+<td>各類別內 I² 多為 0%，整體 I² 0%（HF 住院 30%）。類別間交互作用 p=0.018／0.021，可由機轉解釋，屬於「可解釋的異質性」。→ 合併整體效果時不降級，但**「整體 RR 0.86」本身在臨床上沒有意義**</td>
+</tr>
+<tr>
+<td>間接性</td>
+<td>研究問題是「降壓對結果的效果」，但介入是具多重機轉的藥物；對照組混用 placebo 與 active comparator；終點定義不一（全死因死亡複合、worsening HF events、首次 vs 復發事件）。→ <strong>嚴重，降一至二級</strong></td>
+</tr>
+<tr>
+<td>不精確性</td>
+<td>合併 RR 精確，但迴歸斜率沒有報告 CI；ΔSBP 範圍窄（大型試驗集中在 1–7 mmHg）；有效樣本是約 20 個試驗點，不是 3.9 萬人。→ 就「中介」結論而言<strong>嚴重，降一級</strong></td>
+</tr>
+<tr>
+<td>發表偏差</td>
+<td>沒有漏斗圖、沒有 Egger 檢定，也沒有搜尋註冊平台 [文內無相關描述]。小型試驗（Nassif、RAAM-PEF、Yip、Zi）結果分布散亂，無法判定</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>整體確定性</strong>：</p>
+<ul>
+<li>「各新藥類別減少主要終點」：中等，因為這基本上是重述原始大型試驗。</li>
+<li>「療效與降壓幅度無關，所以降壓不是中介」：<strong>極低至低</strong>。</li>
+</ul>
+<p><strong>NMA 相關評估</strong>：不適用，本文不是 NMA，沒有做間接比較或排名。但作者在討論中隱含跨類別比較，例如「傳統降壓藥不如新藥」。這種比較沒有共同對照下的 transitivity 評估，應該視為非正式的間接比較。</p>
+<hr />
+<h3>B. 論證架構重建（第一階段：純描述）</h3>
+<p><strong>主論點</strong>：在 HFmrEF/HFpEF，新藥（SGLT2i、MRA、ARNI、GLP-1 RA）的臨床效益不是主要透過降低血壓達成；傳統降壓藥在這個族群角色有限。</p>
+<pre><code>1. 前提 A：多種 HFpEF 有效藥物都會降低收縮壓
+   └─ 支撐依據：EMPEROR-Preserved、DELIVER、SUMMIT、STEP pooled、FINEARTS-HF（ref 5–9）
+   └─ 推論步驟：既然都降壓，就需要釐清療效是否經由降壓
+
+2. 前提 B：一般族群中，降壓效益與基線血壓無關；SPRINT 中有無 HF 的效益相近
+   └─ 支撐依據：BPLTTC 等 meta-analysis（ref 10, 11）、SPRINT 次分析（ref 13）
+   └─ 推論步驟：如果降壓在 HFpEF 同樣有效，傳統降壓藥可能是被低估的治療
+
+3. 前提 C：HFrEF 的 meta-analysis 顯示血壓降幅與結果無關（ref 16）
+   └─ 推論步驟：HFpEF 可能也是如此，但尚未被檢驗
+
+4. 本文分析：
+   (a) 合併 20 組比較，RR 0.86；類別間有異質性（p=0.018），效益限於四類新藥
+   (b) log RR 對 ΔSBP 的 meta-regression 斜率不顯著（p=0.304；HF 住院 p=0.528）
+   (c) 加入追蹤時間共變項、只保留傳統降壓藥＋MRA 的敏感度分析，結論不變
+
+5. 中間結論：療效不隨降壓幅度增加 → 療效不是由降壓中介
+
+6. 機轉補充：SGLT2i（重塑、代謝、自噬、腎保護）、GLP-1 RA（去充血、能量利用）、
+   MRA（抗纖維化、抗肥厚、排鈉）都有非血壓的機轉（ref 23–30）
+
+7. 最終結論：
+   (i) 降壓「單獨」不太可能解釋新藥的效益；
+   (ii) 新藥類別以外的標準降壓藥在 HFmrEF/HFpEF「不太可能有益」；
+   (iii) 需要強化降壓試驗來確立 HFpEF 的血壓目標
+</code></pre>
+<p><strong>敘事策略</strong>：從「問題到解方」：先提出「新藥都降壓」的混淆，再用 meta-regression 排除降壓的角色，最後用機轉文獻填補「那效益從哪裡來」。</p>
+<p><strong>作者承認的限制</strong>（Discussion 第 4 段）：對照組異質、HFmrEF 與 HFpEF 合併、降壓幅度小、沒有強化降壓試驗、沒有個別病人資料、追蹤時間短。</p>
+<hr />
+<h3>C. 引用品質評估（第二階段：開始批判）</h3>
+<div class="table-wrap wide"><table>
+<thead>
+<tr>
+<th>論點編號</th>
+<th>引用文獻類型</th>
+<th>證據層級</th>
+<th>與論點關聯性</th>
+<th>問題</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1（新藥都降壓）</td>
+<td>大型 RCT</td>
+<td>高</td>
+<td>直接</td>
+<td>沒有問題，但各試驗的降壓幅度只有 1–5 mmHg，這本身就限制了後續迴歸能檢驗的範圍</td>
+</tr>
+<tr>
+<td>2（一般族群降壓效益）</td>
+<td>RCT meta-analysis、SPRINT 次分析</td>
+<td>高／中</td>
+<td><strong>類推</strong>（非 HF → HF）</td>
+<td>SPRINT 排除了 LVEF &lt;35% 與有症狀 HF 的病人；用它推論 HFpEF 是跨族群類推</td>
+</tr>
+<tr>
+<td>3（HFrEF meta-analysis）</td>
+<td>試驗層級 meta-regression</td>
+<td>中</td>
+<td>類推（HFrEF → HFpEF）</td>
+<td>同樣受生態型迴歸限制；以同類方法佐證同類結論，不構成獨立驗證</td>
+</tr>
+<tr>
+<td>4b（本文 meta-regression）</td>
+<td>試驗層級生態分析</td>
+<td><strong>低</strong></td>
+<td>直接，但方法不足以支撐因果中介</td>
+<td>見 D 節推論 1</td>
+</tr>
+<tr>
+<td>6（非血壓機轉）</td>
+<td>機轉研究、動物、小型臨床研究、綜論</td>
+<td>低</td>
+<td><strong>類推</strong></td>
+<td>機轉的存在不等於機轉解釋了臨床效益；這是事後補述，不是檢驗</td>
+</tr>
+<tr>
+<td>7(ii)（傳統降壓藥無益）</td>
+<td>本文類別分析</td>
+<td>低</td>
+<td>間接</td>
+<td>與自己的 ACEi HF 住院結果矛盾；ARB 的 CI 包含有意義的效益</td>
+</tr>
+<tr>
+<td>SPRINT ADHF 事後分析（ref 33）</td>
+<td>RCT 事後分析</td>
+<td>低</td>
+<td>間接</td>
+<td>研究的是「HF 事件發生後」的再住院，與慢性 HFpEF 藥物療效是不同問題</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>引用品質紅旗</strong>：</p>
+<ul>
+<li>自引：Wang 團隊的 LDC 文獻沒有被引用來支持主論點，自引不明顯。ref 16 若出自同一機構，則屬同一方法學傳統的相互佐證 [無法判定 ref 16 作者]。</li>
+<li><strong>忽略的反面文獻</strong>：沒有引用 2025 <em>Hypertension Research</em> 中「SBP &lt;130 與較少 HF 住院相關」的 HFpEF meta-analysis；也沒有討論 TOPCAT 與 CHARM-Preserved 在血壓較高亞群的效益異質性。</li>
+<li>用機轉研究直接說明人體效益來源：有（論點 6）。</li>
+<li>研究族群與結論對象不一致：SUMMIT 與 STEP 限肥胖者，SUPPORT 限日本人，卻推論到全體 HFpEF。</li>
+</ul>
+<hr />
+<h3>D. 過度推論分析</h3>
+<p><strong>推論 1：「斜率不顯著」被推成「療效不是由降壓中介」（嚴重）</strong></p>
+<ul>
+<li><strong>原始證據</strong>：約 20 個試驗點的 log RR 對 ΔSBP 迴歸，斜率 −0.0125，p=0.304，沒有報告斜率的 CI；ΔSBP 集中在 −1 到 −7 mmHg（Figure 2B）。</li>
+<li><strong>作者結論</strong>：「suggesting the treatment effects on the primary endpoint were not mediated by BP reduction」（Results）；Discussion 稍微收斂為「not mediated through BP lowering alone」。</li>
+<li><strong>跳躍所在</strong>：
+<ol>
+<li><strong>把沒有證據當成證據不存在</strong>：p=0.304 加上喇叭狀信賴帶，相容於有臨床意義的正斜率。依一般族群的經驗，每降 5 mmHg 約減少 10% 主要心血管事件。在 −1 到 −7 mmHg 這麼窄的範圍內，預期 log RR 差異只有約 0.05–0.1，本文的試驗點數根本無力偵測 [推論]。</li>
+<li><strong>生態謬誤與混雜</strong>：ΔSBP 與藥物類別高度共線。ARB（CHARM 降 6.9 mmHg、I-PRESERVE 降 3.6 mmHg）降壓多但效益小；SGLT2i（降 1.2–1.4 mmHg）降壓少但效益大。迴歸斜率實際反映的是「藥物類別差異」，不是「同一藥物降壓多寡的效果」。</li>
+<li><strong>中介分析需要個人層級的資料</strong>：試驗層級的 ΔSBP 與療效無關，邏輯上無法排除個人層級的中介。</li>
+<li><strong>斜率點估計方向與降壓假說相反</strong>，作者卻沒有討論，代表分析結果沒被認真解讀。</li>
+</ol>
+</li>
+<li><strong>嚴重程度：嚴重</strong>。方法本質上無法支撐「非中介」的結論。</li>
+</ul>
+<p><strong>推論 2：「標準降壓藥在新藥類別以外不太可能有益」（中度至嚴重）</strong></p>
+<ul>
+<li><strong>原始證據</strong>：
+<ul>
+<li>主要終點：ACEi 0.93（0.74–1.18）、ARB 0.94（0.86–1.02）。</li>
+<li>HF 住院：ACEi <strong>0.66（0.45–0.95）</strong>、ARB 0.90（0.80–1.01）。</li>
+<li>且 β-blocker、CCB、利尿劑試驗幾乎全部因沒報告血壓而被排除。</li>
+</ul>
+</li>
+<li><strong>作者結論</strong>：「the use of standard antihypertensives outside of these drug classes is unlikely to be beneficial in patients with HFmrEF/HFpEF」。</li>
+<li><strong>跳躍所在</strong>：
+<ul>
+<li>把 CI 跨越 1 解讀為沒有效益（ARB 的 CI 下限代表可能有 14% 效益）；</li>
+<li>忽略自己的 ACEi HF 住院顯著結果；</li>
+<li>把未被檢驗的藥物類別（β-blocker、CCB、利尿劑）一併判定為無益；</li>
+<li>沒有區分「合併高血壓」與「血壓正常」的族群。Discussion 一處寫「in the absence of concomitant hypertension」，結論段卻拿掉了這個限定。</li>
+</ul>
+</li>
+<li><strong>嚴重程度：中度至嚴重</strong>。</li>
+</ul>
+<p><strong>推論 3：摘要結論的字面錯誤（中度）</strong></p>
+<ul>
+<li><strong>原始證據</strong>：降壓藥整體 RR 0.86（0.83–0.89）。</li>
+<li><strong>作者結論</strong>（Abstract Conclusion）：「there was no significant association between pharmacological BP lowering and clinical outcomes」。</li>
+<li><strong>跳躍所在</strong>：把「降壓幅度與療效之間無關」寫成「降壓與結果無關」，字面上與主要結果矛盾，容易被二手引用誤用。</li>
+<li><strong>嚴重程度：中度</strong>（屬於表述錯誤，可能誤導讀者）。</li>
+</ul>
+<p><strong>推論 4：「傳統降壓藥」敏感度分析的標籤（輕微至中度）</strong></p>
+<ul>
+<li><strong>原始證據</strong>：排除 SGLT2i、sGC、GLP-1、ARNI 後 RR 0.88（0.84–0.92）。</li>
+<li><strong>作者結論</strong>：「consistent for primary antihypertensive drug classes」。</li>
+<li><strong>跳躍所在</strong>：剩下的組合仍包含 FINEARTS-HF（復發事件計數、權重最大）與 TOPCAT。這個「傳統降壓藥」合併結果的效益主要由 MRA 貢獻，等於混入了作者在討論中自己歸類為「非血壓機轉」的藥物，邏輯上自我矛盾。</li>
+<li><strong>嚴重程度：輕微至中度</strong>。</li>
+</ul>
+<hr />
+<h3>E. 論證結構完整性評估</h3>
+<ul>
+<li><strong>未被支撐的前提（hidden assumptions）</strong>：
+<ol>
+<li>試驗層級的 ΔSBP 能代表各試驗中病人實際暴露的降壓量（但測量時間點沒有交代，正負號也前後不一）。</li>
+<li>不同藥物類別「每 mmHg 降壓帶來的效益」相同，迴歸才能用單一斜率描述。</li>
+<li>擷取的事件數具有可比性：首次事件與復發事件混用、複合終點定義不一。</li>
+</ol>
+</li>
+<li><strong>邏輯斷層</strong>：
+<ul>
+<li>從「類別間有異質性」直接跳到「異質性與血壓無關」，中間沒有做「類別內」的 ΔSBP 迴歸（例如只在 MRA 或 ARB 內部比較）來控制類別混雜。</li>
+<li>把 sGC 的顯著傷害歸為「沒有效益」，跳過了一個可能與血壓相關的安全性議題（低血壓、症狀性低血壓）。</li>
+</ul>
+</li>
+<li><strong>能動搖結論的替代解釋</strong>，下列三點作者都沒有討論：
+<ol>
+<li><strong>藥物類別造成的混雜（Simpson 型逆轉）</strong>：ARB 與 ACEi 降壓較多卻效益小，可能是因為 RAAS 在 HFpEF 的角色有限；SGLT2i 降壓少卻效益大，是因為排鈉與去充血作用。在同一藥物類別內，降壓越多可能效益越大，卻在跨類別迴歸中被抵消。Figure 2B 斜率方向與假說相反，正符合這個模式。</li>
+<li><strong>地板效應（基線血壓已控制）</strong>：基線 SBP 平均 129 mmHg，多數病人已在 J 型曲線的低點（120–130 mmHg，ref 22）。在這個範圍內再降 3 mmHg，預期邊際效益本來就小，所以「斜率接近 0」可能反映的是「血壓已達標的族群」，而不是「降壓無用」。</li>
+<li><strong>資料擷取錯誤與分母錯置稀釋了真實關係</strong>：STEP 系列的事件數錯誤、FINEARTS 用復發事件、共用對照組重複計算，這些都會在 log RR 上加入雜訊，使迴歸斜率被稀釋往 0 靠近（regression dilution）。</li>
+</ol>
+</li>
+<li><strong>結論是否超出證據範圍</strong>：是。主要終點的類別效果大致可信，但「中介」與「傳統降壓藥無益」兩項結論明顯超出證據範圍。</li>
+</ul>
+<hr />
+<h3>F. 最終裁決</h3>
+<ul>
+<li><strong>論證結構完整性</strong>：<strong>弱</strong>。核心的中介推論建立在無法支撐因果中介的生態型迴歸上，並且忽略了類別混雜。</li>
+<li><strong>引用品質</strong>：<strong>部分適當</strong>。新藥效益引用的是大型 RCT，屬於高品質；但非 HF 族群的降壓證據屬類推，機轉段落屬事後補述，反面文獻也被省略。</li>
+<li><strong>過度推論嚴重程度</strong>：<strong>嚴重</strong>。</li>
+<li><strong>可採用這篇文章的情境</strong>：
+<ul>
+<li>作為「HFpEF 新藥效益可能不只靠降壓」的<strong>輔助、假說生成型</strong>證據，搭配 DELIVER 等試驗內部的血壓次分析一起引用。</li>
+<li>作為 HFpEF 降壓藥 RCT 的文獻清單起點，但需要自行回頭核對原始數據。</li>
+</ul>
+</li>
+<li><strong>不建議直接引用的情境</strong>：
+<ul>
+<li>引用本文的合併 RR 或總人數 39,452：分母有錯置與重複計算。</li>
+<li>用來主張「HFpEF 合併高血壓不需積極降壓」或「ACEi/ARB 對 HFpEF 無益」。</li>
+<li>用來主張 sGC stimulator 在 HFpEF 中性或安全。</li>
+</ul>
+</li>
+<li><strong>若要改觀，最需要</strong>：
+<ol>
+<li>修正資料擷取：統一採用首次事件人數、STEP 系列改用正確的複合終點事件數、共用對照組拆分（split）或合併處理、TOPCAT 人數一致，再重新分析。</li>
+<li>用<strong>個別病人資料</strong>做中介分析（例如在 DELIVER、EMPEROR-Preserved、FINEARTS-HF、PARAGON-HF 中，以治療後血壓變化為中介變項），或至少做<strong>類別內</strong>的 meta-regression，並報告斜率的 95% CI。</li>
+<li>補做發表偏差評估，並列出因「沒報告血壓」而被排除的試驗清單（包括 β-blocker、CCB、利尿劑），再做納入這些試驗的敏感度分析（只看結果、不分析血壓）。</li>
+</ol>
+</li>
+<li><strong>一句話結論</strong>：新藥對 HFpEF 的效益可能不只來自降壓，但這篇 meta-analysis 有資料錯誤與方法限制，無法證明這一點。</li>
+</ul>
+<hr />
+<p><strong>Sources:</strong></p>
+<ul>
+<li><a href="https://pubmed.ncbi.nlm.nih.gov/42571647/">PubMed: Effects of pharmacological blood pressure lowering in HFmrEF/HFpEF (Pack SJJ, et al. Heart 2026)</a>，<a href="https://doi.org/10.1136/heartjnl-2026-327872">DOI</a></li>
+<li><a href="https://doi.org/10.1001/jamacardio.2023.0720">PubMed: Wang N, et al. JAMA Cardiol 2023 (LDC meta-analysis)</a></li>
+<li><a href="https://doi.org/10.1016/j.jacadv.2025.101883">PubMed: Wang N, et al. JACC Adv 2025 (LDC 3–4 drugs)</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Heart_(journal)">Heart (journal) – Wikipedia</a></li>
+<li><a href="https://www.journalmetrics.org/journal/heart">Journal Metrics – Heart</a></li>
+<li><a href="https://heart-frontend.bmj.com/pages/about">Heart – About（BMJ）</a></li>
+<li><a href="https://heart-frontend-stg.bmj.com/pages/about">Heart – About（staging）</a></li>
+<li><a href="https://acc.org/Latest-in-Cardiology/Clinical-Trials/2024/08/29/20/16/finearts-hf">ACC: FINEARTS-HF trial summary</a></li>
+<li><a href="https://www.tctmd.com/news/finearts-hf-benefit-finerenone-extends-hfmref-and-hfpef-patients">TCTMD: FINEARTS-HF</a></li>
+<li><a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC12321576/">Matsumoto et al. Hypertension Research 2025 – SBP &lt;130 mmHg in HFpEF meta-analysis (PMC)</a></li>
+<li><a href="https://pubmed.ncbi.nlm.nih.gov/36599553/">Blood Pressure and Dapagliflozin in HFmrEF/HFpEF: DELIVER (PubMed)</a></li>
+</ul>
+
+<footer class="appraisal-meta">評讀資訊：模型：claude-opus-5-5 (claude)  ·  route：sr  ·  產出時間：2026-11-08 08:24 CST</footer>
+</main>
+</body>
+</html>

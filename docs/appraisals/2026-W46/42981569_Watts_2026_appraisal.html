@@ -1,0 +1,835 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Plozasiran for Severe Hypertriglyceridemia and Risk of Pancreatitis.</title>
+<style>
+  :root {
+    --bg: #fafafa;
+    --card: #ffffff;
+    --text: #1a1a1a;
+    --muted: #6b6b6b;
+    --border: #e5e5e5;
+    --accent: #0b5fff;
+  }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang TC",
+      "Microsoft JhengHei", sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    margin: 0;
+    padding: 24px 16px 64px;
+    line-height: 1.72;
+  }
+  main {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    margin: 0 auto;
+    max-width: 840px;
+    padding: 22px 26px;
+  }
+  nav {
+    margin: 0 auto 14px;
+    max-width: 840px;
+    color: var(--muted);
+    font-size: 14px;
+  }
+  a { color: var(--accent); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  h1, h2, h3, h4 { line-height: 1.35; }
+  h1 { font-size: 26px; margin-top: 0; }
+  h2 { border-top: 1px solid var(--border); padding-top: 18px; }
+  code {
+    background: rgba(127, 127, 127, 0.12);
+    border-radius: 4px;
+    padding: 1px 4px;
+  }
+  .table-wrap {
+    margin: 1em 0;
+    overflow-x: auto;
+  }
+  .table-wrap.wide {
+    /* Break out of the 840px prose column, centred on the viewport. */
+    width: min(1040px, calc(100vw - 32px));
+    margin-left: calc(50% - min(520px, 50vw - 16px));
+  }
+  table {
+    border-collapse: collapse;
+    table-layout: auto;
+    width: 100%;
+  }
+  .table-wrap.wide {
+    /* Opaque so the <main> card border does not show through the table. */
+    background: var(--card);
+  }
+  /* Width hints go on <th> as percentages: Chrome's auto table layout
+     mis-sizes columns (and overflows) when cells carry min-width. */
+  .table-wrap.wide th:first-child {
+    /* Variable + plain-language definition, e.g. "NCPV (noncalcified ...)". */
+    width: 26%;
+  }
+  .table-wrap.wide th:last-child {
+    /* Last column is usually a one-line interpretation. */
+    width: 20%;
+  }
+  th, td {
+    border: 1px solid var(--border);
+    /* Wrap only at spaces: never split an English word mid-letter. */
+    overflow-wrap: normal;
+    word-break: normal;
+    hyphens: manual;
+    padding: 6px 8px;
+    text-align: left;
+    vertical-align: top;
+  }
+  blockquote {
+    border-left: 3px solid var(--accent);
+    color: var(--muted);
+    margin-left: 0;
+    padding-left: 14px;
+  }
+  .appraisal-meta {
+    border-top: 1px solid var(--border);
+    margin-top: 28px;
+    padding-top: 14px;
+    color: var(--muted);
+    font-size: 13px;
+  }
+  @media (max-width: 600px) {
+    body {
+      padding: 12px 8px 40px;
+    }
+    main {
+      padding: 16px 12px;
+    }
+    h1 {
+      font-size: 22px;
+    }
+    table {
+      font-size: 12px;
+    }
+    .table-wrap.wide {
+      width: calc(100vw - 16px);
+      margin-left: calc(50% - 50vw + 8px);
+    }
+    th, td {
+      padding: 4px 5px;
+    }
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #1a1a1a;
+      --card: #242424;
+      --text: #e8e8e8;
+      --muted: #999;
+      --border: #333;
+      --accent: #6ea8ff;
+    }
+  }
+</style>
+</head>
+<body>
+<nav><a href="../../2026-W46.html">← 回到 2026-W46 週報</a></nav>
+<main>
+<h1>Plozasiran for Severe Hypertriglyceridemia and Risk of Pancreatitis.</h1>
+<h1>Plozasiran 治療重度高三酸甘油脂血症與胰臟炎風險（SHASTA-3／SHASTA-4）批判性評讀</h1>
+<hr />
+<h2>SECTION-0：文章全面描述</h2>
+<h3>0. 文章身份證</h3>
+<ul>
+<li><strong>標題</strong>：Plozasiran for Severe Hypertriglyceridemia and Risk of Pancreatitis</li>
+<li><strong>期刊／年份</strong>：N Engl J Med 2026;395:1805-17（2026 年 11 月 5 日刊期）</li>
+<li><strong>DOI</strong>：10.1056/NEJMoa2610014；PMID 42981569</li>
+<li><strong>文章類型</strong>：兩個設計相同的第三期、多中心、雙盲、安慰劑對照 RCT，試驗編號 SHASTA-3（NCT06347003）與 SHASTA-4（NCT06347016）。急性胰臟炎（AP）終點是兩個試驗合併後的 pooled analysis。</li>
+<li><strong>路由</strong>：SKILL-A（RCT 主流程），加上 A1 的特殊設計考量：兩試驗合併的階層式檢定，以及 AP 這個「低事件數、合併分析」的臨床終點。</li>
+</ul>
+<h3>1. 作者團隊評論</h3>
+<ul>
+<li>
+<p><strong>通訊作者</strong>：Gerald F. Watts（University of Western Australia／Royal Perth Hospital），長期研究脂蛋白代謝與家族性高血脂 [文內]。</p>
+</li>
+<li>
+<p><strong>團隊構成</strong>：學術端包括 Ballantyne（Baylor）、Rosenson（Mount Sinai）、Goldberg（NYU）、Gaudet（Université de Montréal／ECOGENE-21）、Baass、Gallo 等脂質領域核心研究者。另有 4 位作者（R. Zhou、L. Aiyer、J. Hellawell、J. Hamilton）是 Arrowhead Pharmaceuticals 員工 [文內]。</p>
+</li>
+<li>
+<p><strong>團隊過往研究</strong> [外部: Arrowhead 新聞稿／Business Wire／BioSpace]：</p>
+<ul>
+<li>SHASTA-2（第二期，重度高三酸甘油脂血症，Gaudet 為第一作者，JAMA Cardiol 2024）</li>
+<li>MUIR（第二期，混合型高血脂，由 Ballantyne 發表）</li>
+<li>PALISADE（第三期，家族性乳糜微粒血症症候群 FCS）</li>
+<li>MUIR／SHASTA-2 的開放標籤延伸研究（AHA 2024）</li>
+</ul>
+<p>核心作者群從第二期到第三期一路主導同一藥物的開發，屬於「同一團隊、同一藥物、反覆發表」的模式。</p>
+</li>
+<li>
+<p><strong>作者立場史</strong> [推論]：Watts、Gaudet、Ballantyne 過去公開立場一貫支持 APOC3 抑制策略，本文結論與其既有立場高度一致，有確認偏差的可能。</p>
+</li>
+<li>
+<p><strong>利益揭露</strong>：</p>
+<ul>
+<li>試驗由 Arrowhead 資助。贊助者參與設計、執行、資料收集、管理與分析；撰稿協助來自 Arrowhead 員工（Nathalie Kertesz）與受雇公關公司 [文內]。</li>
+<li>個別作者的 COI 表單未保留在 markdown [限制：markdown 未保留 disclosure forms]。</li>
+<li><strong>評估</strong>：贊助者同時掌握資料分析與撰稿，又有 4 位員工作者；加上 AP 合併分析的 SAP 在試驗後期才定稿（見 B3），funding 對結論呈現的影響風險屬「中到高」。</li>
+</ul>
+</li>
+</ul>
+<h3>2. 文獻 Metadata</h3>
+<ul>
+<li>
+<p><strong>Received／Accepted date</strong>：[無法取得]（markdown 未保留），無法計算審查天數。</p>
+</li>
+<li>
+<p><strong>時間軸</strong> [外部: Las Vegas Sun／HCPLive／ESC 新聞稿]：</p>
+<ul>
+<li>2026/7/22 公司公布 topline 結果</li>
+<li>2026/8/30 ESC Congress Hot Line 發表</li>
+<li>2026/11/5 NEJM 刊期出版</li>
+</ul>
+<p>從大會發表到刊出約 2 個多月，屬 NEJM 對重大試驗常見的快速審查。[推論] 這種情況下，審查者對 supplement 細節的查核深度可能有限。</p>
+</li>
+<li>
+<p><strong>期刊屬性</strong>：NEJM 2025 JIF 約 84.5，Q1（General &amp; Internal Medicine）[外部: Wolters Kluwer Ovid 列表等二手來源；建議以 JCR 原始資料確認]。本文附 CME 與 Quick Take。</p>
+</li>
+<li>
+<p><strong>邀稿或投稿</strong>：原始研究論文，非邀稿。</p>
+</li>
+</ul>
+<h3>3. 研究背景 [文內]</h3>
+<ul>
+<li><strong>既有證據</strong>：
+<ul>
+<li>重度高三酸甘油脂血症（TG ≥500 mg/dL）盛行率約 1–2%，與急性胰臟炎相關。</li>
+<li>APOC3 抑制 lipoprotein lipase；APOC3 基因缺失者 TG 較低。</li>
+<li>Plozasiran 已在 FCS 證實可降低 TG 與胰臟炎風險（PALISADE）。</li>
+</ul>
+</li>
+<li><strong>知識缺口</strong>：族群更大、異質性更高的多因性 sHTG（非 FCS）是否同樣能降低 TG 與胰臟炎，尚缺資料。</li>
+<li><strong>研究問題</strong>：在接受標準治療後仍有 sHTG 的成人中，每 3 個月皮下注射 25 mg plozasiran，能否在 12 個月時降低空腹 TG 與急性胰臟炎風險？</li>
+</ul>
+<h3>4. 研究設計與方法</h3>
+<p><strong>PICO</strong></p>
+<ul>
+<li><strong>P</strong>：
+<ul>
+<li>成人；病史有 TG ≥500 mg/dL，且篩檢期兩次空腹 TG 平均 ≥500 mg/dL；LDL-C ≤130 mg/dL；HbA1c ≤9.0%。</li>
+<li>已依當地指引接受降脂治療。</li>
+<li>排除：基因確診的 FCS、4 週內發生 AP、BMI &gt;45 [文內；Supplement Methods]。</li>
+</ul>
+</li>
+<li><strong>I</strong>：Plozasiran 25 mg 皮下注射，第 0、3、6、9 個月各一次。</li>
+<li><strong>C</strong>：外觀相同的安慰劑；兩組都接受低脂飲食衛教並持續背景治療。</li>
+<li><strong>O</strong>：
+<ul>
+<li>主要終點：第 12 個月空腹 TG 相對基線的百分比變化。</li>
+<li>各試驗內的階層式次要終點：第 10 個月 TG、TG &lt;500、TG &lt;150、remnant-C、基線 TG ≥880 亞組的 TG 變化、non-HDL-C。</li>
+<li>前述全數通過後，才檢定合併的 AP 終點（3 個）。</li>
+</ul>
+</li>
+</ul>
+<p><strong>關鍵設計細節</strong></p>
+<ul>
+<li>2:1 隨機分派，以篩檢 TG（≥880 或 &lt;880 mg/dL）與 5 年內 AP 病史分層；使用 IRT 系統，分派隱藏有描述 [Supplement Methods]。</li>
+<li>24 國、214 個試驗點；收案自 2024 年 4 月起。</li>
+<li>盲法：受試者、試驗主持人、評估者、裁定委員會皆盲 [文內]。</li>
+<li>統計方法：
+<ul>
+<li>主要分析採 ITT（FAS），以 Wilcoxon rank-sum 檢定搭配 Hodges–Lehmann 中位數差。</li>
+<li>缺失值以 pattern-mixture 多重插補處理；plozasiran 組的缺失值假設藥效 washout。</li>
+</ul>
+</li>
+<li>AP 分析：
+<ul>
+<li>事件判定採改良 2013 Atlanta 定義，「documented／probable／possible」三類都算陽性。</li>
+<li>Logistic regression 分析事件比例、negative binomial 分析事件率、Cox model 分析首次事件時間，三者依序檢定。</li>
+</ul>
+</li>
+</ul>
+<h3>5. 研究結果重點整理</h3>
+<p><strong>主要結果表</strong>（組別欄格式為 SHASTA-3／SHASTA-4；AP 列為合併分析）</p>
+<div class="table-wrap wide"><table>
+<thead>
+<tr>
+<th>變項（代表什麼）</th>
+<th style="text-align:right">Plozasiran（S3／S4）</th>
+<th style="text-align:right">安慰劑（S3／S4）</th>
+<th style="text-align:right">組間差（95% CI）</th>
+<th style="text-align:right">p 值</th>
+<th>如何解讀</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>APOC3</strong>：藥物直接標靶，LS mean 百分比變化</td>
+<td style="text-align:right"><strong>−68%／−64%</strong></td>
+<td style="text-align:right">−5.2%／−2.0%</td>
+<td style="text-align:right">−62（−69 to −55）／−62（−71 to −54）</td>
+<td style="text-align:right">&lt;0.0001（探索性）</td>
+<td>標靶抑制約六成，與機轉一致 [Supplement Table S4]</td>
+</tr>
+<tr>
+<td><strong>空腹 TG 第 12 個月</strong>（主要終點；中位數百分比變化）</td>
+<td style="text-align:right">663 → <strong>142 mg/dL，−79%</strong>／737 → <strong>141，−81%</strong></td>
+<td style="text-align:right">674 → 489，−28%／704 → 500，−27%</td>
+<td style="text-align:right">−45 pp（−51 to −38）／−47 pp（−54 to −39）</td>
+<td style="text-align:right">&lt;0.001</td>
+<td>兩試驗一致，效果大且精確</td>
+</tr>
+<tr>
+<td>空腹 TG 第 10 個月</td>
+<td style="text-align:right"><strong>−84%／−85%</strong></td>
+<td style="text-align:right">−19%／−26%</td>
+<td style="text-align:right">−55（−63 to −46）／−53（−61 to −45）</td>
+<td style="text-align:right">&lt;0.001</td>
+<td>打針後 1 個月是谷底，效果最大</td>
+</tr>
+<tr>
+<td><strong>TG &lt;500 達成率</strong>（第 12 個月，分母為有資料者）</td>
+<td style="text-align:right"><strong>255/279（91%）／175/189（93%）</strong></td>
+<td style="text-align:right">71/140（51%）／49/98（50%）</td>
+<td style="text-align:right">RD 0.4（0.3–0.5）／0.4（0.3–0.5）</td>
+<td style="text-align:right">&lt;0.001</td>
+<td>「有達標的人數比例」；安慰劑也有一半達標</td>
+</tr>
+<tr>
+<td>TG &lt;150 達成率</td>
+<td style="text-align:right"><strong>146/279（52%）／104/189（55%）</strong></td>
+<td style="text-align:right">11/140（8%）／2/98（2%）</td>
+<td style="text-align:right">RD 0.4（0.3–0.5）／0.5（0.4–0.6）</td>
+<td style="text-align:right">&lt;0.001</td>
+<td>約一半病人 TG 降到正常範圍</td>
+</tr>
+<tr>
+<td>基線 TG ≥880 亞組</td>
+<td style="text-align:right">1241 → <strong>193，−85%</strong>／1259 → <strong>215，−85%</strong></td>
+<td style="text-align:right">1258 → 776，−38%／1154 → 878，−25%</td>
+<td style="text-align:right">−42（−58 to −26）／−47（−62 to −32）</td>
+<td style="text-align:right">&lt;0.0001</td>
+<td>高風險族群同樣有效；n = 91/44、77/38</td>
+</tr>
+<tr>
+<td><strong>Remnant-C</strong>（以超高速離心測的 VLDL-C，LS mean %）</td>
+<td style="text-align:right"><strong>−51%／−49%</strong></td>
+<td style="text-align:right">+2.7%／+7.6%</td>
+<td style="text-align:right">−53（−65 to −42）／−56（−69 to −44）</td>
+<td style="text-align:right">&lt;0.001</td>
+<td>原計畫書中屬探索性終點，後來修訂升為次要</td>
+</tr>
+<tr>
+<td><strong>Non-HDL-C</strong>（LS mean %）</td>
+<td style="text-align:right">−17%／−24%</td>
+<td style="text-align:right">+3.4%／+3.9%</td>
+<td style="text-align:right">中位數 −21（−28 to −13）／−28（−37 to −19）</td>
+<td style="text-align:right">&lt;0.001</td>
+<td>幅度中等；不代表 apoB 顆粒數下降</td>
+</tr>
+<tr>
+<td><strong>AP 所有事件</strong>（合併；documented＋probable＋possible）</td>
+<td style="text-align:right">5 事件／5 人，504 人年：<strong>1/100 人年</strong></td>
+<td style="text-align:right">13 事件／9 人，253 人年：<strong>5/100 人年</strong></td>
+<td style="text-align:right">Rate ratio 0.22（0.07–0.67）</td>
+<td style="text-align:right">0.008</td>
+<td>相對降幅大，但總共只有 14 人有事件</td>
+</tr>
+<tr>
+<td><strong>首次 AP 事件</strong></td>
+<td style="text-align:right"><strong>5/504（1.0%）</strong></td>
+<td style="text-align:right">9/253（3.6%）</td>
+<td style="text-align:right">OR 0.26（0.08–0.82）；HR 0.26（0.09–0.78）</td>
+<td style="text-align:right">0.02；0.016</td>
+<td>ARD 約 2.6 pp、NNT 約 39 [自行計算]</td>
+</tr>
+<tr>
+<td><strong>LDL-C（UC）</strong>（中位數 %，探索性）</td>
+<td style="text-align:right"><strong>+39%／+33%</strong></td>
+<td style="text-align:right">+11%／−7%</td>
+<td style="text-align:right"><strong>+27（14–39）／+25（12–39）</strong></td>
+<td style="text-align:right">未報告（探索性）</td>
+<td>試驗組 LDL-C 明顯上升，絕對值中位數 +23／+15 mg/dL</td>
+</tr>
+<tr>
+<td><strong>ApoB</strong>（LS mean %，探索性）</td>
+<td style="text-align:right">−1.3%／−7.8%</td>
+<td style="text-align:right">+2.0%／+0.9%</td>
+<td style="text-align:right">−3.3（−9.1 to 2.6）／−8.6（−15 to −2.7）</td>
+<td style="text-align:right">未報告</td>
+<td>致動脈硬化顆粒數幾乎沒變</td>
+</tr>
+<tr>
+<td><strong>血糖控制惡化</strong>（合併 AE）</td>
+<td style="text-align:right"><strong>72/504（14%）</strong></td>
+<td style="text-align:right">22/252（9%）</td>
+<td style="text-align:right">+5 pp [自行計算]</td>
+<td style="text-align:right">未報告</td>
+<td>最常見的不良訊號</td>
+</tr>
+<tr>
+<td><strong>MRI-PDFF</strong>（肝臟脂肪分率；僅 S3 子研究）</td>
+<td style="text-align:right">14% → 15%，<strong>+1.0</strong></td>
+<td style="text-align:right">16% → 16%，−0.5</td>
+<td style="text-align:right">約 +1 pp（CI 未報告）</td>
+<td style="text-align:right">未報告</td>
+<td>n = 23 對 13，無法排除肝脂肪增加</td>
+</tr>
+<tr>
+<td>死亡</td>
+<td style="text-align:right">3（1%）</td>
+<td style="text-align:right">0</td>
+<td style="text-align:right">—</td>
+<td style="text-align:right">未報告</td>
+<td>2 例心血管死亡、1 例 CMML；皆判定與藥物無關</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>表格補充重點</strong></p>
+<ul>
+<li><strong>安慰劑組的大幅下降</strong>：安慰劑組第 12 個月 TG 中位數也下降 27–28%，安慰劑組 TG &lt;500 達成率約 50%。[推論] 原因主要是 regression to the mean（收案條件是篩檢期 TG 偏高），加上試驗期間的衛教與背景治療優化。換言之，「TG ≥500 的病人一年後有一半自行降到 500 以下」，這點直接影響絕對效益的解讀。</li>
+<li><strong>追蹤完成度</strong>：試驗中止率 S3 為 5%（17/297 對 6/149），S4 為 9%（19/207 對 9/104）。死亡 3 例全在 S3 試驗組 [Supplement Figure S2]。</li>
+<li><strong>終點時點的藥效回彈</strong>：第 12 個月是最後一劑（第 9 個月）後 3 個月的谷底。Figure S3 平均 TG 從第 10 個月約 155 回升到第 12 個月約 210–220 mg/dL，顯示劑量間隔末期藥效減弱。主要終點因此是保守估計，但也提醒實際使用時不能延遲給藥。</li>
+<li><strong>Waterfall plot 的異質反應</strong>：Figure S6 可見少數 plozasiran 病人第 12 個月 TG 反而上升（最高約 +140%）。文內未說明這些是未依從、washout 插補值，還是真正無反應者。</li>
+</ul>
+<h3>6. 作者討論與評論重點</h3>
+<ul>
+<li><strong>作者主要訊息</strong>：
+<ul>
+<li>APOC3 抑制可在標準治療後仍為 sHTG 的族群中，達到約 80% 的 TG 降幅，九成以上病人 TG &lt;500。</li>
+<li>AP 相對降低 78%，與 PALISADE 一致。</li>
+</ul>
+</li>
+<li><strong>與文獻比較</strong>：作者認為與 olezarsen 等 APOC3 藥物結果一致；與 PALISADE（FCS，AP 降低 82%）比較時，以「consistent」帶過。</li>
+<li><strong>作者列出的限制</strong> [文內]：多為白人男性、沒有病人自評腹痛資料、僅追蹤 1 年。</li>
+<li><strong>[評估] 作者避重就輕的部分</strong>：
+<ol>
+<li>AP 只有 14 位病人發生事件，作者沒有討論精確度與效果量可能被誇大。</li>
+<li>「possible」AP 的定義寬鬆，且沒有報告依事件等級（documented／probable／possible）的分層結果。</li>
+<li>LDL-C 上升約 25–27 pp 被輕描淡寫為「基線 LDL 低」。</li>
+<li>血糖惡化以「甘油與脂肪酸受質增加」的推測機轉帶過，沒有劑量反應或可逆性資料。</li>
+<li>討論寫「降低 78 percentage points」，實際應是相對降幅 78%，不是百分點 [文內 Discussion]。</li>
+<li>文中說 remnant-C「絕對降幅 51 與 49 mg/dL」，但 Table 2 的組內變化是 −75 與 −97 mg/dL（安慰劑 −16、−19）；51／49 看起來是把百分比誤當 mg/dL。</li>
+</ol>
+</li>
+</ul>
+<h3>7. 外部專業意見</h3>
+<ul>
+<li>[無法取得]：經多次搜尋，未發現 NEJM 同期 editorial 或期刊 commentary，也沒有找到可供全文擷取的 DOI，因此未呼叫全文擷取工具。</li>
+<li>找到的都是新聞報導、會議報導與公司新聞稿（HCPLive、TCTMD、ESC press release 等），以及一段對作者 Ballantyne 本人的訪談影片。依規則，這些不作為獨立的專業意見來源。</li>
+<li>值得留意：部分媒體轉述公司宣稱的「TG &gt;880 且有 AP 病史亞組 AP 降低 100%」，本文正文與 supplement 都沒有呈現這項亞組分析。這類數字應視為未經同儕審查的行銷訊息。</li>
+</ul>
+<h3>8. 臨床建議</h3>
+<p><strong>可採用的情境</strong></p>
+<ul>
+<li>成人多因性 sHTG：已接受 fibrate、omega-3、statin 與飲食控制，空腹 TG 仍反覆 ≥500 mg/dL。</li>
+<li>特別是基線 TG ≥880 mg/dL，或曾發生過急性胰臟炎的病人，此時降低 TG 以預防胰臟炎的臨床目標最明確。</li>
+</ul>
+<p><strong>不建議直接套用的情境</strong></p>
+<ul>
+<li>只為降低心血管風險而用於中度高 TG：本試驗沒有心血管終點，LDL-C 反而上升、apoB 沒有下降。</li>
+<li>試驗排除或樣本極少的族群：BMI &gt;45、HbA1c &gt;9%，以及女性（17–26%）、黑人（約 3%）、亞洲人（S4 僅約 6%）。</li>
+<li>近期才發生胰臟炎（4 週內）的病人。</li>
+</ul>
+<p><strong>實務建議</strong></p>
+<ol>
+<li>用藥前先排除並矯正次發因素（酒精、血糖控制不佳、藥物）。給藥前後至少各量兩次空腹 TG，以免把 regression to the mean 誤當療效。</li>
+<li>用藥後每 3–6 個月追蹤 HbA1c、LDL-C 與 apoB。LDL-C 上升時以 statin、ezetimibe 等處理，必要時以 apoB 作為治療目標。</li>
+<li>嚴守每 3 個月的給藥間隔：第 12 個月的谷底 TG 已比第 10 個月回升。</li>
+</ol>
+<p><strong>證據強度</strong></p>
+<ul>
+<li>降低 TG：<strong>強</strong>。兩個獨立試驗、效果量大、CI 窄。</li>
+<li>降低急性胰臟炎：<strong>中偏弱</strong>。方向一致且經階層檢定，但只有 14 位病人有事件、CI 很寬，並納入寬鬆的「possible」定義，且缺乏依事件等級的分析。</li>
+</ul>
+<hr />
+<h2>SKILL-A：批判性評讀</h2>
+<h3>A. 補充技術細節</h3>
+<ul>
+<li><strong>樣本數估算</strong>：
+<ul>
+<li>假設安慰劑降 29%、plozasiran 降 76%、SD 50%，兩組相差 47 pp；計畫收案 S3 405 人、S4 300 人，檢定力接近 100%。</li>
+<li>實際收案 446 與 311 人，超收約 10%。</li>
+<li>作者坦承樣本數放大是為了安全性評估與法規要求 [文內]。對 TG 而言屬於刻意 overpowered，但 47 pp 的差距遠大於任何臨床上有意義的門檻，不構成「為偵測微小差異而放大樣本」的問題。</li>
+<li>AP 終點<strong>沒有</strong>檢定力計算；SAP 明說個別試驗都不足以檢定 AP [Supplement Statistical Analysis]。</li>
+</ul>
+</li>
+<li><strong>隨機化</strong>：電腦產生的 2:1 序列，經 IRT 分派，雙因子分層；收案人員無法得知分派序列 [Supplement Methods]。</li>
+<li><strong>盲法</strong>：使用外觀相同的預充填針筒。但 TG 下降 80% 會在中心實驗室數據上顯現，[推論] 試驗主持人若看得到 TG 數值，事實上可能被部分「解盲」，進而影響對腹痛事件的通報與後續檢查強度。文內沒有說明 TG 結果是否對試驗點遮蔽。</li>
+<li><strong>ITT 與 per-protocol</strong>：主要分析採 FAS。Per-protocol set 有在 SAP 中定義 [SAP p.4 目錄]，但正文未報告 PP 結果。</li>
+<li><strong>缺失值</strong>：
+<ul>
+<li>plozasiran 組的缺失值以「藥效 washout、用安慰劑資料插補」處理，屬保守做法。</li>
+<li>AP 分析中，失訪者在 logistic 模型被當作「無事件」。SAP 預先規劃了以 J2R（jump to reference）插補的敏感度分析 [SAP p.621–622]，正文未報告。</li>
+</ul>
+</li>
+<li><strong>Cox 比例風險假設</strong>：SAP 要求檢驗 [SAP p.622]，正文未報告，而且 5 對 9 個事件根本無法可靠檢驗。</li>
+</ul>
+<h4>A1. 特殊設計：兩試驗合併的階層式檢定</h4>
+<ul>
+<li>
+<p><strong>設計本身合理</strong>：先在各試驗內完成所有血脂終點，全數通過才檢定合併的 AP 終點，可控制整體 α。</p>
+</li>
+<li>
+<p><strong>階層順序在不同文件間互相矛盾</strong>：</p>
+<ul>
+<li>正文：第 5 項 remnant-C → 第 6 項 ≥880 亞組 → 第 7 項 non-HDL-C。</li>
+<li>Supplement：第 5 項 ≥880 亞組 → 第 6 項 remnant-C，而且文中先說「前 6 個位置」卻列了 7 項；合併 AP 終點又標成第 7–9 項與第 8–10 項兩種寫法。</li>
+<li>Pooled SAP V0.1 的表 2 還把 APOC3 列為 alpha-adjusted 的關鍵次要終點，但正文把 APOC3 列為探索性。</li>
+</ul>
+<p>因為全部終點都達到 p &lt;0.001，檢定順序不影響結論；但這反映文件管理不嚴謹。</p>
+</li>
+<li>
+<p><strong>AP 終點的檢定順序與報告順序不一致</strong>：</p>
+<ul>
+<li>SAP 的第一順位是事件比例（logistic，得到 OR 0.26，p = 0.02），第二順位才是事件率（negative binomial，rate ratio 0.22，p = 0.008）[SAP p.618–621；Supplement]。</li>
+<li>摘要與 Figure 1A 卻把 0.22（p = 0.008）放在最前面，Figure 1A 還標成「risk ratio」，與 Table S3 的 negative binomial 事件率模型不符。</li>
+<li>這屬於把數字最漂亮的結果放在前面的選擇性呈現。</li>
+</ul>
+</li>
+</ul>
+<h3>B. 批判性評估</h3>
+<h4>B1. 假說與理論邏輯</h4>
+<ol>
+<li><strong>TG 假說是預先指定的，機轉合理</strong>。APOC3 下降約 62–68% 對應 TG 下降約 80%，劑量反應與第二期結果一致 [Supplement Table S4；Fig S3]。</li>
+<li><strong>「TG 下降 → 胰臟炎下降」的因果敘事有跳躍</strong>。作者以「TG 與 AP 呈單調且因果的關係」為前提 [Discussion]，但本文無法區分 AP 下降究竟來自 TG 下降，還是來自定義與偵測差異（見 B3）。由於 AP 事件依賴試驗主持人通報，事件較少可能部分反映試驗組腹痛較少（3% 對 7%）而較少被送去裁定。</li>
+<li><strong>remnant-C、non-HDL-C「代表總致動脈硬化負擔」的敘事超出資料</strong>。apoB 幾乎沒變（−3.3 與 −8.6 pp），LDL-C 上升 25–27 pp。顆粒數沒有減少時，不應暗示具有動脈硬化方面的益處 [Discussion；Supplement Table S4]。</li>
+</ol>
+<h4>B2. 受試者與外推性</h4>
+<ul>
+<li>族群：男性 74–83%，白人 73–89%；S3 亞洲人 21–26%（主要來自中國試驗點），S4 只有 4–9%；黑人 0–6% [Table 1]。</li>
+<li>共病：糖尿病 54–63%；有心血管疾病 25–35%；約 62% 使用 fibrate、20–34% 使用 omega-3 [Table S1]。</li>
+<li>文內 Table 1 的「代謝症候群」僅 1–2%，與糖尿病約 60%、平均 BMI 31 明顯矛盾。[推論] 這是病史欄位的勾選偏差，不代表真實盛行率。</li>
+<li><strong>外推性分級</strong>：
+<ol>
+<li><strong>一般健康族群</strong>：不適用。本試驗沒有收中度 TG 或健康族群。</li>
+<li><strong>多因性 sHTG 病人</strong>：可外推給「標準治療後 TG 仍 ≥500 的中年男性、合併第二型糖尿病」。女性、高齡、HbA1c &gt;9、BMI &gt;45、肝病或腎病病人的外推性有限。</li>
+<li><strong>特殊族群</strong>：曾有 AP 病史的病人只佔約 21%（S3：19% 對 25%；S4：22% 對 20%），AP 終點的事件數大部分可能來自這個子族群，但文內沒有報告亞組事件分布。</li>
+</ol>
+</li>
+</ul>
+<h4>B3. 研究設計與偏差</h4>
+<ol>
+<li>
+<p><strong>AP 終點經過大幅修訂，合併分析的 SAP 很晚才定稿</strong>（偏差方向：可能讓效果看起來變大）：</p>
+<ul>
+<li>原始計畫書（2024/2/16）的次要終點是各試驗內的「裁定腹部臨床事件」，包括因高 TG 相關腹痛就醫或住院，以及 documented 胰臟炎 [Protocol p.8]。</li>
+<li>之後修訂為只看 AP，並刪除「與高 TG 相關」的條件 [Protocol Summary of Changes p.183]。</li>
+<li>合併分析 SAP V0.1 日期是 <strong>2026 年 5 月 22 日</strong> [SAP p.607]，距 topline 公布（7 月 22 日）只有 2 個月，正值多數受試者即將完成第 12 個月訪視。</li>
+<li>SAP 聲明是「在資料庫鎖定與解盲前」定稿，形式上合規。但 [推論] 盲態下的合計事件數與事件類型，在定稿時可能已部分可見，納入「possible」類別的決定是否受此影響，無法排除。</li>
+</ul>
+</li>
+<li>
+<p><strong>「Possible pancreatitis」定義寬鬆，且只適用於有 AP 病史者</strong>：</p>
+<ul>
+<li>要件為：曾有 AP 病史，加上典型腹痛與支持性治療；lipase、amylase 正常或沒有測，影像沒有做或不具診斷性 [Supplement Methods]。</li>
+<li>這類事件的誤分類風險高，而且只會發生在有 AP 病史的人身上。</li>
+<li>S3 安慰劑組「任何 AP 病史」比例較高（25% 對 19%），但模型只校正「5 年內病史」這個分層因子。[推論] 這種失衡傾向讓安慰劑組有更多「possible」事件，<strong>高估</strong> plozasiran 的效益。</li>
+<li>SAP 預先規劃了「僅 documented AP」的探索性分析 [SAP p.618]，<strong>正文與 supplement 都未報告</strong>，是本文最關鍵的缺漏。</li>
+</ul>
+</li>
+<li>
+<p><strong>偵測偏差</strong>：裁定由「試驗主持人通報可疑事件」觸發。試驗組腹痛 AE 較少（13/504 = 3% 對 17/252 = 7%）[Table 3]。若試驗主持人因看到 TG 大降而降低懷疑度，或病人症狀較輕而沒有就醫，都會進一步減少試驗組的事件數。</p>
+</li>
+<li>
+<p><strong>對照組適當性</strong>：安慰劑加背景標準治療，符合「對照組正是我日常會給的治療」的原則。但 icosapent ethyl 劑量、fibrate 是否已優化，沒有逐例說明。</p>
+</li>
+<li>
+<p><strong>前期證據</strong>：SHASTA-2（第二期）為陽性，第三期有合理依據 [外部]。</p>
+</li>
+<li>
+<p><strong>基線失衡</strong>：</p>
+<ul>
+<li>S3 心血管疾病：plozasiran 35% 對安慰劑 25%。</li>
+<li>S4 男性：77% 對 66%。</li>
+</ul>
+<p>2:1 分派下這些可能是隨機差異，但都沒有被校正。</p>
+</li>
+</ol>
+<h4>B4. 測量工具與實務意義</h4>
+<ul>
+<li><strong>TG 測量</strong>：取兩次空腹值的幾何平均（相隔 2–7 天），可降低單次測量的變異，設計良好 [Supplement Fig S4 footnote]。</li>
+<li><strong>Surrogate 與硬終點</strong>：TG 是替代指標。AP 是硬終點，但本文的 AP 包含 probable 與 possible，而且沒有報告嚴重度（Atlanta 分級）、住院天數或 ICU 使用。SAP 規劃的醫療資源使用分析也未報告。</li>
+<li><strong>真實世界效用</strong>：每 100 人治療 1 年，約可少 2.6 人發生首次 AP（95% CI 0.1–5.0 人）[自行計算]。若只在 TG ≥880 或有 AP 病史的高風險者使用，絕對效益可能更大，但文內沒有資料支持這個推論。</li>
+</ul>
+<h3>C. 統計與資料完整性</h3>
+<h4>C1. 結果分類（CI 加 MCID）</h4>
+<ul>
+<li><strong>MCID 設定</strong>：文內沒有預先指定 [推算]。
+<ul>
+<li>TG：以「安慰劑校正後至少降 20–30 pp」或「讓 TG 跌破 500 的比例增加 ≥15–20 pp」作為臨床上有意義的門檻。</li>
+<li>AP：以相對降幅 ≥25%（RR ≤0.75）或絕對降幅 ≥1 pp 每年作為門檻。</li>
+</ul>
+</li>
+</ul>
+<div class="table-wrap wide"><table>
+<thead>
+<tr>
+<th>終點</th>
+<th>效果量（95% CI）</th>
+<th>ARD</th>
+<th>MCID [推算]</th>
+<th>結果分類</th>
+<th>實務意義</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>TG 第 12 個月（S3）</td>
+<td>−45 pp（−51 to −38）</td>
+<td>—</td>
+<td>−20 至 −30 pp</td>
+<td><strong>POSITIVE</strong></td>
+<td>CI 完全超越 MCID</td>
+</tr>
+<tr>
+<td>TG 第 12 個月（S4）</td>
+<td>−47 pp（−54 to −39）</td>
+<td>—</td>
+<td>同上</td>
+<td><strong>POSITIVE</strong></td>
+<td>兩試驗互相複製</td>
+</tr>
+<tr>
+<td>TG &lt;500 達成率</td>
+<td>RD 0.40（0.3–0.5）</td>
+<td>+40 pp</td>
+<td>+15–20 pp</td>
+<td><strong>POSITIVE</strong></td>
+<td>NNT 約 2.5 [自行計算]</td>
+</tr>
+<tr>
+<td>AP 事件率（合併）</td>
+<td>RR 0.22（0.07–0.67）</td>
+<td>約 −4 事件／100 人年</td>
+<td>RR 0.75</td>
+<td><strong>POSITIVE（相對尺度）</strong></td>
+<td>CI 上限 0.67 已排除 MCID</td>
+</tr>
+<tr>
+<td>首次 AP（合併）</td>
+<td>OR 0.26（0.08–0.82）；HR 0.26（0.09–0.78）</td>
+<td><strong>−2.6 pp（−0.1 to −5.0）</strong>[自行計算，Wald 近似]</td>
+<td>ARD 1 pp</td>
+<td><strong>IMPRECISE（+）</strong></td>
+<td>絕對尺度的 CI 下限幾乎貼近 0，NNT 約 39（範圍約 20 到 &gt;700）</td>
+</tr>
+<tr>
+<td>LDL-C（傷害端）</td>
+<td>+27／+25 pp（12–39）</td>
+<td>中位數 +15–23 mg/dL</td>
+<td>—</td>
+<td>探索性訊號</td>
+<td>需以 apoB 及長期心血管結果判斷</td>
+</tr>
+<tr>
+<td>血糖惡化</td>
+<td>14% 對 9%</td>
+<td>+5 pp</td>
+<td>—</td>
+<td>未正式檢定</td>
+<td>有傷害訊號</td>
+</tr>
+</tbody>
+</table></div>
+<h4>C2. Underpowered positive 與 Winner's Curse</h4>
+<ul>
+<li>AP 終點<strong>沒有</strong>檢定力設計，總共 14 位病人有事件（plozasiran 5 位、安慰劑 9 位）。</li>
+<li>依 Gelman &amp; Carlin 的框架，在低檢定力下達到 p &lt;0.05 的估計值，傾向系統性誇大（Type M error）。RR 0.22／HR 0.26 對應 74–78% 的相對降幅，很可能高估真實效果。</li>
+<li><strong>後續試驗的提醒</strong>：若以 RR 0.22 作為檢定力計算的假設效果量，會嚴重低估所需樣本數。</li>
+<li>作者以 PALISADE（82%）作為一致性佐證，但 PALISADE 本身也是小型試驗、事件數少，兩個小型試驗彼此「一致」並不能消除 Type M 誇大。</li>
+</ul>
+<h4>C3. Bayesian 補充（首次 AP 事件；常態近似 [自行計算]）</h4>
+<p>以 HR 0.26（0.09–0.78）推回 ln HR = −1.35、SE ≈ 0.55，在三種先驗下計算：</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Prior</th>
+<th>後驗 HR（95% CrI）</th>
+<th>Pr(HR &lt;1)</th>
+<th>Pr(HR &lt;0.75)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Non-informative</td>
+<td>0.26（0.09–0.78）</td>
+<td>約 0.99</td>
+<td>約 0.97</td>
+</tr>
+<tr>
+<td>Skeptical（中心 HR 1，Pr(HR &lt;0.5) = 5%）</td>
+<td><strong>0.61（0.32–1.17）</strong></td>
+<td><strong>約 0.93</strong></td>
+<td><strong>約 0.73</strong></td>
+</tr>
+<tr>
+<td>Optimistic（中心 HR 0.5，SD 同上）</td>
+<td>0.39（0.20–0.76）</td>
+<td>約 0.997</td>
+<td>約 0.97</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>解讀</strong>：「有益」的方向在三種先驗下都很穩健（Pr(benefit) ≥93%）。但效果大小對先驗高度敏感：在懷疑型先驗下，後驗點估計只剩約 39% 的相對降幅，95% CrI 還跨過 1。這支持「AP 效益方向可信，但 78% 降幅不可信」的判讀。</p>
+<h4>C4. 報告完整性與其他統計問題</h4>
+<p><strong>Kaplan-Meier 圖（Figure 1、Figure S8 視覺判讀）</strong></p>
+<ul>
+<li>安慰劑組的第一個事件約在第 2 個月，plozasiran 組約在第 7 個月；曲線在第 5–7 個月後才明顯分開。</li>
+<li><strong>Number at risk 在第 12 個月的格點驟降</strong>：安慰劑 231 → 158，plozasiran 468 → 338。對照 CONSORT 完成人數（238 與 468）可知，這是第 12 個月訪視窗（day 330–405）造成的格點效應，不是真正失訪；曲線尾端仍可解讀。</li>
+<li><strong>Figure 1 與 Figure S8 數值不一致</strong>（標註為圖面判讀的限制）：
+<ul>
+<li>Figure S8 的首次事件累積發生率：安慰劑約 3.6%（= 9/253）、plozasiran 約 1%（= 5/504），兩者吻合。</li>
+<li>Figure 1B 的 inset 中，安慰劑約 6%、plozasiran 約 1.7%。</li>
+<li>Figure 1A 的 inset 中，安慰劑約 9%，但 13 事件／253 人 ≈ 5.1%。</li>
+<li>Figure 1 的 y 軸標為「Mean Incidence (%)」或「Percentage of Events」，可能是模型估計值，但圖說沒有定義。正文主圖呈現的數值比原始比例高 1.5–1.8 倍，在視覺上放大了兩組差距。</li>
+</ul>
+</li>
+<li><strong>「中位首次事件時間 182 天對 283 天」沒有意義</strong>：KM 中位數並未到達（累積發生率 &lt;4%），這個數字看起來只是「有事件者」的事件時間中位數，以 9 對 5 個事件比較，不能解讀為延後發病。</li>
+</ul>
+<p><strong>其他數據與圖表問題</strong></p>
+<ul>
+<li><strong>圖表誤差棒</strong>：
+<ul>
+<li>Figure S5A 標示為 mean ± SEM，但安慰劑組誤差棒約 ±660 mg/dL；在 n ≈ 140 的情況下 SEM 應只有約 55，因此應是 SD 被誤標為 SEM。</li>
+<li>Figure S6 的 S4 ≥880 亞組 CI 寫成「−612」，是打字錯誤。</li>
+<li>Table 2 中 S4 安慰劑 ≥880 亞組的 IQR 為「−60 to 4」，Figure S6 卻是「−90, 4.2」，兩者不一致。</li>
+</ul>
+</li>
+<li><strong>Remnant-C 與 non-HDL-C 的數值落差</strong>：正文 LS mean（−51／−49%、−17／−24%）與 Figure S7 觀察平均值（約 −63／−67%、−23／−33%）有差距，來自保守插補（washout 假設），方向一致，屬可接受。</li>
+<li><strong>未報告的預先指定分析</strong>：
+<ul>
+<li>僅 documented AP 的探索性分析</li>
+<li>AP 的 Fisher exact、Poisson、J2R 敏感度分析</li>
+<li>Per-protocol 分析</li>
+<li>比例風險假設檢驗</li>
+<li>MACE 裁定結果（安全性目標之一）</li>
+<li>ADA 免疫原性</li>
+<li>新發糖尿病（NODM）發生率</li>
+</ul>
+</li>
+<li><strong>統計紅旗（7 項）</strong>：
+<ol>
+<li>AP 只有 14 位病人有事件，存在 Winner's Curse 風險。</li>
+<li>「possible」AP 定義寬鬆，且沒有分層報告。</li>
+<li>SAP 規劃的 documented-only 與敏感度分析未報告。</li>
+<li>AP 終點的報告順序與 SAP 檢定順序不同，「risk ratio」標示錯誤。</li>
+<li>Figure 1 的事件百分比與原始比例、Figure S8 不一致。</li>
+<li>階層檢定順序在正文、supplement、SAP 三者間不一致。</li>
+<li>安全性終點（血糖、LDL-C、肝脂肪）都沒有正式檢定或 CI，只以「similar」描述。</li>
+</ol>
+</li>
+</ul>
+<h3>D. 亞組分析評估</h3>
+<div class="table-wrap wide"><table>
+<thead>
+<tr>
+<th>亞組</th>
+<th>Interaction p</th>
+<th>預先指定</th>
+<th>一致性</th>
+<th>生物合理性</th>
+<th>可信度</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>基線 TG ≥880 vs &lt;880（TG 終點）</td>
+<td>未報告；兩層都是 −42 至 −47 pp</td>
+<td>是（≥880 為階層終點；&lt;880 列於 Fig S6，未校正多重比較）</td>
+<td>兩試驗一致</td>
+<td>合理</td>
+<td><strong>高</strong>（效果一致，無異質性）</td>
+</tr>
+<tr>
+<td>媒體稱「TG &gt;880 且有 AP 病史，AP 降 100%」</td>
+<td>未報告</td>
+<td>正文與 supplement 都未呈現</td>
+<td>—</td>
+<td>合理，但事件數極少</td>
+<td><strong>推測性</strong>（應忽略）</td>
+</tr>
+<tr>
+<td>性別、種族、糖尿病有無</td>
+<td>未報告</td>
+<td>—</td>
+<td>—</td>
+<td>—</td>
+<td>無法判定</td>
+</tr>
+</tbody>
+</table></div>
+<h3>E. 紅旗清單</h3>
+<ul>
+<li><strong>設計</strong>：AP 終點從各試驗的腹部事件，事後修訂為合併的 AP；合併分析 SAP 遲至 2026/5 定稿；「possible」AP 的定義寬鬆。</li>
+<li><strong>統計</strong>：只有 14 位病人有事件；預先規劃的 documented-only 與敏感度分析未報告；把 rate ratio 擺在最前面並誤標為 risk ratio。</li>
+<li><strong>圖表</strong>：Figure 1 的事件百分比高於原始比例；SD 被誤標為 SEM。</li>
+<li><strong>敘事</strong>：「78 percentage points」用詞錯誤；remnant-C 的 mg/dL 數字錯誤；以「atherogenic burden」包裝 non-HDL 下降，卻忽略 apoB 沒變、LDL-C 上升。</li>
+<li><strong>COI</strong>：贊助者主導分析與撰稿，4 位作者是公司員工；大會發表與公司新聞稿出現論文中沒有的亞組宣稱。</li>
+<li><strong>外推</strong>：女性、黑人、BMI &gt;45、HbA1c &gt;9 的資料有限或被排除；只有 1 年追蹤。</li>
+<li><strong>安全性</strong>：血糖惡化（14% 對 9%）、LDL-C 上升、肝脂肪資料只有 36 人，長期心血管淨效益未知。</li>
+</ul>
+<h3>F. 反向解釋</h3>
+<ol>
+<li><strong>AP 下降部分是分類假象</strong>：
+<ul>
+<li>支持線索：「possible」類別只適用於有 AP 病史者，且不需要酵素證據；S3 安慰劑組 AP 病史較多（25% 對 19%）；documented-only 分析未報告。</li>
+<li>反對線索：S8 的曲線分離與 TG 下降的時序一致，PALISADE 也觀察到同方向的效果。</li>
+</ul>
+</li>
+<li><strong>偵測、通報偏差</strong>：
+<ul>
+<li>支持線索：裁定由試驗主持人通報觸發，TG 大幅下降可能讓試驗主持人或病人的警覺性降低；試驗組腹痛 AE 較少。</li>
+<li>反對線索：裁定委員會是盲態，試驗也持續教育所有病人辨識 AP 症狀。</li>
+</ul>
+</li>
+<li><strong>小樣本的隨機極端值（Winner's Curse）</strong>：
+<ul>
+<li>支持線索：事件數只有 14 人；在懷疑型先驗下後驗 HR 約 0.61。</li>
+<li>反對線索：兩種模型、Cox 分析與 PALISADE 都指向同一方向。</li>
+</ul>
+</li>
+<li><strong>安慰劑組 TG 下降來自 regression to the mean，而非治療優化</strong>：這不影響組間比較的效度，但意味著絕對效益（例如 TG &lt;500 的組間差）沒有表面上那麼大，臨床上許多「TG ≥500」的病人重測後可能不需要新藥。</li>
+</ol>
+<h3>G. 最終裁決</h3>
+<ul>
+<li><strong>整體可信度</strong>：
+<ul>
+<li>TG 降低：<strong>高</strong>。</li>
+<li>急性胰臟炎降低：<strong>中低</strong>。方向可信，幅度不可信。</li>
+</ul>
+</li>
+<li><strong>可採用的條件</strong>：已優化標準治療、排除次發因素，且重複測量後空腹 TG 仍 ≥500 mg/dL（尤其 ≥880 或曾發生 AP）的成人，可考慮使用 plozasiran 預防 AP。同時須監測 HbA1c、LDL-C 與 apoB。</li>
+<li><strong>不建議採用的情境</strong>：
+<ul>
+<li>以降低心血管風險為目的的中度高 TG</li>
+<li>未經重測確認的單次 TG 偏高</li>
+<li>HbA1c 控制極差或肝病病人</li>
+</ul>
+</li>
+<li><strong>若要改觀，最需要的三項改進</strong>：
+<ol>
+<li>公開 documented-only AP，以及依 documented／probable／possible 分層的事件數與敏感度分析（J2R、Fisher）。</li>
+<li>以 AP 為主要終點、事先計算檢定力的試驗，或更長的 OLE 期間合併對照分析。</li>
+<li>長期 apoB、LDL-C、血糖與心血管結果資料，以確認淨效益。</li>
+</ol>
+</li>
+<li><strong>一句話結論</strong>：Plozasiran 能大幅、穩定地降低重度高三酸甘油脂，胰臟炎風險可能下降，但 78% 的降幅只建立在 14 位病人的事件上，實際效益很可能較小。</li>
+</ul>
+<hr />
+<p><strong>Sources</strong></p>
+<ul>
+<li><a href="https://www.hcplive.com/view/plozasiran-cuts-triglycerides-by-80-in-shasta-3-4-trials">HCPLive – Plozasiran Cuts Triglycerides By 80% in SHASTA-3/4 Trials</a></li>
+<li><a href="https://www.hcplive.com/view/shasta-3-4-what-an-80-triglyceride-cut-means-with-christie-ballantyne-md">HCPLive – SHASTA-3/4: What an 80% Triglyceride Cut Means (Ballantyne interview)</a></li>
+<li><a href="https://www.escardio.org/news/press/press-releases/plozasiran-significantly-reduces-triglyceride-levels-in-patients-with-severe-hypertriglyceridaemia/">ESC press release – Plozasiran significantly reduces triglyceride levels</a></li>
+<li><a href="https://lasvegassun.com/news/2026/jul/22/arrowhead-pharmaceuticals-reports-topline-results-/">Las Vegas Sun – Arrowhead topline results (Jul 22, 2026)</a></li>
+<li><a href="https://www.tctmd.com/news/apoc3-targeting-drug-has-benefits-severe-hypertriglyceridemia">TCTMD – APOC3-Targeting Drug Has Benefits in Severe Hypertriglyceridemia</a></li>
+<li><a href="https://www.thecardiologyadvisor.com/news/plozasiran-phase-3-shasta-3-shasta-4-severe-hypertriglyceridemia/">The Cardiology Advisor – Plozasiran Cuts Triglycerides, Pancreatitis Risk</a></li>
+<li><a href="https://www.nejm.org/doi/full/10.1056/NEJMoa2610014">NEJM – Plozasiran for Severe Hypertriglyceridemia and Risk of Pancreatitis</a></li>
+<li><a href="https://clinician.nejm.org/nejm-jw.NA57358">NEJM Journal Watch – SHASTA-2 summary (Watson)</a></li>
+<li><a href="https://www.businesswire.com/news/home/20240407461180/en">Business Wire – Arrowhead SHASTA-2 JAMA Cardiology announcement</a></li>
+<li><a href="https://www.biospace.com/press-releases/arrowhead-pharmaceuticals-presents-new-data-at-aha24-from-palisade-phase-3-study-and-open-label-extension-from-muir-and-shasta-2-studies-of-plozasiran">BioSpace – Arrowhead AHA24 PALISADE/MUIR/SHASTA-2 OLE</a></li>
+<li><a href="https://www.wolterskluwer.com/en/solutions/Ovid/new-england-journal-of-medicine-624">Wolters Kluwer Ovid – NEJM journal information (JIF)</a></li>
+</ul>
+
+<footer class="appraisal-meta">評讀資訊：模型：claude-opus-5-5 (claude)  ·  route：rct  ·  產出時間：2026-11-08 08:19 CST</footer>
+</main>
+</body>
+</html>
