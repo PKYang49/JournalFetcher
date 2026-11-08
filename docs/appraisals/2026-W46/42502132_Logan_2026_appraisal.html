@@ -1,0 +1,756 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Musculoskeletal Stretching and Arterial Stiffness: Systematic Review and Meta-analysis of Acute and Longitudinal Interventions.</title>
+<style>
+  :root {
+    --bg: #fafafa;
+    --card: #ffffff;
+    --text: #1a1a1a;
+    --muted: #6b6b6b;
+    --border: #e5e5e5;
+    --accent: #0b5fff;
+  }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang TC",
+      "Microsoft JhengHei", sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    margin: 0;
+    padding: 24px 16px 64px;
+    line-height: 1.72;
+  }
+  main {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    margin: 0 auto;
+    max-width: 840px;
+    padding: 22px 26px;
+  }
+  nav {
+    margin: 0 auto 14px;
+    max-width: 840px;
+    color: var(--muted);
+    font-size: 14px;
+  }
+  a { color: var(--accent); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  h1, h2, h3, h4 { line-height: 1.35; }
+  h1 { font-size: 26px; margin-top: 0; }
+  h2 { border-top: 1px solid var(--border); padding-top: 18px; }
+  code {
+    background: rgba(127, 127, 127, 0.12);
+    border-radius: 4px;
+    padding: 1px 4px;
+  }
+  .table-wrap {
+    margin: 1em 0;
+    overflow-x: auto;
+  }
+  .table-wrap.wide {
+    /* Break out of the 840px prose column, centred on the viewport. */
+    width: min(1040px, calc(100vw - 32px));
+    margin-left: calc(50% - min(520px, 50vw - 16px));
+  }
+  table {
+    border-collapse: collapse;
+    table-layout: auto;
+    width: 100%;
+  }
+  .table-wrap.wide {
+    /* Opaque so the <main> card border does not show through the table. */
+    background: var(--card);
+  }
+  /* Width hints go on <th> as percentages: Chrome's auto table layout
+     mis-sizes columns (and overflows) when cells carry min-width. */
+  .table-wrap.wide th:first-child {
+    /* Variable + plain-language definition, e.g. "NCPV (noncalcified ...)". */
+    width: 26%;
+  }
+  .table-wrap.wide th:last-child {
+    /* Last column is usually a one-line interpretation. */
+    width: 20%;
+  }
+  th, td {
+    border: 1px solid var(--border);
+    /* Wrap only at spaces: never split an English word mid-letter. */
+    overflow-wrap: normal;
+    word-break: normal;
+    hyphens: manual;
+    padding: 6px 8px;
+    text-align: left;
+    vertical-align: top;
+  }
+  blockquote {
+    border-left: 3px solid var(--accent);
+    color: var(--muted);
+    margin-left: 0;
+    padding-left: 14px;
+  }
+  .appraisal-meta {
+    border-top: 1px solid var(--border);
+    margin-top: 28px;
+    padding-top: 14px;
+    color: var(--muted);
+    font-size: 13px;
+  }
+  @media (max-width: 600px) {
+    body {
+      padding: 12px 8px 40px;
+    }
+    main {
+      padding: 16px 12px;
+    }
+    h1 {
+      font-size: 22px;
+    }
+    table {
+      font-size: 12px;
+    }
+    .table-wrap.wide {
+      width: calc(100vw - 16px);
+      margin-left: calc(50% - 50vw + 8px);
+    }
+    th, td {
+      padding: 4px 5px;
+    }
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #1a1a1a;
+      --card: #242424;
+      --text: #e8e8e8;
+      --muted: #999;
+      --border: #333;
+      --accent: #6ea8ff;
+    }
+  }
+</style>
+</head>
+<body>
+<nav><a href="../../2026-W46.html">← 回到 2026-W46 週報</a></nav>
+<main>
+<h1>Musculoskeletal Stretching and Arterial Stiffness: Systematic Review and Meta-analysis of Acute and Longitudinal Interventions.</h1>
+<h1>批判性評讀：伸展運動與動脈硬化（Logan et al., <em>Sports Medicine</em> 2026）</h1>
+<hr />
+<h2>SECTION-0：文章全面描述</h2>
+<h3>0. 文章身份證</h3>
+<ul>
+<li><strong>標題</strong>：Musculoskeletal Stretching and Arterial Stiffness: Systematic Review and Meta-analysis of Acute and Longitudinal Interventions</li>
+<li><strong>期刊／年份</strong>：<em>Sports Medicine</em> 2026;56:2823–2840</li>
+<li><strong>DOI</strong>：10.1007/s40279-026-02483-8；PMID 42502132</li>
+<li><strong>文章類型</strong>：Systematic review + meta-analysis，量化合成型，走 <strong>SKILL-B / A1</strong></li>
+<li><strong>子型判定</strong>：有 PROSPERO 註冊（CRD42024524199）、PRISMA flow、雙人篩選、ROB-2、3-level model 與 GRADE，屬於 systematic review。</li>
+<li><strong>混血文章警示（部分適用）</strong>：方法學形式完整，但執行面有多處與自稱不符：
+<ul>
+<li>PubMed 檢索式可能誤把人體研究一起排除（見 A1）。</li>
+<li>CASP「品質」與 ROB-2「偏差風險」兩套工具結論互相矛盾。</li>
+<li>GRADE 的各項判定與資料本身不一致。</li>
+<li>作者依未達顯著的 moderator 結果給出「處方建議」，已超出 SR 的推論範圍。</li>
+</ul>
+</li>
+</ul>
+<h3>1. 作者團隊評論</h3>
+<ul>
+<li><strong>通訊作者</strong>：
+<ul>
+<li>Jeongok G. Logan，University of Virginia 護理學院；專長是動脈硬化（PWV）、睡眠與心血管風險 [文內][外部: PubMed]。</li>
+<li>Lee Stoner，UNC Chapel Hill 運動與運動科學系／流行病學系，並列 Scienceye（Hillsborough, NC）[文內]。</li>
+</ul>
+</li>
+<li><strong>分工</strong> [文內]：
+<ul>
+<li>概念：JGL、LS</li>
+<li>文獻搜尋：JGL、AJC</li>
+<li>品質與偏差評估：JGL、HZ</li>
+<li>資料擷取：JGL、AJC、LS</li>
+<li><strong>統計分析由 LS 一人完成</strong></li>
+</ul>
+</li>
+<li><strong>團隊過往研究</strong> [外部: PubMed]：
+<ul>
+<li>Logan JG et al. <em>J Cardiovasc Nurs</em> 2018：單次 30 分鐘靜態伸展，30 名健康女性，pre-post 無對照組，cfPWV 顯著下降（<a href="https://doi.org/10.1097/JCN.0000000000000460">DOI</a>）。</li>
+<li>Logan JG, …, Stoner L. <em>Eur J Obstet Gynecol Reprod Biol</em> 2026：肥胖孕婦 10 週伸展 vs 步行的 RCT，cfPWV −0.44 m/s（95% CI −1.06 to 0.18），<strong>未達顯著</strong>（<a href="https://doi.org/10.1016/j.ejogrb.2026.115470">DOI</a>）。</li>
+<li>Stoner L et al. <em>Am J Physiol Heart Circ Physiol</em> 2023：以動脈硬化作為 24 小時活動週期的中介結果（<a href="https://doi.org/10.1152/ajpheart.00258.2023">DOI</a>）。</li>
+<li>Zieff…Stoner. <em>Psychophysiology</em> 2025：PWV 統合分析，採用相同的 SMD 分級語言（<a href="https://doi.org/10.1111/psyp.70068">DOI</a>）。</li>
+<li>兩位通訊作者是 PWV 領域的核心研究者，不是跨領域首次切入。</li>
+</ul>
+</li>
+<li><strong>作者立場史</strong>：
+<ul>
+<li>Logan 長期推動「伸展降低動脈硬化」這個假說。UVA 新聞稿把 2018 年 pilot 描述為通往後續 NIH 研究的基礎 [外部: UVA School of Nursing]。</li>
+<li>本篇結論與作者既有立場高度一致，有<strong>確認偏差／prior commitment 風險</strong>。</li>
+<li>作者自己較嚴謹的 RCT（孕婦 cfPWV）是陰性結果；該文晚於本篇出版，未被引用 [推論]。</li>
+</ul>
+</li>
+<li><strong>利益揭露</strong> [文內]：Funding「None」；COI「no conflicts relevant」。</li>
+<li><strong>評估</strong>：沒有商業利益。主要風險是智識投資：作者的研究計畫以伸展為核心介入。另外 Stoner 列名私人顧問機構 Scienceye，文內未說明該機構性質 [文內][推論]。</li>
+</ul>
+<h3>2. 文獻 Metadata</h3>
+<ul>
+<li><strong>時程</strong> [文內]：
+<ul>
+<li>Received date：[markdown 未保留 received date]，無法計算審查天數。</li>
+<li>Accepted：2026/06/08；Published online：2026/07/26。</li>
+<li>檢索完成於 2025/12，距接受約 6 個月。</li>
+</ul>
+</li>
+<li><strong>期刊審查速度</strong> [外部: Springer 期刊頁（大學鏡像）]：<em>Sports Medicine</em> 投稿到首次決定的中位數為 21 天（2023 年資料）。缺 received date，無法比較本篇審查速度。</li>
+<li><strong>期刊屬性</strong>：
+<ul>
+<li>JIF 9.3（2023）[外部: Springer 期刊頁]。</li>
+<li>第三方彙整列 2025 IF 9.4、Q1 [外部: journalmetrics.org，非官方 JCR]。</li>
+<li>本文為 CC BY 4.0 Open Access [文內]。</li>
+</ul>
+</li>
+<li><strong>邀稿 vs 投稿</strong>：文內未揭露，標示為一般 Systematic Review。</li>
+</ul>
+<h3>3. 研究背景（文內）</h3>
+<ul>
+<li><strong>既有事實</strong>：
+<ul>
+<li>cfPWV 每增加 1 m/s，心血管事件風險增加 14%（Vlachopoulos meta-analysis）。</li>
+<li>驅幹柔軟度差與動脈硬化相關。</li>
+<li>已有兩篇 meta-analysis：Kato 2020 SMD −1.00；Thomas 2021 baPWV SMD −2.04、cfPWV −0.46。</li>
+</ul>
+</li>
+<li><strong>作者指出的知識缺口</strong>：
+<ol>
+<li>先前研究把急性與長期介入混在同一模型。</li>
+<li>混入 CAVI、AIx 等非 PWV 指標。</li>
+<li>未處理同一研究多個效果量之間的相依性。</li>
+<li>未分析 FITT 處方的調節效果。</li>
+</ol>
+</li>
+<li><strong>研究問題</strong>：成人進行急性（單次）與長期（多次）伸展後，PWV 下降多少？這個效果是否受 FITT、督導、研究品質與 PWV 測量段落調節？</li>
+</ul>
+<h3>4. 研究設計與方法</h3>
+<ul>
+<li>
+<p><strong>PICO</strong>：</p>
+<ul>
+<li><strong>P</strong>：≥18 歲成人（實際多為健康年輕日本男性，以及停經女性）。</li>
+<li><strong>I</strong>：靜態肌肉肌腱伸展，分急性單次與 4–12 週長期。</li>
+<li><strong>C</strong>：
+<ul>
+<li>急性：對側肢體（14/26 k）或計時對照（12/26 k）。</li>
+<li>長期：常規照護（16/17 k）或選擇性伸展講座（1 k）。</li>
+</ul>
+</li>
+<li><strong>O</strong>：PWV，涵蓋 cfPWV、baPWV、crPWV、faPWV、haPWV 等段落。主要效果量為 SMD，MD（m/s）作輔助解讀。</li>
+</ul>
+</li>
+<li>
+<p><strong>資料庫</strong>：PubMed、Scopus、Embase、WoS，1974–2025/12，限英文、限人類。PubMed 檢索式見 [Supplement Table S2]。</p>
+</li>
+<li>
+<p><strong>篩選與擷取</strong>：</p>
+<ul>
+<li>JGL 與 AJC 雙人獨立篩選，LS 仲裁。</li>
+<li>雙人擷取；數值差異超過 5% 時重核，<strong>最終採兩人平均值</strong>。</li>
+</ul>
+</li>
+<li>
+<p><strong>品質工具</strong>：CASP RCT checklist（11 分）＋ ROB-2（含 crossover 的 period/carryover 面向）。</p>
+</li>
+<li>
+<p><strong>統計</strong>：</p>
+<ul>
+<li>3-level REML model（metafor）。</li>
+<li>若單一研究有 k&gt;1，再額外把樣本數修正為 <strong>n/k</strong>。</li>
+<li>另做 permutation test、Cook's distance、Baujat plot、Egger 型回歸、fail-safe N。</li>
+<li>13 個 moderator 逐一單獨放入模型。</li>
+<li>臨床意義閾值設為 1 m/s。</li>
+</ul>
+</li>
+<li>
+<p><strong>限制</strong>：效果量的確切計算公式未在 markdown 中呈現，包括：</p>
+<ul>
+<li>用變化量還是 post 值？</li>
+<li>是否 Hedges' g 校正？</li>
+<li>crossover／對側肢體設計如何處理受試者內相關？</li>
+</ul>
+<p>標注為 [markdown 未保留／文內未報告]。</p>
+</li>
+</ul>
+<h3>5. 研究結果重點整理</h3>
+<div class="table-wrap wide"><table>
+<thead>
+<tr>
+<th>變項（代表什麼）</th>
+<th style="text-align:right">研究數 / 人數</th>
+<th style="text-align:right">I²</th>
+<th style="text-align:right">組間差（95% CI）</th>
+<th style="text-align:right">p 值</th>
+<th>如何解讀</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>急性 PWV</strong>（SMD）：單次伸展後 0–30 分鐘的 PWV 變化</td>
+<td style="text-align:right">u=6 / k=26 / n=110</td>
+<td style="text-align:right"><strong>0%</strong>（τ²=0）</td>
+<td style="text-align:right"><strong>−0.22（−0.62 to 0.17）</strong></td>
+<td style="text-align:right">0.258</td>
+<td>CI 跨 0，效果不確定；I²=0 可能是 SE 灌水造成的假象</td>
+</tr>
+<tr>
+<td>急性 PWV（MD）</td>
+<td style="text-align:right">同上</td>
+<td style="text-align:right">—</td>
+<td style="text-align:right">−0.14 m/s（−0.38 to 0.11）</td>
+<td style="text-align:right">0.253</td>
+<td>絕對值極小，遠低於 1 m/s 閾值</td>
+</tr>
+<tr>
+<td><strong>長期 PWV</strong>（SMD）：4–12 週伸展後 PWV 變化</td>
+<td style="text-align:right">u=6 / k=17 / n=159</td>
+<td style="text-align:right"><strong>33.6%</strong>（τ²=0.59）</td>
+<td style="text-align:right"><strong>−1.02（−1.79 to −0.25）</strong></td>
+<td style="text-align:right">0.012</td>
+<td>平均有利，但 <strong>PI −2.82 to 0.78</strong> 跨 0</td>
+</tr>
+<tr>
+<td>長期 PWV（MD）</td>
+<td style="text-align:right">同上</td>
+<td style="text-align:right">—</td>
+<td style="text-align:right">−0.94 m/s（−1.60 to −0.28）</td>
+<td style="text-align:right">0.013</td>
+<td>混合 ba／cr／fa／cf 段落，m/s 不可直接相加</td>
+</tr>
+<tr>
+<td><strong>每個伸展重複次數</strong>（≥3 vs &lt;3）</td>
+<td style="text-align:right">6 研究切成兩群</td>
+<td style="text-align:right">加入後 τ²→0.00</td>
+<td style="text-align:right">−1.46（−2.23 to −0.70）</td>
+<td style="text-align:right">&lt;0.001</td>
+<td>實質上是 3 篇研究對比另 3 篇，屬生態層級比較</td>
+</tr>
+<tr>
+<td>每次時長（30–50 vs 13–29 分鐘）</td>
+<td style="text-align:right">同上</td>
+<td style="text-align:right">τ² 0.47</td>
+<td style="text-align:right">−0.79（−1.96 to 0.38）</td>
+<td style="text-align:right">0.169</td>
+<td>CI 跨 0，<strong>無證據支持</strong></td>
+</tr>
+<tr>
+<td>每週頻率（5–7 vs 3–4 次）</td>
+<td style="text-align:right">同上</td>
+<td style="text-align:right">τ² 0.43</td>
+<td style="text-align:right">−1.05（−2.52 to 0.42）</td>
+<td style="text-align:right">0.149</td>
+<td>CI 跨 0</td>
+</tr>
+<tr>
+<td>有督導 vs 無督導</td>
+<td style="text-align:right">同上</td>
+<td style="text-align:right">τ² 0.42</td>
+<td style="text-align:right">−1.11（−2.58 to 0.37）</td>
+<td style="text-align:right">0.130</td>
+<td>CI 跨 0</td>
+</tr>
+<tr>
+<td>PWV 段落（CR／FA／BA vs CF）</td>
+<td style="text-align:right">同上</td>
+<td style="text-align:right">—</td>
+<td style="text-align:right">−0.04 至 0.44</td>
+<td style="text-align:right"><strong>1.325、2.057、1.522</strong></td>
+<td>p&gt;1 不可能存在，<strong>Table 3 報告錯誤</strong></td>
+</tr>
+</tbody>
+</table></div>
+<ul>
+<li><strong>長期個別效果量</strong>（Fig. 3 圖讀）：17 個 k 全部為負值，但<strong>只有 3 個 CI 不跨 0</strong>：
+<ul>
+<li>Bisconti k5：−3.32</li>
+<li>Nishiwaki k13：−2.22</li>
+<li>Boonpim k9：−1.80</li>
+</ul>
+</li>
+<li><strong>權重分布</strong>：
+<ul>
+<li>Wong 三個 k 合計約 30%，SMD −0.12 至 −0.24。</li>
+<li>Bisconti 八個 k 合計約 33%。</li>
+</ul>
+</li>
+<li><strong>異質性結構</strong>：3-level 變異中，level 3（研究間）占 51%，level 1（抽樣）占 49%，level 2 為 0 [文內]。</li>
+<li><strong>安全性</strong>：所有納入研究均未報告不良事件。只有 Wong 報告退出（「2/17」，但 Table 2 的 n=28，數字不一致）[文內]。</li>
+</ul>
+<h3>6. 作者討論重點</h3>
+<ul>
+<li><strong>主要訊息</strong>：
+<ul>
+<li>急性伸展效果小且不顯著，長期伸展效果大。</li>
+<li>0.94 m/s「接近臨床意義」，且可與有氧運動（−0.67 m/s）相比。</li>
+<li>建議每次 30–50 分鐘、每週 5–7 天、每個伸展重複 ≥3 次。</li>
+</ul>
+</li>
+<li><strong>與文獻比較</strong>：作者認為結果與 Kato 2020、Thomas 2021 一致。</li>
+<li><strong>作者自述的限制</strong> [文內]：
+<ol>
+<li>研究數少。</li>
+<li>長期研究品質不佳，缺乏遵從度資料。</li>
+<li>對側肢體對照可能受系統性效應污染。</li>
+<li>多為日本／亞洲族群。</li>
+</ol>
+</li>
+<li><strong>[評估] 作者迴避或低估的問題</strong>：
+<ul>
+<li>3-level model 疊加 n/k 修正，等於重複懲罰。</li>
+<li>長期 funnel plot 目視不對稱。</li>
+<li>moderator 與研究身分完全共線。</li>
+<li>GRADE 判定誤用。</li>
+<li>跨段落 MD 的臨床閾值不成立。</li>
+<li>結論中的處方建議明顯超出數據支持範圍。</li>
+</ul>
+</li>
+</ul>
+<h3>7. 外部專業意見</h3>
+<ul>
+<li>[無法取得]：PubMed 與網路檢索都未發現針對本文的同期 editorial、commentary 或 letter（檢索日 2026/11）。</li>
+<li>可作為外部對照的同期獨立研究 [外部: PubMed]：
+<ul>
+<li><strong>Thomas E et al. <em>Sci Rep</em> 2026</strong>（<a href="https://doi.org/10.1038/s41598-026-63164-0">DOI</a>）
+<ul>
+<li>獨立團隊，RCT 與隨機 crossover。</li>
+<li>伸展長期 ES −0.63、急性 ES −0.15（不顯著）。</li>
+<li><strong>整體 GRADE「very low」</strong>。</li>
+<li>方向與本文一致，但長期效果量約為本文的 60%，證據確定性評級低兩級。</li>
+</ul>
+</li>
+<li><strong>Logan et al. 2026 孕婦 RCT</strong>（作者自己的試驗）：cfPWV −0.44 m/s，NS。</li>
+</ul>
+</li>
+</ul>
+<h3>8. 臨床建議</h3>
+<ul>
+<li><strong>可採用的情境</strong>：
+<ul>
+<li>對無法或不願從事中高強度運動的人，伸展可以當作低風險的輔助活動。</li>
+<li>理由是幾乎沒有傷害，且可能有小幅血管效益。</li>
+</ul>
+</li>
+<li><strong>不建議直接套用的情境</strong>：
+<ul>
+<li>以「降低 CVD 風險」為目的開立伸展處方。</li>
+<li>用伸展取代有氧運動。</li>
+<li>把 30–50 分鐘、每週 5–7 天、≥3 次重複當成有證據的劑量。</li>
+<li>推論到高血壓、CAD、HFpEF 等心血管病人（納入研究中幾乎沒有這類病人）。</li>
+</ul>
+</li>
+<li><strong>實務建議</strong>：
+<ol>
+<li>對心血管病人仍以有氧運動與阻力訓練為主軸；伸展只作為附加或過渡選項。</li>
+<li>解讀「PWV 下降約 1 m/s」時，先確認是哪一段 PWV。baPWV／faPWV 的變化不能直接套用 cfPWV 的預後換算。</li>
+<li>本文的 FITT 建議只能作為<strong>未來 RCT 的假設</strong>，不是臨床處方。</li>
+</ol>
+</li>
+<li><strong>證據強度：弱</strong>。長期效果的方向大致一致，但 6 篇小型研究都有偏差風險，PI 跨 0、funnel plot 不對稱，終點是替代指標，加上多項分析錯誤。</li>
+</ul>
+<hr />
+<h2>SKILL-B 批判性評讀</h2>
+<h3>A. 補充技術細節</h3>
+<ul>
+<li><strong>宣稱範疇</strong>：
+<ul>
+<li>標題與結論以「成人」及「CVD 風險」為範疇。</li>
+<li>實際樣本：急性研究 85% 的 k 為男性、92% 為亞洲人，中位年齡 22.6 歲；長期研究 71% 的 k 為女性，中位年齡 43 歲。</li>
+<li><strong>Fig. 4 的百分比是以 k（效果量）計算，不是以受試者計算</strong>。例如「White 47%」= 8/17 k。以人數估算，Bisconti 約 39/159 ≈ 25% [推論，依 Table 2 各研究 n 推算]。</li>
+</ul>
+</li>
+<li><strong>文獻時間範圍</strong>：
+<ul>
+<li>急性研究全部是近 7 年發表，長期研究全部是近 10 年。</li>
+<li>檢索宣稱從 1974 年起，卻沒有任何 2014 年以前的研究。這可能反映真實的研究空窗，也可能與下述 PubMed 檢索問題有關。</li>
+</ul>
+</li>
+</ul>
+<h4>A1. Systematic Review / Meta-analysis 子模組</h4>
+<p><strong>搜尋策略與選擇流程</strong></p>
+<ul>
+<li><strong>⚠️ PubMed 檢索式疑有實質錯誤</strong> [Supplement Table S2]：
+<ul>
+<li>第 8 步使用 <code>#7 NOT (animals[mh])</code>，結果從 138 篇降為 76 篇。</li>
+<li>PubMed 預設會展開 MeSH 階層，而「Humans」位於「Animals」階層之下。</li>
+<li>因此 <code>NOT animals[mh]</code> 會排除<strong>所有標有 Humans MeSH 的人體研究</strong>，只留下尚未完成 MeSH 標引的紀錄 [推論，依 MeSH 階層結構]。</li>
+<li>標準寫法是 <code>NOT (animals[mh] NOT humans[mh])</code>。</li>
+<li>Fig. 1 的 PubMed 筆數（76）與此一致，表示錯誤確實被執行。</li>
+<li>Scopus、Embase、WoS 與參考文獻追查可能部分彌補，但 PubMed 這一軌的敏感度受損，作者沒有討論。</li>
+</ul>
+</li>
+<li><strong>檢索詞過窄</strong>：只用「stretching」，未納入「flexibility exercise」「static stretch」「range of motion exercise」等同義詞，也沒有檢索 CAVI。</li>
+<li><strong>PRISMA 數字核對</strong>（Fig. 1）：242 + 1 − 82 重複 = 161 → 排除 140 → 全文 21 → 排除 9 → 納入 12，數字自洽。全文排除理由只分類計數，沒有列出逐篇清單。</li>
+<li><strong>PROSPERO 已註冊</strong>，但文內沒有報告與註冊計畫的差異，例如 moderator 是否事前指定、α 設定。markdown 中 α 的敘述是亂碼：「α=0.05 for pooled effect…α=0.10 for Q test」。</li>
+<li><strong>資料擷取</strong>：取兩人平均值的做法不尋常。正規做法是差異經討論後取共識值，平均值等於把錯誤稀釋，而不是修正。</li>
+</ul>
+<p><strong>GRADE 五大降級因素（評讀者重評）</strong></p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>因素</th>
+<th>作者判定</th>
+<th>評讀者評估</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Risk of bias</td>
+<td>急性、長期各降 1 級</td>
+<td>同意降級。長期研究全部「some concerns」：無評估者盲化、分派隱匿不明，且 1 篇為 NRCT（Nishiwaki）卻仍從「high」起評。急性研究 2/6 篇（14/26 k）為 high risk。[Supplement Fig S1] 顯示 Measurement of outcome 僅約 8% 為 low risk。</td>
+</tr>
+<tr>
+<td>Inconsistency</td>
+<td>兩者皆「無」</td>
+<td><strong>不同意</strong>。長期 PI −2.82 to 0.78 跨 0，τ²=0.59（SMD 尺度上很大），I² 33.6%，Q p=0.088（作者自己設 α=0.10 就是顯著）。作者把 PI 歸為「imprecision」，<strong>是類別錯置</strong>：PI 反映的是 inconsistency。</td>
+</tr>
+<tr>
+<td>Indirectness</td>
+<td>兩者皆「無」</td>
+<td><strong>不同意</strong>。① 結論宣稱 CVD 風險，但終點是 PWV（替代指標）。② 多數 k 是周邊段落（ba、fa、cr），作者自己也承認這些段落與 CVD 的關聯不一致。③ 族群以健康年輕人為主。至少應降 1 級。</td>
+</tr>
+<tr>
+<td>Imprecision</td>
+<td>急性「無」；長期降 1 級</td>
+<td><strong>急性判定錯誤</strong>。CI −0.62 to 0.17 跨過無效線，依 GRADE 應降級；作者以「τ²=0 所以無 imprecision」為理由，屬概念錯誤。長期 n=159、CI 上界 −0.25，也應考慮降級。</td>
+</tr>
+<tr>
+<td>Publication bias</td>
+<td>兩者皆「無」</td>
+<td><strong>長期研究存疑</strong>。[Supplement Fig S3] funnel plot 目視呈明顯對角線分布：SE 越大，效果越負（SE 1.0–1.43 的點全部落在 −0.9 至 −3.3），右下角空白。Egger p=0.386 在 6 個研究、17 個相依 k 的情況下檢定力極低，不能據此排除小研究效應 [參考: jug140001.md, credibility 與 confidence 區分段]。</td>
+</tr>
+<tr>
+<td><strong>合理總評</strong></td>
+<td>急性 moderate、長期 low</td>
+<td><strong>急性：low 至 very low；長期：very low</strong>。與 Thomas 2026 獨立 MA 的「very low」一致。</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>統計方法的關鍵問題（本文最重要的方法學缺陷）</strong></p>
+<ol>
+<li><strong>雙重懲罰相依性</strong>：
+<ul>
+<li>3-level model 本身就是為了處理同一研究內多個 k 的相依性。</li>
+<li>作者在此之上又把每個 k 的樣本數改為 n/k，相依性被<strong>重複扣除</strong>。</li>
+<li>Fig. 2 可以直接看出後果：Higaki n=17 的單一 k，CI 為 −2.98 to 2.43，寬度約 5.4 個 SMD 單位。n=17 正常的 SMD SE 約 0.35–0.5，95% CI 寬度應在 1.5–2 左右 [推論]。</li>
+</ul>
+</li>
+<li><strong>I²=0 與 τ²=0 是 SE 灌水的產物</strong>：
+<ul>
+<li>急性 funnel plot [Supplement Fig S2] 中，所有點都擠在 −0.85 至 0 之間，SE 卻高達 0.45–1.7，呈現「過度一致」（underdispersion）。</li>
+<li>作者在 5.3.2 也承認 τ² 可能被低估，卻仍據此判定「no imprecision」。</li>
+</ul>
+</li>
+<li><strong>急性研究 SMD 的計算未說明</strong>：crossover 與對側肢體設計是否利用受試者內相關？文中「r = −0.99」的受試者內相關係數是<strong>負值</strong>，在生理上不合理，像是筆誤或概念錯誤。</li>
+<li><strong>影響點報告與圖不符</strong>：
+<ul>
+<li>文內寫急性分析「No influential outliers were identified through examination of the Baujat plot or Cook's distances」。</li>
+<li>[Supplement Fig S4] 中 <strong>k26（Okamoto 2024）以紅點標示「Exceeds Cook's Critical: Yes」</strong>，影響度約 0.93。</li>
+<li>長期分析的 k9（Boonpim）超過 Cook's 臨界，與文內描述一致 [Supplement Fig S5]。</li>
+</ul>
+</li>
+<li><strong>Moderator 分析本質上是研究層級的混淆比較</strong>：
+<ul>
+<li>只有 6 篇研究，任何 FITT 二分都只是把 6 篇研究切成兩群。</li>
+<li>「Stretches #」「Stretch type」的估計值完全相同（0.63, −1.56 to 2.81），「Stretch hold」正好是它的鏡像（−0.63）。三者實際上切出同一組研究（Bisconti 是唯一的 passive、唯一 45 秒 hold、伸展項目最少）[推論，依 Table S4 與 Table 3]。</li>
+<li>「Reps &lt;3」組 = Higaki 2022（2 次）＋ Wong（2 次）＋ Shinno。<strong>Shinno 的重複次數在 Table S4 標為「?」</strong>，卻被歸入某一組；從 −1.46 與 sessions 的 −1.05 估計值不同推斷，Shinno 應被歸在 Low [推論]。</li>
+<li>重複次數因此和「Higaki 無督導、4 週」「Wong 每週 3 次、肥胖停經女性」「Shinno SMD −0.08」等研究特徵完全綁在一起。</li>
+<li>13 個 moderator 沒有做多重比較校正。</li>
+<li>Table 3 的「Benefit」欄邏輯不一：sessions −1.05 標 N，time −0.79 標 Y。</li>
+</ul>
+</li>
+</ol>
+<h3>B. 論證架構重建（第一階段：純描述，不評判）</h3>
+<p><strong>主論點</strong>：規律伸展可以大幅降低 PWV，效果接近臨床意義，與有氧運動相當，可作為降低 CVD 風險的可及策略；最佳處方是 ≥3 次重複、30–50 分鐘、每週 5–7 天、有督導。</p>
+<pre><code>1. 前提 A：PWV（尤其 cfPWV）是 CVD 的有效中介指標；+1 m/s → 事件 +14%
+   └─ 依據：Vlachopoulos MA [12]、[11,13]
+2. 前提 B：伸展在生物學上可能改善 AS（急性：剪力→NO→內皮功能；長期：ECM 重塑）
+   └─ 依據：[21–23]、柔軟度與 AS 相關 MA [15,16]
+3. 前提 C：先前 MA 有方法缺陷（急慢性混合、非 PWV 指標、未處理相依性）
+   └─ 推論：需要分開分析 + 3-level model
+4. 中間結論 1：急性 SMD −0.22（NS）；長期 SMD −1.02（p=0.012）→ 效益會累積
+5. 中間結論 2：MD −0.94 m/s ≈ 1 m/s 閾值 → 接近臨床意義；優於有氧 −0.67 m/s [56]
+6. 中間結論 3：reps ≥3 顯著；時長、頻率、督導「趨勢」有利
+7. 最終結論：伸展是減輕 AS 的吸引人策略；暫定處方 30–50 min × 5–7 d/wk × ≥3 reps
+</code></pre>
+<p><strong>敘事策略</strong>：從機轉推到應用，再推到處方，最後指出下一步（efficacy → effectiveness → implementation）。</p>
+<p><strong>作者承認的限制</strong>：見 5.2 節，共四點：研究少、長期研究品質差、對側肢體對照、族群以亞洲為主。</p>
+<h3>C. 引用品質評估（第二階段：開始批判）</h3>
+<div class="table-wrap wide"><table>
+<thead>
+<tr>
+<th>論點</th>
+<th>引用文獻類型</th>
+<th>證據層級</th>
+<th>關聯性</th>
+<th>問題</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>A（PWV→CVD）</td>
+<td>世代研究 MA</td>
+<td>中–高</td>
+<td><strong>間接</strong></td>
+<td>1 m/s 閾值適用於 aortic／cfPWV，被套到混合段落的 MD</td>
+</tr>
+<tr>
+<td>B（機轉）</td>
+<td>生理研究、動物研究、橫斷面研究</td>
+<td>低</td>
+<td>類推</td>
+<td>Fig. 4 的血管分層重塑（SMC↓、elastin↑、collagen↓）在人體伸展研究中沒有直接證據</td>
+</tr>
+<tr>
+<td>C（前 MA 缺陷）</td>
+<td>二篇 MA</td>
+<td>—</td>
+<td>直接</td>
+<td>批評大致合理；但本文自己的 n/k 修正同樣處理不當</td>
+</tr>
+<tr>
+<td>4（累積效益）</td>
+<td>本 MA</td>
+<td>低</td>
+<td>直接</td>
+<td>急性與長期研究的族群、PWV 段落、對照組完全不同，不能用兩組結果的差異推論「累積」</td>
+</tr>
+<tr>
+<td>5（vs 有氧）</td>
+<td>26 篇 RCT 的 MA [56]</td>
+<td>中</td>
+<td>間接</td>
+<td>跨研究、跨段落比較 MD；作者自己也說可能誤導，卻仍寫進結論</td>
+</tr>
+<tr>
+<td>6（處方）</td>
+<td>本 MA moderator</td>
+<td>極低</td>
+<td>生態推論</td>
+<td>6 篇研究的研究層級共線</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>引用紅旗</strong>：</p>
+<ul>
+<li>作者自己的陰性 RCT（孕婦，2026）未被提及。該文出版時間較晚，可能來不及引用 [推論]。</li>
+<li>ACSM 指引是每週 2–3 天，作者卻說處方「generally in accord with」ACSM。</li>
+<li>參考文獻標號錯誤很多，見 E 節。</li>
+</ul>
+<h3>D. 過度推論分析</h3>
+<p><strong>推論 1：「0.94 m/s 接近 1 m/s 臨床意義閾值」</strong></p>
+<ul>
+<li><strong>原引用</strong>：aortic（cf）PWV 每增加 1 m/s，CV 事件增加 14%，來自長期世代研究 [12]。</li>
+<li><strong>作者結論</strong>：長期伸展 MD −0.94 m/s，接近臨床意義（5.1、5.4 節）。</li>
+<li><strong>跳躍點</strong>：
+<ul>
+<li>pooled MD 混合了 baPWV（基準值通常較高）、crPWV（上肢周邊）、faPWV 與 cfPWV。作者在 3.5 節自己說各段落「may not be directly comparable」，所以才用 SMD。</li>
+<li>12 週替代指標的變化，也不等於長期暴露所對應的風險。</li>
+</ul>
+</li>
+<li><strong>嚴重度：嚴重</strong></li>
+</ul>
+<p><strong>推論 2：「建議 ≥3 次重複、30–50 分鐘、每週 5–7 天、有督導」（結論、Table 4、Fig. 4G）</strong></p>
+<ul>
+<li><strong>原證據</strong>：只有 reps 一項 p&lt;0.001，而且是 3 篇研究對 3 篇研究；時長、頻率、督導的 CI 都跨 0。</li>
+<li><strong>作者結論</strong>：寫成「provisionally recommend」，Table 4 更寫成「Optimal prescription」。</li>
+<li><strong>跳躍點</strong>：把研究層級的生態關聯當成劑量反應證據；並且把不顯著的 moderator 包裝成處方。Fig. 4G 的「10–30 秒 hold」來自 ACSM，不是來自本文資料，納入研究的 hold 時間是 20–45 秒，且 hold 這個 moderator 是 null。</li>
+<li><strong>嚴重度：嚴重</strong></li>
+</ul>
+<p><strong>推論 3：「單次伸展造成 PWV 小幅下降」（結論、Fig. 4F、Table 4）</strong></p>
+<ul>
+<li><strong>原數據</strong>：SMD −0.22，CI −0.62 to 0.17，p=0.258。</li>
+<li><strong>作者結論</strong>：結論與 Table 4 寫成「resulted in a small decrease」。Fig. 2 圖說更寫成「<strong>small but significant effect (p=0.258)</strong>」。</li>
+<li><strong>跳躍點</strong>：把不顯著、CI 跨 0 的點估計寫成確定效果。</li>
+<li><strong>嚴重度：中度至嚴重</strong></li>
+</ul>
+<p><strong>推論 4：「伸展可能降低 CVD 風險；效果與有氧運動相當」</strong></p>
+<ul>
+<li><strong>跳躍點</strong>：替代指標 → 硬終點；跨 MA 比較 MD。</li>
+<li><strong>嚴重度：中度</strong></li>
+</ul>
+<p><strong>推論 5：「段落不調節效果 → 伸展對中央與周邊 AS 效果相似」</strong></p>
+<ul>
+<li><strong>跳躍點</strong>：6 篇研究的檢定力不足，p 值本身也有 &gt;1 的錯誤；把「無證據顯示差異」誤當成「證據顯示無差異」。</li>
+<li><strong>嚴重度：中度</strong></li>
+</ul>
+<h3>E. 論證結構完整性評估</h3>
+<ul>
+<li><strong>隱藏假設</strong>：
+<ul>
+<li>n/k 修正與 3-level model 不會互相重疊。</li>
+<li>不同 PWV 段落的 SMD 是可交換的。</li>
+<li>研究層級的 FITT 差異可以代表個體層級的劑量反應。</li>
+</ul>
+</li>
+<li><strong>邏輯斷層</strong>：
+<ul>
+<li>GRADE 各項判定與作者自己呈現的 PI、funnel plot、CI 相矛盾。</li>
+<li>CASP 評「high quality」，但 ROB-2 評「high risk」，兩者並列卻沒有整合。CASP RCT checklist 也不適用於對側肢體與 crossover 設計。</li>
+</ul>
+</li>
+<li><strong>報告錯誤清單（降低對分析可重現性的信心）</strong>：
+<ol>
+<li>Fig. 2 圖說寫「small but significant (p=0.258)」。</li>
+<li>Fig. 2 中 k8 標為「Ikebe 2022」，但 Table 1 中 k8 是 Higaki 2021。</li>
+<li>Fig. 3 參考文獻標號錯誤：Bisconti 標 [51] 應為 [53]，Nishiwaki 標 [53] 應為 [55]，Wong 標 [52] 應為 [54]。4.3.2 節也把 [52]（Okamoto，急性研究）寫成長期研究的來源。</li>
+<li>Table 3 中三個 p 值 &gt;1（1.325、2.057、1.522）。</li>
+<li>急性 Baujat plot 中 k26 超過 Cook's 臨界，文內卻寫無影響點。</li>
+<li>急性研究被稱為「cross-sectional design」。</li>
+<li>Wong 的退出寫「2 out of 17」，但 Table 2 的 n=28。</li>
+<li>Fig. 4 百分比以 k 計算，卻被呈現為樣本特徵。</li>
+</ol>
+</li>
+<li><strong>替代解釋</strong>：
+<ol>
+<li><strong>小研究效應／發表偏差</strong>：長期研究中效果最大的 k 全部來自 SE 最大的估計（Bisconti 子組、Nishiwaki）。最大且最精確的 Wong 與 Shinno 接近 0（−0.08 至 −0.24）。真實效果可能接近 Thomas 2026 的 −0.63，甚至更小。</li>
+<li><strong>血壓與測量條件混淆</strong>：PWV 高度依賴測量當下的血壓與心率。伸展可能透過放鬆或副交感活化降低測量時的 BP 與 HR，看起來像「血管結構改善」。各研究多沒有調整 MAP，評估者也未盲化。</li>
+<li><strong>對照組條件差異（attention／contact effect）</strong>：長期對照多為「usual care」，伸展組卻有督導接觸與規律回診。所謂「督導效應」可能就是接觸效應，而不是伸展劑量。</li>
+</ol>
+</li>
+</ul>
+<h3>F. 最終裁決</h3>
+<ul>
+<li><strong>論證結構完整性：弱</strong>。</li>
+<li><strong>引用品質：部分適當</strong>。PWV 預後文獻屬間接證據；機轉部分大量依賴類推。</li>
+<li><strong>過度推論嚴重程度：嚴重</strong>。主要是處方建議、臨床意義換算，以及把急性不顯著結果寫成「下降」。</li>
+<li><strong>可採用這篇文章的情境</strong>：
+<ul>
+<li>作為「伸展可能小至中度改善 PWV」的假設來源。</li>
+<li>設計 RCT 時參考現有研究的介入範圍。</li>
+</ul>
+</li>
+<li><strong>不建議直接引用的情境</strong>：
+<ul>
+<li>支持以伸展降低 CVD 風險的臨床或政策建議。</li>
+<li>引用 FITT「最佳處方」。</li>
+<li>引用 0.94 m/s「接近臨床意義」。</li>
+<li>宣稱伸展與有氧運動效果相當。</li>
+</ul>
+</li>
+<li><strong>要改變結論，最需要</strong>：
+<ol>
+<li>以 cfPWV 為主要終點的多中心、評估者盲化、主動對照（attention control）RCT，同時調整測量當下的 MAP 與 HR。</li>
+<li>重新分析：移除 n/k 修正，只用 3-level model；按段落分層（至少分開 cfPWV 與 baPWV）；做 leave-one-study-out 敏感度分析（特別是 Bisconti 與 Boonpim）；用 PET-PEESE 或 3-level Egger 處理小研究效應。</li>
+<li>在單一試驗內直接比較不同劑量（重複次數、頻率），而不是靠跨研究的 moderator 推論。</li>
+</ol>
+</li>
+<li><strong>一句話結論</strong>：長期伸展可能讓動脈硬化指標小幅下降，但證據少、偏差多、分析有誤，還不能拿來當降低心血管風險的處方。</li>
+</ul>
+<hr />
+<p><strong>Sources</strong></p>
+<ul>
+<li>PubMed 檢索結果：<a href="https://doi.org/10.1007/s40279-026-02483-8">本文 DOI</a>；<a href="https://doi.org/10.1038/s41598-026-63164-0">Thomas 2026 Sci Rep</a>；<a href="https://doi.org/10.3390/ijerph17165643">Kato 2020 IJERPH</a>；<a href="https://doi.org/10.1055/a-1312-7131">Thomas 2021 Int J Sports Med</a>；<a href="https://doi.org/10.1097/JCN.0000000000000460">Logan 2018 J Cardiovasc Nurs</a>；<a href="https://doi.org/10.1016/j.ejogrb.2026.115470">Logan 2026 EJOG RB</a>；<a href="https://doi.org/10.1152/ajpheart.00258.2023">Stoner 2023 AJP Heart</a>；<a href="https://doi.org/10.1111/psyp.70068">Zieff 2025 Psychophysiology</a></li>
+<li><a href="https://nursing.virginia.edu/news/stretching-could-unclench-stiff-arteries">UVA School of Nursing — Stretching could unclench stiff arteries</a></li>
+<li><a href="https://www.journalmetrics.org/journal/sports-medicine">Sports Medicine — journalmetrics.org</a></li>
+<li><a href="https://springerlink.bibliotecabuap.elogim.com/journal/40279">Springer Sports Medicine journal page（鏡像）</a></li>
+<li>[參考: jug140001.md — Murad et al. JAMA 2014 Users' Guide to SR/MA]</li>
+</ul>
+
+<footer class="appraisal-meta">評讀資訊：模型：claude-opus-5-5 (claude)  ·  route：sr  ·  產出時間：2026-11-08 13:39 CST</footer>
+</main>
+</body>
+</html>
