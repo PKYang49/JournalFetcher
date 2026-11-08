@@ -1,0 +1,853 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Physiological Adaptations to Controlled Work Rate Heat Acclimation Do Not Differ Between Highly Trained Male and Female Endurance Runners.</title>
+<style>
+  :root {
+    --bg: #fafafa;
+    --card: #ffffff;
+    --text: #1a1a1a;
+    --muted: #6b6b6b;
+    --border: #e5e5e5;
+    --accent: #0b5fff;
+  }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang TC",
+      "Microsoft JhengHei", sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    margin: 0;
+    padding: 24px 16px 64px;
+    line-height: 1.72;
+  }
+  main {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    margin: 0 auto;
+    max-width: 840px;
+    padding: 22px 26px;
+  }
+  nav {
+    margin: 0 auto 14px;
+    max-width: 840px;
+    color: var(--muted);
+    font-size: 14px;
+  }
+  a { color: var(--accent); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  h1, h2, h3, h4 { line-height: 1.35; }
+  h1 { font-size: 26px; margin-top: 0; }
+  h2 { border-top: 1px solid var(--border); padding-top: 18px; }
+  code {
+    background: rgba(127, 127, 127, 0.12);
+    border-radius: 4px;
+    padding: 1px 4px;
+  }
+  .table-wrap {
+    margin: 1em 0;
+    overflow-x: auto;
+  }
+  .table-wrap.wide {
+    /* Break out of the 840px prose column, centred on the viewport. */
+    width: min(1040px, calc(100vw - 32px));
+    margin-left: calc(50% - min(520px, 50vw - 16px));
+  }
+  table {
+    border-collapse: collapse;
+    table-layout: auto;
+    width: 100%;
+  }
+  .table-wrap.wide {
+    /* Opaque so the <main> card border does not show through the table. */
+    background: var(--card);
+  }
+  /* Width hints go on <th> as percentages: Chrome's auto table layout
+     mis-sizes columns (and overflows) when cells carry min-width. */
+  .table-wrap.wide th:first-child {
+    /* Variable + plain-language definition, e.g. "NCPV (noncalcified ...)". */
+    width: 26%;
+  }
+  .table-wrap.wide th:last-child {
+    /* Last column is usually a one-line interpretation. */
+    width: 20%;
+  }
+  th, td {
+    border: 1px solid var(--border);
+    /* Wrap only at spaces: never split an English word mid-letter. */
+    overflow-wrap: normal;
+    word-break: normal;
+    hyphens: manual;
+    padding: 6px 8px;
+    text-align: left;
+    vertical-align: top;
+  }
+  blockquote {
+    border-left: 3px solid var(--accent);
+    color: var(--muted);
+    margin-left: 0;
+    padding-left: 14px;
+  }
+  .appraisal-meta {
+    border-top: 1px solid var(--border);
+    margin-top: 28px;
+    padding-top: 14px;
+    color: var(--muted);
+    font-size: 13px;
+  }
+  @media (max-width: 600px) {
+    body {
+      padding: 12px 8px 40px;
+    }
+    main {
+      padding: 16px 12px;
+    }
+    h1 {
+      font-size: 22px;
+    }
+    table {
+      font-size: 12px;
+    }
+    .table-wrap.wide {
+      width: calc(100vw - 16px);
+      margin-left: calc(50% - 50vw + 8px);
+    }
+    th, td {
+      padding: 4px 5px;
+    }
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #1a1a1a;
+      --card: #242424;
+      --text: #e8e8e8;
+      --muted: #999;
+      --border: #333;
+      --accent: #6ea8ff;
+    }
+  }
+</style>
+</head>
+<body>
+<nav><a href="../../2026-W46.html">← 回到 2026-W46 週報</a></nav>
+<main>
+<h1>Physiological Adaptations to Controlled Work Rate Heat Acclimation Do Not Differ Between Highly Trained Male and Female Endurance Runners.</h1>
+<h1>批判性評讀：高度訓練男女耐力跑者在固定工作率熱適應下的生理適應是否有性別差異</h1>
+<hr />
+<h2>SECTION-0：文章全面描述</h2>
+<h3>0. 文章身份證</h3>
+<ul>
+<li><strong>標題</strong>：Physiological Adaptations to Controlled Work Rate Heat Acclimation Do Not Differ Between Highly Trained Male and Female Endurance Runners</li>
+<li><strong>期刊／年份</strong>：<em>Journal of Applied Physiology</em>，2026（PubMed 線上日期 2026-11-02）[外部: PubMed]</li>
+<li><strong>DOI</strong>：10.1152/japplphysiol.90119.2026；PMID 42969971</li>
+<li><strong>文章類型（路由判斷）</strong>：系統預判為 observational。實際設計是<strong>隨機、counterbalanced 交叉試驗</strong>（HEAT vs TEMP，6 週 washout），所以 HEAT vs TEMP 的比較依隨機化試驗的邏輯評讀。本文標題與主要結論講的卻是<strong>性別比較</strong>。性別不可能隨機分派，是受試者之間的觀察性比較，所以同時套用觀察性子模組，討論混淆與可交換性。</li>
+<li><strong>設計定位</strong>：人體生理學機轉／應用試驗，屬小樣本（n = 18）探索性研究；沒有臨床硬終點。</li>
+</ul>
+<h3>1. 作者團隊評論</h3>
+<ul>
+<li>
+<p><strong>通訊作者</strong>：Yasuki Sekiguchi, PhD（Texas Tech University 運動學系 Sports Performance Laboratory 主持人）與 Marcos S. Keefe, PhD（現任 Hope College）[文內]。</p>
+</li>
+<li>
+<p><strong>背景</strong>：Sekiguchi 出身 UConn Korey Stringer Institute（Casa 團隊），長期研究運動員的熱適應／熱馴化、水分補充，以及 HA 與 ESQ 症狀量表 [外部: Texas Tech 教職頁／CV]。代表作包括：</p>
+<ul>
+<li>熱適應策略對計時賽表現的影響，<em>Sports Health</em> 2021／2022</li>
+<li>熱適應期間水分指標的變化，<em>J Sci Med Sport</em> 2021</li>
+<li>脫水對 HA 誘導期適應的影響，<em>J Strength Cond Res</em> 2020</li>
+<li>Mitochondrial adaptations from HA（narrative review），<em>J Therm Biol</em> 2025 [外部: PubMed, <a href="https://doi.org/10.1016/j.jtherbio.2025.104283">DOI</a>]</li>
+</ul>
+</li>
+<li>
+<p><strong>團隊在此領域的定位</strong>：屬熱適應應用研究的核心網絡（Casa 系統），不是跨領域新進者。</p>
+</li>
+<li>
+<p><strong>同一資料集的多重產出（重要）</strong>：外部搜尋顯示同一 HEAT／TEMP 交叉設計已有多篇會議摘要 [外部: IJES Conference Proceedings]：</p>
+<ul>
+<li>2025 年知覺適應摘要，n = 11</li>
+<li>2025 年冷環境跑步表現摘要</li>
+<li>2026 年知覺適應摘要，n = 18（8 男 10 女）</li>
+<li>2026 年睡眠摘要，n = 17（8 男 9 女）</li>
+</ul>
+<p>樣本數隨時間從 11 增加到 18，顯示資料是<strong>邊收案邊分析</strong>。本文報告的 a priori power（需 12 人）與實際收案流程是否預先鎖定，文內未交代。</p>
+</li>
+<li>
+<p><strong>作者立場史</strong>：此團隊歷來摘要一致報告「沒有性別差異」，本文結論方向與既有立場完全吻合；需要提防確認偏差 [推論]。</p>
+</li>
+<li>
+<p><strong>COI／經費</strong>：作者聲明無利益衝突；經費來自 ACSM 的 World Athletics Research Grant [文內]。沒有商業贊助，經費影響結論方向的風險低。</p>
+</li>
+</ul>
+<h3>2. 文獻 Metadata 整理</h3>
+<ul>
+<li><strong>送審／接受日期</strong>：review copy 只標 R1 送出 2026-09-29，PubMed 線上 2026-11-02 [文內／外部: PubMed]。原始投稿日與接受日文內未提供，<strong>無法計算完整審查天數</strong> [無法取得]。R1 到上線約 34 天。</li>
+<li><strong>期刊平均審查天數</strong>：[無法取得]</li>
+<li><strong>期刊指標</strong>：2025 IF 約 3.3、JCR Q1、5 年 IF 3.5 [外部: Journal Metrics 第三方彙整，未經 Clarivate 原始資料核對]。APS 期刊，屬 hybrid OA。</li>
+<li><strong>邀稿或投稿</strong>：一般投稿的 Research Article [文內]。</li>
+</ul>
+<h3>3. 研究背景（僅根據文內）</h3>
+<ul>
+<li><strong>既有事實</strong>：
+<ul>
+<li>熱適應能降低運動中 Tc、Tsk 與 HR，並提高 WBSR。</li>
+<li>HA 文獻中女性受試者只佔約 13%。</li>
+<li>女性的 BSA/質量比、出汗能力與月經週期造成的 Tc 變動（黃體期高 0.3–0.7 ℃）可能影響適應。</li>
+</ul>
+</li>
+<li><strong>知識缺口</strong>：
+<ul>
+<li>既有性別比較研究多半「只有熱環境介入、沒有溫和環境對照」，分不出熱刺激本身與訓練效果。</li>
+<li>有對照的研究多用自行車、只收男性。</li>
+</ul>
+</li>
+<li><strong>Research question</strong>：在高度訓練耐力跑者中，7 次固定工作率 HA 的適應<strong>軌跡</strong>（時間進程）與<strong>幅度</strong>是否有性別差異？並與相同工作率的溫和環境訓練比較。</li>
+<li><strong>假說</strong>：男性較早出現適應（性別 × 時間差異）；HEAT 的適應幅度大於 TEMP。</li>
+</ul>
+<h3>4. 研究設計與方法</h3>
+<ul>
+<li><strong>PICO</strong>：
+<ul>
+<li>P：18 名耐力跑者（8 男 10 女；McKay Tier 2–4），21–24 歲</li>
+<li>I：HEAT，40 ℃／35% RH，以 50% vVO₂max 跑 60 分鐘 × 7 次，10 天內完成</li>
+<li>C：TEMP，22 ℃／35% RH，其餘相同</li>
+<li>O：以 session 1 為基準的 ΔTc（baseline／mean／peak）、ΔHR、ΔWBSR（每次測）；ΔTsk、ΔPV（只在 session 1 與 7 測）。另有 Tc AUC、Tc &gt; 38.5 ℃ 時間、水分指標</li>
+</ul>
+</li>
+<li><strong>設計細節</strong>：
+<ul>
+<li>隨機、counterbalanced 交叉設計，washout 6 週</li>
+<li>11 月到 4 月執行，目的是避開自然熱馴化</li>
+<li>session 不必連續，最多連續休 3 天；兩種介入都約 10 ± 1–2 天完成</li>
+<li><strong>只有 session 1 與 7</strong> 要求隔夜禁食、前一天不做激烈運動；session 2–6 不禁食</li>
+<li>月經週期不控制</li>
+<li>隨機化方法、分派隱藏、sequence 分布：[文內未提供]</li>
+</ul>
+</li>
+<li><strong>統計</strong>：
+<ul>
+<li>ΔTc、ΔHR、ΔWBSR（session 2–7）用 LMM（lme4，REML），固定效果為介入 × 性別 × session，隨機效果只有 subject random intercept</li>
+<li>Kenward–Roger 自由度；post hoc 用 Tukey</li>
+<li>跨 outcome 不做多重校正</li>
+<li>Tsk、PV、session 1→7 變化另外建模</li>
+</ul>
+</li>
+<li><strong>Power</strong>：G*Power 的 repeated-measures within-between 模式，效果量取 Mee 2015 sex × session interaction 的 f = 0.49，算出需 12 人；為了因應荷爾蒙波動，多收女性。</li>
+</ul>
+<h3>5. 研究結果重點整理</h3>
+<p><strong>主要結果表</strong>（session 1 → 7 變化，mean [95% CI]，取自 Table 2 與正文；M = 男，F = 女）</p>
+<div class="table-wrap wide"><table>
+<thead>
+<tr>
+<th>變項（代表什麼）</th>
+<th style="text-align:right">HEAT 男</th>
+<th style="text-align:right">HEAT 女</th>
+<th style="text-align:right">TEMP 男</th>
+<th style="text-align:right">TEMP 女</th>
+<th style="text-align:right">組間差（95% CI）</th>
+<th style="text-align:right">p 值</th>
+<th>如何解讀</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Tc AUC</strong>：60 分鐘內肛溫高於起始值的累積量（熱刺激劑量）</td>
+<td style="text-align:right"><strong>77.8 a.u.</strong></td>
+<td style="text-align:right"><strong>65.6 a.u.</strong></td>
+<td style="text-align:right"><strong>57.3 a.u.</strong></td>
+<td style="text-align:right"><strong>48.0 a.u.</strong></td>
+<td style="text-align:right">未報告 CI；男比女多約 <strong>12 a.u.</strong>［自行計算，Fig 4］</td>
+<td style="text-align:right">介入 &lt;0.001；性別 0.052</td>
+<td>HEAT 熱劑量較大；男性熱劑量較高，只是沒達 0.05</td>
+</tr>
+<tr>
+<td>Tc &gt; 38.5 ℃ 時間</td>
+<td style="text-align:right"><strong>17 min [14, 20]</strong>（男女合併）</td>
+<td style="text-align:right">—</td>
+<td style="text-align:right"><strong>3 min [0, 6]</strong>（男女合併）</td>
+<td style="text-align:right">—</td>
+<td style="text-align:right">約 14 min［自行計算］</td>
+<td style="text-align:right">介入 &lt;0.001</td>
+<td>TEMP 也有少量高熱暴露</td>
+</tr>
+<tr>
+<td><strong>Peak Tc</strong>：運動最後 5 分鐘肛溫</td>
+<td style="text-align:right"><strong>−0.29 ℃</strong> [−0.59, 0.02]</td>
+<td style="text-align:right"><strong>−0.35 ℃</strong> [−0.67, −0.02]</td>
+<td style="text-align:right">−0.04 [−0.40, 0.32]</td>
+<td style="text-align:right">−0.14 [−0.34, 0.07]</td>
+<td style="text-align:right">HEAT−TEMP：男 −0.25、女 −0.21［自行計算］</td>
+<td style="text-align:right">1→7：0.086；縱向：0.002</td>
+<td>下降約 0.2–0.3 ℃，但端點模型不顯著</td>
+</tr>
+<tr>
+<td>Mean Tc</td>
+<td style="text-align:right">−0.19 [−0.40, 0.01]</td>
+<td style="text-align:right">−0.27 [−0.54, 0.00]</td>
+<td style="text-align:right">+0.01 [−0.32, 0.34]</td>
+<td style="text-align:right">−0.10 [−0.31, 0.10]</td>
+<td style="text-align:right">HEAT−TEMP 約 −0.2 ℃［自行計算］</td>
+<td style="text-align:right">1→7：0.104；縱向：0.018</td>
+<td>同上，η²p 只有 0.04</td>
+</tr>
+<tr>
+<td>Baseline Tc</td>
+<td style="text-align:right">−0.13 [−0.43, 0.17]</td>
+<td style="text-align:right">−0.10 [−0.35, 0.16]</td>
+<td style="text-align:right">−0.02</td>
+<td style="text-align:right">−0.09</td>
+<td style="text-align:right">未報告</td>
+<td style="text-align:right">0.606</td>
+<td>靜息 Tc 沒有明確組間差異</td>
+</tr>
+<tr>
+<td>Baseline HR</td>
+<td style="text-align:right"><strong>−6 bpm</strong> [−10, −2]</td>
+<td style="text-align:right">−7 [−17, 4]</td>
+<td style="text-align:right">+3 [−6, 12]</td>
+<td style="text-align:right">+3 [−4, 10]</td>
+<td style="text-align:right">HEAT−TEMP 約 −9 至 −10［自行計算］</td>
+<td style="text-align:right">0.016</td>
+<td>方向一致，但女性 CI 寬</td>
+</tr>
+<tr>
+<td>Mean HR</td>
+<td style="text-align:right">−5 [−11, 0]</td>
+<td style="text-align:right"><strong>−7</strong> [−13, −2]</td>
+<td style="text-align:right">−1 [−7, 5]</td>
+<td style="text-align:right">+1 [−5, 7]</td>
+<td style="text-align:right">HEAT−TEMP：男 −4、女 −8［自行計算］</td>
+<td style="text-align:right">0.009</td>
+<td>下降約 5–7 bpm，幅度小於經典 HA</td>
+</tr>
+<tr>
+<td>Peak HR</td>
+<td style="text-align:right"><strong>−7</strong> [−11, −3]</td>
+<td style="text-align:right"><strong>−8</strong> [−14, −2]</td>
+<td style="text-align:right">−2 [−11, 6]</td>
+<td style="text-align:right">+1 [−5, 8]</td>
+<td style="text-align:right">HEAT−TEMP：男 −5、女 −9［自行計算］</td>
+<td style="text-align:right">0.020</td>
+<td>同上</td>
+</tr>
+<tr>
+<td><strong>WBSR</strong>（whole-body sweat rate）：全身出汗率</td>
+<td style="text-align:right"><strong>+0.43 L/h</strong> [0.16, 0.71]</td>
+<td style="text-align:right"><strong>+0.06</strong> [−0.27, 0.39]</td>
+<td style="text-align:right"><strong>+0.41</strong> [0.10, 0.71]</td>
+<td style="text-align:right">−0.19 [−0.56, 0.18]</td>
+<td style="text-align:right">HEAT 女−男 −0.37 L/h［自行計算］</td>
+<td style="text-align:right">介入 0.358；<strong>性別 0.002</strong></td>
+<td><strong>男性出汗增加明顯較多</strong>，與「無性別差異」結論矛盾</td>
+</tr>
+<tr>
+<td>Mean Tsk</td>
+<td style="text-align:right">−0.63 ℃ [−0.93, −0.33]</td>
+<td style="text-align:right">−0.39 [−0.72, −0.07]</td>
+<td style="text-align:right">+0.24 [−0.34, 0.82]</td>
+<td style="text-align:right">−0.52 [−0.93, −0.12]</td>
+<td style="text-align:right">未報告</td>
+<td style="text-align:right">介入×性別 0.008</td>
+<td>交互作用來自 TEMP 男性上升</td>
+</tr>
+<tr>
+<td>Baseline Tsk</td>
+<td style="text-align:right"><strong>−1.84 ℃</strong> [−2.97, −0.71]</td>
+<td style="text-align:right">−1.23 [−1.99, −0.47]</td>
+<td style="text-align:right">+0.38 [0.09, 0.68]</td>
+<td style="text-align:right">−0.23</td>
+<td style="text-align:right">未報告</td>
+<td style="text-align:right">介入 &lt;0.001</td>
+<td>靜息皮溫變動近 2 ℃，量測條件需要解釋</td>
+</tr>
+<tr>
+<td><strong>ΔPV</strong>：以 Hb/Hct 推估的血漿容積變化</td>
+<td style="text-align:right">+1.78% [−2.51, 6.06]</td>
+<td style="text-align:right">−0.56% [−4.39, 3.28]</td>
+<td style="text-align:right">−0.46% [−4.75, 3.82]</td>
+<td style="text-align:right">−1.08% [−4.92, 2.75]</td>
+<td style="text-align:right">未報告</td>
+<td style="text-align:right">介入 0.522</td>
+<td>CI 寬達 ±4%，<strong>不能說沒有擴張</strong></td>
+</tr>
+</tbody>
+</table></div>
+<p>補充：</p>
+<ul>
+<li>Table 2 的 session 1→7 端點模型中，mean／peak Tc 的介入效果<strong>沒有</strong>達顯著（p = 0.104／0.086）。摘要的「greater reductions in Tc」依據的是 session 2–7 的縱向模型（p = 0.018／0.002，η²p 0.04–0.06）。兩種分析方法給出不同結論，文內沒有說明哪一個是預先指定的主要分析。</li>
+<li>所有 outcome 的介入 × session 交互作用都不顯著：HEAT 與 TEMP 的差距從 day 2 就出現並維持，沒有「逐日累積」的適應軌跡（見 B3 對 session 1 的偏差討論）。</li>
+<li>安全性：沒有人達到 40.5 ℃ 停止標準 [文內]；不良事件未報告。</li>
+<li>受試者中 5 名女性使用荷爾蒙／子宮內避孕（implant 2、IUD 2、OCP 1），1 名無月經。真正自然週期的女性最多約 4 人。</li>
+</ul>
+<h3>6. 作者討論與評論重點</h3>
+<ul>
+<li><strong>主要訊息</strong>：男女的適應軌跡與幅度相同，不需要依性別調整 HA 方案；熱環境提供的額外適應刺激超過單純訓練。</li>
+<li><strong>與文獻比較</strong>：
+<ul>
+<li>Tc、HR 結果與 Giersch 2025、Avellini 1980、Mee 2015 一致。</li>
+<li>WBSR 與「男性 WBSR 適應較大」的研究（Giersch、Avellini、Buono）不一致，作者用 BSA/質量比相近來解釋。</li>
+<li>作者推測負重運動（跑步／走路）讓性別間的熱刺激較一致。</li>
+</ul>
+</li>
+<li><strong>作者自列限制</strong>：
+<ol>
+<li>月經週期未控制</li>
+<li>兩介入的天數略有不同</li>
+<li>Power 依據的效果量來自 sex × session，可能高估三階交互作用的效果</li>
+<li>用 Dill &amp; Costill 公式推估多日 PV 變化並不適當</li>
+</ol>
+</li>
+<li><strong>[評估]</strong>：
+<ul>
+<li>限制 (3) 等於承認研究對主要問題 power 不足，結論卻仍寫成「不differ」的等效宣稱，兩者矛盾。</li>
+<li>作者<strong>沒有處理</strong> Table 2 WBSR 性別主效果 p = 0.002 的意義。</li>
+<li>作者也沒提到：session 1／7 與 session 2–6 的禁食、休息條件不同，以及避孕藥具造成女性組的異質性。</li>
+<li>結論「sex does not meaningfully influence medium-term HA responses」超出數據能支持的範圍。</li>
+</ul>
+</li>
+</ul>
+<h3>7. 外部專業意見</h3>
+<p>[無法取得]——PubMed 與網路搜尋都沒有找到針對本文的同期 editorial 或 commentary，因此未執行全文擷取。</p>
+<h3>8. 臨床建議（運動醫學／隊醫情境）</h3>
+<ul>
+<li><strong>可採用的情境</strong>：在溫帶季節、對已有高度有氧訓練的男女跑者，用 7 次 × 60 分鐘、40 ℃、50% vVO₂max 的方案做賽前熱適應。可預期 HR 約下降 5–8 bpm、peak Tc 約下降 0.2–0.3 ℃。男女都能安全完成（無人 &gt; 40.5 ℃）。</li>
+<li><strong>不建議直接套用的情境</strong>：
+<ul>
+<li>據此「確定」女性不需要調整劑量或天數</li>
+<li>推論到自然月經週期的女性跑者（本研究多數女性使用避孕藥具）</li>
+<li>推論到非負重運動、isothermic／controlled hyperthermia 方案、濕熱環境，或一般民眾、勞工、軍人</li>
+</ul>
+</li>
+<li><strong>實務建議</strong>：
+<ol>
+<li>男女可以先用同一套方案起步，但要監測個人反應：每次記錄 HR、肛溫或腸溫、出汗量，不要假設女性會得到相同幅度的出汗適應。</li>
+<li>若追求較大的適應幅度（PV 擴張、出汗提升），應考慮延長到 10–14 次，或改用 controlled hyperthermia（目標 Tc ≥ 38.5 ℃ 維持 60 分鐘），而不是本方案每次約 17 分鐘的高熱暴露。</li>
+<li>22 ℃ 的溫和環境訓練本身就有部分熱適應效果，賽前規劃時可以納入考量，但不能取代熱環境暴露。</li>
+</ol>
+</li>
+<li><strong>證據強度</strong>：<strong>弱</strong>。理由：n = 18；性別比較非隨機、power 不足；主要結論建立在不顯著的交互作用上；關鍵 outcome（WBSR）的結果與結論衝突。</li>
+</ul>
+<hr />
+<h2>SKILL-A：原始研究批判性評讀</h2>
+<h3>A. 補充技術細節</h3>
+<ul>
+<li><strong>樣本數估算</strong>：
+<ul>
+<li>G*Power 的 &quot;repeated measures, within-between interaction&quot; 模式把 sex × intervention 當作 <strong>4 個獨立組</strong>。但本研究中 intervention 是受試者內因子，模型設定與實際設計不符。</li>
+<li>效果量 f = 0.49 取自 Mee 2015 的 <strong>sex × session</strong>，不是本文主要假說的 <strong>sex × intervention × session</strong> 三階交互作用；三階交互作用的效果量通常遠小於二階。</li>
+<li>算出的「12 人」對主要問題大概嚴重不足（作者在 Discussion 也承認）。</li>
+</ul>
+</li>
+<li><strong>隨機化</strong>：文內只寫 randomized, counterbalanced；<strong>未說明隨機方法、分派隱藏，也沒報告 HEAT-first 與 TEMP-first 各幾人、男女在各 sequence 的分布</strong> [文內未提供]。</li>
+<li><strong>致盲</strong>：環境溫度無法盲；研究者與受試者都知道分組。主要 outcome（肛溫、HR、體重差）屬客觀測量，致盲失敗的影響有限。但 WBSR 依賴擦汗、飲水紀錄等操作，仍可能受到影響。</li>
+<li><strong>ITT vs per-protocol</strong>：沒有提到失訪或排除；表面上 18 人都完成。若有退出者，文內未揭露。沒有 CONSORT 流程圖。</li>
+<li><strong>多重比較</strong>：
+<ul>
+<li>約 13 個 outcome，各自建模，各有 7 個固定效果項，總共檢定近百次，<strong>跨 outcome 不校正</strong>。</li>
+<li>「predefined hypotheses representing distinct endpoints」不足以構成免除校正的理由。</li>
+</ul>
+</li>
+<li><strong>Carryover／period effect</strong>：
+<ul>
+<li>6 週 washout 依 HA 衰退速率（約每天 2.5%）大致足夠。</li>
+<li>但收案期間跨 11 月到 4 月；Lubbock 的 3、4 月可能已有溫熱天氣，<strong>季節、period effect 沒有建模或檢定</strong>。</li>
+</ul>
+</li>
+<li><strong>基線處理</strong>：
+<ul>
+<li>以 session 1 為零點計算 Δ，session 1 的隨機誤差會進入所有 Δ。</li>
+<li>沒有把 session 1 的值當共變量，也沒有給 ANCOVA 型分析。</li>
+<li>許多模型 R²c = NA，代表 random intercept 變異估計為 0（singular fit）；作者沒有說明。</li>
+</ul>
+</li>
+<li><strong>缺失資料</strong>：文內未提及任何缺失值或處理方式。</li>
+</ul>
+<h3>A1. 觀察性子模組：性別比較的混淆控制</h3>
+<p>性別不能隨機分派，本研究也<strong>沒有對性別比較做任何共變量調整</strong>。下列因素都和「性別」綁在一起：</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>與性別交纏的因素</th>
+<th>文內證據</th>
+<th>可能的偏差方向</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>避孕藥具（外源荷爾蒙）</td>
+<td>5/10 女性使用 implant／IUD／OCP</td>
+<td>外源黃體素讓女性 Tc 持續偏高，可能削弱或掩蓋差異</td>
+</tr>
+<tr>
+<td>月經週期相位不平衡</td>
+<td>Table 4：HEAT 起始時 3 menses／5 luteal；TEMP 起始時 0 menses／3 follicular／5 luteal</td>
+<td>兩介入間相位不同，女性內部又跨相位，增加雜訊</td>
+</tr>
+<tr>
+<td>無月經 1 人</td>
+<td>Table 4</td>
+<td>可能是低能量可得性（RED-S），影響體溫調節</td>
+</tr>
+<tr>
+<td>起始 Tc 不同</td>
+<td>Fig 4：男性約 36.7 ℃，女性約 37.07 ℃</td>
+<td>AUC 以個人起點計算，女性「Δ 空間」較小</td>
+</tr>
+<tr>
+<td>體型、絕對 VO₂max、絕對跑速</td>
+<td>Table 1：BSA、體重、L/min 均有差異</td>
+<td>絕對產熱與 WBSR 的絕對值有系統性差異</td>
+</tr>
+</tbody>
+</table></div>
+<ul>
+<li><strong>Target trial 思維</strong>：要回答「性別是否改變 HA 反應」，理想做法是預先分層、樣本足夠的平行比較，讓各組在避孕狀態、訓練程度、熱暴露時間上可交換，並以 equivalence margin 為主要假說。本研究在<strong>可交換性</strong>（避孕、相位、起始 Tc）與<strong>樣本數</strong>兩項都明顯不符。</li>
+<li><strong>Positivity</strong>：只有約 4 名自然週期女性，「自然週期女性在各相位接受 HA」這一層的資料幾乎是空的。</li>
+</ul>
+<hr />
+<h3>B. 批判性評估</h3>
+<h4>B1. 假說與理論邏輯</h4>
+<ol>
+<li><strong>把「沒有拒絕虛無假說」當成「證明相等」</strong>
+<ul>
+<li>問題：標題與結論都是等效宣稱（&quot;Do Not Differ&quot;、&quot;comparable&quot;）。</li>
+<li>文內證據：主要依據是 three-way interaction p &gt; 0.05（Results 第 281–283 行）；沒有預先設定 equivalence margin，也沒有 TOST。</li>
+<li>風險方向：讓「無差異」看起來比實際更確定。</li>
+<li>需要什麼才放心：預先指定 MCID 的等效檢定，或報告性別差的 95% CI 並說明是否落在 ±MCID 內。</li>
+</ul>
+</li>
+<li><strong>作者自己的假說也被論述方式改寫</strong>
+<ul>
+<li>原假說是「男性較早適應」。</li>
+<li>結果顯示 intervention × session 交互作用也不顯著，也就是<strong>連 HEAT 本身都看不到隨 session 進展的適應軌跡</strong>。</li>
+<li>在一個連「時間進程」都偵測不到的研究中，想比較男女的時間進程，本來就缺乏前提。</li>
+</ul>
+</li>
+<li><strong>機轉敘事跳躍</strong>
+<ul>
+<li>(a) 用「BSA/質量比相近（p = 0.198）」解釋 WBSR 沒有性別差，但 WBSR 實際上<strong>有</strong>性別差（見 C4）。</li>
+<li>(b) 用「負重運動讓熱刺激較一致」解釋 Tc 無差異，屬推測，本研究沒有對照組（如自行車）可以驗證。</li>
+<li>(c) PV 沒有擴張、HR 卻下降，作者歸因於交感活性與皮膚血流，兩者都沒有測量；作者已標註為推測。</li>
+</ul>
+</li>
+</ol>
+<h4>B2. 受試者與外推性</h4>
+<ul>
+<li><strong>與宣稱族群的一致性</strong>：
+<ul>
+<li>標題寫 &quot;highly trained&quot;，納入卻包含 Tier 2（McKay 分類中的 trained／developmental）。</li>
+<li>男性相對 VO₂max 的 SD 達 14.3（65.7 ± 14.3），代表族群異質性大。</li>
+<li>「相對 VO₂max 沒有性別差異（p = 0.100）因此訓練程度可比」仍是用 p &gt; 0.05 推論相等。</li>
+</ul>
+</li>
+<li><strong>外推性分級</strong>：
+<ol>
+<li><strong>一般健康族群</strong>：不該外推。50% vVO₂max 的跑步對未受訓者是中強度；未受訓者的基線熱耐受性與適應潛力都不同。</li>
+<li><strong>特定族群（熱暴露勞工、軍人）</strong>：中度外推，限於負重運動、乾熱環境。但本方案的熱劑量偏低，實務上不足以作為安全準備。</li>
+<li><strong>菁英耐力跑者（男女）</strong>：可外推「本方案可行且有小幅生理效果」。「女性不需調整」則<strong>不可外推</strong>，尤其是自然週期、未使用避孕藥具的女性。</li>
+</ol>
+</li>
+</ul>
+<h4>B3. 研究設計與偏差</h4>
+<ol>
+<li><strong>session 1／7 與 session 2–6 條件不同（本文最關鍵的設計問題之一）</strong>
+<ul>
+<li>文內證據：Methods 第 140–145 行。只有 session 1 與 7 要求隔夜禁食、前一天不做激烈運動；session 2–6 不禁食，前一天也可能有訓練。</li>
+<li>偏差：所有 Δ 都以 session 1 為零點。session 2–6 的 Δ 混入了進食、殘餘疲勞、前日訓練的影響，session 7 又回到禁食、休息狀態。</li>
+<li><strong>圖上可見的佐證</strong>：
+<ul>
+<li>Fig 2E（HEAT baseline HR）在 day 3–5 <strong>上升</strong> +3 至 +6 bpm（男性平均可達 +14 bpm 上限），到 day 7 才驟降至約 −6 bpm。</li>
+<li>Fig 3E（TEMP）整段 baseline HR 都高於 session 1（女性 +3 至 +10 bpm）。</li>
+<li>這種「中段反彈、終點回落」的形狀，比較像進食、疲勞狀態的差異，而不是熱適應的單調下降。</li>
+</ul>
+</li>
+<li>方向：可能讓 session 1→7 的「下降」看起來比真實適應更大（session 7 恰好是最乾淨的狀態），同時讓中段軌跡失真，降低偵測軌跡差異的能力。</li>
+</ul>
+</li>
+<li><strong>session 1 是「首次熱暴露」，HEAT vs TEMP 的差異可能來自 session 1 偏高</strong>
+<ul>
+<li>介入主效果顯著、介入 × session 不顯著，代表 HEAT 與 TEMP 的 Δ 差距<strong>從 day 2 就出現並維持</strong>。</li>
+<li>這和下列解釋都相容：首次 40 ℃ 暴露的焦慮、預期反應、session 1 偏高造成的 regression to the mean，以及真正的快速適應。單憑本設計無法區分。</li>
+</ul>
+</li>
+<li><strong>對照組適當性</strong>：
+<ul>
+<li>TEMP 22 ℃ 是合理的實際訓練環境。但 TEMP 也有約 3 分鐘 &gt; 38.5 ℃，Fig 4 的 TEMP Tc 也高原化在約 38.2 ℃，屬「部分熱刺激」。</li>
+<li>這會讓 HEAT vs TEMP 的差異<strong>偏小</strong>（作者已討論）。</li>
+</ul>
+</li>
+<li><strong>熱刺激劑量偏低</strong>：
+<ul>
+<li>每次只有約 17 分鐘 &gt; 38.5 ℃，總共 7 次。</li>
+<li>Fig 4 的 HEAT 曲線在 60 分鐘時仍呈線性上升、未達平衡（男性約 39.2 ℃、女性約 39.1 ℃），表示每次暴露的「有效高熱時間」主要集中在最後 20 分鐘。</li>
+<li>適應幅度小，是性別差異難以偵測的另一個原因。</li>
+</ul>
+</li>
+<li><strong>熱刺激在性別間不完全相等</strong>：
+<ul>
+<li>作者宣稱 &quot;thermal load did not differ between sexes&quot;，但 Fig 4 顯示 HEAT AUC 男 77.8 vs 女 65.6 a.u.（男多約 19%），TEMP 57.3 vs 48.0 a.u.，性別主效果 p = 0.052。</li>
+<li>若男性實際接受較大的熱刺激，再加上男性 WBSR 適應較大，與「同等刺激下沒有性別差異」的前提相衝突。</li>
+<li>另外 AUC 以個人起始 Tc 為零點；女性起始 Tc 約高 0.35 ℃，最終 Tc 卻相近，所以女性的「相對增量」較小。這是測量定義造成的差異，不一定代表生理刺激較小。</li>
+</ul>
+</li>
+<li><strong>Crossover 的 period／sequence 效應未檢定</strong>：季節跨度大（11 月到 4 月），又沒報告 sequence 分配。</li>
+</ol>
+<p><strong>最可能造成偏差的三個設計點</strong>：(1) session 1／7 與 2–6 的禁食、休息條件不同 → 方向不定，可能放大 1→7 的變化並扭曲軌跡；(2) 性別比較未調整避孕藥具與相位 → 偏向「看不到差異」；(3) power 不足加上用 p &gt; 0.05 下結論 → 偏向「無差異」。</p>
+<h4>B4. 測量工具與實務意義</h4>
+<ul>
+<li><strong>肛溫</strong>：自行置入 10 cm、每 5 分鐘紀錄，屬標準做法。</li>
+<li><strong>Tsk</strong>：只用 4 點 iButton。靜息 Tsk 在 HEAT 下降 1.84 ℃，TEMP 男性卻上升 0.38 ℃。靜息 Tsk 主要受測量時室溫影響，這麼大的變動代表<strong>量測環境（室溫、季節、著裝）可能不一致</strong>，不太可能是熱適應的真實效果。文內沒有交代 baseline Tsk 在何處、何室溫下測量。</li>
+<li><strong>PV</strong>：
+<ul>
+<li>用 point-of-care 的 HemoPoint H2 與 HemataStat II 測單次 Hb、Hct，再套 Dill &amp; Costill 公式。</li>
+<li>Hb、Hct 單點量測誤差合計可能就達 ±2–3% PV。</li>
+<li>所得 CI 寬約 ±4%，涵蓋一般 HA 後 4–7% 的 PV 擴張。<strong>「PV 沒有改變」應改為「無法判定」。</strong></li>
+</ul>
+</li>
+<li><strong>WBSR 單位不一致</strong>：Table 2 用 L·h⁻¹，Fig 2D／3D 的 y 軸卻標 L·min⁻¹（範圍 −2 至 +2）。若為 L·min⁻¹，數值在生理上不可能；應屬圖軸標籤錯誤，但仍反映品質控管不足。</li>
+<li><strong>實務意義</strong>：就算結果是真的，HEAT 比 TEMP 多出的效果約為 peak Tc −0.2 ℃、HR −4 至 −9 bpm。對菁英跑者在熱環境比賽有意義（約等於經典 10–14 天 HA 效果的一半），但不構成「方案已最佳化」的證據。</li>
+</ul>
+<hr />
+<h3>C. 統計與資料完整性</h3>
+<h4>C1. 結果分類（CI + MCID）</h4>
+<p><strong>MCID 確認</strong>：文內<strong>完全沒有</strong>預先指定任何 MCID 或等效界限。以下依領域常用的最小值得注意變化與 HA meta-analysis 的典型效果量估計 [推算]：Tc 約 0.2 ℃（肛溫典型誤差約 0.1–0.15 ℃）、HR 約 5 bpm、WBSR 約 0.15 L/h、PV 約 3%。</p>
+<p>性別差的 95% CI 由 Table 2 各組 CI 反推標準誤，再假設兩組獨立計算 [自行計算；屬近似值，小樣本 t 分布下實際會更寬]：</p>
+<div class="table-wrap wide"><table>
+<thead>
+<tr>
+<th>指標</th>
+<th>介入組／男</th>
+<th>對照組／女</th>
+<th>效果量</th>
+<th>95% CI</th>
+<th>ARD</th>
+<th>MCID</th>
+<th>結果分類</th>
+<th>實務意義</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Peak Tc：HEAT vs TEMP（男女合併）</td>
+<td>−0.29 / −0.35 ℃</td>
+<td>−0.04 / −0.14 ℃</td>
+<td>約 −0.2 至 −0.25 ℃</td>
+<td>未報告；1→7 模型 p = 0.086，縱向 p = 0.002</td>
+<td>不適用</td>
+<td>0.2 ℃ [推算]</td>
+<td><strong>IMPRECISE (+)／依模型而定</strong></td>
+<td>有方向性證據，幅度約在 MCID 附近</td>
+</tr>
+<tr>
+<td>Mean HR：HEAT vs TEMP</td>
+<td>−5 / −7 bpm</td>
+<td>−1 / +1 bpm</td>
+<td>−4 至 −8 bpm</td>
+<td>未報告；p = 0.009</td>
+<td>不適用</td>
+<td>5 bpm [推算]</td>
+<td><strong>IMPRECISE (+)</strong></td>
+<td>效果真實的可能性高，但幅度小</td>
+</tr>
+<tr>
+<td>WBSR：HEAT vs TEMP</td>
+<td>+0.43 / +0.06</td>
+<td>+0.41 / −0.19</td>
+<td>男 +0.02、女 +0.25 L/h</td>
+<td>未報告；1→7 介入 p = 0.358</td>
+<td>不適用</td>
+<td>0.15 L/h [推算]</td>
+<td><strong>INCONCLUSIVE</strong>，且男女方向不同</td>
+<td>「HEAT 出汗增加較多」只在女性成立</td>
+</tr>
+<tr>
+<td>ΔPV：HEAT vs TEMP</td>
+<td>+1.78% / −0.56%</td>
+<td>−0.46% / −1.08%</td>
+<td>約 +1%</td>
+<td>各組 CI 約 ±4%；p = 0.522</td>
+<td>不適用</td>
+<td>3% [推算]</td>
+<td><strong>INCONCLUSIVE</strong></td>
+<td>不能說 HA 不擴張 PV</td>
+</tr>
+<tr>
+<td><strong>性別差</strong>：HEAT peak Tc（女−男）</td>
+<td>—</td>
+<td>—</td>
+<td>−0.06 ℃</td>
+<td>約 −0.51 至 +0.39 [推算]</td>
+<td>不適用</td>
+<td>±0.2 ℃</td>
+<td><strong>INCONCLUSIVE</strong></td>
+<td>CI 涵蓋兩方向的臨床重要差異</td>
+</tr>
+<tr>
+<td><strong>性別差</strong>：HEAT mean HR（女−男）</td>
+<td>—</td>
+<td>—</td>
+<td>−2 bpm</td>
+<td>約 −10 至 +6 [推算]</td>
+<td>不適用</td>
+<td>±5 bpm</td>
+<td><strong>INCONCLUSIVE</strong></td>
+<td>同上</td>
+</tr>
+<tr>
+<td><strong>性別差</strong>：HEAT WBSR（女−男）</td>
+<td>—</td>
+<td>—</td>
+<td><strong>−0.37 L/h</strong></td>
+<td>約 −0.80 至 +0.06 [推算]；Table 2 性別 p = 0.002</td>
+<td>不適用</td>
+<td>±0.15 L/h</td>
+<td><strong>INCONCLUSIVE，點估計偏向男性較大</strong></td>
+<td>與「無性別差異」結論<strong>直接衝突</strong></td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>結論</strong>：本文所有「性別無差異」的結果都屬 <strong>INCONCLUSIVE</strong>（CI 同時涵蓋 0 與 ±MCID），沒有任何一項達到 <strong>NEUTRAL</strong>（CI 完全落在 ±MCID 內）。標題的等效宣稱沒有統計支持。</p>
+<h4>C2. Underpowered 與 Winner's Curse</h4>
+<ul>
+<li>對主要問題（性別差異）而言是 <strong>underpowered null</strong>，不是 underpowered positive；Winner's Curse 風險在性別比較上不適用。這裡的問題是 <strong>Type II error</strong>，加上把 null 錯誤詮釋成等效。</li>
+<li>對 HEAT vs TEMP 的顯著效果：η²p 只有 0.02–0.11，樣本小。若以此效果量規劃後續研究，可能低估需要的樣本數，但風險不大，因為效果方向與大量 HA 文獻一致。</li>
+<li>作者沒有使用 post-hoc power，這點正確。</li>
+</ul>
+<h4>C3. Bayesian 補充</h4>
+<p>Tc AUC 的性別主效果 p = 0.052，屬於「接近 0.05、具有解讀意義」的情況。但文內沒有提供足以重建 posterior 的資料（各組 SD、個體資料），無法進行三種 prior 的分析。[無法判定——缺 AUC 的組別 SD／CI]</p>
+<h4>C4. 報告完整性與統計紅旗</h4>
+<ol>
+<li><strong>WBSR 結果與結論衝突</strong>：
+<ul>
+<li>Table 2 顯示 WBSR 性別主效果 p = 0.002（η²p 0.26），HEAT 中男性 +0.43、女性 +0.06 L/h。</li>
+<li>摘要與 Discussion 卻寫 &quot;no sex differences in the overall magnitude of adaptation for any HEAT outcome&quot; 與 &quot;absence of WBSR differences&quot;。</li>
+<li>正文把縱向模型的介入 × 性別交互作用（p = 0.012）解讀為「TEMP 中男性增加較多」，迴避了 HEAT 中同樣存在的男女差距。</li>
+</ul>
+</li>
+<li><strong>兩套分析，擇有利者報告</strong>：mean／peak Tc 的介入效果，縱向模型顯著、1→7 端點模型不顯著。摘要只報顯著的那一套，也沒說明哪個是預先指定的主要分析。</li>
+<li><strong>組間差的效果量與 CI 未報告</strong>：只給各組內 Δ 的 CI 與 η²p，沒有 HEAT−TEMP 或男−女的差值與 95% CI。讀者無法直接判斷精確度。</li>
+<li><strong>跨 outcome 不做多重校正</strong>：約 13 個 outcome × 7 個固定效果項；baseline Tsk、Tsk 交互作用、ΔBM、Ucolor 等零星顯著結果，很可能有部分是偽陽性。</li>
+<li><strong>模型設定問題</strong>：只放 random intercept，沒有 random slope for session／intervention；許多 R²c = NA（變異成分估為 0）。交叉設計也沒納入 period、sequence 項。</li>
+<li><strong>Power 計算模型錯置</strong>：見 A；且主要效果量並非針對三階交互作用。</li>
+<li><strong>資料逐步累積</strong>：同一 cohort 的會議摘要 n 從 11 → 17 → 18，最終樣本數是否預先鎖定不明，有「看資料再決定停止」的風險。</li>
+<li><strong>Fig 4 沒有變異度</strong>：只畫平均曲線，沒有 CI 或個體資料；HEAT 與 TEMP 的 session 合併方式也未說明。</li>
+</ol>
+<p><strong>Kaplan-Meier／forest plot</strong>：本文無此類圖，不適用。</p>
+<p><strong>圖形判讀補充</strong>（實際讀取 9 張圖頁）：</p>
+<ul>
+<li><strong>Fig 2、3（Δ 軌跡）</strong>：
+<ul>
+<li>男女 95% CI 帶在所有面板高度重疊；淺灰色個體線顯示個體間差異極大，例如 HEAT WBSR 男性 day 6 的上限達 +1.0、下限 −0.6。</li>
+<li>Y 軸以 0 為中心對稱，沒有用截斷座標誇大效果。</li>
+<li>多數 HEAT 面板的 CI 帶在 day 2–6 都跨越 0，只有 day 7 偏離較明顯，與「session 7 狀態較乾淨」的混淆一致。</li>
+</ul>
+</li>
+<li><strong>Fig 4</strong>：y 軸從 36.5–37 ℃ 起始，以體溫而言是合理範圍。男女起始 Tc 差約 0.35 ℃；HEAT 曲線沒有高原化。</li>
+<li><strong>Fig 1、圖形摘要</strong>：只有流程示意；沒有 CONSORT 流程圖，篩選、退出人數無從核對。</li>
+</ul>
+<hr />
+<h3>D. 次組分析評估（性別作為效果修飾因子）</h3>
+<p>本文的「主要問題」本質上就是次組分析（sex × intervention 或 sex × intervention × session）：</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>標準</th>
+<th>評估</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1. 有 interaction p 值嗎？</td>
+<td>有（多數 &gt; 0.05；WBSR 的 sex × intervention p = 0.012，Tsk p = 0.008／0.011）</td>
+</tr>
+<tr>
+<td>2. 方向與其他研究一致嗎？</td>
+<td>Tc、HR 一致；<strong>WBSR 男性較大的方向，其實與 Giersch、Avellini、Buono 一致</strong>，作者卻詮釋為「不一致」</td>
+</tr>
+<tr>
+<td>3. 假說預先指定、方向明確嗎？</td>
+<td>是，但預期的是男性<strong>較早</strong>適應（時間進程），結果卻用來宣稱「幅度相同」</td>
+</tr>
+<tr>
+<td>4. 生物機轉合理嗎？</td>
+<td>合理（汗腺輸出、荷爾蒙對 Tc 設定點的影響），但本研究無法驗證</td>
+</tr>
+<tr>
+<td>5. 受試者內或受試者間比較？</td>
+<td>性別是受試者間比較，可交換性差（避孕、相位、起始 Tc）</td>
+</tr>
+</tbody>
+</table></div>
+<ul>
+<li><strong>「性別不改變 HA 反應」的可信度</strong>：<strong>低</strong>（null 無法證明等效）。</li>
+<li><strong>「男性 WBSR 適應較大」的可信度</strong>：<strong>中／推測性</strong>（性別主效果 p = 0.002 且方向與文獻一致，但沒有多重校正，n 也小）。</li>
+</ul>
+<hr />
+<h3>E. 紅旗清單</h3>
+<ul>
+<li>🚩 <strong>標題是等效宣稱，統計上只有不顯著的交互作用</strong>，沒有 margin、沒有 TOST、沒有組間差的 CI。</li>
+<li>🚩 <strong>WBSR 性別主效果 p = 0.002，結論卻寫「所有 HEAT outcome 都沒有性別差異」。</strong></li>
+<li>🚩 摘要只報縱向模型的顯著 Tc 結果；端點模型（p = 0.086／0.104）沒有呈現在摘要中。</li>
+<li>🚩 session 1／7 禁食、休息，session 2–6 不禁食，所有 Δ 的基準點與中段條件不同。</li>
+<li>🚩 女性組一半使用荷爾蒙／子宮內避孕、1 人無月經，自然週期女性約 4 人。結論卻泛化到 &quot;female endurance runners&quot;。</li>
+<li>🚩 Power 計算的效果量與統計模型都和主要假說不符，作者也自承 underpowered。</li>
+<li>🚩 同一 cohort 多篇摘要、n 逐步增加，最終樣本數是否預先鎖定不明。</li>
+<li>🚩 「PV 沒有改變」是用 CI 達 ±4% 的估計值下的結論。</li>
+<li>🚩 Fig 2／3 的 WBSR 單位（L·min⁻¹）與 Table 2（L·h⁻¹）不一致；靜息 Tsk 變動近 2 ℃，量測條件未說明。</li>
+<li>🚩 熱劑量在性別間其實有差（AUC 男多約 19%，p = 0.052），作者仍宣稱「熱刺激相同」。</li>
+</ul>
+<h3>F. 反向解釋</h3>
+<ol>
+<li><strong>「沒有性別差異」其實是 power 不足加上組內異質性造成的假陰性</strong>
+<ul>
+<li>支持：n = 8 vs 10；性別差的 CI 涵蓋 ±MCID；避孕與相位差異增加女性組變異。</li>
+<li>反對：Tc、HR 的點估計確實非常接近（peak Tc 差 0.06 ℃，HR 差 1–2 bpm）。</li>
+</ul>
+</li>
+<li><strong>HEAT vs TEMP 的「適應差異」部分來自 session 1 首次熱暴露的偏高值（regression to the mean／預期壓力），不完全是累積適應</strong>
+<ul>
+<li>支持：介入 × session 交互作用不顯著，差距在 day 2 就出現；Fig 2E 的 baseline HR 中段反而上升。</li>
+<li>反對：差異方向與經典 HA 文獻一致；session 7 的 Tc、HR 下降相對明確。</li>
+</ul>
+</li>
+<li><strong>session 7 的「適應」部分來自禁食加前日休息，而非熱暴露</strong>
+<ul>
+<li>支持：session 1 與 7 條件相同，但 2–6 不同；Fig 2E／3E 的終點回落型態。</li>
+<li>反對：TEMP 也同樣在 session 7 禁食，HEAT vs TEMP 的對比可抵銷部分影響。</li>
+</ul>
+</li>
+<li><strong>男女 WBSR 差異反映的是男性熱刺激較大（AUC 較高），不是內在性別差異</strong>
+<ul>
+<li>支持：Fig 4 的 AUC 男性較高。</li>
+<li>反對：TEMP 中男性 WBSR 也上升 +0.41 L/h，顯示男性在兩種環境都有出汗增加，可能與訓練季節或量測有關。</li>
+</ul>
+</li>
+</ol>
+<h3>G. 最終裁決</h3>
+<ul>
+<li><strong>整體可信度</strong>：<strong>低</strong>（針對主標題「男女適應不同」的否定宣稱）。針對「熱環境比溫和環境帶來較大的 HR／Tc 下降」：<strong>中</strong>。</li>
+<li><strong>可採用的條件</strong>：作為「7 次固定工作率 HA 對已訓練男女跑者都可行、安全，且有小幅 HR 與 Tc 效益」的支持證據；作為「22 ℃ 訓練也產生部分熱適應」的觀察。</li>
+<li><strong>不建議採用的情境</strong>：作為「女性不需要個別化 HA 方案」的依據；用於自然週期女性、非負重運動或 isothermic 方案；或據此說「HA 不會擴張 PV」。</li>
+<li><strong>若要改觀，最需要的三個改進</strong>：
+<ol>
+<li>預先註冊等效界限（例如 peak Tc ±0.2 ℃、HR ±5 bpm、WBSR ±0.15 L/h），以 TOST 或 CI 判讀，並把樣本數提高到能讓性別差的 CI 落在界限內（粗估每組需要數十人，而不是 8–10 人）。</li>
+<li>所有 session 採相同的禁食、前日活動、量測條件，並把 session 1 的值當共變量，納入 period 與 sequence 項。</li>
+<li>依避孕狀態分層（或只收自然週期女性並以荷爾蒙驗證相位），PV 改用 CO rebreathing 測量，並明確報告 WBSR 的性別差與其 CI。</li>
+</ol>
+</li>
+<li><strong>一句話結論</strong>：小樣本試驗顯示熱環境跑步能稍微降低心率與核心體溫，但「男女適應相同」只是「還看不出差異」，出汗反應甚至顯示男性增加較多。</li>
+</ul>
+<hr />
+<p><strong>Sources:</strong></p>
+<ul>
+<li>PubMed：本文與作者團隊相關文獻 — <a href="https://doi.org/10.1152/japplphysiol.90119.2026">10.1152/japplphysiol.90119.2026</a>、<a href="https://doi.org/10.1177/19417381261423565">10.1177/19417381261423565</a>、<a href="https://doi.org/10.1249/MSS.0000000000003938">10.1249/MSS.0000000000003938</a>、<a href="https://doi.org/10.1113/JP290619">10.1113/JP290619</a>、<a href="https://doi.org/10.1016/j.jtherbio.2025.104283">10.1016/j.jtherbio.2025.104283</a>、<a href="https://doi.org/10.1113/JP287837">10.1113/JP287837</a>、<a href="https://doi.org/10.1016/j.cstres.2024.05.001">10.1016/j.cstres.2024.05.001</a></li>
+<li><a href="https://digitalcommons.wku.edu/ijesab/vol2/iss18/43">IJES Conference Proceedings（同一 cohort 會議摘要）</a>、<a href="https://digitalcommons.wku.edu/ijesab/vol2/iss17/11">vol2/iss17/11</a>、<a href="https://digitalcommons.wku.edu/ijesab/vol2/iss17/8">vol2/iss17/8</a></li>
+<li><a href="https://lida.sport-iat.de/twm/Record/4094129?lng=de">Sex-specific responses of heat acclimation on running performance (SPOLIT/LIDA)</a>、<a href="https://www.sponet.de/sponet/Record/4097719?lng=en">Sex-specific perceptual adaptations (SPONET)</a></li>
+<li><a href="https://www.depts.ttu.edu/ksm/about_ksm/faculty_and_staff/yasuki_sekiguchi.php">Yasuki Sekiguchi — Texas Tech faculty page</a>、<a href="https://www.depts.ttu.edu/ksm/_documents/faculty/vitae/Y.Sekiguchi/CVYasukiSekiguchi.pdf">CV</a>、<a href="https://www.depts.ttu.edu/ksm/research/yspl_lab.php">Sports Performance Lab</a></li>
+<li><a href="https://www.journalmetrics.org/journal/journal-of-applied-physiology">Journal Metrics — Journal of Applied Physiology</a></li>
+</ul>
+
+<footer class="appraisal-meta">評讀資訊：模型：claude-opus-5-5 (claude)  ·  route：observational  ·  產出時間：2026-11-08 14:07 CST</footer>
+</main>
+</body>
+</html>
