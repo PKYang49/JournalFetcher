@@ -1,0 +1,914 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>From GPT-4 to Expert-Endorsed Athlete Guidance: A Delphi Consensus on Sleep and Jet Lag.</title>
+<style>
+  :root {
+    --bg: #fafafa;
+    --card: #ffffff;
+    --text: #1a1a1a;
+    --muted: #6b6b6b;
+    --border: #e5e5e5;
+    --accent: #0b5fff;
+  }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang TC",
+      "Microsoft JhengHei", sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    margin: 0;
+    padding: 24px 16px 64px;
+    line-height: 1.72;
+  }
+  main {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    margin: 0 auto;
+    max-width: 840px;
+    padding: 22px 26px;
+  }
+  nav {
+    margin: 0 auto 14px;
+    max-width: 840px;
+    color: var(--muted);
+    font-size: 14px;
+  }
+  a { color: var(--accent); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  h1, h2, h3, h4 { line-height: 1.35; }
+  h1 { font-size: 26px; margin-top: 0; }
+  h2 { border-top: 1px solid var(--border); padding-top: 18px; }
+  code {
+    background: rgba(127, 127, 127, 0.12);
+    border-radius: 4px;
+    padding: 1px 4px;
+  }
+  .table-wrap {
+    margin: 1em 0;
+    overflow-x: auto;
+  }
+  .table-wrap.wide {
+    /* Break out of the 840px prose column, centred on the viewport. */
+    width: min(1040px, calc(100vw - 32px));
+    margin-left: calc(50% - min(520px, 50vw - 16px));
+  }
+  table {
+    border-collapse: collapse;
+    table-layout: auto;
+    width: 100%;
+  }
+  .table-wrap.wide {
+    /* Opaque so the <main> card border does not show through the table. */
+    background: var(--card);
+  }
+  /* Width hints go on <th> as percentages: Chrome's auto table layout
+     mis-sizes columns (and overflows) when cells carry min-width. */
+  .table-wrap.wide th:first-child {
+    /* Variable + plain-language definition, e.g. "NCPV (noncalcified ...)". */
+    width: 26%;
+  }
+  .table-wrap.wide th:last-child {
+    /* Last column is usually a one-line interpretation. */
+    width: 20%;
+  }
+  th, td {
+    border: 1px solid var(--border);
+    /* Wrap only at spaces: never split an English word mid-letter. */
+    overflow-wrap: normal;
+    word-break: normal;
+    hyphens: manual;
+    padding: 6px 8px;
+    text-align: left;
+    vertical-align: top;
+  }
+  blockquote {
+    border-left: 3px solid var(--accent);
+    color: var(--muted);
+    margin-left: 0;
+    padding-left: 14px;
+  }
+  .appraisal-meta {
+    border-top: 1px solid var(--border);
+    margin-top: 28px;
+    padding-top: 14px;
+    color: var(--muted);
+    font-size: 13px;
+  }
+  @media (max-width: 600px) {
+    body {
+      padding: 12px 8px 40px;
+    }
+    main {
+      padding: 16px 12px;
+    }
+    h1 {
+      font-size: 22px;
+    }
+    table {
+      font-size: 12px;
+    }
+    .table-wrap.wide {
+      width: calc(100vw - 16px);
+      margin-left: calc(50% - 50vw + 8px);
+    }
+    th, td {
+      padding: 4px 5px;
+    }
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #1a1a1a;
+      --card: #242424;
+      --text: #e8e8e8;
+      --muted: #999;
+      --border: #333;
+      --accent: #6ea8ff;
+    }
+  }
+</style>
+</head>
+<body>
+<nav><a href="../../2026-W46.html">← 回到 2026-W46 週報</a></nav>
+<main>
+<h1>From GPT-4 to Expert-Endorsed Athlete Guidance: A Delphi Consensus on Sleep and Jet Lag.</h1>
+<h1>批判性評讀：From GPT-4 to Expert-Endorsed Athlete Guidance — A Delphi Consensus on Sleep and Jet Lag</h1>
+<hr />
+<h2>SECTION-0：文章全面描述</h2>
+<h3>0. 文章身份證</h3>
+<ul>
+<li>
+<p><strong>標題</strong>：From GPT-4 to Expert-Endorsed Athlete Guidance: A Delphi Consensus on Sleep and Jet Lag</p>
+</li>
+<li>
+<p><strong>期刊／年份</strong>：Sports Medicine 2026;56:2855–2872</p>
+</li>
+<li>
+<p><strong>DOI</strong>：10.1007/s40279-026-02484-7；PMID 42470603</p>
+</li>
+<li>
+<p><strong>文章類型（路由結果）</strong>：Consensus Statement（modified Delphi，兩輪）→ SKILL-B，執行 A2.0 + A2.2。期刊把本文標為 &quot;Original Research Article&quot;。</p>
+</li>
+<li>
+<p><strong>混血文章警示</strong>：自稱的方法學類別和實際做法之間有落差。本文同時做兩件事：</p>
+<ol>
+<li>一個 Delphi 共識流程，產出 20 條 FAQ 型建議；</li>
+<li>一個比較「GPT-4 原始答案 vs. 專家修訂版」的 LLM 評估，見 Table 3 與 §4.3「AI vs Humans」。</li>
+</ol>
+<p>兩者的推論目標不同：前者要產出可用的建議，後者要衡量 AI 原稿的品質。作者卻共用同一組評分資料，因此兩方面的結論互相干擾，詳見後文 D 段。另外，supplement 檔頭保留的原始投稿標題是「<strong>Developing gold-standard athlete guidance</strong> … from GTP-4 to ATSIG-endorsed Delphi consensus」[Supplement 4/5 p.1]。正式刊出版本改成「consensus-based guidance rather than definitive proof of correctness」，可見審稿過程中曾修正過度宣稱。</p>
+</li>
+</ul>
+<h3>1. 作者團隊評論</h3>
+<ul>
+<li><strong>通訊作者</strong>：Jacopo Vitale（eCampus University，義大利；LUDES Lugano；Cracow 體育大學），專長為運動員睡眠與時間生物學 [文內]。</li>
+<li><strong>共同資深作者</strong>：
+<ul>
+<li>Shona Halson（Australian Catholic University，SPRINT Research Centre）：運動員睡眠與恢復領域的核心研究者 [文內]。</li>
+<li>Dina C. Janse van Rensburg（University of Pretoria, Sports Medicine）[文內]。</li>
+<li>Alan McCall（Edinburgh Napier；Arsenal FC Performance &amp; Research）[文內]。</li>
+</ul>
+</li>
+<li><strong>團隊過往研究</strong>：
+<ul>
+<li>Janse van Rensburg、Halson、Vitale 等人在 2021 年於 <em>Sports Medicine</em> 發表〈Managing Travel Fatigue and Jet Lag in Athletes: A Review and Consensus Statement〉，作者群為 26 人的專家小組 [外部: UWA research repository]。</li>
+<li>同團隊 2020 年於 <em>BJSM</em> 發表 jet lag 介入的 systematic review，結論是證據品質低 [外部: UP repository]。</li>
+<li>本文的前導研究：ATSIG〈&quot;Can We Trust Them?&quot; An Expert Evaluation of LLMs to Provide Sleep and Jet Lag Recommendations for Athletes〉，<em>Sports Med</em> 2026;56(1):257–270。該研究由 20 位專家評 ChatGPT-3.5、ChatGPT-4、Bard，Fleiss' κ 僅 0.21–0.39；GPT-4 的 CVR 為 sleep 0.67、jet lag 0.68 [外部: University of Limerick Pure]。</li>
+<li>整體而言，這是該領域的核心研究群，不是跨領域首次切入。</li>
+</ul>
+</li>
+<li><strong>作者立場史</strong>：本文 jet lag 段落多處引用 ref [8]。依上下文判斷，[8] 應為同團隊 2021 年的 consensus statement [推論：文內寫「consistent with contemporary consensus statement [8]」]。最終 FAQ 與該團隊既有立場高度一致，存在確認偏差的空間。</li>
+<li><strong>利益揭露</strong>：
+<ul>
+<li>Halson 與 McCall 是 <em>Sports Medicine</em> 編委，文中聲明未參與審稿人選擇與編輯決策 [文內]。</li>
+<li>無研究經費 [文內]。</li>
+<li><strong>結構性 COI</strong>：17 位評分專家全部以 group author「ATSIG」名義掛名作者 [文內 Acknowledgements]。也就是說，panel 是在為自己具名的產出投票。這不是財務 COI，但削弱了「外部獨立驗證」的意義。</li>
+</ul>
+</li>
+</ul>
+<h3>2. 文獻 Metadata 整理</h3>
+<ul>
+<li><strong>Received date</strong>：[markdown 未保留]。Accepted 14 June 2026；Published online 18 July 2026 [文內]。審查天數無法計算。</li>
+<li><strong>期刊平均審查時間</strong>：首次決定中位數 21 天或 31 天，兩個來源不一致，且未標年份 [外部: Springer 頁面鏡像／Manusights]，無法比較。</li>
+<li><strong>期刊屬性</strong>：2025 Impact Factor 約 9.4（第三方 Journal Metrics 網站，未經 Clarivate 直接確認），JCR Q1 [外部: journalmetrics.org]。Open Access 狀態：「exclusive licence to Springer Nature」，非 OA [文內]。</li>
+<li><strong>邀稿 vs 投稿</strong>：[文內未揭露]。</li>
+</ul>
+<h3>3. 研究背景 [文內]</h3>
+<ul>
+<li><strong>既有事實</strong>：
+<ul>
+<li>LLM 被廣泛用來產生健康資訊。</li>
+<li>團隊前導研究發現 GPT-4 表現最好，但專家間評分變異大（inter-rater variability）、缺乏運動員專屬脈絡，而且沒有標準參照答案。</li>
+<li>ACL 手術 FAQ 研究也顯示 GPT-4 答案技術上正確，但專家間一致性只有中等。</li>
+</ul>
+</li>
+<li><strong>知識缺口</strong>：沒有透明、經專家背書的參照答案，難以評估 LLM 的表現；睡眠與 jet lag 的實務指引品質不一。</li>
+<li><strong>研究問題</strong>：能否以 GPT-4 的 FAQ 答案為起點，透過 Delphi 建立運動員睡眠／jet lag 的專家共識答案集，並用它作為未來 LLM benchmarking 的參照。</li>
+</ul>
+<h3>4. 指引制定方法學（Consensus 調整版）</h3>
+<ul>
+<li><strong>委員會構成</strong>：
+<ul>
+<li>四人 steering committee（Vitale、McCall、Halson、Janse van Rensburg），不參與評分。其中三人（Vitale、Halson、Janse van Rensburg）負責改寫答案，四人共同設計問卷與分析資料。</li>
+<li>Panel 為 17 位 ATSIG 成員，涵蓋研究者、實務者、臨床人員。從致謝名單看，地理分布含澳洲、加拿大、愛爾蘭、法國、德國、波蘭、日本、卡達、美國、英國、冰島、南非；其中 <strong>4/17（24%）來自同一單位</strong>，即 CQU Appleton Institute（Lastella、Miller、Roach、Sargent）[文內 Acknowledgements]。</li>
+<li>無運動員、教練或患者代表；作者自承低中收入國家與少數族群代表不足 [文內 §4.5]。</li>
+<li>17 人全員也參與過前導研究，評過同一批 GPT-4 答案 [文內 §2.2.2]。前導研究是 20 位專家，本研究 17 位加 3 位 steering 成員正好 20 人，可見 steering committee 成員在前導研究中也當過評分者 [推論：依人數與致謝名單吻合]。</li>
+</ul>
+</li>
+<li><strong>證據檢索與評估</strong>：沒有系統性文獻檢索，沒有 GRADE 或任何證據等級，FAQ 答案本身也沒有附引用文獻 [Supplement 4/5]。</li>
+<li><strong>共識方法</strong>：
+<ul>
+<li>Modified Delphi，第一輪改為封閉式的預設陳述。</li>
+<li>兩輪，各用 6 點 Likert 量表（1=strongly disagree，6=strongly agree）。</li>
+<li>共識定義：≥70% 評 5–6 分，且 ≤15% 評 1–2 分；事前設定，兩輪一致。</li>
+<li>匿名性：panel 成員之間匿名；但表單第一欄就是「姓名」，steering committee 知道每個人的評分 [文內 §2.2.4]。</li>
+<li>輪間回饋：「Only aggregate results were reported back」[文內]。</li>
+<li>停止規則：事後決定只做兩輪，理由是避免 group-think [文內 §2.4.3]，並非事前設定。</li>
+</ul>
+</li>
+<li><strong>COI 管理機制</strong>：未描述共識流程中的 COI 迴避機制。</li>
+<li><strong>外部審查</strong>：除期刊審稿外無其他。</li>
+<li><strong>報告規範</strong>：自稱依 DELPHISTAR，並補附 TRIPOD-LLM checklist [Supplement 3]。</li>
+</ul>
+<h3>5. 研究結果重點整理（共識概覽）</h3>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>指標</th>
+<th style="text-align:right">第 1 輪</th>
+<th style="text-align:right">第 2 輪</th>
+<th>如何解讀</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>達共識條目數（全部 20 條）</td>
+<td style="text-align:right"><strong>15（75%）</strong></td>
+<td style="text-align:right"><strong>18（90%）</strong></td>
+<td>第 2 輪評的是改寫後的新文字，不是同一份陳述</td>
+</tr>
+<tr>
+<td>睡眠 10 條達共識</td>
+<td style="text-align:right">7</td>
+<td style="text-align:right">9</td>
+<td>Sleep Q6（受傷風險）兩輪都卡在 64.7%</td>
+</tr>
+<tr>
+<td>Jet lag 10 條達共識</td>
+<td style="text-align:right">8</td>
+<td style="text-align:right">9</td>
+<td>Jet Lag Q9（褪黑激素）兩輪都是 47.1%，差距不小</td>
+</tr>
+<tr>
+<td>IQR 收斂條目</td>
+<td style="text-align:right">—</td>
+<td style="text-align:right">8/20</td>
+<td>0 條發散；Sleep Q5 IQR 縮到 0 是過度集中</td>
+</tr>
+<tr>
+<td>輪間 Wilcoxon 顯著</td>
+<td style="text-align:right">—</td>
+<td style="text-align:right">1/20（Jet Q7，p=0.005）</td>
+<td>20 次檢定若做 Bonferroni，門檻為 0.0025，此結果不顯著 [自行計算]</td>
+</tr>
+<tr>
+<td>GPT-4 → R2 平均分顯著改變</td>
+<td style="text-align:right">—</td>
+<td style="text-align:right">0/40（Bonferroni p&lt;0.00125）</td>
+<td>「改善」只有描述性證據</td>
+</tr>
+<tr>
+<td>Round 1 質性評論</td>
+<td style="text-align:right">123 則</td>
+<td style="text-align:right">—</td>
+<td>睡眠以「不精確／誤導」為主（54.7%）；jet lag 以「過時證據」為主（35.6%）</td>
+</tr>
+</tbody>
+</table></div>
+<ul>
+<li><strong>圖表交叉核對</strong>：我把 Fig. 2 二十張直方圖的柱高逐一加總，每條都是 17 人；換算出的「5–6 分人數」與 Table 1 第 2 輪完全吻合。用直方圖反算的平均分也與 Table 3 一致，例如 Jet Q9 = 71/17 = 4.18、Sleep Q6 = 77/17 = 4.53、Jet Q7 = 95/17 = 5.59 [自行計算，依 Fig. 2]。</li>
+<li><strong>Fig. 2 顯示、但正文沒講清楚的事</strong>：
+<ul>
+<li>Jet Q9 的分數分布在 2–6 分之間近乎均勻：2 分 3 人、3 分 2 人、4 分 4 人、5 分 5 人、6 分 3 人。<strong>9/17（53%）給 ≤4 分</strong>。這不是「soft disagreement」，而是典型的「無共識」。</li>
+<li>Sleep Q6 的 2–4 分合計 6 人（35%）。</li>
+</ul>
+</li>
+<li><strong>Fig. 1 標題誤導</strong>：Fig. 1 標題寫「Marginally non-consensus items」，圖說稱兩條都「narrowly missed consensus」。但 Jet Q9 的盒鬚圖 Q1=3、中位數 4、Q3=5，同意率 47.1%，與 70% 門檻差了 23 個百分點，不能稱為「marginal」。</li>
+<li><strong>文內數字矛盾</strong>：
+<ol>
+<li>§3.1 說 Sleep Q5「no increases in disagreement observed」，但 Table 1 顯示 Sleep Q5 的不適當評分從 0 增為 1，且標為「Increased」。</li>
+<li>§4.1 說「only one outlier emerged (Q6)」，§3.4 卻寫「Outliers were identified in 13 out of 20 items」。</li>
+<li>§4.3 稱第 1 輪「10% flagged as 'inappropriate'」。依 Table 1 計算，第 1 輪 1–2 分評分合計 13/340（3.8%），未達共識的條目為 5/20（25%），兩者都不是 10% [自行計算]。</li>
+<li>題號標示混亂：Jet Q7 在 §3.3 是「jet lag 對睡眠的影響」，在 §3.6 變成「jet lag and performance」（依 Supplement 5，performance 是 Q8）。§4.2 把 Q3 寫成「behavioural strategies」，後面又說這段修訂「drove consensus on Q6」；依 Supplement 5，Q3 是 travel fatigue 評估，Q6 才是策略。</li>
+</ol>
+</li>
+</ul>
+<h3>6. 作者討論與評論重點</h3>
+<ul>
+<li>
+<p><strong>主要訊息</strong>：GPT-4 可產出有用的初稿，但不可單獨使用；經 Delphi 修訂後產出 18 條專家共識 FAQ，可作為教育素材與未來 LLM benchmark。</p>
+</li>
+<li>
+<p><strong>對兩條未達共識條目的解釋</strong>：</p>
+<ul>
+<li>Sleep Q6：作者引用 2019 年青少年 meta-analysis（&lt;8 小時睡眠，OR 1.58，95% CI 1.05–2.37）與成人 SR（12 個 prospective cohorts，結果不一致），結論是證據不支持「1.7×」這種確定說法。</li>
+<li>Jet Q9：作者指出草稿混淆了褪黑激素的 hypnotic（催眠）作用與 chronobiotic（調節生理時鐘）作用，且沒有依旅行方向區分服用時間。</li>
+</ul>
+</li>
+<li>
+<p><strong>作者自承限制</strong> [文內 §4.5]：</p>
+<ul>
+<li>Delphi 結果的外部效度；</li>
+<li>低中收入國家與少數族群代表不足，缺少運動員／教練代表；</li>
+<li>70% 門檻附近的條目分類很敏感；</li>
+<li>GPT-4 原稿造成的 anchoring bias，以及 AI、steering committee、panel 三者的貢獻無法拆開；</li>
+<li>ChatGPT web 介面無法重現原稿；</li>
+<li>共識不等於正確；</li>
+<li>conformity pressure；</li>
+<li>150 字上限；</li>
+<li>未經前瞻驗證。</li>
+</ul>
+<p>整體而言相當完整，但<strong>避開了最關鍵的一點</strong>：被專家明確點出的錯誤，在第 2 輪定稿中仍然保留，詳見 D 段。</p>
+</li>
+<li>
+<p><strong>[評估]</strong>：§4.4 寫「support staff can now design timed light-dark exposure」、「help dispel common myths」、「replace trial-and-error with evidence-based routines」。這些實務宣稱超出了「共識 ≠ 證據」的自我定位。</p>
+</li>
+</ul>
+<h3>7. 外部專業意見</h3>
+<ul>
+<li>[無法取得]——以標題、作者、ATSIG、Delphi 等關鍵字搜尋，未發現針對本文的同期 editorial、commentary 或 letter。因此沒有 DOI 可供全文擷取。</li>
+</ul>
+<h3>8. 臨床建議</h3>
+<ul>
+<li><strong>可採用的情境</strong>：
+<ul>
+<li>作為運動員與隊職員的入門衛教素材，例如 Sleep Q1、Q2、Q5、Q7–Q10，Jet Q1、Q2、Q4、Q5、Q7。這些條目屬於一般睡眠衛生與晝夜節律原理，第 2 輪同意率 ≥82%，風險低。</li>
+<li>作為 LLM 輸出比對的「一個」參考答案集，但必須理解它是 17 人封閉小組的意見。</li>
+</ul>
+</li>
+<li><strong>不建議直接套用的情境</strong>：
+<ul>
+<li><strong>Jet Q9 褪黑激素的時間與劑量</strong>：定稿仍寫「不分方向，目的地 22:00–24:00 服用、3–5 mg、出發前數天開始」。這正是 panel 多位專家指出可能延遲西行適應的寫法，不應照做。</li>
+<li><strong>Jet Q6 抵達後的光照與褪黑激素方向</strong>：與 Q9 自相矛盾，需由專人依航班個別規劃。</li>
+<li><strong>Sleep Q6 引用的「&lt;7 小時、1.7 倍」數字</strong>：原始研究的門檻是 &lt;8 小時，不應在衛教中引用。</li>
+</ul>
+</li>
+<li><strong>實務建議</strong>：
+<ol>
+<li>跨時區比賽的褪黑激素與光照處方，應依旅行方向、跨越時區數與 phase response curve 個別設計，不採用本 FAQ 的固定時段。</li>
+<li>把這套 FAQ 當「隊內衛教底稿」，引用前逐條回查原始文獻，特別是沒有附引用的數字類敘述，例如重新同步速率、咖啡因 8 小時。</li>
+<li>用它評估 LLM 時，同時報告其不確定的條目（Sleep Q6、Jet Q9）。</li>
+</ol>
+</li>
+<li><strong>證據強度分級：弱</strong>。這是專家意見層級的共識：無系統性證據檢索、無證據分級，panel 同質且具結構性 COI，產出內容也無前瞻驗證。</li>
+</ul>
+<hr />
+<h2>SKILL-B 批判性評讀</h2>
+<h3>A. 補充技術細節</h3>
+<ul>
+<li><strong>宣稱的適用範疇</strong>：標題與摘要稱 &quot;athlete guidance&quot;，§4.4 又說 elite athletes 與 junior／emerging athletes 都適用。但 FAQ 未區分運動項目、性別、年齡、身障運動員、不同時區跨距，適用對象寬於實際所做的處理。</li>
+<li><strong>引用文獻的時間範圍</strong>：FAQ 本身沒有附任何引用 [Supplement 4/5]。Discussion 引用的文獻用來事後說明修訂理由，不是事前的證據基礎。</li>
+</ul>
+<h3>A2.0 文章建議清單完整重建</h3>
+<h4>(1) 建議的層級結構</h4>
+<ul>
+<li><strong>證據品質分級</strong>：[未使用正式建議分級系統]。FAQ 部分條目以文字附註不確定性，例如「evidence in athletes is limited」「data in this area is lacking」，但不是正式等級。</li>
+<li><strong>建議強度分級</strong>：以 Delphi 第 2 輪「評 5–6 分的比例」作為唯一的強弱指標。≥70% 且 ≤15% 評 1–2 分即為「達共識」。</li>
+<li><strong>最終建議文字來源</strong>：Supplement 4（睡眠）與 Supplement 5（jet lag）。第 1 輪的 steering committee 改寫版<strong>未提供</strong> [限制：無法逐條比對第 1 輪與第 2 輪文字]。</li>
+</ul>
+<h4>(2) 建議清單主表</h4>
+<p>以下依 Supplement 4/5 的第 2 輪定稿忠實轉述。「同意率」為第 2 輪評 5–6 分的比例 [Table 1]。「證據品質」一欄 20 條全部是「未分級」；「主要支撐文獻」一欄 FAQ 內全部未列引用，括號內為 Discussion 事後提及的文獻。</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>編號</th>
+<th>建議內容</th>
+<th style="text-align:right">同意率（R2）</th>
+<th>文內位置</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>S1</td>
+<td>睡眠需求個體差異大。運動員宜每晚睡 7–9 小時，與一般成人建議相同；因訓練與比賽的身心負荷，可能受益於 9–10 小時。</td>
+<td style="text-align:right">82.4%</td>
+<td>Supp 4 p.2</td>
+</tr>
+<tr>
+<td>S2</td>
+<td>影響運動員睡眠的六大因素：①訓練／比賽：睡前高強度運動、賽前緊張、清晨訓練、高慢性負荷與 overreaching；②旅行、jet lag、陌生環境、不規律作息；③環境：噪音、光、溫度、寢具；④心理壓力；⑤科技：睡前螢幕藍光抑制褪黑激素，睡眠追蹤引起的 orthosomnia；⑥睡眠衛生不良：作息不規律、晚餐過晚、咖啡因／酒精／水分過量。</td>
+<td style="text-align:right">76.5%</td>
+<td>Supp 4 p.2</td>
+</tr>
+<tr>
+<td>S3</td>
+<td>先說明「睡眠不足」與「表現」都難以定義，再列五類後果：①表現下降：反應變慢、自覺用力增加；②受傷風險：疲勞可能增加風險，但資料缺乏；睡眠不足與免疫下降、感染風險增加有關；③認知：決策、專注、記憶受損；④恢復受損：肌肉修復、生長激素分泌；⑤情緒不穩：易怒、動機下降。</td>
+<td style="text-align:right">70.6%</td>
+<td>Supp 4 p.2</td>
+</tr>
+<tr>
+<td>S4</td>
+<td>最佳評估是主客觀合併：睡眠日誌與問卷，加上客觀測量。PSG 為黃金標準，多在實驗室用於診斷睡眠疾患；wearable、nearable 與活動監測愈來愈普及。選擇時考量個人偏好、可行性與資源。</td>
+<td style="text-align:right">76.5%</td>
+<td>Supp 4 p.3</td>
+</tr>
+<tr>
+<td>S5</td>
+<td>Wearable 可用於評估運動員睡眠。優點：①方便，可長期監測；②提供時長、效率、睡眠分期資料（分期準確度不一）；③提供回饋，可作為與醫療人員對話的起點。限制：①準確度，尤其是分期；②配戴位置影響準確度；③過度依賴數據會增加焦慮、干擾睡眠；④廠商可能隨時更動演算法，影響長期比較。</td>
+<td style="text-align:right">82.4%</td>
+<td>Supp 4 p.3</td>
+</tr>
+<tr>
+<td>S6</td>
+<td>有限證據顯示睡眠不佳與受傷可能相關：「一項研究發現每晚睡不到<strong>七</strong>小時的運動員，發生肌肉骨骼傷害的機率為 1.7 倍」，但整體資料品質低。可能機轉：①反應時間與協調受損；②判斷與風險辨識受損；③恢復受損，易發生 overuse injury、延遲癒合。</td>
+<td style="text-align:right"><strong>64.7%（未達）</strong></td>
+<td>Supp 4 p.3–4</td>
+</tr>
+<tr>
+<td>S7</td>
+<td>睡前常規可能改善睡眠，但運動員證據有限。可能無害的策略：①睡前一小時放鬆；②減少螢幕與光照；③固定就寢與起床時間（誤差 1 小時內，含週末）；④正念、放鬆與 biofeedback：深呼吸、漸進式肌肉放鬆、引導想像、cardiac coherence；⑤臥室涼、暗、靜，必要時用耳塞、眼罩、白噪音；⑥晚間避免咖啡因、酒精、過量水分與大餐。</td>
+<td style="text-align:right">82.4%</td>
+<td>Supp 4 p.4</td>
+</tr>
+<tr>
+<td>S8</td>
+<td>夜間睡眠不足或訓練需要額外恢復時，小睡有益，可改善警覺、情緒、認知與體能；個體反應不一。時間：午後早至中段，避免 16:00 後。時長：10–20 分鐘提升警覺；60–90 分鐘可能增進恢復，但會加重 sleep inertia；醒後至少 30 分鐘再運動。睡眠剝奪時較長小睡可能較有恢復效果，但需更多研究。環境涼、靜、暗，並使用鬧鐘。</td>
+<td style="text-align:right">88.2%</td>
+<td>Supp 4 p.4</td>
+</tr>
+<tr>
+<td>S9</td>
+<td>深夜訓練或比賽可能明顯干擾睡眠，比賽的資料多於訓練。影響包括：①入睡延遲：核心體溫上升、肌肉痠痛、心理喚醒、賽中刺激物或咖啡因；②睡眠品質下降：淺睡增加、深睡減少；③規律的深夜活動會使生理時鐘位移。</td>
+<td style="text-align:right">88.2%</td>
+<td>Supp 4 p.5</td>
+</tr>
+<tr>
+<td>S10</td>
+<td>咖啡因作為 ergogenic aid 一般為 3–6 mg/kg，須計入補充品與飲食來源。理想上就寢前 8 小時內避免攝取。習慣性使用會產生耐受，可保留給關鍵訓練或比賽；個體因遺傳差異不同，需自我監測。超量會變成 ergolytic（害處大於效益）。</td>
+<td style="text-align:right">82.4%</td>
+<td>Supp 4 p.5（Discussion 引 [28, 29]）</td>
+</tr>
+<tr>
+<td>J1</td>
+<td>Travel fatigue 與 jet lag 成因與症狀不同，兩者都是暫時性的。Travel fatigue 發生於任何長途旅行，與 jet lag 同時出現；跨 ≤3 時區時單獨出現，源於久坐、壓力、睡眠損失、機艙低氧。Jet lag 是跨 ≥3 時區造成的晝夜節律失調，症狀有失眠、日間疲倦、專注困難、腸胃不適，受時區數與方向影響，需數日調整。Jet lag 屬間歇性；travel fatigue 可為急性或整季累積。</td>
+<td style="text-align:right">82.4%</td>
+<td>Supp 5 p.2</td>
+</tr>
+<tr>
+<td>J2</td>
+<td>無黃金標準，宜主客觀合併。主觀：Liverpool Jet Lag Questionnaire、Columbian Jet Lag Scale、睡眠日誌。客觀：唾液褪黑激素（DLMO）、核心體溫、actigraphy。部分客觀評估在實務上不可行。</td>
+<td style="text-align:right">94.1%</td>
+<td>Supp 5 p.2</td>
+</tr>
+<tr>
+<td>J3</td>
+<td>無黃金標準，需整體評估。主觀：Total Quality of Recovery Scale、DALDA、Acute Recovery Stress Scale。客觀：HRV、cortisol（變異大，需謹慎解讀）；旅行前後做簡單的專項表現測試。</td>
+<td style="text-align:right">76.5%</td>
+<td>Supp 5 p.2</td>
+</tr>
+<tr>
+<td>J4</td>
+<td>東行通常比西行困難：白天縮短，且生理時鐘週期略長於 24 小時，較難前移；抵達後也較易在不當時間接觸光線。東行可能對「較晚的比賽」帶來 circadian advantage。另有個體差異。</td>
+<td style="text-align:right">94.1%</td>
+<td>Supp 5 p.3（Discussion 引 [8, 44–48]）</td>
+</tr>
+<tr>
+<td>J5</td>
+<td>重新同步取決於跨越時區數與方向，平均每天約可調 1–2 個時區，受睡眠習慣、行前準備、光照與旅行疲勞影響。經驗法則：東行每跨一時區約需 1 天，西行約 0.5 天；例如跨 6 時區，西行約 3 天、東行約 6 天。旅行經驗與策略執行可加速或延遲適應。</td>
+<td style="text-align:right">88.2%</td>
+<td>Supp 5 p.3</td>
+</tr>
+<tr>
+<td>J6</td>
+<td><strong>行前</strong>：漸進調整作息接近目的地時間；東行增加早晨光照、西行增加傍晚光照；訓練配合光照時段；出發前 3 天每天調整就寢 1 小時（東行提早、西行延後），但個體差異與訓練安排可能限制此做法，甚至導致行前睡差。<strong>途中</strong>：補水；限制咖啡因與酒精；累了就睡，用眼罩、耳塞並避免螢幕；未事先試用過不用安眠藥；定時活動。<strong>抵達後</strong>：依方向、時區數與航班安排；光照或避光、褪黑激素、咖啡因、策略性小睡都需正確時機。一般而言，西行需下午光照與早晨褪黑激素（以出發地時間計），東行則相反。維持適當營養，運動配合光照。</td>
+<td style="text-align:right">76.5%</td>
+<td>Supp 5 p.3–4（Discussion 引 [8, 42, 43]）</td>
+</tr>
+<tr>
+<td>J7</td>
+<td>會。節律錯位造成入睡困難、睡眠中斷與品質下降，但睡眠結構可能沒有顯著改變。最嚴重的睡眠干擾在出發前夜與旅途當晚，多因行程安排，不是 jet lag。西行後傍晚早睏、早醒；東行後難入睡、上午晚段至午後早段嗜睡。東行較明顯。</td>
+<td style="text-align:right">94.1%</td>
+<td>Supp 5 p.4</td>
+</tr>
+<tr>
+<td>J8</td>
+<td>會。造成疲勞、警覺下降、情緒與認知受損；複雜任務衰退較快。對體能的影響較不一致，肌力與衝刺的研究結果不一。用餐與運動時間錯置也會影響。嚴重度依時區數、方向與個體易感性而定。</td>
+<td style="text-align:right">76.5%</td>
+<td>Supp 5 p.4</td>
+</tr>
+<tr>
+<td>J9</td>
+<td>褪黑激素調節睡醒週期，策略性使用可傳達「該睡了」的訊號，對睡眠相位前移（東行）最有效。研究顯示在目的地目標就寢時間附近（約 22:00–24:00）服用特別有益。應個別化，最好在醫療人員監督下使用。最有效劑量 3–5 mg，從出發前數天開始，持續至抵達後數天；須確認當地法規。非處方助眠藥有副作用與依賴風險。光照與睡眠衛生為第一線，褪黑激素等屬輔助；產品污染可能導致誤服禁藥。</td>
+<td style="text-align:right"><strong>47.1%（未達）</strong></td>
+<td>Supp 5 p.4–5</td>
+</tr>
+<tr>
+<td>J10</td>
+<td>可能有影響，但運動員證據有限，多屬理論推論。晨型者較易適應東行，夜型者較易適應西行。合併 chronotype 評估與睡眠監測（actigraphy、日誌）有助於個別化處置。</td>
+<td style="text-align:right">76.5%</td>
+<td>Supp 5 p.5</td>
+</tr>
+</tbody>
+</table></div>
+<h4>(3) 建議分布概覽</h4>
+<ul>
+<li>可見並完整重建的建議：<strong>20 條</strong>。遺失或無法重建的章節：無（第 1 輪中間版本除外）。</li>
+<li>達共識 18 條，未達 2 條（S6、J9）。</li>
+<li>第 2 輪同意率分布：≥90% 有 3 條（J2、J4、J7）；80–89% 有 9 條；70–79% 有 6 條；&lt;70% 有 2 條。</li>
+<li>證據品質分布：20 條全部未分級。</li>
+<li>「強建議＋低證據」交叉分析不適用：沒有強度分級。不過有 9 條（S3、S6、S7、S8、J2、J3、J8、J10，以及 S9 的訓練部分）在文字中自承證據有限，卻仍以具體做法呈現。</li>
+</ul>
+<h4>(4) 主題分組</h4>
+<ul>
+<li><strong>睡眠需求與影響因素</strong>：S1、S2、S9</li>
+<li><strong>睡眠不足的後果</strong>：S3、S6</li>
+<li><strong>評估工具</strong>：S4、S5、J2、J3</li>
+<li><strong>行為與營養介入</strong>：S7、S8、S10</li>
+<li><strong>jet lag 機轉與病程</strong>：J1、J4、J5、J7、J8、J10</li>
+<li><strong>jet lag 處置</strong>：J6、J9</li>
+</ul>
+<h4>(5) 新增／變更／爭議</h4>
+<ul>
+<li><strong>全部 20 條都在輪間改寫過</strong>，包括第 1 輪已達共識的條目 [文內 §2.4.2]。</li>
+<li><strong>文內描述的主要變更</strong>：
+<ul>
+<li>S3：重組為五大面向，並加入定義困難的前言；</li>
+<li>S5：精簡為三項優點、四項限制；</li>
+<li>S10：加入 8 小時、耐受性、策略性使用；</li>
+<li>J4：加入「circadian advantage」與個體差異；</li>
+<li>J6：加入可行性但書。</li>
+</ul>
+</li>
+<li><strong>明確爭議</strong>：S6、J9。</li>
+<li><strong>研究空缺</strong>：sleep 與受傷的劑量反應關係、褪黑激素的現場隨機試驗 [§4.4]。</li>
+</ul>
+<h4>(6) 共識統計揭露 [Table 1]</h4>
+<div class="table-wrap wide"><table>
+<thead>
+<tr>
+<th>編號</th>
+<th style="text-align:right">R1 評 5–6 分</th>
+<th style="text-align:right">R1 評 1–2 分</th>
+<th style="text-align:right">R2 評 5–6 分</th>
+<th style="text-align:right">R2 評 1–2 分</th>
+<th>是否達門檻</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>S1</td>
+<td style="text-align:right">82.4%</td>
+<td style="text-align:right">5.9%</td>
+<td style="text-align:right">82.4%</td>
+<td style="text-align:right">5.9%</td>
+<td>是</td>
+</tr>
+<tr>
+<td>S2</td>
+<td style="text-align:right">76.5%</td>
+<td style="text-align:right">5.9%</td>
+<td style="text-align:right">76.5%</td>
+<td style="text-align:right">5.9%</td>
+<td>是</td>
+</tr>
+<tr>
+<td>S3</td>
+<td style="text-align:right">64.7%</td>
+<td style="text-align:right">0%</td>
+<td style="text-align:right">70.6%</td>
+<td style="text-align:right">5.9%</td>
+<td>是（剛好 12/17）</td>
+</tr>
+<tr>
+<td>S4</td>
+<td style="text-align:right">94.1%</td>
+<td style="text-align:right">0%</td>
+<td style="text-align:right">76.5%</td>
+<td style="text-align:right">0%</td>
+<td>是（下降）</td>
+</tr>
+<tr>
+<td>S5</td>
+<td style="text-align:right">70.6%</td>
+<td style="text-align:right">0%</td>
+<td style="text-align:right">82.4%</td>
+<td style="text-align:right">5.9%</td>
+<td>是</td>
+</tr>
+<tr>
+<td>S6</td>
+<td style="text-align:right">64.7%</td>
+<td style="text-align:right">5.9%</td>
+<td style="text-align:right">64.7%</td>
+<td style="text-align:right">5.9%</td>
+<td>否</td>
+</tr>
+<tr>
+<td>S7</td>
+<td style="text-align:right">76.5%</td>
+<td style="text-align:right">5.9%</td>
+<td style="text-align:right">82.4%</td>
+<td style="text-align:right">5.9%</td>
+<td>是</td>
+</tr>
+<tr>
+<td>S8</td>
+<td style="text-align:right">82.4%</td>
+<td style="text-align:right">0%</td>
+<td style="text-align:right">88.2%</td>
+<td style="text-align:right">0%</td>
+<td>是</td>
+</tr>
+<tr>
+<td>S9</td>
+<td style="text-align:right">76.5%</td>
+<td style="text-align:right">0%</td>
+<td style="text-align:right">88.2%</td>
+<td style="text-align:right">0%</td>
+<td>是</td>
+</tr>
+<tr>
+<td>S10</td>
+<td style="text-align:right">64.7%</td>
+<td style="text-align:right">0%</td>
+<td style="text-align:right">82.4%</td>
+<td style="text-align:right">0%</td>
+<td>是</td>
+</tr>
+<tr>
+<td>J1</td>
+<td style="text-align:right">88.2%</td>
+<td style="text-align:right">0%</td>
+<td style="text-align:right">82.4%</td>
+<td style="text-align:right">0%</td>
+<td>是（下降）</td>
+</tr>
+<tr>
+<td>J2</td>
+<td style="text-align:right">82.4%</td>
+<td style="text-align:right">0%</td>
+<td style="text-align:right">94.1%</td>
+<td style="text-align:right">0%</td>
+<td>是</td>
+</tr>
+<tr>
+<td>J3</td>
+<td style="text-align:right">70.6%</td>
+<td style="text-align:right">0%</td>
+<td style="text-align:right">76.5%</td>
+<td style="text-align:right">0%</td>
+<td>是</td>
+</tr>
+<tr>
+<td>J4</td>
+<td style="text-align:right">70.6%</td>
+<td style="text-align:right">0%</td>
+<td style="text-align:right">94.1%</td>
+<td style="text-align:right">0%</td>
+<td>是</td>
+</tr>
+<tr>
+<td>J5</td>
+<td style="text-align:right">82.4%</td>
+<td style="text-align:right">0%</td>
+<td style="text-align:right">88.2%</td>
+<td style="text-align:right">0%</td>
+<td>是</td>
+</tr>
+<tr>
+<td>J6</td>
+<td style="text-align:right">58.8%</td>
+<td style="text-align:right">17.6%</td>
+<td style="text-align:right">76.5%</td>
+<td style="text-align:right">0%</td>
+<td>是</td>
+</tr>
+<tr>
+<td>J7</td>
+<td style="text-align:right">70.6%</td>
+<td style="text-align:right">5.9%</td>
+<td style="text-align:right">94.1%</td>
+<td style="text-align:right">0%</td>
+<td>是</td>
+</tr>
+<tr>
+<td>J8</td>
+<td style="text-align:right">76.5%</td>
+<td style="text-align:right">0%</td>
+<td style="text-align:right">76.5%</td>
+<td style="text-align:right">0%</td>
+<td>是</td>
+</tr>
+<tr>
+<td>J9</td>
+<td style="text-align:right">47.1%</td>
+<td style="text-align:right">17.6%</td>
+<td style="text-align:right">47.1%</td>
+<td style="text-align:right">17.6%</td>
+<td>否</td>
+</tr>
+<tr>
+<td>J10</td>
+<td style="text-align:right">70.6%</td>
+<td style="text-align:right">11.8%</td>
+<td style="text-align:right">76.5%</td>
+<td style="text-align:right">5.9%</td>
+<td>是</td>
+</tr>
+</tbody>
+</table></div>
+<p>各條目的同意比例揭露完整，這一點透明度良好。S3 只以 12/17 的最低票數過門檻；同理，S6 若多一票就會由「否」翻成「是」。門檻附近的分類非常脆弱。</p>
+<h3>A2.2 Consensus／Delphi 方法學評估</h3>
+<ul>
+<li><strong>共識方法</strong>：Modified Delphi（封閉式第一輪）有交代理由。但第一輪內容來自 GPT-4 加上 steering committee 改寫，panel 沒有機會提出新的 FAQ 題目；作者已承認有 anchoring bias。</li>
+<li><strong>專家組成</strong>：
+<ul>
+<li>優點：跨學科，具國際性，留存率 100%。</li>
+<li>缺點：①全部來自同一個 interest group，且 4/17 同一單位；②全員都評過同一批 GPT-4 答案（會有記憶與定錨效應）；③全員掛名作者；④無運動員、教練、方法學家；⑤無說明 panel 成員的 COI 分布與投票迴避。</li>
+</ul>
+</li>
+<li><strong>投票機制透明度</strong>：
+<ul>
+<li>門檻 70% 事前設定，並明確定義非適當評分上限 15%，這點值得肯定；但 70% 低於常見的 75–80% [文內引用 15–17]。</li>
+<li><strong>Panel 成員對 steering committee 並不匿名</strong>（表單要求填姓名），對資深學者可能產生 social desirability 壓力。</li>
+<li>只做兩輪，且是事後決定。對兩條未達共識的條目也沒有安排定向的第三輪。</li>
+</ul>
+</li>
+<li><strong>輪間修訂設計是根本性問題</strong>：第 2 輪評的是<strong>另一份文字</strong>，而且已達共識的條目也被改寫。因此：
+<ul>
+<li>「75%→90%」不能解讀成「共識增加」，而是「新版本較受接受」；</li>
+<li>§2.5.1 用 Wilcoxon signed-rank 檢定「expert opinion stability」在概念上不成立，因為兩輪的刺激物不同。</li>
+<li>S4 從 94.1% 降到 76.5%、J1 從 88.2% 降到 82.4%，顯示改寫也可能讓條目變差。</li>
+</ul>
+</li>
+<li><strong>Dissent analysis 有方向性偏差</strong>：
+<ul>
+<li>IQR 型 outlier 方法套在 6 點量表、n=17 的資料上本身就不適合；作者也承認 Sleep Q5 有 7 個「outlier」。</li>
+<li>更關鍵的是，作者只針對 Sleep Q6 移除了一個 2 分，理由是該評分者「interpretive confusion」。但這位評分者的評論（「只用單一研究支持，那些顯示無關聯的研究呢？」）是<strong>實質且正確的方法學批評</strong>，作者自己在 §4.1 的結論也與它一致。把正確的少數意見重新貼上「誤解」標籤再移除，與 dissent analysis 保護少數意見的初衷相反。</li>
+</ul>
+</li>
+<li><strong>共識不等於證據</strong>：作者在限制段落明說了這一點，值得肯定。但標題「Expert-Endorsed Athlete Guidance」、Key Points「LLMs can effectively support sports science communication」，以及 §4.4 的實務宣稱，語氣仍然暗示這些是具證據基礎的指引。</li>
+<li><strong>與 JAMA Users' Guide 對照</strong>：可信的建議應建立在適當且更新的系統性回顧上，並明示建議強弱與適用族群 [參考: jama_brignardellopetersen_2021_ug_210001_1643153219.93024.md 摘要 Observations 段]。本文三項都沒有做到，屬於專家意見層級。</li>
+</ul>
+<hr />
+<h3>B. 論證架構重建（純描述）</h3>
+<p><strong>主論點</strong>：GPT-4 的答案可作為起點，經結構化的專家 Delphi 修訂後，能產出可信的運動員睡眠與 jet lag 指引，並可作為 AI benchmark。</p>
+<pre><code>1. 前提 A：LLM 被廣泛使用，但在運動醫學領域未經驗證，且缺乏參照答案（引用前導研究 [4]、ACL 研究 [5]）
+2. 前提 B：Delphi 能在證據不確定的領域整合專家意見（引用 [6, 7, 10–12]）
+3. 前提 C：前導研究中 GPT-4 表現最佳，故以其答案為底稿
+4. 中間結論：GPT-4 底稿經 panel 兩輪修訂後，達共識由 75% 升至 90%，IQR 收斂，無雙峰分布
+5. 中間結論：GPT-4 → R2 平均分多數上升（描述性），質性評論顯示原稿不精確、過時、缺乏運動員脈絡
+6. 最終結論：(a) GPT-4 不可單獨使用；(b) 專家修訂提升了清晰度、安全性、運動員相關性；(c) 18 條 FAQ 可作為衛教素材與 LLM benchmark
+</code></pre>
+<ul>
+<li><strong>敘事策略</strong>：問題（AI 不可信）→ 方法（Delphi）→ 改善（共識上升）→ 應用（三類利害關係人）。</li>
+<li><strong>作者承認的限制</strong>：見 §4.5，共八項，已於 SECTION-0 第 6 節列出。</li>
+</ul>
+<h3>C. 引用品質評估</h3>
+<div class="table-wrap wide"><table>
+<thead>
+<tr>
+<th>論點</th>
+<th>引用類型</th>
+<th>證據層級</th>
+<th>關聯性</th>
+<th>問題</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1 LLM 缺乏驗證</td>
+<td>自家前導研究、單一 ACL 研究</td>
+<td>低–中</td>
+<td>直接</td>
+<td>前導研究的 κ 僅 0.21–0.39，本身即顯示「專家判斷」不穩，卻被用來支持以同一群專家建立標準</td>
+</tr>
+<tr>
+<td>2 Delphi 的正當性</td>
+<td>方法學文獻、DELPHISTAR</td>
+<td>方法學</td>
+<td>直接</td>
+<td>適當</td>
+</tr>
+<tr>
+<td>4 共識上升＝品質提升</td>
+<td>本研究資料</td>
+<td>低</td>
+<td>間接</td>
+<td>刺激物改變、panel 非獨立</td>
+</tr>
+<tr>
+<td>5 GPT-4 vs 人類</td>
+<td>本研究 Table 3</td>
+<td>低</td>
+<td>間接</td>
+<td>40 次比較無一顯著；第 1 輪已經 steering committee 改寫；GPT-4 欄的評分來源（前導研究 20 人或本研究 17 人？量表是否相同？）文內未說明，「paired」Wilcoxon 的配對基礎不明 [無法判定]</td>
+</tr>
+<tr>
+<td>FAQ 內容本身</td>
+<td>無引用</td>
+<td>專家意見</td>
+<td>—</td>
+<td>數字類敘述沒有出處，例如「每天調 1–2 時區」「東行 1 天／時區」「咖啡因 8 小時」「褪黑激素 3–5 mg」</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>引用品質紅旗</strong>：</p>
+<ul>
+<li>大量依賴自家研究（[4]、[8]）。</li>
+<li>FAQ 定稿完全沒有引用，讀者無法回查。</li>
+<li>Discussion 的文獻（例如褪黑激素現場證據弱 [8]、[49]）是在事後解釋未達共識的原因，沒有回頭用來修正定稿文字。</li>
+</ul>
+<h3>D. 過度推論分析</h3>
+<p><strong>推論 1：「專家修訂修正了 GPT-4 的錯誤」（嚴重）</strong></p>
+<ul>
+<li><strong>原始資料說了什麼</strong>：第 1 輪專家指出 Sleep Q6 的「1.7 倍」數字出自單一研究，且門檻是 &lt;8 小時而非 &lt;7 小時（Table 5 有評論者附上該研究 DOI 10.1097/BPO.0000000000000151）。專家也指出 J9 的「22:00–24:00 不分方向服用」「出發前數天開始」可能延遲西行適應，且與前一題（J6）矛盾 [Table 5]。</li>
+<li><strong>作者的結論說了什麼</strong>：「expert review improved the overall acceptability … clearer, safer」[§4.3、摘要]。</li>
+<li><strong>跳躍在哪裡</strong>：定稿 Supplement 4 的 S6 <strong>仍然寫「fewer than seven hours … 1.7 times」</strong>，只把「studies have shown」改成「one study」，門檻錯誤沒有修正。Supplement 5 的 J9 <strong>仍保留「10 PM to midnight」與「starting a few days before travel」</strong>。J6 則寫「westward travel needs afternoon light and morning melatonin (home time)」，與 J9「目的地就寢前服用」互相矛盾。也就是說，兩條未達共識的條目，很可能是因為 steering committee 沒有採納 panel 的具體修正意見，而不是因為「證據本身有爭議」。作者把失敗歸因於證據不足（§4.1、§4.3「not a failure of the AI approach」），忽略了編修流程本身的失敗。</li>
+<li><strong>連帶問題</strong>：Discussion §4.2 說專家建議「removing generic 'maintain proper nutrition' advice」並已在定稿中處理，但 J6 定稿仍有「Maintain proper nutrition」[Supplement 5 p.4]，Discussion 與定稿不一致。</li>
+</ul>
+<p><strong>推論 2：「共識由 75% 升至 90%，代表共識增強」（中度）</strong></p>
+<ul>
+<li><strong>資料</strong>：第 2 輪評的是改寫後的文字；兩輪輸贏都取決於 1 票（S3：12/17；S6：11/17）。</li>
+<li><strong>跳躍</strong>：把「新版本較受接受」解讀成「專家意見趨同」，而且沒有考慮 panel 再次評分時的熟悉度與 conformity 效應。</li>
+</ul>
+<p><strong>推論 3：「Jet Q7 輪間顯著改變，反映共識增強」（輕微–中度）</strong></p>
+<ul>
+<li>p=0.005，但同一組有 20 個檢定，Bonferroni 門檻為 0.0025 [自行計算]。作者在 §2.5.1 宣稱「Bonferroni adjustment applied where multiple related comparisons」，結果卻沒有套用。</li>
+</ul>
+<p><strong>推論 4：「LLMs can effectively support sports science communication」（中度）</strong></p>
+<ul>
+<li><strong>資料</strong>：40 個 GPT-4 vs Delphi 比較無一顯著；GPT-4 原稿平均分已有 4.24–5.06；前導研究的 GPT-4 CVR 約 0.67–0.68，換算約 83–84% 專家判為適當 [推論：CVR = (n_e − N/2)/(N/2)]。</li>
+<li><strong>跳躍</strong>：起始品質本來就接近共識水準，「AI 原稿＋專家修訂」相對於「專家直接撰寫」是否更好、更省力，沒有對照組可以回答。Key Points 的「effectively」缺乏比較基礎。</li>
+</ul>
+<p><strong>推論 5：「可作為未來 LLM benchmark 的 expert-endorsed reference」（中度）</strong></p>
+<ul>
+<li>Benchmark 需要逐項可判讀的正確答案。本文的評分單位是「整段 FAQ 是否適當」，一段話含多個子主張，而定稿中已知仍有錯誤（推論 1）。如果把它當參照答案，會讓「重現同樣錯誤」的 LLM 得高分。</li>
+</ul>
+<h3>E. 論證結構完整性評估</h3>
+<ul>
+<li><strong>隱藏假設</strong>：
+<ol>
+<li>17 位 ATSIG 專家的整體評分可以代表「正確」，而前導研究顯示同一群專家的 κ 只有 0.21–0.39；</li>
+<li>整段文字的 Likert 評分能反映每個子主張的正確性；</li>
+<li>steering committee 的改寫忠實反映了 panel 意見，但沒有逐條回饋紀錄（feedback-to-revision audit trail）。</li>
+</ol>
+</li>
+<li><strong>邏輯斷層</strong>：「AI vs 人類」比較中，第 1 輪已經人為改寫，作者也承認三方貢獻無法拆解，Table 3 與 §4.3 卻仍以此論證 AI 的角色。</li>
+<li><strong>替代解釋</strong>：
+<ol>
+<li><strong>編修瓶頸</strong>：S6 與 J9 未達共識，主要原因可能是 steering committee 保留了被點名的錯誤，而不是證據本身不確定。證據是 Table 5 的評論內容與 Supplement 定稿的對照。</li>
+<li><strong>熟悉度與定錨</strong>：panel 第三次看同一題組（前導研究 T1、T2，再加本研究 R1），評分上升可能部分反映熟悉度與對「已被修過」的預期，而非內容改善。證據是 S7 從 GPT-4 到 R1 的 Δ 為 0、S3 從 GPT-4 到 R2 的 Δ 為 0。</li>
+<li><strong>社會期望與非匿名</strong>：作者知道每位 panel 成員的身分，而 panel 全員都是作者群一員。在這種情況下，對「自己團隊的產出」給 5 分以上的門檻可能偏低。</li>
+</ol>
+</li>
+</ul>
+<h3>F. 最終裁決</h3>
+<ul>
+<li><strong>論證結構完整性：弱–中</strong>。流程報告透明，但「共識增加＝品質提升」與「AI 有效支援」缺乏對照組與獨立驗證。</li>
+<li><strong>引用品質：明顯不足</strong>。FAQ 定稿無引用，Discussion 的文獻沒有回饋到定稿。</li>
+<li><strong>過度推論：中度</strong>。最嚴重的一點是：已被專家指出的事實性與方向性錯誤留在定稿中，作者卻宣稱修訂提升了安全性。</li>
+<li><strong>可採用的情境</strong>：一般睡眠衛生衛教（S1、S2、S5、S7–S10）、jet lag 的基本概念說明（J1、J4、J5、J7），以及作為 LLM 輸出比較的參考之一。</li>
+<li><strong>不建議直接引用的情境</strong>：褪黑激素處方（J9）、跨時區光照與褪黑激素時序（J6）、受傷風險數字（S6）；也不宜作為 LLM benchmark 的「gold standard」。</li>
+<li><strong>若要改觀，最需要</strong>：
+<ol>
+<li>公開逐條的「panel 評論 → 修訂決策」對照表，並針對 S6、J9 依 phase response curve 與正確文獻重寫後，再做一輪定向投票；</li>
+<li>由 ATSIG 以外的獨立專家，加上運動員與教練，做外部驗證，並為每條建議附上引用與證據等級；</li>
+<li>用前瞻性研究驗證 jet lag 處置條目的實際效果（例如團隊旅行的 crossover 或 cluster 設計）。</li>
+</ol>
+</li>
+<li><strong>一句話結論</strong>：這是一份透明但封閉的專家共識，基本睡眠衛教可參考；褪黑激素與受傷風險兩條仍有已知錯誤，不宜照用。</li>
+</ul>
+<p><strong>CPG／Consensus 專屬欄位</strong></p>
+<ul>
+<li><strong>建議清單完整性</strong>：可見並完整重建 20 條；遺失章節 0 個。第 1 輪中間版本未提供，無法逐條比對修訂內容。</li>
+<li><strong>建議強度與證據品質的一致性</strong>：沒有證據分級，無法計算「強建議＋低證據」比例。20/20 條（100%）屬專家意見層級，其中 9 條在文字中自承證據有限。整體評估：<strong>部分合理</strong>。基本衛教合理；處置類（J6、J9）明顯越界。</li>
+<li><strong>AGREE-II 六面向定性評估</strong>（本文是 Delphi 共識而非正式 CPG，僅作參考）：
+<ul>
+<li><strong>範疇與目的：中</strong>。問題明確，但目標族群未細分（項目、性別、年齡、身障）。</li>
+<li><strong>利害關係人參與：弱</strong>。單一 interest group，無運動員或教練，4/17 同一單位。</li>
+<li><strong>制定嚴謹度：弱</strong>。無系統性檢索，無證據分級，輪數事後決定，dissent 處理具方向性偏差。</li>
+<li><strong>表達清晰度：中</strong>。150 字格式精簡，但 J6 與 J9 互相矛盾，題號標示多處錯誤。</li>
+<li><strong>適用性：弱–中</strong>。可行性但書有寫，但沒有實施工具、監測指標或資源考量。</li>
+<li><strong>編輯獨立性：弱</strong>。無經費，但 panel 全員掛名作者、兩位作者是期刊編委，也無 COI 迴避機制。</li>
+</ul>
+</li>
+<li><strong>共識統計揭露</strong>：完整揭露各題目同意比例（Table 1、Fig. 2）。</li>
+<li><strong>本指引在臨床決策中的合理角色</strong>：採用為「現階段共識立場」的參考，但證據基礎薄弱；J6 與 J9 不建議直接採用。</li>
+</ul>
+<hr />
+<p><strong>Sources:</strong></p>
+<ul>
+<li><a href="https://pure.ul.ie/en/publications/can-we-trust-them-an-expert-evaluation-of-large-language-models-t/">&quot;Can We Trust Them?&quot; An Expert Evaluation of LLMs … Sleep and Jet Lag Recommendations for Athletes（Univ. of Limerick Pure）</a></li>
+<li><a href="https://research-repository.uwa.edu.au/en/publications/managing-travel-fatigue-and-jet-lag-in-athletes-a-review-and-cons/">Managing Travel Fatigue and Jet Lag in Athletes: A Review and Consensus Statement（UWA repository）</a></li>
+<li><a href="https://repository.up.ac.za/handle/2263/74527">How to manage travel fatigue and jet lag in athletes? A systematic review of interventions（UP repository）</a></li>
+<li><a href="https://www.journalmetrics.org/journal/sports-medicine">Sports Medicine — Journal Metrics</a></li>
+<li><a href="https://manusights.com/blog/sports-medicine-submission-guide">Sports Medicine submission guide（Manusights）</a></li>
+<li><a href="https://springerlink.bibliotecabuap.elogim.com/journal/40279">Springer journal page mirror（Sports Medicine 40279）</a></li>
+</ul>
+
+<footer class="appraisal-meta">評讀資訊：模型：claude-opus-5-5 (claude)  ·  route：consensus  ·  產出時間：2026-11-08 13:46 CST</footer>
+</main>
+</body>
+</html>
