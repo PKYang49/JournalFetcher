@@ -1,0 +1,833 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Long-term outcomes after percutaneous coronary intervention with drug-eluting stents versus coronary artery bypass grafting for left main coronary artery disease: a prospective analysis of the multicentre IRIS-MAIN registry.</title>
+<style>
+  :root {
+    --bg: #fafafa;
+    --card: #ffffff;
+    --text: #1a1a1a;
+    --muted: #6b6b6b;
+    --border: #e5e5e5;
+    --accent: #0b5fff;
+  }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang TC",
+      "Microsoft JhengHei", sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    margin: 0;
+    padding: 24px 16px 64px;
+    line-height: 1.72;
+  }
+  main {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    margin: 0 auto;
+    max-width: 840px;
+    padding: 22px 26px;
+  }
+  nav {
+    margin: 0 auto 14px;
+    max-width: 840px;
+    color: var(--muted);
+    font-size: 14px;
+  }
+  a { color: var(--accent); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  h1, h2, h3, h4 { line-height: 1.35; }
+  h1 { font-size: 26px; margin-top: 0; }
+  h2 { border-top: 1px solid var(--border); padding-top: 18px; }
+  code {
+    background: rgba(127, 127, 127, 0.12);
+    border-radius: 4px;
+    padding: 1px 4px;
+  }
+  .table-wrap {
+    margin: 1em 0;
+    overflow-x: auto;
+  }
+  .table-wrap.wide {
+    /* Break out of the 840px prose column, centred on the viewport. */
+    width: min(1040px, calc(100vw - 32px));
+    margin-left: calc(50% - min(520px, 50vw - 16px));
+  }
+  table {
+    border-collapse: collapse;
+    table-layout: auto;
+    width: 100%;
+  }
+  .table-wrap.wide {
+    /* Opaque so the <main> card border does not show through the table. */
+    background: var(--card);
+  }
+  /* Width hints go on <th> as percentages: Chrome's auto table layout
+     mis-sizes columns (and overflows) when cells carry min-width. */
+  .table-wrap.wide th:first-child {
+    /* Variable + plain-language definition, e.g. "NCPV (noncalcified ...)". */
+    width: 26%;
+  }
+  .table-wrap.wide th:last-child {
+    /* Last column is usually a one-line interpretation. */
+    width: 20%;
+  }
+  th, td {
+    border: 1px solid var(--border);
+    /* Wrap only at spaces: never split an English word mid-letter. */
+    overflow-wrap: normal;
+    word-break: normal;
+    hyphens: manual;
+    padding: 6px 8px;
+    text-align: left;
+    vertical-align: top;
+  }
+  blockquote {
+    border-left: 3px solid var(--accent);
+    color: var(--muted);
+    margin-left: 0;
+    padding-left: 14px;
+  }
+  .appraisal-meta {
+    border-top: 1px solid var(--border);
+    margin-top: 28px;
+    padding-top: 14px;
+    color: var(--muted);
+    font-size: 13px;
+  }
+  @media (max-width: 600px) {
+    body {
+      padding: 12px 8px 40px;
+    }
+    main {
+      padding: 16px 12px;
+    }
+    h1 {
+      font-size: 22px;
+    }
+    table {
+      font-size: 12px;
+    }
+    .table-wrap.wide {
+      width: calc(100vw - 16px);
+      margin-left: calc(50% - 50vw + 8px);
+    }
+    th, td {
+      padding: 4px 5px;
+    }
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #1a1a1a;
+      --card: #242424;
+      --text: #e8e8e8;
+      --muted: #999;
+      --border: #333;
+      --accent: #6ea8ff;
+    }
+  }
+</style>
+</head>
+<body>
+<nav><a href="../../2026-W46.html">← 回到 2026-W46 週報</a></nav>
+<main>
+<h1>Long-term outcomes after percutaneous coronary intervention with drug-eluting stents versus coronary artery bypass grafting for left main coronary artery disease: a prospective analysis of the multicentre IRIS-MAIN registry.</h1>
+<h1>IRIS-MAIN 註冊研究：左主幹冠狀動脈疾病 PCI（DES）與 CABG 的長期結果——批判性評讀</h1>
+<hr />
+<h2>SECTION-0：文章全面描述</h2>
+<h3>0. 文章身份證</h3>
+<ul>
+<li>
+<p><strong>標題</strong>：Long-term outcomes after PCI with drug-eluting stents versus CABG for left main coronary artery disease: a prospective analysis of the multicentre IRIS-MAIN registry</p>
+</li>
+<li>
+<p><strong>期刊／年份</strong>：<em>Lancet</em>，2026（線上發表日 2026-11-03）；DOI 10.1016/S0140-6736(26)02104-5；PMID 42976899</p>
+</li>
+<li>
+<p><strong>文章類型（路由結果）</strong>：前瞻性多中心觀察性世代研究。作者以 target trial emulation 框架分析，並用 propensity-score overlap weighting 校正。→ 走 SKILL-A，加觀察性子模組與因果推論 Appendix。</p>
+</li>
+<li>
+<p><strong>混血設計提醒</strong>：作者自稱「target trial emulation」，但實際做法有三處不符 target trial 的核心要求：</p>
+<ul>
+<li>time zero 設在手術日，而不是治療決策日；</li>
+<li>PCI 組包含 CABG 禁忌者，不符合「兩種治療皆適合」的納入條件；</li>
+<li>關鍵解剖變項（Medina 分型、LM 狹窄程度）是回溯收集，而且未放進主分析的 PS 模型。</li>
+</ul>
+<p>因此本文較接近「借用 target trial 語言的 PS-weighted cohort」，不是嚴格的 emulation（細節見 B3 與 Appendix）。</p>
+</li>
+</ul>
+<h3>1. 作者團隊評論</h3>
+<ul>
+<li><strong>通訊作者</strong>：Duk-Woo Park（Asan Medical Centre，University of Ulsan，首爾）[文內]。資深作者 Seung-Jung Park 也在同一機構 [文內]。</li>
+<li><strong>團隊構成</strong>：37 位作者幾乎全是介入心臟科醫師；外科醫師只有 Asan 的 5 位胸腔心臟外科醫師（H J Kim、K Kim、J B Kim、J S Yoo、C H Chung）。統計由 M-J Kim（MSc）負責 [文內 Contributors]。研究構想、分析與撰稿都由 Asan 介入團隊主導 [文內]。</li>
+<li><strong>團隊過往研究</strong>：
+<ul>
+<li>D-W Park 是 PRECOMBAT 10 年追蹤（<em>Circulation</em> 2020）的第一作者 [外部: Ehara comment 參考文獻 4]。</li>
+<li>D-W Park 也是 MAIN-COMPARE 長期報告的作者 [外部: 搜尋結果書目列表]。</li>
+<li>本研究同步在 TCT 2026 由 D-W Park 發表 [外部: ACC.org / TCTMD]。</li>
+<li>這個團隊是亞洲左主幹 PCI 的核心研究群，不是跨領域首次切入。</li>
+</ul>
+</li>
+<li><strong>作者立場史</strong>：團隊過去在 PRECOMBAT、MAIN-COMPARE 一貫的結論是「LM PCI 與 CABG 的死亡率沒有顯著差異」[外部]。本文結論與過往立場高度一致，有確認偏差風險。這不等於結果錯誤，但解讀的模糊空間（例如 Medina 不平衡、landmark 後期趨勢）較可能往「PCI 不劣」的方向詮釋。</li>
+<li><strong>利益揭露</strong> [文內]：
+<ul>
+<li>D-W Park：Abbott Vascular、Boston Scientific、Medtronic（皆為 DES 製造商）等公司的研究經費與演講費。</li>
+<li>S-J Park：Abbott、Medtronic 等。</li>
+<li>D-Y Kang：Abbott 等演講費。</li>
+<li>C-W Nam：Abbott 研究經費。</li>
+<li>資金來源為 CardioVascular Research Foundation（韓國），文內聲明資助方不參與研究。CVRF 與作者團隊的組織關係：[無法取得：本次搜尋未確認]。</li>
+</ul>
+</li>
+<li><strong>評估</strong>：PCI 團隊主導、核心作者與支架廠商有財務關係、外科觀點只占少數。這些因素主要影響的是敘事框架（例如把高比例影像導引 PCI 作為可能的解釋），不是硬性數據本身。</li>
+</ul>
+<h3>2. 文獻 Metadata</h3>
+<ul>
+<li><strong>Received / Accepted date</strong>：[markdown 未保留]；審查天數無法計算。</li>
+<li><strong>期刊平均審查天數</strong>：[無法取得]。</li>
+<li><strong>發表形式</strong>：與 TCT 2026 同步發表 [外部: ACC.org]。同步發表通常代表加速審查流程 [推論]。</li>
+<li><strong>期刊屬性</strong>：<em>Lancet</em>，JIF 約 109（2025 JCR 資料年）。這個數字取自次級彙整網站，未經 Clarivate 直接確認 [外部: impactfactorforjournal.com]。General &amp; Internal Medicine Q1；非 Open Access（文內版權聲明 &quot;All rights reserved&quot;）[文內]。</li>
+<li><strong>邀稿或投稿</strong>：原著論文，非邀稿 [文內]；同期附 Comment [外部]。</li>
+</ul>
+<h3>3. 研究背景 [文內]</h3>
+<ul>
+<li><strong>既有證據</strong>：
+<ul>
+<li>4 個 RCT（SYNTAX、PRECOMBAT、EXCEL、NOBLE）的 IPD meta-analysis：5 年死亡率 PCI 11.2% vs CABG 10.2%，HR 1.10（0.91–1.32）。</li>
+<li>NOBLE 與 SYNTAX Extended Survival 的 10 年死亡率無顯著差異。</li>
+<li>觀察性的 SWEDEHEART 與 Ontario 註冊研究則顯示 CABG 有存活優勢。</li>
+</ul>
+</li>
+<li><strong>知識缺口</strong>：
+<ul>
+<li>RCT 收的多是低至中解剖複雜度病人。</li>
+<li>10 年 RCT 報告缺少非致死結果。</li>
+<li>亞洲族群與高比例 intravascular imaging 導引 PCI 的情境缺乏長期資料。</li>
+</ul>
+</li>
+<li><strong>Research question</strong>：在亞洲 unprotected LM 病人中，DES-PCI 與單純 CABG 的長期全因死亡率是否不同？</li>
+</ul>
+<h3>4. 研究設計與方法</h3>
+<p><strong>PICO</strong></p>
+<ul>
+<li><strong>P</strong>：年齡 ≥18 歲、unprotected LM 狹窄 ≥50%（目測）、接受指標血管重建的病人。排除 STEMI、心因性休克或 MCS、曾心臟手術或 LM PCI、活動性惡性腫瘤、嚴重共病、預期壽命 &lt;1 年。</li>
+<li><strong>I</strong>：PCI 使用 DES（n=3836）。</li>
+<li><strong>C</strong>：單純 CABG（n=1543）。</li>
+<li><strong>O</strong>：
+<ul>
+<li>主要終點：全因死亡。</li>
+<li>次要終點：心血管與非心血管死亡、自發性 MI、procedural MI（Fourth UDMI；post-hoc 加做 SCAI 定義）、中風、TVR、任何再血管化。</li>
+</ul>
+</li>
+</ul>
+<p><strong>設計細節</strong></p>
+<ul>
+<li>46 家醫院，分布於韓國、印度、日本、印尼、馬來西亞。</li>
+<li>收案期間 2003–2024；死亡追蹤至 2025-12-31。</li>
+<li>中位追蹤 10.0 年。</li>
+<li>治療由 Heart Team 或主治醫師決定。</li>
+</ul>
+<p><strong>統計方法</strong></p>
+<ul>
+<li>以非簡約邏輯迴歸估計 PS，calendar year 以 5 knot restricted cubic spline 建模，再做 overlap weighting（ATO estimand）。</li>
+<li>主模型：加權 Cox 模型，搭配 robust sandwich 變異數。</li>
+<li>遺漏值：多重插補 10 組，以 Rubin's rules 合併。</li>
+<li>非致死結果：Fine-Gray 模型，以死亡為競爭風險。</li>
+<li>Procedural MI：加權 logistic 迴歸。</li>
+<li>預先指定的 landmark 分析：0–1 年、&gt;1–5 年、&gt;5–10 年；每段重新估計權重。</li>
+<li>敏感度分析：中心叢集變異數、依死亡資料來源分層的 Cox、sIPTW、IPCW、complete-case（加入 Medina 與 LM 狹窄程度）。</li>
+<li>多重比較未校正，次要終點視為探索性 [文內]。</li>
+</ul>
+<p><strong>變項定義</strong></p>
+<ul>
+<li>死亡資料：65.1% 病人（韓國、有身分證號者）連結 NHIS 與國家統計資料。其餘病人靠臨床追蹤 [文內]。</li>
+<li>非致死事件：主要由各中心通報，再由盲法 CEC 判定 [文內]。</li>
+</ul>
+<h3>5. 研究結果重點整理</h3>
+<p><strong>主要結果表</strong>（加權 = overlap-weighted；HR 以 CABG 為參照；10 年率）</p>
+<div class="table-wrap wide"><table>
+<thead>
+<tr>
+<th>變項（代表什麼）</th>
+<th style="text-align:right">PCI（n=3836）</th>
+<th style="text-align:right">CABG（n=1543）</th>
+<th style="text-align:right">組間差（95% CI）</th>
+<th style="text-align:right">p 值</th>
+<th>如何解讀</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>未校正全因死亡</td>
+<td style="text-align:right"><strong>21.0%</strong></td>
+<td style="text-align:right"><strong>26.2%</strong></td>
+<td style="text-align:right">HR <strong>0.74</strong>（0.67–0.82）</td>
+<td style="text-align:right">&lt;0.0001</td>
+<td>粗資料偏向 PCI，反映 CABG 組病人基線較重</td>
+</tr>
+<tr>
+<td><strong>全因死亡（主要終點）</strong></td>
+<td style="text-align:right">772 例；<strong>24.0%</strong></td>
+<td style="text-align:right">674 例；<strong>22.9%</strong></td>
+<td style="text-align:right">ARD <strong>＋1.1%</strong>（−2.4 to 4.7）；HR <strong>1.00</strong>（0.87–1.14）</td>
+<td style="text-align:right">0.99</td>
+<td>校正後兩組幾乎重疊；CI 無法排除 PCI 多約 4.7% 的絕對死亡</td>
+</tr>
+<tr>
+<td>心血管死亡</td>
+<td style="text-align:right"><strong>10.6%</strong></td>
+<td style="text-align:right"><strong>10.9%</strong></td>
+<td style="text-align:right">ARD −0.3%（−3.1 to 2.5）；HR 1.05（0.86–1.28）</td>
+<td style="text-align:right">0.64</td>
+<td>沒有明確組間差異</td>
+</tr>
+<tr>
+<td>非心血管死亡（PH 假設不成立）</td>
+<td style="text-align:right"><strong>15.0%</strong></td>
+<td style="text-align:right"><strong>13.4%</strong></td>
+<td style="text-align:right">RMST 差 −44.0 天（−104.3 to 16.3）</td>
+<td style="text-align:right">0.15</td>
+<td>沒有明確差異；表中 HR 0.96 不宜解讀</td>
+</tr>
+<tr>
+<td>Landmark 0–1 年死亡</td>
+<td style="text-align:right"><strong>3.2%</strong></td>
+<td style="text-align:right"><strong>3.4%</strong></td>
+<td style="text-align:right">HR 0.92（0.59–1.41）</td>
+<td style="text-align:right">0.69</td>
+<td>早期死亡率相近</td>
+</tr>
+<tr>
+<td>Landmark &gt;1–5 年死亡</td>
+<td style="text-align:right"><strong>9.2%</strong></td>
+<td style="text-align:right"><strong>8.4%</strong></td>
+<td style="text-align:right">HR 1.09（0.83–1.45）</td>
+<td style="text-align:right">0.54</td>
+<td>點估計略偏 CABG，CI 很寬</td>
+</tr>
+<tr>
+<td>Landmark &gt;5–10 年死亡</td>
+<td style="text-align:right"><strong>14.3%</strong></td>
+<td style="text-align:right"><strong>12.5%</strong></td>
+<td style="text-align:right">HR <strong>1.17</strong>（0.90–1.53）</td>
+<td style="text-align:right">0.24</td>
+<td>晚期 PCI 點估計較差，與 RCT IPD 趨勢一致</td>
+</tr>
+<tr>
+<td><strong>自發性 MI</strong>：非手術相關的心肌梗塞</td>
+<td style="text-align:right"><strong>4.6%</strong></td>
+<td style="text-align:right"><strong>1.9%</strong></td>
+<td style="text-align:right">ARD ＋2.7%（0.8 to 4.6）；sHR <strong>2.06</strong>（1.16–3.66）</td>
+<td style="text-align:right">0.014</td>
+<td>PCI 較多，但 CABG 只有 25 例事件</td>
+</tr>
+<tr>
+<td><strong>Procedural MI（Fourth UDMI）</strong>：術後 48 小時內的生物標記型 MI</td>
+<td style="text-align:right">53 例；<strong>1.8%</strong></td>
+<td style="text-align:right">4 例；<strong>0.4%</strong></td>
+<td style="text-align:right">OR <strong>4.44</strong>（1.33–14.88）</td>
+<td style="text-align:right">0.016</td>
+<td>CABG 只有 4 例；改用 SCAI 定義後方向反轉</td>
+</tr>
+<tr>
+<td>Procedural MI（SCAI，post-hoc）</td>
+<td style="text-align:right">未報告</td>
+<td style="text-align:right">未報告</td>
+<td style="text-align:right">OR <strong>0.50</strong>（0.38–0.67）</td>
+<td style="text-align:right">未報告</td>
+<td>方向與上一列相反，顯示結論高度依賴定義</td>
+</tr>
+<tr>
+<td>中風</td>
+<td style="text-align:right"><strong>3.0%</strong></td>
+<td style="text-align:right"><strong>6.2%</strong></td>
+<td style="text-align:right">ARD −3.2%（−5.6 to −0.8）；sHR <strong>0.53</strong>（0.33–0.86）</td>
+<td style="text-align:right">0.010</td>
+<td>PCI 較少；10 年事件確認完整度只有 69%</td>
+</tr>
+<tr>
+<td>30 天後中風（post-hoc）</td>
+<td style="text-align:right"><strong>2.5%</strong></td>
+<td style="text-align:right"><strong>5.6%</strong></td>
+<td style="text-align:right">HR 0.45（0.26–0.77）</td>
+<td style="text-align:right">未報告</td>
+<td>晚期中風差異的生物學合理性存疑（見 B4）</td>
+</tr>
+<tr>
+<td><strong>TVR</strong>：目標血管再血管化</td>
+<td style="text-align:right"><strong>11.8%</strong></td>
+<td style="text-align:right"><strong>4.6%</strong></td>
+<td style="text-align:right">ARD ＋7.2%（4.2 to 10.1）；sHR <strong>2.57</strong>（1.74–3.79）</td>
+<td style="text-align:right">&lt;0.0001</td>
+<td>PCI 明顯較多，與 RCT 一致</td>
+</tr>
+<tr>
+<td>任何再血管化</td>
+<td style="text-align:right"><strong>21.5%</strong></td>
+<td style="text-align:right"><strong>8.0%</strong></td>
+<td style="text-align:right">ARD ＋13.5%（9.5 to 17.6）；sHR <strong>2.78</strong>（2.05–3.75）</td>
+<td style="text-align:right">&lt;0.0001</td>
+<td>約每 7 位 PCI 病人多 1 人需再次介入 [自行計算 1/0.135]</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>表外重點</strong></p>
+<ul>
+<li>
+<p><strong>有效樣本量</strong>：加權後的有效樣本量在時間 0 時是 PCI 1503 + CABG 1043 = 2546，約為原始 5379 人的 47%（Figure 2A 圖下數字）[自行計算]。也就是說，實際推論的「虛擬族群」只有原始人數的一半左右。</p>
+</li>
+<li>
+<p><strong>追蹤時間嚴重不對稱</strong>：中位追蹤 PCI 8.9 年 vs CABG 17.0 年。依 Figure 2A，到 10 年時：</p>
+<ul>
+<li>PCI 已累積 2092 例設限（54.5%），仍在風險中 1184 人；</li>
+<li>CABG 設限 331 例（21.5%），仍在風險中 849 人。</li>
+</ul>
+<p>換言之，10 年 PCI 估計主要來自早期收案者 [自行計算]。</p>
+</li>
+<li>
+<p><strong>非致死結果的追蹤遠比死亡短</strong>：Figure 3A/C/D 顯示，到 10 年時 CABG 有 1233–1265 例設限（約 80–82%），PCI 有 2986–3137 例設限（約 78–82%）；10 年仍在風險中的人只有 CABG 約 150 人、PCI 約 400–450 人。所以 10 年非致死事件率的分母很小，精確度遠不如死亡率。</p>
+</li>
+<li>
+<p><strong>亞組</strong>：唯一名目上顯著的亞組是「LM＋單支血管病變」HR 0.63（0.42–0.96），但交互作用 p=0.14，且 CABG 組只有 80 人。LVEF &lt;50% 亞組 HR 1.22（0.91–1.63），交互作用 p=0.19。</p>
+</li>
+</ul>
+<h3>6. 作者討論與評論重點</h3>
+<ul>
+<li>
+<p><strong>主要訊息</strong>：在亞洲、高比例影像導引 PCI 的真實世界族群中，10 年死亡率沒有可偵測的差異。PCI 有較多自發性 MI 與再血管化，中風則較少。</p>
+</li>
+<li>
+<p><strong>與文獻的異同</strong>：</p>
+<ul>
+<li>與 NOBLE、SYNTAX、PRECOMBAT 的 10 年結果一致。</li>
+<li>與 SWEDEHEART、Ontario（CABG 存活較佳）不一致。作者提出的可能解釋包括：PCI 比例差異（71% vs 16% vs 6%）、影像導引、病人選擇、殘餘混淆，並明確說這些「只是假說」[文內 Discussion]。</li>
+</ul>
+</li>
+<li>
+<p><strong>作者自列限制</strong> [文內]：</p>
+<ol>
+<li>觀察性設計，有殘餘混淆；</li>
+<li>選擇 PCI 的理由只單向記錄；</li>
+<li>20 年跨度，10 年估計主要來自早期收案者；</li>
+<li>缺 SYNTAX score 與衰弱評估；</li>
+<li>死亡資料來源不一致，IPCW 結果難以解讀；</li>
+<li>非致死事件可能漏報或差異性確認；</li>
+<li>只有亞洲族群。</li>
+</ol>
+</li>
+<li>
+<p><strong>[評估]</strong>：作者的限制段相當坦白，abstract 也明寫「CI 不排除任一方向的利益或傷害」「不能建立因果或等效」，這是本文的優點。作者未充分討論的有三點：</p>
+<ul>
+<li>PCI 組包含 CABG 禁忌者，等於破壞了 target trial 的可交換性前提；</li>
+<li>time zero 設在手術日造成的選擇問題；</li>
+<li>Medina 分型在加權後仍明顯不平衡（1,1,1 型 43.3% vs 59.0%）。</li>
+</ul>
+<p>Heart Team 的建議語氣算克制，沒有明顯超出數據範圍。</p>
+</li>
+</ul>
+<h3>7. 外部專業意見</h3>
+<p><strong>Ehara N.</strong>（Kobe City Medical Center General Hospital）。&quot;Left main coronary artery disease: PCI or CABG for revascularisation strategy.&quot; <em>Lancet</em> 2026 Comment，DOI 10.1016/S0140-6736(26)02200-2 [外部: Lancet comment 全文]</p>
+<ul>
+<li><strong>肯定</strong>：作為 RCT 的補充證據有價值；認為「在適當選擇的病人中，DES-PCI 可能達到與 CABG 相當的長期存活」，但選擇策略時必須考慮自發性 MI 與再血管化較多。</li>
+<li><strong>對與歐美註冊研究結果分歧的解釋</strong>：
+<ul>
+<li>PCI 使用比例差異；</li>
+<li>亞洲較高的術者經驗；</li>
+<li>IRIS-MAIN 的 PCI 病人比 Ontario、SWEDEHEART 年輕約 8–10 歲；</li>
+<li>高比例影像導引（引用 RENOVATE-COMPLEX-PCI、NOBLE IVUS substudy）。</li>
+</ul>
+</li>
+<li><strong>方法學質疑</strong>：
+<ul>
+<li>缺 SYNTAX score 是「特別重要的限制」；</li>
+<li>其他未測或未充分校正的混淆包括衰弱、手術風險、認知狀態、社經地位、病人偏好、血管重建完整度、殘餘病變、術者經驗、長期藥物治療。</li>
+<li>結論是觀察到的關聯「無法完全歸因於血管重建策略本身」，且對亞洲以外地區的外推有限。</li>
+</ul>
+</li>
+<li><strong>評論中的事實錯誤</strong>：
+<ul>
+<li>把「3111/3836（81%）」寫成 PCI 占全部血管重建的比例，但這個數字其實是「影像導引 PCI 的比例」；本文的 PCI 比例是 71.3%。</li>
+<li>把 era 分段寫成「2003–23」，原文是 2003–13。</li>
+</ul>
+</li>
+<li><strong>利益揭露</strong>：Ehara 本人揭露 Abbott Vascular、Medtronic、Edwards 酬勞 [外部]。</li>
+<li><strong>評論的取向</strong>：整體偏向接受本文主結論，方法學批評集中在未測混淆，沒有觸及 overlap estimand 的定義、time zero、PCI 組納入 CABG 禁忌者等設計層面問題。</li>
+</ul>
+<h3>8. 臨床建議</h3>
+<ul>
+<li><strong>可參考本研究的情境</strong>：亞洲、高 PCI 經驗、常規使用 IVUS/OCT 的中心，Heart Team 認為兩種策略皆可行、LM 合併 0–2 支血管病變、LVEF 保留的病人。本研究可作為「長期死亡率差異可能不大」的補充觀察性證據，但不能取代 RCT。</li>
+<li><strong>不建議直接套用的情境</strong>：
+<ul>
+<li>糖尿病合併多支血管、高 SYNTAX 的病人：本研究沒有 SYNTAX 資料，現有 RCT 與指引仍支持 CABG。</li>
+<li>LVEF &lt;50%：點估計 HR 1.22 偏向 CABG。</li>
+<li>歐美族群。</li>
+<li>不常規使用影像導引的 PCI 中心。</li>
+<li>預期壽命 &gt;10–15 年的年輕病人：&gt;5–10 年 landmark 點估計偏向 CABG，而且 10 年後 PCI 的資料極少。</li>
+</ul>
+</li>
+<li><strong>實務建議</strong>：
+<ol>
+<li>和病人溝通時，與其說「死亡率相同」，較誠實的說法是「10 年死亡差異可能在 ±4–5% 範圍內無法確定，但 PCI 約每 7 人多 1 人需要再次介入」。</li>
+<li>中風差異不要當作選擇 PCI 的主要理由：事件確認不完整，而且 30 天後的晚期差異缺乏生物學合理性。</li>
+<li>若選擇 PCI，應以影像導引為標準作法，並安排長期追蹤，注意晚期事件。</li>
+</ol>
+</li>
+<li><strong>證據強度</strong>：<strong>弱至中</strong>。理由：前瞻收案、大樣本、長追蹤、死亡資料連結（部分病人），但有不可忽略的殘餘混淆、estimand 不對應臨床決策族群、追蹤不對稱。</li>
+</ul>
+<hr />
+<h2>SKILL-A：批判性評讀（觀察性研究）</h2>
+<h3>A. 補充技術細節</h3>
+<ul>
+<li><strong>樣本數估算</strong>：未報告事前 power 計算，註冊研究也不適用。統計精確度由 CI 表達：HR 0.87–1.14。</li>
+<li><strong>混淆控制方法</strong>：PS overlap weighting，強度「中–高」。
+<ul>
+<li><strong>優點</strong>：
+<ul>
+<li>對 PS 模型內變項保證完全平衡（SMD 0.00）；</li>
+<li>不會產生極端權重；</li>
+<li>calendar year 以 spline 處理；</li>
+<li>做了 era 分層與 complete-case 敏感度分析。</li>
+</ul>
+</li>
+<li><strong>關鍵問題 1：重疊性很差。</strong> CABG 的 PS 中位數在 PCI 組是 7.6%（IQR 1.9–21.8），在 CABG 組是 67.7%（38.4–83.7）[文內]。兩組 IQR 完全不重疊。Overlap weighting 會把權重集中在 PS 約 0.3–0.7 的「臨床模稜兩可」病人上。加權後的族群有 57.3% 是 LM＋三支血管病變，而原始 PCI 組只有 29.6%、CABG 組 73.2%。所以本文的 HR 1.00 描述的是一個合成出來的 equipoise 族群，不是「典型被選做 PCI 的病人」，也不是「典型被選做 CABG 的病人」。作者在 Implications 段有提到這一點，值得肯定。</li>
+<li><strong>關鍵問題 2：加權後仍不平衡的變項。</strong> Chronic renal failure 加權後是 5.8% vs 5.1%（SMD 0.03）。Overlap weighting 對 PS 模型內變項理論上會得到完全平衡，所以這可能表示該變項不在 PS 模型中，或是多重插補合併造成的差異 [推論；markdown 未說明]。</li>
+</ul>
+</li>
+<li><strong>缺失資料</strong>：
+<ul>
+<li>主分析的 MI 插補模型包含結果變項，作法正確（outcome-informed）。</li>
+<li>Medina 分型與 LM 狹窄程度是回溯收集，只有約 3500/5379（65%）的病人有資料，且沒有放進主分析。</li>
+</ul>
+</li>
+<li><strong>比例風險假設</strong>：作者報告除了非心血管死亡外全部成立。但 Figure 2A 目視可見曲線交叉（見 C4），PH 檢定在 HR 接近 1 時檢定力有限。</li>
+<li><strong>競爭風險</strong>：非致死結果以 Fine-Gray 處理死亡競爭風險，方法正確。但 sHR 不能解讀為因果的 cause-specific 效果。</li>
+</ul>
+<h3>B. 批判性評估</h3>
+<h4>B1. 假說與理論邏輯</h4>
+<ul>
+<li><strong>預先指定</strong>：主要終點、landmark 分析、亞組都有預先指定 [文內 SAP]。SCAI 定義、30 天後中風、支架世代、年齡交互作用則是 post-hoc，作者都有標示 [文內]。</li>
+<li><strong>合理機轉</strong>：
+<ol>
+<li><strong>PCI 晚期事件累積</strong>：支架內再狹窄、非支架段病變進展，而 CABG 繞道可以「保護」後續新生的近端病變。這可以解釋 PCI 組自發性 MI 與 TVR 較多，以及 &gt;5 年死亡的點估計偏高。</li>
+<li><strong>CABG 的中風</strong>：主要在圍術期，與手術操作有關。</li>
+</ol>
+</li>
+<li><strong>最可疑的敘事跳躍</strong>：
+<ol>
+<li>用「81% 影像導引 PCI」解釋為何本文結果與 SWEDEHEART、Ontario 不同。本研究內部沒有做影像導引與非影像導引的比較，這只是無法在本資料中檢驗的假說。作者有自我約束，但 Research in context 與 Comment 都放大了這條敘事。</li>
+<li>中風「在 30 天後仍是 CABG 組較多」（HR 0.45）。CABG 的中風超額風險在機轉上應集中於圍術期，晚期中風差異更可能反映基線差異（CABG 組既往中風或 TIA 較多、PAD 較多）或追蹤差異，而不是治療效果。</li>
+</ol>
+</li>
+</ul>
+<h4>B2. 受試者與外推性</h4>
+<ul>
+<li><strong>加權族群與實際臨床決策族群不同</strong>：加權族群有 57% 是 LM＋三支血管病變、ACS 52.9%、LVEF &lt;50% 有 17.2%。但缺少 SYNTAX score，無法判斷解剖複雜度分布。</li>
+<li><strong>地域組成未交代</strong>：絕大部分病人來自韓國；印度、日本、印尼、馬來西亞各自的病人數 [markdown 未報告]。</li>
+<li><strong>外推性分級</strong>：
+<ol>
+<li><strong>一般 LM 病人（亞洲、高 PCI 量、影像導引中心）</strong>：可有條件參考。條件是 Heart Team 認為兩種策略皆可行、解剖複雜度不高。</li>
+<li><strong>歐美病人</strong>：不宜外推。原因是族群、年齡（Comment 指出 IRIS-MAIN 病人年輕約 8–10 歲）、PCI 選擇門檻與手術品質都不同。</li>
+<li><strong>特殊族群</strong>：
+<ul>
+<li>糖尿病：亞組 HR 0.98，但這個族群的 RCT 證據（FREEDOM 等多支血管研究）較強，不應被本研究推翻；</li>
+<li>LVEF 低下：點估計不利 PCI；</li>
+<li>年輕病人：缺 15 年以上的 PCI 資料；</li>
+<li>STEMI 或休克：已被排除，不適用。</li>
+</ul>
+</li>
+</ol>
+</li>
+</ul>
+<h4>B3. 研究設計與偏差（最可能造成偏差的 3 個設計點）</h4>
+<ol>
+<li>
+<p><strong>PCI 組包含 CABG 禁忌者（違反 target trial 納入條件與 exchangeability）</strong></p>
+<ul>
+<li><strong>文內證據</strong>：作者前瞻記錄了「選擇 PCI 而非 CABG 的理由，包括解剖、臨床或手術上的 CABG 禁忌」[文內 Methods]。作者在限制段承認這些資料「無法確認每位病人都適合兩種治療」[文內 Limitations]。</li>
+<li><strong>偏差方向</strong>：手術禁忌者通常衰弱、共病多，在 PS 模型未測量的情況下會讓 PCI 看起來比較差。另一方面，CABG 組有較高的未測解剖複雜度（SYNTAX），會讓 CABG 看起來比較差。兩股未測混淆方向相反，淨偏差方向無法判定。HR 1.00 可能是「互相抵消」的結果。</li>
+<li><strong>需要什麼才放心</strong>：排除有 CABG 禁忌紀錄者的敏感度分析；或只限 Heart Team 明確判定「兩者皆可」的子世代。</li>
+</ul>
+</li>
+<li>
+<p><strong>Time zero 設在手術日，而非治療決策日</strong></p>
+<ul>
+<li><strong>文內證據</strong>：「Follow-up began at the date of index revascularisation」[文內]。流程圖中有 9 人在血管重建前死亡、157 人計畫血管重建但未執行 [Figure 1，已讀圖確認，總數 801 = 各項相加，數字一致]。</li>
+<li><strong>偏差方向</strong>：CABG 通常排程等候較久，等候期間死亡或惡化的人不會進入 CABG 組。這會產生有利於 CABG 的選擇偏差（類似 immortal time 的效果）。真正的 target trial 應從「決定血管重建」那一刻起算。</li>
+<li><strong>需要什麼才放心</strong>：以 angiography 或 Heart Team 決策日為 time zero 的 intention-to-treat 型分析，並把等候期事件計入。</li>
+</ul>
+</li>
+<li>
+<p><strong>差異性追蹤與死亡確認（PCI 為近期收案、CABG 為早期收案）</strong></p>
+<ul>
+<li><strong>文內證據</strong>：中位追蹤 PCI 8.9 年 vs CABG 17.0 年；PCI 比例隨年代上升；NHIS 連結率 65.1%，未連結者靠臨床追蹤 [文內]。IPCW「無法解讀為確認主分析」[文內]。</li>
+<li><strong>偏差方向</strong>：若 PCI 組有較多非韓國或未連結的病人，死亡漏報會讓 PCI 看起來較好。若早期 CABG 病人接受的是較舊的術後照護，則會讓 CABG 看起來較差。年代混淆雖然用 spline 調整，但「CABG 的 10 年資料多數來自 2003–2013，PCI 的 10 年資料則混合各年代」，這種結構無法完全靠模型消除。</li>
+<li><strong>需要什麼才放心</strong>：按連結狀態分層的各組人數與結果、各國各組人數，以及只限 NHIS 連結者的主分析（appendix p 45 提到分層 Cox，但 markdown 未保留各層數字）。</li>
+</ul>
+</li>
+</ol>
+<p><strong>未充分處理的已測混淆</strong>：Medina 分型與 LM 狹窄程度雖然有 complete-case 分析，但加權後 Medina（1,1,1）仍是 43.3% vs 59.0%。依文內百分比 [自行計算]，SMD 約 0.3 以上，屬嚴重不平衡。真分叉三支受累的 LM 預後較差，而且多在 CABG 組。這個不平衡若未被 complete-case 分析完全處理，偏差方向是對 PCI 有利。</p>
+<p><strong>對照組適當性</strong>：CABG 是該期間的 LM 標準治療，對照組合理。Off-pump 比例 59.4%、total arterial 28.5%、LIMA 94.1%。在 ROOBY、CORONARY 等時代，off-pump 比例偏高，可能與較低的長期 graft patency 有關，屬於外科品質的變異來源 [推論]。</p>
+<h4>B4. 測量工具與實務意義</h4>
+<ul>
+<li><strong>全因死亡</strong>：硬終點，韓國部分有國家資料庫連結，測量可靠度高。非韓國部分可靠度未知。</li>
+<li><strong>非致死事件</strong>：
+<ul>
+<li>中風的完整度指數在 1 年 96.4%、5 年 85.3%、10 年 69.1% [文內]。</li>
+<li>由 Figure 3C 讀圖：CABG 曲線在 0 點有小階梯（約 0.5%），之後在 1–3 年持續爬升到約 2.7%（3 年處）。CABG 的中風超額主要在 1 年以後累積，不在圍術期。這與 CABG 中風的已知機轉不符，更支持基線動脈粥樣硬化負擔差異或確認差異的解釋。</li>
+</ul>
+</li>
+<li><strong>TVR 曲線形態</strong>：Figure 3D 讀圖可見 PCI 曲線在 0–約 0.8 年內急升到約 4.5–5%，之後轉為緩坡。這種「早期陡升」很符合韓國早期常規 follow-up angiography 時代的「眼見即修」效應（oculostenotic reflex）[推論]。所以 TVR 差異有一部分可能是檢查密度造成的偵測偏差，不完全是臨床驅動的需要。</li>
+<li><strong>Procedural MI</strong>：CABG 只有 4 例事件，OR 的 CI 是 1.33–14.88。改用 SCAI 定義後 OR 反轉為 0.50。這個結果完全由定義決定，不具臨床參考價值。</li>
+<li><strong>實務意義</strong>：即使主結果為真，臨床上可取用的訊息是「死亡率的差異可能不大，但 PCI 的代價是約 13.5% 的絕對超額再介入、約 2.7% 的自發性 MI」。這對預期壽命長的病人有實質影響。</li>
+</ul>
+<h3>C. 統計與資料完整性</h3>
+<h4>C1. 結果分類（CI + MCID）</h4>
+<ul>
+<li><strong>MCID</strong>：文內未指定。[推算] 10 年全因死亡以絕對差 3% 或相對 HR 1.15 作為臨床重要差異。依據：LM 非劣性 RCT 常見的絕對 margin 約 3–4%，以 10 年基線死亡約 23% 換算，HR 1.15 約等於絕對差 3.4%。</li>
+<li><strong>相對尺度</strong>：HR 1.00（0.87–1.14）的 CI 幾乎完全落在 [0.87, 1.15] 內 → 接近 <strong>NEUTRAL</strong>。</li>
+<li><strong>絕對尺度</strong>：ARD ＋1.1%（−2.4 to 4.7）。上限 4.7% 超過 3% → 無法排除臨床上重要的 PCI 超額死亡。</li>
+<li><strong>分類</strong>：<strong>INCONCLUSIVE（在相對尺度上接近 Neutral）</strong> ❓。此外，這個分類只反映隨機誤差；殘餘混淆造成的系統性誤差可能大於 CI 寬度，所以實質上無法宣稱等效。作者也明確不宣稱等效，這一點正確。</li>
+<li><strong>&gt;5–10 年 landmark</strong>：HR 1.17（0.90–1.53），CI 同時跨越 1 與 MCID → <strong>INCONCLUSIVE</strong>。點估計方向與 IPD meta-analysis 中「1 年後 PCI 死亡較多」的趨勢一致。</li>
+<li><strong>次要終點</strong>：
+<ul>
+<li>TVR、任何再血管化：POSITIVE（PCI 較差）✅，CI 遠離無效值。在多重比較與偵測偏差之下仍相對穩健。</li>
+<li>自發性 MI：IMPRECISE。CI 1.16–3.66 很寬，CABG 事件只有 25 例。</li>
+<li>中風：IMPRECISE，加上有確認偏差疑慮。</li>
+</ul>
+</li>
+</ul>
+<h4>C2. Underpowered／Winner's Curse</h4>
+<p>主要終點 p=0.99，不屬於 underpowered positive 的情境。次要終點中，procedural MI（CABG 4 例）與自發性 MI（CABG 25 例）屬於事件數少的「顯著」結果，效果量（OR 4.44、sHR 2.06）有被高估（Type M error）的風險。</p>
+<h4>C3. Bayesian 補充（簡式，[自行計算]）</h4>
+<p>以 flat prior 與 log-HR 常態近似計算：SE = (ln1.14 − ln0.87)/3.92 ≈ 0.069。</p>
+<ul>
+<li>Pr(HR &gt; 1.15) ≈ 2%</li>
+<li>Pr(HR &lt; 0.87) ≈ 2%</li>
+<li>Pr(0.87 ≤ HR ≤ 1.15，ROPE) ≈ 96%</li>
+</ul>
+<p>這個計算只量化隨機誤差，前提是沒有殘餘混淆。在本研究的設計下，這個前提顯然不成立，所以不能把 96% 解讀為「96% 機率兩者等效」。由於 p 值遠離 0.05，不另做三組 prior 的敏感度分析。</p>
+<h4>C4. 報告完整性與其他問題</h4>
+<ul>
+<li><strong>Kaplan-Meier 圖判讀（Figure 2A，讀圖）</strong>：
+<ul>
+<li>0–約 3.5 年 CABG 曲線略高（反映圍術期與早期事件）；約 3.5–4 年兩線交叉；5 年後 PCI 持續在上方，差距逐漸擴大到 10 年的 1.1%。</li>
+<li>整體 HR 1.00 是「早期 CABG 略差 + 晚期 PCI 略差」的平均。PH 檢定雖然通過，但「單一 HR = 1.00」掩蓋了交叉的時間結構。Landmark 結果（0.92 → 1.09 → 1.17）呈單調上升趨勢，比整體 HR 更有資訊量。</li>
+<li>Y 軸在 30% 上方有斷軸，並以 100 標示，屬於誠實標示。</li>
+<li>10 年時加權有效樣本量是 PCI 676、CABG 571，10 年尾端仍可信。但 10 年以後沒有呈現；CABG 中位追蹤 17 年，PCI 卻沒有足夠資料，作者正確地把分析截在 10 年。</li>
+</ul>
+</li>
+<li><strong>Informative censoring</strong>：PCI 組到 10 年累積 2092 例設限，大部分應該是 administrative censoring（近期收案）。但非韓國病人的臨床追蹤失聯可能具資訊性。作者自承 IPCW 的權重過大、無法確認 [文內]。</li>
+<li><strong>Figure 3 的 Y 軸</strong>：顯示到 14%（另一圖到 3%），並以斷軸接 100。座標壓縮會放大視覺差異，但數字有標示，不構成誤導。</li>
+<li><strong>多重比較</strong>：未校正，作者已聲明。至少 7 個次要終點、10 個亞組、多個 post-hoc 分析。</li>
+<li><strong>統計紅旗</strong>：
+<ol>
+<li>PS 分布幾乎不重疊，ATO 族群不等於臨床決策族群；</li>
+<li>Medina 分型在加權後仍嚴重不平衡，且不在主分析 PS 模型中；</li>
+<li>粗 HR 0.74 → 加權 1.00 的大幅移動，顯示混淆很強，殘餘混淆可能同樣很大；</li>
+<li>非致死結果到 10 年有約 80% 設限，10 年率實際由少數人決定；</li>
+<li>Procedural MI 結論隨定義反轉；</li>
+<li>IPCW 失敗，無法排除資訊性設限；</li>
+<li>SCAI 定義下的 procedural MI 只報告 OR，未報告各組事件率 [markdown 未保留]。</li>
+</ol>
+</li>
+</ul>
+<h3>D. 亞組分析評估</h3>
+<div class="table-wrap wide"><table>
+<thead>
+<tr>
+<th>亞組</th>
+<th>交互作用 p</th>
+<th>方向與既有證據一致？</th>
+<th>預先指定且有預期方向？</th>
+<th>生物機轉</th>
+<th>可信度</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>LM＋單支血管（HR 0.63，0.42–0.96）</td>
+<td>0.14</td>
+<td>否（其他層 HR 約 1.0–1.44，非單調）</td>
+<td>預先指定，未說明預期方向</td>
+<td>弱</td>
+<td><strong>推測性</strong>：CABG 只有 80 人；LM only 層 CABG 僅 33 人，有 positivity 問題</td>
+</tr>
+<tr>
+<td>LVEF &lt;50%（HR 1.22）</td>
+<td>0.19</td>
+<td>是（STICH 等支持 CABG 用於缺血性心肌病變）</td>
+<td>預先指定</td>
+<td>合理</td>
+<td><strong>低</strong></td>
+</tr>
+<tr>
+<td>糖尿病（0.98 vs 1.01）</td>
+<td>0.82</td>
+<td>與 FREEDOM（多支血管）不一致；LM 的 RCT 證據較分歧</td>
+<td>預先指定</td>
+<td>不適用</td>
+<td><strong>低</strong>：不能據此推論糖尿病病人做 PCI 無害</td>
+</tr>
+<tr>
+<td>其他（性別、ACS、eGFR、分叉、狹窄程度）</td>
+<td>0.47–0.96</td>
+<td>不適用</td>
+<td>預先指定</td>
+<td>不適用</td>
+<td>未見效應修飾</td>
+</tr>
+</tbody>
+</table></div>
+<p>Figure 4 讀圖：除了 LM＋單支血管與 LM only（點估計 1.44，CI 0.65–3.20），其餘亞組點估計都緊貼 1.00，CI 窄且都跨越無效線。LM only 層的 CABG 10 年死亡 6.9%（7/33），低得不合理，顯示極小樣本下的不穩定。</p>
+<h3>E. 紅旗清單</h3>
+<ul>
+<li><strong>設計</strong>：自稱 target trial emulation，但 time zero、納入「兩種治療皆適合」者、estimand 都與 target trial 不符。</li>
+<li><strong>混淆</strong>：缺 SYNTAX score、衰弱評估；Medina 分型加權後仍不平衡；PCI 組包含 CABG 禁忌者。</li>
+<li><strong>追蹤</strong>：兩組追蹤年代與死亡資料來源不對稱；IPCW 無法支撐主分析。</li>
+<li><strong>非致死結果</strong>：10 年確認完整度 69%；procedural MI 結論隨定義反轉；TVR 可能受常規追蹤血管攝影影響。</li>
+<li><strong>Estimand</strong>：overlap 族群是合成的 equipoise 族群，不能說「LM 病人做 PCI 與 CABG 存活相同」。</li>
+<li><strong>COI 與敘事</strong>：PCI 團隊主導，核心作者與 DES 廠商有財務關係；「影像導引導致與西方不同」的敘事超出資料能檢驗的範圍。</li>
+<li><strong>同期評論</strong>：Comment 把影像導引比例誤寫為 PCI 比例，可能在二次傳播中放大「亞洲 PCI 主流」的印象。</li>
+</ul>
+<h3>F. 反向解釋</h3>
+<ol>
+<li><strong>相反方向的未測混淆互相抵消</strong>：CABG 組有較高的 SYNTAX、較多三支受累的分叉病變（偏向 CABG 較差）；PCI 組有手術禁忌者與衰弱病人（偏向 PCI 較差）。兩者抵消後得到 HR 約 1.0。
+<ul>
+<li>支持：Medina 分型不平衡、PCI 選擇理由包含手術禁忌 [文內]。</li>
+<li>反對：complete-case 加入 Medina 後結果一致 [文內 appendix p 45，數字未保留]。</li>
+</ul>
+</li>
+<li><strong>選擇偏差有利 CABG，但被早期年代的 CABG 品質抵銷</strong>：time zero 排除了等候期死亡，對 CABG 有利；早期年代 off-pump 比例高、術後二級預防較差，對 CABG 不利。
+<ul>
+<li>支持：Figure 1 中有 9 人在血管重建前死亡、157 人計畫血管重建但未執行。</li>
+<li>反對：era 分層結果一致。</li>
+</ul>
+</li>
+<li><strong>PCI 組死亡漏報</strong>：非韓國、未連結的病人中，PCI 比例可能較高，漏報會讓 PCI 看起來較好。
+<ul>
+<li>支持：IPCW 失敗、作者承認死亡確認有差異。</li>
+<li>反對：依死亡資料來源分層的 Cox 分析結果一致 [文內]。</li>
+</ul>
+</li>
+<li><strong>真實的晚期 PCI 劣勢被追蹤截斷</strong>：landmark HR 由 0.92 → 1.09 → 1.17 逐段上升，若追蹤到 15 年，差異可能浮現。
+<ul>
+<li>支持：Figure 2A 的曲線在 5 年後分開、IPD meta-analysis 的趨勢。</li>
+<li>反對：各段 CI 都跨越 1。</li>
+</ul>
+</li>
+</ol>
+<h3>G. 最終裁決</h3>
+<ul>
+<li><strong>整體可信度</strong>：<strong>中</strong>（作為死亡率的描述性關聯）。若作為因果效應的估計，可信度為<strong>低</strong>。</li>
+<li><strong>可採用的條件</strong>：亞洲、高 PCI 經驗、影像導引的中心；Heart Team 判定兩種策略皆可行；解剖複雜度低至中、LVEF 保留的病人。在這些條件下，可作為「死亡率差異可能不大」的補充證據，並與 NOBLE、PRECOMBAT 的 RCT 證據一起使用。</li>
+<li><strong>不建議採用的情境</strong>：高 SYNTAX 或糖尿病合併多支血管病變、LVEF 低下、預期壽命很長的年輕病人、歐美醫療環境、不常規使用影像導引的中心；也不應用它來支持「PCI 與 CABG 等效」的政策主張。</li>
+<li><strong>若要改觀，最需要的 3 個改進</strong>：
+<ol>
+<li>補收或推估 SYNTAX score，並只限「Heart Team 判定兩者皆可、無手術禁忌」的子世代重做分析；</li>
+<li>以治療決策日為 time zero 的 ITT 型 emulation；</li>
+<li>只限 NHIS 連結者、並明列各國各組人數的主分析，加上 E-value 一類的未測混淆量化。</li>
+</ol>
+</li>
+<li><strong>一句話結論</strong>：亞洲高經驗中心的 LM 病人做 PCI 與做 CABG，10 年死亡率看不出差異，但 PCI 再次介入明顯較多，而且「看不出差異」不等於「確定相同」。</li>
+</ul>
+<h3>效果量總表</h3>
+<div class="table-wrap wide"><table>
+<thead>
+<tr>
+<th>指標</th>
+<th>PCI</th>
+<th>CABG</th>
+<th>效果量</th>
+<th>95% CI</th>
+<th>ARD</th>
+<th>MCID [推算]</th>
+<th>結果分類</th>
+<th>實務意義</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>10 年全因死亡</td>
+<td>24.0%</td>
+<td>22.9%</td>
+<td>HR 1.00</td>
+<td>0.87–1.14</td>
+<td>＋1.1%（−2.4 to 4.7）</td>
+<td>絕對 3% 或 HR 1.15</td>
+<td>Inconclusive（相對尺度近 Neutral）</td>
+<td>無法排除 PCI 多約 5% 的絕對死亡</td>
+</tr>
+<tr>
+<td>&gt;5–10 年死亡</td>
+<td>14.3%</td>
+<td>12.5%</td>
+<td>HR 1.17</td>
+<td>0.90–1.53</td>
+<td>未報告</td>
+<td>HR 1.15</td>
+<td>Inconclusive</td>
+<td>晚期趨勢不利 PCI，需更長追蹤</td>
+</tr>
+<tr>
+<td>自發性 MI</td>
+<td>4.6%</td>
+<td>1.9%</td>
+<td>sHR 2.06</td>
+<td>1.16–3.66</td>
+<td>＋2.7%（0.8 to 4.6）</td>
+<td>無公認值</td>
+<td>Imprecise（＋，PCI 較差）</td>
+<td>事件少，效果量可能被高估</td>
+</tr>
+<tr>
+<td>中風</td>
+<td>3.0%</td>
+<td>6.2%</td>
+<td>sHR 0.53</td>
+<td>0.33–0.86</td>
+<td>−3.2%（−5.6 to −0.8）</td>
+<td>無公認值</td>
+<td>Imprecise（PCI 較少）</td>
+<td>確認不完整，晚期差異機轉存疑</td>
+</tr>
+<tr>
+<td>TVR</td>
+<td>11.8%</td>
+<td>4.6%</td>
+<td>sHR 2.57</td>
+<td>1.74–3.79</td>
+<td>＋7.2%（4.2 to 10.1）</td>
+<td>無公認值</td>
+<td>Positive（PCI 較差）</td>
+<td>穩健，部分可能是偵測偏差</td>
+</tr>
+<tr>
+<td>任何再血管化</td>
+<td>21.5%</td>
+<td>8.0%</td>
+<td>sHR 2.78</td>
+<td>2.05–3.75</td>
+<td>＋13.5%（9.5 to 17.6）</td>
+<td>無公認值</td>
+<td>Positive（PCI 較差）</td>
+<td>約每 7 人多 1 次再介入</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+<p><strong>Sources:</strong></p>
+<ul>
+<li><a href="https://www.tctmd.com/news/mortality-similar-pci-cabg-left-main-cad-broad-asian-population">TCTMD: Mortality Similar With PCI, CABG in Left Main CAD in a Broad Asian Population</a></li>
+<li><a href="https://www.acc.org/latest-in-cardiology/articles/2026/11/02/22/45/tues-257pm-iris-main-tct-2026">ACC.org: IRIS-MAIN, TCT 2026</a></li>
+<li><a href="https://citoday.com/news/iris-main-study-compares-pci-and-cabg-for-left-main-coronary-artery-disease">CI Today: IRIS-MAIN study compares PCI and CABG</a></li>
+<li><a href="https://www.healio.com/news/cardiac-vascular-intervention/20200330/no-difference-in-cardiac-cerebrovascular-events-with-left-main-pci-vs-cabg-at-10-years-precombat">Healio: PRECOMBAT 10-year</a></li>
+<li><a href="https://impactfactorforjournal.com/lancet-impact-factor">Lancet Impact Factor (impactfactorforjournal.com)</a></li>
+<li><a href="https://www.journalmetrics.org/journal/lancet">Journal Metrics: Lancet</a></li>
+<li>Ehara N. <em>Lancet</em> 2026 Comment, DOI 10.1016/S0140-6736(26)02200-2（全文經 dlbydoi 下載）</li>
+</ul>
+
+<footer class="appraisal-meta">評讀資訊：模型：claude-opus-5-5 (claude)  ·  route：observational  ·  產出時間：2026-11-08 08:56 CST</footer>
+</main>
+</body>
+</html>
