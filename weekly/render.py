@@ -10,6 +10,7 @@ from urllib.parse import urlencode
 from jinja2 import Environment, FileSystemLoader, select_autoescape
 from markdown_it import MarkdownIt
 
+from modules.pubmed import is_guideline_or_consensus
 from weekly.appraisal_status import AppraisalStatus
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -171,6 +172,43 @@ def _journal_sections(articles: list[dict], journal_counts: list[dict]) -> list[
     return sections
 
 
+# 指引・回顧 quick-index groups, in display order. An article lands in the
+# first group it matches, so a guideline tagged "Review" is listed once.
+SYNTHESIS_PUB_TYPES = {"Systematic Review", "Meta-Analysis"}
+REVIEW_PUB_TYPES = {"Review"}
+
+
+def _card_anchor(article: dict) -> str:
+    """In-page id for an article card; empty when the article has no PMID."""
+    pmid = re.sub(r"[^0-9A-Za-z]+", "", str(article.get("pmid", "")))
+    return f"article-{pmid}" if pmid else ""
+
+
+def _evidence_groups(articles: list[dict]) -> list[dict]:
+    """Collect guideline / consensus / review cards for the quick-index section.
+
+    `articles` are prepared cards from every section of the page; each entry
+    links to the card's anchor so the reader can jump to it in place.
+    """
+    groups: list[dict] = [
+        {"key": "guideline", "label": "指引／共識／聲明", "items": []},
+        {"key": "synthesis", "label": "系統性回顧／統合分析", "items": []},
+        {"key": "review", "label": "綜述", "items": []},
+    ]
+    by_key = {g["key"]: g for g in groups}
+    for article in articles:
+        if not article.get("card_anchor"):
+            continue
+        pub_type = str(article.get("pub_type", ""))
+        if is_guideline_or_consensus(article):
+            by_key["guideline"]["items"].append(article)
+        elif pub_type in SYNTHESIS_PUB_TYPES:
+            by_key["synthesis"]["items"].append(article)
+        elif pub_type in REVIEW_PUB_TYPES:
+            by_key["review"]["items"].append(article)
+    return [g for g in groups if g["items"]]
+
+
 def render_weekly(
     articles: list[dict],
     week_label: str,
@@ -221,6 +259,7 @@ def render_weekly(
                 "appraise_request_url": appraise_request_url,
                 "appraisal_state": _appraisal_state(article),
                 "feedback_id": _feedback_id(article),
+                "card_anchor": _card_anchor(article),
             }
         )
 
@@ -281,6 +320,12 @@ def render_weekly(
         a for a in prepared if a.get("feedback_id") not in selected_ids
     ]
     journal_sections = _journal_sections(summary_articles, journal_counts)
+    # Page order: featured → appraised → per-journal summaries.
+    evidence_groups = _evidence_groups(
+        featured_articles
+        + appraised_articles
+        + [a for section in journal_sections for a in section["articles"]]
+    )
 
     return tmpl.render(
         week_label=week_label,
@@ -288,6 +333,7 @@ def render_weekly(
         total_count=len(articles),
         articles=summary_articles,
         journal_sections=journal_sections,
+        evidence_groups=evidence_groups,
         journal_counts=journal_counts,
         featured_articles=featured_articles,
         appraised_articles=appraised_articles,
