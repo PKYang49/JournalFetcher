@@ -1,0 +1,788 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Transcatheter Aortic Valve Replacement in Pure Aortic Regurgitation: The Randomized SEASON-AR Clinical Trial.</title>
+<style>
+  :root {
+    --bg: #fafafa;
+    --card: #ffffff;
+    --text: #1a1a1a;
+    --muted: #6b6b6b;
+    --border: #e5e5e5;
+    --accent: #0b5fff;
+  }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang TC",
+      "Microsoft JhengHei", sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    margin: 0;
+    padding: 24px 16px 64px;
+    line-height: 1.72;
+  }
+  main {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    margin: 0 auto;
+    max-width: 840px;
+    padding: 22px 26px;
+  }
+  nav {
+    margin: 0 auto 14px;
+    max-width: 840px;
+    color: var(--muted);
+    font-size: 14px;
+  }
+  a { color: var(--accent); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  h1, h2, h3, h4 { line-height: 1.35; }
+  h1 { font-size: 26px; margin-top: 0; }
+  h2 { border-top: 1px solid var(--border); padding-top: 18px; }
+  code {
+    background: rgba(127, 127, 127, 0.12);
+    border-radius: 4px;
+    padding: 1px 4px;
+  }
+  .table-wrap {
+    margin: 1em 0;
+    overflow-x: auto;
+  }
+  .table-wrap.wide {
+    /* Break out of the 840px prose column, centred on the viewport. */
+    width: min(1040px, calc(100vw - 32px));
+    margin-left: calc(50% - min(520px, 50vw - 16px));
+  }
+  table {
+    border-collapse: collapse;
+    table-layout: auto;
+    width: 100%;
+  }
+  .table-wrap.wide {
+    /* Opaque so the <main> card border does not show through the table. */
+    background: var(--card);
+  }
+  /* Width hints go on <th> as percentages: Chrome's auto table layout
+     mis-sizes columns (and overflows) when cells carry min-width. */
+  .table-wrap.wide th:first-child {
+    /* Variable + plain-language definition, e.g. "NCPV (noncalcified ...)". */
+    width: 26%;
+  }
+  .table-wrap.wide th:last-child {
+    /* Last column is usually a one-line interpretation. */
+    width: 20%;
+  }
+  th, td {
+    border: 1px solid var(--border);
+    /* Wrap only at spaces: never split an English word mid-letter. */
+    overflow-wrap: normal;
+    word-break: normal;
+    hyphens: manual;
+    padding: 6px 8px;
+    text-align: left;
+    vertical-align: top;
+  }
+  blockquote {
+    border-left: 3px solid var(--accent);
+    color: var(--muted);
+    margin-left: 0;
+    padding-left: 14px;
+  }
+  .appraisal-meta {
+    border-top: 1px solid var(--border);
+    margin-top: 28px;
+    padding-top: 14px;
+    color: var(--muted);
+    font-size: 13px;
+  }
+  @media (max-width: 600px) {
+    body {
+      padding: 12px 8px 40px;
+    }
+    main {
+      padding: 16px 12px;
+    }
+    h1 {
+      font-size: 22px;
+    }
+    table {
+      font-size: 12px;
+    }
+    .table-wrap.wide {
+      width: calc(100vw - 16px);
+      margin-left: calc(50% - 50vw + 8px);
+    }
+    th, td {
+      padding: 4px 5px;
+    }
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #1a1a1a;
+      --card: #242424;
+      --text: #e8e8e8;
+      --muted: #999;
+      --border: #333;
+      --accent: #6ea8ff;
+    }
+  }
+</style>
+</head>
+<body>
+<nav><a href="../../2026-W46.html">← 回到 2026-W46 週報</a></nav>
+<main>
+<h1>Transcatheter Aortic Valve Replacement in Pure Aortic Regurgitation: The Randomized SEASON-AR Clinical Trial.</h1>
+<h1>SEASON-AR 批判性評讀：純主動脈瓣逆流（pure AR）以 TAVR 加 GDMT 對比單用 GDMT</h1>
+<hr />
+<h2>SECTION-0：文章全面描述</h2>
+<h3>0. 文章身份證</h3>
+<ul>
+<li><strong>標題</strong>：Transcatheter Aortic Valve Replacement in Pure Aortic Regurgitation: The Randomized SEASON-AR Clinical Trial</li>
+<li><strong>期刊／年份</strong>：<em>Circulation</em> 2026；DOI 10.1161/CIRCULATIONAHA.126.082827；PMID 42965504</li>
+<li><strong>文章類型</strong>：多中心、隨機分派、開放標籤（open-label）的優效性 RCT。比較裝置介入（TAVR 加 GDMT）與單用藥物治療（GDMT）。</li>
+<li><strong>路由</strong>：SKILL-A（RCT 主流程）。</li>
+<li><strong>版本提醒</strong>：本次評讀的 PDF 頁面有「FIRST PROOF ONLY」浮水印，是校樣版本 [文內 p.1 圖頁]。文中有幾處排版瑕疵，包括摘要的「hazard ration」、正文的「Tables 16 through 18」「Table 19」漏寫「S」，以及補充資料網址的 DOI（10.1161/CIRCULATIONAHA.<strong>124.071855</strong>）與本文 DOI 不一致 [文內 p.1 註腳]。</li>
+</ul>
+<h3>1. 作者團隊評論</h3>
+<ul>
+<li><strong>通訊作者</strong>：張俊傑（Jun-Jie Zhang）與陳紹良（Shao-Liang Chen），都在南京醫科大學附屬南京市第一醫院心內科 [文內]。張俊傑是本研究主席與 PI [Supplement eTable 2]。</li>
+<li><strong>團隊過往研究</strong>：
+<ul>
+<li>2024 年在 <em>Am Heart J</em> 發表 SEASON-AR 設計論文 [外部: PubMed, <a href="https://doi.org/10.1016/j.ahj.2024.02.022">DOI</a>]。</li>
+<li>2024 年在 <em>Catheter Cardiovasc Interv</em> 發表單中心 VitaFlow 治療 AR 的經驗：62 例，device success 79.0%，院內新置永久性心律調節器（PPM）29.0%，第二顆瓣膜植入率 14.5% [外部: PubMed, <a href="https://doi.org/10.1002/ccd.31193">DOI</a>]。</li>
+<li>陳紹良在 PubMed 上有多篇 PCI 分叉病灶 RCT（DKCRUSH／DEFINITION 系列；以作者加關鍵字檢索得 33 筆）[外部: PubMed 作者搜尋]，是大型 RCT 經驗豐富的團隊。不過他們在結構性心臟病領域屬於相對新進入的團隊 [推論]。</li>
+</ul>
+</li>
+<li><strong>作者立場史</strong>：同一團隊先發表 SEASON-AR registry 與單中心 VitaFlow 經驗，接著主導本 RCT，核心主張前後一致，存在先前承諾偏差（prior commitment bias）的風險 [推論]。正文引用的 AURORA 研究則出自另一個團隊（Song Guang-Yuan 等，北京安貞醫院；VitaFlow；30 天 device success 91%、PPM 9%）[外部: EuroIntervention]，可視為部分獨立的觀察性佐證。</li>
+<li><strong>利益揭露</strong>：
+<ul>
+<li>經費來自江蘇省與南京市多項政府計畫，並由瓣膜製造商 MicroPort CardioFlow「jointly supported」[文內 Sources of Funding]，但 Disclosures 欄寫的是「None」[文內]。兩者矛盾。</li>
+<li>CT core lab 由 MicroPort CardioFlow 自己擔任 [文內 Methods；Supplement eTable 2]。CT 量測直接決定收案資格（annular perimeter ≤85 mm、LVOT／annulus ratio 0.95–1.05），所以「funder 不參與研究設計」的說法並不完整。</li>
+</ul>
+</li>
+</ul>
+<h3>2. 文獻 Metadata</h3>
+<ul>
+<li><strong>審查時程</strong>：2026 年 8 月 2 日收稿、10 月 7 日接受，審查約 <strong>66 天</strong> [文內]。研究同步在 TCT 2026（10/31–11/3）發表 [文內]。</li>
+<li><strong>期刊平均審查天數</strong>：[無法取得]。66 天對 late-breaking 同步發表算常見，不算特別快 [推論]。</li>
+<li><strong>期刊屬性</strong>：<em>Circulation</em> 2024 年 IF 約 38.6，Q1 [外部: Wikipedia／Manusights]。2025 年 JCR 數值 [無法取得]。版權屬 AHA，OA 狀態 [無法取得]。</li>
+<li><strong>稿件性質</strong>：投稿的原著論文，不是邀稿。</li>
+</ul>
+<h3>3. 研究背景（文內）</h3>
+<ul>
+<li><strong>既有證據</strong>：SAVR 是症狀性重度 AR 的標準治療，但很多病人沒有接受手術。美國 registry 顯示一年內只有 26% 接受手術；中國約 57% 接受 SAVR [文內]。ACC/AHA 對可手術者的 TAVR 為 Class III，ESC 對不適合手術者為 Class IIb [文內]。</li>
+<li><strong>知識缺口</strong>：專用 AR 瓣膜（JenaValve、J-Valve、Pioneer）與 off-label VitaFlow 的證據都來自單臂研究，沒有 TAVR 對比藥物治療的 RCT。</li>
+<li><strong>研究問題</strong>：在手術困難、手術不被接受或堅持拒絕手術的重度 pure AR 病人，TAVR 加 GDMT 能否比單用 GDMT 降低一年的死亡、失能性中風或心衰竭再住院？</li>
+</ul>
+<h3>4. 研究設計與方法</h3>
+<ul>
+<li><strong>P</strong>：年齡 ≥60 歲的原生重度 pure AR，平均跨瓣壓差 &lt;20 mmHg；CT 顯示 annular perimeter ≤85 mm、LVOT／annulus ratio 0.95–1.05；並符合以下任一條件：STS-PROM ≥8%、心臟團隊判定手術困難、經多科說明後仍堅持拒絕 SAVR。
+<ul>
+<li>主要排除：LVEF &lt;30%、升主動脈 &gt;45 mm、SYNTAX &gt;32、重度二尖瓣逆流 [Supplement eTable 3]。</li>
+</ul>
+</li>
+<li><strong>I</strong>：經股動脈 TAVR（VitaFlow，97.1% 使用可回收的新一代 Liberty 系統）加 GDMT。</li>
+<li><strong>C</strong>：單用 GDMT。內容是心衰竭指引藥物，包括 β-blocker、ACEI／ARB／ARNI、SGLT2i、MRA。</li>
+<li><strong>O</strong>：
+<ul>
+<li>主要終點：一年內全死因死亡、失能性中風或心衰竭再住院的複合終點（time-to-first-event）。</li>
+<li>次要終點：各組成分、VARC-3 安全終點、6MWD、NYHA、心臟超音波。</li>
+</ul>
+</li>
+<li><strong>設計細節</strong>：
+<ul>
+<li>中央網路系統隨機分派，以中心分層，permuted block 大小 6。</li>
+<li>病人與治療醫師都知道分組。結果收集人員與 CEC 宣稱 blinded；超音波由中央判讀。</li>
+<li>主要分析為 ITT 的 Kaplan-Meier／log-rank 與 Cox 模型。敏感度分析包括校正中心、年齡、性別，以及 per-protocol、as-treated、RMST、MNAR、landmark、LWYY 重複事件模型、Fine-Gray 競爭風險分析。</li>
+<li>次要終點、敏感度分析與次組分析都沒有做多重比較校正，作者自己標為探索性 [文內 Statistical Analysis]。</li>
+</ul>
+</li>
+<li><strong>登錄與 protocol 核對</strong>：ClinicalTrials.gov 登錄的主要終點是「Clinical worsening: all-cause death, disabling stroke, or HF rehospitalization, 12 months」，與正文一致，<strong>沒有 outcome switching</strong>。
+<ul>
+<li>AHJ 2024 的設計論文寫「12 months after the procedure」，正文則從隨機分派起算。對 GDMT 組而言，從隨機分派起算才合理 [外部: ClinicalTrials.gov、PubMed]。</li>
+<li>登錄資料目前仍標示「RECRUITING」，只列一個試驗地點 [外部: ClinicalTrials.gov]。</li>
+</ul>
+</li>
+</ul>
+<h3>5. 研究結果重點整理</h3>
+<p><strong>主要結果表</strong>（ITT；組別欄格式為「基線 → 追蹤值」或「事件數（KM %）」）</p>
+<div class="table-wrap wide"><table>
+<thead>
+<tr>
+<th>變項（代表什麼）</th>
+<th style="text-align:right">TAVR 組（n=109）</th>
+<th style="text-align:right">GDMT 組（n=101）</th>
+<th style="text-align:right">組間差（95% CI）</th>
+<th style="text-align:right">p 值</th>
+<th>如何解讀</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>LVEDD</strong>（左心室舒張末期內徑）：反映 AR 造成的容量負荷</td>
+<td style="text-align:right">61.5 → <strong>52.0 mm</strong>（n=98）</td>
+<td style="text-align:right">63.0 → <strong>63.0 mm</strong>（n=73）</td>
+<td style="text-align:right">−9.0 mm（−10.6 to −7.5）</td>
+<td style="text-align:right">&lt;0.001</td>
+<td>TAVR 確實卸除容量負荷；GDMT 組 1 年少了 23 筆追蹤</td>
+</tr>
+<tr>
+<td><strong>LVEF</strong>（左心室射出分率）</td>
+<td style="text-align:right">53.0 → <strong>61.0%</strong></td>
+<td style="text-align:right">52.5 → <strong>55.0%</strong></td>
+<td style="text-align:right">＋6.8%（5.2 to 8.4）</td>
+<td style="text-align:right">&lt;0.001</td>
+<td>收縮功能明顯改善；屬中介指標</td>
+</tr>
+<tr>
+<td>左心室質量</td>
+<td style="text-align:right">286.5 → <strong>214.0 g</strong></td>
+<td style="text-align:right">287.0 → <strong>278.0 g</strong></td>
+<td style="text-align:right">−67.3 g（−78.9 to −55.7）</td>
+<td style="text-align:right">&lt;0.001</td>
+<td>逆向重塑的方向一致</td>
+</tr>
+<tr>
+<td><strong>主要複合終點</strong>：死亡、失能性中風或心衰竭再住院</td>
+<td style="text-align:right"><strong>9（8.3%）</strong></td>
+<td style="text-align:right"><strong>25（24.8%）</strong></td>
+<td style="text-align:right">HR 0.31（0.14–0.66）</td>
+<td style="text-align:right">0.001</td>
+<td>ARD 約 16.5 個百分點，NNT 約 6 [自行計算]</td>
+</tr>
+<tr>
+<td>全死因死亡</td>
+<td style="text-align:right">3（2.8%）</td>
+<td style="text-align:right">7（6.9%）</td>
+<td style="text-align:right">HR 0.39（0.10–1.50）</td>
+<td style="text-align:right">0.155</td>
+<td>CI 很寬，無法下結論</td>
+</tr>
+<tr>
+<td>失能性中風</td>
+<td style="text-align:right">2（1.8%）</td>
+<td style="text-align:right">1（1.0%）</td>
+<td style="text-align:right">HR 1.84（0.17–20.28）</td>
+<td style="text-align:right">0.614</td>
+<td>事件太少，無法判斷</td>
+</tr>
+<tr>
+<td>心衰竭再住院</td>
+<td style="text-align:right"><strong>4（3.7%）</strong></td>
+<td style="text-align:right"><strong>21（21.3%）</strong></td>
+<td style="text-align:right">HR 0.16（0.06–0.47）</td>
+<td style="text-align:right">&lt;0.001</td>
+<td>主要終點的效益幾乎全來自這一項</td>
+</tr>
+<tr>
+<td>重複心衰竭再住院（每 100 人年）</td>
+<td style="text-align:right"><strong>4.7</strong></td>
+<td style="text-align:right"><strong>33.9</strong></td>
+<td style="text-align:right">RR 0.14（0.04–0.45）</td>
+<td style="text-align:right">0.001</td>
+<td>LWYY 模型結果，方向一致</td>
+</tr>
+<tr>
+<td><strong>RMST</strong>（restricted mean survival time）：一年內平均無事件天數</td>
+<td style="text-align:right"><strong>344 天</strong></td>
+<td style="text-align:right"><strong>301 天</strong></td>
+<td style="text-align:right">＋43 天（15 to 71）</td>
+<td style="text-align:right">0.003</td>
+<td>一年內平均多 43 天沒有事件</td>
+</tr>
+<tr>
+<td>30 天大出血或致命性出血</td>
+<td style="text-align:right"><strong>10（9.2%）</strong></td>
+<td style="text-align:right"><strong>0</strong></td>
+<td style="text-align:right">未報告</td>
+<td style="text-align:right">0.002</td>
+<td>屬於 TAVR 的早期代價</td>
+</tr>
+<tr>
+<td>30 天新置 PPM（永久性心律調節器）</td>
+<td style="text-align:right"><strong>21/104（20.2%）</strong></td>
+<td style="text-align:right"><strong>2/99（2.0%）</strong></td>
+<td style="text-align:right">HR 11.12（2.61–47.43）</td>
+<td style="text-align:right">&lt;0.001</td>
+<td>每約 5–6 位病人就多 1 位需要 PPM [自行計算]</td>
+</tr>
+<tr>
+<td><strong>6MWD</strong>（六分鐘步行距離）</td>
+<td style="text-align:right">290 → <strong>400 m</strong>（n=84）</td>
+<td style="text-align:right">312 → <strong>281.5 m</strong>（n=68）</td>
+<td style="text-align:right">＋105.1 m（70.6 to 139.7）</td>
+<td style="text-align:right">&lt;0.001</td>
+<td>開放標籤下的主觀功能指標，且 GDMT 組約 28% 缺值</td>
+</tr>
+<tr>
+<td>1 年 NYHA I–II 比例</td>
+<td style="text-align:right"><strong>84.7%</strong></td>
+<td style="text-align:right"><strong>62.4%</strong></td>
+<td style="text-align:right">未報告</td>
+<td style="text-align:right">&lt;0.001</td>
+<td>屬於可能受分組知情影響的終點</td>
+</tr>
+<tr>
+<td>次組：基線 LVEF &lt;50%</td>
+<td style="text-align:right">6/31（19.4%）</td>
+<td style="text-align:right">19/40（47.5%）</td>
+<td style="text-align:right">HR 0.35（0.14–0.87）</td>
+<td style="text-align:right">P_int 0.621</td>
+<td>GDMT 組這個高風險次組人數明顯較多（見下）</td>
+</tr>
+<tr>
+<td>次組：基線 LVEF ≥50%</td>
+<td style="text-align:right">2/77（2.6%）</td>
+<td style="text-align:right">6/56（10.7%）</td>
+<td style="text-align:right">HR 0.24（0.05–1.17）</td>
+<td style="text-align:right">—</td>
+<td>收縮功能保留者的 CI 跨過 1</td>
+</tr>
+</tbody>
+</table></div>
+<p>補充說明：</p>
+<ul>
+<li><strong>交叉治療比文內強調的更多</strong>：正文只說 9.9%（10/101）的 GDMT 病人在主要終點前接受瓣膜置換 [文內 Results]。Supplement eTable 20 另外列出 <strong>12 位 GDMT 病人先發生心衰竭再住院，之後接受 rescue AVR</strong>（11 例 TAVR、1 例 SAVR）。一年內 GDMT 組實際有 <strong>22/101（21.8%）</strong> 接受瓣膜置換 [自行計算]。
+<ul>
+<li>Figure 1 寫「91 underwent GDMT alone」，與 eTable 20 矛盾。</li>
+<li>GDMT 組 21 次心衰竭住院中，有 12 次（57%）之後接著做瓣膜置換。交叉的中位時間是第 42–48 天 [Supplement eTable 11、eTable 20]。</li>
+</ul>
+</li>
+<li><strong>基線左心室功能不平衡</strong>：這點從 Figure 3 forest plot 推算而得 [自行計算]。LVEF &lt;50% 在 GDMT 組占 40/96（41.7%），在 TAVR 組占 31/108（28.7%）。這個次組在 GDMT 組的一年事件率高達 47.5%。Table 2 只列中位數（53.0 對 52.5%），掩蓋了下四分位數的差距（49 對 44%）。</li>
+<li><strong>基線心臟超音波缺漏</strong>：forest plot 的 LVEF 次組加總只有 108＋96 人，eTable 22 的基線超音波也是 n=108／96。也就是說，有 6 位病人缺基線 LVEF，但收案條件本身就要求 TTE 確診。</li>
+<li><strong>安全性</strong>：
+<ul>
+<li>GDMT 組交叉接受 TAVR 的病人也出現不少併發症：主要血管併發症 1/9，PPM 2/9 [eTable 11]；rescue TAVR 中有 1 例失能性中風與 1 例緊急轉開胸 [eTable 20]。這些事件因為不是「首次事件」，都沒有計入主要終點。</li>
+<li>TAVR 組有 3 例植入失敗：2 例緊急轉手術（主動脈剝離 1、瓣膜移位至左心室 1），1 例錨定失敗後改用專用瓣膜 [eTable 10]。</li>
+</ul>
+</li>
+</ul>
+<h3>6. 作者討論與評論重點</h3>
+<ul>
+<li><strong>作者的主要訊息</strong>：這是第一個有足夠 power 的 RCT，TAVR 使主要終點的風險降低 69%，效益主要來自心衰竭住院減少；出血與 PPM 隨經驗累積在數值上下降。</li>
+<li><strong>與文獻比較</strong>：作者表示 PPM 20.2% 與 ALIGN-AR 相近；VitaFlow 的圓柱形框架優於早期為主動脈狹窄設計的錐形瓣膜。</li>
+<li><strong>作者列出的限制</strong>：開放標籤、組成分析 power 不足、樣本小、交叉治療、單一瓣膜平台且只在中國進行、64.8% 來自單一中心、追蹤只有一年、功能與超音波資料有缺漏、心臟團隊判定細節沒有系統紀錄、對照組事件率低於預期。限制列得相當完整。</li>
+<li><strong>[評估] 作者避重就輕之處</strong>：
+<ol>
+<li>把交叉治療只描述為「讓 ITT 估計偏保守」，沒有處理更關鍵的問題：「心衰竭住院」本身可能就是通往 rescue AVR 的入口。</li>
+<li>沒有討論 GDMT 組 β-blocker 用得較多（66.3% 對 43.1%）對 AR 血行動力學的可能影響。</li>
+<li>沒有討論基線 LVEF 的不平衡。</li>
+<li>宣稱 CEC「blinded to allocation」，但在 TAVR 與非 TAVR 之間，這在實務上幾乎做不到。</li>
+<li>摘要結論寫「Among patients with severe pure AR」，外推範圍超出實際收案族群：936 位篩檢者只有 22.6% 被隨機分派，且需要非常特定的解剖條件。</li>
+</ol>
+</li>
+</ul>
+<h3>7. 外部專業意見</h3>
+<ul>
+<li><strong>同期 editorial／commentary</strong>：在 PubMed 與網路搜尋都<strong>沒有找到</strong>針對本文的 <em>Circulation</em> 同期 editorial 或 comment，也沒有取得任何 DOI，因此沒有執行全文擷取。[無法取得]——未發現同期 editorial 或公開評論。</li>
+<li><strong>補充：會議討論者意見</strong>（經 TCTMD 新聞轉述，不是正式 editorial，只作背景參考）：TCT 指定討論者 Amr Abbas（William Beaumont）指出約 70% 的篩檢病人被排除，並肯定心衰竭住院明顯減少。他有 Edwards Lifesciences 的研究經費與顧問關係 [外部: TCTMD]。</li>
+</ul>
+<h3>8. 臨床建議</h3>
+<ul>
+<li><strong>可以參考本研究的情境</strong>：同時符合以下條件的病人。
+<ul>
+<li>年齡 ≥60 歲（中位 74 歲）、NYHA II–III 的症狀性重度 pure AR。</li>
+<li>真正無法或不適合手術（STS ≥8%，或有明確的解剖或臨床手術禁忌）。</li>
+<li>解剖條件符合：annulus perimeter ≤85 mm、LVOT／annulus ratio 0.95–1.05、升主動脈 ≤45 mm、LVEF ≥30%。</li>
+<li>在具備 AR-TAVR 經驗的中心治療。</li>
+</ul>
+</li>
+<li><strong>不建議直接套用的情境</strong>：
+<ul>
+<li>可以接受 SAVR、只是不想開刀的病人（本試驗中占 36.2%）。對他們的正確比較對象是 SAVR，不是 GDMT。</li>
+<li>大 annulus 或升主動脈擴張的西方族群。</li>
+<li>有專用 AR 瓣膜可用的地區。</li>
+<li>低流量經驗中心。</li>
+</ul>
+</li>
+<li><strong>給臨床醫師的實務建議</strong>：
+<ol>
+<li>與病人討論時用絕對數字。一年內 TAVR 大約每 6 人可少 1 次「死亡、失能性中風或心衰竭住院」，主要是少住院；死亡差異還沒有確證。代價是每約 5–6 人多 1 位 PPM、每約 11 人多 1 次大出血 [自行計算]。</li>
+<li>如果選擇保守治療，重度 AR 病人應優先使用血管擴張劑控制血壓，避免不必要地為了「HF GDMT」而積極使用會導致心搏過緩的 β-blocker。這是生理學推論，不是本試驗驗證的結果 [推論]。</li>
+<li>告知病人 VARC-3 定義的技術成功率估計約 88.6% 以下，而不是 97%（理由見 B4）。</li>
+</ol>
+</li>
+<li><strong>證據強度</strong>：<strong>中</strong>。這是隨機分派、有登錄、零失訪的試驗，但屬於開放標籤、只有 34 個事件，效益幾乎全靠容易受分組知情影響的心衰竭住院，64.8% 來自單一中心，且製造商參與 CT core lab。</li>
+</ul>
+<hr />
+<h2>SKILL-A：批判性評讀</h2>
+<h3>A. 補充技術細節</h3>
+<ul>
+<li><strong>樣本數</strong>：假設 GDMT 組 38%、TAVR 組 20%，80% power、雙尾 α 0.05，需要 200 人，加 5% 後為 210 人 [文內]。預期約 58 個事件，實際只有 34 個；對照組事件率 24.8% 明顯低於假設的 38% [自行計算]。</li>
+<li><strong>隨機化</strong>：中央網路系統、以中心分層、block 大小 6。實際 111：101 [Figure 1]，在 18 個中心、多數中心只收 1–2 人的情況下，這樣的不平衡可以接受。
+<ul>
+<li>有 2 位 TAVR 組病人在手術前撤回同意並拒絕資料使用，被排除在所有分析外，所以嚴格說是 modified ITT，而且只發生在 TAVR 組。</li>
+</ul>
+</li>
+<li><strong>盲法</strong>：病人與治療醫師知情。CEC 與結果收集人員宣稱 blinded，但沒有說明如何對 CEC 遮蔽「有沒有植入瓣膜」這種病歷上一目了然的資訊，也沒有檢查盲法是否成功。</li>
+<li><strong>ITT 對比 per-protocol</strong>：
+<ul>
+<li>Per-protocol：HR 0.28（0.13–0.61）[eTable 13]。</li>
+<li>As-treated：HR 0.27（0.13–0.59）[eTable 14]。</li>
+<li>三種分析的事件數完全相同（9 對 25）。這表示主要終點前交叉的 10 位病人，交叉後都沒有發生事件；後面 12 位是先發生事件才交叉，所以事件歸屬沒有改變。</li>
+</ul>
+</li>
+<li><strong>比例風險假設</strong>：主要終點的 Schoenfeld 檢定 p=0.488 [eTable 12]。但 landmark 分析的 HR 從 0–30 天的 0.62 變成 31–365 天的 0.22 [Figure S4]，交互作用 p=0.663，在 34 個事件下 power 本來就不足。</li>
+<li><strong>缺失資料</strong>：一年臨床追蹤 100% 完整 [文內；Figure 1]。功能與超音波資料是 complete-case ANCOVA：一年超音波 TAVR 98、GDMT 73；6MWD 84 對 68 [eTable 22]。</li>
+<li><strong>MNAR 分析</strong>：做法是把交叉者在交叉時點之後設為缺失，再用 delta-adjusted pattern-mixture 推估。結果 HR 0.29–0.30，幾乎不變 [eTable 17]。不過這個分析只處理了「主要終點前」交叉的 10 位，不涉及「心衰竭住院作為交叉入口」的機制偏差。</li>
+</ul>
+<h3>B. 批判性評估</h3>
+<h4>B1. 假說與理論邏輯</h4>
+<ul>
+<li><strong>機轉合理性高</strong>：慢性 AR 的容量負荷會造成左心室擴大與失代償，換瓣後 LVEDD 減少 9 mm、LV mass 減少 67 g [eTable 22]，與心衰竭住院減少的方向一致。</li>
+<li><strong>主要終點事前指定，與登錄一致</strong>，沒有 outcome switching [外部: ClinicalTrials.gov]。</li>
+<li><strong>最可疑的敘事跳躍</strong>：
+<ol>
+<li>臨床觀點寫「withstood a 9.9% crossover」[文內 Clinical Perspective]，但實際上一年內有 21.8% 的 GDMT 病人接受瓣膜置換 [eTable 11、eTable 20]。</li>
+<li>作者把 VitaFlow 的效能歸因於「圓柱形框架、高徑向力」[文內 Discussion]，但試驗沒有比較其他瓣膜，這只是裝置宣傳性質的推論。</li>
+<li>摘要結論把對象寫成「severe pure AR」全體，省略了「手術困難或拒絕手術」與嚴格解剖篩選這兩個前提。</li>
+</ol>
+</li>
+</ul>
+<h4>B2. 受試者與外推性</h4>
+<ul>
+<li><strong>篩檢到隨機分派</strong>：936 人篩檢，212 人隨機分派（22.6%）。排除原因前三名都是解剖條件：升主動脈 &gt;45 mm 245 人、annulus &gt;85 mm 151 人、LVOT ratio &gt;1.05 98 人 [Figure 1]。</li>
+<li><strong>族群組成很不一致</strong>：
+<ul>
+<li>STS ≥8%：30.5%。</li>
+<li>解剖或臨床因素導致手術困難：33.3%。</li>
+<li><strong>STS &lt;8% 且只是拒絕手術：36.2%</strong> [文內 Results]。</li>
+<li>第三類人在西方通常會被建議 SAVR，美國指引對這類人的 TAVR 是 Class III [文內]。</li>
+</ul>
+</li>
+<li><strong>單中心集中</strong>：南京市第一醫院收了 136/210（64.8%）[Supplement eTable 1]。其餘 17 個中心中有 9 個各只收 1 人。</li>
+<li><strong>外推性分級</strong>：
+<ol>
+<li><strong>一般 AR 族群：不可外推</strong>。必須符合 annulus ≤85 mm、LVOT ratio 0.95–1.05、升主動脈 ≤45 mm 等條件。</li>
+<li><strong>高手術風險或無法手術者：有條件外推</strong>。前提是解剖條件相符、在經驗充足的中心、能取得 VitaFlow 或同類瓣膜。這類病人的直接證據只有 STS ≥8% 次組約 64 人，HR 0.25（0.05–1.23），CI 跨過 1 [Figure 3]。</li>
+<li><strong>可手術但拒絕者：不應外推為「TAVR 可取代 SAVR」</strong>。本試驗沒有回答這個問題。</li>
+<li><strong>西方或台灣族群</strong>：本試驗中位 BMI 23、annulus perimeter 78.5 mm，偏亞洲體型。台灣在體型上相近，但瓣膜可得性與健保制度不同 [推論]。</li>
+</ol>
+</li>
+</ul>
+<h4>B3. 研究設計與偏差</h4>
+<ol>
+<li><strong>心衰竭住院可能是「通往交叉的入口」，屬於 performance／ascertainment bias，方向是高估 TAVR 效益</strong>：
+<ul>
+<li>GDMT 組病人知道自己沒有被分到 TAVR，治療醫師也知道。21 次心衰竭住院中有 12 次後續接著做 rescue AVR，中位時間第 48 天 [eTable 20]。</li>
+<li>KM 曲線 Figure 2D 顯示 GDMT 組心衰竭住院集中在第 15–90 天陡升。number at risk 從 101 降到第 90 天的 85，之後趨於平緩 [Figure 2；Figure S3 MCF 曲線]。這與「隨機分派後很快要求換瓣」的時序吻合 [推論]。</li>
+<li>在需要住院才能接受 TAVR 的醫療體系中，「心衰竭住院」與「為換瓣而住院」的界線容易模糊。eTable 6 的定義要求以心衰竭為主要原因且需要靜脈治療，但文中沒有提供靜脈利尿劑使用比例等可驗證的資料。</li>
+<li>CEC 盲法無法修正「是否收住院」這個由知情醫師做的決策。</li>
+</ul>
+</li>
+<li><strong>對照組並非最佳的「標準治療」</strong>：
+<ul>
+<li>慢性重度 AR 沒有已證實能改變病程的藥物。本試驗的「GDMT」實際上是 HFrEF 的心衰竭指引藥物，但病人中位 LVEF 約 53%。</li>
+<li>GDMT 組 β-blocker 使用率出院時 66.3%、一年 53.2%，明顯高於 TAVR 組的 43.1% 與 37.7% [Table 4]。在未矯正的重度 AR，心搏過緩會延長舒張期、增加逆流量，可能讓對照組變得更差，方向同樣是高估 TAVR 效益 [推論]。</li>
+<li>依 Gyawali 的框架問「這是我日常會給這類病人的治療嗎？」對其中 36.2% 拒絕手術者，答案應該是 SAVR。</li>
+</ul>
+</li>
+<li><strong>基線預後不平衡，方向是高估 TAVR 效益</strong>：GDMT 組 LVEF &lt;50% 的比例是 41.7%，TAVR 組是 28.7% [Figure 3 推算]。校正模型只納入中心、年齡、性別，沒有納入 LVEF 或 LVESD 這類 AR 的關鍵預後因子 [eTable 17]。</li>
+</ol>
+<p><strong>對照組的後續治療</strong>：GDMT 組可以 rescue AVR 是合理且符合倫理的安排，但後果是 GDMT 組實際上變成「延遲換瓣」策略。所以這個 ITT 比較的真正問題是「立即 TAVR 對比延後並視需要換瓣」。如果心衰竭住院是交叉的觸發條件，這個設計會系統性地把 GDMT 組的事件「預先登記」下來。</p>
+<h4>B4. 測量工具與實務意義</h4>
+<ul>
+<li><strong>心衰竭住院</strong>：屬於軟終點，在開放標籤下高度受醫師行為影響。真正的硬終點（死亡、失能性中風）事件太少：死亡 3 對 7，中風 2 對 1。</li>
+<li><strong>6MWD 與 NYHA</strong>：病人知情、主觀終點，而且 GDMT 組約 28% 的存活者缺 6MWD [Figure S5：n=68；自行計算]。</li>
+<li><strong>技術成功率被高估</strong>：作者寫「successfully deployed 102/105（97.1%）」，但 VARC-3 的 technical success 要求「正確放置單一顆瓣膜」。另有 9 例 valve-in-valve 不屬於上述失敗病例 [Table 3、eTable 9、eTable 10]，所以 VARC-3 technical success 最多約 <strong>93/105（88.6%）</strong> [自行計算]，如果主要血管併發症需要介入處理，實際還會更低。
+<ul>
+<li>另外有 32.7% 需要回收或重新定位 [Table 3]。</li>
+</ul>
+</li>
+<li><strong>就算效果是真的，真實世界的用處</strong>：對手術無望、解剖合適的 AR 病人，一年少約 17 次心衰竭住院／100 人，NYHA 與 6MWD 改善，臨床意義明確。但前提是能在經驗中心接受 VitaFlow 這類瓣膜，並接受約 20% 的 PPM 率。</li>
+</ul>
+<h3>C. 統計與資料完整性</h3>
+<h4>C1. 結果分類（CI 加 MCID）</h4>
+<ul>
+<li><strong>MCID</strong>：文內沒有預先指定。依結構性心臟病硬終點複合指標的慣例，估為 <strong>HR ≤0.80 或絕對差 ≥5 個百分點</strong> [推算]。</li>
+</ul>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>終點</th>
+<th>95% CI 相對 MCID 的位置</th>
+<th>分類</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>主要複合終點 HR 0.31（0.14–0.66）</td>
+<td>上限 0.66 已優於 0.80；ARD 約 16.5（約 6.6–26.4）個百分點，下限超過 5 [自行計算]</td>
+<td><strong>POSITIVE ✅</strong>（統計上；但受 B3 偏差影響，幅度可信度降低）</td>
+</tr>
+<tr>
+<td>全死因死亡 HR 0.39（0.10–1.50）</td>
+<td>同時涵蓋 null 與明顯效益</td>
+<td><strong>INCONCLUSIVE ❓</strong></td>
+</tr>
+<tr>
+<td>失能性中風 HR 1.84（0.17–20.28）</td>
+<td>同時涵蓋大幅效益與大幅傷害</td>
+<td><strong>INCONCLUSIVE ❓</strong></td>
+</tr>
+<tr>
+<td>心衰竭再住院 HR 0.16（0.06–0.47）</td>
+<td>完全超越 MCID</td>
+<td>POSITIVE（但最容易受偏差影響）</td>
+</tr>
+<tr>
+<td>30 天 PPM HR 11.12（2.61–47.43）</td>
+<td>完全落在傷害區</td>
+<td><strong>HARMFUL ☠️</strong></td>
+</tr>
+<tr>
+<td>30 天大出血 9.2% 對 0%，p=0.002</td>
+<td>效果量未報告；絕對差 9.2 個百分點</td>
+<td><strong>HARMFUL ☠️</strong></td>
+</tr>
+</tbody>
+</table></div>
+<ul>
+<li>作者在 Limitations 正確指出死亡與中風「should not be interpreted as evidence of equivalence」[文內]，沒有犯「p&gt;0.05 等於沒有差異」的錯誤。</li>
+</ul>
+<h4>C2. Underpowered 與 Winner's Curse</h4>
+<ul>
+<li>事前假設的效果是 RR 約 0.53（38% 對 20%）。實際 HR 0.31，比假設更強，而對照組事件率反而更低（24.8%）。</li>
+<li>在只有 34 個事件的試驗中，達到顯著的估計值有被系統性高估（Type M error）的風險 [推論；Gelman &amp; Carlin 框架]。</li>
+<li>心衰竭住院 HR 0.16（降低 84%）遠大於多數結構性心臟介入試驗常見的效果量 [推論]。後續確認性試驗如果用 HR 0.31 計算樣本數，可能嚴重低估所需人數。</li>
+</ul>
+<h4>C3. Bayesian 補充分析</h4>
+<ul>
+<li>主要終點 p=0.001，沒有落在接近 0.05 的灰色地帶，因此不另做 Bayesian 分析。真正的不確定性來自偏差，不是隨機誤差，Bayesian 分析也無法修正。</li>
+</ul>
+<h4>C4. 報告完整性與其他統計問題</h4>
+<ul>
+<li><strong>KM 圖判讀</strong>（Figure 2，ITT）：
+<ul>
+<li>主要終點曲線在第 30 天之後才明顯分開。第 0–30 天兩組都有事件（4 對 6），而且 TAVR 組在早期一度與 GDMT 組重疊（Figure S4A）。</li>
+<li>Number at risk：TAVR 109 → 100，GDMT 101 → 76，沒有尾端銳減，也沒有因交叉而被 censor 的跡象（101−25=76，數字吻合）。</li>
+<li>Inset 的 y 軸放大到 0–30%，主圖從 0 起算，沒有座標軸誇大的問題。</li>
+</ul>
+</li>
+<li><strong>Landmark 分析</strong>：第 31–365 天心衰竭住院 HR 0.10（0.02–0.45）[Figure S4B]，正文沒有報告。</li>
+<li><strong>數字不一致</strong>：
+<ol>
+<li>Figure 1 寫「91 underwent GDMT alone」，但 eTable 20 顯示另有 12 位接受 AVR。</li>
+<li>Disclosures 寫「None」，但有製造商共同贊助。</li>
+<li>補充資料網址 DOI 與本文 DOI 不符。</li>
+<li>基線超音波缺 6 位，但收案要求 TTE。</li>
+</ol>
+</li>
+<li><strong>多重比較</strong>：次要終點沒有校正，作者已標為探索性。</li>
+<li><strong>統計面紅旗</strong>：
+<ol>
+<li>只有 34 個事件，效果量卻大於事前假設，有 Winner's Curse 風險。</li>
+<li>主要終點的效益幾乎完全來自開放標籤下的軟終點（心衰竭住院 21 對 4；死亡加失能性中風 8 對 5）。</li>
+<li>校正模型沒有納入不平衡的 LVEF 等關鍵預後因子。</li>
+<li>用來處理交叉的 MNAR 敏感度分析沒有針對「事件後交叉」這個機制。</li>
+<li>功能與超音波資料呈差異性缺漏（GDMT 組約 24–28%），而且只做 complete-case 分析。</li>
+<li>Modified ITT：只有 TAVR 組排除了 2 位撤回同意的病人。</li>
+</ol>
+</li>
+</ul>
+<h3>D. 次組分析（Figure 3，11 個事前指定的次組）</h3>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>檢核標準</th>
+<th>評估</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Interaction p</td>
+<td>全部 &gt;0.2（0.232–0.960）</td>
+</tr>
+<tr>
+<td>方向一致</td>
+<td>所有點估計都小於 1</td>
+</tr>
+<tr>
+<td>事前指定</td>
+<td>是 [文內]</td>
+</tr>
+<tr>
+<td>生物學合理性</td>
+<td>尚可</td>
+</tr>
+<tr>
+<td>研究內比較</td>
+<td>是</td>
+</tr>
+</tbody>
+</table></div>
+<ul>
+<li><strong>可信度</strong>：「效果在各次組一致」的結論為<strong>中</strong>，但 power 很低。</li>
+<li>每個次組事件數極少，例如 DM 為 1 對 3、STS ≥8% 為 2 對 7，CI 普遍跨過 1。這只能說明「沒有偵測到異質性」，不能證明效果一致。</li>
+<li>forest plot 最有價值的副產品，是揭露了上述 LVEF 的基線不平衡。</li>
+</ul>
+<h3>E. 紅旗清單</h3>
+<ul>
+<li><strong>設計</strong>：開放標籤，效益主要靠心衰竭住院；心衰竭住院是 rescue AVR 的入口（12/21 例）。</li>
+<li><strong>對照組</strong>：「GDMT」不是 AR 的實證治療；β-blocker 使用不對稱；36.2% 拒絕手術者的標準治療其實是 SAVR。</li>
+<li><strong>統計</strong>：只有 34 個事件，效果量大於假設；LVEF 不平衡且沒有校正。</li>
+<li><strong>報告</strong>：Figure 1 低報交叉人數；Clinical Perspective 宣稱「withstood 9.9% crossover」，實際是 21.8%；技術成功率不是用 VARC-3 定義。</li>
+<li><strong>COI</strong>：製造商共同贊助並擔任 CT core lab，Disclosures 卻寫「None」；64.8% 收案來自 PI 所在醫院。</li>
+<li><strong>外推</strong>：只占篩檢者 22.6%、只有單一瓣膜平台、只在中國進行、只追蹤一年，沒有耐久性資料。</li>
+</ul>
+<h3>F. 反向解釋</h3>
+<ol>
+<li><strong>偏差驅動的心衰竭住院差異</strong>：GDMT 組因知道沒有分到 TAVR，更容易被收住院以安排 rescue AVR。
+<ul>
+<li>支持：12/21 次住院之後換瓣；事件集中在前 90 天。</li>
+<li>反對：死亡數字的方向也一致（7 對 3），但沒有統計意義。</li>
+</ul>
+</li>
+<li><strong>預後不平衡</strong>：GDMT 組 LVEF &lt;50% 的比例多 13 個百分點，本來事件率就較高。
+<ul>
+<li>支持：Figure 3 的次組人數。</li>
+<li>反對：LVEF 次組的 interaction p=0.621，兩個次組的 HR 方向都一致。</li>
+</ul>
+</li>
+<li><strong>對照組治療的傷害</strong>：GDMT 組 β-blocker 較多，可能惡化 AR 血行動力學。
+<ul>
+<li>支持：Table 4。</li>
+<li>反對：β-blocker 的使用可能部分來自 AF 心率控制，且 eTable 18 把出院用藥納入校正後 HR 為 0.32，結果不變。不過這個調整只用出院當下的資料，屬於事後變數，解釋有限。</li>
+</ul>
+</li>
+<li><strong>真實的生理效益</strong>：卸除容量負荷後逆向重塑、症狀改善。
+<ul>
+<li>支持：LVEDD 減少 9 mm、LVEF 增加 6.8%、LV mass 減少 67 g，屬於客觀且中央判讀的超音波指標。</li>
+<li>反對：GDMT 組約 24% 缺一年超音波。</li>
+<li>整體而言，<strong>效果方向很可能是真的，爭議在於幅度</strong>。</li>
+</ul>
+</li>
+</ol>
+<h3>G. 最終裁決</h3>
+<ul>
+<li><strong>整體可信度</strong>：<strong>中</strong>。TAVR 能改善這群病人心衰竭相關結果的方向可信；HR 0.31 與心衰竭住院 HR 0.16 的幅度很可能被高估。</li>
+<li><strong>可採用的條件</strong>：
+<ul>
+<li>真正無法手術、解剖條件符合本試驗標準的症狀性重度 pure AR。</li>
+<li>由有經驗的 AR-TAVR 中心與心臟團隊決策。</li>
+<li>病人已被告知約 20% 的 PPM 風險、約 9% 的大出血風險、約 2% 的緊急轉手術風險，以及沒有長期耐久性資料。</li>
+</ul>
+</li>
+<li><strong>不建議採用的情境</strong>：
+<ul>
+<li>可接受 SAVR 的病人。</li>
+<li>解剖條件不符：大 annulus、升主動脈擴張、LVOT ratio 超出 0.95–1.05。</li>
+<li>有專用 AR 瓣膜可用且證據較完整時，以 TAVR 取代專用瓣膜。</li>
+<li>低流量中心。</li>
+</ul>
+</li>
+<li><strong>要改觀最需要的三個改進</strong>：
+<ol>
+<li>公開 GDMT 組心衰竭住院的客觀證據（靜脈利尿劑、BNP、住院天數），並做「把 rescue AVR 也視為事件」或「排除換瓣目的住院」的敏感度分析。</li>
+<li>在校正模型納入 LVEF、LVESD 等基線預後因子，並公開完整的次組基線表。</li>
+<li>由獨立團隊重複驗證：獨立 CT core lab、非製造商參與、以硬終點（死亡）為主並延長追蹤；或與專用瓣膜做頭對頭比較。</li>
+</ol>
+</li>
+<li><strong>一句話結論</strong>：對無法開刀的重度主動脈瓣逆流病人，經導管換瓣可以明顯減少心衰竭住院，但效益幅度可能被高估，而且大約每五人就有一人需要裝心律調節器。</li>
+</ul>
+<hr />
+<h3>效果量總表（CONDITIONAL OUTPUT）</h3>
+<div class="table-wrap wide"><table>
+<thead>
+<tr>
+<th>指標</th>
+<th>介入組</th>
+<th>對照組</th>
+<th>效果量</th>
+<th>95% CI</th>
+<th>ARD</th>
+<th>MCID</th>
+<th>結果分類</th>
+<th>實務意義</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>主要複合終點（1 年）</td>
+<td>8.3%</td>
+<td>24.8%</td>
+<td>HR 0.31</td>
+<td>0.14–0.66</td>
+<td>−16.5 個百分點 [自行計算]</td>
+<td>HR 0.80／5 個百分點 [推算]</td>
+<td>POSITIVE（受偏差影響）</td>
+<td>NNT 約 6，主要是少住院</td>
+</tr>
+<tr>
+<td>全死因死亡</td>
+<td>2.8%</td>
+<td>6.9%</td>
+<td>HR 0.39</td>
+<td>0.10–1.50</td>
+<td>−4.1 個百分點</td>
+<td>同上</td>
+<td>INCONCLUSIVE</td>
+<td>死亡效益未確立</td>
+</tr>
+<tr>
+<td>失能性中風</td>
+<td>1.8%</td>
+<td>1.0%</td>
+<td>HR 1.84</td>
+<td>0.17–20.28</td>
+<td>＋0.8 個百分點</td>
+<td>—</td>
+<td>INCONCLUSIVE</td>
+<td>無法排除中風風險增加</td>
+</tr>
+<tr>
+<td>心衰竭再住院</td>
+<td>3.7%</td>
+<td>21.3%</td>
+<td>HR 0.16</td>
+<td>0.06–0.47</td>
+<td>−17.6 個百分點</td>
+<td>—</td>
+<td>POSITIVE（最易受偏差影響）</td>
+<td>主要效益來源</td>
+</tr>
+<tr>
+<td>30 天新置 PPM</td>
+<td>20.2%</td>
+<td>2.0%</td>
+<td>HR 11.12</td>
+<td>2.61–47.43</td>
+<td>＋18.2 個百分點</td>
+<td>—</td>
+<td>HARMFUL</td>
+<td>NNH 約 5.5</td>
+</tr>
+<tr>
+<td>30 天大出血或致命性出血</td>
+<td>9.2%</td>
+<td>0%</td>
+<td>未報告</td>
+<td>未報告</td>
+<td>＋9.2 個百分點</td>
+<td>—</td>
+<td>HARMFUL</td>
+<td>NNH 約 11</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+<p><strong>Sources:</strong></p>
+<ul>
+<li><a href="https://doi.org/10.1161/CIRCULATIONAHA.126.082827">PubMed: SEASON-AR 主文（DOI 10.1161/CIRCULATIONAHA.126.082827）</a></li>
+<li><a href="https://doi.org/10.1016/j.ahj.2024.02.022">PubMed: SEASON-AR 設計論文，Am Heart J 2024（DOI）</a></li>
+<li><a href="https://doi.org/10.1002/ccd.31193">PubMed: Kong et al. 單中心 VitaFlow AR 經驗，CCI 2024（DOI）</a></li>
+<li><a href="https://clinicaltrials.gov/study/NCT04864145">ClinicalTrials.gov NCT04864145</a></li>
+<li><a href="https://www.tctmd.com/news/tavi-plus-gdmt-suitable-select-patients-severe-aortic-regurgitation">TCTMD: TAVI Plus GDMT Suitable for Select Patients With Severe Aortic Regurgitation</a></li>
+<li><a href="https://www.tctmd.com/slide/tavr-vs-medical-therapy-pure-aortic-regurgitation-1-year-outcomes-season-ar-randomized-trial">TCTMD slide: SEASON-AR 1-year outcomes</a></li>
+<li><a href="https://eurointervention.pcronline.com/article/transcatheter-aortic-valve-implantation-in-pure-aortic-regurgitation-one-year-outcomes-of-the-aurora-trial">EuroIntervention: AURORA trial one-year outcomes</a></li>
+<li><a href="https://www.sciencedirect.com/science/article/abs/pii/S0002870324000498">ScienceDirect: SEASON-AR rationale and design</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Circulation_(journal)">Wikipedia: Circulation (journal)</a></li>
+<li><a href="https://manusights.com/blog/circulation-impact-factor">Manusights: Circulation Impact Factor</a></li>
+</ul>
+
+<footer class="appraisal-meta">評讀資訊：模型：claude-opus-5-5 (claude)  ·  route：rct  ·  產出時間：2026-11-09 08:32 CST</footer>
+</main>
+</body>
+</html>
