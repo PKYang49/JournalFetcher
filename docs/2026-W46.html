@@ -152,6 +152,45 @@
     .appraisal-state.is-deferred   { background: #4a3320; color: #ffb878; }
     .appraisal-state.is-failed     { background: #4a2422; color: #ff9b9b; }
   }
+  .evidence-group { margin: 0 0 14px; }
+  .evidence-group-title {
+    color: var(--muted);
+    font-size: 13px;
+    font-weight: 700;
+    margin: 0 0 6px;
+  }
+  .evidence-list {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    list-style: none;
+    margin: 0;
+    padding: 4px 0;
+  }
+  .evidence-list li {
+    align-items: baseline;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px 8px;
+    padding: 7px 14px;
+  }
+  .evidence-list li + li { border-top: 1px solid var(--border); }
+  .evidence-list .tag { margin: 0; }
+  .evidence-list a.evidence-title {
+    color: var(--text);
+    flex: 1 1 260px;
+    font-size: 14px;
+    text-decoration: none;
+  }
+  .evidence-list a.evidence-title:hover { color: var(--accent); text-decoration: underline; }
+  .evidence-list a.evidence-report {
+    color: var(--accent);
+    font-size: 12px;
+    text-decoration: none;
+    white-space: nowrap;
+  }
+  article[id] { scroll-margin-top: 64px; }
+  article:target { box-shadow: 0 0 0 2px var(--accent); }
   .selection-reason {
     color: var(--text);
     font-size: 14px;
@@ -352,7 +391,7 @@
 <div class="container">
   <header>
     <h1>📚 期刊週報 2026-W46</h1>
-    <div class="meta">2026-11-08 14:07 UTC+08:00 · 共 96 篇</div>
+    <div class="meta">2026-11-09 08:15 UTC+08:00 · 共 96 篇</div>
     <div class="nav"><a href="index.html">← 回到週報索引</a></div>
   </header>
 
@@ -393,6 +432,7 @@
     <a class="jump-chip" href="#featured-appraisals">精選評讀</a>
     <a class="jump-chip" href="#completed-appraisals">已評讀</a>
     <a class="jump-chip" id="appraisal-attention-jump" href="#appraisal-attention" hidden>評讀中</a>
+    <a class="jump-chip" href="#evidence-index">指引・回顧</a>
 
     <a class="jump-chip" href="#journal-nejm">NEJM</a>
 
@@ -431,7 +471,7 @@
     <h2 class="section-title">本週精選評讀</h2>
 
 
-  <article class="selected-card">
+  <article id="article-42970708" class="selected-card">
     <span class="tag">NEJM</span>
     <span class="tag pub-type type-original">Original</span>
     <h2>TAVR in Patients with Moderate Aortic Stenosis with At-Risk Features.</h2>
@@ -493,7 +533,7 @@
 
 
 
-  <article class="selected-card">
+  <article id="article-42969897" class="selected-card">
     <span class="tag">NEJM</span>
     <span class="tag pub-type type-original">Original</span>
     <h2>Coronary CT Angiography versus Intravascular Ultrasound Guidance for PCI.</h2>
@@ -555,7 +595,7 @@
 
 
 
-  <article class="selected-card">
+  <article id="article-42970643" class="selected-card">
     <span class="tag">JAMA</span>
     <span class="tag pub-type type-original">Original</span>
     <h2>Antithrombotic Therapy After Left Atrial Appendage Occlusion: The SIMPLAAFY Randomized Clinical Trial.</h2>
@@ -617,7 +657,7 @@
 
 
 
-  <article class="selected-card status-card-failed" data-appraisal-card data-pmid="42965504" data-doi="10.1161/CIRCULATIONAHA.126.082827">
+  <article id="article-42965504" class="selected-card status-card-failed" data-appraisal-card data-pmid="42965504" data-doi="10.1161/CIRCULATIONAHA.126.082827">
     <span class="tag">Circulation</span>
     <span class="tag pub-type type-original">Original</span>
     <h2>Transcatheter Aortic Valve Replacement in Pure Aortic Regurgitation: The Randomized SEASON-AR Clinical Trial.</h2>
@@ -692,7 +732,7 @@
 
 
 
-  <article class="selected-card">
+  <article id="article-42571650" class="selected-card">
     <span class="tag">Heart</span>
     <span class="tag pub-type type-original">Original</span>
     <h2>Sudden cardiac death risk after myocardial infarction across the spectrum of left ventricular ejection fraction: a meta-analysis.</h2>
@@ -754,7 +794,7 @@
 
 
 
-  <article class="selected-card">
+  <article id="article-42981569" class="selected-card">
     <span class="tag">NEJM</span>
     <span class="tag pub-type type-trial">RCT</span>
     <h2>Plozasiran for Severe Hypertriglyceridemia and Risk of Pancreatitis.</h2>
@@ -816,7 +856,7 @@
 
 
 
-  <article class="selected-card">
+  <article id="article-42571647" class="selected-card">
     <span class="tag">Heart</span>
     <span class="tag pub-type type-original">Original</span>
     <h2>Effects of pharmacological blood pressure lowering in heart failure with mildly reduced or preserved ejection fraction: a meta-analysis.</h2>
@@ -885,7 +925,7 @@
     <h2 class="section-title">已評讀</h2>
 
 
-  <article class="selected-card appraised-card">
+  <article id="article-42976899" class="selected-card appraised-card">
     <span class="tag">Lancet</span>
     <span class="tag pub-type type-original">Original</span>
     <h2>Long-term outcomes after percutaneous coronary intervention with drug-eluting stents versus coronary artery bypass grafting for left main coronary artery disease: a prospective analysis of the multicentre IRIS-MAIN registry.</h2>
@@ -930,7 +970,7 @@
 
 
 
-  <article class="selected-card appraised-card">
+  <article id="article-42976123" class="selected-card appraised-card">
     <span class="tag">MSSE</span>
     <span class="tag pub-type type-original">Original</span>
     <h2>Moderate-Intensity Interval Training Is Sufficient to Increase Muscle Mitochondrial Respiratory Capacity and Exercise Tolerance in Young Untrained Men.</h2>
@@ -975,7 +1015,7 @@
 
 
 
-  <article class="selected-card appraised-card">
+  <article id="article-42502132" class="selected-card appraised-card">
     <span class="tag">SportsMed</span>
     <span class="tag pub-type type-evidence">Meta-Analysis</span>
     <h2>Musculoskeletal Stretching and Arterial Stiffness: Systematic Review and Meta-analysis of Acute and Longitudinal Interventions.</h2>
@@ -1020,7 +1060,7 @@
 
 
 
-  <article class="selected-card appraised-card">
+  <article id="article-42470603" class="selected-card appraised-card">
     <span class="tag">SportsMed</span>
     <span class="tag pub-type type-original">Original</span>
     <h2>From GPT-4 to Expert-Endorsed Athlete Guidance: A Delphi Consensus on Sleep and Jet Lag.</h2>
@@ -1065,7 +1105,7 @@
 
 
 
-  <article class="selected-card appraised-card">
+  <article id="article-42969971" class="selected-card appraised-card">
     <span class="tag">JAP</span>
     <span class="tag pub-type type-original">Original</span>
     <h2>Physiological Adaptations to Controlled Work Rate Heat Acclimation Do Not Differ Between Highly Trained Male and Female Endurance Runners.</h2>
@@ -1118,13 +1158,210 @@
     <div id="appraisal-attention-list"></div>
   </section>
 
+
+  <section class="selected-section" id="evidence-index">
+    <h2 class="section-title">指引・共識・回顧</h2>
+    <p class="status-section-note">本週的指引、共識聲明與回顧文章；點標題跳到該篇卡片。</p>
+
+    <div class="evidence-group">
+      <h3 class="evidence-group-title">指引／共識／聲明 · 4 篇</h3>
+      <ul class="evidence-list">
+
+        <li>
+          <span class="tag">SportsMed</span>
+          <span class="tag pub-type type-original">Original</span>
+          <a class="evidence-title" href="#article-42470603">From GPT-4 to Expert-Endorsed Athlete Guidance: A Delphi Consensus on Sleep and Jet Lag.</a>
+          <a class="evidence-report" href="appraisals/2026-W46/42470603_Vitale_2026_appraisal.html">評讀結果 →</a>
+        </li>
+
+        <li>
+          <span class="tag">JACC</span>
+          <span class="tag pub-type type-review">Review</span>
+          <a class="evidence-title" href="#article-42693699">Clinical Considerations for the Care of the Tactical Athlete With Cardiovascular Abnormalities: A Scientific Statement From the American College of Cardiology and the American Heart Association.</a>
+
+        </li>
+
+        <li>
+          <span class="tag">JACC</span>
+          <span class="tag pub-type type-guideline">Guideline</span>
+          <a class="evidence-title" href="#article-42171544">Optimization of Postpartum Care for Patients With and at Risk for Premature and Long-Term Cardiovascular Disease: 2026 ACC Expert Consensus Decision Pathway: A Report of the American College of Cardiology Solution Set Oversight Committee.</a>
+
+        </li>
+
+        <li>
+          <span class="tag">Circulation</span>
+          <span class="tag pub-type type-review">Review</span>
+          <a class="evidence-title" href="#article-42817881">Impact of Undertreated Antithrombotic Therapy on Adverse Patient Outcomes: A Scientific Statement From the American Heart Association.</a>
+
+        </li>
+
+      </ul>
+    </div>
+
+    <div class="evidence-group">
+      <h3 class="evidence-group-title">系統性回顧／統合分析 · 5 篇</h3>
+      <ul class="evidence-list">
+
+        <li>
+          <span class="tag">SportsMed</span>
+          <span class="tag pub-type type-evidence">Meta-Analysis</span>
+          <a class="evidence-title" href="#article-42502132">Musculoskeletal Stretching and Arterial Stiffness: Systematic Review and Meta-analysis of Acute and Longitudinal Interventions.</a>
+          <a class="evidence-report" href="appraisals/2026-W46/42502132_Logan_2026_appraisal.html">評讀結果 →</a>
+        </li>
+
+        <li>
+          <span class="tag">Lancet</span>
+          <span class="tag pub-type type-evidence">Meta-Analysis</span>
+          <a class="evidence-title" href="#article-42956796">Performance of 0/1 h versus 0/3 h pathways in patients with suspected myocardial infarction: a systematic review and individual participant data meta-analysis of randomised controlled trials.</a>
+
+        </li>
+
+        <li>
+          <span class="tag">EHJ</span>
+          <span class="tag pub-type type-evidence">Meta-Analysis</span>
+          <a class="evidence-title" href="#article-40878832">Discontinuation of renin-angiotensin system inhibitors before non-cardiac surgery: a meta-analysis.</a>
+
+        </li>
+
+        <li>
+          <span class="tag">SportsMed</span>
+          <span class="tag pub-type type-evidence">Meta-Analysis</span>
+          <a class="evidence-title" href="#article-42742930">The Effects of Intermittent Hypoxic Training Strategies on Maximal Oxygen Uptake in Healthy Humans: A Meta-analysis with Meta-regression.</a>
+
+        </li>
+
+        <li>
+          <span class="tag">SportsMed</span>
+          <span class="tag pub-type type-evidence">Meta-Analysis</span>
+          <a class="evidence-title" href="#article-42720840">Comparison of the Linear versus Non-Linear Repeated Sprint Training on Lower Limb Sports Performance Tasks in Team Sport Athletes: A Systematic Review and Meta-Analysis.</a>
+
+        </li>
+
+      </ul>
+    </div>
+
+    <div class="evidence-group">
+      <h3 class="evidence-group-title">綜述 · 15 篇</h3>
+      <ul class="evidence-list">
+
+        <li>
+          <span class="tag">NEJM</span>
+          <span class="tag pub-type type-review">Review</span>
+          <a class="evidence-title" href="#article-42981570">Intravenous Thrombolysis for Acute Ischemic Stroke - New Directions.</a>
+
+        </li>
+
+        <li>
+          <span class="tag">Lancet</span>
+          <span class="tag pub-type type-review">Review</span>
+          <a class="evidence-title" href="#article-42950876">The 2026 report of the Lancet Countdown on health and climate change: a decade of escalating health harms and a decisive moment for all.</a>
+
+        </li>
+
+        <li>
+          <span class="tag">Lancet</span>
+          <span class="tag pub-type type-review">Review</span>
+          <a class="evidence-title" href="#article-42987891">Eating disorders.</a>
+
+        </li>
+
+        <li>
+          <span class="tag">Lancet</span>
+          <span class="tag pub-type type-review">Review</span>
+          <a class="evidence-title" href="#article-42982077">Retinoblastoma.</a>
+
+        </li>
+
+        <li>
+          <span class="tag">Lancet</span>
+          <span class="tag pub-type type-review">Review</span>
+          <a class="evidence-title" href="#article-42956776">Reframing the manosphere: a public health response to a commercial ecosystem.</a>
+
+        </li>
+
+        <li>
+          <span class="tag">EHJ</span>
+          <span class="tag pub-type type-review">Review</span>
+          <a class="evidence-title" href="#article-42128248">Renin-angiotensin-aldosterone system failure drives inappropriate vasodilation in cardiogenic shock: a hypothesis.</a>
+
+        </li>
+
+        <li>
+          <span class="tag">EHJ</span>
+          <span class="tag pub-type type-review">Review</span>
+          <a class="evidence-title" href="#article-41879158">Palliative care in cardiovascular medicine.</a>
+
+        </li>
+
+        <li>
+          <span class="tag">EHJ</span>
+          <span class="tag pub-type type-review">Review</span>
+          <a class="evidence-title" href="#article-41711546">Delirium in cardiovascular medicine.</a>
+
+        </li>
+
+        <li>
+          <span class="tag">SportsMed</span>
+          <span class="tag pub-type type-review">Review</span>
+          <a class="evidence-title" href="#article-42980705">The Applied Sport Science of Professional Male Basketball: A Narrative Review of Current and Emerging Practices.</a>
+
+        </li>
+
+        <li>
+          <span class="tag">SportsMed</span>
+          <span class="tag pub-type type-review">Review</span>
+          <a class="evidence-title" href="#article-42730844">Vitamin B6 in Elite Athletes: Potential Implications of High Intakes.</a>
+
+        </li>
+
+        <li>
+          <span class="tag">SportsMed</span>
+          <span class="tag pub-type type-review">Review</span>
+          <a class="evidence-title" href="#article-42627476">Mechanisms Influencing Maximum Joint Range of Motion and Stiffness: A Narrative Review.</a>
+
+        </li>
+
+        <li>
+          <span class="tag">SportsMed</span>
+          <span class="tag pub-type type-review">Review</span>
+          <a class="evidence-title" href="#article-42496856">Dietary FODMAP Manipulation for Exercise-Associated Gastrointestinal Symptoms: Why Symptom Severity Should Guide Our Approach.</a>
+
+        </li>
+
+        <li>
+          <span class="tag">JAP</span>
+          <span class="tag pub-type type-review">Review</span>
+          <a class="evidence-title" href="#article-42932895">Diaphragm dysfunction in heart failure and chronic obstructive pulmonary disease: mechanisms, cardiopulmonary interactions, and inspiratory muscle training.</a>
+
+        </li>
+
+        <li>
+          <span class="tag">Heart</span>
+          <span class="tag pub-type type-review">Review</span>
+          <a class="evidence-title" href="#article-42552114">Proteomics in cardiology: research and practice.</a>
+
+        </li>
+
+        <li>
+          <span class="tag">Heart</span>
+          <span class="tag pub-type type-review">Review</span>
+          <a class="evidence-title" href="#article-42571652">Bidirectional links between heart failure and cancer: shared pathophysiology, clinical outcomes and collaborative management.</a>
+
+        </li>
+
+      </ul>
+    </div>
+
+  </section>
+
+
   <section class="article-section" id="weekly-summary">
   <h2 class="section-title">本週文章摘要</h2>
 
   <section class="journal-section" id="journal-nejm">
     <h3 class="journal-title">NEJM <span class="journal-count">5 篇</span></h3>
 
-    <article data-appraisal-card data-pmid="42981570" data-doi="10.1056/NEJMra2519017">
+    <article id="article-42981570" data-appraisal-card data-pmid="42981570" data-doi="10.1056/NEJMra2519017">
       <span class="tag">NEJM</span>
       <span class="tag pub-type type-review">Review</span>
       <h2>Intravenous Thrombolysis for Acute Ischemic Stroke - New Directions.</h2>
@@ -1176,7 +1413,7 @@
 
     </article>
 
-    <article data-appraisal-card data-pmid="42912669" data-doi="10.1056/NEJMoa2608682">
+    <article id="article-42912669" data-appraisal-card data-pmid="42912669" data-doi="10.1056/NEJMoa2608682">
       <span class="tag">NEJM</span>
       <span class="tag pub-type type-trial">RCT</span>
       <h2>Interim Analysis of a Phase 3 Trial of Povetacicept in IgA Nephropathy.</h2>
@@ -1228,7 +1465,7 @@
 
     </article>
 
-    <article data-appraisal-card data-pmid="42814954" data-doi="10.1056/NEJMoa2604169">
+    <article id="article-42814954" data-appraisal-card data-pmid="42814954" data-doi="10.1056/NEJMoa2604169">
       <span class="tag">NEJM</span>
       <span class="tag pub-type type-trial">RCT</span>
       <h2>Retatrutide, a Triple Hormone Receptor Agonist, for Treatment of Obesity.</h2>
@@ -1280,7 +1517,7 @@
 
     </article>
 
-    <article data-appraisal-card data-pmid="42670980" data-doi="10.1056/NEJMoa2608903">
+    <article id="article-42670980" data-appraisal-card data-pmid="42670980" data-doi="10.1056/NEJMoa2608903">
       <span class="tag">NEJM</span>
       <span class="tag pub-type type-trial">RCT</span>
       <h2>Targeted Use of Computed Tomographic Coronary Angiography in Acute Chest Pain.</h2>
@@ -1332,7 +1569,7 @@
 
     </article>
 
-    <article data-appraisal-card data-pmid="42670946" data-doi="10.1056/NEJMoa2609059">
+    <article id="article-42670946" data-appraisal-card data-pmid="42670946" data-doi="10.1056/NEJMoa2609059">
       <span class="tag">NEJM</span>
       <span class="tag pub-type type-original">Observational</span>
       <h2>Prevalence of Silent Atherosclerosis across Adult Life.</h2>
@@ -1389,7 +1626,7 @@
   <section class="journal-section" id="journal-lancet">
     <h3 class="journal-title">Lancet <span class="journal-count">9 篇</span></h3>
 
-    <article data-appraisal-card data-pmid="42956796" data-doi="10.1016/S0140-6736(26)01767-8">
+    <article id="article-42956796" data-appraisal-card data-pmid="42956796" data-doi="10.1016/S0140-6736(26)01767-8">
       <span class="tag">Lancet</span>
       <span class="tag pub-type type-evidence">Meta-Analysis</span>
       <h2>Performance of 0/1 h versus 0/3 h pathways in patients with suspected myocardial infarction: a systematic review and individual participant data meta-analysis of randomised controlled trials.</h2>
@@ -1441,7 +1678,7 @@
 
     </article>
 
-    <article data-appraisal-card data-pmid="42950876" data-doi="10.1016/S0140-6736(26)01779-4">
+    <article id="article-42950876" data-appraisal-card data-pmid="42950876" data-doi="10.1016/S0140-6736(26)01779-4">
       <span class="tag">Lancet</span>
       <span class="tag pub-type type-review">Review</span>
       <h2>The 2026 report of the Lancet Countdown on health and climate change: a decade of escalating health harms and a decisive moment for all.</h2>
@@ -1493,7 +1730,7 @@
 
     </article>
 
-    <article data-appraisal-card data-pmid="42933457" data-doi="10.1016/S0140-6736(26)01899-4">
+    <article id="article-42933457" data-appraisal-card data-pmid="42933457" data-doi="10.1016/S0140-6736(26)01899-4">
       <span class="tag">Lancet</span>
       <span class="tag pub-type type-trial">RCT</span>
       <h2>Ruzaltatug rezetecan versus chemotherapy for EGFR-mutated advanced non-small-cell lung cancer progressing after EGFR tyrosine kinase inhibitor therapy (HERON-Lung01): interim analysis of a randomised, open-label, phase 3 trial in China.</h2>
@@ -1545,7 +1782,7 @@
 
     </article>
 
-    <article data-appraisal-card data-pmid="42667934" data-doi="10.1016/S0140-6736(26)01654-5">
+    <article id="article-42667934" data-appraisal-card data-pmid="42667934" data-doi="10.1016/S0140-6736(26)01654-5">
       <span class="tag">Lancet</span>
       <span class="tag pub-type type-trial">RCT</span>
       <h2>Safety and efficacy of the 0/1 h pathway for myocardial infarction in the emergency department: an international, pragmatic, stepped-wedge, cluster-randomised, controlled trial.</h2>
@@ -1597,7 +1834,7 @@
 
     </article>
 
-    <article data-appraisal-card data-pmid="42660159" data-doi="10.1016/S0140-6736(26)01386-3">
+    <article id="article-42660159" data-appraisal-card data-pmid="42660159" data-doi="10.1016/S0140-6736(26)01386-3">
       <span class="tag">Lancet</span>
       <span class="tag pub-type type-other">Case Report</span>
       <h2>Generalised eruptive histiocytosis mimicking lymphoma relapse in a patient with previous diffuse large B-cell lymphoma.</h2>
@@ -1649,7 +1886,7 @@
 
     </article>
 
-    <article data-appraisal-card data-pmid="42987891" data-doi="10.1016/S0140-6736(26)01326-7">
+    <article id="article-42987891" data-appraisal-card data-pmid="42987891" data-doi="10.1016/S0140-6736(26)01326-7">
       <span class="tag">Lancet</span>
       <span class="tag pub-type type-review">Review</span>
       <h2>Eating disorders.</h2>
@@ -1701,7 +1938,7 @@
 
     </article>
 
-    <article data-appraisal-card data-pmid="42982077" data-doi="10.1016/S0140-6736(26)01382-6">
+    <article id="article-42982077" data-appraisal-card data-pmid="42982077" data-doi="10.1016/S0140-6736(26)01382-6">
       <span class="tag">Lancet</span>
       <span class="tag pub-type type-review">Review</span>
       <h2>Retinoblastoma.</h2>
@@ -1753,7 +1990,7 @@
 
     </article>
 
-    <article data-appraisal-card data-pmid="42982076" data-doi="10.1016/S0140-6736(26)01818-0">
+    <article id="article-42982076" data-appraisal-card data-pmid="42982076" data-doi="10.1016/S0140-6736(26)01818-0">
       <span class="tag">Lancet</span>
       <span class="tag pub-type type-original">Original</span>
       <h2>Preparing for responsive management versus renal dialysis in older people living with kidney failure and frailty or multimorbidity in the UK (Prepare for Kidney Care): a two-arm, superiority, parallel-group, open-label, pragmatic, phase 3, individually randomised controlled trial.</h2>
@@ -1805,7 +2042,7 @@
 
     </article>
 
-    <article data-appraisal-card data-pmid="42956776" data-doi="10.1016/S0140-6736(26)02027-1">
+    <article id="article-42956776" data-appraisal-card data-pmid="42956776" data-doi="10.1016/S0140-6736(26)02027-1">
       <span class="tag">Lancet</span>
       <span class="tag pub-type type-review">Review</span>
       <h2>Reframing the manosphere: a public health response to a commercial ecosystem.</h2>
@@ -1862,7 +2099,7 @@
   <section class="journal-section" id="journal-jama">
     <h3 class="journal-title">JAMA <span class="journal-count">5 篇</span></h3>
 
-    <article data-appraisal-card data-pmid="42986716" data-doi="10.1001/jama.2026.21764">
+    <article id="article-42986716" data-appraisal-card data-pmid="42986716" data-doi="10.1001/jama.2026.21764">
       <span class="tag">JAMA</span>
       <span class="tag pub-type type-original">Original</span>
       <h2>Nonreceipt of Newborn Vitamin K and Risk of Bleeding.</h2>
@@ -1914,7 +2151,7 @@
 
     </article>
 
-    <article data-appraisal-card data-pmid="42804178" data-doi="10.1001/jama.2026.16139">
+    <article id="article-42804178" data-appraisal-card data-pmid="42804178" data-doi="10.1001/jama.2026.16139">
       <span class="tag">JAMA</span>
       <span class="tag pub-type type-original">Original</span>
       <h2>Patents on Small-Molecule Drugs Approved by the US Food and Drug Administration, 1990-2019.</h2>
@@ -1966,7 +2203,7 @@
 
     </article>
 
-    <article data-appraisal-card data-pmid="42776543" data-doi="10.1001/jama.2026.15496">
+    <article id="article-42776543" data-appraisal-card data-pmid="42776543" data-doi="10.1001/jama.2026.15496">
       <span class="tag">JAMA</span>
       <span class="tag pub-type type-trial">RCT</span>
       <h2>Tenecteplase Before Thrombectomy at 4.5 to 24 Hours for Basilar Artery Occlusion: The ATTENTION LATE Randomized Clinical Trial.</h2>
@@ -2018,7 +2255,7 @@
 
     </article>
 
-    <article data-appraisal-card data-pmid="42734953" data-doi="10.1001/jama.2026.15010">
+    <article id="article-42734953" data-appraisal-card data-pmid="42734953" data-doi="10.1001/jama.2026.15010">
       <span class="tag">JAMA</span>
       <span class="tag pub-type type-original">Original</span>
       <h2>Adoption of Adjunctive Azithromycin for Unscheduled Cesarean Delivery and Postpartum Infections.</h2>
@@ -2070,7 +2307,7 @@
 
     </article>
 
-    <article data-appraisal-card data-pmid="42667613" data-doi="10.1001/jama.2026.16372">
+    <article id="article-42667613" data-appraisal-card data-pmid="42667613" data-doi="10.1001/jama.2026.16372">
       <span class="tag">JAMA</span>
       <span class="tag pub-type type-trial">RCT</span>
       <h2>Digital Outreach to Improve Statin Refills in Patients With Low Statin Adherence: The ADHERE-ASCVD Randomized Clinical Trial.</h2>
@@ -2127,7 +2364,7 @@
   <section class="journal-section" id="journal-jacc">
     <h3 class="journal-title">JACC <span class="journal-count">7 篇</span></h3>
 
-    <article data-appraisal-card data-pmid="42980634" data-doi="10.1016/j.jacc.2026.10.055">
+    <article id="article-42980634" data-appraisal-card data-pmid="42980634" data-doi="10.1016/j.jacc.2026.10.055">
       <span class="tag">JACC</span>
       <span class="tag pub-type type-original">Original</span>
       <h2>Single vs Double ProGlide Devices for Access Site Closure after Transfemoral Aortic Valve Replacement: The SINGLE-CLOSURE Trial.</h2>
@@ -2179,7 +2416,7 @@
 
     </article>
 
-    <article data-appraisal-card data-pmid="42980633" data-doi="10.1016/j.jacc.2026.10.047">
+    <article id="article-42980633" data-appraisal-card data-pmid="42980633" data-doi="10.1016/j.jacc.2026.10.047">
       <span class="tag">JACC</span>
       <span class="tag pub-type type-original">Original</span>
       <h2>Percutaneous Transcatheter Mitral Valve Replacement for Symptomatic Mitral Regurgitation: 2-Year Outcomes From the ENCIRCLE Trial.</h2>
@@ -2231,7 +2468,7 @@
 
     </article>
 
-    <article data-appraisal-card data-pmid="42788921" data-doi="10.1016/j.jacc.2026.07.010">
+    <article id="article-42788921" data-appraisal-card data-pmid="42788921" data-doi="10.1016/j.jacc.2026.07.010">
       <span class="tag">JACC</span>
       <span class="tag pub-type type-original">Original</span>
       <h2>Cardiovascular Disease Mortality by County, Race and/or Ethnic Population, United States, 2000-2019.</h2>
@@ -2283,7 +2520,7 @@
 
     </article>
 
-    <article data-appraisal-card data-pmid="42693699" data-doi="10.1016/j.jacc.2026.07.003">
+    <article id="article-42693699" data-appraisal-card data-pmid="42693699" data-doi="10.1016/j.jacc.2026.07.003">
       <span class="tag">JACC</span>
       <span class="tag pub-type type-review">Review</span>
       <h2>Clinical Considerations for the Care of the Tactical Athlete With Cardiovascular Abnormalities: A Scientific Statement From the American College of Cardiology and the American Heart Association.</h2>
@@ -2335,7 +2572,7 @@
 
     </article>
 
-    <article data-appraisal-card data-pmid="42644782" data-doi="10.1016/j.jacc.2026.07.045">
+    <article id="article-42644782" data-appraisal-card data-pmid="42644782" data-doi="10.1016/j.jacc.2026.07.045">
       <span class="tag">JACC</span>
       <span class="tag pub-type type-trial">RCT</span>
       <h2>A Coordinated Community- and Family-Based Intervention to Control Blood Pressure in Rural China: A Cluster-Randomized Trial.</h2>
@@ -2387,7 +2624,7 @@
 
     </article>
 
-    <article data-appraisal-card data-pmid="42417693" data-doi="10.1016/j.jacc.2026.05.035">
+    <article id="article-42417693" data-appraisal-card data-pmid="42417693" data-doi="10.1016/j.jacc.2026.05.035">
       <span class="tag">JACC</span>
       <span class="tag pub-type type-trial">RCT</span>
       <h2>Cardiovascular Health Change Patterns After Multifaceted Antihypertensive Intervention and Cardiovascular Outcomes: A Post Hoc Analysis of CRHCP Trial.</h2>
@@ -2439,7 +2676,7 @@
 
     </article>
 
-    <article data-appraisal-card data-pmid="42171544" data-doi="10.1016/j.jacc.2025.11.001">
+    <article id="article-42171544" data-appraisal-card data-pmid="42171544" data-doi="10.1016/j.jacc.2025.11.001">
       <span class="tag">JACC</span>
       <span class="tag pub-type type-guideline">Guideline</span>
       <h2>Optimization of Postpartum Care for Patients With and at Risk for Premature and Long-Term Cardiovascular Disease: 2026 ACC Expert Consensus Decision Pathway: A Report of the American College of Cardiology Solution Set Oversight Committee.</h2>
@@ -2491,7 +2728,7 @@
   <section class="journal-section" id="journal-ehj">
     <h3 class="journal-title">EHJ <span class="journal-count">10 篇</span></h3>
 
-    <article data-appraisal-card data-pmid="42670759" data-doi="10.1093/eurheartj/ehag597">
+    <article id="article-42670759" data-appraisal-card data-pmid="42670759" data-doi="10.1093/eurheartj/ehag597">
       <span class="tag">EHJ</span>
       <span class="tag pub-type type-original">Observational</span>
       <h2>Takotsubo syndrome diagnosis: the biomarker-based BioTAK score.</h2>
@@ -2543,7 +2780,7 @@
 
     </article>
 
-    <article data-appraisal-card data-pmid="42128248" data-doi="10.1093/eurheartj/ehag292">
+    <article id="article-42128248" data-appraisal-card data-pmid="42128248" data-doi="10.1093/eurheartj/ehag292">
       <span class="tag">EHJ</span>
       <span class="tag pub-type type-review">Review</span>
       <h2>Renin-angiotensin-aldosterone system failure drives inappropriate vasodilation in cardiogenic shock: a hypothesis.</h2>
@@ -2595,7 +2832,7 @@
 
     </article>
 
-    <article data-appraisal-card data-pmid="41879158" data-doi="10.1093/eurheartj/ehag219">
+    <article id="article-41879158" data-appraisal-card data-pmid="41879158" data-doi="10.1093/eurheartj/ehag219">
       <span class="tag">EHJ</span>
       <span class="tag pub-type type-review">Review</span>
       <h2>Palliative care in cardiovascular medicine.</h2>
@@ -2647,7 +2884,7 @@
 
     </article>
 
-    <article data-appraisal-card data-pmid="41711546" data-doi="10.1093/eurheartj/ehag088">
+    <article id="article-41711546" data-appraisal-card data-pmid="41711546" data-doi="10.1093/eurheartj/ehag088">
       <span class="tag">EHJ</span>
       <span class="tag pub-type type-review">Review</span>
       <h2>Delirium in cardiovascular medicine.</h2>
@@ -2699,7 +2936,7 @@
 
     </article>
 
-    <article data-appraisal-card data-pmid="40928499" data-doi="10.1093/eurheartj/ehaf671">
+    <article id="article-40928499" data-appraisal-card data-pmid="40928499" data-doi="10.1093/eurheartj/ehaf671">
       <span class="tag">EHJ</span>
       <span class="tag pub-type type-original">Original</span>
       <h2>Fulminant myocarditis: outcome predictors in an international cohort study.</h2>
@@ -2751,7 +2988,7 @@
 
     </article>
 
-    <article data-appraisal-card data-pmid="40878832" data-doi="10.1093/eurheartj/ehaf573">
+    <article id="article-40878832" data-appraisal-card data-pmid="40878832" data-doi="10.1093/eurheartj/ehaf573">
       <span class="tag">EHJ</span>
       <span class="tag pub-type type-evidence">Meta-Analysis</span>
       <h2>Discontinuation of renin-angiotensin system inhibitors before non-cardiac surgery: a meta-analysis.</h2>
@@ -2803,7 +3040,7 @@
 
     </article>
 
-    <article data-appraisal-card data-pmid="42986702" data-doi="10.1093/eurheartj/ehag878">
+    <article id="article-42986702" data-appraisal-card data-pmid="42986702" data-doi="10.1093/eurheartj/ehag878">
       <span class="tag">EHJ</span>
       <span class="tag pub-type type-original">Original</span>
       <h2>Atherosclerotic plaque healing: mechanisms and clinical relevance.</h2>
@@ -2855,7 +3092,7 @@
 
     </article>
 
-    <article data-appraisal-card data-pmid="42986701" data-doi="10.1093/eurheartj/ehag837">
+    <article id="article-42986701" data-appraisal-card data-pmid="42986701" data-doi="10.1093/eurheartj/ehag837">
       <span class="tag">EHJ</span>
       <span class="tag pub-type type-original">Original</span>
       <h2>Left ventricular outflow tract obstruction in transcatheter mitral interventions: percutaneous anterior leaflet modification.</h2>
@@ -2907,7 +3144,7 @@
 
     </article>
 
-    <article data-appraisal-card data-pmid="42986697" data-doi="10.1093/eurheartj/ehag815">
+    <article id="article-42986697" data-appraisal-card data-pmid="42986697" data-doi="10.1093/eurheartj/ehag815">
       <span class="tag">EHJ</span>
       <span class="tag pub-type type-original">Original</span>
       <h2>Coronary angiography in heart transplants from donors older than 40: a Eurotransplant study.</h2>
@@ -2959,7 +3196,7 @@
 
     </article>
 
-    <article data-appraisal-card data-pmid="42981224" data-doi="10.1093/eurheartj/ehag854">
+    <article id="article-42981224" data-appraisal-card data-pmid="42981224" data-doi="10.1093/eurheartj/ehag854">
       <span class="tag">EHJ</span>
       <span class="tag pub-type type-original">Original</span>
       <h2>Heart failure therapy in congenitally corrected transposition of the great arteries: effect on right ventricular function and survival.</h2>
@@ -3016,7 +3253,7 @@
   <section class="journal-section" id="journal-eurointervention">
     <h3 class="journal-title">EuroIntervention <span class="journal-count">4 篇</span></h3>
 
-    <article data-appraisal-card data-pmid="42975601" data-doi="10.4244/EIJ-D-26-00457">
+    <article id="article-42975601" data-appraisal-card data-pmid="42975601" data-doi="10.4244/EIJ-D-26-00457">
       <span class="tag">EuroIntervention</span>
       <span class="tag pub-type type-trial">RCT</span>
       <h2>Prognostic value of Murray law-based quantitative flow ratio after percutaneous coronary intervention.</h2>
@@ -3068,7 +3305,7 @@
 
     </article>
 
-    <article data-appraisal-card data-pmid="42975600" data-doi="10.4244/EIJ-D-26-00473">
+    <article id="article-42975600" data-appraisal-card data-pmid="42975600" data-doi="10.4244/EIJ-D-26-00473">
       <span class="tag">EuroIntervention</span>
       <span class="tag pub-type type-original">Original</span>
       <h2>Guided P2Y12 inhibitor selection after rapid CYP2C19 genotyping in patients undergoing percutaneous coronary intervention.</h2>
@@ -3120,7 +3357,7 @@
 
     </article>
 
-    <article data-appraisal-card data-pmid="42975599" data-doi="10.4244/EIJ-D-26-00575">
+    <article id="article-42975599" data-appraisal-card data-pmid="42975599" data-doi="10.4244/EIJ-D-26-00575">
       <span class="tag">EuroIntervention</span>
       <span class="tag pub-type type-original">Observational</span>
       <h2>Prediction of coronary events by computed tomography-derived Murray law-based quantitative flow ratio.</h2>
@@ -3172,7 +3409,7 @@
 
     </article>
 
-    <article data-appraisal-card data-pmid="42975595" data-doi="10.4244/EIJ-D-26-00924">
+    <article id="article-42975595" data-appraisal-card data-pmid="42975595" data-doi="10.4244/EIJ-D-26-00924">
       <span class="tag">EuroIntervention</span>
       <span class="tag pub-type type-original">Original</span>
       <h2>A randomised non-inferiority trial of CCTA guidance versus IVUS guidance for PCI: rationale and design of the P4 clinical trial.</h2>
@@ -3229,7 +3466,7 @@
   <section class="journal-section" id="journal-circulation">
     <h3 class="journal-title">Circulation <span class="journal-count">9 篇</span></h3>
 
-    <article data-appraisal-card data-pmid="42974708" data-doi="10.1161/CIRCULATIONAHA.125.078300">
+    <article id="article-42974708" data-appraisal-card data-pmid="42974708" data-doi="10.1161/CIRCULATIONAHA.125.078300">
       <span class="tag">Circulation</span>
       <span class="tag pub-type type-original">Original</span>
       <h2>Targeting ALDOA Lactylation Reverses Vascular Remodeling in Pulmonary Hypertension by Disrupting Actin Polymerization and YAP Activation.</h2>
@@ -3281,7 +3518,7 @@
 
     </article>
 
-    <article data-appraisal-card data-pmid="42974684" data-doi="10.1161/CIRCULATIONAHA.126.080735">
+    <article id="article-42974684" data-appraisal-card data-pmid="42974684" data-doi="10.1161/CIRCULATIONAHA.126.080735">
       <span class="tag">Circulation</span>
       <span class="tag pub-type type-original">Original</span>
       <h2>Long-Term Impact of Vutrisiran in Patients With TTR Amyloidosis With Cardiomyopathy: 1-Year Efficacy and Safety Outcomes From the HELIOS-B Open-Label Extension.</h2>
@@ -3333,7 +3570,7 @@
 
     </article>
 
-    <article data-appraisal-card data-pmid="42817881" data-doi="10.1161/CIR.0000000000001474">
+    <article id="article-42817881" data-appraisal-card data-pmid="42817881" data-doi="10.1161/CIR.0000000000001474">
       <span class="tag">Circulation</span>
       <span class="tag pub-type type-review">Review</span>
       <h2>Impact of Undertreated Antithrombotic Therapy on Adverse Patient Outcomes: A Scientific Statement From the American Heart Association.</h2>
@@ -3385,7 +3622,7 @@
 
     </article>
 
-    <article data-appraisal-card data-pmid="42741853" data-doi="10.1161/CIRCULATIONAHA.124.072363">
+    <article id="article-42741853" data-appraisal-card data-pmid="42741853" data-doi="10.1161/CIRCULATIONAHA.124.072363">
       <span class="tag">Circulation</span>
       <span class="tag pub-type type-original">Original</span>
       <h2>Intestinal Serotonergic Vagal Signaling as a Mediator of Microbiota-Induced Hypertension.</h2>
@@ -3437,7 +3674,7 @@
 
     </article>
 
-    <article data-appraisal-card data-pmid="42708224" data-doi="10.1161/CIRCULATIONAHA.126.080527">
+    <article id="article-42708224" data-appraisal-card data-pmid="42708224" data-doi="10.1161/CIRCULATIONAHA.126.080527">
       <span class="tag">Circulation</span>
       <span class="tag pub-type type-original">Original</span>
       <h2>Impaired Glycolysis Leads to Defective Efferocytosis and Impaired Plaque Resolution in Tet2 Clonal Hematopoiesis.</h2>
@@ -3489,7 +3726,7 @@
 
     </article>
 
-    <article data-appraisal-card data-pmid="42708217" data-doi="10.1161/CIRCULATIONAHA.126.080483">
+    <article id="article-42708217" data-appraisal-card data-pmid="42708217" data-doi="10.1161/CIRCULATIONAHA.126.080483">
       <span class="tag">Circulation</span>
       <span class="tag pub-type type-original">Original</span>
       <h2>Macrotroponin Complexes and Risk of Cardiovascular Events.</h2>
@@ -3541,7 +3778,7 @@
 
     </article>
 
-    <article data-appraisal-card data-pmid="42708210" data-doi="10.1161/CIRCULATIONAHA.126.080608">
+    <article id="article-42708210" data-appraisal-card data-pmid="42708210" data-doi="10.1161/CIRCULATIONAHA.126.080608">
       <span class="tag">Circulation</span>
       <span class="tag pub-type type-original">Observational</span>
       <h2>Arrhythmic Risk Stratification According to LGE Corridors and Genetics in Nonischemic Dilated Cardiomyopathy.</h2>
@@ -3593,7 +3830,7 @@
 
     </article>
 
-    <article data-appraisal-card data-pmid="42708181" data-doi="10.1161/CIRCULATIONAHA.126.078415">
+    <article id="article-42708181" data-appraisal-card data-pmid="42708181" data-doi="10.1161/CIRCULATIONAHA.126.078415">
       <span class="tag">Circulation</span>
       <span class="tag pub-type type-original">Original</span>
       <h2>Overcoming Intrinsic Barriers in Myofibroblasts Permits Efficient Cardiac Reprogramming After Infarction.</h2>
@@ -3645,7 +3882,7 @@
 
     </article>
 
-    <article data-appraisal-card data-pmid="42969101" data-doi="10.1161/CIRCULATIONAHA.126.083383">
+    <article id="article-42969101" data-appraisal-card data-pmid="42969101" data-doi="10.1161/CIRCULATIONAHA.126.083383">
       <span class="tag">Circulation</span>
       <span class="tag pub-type type-original">Original</span>
       <h2>Performance of the PREVENT-HF Equations Across Heart Failure Subtypes in Community-Based and Ambulatory Healthcare Samples.</h2>
@@ -3811,7 +4048,7 @@
   <section class="journal-section" id="journal-msse">
     <h3 class="journal-title">MSSE <span class="journal-count">9 篇</span></h3>
 
-    <article data-appraisal-card data-pmid="42976152" data-doi="10.1249/MSS.0000000000004204">
+    <article id="article-42976152" data-appraisal-card data-pmid="42976152" data-doi="10.1249/MSS.0000000000004204">
       <span class="tag">MSSE</span>
       <span class="tag pub-type type-original">Original</span>
       <h2>Differential Effects of Hip- and Knee-Based Stretches on Torque and Motor Unit Activity in the Hamstrings.</h2>
@@ -3863,7 +4100,7 @@
 
     </article>
 
-    <article data-appraisal-card data-pmid="42870357" data-doi="10.1249/MSS.0000000000004062">
+    <article id="article-42870357" data-appraisal-card data-pmid="42870357" data-doi="10.1249/MSS.0000000000004062">
       <span class="tag">MSSE</span>
       <span class="tag pub-type type-original">Original</span>
       <h2>Physical Activity Levels and Lung-Kidney Function in a Cohort of COVID-19 Survivors.</h2>
@@ -3915,7 +4152,7 @@
 
     </article>
 
-    <article data-appraisal-card data-pmid="42492489" data-doi="10.1249/MSS.0000000000004065">
+    <article id="article-42492489" data-appraisal-card data-pmid="42492489" data-doi="10.1249/MSS.0000000000004065">
       <span class="tag">MSSE</span>
       <span class="tag pub-type type-original">Original</span>
       <h2>Determinants of Reclassification of Exercise Performance across Cardiopulmonary Exercise Testing Prediction Equations.</h2>
@@ -3967,7 +4204,7 @@
 
     </article>
 
-    <article data-appraisal-card data-pmid="42492233" data-doi="10.1249/MSS.0000000000004071">
+    <article id="article-42492233" data-appraisal-card data-pmid="42492233" data-doi="10.1249/MSS.0000000000004071">
       <span class="tag">MSSE</span>
       <span class="tag pub-type type-original">Original</span>
       <h2>Resting Metabolic Rate in Collegiate Male Wrestlers: Cross-Validation and Development of Prediction Equations.</h2>
@@ -4019,7 +4256,7 @@
 
     </article>
 
-    <article data-appraisal-card data-pmid="42492232" data-doi="10.1249/MSS.0000000000004075">
+    <article id="article-42492232" data-appraisal-card data-pmid="42492232" data-doi="10.1249/MSS.0000000000004075">
       <span class="tag">MSSE</span>
       <span class="tag pub-type type-original">Original</span>
       <h2>Resistance Exercise at Different Periods Before and After Ovariectomy Attenuates Bone Loss in Ovariectomized Mice.</h2>
@@ -4071,7 +4308,7 @@
 
     </article>
 
-    <article data-appraisal-card data-pmid="42478182" data-doi="10.1249/MSS.0000000000004072">
+    <article id="article-42478182" data-appraisal-card data-pmid="42478182" data-doi="10.1249/MSS.0000000000004072">
       <span class="tag">MSSE</span>
       <span class="tag pub-type type-trial">RCT</span>
       <h2>Superimposed Tendon Vibration Increases Time to Task Failure During Intermittent Isometric Knee Extensions: Effects of Contraction Intensity and Sex.</h2>
@@ -4123,7 +4360,7 @@
 
     </article>
 
-    <article data-appraisal-card data-pmid="42421211" data-doi="10.1249/MSS.0000000000004060">
+    <article id="article-42421211" data-appraisal-card data-pmid="42421211" data-doi="10.1249/MSS.0000000000004060">
       <span class="tag">MSSE</span>
       <span class="tag pub-type type-original">Original</span>
       <h2>The Influence of Interindividual Factors on Army Combat Fitness Test Performance.</h2>
@@ -4175,7 +4412,7 @@
 
     </article>
 
-    <article data-appraisal-card data-pmid="42406891" data-doi="10.1249/MSS.0000000000004068">
+    <article id="article-42406891" data-appraisal-card data-pmid="42406891" data-doi="10.1249/MSS.0000000000004068">
       <span class="tag">MSSE</span>
       <span class="tag pub-type type-original">Original</span>
       <h2>Are All Exertional Heat Strokes Equal?</h2>
@@ -4227,7 +4464,7 @@
 
     </article>
 
-    <article data-appraisal-card data-pmid="42406586" data-doi="10.1249/MSS.0000000000004069">
+    <article id="article-42406586" data-appraisal-card data-pmid="42406586" data-doi="10.1249/MSS.0000000000004069">
       <span class="tag">MSSE</span>
       <span class="tag pub-type type-original">Original</span>
       <h2>Associations of 24-Hour Accelerometer-Measured Movement Behaviors with Chronic Liver Disease and the Mediating Role of Proteomics and Metabolomics.</h2>
@@ -4284,7 +4521,7 @@
   <section class="journal-section" id="journal-sportsmed">
     <h3 class="journal-title">SportsMed <span class="journal-count">8 篇</span></h3>
 
-    <article data-appraisal-card data-pmid="42986605" data-doi="10.1007/s40279-026-02568-4">
+    <article id="article-42986605" data-appraisal-card data-pmid="42986605" data-doi="10.1007/s40279-026-02568-4">
       <span class="tag">SportsMed</span>
       <span class="tag pub-type type-original">Original</span>
       <h2>Understanding the Complexity of Athlete Sleep: A Systems Approach to Modelling the Athlete Sleep Environment.</h2>
@@ -4336,7 +4573,7 @@
 
     </article>
 
-    <article data-appraisal-card data-pmid="42980705" data-doi="10.1007/s40279-026-02557-7">
+    <article id="article-42980705" data-appraisal-card data-pmid="42980705" data-doi="10.1007/s40279-026-02557-7">
       <span class="tag">SportsMed</span>
       <span class="tag pub-type type-review">Review</span>
       <h2>The Applied Sport Science of Professional Male Basketball: A Narrative Review of Current and Emerging Practices.</h2>
@@ -4388,7 +4625,7 @@
 
     </article>
 
-    <article data-appraisal-card data-pmid="42742930" data-doi="10.1007/s40279-026-02482-9">
+    <article id="article-42742930" data-appraisal-card data-pmid="42742930" data-doi="10.1007/s40279-026-02482-9">
       <span class="tag">SportsMed</span>
       <span class="tag pub-type type-evidence">Meta-Analysis</span>
       <h2>The Effects of Intermittent Hypoxic Training Strategies on Maximal Oxygen Uptake in Healthy Humans: A Meta-analysis with Meta-regression.</h2>
@@ -4440,7 +4677,7 @@
 
     </article>
 
-    <article data-appraisal-card data-pmid="42730844" data-doi="10.1007/s40279-026-02534-0">
+    <article id="article-42730844" data-appraisal-card data-pmid="42730844" data-doi="10.1007/s40279-026-02534-0">
       <span class="tag">SportsMed</span>
       <span class="tag pub-type type-review">Review</span>
       <h2>Vitamin B6 in Elite Athletes: Potential Implications of High Intakes.</h2>
@@ -4487,7 +4724,7 @@
 
     </article>
 
-    <article data-appraisal-card data-pmid="42720840" data-doi="10.1007/s40279-026-02468-7">
+    <article id="article-42720840" data-appraisal-card data-pmid="42720840" data-doi="10.1007/s40279-026-02468-7">
       <span class="tag">SportsMed</span>
       <span class="tag pub-type type-evidence">Meta-Analysis</span>
       <h2>Comparison of the Linear versus Non-Linear Repeated Sprint Training on Lower Limb Sports Performance Tasks in Team Sport Athletes: A Systematic Review and Meta-Analysis.</h2>
@@ -4539,7 +4776,7 @@
 
     </article>
 
-    <article data-appraisal-card data-pmid="42627476" data-doi="10.1007/s40279-026-02491-8">
+    <article id="article-42627476" data-appraisal-card data-pmid="42627476" data-doi="10.1007/s40279-026-02491-8">
       <span class="tag">SportsMed</span>
       <span class="tag pub-type type-review">Review</span>
       <h2>Mechanisms Influencing Maximum Joint Range of Motion and Stiffness: A Narrative Review.</h2>
@@ -4591,7 +4828,7 @@
 
     </article>
 
-    <article data-appraisal-card data-pmid="42571000" data-doi="10.1007/s40279-026-02485-6">
+    <article id="article-42571000" data-appraisal-card data-pmid="42571000" data-doi="10.1007/s40279-026-02485-6">
       <span class="tag">SportsMed</span>
       <span class="tag pub-type type-original">Original</span>
       <h2>The Global Physical Literacy Action Framework: Process and Outcomes.</h2>
@@ -4643,7 +4880,7 @@
 
     </article>
 
-    <article data-appraisal-card data-pmid="42496856" data-doi="10.1007/s40279-026-02474-9">
+    <article id="article-42496856" data-appraisal-card data-pmid="42496856" data-doi="10.1007/s40279-026-02474-9">
       <span class="tag">SportsMed</span>
       <span class="tag pub-type type-review">Review</span>
       <h2>Dietary FODMAP Manipulation for Exercise-Associated Gastrointestinal Symptoms: Why Symptom Severity Should Guide Our Approach.</h2>
@@ -4700,7 +4937,7 @@
   <section class="journal-section" id="journal-jap">
     <h3 class="journal-title">JAP <span class="journal-count">9 篇</span></h3>
 
-    <article data-appraisal-card data-pmid="42977714" data-doi="10.1152/japplphysiol.90326.2026">
+    <article id="article-42977714" data-appraisal-card data-pmid="42977714" data-doi="10.1152/japplphysiol.90326.2026">
       <span class="tag">JAP</span>
       <span class="tag pub-type type-original">Original</span>
       <h2>Conventional transcutaneous spinal stimulation waveforms recruit sensory pathways more effectively than burst-modulated high-frequency waveforms.</h2>
@@ -4752,7 +4989,7 @@
 
     </article>
 
-    <article data-appraisal-card data-pmid="42973111" data-doi="10.1152/japplphysiol.90213.2026">
+    <article id="article-42973111" data-appraisal-card data-pmid="42973111" data-doi="10.1152/japplphysiol.90213.2026">
       <span class="tag">JAP</span>
       <span class="tag pub-type type-original">Original</span>
       <h2>Proteomic Interrogation of the Acute Response to Muscle Damage in Untrained Middle Aged and Older Females.</h2>
@@ -4804,7 +5041,7 @@
 
     </article>
 
-    <article data-appraisal-card data-pmid="42973080" data-doi="10.1152/japplphysiol.90283.2026">
+    <article id="article-42973080" data-appraisal-card data-pmid="42973080" data-doi="10.1152/japplphysiol.90283.2026">
       <span class="tag">JAP</span>
       <span class="tag pub-type type-original">Original</span>
       <h2>Functional sympatholysis: Do females do it better?</h2>
@@ -4856,7 +5093,7 @@
 
     </article>
 
-    <article data-appraisal-card data-pmid="42932899" data-doi="10.1152/japplphysiol.90329.2026">
+    <article id="article-42932899" data-appraisal-card data-pmid="42932899" data-doi="10.1152/japplphysiol.90329.2026">
       <span class="tag">JAP</span>
       <span class="tag pub-type type-original">Original</span>
       <h2>Assessing regional pulmonary response to methacholine and mannitol challenge in asthma patients using hyperpolarized helium-3 magnetic resonance imaging.</h2>
@@ -4908,7 +5145,7 @@
 
     </article>
 
-    <article data-appraisal-card data-pmid="42932896" data-doi="10.1152/japplphysiol.90066.2026">
+    <article id="article-42932896" data-appraisal-card data-pmid="42932896" data-doi="10.1152/japplphysiol.90066.2026">
       <span class="tag">JAP</span>
       <span class="tag pub-type type-original">Original</span>
       <h2>Effects of aging on fatigue resistance and neuromuscular control of the trunk extensor muscles during isokinetic contractions.</h2>
@@ -4960,7 +5197,7 @@
 
     </article>
 
-    <article data-appraisal-card data-pmid="42932895" data-doi="10.1152/japplphysiol.00397.2026">
+    <article id="article-42932895" data-appraisal-card data-pmid="42932895" data-doi="10.1152/japplphysiol.00397.2026">
       <span class="tag">JAP</span>
       <span class="tag pub-type type-review">Review</span>
       <h2>Diaphragm dysfunction in heart failure and chronic obstructive pulmonary disease: mechanisms, cardiopulmonary interactions, and inspiratory muscle training.</h2>
@@ -5012,7 +5249,7 @@
 
     </article>
 
-    <article data-appraisal-card data-pmid="42932894" data-doi="10.1152/japplphysiol.00687.2026">
+    <article id="article-42932894" data-appraisal-card data-pmid="42932894" data-doi="10.1152/japplphysiol.00687.2026">
       <span class="tag">JAP</span>
       <span class="tag pub-type type-other">Case Report</span>
       <h2>Effects of stellate ganglion blockade on pulmonary artery pressure and sympathetic baroreflex function at high altitude: a case study in treated hypertension.</h2>
@@ -5064,7 +5301,7 @@
 
     </article>
 
-    <article data-appraisal-card data-pmid="42932893" data-doi="10.1152/japplphysiol.90273.2026">
+    <article id="article-42932893" data-appraisal-card data-pmid="42932893" data-doi="10.1152/japplphysiol.90273.2026">
       <span class="tag">JAP</span>
       <span class="tag pub-type type-original">Original</span>
       <h2>The interaction of surface stiffness and hopping frequency on the metabolic cost and biomechanics of human hopping.</h2>
@@ -5116,7 +5353,7 @@
 
     </article>
 
-    <article data-appraisal-card data-pmid="42932892" data-doi="10.1152/japplphysiol.00617.2026">
+    <article id="article-42932892" data-appraisal-card data-pmid="42932892" data-doi="10.1152/japplphysiol.00617.2026">
       <span class="tag">JAP</span>
       <span class="tag pub-type type-original">Original</span>
       <h2>Cold fluid ingestion does not enhance exogenous carbohydrate oxidation during prolonged endurance exercise in the heat.</h2>
@@ -5173,7 +5410,7 @@
   <section class="journal-section" id="journal-jamacardio">
     <h3 class="journal-title">JAMACardio <span class="journal-count">2 篇</span></h3>
 
-    <article data-appraisal-card data-pmid="42976368" data-doi="10.1001/jamacardio.2026.5260">
+    <article id="article-42976368" data-appraisal-card data-pmid="42976368" data-doi="10.1001/jamacardio.2026.5260">
       <span class="tag">JAMACardio</span>
       <span class="tag pub-type type-original">Original</span>
       <h2>Efficacy and Safety of Routine Postdilation in Balloon-Expandable Transcatheter Aortic Valve Implantation Platform: The DUOTAP Randomized Clinical Trial.</h2>
@@ -5225,7 +5462,7 @@
 
     </article>
 
-    <article data-appraisal-card data-pmid="42967827" data-doi="10.1001/jamacardio.2026.5270">
+    <article id="article-42967827" data-appraisal-card data-pmid="42967827" data-doi="10.1001/jamacardio.2026.5270">
       <span class="tag">JAMACardio</span>
       <span class="tag pub-type type-original">Original</span>
       <h2>Microvascular Resistance Reserve and Outcomes in Angina and Nonobstructive Coronary Artery Disease.</h2>
@@ -5282,7 +5519,7 @@
   <section class="journal-section" id="journal-heart">
     <h3 class="journal-title">Heart <span class="journal-count">5 篇</span></h3>
 
-    <article data-appraisal-card data-pmid="42567695" data-doi="10.1136/heartjnl-2026-327956">
+    <article id="article-42567695" data-appraisal-card data-pmid="42567695" data-doi="10.1136/heartjnl-2026-327956">
       <span class="tag">Heart</span>
       <span class="tag pub-type type-original">Original</span>
       <h2>Association of incomplete device apposition with stroke recurrence after patent foramen ovale closure.</h2>
@@ -5334,7 +5571,7 @@
 
     </article>
 
-    <article data-appraisal-card data-pmid="42567693" data-doi="10.1136/heartjnl-2025-327742">
+    <article id="article-42567693" data-appraisal-card data-pmid="42567693" data-doi="10.1136/heartjnl-2025-327742">
       <span class="tag">Heart</span>
       <span class="tag pub-type type-original">Original</span>
       <h2>Ascending aorta and pure aortic regurgitation transcatheter aortic valve replacement: insights from the National Transcatheter Valve Therapeutics Registry.</h2>
@@ -5386,7 +5623,7 @@
 
     </article>
 
-    <article data-appraisal-card data-pmid="42567692" data-doi="10.1136/heartjnl-2026-328038">
+    <article id="article-42567692" data-appraisal-card data-pmid="42567692" data-doi="10.1136/heartjnl-2026-328038">
       <span class="tag">Heart</span>
       <span class="tag pub-type type-original">Original</span>
       <h2>Mineralocorticoid receptor antagonists in patients with transthyretin amyloid cardiomyopathy receiving disease-modifying therapy.</h2>
@@ -5438,7 +5675,7 @@
 
     </article>
 
-    <article data-appraisal-card data-pmid="42552114" data-doi="10.1136/heartjnl-2025-326751">
+    <article id="article-42552114" data-appraisal-card data-pmid="42552114" data-doi="10.1136/heartjnl-2025-326751">
       <span class="tag">Heart</span>
       <span class="tag pub-type type-review">Review</span>
       <h2>Proteomics in cardiology: research and practice.</h2>
@@ -5490,7 +5727,7 @@
 
     </article>
 
-    <article data-appraisal-card data-pmid="42571652" data-doi="10.1136/heartjnl-2026-328221">
+    <article id="article-42571652" data-appraisal-card data-pmid="42571652" data-doi="10.1136/heartjnl-2026-328221">
       <span class="tag">Heart</span>
       <span class="tag pub-type type-review">Review</span>
       <h2>Bidirectional links between heart failure and cancer: shared pathophysiology, clinical outcomes and collaborative management.</h2>
@@ -5547,7 +5784,7 @@
   </section>
 
   <footer>
-    Generated by JournalFetcher · 2026-11-08 14:07 UTC+08:00
+    Generated by JournalFetcher · 2026-11-09 08:15 UTC+08:00
   </footer>
 </div>
 <script>
