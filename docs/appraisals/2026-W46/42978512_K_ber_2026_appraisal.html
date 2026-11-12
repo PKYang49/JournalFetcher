@@ -1,0 +1,861 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hydralazine-isosorbide dinitrate in chronic heart failure with reduced ejection fraction: the H-HeFT trial.</title>
+<style>
+  :root {
+    --bg: #fafafa;
+    --card: #ffffff;
+    --text: #1a1a1a;
+    --muted: #6b6b6b;
+    --border: #e5e5e5;
+    --accent: #0b5fff;
+  }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang TC",
+      "Microsoft JhengHei", sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    margin: 0;
+    padding: 24px 16px 64px;
+    line-height: 1.72;
+  }
+  main {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    margin: 0 auto;
+    max-width: 840px;
+    padding: 22px 26px;
+  }
+  nav {
+    margin: 0 auto 14px;
+    max-width: 840px;
+    color: var(--muted);
+    font-size: 14px;
+  }
+  a { color: var(--accent); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  h1, h2, h3, h4 { line-height: 1.35; }
+  h1 { font-size: 26px; margin-top: 0; }
+  h2 { border-top: 1px solid var(--border); padding-top: 18px; }
+  code {
+    background: rgba(127, 127, 127, 0.12);
+    border-radius: 4px;
+    padding: 1px 4px;
+  }
+  .table-wrap {
+    margin: 1em 0;
+    overflow-x: auto;
+  }
+  .table-wrap.wide {
+    /* Break out of the 840px prose column, centred on the viewport. */
+    width: min(1040px, calc(100vw - 32px));
+    margin-left: calc(50% - min(520px, 50vw - 16px));
+  }
+  table {
+    border-collapse: collapse;
+    table-layout: auto;
+    width: 100%;
+  }
+  .table-wrap.wide {
+    /* Opaque so the <main> card border does not show through the table. */
+    background: var(--card);
+  }
+  /* Width hints go on <th> as percentages: Chrome's auto table layout
+     mis-sizes columns (and overflows) when cells carry min-width. */
+  .table-wrap.wide th:first-child {
+    /* Variable + plain-language definition, e.g. "NCPV (noncalcified ...)". */
+    width: 26%;
+  }
+  .table-wrap.wide th:last-child {
+    /* Last column is usually a one-line interpretation. */
+    width: 20%;
+  }
+  th, td {
+    border: 1px solid var(--border);
+    /* Wrap only at spaces: never split an English word mid-letter. */
+    overflow-wrap: normal;
+    word-break: normal;
+    hyphens: manual;
+    padding: 6px 8px;
+    text-align: left;
+    vertical-align: top;
+  }
+  blockquote {
+    border-left: 3px solid var(--accent);
+    color: var(--muted);
+    margin-left: 0;
+    padding-left: 14px;
+  }
+  .appraisal-meta {
+    border-top: 1px solid var(--border);
+    margin-top: 28px;
+    padding-top: 14px;
+    color: var(--muted);
+    font-size: 13px;
+  }
+  @media (max-width: 600px) {
+    body {
+      padding: 12px 8px 40px;
+    }
+    main {
+      padding: 16px 12px;
+    }
+    h1 {
+      font-size: 22px;
+    }
+    table {
+      font-size: 12px;
+    }
+    .table-wrap.wide {
+      width: calc(100vw - 16px);
+      margin-left: calc(50% - 50vw + 8px);
+    }
+    th, td {
+      padding: 4px 5px;
+    }
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #1a1a1a;
+      --card: #242424;
+      --text: #e8e8e8;
+      --muted: #999;
+      --border: #333;
+      --accent: #6ea8ff;
+    }
+  }
+</style>
+</head>
+<body>
+<nav><a href="../../2026-W46.html">← 回到 2026-W46 週報</a></nav>
+<main>
+<h1>Hydralazine-isosorbide dinitrate in chronic heart failure with reduced ejection fraction: the H-HeFT trial.</h1>
+<h1>H-HeFT 試驗批判性評讀：Hydralazine-isosorbide dinitrate 用於慢性 HFrEF</h1>
+<hr />
+<h2>SECTION-0：文章全面描述</h2>
+<h3>0. 文章身份證</h3>
+<ul>
+<li><strong>標題</strong>：Hydralazine-isosorbide dinitrate in chronic heart failure with reduced ejection fraction: the H-HeFT trial</li>
+<li><strong>期刊／年份</strong>：European Heart Journal 2026（FASTTRACK – Clinical Research，[文內 p.1 圖頁]）；online 2026-11-04 [外部: OUP 文章頁]</li>
+<li><strong>DOI</strong>：10.1093/eurheartj/ehag773；PMID 42978512</li>
+<li><strong>文章類型（路由）</strong>：多中心、1:1 隨機、雙盲、安慰劑對照 RCT。屬於 DANHEART 2×2 factorial 計畫中的 H-HeFT 子試驗 → <strong>SKILL-A 主流程</strong></li>
+<li><strong>特殊設計</strong>：factorial design（另一臂為 Met-HeFT）；<strong>提前終止收案</strong>（經費不足），屬於 underpowered superiority trial</li>
+</ul>
+<h3>1. 作者團隊評論</h3>
+<ul>
+<li><strong>通訊作者</strong>：Lars Køber（Rigshospitalet, University of Copenhagen）[文內]。他是丹麥心衰竭試驗的核心人物，曾主持 DANISH 試驗（非缺血性 HFrEF 預防性 ICD，NEJM 2016）[外部: ACC / ESC press release 2016]。</li>
+<li><strong>共同主導者</strong>：Henrik Wiggers 與 Anders Hostrup Larsen（Aarhus University Hospital）。這個團隊長期研究 metformin 在 HFrEF 的心肌能量學。依 PubMed，代表作包括：
+<ul>
+<li>Larsen et al., Eur J Heart Fail 2020 <a href="https://doi.org/10.1002/ejhf.1656">DOI</a></li>
+<li>Larsen et al., Cardiovasc Drugs Ther 2021 <a href="https://doi.org/10.1007/s10557-020-07050-5">DOI</a></li>
+<li>DANHEART 設計論文：Wiggers et al., Am Heart J 2021;231:137–46 <a href="https://doi.org/10.1016/j.ahj.2020.09.020">DOI</a></li>
+</ul>
+</li>
+<li><strong>團隊屬性</strong>：丹麥全國心臟科網絡（23 家醫院），研究者主導（investigator-initiated），是該領域的核心研究者，不是跨領域新手。</li>
+<li><strong>作者立場史</strong>：本團隊在 H-ISDN 方面沒有既往發表的強烈立場。Køber 在 ESC 記者會表示「死亡率是否降低需要新 RCT」[外部: ESC press release 2026]，與內文立場一致。確認偏差風險低。</li>
+<li><strong>利益揭露 [文內]</strong>：
+<ul>
+<li>多位作者有 AstraZeneca、Novartis、Bayer、BI、Novo 演講或顧問費。</li>
+<li>F.G. 為 Abbott 全職員工；S.L.K. 為 Novo 全職員工（Novo Nordisk Foundation 是資助者之一）。</li>
+<li>試驗藥與安慰劑由 Azurity Pharmaceuticals（BiDil 廠商）提供 [文內 Methods; Supplement]，但正文「Role of the funding source」沒有明確揭露藥廠角色。</li>
+</ul>
+</li>
+<li><strong>評估</strong>：結果為中性，對廠商不利，因此 COI 推動陽性敘事的風險低。但有獨立性疑慮：
+<ul>
+<li>Endpoint Committee 三位委員（Refsgaard、Steffensen、Hassager）都是本文作者，且所屬醫院就是收案中心（Viborg、Vejle、Rigshospitalet）[Supplement: EC/DSMB 名單；Table S2]。</li>
+<li>DSMB 兩位醫師委員（Eiskjær、Møller）也是作者 [Supplement]。</li>
+</ul>
+</li>
+<li><strong>Declarations 段的錯誤</strong>：寫著「All authors declare no funding」「No data were generated」「Ethical approval was not required」「Pre-registered Clinical Trial Number: None supplied」，與 Methods 所述（有倫理核准、有 NCT03514108 登錄、有多項資助）直接矛盾 [文內]。看起來是範本未修改，屬於編輯品管缺失。</li>
+</ul>
+<h3>2. 文獻 Metadata</h3>
+<ul>
+<li><strong>審查時程</strong>：Received 2026-08-05 → revised 2026-08-19 → accepted 2026-09-10，<strong>約 36 天</strong> [文內；自行計算]。</li>
+<li><strong>EHJ 平均審查天數</strong>：[無法取得]</li>
+<li><strong>解讀</strong>：本文標示 FASTTRACK，並配合 ESC Congress 2026 Hot Line（2026-08-30）發表 [外部: ESC press release]。審查明顯快於一般投稿 [推論]，上述 Declarations 錯誤未被攔下也符合快速流程的特徵。</li>
+<li><strong>期刊指標</strong>：2025 JIF 約 45.3（JCR 2026 年 6 月發布）[外部: Wolters Kluwer / Journal Metrics；ESC 頁面另列 43.5，數字不一致]；Q1。</li>
+<li><strong>邀稿或投稿</strong>：屬於主要研究，非邀稿；Hot Line 同步發表。</li>
+</ul>
+<h3>3. 研究背景 [文內]</h3>
+<ul>
+<li><strong>既有證據</strong>：
+<ul>
+<li>V-HeFT I（1986）中 H-ISDN 對死亡率的效果為邊緣顯著（P = .053）。</li>
+<li>V-HeFT II 中 enalapril 優於 H-ISDN。</li>
+<li>A-HeFT 在自認為黑人的病人中，H-ISDN 加上標準治療可降低複合終點、HF 住院與死亡。</li>
+</ul>
+</li>
+<li><strong>知識缺口</strong>：在以白人為主、接受現代 GDMT（含 ARNI、SGLT2i）的族群中，H-ISDN 是否仍有效，沒有 RCT 證據。</li>
+<li><strong>研究問題</strong>：在接受當代指引治療的 HFrEF 病人中，加上 H-ISDN 能否降低死亡或 HF 事件。</li>
+</ul>
+<h3>4. 研究設計與方法</h3>
+<p><strong>PICO</strong></p>
+<ul>
+<li><strong>P</strong>：NYHA II–IV、LVEF ≤40%、SBP ≥100 mmHg、NT-proBNP ≥350 pg/mL，已接受最大耐受 GDMT（CRT 植入後至少 3 個月）；排除非洲裔 [文內; Table S1]。
+<ul>
+<li>小落差：Supplement Table S1 的條件是「NT-proBNP &gt;350 或 BNP &gt;80」，正文只寫 NT-proBNP ≥350。</li>
+</ul>
+</li>
+<li><strong>I</strong>：BiDil（hydralazine 37.5 mg/ISDN 20 mg）一顆 bid 起始，3 個月內調升至兩顆 tid（每日 225/120 mg）。</li>
+<li><strong>C</strong>：外觀相同的安慰劑。</li>
+<li><strong>O</strong>：
+<ul>
+<li>主要終點：首次發生 HF 惡化住院、急診或門診緊急就醫並接受 IV 利尿劑或 metolazone、心臟移植、LVAD 或全死因死亡。</li>
+<li>次要終點：各組成、全部（首次＋復發）事件、主要終點＋MI／stroke、總住院、NT-proBNP 變化。</li>
+</ul>
+</li>
+</ul>
+<p><strong>設計細節</strong></p>
+<ul>
+<li>2018-03 至 2025-09 收案，median follow-up 3.7 年（0.1–7.6）。</li>
+<li>隨機化：web-based，block size 6，依中心與是否同時參加 Met-HeFT 分層。</li>
+<li>分析：ITT Cox（只放 treatment 一個變項）；recurrent events 用 Ghosh–Lin；非致死終點用 Aalen–Johansen 處理 competing risk。</li>
+<li>次要終點未校正多重比較。</li>
+</ul>
+<p><strong>與事前設計的落差（重要）</strong></p>
+<p>依 2021 年設計論文 [外部: Am Heart J 2021, PMC7544566]：</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>項目</th>
+<th>事前設計</th>
+<th>本文</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>主要終點</td>
+<td>「death or hospitalization with worsening HF」</td>
+<td>再加上 urgent visit（IV／metolazone）、心臟移植、LVAD</td>
+</tr>
+<tr>
+<td>次要 composite</td>
+<td>death 或 CV 住院（WHF、MI、stroke）</td>
+<td>主要終點＋MI 或 stroke</td>
+</tr>
+<tr>
+<td>樣本數</td>
+<td>每組 512 人、391 events（年事件率 12%、HR 0.75、power 80%），總計 1,300 人</td>
+<td>實際 592 人、181 events</td>
+</tr>
+<tr>
+<td>Subgroup</td>
+<td>「post hoc subgroup analyses… will be prespecified before trial termination」</td>
+<td>正文稱為「prespecified」</td>
+</tr>
+</tbody>
+</table></div>
+<ul>
+<li>主要終點的擴充版本在 ClinicalTrials.gov 條目中已可見 [外部: CenterWatch/registry 摘要]，但修訂時點與盲性狀態 <strong>[無法取得：registry 版本歷史]</strong>。</li>
+<li>Subgroup 實際上是「收案中、揭盲前才指定」，比真正的 a priori 弱。</li>
+<li><strong>[限制：本次提供的 supplement 未包含 Protocol 與 SAP 全文]</strong>，無法逐項核對 SAP 偏離。</li>
+</ul>
+<h3>5. 研究結果重點整理</h3>
+<p><strong>主要結果表</strong> [Table 2；Figure 2；Supplement Table S5]</p>
+<div class="table-wrap wide"><table>
+<thead>
+<tr>
+<th>變項（代表什麼）</th>
+<th style="text-align:right">H-ISDN（n=294）</th>
+<th style="text-align:right">安慰劑（n=298）</th>
+<th style="text-align:right">組間差（95% CI）</th>
+<th style="text-align:right">p 值</th>
+<th>如何解讀</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>6 個月實際服藥劑量</strong>（每日 hydralazine／ISDN）</td>
+<td style="text-align:right"><strong>83.1／44.3 mg</strong>；達目標劑量 <strong>23.7%</strong>；完全停藥 <strong>42.2%</strong></td>
+<td style="text-align:right">（安慰劑錠當量）157.5／84 mg；達目標 <strong>57.3%</strong>；停藥 <strong>13.6%</strong></td>
+<td style="text-align:right">未報告</td>
+<td style="text-align:right">未報告</td>
+<td>試驗組實際暴露只有目標劑量約 <strong>37%</strong>，這是理解所有結果的前提</td>
+</tr>
+<tr>
+<td><strong>主要終點</strong>：首次 HF 事件或死亡</td>
+<td style="text-align:right"><strong>90（30.6%）</strong>，8.6/100 PY</td>
+<td style="text-align:right"><strong>91（30.5%）</strong>，9.3/100 PY</td>
+<td style="text-align:right">HR <strong>0.90（0.67–1.21）</strong></td>
+<td style="text-align:right">0.48</td>
+<td>CI 同時涵蓋 25% 利益與 20% 傷害，屬於無定論</td>
+</tr>
+<tr>
+<td><strong>首次＋復發主要事件</strong>（平均每人事件數）</td>
+<td style="text-align:right">144（0.49），9.3/100 PY</td>
+<td style="text-align:right">156（0.52），10.9/100 PY</td>
+<td style="text-align:right">mean ratio <strong>0.89（0.66–1.21）</strong></td>
+<td style="text-align:right">未報告</td>
+<td>與首次事件分析一致，無明確差異</td>
+</tr>
+<tr>
+<td>主要終點＋MI 或 stroke</td>
+<td style="text-align:right">97（33.0%）</td>
+<td style="text-align:right">101（33.9%）</td>
+<td style="text-align:right">HR 0.88（0.67–1.17）</td>
+<td style="text-align:right">未報告</td>
+<td>無明確組間差異</td>
+</tr>
+<tr>
+<td><strong>全死因死亡</strong></td>
+<td style="text-align:right"><strong>57（19.4%）</strong>，5.0/100 PY</td>
+<td style="text-align:right"><strong>72（24.2%）</strong>，6.9/100 PY</td>
+<td style="text-align:right">HR <strong>0.72（0.51–1.02）</strong></td>
+<td style="text-align:right">未報告</td>
+<td>CI 跨越 1；粗絕對差 4.8% [自行計算]，僅供產生假說</td>
+</tr>
+<tr>
+<td>心臟性猝死</td>
+<td style="text-align:right">12（4.1%）</td>
+<td style="text-align:right">19（6.4%）</td>
+<td style="text-align:right">HR 0.57（0.28–1.18）</td>
+<td style="text-align:right">未報告</td>
+<td>事件數太少，CI 極寬</td>
+</tr>
+<tr>
+<td>進行性 HF 死亡</td>
+<td style="text-align:right">19（6.5%）</td>
+<td style="text-align:right">23（7.7%）</td>
+<td style="text-align:right">HR 0.74（0.40–1.36）</td>
+<td style="text-align:right">未報告</td>
+<td>無明確差異</td>
+</tr>
+<tr>
+<td>非心血管死亡</td>
+<td style="text-align:right">17（5.8%）</td>
+<td style="text-align:right">21（7.0%）</td>
+<td style="text-align:right">HR 0.74（0.39–1.41）</td>
+<td style="text-align:right">未報告</td>
+<td>血管擴張劑理論上不影響此類死亡，卻有同幅度下降，偏向機率或組間不平衡</td>
+</tr>
+<tr>
+<td><strong>HF 惡化／移植／LVAD</strong>（非死亡 HF 事件）</td>
+<td style="text-align:right">52（17.7%）</td>
+<td style="text-align:right">47（15.8%）</td>
+<td style="text-align:right">HR <strong>1.01（0.68–1.50）</strong></td>
+<td style="text-align:right">未報告</td>
+<td>完全沒有 HF 事件的利益訊號</td>
+</tr>
+<tr>
+<td><strong>總住院次數</strong>（含復發）</td>
+<td style="text-align:right"><strong>494（1.68／人）</strong></td>
+<td style="text-align:right"><strong>394（1.32／人）</strong></td>
+<td style="text-align:right">rate ratio <strong>1.23（0.98–1.54）</strong></td>
+<td style="text-align:right">未報告</td>
+<td>試驗組住院負擔數值偏高；可排除有意義的減少</td>
+</tr>
+<tr>
+<td>非心血管住院次數</td>
+<td style="text-align:right">253（0.86／人）</td>
+<td style="text-align:right">191（0.64／人）</td>
+<td style="text-align:right">1.29（0.96–1.74）</td>
+<td style="text-align:right">未報告</td>
+<td>數值偏高，機轉不明</td>
+</tr>
+<tr>
+<td><strong>NT-proBNP 變化%</strong>（基線到最後追蹤）</td>
+<td style="text-align:right">＋141%（−3 to 285），n=207</td>
+<td style="text-align:right">＋39%（21–56），n=195</td>
+<td style="text-align:right">差 <strong>103（−42 to 248）</strong></td>
+<td style="text-align:right">未報告</td>
+<td>無證據顯示改善；有測量的病人僅約 7 成，且有存活者偏差</td>
+</tr>
+</tbody>
+</table></div>
+<p>補充：</p>
+<ul>
+<li><strong>停藥原因</strong>：低血壓、頭暈或暈厥 89 vs 26；頭痛或視覺障礙 29 vs 5；沒有 lupus-like syndrome。CONSORT 停藥人數 182 vs 108 [文內 Results; Figure 1]。</li>
+<li><strong>死因加總不符</strong>：H-ISDN 組 19+12+0+17+3 = <strong>51</strong>，但總死亡為 57；安慰劑組 = <strong>70</strong>，總死亡為 72 [Table 2；自行計算]。死因分類有缺漏，文內沒有說明。</li>
+<li><strong>CV 住院的描述錯誤</strong>：正文寫「244 patients… HR 1.16」，但 Table 2 中 244 是事件數、1.16 是 rate ratio，正文誤寫 [文內 Results vs Table 2]。</li>
+<li><strong>NT-proBNP 註腳錯誤</strong>：表註寫「mean ± SD」，但表內呈現的是區間，格式矛盾。</li>
+</ul>
+<h3>6. 作者討論與評論重點</h3>
+<ul>
+<li><strong>主要訊息</strong>：H-ISDN 沒有改變主要複合終點。死亡率數值較低但沒有達到統計顯著，只能用來產生假說。</li>
+<li><strong>與 A-HeFT 的差異，作者提出的解釋</strong>：
+<ul>
+<li>現代 GDMT 背景下額外效益空間變小</li>
+<li>年齡較大（72 vs 57 歲），competing risk 較高</li>
+<li>NYHA III–IV 僅 6%（A-HeFT 幾乎 100%）</li>
+<li>族群生物學差異</li>
+<li><strong>最可能的原因：依從性與劑量達成率不足</strong></li>
+</ul>
+</li>
+<li><strong>作者列出的限制</strong>：病人與事件數不足、停藥率高、power 低、無法排除利益，也無法證明安全。</li>
+<li><strong>[評估]</strong>：
+<ul>
+<li>依從性的解釋合理，資料也支持（Table S5）。</li>
+<li>但結論寫「Treatment… appears to be safe」，與 limitation 段「或提供安全性證據」<strong>自相矛盾</strong>。ITT 加上高停藥率會把安全性差異稀釋向 null，對安全性宣稱來說是<strong>不保守</strong>的方向。</li>
+<li>「可支持 CKD 病人使用 H-ISDN 的安全性」超出資料範圍。本試驗 eGFR 下限約 35，沒有 CKD 4–5 期資料。</li>
+<li>圖形摘要的 Take home message「does not seem to be beneficial」比 CI 支持的程度更強。這是 inconclusive，不是 neutral。</li>
+</ul>
+</li>
+</ul>
+<h3>7. 外部專業意見</h3>
+<ul>
+<li><strong>同期 EHJ editorial／comment</strong>：[無法取得]。PubMed、OUP 文章頁與網路搜尋都沒有找到針對本文的同期 editorial，因此沒有 DOI 可以抓全文。</li>
+<li><strong>ESC Congress 2026 評論</strong>：Lilia Sierra-Galan（Radcliffe Cardiology 的 Hot Line 評論）[外部: Radcliffe Cardiology 新聞稿／評論摘要，非期刊全文]
+<ul>
+<li>H-HeFT 提供反對在廣泛 HFrEF 族群「常規加用」H-ISDN 的當代證據。</li>
+<li>主要終點中性加上高停藥率，限制了臨床實用性。</li>
+<li>不應以此否定 A-HeFT 在合適黑人病人中的既有效益。</li>
+<li>該報導稱 6 個月停藥率為「57% vs 28%」，與 Supplement Table S5 不符（visit 3 完全停藥 42.2% vs 13.6%；未達目標劑量 76.3% vs 42.7%）。來源定義不明。</li>
+</ul>
+</li>
+<li><strong>同場 meta-analysis</strong>（Jawad Haider Butt；V-HeFT I＋A-HeFT＋H-HeFT，2,101 人）[外部: ESC press release; ACC; HCPLive]
+<ul>
+<li>全死因 HR 0.71（0.58–0.87），CV 死亡 HR 0.65（0.47–0.90），HF 住院結果不一致。</li>
+<li>作者本人承認異質性大（設計、年代、背景治療），難以下確定結論。</li>
+<li>尚未正式出刊，只有會議資料。</li>
+</ul>
+</li>
+</ul>
+<h3>8. 臨床建議</h3>
+<ul>
+<li><strong>可參考的情境</strong>：在白人為主、NYHA II、已接受四大支柱 GDMT 的穩定 HFrEF 病人中，<strong>沒有理由為了降低 HF 事件而常規加上 H-ISDN</strong>。</li>
+<li><strong>不應直接套用的情境</strong>：
+<ul>
+<li>自認為黑人的 HFrEF：被排除，A-HeFT 證據仍然適用。</li>
+<li>因 CKD 或高鉀無法使用 RAASi／MRA 的病人：缺乏試驗內代表性。</li>
+<li>NYHA III–IV、低血壓邊緣的病人。</li>
+</ul>
+</li>
+<li><strong>實務建議</strong>：
+<ol>
+<li>若因 RAASi 不耐或殘餘高血壓而考慮 H-ISDN，先預告頭暈與頭痛，並採慢速調升。本試驗 6 個月只有 24% 達目標劑量。</li>
+<li>不要以「降低死亡率」作為處方理由。HR 0.72 只是 secondary、CI 跨越 1、死因分析不一致的訊號。</li>
+<li>開始用藥後要監測住院負擔與跌倒／暈厥，因為總住院數值偏高。</li>
+</ol>
+</li>
+<li><strong>證據強度</strong>：<strong>弱</strong>。這是設計良好但嚴重 underpowered 的 RCT，實際暴露劑量很低，所有終點都無定論。</li>
+</ul>
+<hr />
+<h2>SKILL-A：批判性評讀</h2>
+<h3>A. 補充技術細節</h3>
+<ul>
+<li>
+<p><strong>樣本數</strong>：原設計 1,300 人、391 events，實際 592 人、181 events，都只有原設計的約 46%。2025-04 修訂後宣稱「175 events 可在 80% power 下偵測 HR 0.73」[文內 Statistical analysis]。</p>
+<ul>
+<li>HR 0.73（相對降低 27%）是極樂觀的假設。依據是 A-HeFT 的死亡率效果（&gt; 40%），但本試驗主要終點是複合終點，族群也不同。</li>
+<li>此外沒有考慮停藥造成的稀釋。在 ITT 加上約 50–60% 停藥的情況下，ITT HR 0.73 等於要求「真正服藥時」的 HR 約 0.5 [推論]。</li>
+</ul>
+</li>
+<li>
+<p><strong>隨機化</strong>：web-based、藥局執行，allocation concealment 足夠。site 分層搭配固定 block size 6，在小中心理論上可被預測，但雙盲可以緩解。</p>
+</li>
+<li>
+<p><strong>致盲</strong>：雙盲。H-ISDN 的頭痛與低血壓容易造成功能性揭盲（停藥原因中頭痛 29 vs 5），文內<strong>沒有評估致盲是否成功</strong>。終點委員會為盲性，死亡終點不受影響，但「urgent visit／metolazone」類軟終點可能受影響。</p>
+</li>
+<li>
+<p><strong>ITT vs per-protocol</strong>：只有 ITT，<strong>沒有 per-protocol、on-treatment 或 CACE 分析</strong>。在劑量達成率 24% 的情況下，這是最大的資訊缺口。</p>
+</li>
+<li>
+<p><strong>多重比較</strong>：次要終點未校正，作者已聲明。</p>
+</li>
+<li>
+<p><strong>比例風險</strong>：用 log-log plot 評估 [Fig S2]：</p>
+<ul>
+<li>主要終點兩條曲線大致平行，但 2–4 年間有輕微分離。</li>
+<li><strong>死亡的 log-log 曲線在 0–1.5 年交叉</strong>：早期 H-ISDN 曲線較高，代表早期死亡反而較多；約 2 年後才轉為較低。比例風險假設不成立。</li>
+<li>非致死 HF 的曲線早期也交叉。</li>
+<li>因此 HR 0.72 只是非恆定 hazard 的平均值，作者沒有討論。</li>
+</ul>
+</li>
+<li>
+<p><strong>缺失資料</strong>：基線缺失極少 [Table S4]。NT-proBNP 終點只有 207/294、195/298 有數據，complete-case t-test 會受存活者偏差影響。</p>
+</li>
+<li>
+<p><strong>Factorial 交互作用</strong> [Supplement Table S3]：</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>組合</th>
+<th>HR（95% CI）</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>H-ISDN（未用 metformin）</td>
+<td>0.83（0.49–1.41）</td>
+</tr>
+<tr>
+<td>安慰劑＋metformin</td>
+<td>1.28（0.79–2.08）</td>
+</tr>
+<tr>
+<td>H-ISDN＋metformin</td>
+<td>1.25（0.77–2.02）</td>
+</tr>
+</tbody>
+</table></div>
+<p>P_int 0.67，沒有證據顯示交互作用。但 power 極低，無法排除。另外，正文說「停藥與劑量見 Table S3」，supplement 中 S3 實為交互作用表、S5 才是劑量表；正文引用的「Table S2、S4、S5」也與實際內容不符（S2 是收案中心名單）。<strong>Supplement 編號錯置</strong>。</p>
+</li>
+</ul>
+<h3>B. 批判性評估</h3>
+<h4>B1. 假說與理論邏輯</h4>
+<ul>
+<li><strong>機轉</strong>：硝酸鹽補充 NO、hydralazine 降低 afterload，並可能減少 nitrate tolerance。這個機轉在 RAAS／交感已被充分阻斷、SGLT2i 已使用的背景下是否還有空間，本身就是開放問題，假說合理。</li>
+<li><strong>可疑的敘事跳躍</strong>：
+<ol>
+<li>作者把死亡率訊號與 A-HeFT 的 HR 0.57「相似」並列 [Discussion]。但兩者族群、背景治療與暴露劑量差異很大，數值相近不代表機轉一致。</li>
+<li>用「依從性差」解釋 HF 事件沒有下降，卻沒有用同一邏輯質疑死亡率訊號。<strong>死亡曲線在第 2–3 年才分離</strong>（Figure 2C 可見 0–2 年兩線幾乎重疊），而那時 H-ISDN 組已有超過 50% 停藥（Table S5 visit 4 起 51.2%）。暴露最低的時期反而出現差異，與藥理學上的 dose–response 預期相反 [推論]。</li>
+<li>非心血管死亡的 HR（0.74）與 HF 死亡的 HR（0.74）相同，顯示死亡差異可能不具特異性。</li>
+</ol>
+</li>
+</ul>
+<h4>B2. 受試者與外推性</h4>
+<ul>
+<li>族群：72 歲，男性 83%，NYHA II 占 93.5%，median NT-proBNP 約 950 pg/mL，LVEF 35%。這是<strong>相對低風險的門診 HFrEF</strong>，主要終點事件率約 9/100 PY，低於設計假設的 12%。</li>
+<li>SGLT2i 使用率隨收案年度從 10% 升到 94%，基線整體 41%，代表前期病人與現行標準有落差。</li>
+<li><strong>外推性分級</strong>：
+<ol>
+<li><strong>一般 HFrEF（白人、NYHA II、GDMT 完整）</strong>：可外推「沒有 HF 事件利益」，但「是否降低死亡」無法外推。</li>
+<li><strong>晚期或 NYHA III–IV、RAASi 不耐、CKD</strong>：<strong>不應外推</strong>，代表性不足（NYHA III–IV 僅 38 人）。</li>
+<li><strong>黑人病人</strong>：被排除，<strong>不可外推</strong>。</li>
+<li><strong>亞洲／台灣病人</strong>：沒有資料。H-ISDN 在台灣取得性與劑型也不同（無 BiDil 固定劑量複方）[推論]。</li>
+</ol>
+</li>
+</ul>
+<h4>B3. 研究設計與偏差</h4>
+<ul>
+<li><strong>對照組適當性（Gyawali）</strong>：安慰劑加上 GDMT 是合理的 add-on 設計，符合「日常 SoC＋新藥 vs SoC＋安慰劑」。</li>
+<li><strong>前期證據</strong>：沒有現代 Phase II 劑量探索。目標劑量直接套用 A-HeFT，對 72 歲、SBP 121 的族群而言耐受性被高估。這是設計時就可預見的問題。</li>
+<li><strong>提前終止收案</strong>：因經費而非療效，不會造成典型的「early stopping 誇大效果」偏差，但造成 power 嚴重不足。</li>
+<li><strong>Post-protocol 治療</strong>：停藥後是否開放使用 hydralazine 或硝酸鹽，安慰劑組是否加用，<strong>均未報告</strong>。</li>
+</ul>
+<p><strong>最可能造成偏差的三個設計點</strong></p>
+<ol>
+<li><strong>高停藥率加上只報 ITT</strong>：效果被稀釋向 null，會讓利益看起來<strong>變小</strong>，安全性訊號也會被淡化。</li>
+<li><strong>基線預後因子不平衡</strong>：H-ISDN 組有利因子較多，可能讓死亡 HR 看起來<strong>變好</strong>。
+<ul>
+<li>MRA 74% vs 65%，粗略檢定 p ≈ 0.02 [自行計算，雙比例 z 檢定]</li>
+<li>NT-proBNP median 900 vs 1019</li>
+<li>AF 18% vs 22%</li>
+<li>β-blocker 目標劑量 median 100% vs 75%</li>
+<li>作者稱「balanced」，而且<strong>沒有校正後的敏感度分析</strong>。</li>
+</ul>
+</li>
+<li><strong>主要終點在試驗期間擴充，subgroup 在揭盲前才指定</strong>：方向不確定，但會降低可驗證性。</li>
+</ol>
+<h4>B4. 測量工具與實務意義</h4>
+<ul>
+<li>主要終點包含門診 IV 利尿劑或 metolazone，貼近現代 HF 試驗的「worsening HF event」定義（Hicks 2017 標準），有臨床意義。</li>
+<li>終點委員會為盲性，但三位委員都是作者兼收案中心成員，獨立性不足。死亡終點不受影響。</li>
+<li><strong>實務意義</strong>：即使死亡率訊號是真的，以 6 個月只有 24% 能耐受目標劑量來看，真實世界的「可達成效益」會更低。總住院（1.23，0.98–1.54）還可能抵消部分效益。</li>
+</ul>
+<h3>C. 統計與資料完整性</h3>
+<h4>C1. 結果分類（CI ＋ MCID）</h4>
+<ul>
+<li><strong>MCID [推算]</strong>：當代 HFrEF add-on 治療的主要複合終點，以 HR 0.85（相對降低 15%）作為最小臨床重要利益；傷害門檻設為 HR 1.15。本文沒有預先指定 MCID，樣本數假設使用 HR 0.75。</li>
+</ul>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>終點</th>
+<th>HR／RR（95% CI）</th>
+<th>與 MCID 的關係</th>
+<th>分類</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>主要終點</td>
+<td>0.90（0.67–1.21）</td>
+<td>同時涵蓋 0.85 與 1.15</td>
+<td><strong>INCONCLUSIVE ❓</strong></td>
+</tr>
+<tr>
+<td>全死因死亡</td>
+<td>0.72（0.51–1.02）</td>
+<td>涵蓋 null 與 0.85，偏向利益</td>
+<td><strong>INCONCLUSIVE ❓（偏利益）</strong></td>
+</tr>
+<tr>
+<td>HF 事件</td>
+<td>1.01（0.68–1.50）</td>
+<td>涵蓋利益與傷害</td>
+<td><strong>INCONCLUSIVE ❓</strong></td>
+</tr>
+<tr>
+<td>總住院</td>
+<td>1.23（0.98–1.54）</td>
+<td>下限 0.98 &gt; 0.85，排除有意義利益，傷害仍可能</td>
+<td><strong>NEGATIVE ❌（就利益而言）</strong></td>
+</tr>
+</tbody>
+</table></div>
+<ul>
+<li><strong>禁止的謬誤</strong>：
+<ul>
+<li>本文 Abstract 結論「did not change the incidence」與圖形摘要「does not seem to be beneficial」都有把 p &gt; 0.05 當成沒有效果的傾向。</li>
+<li>正確的表述是：「本試驗無法判定 H-ISDN 對複合終點的效果」。</li>
+<li>作者在 Discussion 中承認 low power、無法排除利益，這點值得肯定。</li>
+</ul>
+</li>
+</ul>
+<h4>C2. Underpowered 與 Winner's Curse</h4>
+<ul>
+<li><strong>主要終點</strong>：CI 同時包含 null 與 MCID，<strong>典型的 underpowered</strong>。</li>
+<li><strong>死亡率</strong>：這是 secondary、接近顯著的訊號，事件只有 129 件。若後續 meta-analysis（如 Butt 的合併分析）把這個點估計當作真實效果使用，會有 <strong>Type M 誇大</strong>的風險。</li>
+<li>若有人據此設計確認性試驗，<strong>不應以 HR 0.72 估算樣本數</strong>。</li>
+</ul>
+<h4>C3. Bayesian 補充（常態近似；[自行計算]，僅供方向參考）</h4>
+<p><strong>主要終點</strong>（log HR = −0.105，SE ≈ 0.151），flat prior：</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>指標</th>
+<th>機率</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Pr(HR &lt; 1)</td>
+<td>≈ 76%</td>
+</tr>
+<tr>
+<td>Pr(HR &lt; 0.85)</td>
+<td>≈ 35%</td>
+</tr>
+<tr>
+<td>Pr(0.85 &lt; HR &lt; 1.15)（ROPE）</td>
+<td>≈ 60%</td>
+</tr>
+<tr>
+<td>Pr(HR &gt; 1.10)</td>
+<td>≈ 9%</td>
+</tr>
+</tbody>
+</table></div>
+<p>結論：最可能是「效果很小或沒有」，但無法正式宣稱等效。</p>
+<p><strong>全死因死亡</strong>（log HR = −0.329，SE ≈ 0.177）：</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Prior</th>
+<th>Pr(HR &lt; 1)</th>
+<th>Pr(HR &lt; 0.85)</th>
+<th>後驗 HR</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Flat</td>
+<td>≈ 97%</td>
+<td>≈ 83%</td>
+<td>0.72</td>
+</tr>
+<tr>
+<td>Skeptical（mean 0、SD 0.1，即 95% HR 落在 0.82–1.22）</td>
+<td>≈ 82%</td>
+<td>≈ 17%</td>
+<td>≈ 0.92</td>
+</tr>
+</tbody>
+</table></div>
+<p>結論<strong>對 prior 高度敏感</strong>。這是資料本身不足的表現，不能作為死亡率利益的證據。</p>
+<h4>C4. 報告完整性與 KM 判讀</h4>
+<ul>
+<li><strong>Number at risk</strong>：主要終點第 6 年剩 42 vs 24 人，死亡曲線剩 46 vs 32 人 [Figure 2A/C]。5 年後曲線尾端不可靠。
+<ul>
+<li>Figure 2A：0–2 年兩線重疊，2.5–5 年 H-ISDN 略低，約 5 年後收斂。</li>
+<li>Figure 2B（復發事件）：2–5 年有分離，第 6 年兩線在約 0.75 重合。</li>
+<li>「後期分離後又收斂」的型態，不支持持續性療效。</li>
+</ul>
+</li>
+<li><strong>座標軸</strong>：KM 圖 y 軸 0–100%，recurrent 圖 0–1.4，都從 0 開始，沒有視覺誇大 [Figure 2；圖形摘要]。</li>
+<li><strong>Informative censoring</strong>：沒有因毒性退出的設限；只有 2 人撤回同意 [Figure 1]。高停藥率不影響 ITT 設限，但影響暴露。</li>
+<li><strong>CONSORT 一致性</strong>：1303 − 711（699 不符合條件＋12 拒絕）= 592 ✓；294＋298 均納入主要分析 ✓。</li>
+<li><strong>Abstract 與正文不一致</strong>：
+<ul>
+<li>Abstract 寫「mean follow-up 3.7 y」，正文寫「median 3.7 y」。</li>
+<li>Abstract 寫「18% women」，Table 1 計算為 98/592 = <strong>16.6%</strong> [自行計算]。</li>
+</ul>
+</li>
+</ul>
+<p><strong>統計紅旗</strong></p>
+<ol>
+<li>只有 ITT，沒有任何 on-treatment、per-protocol 或 CACE 分析，暴露僅約 30% 劑量強度。</li>
+<li>死亡結果違反比例風險（log-log 早期交叉），HR 0.72 的解釋需保留。</li>
+<li>死因加總不符：51 vs 57、70 vs 72。</li>
+<li>基線 MRA 不平衡（p ≈ 0.02），卻沒有 covariate-adjusted 敏感度分析。</li>
+<li>修訂後的 power 假設（HR 0.73）不切實際，也沒有納入停藥稀釋。</li>
+<li>NT-proBNP 用 percent change 的 t-test 處理偏態資料，加上約 30% 缺失，表註格式也錯誤。</li>
+<li>正文與 supplement 的表格編號錯置，Declarations 段範本未修改。</li>
+</ol>
+<h3>D. 次組分析評估 [Figure 3]</h3>
+<p>全部 12 組 subgroup（年齡、性別、病因、LVEF、eGFR、NT-proBNP、心率、SBP、SGLT2i、T2D、BMI）的交互作用 p 值都在 0.29–0.98 之間，每個 subgroup 的 CI 都跨越 1。</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>準則</th>
+<th>評估</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Interaction p</td>
+<td>均未達顯著</td>
+</tr>
+<tr>
+<td>方向一致性</td>
+<td>無方向性訊號可評估</td>
+</tr>
+<tr>
+<td>預先指定</td>
+<td>揭盲前指定，但非 a priori（依設計論文）</td>
+</tr>
+<tr>
+<td>生物機轉</td>
+<td>例如 SGLT2i「是」組 HR 0.74 vs「否」組 0.95，沒有合理機轉支持</td>
+</tr>
+<tr>
+<td>Within-study 比較</td>
+<td>是</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>可信度：低</strong>。各 subgroup 事件數 54–157，power 不足以偵測任何交互作用，只能說「沒有觀察到異質性」。</p>
+<h3>E. 紅旗清單</h3>
+<ul>
+<li><strong>設計</strong>：主要終點擴充、樣本數只達計畫的 46%、目標劑量沒有在高齡族群做耐受性預試驗。</li>
+<li><strong>暴露</strong>：6 個月只有 24% 達目標劑量，最後一次訪視 H-ISDN 組 61% 未服藥 [Table S5 FINAL]。</li>
+<li><strong>統計</strong>：只有 ITT、死亡結果違反比例風險、未校正 MRA 不平衡。</li>
+<li><strong>資料</strong>：死因加總不符、正文誤把事件數寫成病人數、supplement 編號錯置、Abstract 中女性比例與追蹤統計量錯誤。</li>
+<li><strong>敘事</strong>：結論宣稱「appears to be safe」，與 limitation 段自相矛盾；延伸到 CKD 族群的安全性推論超出資料。</li>
+<li><strong>獨立性</strong>：EC 與 DSMB 成員同時是作者兼收案中心研究者。</li>
+<li><strong>外推</strong>：排除非洲裔、NYHA III–IV 僅 6%，沒有亞洲資料。</li>
+</ul>
+<h3>F. 反向解釋</h3>
+<ol>
+<li><strong>死亡差異是機率加上基線不平衡</strong>。
+<ul>
+<li>支持：MRA、NT-proBNP、AF 都偏向 H-ISDN 組有利；非心血管死亡同幅度下降；曲線在多數病人已停藥後才分離；skeptical prior 下 Pr(HR &lt; 0.85) 僅約 17%。</li>
+<li>反對：A-HeFT 與 V-HeFT I 方向一致。</li>
+</ul>
+</li>
+<li><strong>H-ISDN 真的有效，只是被停藥稀釋</strong>。
+<ul>
+<li>支持：Table S5 的 dose intensity 僅 22–37%。</li>
+<li>反對：「依從性」本身就是這個治療的臨床屬性，有效但吃不下的藥對多數病人沒有用；而且 HF 事件完全沒有訊號（HR 1.01）。</li>
+</ul>
+</li>
+<li><strong>H-ISDN 在現代 GDMT 下已無增量效益</strong>。
+<ul>
+<li>支持：HF 事件與 NT-proBNP 都沒有改善。</li>
+<li>反對：CI 寬到無法排除 25% 的利益。</li>
+</ul>
+</li>
+<li><strong>低血壓相關傷害（跌倒、暈厥、非 CV 住院）抵消效益</strong>。
+<ul>
+<li>支持：總住院 RR 1.23、非 CV 住院 1.29，低血壓相關停藥 89 vs 26。</li>
+<li>反對：CI 跨越 1，也沒有報告跌倒或骨折等具體事件。</li>
+</ul>
+</li>
+</ol>
+<h3>G. 最終裁決</h3>
+<ul>
+<li><strong>整體可信度</strong>：<strong>中</strong>。內部效度良好（雙盲、隨機化、零失訪、盲性裁定），但精確度與暴露嚴重不足，結論方向只能停在「無定論」。</li>
+<li><strong>可採用的條件</strong>：在白人為主、NYHA II、GDMT 完整的 HFrEF 中，「不需要為了 HF 事件而常規加上 H-ISDN」可以採用。</li>
+<li><strong>不建議採用的情境</strong>：
+<ul>
+<li>以本試驗否定 A-HeFT 對黑人病人的建議。</li>
+<li>以本試驗宣稱 H-ISDN 降低死亡。</li>
+<li>以本試驗宣稱 H-ISDN 對 CKD 或 RAASi 不耐病人安全。</li>
+</ul>
+</li>
+<li><strong>若要改觀，最需要的三項改進</strong>：
+<ol>
+<li>補報 on-treatment、CACE 與 covariate-adjusted（MRA、NT-proBNP、AF）敏感度分析，並校對死因分類。</li>
+<li>在 RAASi／MRA 不耐或 CKD 3b–4 的 HFrEF 中，設計耐受性導向（緩慢調升、較低目標劑量）的確認性 RCT，以 mortality 或 HF 事件為主要終點。</li>
+<li>公開 Protocol／SAP 版本歷史，釐清主要終點修訂時點與 subgroup 指定時點。</li>
+</ol>
+</li>
+<li><strong>一句話結論</strong>：在現代 GDMT 下，H-ISDN 對 HFrEF 的效果仍無定論。病人難以耐受，死亡率訊號只能用來產生假說。</li>
+</ul>
+<hr />
+<h3>效果量總表（CONDITIONAL OUTPUT）</h3>
+<div class="table-wrap wide"><table>
+<thead>
+<tr>
+<th>指標</th>
+<th>H-ISDN</th>
+<th>安慰劑</th>
+<th>效果量</th>
+<th>95% CI</th>
+<th>ARD（粗，[自行計算]）</th>
+<th>MCID [推算]</th>
+<th>分類</th>
+<th>實務意義</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>主要終點</td>
+<td>30.6%</td>
+<td>30.5%</td>
+<td>HR 0.90</td>
+<td>0.67–1.21</td>
+<td>+0.1%</td>
+<td>HR 0.85</td>
+<td>INCONCLUSIVE</td>
+<td>無法支持或排除</td>
+</tr>
+<tr>
+<td>全死因死亡</td>
+<td>19.4%</td>
+<td>24.2%</td>
+<td>HR 0.72</td>
+<td>0.51–1.02</td>
+<td>−4.8%</td>
+<td>HR 0.85</td>
+<td>INCONCLUSIVE（偏利益）</td>
+<td>只能產生假說</td>
+</tr>
+<tr>
+<td>HF 事件</td>
+<td>17.7%</td>
+<td>15.8%</td>
+<td>HR 1.01</td>
+<td>0.68–1.50</td>
+<td>+1.9%</td>
+<td>HR 0.85</td>
+<td>INCONCLUSIVE</td>
+<td>沒有利益訊號</td>
+</tr>
+<tr>
+<td>總住院</td>
+<td>1.68 次／人</td>
+<td>1.32 次／人</td>
+<td>RR 1.23</td>
+<td>0.98–1.54</td>
+<td>+0.36 次／人</td>
+<td>RR 0.85</td>
+<td>NEGATIVE（利益已排除）</td>
+<td>住院負擔可能增加</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+<p><strong>外部來源</strong></p>
+<ul>
+<li><a href="https://www.escardio.org/news/press/press-releases/no-demonstration-of-benefit-with-hydralazine-plus-isosorbide-dinitrate-in-heart-failure/">ESC press release – H-HeFT</a></li>
+<li><a href="https://www.radcliffecardiology.com/news/esc-congress-2026-day-3-hot-line-trials-what-data-show-and-what-cardiologists-think">Radcliffe Cardiology – ESC 2026 Day 3 Hot Line review</a></li>
+<li><a href="https://www.acc.org/latest-in-cardiology/articles/2026/08/29/08/48/sun-253am-combohf-esc-2026">ACC – H-HeFT and Met-HeFT</a></li>
+<li><a href="https://www.hcplive.com/view/h-isdn-meta-analysis-lowers-mortality-in-heart-failure-with-jawad-butt-md-phd">HCPLive – H-ISDN meta-analysis（Butt）</a></li>
+<li><a href="https://www.news-medical.net/news/20260830/H-ISDN-shows-no-significant-benefit-in-broader-heart-failure-population.aspx">News-Medical – H-ISDN no significant benefit</a></li>
+<li><a href="https://academic.oup.com/eurheartj/advance-article/doi/10.1093/eurheartj/ehag773/9011573">OUP 文章頁</a></li>
+<li><a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC7544566">DANHEART 設計論文（PMC）</a></li>
+<li><a href="https://www.journalmetrics.org/journal/european-heart-journal">Journal Metrics – EHJ</a>；<a href="https://www.wolterskluwer.com/solutions/ovid/european-heart-journal-2148">Wolters Kluwer – EHJ</a></li>
+<li><a href="https://acc.org/Latest-in-Cardiology/Articles/2016/08/26/16/48/8AM-SUN-DANISH-Efficacy-of-ICDs-in-Patients-With-Non-Ischemic-Systolic-HF-on-Mortality-ESC-2016">ACC – DANISH 2016</a></li>
+<li>PubMed：<a href="https://doi.org/10.1016/j.ahj.2020.09.020">10.1016/j.ahj.2020.09.020</a>；<a href="https://doi.org/10.1002/ejhf.1656">10.1002/ejhf.1656</a>；<a href="https://doi.org/10.1007/s10557-020-07050-5">10.1007/s10557-020-07050-5</a></li>
+</ul>
+
+<footer class="appraisal-meta">評讀資訊：模型：claude-opus-5-5 (claude)  ·  route：rct  ·  產出時間：2026-11-12 12:40 CST</footer>
+</main>
+</body>
+</html>
