@@ -1,7 +1,7 @@
 """Weekly report runner.
 
 Pipeline:
-  1. fetch articles for each journal (last `days` days, top `count` per journal)
+  1. fetch all matching articles for each journal in the configured date window
   2. summarize each abstract via `claude -p`, falling back to `codex exec`
   3. optionally select top articles, download PDFs, and generate full appraisals
   4. render HTML to docs/<YYYY>-Wxx.html and update docs/index.html
@@ -63,7 +63,11 @@ AUTH_WAIT_MAX_SECONDS = int(
 )
 
 
-def fetch_all(journals: list[str], days: int | None, count: int) -> list[dict]:
+def fetch_all(
+    journals: list[str],
+    days: int | None,
+    count: int | None,
+) -> list[dict]:
     """Fetch articles from each journal, tagging with `journal_key`.
 
     When `days` is None, use the per-journal default from
@@ -84,7 +88,12 @@ def fetch_all(journals: list[str], days: int | None, count: int) -> list[dict]:
             window = days if days is not None else 7
             window_label = f"last {window}d"
             kw = {"days": window}
-        print(f"[{key}] fetching {window_label}, up to {count} articles ...")
+        amount = (
+            "all matching articles"
+            if count is None
+            else f"up to {count} articles"
+        )
+        print(f"[{key}] fetching {window_label}, {amount} ...")
         try:
             if key == "BJSM" and date_range is not None:
                 articles = crossref.fetch_bjsm_articles(
@@ -241,7 +250,15 @@ def main() -> int:
         default=DEFAULT_JOURNALS,
         help="Subset of journals (keys from pubmed.JOURNAL_QUERIES)",
     )
-    parser.add_argument("--count", type=int, default=10, help="Per-journal count")
+    parser.add_argument(
+        "--count",
+        type=int,
+        default=None,
+        help=(
+            "Optional per-journal limit for debug/manual runs; "
+            "default fetches every matching article"
+        ),
+    )
     parser.add_argument(
         "--days",
         type=int,

@@ -16,6 +16,9 @@ load_dotenv()
 CROSSREF_BASE_URL = "https://api.crossref.org"
 BJSM_ISSN = "0306-3674"
 REQUEST_TIMEOUT = 30
+UNBOUNDED_SEARCH_SAFETY_LIMIT = int(
+    os.getenv("JOURNAL_FETCHER_WEEKLY_JOURNAL_SAFETY_LIMIT", "100")
+)
 USER_AGENT = (
     "JournalFetcher/1.0 "
     "(mailto:{email})"
@@ -27,7 +30,7 @@ class CrossrefFetchError(RuntimeError):
 
 
 def fetch_bjsm_articles(
-    count: int = 10,
+    count: int | None = 10,
     date_range: tuple[int, int] = (90, 100),
 ) -> list[dict]:
     """Fetch BJSM online-first articles from Crossref.
@@ -36,9 +39,10 @@ def fetch_bjsm_articles(
     Only returns articles with an abstract after the Crossref -> BMJ-page
     fallback cascade.
     """
+    item_limit = None if count is None else count * 3
     items = _fetch_crossref_journal_items(
         BJSM_ISSN,
-        count=count * 3,
+        count=item_limit,
         date_range=date_range,
     )
     articles: list[dict] = []
@@ -49,14 +53,14 @@ def fetch_bjsm_articles(
         if not article["abstract"]:
             continue
         articles.append(article)
-        if len(articles) >= count:
+        if count is not None and len(articles) >= count:
             break
     return articles
 
 
 def _fetch_crossref_journal_items(
     issn: str,
-    count: int,
+    count: int | None,
     date_range: tuple[int, int],
 ) -> list[dict[str, Any]]:
     today = datetime.now(timezone.utc).date()
@@ -65,13 +69,14 @@ def _fetch_crossref_journal_items(
     until_date = today - timedelta(days=min_days_ago)
 
     email = os.getenv("PUBMED_EMAIL", "researcher@example.com")
+    rows = UNBOUNDED_SEARCH_SAFETY_LIMIT if count is None else max(count, 1)
     params = {
         "filter": (
             f"from-online-pub-date:{from_date.isoformat()},"
             f"until-online-pub-date:{until_date.isoformat()},"
             "type:journal-article"
         ),
-        "rows": max(count, 1),
+        "rows": rows,
         "mailto": email,
     }
     headers = {"User-Agent": USER_AGENT.format(email=email)}
@@ -86,7 +91,16 @@ def _fetch_crossref_journal_items(
     except requests.HTTPError as e:
         raise CrossrefFetchError(f"Crossref request failed: {resp.status_code}") from e
     data = resp.json()
-    return data.get("message", {}).get("items", [])
+    message = data.get("message", {})
+    if count is None:
+        total = int(message.get("total-results", 0))
+        if total > UNBOUNDED_SEARCH_SAFETY_LIMIT:
+            raise CrossrefFetchError(
+                f"BJSM returned {total} records, exceeding the weekly anomaly "
+                f"safety limit ({UNBOUNDED_SEARCH_SAFETY_LIMIT}); refusing to "
+                "truncate silently"
+            )
+    return message.get("items", [])
 
 
 def _crossref_item_to_article(item: dict[str, Any]) -> dict:

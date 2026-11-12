@@ -23,6 +23,12 @@ BASE_URL = "https://eutils.ncbi.nlm.nih.gov/entrez/eutils"
 # waits between attempts are 1s and 3s (no sleep after the final attempt).
 SEARCH_MAX_ATTEMPTS = 3
 SEARCH_BACKOFF_BASE = 3.0
+# This is an anomaly guard, not a content limit. Weekly runs fetch every
+# matching record in the date window; an unexpectedly large result must fail
+# loudly instead of being silently truncated.
+UNBOUNDED_SEARCH_SAFETY_LIMIT = int(
+    os.getenv("JOURNAL_FETCHER_WEEKLY_JOURNAL_SAFETY_LIMIT", "100")
+)
 
 
 class PubmedSearchError(RuntimeError):
@@ -158,7 +164,7 @@ def _build_esearch_params(
 def search_pmids(
     journal: str,
     days: int = 30,
-    count: int = 20,
+    count: int | None = 20,
     date_range: tuple[int, int] | None = None,
 ) -> list[str]:
     """Search PubMed and return list of PMIDs for the journal.
@@ -167,12 +173,17 @@ def search_pmids(
     to articles whose publication date falls inside that historical window and
     takes precedence over `days`.
 
+    `count=None` returns every matching PMID up to the anomaly safety limit. If
+    PubMed reports more than that limit, raise instead of returning a partial
+    result.
+
     Retries on transient failures: HTTP 5xx, network errors, and 200 OK
     responses whose `esearchresult` is missing `idlist` or carries an `ERROR`
     field. Raises `PubmedSearchError` after all retries are exhausted so the
     caller can decide whether to abort or fall back.
     """
-    params = _build_esearch_params(journal, days, count, date_range)
+    retmax = UNBOUNDED_SEARCH_SAFETY_LIMIT if count is None else count
+    params = _build_esearch_params(journal, days, retmax, date_range)
     last_reason = ""
     for attempt in range(1, SEARCH_MAX_ATTEMPTS + 1):
         try:
@@ -191,6 +202,15 @@ def search_pmids(
                     f"missing 'idlist'; body keys={sorted(result.keys())}"
                 )
             else:
+                if count is None:
+                    total = int(result.get("count", len(result["idlist"])))
+                    if total > UNBOUNDED_SEARCH_SAFETY_LIMIT:
+                        raise PubmedSearchError(
+                            f"{journal} returned {total} records, exceeding the "
+                            "weekly anomaly safety limit "
+                            f"({UNBOUNDED_SEARCH_SAFETY_LIMIT}); refusing to "
+                            "truncate silently"
+                        )
                 return result["idlist"]
         except requests.RequestException as e:
             last_reason = f"{type(e).__name__}: {e}"
@@ -355,7 +375,7 @@ def _extract_publication_year(article: ET.Element) -> str:
 def fetch_journal_articles(
     journal: str,
     days: int = 30,
-    count: int = 20,
+    count: int | None = 20,
     date_range: tuple[int, int] | None = None,
 ) -> list[dict]:
     """High-level: search + fetch for one journal.
@@ -367,10 +387,12 @@ def fetch_journal_articles(
     Pass `date_range=(min_days_ago, max_days_ago)` to restrict to a historical
     publication-date window; otherwise `days` is the "last N days" lookback.
     """
-    # Fetch extra records because ordinary abstract-less records are removed
-    # after metadata parsing.
+    # Explicit limits fetch extra records because ordinary abstract-less
+    # records are removed after metadata parsing. The weekly no-limit path
+    # fetches the complete result set and relies on the anomaly guard.
+    search_count = None if count is None else count * 4
     pmids = search_pmids(
-        journal, days=days, count=count * 4, date_range=date_range
+        journal, days=days, count=search_count, date_range=date_range
     )
     articles = fetch_articles(pmids)
     articles = [
@@ -378,7 +400,7 @@ def fetch_journal_articles(
         for a in articles
         if a.get("abstract", "").strip() or is_guideline_or_consensus(a)
     ]
-    return articles[:count]
+    return articles if count is None else articles[:count]
 
 
 if __name__ == "__main__":

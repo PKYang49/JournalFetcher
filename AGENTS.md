@@ -135,7 +135,7 @@ launchd 啟動的 process env 幾乎是空的（只有 plist 裡寫的 PATH/HOME
 
 ### 流程（`weekly/run_weekly.py`）
 
-1. 每本期刊抓最新 10 篇（13 本約 130 篇）。
+1. 每本期刊抓日期窗內所有符合條件的文章，不設內容篇數上限；單刊超過 `JOURNAL_FETCHER_WEEKLY_JOURNAL_SAFETY_LIMIT`（預設 100）時視為查詢異常並明確失敗，不靜默截斷。`--count N` 僅供 debug／手動限量。
 2. 對每篇 abstract 用 claude Haiku（fallback codex GPT 5.4）產生**四句**中文摘要：背景、方法、結果、結論。
 3. （可選）`select_articles.select_top_articles` 自選 N 篇，下載 PDF，跑完整評讀。
 4. 渲染 `docs/<YYYY>-W<week>.html`，三區由上而下：

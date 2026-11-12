@@ -91,6 +91,7 @@ BOT_SEND_PDF=true
 
 ```bash
 # 完整流程：抓文獻、摘要、渲染 HTML、commit/push、發 Discord
+# 預設抓取各期刊日期窗內所有符合條件的文章，不做篇數截斷
 python3 -m weekly.run_weekly
 
 # 只產生 HTML，不 push、不發 Discord
@@ -162,6 +163,7 @@ launchd plist 放在 `scripts/*.plist`。目前 weekly 主排程精選評讀 5 �
 | `JOURNAL_FETCHER_CODEX_MODEL` | Codex 摘要 fallback | Codex default 降一個 minor |
 | `JOURNAL_FETCHER_APPRAISAL_MODEL` | Codex 評讀 fallback / 手動要求評讀 | Codex default / latest |
 | `JOURNAL_FETCHER_APPRAISAL_CHAR_BACKSTOP` | 評讀文章字元上限 | `1500000` |
+| `JOURNAL_FETCHER_WEEKLY_JOURNAL_SAFETY_LIMIT` | 單刊日期窗的異常安全閥；超過時報錯，不靜默截斷 | `100` |
 | `DISCORD_WEBHOOK_URL` | 週報與評讀完成通知 | 無 |
 | `FEEDBACK_ENDPOINT_URL` | Access 保護的 Cloudflare Worker `/api` | 無 |
 | `FEEDBACK_SYNC_TOKEN` | 本機同步回饋與 request 的 token | 無 |
