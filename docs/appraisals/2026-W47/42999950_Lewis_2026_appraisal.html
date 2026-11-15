@@ -1,0 +1,868 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Iron Repletion in Heart Failure With Preserved Ejection Fraction: The IRONMET-HFpEF Randomized Trial.</title>
+<style>
+  :root {
+    --bg: #fafafa;
+    --card: #ffffff;
+    --text: #1a1a1a;
+    --muted: #6b6b6b;
+    --border: #e5e5e5;
+    --accent: #0b5fff;
+  }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang TC",
+      "Microsoft JhengHei", sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    margin: 0;
+    padding: 24px 16px 64px;
+    line-height: 1.72;
+  }
+  main {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    margin: 0 auto;
+    max-width: 840px;
+    padding: 22px 26px;
+  }
+  nav {
+    margin: 0 auto 14px;
+    max-width: 840px;
+    color: var(--muted);
+    font-size: 14px;
+  }
+  a { color: var(--accent); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  h1, h2, h3, h4 { line-height: 1.35; }
+  h1 { font-size: 26px; margin-top: 0; }
+  h2 { border-top: 1px solid var(--border); padding-top: 18px; }
+  code {
+    background: rgba(127, 127, 127, 0.12);
+    border-radius: 4px;
+    padding: 1px 4px;
+  }
+  .table-wrap {
+    margin: 1em 0;
+    overflow-x: auto;
+  }
+  .table-wrap.wide {
+    /* Break out of the 840px prose column, centred on the viewport. */
+    width: min(1040px, calc(100vw - 32px));
+    margin-left: calc(50% - min(520px, 50vw - 16px));
+  }
+  table {
+    border-collapse: collapse;
+    table-layout: auto;
+    width: 100%;
+  }
+  .table-wrap.wide {
+    /* Opaque so the <main> card border does not show through the table. */
+    background: var(--card);
+  }
+  /* Width hints go on <th> as percentages: Chrome's auto table layout
+     mis-sizes columns (and overflows) when cells carry min-width. */
+  .table-wrap.wide th:first-child {
+    /* Variable + plain-language definition, e.g. "NCPV (noncalcified ...)". */
+    width: 26%;
+  }
+  .table-wrap.wide th:last-child {
+    /* Last column is usually a one-line interpretation. */
+    width: 20%;
+  }
+  th, td {
+    border: 1px solid var(--border);
+    /* Wrap only at spaces: never split an English word mid-letter. */
+    overflow-wrap: normal;
+    word-break: normal;
+    hyphens: manual;
+    padding: 6px 8px;
+    text-align: left;
+    vertical-align: top;
+  }
+  blockquote {
+    border-left: 3px solid var(--accent);
+    color: var(--muted);
+    margin-left: 0;
+    padding-left: 14px;
+  }
+  .appraisal-meta {
+    border-top: 1px solid var(--border);
+    margin-top: 28px;
+    padding-top: 14px;
+    color: var(--muted);
+    font-size: 13px;
+  }
+  @media (max-width: 600px) {
+    body {
+      padding: 12px 8px 40px;
+    }
+    main {
+      padding: 16px 12px;
+    }
+    h1 {
+      font-size: 22px;
+    }
+    table {
+      font-size: 12px;
+    }
+    .table-wrap.wide {
+      width: calc(100vw - 16px);
+      margin-left: calc(50% - 50vw + 8px);
+    }
+    th, td {
+      padding: 4px 5px;
+    }
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #1a1a1a;
+      --card: #242424;
+      --text: #e8e8e8;
+      --muted: #999;
+      --border: #333;
+      --accent: #6ea8ff;
+    }
+  }
+</style>
+</head>
+<body>
+<nav><a href="../../2026-W47.html">← 回到 2026-W47 週報</a></nav>
+<main>
+<h1>Iron Repletion in Heart Failure With Preserved Ejection Fraction: The IRONMET-HFpEF Randomized Trial.</h1>
+<h1>IRONMET-HFpEF 批判性評讀報告</h1>
+<hr />
+<h2>SECTION-0：文章全面描述</h2>
+<h3>0. 文章基本資料</h3>
+<ul>
+<li><strong>標題</strong>：Iron Repletion in Heart Failure With Preserved Ejection Fraction: The IRONMET-HFpEF Randomized Trial</li>
+<li><strong>期刊／年份</strong>：<em>Circulation</em>，2026；DOI：10.1161/CIRCULATIONAHA.126.084009；PMID 42999950</li>
+<li><strong>文章類型</strong>：單中心、2:1、雙盲、安慰劑對照、平行組 RCT（superiority）。依路由規則執行 SKILL-A 主流程。</li>
+<li><strong>註冊</strong>：NCT04945707 [文內]</li>
+<li><strong>閱讀來源與限制</strong>：
+<ul>
+<li>本次評讀依據 PDF 轉出的 markdown，以及 12 張原始頁面圖檔（逐張檢視；Figure 1–3、Table 1–3 均可直接判讀）。</li>
+<li>Supplement 共 68 頁，包含 Protocol v6.0（Amendment 3）、eTable 1–2、CONSORT checklist 與 SAP v1.0。</li>
+</ul>
+</li>
+</ul>
+<h3>1. 作者團隊評論</h3>
+<ul>
+<li><strong>通訊作者</strong>：Gregory D. Lewis，MGH 心臟衰竭科主任，兼 MGH CPET 實驗室主任 [外部: Healio]。</li>
+<li><strong>共同 PI</strong>：Rajeev Malhotra，研究主軸為 hepcidin 與鐵代謝 [文內 ref 26；Protocol p.8]。</li>
+<li><strong>團隊過往研究</strong> [文內 references／外部]：
+<ul>
+<li>IRONOUT-HF（JAMA 2017；口服鐵治療 HFrEF，peak V̇O₂ 為中性結果）。</li>
+<li>HFSA 鐵缺乏 scientific statement（J Card Fail 2023；Lewis 為作者）。</li>
+<li>HEART-FID（NEJM 2023；Lewis 為共同作者）。</li>
+<li>Tsat 比 ferritin 更能預測 HFpEF 運動反應（JACC HF 2025；Lee、Tattersfield 等本團隊成員）。</li>
+<li>HCM 病人 CPET 的 MCID（J Card Fail 2026）與 JACC HF MCID position statement（2026），Lewis 皆為共同作者。</li>
+<li><strong>結論</strong>：此團隊是 HFpEF CPET 表型研究與 HF 鐵代謝領域的核心團隊。</li>
+</ul>
+</li>
+<li><strong>作者立場</strong>：團隊長期主張「鐵缺乏是 HFpEF 周邊氧利用障礙的可治療標的」（Protocol p.7–12）。本文用來支撐 MCID 的文獻（ref 16、20），以及「Tsat 才是關鍵」的論點（ref 25），多數是同一團隊的著作，存在<strong>先前立場一致性帶來的確認偏差風險</strong>。</li>
+<li><strong>利益衝突</strong>：
+<ul>
+<li><strong>文內揭露</strong>：Lewis 與 Malhotra 曾任 Pharmacosmos（FDI 製造商）顧問；Lewis 曾任 American Regent（FCM 美國經銷商）SAB。經費來自 NHLBI R01HL159514 [文內]。</li>
+<li><strong>⚠ 未揭露的實物支援</strong>：Protocol p.14 寫明「The study drug is supplied in kind by Pharmacosmos Therapeutics Inc.」，Pharmacosmos 新聞稿也寫「Pharmacosmos donated the study drug」[外部: Pharmacosmos 新聞稿]。但正文的 Sources of Funding 完全沒有提到藥物由廠商提供，雖然 CONSORT 2025 item 5a 明確要求揭露「supply of drugs」。</li>
+<li><strong>評估</strong>：廠商未參與設計與分析（研究者發起、NIH 資助），影響方向有限；但 PI 與廠商的顧問關係加上實物供藥，屬於應完整揭露而未揭露的 COI。廠商在同日即發新聞稿，並以「MonoFerric improved exercise capacity」為標題。</li>
+</ul>
+</li>
+</ul>
+<h3>2. 文獻 Metadata</h3>
+<ul>
+<li><strong>審查時程</strong>：Received 2026/10/13，Accepted 2026/10/22，<strong>審查僅 9 天</strong> [文內]，與 AHA 2026 Late-Breaking 同步發表。</li>
+<li><strong>期刊平均審查天數</strong>：[無法取得]。9 天明顯短於一般原著審查週期，推測為 late-breaker fast-track [推論]。這類快速審查通常較少要求補做分析，這可能是 SAP 中多項預先指定分析未見於正文的原因之一（見 E 節）。</li>
+<li><strong>期刊屬性</strong>：<em>Circulation</em> 2025 JIF 41.3，Cardiac &amp; Cardiovascular Systems 類別 Q1、排名 3/237 [外部: manusights／bioxbio 等二手來源，未能直接查證 Clarivate]。本文為 Open Access（CC BY-NC-ND）[文內]。</li>
+<li><strong>稿件性質</strong>：投稿原著，非邀稿。</li>
+</ul>
+<h3>3. 研究背景（文內）</h3>
+<ul>
+<li><strong>既有證據</strong>：
+<ul>
+<li>HFpEF 病人鐵缺乏盛行率 59–75%，且與運動能力差及死亡相關。</li>
+<li>HFrEF 已有多個 IV iron 試驗，指引給予 Class 1 建議（以改善運動能力與症狀）。</li>
+<li>SGLT2i、MRA 對 HFpEF 的運動能力幾乎沒有改善效果。</li>
+</ul>
+</li>
+<li><strong>知識缺口</strong>：HFpEF 的 IV iron 隨機證據很少。FAIR-HFpEF（n=39）提前終止；IRON-HFpEF 的主要終點是充填壓。目前沒有以 peak V̇O₂ 為主要終點的安慰劑對照試驗。</li>
+<li><strong>研究問題</strong>：單劑 FDI 1000 mg 與安慰劑相比，能否在 12 週時提升 HFpEF 合併鐵缺乏病人的 peak V̇O₂。</li>
+</ul>
+<h3>4. 研究設計與方法</h3>
+<ul>
+<li><strong>PICO</strong>：
+<ul>
+<li><strong>P</strong>：HFpEF（LVEF ≥50%，加上 NT-proBNP、血行動力學、HF 住院或心超證據其中一項），NYHA II–IV；鐵缺乏定義為 ferritin &lt;100，或 ferritin 100–299 合併 Tsat &lt;20%；Hb 9–15 g/dL；<strong>需能完成 RER ≥1.05 的最大努力 CPET，且 peak V̇O₂ ≤75% 預測值</strong>。最後兩項限制正文完全沒有交代，只寫在 Protocol p.4、p.16 與 eBox。</li>
+<li><strong>I</strong>：ferric derisomaltose（FDI）1000 mg 單次靜脈輸注；&lt;50 kg 者給 20 mg/kg。</li>
+<li><strong>C</strong>：生理食鹽水安慰劑。</li>
+<li><strong>O</strong>：
+<ul>
+<li>主要終點：12 週 peak V̇O₂（mL/kg/min）變化，由獨立 CPET core lab 判讀。</li>
+<li>次要終點：VAT 時的 V̇O₂、6MWT、NYHA 改善比例、KCCQ-OSS、鐵指標與 Hb。</li>
+<li>探索終點：未校正體重的 peak V̇O₂、peak workload、peak HR、O₂ pulse、V̇E/V̇CO₂ slope。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><strong>設計細節</strong>：
+<ul>
+<li>2:1 隨機，依性別分層，permuted block；正文寫 block size 6，SAP p.7 卻寫 4，兩者不一致。採 web-based 隱藏分派。</li>
+<li>受試者以布簾與毛巾遮蔽藥液顏色以維持盲性；備藥與給藥人員知道分組，但不參與任何評估。</li>
+<li>收案期間 2021/12 至 2026/04，追蹤 12 週。</li>
+</ul>
+</li>
+<li><strong>統計</strong>：
+<ul>
+<li>主要分析為 ANCOVA（以變化量為結果，共變項為組別、基線 peak V̇O₂、性別）。</li>
+<li>分析族群為「有 12 週資料者」（observed-data ITT）；預先指定的敏感度分析為 MI（MAR）。</li>
+<li>次要終點<strong>未做多重比較校正</strong>，作者自承 p 值屬 nominal。</li>
+</ul>
+</li>
+<li><strong>主要變項定義</strong>：peak V̇O₂ 定義為 10 W/min ramp 最後 90 秒內最高的 30 秒中位數。</li>
+</ul>
+<h3>5. 研究結果重點整理</h3>
+<p><strong>流程圖查核（Figure 1，圖檔可清楚判讀）</strong>：</p>
+<ul>
+<li>89 人評估資格，排除 24 人（15 人不符條件、8 人拒絕、1 人其他原因），65 人隨機分派。</li>
+<li>FDI 組 44 人，1 人跌倒後退出，主要終點分析 43 人；安慰劑組 21 人全數分析。</li>
+<li>圖中人數與正文、Table 2 一致。SAP p.10 提到 70 人簽署同意書，流程圖沒有呈現「同意後未隨機」的 5 人，屬小缺漏。</li>
+</ul>
+<p><strong>主要結果表</strong>（數值取自 Table 2；調整後變化 = 校正基線值與性別後的 LSM）</p>
+<div class="table-wrap wide"><table>
+<thead>
+<tr>
+<th>變項（代表什麼）</th>
+<th style="text-align:right">FDI（n=43）</th>
+<th style="text-align:right">安慰劑（n=21）</th>
+<th style="text-align:right">組間差（95% CI）</th>
+<th style="text-align:right">p 值</th>
+<th>如何解讀</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Tsat</strong>（transferrin saturation）：運鐵蛋白飽和度，反映可用循環鐵</td>
+<td style="text-align:right">16.4 → <strong>26.6%</strong>；<strong>＋9.8</strong></td>
+<td style="text-align:right">15.3 → <strong>16.7%</strong>；<strong>＋0.4</strong></td>
+<td style="text-align:right">＋9.4（4.9 to 13.9）</td>
+<td style="text-align:right">&lt;0.001</td>
+<td>有達到治療標的，但 FDI 組仍有 23% Tsat &lt;20%（eTable 1）</td>
+</tr>
+<tr>
+<td>Ferritin（ng/mL）</td>
+<td style="text-align:right">60.1 → <strong>249.6</strong></td>
+<td style="text-align:right">52.9 → <strong>58.1</strong></td>
+<td style="text-align:right">＋182.6（127.7 to 237.5）</td>
+<td style="text-align:right">&lt;0.001</td>
+<td>鐵儲存量明確補充</td>
+</tr>
+<tr>
+<td>血紅素（g/dL）</td>
+<td style="text-align:right">12.3 → <strong>13.2</strong>；<strong>＋0.9</strong></td>
+<td style="text-align:right">12.3 → <strong>11.8</strong>；<strong>−0.5</strong></td>
+<td style="text-align:right">＋1.4（0.9 to 1.9）</td>
+<td style="text-align:right">&lt;0.001</td>
+<td>約 1/3 的組間差來自安慰劑組 Hb 下降</td>
+</tr>
+<tr>
+<td>Hepcidin（ng/mL）</td>
+<td style="text-align:right">15.6 → <strong>54.0</strong>（n=35）</td>
+<td style="text-align:right">12.0 → <strong>11.8</strong>（n=20）</td>
+<td style="text-align:right">＋40.4（27.6 to 53.2）</td>
+<td style="text-align:right">&lt;0.001</td>
+<td>補鐵後的生理回饋；FDI 組缺值較多</td>
+</tr>
+<tr>
+<td><strong>Peak V̇O₂</strong>（mL/kg/min）：最大攝氧量，主要終點</td>
+<td style="text-align:right">13.8 → <strong>14.9</strong>；<strong>＋1.2</strong>（0.6 to 1.7）</td>
+<td style="text-align:right">13.6 → <strong>13.7</strong>；<strong>＋0.1</strong>（−0.7 to 0.9）</td>
+<td style="text-align:right"><strong>＋1.1（0.2 to 1.9）</strong></td>
+<td style="text-align:right"><strong>0.02</strong></td>
+<td>點估計勉強超過 MCID 1.0，CI 下限只有 0.2</td>
+</tr>
+<tr>
+<td>MI 敏感度分析</td>
+<td style="text-align:right">—</td>
+<td style="text-align:right">—</td>
+<td style="text-align:right">＋1.1（0.2 to 1.9）</td>
+<td style="text-align:right">0.02</td>
+<td>只缺 1 筆，補值後結果幾乎不變</td>
+</tr>
+<tr>
+<td><strong>Peak RER</strong>：呼吸交換率，代表運動努力程度</td>
+<td style="text-align:right">基線中位數 1.18</td>
+<td style="text-align:right">基線中位數 1.23</td>
+<td style="text-align:right">0.00（−0.06 to 0.06）</td>
+<td style="text-align:right">0.92</td>
+<td>兩組努力程度相當（12 週實際值未報告）</td>
+</tr>
+<tr>
+<td><strong>6MWT</strong>（6-minute walk test）：6 分鐘步行距離（m）</td>
+<td style="text-align:right">325 → <strong>373</strong>；<strong>＋48.0</strong>（n=42）</td>
+<td style="text-align:right">326 → <strong>330</strong>；<strong>＋6.8</strong></td>
+<td style="text-align:right">＋41.1（9.5 to 72.8）</td>
+<td style="text-align:right">0.01</td>
+<td>方向一致；CI 下限低於 MCID 約 15 m</td>
+</tr>
+<tr>
+<td><strong>VAT 時 V̇O₂</strong>（ventilatory anaerobic threshold）：無氧閾值時的攝氧量（mL/min，未校正體重）</td>
+<td style="text-align:right">756 → <strong>798</strong>；<strong>＋36.3</strong></td>
+<td style="text-align:right">738 → <strong>734</strong>；<strong>−10.1</strong></td>
+<td style="text-align:right">＋46.4（0.7 to 92.2）</td>
+<td style="text-align:right">0.047</td>
+<td>勉強達名目顯著，CI 下限幾乎為 0</td>
+</tr>
+<tr>
+<td>NYHA 改善 ≥1 級比例</td>
+<td style="text-align:right"><strong>15/43（34.9%）</strong></td>
+<td style="text-align:right"><strong>2/21（9.5%）</strong></td>
+<td style="text-align:right">＋26%（6 to 47）</td>
+<td style="text-align:right">0.01</td>
+<td>調整後比例 36% 對 10%；安慰劑組惡化 14.3% 對 4.7%</td>
+</tr>
+<tr>
+<td><strong>KCCQ-OSS</strong>（Kansas City Cardiomyopathy Questionnaire Overall Summary Score）：病人自評健康狀態</td>
+<td style="text-align:right">57.1 → <strong>63.9</strong>；<strong>＋7.8</strong></td>
+<td style="text-align:right">61.9 → <strong>63.5</strong>；<strong>＋3.4</strong></td>
+<td style="text-align:right">＋4.4（−2.4 to 11.2）</td>
+<td style="text-align:right">0.20</td>
+<td>無法下結論：CI 同時跨越 0 與 MCID 5</td>
+</tr>
+<tr>
+<td>未校正體重的 peak V̇O₂（mL/min）</td>
+<td style="text-align:right">1229 → <strong>1332</strong>；<strong>＋102.9</strong></td>
+<td style="text-align:right">1140 → <strong>1138</strong>；<strong>＋6.2</strong></td>
+<td style="text-align:right">＋96.7（20.7 to 172.7）</td>
+<td style="text-align:right">0.01</td>
+<td>排除了「體重下降造成假性改善」</td>
+</tr>
+<tr>
+<td>Peak workload（W）</td>
+<td style="text-align:right">90.0 → <strong>97.7</strong></td>
+<td style="text-align:right">83.1 → <strong>84.3</strong></td>
+<td style="text-align:right">＋6.2（1.3 to 11.0）</td>
+<td style="text-align:right">0.01</td>
+<td>與 V̇O₂ 結果一致</td>
+</tr>
+<tr>
+<td>Peak HR（bpm）</td>
+<td style="text-align:right">123 → <strong>128</strong></td>
+<td style="text-align:right">115 → <strong>119</strong></td>
+<td style="text-align:right">＋1.3（−6.1 to 8.8）</td>
+<td style="text-align:right">0.72</td>
+<td>心率反應沒有改變</td>
+</tr>
+<tr>
+<td><strong>Peak O₂ pulse</strong>（V̇O₂/HR，約等於 SV × 動靜脈氧含量差，mL/beat）</td>
+<td style="text-align:right">10.0 → <strong>10.4</strong></td>
+<td style="text-align:right">10.1 → <strong>9.7</strong></td>
+<td style="text-align:right">＋0.8（−0.0 to 1.5）</td>
+<td style="text-align:right">0.05</td>
+<td>約 +8%，與 Hb 上升約 11% 的幅度相符</td>
+</tr>
+<tr>
+<td>V̇E/V̇CO₂ slope：通氣效率</td>
+<td style="text-align:right">33.0 → <strong>32.1</strong></td>
+<td style="text-align:right">34.9 → <strong>34.3</strong></td>
+<td style="text-align:right">−0.3（−2.7 to 2.2）</td>
+<td style="text-align:right">0.83</td>
+<td>通氣效率不變</td>
+</tr>
+<tr>
+<td>嚴重不良事件（SAE）</td>
+<td style="text-align:right"><strong>2/44（4.5%）</strong></td>
+<td style="text-align:right"><strong>4/21（19.0%）</strong></td>
+<td style="text-align:right">未報告（未檢定）</td>
+<td style="text-align:right">—</td>
+<td>都不是藥物相關；安慰劑組心臟相關 AE 較多（4 對 1）</td>
+</tr>
+</tbody>
+</table></div>
+<p>補充重點：</p>
+<ul>
+<li><strong>圖形判讀</strong>：
+<ul>
+<li>Figure 2A：個別病人資料依基線值排序，y 軸從 0 開始，沒有截斷誇大。FDI 組多數直條在基線線之上；安慰劑組上下混雜，偏向下降。圖解析度足以判斷方向，但無法讀出每個人的精確數值。</li>
+<li>Figure 2B：只顯示各組 LSM 與 95% CI，FDI 組 CI 下界約 0.6，安慰劑組跨越 0；組間差 CI 0.2–1.9 未畫出。</li>
+<li>Figure 3D：FDI 組改善 34.9%、不變 60.5%、惡化 4.7%；安慰劑組改善 9.5%、不變 76.2%、惡化 14.3%。</li>
+</ul>
+</li>
+<li><strong>補鐵不完全</strong>：12 週時 FDI 組仍有 <strong>13/43（30.2%）符合鐵缺乏定義</strong>、10/43（23.3%）Tsat &lt;20% [Supplement eTable 1]。在 BMI 中位數 33 的族群，單一固定劑量 1000 mg 很可能劑量不足。</li>
+<li><strong>基線不平衡</strong>（Table 1）：安慰劑組較年長（70 對 66.5 歲）、糖尿病較多（38% 對 20%）、高血壓較多（90% 對 75%）、SGLT2i 使用較多（43% 對 30%）、NT-proBNP 較高（220 對 175）。FDI 組 BMI 較高（33.2 對 29.7）、KCCQ 較低（54 對 65）、hepcidin 較高（12.7 對 6.3）。ANCOVA 只校正基線 peak V̇O₂ 與性別。</li>
+<li><strong>整體族群病情偏輕</strong>：NT-proBNP 中位數 178 pg/mL，92% 為白人。</li>
+<li><strong>合併用藥</strong>：12 週間 GDMT 大致穩定，FDI 組 SGLT2i 從 13 人增為 15 人 [Supplement eTable 2]。</li>
+</ul>
+<h3>6. 作者討論與評論重點</h3>
+<ul>
+<li><strong>作者主要訊息</strong>：
+<ul>
+<li>單劑 FDI 可同時改善 peak V̇O₂、VAT、6MWT 與 NYHA。</li>
+<li>作者把機轉歸於「周邊氧利用改善」。</li>
+<li>結論定位為「迄今最大的 HFpEF 補鐵試驗」。</li>
+</ul>
+</li>
+<li><strong>與既有文獻比較</strong>：
+<ul>
+<li>作者認為 6MWT +41 m 與 FAIR-HFpEF（+49 m）、IRON-HFpEF（+28 m）一致。</li>
+<li>但 Discussion 後段又改說 FAIR-HFpEF 為「+37 m」，<strong>前後數字不一致且未說明</strong>。</li>
+<li>FAIR-HFpEF 的 ferritin 單位誤寫為「ng/dL」。</li>
+</ul>
+</li>
+<li><strong>作者列出的限制</strong>：族群以白人為主；只有 12 週一個時間點；ID 定義可改以 Tsat 為準；KCCQ 檢定力不足。</li>
+<li><strong>作者未列出的限制</strong>：
+<ul>
+<li>單中心。</li>
+<li>安慰劑組只有 21 人。</li>
+<li>次要終點未校正多重比較。</li>
+<li>Hb 上升可能完全解釋效果（與作者的「周邊機轉」敘事衝突）。</li>
+<li>預先指定的分析未報告。</li>
+<li>正文未交代 RER 與「≤75% 預測 peak V̇O₂」兩項篩選條件。</li>
+</ul>
+</li>
+<li><strong>[評估]</strong>：
+<ul>
+<li>「FDI improved multiple measures of exercise capacity」整體上有數據支持，但每個效果量的 CI 下限都貼近 0 或 MCID。</li>
+<li>「broad salutary effects」的措辭超出單一小型試驗能承擔的範圍。</li>
+<li>機轉推論（周邊氧利用）<strong>沒有直接測量</strong>：未量 C(a–v)O₂，Protocol 規劃的 CPET-HD 血行動力學資料也未報告。</li>
+<li>摘要寫「KCCQ-OSS … FDI group, +4.4」，但 4.4 其實是組間差，屬描述錯誤。</li>
+</ul>
+</li>
+</ul>
+<h3>7. 外部專業意見</h3>
+<p>同期兩篇 editorial 皆已取得全文 [外部: Circulation editorial 全文]，觀點相反：</p>
+<p><strong>(1) Fudim M、Ambrosy AP.〈Iron Repletion in HFpEF: An Endpoint Is Not Yet an Indication〉Circulation 2026（DOI 10.1161/CIRCULATIONAHA.126.084114）</strong></p>
+<ul>
+<li><strong>肯定</strong>：設計乾淨、問題聚焦；peak RER 證明努力程度足夠且兩組相當。</li>
+<li><strong>質疑</strong>：
+<ul>
+<li>MCID 1.0 來自 HFrEF 的 HF-ACTION，HFpEF 沒有驗證過的門檻；點估計只是「勉強」超過，CI 下限 0.2 低於多數病人能感受到的程度；安慰劑組只有 21 人，真實效果可能更小。</li>
+<li>次要終點沒有階層式檢定保護，VAT 的 p=0.047 只能算名目顯著；6MWT 受動機影響；NYHA 由醫師判定且分級粗糙，而 KCCQ 才是病人與主管機關最重視的指標，結果卻是陰性。</li>
+<li><strong>機轉</strong>：Hb 上升 1.4 g/dL 約使動脈氧含量增加 11%，而 peak V̇O₂ 相對增加約 8%，依 Fick 方程式最簡單的解釋是「氧氣運送增加」，而不是周邊利用改善；建議依基線是否貧血分層報告。</li>
+<li>約 1/4 受試者 Tsat ≥20%，以 ferritin 為準的定義在肥胖與發炎族群會納入非真正鐵缺乏者；族群病情輕（NT-proBNP 178）、92% 白人；固定 1000 mg 對較重病人可能劑量不足。</li>
+<li><strong>法規角度</strong>：單中心 65 人、p=0.02 不足以單獨支持新適應症，需要重複驗證、超過 12 週的持久性，以及病人可感受的效益。</li>
+</ul>
+</li>
+<li><strong>COI</strong>：兩位作者為 INFUSE-HFpEF 的 PI，且皆為 Pharmacosmos 顧問。</li>
+<li><strong>小錯誤</strong>：該文把 NYHA 改善寫成 34% 對 8%，原文為 34.9% 對 9.5%。</li>
+</ul>
+<p><strong>(2) Kitzman DW、Mentz RJ.〈A Potential New Therapeutic Option for Exercise Intolerance in Patients with HFpEF〉Circulation 2026（DOI 10.1161/CIRCULATIONAHA.126.084111）</strong></p>
+<ul>
+<li><strong>肯定</strong>：「very well-designed」，98.5% 保留率；三項運動指標「robust」；KCCQ 的 4.4 接近近期提出的 3.9 分 MCID。</li>
+<li><strong>主張</strong>：結合 FAIR-HFpEF 與 IRON-HFpEF，以及 HFrEF 超過 7000 人的證據，建議臨床可在 shared decision-making 下考慮對 HFpEF 鐵缺乏病人給予 IV iron；也主張 Tsat 優先的定義，並建議多用 CPET。</li>
+<li><strong>評論</strong>：此文立場明顯較樂觀，未處理多重比較、Hb 中介與小樣本不精確的問題。Mentz 揭露與 Pharmacosmos、American Regent 有財務往來，也是 HEART-FID 作者群之一。</li>
+</ul>
+<h3>8. 臨床建議</h3>
+<ul>
+<li><strong>可參考的情境</strong>：
+<ul>
+<li>症狀性 HFpEF（NYHA II–III），病情偏輕到中度，能完成 CPET。</li>
+<li>合併明確鐵缺乏，<strong>特別是 Tsat &lt;20%</strong>。</li>
+<li>運動耐受度是主要困擾，且已排除其他貧血原因。</li>
+<li>可以和病人討論 IV iron 作為「改善運動能力」的選項，但需說明證據來自單一小型試驗。</li>
+</ul>
+</li>
+<li><strong>不建議直接套用的情境</strong>：
+<ul>
+<li>以降低住院或死亡為目的（沒有任何 outcome 資料）。</li>
+<li>近期 HF 住院、NT-proBNP 很高的進展期病人（未納入研究）。</li>
+<li>只有 ferritin 偏低但 Tsat 正常的肥胖或發炎病人。</li>
+<li>無法運動的衰弱高齡者。</li>
+<li>非白人族群（外推性未知）。</li>
+</ul>
+</li>
+<li><strong>實務建議</strong>：
+<ol>
+<li>HFpEF 病人常規檢查 <strong>Tsat + ferritin</strong>；判斷是否治療時以 <strong>Tsat &lt;20%</strong> 為主要依據。</li>
+<li>若給 FDI，應在 8–12 週後複驗鐵指標：本試驗 30% 病人在單劑 1000 mg 後仍處於鐵缺乏狀態，BMI 高者可考慮依體重與 Hb 計算總劑量。</li>
+<li>向病人說明預期效益約為 peak V̇O₂ +1 mL/kg/min（約 8%）、6MWT 約 +40 m，但「主觀生活品質是否改善」目前沒有證實。</li>
+</ol>
+</li>
+<li><strong>證據強度：弱到中</strong>。主要終點達統計顯著，內部效度不錯，但樣本小、單中心、CI 跨越 MCID、追蹤短，也沒有重複驗證。</li>
+</ul>
+<hr />
+<h2>SKILL-A：批判性評讀</h2>
+<h3>A. 補充技術細節</h3>
+<ul>
+<li><strong>樣本數估算（⚠ 事後改寫的疑慮）</strong>：
+<ul>
+<li><strong>Protocol v6.0（2023/8/8，p.33–35）</strong>：預期效果 1.34 mL/kg/min（約 10%），SD 範圍 1.25–1.75，66 人提供 &gt;85% 檢定力。Fig 4 另寫 SD 1.5、效果 1.0、80% power、12% attrition。</li>
+<li><strong>SAP v1.0（2026/8/10，p.8）</strong>：改以「MCID 1.0、SD 1.25（多中心試驗變異的一半）、82% power」為設計依據，正文採用這個版本。</li>
+<li><strong>SAP 的完成時間在收案結束（2026/4）且全部追蹤完成之後</strong>：SAP p.10 已寫入「70 consented、65 randomized、64 completed」等結果性人數。SAP 自稱完成於 database lock 與解盲之前，此說法無法驗證。</li>
+<li>主要終點本身沒有被替換（沒有 outcome switching），但<strong>檢定力的理由與 MCID 錨點是在資料收集完後才定稿</strong>。</li>
+<li><strong>用實際資料檢核 SD 假設</strong>：由組間差 CI 反推，SE 約 0.43，對應變化量的 SD 約 <strong>1.6 mL/kg/min</strong> [自行計算]，明顯大於 SAP 假設的 1.25。在此實際變異下，偵測 1.0 的設計把握度約只有六成 [自行計算；這是用設計 MCID 檢核設計假設，不是以觀察效果推算的 post-hoc power]。</li>
+</ul>
+</li>
+<li><strong>隨機化與分派隱藏</strong>：採 web-based sequestered 分派，依性別分層。Block size 正文與 Protocol 寫 6、SAP 寫 4，紀錄不一致。小區塊加上 2:1 比例，在單中心有被猜到的風險，但分派是 web 系統執行，風險低。</li>
+<li><strong>盲法</strong>：
+<ul>
+<li>受試者盲（布簾遮蔽）；評估人員盲（給藥人員不參與評估）；CPET 原始資料直接送獨立 core lab 判讀。</li>
+<li><strong>沒有做盲法成功度檢查</strong>（例如請受試者猜組別）。</li>
+<li>FDI 組有 1 人出現流感樣症狀、1 人在輸注中出現唇腫與噁心，這些可能洩漏分組。</li>
+<li>6MWT 與 NYHA 由誰評估、是否確實盲，正文沒有明確寫出。</li>
+</ul>
+</li>
+<li><strong>ITT 與 per-protocol</strong>：主要分析為「有 12 週資料者」（64/65）。SAP 8.1.3 <strong>預先指定的 per-protocol 敏感度分析沒有報告</strong>；不過所有人都接受了單劑，偏差可能很小。</li>
+<li><strong>多重比較</strong>：沒有任何校正，也沒有 hierarchical testing。</li>
+<li><strong>缺失資料</strong>：主要終點只缺 1 筆（1.5%），MI 敏感度分析結果一致。Hepcidin 在 FDI 組 12 週只有 35/43 筆資料。</li>
+</ul>
+<h3>B. 批判性評估</h3>
+<h4>B1. 假說與理論邏輯</h4>
+<ul>
+<li><strong>假說有預先指定</strong>：主要終點、時間點與分析模型和 Protocol、註冊資料一致，沒有撒網式挖掘主要假說。</li>
+<li><strong>最可能的合理機轉</strong>：
+<ol>
+<li><strong>Hb 上升使動脈氧含量增加，提高氧氣運送（最簡約的解釋）</strong>：
+<ul>
+<li>Hb +1.4 g/dL 約使 CaO₂ 增加 11%；peak O₂ pulse +0.8 mL/beat（+8%，p=0.05）；peak HR 不變（+1.3）。</li>
+<li>依 Fick 方程式，peak V̇O₂ 約 +8%（未校正體重 +96.7/1229）完全可以由「每搏氧運送量」上升解釋 [自行計算；依據 Table 2]。</li>
+</ul>
+</li>
+<li>骨骼肌粒線體與氧化磷酸化改善：生物學上合理，但本試驗沒有任何直接測量（未量 C(a–v)O₂ 或 ³¹P-MRS）。</li>
+<li>這兩種機轉可能同時存在，但本試驗無法區分。</li>
+</ol>
+</li>
+<li><strong>最可疑的敘事跳躍</strong>：
+<ol>
+<li>Discussion 用「HFpEF 周邊氧利用障礙比 HFrEF 更嚴重」來包裝結果，暗示 FDI 改善的是周邊利用，但<strong>沒有資料支持</strong>。Protocol 規劃了 n=33 的 CPET-HD（含 C(a–v)O₂），這些結果卻未報告（Protocol p.19、p.22）。</li>
+<li>「hepcidin 失調，所以口服鐵無效」：本試驗沒有口服鐵對照組，此推論來自與 IRONOUT-HF 的跨試驗比較，只能算假說。</li>
+<li>拿 GLP-1 RA 的肌少症疑慮來說明「需要周邊介入」：屬於延伸論述，與本試驗數據無關。</li>
+</ol>
+</li>
+</ul>
+<h4>B2. 受試者與外推性</h4>
+<ul>
+<li><strong>篩選高度精選</strong>：
+<ul>
+<li>需能完成 RER ≥1.05 的最大 CPET，且 peak V̇O₂ ≤75% 預測值，這兩項正文都沒寫。</li>
+<li>74% 有右心導管確認診斷；單一頂尖 CPET 中心。</li>
+<li>NT-proBNP 中位數 178，屬輕度至中度病情，與真實世界的 HFpEF 住院族群差距大。</li>
+</ul>
+</li>
+<li><strong>族群組成</strong>：92% 白人、72% 女性、BMI 中位數 31。</li>
+<li><strong>外推性分級</strong>：
+<ol>
+<li><strong>一般 HFpEF 門診（能運動、Tsat 低）</strong>：外推距離<strong>中</strong>。效果方向可參考，效果大小可能被高品質 CPET 環境放大或縮小。</li>
+<li><strong>HFpEF 近期住院或衰弱高齡者</strong>：<strong>遠</strong>，未被研究，應等 INFUSE-HFpEF 結果。</li>
+<li><strong>亞洲族群（含台灣）</strong>：<strong>中到遠</strong>。體重較輕時，1000 mg 的相對劑量反而較高；但本試驗幾乎沒有亞洲受試者（1 人）。</li>
+</ol>
+</li>
+</ul>
+<h4>B3. 研究設計與偏差</h4>
+<ul>
+<li><strong>對照組適當性</strong>：HFpEF 目前沒有補鐵的標準治療，用安慰劑對照合理。</li>
+<li><strong>最可能造成偏差的三個設計點</strong>：
+<ol>
+<li><strong>安慰劑組人數少（21 人）且基線偏重</strong>：安慰劑組較老、糖尿病與高血壓較多、NT-proBNP 較高；12 週內心臟相關 AE 較多（4/21 對 1/44）、住院較多（4 對 2），Hb 也下降 0.5 g/dL。這些干擾事件可能壓低安慰劑組的 12 週表現。<strong>方向：使效果看起來變大。</strong></li>
+<li><strong>SAP 在資料收集完成後才定稿</strong>，且多項預先指定分析未報告（見 E 節）。<strong>方向：選擇性報告的可能，使結果看起來較一致、較好。</strong></li>
+<li><strong>盲性可能洩漏</strong>：深棕色藥液、輸注反應、流感樣症狀，且沒有做盲法檢查。<strong>方向：對 NYHA、6MWT 這類較主觀或受動機影響的指標，可能使效果變大</strong>；對 core lab 判讀且有 RER 確認努力程度的 peak V̇O₂ 影響較小。</li>
+</ol>
+</li>
+<li><strong>提前停止</strong>：沒有，也沒有 interim efficacy analysis（SAP p.10）。</li>
+<li><strong>前期證據</strong>：FAIR-HFpEF 與 IRON-HFpEF 都屬小型試驗，6MWT 方向一致，沒有「Phase II 陰性卻硬做」的問題。</li>
+</ul>
+<h4>B4. 測量工具與實務意義</h4>
+<ul>
+<li><strong>Peak V̇O₂ 的測量品質佳</strong>：core lab 判讀、ATS 標準、RER 控制；團隊表示 intra-CPET 重複測量變異 &lt;5%（Protocol p.34）。</li>
+<li><strong>MCID 的適用性</strong>：
+<ul>
+<li>1.0 mL/kg/min 來自 HF-ACTION（HFrEF，運動訓練）與預後的關聯，<strong>不是病人可感知的門檻，也沒有在 HFpEF 驗證</strong>。</li>
+<li>作者另外引用 HCM 的 PGIC-anchored MCID（0.35 / 0.92）與「&gt;6%」門檻，<strong>多種門檻並陳，而本試驗正好落在其中最寬鬆的定義之上</strong>。</li>
+</ul>
+</li>
+<li><strong>病人自評結果</strong>：KCCQ 是最貼近病人感受的指標，結果卻無法下結論。</li>
+<li><strong>就算結果為真，真實世界的用處</strong>：
+<ul>
+<li>peak V̇O₂ 約 +1.1 mL/kg/min，相當於從 13.7 提升到約 14.8，仍遠低於日常活動所需的約 16。</li>
+<li>NYHA 改善的 ARD 為 26%（NNT 約 4，95% CI 約 2–17）[自行計算]。</li>
+<li>對「單次輸注、耐受性佳」的介入來說，這是值得重視的潛在效益，但要確認持久性與病人是否感受得到。</li>
+</ul>
+</li>
+</ul>
+<h3>C. 統計與資料完整性</h3>
+<h4>C1. 結果分類（CI + MCID）</h4>
+<ul>
+<li><strong>Step 1：MCID</strong>
+<ul>
+<li>Peak V̇O₂：1.0 mL/kg/min（作者事前指定，見 Methods 與 SAP p.8，但 SAP 在事後才定稿）。</li>
+<li>6MWT：約 15 m（作者引用 ref 19，HFrEF 合併鐵缺乏）。</li>
+<li>KCCQ：5 分。</li>
+<li>VAT 時 V̇O₂ 與 NYHA：沒有公認門檻 [無法判定]。</li>
+</ul>
+</li>
+<li><strong>Step 2：主要終點分類</strong>
+<ul>
+<li>LSMD 1.1（0.2–1.9），p=0.02，CI 下限 0.2 &lt; MCID 1.0。</li>
+<li><strong>→ IMPRECISE (+)</strong>：統計上顯著，但效果是否達臨床重要程度不確定。</li>
+</ul>
+</li>
+</ul>
+<h4>C2. Underpowered 與 Winner's Curse</h4>
+<ul>
+<li>主要終點不屬於 underpowered positive 的典型情況：CI 沒有包含 0，觀察效果（1.1）也落在 Protocol 預期的 1.0–1.34 之內，不是遠超預期。因此 <strong>Winner's Curse 風險屬中低度</strong>。</li>
+<li><strong>仍需注意</strong>：
+<ul>
+<li>實際變異大於設計假設（SD 約 1.6 對 1.25）。</li>
+<li>安慰劑組只有 21 人，且干擾事件不平衡。</li>
+<li>若後續試驗直接拿 1.1 與 SD 1.25 做樣本數估算，<strong>會低估所需人數</strong>。</li>
+</ul>
+</li>
+<li><strong>KCCQ</strong>：CI 同時包含 0 與 MCID 5，屬於典型 underpowered，結果為 <strong>INCONCLUSIVE</strong>，不能解讀成「沒效」，也不能解讀成「接近 MCID 就算有效」（Kitzman 的說法過度樂觀）。</li>
+</ul>
+<h4>C3. Bayesian 補充（近似常態、以點估計與 SE 計算）[自行計算]</h4>
+<p>以 LSMD 1.1、SE 約 0.43 計算：</p>
+<div class="table-wrap wide"><table>
+<thead>
+<tr>
+<th>Prior</th>
+<th style="text-align:right">後驗平均</th>
+<th style="text-align:right">Pr(效果 &gt; 0)</th>
+<th style="text-align:right">Pr(效果 &gt; 0.5)</th>
+<th style="text-align:right">Pr(效果 ≥ 1.0，MCID)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Non-informative</td>
+<td style="text-align:right">1.10</td>
+<td style="text-align:right">≈0.995</td>
+<td style="text-align:right">≈0.92</td>
+<td style="text-align:right">≈0.59</td>
+</tr>
+<tr>
+<td>Skeptical（N(0, 0.5²)）</td>
+<td style="text-align:right">≈0.63</td>
+<td style="text-align:right">≈0.97</td>
+<td style="text-align:right">≈0.65</td>
+<td style="text-align:right">≈0.13</td>
+</tr>
+<tr>
+<td>Optimistic（N(1.0, 0.5²)）</td>
+<td style="text-align:right">≈1.06</td>
+<td style="text-align:right">≈0.999</td>
+<td style="text-align:right">≈0.95</td>
+<td style="text-align:right">≈0.55</td>
+</tr>
+</tbody>
+</table></div>
+<ul>
+<li><strong>「有某種正向效果」的結論對 prior 選擇穩健</strong>：三組 Pr(&gt;0) 都 ≥0.97。</li>
+<li><strong>「效果達到 MCID」的結論高度依賴 prior</strong>：Pr(≥MCID) 在 0.13 到 0.59 之間。</li>
+<li>這和 IMPRECISE (+) 的分類一致：<strong>很可能有效，但是否達臨床重要程度無法確定。</strong></li>
+</ul>
+<h4>C4. 報告完整性與其他統計問題</h4>
+<ul>
+<li><strong>沒有 overpowered 問題</strong>：設計門檻等於 MCID。</li>
+<li><strong>統計面紅旗</strong>：
+<ol>
+<li>次要與探索終點共 13 項以上，都沒有多重比較校正；VAT（p=0.047）與 O₂ pulse（p=0.05）落在邊界，最可能是假陽性。</li>
+<li>樣本數的理由在資料收集後改寫（SAP 2026/8/10），SD 假設比實際觀察值樂觀。</li>
+<li>SAP 預先指定的 per-protocol 敏感度分析、性別交互作用、Tsat&lt;20% 亞組、responder 分析、NT-proBNP 與心超、CPET-HD 血行動力學都沒有報告，屬選擇性報告風險。</li>
+<li>ANCOVA 只校正基線 peak V̇O₂ 與性別，沒有處理年齡、糖尿病、SGLT2i、NT-proBNP、BMI 的不平衡（2:1 小樣本中這些差異不算小），也沒有提供調整後的敏感度分析。</li>
+<li>12 週 peak RER 的實際數值沒有呈現，只報告組間差；Discussion 寫「RER 在基線與 12 週高度一致」，卻沒有表格支持。</li>
+<li>安全性只有描述；SAE 的組間差（4.5% 對 19.0%）在小樣本下不宜過度解讀為「FDI 較安全」。</li>
+<li><strong>報告錯誤</strong>：
+<ul>
+<li>摘要把 KCCQ 組間差寫成「FDI group, +4.4」。</li>
+<li>Table 1 的 LVEF 以小數表示卻標「%」。</li>
+<li>Fig 3 圖說把 KCCQ-OSS 寫成「Overall Symptom Score」。</li>
+<li>Discussion 中 FAIR-HFpEF 的 6MWT 數字前後不一（49 對 37 m），ferritin 單位誤寫。</li>
+</ul>
+</li>
+</ol>
+</li>
+</ul>
+<h3>D. 次組分析評估</h3>
+<p><strong>正文沒有報告任何次組分析</strong>，但以下次組分析都有預先指定：</p>
+<ul>
+<li>性別交互作用（Protocol p.5、SAP 8.3）。</li>
+<li>Tsat &lt;20% 與鐵 &lt;13 μM 的次組（SAP 10.5）。</li>
+<li>依基線是否貧血分層（Fudim editorial 建議；Protocol 提到「with or without anemia」）。</li>
+</ul>
+<p>其中「依貧血分層」直接關係到 Hb 中介與周邊機轉之爭，缺席是重大資訊缺口。因為沒有數據，無法套用 JAMA 次組五準則評估，<strong>可信度：無法判定</strong>。</p>
+<h3>E. 紅旗清單</h3>
+<ul>
+<li>🚩 <strong>COI 揭露不完整</strong>：Pharmacosmos 實物供藥（Protocol p.14）未列入正文 Funding；PI 為廠商顧問；廠商同日發布產品新聞稿。</li>
+<li>🚩 <strong>SAP 在資料收集完成後才定稿</strong>，MCID 與 SD 的設計理由事後改寫，且與 Protocol 原始計算（1.34 mL/kg/min、&gt;85% power）不同。</li>
+<li>🚩 <strong>預先指定分析缺席</strong>：per-protocol、性別交互作用、Tsat 亞組、CPET-HD 血行動力學、心超、NT-proBNP、actigraphy。試驗名稱有「Mechanisms」，機轉資料卻沒有交代。</li>
+<li>🚩 <strong>安慰劑組只有 21 人，且基線偏重、干擾事件較多</strong>，分母小，點估計不穩定。</li>
+<li>🚩 <strong>機轉敘事與數據不符</strong>：數據最支持「Hb 上升使氧運送增加」，作者卻強調周邊氧利用。</li>
+<li>🚩 <strong>最貼近病人感受的 KCCQ 結果無法下結論</strong>，次要「全部改善」的敘事建立在未校正的 nominal p 值上。</li>
+<li>🚩 <strong>補鐵不足</strong>：12 週時 30% 仍處於鐵缺乏，固定劑量的設計可能低估真正補足鐵量的效果，也限制劑量與效果關係的推論。</li>
+<li>🚩 <strong>9 天審查</strong>，加上 late-breaker 同步發表，審稿嚴謹度存疑 [推論]。</li>
+</ul>
+<h3>F. 反向解釋</h3>
+<ol>
+<li><strong>效果主要由 Hb 上升（抗貧血效應）解釋，而不是非造血性的「鐵本身」效應</strong>：
+<ul>
+<li>支持線索：Hb +1.4、O₂ pulse +8%、HR 不變，48% 受試者基線有貧血。</li>
+<li>反對線索：作者主張非貧血者也可能受益，但沒有分層資料可驗證。</li>
+<li>臨床意涵：若此解釋成立，效益應集中在貧血病人。</li>
+</ul>
+</li>
+<li><strong>安慰劑組的干擾事件與基線較差，壓低了對照組表現</strong>：
+<ul>
+<li>支持線索：安慰劑組心臟 AE 19%、住院 19%、NYHA 惡化 14%、Hb 下降 0.5，且基線較老、糖尿病較多。</li>
+<li>反對線索：安慰劑組 peak V̇O₂ 變化量 +0.1 接近 0，並沒有明顯下降。</li>
+</ul>
+</li>
+<li><strong>盲性部分洩漏，影響 NYHA 與 6MWT</strong>：
+<ul>
+<li>支持線索：輸注反應、流感樣症狀；沒有做盲法檢查；6MWT 與 NYHA 受動機與期待影響。</li>
+<li>反對線索：peak V̇O₂ 由 core lab 判讀，peak RER 兩組相同，主要終點受影響的機率較低。</li>
+</ul>
+</li>
+<li><strong>隨機誤差加上小樣本</strong>：
+<ul>
+<li>支持線索：主要終點 p=0.02、CI 下限 0.2；多個次要終點落在 p≈0.05；實際 SD 大於假設。</li>
+<li>反對線索：多個彼此相關的運動指標方向一致，且與 FAIR-HFpEF、IRON-HFpEF 的 6MWT 結果方向相同。</li>
+</ul>
+</li>
+</ol>
+<h3>G. 最終裁決</h3>
+<ul>
+<li><strong>整體可信度：中</strong>
+<ul>
+<li><strong>內部效度</strong>：主要終點測量品質佳、幾乎沒有失訪，是優點。</li>
+<li><strong>效果大小</strong>：效果不精確、樣本小，且有報告完整性與 COI 揭露瑕疵。</li>
+</ul>
+</li>
+<li><strong>可採用的條件</strong>：
+<ul>
+<li>以「改善運動能力」為目標，且明確 Tsat &lt;20% 的症狀性 HFpEF 病人。</li>
+<li>與病人共同決策，並說明證據有限。</li>
+<li>治療後複驗鐵指標。</li>
+</ul>
+</li>
+<li><strong>不建議採用的情境</strong>：
+<ul>
+<li>以降低住院或死亡為目的。</li>
+<li>只有 ferritin 低、Tsat 正常者。</li>
+<li>進展期或住院後 HFpEF。</li>
+<li>期待「生活品質一定會改善」的病人。</li>
+</ul>
+</li>
+<li><strong>若要改觀，最需要的三項改進</strong>：
+<ol>
+<li>補報 SAP 預先指定的 per-protocol、性別交互作用、Tsat 亞組，以及<strong>依基線貧血分層</strong>的結果，並交代 CPET-HD 血行動力學（C(a–v)O₂）資料。</li>
+<li>多中心、樣本較大、追蹤 ≥24 週的重複驗證試驗，以 KCCQ 或病人可感知的結果作為共同或階層式主要終點（例如 INFUSE-HFpEF、ISLE-HFpEF）。</li>
+<li>依體重與 Hb 個別化劑量，以 Tsat 為篩選標準，並完整揭露廠商供藥與財務關係。</li>
+</ol>
+</li>
+<li><strong>一句話結論</strong>：單劑 IV 鐵劑讓 HFpEF 合併鐵缺乏病人的運動能力小幅提升，但效益可能主要來自血紅素上升，且病人自覺生活品質尚未證實改善。</li>
+</ul>
+<hr />
+<h3>效果量總表（CONDITIONAL OUTPUT）</h3>
+<div class="table-wrap wide"><table>
+<thead>
+<tr>
+<th>指標</th>
+<th>介入組（FDI）</th>
+<th>對照組</th>
+<th>效果量</th>
+<th>95% CI</th>
+<th>ARD</th>
+<th>MCID</th>
+<th>結果分類</th>
+<th>實務意義</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Peak V̇O₂（mL/kg/min）</td>
+<td>＋1.2</td>
+<td>＋0.1</td>
+<td>LSMD 1.1</td>
+<td>0.2 to 1.9</td>
+<td>—</td>
+<td>1.0（HFrEF 衍生）</td>
+<td><strong>IMPRECISE (+)</strong></td>
+<td>約 +8%，是否達臨床重要程度不確定</td>
+</tr>
+<tr>
+<td>6MWT（m）</td>
+<td>＋48.0</td>
+<td>＋6.8</td>
+<td>LSMD 41.1</td>
+<td>9.5 to 72.8</td>
+<td>—</td>
+<td>約 15</td>
+<td><strong>IMPRECISE (+)</strong>（nominal）</td>
+<td>方向一致，未校正多重比較</td>
+</tr>
+<tr>
+<td>VAT 時 V̇O₂（mL/min）</td>
+<td>＋36.3</td>
+<td>−10.1</td>
+<td>LSMD 46.4</td>
+<td>0.7 to 92.2</td>
+<td>—</td>
+<td>未建立</td>
+<td>名目顯著、邊界值</td>
+<td>可能是假陽性</td>
+</tr>
+<tr>
+<td>NYHA 改善比例</td>
+<td>34.9%</td>
+<td>9.5%</td>
+<td>差 0.26</td>
+<td>0.06 to 0.47</td>
+<td>＋26%（NNT 約 4，2–17）[自行計算]</td>
+<td>未建立</td>
+<td>名目顯著</td>
+<td>評估者為醫師，指標分級粗糙</td>
+</tr>
+<tr>
+<td>KCCQ-OSS</td>
+<td>＋7.8</td>
+<td>＋3.4</td>
+<td>LSMD 4.4</td>
+<td>−2.4 to 11.2</td>
+<td>—</td>
+<td>5</td>
+<td><strong>INCONCLUSIVE</strong></td>
+<td>不能說無效，也不能說有效</td>
+</tr>
+<tr>
+<td>SAE</td>
+<td>4.5%</td>
+<td>19.0%</td>
+<td>未檢定</td>
+<td>—</td>
+<td>−14.5%[自行計算]</td>
+<td>—</td>
+<td>描述性</td>
+<td>沒有藥物相關 SAE；樣本太小，無法比較安全性</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+<h3>參考來源</h3>
+<ul>
+<li>同期 editorial（依 PubMed 取得書目，並以本機 dlbydoi 下載全文）：
+<ul>
+<li>Fudim M, Ambrosy AP. Iron Repletion in HFpEF: An Endpoint Is Not Yet an Indication. <em>Circulation</em> 2026. <a href="https://doi.org/10.1161/CIRCULATIONAHA.126.084114">DOI</a></li>
+<li>Kitzman DW, Mentz RJ. A Potential New Therapeutic Option for Exercise Intolerance in Patients with HFpEF. <em>Circulation</em> 2026. <a href="https://doi.org/10.1161/CIRCULATIONAHA.126.084111">DOI</a></li>
+</ul>
+</li>
+<li>外部網頁：
+<ul>
+<li><a href="https://www.financialcontent.com/article/marketersmedia-2026-11-8-monoferric-ferric-derisomaltose-improved-exercise-capacity-in-patients-with-hfpef-and-iron-deficiency-in-new-study">Pharmacosmos 新聞稿：MonoFerric improved exercise capacity…（financialcontent）</a></li>
+<li><a href="https://www.healio.com/news/cardiology/20261108/single-iron-infusion-improves-exercise-capacity-in-patients-with-hfpef">Healio：Single iron infusion improves exercise capacity in patients with HFpEF</a></li>
+<li><a href="https://www.eurekalert.org/news-releases/1150807">EurekAlert 新聞稿</a></li>
+<li><a href="https://www.ahajournals.org/ahasessions">AHA Sessions 列表</a></li>
+<li><a href="https://manusights.com/blog/circulation-impact-factor">Circulation impact factor（manusights）</a></li>
+<li><a href="https://www.bioxbio.com/journal/CIRCULATION">bioxbio：Circulation</a></li>
+<li><a href="https://cm.healio.com/news/cardiology/20170306/iron-an-emerging-target-for-hf">Healio 2017：Iron: An emerging target for HF（Lewis 背景）</a></li>
+<li><a href="https://www.wikijournalclub.org/wiki/IRONOUT-HF">IRONOUT-HF（WikiJournalClub）</a></li>
+</ul>
+</li>
+</ul>
+
+<footer class="appraisal-meta">評讀資訊：模型：claude-opus-5-5 (claude)  ·  route：rct  ·  產出時間：2026-11-15 18:52 CST</footer>
+</main>
+</body>
+</html>
