@@ -1,0 +1,855 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Whole-grain consumption and cardiometabolic risk: a meta-analysis of randomized trials.</title>
+<style>
+  :root {
+    --bg: #fafafa;
+    --card: #ffffff;
+    --text: #1a1a1a;
+    --muted: #6b6b6b;
+    --border: #e5e5e5;
+    --accent: #0b5fff;
+  }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang TC",
+      "Microsoft JhengHei", sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    margin: 0;
+    padding: 24px 16px 64px;
+    line-height: 1.72;
+  }
+  main {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    margin: 0 auto;
+    max-width: 840px;
+    padding: 22px 26px;
+  }
+  nav {
+    margin: 0 auto 14px;
+    max-width: 840px;
+    color: var(--muted);
+    font-size: 14px;
+  }
+  a { color: var(--accent); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  h1, h2, h3, h4 { line-height: 1.35; }
+  h1 { font-size: 26px; margin-top: 0; }
+  h2 { border-top: 1px solid var(--border); padding-top: 18px; }
+  code {
+    background: rgba(127, 127, 127, 0.12);
+    border-radius: 4px;
+    padding: 1px 4px;
+  }
+  .table-wrap {
+    margin: 1em 0;
+    overflow-x: auto;
+  }
+  .table-wrap.wide {
+    /* Break out of the 840px prose column, centred on the viewport. */
+    width: min(1040px, calc(100vw - 32px));
+    margin-left: calc(50% - min(520px, 50vw - 16px));
+  }
+  table {
+    border-collapse: collapse;
+    table-layout: auto;
+    width: 100%;
+  }
+  .table-wrap.wide {
+    /* Opaque so the <main> card border does not show through the table. */
+    background: var(--card);
+  }
+  /* Width hints go on <th> as percentages: Chrome's auto table layout
+     mis-sizes columns (and overflows) when cells carry min-width. */
+  .table-wrap.wide th:first-child {
+    /* Variable + plain-language definition, e.g. "NCPV (noncalcified ...)". */
+    width: 26%;
+  }
+  .table-wrap.wide th:last-child {
+    /* Last column is usually a one-line interpretation. */
+    width: 20%;
+  }
+  th, td {
+    border: 1px solid var(--border);
+    /* Wrap only at spaces: never split an English word mid-letter. */
+    overflow-wrap: normal;
+    word-break: normal;
+    hyphens: manual;
+    padding: 6px 8px;
+    text-align: left;
+    vertical-align: top;
+  }
+  blockquote {
+    border-left: 3px solid var(--accent);
+    color: var(--muted);
+    margin-left: 0;
+    padding-left: 14px;
+  }
+  .appraisal-meta {
+    border-top: 1px solid var(--border);
+    margin-top: 28px;
+    padding-top: 14px;
+    color: var(--muted);
+    font-size: 13px;
+  }
+  @media (max-width: 600px) {
+    body {
+      padding: 12px 8px 40px;
+    }
+    main {
+      padding: 16px 12px;
+    }
+    h1 {
+      font-size: 22px;
+    }
+    table {
+      font-size: 12px;
+    }
+    .table-wrap.wide {
+      width: calc(100vw - 16px);
+      margin-left: calc(50% - 50vw + 8px);
+    }
+    th, td {
+      padding: 4px 5px;
+    }
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #1a1a1a;
+      --card: #242424;
+      --text: #e8e8e8;
+      --muted: #999;
+      --border: #333;
+      --accent: #6ea8ff;
+    }
+  }
+</style>
+</head>
+<body>
+<nav><a href="../../2026-W47.html">← 回到 2026-W47 週報</a></nav>
+<main>
+<h1>Whole-grain consumption and cardiometabolic risk: a meta-analysis of randomized trials.</h1>
+<h1>文獻評讀：Whole-grain consumption and cardiometabolic risk: a meta-analysis of randomized trials（Naghshi et al., <em>Eur Heart J</em> 2026）</h1>
+<h2>SECTION-0：文章全面描述</h2>
+<h3>0. 文章身份證</h3>
+<ul>
+<li>
+<p><strong>標題</strong>：Whole-grain consumption and cardiometabolic risk: a meta-analysis of randomized trials</p>
+</li>
+<li>
+<p><strong>期刊／年份</strong>：<em>European Heart Journal</em> 2026;47:6235–6247 [文內]</p>
+</li>
+<li>
+<p><strong>DOI</strong>：10.1093/eurheartj/ehag519；PMID 42743912</p>
+</li>
+<li>
+<p><strong>文章類型</strong>：systematic review 加 pairwise 與 dose-response meta-analysis，只納入 RCT（parallel 與 crossover）→ 走 <strong>SKILL-B／A1（量化合成型）</strong></p>
+</li>
+<li>
+<p><strong>Review 子型</strong>：systematic review／meta-analysis，不是 NMA。</p>
+</li>
+<li>
+<p><strong>混血文章警示</strong>：不適用。文章有 PROSPERO 註冊（CRD42024565726）、PRISMA flow、雙人篩選、RoB 2、GRADE、forest plot 與 I²，是名實相符的 SR/MA。不過<strong>事後修改了 protocol</strong>：</p>
+<ul>
+<li>劑量單位從「每份 30 g 鮮重」改成「每 48 g 乾重」</li>
+<li>刪掉原本計畫的 prediction interval</li>
+<li>偏誤評估工具從 RoB 1 改成 RoB 2</li>
+</ul>
+<p>見 [Supplement Text S3, Protocol amendment]。</p>
+</li>
+</ul>
+<h3>1. 作者團隊評論</h3>
+<ul>
+<li><strong>通訊作者</strong>：Helda Tutunchi，Tabriz University of Medical Sciences, Endocrine Research Center 營養學助理教授，專長是 NAFLD 與臨床營養 [外部: 校方 CV；Rankless／Scinapse]。</li>
+<li><strong>第一作者兼 guarantor</strong>：Sina Naghshi，主導資料擷取與分析。
+<ul>
+<li>根據 PubMed，他過去以觀察性研究的 dose-response meta-analysis 為主，代表作是 BMJ 2020 的蛋白質攝取與死亡率研究（<a href="https://doi.org/10.1136/bmj.m2412">DOI</a>）。</li>
+<li>另曾與 Tutunchi 合作優格與死亡率的 dose-response MA（<a href="https://doi.org/10.1017/S1368980022002385">DOI</a>）。</li>
+<li>這是飲食流行病學 MA 的「量產型」團隊 [外部: PubMed]。</li>
+</ul>
+</li>
+<li><strong>Dagfinn Aune</strong>（Imperial College）：whole grain 世代研究 dose-response MA 的核心作者。
+<ul>
+<li>BMJ 2016 那篇 MA 的結論是全穀物降低 CHD、CVD 與總死亡，效益延續到 210–225 g/day（<a href="https://doi.org/10.1136/bmj.i2716">DOI</a>）。</li>
+<li>另有 2013 年第二型糖尿病（<a href="https://doi.org/10.1007/s10654-013-9852-5">DOI</a>）與 2025 年高血壓（<a href="https://doi.org/10.1038/s41598-025-05197-5">DOI</a>）的同主題 MA [外部: PubMed]。</li>
+<li>2025 年那篇的共同作者來自 Plant-Based Health Professionals [外部: PubMed]。</li>
+</ul>
+</li>
+<li><strong>Ahmad Jayedi</strong>（Imperial College）：負責分析。具體代表作 [無法取得]。</li>
+<li><strong>作者立場史</strong>：Aune 長期發表「全穀物有益、劑量越高越好」的世代研究結論。本文 Discussion 用「trial 與 cohort 一致 → 可能有因果」來互相印證 [p.6242]，<strong>有確認偏差（prior commitment）的風險</strong> [推論]。</li>
+<li><strong>利益揭露</strong>：作者聲明無個人或財務 COI；經費來自 Tabriz University of Medical Sciences（grant 75326），funder 不參與研究 [文內]。沒有產業資金，經費面的偏誤風險低。</li>
+</ul>
+<h3>2. 文獻 Metadata 整理</h3>
+<ul>
+<li><strong>時間線</strong>：投稿 2025-11-25；修訂 2026-03-21；接受 2026-06-17；線上刊出 2026-09-15 [文內]。
+<ul>
+<li>投稿到接受約 <strong>204 天</strong>（自行計算）。</li>
+</ul>
+</li>
+<li><strong>期刊平均審查天數</strong>：EHJ 官方中位數 [無法取得]。
+<ul>
+<li>心臟科期刊投稿到接受的中位數約 96 天（2024–2025 PubMed 日期）[外部: Journalmetrics]。</li>
+<li>本篇明顯較慢，推測經過實質修訂（至少一輪大修）[推論]。</li>
+</ul>
+</li>
+<li><strong>期刊屬性</strong>：
+<ul>
+<li>2025 JIF 45.3（ESC 頁面寫 43.5）；Cardiac &amp; Cardiovascular Systems 類別 2/237，屬 Q1 [外部: Wolters Kluwer／Journalmetrics／OUP About]。</li>
+<li>本文以 CC BY 開放取用 [文內]。</li>
+</ul>
+</li>
+<li><strong>邀稿 vs 投稿</strong>：文內沒有邀稿標記，推測是一般投稿 [推論]。同期附有 editorial，ESC 也發了新聞稿，以「每天 4–6 份全穀物」為主要訊息 [外部: ESC press release／News-Medical]。</li>
+</ul>
+<h3>3. 研究背景［僅根據文內］</h3>
+<ul>
+<li><strong>既有證據</strong>：世代研究的 dose-response MA 顯示，全穀物攝取越多，T2D、高血壓、CHD、CVD、癌症與死亡風險越低，效益延續到 210–225 g/day。</li>
+<li><strong>知識缺口</strong>：
+<ul>
+<li>既有 RCT MA 結果不一致，有的對體重無效，有的只對血脂有小效果。</li>
+<li>多只做 pairwise 比較、忽略劑量。</li>
+<li>沒有用 MID 判讀臨床意義。</li>
+<li>有重複納入、SMD 難解讀、unit-of-analysis error、沒有 ICEMAN 等問題 [p.6237]。</li>
+</ul>
+</li>
+<li><strong>Research question</strong>：在成人 RCT 中，全穀物攝取量與心血管代謝危險因子之間的劑量反應關係（強度與形狀）為何 [文內]？</li>
+</ul>
+<h3>4. 研究設計與方法</h3>
+<ul>
+<li><strong>P</strong>：≥18 歲成人，含健康者與高風險者（T2D、前期糖尿病、代謝症候群、高膽固醇血症、肥胖等）；排除孕婦與癌症等重症 [文內]。</li>
+<li><strong>I</strong>：全穀物（三部分完整的穀粒），單一種類或混合，可合併熱量限制；介入至少 2 週。</li>
+<li><strong>C</strong>：低全穀物飲食、usual diet、routine care、精製穀物；排除 active control。</li>
+<li><strong>O</strong>：
+<ul>
+<li>主要：體重、LDL-C、FPG、不良事件。</li>
+<li>次要：腰圍、體脂率、SBP、DBP、HbA1c、insulin、HOMA-IR、HDL-C、TC、TG、CRP、IL-6、TNF-α、HRQoL。</li>
+</ul>
+</li>
+<li><strong>檢索</strong>：PubMed、Scopus、WoS、CENTRAL，加 Google Scholar 前 500 筆，檢索到 <strong>2024-11-01</strong>；<strong>只收英文</strong>（作者承認可能有語言偏誤）[Supplement Text S1]。
+<ul>
+<li>檢索與刊出相隔近 2 年。</li>
+</ul>
+</li>
+<li><strong>篩選與擷取</strong>：
+<ul>
+<li>SN、SK 雙人獨立篩選，以討論解決歧見，沒有報告 κ。</li>
+<li>三人擷取資料；RoB 2 由三人評估。</li>
+</ul>
+</li>
+<li><strong>統計方法</strong>：
+<ul>
+<li>Pairwise：change-from-baseline 的 MD；研究數 &gt;5 用 DerSimonian–Laird，≤5 用 REML 加 Knapp–Hartung。</li>
+<li>多臂試驗合併成單一比較；crossover 試驗的組內相關設為 r=0.5。</li>
+<li>改變量的 SD 用推算的相關係數補值。</li>
+</ul>
+</li>
+<li><strong>Dose-response</strong>：Crippa–Orsini one-stage 模型。
+<ul>
+<li>劑量定義為「介入組減對照組」的乾重差，<strong>對照組劑量一律設為 0</strong>。</li>
+<li>線性分析以每 48 g/day 為單位；非線性用 3 knot（10/50/90 百分位）的 RCS。</li>
+<li>煮熟糙米用單一研究得出的係數 2.25 換算成乾重 [Supplement Text S2–S3]。</li>
+</ul>
+</li>
+<li><strong>其他</strong>：
+<ul>
+<li>GRADE 用 minimally contextualized approach，搭配 MID 判斷 imprecision。</li>
+<li>Subgroup 用 ICEMAN 評估可信度。</li>
+<li>Publication bias 用 contour-enhanced funnel plot 加 Egger test。</li>
+</ul>
+</li>
+</ul>
+<h3>5. 研究結果重點整理</h3>
+<p>納入 <strong>87 個試驗（101 篇文章），約 6529 人</strong>；單一試驗 10–266 人；追蹤 2 週至 2 年，<strong>中位數 8 週（IQR 6–12）</strong> [Supplement Text S5]。</p>
+<p><strong>主要結果表</strong>（MID 依 Supplement Table S3）</p>
+<div class="table-wrap wide"><table>
+<thead>
+<tr>
+<th>變項（代表什麼）</th>
+<th style="text-align:right">研究數／人數</th>
+<th style="text-align:right">I²</th>
+<th style="text-align:right">配對 MD（95% CI）</th>
+<th style="text-align:right">每 48 g/day 線性 MD（95% CI）</th>
+<th style="text-align:right">p 值</th>
+<th>如何解讀</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>LDL-C</strong>（mmol/L；MID 0.10）</td>
+<td style="text-align:right">69／5932</td>
+<td style="text-align:right">57.9%</td>
+<td style="text-align:right"><strong>−0.13（−0.17 to −0.08）</strong></td>
+<td style="text-align:right">−0.07（−0.10 to −0.05）</td>
+<td style="text-align:right">每 48 g &lt;0.01（圖示 0.00）</td>
+<td>配對值剛過 MID，但每 48 g 只有 −0.07；主要由燕麥貢獻</td>
+</tr>
+<tr>
+<td><strong>體重</strong>（kg；MID 2.5）</td>
+<td style="text-align:right">60／4390</td>
+<td style="text-align:right">40.4%</td>
+<td style="text-align:right"><strong>−0.51（−0.72 to −0.30）</strong></td>
+<td style="text-align:right">−0.20（−0.31 to −0.09）</td>
+<td style="text-align:right">每 48 g &lt;0.01</td>
+<td>只有 MID 的 1/5；「高確定性」確認的是效果很小</td>
+</tr>
+<tr>
+<td><strong>FPG</strong>（空腹血糖，mmol/L；MID 1.6）</td>
+<td style="text-align:right">62／4728</td>
+<td style="text-align:right">69.3%</td>
+<td style="text-align:right">−0.07（−0.13 to −0.02）</td>
+<td style="text-align:right">−0.03（−0.06 to −0.00）</td>
+<td style="text-align:right">每 48 g 0.03</td>
+<td>約為 MID 的 4%，臨床上可忽略</td>
+</tr>
+<tr>
+<td><strong>不良事件</strong>（多為輕度腸胃症狀）</td>
+<td style="text-align:right">7／742</td>
+<td style="text-align:right">0%</td>
+<td style="text-align:right">RR 1.53（0.72 to 3.22）；RD +2/100（−1 to +5）</td>
+<td style="text-align:right">RR 1.17（0.83 to 1.65）</td>
+<td style="text-align:right">未報告</td>
+<td>事件數少（20/406 vs 9/336），無法排除每百人多 5 例</td>
+</tr>
+<tr>
+<td><strong>TC</strong>（總膽固醇，mmol/L；MID 0.26）</td>
+<td style="text-align:right">73／5907</td>
+<td style="text-align:right">71.5%</td>
+<td style="text-align:right">−0.17（−0.22 to −0.12）</td>
+<td style="text-align:right">−0.10（−0.13 to −0.07）</td>
+<td style="text-align:right">未報告</td>
+<td>未達 MID；非線性最大值 −0.21 也未達</td>
+</tr>
+<tr>
+<td><strong>TG</strong>（三酸甘油酯，mmol/L；MID 0.09）</td>
+<td style="text-align:right">70／5745</td>
+<td style="text-align:right">48.2%</td>
+<td style="text-align:right">−0.05（−0.09 to −0.02）</td>
+<td style="text-align:right">−0.04（−0.06 to −0.02）</td>
+<td style="text-align:right">未報告</td>
+<td>未達 MID；作者稱 80 g 處「超過 MID」有誤</td>
+</tr>
+<tr>
+<td><strong>HDL-C</strong>（mmol/L；MID 0.10）</td>
+<td style="text-align:right">71／5754</td>
+<td style="text-align:right">81.9%</td>
+<td style="text-align:right">0.01（−0.01 to 0.03）</td>
+<td style="text-align:right">0.01（−0.01 to 0.02）</td>
+<td style="text-align:right">未報告</td>
+<td>配對分析無效；220 g 處上升屬稀疏資料外推</td>
+</tr>
+<tr>
+<td><strong>SBP</strong>（mmHg；MID 2）</td>
+<td style="text-align:right">46／3609</td>
+<td style="text-align:right">62.5%</td>
+<td style="text-align:right">−1.50（−2.62 to −0.38）</td>
+<td style="text-align:right">−0.82（−1.49 to −0.15）</td>
+<td style="text-align:right">未報告</td>
+<td>低於 MID；PI 約 −7.4 至 +4.4 [自行計算]</td>
+</tr>
+<tr>
+<td><strong>DBP</strong>（mmHg；MID 2）</td>
+<td style="text-align:right">45／3522</td>
+<td style="text-align:right">65.4%</td>
+<td style="text-align:right">−0.82（−1.59 to −0.05）</td>
+<td style="text-align:right">−0.41（−0.92 to 0.11）</td>
+<td style="text-align:right">未報告</td>
+<td>移除單一研究即不穩；每 48 g 的 CI 跨 0</td>
+</tr>
+<tr>
+<td><strong>腰圍</strong>（cm；MID 2）</td>
+<td style="text-align:right">38／3207</td>
+<td style="text-align:right">54.8%</td>
+<td style="text-align:right">−0.60（−0.98 to −0.22）</td>
+<td style="text-align:right">−0.22（−0.39 to −0.06）</td>
+<td style="text-align:right">每 48 g 0.01</td>
+<td>約為 MID 的 1/3</td>
+</tr>
+<tr>
+<td><strong>體脂率</strong>（%；MID 2）</td>
+<td style="text-align:right">29／2682</td>
+<td style="text-align:right">41.1%</td>
+<td style="text-align:right">−0.22（−0.47 to 0.02）</td>
+<td style="text-align:right">−0.07（−0.20 to 0.07）</td>
+<td style="text-align:right">每 48 g 0.34</td>
+<td>CI 跨 0，無效果</td>
+</tr>
+<tr>
+<td><strong>HbA1c</strong>（%；MID 0.5）</td>
+<td style="text-align:right">24／1908</td>
+<td style="text-align:right">58.1%</td>
+<td style="text-align:right">−0.05（−0.10 to −0.01）</td>
+<td style="text-align:right">−0.03（−0.05 to 0.00）</td>
+<td style="text-align:right"><strong>每 48 g 0.08</strong></td>
+<td>線性分析不顯著，圖形摘要卻標示「改善」</td>
+</tr>
+<tr>
+<td><strong>Fasting insulin</strong>（pmol/L；MID 5）</td>
+<td style="text-align:right">42／3143</td>
+<td style="text-align:right">12.8%</td>
+<td style="text-align:right">−0.37（−2.19 to 1.46）</td>
+<td style="text-align:right">−0.00（−0.84 to 0.83）</td>
+<td style="text-align:right">每 48 g 0.99</td>
+<td>無效果</td>
+</tr>
+<tr>
+<td><strong>HOMA-IR</strong>（胰島素阻抗指數；MID 0.05）</td>
+<td style="text-align:right">30／2486</td>
+<td style="text-align:right">66.4%</td>
+<td style="text-align:right">−0.24（−0.39 to −0.09）</td>
+<td style="text-align:right">−0.08（−0.16 to −0.01）</td>
+<td style="text-align:right">每 48 g 0.03</td>
+<td>MID 訂為 0.05 過低，微小變化因此被判「重要」</td>
+</tr>
+<tr>
+<td><strong>CRP</strong>（mg/L；MID 0.5）</td>
+<td style="text-align:right">31／2509</td>
+<td style="text-align:right">83.1%</td>
+<td style="text-align:right">−0.38（−0.55 to −0.21）</td>
+<td style="text-align:right">−0.31（−0.52 to −0.10）</td>
+<td style="text-align:right">未報告</td>
+<td>異質性高；高劑量時曲線反轉向上，形狀不可信</td>
+</tr>
+<tr>
+<td><strong>IL-6</strong>（pg/mL；MID 1）</td>
+<td style="text-align:right">20／1219</td>
+<td style="text-align:right">67.3%</td>
+<td style="text-align:right">−0.22（−0.44 to −0.01）</td>
+<td style="text-align:right">−0.12（−0.23 to −0.004）</td>
+<td style="text-align:right">未報告</td>
+<td>被評「高確定性」，但作者自己的敏感度分析顯示不穩健</td>
+</tr>
+<tr>
+<td><strong>TNF-α</strong>（pg/mL；MID 0.9）</td>
+<td style="text-align:right">14／697</td>
+<td style="text-align:right">64.4%</td>
+<td style="text-align:right">−0.04（−0.16 to 0.08）</td>
+<td style="text-align:right">−0.00（−0.04 to 0.04）</td>
+<td style="text-align:right">未報告</td>
+<td>無效果</td>
+</tr>
+</tbody>
+</table></div>
+<p>註：Table 1 的「P-value」欄是異質性 Q 檢定，不是效果的 p 值。上表「每 48 g」的 p 值是從 supplement forest plot 的 z 檢定讀出，只有 8 個 outcome 有圖可讀 [Supplement Fig S55–S63 圖片]。</p>
+<p><strong>表外重點</strong>：</p>
+<ul>
+<li><strong>非線性分析</strong> [Supplement Table S18–S21]：
+<ul>
+<li>只有 TC（p-nonlinearity 0.002）、LDL（0.009）、HDL（0.01）、CRP（0.01）、SBP（0.03）、TG（0.04）呈非線性。</li>
+<li>體重（0.63）、FPG（0.98）、HOMA-IR（0.38）、HbA1c（0.43）、IL-6（0.65）、TNF-α（0.48）、腰圍（0.11）都沒有非線性證據。</li>
+<li>80 g 處：LDL −0.16（−0.22 to −0.10）、<strong>TC −0.21（未達 MID 0.26）</strong>、<strong>TG −0.08（未達 MID 0.09）</strong>。</li>
+<li>SBP 60 g 處 −2.44（−4.29 to −0.58），CI 跨過 MID 2。</li>
+</ul>
+</li>
+<li><strong>偏誤風險</strong> [Supplement Table S8]：101 筆中只有 <strong>3 筆 low risk</strong>（Graandioos 試驗兩篇與 Connolly 2016），9 筆 some concerns，其餘約 89 筆 high risk。主要問題是 deviations from intended interventions（未致盲、只做 per-protocol 分析）。</li>
+<li><strong>與文內主張的落差</strong>：作者在 Discussion 稱 TG、SBP、CRP 的改善「具臨床意義」[p.6245]，但他們自己的 pairwise MID 判讀把這三項都歸為「clinically irrelevant」[p.6238]。</li>
+</ul>
+<h3>6. 作者討論與評論重點</h3>
+<ul>
+<li>
+<p><strong>主要訊息</strong>：</p>
+<ul>
+<li>全穀物能改善多項心血管代謝指標。</li>
+<li>60–100 g/day 乾重（約 115–190 g 鮮重，4–6 份）可作為「evidence-based benchmark」。</li>
+<li>多項風險因子的效果相加，可能轉化成 CHD／CVD 的下降 [p.6245]。</li>
+</ul>
+</li>
+<li>
+<p><strong>與文獻的異同</strong>：</p>
+<ul>
+<li>作者認為過去研究結果不一致，是因為那些 MA 沒有處理劑量。</li>
+<li>本研究最大效益出現在 60–100 g，世代研究則延續到 112–120 g 乾重。作者用族群、暴露來源、追蹤時間與樣本量差異來解釋這個差距。</li>
+</ul>
+</li>
+<li>
+<p><strong>作者自承限制</strong>：</p>
+<ul>
+<li>全穀物種類間的差異</li>
+<li>多數試驗偏誤風險高（per-protocol 分析、未致盲）</li>
+<li>背景全穀物攝取的報告不足</li>
+<li>劑量差異大，無法做 time-response 分析</li>
+<li>中位追蹤只有 8 週</li>
+<li>高劑量資料稀疏</li>
+<li>不良事件報告不完整</li>
+<li>Comparator 與替代模式不同</li>
+</ul>
+</li>
+<li>
+<p><strong>[評估]</strong>：限制列得相當完整，但有三處避重就輕：</p>
+<ol>
+<li>沒有承認「高確定性」是靠 dose-response 升級抵銷偏誤降級換來的。</li>
+<li>沒有承認 run-in、長追蹤、低 RoB 等較嚴謹的試驗效果反而接近零。</li>
+<li>對 TC／TG 是否超過 MID 的敘述，與 supplement 數字矛盾。</li>
+</ol>
+<p>「consistency with cohorts suggests likely causal」與「60–100 g benchmark」這兩個說法，超出了 surrogate、短期、多數高偏誤的資料所能支持的範圍。</p>
+</li>
+</ul>
+<h3>7. 外部專業意見</h3>
+<p><strong>同期 editorial</strong>：Kyrø C, Tjønneland A, Olsen A. &quot;Whole grains and cardiometabolic health: strong evidence, new questions in an ultra-processed world.&quot; <em>Eur Heart J</em> 2026;47:6248–6251，doi:10.1093/eurheartj/ehag724 [外部: EHJ editorial 全文]。</p>
+<ul>
+<li><strong>肯定</strong>：
+<ul>
+<li>只納入 RCT 並全面套用 GRADE，補足了觀察性研究的證據。</li>
+<li>Dose-response 分析可直接支援以食物為本的飲食指引。</li>
+<li>效應型態與膳食纖維、食物基質、微生物體等機轉一致，符合生物合理性。</li>
+<li>認為 60–100 g/day 的建議高於美國指引的 2–4 份，可能更理想。</li>
+</ul>
+</li>
+<li><strong>保留意見</strong>：
+<ul>
+<li>試驗主要來自東亞（糙米對白米）與北歐、北美（小麥、黑麥、燕麥）。</li>
+<li>不同穀物種類的差異，應謹慎解讀：直接比較兩種全穀物的試驗被排除，產品資訊也有限。</li>
+<li>中位追蹤 8 週，效果小。</li>
+</ul>
+</li>
+<li><strong>新觀點</strong>：
+<ul>
+<li>納入的試驗多使用低度加工的全穀物主食，結論<strong>不能直接外推到 ultra-processed 的「全穀」產品</strong>。</li>
+<li>呼籲用試驗直接比較低度加工、超加工全穀與精製超加工食品。</li>
+<li>建議在試驗中整合 omics 研究。</li>
+</ul>
+</li>
+<li><strong>評論者的盲點</strong>：
+<ul>
+<li>Editorial 寫 HOMA-IR 為「moderate-certainty」，但原文 GRADE 是 <strong>low</strong>，屬事實誤植。</li>
+<li>對 GRADE 升級、MID 選擇、非線性模型選擇沒有任何方法學批評。</li>
+<li>Editorial 作者的經費來自 Plantefonden（丹麥植物性食品基金），作者聲明無 COI。</li>
+</ul>
+</li>
+</ul>
+<h3>8. 臨床建議</h3>
+<ul>
+<li><strong>可採用的情境</strong>：
+<ul>
+<li>對高膽固醇血症病人，<strong>用燕麥（β-glucan）取代精製穀物</strong>作為飲食調整的一環，預期 LDL 下降約 0.2 mmol/L（約 8 mg/dL）。燕麥亞組為 −0.20（−0.25 to −0.15），I² 0%，n=20 [Supplement Table S14]。</li>
+<li>作為「以全穀物取代精製穀物」這類一般飲食建議的佐證。這個建議風險低、成本低、有世代研究支持。</li>
+</ul>
+</li>
+<li><strong>不建議直接套用的情境</strong>：
+<ul>
+<li>把「60–100 g/day」當作有試驗驗證的劑量目標。</li>
+<li>期待全穀物帶來臨床上有意義的減重或血糖改善：體重只減 0.5 kg，FPG 只降 0.07 mmol/L。</li>
+<li>把結論套到超加工的「全穀」產品。</li>
+<li>用來取代 statin 或降壓藥。</li>
+</ul>
+</li>
+<li><strong>給臨床醫師的實務建議</strong>：
+<ol>
+<li>對病人的說法改成「把白米、白麵包換成糙米、燕麥、全麥，三餐都換」，期待「血脂小幅改善」，不要說「可以減重、控血糖」。</li>
+<li>若目標是降 LDL，<strong>優先選燕麥或大麥</strong>；混合全穀物對 LDL 幾乎無效（−0.007 mmol/L）。</li>
+<li>腸胃脹氣是主要副作用，要提醒病人並逐步增量。</li>
+</ol>
+</li>
+<li><strong>證據強度</strong>：<strong>中（燕麥對 LDL）／弱（「全穀物」整體的劑量目標與臨床相關性）</strong>。理由：約 88% 的研究高偏誤，追蹤短，只有 surrogate outcome，劑量關係來自研究間比較。</li>
+</ul>
+<hr />
+<h2>SKILL-B：Review Article 批判性評讀</h2>
+<h3>A. 補充技術細節</h3>
+<ul>
+<li><strong>宣稱範疇</strong>：作者把結論寫成適用所有成人（healthy and at risk），但：
+<ul>
+<li>試驗多為短期、高風險族群，以糙米對白米（亞洲）或燕麥／黑麥（歐美）為主。</li>
+<li>「混合全穀物飲食」對 LDL 與 TG 幾乎無效。</li>
+</ul>
+</li>
+<li><strong>引用文獻時間範圍</strong>：試驗年份 1986–2024；檢索到 2024-11 為止，2025–2026 年新試驗沒有納入。</li>
+</ul>
+<h4>A1. Systematic Review／Meta-analysis 子模組</h4>
+<p><strong>搜尋策略與選擇流程</strong></p>
+<ul>
+<li>4 個資料庫加 Google Scholar，關鍵字很廣（含 rice、wheat、bread）。檢索 82,881 筆，去重後 63,674 筆，211 筆進入全文審查，納入 101 筆 [Supplement Fig S1]。</li>
+<li><strong>只收英文</strong>，可能遺漏中、日、韓文的糙米試驗；而亞洲試驗正是本文的重要來源。</li>
+<li>雙人篩選，以討論解決歧見，沒有報告 κ。</li>
+<li>PROSPERO 已預先註冊，但有事後修改（見 0 節）。</li>
+<li><strong>事後修改的理由在統計上站不住</strong>：作者稱「改用每份計算會讓 CI 過窄」。但線性 dose-response 換單位只是等比例縮放點估計與 CI，z 值不變，不會影響精確度 [推論]。不過這項修改不改變推論，只是理由錯誤。</li>
+</ul>
+<p><strong>擷取品質觀察</strong>（supplement forest plot 圖片）：</p>
+<ul>
+<li>研究標籤有多處與 Table S7 不一致：
+<ul>
+<li>「Van Horn 1998」（Table S7 只有 1986／1988／1991）</li>
+<li>LDL 與 FPG 圖中的「Na et al. 2013」，Table S7 為 Ma 2013 與 Na 2023</li>
+<li>「Ampatzoglou 2014」，Table S7 為 2015／2016</li>
+<li>「Jonston 1998」</li>
+</ul>
+</li>
+<li>這些不影響數值，但顯示資料整理不夠嚴謹。</li>
+</ul>
+<p><strong>文獻可信度（GRADE 五大降級因素）</strong></p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>因素</th>
+<th>評估</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>偏誤風險</strong></td>
+<td>嚴重。101 筆中只有 3 筆 low risk；作者每個 outcome 都降一級，這部分合理。但 <strong>low RoB 亞組幾乎都沒有效果</strong>：LDL −0.066（−0.389 to 0.256）、SBP −4.0（−11.2 to 3.2）[Supplement Table S14–S15]。</td>
+</tr>
+<tr>
+<td><strong>不一致性</strong></td>
+<td><strong>作者低估了</strong>。TC 的 I² 71.5%，GRADE 註解卻寫「被 health status 解釋」，但該 subgroup 的 P 為 0.211，<strong>並沒有統計差異</strong> [Supplement Table S26 註 aa；Table S14]。LDL、FPG、腰圍、SBP、DBP、IL-6 則是事後剔除 1–2 個 outlier、讓 I² 降到 50% 以下，就判為「not serious」。這不符合 GRADE 對「可解釋異質性」的要求。也沒有報告 prediction interval（protocol 原本計畫要做），例如 SBP 的 PI 約 −7.4 至 +4.4 mmHg [自行計算]。</td>
+</tr>
+<tr>
+<td><strong>間接性</strong></td>
+<td>被評為 not serious，但其實有嚴重間接性：全部是 surrogate outcome，沒有任何臨床事件；中位追蹤 8 週；comparator 混雜（usual diet、加入 healthy diet、熱量限制）；穀物種類效果差異大。</td>
+</tr>
+<tr>
+<td><strong>不精確性</strong></td>
+<td>用 MID 判斷。但 <strong>「CI 完全低於 MID」被判為 not serious，等於高度確定效果微不足道</strong>；作者在摘要卻呈現為「improvements with high certainty」。MID 來源也不一致：FPG 1.6 mmol/L 與 HbA1c 0.5% 取自 T2D 低醣飲食 MA，HOMA-IR 卻只取 0.05，造成 HOMA-IR「重要」、FPG「不重要」的不對稱判讀。</td>
+</tr>
+<tr>
+<td><strong>發表偏誤</strong></td>
+<td>Egger test 在 FPG、HbA1c、insulin、IL-6、TNF-α 達顯著。作者剔除 outlier 後改稱不顯著，GRADE 也沒有降級 [Supplement Text S7]。</td>
+</tr>
+<tr>
+<td><strong>升級（dose-response）</strong></td>
+<td><strong>方法學上最關鍵的問題</strong>。LDL、體重、腰圍、TG、TC、HDL、SBP、CRP、IL-6 都因「dose-response gradient」升一級。但：(1) 這個梯度來自研究間的劑量差異，屬生態學層次的比較，容易被穀物種類與族群混淆；(2) GRADE 的升級標準主要為觀察性研究設計；(3) <strong>IL-6 依據的 P-whole curve 是 0.07（不顯著）</strong>；(4) 註解的 p 值與 Table S18–S21 不一致（體重 0.002 vs 0.005；腰圍 0.007 vs 0.01；HDL 0.04 vs 0.03；SBP 0.02 vs 0.03）。所有「High」評等（體重、腰圍、TC、IL-6）都是靠這次升級抵銷偏誤降級而來。</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Dose-response 模型的特別問題</strong></p>
+<ul>
+<li>作者稱「3 knot RCS 對所有 outcome 的配適都較好（AIC）」[p.6241；Supplement Text S7]。但 <strong>Supplement Table S22–S25 顯示：</strong>
+<ul>
+<li>體重、腰圍、體脂、不良事件、FPG、insulin、HOMA-IR、HbA1c、<strong>TG</strong>、TNF-α 這 10 項，<strong>AIC 最低的是線性模型</strong>。</li>
+<li>只有 TC、LDL、HDL、SBP、DBP、CRP、IL-6 是 RCS 較佳。</li>
+</ul>
+</li>
+<li>部分模型的 deviance 只差約 3，AIC 卻差約 30（例如腰圍：線性 deviance 46.17／AIC 93.98，quadratic 43.10／124.20），顯示各模型的 AIC 可能不在同一個 likelihood 基礎上，不能直接比較 [推論]。</li>
+<li>圖 6 的 CRP 曲線在 120 g 以上反轉向上，220 g 處 +1.62 mg/L（−0.74 to 3.97）[Supplement Table S21]。生物學上不合理，是高劑量區只有零星小研究造成的 spline 過度配適。
+<ul>
+<li>圖中可見 20 g 附近有一個權重最大、效果約 −0.8 mg/L 的研究，主導了低劑量段的下降。</li>
+</ul>
+</li>
+<li>圖 4 的 LDL 與 HDL：160 g 以上只有約 4–5 個資料點，HDL 在 220 g 處的上升完全靠這些點外推。</li>
+<li>所有曲線在劑量 0 處都被強制通過 0（對照組劑量設為 0），屬模型的結構限制，不是資料本身的特徵。</li>
+</ul>
+<p><strong>NMA</strong>：不適用。</p>
+<h3>B. 論證架構重建（第一階段：純描述）</h3>
+<p><strong>主論點</strong>：增加全穀物攝取能改善多項心血管代謝危險因子；約 60–100 g/day 乾重的效益最大；這支持現行飲食建議，並可能降低 CVD 風險。</p>
+<pre><code>1. 前提 A：世代研究顯示全穀物與 CVD、T2D、死亡率呈負相關（refs 11–16）
+   └─ 推論：若 RCT 顯示危險因子改善，可作為中介機轉並支持因果
+
+2. 前提 B：既有 RCT MA 結果不一致，原因是忽略劑量、沒用 MID 等方法學缺陷
+   └─ 推論：用 dose-response 加 MID 加 GRADE 可以釐清效果
+
+3. 前提 C：87 個 RCT 的 pairwise 與線性分析顯示 LDL、TC、TG、體重、腰圍、FPG、SBP、CRP、IL-6 下降
+   └─ GRADE 為 high 或 moderate
+
+4. 前提 D：非線性分析顯示血脂、SBP、CRP 在 60–100 g 達到最大效益並超過 MID；HDL 在 220 g 上升
+   └─ 推論：dose-response 比 pairwise 可靠，因為 pairwise 有劑量錯誤分類
+
+5. 中間結論：trial 與 cohort 一致，加上劑量反應 → 對危險因子的效果「likely causal」
+
+6. 最終結論：建議 60–100 g/day（4–6 份）；多項小效果相加、長期持續，可能帶來有意義的 CHD／CVD 下降
+</code></pre>
+<p><strong>敘事策略</strong>：從問題到解方（指出既有 MA 缺陷，提出 dose-response 方法），再用世代研究互相印證。</p>
+<p><strong>作者承認的限制</strong>：穀物種類、偏誤風險（per-protocol、未致盲）、背景攝取、追蹤短、高劑量資料稀疏、不良事件報告不全、comparator 差異 [p.6243–6245]。</p>
+<h3>C. 引用品質評估（第二階段：開始批判）</h3>
+<div class="table-wrap wide"><table>
+<thead>
+<tr>
+<th>論點</th>
+<th>證據類型</th>
+<th>證據層級</th>
+<th>與論點的關聯</th>
+<th>問題</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>A（世代研究證據）</td>
+<td>世代研究的 dose-response MA（多由共同作者 Aune 發表）</td>
+<td>中</td>
+<td>間接</td>
+<td>自我引用，用自己的世代研究印證自己的 RCT 結論</td>
+</tr>
+<tr>
+<td>B（既有 MA 缺陷）</td>
+<td>先前 RCT MA</td>
+<td>中</td>
+<td>直接</td>
+<td>批評大致合理，但本文也有部分同樣問題（例如沒有 PI）</td>
+</tr>
+<tr>
+<td>C（pairwise 效果）</td>
+<td>RCT（約 88% 高偏誤）</td>
+<td>中低</td>
+<td>直接，但都是 surrogate</td>
+<td>效果量多低於自己設定的 MID</td>
+</tr>
+<tr>
+<td>D（非線性最大效益）</td>
+<td>研究間劑量比較</td>
+<td>低</td>
+<td>類推（生態學層次）</td>
+<td>模型選擇錯誤陳述；TC／TG 是否超過 MID 寫錯</td>
+</tr>
+<tr>
+<td>E（因果）</td>
+<td>Trial 與 cohort 的一致性</td>
+<td>低</td>
+<td>類推</td>
+<td>Surrogate 與 hard outcome 的落差、追蹤期 8 週對比數十年</td>
+</tr>
+<tr>
+<td>F（多項小效果相加降低 CVD）</td>
+<td>糖尿病多重風險控制試驗（refs 72–73）</td>
+<td>中</td>
+<td>類推</td>
+<td>那些是藥物強化治療，幅度不可比</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>引用品質紅旗</strong>：</p>
+<ul>
+<li>大量引用共同作者自己的世代研究 MA，用來支持「一致性」。</li>
+<li>對立證據被淡化：低 RoB 試驗、有 run-in 的試驗、≥16 週的試驗效果都接近零；這些出現在 supplement，Discussion 只輕描淡寫。</li>
+<li>用糖尿病多重藥物控制試驗類推飲食的小幅效果可以相加。</li>
+</ul>
+<h3>D. 過度推論分析</h3>
+<p><strong>推論 1：摘要的「high certainty improvements」</strong></p>
+<ul>
+<li><strong>原始數據</strong>：體重 −0.51 kg（MID 2.5 kg），腰圍 −0.60 cm（MID 2 cm），IL-6 −0.22 pg/mL（MID 1）；作者自己判為「clinically irrelevant」[p.6238]。</li>
+<li><strong>作者結論</strong>：摘要寫「associated with reductions in body weight … with high certainty」，沒有提到效果遠低於 MID。</li>
+<li><strong>跳躍</strong>：把「高度確定效果很小」寫成「高度確定有改善」。</li>
+<li><strong>嚴重度</strong>：中度。</li>
+</ul>
+<p><strong>推論 2：「60–100 g/day 效益最大，適用大多數 outcome」</strong></p>
+<ul>
+<li><strong>原始數據</strong>：17 個 outcome 中只有 6 個 p-nonlinearity &lt;0.05；10 個 outcome 的 AIC 支持線性 [Supplement Table S18–S25]。</li>
+<li><strong>作者結論</strong>：「Non-linear analyses indicated greatest effects at 60–100 g/day for most outcomes」（摘要）。</li>
+<li><strong>跳躍</strong>：把少數血脂指標的曲線形狀推廣到整體；同時錯誤陳述模型選擇的依據。</li>
+<li><strong>嚴重度</strong>：中度。</li>
+</ul>
+<p><strong>推論 3：「TC、LDL、TG 在 80 g 處 surpassing the MID」[p.6240]</strong></p>
+<ul>
+<li><strong>原始數據</strong>：TC −0.21 &lt; MID 0.26；TG −0.08 &lt; MID 0.09 [Supplement Table S20]。</li>
+<li><strong>作者結論</strong>：三項都超過 MID。Discussion 後段又把 TC 列為「unimportant」[p.6242]，自相矛盾。</li>
+<li><strong>跳躍</strong>：數字敘述錯誤，只有 LDL 成立。</li>
+<li><strong>嚴重度</strong>：中度（審稿應攔下的事實錯誤）。</li>
+</ul>
+<p><strong>推論 4：「dose-response findings are more reliable than pairwise」（HDL）</strong></p>
+<ul>
+<li><strong>原始數據</strong>：pairwise 0.01，I² 82%；dose-response 在 220 g 處 +0.19，該區只有約 4 個資料點。</li>
+<li><strong>作者結論</strong>：HDL 在高劑量下有臨床意義的上升。</li>
+<li><strong>跳躍</strong>：研究間的 dose-response 比 pairwise 更容易受混淆，作者反而給它更高的可信度。</li>
+<li><strong>嚴重度</strong>：中度。</li>
+</ul>
+<p><strong>推論 5：「consistency between trial and cohort … likely causal」，並據以推論 CVD 下降</strong></p>
+<ul>
+<li><strong>原始數據</strong>：短期 surrogate outcome、效果小，且多數試驗高偏誤。</li>
+<li><strong>作者結論</strong>：可能有因果，相加後可能顯著降低 CHD／CVD [p.6242, 6245]。</li>
+<li><strong>跳躍</strong>：從 surrogate 推到 hard outcome；用一致性取代因果證據。</li>
+<li><strong>嚴重度</strong>：中度。</li>
+</ul>
+<p><strong>推論 6：「長期持續會有更大的累積效果」</strong></p>
+<ul>
+<li><strong>原始數據</strong>：≥16 週試驗的效果較小或歸零。LDL −0.030（−0.253 to 0.193）、TC −0.046、SBP −0.179、FPG −0.092 [Supplement Table S13–S15]。</li>
+<li><strong>作者結論</strong>：中位 8 週可能不足以觀察到較大效果 [p.6242]。</li>
+<li><strong>跳躍</strong>：與自己的 duration subgroup 方向相反。</li>
+<li><strong>嚴重度</strong>：嚴重。</li>
+</ul>
+<p><strong>推論 7：圖形摘要「Supports whole-grain intake for cardiovascular risk reduction」，並把 HbA1c 標為改善</strong></p>
+<ul>
+<li><strong>原始數據</strong>：HbA1c 每 48 g 的 p=0.08，CI 上限為 0.00。</li>
+<li><strong>作者結論</strong>：圖形摘要畫向下箭頭，列為「Glycaemia improves」。</li>
+<li><strong>嚴重度</strong>：輕微至中度。</li>
+</ul>
+<h3>E. 論證結構完整性評估</h3>
+<ul>
+<li><strong>未被支撐的前提</strong>：
+<ul>
+<li>前提一：研究間的劑量差異能代表研究內的劑量效應。但劑量軸與穀物種類、地區、comparator 高度共線。</li>
+<li>前提二：surrogate 的小幅變化可以線性相加，轉換成事件下降。</li>
+</ul>
+</li>
+<li><strong>邏輯斷層</strong>：GRADE 「high」的來源（升級）與「效果微小」的判讀（MID）在摘要裡被分開呈現，讀者會以為效果「大且確定」。</li>
+<li><strong>被忽略、可能動搖結論的證據</strong>：
+<ol>
+<li>有 run-in 的試驗效果近零：TC −0.040（−0.137 to 0.057）vs 無 run-in −0.211，P=0.003；FPG −0.004 vs −0.105，P=0.020 [Supplement Table S13–S14]。</li>
+<li>只納入背景全穀物攝取低的試驗時，FPG、腰圍、HOMA-IR、HbA1c、TG、SBP、CRP、IL-6 都失去顯著。這些人理論上應該最受益，效果反而消失 [Supplement Table S11]。</li>
+<li>Low RoB 試驗的效果多半為 null。</li>
+</ol>
+</li>
+</ul>
+<p><strong>替代解釋</strong>：</p>
+<ol>
+<li><strong>穀物種類，而非「全穀物」本身</strong>：
+<ul>
+<li>LDL 效果幾乎全來自燕麥（−0.205，I² 0%）；混合全穀物只有 −0.007（−0.069 to 0.054）[Supplement Table S14]。</li>
+<li>燕麥試驗常用每天 50–100 g 燕麥片，劑量正好落在 60–100 g，<strong>可能就是 LDL 在 80 g 處最低的原因</strong>，而不是全穀物真的有劑量閾值 [推論]。</li>
+</ul>
+</li>
+<li><strong>試驗嚴謹度梯度</strong>：
+<ul>
+<li>效果集中在沒有 run-in、未致盲、comparator 為 usual diet 或白米的試驗。</li>
+<li>這符合 small-study／low-quality effect，或是共同介入與熱量替換的作用（usual diet 組沒有替換食物，等於只是多吃了東西或改變了飽足感）。</li>
+</ul>
+</li>
+<li><strong>個別亞洲高權重試驗與異質族群</strong>：
+<ul>
+<li>例如 Geng 2016 糙米試驗在 LDL 每 48 g 分析中權重 3.03%、效果 −0.32，是 I² 的主要來源。</li>
+<li>高風險族群（高膽固醇血症、T2D）有 regression to the mean 與合併用藥變動的空間；未致盲的試驗也可能出現追蹤期間的行為改變。</li>
+</ul>
+</li>
+</ol>
+<h3>F. 最終裁決</h3>
+<ul>
+<li><strong>論證結構完整性</strong>：中。方法框架完整（PROSPERO、RoB 2、GRADE、ICEMAN、dose-response），但從數據到結論的橋接多處斷裂。</li>
+<li><strong>引用品質</strong>：部分適當。RCT 證據本身直接，但大量用共同作者的世代研究作佐證，對立的 supplement 證據被淡化。</li>
+<li><strong>過度推論嚴重度</strong>：<strong>中度</strong>。包含數字錯誤（TC／TG 與 MID、AIC 模型選擇）、GRADE 升級濫用，以及與 duration 資料相反的推論。</li>
+<li><strong>可採用的情境</strong>：
+<ul>
+<li>支持「以全穀物，特別是燕麥或大麥，取代精製穀物」作為低風險的飲食建議。</li>
+<li>引用燕麥對 LDL 約降 0.2 mmol/L 的效果。</li>
+<li>作為「全穀物對短期代謝指標的效果小但方向一致」的證據。</li>
+</ul>
+</li>
+<li><strong>不建議直接引用的情境</strong>：
+<ul>
+<li>把「60–100 g/day」當成 RCT 驗證的最適劑量。</li>
+<li>宣稱全穀物有「high certainty」的減重或抗發炎效果。</li>
+<li>主張全穀物能降低 CVD 事件。</li>
+<li>外推到超加工的全穀產品。</li>
+</ul>
+</li>
+<li><strong>若要改觀，最需要</strong>：
+<ol>
+<li>用乾重定量、isocaloric、以精製穀物為對照、追蹤 ≥6–12 個月的低偏誤試驗，並在<strong>單一試驗內做多個劑量臂</strong>，取得研究內的 dose-response。</li>
+<li>依穀物種類（燕麥、大麥 vs 糙米 vs 小麥、黑麥）分開做 dose-response，或用 meta-regression 調整種類、comparator 與 run-in。</li>
+<li>報告 prediction interval，並取消用研究間劑量梯度做 GRADE 升級，重新評定確定性。</li>
+</ol>
+</li>
+<li><strong>一句話結論</strong>：全穀物（尤其燕麥）能小幅改善血脂，但對體重、血糖、血壓的效果遠低於臨床意義門檻，「每天 60–100 g 最好」證據薄弱。</li>
+</ul>
+<hr />
+<h3>外部資料來源</h3>
+<ul>
+<li><a href="https://doi.org/10.1093/eurheartj/ehag724">Kyrø C, et al. Whole grains and cardiometabolic health: strong evidence, new questions in an ultra-processed world. Eur Heart J 2026 (DOI 10.1093/eurheartj/ehag724)</a>（editorial 全文，經本機 dlbydoi 取得）</li>
+<li>根據 PubMed 取得的作者背景文獻：
+<ul>
+<li>Naghshi S, et al. BMJ 2020 — <a href="https://doi.org/10.1136/bmj.m2412">DOI</a></li>
+<li>Tutunchi H, Naghshi S, et al. Public Health Nutr 2022 — <a href="https://doi.org/10.1017/S1368980022002385">DOI</a></li>
+<li>Darooghegi Mofrad M, Naghshi S, et al. Front Nutr 2022 — <a href="https://doi.org/10.3389/fnut.2022.878979">DOI</a></li>
+<li>Aune D, et al. BMJ 2016 — <a href="https://doi.org/10.1136/bmj.i2716">DOI</a></li>
+<li>Aune D, et al. Eur J Epidemiol 2013 — <a href="https://doi.org/10.1007/s10654-013-9852-5">DOI</a></li>
+<li>Aune D, et al. Sci Rep 2025 — <a href="https://doi.org/10.1038/s41598-025-05197-5">DOI</a></li>
+</ul>
+</li>
+<li><a href="https://enrc.tbzmed.ac.ir/uploads/user/7432/cv%20dr.%20tutunchi.docx.pdf">Tutunchi CV（Tabriz University of Medical Sciences）</a>、<a href="https://www.rankless.org/authors/helda-tutunchi">Rankless: Helda Tutunchi</a>、<a href="https://www.scinapse.io/authors/5054441992">Scinapse: Helda Tutunchi</a></li>
+<li>期刊指標：<a href="https://www.wolterskluwer.com/solutions/ovid/european-heart-journal-2148">Wolters Kluwer: European Heart Journal</a>、<a href="https://www.journalmetrics.org/journal/european-heart-journal">Journalmetrics: European Heart Journal</a>、<a href="https://academic.oup.com/EURHEARTJ/pages/About">OUP EHJ About</a>、<a href="https://www.escardio.org/Journals/ESC-Journal-Family/European-Heart-Journal">ESC: European Heart Journal</a>、<a href="https://en.wikipedia.org/wiki/European_Heart_Journal">Wikipedia: European Heart Journal</a></li>
+<li>審查時間基準：<a href="https://www.journalmetrics.org/fastest-journals/cardiology">Journalmetrics: fastest-accepting cardiology journals 2026</a>、<a href="https://www.journalmetrics.org/blog/journal-acceptance-times-2026">Journalmetrics: journal acceptance times 2026</a></li>
+<li>新聞稿與媒體報導：<a href="https://www.escardio.org/news/press/press-releases/four-to-six-servings-of-wholegrain-per-day-lowers-risk-factors-for-heart-disease/">ESC press release</a>、<a href="https://www.news-medical.net/news/20260916/Eating-four-to-six-wholegrain-servings-daily-protects-heart-health.aspx">News-Medical</a>、<a href="https://sciencedaily.com/releases/2026/09/260915232126.htm">ScienceDaily</a></li>
+</ul>
+
+<footer class="appraisal-meta">評讀資訊：模型：claude-opus-5-5 (claude)  ·  route：sr  ·  產出時間：2026-11-15 18:26 CST</footer>
+</main>
+</body>
+</html>
