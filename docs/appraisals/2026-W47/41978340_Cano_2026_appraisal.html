@@ -1,0 +1,819 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Left bundle branch area vs biventricular pacing for cardiac resynchronization therapy: the LEFT-BUNDLE-CRT trial.</title>
+<style>
+  :root {
+    --bg: #fafafa;
+    --card: #ffffff;
+    --text: #1a1a1a;
+    --muted: #6b6b6b;
+    --border: #e5e5e5;
+    --accent: #0b5fff;
+  }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang TC",
+      "Microsoft JhengHei", sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    margin: 0;
+    padding: 24px 16px 64px;
+    line-height: 1.72;
+  }
+  main {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    margin: 0 auto;
+    max-width: 840px;
+    padding: 22px 26px;
+  }
+  nav {
+    margin: 0 auto 14px;
+    max-width: 840px;
+    color: var(--muted);
+    font-size: 14px;
+  }
+  a { color: var(--accent); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  h1, h2, h3, h4 { line-height: 1.35; }
+  h1 { font-size: 26px; margin-top: 0; }
+  h2 { border-top: 1px solid var(--border); padding-top: 18px; }
+  code {
+    background: rgba(127, 127, 127, 0.12);
+    border-radius: 4px;
+    padding: 1px 4px;
+  }
+  .table-wrap {
+    margin: 1em 0;
+    overflow-x: auto;
+  }
+  .table-wrap.wide {
+    /* Break out of the 840px prose column, centred on the viewport. */
+    width: min(1040px, calc(100vw - 32px));
+    margin-left: calc(50% - min(520px, 50vw - 16px));
+  }
+  table {
+    border-collapse: collapse;
+    table-layout: auto;
+    width: 100%;
+  }
+  .table-wrap.wide {
+    /* Opaque so the <main> card border does not show through the table. */
+    background: var(--card);
+  }
+  /* Width hints go on <th> as percentages: Chrome's auto table layout
+     mis-sizes columns (and overflows) when cells carry min-width. */
+  .table-wrap.wide th:first-child {
+    /* Variable + plain-language definition, e.g. "NCPV (noncalcified ...)". */
+    width: 26%;
+  }
+  .table-wrap.wide th:last-child {
+    /* Last column is usually a one-line interpretation. */
+    width: 20%;
+  }
+  th, td {
+    border: 1px solid var(--border);
+    /* Wrap only at spaces: never split an English word mid-letter. */
+    overflow-wrap: normal;
+    word-break: normal;
+    hyphens: manual;
+    padding: 6px 8px;
+    text-align: left;
+    vertical-align: top;
+  }
+  blockquote {
+    border-left: 3px solid var(--accent);
+    color: var(--muted);
+    margin-left: 0;
+    padding-left: 14px;
+  }
+  .appraisal-meta {
+    border-top: 1px solid var(--border);
+    margin-top: 28px;
+    padding-top: 14px;
+    color: var(--muted);
+    font-size: 13px;
+  }
+  @media (max-width: 600px) {
+    body {
+      padding: 12px 8px 40px;
+    }
+    main {
+      padding: 16px 12px;
+    }
+    h1 {
+      font-size: 22px;
+    }
+    table {
+      font-size: 12px;
+    }
+    .table-wrap.wide {
+      width: calc(100vw - 16px);
+      margin-left: calc(50% - 50vw + 8px);
+    }
+    th, td {
+      padding: 4px 5px;
+    }
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #1a1a1a;
+      --card: #242424;
+      --text: #e8e8e8;
+      --muted: #999;
+      --border: #333;
+      --accent: #6ea8ff;
+    }
+  }
+</style>
+</head>
+<body>
+<nav><a href="../../2026-W47.html">← 回到 2026-W47 週報</a></nav>
+<main>
+<h1>Left bundle branch area vs biventricular pacing for cardiac resynchronization therapy: the LEFT-BUNDLE-CRT trial.</h1>
+<h1>LEFT-BUNDLE-CRT 試驗批判性評讀</h1>
+<h2>SECTION-0：文章全面描述</h2>
+<h3>0. 文章身份證</h3>
+<ul>
+<li><strong>標題</strong>：Left bundle branch area vs biventricular pacing for cardiac resynchronization therapy: the LEFT-BUNDLE-CRT trial</li>
+<li><strong>期刊／年份</strong>：European Heart Journal 2026;47:6252–6264（標為 CONGRESS／Clinical trials）</li>
+<li><strong>DOI</strong>：10.1093/eurheartj/ehag225；PMID 41978340；試驗登錄 NCT05434962</li>
+<li><strong>文章類型</strong>：多中心、隨機、研究者發起、<strong>非劣性（non-inferiority）RCT</strong>，比較兩種植入裝置的策略。走 SKILL-A，並套用 A1 的非劣性子模組。</li>
+<li><strong>研究性質</strong>：試驗登錄記載為「post-market study」、「open」設計 [外部: ClinicalTrials.gov]；正文則寫病人對分組設盲。兩者描述不一致，見 B3。</li>
+</ul>
+<h3>1. 作者團隊評論</h3>
+<ul>
+<li><strong>通訊作者</strong>：Óscar Cano（Hospital Universitario y Politécnico La Fe，Valencia；CIBERCV）。他是 CSP（conduction system pacing，傳導系統節律）領域的活躍研究者：
+<ul>
+<li>與 Vijayaraman 等人合作國際多中心觀察性研究 I-CLAS（Heart Rhythm 2025）。該研究在 LVEF ≤50% 的病人中，發現 LBBAP 與較少心衰竭住院、較少併發症相關 [外部: 搜尋結果彙整]。</li>
+<li>2021 年與 Vijayaraman 合寫 CSP-CRT 綜述，另有 2023 年的 physiological pacing 實證更新（Curr Treat Options Cardiovasc Med）與一篇 2023 年 preprint 綜述 [外部]。</li>
+<li>[限制：未能經可靠來源逐篇確認其完整發表清單，以上僅列搜尋可證實者]</li>
+</ul>
+</li>
+<li><strong>團隊構成</strong>：11 家西班牙中心的電生理醫師；echo core lab 由 La Fe 的 M. Rodríguez-Serrano 主持，她同時是作者。Steering committee 由 Cano、Molina-Lerma、Peñafiel 三人組成 [文內 Appendix 1]。</li>
+<li><strong>作者立場史</strong>：Cano 長期發表支持 LBBAP 的觀察性資料，事前立場偏向 CSP。本篇 ITT 結果為「未證實非劣性」，作者仍如實報告主要結果，這點值得肯定。不過 graphical abstract 的 take-home message 仍寫「LBBAP represents an alternative pacing strategy」，屬輕度正向包裝（見 E 節）。</li>
+<li><strong>利益揭露</strong> [文內]：
+<ul>
+<li>資助：Medtronic 外部研究計畫；SEC（西班牙心臟學會）為 sponsor。</li>
+<li>所有裝置均為 Medtronic 產品，CSP 導線為 3830。</li>
+<li>通訊作者與 steering committee 三人全部申報 Medtronic 顧問費；Cano 另有 Medtronic 研究資助。</li>
+<li><strong>評估</strong>：Medtronic 同時販售 CS 導線與 3830 導線，商業利益對兩組的方向不完全單一，且主結果為「未達非劣性」，所以 funding 扭曲主結論的可能性有限。真正的風險在於事後的「capture 亞組」與 on-treatment 敘事，見 E、F 節。</li>
+</ul>
+</li>
+</ul>
+<h3>2. 文獻 Metadata 整理</h3>
+<ul>
+<li><strong>時程</strong> [文內]：Received 2025-12-23 → Revised 2026-02-02 → Accepted 2026-03-11 → Online 2026-04-14。</li>
+<li><strong>審查天數</strong>：78 天 [自行計算]。</li>
+<li><strong>期刊平均審查時間</strong>：無官方公開數字。第三方網站估計首次決定約 20 天至 4.7 週，各來源互相矛盾 [外部: Manusights]。
+<ul>
+<li><strong>比較</strong>：投稿到接受 78 天，以 EHJ 的頂級期刊等級而言屬正常偏快。文章標示 CONGRESS，可能配合學會發表時程加速處理 [推論]。</li>
+</ul>
+</li>
+<li><strong>期刊屬性</strong>：2025 Impact Factor 45.3；Cardiac &amp; Cardiovascular Systems 類別 2/237；Q1 [外部: OUP / Journal Metrics]。非 Open Access（© OUP，All rights reserved）[文內]。</li>
+<li><strong>邀稿／投稿</strong>：原著試驗，非邀稿 [文內]。</li>
+</ul>
+<h3>3. 研究背景（僅依文內）</h3>
+<ul>
+<li><strong>既有證據</strong>：多項觀察性研究與小型 RCT 顯示，CSP（HBP / LBBAP）在 LVEF、QRS 寬度、心衰竭住院方面可能優於 BiVP；現行指引與共識已把 CSP 列為 BiVP 的替代選項（ref 18–21）。HBP 的閾值偏高、成功率偏低、需要重新放導線的比例較高。</li>
+<li><strong>知識缺口</strong>：缺少足夠大型、以 LBBAP 直接對比 BiVP 的隨機試驗。</li>
+<li><strong>研究問題</strong>：在符合指引 CRT 適應症、且為 Strauss 定義典型 LBBB 的病人中，LBBAP-CRT 的 6 個月 CRT 反應率是否不劣於 BiVP-CRT。</li>
+</ul>
+<h3>4. 研究設計與方法</h3>
+<p><strong>PICO</strong></p>
+<ul>
+<li><strong>P（族群）</strong>：≥18 歲、具 ESC 或 ACC/AHA/HRS class I/IIa CRT 適應症、Strauss LBBB（有中央 ECG 審閱）。
+<ul>
+<li>排除：永久性或長期持續性 AF、既有 CRT、心室起搏 &gt;10%、傳統節律器適應症、非特異性 IVCD、90 天內 ACS / PCI / CABG / 瓣膜手術。</li>
+</ul>
+</li>
+<li><strong>I（介入）</strong>：LBBAP-CRT。成功的定義<strong>包含 LBBP 與 LVSP 兩者</strong>；DSP 視為失敗，由術者決定接受或轉為 BiVP。</li>
+<li><strong>C（對照）</strong>：BiVP-CRT，CS 導線瞄準 lateral / posterolateral 分支的 basal 或 mid 位置；CS 失敗可轉為 LBBAP。</li>
+<li><strong>O（結局）</strong>：
+<ul>
+<li>主要終點：6 個月「CRT 反應」，定義為 <strong>CCS 改善 OR LVESV 下降 ≥15%</strong>。</li>
+<li>次要終點：echo 重塑、CCS、6MWD、EQ-5D、死亡、心衰竭住院、心室心律不整、併發症、依 capture 型態分層的反應。</li>
+</ul>
+</li>
+</ul>
+<p><strong>設計細節</strong> [文內 Methods / Results]</p>
+<ul>
+<li>1:1 隨機，依缺血 vs 非缺血分層。隨機方法、區塊大小、allocation concealment <strong>未描述</strong>。</li>
+<li>收案 2022/6–2024/6，追蹤 12 個月（平均 362±7 天）。</li>
+<li><strong>盲法</strong>：病人設盲；植入醫師與程控人員知道分組；echo core lab 設盲，但作者承認可能從影像看出導線位置；CEC 獨立判定事件。</li>
+<li><strong>術者資格</strong>：每家中心兩種技術都需已有 ≥100 例經驗，每中心最多 2 名植入醫師。</li>
+<li><strong>樣本數</strong>：單側 α=.05、power 90%，NI margin 10%，假設 BiVP 反應率 70%、LBBAP 80% → 需 160 名可評估者；加上 10% 流失 → 176 人。</li>
+<li><strong>主分析</strong>：作者稱為「intention-to-treat」，實際是<strong>所有具 6 個月 echo 與 CCS 資料者的 complete-case 分析，未做任何補值</strong>。另做 on-treatment 分析。</li>
+<li><strong>統計方法</strong>：以 RR 搭配 z=1.645 檢定非劣性；但 Methods 同時寫「Tests were two-sided」，敘述互相矛盾。</li>
+</ul>
+<h3>5. 研究結果重點整理</h3>
+<p><strong>主要結果表</strong>（組別：BiVP = 隨機分派至雙心室節律組；LBBAP = 隨機分派至左束支區域節律組；除特別註明外為 ITT）</p>
+<div class="table-wrap wide"><table>
+<thead>
+<tr>
+<th>變項（代表什麼）</th>
+<th style="text-align:right">BiVP</th>
+<th style="text-align:right">LBBAP</th>
+<th style="text-align:right">組間差（95% CI）</th>
+<th style="text-align:right">p 值</th>
+<th>如何解讀</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Paced QRS</strong>：植入後的起搏 QRS 寬度</td>
+<td style="text-align:right">165 → <strong>130 ms</strong></td>
+<td style="text-align:right">171 → <strong>130 ms</strong></td>
+<td style="text-align:right">未報告</td>
+<td style="text-align:right">.45</td>
+<td>兩組電學上同樣縮窄；LBBAP 基線 QRS 較寬</td>
+</tr>
+<tr>
+<td><strong>CRT 反應（ITT，主要終點）</strong>：CCS 改善或 LVESV 降 ≥15%</td>
+<td style="text-align:right"><strong>94.6%（70/74）</strong></td>
+<td style="text-align:right"><strong>89.7%（78/87）</strong></td>
+<td style="text-align:right">RR 0.95（0.88–1.02）；RD −4.9% [自行計算]</td>
+<td style="text-align:right">NI p=.12</td>
+<td><strong>未達非劣性</strong>；CI 下界跨過 0.90</td>
+</tr>
+<tr>
+<td><strong>CRT 反應（on-treatment）</strong>：依實際接受的節律方式分組</td>
+<td style="text-align:right"><strong>92.8%（64/69）</strong></td>
+<td style="text-align:right"><strong>91.3%（84/92）</strong></td>
+<td style="text-align:right">RR 0.98（0.91–1.06）</td>
+<td style="text-align:right">NI p=.03</td>
+<td>非隨機比較，屬探索性</td>
+</tr>
+<tr>
+<td><strong>CCS 改善</strong>：死亡、HF 住院、NYHA、病人整體評估的階層分類</td>
+<td style="text-align:right"><strong>77%</strong></td>
+<td style="text-align:right"><strong>68%</strong></td>
+<td style="text-align:right">RD −9%（約 −23 至 +5）[自行計算]</td>
+<td style="text-align:right">.19</td>
+<td>病人中心成分 LBBAP 數字較差，CI 很寬</td>
+</tr>
+<tr>
+<td><strong>LVESV 降 ≥15%</strong>：收縮末期容積下降達 15% 的人數比例</td>
+<td style="text-align:right"><strong>85%（62/73）</strong></td>
+<td style="text-align:right"><strong>79%（68/86）</strong></td>
+<td style="text-align:right">RD −6%（約 −18 至 +6）[自行計算]</td>
+<td style="text-align:right">.34</td>
+<td>重塑反應者比例 LBBAP 較低，無法定論</td>
+</tr>
+<tr>
+<td><strong>ΔLVEF 6 個月</strong>：LVEF 絕對上升點數</td>
+<td style="text-align:right"><strong>+16.3±10.4</strong></td>
+<td style="text-align:right"><strong>+14.4±11.3</strong></td>
+<td style="text-align:right">−1.9（約 −5.3 至 +1.5）[自行計算]</td>
+<td style="text-align:right">.29</td>
+<td>下界接近 5 點，無法排除有意義的劣勢</td>
+</tr>
+<tr>
+<td>ΔLVEF 12 個月</td>
+<td style="text-align:right"><strong>+19（16–21）</strong></td>
+<td style="text-align:right"><strong>+16（14–18）</strong></td>
+<td style="text-align:right">未報告</td>
+<td style="text-align:right">.22</td>
+<td>方向一致，仍是 BiVP 數字較佳</td>
+</tr>
+<tr>
+<td><strong>Super-responder 12 個月</strong>：LVEF 升 ≥20 點或 &gt;50%</td>
+<td style="text-align:right"><strong>63%</strong></td>
+<td style="text-align:right"><strong>49%</strong></td>
+<td style="text-align:right">RD −14% [自行計算]</td>
+<td style="text-align:right">.07</td>
+<td>12 個月差距反而擴大</td>
+</tr>
+<tr>
+<td>全死因死亡（12 個月）</td>
+<td style="text-align:right"><strong>3</strong></td>
+<td style="text-align:right"><strong>0</strong></td>
+<td style="text-align:right">未報告</td>
+<td style="text-align:right">.06</td>
+<td>均非心血管死因；其中 2 人實際接受 LBBAP</td>
+</tr>
+<tr>
+<td>HF 住院</td>
+<td style="text-align:right"><strong>3</strong></td>
+<td style="text-align:right"><strong>5</strong></td>
+<td style="text-align:right">未報告</td>
+<td style="text-align:right">.67</td>
+<td>事件數過少，無法判讀</td>
+</tr>
+<tr>
+<td>死亡或 HF 住院</td>
+<td style="text-align:right"><strong>6</strong></td>
+<td style="text-align:right"><strong>5</strong></td>
+<td style="text-align:right">未報告</td>
+<td style="text-align:right">.56</td>
+<td>樣本數不足以比較臨床事件</td>
+</tr>
+<tr>
+<td>手術相關併發症（任何）</td>
+<td style="text-align:right"><strong>12.2%</strong></td>
+<td style="text-align:right"><strong>10.9%</strong></td>
+<td style="text-align:right">未報告</td>
+<td style="text-align:right">.81</td>
+<td>整體相近，但類型不同</td>
+</tr>
+<tr>
+<td>中膈穿孔</td>
+<td style="text-align:right"><strong>0</strong></td>
+<td style="text-align:right"><strong>6（6.5%）</strong></td>
+<td style="text-align:right">未報告</td>
+<td style="text-align:right">.03</td>
+<td>LBBAP 特有風險，均無臨床後果</td>
+</tr>
+<tr>
+<td>CS dissection</td>
+<td style="text-align:right"><strong>7（8.5%）</strong></td>
+<td style="text-align:right"><strong>1（1.1%）</strong></td>
+<td style="text-align:right">未報告</td>
+<td style="text-align:right">.03</td>
+<td>BiVP 特有風險；正文寫 8 例，與表不一致</td>
+</tr>
+<tr>
+<td>透視時間</td>
+<td style="text-align:right"><strong>19 分鐘</strong></td>
+<td style="text-align:right"><strong>11 分鐘</strong></td>
+<td style="text-align:right">未報告</td>
+<td style="text-align:right">.01</td>
+<td>LBBAP 輻射暴露較少</td>
+</tr>
+<tr>
+<td>交叉治療比例</td>
+<td style="text-align:right"><strong>20.7%（17/82）</strong></td>
+<td style="text-align:right"><strong>9.8%（9/92）</strong></td>
+<td style="text-align:right">未報告</td>
+<td style="text-align:right">.04</td>
+<td>BiVP 植入失敗率約為 LBBAP 的兩倍</td>
+</tr>
+<tr>
+<td><strong>ΔLVESV：LBBP vs LVSP</strong>（探索性，on-treatment，6 個月）</td>
+<td style="text-align:right">LBBP <strong>−36.9 mL/m²</strong></td>
+<td style="text-align:right">LVSP <strong>−24.1 mL/m²</strong></td>
+<td style="text-align:right">差 −12.8 [自行計算]</td>
+<td style="text-align:right">.019</td>
+<td>依植入後結果分組，有嚴重干擾，只能產生假說</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>表後補充</strong></p>
+<ul>
+<li><strong>主要分析的缺漏不對稱</strong>：ITT 分母 BiVP 74/83（排除 10.8%）、LBBAP 87/92（排除 5.4%）[Figure 1]。
+<ul>
+<li>BiVP 被排除的人包括 <strong>3 例 pocket infection 移除裝置</strong>；正文另提到 2 例死亡發生在 6 個月前。這些人都是「策略失敗」，卻被當成缺漏資料剔除，見 C4 敏感度推算。</li>
+</ul>
+</li>
+<li><strong>CI 寬度的實際意義</strong>：本文標示的「95% CI 0.88–1.02」，經我依原始計數回推，與<strong>雙側 90% CI</strong> 相符（約 0.879–1.022）；真正的雙側 95% CI 約 0.87–1.04 [自行計算]。這與單側 α=.05 的設計一致，但標示有誤導之嫌。</li>
+<li><strong>基線資料內部矛盾</strong>（見 C4）：
+<ul>
+<li>Table 1 的 hypertension 19%/17%、CKD 5%/2%，與 Supplement Table S1 的 72%/63%、28%/18% 相差懸殊。</li>
+<li>Table 1 中 BiVP 組 GFR 的 IQR 下緣為 50，代表至少約 25% 病人 GFR &lt;60，「CKD 5%」在數學上不可能成立。</li>
+</ul>
+</li>
+<li><strong>capture 型態</strong>：最終判定 LBBP 只有 38/92（41%），LVSP 50（54%），DSP 4（4%）[文內]。</li>
+</ul>
+<h3>6. 作者討論與評論重點</h3>
+<ul>
+<li><strong>主要訊息</strong>：ITT 未證實非劣性；on-treatment 看似相近但屬探索性；兩組反應率都 &gt;90%、臨床事件相近；確認的 LBBP 似乎優於 LVSP。</li>
+<li><strong>與現有文獻比較</strong>：作者以「Strauss LBBB 篩選後反應率極高，壓縮了證明非劣性的空間」解釋結果，也以「務實的交叉策略」說明 BiVP 交叉偏高。</li>
+<li><strong>作者列出的限制</strong> [文內]：
+<ul>
+<li>交叉比例高且不對稱；</li>
+<li>只收典型 LBBB；</li>
+<li>EQ-5D 為通用量表；</li>
+<li>echo core lab 可能看得到導線位置；</li>
+<li>capture 型態是事後依 EHRA 共識判定。</li>
+</ul>
+</li>
+<li><strong>[評估] 遺漏的限制</strong>：
+<ol>
+<li>「ITT」實為 complete-case 分析，且缺漏不對稱；</li>
+<li>主要終點是寬鬆的 OR 型合成終點，有天花板效應；</li>
+<li>樣本數假設 LBBAP 反應率較 BiVP 高 10%，屬樂觀設定；</li>
+<li>NI margin 在樣本數計算用絕對差、在分析用相對比，尺度不一致；</li>
+<li>基線表與 supplement 多處數字矛盾；</li>
+<li>CCS 的 NYHA／病人整體評估由誰執行、是否設盲，未交代。</li>
+</ol>
+</li>
+<li><strong>超出數據支持的說法</strong>：「both strategies yielded similar clinical outcomes」。本試驗並未針對臨床事件設計等效檢定，事件只有 5–6 件，無法支持「相似」，只能說「無法區分」。</li>
+</ul>
+<h3>7. 外部專業意見</h3>
+<p><strong>Hatala R, Margitfalvi P. Pursuing physiological resynchronization in heart failure with reduced ejection fraction and left bundle branch block. Eur Heart J 2026;47:6265–6267（doi:10.1093/eurheartj/ehag581）</strong> [外部: EHJ editorial 全文]</p>
+<ul>
+<li><strong>肯定之處</strong>：採用 Strauss LBBB 是方法學上的優點，讓各試驗可以比較；高反應率（&gt;90%，約一半為 super-responder）顯示病人篩選才是 CRT 成功的關鍵。</li>
+<li><strong>核心論點</strong>：把五項 LBBAP vs BiVP RCT 放在一起看：
+<ul>
+<li>達成非劣性或優越性的試驗，LBBP 比例都 &gt;80%：LBBP-RESYNC 100%、CSP-SYNC 79%、HeartSync-LBBP 98%（3 年死亡＋HF 住院 HR 0.26）。</li>
+<li>未達非劣性的試驗，LBBP 比例 &lt;50%：本研究 41%；PhysioSync-HF 只有 63% 接受 LBBAP，且 OR 2.36 對 CSP 不利。</li>
+<li>作者認為「接受任何形式的 LBBAP（含 LVSP）」會稀釋 LBBP 的效益；在高經驗中心可以 LBBP 為首選、BiVP 作後援；一般臨床則仍以 BiVP 為標準。</li>
+</ul>
+</li>
+<li><strong>方法學批評</strong>：植入者經驗不足（作者引用 MELOS 建議的 &gt;110 例門檻）、LBBP 達成率低。</li>
+<li><strong>[評讀者註] editorial 本身的事實錯誤</strong>：
+<ul>
+<li>稱本研究病人「mean age 74」，但 Table 1 中位數為 67–68 歲。</li>
+<li>稱本研究術者只有「30–40 例」LBBAP 經驗，與本文 Methods 要求「每種技術 ≥100 例」直接矛盾。</li>
+<li>稱 NI 門檻為「lower limit &lt;0.88」，與本文設定的 0.90 不符。</li>
+<li>因此 editorial 的「經驗不足」論點，在本文資料中缺乏直接支持。較合理的替代解釋是本文對 LBBP 採用嚴格的「QRS transition 唯一準則」，導致 LBBP 比例看起來偏低，見 F 節。</li>
+</ul>
+</li>
+</ul>
+<h3>8. 臨床建議</h3>
+<ul>
+<li><strong>可採用的情境</strong>：Strauss LBBB、竇性心律、LVEF ≤35%、NYHA I–III。本研究支持「<strong>BiVP 為首選，CS 植入失敗或閾值／膈神經問題時以 LBBAP 作為 bailout</strong>」。BiVP 組有 20.7% 需要 bailout，bailout 後整體反應仍高。</li>
+<li><strong>不建議直接套用的情境</strong>：
+<ul>
+<li>非 LBBB 或 IVCD、AF、需大量心室起搏的族群；</li>
+<li>以本研究推論 LBBAP 在臨床事件上「相等」；</li>
+<li>以 LVSP 作為 LBBAP「成功」的終點。</li>
+</ul>
+</li>
+<li><strong>實務建議</strong>：
+<ol>
+<li>典型 LBBB 的 CRT 第一線仍以 BiVP 為預設；中心可依自身 LBBP 確認率決定是否改採 LBBAP-first，但需追蹤自己的 LBBP 達成率。</li>
+<li>若走 LBBAP，盡量取得有 QRS transition 證據的 LBBP；只得到 LVSP 時，應考慮加放 CS 導線或改走 BiVP。這屬假說層級，需要對病人說明證據不足。</li>
+<li>知情同意需說清楚兩種技術的特有併發症：中膈穿孔約 6.5% vs CS dissection 約 8.5%；LBBAP 透視時間較短。</li>
+</ol>
+</li>
+<li><strong>證據強度</strong>：<strong>中</strong>。單一國家、176 人、替代性合成終點、complete-case 主分析與數據完整性問題，限制了強度。</li>
+</ul>
+<hr />
+<h2>SKILL-A：批判性評讀</h2>
+<h3>A. 補充技術細節</h3>
+<ul>
+<li><strong>樣本數</strong>：
+<ul>
+<li>假設 BiVP 70%、LBBAP 80%，等於把「LBBAP 比較好」寫進前提，屬樂觀假設。</li>
+<li>實際反應率約 92%，且 LBBAP 數字較低。依 RD SE≈4.2% 推算，若真實差異為 0，偵測 10% margin 的 power 約 77%；若真實差異為 −4.9%，power 降到約 11% [自行計算，常態近似]。結果未達非劣性，部分歸因於設計假設不切實際。</li>
+<li>實際可評估人數 161，略高於所需的 160。</li>
+</ul>
+</li>
+<li><strong>隨機化</strong>：方法、區塊與 allocation concealment 均未描述 [無法判定]。登錄資料提到「block size」但沒有細節。</li>
+<li><strong>盲法</strong>：病人設盲；CCS 中的 NYHA 與 patient global assessment 由誰評估、是否設盲，<strong>未說明</strong>；echo core lab 部分設盲。</li>
+<li><strong>ITT vs on-treatment</strong>：兩者結論不同，ITT 不成立、on-treatment 成立。
+<ul>
+<li>依 JAMA Users' Guide，非劣性試驗應同時報告兩種分析，且<strong>兩者都成立</strong>才可較有信心宣稱非劣性 [參考: jug120004_2605_2611.md 圖 1 與分析族群段]。本研究兩者不一致，屬「indeterminate（scenario C）」。</li>
+</ul>
+</li>
+<li><strong>NI margin 尺度不一致</strong>：樣本數以「BiVP 優勢 &gt;10%」的絕對差設計；分析卻以 RR 下界 0.90 判定。
+<ul>
+<li>在 94.6% 的基線下，RR 0.90 等於約 9.5% 絕對差，兩者接近。</li>
+<li>但換到「無反應率」的尺度，容許 LBBAP 的無反應率從 5.4% 升到約 15%，<strong>接近三倍</strong>。這個 margin 對病人其實不算嚴格。</li>
+</ul>
+</li>
+<li><strong>多重比較</strong>：次要終點多（6 與 12 個月、ITT 與 on-treatment、capture 亞組），均未校正。</li>
+<li><strong>缺漏資料</strong>：不補值；6 個月缺 echo 或 CCS 者直接剔除，死亡與裝置移除也包含在內。</li>
+</ul>
+<h4>A1. 非劣性設計子模組</h4>
+<ul>
+<li><strong>margin 合理性</strong>：作者稱「與既往 CRT 研究一致」，但沒有提出 BiVP 相對無 CRT 的效果量依據（M1/M2 推導），屬經驗設定。</li>
+<li><strong>active comparator 是否最佳化</strong>：BiVP 採 lateral / posterolateral、非心尖位置、全部使用 quadripolar 導線，comparator 執行品質良好 [文內]。</li>
+<li><strong>ITT 在非劣性試驗中不一定保守</strong>：本研究交叉為雙向，而且 BiVP 組的交叉者被 LBBAP「救回」，ITT 實際比較的是「<strong>BiVP-first 策略（含 LBBAP 後援）vs LBBAP-first 策略（含 BiVP 後援）</strong>」。這是臨床上最相關的策略 estimand，並沒有被稀釋。</li>
+<li><strong>on-treatment 分析不具隨機保護</strong>：
+<ul>
+<li>9 名 LBBAP 失敗者（包括 6 名「左側中膈導線位置正確卻無法矯正 LBBB」）被移到 BiVP 組；這類病人可能有遠端傳導病變或心肌病變，本身反應就可能較差。</li>
+<li>17 名 CS 失敗者被移到 LBBAP 組。</li>
+<li>這種移動可能<strong>偏向讓 LBBAP 看起來較好</strong>。ITT 時 BiVP 反應 70/74，on-treatment 降為 64/69，與「難治個案被移入 BiVP」的推測一致 [推論]。</li>
+</ul>
+</li>
+<li><strong>LOT-CRT 混合裝置</strong>：LBBAP 組有 2 例 LOT-CRT [Supplement Table S2]，正文未提及，ITT／on-treatment 如何歸類不明。</li>
+</ul>
+<h3>B. 批判性評估</h3>
+<h4>B1. 假說與理論邏輯</h4>
+<ul>
+<li><strong>假說</strong>：LBBAP 直接矯正近端 LBBB，可恢復生理性心室激動，事前指定且機轉合理 [Introduction]。</li>
+<li><strong>最可能成立的機轉</strong>：
+<ol>
+<li>真正的 LBBP 能矯正近端阻斷，與 BiVP 達到相同電學同步：paced QRS 130 vs 130 ms [Supplement Table S2]。</li>
+<li>LVSP 只部分重建左心室激動，重塑較少：ΔLVEF 12 個月 LBBP +19.5 vs LVSP +13.9，p=.018 [Supplement Table S6]。</li>
+</ol>
+</li>
+<li><strong>可疑的敘事跳躍</strong>：
+<ol>
+<li>Discussion 從 S6 的事後亞組推論「achieving true conduction system capture... may be critical」。LBBP 與 LVSP 是<strong>植入後的結果</strong>，而非隨機分派；能被 LBBP capture 的病人可能本身就是近端阻斷、心肌病變較輕，干擾難以排除。</li>
+<li>把「極高反應率」當作未達非劣性的主要理由。然而 BiVP 數字在 6 個月與 12 個月的多數指標都較佳（CCS、LVESV ≥15%、ΔLVEF、super-responder），整體方向一致，不只是天花板造成的統計假象。</li>
+</ol>
+</li>
+</ul>
+<h4>B2. 受試者與外推性</h4>
+<ul>
+<li><strong>基線差異</strong>：
+<ul>
+<li>有統計差異：LBBAP 基線 QRS 較寬（171 vs 165，p=.04）、EQ-5D 較佳（p=.01）。</li>
+<li>無統計差異但數字差距大：NYHA III 為 27% vs 13%（p=.08）。BiVP 組 NYHA III 較多，代表 CCS「改善」的空間較大，這可能讓 BiVP 在 CCS 上佔優勢。</li>
+</ul>
+</li>
+<li><strong>外推性分級</strong>：
+<ol>
+<li><strong>一般 CRT 族群（含非 Strauss LBBB、IVCD、AF）</strong>：遠，不應外推。作者坦承 Strauss LBBB 只佔 CRT 候選人約一半（editorial 亦同）。</li>
+<li><strong>Strauss LBBB、竇性心律、以非缺血為主（73%）</strong>：近，但只限於術者兩種技術都有 ≥100 例經驗的西班牙中心。</li>
+<li><strong>特殊族群（高齡、CKD、缺血性心肌病）</strong>：中至遠。缺血族群僅 48 人；CKD 比例因表格矛盾無法確定。</li>
+</ol>
+</li>
+</ul>
+<h4>B3. 研究設計與偏差</h4>
+<ul>
+<li><strong>allocation concealment 未描述</strong>：選擇偏差的風險無法判定。</li>
+<li><strong>盲法不完整</strong>：
+<ul>
+<li>登錄資料寫「open」，正文寫病人設盲；</li>
+<li>CCS 的 NYHA 與 patient global assessment 屬主觀判斷，若評估者知道分組，偏差方向不定；</li>
+<li>echo core lab 可能看見導線。</li>
+</ul>
+</li>
+<li><strong>對照組適當性（Gyawali）</strong>：BiVP 是目前的標準治療，comparator 恰當；也沒有「劣質對照」的問題。</li>
+<li><strong>最可能造成偏差的設計點</strong>：
+<ol>
+<li><strong>complete-case「ITT」與不對稱剔除</strong>：BiVP 剔除 10.8%，含 3 例感染移除裝置與早期死亡；LBBAP 剔除 5.4%。把策略失敗當成缺漏，<strong>偏向讓 BiVP 看起來較好</strong>。</li>
+<li><strong>on-treatment 的選擇性重新分組</strong>：<strong>偏向讓 LBBAP 看起來較好</strong>（見 A1）。</li>
+<li><strong>寬鬆的 OR 型合成終點</strong>：只要 CCS 改善「或」echo 達標就算反應者。一位 HF 住院（CCS 惡化）但 LVESV 降 ≥15% 的病人也算 responder。天花板效應讓兩組都約 92%，<strong>使結果偏向無差異</strong>；同時壓縮了資訊量。</li>
+</ol>
+</li>
+<li><strong>post-protocol 處置</strong>：1 例 DSP 無反應者後來重放 LBBAP 導線並達成 LBBP [文內]。分析時歸到哪一組不明。</li>
+</ul>
+<h4>B4. 測量工具與實務意義</h4>
+<ul>
+<li><strong>LVESV ≥15%</strong> 是 CRT 研究常用的替代終點，但單次 echo 測量變異約 10% 上下；core lab 判讀可降低變異 [推論]。</li>
+<li><strong>CCS</strong> 混合了硬終點（死亡、HF 住院）與軟終點（NYHA、病人整體評估）。本研究 6 個月內的硬事件極少，CCS 實質上由主觀成分主導。</li>
+<li><strong>就算結果是真的，臨床意義有多大</strong>：
+<ul>
+<li>ITT 的絕對差 −4.9%，等於每治療約 20 人，BiVP-first 策略多出 1 位 responder [自行計算，NNT≈20，CI 跨 0]；</li>
+<li>12 個月 super-responder 差 14%；</li>
+<li>對病人而言，主要權衡是：BiVP 植入失敗率較高、CS dissection 較多、透視較長，對比 LBBAP 中膈穿孔與 LVSP 的不確定性。</li>
+</ul>
+</li>
+</ul>
+<h3>C. 統計與資料完整性</h3>
+<h4>C1. 結果分類（CI + MCID）</h4>
+<ul>
+<li><strong>Step 1｜MCID</strong>：主要終點以 NI margin 作為「傷害方 MCID」：RR 0.90，約等於絕對差 −10% [文內]。ΔLVEF 以 5 個百分點作為 MCID [推算，CRT 領域常用門檻]。</li>
+<li><strong>Step 2｜分類</strong>：
+<ul>
+<li><strong>主要終點（ITT）</strong>：RR 0.95，90% CI 0.88–1.02 下界越過 0.90，上界越過 1.0 → <strong>INCONCLUSIVE（非劣性無法確立，也沒有證明劣性）</strong>。
+<ul>
+<li>依 JAMA NI 框架屬 scenario C「indeterminate」[參考: jug120004_2605_2611.md 圖 1]。</li>
+<li>文章結論用「was not shown to be non-inferior」，措辭正確；但不能解讀為「LBBAP 較差」，也不能解讀為「兩者相同」。</li>
+</ul>
+</li>
+<li><strong>主要終點（on-treatment）</strong>：90% CI 0.91–1.06 未跨 0.90，形式上非劣，但屬非隨機比較，<strong>只能算探索性</strong>。</li>
+<li><strong>CCS 改善</strong>：RD −9%，95% CI 約 −23% 至 +5% → <strong>INCONCLUSIVE</strong>，CI 同時包含 0 與 −10%。</li>
+<li><strong>ΔLVEF 6 個月</strong>：−1.9，95% CI 約 −5.3 至 +1.5 → <strong>INCONCLUSIVE 偏向 NEGATIVE（對 LBBAP 優越性而言）</strong>。CI 已排除 LBBAP 有臨床意義的優勢（&gt;+5），但下界剛好觸及 −5，無法排除 LBBAP 有臨床意義的劣勢。</li>
+<li><strong>死亡、HF 住院</strong>：事件 3–6 件 → <strong>INCONCLUSIVE</strong>；「similar clinical outcomes」的說法不成立。</li>
+</ul>
+</li>
+<li><strong>Step 3｜謬誤檢查</strong>：
+<ul>
+<li>作者沒有用 post-hoc power；</li>
+<li>主要結果的措辭大致避開了「p&gt;.05 = no difference」；</li>
+<li>但 Results 中「LVESV... was similar」、「no significant differences between groups」，以及 Abstract 的「Rates of adverse events and HF hospitalization were similar」，<strong>屬於把 p&gt;.05 當成相同</strong>。</li>
+</ul>
+</li>
+</ul>
+<h4>C2. Underpowered 與 Winner's Curse</h4>
+<ul>
+<li>主要終點是「underpowered 的不顯著結果」，CI 同時涵蓋無差異與 margin，而非 underpowered positive，因此 Winner's Curse 不適用於主結果。</li>
+<li><strong>探索性的 LBBP vs LVSP 顯著結果（p=.018–.023）</strong>：n=38 vs 50、事後分組、多重比較，<strong>高度可能存在 Type M error（效果量被高估）</strong>。不宜直接拿來設計下一個試驗的 power。</li>
+</ul>
+<h4>C3. Bayesian 補充分析（近似）</h4>
+<ul>
+<li>以非資訊性先驗、常態近似，RD = −4.9%、SE ≈ 4.2% [自行計算]：
+<ul>
+<li>Pr(RD &gt; −10%，即非劣) ≈ <strong>0.89</strong>；</li>
+<li>Pr(RD &lt; 0，即 LBBAP 數字較差) ≈ <strong>0.88</strong>；</li>
+<li>Pr(−5% &lt; RD &lt; +5%，即實質等效 ROPE) ≈ <strong>0.50</strong>。</li>
+</ul>
+</li>
+<li><strong>解讀</strong>：資料傾向「LBBAP 可能略差，但大概落在 margin 內」，等效機率只有一半。</li>
+<li>[限制：未做 skeptical / optimistic 先驗敏感度分析；個體層級資料不可得，結果僅供方向參考]</li>
+</ul>
+<h4>C4. 報告完整性與數據一致性紅旗</h4>
+<ul>
+<li><strong>缺漏資料敏感度推算</strong> [自行計算／推論]：
+<ul>
+<li>若把 BiVP 組 3 例感染移除與 2 例 6 個月前死亡視為無反應，並把 LBBAP 組 1 例感染視為無反應，反應率變為 BiVP 70/79 = 88.6%、LBBAP 78/88 = 88.6%，<strong>RD ≈ 0</strong>。</li>
+<li>極端情境：BiVP 缺漏全計為失敗、LBBAP 全計為成功 → 84.3% vs 90.2%；反向極端 → 95.2% vs 84.8%。</li>
+<li>結論隨缺漏處理方式而翻轉，<strong>主結果對缺漏處理極度敏感</strong>；正文沒有做任何敏感度分析。</li>
+<li>[限制：無法確認 2 例早期死亡是否已包含在「4 patients without 6-month TTE」中]</li>
+</ul>
+</li>
+<li><strong>Table 1 與 Supplement Table S1 數字矛盾</strong>：
+<ul>
+<li>Hypertension：19%/17% vs 72%/63%；Diabetes：57%/61% vs 46%/44%；CKD：5%/2% vs 28%/18%。</li>
+<li>Table 1 的 CKD 比例與其 GFR IQR 互相矛盾。疑似列名錯置。</li>
+</ul>
+</li>
+<li><strong>NYHA（Table 1，LBBAP 組）</strong>：10+73+12 = 95 ≠ 92；73/92 應為 79%，不是 76%。</li>
+<li><strong>QRS 中位數</strong>：Abstract 寫 172 ms，正文與 Table 1 寫 171 ms。</li>
+<li><strong>CS dissection</strong>：Table 4 為 7 例，正文為「eight cases」。</li>
+<li><strong>Table 2（ITT，12 個月）</strong>：LBBAP 的 LVEF 中位數 54 高於 BiVP 51，但 ΔLVEF（+16 vs +19）與 super-responder（49% vs 63%）均較低；且與 on-treatment 的 LBBAP LVEF 49 [40–54] 差距不合理，疑似誤植。</li>
+<li><strong>Table 2（on-treatment）</strong>：BiVP ΔLVEDV「−26（−31 to −25）」，點估計緊貼 CI 邊界、CI 不對稱。</li>
+<li><strong>Supplement Table S6</strong>：ΔLVEDV「−25.6（−13.1 to −8.7）」與「−37.4（−14.3 to −8.4）」，<strong>點估計落在 CI 之外</strong>，數值不可能成立。</li>
+<li><strong>Supplement Table S3</strong>：LBBAP 6 個月閾值「0.50 [0.6–1.3]」，中位數落在 IQR 之外。正文稱 CS 導線閾值顯著較高，但 Supplement Table S2 中 CS 導線為 1.0 [0.6–1.2] vs 1.0 [0.7–1.8]（p=1），兩者對不上。</li>
+<li><strong>Supplement Table S2 加總</strong>：BiVP 組 65 + 16 = 81 ≠ 82；LBBAP 組 9 + 82 + 2 = 93 ≠ 92。</li>
+<li><strong>CI 標示</strong>：「95% CI」實為雙側 90% CI（見第 5 節）；Methods 同時寫「Tests were two-sided」。</li>
+<li><strong>Kaplan-Meier</strong>：本文沒有 KM 圖；事件以 Fisher's exact test 與「annual actuarial incidence」呈現，沒有時間至事件分析或 number at risk。</li>
+<li><strong>圖表判讀</strong> [page_002、page_007、page_009 圖檔]：
+<ul>
+<li><strong>Figure 2</strong> 與 graphical abstract 長條圖的 y 軸<strong>從 70% 起算</strong>，使 95% vs 90% 的差距在視覺上被放大，同時讓「兩組都很高」的印象較不明顯。</li>
+<li><strong>Figure 3A</strong>：菱形點估計 0.95 位於 1 左側，綠色 CI 線段左端明顯越過 0.90 黃色虛線、右端越過 1.0，與文字一致。</li>
+<li><strong>Figure 3B</strong>：CI 左端約在 0.91，剛好在虛線右側。</li>
+<li><strong>Figure 4</strong> 的 y 軸從 0 起算，可正常判讀：ITT 12 個月 super-responder 為 Overall 55%、BiVP 63%、LBBAP 49%。圖說寫「Data corresponding to the 161 patients」，但 on-treatment 的分組人數不同，標示含糊。</li>
+</ul>
+</li>
+<li><strong>Figure 1 流程圖</strong> [page_005]：
+<ul>
+<li>把「9 crossed-over from LBBAP-CRT」畫在 BiVP 臂下、把「17 crossed-over from BiVP-CRT」畫在 LBBAP 臂下，等於把 on-treatment 的流向混進 ITT 的分派流程，<strong>容易誤讀</strong>。</li>
+<li>人數可對上：BiVP 83 − 9 = 74；LBBAP 92 − 5 = 87；兩臂排除合計 14 人，與正文的 8 人退出 + 6 人缺 6 個月訪視相符。</li>
+<li>但流程圖<strong>沒有列出死亡</strong>，無法確認死亡個案的去向。</li>
+</ul>
+</li>
+</ul>
+<h3>D. 次組分析評估</h3>
+<div class="table-wrap wide"><table>
+<thead>
+<tr>
+<th>次組</th>
+<th>Interaction p</th>
+<th>與其他研究一致性</th>
+<th>事前指定</th>
+<th>生物機轉</th>
+<th>可信度</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>LBBP vs LVSP（Supplement Table S6、Supplement Figure 1）</td>
+<td>無；只有組間 p</td>
+<td>與觀察性研究及 editorial 彙整方向一致</td>
+<td>部分：登錄的是「LBBP vs deep septal pacing」，<strong>正文改為 LBBP vs LVSP</strong></td>
+<td>合理</td>
+<td><strong>低／推測性</strong>：依植入結果分組、非隨機、n 小、數值有誤</td>
+</tr>
+<tr>
+<td>缺血 vs 非缺血（分層因子）</td>
+<td>未報告</td>
+<td>—</td>
+<td>是（分層）</td>
+<td>—</td>
+<td>無法判定（未呈現）</td>
+</tr>
+</tbody>
+</table></div>
+<h3>E. 紅旗清單</h3>
+<ul>
+<li><strong>設計</strong>：主要分析標為 ITT，實為 complete-case，且剔除不對稱；死亡與裝置感染被當作缺漏處理。</li>
+<li><strong>設計</strong>：OR 型反應終點寬鬆且有天花板效應，HF 住院的病人也可能被算作 responder。</li>
+<li><strong>統計</strong>：樣本數假設 LBBAP 優於 BiVP 10%；NI margin 在設計與分析時尺度不一致；「95% CI」實為 90% CI。</li>
+<li><strong>統計</strong>：on-treatment 分析在登錄資料中沒有記載，正文措辭含糊；Figure 2 圖說卻稱其為「prespecified」。</li>
+<li><strong>數據完整性</strong>：Table 1 與 Supplement Table S1 多項基線比例嚴重矛盾，Supplement Table S6 的 CI 數學上不可能，多處加總不符。這是<strong>同儕審查與編輯校對的明顯失守</strong>。</li>
+<li><strong>敘事</strong>：在 ITT 不成立的情況下，graphical abstract 仍寫「LBBAP represents an alternative」；「similar clinical outcomes」超出了樣本數所能支持的範圍。</li>
+<li><strong>敘事</strong>：登錄的次要分析是「LBBP vs DSP」，正文改為「LBBP vs LVSP」，並在 Discussion 中被放大詮釋。</li>
+<li><strong>COI</strong>：Medtronic 資助、單一廠牌裝置，steering committee 全員有 Medtronic 顧問關係；但主結果為「未成立」，偏差方向有限。</li>
+<li><strong>外推</strong>：僅限西班牙 11 家高經驗中心、Strauss LBBB、竇性心律族群。</li>
+</ul>
+<h3>F. 反向解釋</h3>
+<ol>
+<li><strong>「真實差異接近 0，ITT 未達標純粹是缺漏處理造成」</strong>
+<ul>
+<li>支持：BiVP 剔除較多（10.8% vs 5.4%），被剔除者是感染與早期死亡；把這些人視為無反應後，兩組反應率都約 88.6%。</li>
+<li>反對：BiVP 在 CCS、LVESV、ΔLVEF、super-responder 各項數字都一致較佳，不像單純的缺漏偏差。</li>
+</ul>
+</li>
+<li><strong>「LBBAP 效果被 LVSP 稀釋」</strong>（editorial 的主張）
+<ul>
+<li>支持：LBBP 只佔 41%；Supplement Table S6 中 LBBP 的重塑優於 LVSP。</li>
+<li>反對：LBBP 與 LVSP 是植入結果，有嚴重干擾；Supplement Figure 1 中 LVSP 對 BiVP 的非劣性 p=.08，也沒有很差。</li>
+</ul>
+</li>
+<li><strong>「LBBP 比例偏低，是因為判定準則嚴格，而不是術者經驗不足」</strong>
+<ul>
+<li>支持：本研究只用「unipolar 遞減輸出時的 QRS transition」作為 LBBP 的唯一準則，作者承認在擴張性心肌病合併 LBBB 時，其他準則的診斷率低；術者要求 ≥100 例經驗。</li>
+<li>反對：其他試驗（如 HeartSync）在同類族群中報告 &gt;95% 的 LBBP，準則差異可能只是部分原因 [推論]。</li>
+</ul>
+</li>
+<li><strong>「BiVP 交叉者被 LBBAP 救回，使 BiVP-first 策略的 ITT 成績被墊高」</strong>
+<ul>
+<li>支持：17 名 CS 失敗者在 ITT 中算作 BiVP 組，且 bailout 後反應良好。</li>
+<li>反對：這正是臨床真實會採用的策略，此 estimand 本身有意義，不構成偏差。</li>
+</ul>
+</li>
+</ol>
+<h3>G. 最終裁決</h3>
+<ul>
+<li><strong>整體可信度：中偏低</strong>。主要結論「未證實非劣性」本身可信，但由於缺漏處理方式與數據完整性問題，「LBBAP 較差」與「兩者相當」<strong>兩個方向都無法下定論</strong>。</li>
+<li><strong>可採用的條件</strong>：作為「Strauss LBBB 病人採 BiVP-first、LBBAP 作為 bailout 仍屬合理標準做法」的支持證據；也可作為兩種技術併發症型態的參考數據。</li>
+<li><strong>不建議採用的情境</strong>：用來宣稱 LBBAP 與 BiVP 等效、用 on-treatment 結果支持 LBBAP-first，或把 LBBP &gt; LVSP 當成既定事實。</li>
+<li><strong>若要改觀，最需要的三項改進</strong>：
+<ol>
+<li>把死亡與裝置移除視為治療失敗的真正 ITT 分析，加上 multiple imputation 敏感度分析，並公開 SAP。</li>
+<li>更正 Table 1、Table 2 與 Supplement Table S2、S3、S6 的數據矛盾，並公布完整 protocol。</li>
+<li>以臨床硬終點設計、事前隨機分派「必須達成 LBBP 才算成功」的大型多國試驗。</li>
+</ol>
+</li>
+<li><strong>一句話結論</strong>：在典型 LBBB 病人，LBBAP 未能證明不劣於雙心室節律；兩者差距可能不大，但證據不足以改變以 BiVP 為首選的做法。</li>
+</ul>
+<hr />
+<h3>CONDITIONAL OUTPUT：效果量表（ITT）</h3>
+<div class="table-wrap wide"><table>
+<thead>
+<tr>
+<th>指標</th>
+<th>介入組（LBBAP）</th>
+<th>對照組（BiVP）</th>
+<th>效果量</th>
+<th>95% CI</th>
+<th>ARD</th>
+<th>MCID</th>
+<th>結果分類</th>
+<th>實務意義</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>CRT 反應（主要終點）</td>
+<td>89.7%（78/87）</td>
+<td>94.6%（70/74）</td>
+<td>RR 0.95</td>
+<td>文內標示 0.88–1.02（實為 90% CI）；雙側 95% 約 0.87–1.04 [自行計算]</td>
+<td>−4.9%</td>
+<td>RR 0.90（約 −10%）</td>
+<td><strong>INCONCLUSIVE</strong></td>
+<td>非劣性未確立，也未證明劣性</td>
+</tr>
+<tr>
+<td>CCS 改善</td>
+<td>68%</td>
+<td>77%</td>
+<td>RD −9%</td>
+<td>約 −23% 至 +5% [自行計算]</td>
+<td>−9%</td>
+<td>10% [推算]</td>
+<td><strong>INCONCLUSIVE</strong></td>
+<td>病人中心成分數字偏向 BiVP</td>
+</tr>
+<tr>
+<td>LVESV 降 ≥15%</td>
+<td>79%</td>
+<td>85%</td>
+<td>RD −6%</td>
+<td>約 −18% 至 +6% [自行計算]</td>
+<td>−6%</td>
+<td>10% [推算]</td>
+<td><strong>INCONCLUSIVE</strong></td>
+<td>—</td>
+</tr>
+<tr>
+<td>ΔLVEF 6 個月</td>
+<td>+14.4</td>
+<td>+16.3</td>
+<td>MD −1.9</td>
+<td>約 −5.3 至 +1.5 [自行計算]</td>
+<td>—</td>
+<td>5 點 [推算]</td>
+<td><strong>INCONCLUSIVE（已排除 LBBAP 有意義的優勢）</strong></td>
+<td>LBBAP 不會讓 LVEF 回升更多</td>
+</tr>
+<tr>
+<td>Super-responder 12 個月</td>
+<td>49%</td>
+<td>63%</td>
+<td>RD −14%</td>
+<td>未報告；p=.07</td>
+<td>−14%</td>
+<td>—</td>
+<td><strong>INCONCLUSIVE</strong></td>
+<td>長期重塑數字偏向 BiVP</td>
+</tr>
+<tr>
+<td>死亡或 HF 住院</td>
+<td>5</td>
+<td>6</td>
+<td>—</td>
+<td>未報告</td>
+<td>—</td>
+<td>—</td>
+<td><strong>INCONCLUSIVE（事件極少）</strong></td>
+<td>無法支持「臨床結果相似」</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Sources:</strong></p>
+<ul>
+<li><a href="https://doi.org/10.1093/eurheartj/ehag581">EHJ editorial: Hatala &amp; Margitfalvi, doi:10.1093/eurheartj/ehag581</a></li>
+<li><a href="https://clinicaltrials.gov/study/NCT05434962">ClinicalTrials.gov NCT05434962</a></li>
+<li><a href="https://academic.oup.com/EURHEARTJ/pages/About">EHJ About the Journal（IF 2025）</a></li>
+<li><a href="https://www.journalmetrics.org/journal/european-heart-journal">Journal Metrics – European Heart Journal</a></li>
+<li><a href="https://manusights.com/blog/european-heart-journal-review-time">Manusights – EHJ review time</a></li>
+<li><a href="https://ouci.dntb.gov.ua/works/4LwJ8pj7">An Evidence-Based Update on Physiological Pacing</a></li>
+<li><a href="https://www.preprints.org/manuscript/202309.1251/v1/download">Preprints.org CSP-CRT review</a></li>
+</ul>
+
+<footer class="appraisal-meta">評讀資訊：模型：claude-opus-5-5 (claude)  ·  route：rct  ·  產出時間：2026-11-15 08:07 CST</footer>
+</main>
+</body>
+</html>

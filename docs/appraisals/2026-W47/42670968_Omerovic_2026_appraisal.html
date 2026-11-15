@@ -1,0 +1,997 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Prasugrel versus Ticagrelor in Acute Coronary Syndromes.</title>
+<style>
+  :root {
+    --bg: #fafafa;
+    --card: #ffffff;
+    --text: #1a1a1a;
+    --muted: #6b6b6b;
+    --border: #e5e5e5;
+    --accent: #0b5fff;
+  }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang TC",
+      "Microsoft JhengHei", sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    margin: 0;
+    padding: 24px 16px 64px;
+    line-height: 1.72;
+  }
+  main {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    margin: 0 auto;
+    max-width: 840px;
+    padding: 22px 26px;
+  }
+  nav {
+    margin: 0 auto 14px;
+    max-width: 840px;
+    color: var(--muted);
+    font-size: 14px;
+  }
+  a { color: var(--accent); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  h1, h2, h3, h4 { line-height: 1.35; }
+  h1 { font-size: 26px; margin-top: 0; }
+  h2 { border-top: 1px solid var(--border); padding-top: 18px; }
+  code {
+    background: rgba(127, 127, 127, 0.12);
+    border-radius: 4px;
+    padding: 1px 4px;
+  }
+  .table-wrap {
+    margin: 1em 0;
+    overflow-x: auto;
+  }
+  .table-wrap.wide {
+    /* Break out of the 840px prose column, centred on the viewport. */
+    width: min(1040px, calc(100vw - 32px));
+    margin-left: calc(50% - min(520px, 50vw - 16px));
+  }
+  table {
+    border-collapse: collapse;
+    table-layout: auto;
+    width: 100%;
+  }
+  .table-wrap.wide {
+    /* Opaque so the <main> card border does not show through the table. */
+    background: var(--card);
+  }
+  /* Width hints go on <th> as percentages: Chrome's auto table layout
+     mis-sizes columns (and overflows) when cells carry min-width. */
+  .table-wrap.wide th:first-child {
+    /* Variable + plain-language definition, e.g. "NCPV (noncalcified ...)". */
+    width: 26%;
+  }
+  .table-wrap.wide th:last-child {
+    /* Last column is usually a one-line interpretation. */
+    width: 20%;
+  }
+  th, td {
+    border: 1px solid var(--border);
+    /* Wrap only at spaces: never split an English word mid-letter. */
+    overflow-wrap: normal;
+    word-break: normal;
+    hyphens: manual;
+    padding: 6px 8px;
+    text-align: left;
+    vertical-align: top;
+  }
+  blockquote {
+    border-left: 3px solid var(--accent);
+    color: var(--muted);
+    margin-left: 0;
+    padding-left: 14px;
+  }
+  .appraisal-meta {
+    border-top: 1px solid var(--border);
+    margin-top: 28px;
+    padding-top: 14px;
+    color: var(--muted);
+    font-size: 13px;
+  }
+  @media (max-width: 600px) {
+    body {
+      padding: 12px 8px 40px;
+    }
+    main {
+      padding: 16px 12px;
+    }
+    h1 {
+      font-size: 22px;
+    }
+    table {
+      font-size: 12px;
+    }
+    .table-wrap.wide {
+      width: calc(100vw - 16px);
+      margin-left: calc(50% - 50vw + 8px);
+    }
+    th, td {
+      padding: 4px 5px;
+    }
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #1a1a1a;
+      --card: #242424;
+      --text: #e8e8e8;
+      --muted: #999;
+      --border: #333;
+      --accent: #6ea8ff;
+    }
+  }
+</style>
+</head>
+<body>
+<nav><a href="../../2026-W47.html">← 回到 2026-W47 週報</a></nav>
+<main>
+<h1>Prasugrel versus Ticagrelor in Acute Coronary Syndromes.</h1>
+<h1>SWITCH-SWEDEHEART 批判性評讀：Prasugrel versus Ticagrelor in Acute Coronary Syndromes（NEJM 2026）</h1>
+<hr />
+<h2>SECTION-0：文章全面描述</h2>
+<h3>0. 文章身份證</h3>
+<ul>
+<li><strong>標題</strong>：Prasugrel versus Ticagrelor in Acute Coronary Syndromes</li>
+<li><strong>期刊／年份</strong>：N Engl J Med 2026;395:1911-20（線上發表 2026-08-29，與 ESC Congress 2026 同步）</li>
+<li><strong>DOI</strong>：10.1056/NEJMoa2609057；PMID 42670968；ClinicalTrials.gov NCT05183178</li>
+<li><strong>文章類型（路由結果）</strong>：原始研究，屬 RCT 路徑。設計是 <strong>registry-based、open-label、stepped-wedge cluster-randomized trial</strong>，在「區域政策」層級隨機化，不是個人層級的藥物對藥物比較 [文內]。</li>
+<li><strong>重要定位</strong>：本文估計的是「把預設藥物從 ticagrelor 換成 prasugrel」這個<strong>政策</strong>的效果，也就是 treatment-policy estimand；它不是 prasugrel 與 ticagrelor 兩個分子本身的療效比較。Byrne 在 editorial 中也明確提出這個區分 [外部: NEJM editorial 全文]。</li>
+</ul>
+<h3>1. 作者團隊評論</h3>
+<ul>
+<li><strong>通訊作者</strong>：Elmir Omerovic, M.D., Ph.D.，Sahlgrenska University Hospital／University of Gothenburg 心臟科 [文內]。他是試驗 PI，也是 steering committee 主席 [Supplement p.4]。</li>
+<li><strong>團隊構成</strong>：共 19 位作者，大多是瑞典參與區域的心臟科醫師，另有統計學者 Mila Sun（Weill Cornell）與衛生經濟學者 Kristian Bolin [文內]。統計分析由 Mila Sun 與兩位 PI 執行，初稿由 Redfors 與 Omerovic 撰寫 [Supplement p.5]。</li>
+<li><strong>團隊過往研究</strong>：這個團隊是 SWEDEHEART registry-based RCT 的核心群體。
+<ul>
+<li>VALIDATE-SWEDEHEART（bivalirudin vs heparin，NEJM）的作者群包含 Erlinge、Omerovic、Fröbert [外部: VALIDATE 試驗報告 PDF]。</li>
+<li>TASTE（thrombus aspiration，NEJM 2013）由 Fröbert 主導 [外部: Uppsala University 新聞稿／TASTE 論文]。</li>
+<li>這組人是該領域的核心研究者，不是跨領域首次切入。</li>
+</ul>
+</li>
+<li><strong>作者立場史</strong>：
+<ul>
+<li>Protocol v1.0 把本試驗定位為對 ISAR-REACT 5 的「validation and external quality control」，並認為 prasugrel 的優勢值得驗證 [Protocol p.17–18]。</li>
+<li>研究者在行政訴訟中是當事方，曾以多份書狀主張本試驗屬於「normal clinical practice」[Supplement L2–L6]。</li>
+<li>研究團隊對「registry-based policy trial 可行且應免除個別同意」有強烈的制度與聲譽投入。正文在 Discussion 中特別宣示判決「removes an important barrier」[文內]。這不構成造假，但讀者應意識到作者對試驗模式本身存在 commitment。</li>
+</ul>
+</li>
+<li><strong>利益揭露</strong>：
+<ul>
+<li>資金來自 Region Västra Götaland，它同時是 sponsor [文內]。markdown 未保留個別作者的 disclosure forms [無法取得]。</li>
+<li>[評估]：sponsor 是醫療支付方。法院文件記載「regions 想轉換的主要理由之一是 prasugrel 比 ticagrelor 便宜」[Supplement L4 p.6]。支付方有經濟誘因偏好「prasugrel 不劣於 ticagrelor、出血更少」這類結論。不過主要終點本身是硬終點，也是事前登錄的，這種影響較可能出現在解讀與強調的層面。</li>
+</ul>
+</li>
+</ul>
+<h3>2. 文獻 Metadata 整理</h3>
+<ul>
+<li><strong>Received／Accepted date</strong>：markdown 未呈現 [無法取得]。只知道 2026-08-29 線上發表、11-12 刊出 [文內]。</li>
+<li><strong>NEJM 平均審查天數</strong>：[無法取得]。</li>
+<li><strong>期刊屬性</strong>：NEJM，2025 Journal Impact Factor 84.5（JCR 2026 release）[外部: Ovid／Manusights]；Q1；非 OA（CME 文章）。</li>
+<li><strong>時程推論</strong> [推論]：SAP v2.0 定稿於 2025-12-16，論文於 2026-08 發表並與 ESC 同步。這類同步發表通常是加速審查。</li>
+<li><strong>邀稿 vs 投稿</strong>：原始研究，非邀稿。</li>
+</ul>
+<h3>3. 研究背景</h3>
+<ul>
+<li><strong>既有證據</strong>：
+<ul>
+<li>Prasugrel 與 ticagrelor 都優於 clopidogrel，兩者都是 class I。</li>
+<li>ISAR-REACT 5 顯示 prasugrel-based strategy 在 1 年 death／MI／stroke 優於 ticagrelor，且未增加出血，因此 ESC 指引偏好 prasugrel（NSTE-ACS）[文內]。</li>
+</ul>
+</li>
+<li><strong>知識缺口</strong>：
+<ul>
+<li>ISAR-REACT 5 是 open-label，受試者較年輕、風險較低，並排除 prior stroke 與 OAC，出院後換藥頻繁。</li>
+<li>該試驗的效益可能主要來自 NSTE-ACS 中 deferred loading 的策略差異，而不是藥物分子本身。</li>
+<li>另一項較小的 RCT 未見差異；meta-analysis 則偏向 prasugrel [文內]。</li>
+</ul>
+</li>
+<li><strong>Research question</strong>：在接受 PCI 的 all-comer ACS 族群中，以 prasugrel 取代 ticagrelor 作為區域預設 P2Y12 inhibitor，能否改善 1 年臨床結果 [文內]。</li>
+</ul>
+<h3>4. 研究設計與方法</h3>
+<p><strong>PICO</strong></p>
+<ul>
+<li><strong>P</strong>：≥18 歲、因 ACS 接受 PCI、登錄於 SCAAR／SWEDEHEART 的病人。每位病人只計入第一次合格住院；保留 OAC 與 prior stroke 病人 [文內]。</li>
+<li><strong>I</strong>：區域預設 prasugrel 政策。維持劑量 10 mg QD；&gt;70 歲或 &lt;60 kg 改為 5 mg [文內]。</li>
+<li><strong>C</strong>：區域預設 ticagrelor 政策，90 mg BID [文內]。</li>
+<li><strong>O</strong>：
+<ul>
+<li>主要終點：1 年 death from any cause、fatal／nonfatal MI、fatal／nonfatal stroke 的複合終點。</li>
+<li>Key secondary：index hospitalization 中的 death 或 major bleeding。</li>
+<li>其他次要終點：各組成事件、major bleeding（broad／narrow ICD-10 定義）、stent thrombosis。</li>
+<li>Cost-effectiveness 結果未在本文報告 [文內]。</li>
+</ul>
+</li>
+</ul>
+<p><strong>關鍵設計細節</strong></p>
+<ul>
+<li><strong>Clusters</strong>：7 個區域分成 3 個 clusters。
+<ul>
+<li>Cluster 1：Skåne</li>
+<li>Cluster 2：Örebro、Västerbotten、Halland、Jämtland、Gävleborg</li>
+<li>Cluster 3：Västra Götaland</li>
+</ul>
+</li>
+<li><strong>時程</strong>：4 個 9 個月的 period，收案期 2021-05 至 2024-08。</li>
+<li><strong>排除期</strong>：兩段 blanking periods 被排除。
+<ul>
+<li>2023-01～03：prasugrel 缺貨</li>
+<li>2023-11：藥品管理局介入</li>
+</ul>
+</li>
+<li><strong>隨機化</strong>：轉換順序由電腦亂數決定 [文內]。</li>
+<li><strong>致盲</strong>：open-label；終點未經中央判定，全靠 ICD-10 registry 編碼 [文內]。</li>
+<li><strong>統計分析</strong>：
+<ul>
+<li>Logistic GLMM，含 cluster random intercept、事前指定的共變項，以及 calendar time 的 restricted cubic spline（3 knots）。</li>
+<li>缺失資料用 MICE（50 組）處理。</li>
+<li>採 ITT（依政策分組）。</li>
+<li>只有主要終點控制 type I error [文內]。</li>
+</ul>
+</li>
+</ul>
+<h3>5. 研究結果重點整理</h3>
+<div class="table-wrap wide"><table>
+<thead>
+<tr>
+<th>變項（代表什麼）</th>
+<th style="text-align:right">Ticagrelor 政策組（N=9444）</th>
+<th style="text-align:right">Prasugrel 政策組（N=7651）</th>
+<th style="text-align:right">組間差（95% CI）</th>
+<th style="text-align:right">p 值</th>
+<th>如何解讀</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>政策藥物實際取藥率</strong>：有取 P2Y12 者中，領到該區預設藥物的比例</td>
+<td style="text-align:right"><strong>75.8%</strong></td>
+<td style="text-align:right"><strong>60.6%</strong></td>
+<td style="text-align:right">未報告</td>
+<td style="text-align:right">未報告</td>
+<td>Prasugrel 政策的落實度差很多；兩組實際暴露重疊</td>
+</tr>
+<tr>
+<td>出院時 clopidogrel 使用率</td>
+<td style="text-align:right"><strong>22.0%</strong>（1625/7389）</td>
+<td style="text-align:right"><strong>26.7%</strong>（1588/5957）</td>
+<td style="text-align:right">未報告</td>
+<td style="text-align:right">未報告</td>
+<td>Prasugrel 政策反而讓更多人退回 clopidogrel</td>
+</tr>
+<tr>
+<td>Prasugrel 政策組出院時仍用 ticagrelor</td>
+<td style="text-align:right">—</td>
+<td style="text-align:right"><strong>9.9%</strong>（591/5957）</td>
+<td style="text-align:right">—</td>
+<td style="text-align:right">—</td>
+<td>有一成病人「反向」用到對照組藥物</td>
+</tr>
+<tr>
+<td><strong>主要終點 MACE</strong>：1 年 death／MI／stroke 複合</td>
+<td style="text-align:right"><strong>1113（11.8%）</strong></td>
+<td style="text-align:right"><strong>848（11.1%）</strong></td>
+<td style="text-align:right">aOR <strong>0.90（0.77–1.06）</strong></td>
+<td style="text-align:right">0.22</td>
+<td>CI 跨過 1；粗 ARD 約 −0.7 pp [自行計算]</td>
+</tr>
+<tr>
+<td>主要終點，period 改用類別變項的模型（SAP v1.0 原定主模型）</td>
+<td style="text-align:right">同上</td>
+<td style="text-align:right">同上</td>
+<td style="text-align:right">aOR <strong>0.82（0.70–0.96）</strong></td>
+<td style="text-align:right">未報告</td>
+<td>換一種時間校正方式，結果就變成「顯著」</td>
+</tr>
+<tr>
+<td>全死因死亡</td>
+<td style="text-align:right">673（7.1%）</td>
+<td style="text-align:right">515（6.7%）</td>
+<td style="text-align:right">aOR 1.01（0.82–1.26）</td>
+<td style="text-align:right">未報告</td>
+<td>沒有明確組間差異</td>
+</tr>
+<tr>
+<td>心肌梗塞</td>
+<td style="text-align:right">414（4.4%）</td>
+<td style="text-align:right">302（3.9%）</td>
+<td style="text-align:right">aOR 0.89（0.71–1.12）</td>
+<td style="text-align:right">未報告</td>
+<td>點估計偏向 prasugrel，CI 寬</td>
+</tr>
+<tr>
+<td>中風</td>
+<td style="text-align:right">83（0.9%）</td>
+<td style="text-align:right">67（0.9%）</td>
+<td style="text-align:right">aOR <strong>1.38（0.83–2.28）</strong></td>
+<td style="text-align:right">未報告</td>
+<td>粗率相同，但調整後點估計偏向不利；事件少、不精確</td>
+</tr>
+<tr>
+<td><strong>Key secondary</strong>：住院中死亡或 major bleeding</td>
+<td style="text-align:right">400（4.2%）</td>
+<td style="text-align:right">335（4.4%）</td>
+<td style="text-align:right">aOR 0.91（0.70–1.18）</td>
+<td style="text-align:right">未報告</td>
+<td>粗率反而是 prasugrel 組略高</td>
+</tr>
+<tr>
+<td><strong>Major bleeding（broad）</strong>：1 年內以 ICD-10 編碼的出血</td>
+<td style="text-align:right">413（4.4%）</td>
+<td style="text-align:right">321（4.2%）</td>
+<td style="text-align:right">aOR <strong>0.80（0.64–0.99）</strong></td>
+<td style="text-align:right">未報告</td>
+<td>粗差只有 0.2 pp，調整後 OR 卻降到 0.80（見 C4）</td>
+</tr>
+<tr>
+<td>Major bleeding（narrow）</td>
+<td style="text-align:right">225（2.4%）</td>
+<td style="text-align:right">153（2.0%）</td>
+<td style="text-align:right">aOR 0.69（0.50–0.93）</td>
+<td style="text-align:right">未報告</td>
+<td>方向一致；未經多重比較校正</td>
+</tr>
+<tr>
+<td>Stent thrombosis</td>
+<td style="text-align:right">30（0.3%）</td>
+<td style="text-align:right">25（0.3%）</td>
+<td style="text-align:right">aOR 1.13（0.53–2.40）</td>
+<td style="text-align:right">未報告</td>
+<td>事件太少，無法判讀</td>
+</tr>
+</tbody>
+</table></div>
+<p>（資料出處：Table 2、Table S7、Table S9、正文 Treatment Concordance 段）</p>
+<p>補充重點：</p>
+<ul>
+<li><strong>粗 OR 與調整後 OR 的落差</strong> [自行計算]：
+<ul>
+<li>主要終點粗 OR ≈ 0.93，調整後 0.90。</li>
+<li>Broad bleeding 粗 OR ≈ 0.96，調整後 0.80。</li>
+<li>Narrow bleeding 粗 OR ≈ 0.84，調整後 0.69。</li>
+<li>出血的「效益」大部分來自 calendar time 與共變項的調整，而不是原始資料直接呈現。Table 2 註腳也承認調整後 OR 可能與粗百分比方向不同 [Table 2 footnote]。</li>
+</ul>
+</li>
+<li><strong>Prasugrel 劑量</strong>：用 prasugrel 的病人中只有 17.7%（750/4227）以 5 mg 起始，其中 90.9% ≥75 歲 [文內]。Protocol 規定 &gt;70 歲就應減量，執行面看起來接近 label（≥75 歲），而不是 protocol 的門檻 [推論]。Örebro 區域的院內通訊也寫「&gt;75 歲」給 5 mg [Supplement L5 annex]。各區劑量規則不一致。</li>
+<li><strong>換藥率</strong>：用政策藥物的病人中，後續換成其他 P2Y12 inhibitor 的比例為 ticagrelor 組 12.7%、prasugrel 組 8.7% [文內]。</li>
+<li><strong>追蹤完整度</strong>：主要終點沒有失訪 [文內]。但 Table S8 各 cell 事件數加總為 1931 件，比 Table 2 的 1961 件少 30 件 [自行計算]，文內沒有解釋（可能與 imputation 或定義有關，無法判定）。</li>
+</ul>
+<h3>6. 作者討論與評論重點</h3>
+<ul>
+<li><strong>作者主要訊息</strong>：在 all-comer PCI-ACS 族群中，prasugrel 預設政策並未降低缺血事件。作者認為這是「refine, rather than contradict」ISAR-REACT 5，並強調 registry-based 政策試驗是可擴展的上市後證據模式 [文內]。</li>
+<li><strong>對差異的解釋</strong>：
+<ul>
+<li>病人組成較老、較高風險。</li>
+<li>Deferred loading 現在已是 NSTE-ACS 標準做法。</li>
+<li>政策落實度不完整，稀釋了效果 [文內]。</li>
+</ul>
+</li>
+<li><strong>作者列出的限制</strong> [文內]：
+<ol>
+<li>Open-label</li>
+<li>終點未經判定，出血用 ICD 定義</li>
+<li>只有 3 個 clusters</li>
+<li>Calendar time 混淆</li>
+<li>落實度不完整且不對稱</li>
+<li>外推性限於瑞典</li>
+</ol>
+</li>
+<li><strong>[評估]</strong>：限制列得相當完整，但<strong>避重就輕</strong>的地方有兩處。
+<ol>
+<li>正文沒有揭露 primary model 的時間參數化是在追蹤結束後才從「類別 period」改成「spline」（詳見 B3／C4），只把類別模型描述為「least concordant but quantitatively similar」。</li>
+<li>摘要把 major bleeding 與主要終點並列（aOR 0.80），讀者容易把一個未經多重比較校正、而且高度依賴模型的次要終點讀成確定結論。ESC 新聞稿標題就寫成「favour prasugrel」[外部: ESC press release]，這種詮釋方向超出了資料支持的範圍。</li>
+</ol>
+</li>
+</ul>
+<h3>7. 外部專業意見</h3>
+<p><strong>Byrne RA. The Emerging Role of Treatment Policy Implementation Trials in Acute Coronary Syndrome. N Engl J Med 2026;395:1958-9</strong>（DOI <a href="https://doi.org/10.1056/NEJMe2610678">10.1056/NEJMe2610678</a>，書目經 PubMed 確認）[外部: NEJM editorial 全文]</p>
+<ul>
+<li><strong>肯定</strong>：稱本研究為「landmark policy implementation trial」，支持在 ACS 中進行 registry-based 的 pragmatic randomized trial。</li>
+<li><strong>核心論點</strong>：
+<ul>
+<li>本試驗比較的是政策，不是藥物。</li>
+<li>Prasugrel 政策組只有 61% 取得 prasugrel，ticagrelor 組 76% 取得 ticagrelor。不遵從者大多改用 clopidogrel，使結果偏向 null。</li>
+<li>「Prasugrel 在受控試驗中的優勢，落實到臨床時被稀釋」可能就是本研究最重要的訊息。</li>
+</ul>
+</li>
+<li><strong>對出血結果的保留</strong>：較低的 major bleeding 可能部分來自 &gt;70 歲或 &lt;60 kg 的 prasugrel 減量（ticagrelor 不調整劑量），以及 prasugrel 組較多 clopidogrel 使用。</li>
+<li><strong>倫理議題</strong>：未取得個別同意是否適用於「其中一個治療有較強指引建議」的情境，仍需審慎討論。</li>
+<li><strong>Byrne 未觸及的部分</strong>：主模型的時間參數化變更，以及只有 3 個 clusters 的推論穩健度。</li>
+</ul>
+<h3>8. 臨床建議</h3>
+<ul>
+<li><strong>可採用的情境</strong>：醫療體系或醫院在決定「預設 P2Y12 inhibitor」時，可以把本研究當作證據。在瑞典式 all-comer PCI 族群中，把預設藥物從 ticagrelor 換成 prasugrel，1 年缺血事件<strong>沒有看到明確的改善或惡化</strong>。真實世界的效益上限估計約為 ARD −2.5 pp 至 +0.6 pp [自行計算]。</li>
+<li><strong>不建議直接套用的情境</strong>：
+<ul>
+<li>用本研究推論「prasugrel 與 ticagrelor 對個別病人等效」。本研究是政策層級的比較，藥物暴露重疊大，不足以否定 ISAR-REACT 5 的藥物層級結果。</li>
+<li>用本研究推論「prasugrel 出血較少」。這是未經校正的次要結果，依賴模型與劑量調整，而且是 ICD 定義的出血。</li>
+<li>外推到亞洲族群：瑞典族群不含東亞人，而東亞人的出血風險與 prasugrel 劑量問題不同。</li>
+</ul>
+</li>
+<li><strong>給臨床醫師的實務建議</strong>：
+<ol>
+<li>個別病人的 P2Y12 選擇仍以藥物層級的 RCT（ISAR-REACT 5）與禁忌症為主：prior stroke 禁用 prasugrel，高齡或低體重要減量。</li>
+<li>機構若要推動 prasugrel 為預設藥物，應同時建立劑量減量規則與落實度監測。本研究顯示，沒有配套時會有大約四分之一病人退回 clopidogrel，原本預期的效益會被稀釋。</li>
+<li>不要因為本研究的出血 OR 0.80 而改變高出血風險病人的處置，例如以 prasugrel 取代 clopidogrel。</li>
+</ol>
+</li>
+<li><strong>證據強度</strong>：
+<ul>
+<li>政策問題：<strong>中</strong>。隨機化的大型實用試驗，但只有 3 個 clusters、主模型在事後變更、終點未經判定。</li>
+<li>藥物對藥物的比較問題：<strong>弱</strong>。</li>
+</ul>
+</li>
+</ul>
+<hr />
+<h2>SKILL-A：批判性評讀</h2>
+<h3>A. 補充技術細節</h3>
+<p><strong>樣本數估算</strong></p>
+<ul>
+<li><strong>假設</strong>：3 clusters × 4 periods，每個 cluster-period 1300 人，共 15,600 人；ticagrelor 組事件率 10.0%，prasugrel 組 7.5%（RRR 25%）；ICC 0.04；雙尾 α 0.05 [文內]。</li>
+<li><strong>Power 數字前後不一</strong>：正文寫 power 95%，但 protocol 變更表記載 v2.0 已把 power 更新為 <strong>92%</strong> [Protocol p.72–73]。正文與 protocol 不一致。</li>
+<li><strong>原始設計</strong> [Protocol p.12–14]：4 clusters、5 periods、20,000 人；cost-effectiveness 與臨床療效是 co-primary，以 Holm 法分配 α 0.025。v2.0 改為單一臨床主要終點（outcome hierarchy 的變更發生在 2022-01，屬收案早期，風險較低）。</li>
+<li><strong>ICC</strong>：ICC 0.04 是很高的假設值。SAP 規定要報告實際 ICC 與 cluster-period ICC [SAP v2.0 6.2.4]，正文與 supplement 都<strong>未報告</strong> [無法判定]。</li>
+</ul>
+<p><strong>隨機化</strong></p>
+<ul>
+<li>隨機化的單位是 3 個 clusters 的轉換順序，可能的序列只有 3! = 6 種 [自行計算]。</li>
+<li>文內未說明 allocation concealment，以及各區域是否在收案前就知道自己的順序 [無法判定——文內未提供]。</li>
+<li>Cluster 1（Skåne）第一個轉換。它的基線 Killip II–IV 比例明顯較高，缺失也較多 [Table S5]。</li>
+</ul>
+<p><strong>ITT vs per-protocol</strong></p>
+<ul>
+<li>只報告 ITT。</li>
+<li>SAP v2.0 事前規定的 as-treated 分析，以及 marginal predicted risk／absolute risk difference <strong>都未報告</strong> [SAP v2.0 6.2.2、6.2.6]。</li>
+<li>SAP v1.0／v2.0 規定的「all ACS 次要分析世代」「納入 blanking period 病人的敏感度分析」「與未參與區域比較」也<strong>都未報告</strong> [SAP v1.0 6.2.6；SAP v2.0 5.1.2]。</li>
+</ul>
+<p><strong>分析世代與納排的事後變更</strong> [Protocol p.72–73；SAP v1.0]</p>
+<p>以下變更都在收案結束（2024-08）之後由 SAP v1.0（2025-02-07）引入：</p>
+<ul>
+<li>主要分析世代從「所有住院 ACS」改為「接受 PCI 的 ACS」。</li>
+<li>原本排除 OAC 與 prior stroke 的規則被<strong>移除</strong>。</li>
+</ul>
+<p>這兩項都沒有改變主要終點本身，作者的理由（SCAAR 涵蓋率、all-comer 精神）也合理。但它們屬於收案後才定義分析族群，正文只寫「prespecified」，沒有說明定義的時點。</p>
+<p><strong>時間效應模型的事後變更</strong>（本文最關鍵的方法學事件）</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>文件</th>
+<th>日期</th>
+<th>主模型的時間校正</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>SAP v1.0</td>
+<td>2025-02-07</td>
+<td><strong>類別變項</strong>（9 個月 period），spline 作為敏感度分析</td>
+</tr>
+<tr>
+<td>SAP v2.0</td>
+<td>2025-12-16（1 年追蹤已於 2025-08-31 完成）</td>
+<td><strong>restricted cubic spline</strong>，類別 period 降為敏感度分析</td>
+</tr>
+</tbody>
+</table></div>
+<p>[SAP v1.0 6.2.2–6.2.3；SAP v2.0 6.2.2–6.2.3；Protocol 變更表 p.73]</p>
+<ul>
+<li>依原定 SAP v1.0 的主模型，結果是 <strong>OR 0.82（0.70–0.96）</strong>，具統計顯著 [Table S9]。</li>
+<li>依變更後的主模型，結果是 <strong>OR 0.90（0.77–1.06）</strong>，不顯著。</li>
+<li>正文寫「Here we report the results of the prespecified primary analysis」，沒有揭露主模型在追蹤完成後才變更，也沒有說明變更時研究者是否已看過結局資料 [無法判定——文內未提供]。</li>
+</ul>
+<p><strong>多重比較</strong>：只有主要終點控制 type I error；次要終點與亞群都未校正 [文內]。</p>
+<p><strong>缺失資料</strong>：</p>
+<ul>
+<li>共變項缺失不少，例如 admission medication 約 17% 缺失 [Table 1]，以 MICE 處理。</li>
+<li>完整病例分析 OR 0.94（0.77–1.15）[Table S9]。</li>
+</ul>
+<p><strong>Stepped-wedge 特有的假設</strong>：</p>
+<ul>
+<li>主模型假設政策效果在各 cluster 與轉換後各時期都相同。</li>
+<li>作者用 post hoc exposure-time model 檢驗，TATE 為 0.87（0.73–1.03）[Table S9]，與主模型相近。</li>
+</ul>
+<h4>A1. 特殊設計子模組：Stepped-wedge cluster RCT（Platform／Adaptive 類比）</h4>
+<ul>
+<li><strong>只有 3 個 clusters</strong>：
+<ul>
+<li>Cluster random-effect variance 幾乎無法估計。</li>
+<li>GEE 的 sandwich SE 嚴重低估，作者也承認 GEE 的 CI（0.85–0.92）不可信 [Table S9 註]。</li>
+<li>主模型 CI 的名目覆蓋率在 3 個 clusters 下可能不準確，實際 CI 可能比報告值更寬或更窄 [推論]。</li>
+</ul>
+</li>
+<li><strong>Period 1 與 period 4 完全不提供組間對照</strong>：period 1 全是 ticagrelor，period 4 全是 prasugrel。治療與時間在這兩期完全共線 [Supplement p.10]。
+<ul>
+<li>類別 period 模型只用 period 2–3 的同時期對照，這是 stepped-wedge 標準的「vertical」比較。</li>
+<li>Spline 模型假設 secular trend 平滑，讓 period 1 與 period 4 也透過參數化時間貢獻資訊，等於納入更多「前後比較」（horizontal）的成分。後者更容易受到 secular confounding 影響 [推論]。</li>
+<li>換句話說，作者以「類別模型較不具資訊量」為由降級它，但從因果識別的角度看，類別模型反而是較保守、較少依賴假設的選擇。</li>
+</ul>
+</li>
+<li><strong>Calendar-time 混淆的具體證據</strong> [Table S6]：prasugrel 期的 PCI 處置反映了時代變化。
+<ul>
+<li>Intracoronary imaging：18.1% vs 13.7%</li>
+<li>DCB：11.4% vs 7.5%</li>
+<li>總支架長度：45.4 vs 53.8 mm</li>
+<li>Cangrelor：9.4% vs 4.6%</li>
+<li>這些變化都會影響出血與缺血結果，也是「依政策組分層比較」無法避開的時代效應。</li>
+</ul>
+</li>
+<li><strong>收案量逐期下降</strong>：Cluster 1 從 1369 降到 1074，cluster 3 從 1689 降到 1417 [Table S3]。原因未解釋。若與 SCAAR 登錄或轉介型態的變化有關，可能影響族群組成 [無法判定]。</li>
+<li><strong>轉換的時間點受到外力干擾</strong>：藥品缺貨、藥品管理局介入，以及 cluster 3 延後轉換。作者以 blanking periods 處理，期間共排除 1886 位 PCI 病人 [Figure S1]。這些干擾都不是隨機發生的。</li>
+</ul>
+<h3>B. 批判性評估（四大面向）</h3>
+<h4>B1. 假說與理論邏輯</h4>
+<ul>
+<li><strong>問題</strong>：主要假說是預設 prasugrel 能讓 MACE 相對下降 25%。
+<ul>
+<li><strong>文內證據</strong>：樣本數段落 [文內]。</li>
+<li><strong>風險方向</strong>：這個效果量取自 ISAR-REACT 5（藥物層級、選擇性族群、高遵從度），沒有預先考慮政策層級的稀釋。政策試驗中 25% 的 RRR 幾乎不可能達成，設計時就高估了效果，對真實較小的效果 power 不足。</li>
+<li><strong>需要什麼才放心</strong>：以預期落實度（例如 60–75%）折算後的效果量重新估算 power。</li>
+</ul>
+</li>
+<li><strong>合理機轉</strong>：
+<ol>
+<li>Prasugrel 抑制血小板較快、較穩定，不受 CYP 代謝的影響。</li>
+<li>年長者用 5 mg 減量可能降低出血 [外部: Byrne editorial]。</li>
+<li>Ticagrelor 的呼吸困難副作用導致停藥。不過本研究中 ticagrelor 組的換藥率反而較高（12.7% vs 8.7%）[文內]。</li>
+</ol>
+</li>
+<li><strong>可疑的敘事跳躍</strong>：
+<ol>
+<li>作者把「incomplete concordance probably attenuates the treatment effect, such that the trial may understate a true between-drug difference」[文內] 當作支持 prasugrel 的敘事。但不遵從是雙向的：prasugrel 組有 9.9% 用 ticagrelor，ticagrelor 組只有 0.6% 用 prasugrel，而且兩組都有約四分之一用 clopidogrel。稀釋的方向未必只有一種。</li>
+<li>摘要結論只說缺血事件「not lower」，卻在結果段強調出血 aOR 0.80。Discussion 雖然沒有正式宣稱出血較少，ESC 新聞稿則寫成「favour prasugrel」[外部]。</li>
+</ol>
+</li>
+</ul>
+<h4>B2. 受試者與外推性</h4>
+<ul>
+<li><strong>優點</strong>：
+<ul>
+<li>平均 69.8 歲，36.8% ≥75 歲，27.8% 女性。</li>
+<li>保留 6.1% prior stroke 與 10.1% OAC 適應症 [Table 1／S4]。</li>
+<li>族群代表性遠高於 ISAR-REACT 5（中位數 65 歲）[Table S10]。</li>
+</ul>
+</li>
+<li><strong>外推性分級</strong>：
+<ol>
+<li><strong>一般 ACS／PCI 族群（歐洲高所得國家）</strong>：中等。前提是醫療體系、PCI 技術與遵從型態相近，例如 radial access 87%、DES 95%。</li>
+<li><strong>特定病患族群</strong>：
+<ul>
+<li>Prior stroke：本研究的政策組仍保留這類病人，但 prasugrel 是禁忌。亞群 OR 0.78（0.55–1.10）很可能反映的是這些病人實際上沒有用 prasugrel，而不是 prasugrel 對他們有效 [推論]。</li>
+<li>OAC 族群：多數用 clopidogrel，政策差異趨近於零，亞群 OR 0.91（0.68–1.22）沒有資訊量。</li>
+</ul>
+</li>
+<li><strong>東亞、台灣族群</strong>：<strong>不應直接外推</strong>。
+<ul>
+<li>瑞典的 SWEDEHEART 不收集種族資料 [Table S10]。</li>
+<li>東亞人出血傾向較高，台灣 prasugrel 常用劑量（如 3.75 mg 減量方案）與歐洲不同，本研究不適用。</li>
+<li>健保給付規則也會改變「預設政策」的落實型態。</li>
+</ul>
+</li>
+</ol>
+</li>
+</ul>
+<h4>B3. 研究設計與偏差</h4>
+<p>最可能造成偏差的三個設計點如下。</p>
+<p><strong>1. 主模型在追蹤完成後變更（outcome-informed analysis risk）</strong></p>
+<ul>
+<li><strong>文內證據</strong>：SAP v1.0 vs v2.0 [Protocol p.73]；Table S9 類別模型 OR 0.82（0.70–0.96）。</li>
+<li><strong>風險方向</strong>：這次變更讓結果<strong>從顯著變成不顯著</strong>，偏向「效果變小」。這與常見「為了做出顯著而改模型」的方向相反，因此較不像 p-hacking 來追求陽性結果。但它說明主要結論對模型選擇敏感。正文未揭露，違反透明原則。</li>
+<li><strong>需要什麼才放心</strong>：說明 SAP v2.0 定稿時研究者是否已接觸結局資料，並在正文並列兩個模型的結果。</li>
+</ul>
+<p><strong>2. Calendar-time 混淆與 cluster 數過少</strong></p>
+<ul>
+<li><strong>文內證據</strong>：Table S6 的處置時代差異；作者承認的第 3、4 項限制。</li>
+<li><strong>風險方向</strong>：不確定。缺血結果可能往兩個方向偏；出血結果因同期 PCI 技術進步（較短支架、更多影像導引），可能偏向有利 prasugrel 期。</li>
+<li><strong>需要什麼才放心</strong>：用未參與轉換的瑞典區域作為同期 negative control（SAP 原有規劃但未報告）。</li>
+</ul>
+<p><strong>3. 政策落實度不對稱、對照組被「污染」</strong></p>
+<ul>
+<li><strong>文內證據</strong>：取藥率 60.6% vs 75.8%；clopidogrel 26.7% vs 22.0% [Table S7]。Figure S2 顯示，各 cluster 轉換後 clopidogrel 比例都上升，例如 cluster 1 從 15% 升到 26–28%，cluster 3 從 22–23% 升到 29%。</li>
+<li><strong>風險方向</strong>：缺血效果偏向 null（若 prasugrel 真的較好，效果被低估）；出血結果偏向有利 prasugrel 政策（較多病人用藥效較弱的 clopidogrel）。</li>
+<li><strong>需要什麼才放心</strong>：報告 SAP 規定的 as-treated 分析，或用 IV／CACE 估計方法，並承認其限制。</li>
+</ul>
+<p><strong>對照組適當性（Gyawali 框架）</strong></p>
+<ul>
+<li>Ticagrelor 90 mg BID 確實是當時瑞典的標準治療，對照組合理。</li>
+<li>但兩組實際接受的是「混合治療」，對照組並非純 ticagrelor。</li>
+</ul>
+<p><strong>致盲與終點</strong>：</p>
+<ul>
+<li>Open-label，加上非致盲的 ICD 編碼終點。</li>
+<li>死亡不受影響，但 MI 編碼（I21／I22 主診斷，需 PCI 後 ≥5 天）與 bleeding 編碼可能受醫師診斷習慣影響 [Table S2]。</li>
+</ul>
+<p><strong>提早停止</strong>：無；試驗曾被藥品管理局要求停止，但經法院撤銷 [Supplement L1–L10]。</p>
+<h4>B4. 測量工具與實務意義</h4>
+<ul>
+<li><strong>出血定義嚴重偏離臨床試驗標準</strong>：
+<ul>
+<li>兩種 ICD-10 定義以消化道出血與 anemia 編碼為主，<strong>不含顱內出血</strong>；I60–I62 被歸入 stroke [SAP v2.0 8.2、8.5]。</li>
+<li>只計主診斷，不對應 BARC 3/5 或 TIMI major。</li>
+<li>因此「major bleeding OR 0.80」實際上主要是「住院主診斷為消化道出血或貧血」的差異。</li>
+</ul>
+</li>
+<li><strong>Table S2 標示疑似錯置</strong>：
+<ul>
+<li>Supplement Table S2 把 GI 為主的短清單標為「broad」，把「Narrow definition plus…」標為「narrow」。</li>
+<li>這與 SAP 的定義（broad = 長清單）相反 [Supplement p.17 vs SAP v2.0 8.5]。</li>
+<li>正文的事件率（broad 4.4% &gt; narrow 2.4%）符合 SAP，判斷是 Table S2 標錯。</li>
+</ul>
+</li>
+<li><strong>中風 OR 1.38</strong>：粗率相同，調整後卻偏高。事件少（150 件），不能下結論。但 prasugrel 在 prior stroke／TIA 病人身上有已知傷害（TRITON），本研究在政策層級保留了這類病人，這個訊號值得後續追蹤 [推論]。</li>
+<li><strong>實務效用</strong>：
+<ul>
+<li>就算點估計為真，ARD 約 −0.7 pp，NNT 約 140／年 [自行計算]。</li>
+<li>CI 上限 OR 1.06 對應約 +0.6 pp [自行計算]。</li>
+<li>對醫療體系而言，「藥價較低、缺血事件沒有可見損失」本身就是有用的政策訊息（cost-effectiveness 待後續報告）。</li>
+</ul>
+</li>
+</ul>
+<h3>C. 統計與資料完整性</h3>
+<h4>C1. 結果分類（CI + MCID）</h4>
+<p><strong>Step 1：MCID</strong></p>
+<ul>
+<li>文內未指定 MCID。設計假設的效果是 RRR 25%，相當於 OR 約 0.73 [自行計算]。</li>
+<li>依 ACS 抗血小板試驗慣例，取政策層級的臨床重要差異為 <strong>ARD 1 pp</strong>（相對約 8–9%，OR 約 0.91）[推算]。</li>
+</ul>
+<p><strong>Step 2：CI 位置</strong></p>
+<ul>
+<li>OR 0.90（0.77–1.06）。以 ticagrelor 組 11.8% 換算，ARD 約 <strong>−2.5 pp 至 +0.6 pp</strong> [自行計算]。</li>
+<li>CI 排除了設計假設的 25% RRR（OR 0.73）。</li>
+<li>CI 同時包含 null 與 1 pp 的 MCID。</li>
+</ul>
+<p><strong>分類</strong>：</p>
+<ul>
+<li>以設計假設的效果為準：<strong>NEGATIVE ❌</strong>。可以排除「預設 prasugrel 政策降低 25% MACE」。</li>
+<li>以臨床合理的 MCID（ARD 1 pp）為準：<strong>INCONCLUSIVE ❓</strong>。中等程度的政策效益（ARD 1–2.5 pp）無法排除，傷害端也無法完全排除（最多 +0.6 pp）。</li>
+<li>結果<strong>不是 NEUTRAL</strong>。CI 不夠窄，不能宣稱兩種政策等效。新聞標題「prasugrel matches ticagrelor」[外部: News-Medical] 屬於誤讀。</li>
+</ul>
+<p><strong>Step 3：謬誤檢查</strong></p>
+<ul>
+<li>作者用的是「not significantly lower」與「not lower」，沒有說「no difference」，用語大致恰當。</li>
+<li>但摘要結論「the risk of ischemic events was not lower」仍可能被讀成「沒有差異」。</li>
+</ul>
+<h4>C2. Underpowered 與 Winner's Curse</h4>
+<ul>
+<li>主要終點：CI 同時跨越 null 與 MCID，針對臨床合理的效果量屬於 <strong>underpowered</strong>。根本原因是設計時假設 RRR 25%，沒有把政策稀釋納入考量。</li>
+<li>Major bleeding aOR 0.80（上限 0.99）勉強達到名目顯著，又是未校正的次要終點。在 Type M error 的框架下，它的效果量很可能被高估 [推論]。粗 OR 只有 0.96，佐證這一點。</li>
+</ul>
+<h4>C3. Bayesian 補充（近似）</h4>
+<p>依 non-informative prior、log-OR 常態近似計算 [自行計算，近似；未考慮只有 3 個 clusters 時 SE 的不確定性]。由 CI 推得 log-OR 為 −0.105，SE 0.082。</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>指標</th>
+<th>估計</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Pr(OR &lt; 1，任何利益)</td>
+<td>約 0.90</td>
+</tr>
+<tr>
+<td>Pr(OR &lt; 0.91，ARD ≥ 約 1 pp)</td>
+<td>約 0.55</td>
+</tr>
+<tr>
+<td>Pr(OR &lt; 0.73，達設計假設效果)</td>
+<td>&lt;0.01</td>
+</tr>
+<tr>
+<td>Pr(OR &gt; 1.09，傷害 ≥ 約 1 pp)</td>
+<td>&lt;0.01</td>
+</tr>
+</tbody>
+</table></div>
+<p>解讀：</p>
+<ul>
+<li>政策「有一些利益」的機率不低。</li>
+<li>臨床上有意義的利益大約一半一半。</li>
+<li>設計假設的大效果與有意義的傷害幾乎都可排除。</li>
+<li>改用 SAP v1.0 的類別模型（OR 0.82），Pr(OR &lt; 0.91) 會升到約 0.9。結論對模型選擇敏感。</li>
+</ul>
+<h4>C4. 報告完整性與其他統計問題</h4>
+<p><strong>統計紅旗</strong></p>
+<ol>
+<li><strong>主模型在追蹤後變更</strong>（類別時間 → spline），正文未揭露。依原定模型結果為 OR 0.82（0.70–0.96）[Protocol p.73；Table S9]。</li>
+<li><strong>SAP 規定但未報告的分析</strong>：ICC、as-treated、marginal ARD、全 ACS 世代、納入 blanking 病人的分析、未參與區域對照 [SAP v1.0／v2.0]。</li>
+<li><strong>Power 數字不一致</strong>：正文 95%，protocol 變更表 92%。</li>
+<li><strong>粗結果與調整後結果明顯背離（出血）</strong>：粗 OR 0.96 vs 調整後 0.80，反映對 calendar time 模型的高度依賴 [自行計算；Table 2]。</li>
+<li><strong>事件數不一致</strong>：Table S8 的 cluster-period 事件加總 1931 件，Table 2 為 1961 件 [自行計算]。</li>
+<li><strong>GEE 的 CI 不可用</strong>：作者也承認，只有 3 個 clusters 時，任何以 cluster 為基礎的變異數估計都不穩。</li>
+<li><strong>Table S9 腳註有殘缺</strong>（「should not be…」句未完；‡ 符號重複使用），Table S2 的出血定義標示錯置，SAP 中第二段 blanking 的年份誤植為 2024。品質把關上有瑕疵。</li>
+</ol>
+<p><strong>Kaplan-Meier 圖判讀</strong> [Figure S3 圖像]</p>
+<ul>
+<li>每個 cluster-period cell 各自畫一條曲線，<strong>沒有 numbers at risk</strong>，也沒有同一面板內的組間對比。</li>
+<li>可見型態：前 30 天急升至約 4–7%，之後近似線性上升，1 年時落在約 9.5–13%。y 軸從 0% 起，沒有誇大效果。</li>
+<li>同一 period 內的對比看起來是 period 2 時 C1（prasugrel，約 10%）低於 C2、C3（ticagrelor，約 12.5–13%）。但 C1 在 period 1 時就已較低（10.5%），這個差距大部分是 cluster 之間的差異，不是政策效果。</li>
+<li>依 Table S8 計算同期對照的粗事件率 [自行計算]：</li>
+</ul>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Period</th>
+<th style="text-align:right">Prasugrel 政策</th>
+<th style="text-align:right">Ticagrelor 政策</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Period 2</td>
+<td style="text-align:right">10.0%（C1）</td>
+<td style="text-align:right">12.7%（C2+C3）</td>
+</tr>
+<tr>
+<td>Period 3</td>
+<td style="text-align:right">11.1%（C1+C2）</td>
+<td style="text-align:right">11.7%（C3）</td>
+</tr>
+</tbody>
+</table></div>
+<ul>
+<li>同一 cluster 轉換前後的變化很小，方向不一致：
+<ul>
+<li>C1：10.5% → 10.0／11.6／8.8%</li>
+<li>C2：11.5／12.3% → 10.6／11.3%</li>
+<li>C3：11.4／13.0／11.7% → 11.6%</li>
+</ul>
+</li>
+</ul>
+<p><strong>CONSORT／flow diagram</strong> [Figure S1 圖像]</p>
+<ul>
+<li>28,114 人中排除 11,019 人，得到 17,095 人，數字相符 [自行計算]。</li>
+<li>排除原因中有 1886 人是 blanking 期間的 PCI，另有 5174 人採藥物治療。</li>
+<li>流程圖沒有依 cluster-period 拆分人數，也沒有列出「非首次住院」的排除數，未完全符合 SAP v2.0 6.1 的要求。</li>
+</ul>
+<h3>D. 亞群分析評估 [Figure S4 圖像]</h3>
+<ul>
+<li>20 個亞群中，只有糖尿病「Yes」的 CI 沒有跨過 1：OR 0.80（0.64–0.99）。其他亞群都跨過 1，點估計集中在 0.78–1.13。</li>
+<li><strong>沒有報告任何 interaction p 值。</strong></li>
+<li><strong>亞群清單與 protocol v2.0 事前指定的不一致</strong> [Protocol p.53–54]：
+<ul>
+<li>Protocol 列的是 hypertension、prior CVD、eGFR &lt;60、revascularization technique、concomitant medication。</li>
+<li>圖中出現的是 weight、creatinine 81 µmol/L 切點、cardiogenic shock、prior stroke、OAC。</li>
+<li>圖說寫「prespecified」，但來源文件版本不明 [無法判定]。</li>
+</ul>
+</li>
+</ul>
+<div class="table-wrap wide"><table>
+<thead>
+<tr>
+<th>亞群</th>
+<th>有 interaction p</th>
+<th>與他研究一致</th>
+<th>事前指定且有方向</th>
+<th>生物機轉</th>
+<th>within-study</th>
+<th>可信度</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Diabetes yes 0.80</td>
+<td>否</td>
+<td>部分（TRITON 中糖尿病效益較大；TUXEDO-2）</td>
+<td>有（protocol 列出），無方向</td>
+<td>合理</td>
+<td>是</td>
+<td><strong>低</strong></td>
+</tr>
+<tr>
+<td>Prior stroke yes 0.78</td>
+<td>否</td>
+<td>否（TRITON 為傷害）</td>
+<td>有</td>
+<td>不合理；可能反映這類病人實際沒用 prasugrel</td>
+<td>是</td>
+<td><strong>推測性</strong></td>
+</tr>
+<tr>
+<td>Weight &lt;60 kg 1.00</td>
+<td>否</td>
+<td>—</td>
+<td>不在 protocol 清單</td>
+<td>—</td>
+<td>是</td>
+<td><strong>低</strong></td>
+</tr>
+<tr>
+<td>Cardiogenic shock 1.13</td>
+<td>否</td>
+<td>—</td>
+<td>不在 protocol 清單</td>
+<td>—</td>
+<td>是，事件少</td>
+<td><strong>推測性</strong></td>
+</tr>
+</tbody>
+</table></div>
+<h3>E. 紅旗清單</h3>
+<ul>
+<li><strong>設計</strong>：只有 3 個 clusters（6 種可能序列）；open-label；終點未經判定；calendar time 與政策部分共線。</li>
+<li><strong>統計</strong>：主模型在追蹤後由類別時間改為 spline，正文未揭露；多項 SAP 規定分析未報告；power 數字不一致；出血結果的粗值與調整值明顯背離；Table S8 與 Table 2 事件數不符。</li>
+<li><strong>測量</strong>：出血定義不含 ICH，以 GI 或貧血主診斷為主，不等同於 BARC；Table S2 定義標示錯置。</li>
+<li><strong>敘事</strong>：摘要把未校正的出血結果與主要終點並列；ESC 新聞稿標題「favour prasugrel」超出資料範圍。</li>
+<li><strong>COI</strong>：sponsor 是支付方（prasugrel 較便宜）；研究團隊同時是訴訟當事方，且對試驗模式有制度性投入。</li>
+<li><strong>外推</strong>：瑞典單一國家；沒有種族資料；劑量規則在各區執行不一致（&gt;70 vs ≥75 歲）。</li>
+</ul>
+<h3>F. 反向解釋</h3>
+<ol>
+<li><strong>Prasugrel 分子確實較好，只是被政策落實度稀釋</strong>（Byrne 的觀點）。
+<ul>
+<li>支持：取藥率差距大、clopidogrel 比例上升；SAP v1.0 主模型 OR 0.82；同期對照 period 2 有差距。</li>
+<li>反對：ITT 點估計小；同一 cluster 轉換前後變化小且方向不一。</li>
+</ul>
+</li>
+<li><strong>兩種政策在真實世界大致等效，觀察到的小差異來自 secular trend 或 cluster 差異</strong>。
+<ul>
+<li>支持：粗 OR 0.93；CI 跨過 1；period 2 的差距主要來自 C1 原本就較低的基線。</li>
+<li>反對：多數敏感度分析的點估計都 &lt;1。</li>
+</ul>
+</li>
+<li><strong>出血較少不是 prasugrel 的藥理效果，而是劑量減量、改用 clopidogrel，以及同期 PCI 技術進步（短支架、影像導引）造成</strong>。
+<ul>
+<li>支持：粗 OR 0.96；clopidogrel 26.7% vs 22.0%；Table S6 的時代差異；Byrne 也有相同論點。</li>
+<li>反對：narrow 定義的粗 OR 也有 0.84。</li>
+</ul>
+</li>
+<li><strong>中風訊號（OR 1.38）反映 prior stroke 病人在政策下仍接觸到 prasugrel</strong>。
+<ul>
+<li>支持：族群保留 prior stroke 病人，且 prasugrel 在這類病人身上是禁忌。</li>
+<li>反對：粗率相同；prior stroke 亞群的 MACE OR 為 0.78；事件數太少。</li>
+</ul>
+</li>
+</ol>
+<h3>G. 最終裁決</h3>
+<ul>
+<li><strong>整體可信度</strong>：<strong>中</strong>（政策問題）／<strong>低</strong>（藥物對藥物問題）。</li>
+<li><strong>可採用的條件</strong>：在高所得國家、遵從型態與瑞典相近的 PCI-ACS 族群中，評估「預設藥物政策」時，可接受「預設 prasugrel 不會帶來可見的缺血損失」，並配合成本考量。</li>
+<li><strong>不建議採用的情境</strong>：
+<ul>
+<li>個別病人的藥物選擇。</li>
+<li>宣稱 prasugrel 出血較少。</li>
+<li>推論東亞族群。</li>
+<li>推論 prior stroke／OAC 病人。</li>
+</ul>
+</li>
+<li><strong>若要改觀，最需要的三項改進</strong>：
+<ol>
+<li>揭露 SAP 變更時研究者是否接觸過結局資料，並在正文並列兩個時間模型的結果。</li>
+<li>報告 SAP 規定的 as-treated（或 CACE）分析、marginal ARD、ICC，以及未參與區域的同期對照。</li>
+<li>以臨床判定或 BARC 對應的出血定義（包含 ICH）重新分析安全性終點。</li>
+</ol>
+</li>
+<li><strong>一句話結論</strong>：在瑞典的日常醫療中，把預設抗血小板藥從 ticagrelor 換成 prasugrel，一年內心血管事件沒有明顯減少；這項研究回答的是「政策」能否改善結果，不是哪一種藥本身比較好。</li>
+</ul>
+<hr />
+<h3>CONDITIONAL OUTPUT：效果量總表</h3>
+<div class="table-wrap wide"><table>
+<thead>
+<tr>
+<th>指標</th>
+<th style="text-align:right">介入組（prasugrel 政策）</th>
+<th style="text-align:right">對照組（ticagrelor 政策）</th>
+<th style="text-align:right">效果量</th>
+<th style="text-align:right">95% CI</th>
+<th style="text-align:right">ARD（粗）[自行計算]</th>
+<th style="text-align:right">MCID</th>
+<th>結果分類</th>
+<th>實務意義</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1 年 MACE</td>
+<td style="text-align:right">11.1%</td>
+<td style="text-align:right">11.8%</td>
+<td style="text-align:right">aOR 0.90</td>
+<td style="text-align:right">0.77–1.06</td>
+<td style="text-align:right">−0.7 pp（CI 換算約 −2.5～+0.6 pp）</td>
+<td style="text-align:right">ARD 1 pp [推算]</td>
+<td><strong>INCONCLUSIVE</strong>（對設計假設的 25% RRR 為 NEGATIVE）</td>
+<td>排除大效益；中等效益無法確定</td>
+</tr>
+<tr>
+<td>MACE（SAP v1.0 類別時間模型）</td>
+<td style="text-align:right">同上</td>
+<td style="text-align:right">同上</td>
+<td style="text-align:right">aOR 0.82</td>
+<td style="text-align:right">0.70–0.96</td>
+<td style="text-align:right">同上</td>
+<td style="text-align:right">同上</td>
+<td>敏感度分析中呈 POSITIVE／IMPRECISE</td>
+<td>顯示結論依賴模型</td>
+</tr>
+<tr>
+<td>全死因死亡</td>
+<td style="text-align:right">6.7%</td>
+<td style="text-align:right">7.1%</td>
+<td style="text-align:right">aOR 1.01</td>
+<td style="text-align:right">0.82–1.26</td>
+<td style="text-align:right">−0.4 pp</td>
+<td style="text-align:right">ARD 1 pp</td>
+<td>INCONCLUSIVE</td>
+<td>無訊號</td>
+</tr>
+<tr>
+<td>MI</td>
+<td style="text-align:right">3.9%</td>
+<td style="text-align:right">4.4%</td>
+<td style="text-align:right">aOR 0.89</td>
+<td style="text-align:right">0.71–1.12</td>
+<td style="text-align:right">−0.5 pp</td>
+<td style="text-align:right">ARD 1 pp</td>
+<td>INCONCLUSIVE</td>
+<td>點估計偏向有利</td>
+</tr>
+<tr>
+<td>Stroke</td>
+<td style="text-align:right">0.9%</td>
+<td style="text-align:right">0.9%</td>
+<td style="text-align:right">aOR 1.38</td>
+<td style="text-align:right">0.83–2.28</td>
+<td style="text-align:right">0 pp</td>
+<td style="text-align:right">—</td>
+<td>INCONCLUSIVE（事件少）</td>
+<td>需追蹤</td>
+</tr>
+<tr>
+<td>Major bleeding（broad，ICD）</td>
+<td style="text-align:right">4.2%</td>
+<td style="text-align:right">4.4%</td>
+<td style="text-align:right">aOR 0.80</td>
+<td style="text-align:right">0.64–0.99</td>
+<td style="text-align:right">−0.2 pp</td>
+<td style="text-align:right">ARD 1 pp</td>
+<td>IMPRECISE(+)，未校正多重比較，依賴模型</td>
+<td>不足以改變臨床決策</td>
+</tr>
+<tr>
+<td>Major bleeding（narrow）</td>
+<td style="text-align:right">2.0%</td>
+<td style="text-align:right">2.4%</td>
+<td style="text-align:right">aOR 0.69</td>
+<td style="text-align:right">0.50–0.93</td>
+<td style="text-align:right">−0.4 pp</td>
+<td style="text-align:right">—</td>
+<td>探索性</td>
+<td>同上</td>
+</tr>
+<tr>
+<td>Stent thrombosis</td>
+<td style="text-align:right">0.3%</td>
+<td style="text-align:right">0.3%</td>
+<td style="text-align:right">aOR 1.13</td>
+<td style="text-align:right">0.53–2.40</td>
+<td style="text-align:right">0 pp</td>
+<td style="text-align:right">—</td>
+<td>INCONCLUSIVE</td>
+<td>無法判讀</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+<p><strong>Sources</strong></p>
+<ul>
+<li>PubMed metadata：Byrne RA, N Engl J Med 2026;395:1958-9, <a href="https://doi.org/10.1056/NEJMe2610678">DOI 10.1056/NEJMe2610678</a>（editorial 全文由本機 dlbydoi 擷取）</li>
+<li><a href="https://www.escardio.org/news/press/press-releases/results-from-switch-swedeheart-favour-prasugrel-over-ticagrelor-after-coronary-stenting/">ESC press release: Results from SWITCH SWEDEHEART favour prasugrel over ticagrelor after coronary stenting</a></li>
+<li><a href="https://www.medscape.com/viewarticle/prasugrel-falls-short-default-p2y12-inhibitor-acs-2026a1000xeu">Medscape: Prasugrel Falls Short as Default P2Y12 Inhibitor for ACS</a></li>
+<li><a href="https://www.news-medical.net/news/20260829/SWITCH-SWEDEHEART-trial-shows-prasugrel-matches-ticagrelor-with-less-bleeding.aspx">News-Medical: SWITCH SWEDEHEART trial shows prasugrel matches ticagrelor with less bleeding</a></li>
+<li><a href="https://www.materprivate.ie/news-events/news/article/2026/09/10/irish-cardiologist-highlights-implementation-gap-between-clinical-trials-and-routine-care-in-nejm-editorial">Mater Private: Irish cardiologist highlights implementation gap … in NEJM editorial</a></li>
+<li><a href="https://www.acc.org/latest-in-cardiology/articles/2026/08/24/12/30/sat-6am-combo-interventional-esc-2026">ACC: Interventional Highlights From … SWITCH SWEDEHEART</a></li>
+<li><a href="https://www.drvoice.cn/uploadfile/2017/0924/20170924111343205.pdf">VALIDATE-SWEDEHEART 試驗報告 PDF</a>；<a href="https://www.uu.se/en/news/2013/2013-09-01-new-swedish-registry-study-may-change-treatment-for-heart-attacks">Uppsala University: TASTE registry trial</a></li>
+<li><a href="https://www.wolterskluwer.com/en/solutions/Ovid/new-england-journal-of-medicine-624">Ovid／Wolters Kluwer NEJM listing（JIF 84.5）</a>；<a href="https://manusights.com/blog/nejm-impact-factor">Manusights: NEJM impact factor</a></li>
+</ul>
+
+<footer class="appraisal-meta">評讀資訊：模型：claude-opus-5-5 (claude)  ·  route：rct  ·  產出時間：2026-11-15 08:14 CST</footer>
+</main>
+</body>
+</html>

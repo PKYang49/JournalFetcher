@@ -1,0 +1,859 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Left Bundle-Branch Pacing versus Right Ventricular Pacing for Atrioventricular Block.</title>
+<style>
+  :root {
+    --bg: #fafafa;
+    --card: #ffffff;
+    --text: #1a1a1a;
+    --muted: #6b6b6b;
+    --border: #e5e5e5;
+    --accent: #0b5fff;
+  }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang TC",
+      "Microsoft JhengHei", sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    margin: 0;
+    padding: 24px 16px 64px;
+    line-height: 1.72;
+  }
+  main {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    margin: 0 auto;
+    max-width: 840px;
+    padding: 22px 26px;
+  }
+  nav {
+    margin: 0 auto 14px;
+    max-width: 840px;
+    color: var(--muted);
+    font-size: 14px;
+  }
+  a { color: var(--accent); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  h1, h2, h3, h4 { line-height: 1.35; }
+  h1 { font-size: 26px; margin-top: 0; }
+  h2 { border-top: 1px solid var(--border); padding-top: 18px; }
+  code {
+    background: rgba(127, 127, 127, 0.12);
+    border-radius: 4px;
+    padding: 1px 4px;
+  }
+  .table-wrap {
+    margin: 1em 0;
+    overflow-x: auto;
+  }
+  .table-wrap.wide {
+    /* Break out of the 840px prose column, centred on the viewport. */
+    width: min(1040px, calc(100vw - 32px));
+    margin-left: calc(50% - min(520px, 50vw - 16px));
+  }
+  table {
+    border-collapse: collapse;
+    table-layout: auto;
+    width: 100%;
+  }
+  .table-wrap.wide {
+    /* Opaque so the <main> card border does not show through the table. */
+    background: var(--card);
+  }
+  /* Width hints go on <th> as percentages: Chrome's auto table layout
+     mis-sizes columns (and overflows) when cells carry min-width. */
+  .table-wrap.wide th:first-child {
+    /* Variable + plain-language definition, e.g. "NCPV (noncalcified ...)". */
+    width: 26%;
+  }
+  .table-wrap.wide th:last-child {
+    /* Last column is usually a one-line interpretation. */
+    width: 20%;
+  }
+  th, td {
+    border: 1px solid var(--border);
+    /* Wrap only at spaces: never split an English word mid-letter. */
+    overflow-wrap: normal;
+    word-break: normal;
+    hyphens: manual;
+    padding: 6px 8px;
+    text-align: left;
+    vertical-align: top;
+  }
+  blockquote {
+    border-left: 3px solid var(--accent);
+    color: var(--muted);
+    margin-left: 0;
+    padding-left: 14px;
+  }
+  .appraisal-meta {
+    border-top: 1px solid var(--border);
+    margin-top: 28px;
+    padding-top: 14px;
+    color: var(--muted);
+    font-size: 13px;
+  }
+  @media (max-width: 600px) {
+    body {
+      padding: 12px 8px 40px;
+    }
+    main {
+      padding: 16px 12px;
+    }
+    h1 {
+      font-size: 22px;
+    }
+    table {
+      font-size: 12px;
+    }
+    .table-wrap.wide {
+      width: calc(100vw - 16px);
+      margin-left: calc(50% - 50vw + 8px);
+    }
+    th, td {
+      padding: 4px 5px;
+    }
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #1a1a1a;
+      --card: #242424;
+      --text: #e8e8e8;
+      --muted: #999;
+      --border: #333;
+      --accent: #6ea8ff;
+    }
+  }
+</style>
+</head>
+<body>
+<nav><a href="../../2026-W47.html">← 回到 2026-W47 週報</a></nav>
+<main>
+<h1>Left Bundle-Branch Pacing versus Right Ventricular Pacing for Atrioventricular Block.</h1>
+<h1>OptimPacing 試驗批判性評讀：左束支起搏（LBBP）vs. 右心室起搏（RVP）用於房室傳導阻滯</h1>
+<hr />
+<h2>SECTION-0：文章全面描述</h2>
+<h3>0. 文章身份證</h3>
+<ul>
+<li><strong>標題</strong>：Left Bundle-Branch Pacing versus Right Ventricular Pacing for Atrioventricular Block（OptimPacing trial）</li>
+<li><strong>期刊／年份</strong>：<em>N Engl J Med</em> 2026；線上發表 2026-11-08（與 AHA 2026 同步發表）[文內]</li>
+<li><strong>DOI</strong>：10.1056/NEJMoa2612972；NCT04624763；PMID 43001763</li>
+<li><strong>文章類型</strong>：investigator-initiated、國際多中心、open-label、event-driven 的平行組 RCT，經預先規劃的期中分析後提前終止 → <strong>SKILL-A 主流程</strong>，加上 A1 中「提前終止／group-sequential」與「procedural RCT」相關評估</li>
+<li>不是 review 類文章，不適用混血文章警示。</li>
+</ul>
+<h3>1. 作者團隊評論</h3>
+<ul>
+<li><strong>通訊作者</strong>：Jiangang Zou（南京醫科大學第一附屬醫院／江蘇省人民醫院心內科，PI）與 Xingbin Liu（四川大學華西醫院，Co-PI）[文內]。</li>
+<li><strong>團隊構成</strong>：17 個中心。中國大陸 13 中心、香港 1、波蘭 1、英國 1、美國 1 [文內 Table S1]。統計由 Yongyue Wei（北京大學）負責 [文內 Table S2]。Gold 與 Ellenbogen 參與試驗設計，並修改稿件 [文內 Table S2]。</li>
+<li><strong>團隊過往研究</strong>：
+<ul>
+<li>Hou X, Qian Z, Wang Y, et al. 左束支起搏的可行性與同步性研究，<em>Europace</em> 2019 [文內 Supplement 引文]</li>
+<li>Chen X, Qian Z, Zou F, et al. LBBP 與 LVSP 的鑑別演算法，<em>J Cardiovasc Electrophysiol</em> 2022 [文內 Table S4 引文]</li>
+<li>Zou 主導的 LBBP-RESYNC 多中心 RCT [外部: 搜尋摘要，未確認刊登期刊]</li>
+<li>共同作者 Weijian Huang 是 LBBP 概念的首倡者（Huang W, <em>Heart Rhythm</em> 2019）[文內 Protocol ref 15、Table S4]</li>
+<li>結論：這是 LBBP 技術的核心開發團隊，不是跨領域首次切入。</li>
+</ul>
+</li>
+<li><strong>作者立場史</strong>：團隊多年來一直推廣 LBBP。PI 在 AHA 會後公開表示「LBBP 應作為房室傳導阻滯病人的首選」[外部: ACC.org]。結論與團隊既有立場高度一致，有確認偏差的風險，在 open-label 設計下更需要注意。</li>
+<li><strong>利益揭露與資金</strong> [文內]：
+<ul>
+<li>經費全部來自中國政府與醫院計畫（江蘇省、國家自然科學基金、華西醫院），文中聲明「不是 academic–industry collaboration」。</li>
+<li>國際共同作者 Whinnett、Jastrzębski、Ellenbogen、Gold 都有 Medtronic 演講或顧問費。試驗指定使用 Medtronic 3830 導線與 C315-HIS 鞘管。</li>
+<li>評估：產業直接影響結論的風險低。真正的利益衝突是「學術立場」：發明者評估自己的技術、委員會又不夠獨立（見 E 節）。</li>
+</ul>
+</li>
+</ul>
+<h3>2. 文獻 Metadata 整理</h3>
+<ul>
+<li><strong>Received / Accepted date</strong>：[markdown 未保留，無法計算審查天數]</li>
+<li><strong>時程推算</strong> [自行計算]：DSMB 會議 2026-07-29 → steering committee 背書 2026-08-01 → 線上發表 2026-11-08，從停止試驗到刊出約 14 週，屬於配合大會的快速通道。</li>
+<li><strong>該期刊平均審查天數</strong>：[無法取得]</li>
+<li><strong>期刊屬性</strong>：NEJM，2025 JIF 約 84.5 [外部: Ovid／Manusights 二手來源，未直接查核 Clarivate JCR]；Q1。Open access 狀態 [無法取得]（下載註記為機構訂閱，[推論] 非 OA）。</li>
+<li><strong>邀稿 vs 投稿</strong>：原始研究，不適用。</li>
+</ul>
+<h3>3. 研究背景 [文內]</h3>
+<ul>
+<li><strong>既有證據</strong>：
+<ul>
+<li>RVP 造成電學與機械不同步，增加 pacing-induced cardiomyopathy（PICM）、心衰竭與死亡風險。</li>
+<li>RV septal／outflow pacing 並未優於 apex pacing。</li>
+<li>BioPace（雙心室起搏，保留 EF）呈陰性；BLOCK-HF（EF 降低）呈陽性。</li>
+<li>LBBP 縮短 paced QRS、改善同步性。觀察性研究與小型 RCT（CSPACE、LBBP-FAVOUR、Prague CSP）支持減少 PICM，但未證實能減少死亡或心衰竭住院。</li>
+</ul>
+</li>
+<li><strong>知識缺口</strong>：缺乏以臨床事件為主要終點的 event-driven RCT。</li>
+<li><strong>Research question</strong>：房室傳導阻滯且預期需要高比例心室起搏的病人，LBBP 能否比 RVP 降低「全死因死亡、心衰竭住院、PICM」組合終點？</li>
+</ul>
+<h3>4. 研究設計與方法</h3>
+<p><strong>PICO</strong></p>
+<ul>
+<li><strong>P</strong>：≥19 歲，class I 起搏適應症，包括二度／完全房室傳導阻滯，或持續性／永久性 AF 合併慢心室率；預期起搏比例 ≥20%；LVEF &gt;35%，NYHA I–III [文內 Methods、Table S3]。</li>
+<li><strong>I</strong>：LBBP，使用 3830 導線經中隔鎖入左側內膜下。</li>
+<li><strong>C</strong>：RVP，位置（septum 或 apex）由術者決定。</li>
+<li><strong>O</strong>：
+<ul>
+<li>主要終點：全死因死亡＋心衰竭住院＋PICM 的 time-to-first-event 組合終點。</li>
+<li>PICM 定義：LVEF 下降 ≥10% 且 &lt;50%，並排除其他原因。</li>
+<li>次要終點：心超參數、起搏參數、NYHA、NT-proBNP、6MWD、MLHFQ、中風、新發 AF、裝置升級。</li>
+</ul>
+</li>
+</ul>
+<p><strong>設計細節</strong></p>
+<ul>
+<li>1:1 網路隨機分派，permuted block；依 AF 合併慢心室率、LVEF（≤50%／&gt;50%）、中心分層。</li>
+<li>收案 2021 年 6 月至 2025 年 1 月。</li>
+<li>樣本數假設：5 年事件率 RVP 25% vs LBBP 15%，80% power，需 ≥100 事件，n=683。</li>
+<li>一次 O'Brien–Fleming 期中分析：≥50 事件時進行，名目 α 期中 0.003、最終 0.047。</li>
+<li>主要分析族群為 modified ITT：排除植入前即退出者。</li>
+<li>統計方法：分層 log-rank、分層 Cox。次要終點使用 MMRM，未做多重比較校正。</li>
+<li>心超由核心實驗室（復旦中山）判讀，但 baseline 是植入後、出院前的心超。</li>
+</ul>
+<h3>5. 研究結果重點整理</h3>
+<p><strong>主要結果表</strong>（LBBP n=342，RVP n=343，mITT；起搏參數與 SAE 採 as-treated）</p>
+<div class="table-wrap wide"><table>
+<thead>
+<tr>
+<th>變項（代表什麼）</th>
+<th style="text-align:right">LBBP</th>
+<th style="text-align:right">RVP</th>
+<th style="text-align:right">組間差（95% CI）</th>
+<th style="text-align:right">p 值</th>
+<th>如何解讀</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Paced QRS</strong>：起搏後 QRS 寬度</td>
+<td style="text-align:right"><strong>124.0±17.0 ms</strong></td>
+<td style="text-align:right"><strong>151.7±20.0 ms</strong></td>
+<td style="text-align:right">−27.7 ms</td>
+<td style="text-align:right">未報告</td>
+<td>電學同步較好 [自行計算差值]</td>
+</tr>
+<tr>
+<td><strong>LBB capture</strong>：確認真正夾到左束支的比例</td>
+<td style="text-align:right"><strong>290/331（87.6%）</strong></td>
+<td style="text-align:right">—</td>
+<td style="text-align:right">—</td>
+<td style="text-align:right">—</td>
+<td>約 12% 實為 LVSP，不是純 LBBP</td>
+</tr>
+<tr>
+<td><strong>心室起搏比例</strong></td>
+<td style="text-align:right">90.9±23.0%</td>
+<td style="text-align:right">93.4±19.4%</td>
+<td style="text-align:right">—</td>
+<td style="text-align:right">未報告</td>
+<td>兩組都是高起搏負荷族群</td>
+</tr>
+<tr>
+<td><strong>主要組合終點</strong>（死亡／HF 住院／PICM）</td>
+<td style="text-align:right"><strong>16 例；4 年 KM 8.5%</strong></td>
+<td style="text-align:right"><strong>35 例；4 年 KM 19.2%</strong></td>
+<td style="text-align:right">HR <strong>0.41（0.23–0.75）</strong></td>
+<td style="text-align:right">0.003（Table S12：0.0027）</td>
+<td>絕對差約 10.7 個百分點，NNT 約 9（4 年）[自行計算]</td>
+</tr>
+<tr>
+<td><strong>PICM</strong>：起搏誘發心肌病（心超定義）</td>
+<td style="text-align:right"><strong>0 例；0%</strong></td>
+<td style="text-align:right"><strong>19 例；11.7%</strong></td>
+<td style="text-align:right">sHR 0.025（0.002–0.361）*</td>
+<td style="text-align:right">未報告</td>
+<td>組合終點的主要驅動者</td>
+</tr>
+<tr>
+<td><strong>HF 住院</strong>（首發事件）</td>
+<td style="text-align:right">2 例；1.5%</td>
+<td style="text-align:right">7 例；2.9%</td>
+<td style="text-align:right">sHR 0.26（0.05–1.28）</td>
+<td style="text-align:right">未報告</td>
+<td>方向有利，CI 跨越 1</td>
+</tr>
+<tr>
+<td><strong>全死因死亡</strong></td>
+<td style="text-align:right">15 例；7.4%</td>
+<td style="text-align:right">13 例；7.7%</td>
+<td style="text-align:right">HR <strong>1.06（0.50–2.26）</strong></td>
+<td style="text-align:right">未報告</td>
+<td>沒有明確組間差異，CI 很寬</td>
+</tr>
+<tr>
+<td><strong>LVEF 變化</strong>（36 個月，MMRM）</td>
+<td style="text-align:right"><strong>＋0.43%</strong></td>
+<td style="text-align:right"><strong>−0.99%</strong></td>
+<td style="text-align:right">1.41（0.40–2.43）</td>
+<td style="text-align:right">未報告</td>
+<td>統計上非零，但遠小於臨床意義門檻</td>
+</tr>
+<tr>
+<td><strong>LVESV 變化</strong>（36 個月）</td>
+<td style="text-align:right"><strong>−3.54 mL</strong></td>
+<td style="text-align:right"><strong>＋1.07 mL</strong></td>
+<td style="text-align:right">−4.61（−6.89 to −2.33）</td>
+<td style="text-align:right">未報告</td>
+<td>正常心臟中差異幅度很小</td>
+</tr>
+<tr>
+<td><strong>6MWD</strong>：6 分鐘步行距離變化（36 個月）</td>
+<td style="text-align:right"><strong>＋88.3 m</strong></td>
+<td style="text-align:right"><strong>＋100.9 m</strong></td>
+<td style="text-align:right">−12.6（−30.95 to 5.74）</td>
+<td style="text-align:right">未報告</td>
+<td>數值上反而偏向 RVP</td>
+</tr>
+<tr>
+<td><strong>MLHFQ</strong>：生活品質分數（越高越差）</td>
+<td style="text-align:right">＋0.63</td>
+<td style="text-align:right">＋0.78</td>
+<td style="text-align:right">−0.15（−1.24 to 0.94）</td>
+<td style="text-align:right">未報告</td>
+<td>基線僅約 2.5 分，有地板效應</td>
+</tr>
+<tr>
+<td><strong>ln NT-proBNP 變化</strong>（36 個月）</td>
+<td style="text-align:right">−1.00</td>
+<td style="text-align:right">−0.76</td>
+<td style="text-align:right">−0.24（−0.45 to −0.03）</td>
+<td style="text-align:right">未報告</td>
+<td>幅度小，未經多重比較校正</td>
+</tr>
+<tr>
+<td><strong>新發 AF</strong>（4 年 KM）</td>
+<td style="text-align:right">23.8%</td>
+<td style="text-align:right">36.1%</td>
+<td style="text-align:right">HR 0.69（0.48–0.99）</td>
+<td style="text-align:right">未報告</td>
+<td>分母 255／275 來源不明</td>
+</tr>
+<tr>
+<td><strong>中風</strong>（4 年 KM）</td>
+<td style="text-align:right">1.35%</td>
+<td style="text-align:right">2.92%</td>
+<td style="text-align:right">HR 0.64（0.18–2.30）</td>
+<td style="text-align:right">未報告</td>
+<td>事件太少，無法判斷</td>
+</tr>
+<tr>
+<td><strong>手術相關併發症</strong></td>
+<td style="text-align:right">13（3.8%）</td>
+<td style="text-align:right">11（3.2%）</td>
+<td style="text-align:right">—</td>
+<td style="text-align:right">0.68</td>
+<td>沒有明確差異</td>
+</tr>
+<tr>
+<td><strong>非手術相關 SAE</strong></td>
+<td style="text-align:right">39（11.8%）</td>
+<td style="text-align:right">33（9.3%）</td>
+<td style="text-align:right">—</td>
+<td style="text-align:right">0.32</td>
+<td>數值上 LBBP 較多</td>
+</tr>
+<tr>
+<td><strong>手術時間／透視時間</strong></td>
+<td style="text-align:right">78.2／8.5 min</td>
+<td style="text-align:right">60.4／4.8 min</td>
+<td style="text-align:right">—</td>
+<td style="text-align:right">未報告</td>
+<td>LBBP 技術負擔較大 [Table S7]</td>
+</tr>
+</tbody>
+</table></div>
+<p>* PICM 在 LBBP 組為零事件，依 SAP 改用 Firth penalized Poisson 估計 [Table S10]。</p>
+<p>補充重點：</p>
+<ul>
+<li><strong>效果幾乎全由 PICM 驅動</strong>：35 例 RVP 事件中有 19 例是 PICM。PICM 是心超定義的終點，在 open-label 下有判讀偏差的風險。硬終點（死亡、HF 住院）沒有可確認的差異。</li>
+<li><strong>Tipping-point 很脆弱</strong>：LBBP 組有 13 位心超追蹤缺失而被 censor。只要把其中 7 位改判為事件，95% CI 上限就到 1.01 [Table S13]。</li>
+<li><strong>追蹤流失</strong>：植入前排除 6 vs 11；術後失聯 3 vs 8；LBBP 有 11 例 crossover 到 RVP，多數是導線無法鎖入（8 例）[Figure 1]。</li>
+<li><strong>不一致之處</strong>：DSMB 信函寫「685 人收案完成」，steering committee 信函寫「683 人」[Figure S2a/b]。</li>
+</ul>
+<h3>6. 作者討論與評論重點</h3>
+<ul>
+<li><strong>作者主要訊息</strong>：LBBP 降低組合終點，主要靠減少 PICM 與 HF 住院；RVP 也可能透過舒張功能造成 HFpEF 型心衰竭（10 例 HF 住院中 5 例 EF 保留）。</li>
+<li><strong>與文獻的對照</strong>：作者認為結果與 CSPACE 一致；LBBP-FAVOUR 與 Prague CSP 只減少 PICM、未減少死亡或 HF 住院，作者對此沒有正面解釋。</li>
+<li><strong>作者列出的限制</strong> [文內]：(1) 提前終止；(2) 部分心超缺失；(3) 多數 EF 正常；(4) 主要在中國收案；(5) 未依 RV 起搏位置分層、未比較 LBBP vs LVSP；(6) 心超判讀可能失盲。</li>
+<li><strong>[評估]</strong>：
+<ul>
+<li>限制段寫了「結果在考慮 censoring 後仍有統計與臨床顯著性」，但 tipping point 只需 7 例就翻轉，這個說法避重就輕。</li>
+<li>作者沒有承認死亡 HR 1.06、6MWD 數值偏向 RVP 這些訊號。</li>
+<li>Protocol 原本規劃「LVSP 子組分析」，論文未報告（見 B3）。</li>
+<li>作者把 4 年絕對風險差當作主要訊息，但 48 個月時每組只剩 44 人在風險中。</li>
+</ul>
+</li>
+</ul>
+<h3>7. 外部專業意見</h3>
+<ul>
+<li><strong>同期 NEJM editorial</strong>：[無法取得]。多次搜尋未找到針對本文的同期 editorial 或 comment，也沒有可下載全文的 DOI。</li>
+<li><strong>AHA 2026 指定討論人與專家發言</strong>（[外部: TCTMD 報導，屬二手轉述，非全文評論]）：
+<ul>
+<li><strong>Sana Al-Khatib</strong>（Duke，HRS 理事長，無相關利益衝突）：提前終止可能誇大 LBBP 優勢；本試驗與 Prague CSP 結果不一致，可能來自 Prague CSP 追蹤只有 12 個月，以及本試驗術者的 LBBP 熟練度特別高；呼籲研究存活、HF 住院、導線穩定與拔除等問題。</li>
+<li><strong>Elaine Wan</strong>（Columbia）：強調導線位置與是否真正達到生理性 QRS（「不只是把導線放在那裡」），並質疑現階段是否足以改寫 2023 HRS 指引。</li>
+<li><strong>Cara Pellegrini</strong>（UCSF）：多數電生理醫師已把 LBBAP 當作預設選項。</li>
+</ul>
+</li>
+<li><strong>Medscape 2026-11-13 podcast</strong>：遇付費牆 [無法取得全文]，不轉述其內容。</li>
+</ul>
+<h3>8. 臨床建議</h3>
+<ul>
+<li><strong>可採用的情境</strong>：
+<ul>
+<li>LVEF 保留、預期高比例心室起搏的房室傳導阻滯病人。</li>
+<li>在 LBBP 成功率 &gt;95%、熟悉 LBB capture 驗證的中心，選擇 LBBAP 以降低 PICM 風險是合理的。</li>
+</ul>
+</li>
+<li><strong>不建議直接套用的情境</strong>：
+<ul>
+<li>LVEF ≤50%：本試驗只有 10 人。</li>
+<li>原本就是 LBBB 的病人：子組 HR 0.88（0.12–6.67）。</li>
+<li>低起搏比例或間歇性房室傳導阻滯：被排除了 151 人。</li>
+<li>LBBP 經驗有限的中心。</li>
+<li>把這篇解讀為「LBBP 降低死亡率」。</li>
+</ul>
+</li>
+<li><strong>實務建議</strong>：
+<ol>
+<li>本試驗支持的是「LBBP 預防心超定義的 PICM」，不是「降低死亡或 HF 住院」。和病人溝通時以預防 LV 功能惡化為主，不宣稱延長存活。</li>
+<li>不論用哪一種起搏，高起搏負荷的 RVP 病人都應在 1–2 年內規律追蹤心超。PICM 在 RVP 組 4 年約 12%，可以早期發現並升級（CRT 或 LBBP）處理。</li>
+<li>植入 LBBP 時要確認真正的 LBB capture（本試驗只有 87.6%），也要接受較長的手術與透視時間，以及約 2% 的導線微移位。</li>
+</ol>
+</li>
+<li><strong>證據強度</strong>：<strong>中</strong>。設計是 RCT，主要終點達標，與機轉一致。但 open-label 加上軟終點驅動、提前終止且剛好越過界線、委員會不夠獨立、硬終點 CI 很寬，都使證據強度下修。</li>
+</ul>
+<hr />
+<h2>SKILL-A：批判性評讀</h2>
+<h3>A. 補充技術細節</h3>
+<ul>
+<li><strong>樣本數</strong>：假設 5 年 25% vs 15%（約 HR 0.56）。實際觀察到 HR 0.41，比假設效果大很多，符合提前終止常見的效果高估型態。期中分析時只有 51/100 事件（information fraction 約 51%）。</li>
+<li><strong>隨機化</strong>：網路系統，分派隱藏應屬充分。但有 20 人分層因子輸入錯誤（AF 14 人、LVEF 6 人）；依原始錯誤分層分析得 HR 0.40，結論穩定 [Table S12 Model 4–6]。</li>
+<li><strong>致盲</strong>：完全 open-label，受試者、術者、事件判定者都知道分組。核心實驗室讀片者「被要求不看前次報告」，但心超影像本身可能看得到導線位置，無法保證盲法。文中未進行盲法成功度檢查。</li>
+<li><strong>事件判定</strong>：由 steering committee（3 位非試驗研究者）判定主要終點 [Table S2]。文中沒有說明判定者是否知道分組，也沒有獨立 CEC。</li>
+<li><strong>ITT vs per-protocol</strong>：mITT 排除 17 位植入前退出者。Protocol v2.0 已寫明「隨機或植入不成功即退出」，所以算是預先指定。
+<ul>
+<li>全隨機族群分析：HR 0.41；最壞情境（17 人全算第 1 天發生事件）：HR 0.45（0.27–0.76）。</li>
+<li>As-treated：HR 0.37（0.20–0.69）[Table S12]。</li>
+</ul>
+</li>
+<li><strong>多重比較</strong>：只有主要終點有 α 控制，次要終點與子組都未校正（文中有聲明）。</li>
+<li><strong>比例風險假設</strong>：global Schoenfeld P=0.44 [Table S9]。但 KM 曲線前 18–24 個月幾乎重疊，見 C4。</li>
+<li><strong>缺失資料</strong>：
+<ul>
+<li>心超追蹤率：6 個月 84.7% vs 80.9%，3 年 92.9% vs 87.2% [Table S16]，RVP 組略低（這對 RVP 較保守，因為漏掉的 PICM 較多）。</li>
+<li>8.8% 的 baseline 心超與 6–14% 的追蹤心超是中心自行判讀 [Table S16]。</li>
+<li>MMRM 假設 missing at random。</li>
+</ul>
+</li>
+</ul>
+<h4>A1. 特殊設計：提前終止與 procedural RCT</h4>
+<ul>
+<li><strong>Group-sequential 邊界</strong>：期中名目 α=0.003，觀察到 P=0.0027 [Table S12]，<strong>僅以極小差距越過界線</strong>。</li>
+<li><strong>第 51 個事件的爭議（關鍵發現）</strong>：
+<ul>
+<li>DSMB 信函 [Figure S2a] 記載：50 個事件於 2026-05-09 達到，並於 2026-06-08 完成判定。</li>
+<li>6 月 18 日資料驗證期間，site 07 一位病人家屬主動告知病人已於 5 月 22 日死亡。這個事件經 steering committee 建議後納入期中分析。</li>
+<li>對照 Table S8，這個事件是 <strong>RVP 組 d07014 的吸入性肺炎死亡</strong>（與起搏機轉無關）。</li>
+<li>[推論，未分層 log-rank 粗略近似：Z=3.00 對應 O−E≈−10.7、V≈12.75；移除這 1 例 RVP 事件後 Z≈2.89，p≈0.004，僅供判斷方向] 若沒有這個晚到、與機轉無關的死亡事件，期中檢定很可能不會越過 0.003 的界線。</li>
+<li>Protocol 寫的是「至少 50 事件」，納入它在程序上可以辯護。但「是否停止」可能取決於單一非心因性死亡，凸顯停止決策的脆弱。</li>
+</ul>
+</li>
+<li><strong>治理問題</strong>：
+<ul>
+<li>Protocol 寫明期中分析後「由 Principal Investigator 決定是否繼續或停止」[Protocol p.9]。</li>
+<li>Interim 段落同時提到 predictive probability、sample size re-estimation 與 O'Brien–Fleming 停止規則，三者寫在一起，邏輯不夠清楚。</li>
+</ul>
+</li>
+<li><strong>Procedural RCT 特性</strong>：
+<ul>
+<li>沒有 sham 對照，也不可能做到。</li>
+<li>術者熟練度的差異沒有控制：兩大中心佔 38.5%（264/685）。依中心分層後效果方向一致：大中心 HR 0.51（0.19–1.39），其他中心 HR 0.37（0.17–0.77）[Table S11]。</li>
+<li>RV 導線位置（septum vs apex）未報告分布。</li>
+</ul>
+</li>
+</ul>
+<hr />
+<h3>B. 批判性評估</h3>
+<h4>B1. 假說與理論邏輯</h4>
+<ul>
+<li><strong>問題</strong>：機轉假說（電學同步 → 避免 LV 重塑 → 減少 PICM 與 HF）預先指定且合理；QRS 縮短 27.7 ms、LVESV 較小都支持機轉。</li>
+<li><strong>最可疑的敘事跳躍</strong>：
+<ol>
+<li><strong>從「PICM 減少」跳到「臨床結局改善」</strong>：死亡 HR 1.06，HF 住院僅 2 vs 7 例；6MWD 與 QoL 都沒有改善，甚至數值偏向 RVP [Table S14f/h]。標題與結論用「composite 優於」包裝，容易讓讀者以為硬終點也獲益。</li>
+<li><strong>「RVP 影響舒張功能」的推論</strong>：只根據 10 例 HF 住院中 5 例 EF 保留 [Discussion]。這些病人多合併肺炎、自體免疫疾病、腎病等 [Table S8]，沒有因果證據。</li>
+<li><strong>把 0 例 PICM 歸因於 LBBP</strong>：LBBP 組中約 12% 實為 LVSP、11 例 crossover 到 RVP（mITT 仍計入 LBBP 組），卻仍然是 0 例。這可能反映 LBBAP 真的有效，也可能反映 PICM 判定在兩組間不對稱，見 F 節。</li>
+</ol>
+</li>
+</ul>
+<h4>B2. 受試者與外推性</h4>
+<ul>
+<li><strong>納入族群</strong>：
+<ul>
+<li>98.5% LVEF &gt;50%，平均 63%；NYHA I 佔 48%；MLHFQ 基線約 2.5 分（滿分 105），顯示病人整體相當健康。</li>
+<li>93% 在中國大陸收案；非大陸受試者僅 46 人 [Table S1]。</li>
+<li>篩選時排除了：間歇性房室傳導阻滯 151 人、選擇 leadless 90 人、心超影像品質差 35 人 [Figure 1]。</li>
+</ul>
+</li>
+<li><strong>外推性分級</strong>：
+<ol>
+<li><strong>一般起搏族群（含 SND、低起搏比例）</strong>：<strong>遠</strong>。本試驗只收高起搏負荷的房室傳導阻滯病人，SND 與低起搏比例者沒有被研究。</li>
+<li><strong>EF 保留、高起搏負荷的房室傳導阻滯</strong>：<strong>近</strong>。前提是術者 LBBP 成功率與本試驗相當（96.8%）。</li>
+<li><strong>EF 降低、原有 LBBB、高齡（&gt;70 歲）</strong>：<strong>中至遠</strong>。EF ≤50% 只有 10 人；LBBB 子組 HR 0.88；&gt;70 歲 HR 0.77（0.37–1.64）。</li>
+<li><strong>非亞洲族群與一般社區醫院</strong>：<strong>中</strong>。Al-Khatib 也明白指出術者熟練度是一個解釋。</li>
+</ol>
+</li>
+</ul>
+<h4>B3. 研究設計與偏差</h4>
+<ul>
+<li><strong>對照組適當性</strong>：RVP 是目前多數指引中的標準照護，作為對照合理。但 RV 導線位置由術者決定，且沒有報告分布。</li>
+<li><strong>後續治療</strong>：
+<ul>
+<li>RVP 組發生 PICM 後有人升級：CRT 2 例、LBBP 2 例。</li>
+<li>因為是 time-to-first-event 分析，升級後的獲益不影響主要終點，但會影響後續 HF 住院與死亡的自然史。</li>
+</ul>
+</li>
+<li><strong>最可能造成偏差的三個設計點</strong>：
+<ol>
+<li><strong>Open-label 加上軟性、心超定義的 PICM</strong>：PICM 佔 RVP 事件的 54%（19/35）。判讀者可能從影像看出導線位置，判讀與裁決者都可能預期 RVP 較差。<strong>方向：誇大效果</strong>。</li>
+<li><strong>PICM 判定的定義不一致與時間點問題</strong>（[文內 Table S8]）：
+<ul>
+<li><strong>定義門檻</strong>：Protocol 寫「LVEF ≤50%」[Protocol p.7]，論文寫「&lt;50%」。d10050 追蹤 LVEF 剛好 50%，被計為 PICM，只符合 protocol 版本。</li>
+<li><strong>排除條件</strong>：d10007 曾因下壁 MI 置放 RCA 支架。Protocol 明列 MI 為 PICM 的排除原因，此例仍被計入。</li>
+<li><strong>事件日期</strong>：d10007 在 6 個月時已符合標準（58.7→44%），事件日期卻記在 3 年；d08002 在 1 年時已符合（57→47%），事件日期也記在 3 年。</li>
+<li>多例排除缺血只依據「無胸悶胸痛」，而不是影像檢查。</li>
+<li><strong>方向</strong>：前兩項會誇大 RVP 事件數；事件日期延後則讓 RVP 曲線晚分離，對 HR 影響較小。</li>
+</ul>
+</li>
+<li><strong>委員會獨立性不足</strong>：DSMB 三位成員全部來自南京醫科大學（2 位來自 PI 所在的第一附屬醫院）；Safety Review Committee 三位中有兩位來自同院；consulting statistician 也來自南京醫科大學 [Table S2]。名為「independent」，機構上並不獨立。<strong>方向</strong>：增加偏向停止試驗的風險。</li>
+</ol>
+</li>
+<li><strong>Protocol 偏離</strong>：
+<ul>
+<li>Protocol 寫明「LBBP 失敗但 LVSP 成功者會做子組分析」[Protocol p.38]，論文未報告，只在限制中寫「未比較 LBBP 與 LVSP」。</li>
+<li>「預期起搏比例 ≥20%」的納入條件出現在正文，但 protocol v2.0／v3.0 的納入條件中沒有 [Protocol p.10, p.134]。</li>
+<li>Protocol 的 primary endpoint 文字與論文一致，沒有 outcome switching。</li>
+</ul>
+</li>
+</ul>
+<h4>B4. 測量工具與實務意義</h4>
+<ul>
+<li><strong>終點性質</strong>：PICM 是 surrogate（LVEF 變化）被當成臨床事件。LVEF 的 test–retest 變異約 5–7 個百分點 [推論，一般心超文獻常識，非本文數據]，「下降 ≥10%」的門檻接近測量誤差的兩倍，單次測量就可能被判為事件。</li>
+<li><strong>連續性結果</strong>：組間 LVEF 差異 1.4 個百分點、LVESV 差異 4.6 mL，對 EF 正常的心臟幾乎沒有臨床意義。</li>
+<li><strong>就算結果是真的，真實世界的效益</strong>：
+<ul>
+<li>每治療約 9 人、4 年可避免 1 例「心超定義的 PICM」[自行計算]。</li>
+<li>每 100 人、4 年避免約 1.4 例 HF 住院（CI 跨越 1）；避免死亡的估計約 0.3 例（CI 跨越 1，且 HR 點估計 1.06 實際上不支持任何死亡獲益）。</li>
+<li>代價：手術時間約多 18 分鐘、透視時間多 3.7 分鐘、約 3% crossover、約 2% 導線微移位。</li>
+<li>PICM 若能被追蹤發現，再升級處理通常可逆（例如 d08002 升級 LBBP 後 EF 回升到 47%、d12006 升到 45%），可以稀釋 LBBP「預防」策略的淨效益。</li>
+</ul>
+</li>
+</ul>
+<hr />
+<h3>C. 統計與資料完整性</h3>
+<h4>C1. 結果分類（CI + MCID）</h4>
+<ul>
+<li><strong>主要終點</strong>：
+<ul>
+<li>MCID 未預先指定。依樣本數假設的 10% 絕對差（約 HR 0.56）作為設計目標，臨床有意義的 δ 取 HR 0.80 [推算]。</li>
+<li>HR 0.41（0.23–0.75），CI 完全在 0.80 以下 → <strong>形式上為 POSITIVE</strong>。但這是提前終止的試驗，點估計應預期向 null 回歸（見 C3）。</li>
+</ul>
+</li>
+<li><strong>全死因死亡</strong>：HR 1.06（0.50–2.26），CI 同時包含明顯獲益與明顯傷害 → <strong>INCONCLUSIVE</strong>。</li>
+<li><strong>HF 住院</strong>：sHR 0.26（0.05–1.28）→ <strong>INCONCLUSIVE</strong>。</li>
+<li><strong>6MWD</strong>：MCID 約 ±30 m [推算]。CI −30.95 至 5.74，排除了 LBBP 有意義的獲益，下限剛好碰到傷害門檻 → 對「LBBP 改善運動能力」而言是 <strong>NEGATIVE</strong>。</li>
+<li><strong>MLHFQ</strong>：MCID 約 5 分 [推算]。CI −1.24 至 0.94，完全在 ±5 內 → <strong>NEUTRAL</strong>（但有地板效應，敏感度低）。</li>
+<li><strong>LVEF</strong>：差值 1.41（0.40–2.43），統計上排除 0，但整個 CI 遠低於 5 個百分點的 MCID [推算] → 臨床上屬於可忽略的差異。</li>
+</ul>
+<h4>C2. Underpowered 與 Winner's Curse</h4>
+<ul>
+<li>試驗在 51/100 事件時停止；事件數減半，效果卻遠大於設計假設（HR 0.41 vs 約 0.56）。這是典型的 truncated-trial 高估型態，作者在限制中也承認。</li>
+<li>Tipping point：只需 7 例 LBBP 缺失者改判為事件就失去顯著 [Table S13]。</li>
+<li>Table S13 的 time-to-event 欄位，前 6 例寫「1 d」，與「假設事件發生在最後一次心超日」的定義矛盾。報告品質有疑義。</li>
+<li><strong>給後續試驗設計者的提醒</strong>：不宜用 HR 0.41 估算確認試驗的樣本數，否則會嚴重低估所需樣本。</li>
+</ul>
+<h4>C3. Bayesian 補充分析（因提前終止而執行）</h4>
+<p>[自行計算，常態近似：lnHR −0.892，SE 0.302]</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Prior</th>
+<th>後驗 HR（95% CrI）</th>
+<th>Pr(HR&lt;1)</th>
+<th>Pr(HR&lt;0.80)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>無資訊 prior</td>
+<td>0.41（0.23–0.75）</td>
+<td>約 99.8%</td>
+<td>約 98.7%</td>
+</tr>
+<tr>
+<td>Skeptical prior（中心 HR 1，Pr(HR&lt;0.56)=5%）</td>
+<td><strong>0.60（0.38–0.94）</strong></td>
+<td>約 98.8%</td>
+<td>約 90%</td>
+</tr>
+</tbody>
+</table></div>
+<ul>
+<li>即使採懷疑性 prior，組合終點有獲益的機率仍然很高，<strong>方向穩健</strong>。</li>
+<li>但合理的效果大小估計約 HR 0.6，不是 0.41。用於臨床決策時，絕對風險下降應打折，大約 6–7 個百分點，NNT 約 15 [推論]。</li>
+</ul>
+<h4>C4. KM 圖與報告完整性（依 Figure 2–4 實際圖像）</h4>
+<ul>
+<li><strong>曲線分離時點</strong>：主要終點與 PICM 的曲線在前約 18 個月幾乎重疊，約 24 個月起 RVP 曲線呈階梯式上升，階梯集中在 12、24、36、48 個月。這和心超排程時間一致，表示 PICM 實際上是 interval-censored，事件時間由回診排程決定。</li>
+<li><strong>Number at risk</strong>：48 個月時兩組各只剩 44 人，60 個月時 0 與 1 人。RVP 在約 46–48 個月從約 15% 跳到 19.2%，發生在少數人中，<strong>4 年 KM 估計的尾端不可靠</strong>；作者用 4 年率當作 headline 數字，等於放大了不穩定的尾端。</li>
+<li><strong>死亡曲線</strong>（Figure 2D）：全程交錯重疊，沒有分離跡象。</li>
+<li><strong>座標軸</strong>：主圖 y 軸 0–100% 是誠實呈現；inset 放大到 0–30%，視覺上會放大差異，但有標示清楚。</li>
+<li><strong>Forest plot</strong>（Figure 3）：
+<ul>
+<li>年齡 ≤70 歲 HR 0.15（0.04–0.51），&gt;70 歲 HR 0.77（0.37–1.64）；LBBB 子組 HR 0.88，CI 寬且跨越 1。</li>
+<li><strong>完全沒有報告 interaction p 值</strong>。</li>
+</ul>
+</li>
+<li><strong>Figure 4 起搏參數</strong>：LBBP 的 capture threshold 從約 0.55 V 緩升到約 0.77 V（36 個月），正文描述「low and stable」略為美化。R-wave sensing 較高（約 15–16 vs 13 mV）。</li>
+<li><strong>CONSORT 人數</strong>：1081−379=702，702−17=685 → 342＋343，與正文一致。</li>
+<li><strong>其他數字不一致</strong>：新發 AF 分析的分母為 255／275，與非 AF 基線人數 295／303 不符，文中未說明。</li>
+<li><strong>統計紅旗清單</strong>：
+<ol>
+<li>提前終止，P=0.0027 僅以極小差距越過 0.003，且可能取決於第 51 個晚報的非心因性死亡。</li>
+<li>效果大小遠超過設計假設（winner's curse）。</li>
+<li>主要驅動終點為 open-label 下的心超 surrogate。</li>
+<li>Tipping point 只需 7 例就翻轉。</li>
+<li>子組分析沒有 interaction p 值。</li>
+<li>PICM 定義在 protocol（≤50%）與論文（&lt;50%）之間不一致，且有個案不符合排除標準。</li>
+<li>4 年 KM 估計建立在每組 44 人的尾端上。</li>
+<li>Protocol 規劃的 LVSP 子組分析未報告。</li>
+</ol>
+</li>
+</ul>
+<hr />
+<h3>D. 次組分析評估（JAMA 5 標準）</h3>
+<div class="table-wrap wide"><table>
+<thead>
+<tr>
+<th>子組</th>
+<th>Interaction p</th>
+<th>方向一致</th>
+<th>預先指定</th>
+<th>生物機轉</th>
+<th>Within-study</th>
+<th>可信度</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>年齡 ≤70（HR 0.15）vs &gt;70（0.77）</td>
+<td>未報告</td>
+<td>無外部資料</td>
+<td>是</td>
+<td>部分（高齡者死亡等競爭風險較多）</td>
+<td>是</td>
+<td><strong>低</strong></td>
+</tr>
+<tr>
+<td>LBBB（0.88）vs 非 LBBB（0.39）</td>
+<td>未報告</td>
+<td>與「LBBB 時 RVP 傷害較小」的假說相符</td>
+<td>是</td>
+<td>合理</td>
+<td>是</td>
+<td><strong>推測性</strong>（LBBB 只有 60 人）</td>
+</tr>
+<tr>
+<td>QRS ≤120（0.48）vs &gt;120（0.37）</td>
+<td>未報告</td>
+<td>一致</td>
+<td>是</td>
+<td>合理</td>
+<td>是</td>
+<td><strong>低</strong>（兩組 CI 高度重疊）</td>
+</tr>
+<tr>
+<td>AF 慢心室率（0.68）vs 非 AF（0.36）</td>
+<td>未報告</td>
+<td>—</td>
+<td>是（分層因子）</td>
+<td>不明</td>
+<td>是</td>
+<td><strong>低</strong>（AF 組只有 87 人）</td>
+</tr>
+<tr>
+<td>LVEF ≤50%</td>
+<td>無法估計</td>
+<td>—</td>
+<td>是</td>
+<td>—</td>
+<td>—</td>
+<td><strong>無法判定</strong>（10 人）</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+<h3>E. 紅旗清單</h3>
+<ul>
+<li><strong>設計</strong>：open-label，主要終點由心超 surrogate 驅動；事件判定者是否知道分組未說明；RV 導線位置任由術者選擇。</li>
+<li><strong>治理</strong>：「independent」DMC 全數來自 PI 所屬大學；protocol 寫明由 PI 決定停止與否；停止決策可能取決於晚到的單一 RVP 非心因性死亡。</li>
+<li><strong>統計</strong>：P=0.0027 僅以極小差距越過 0.003；效果大於假設；tipping point 只需 7 例；4 年 KM 尾端每組只剩 44 人；子組沒有 interaction p 值。</li>
+<li><strong>資料完整性</strong>：PICM 定義在 protocol 與論文間不一致（≤50 vs &lt;50）；有個案違反 protocol 排除條件（MI 病史）；PICM 事件日期不一致；685 vs 683 人；新發 AF 分母不明；Table S13 時間欄位矛盾。</li>
+<li><strong>敘事</strong>：標題與結論沒有區分「PICM 獲益」與「臨床事件獲益」；死亡 HR 1.06 與 6MWD 偏向 RVP 未被討論；「LBBP capture threshold stable」略為美化。</li>
+<li><strong>利益衝突</strong>：技術發明者評估自己的技術，PI 會後公開主張 LBBP 為「首選」。</li>
+<li><strong>外推</strong>：93% 中國收案；EF 正常且症狀輕；專家中心；排除低起搏比例與間歇性房室傳導阻滯。</li>
+</ul>
+<h3>F. 反向解釋</h3>
+<ol>
+<li><strong>偵測偏差（ascertainment bias）</strong>：PICM 依賴心超判讀，判讀者可能從影像看出導線位置。
+<ul>
+<li>支持線索：LBBP 組 0 例 PICM，包括約 12% LVSP 與 11 例 crossover 到 RVP 的病人。照理說後者應該接近 RVP 的風險，在 mITT 下卻沒有任何人發生 PICM。</li>
+<li>反對線索：核心實驗室判讀佔 91%；LVEF 與 LVESV 的連續數據方向一致。</li>
+</ul>
+</li>
+<li><strong>提前終止造成的隨機高估</strong>：在事件數少時，隨機的高點最容易觸發停止條件。
+<ul>
+<li>支持線索：P 值剛好越過界線、效果遠大於假設、tipping point 脆弱。</li>
+<li>反對線索：skeptical prior 下 Pr(HR&lt;1) 仍約 99%。</li>
+</ul>
+</li>
+<li><strong>術者與中心效應</strong>：結果反映的是「頂尖 LBBP 中心」的表現，不一定反映 LBBP 技術本身。
+<ul>
+<li>支持線索：96.8% 植入成功率；與 Prague CSP、LBBP-FAVOUR 的結果不一致；Al-Khatib 也提出相同看法。</li>
+<li>反對線索：大中心與其他中心的效果方向一致 [Table S11]。</li>
+</ul>
+</li>
+<li><strong>PICM 定義過於寬鬆</strong>：測量變異加上邊界個案（剛好 50%、MI 病史）可能讓 RVP 事件數偏多。
+<ul>
+<li>支持線索：Table S8 的個案敘述。</li>
+<li>反對線索：多數 RVP PICM 個案的 LVEF 下降超過 15 個百分點，且是在多次追蹤中持續下降。</li>
+</ul>
+</li>
+</ol>
+<h3>G. 最終裁決</h3>
+<ul>
+<li><strong>整體可信度</strong>：<strong>中</strong>。「LBBP 減少心超定義的 PICM」可信度中至高；「LBBP 降低死亡或 HF 住院」可信度低，證據不足。</li>
+<li><strong>可採用的條件</strong>：EF 保留、高起搏比例的房室傳導阻滯；中心 LBBP 成功率高並能確認 LBB capture；以預防 LV 功能惡化為目標。</li>
+<li><strong>不建議採用的情境</strong>：EF 降低（應參考 CRT 證據）、原有 LBBB、低起搏比例、LBBP 經驗有限的中心；也不應以本試驗宣稱有存活或功能獲益。</li>
+<li><strong>若要改觀，最需要的三項改進</strong>：
+<ol>
+<li>由真正獨立、且不知道分組的 CEC 與核心實驗室重新判定 PICM。如果做得到，以 blinded offline 方式判讀心超（遮蔽導線影像）。</li>
+<li>公開完整的期中分析紀錄：未納入第 51 例時的檢定結果、interaction p 值、LVSP 子組結果。</li>
+<li>長期追蹤與非亞洲、非專家中心的獨立重現試驗，例如以死亡加 HF 住院為主要終點的大型試驗。</li>
+</ol>
+</li>
+<li><strong>一句話結論</strong>：左束支起搏能明顯減少右心室起搏造成的心臟功能變差，但這篇提前喊停的試驗還不能證明它可以減少死亡或住院。</li>
+</ul>
+<hr />
+<h3>CONDITIONAL OUTPUT：效果量與結果分類</h3>
+<div class="table-wrap wide"><table>
+<thead>
+<tr>
+<th>指標</th>
+<th>介入組（LBBP）</th>
+<th>對照組（RVP）</th>
+<th>效果量</th>
+<th>95% CI</th>
+<th>ARD（4 年）</th>
+<th>MCID</th>
+<th>結果分類</th>
+<th>實務意義</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>主要組合終點</td>
+<td>8.5%</td>
+<td>19.2%</td>
+<td>HR 0.41</td>
+<td>0.23–0.75</td>
+<td>−10.7%（NNT 約 9）[自行計算]</td>
+<td>HR 0.80 [推算]</td>
+<td>POSITIVE（提前終止，需打折；skeptical 後驗 HR 約 0.60）</td>
+<td>主要反映 PICM 預防</td>
+</tr>
+<tr>
+<td>PICM</td>
+<td>0%</td>
+<td>11.7%</td>
+<td>sHR 0.025</td>
+<td>0.002–0.361</td>
+<td>−11.7%</td>
+<td>—</td>
+<td>POSITIVE（open-label surrogate，有偵測偏差風險）</td>
+<td>可藉心超追蹤早期發現並處理</td>
+</tr>
+<tr>
+<td>HF 住院</td>
+<td>1.5%</td>
+<td>2.9%</td>
+<td>sHR 0.26</td>
+<td>0.05–1.28</td>
+<td>−1.4%</td>
+<td>HR 0.80 [推算]</td>
+<td>INCONCLUSIVE</td>
+<td>不能作為主張依據</td>
+</tr>
+<tr>
+<td>全死因死亡</td>
+<td>7.4%</td>
+<td>7.7%</td>
+<td>HR 1.06</td>
+<td>0.50–2.26</td>
+<td>−0.3%</td>
+<td>HR 0.80 [推算]</td>
+<td>INCONCLUSIVE</td>
+<td>沒有存活獲益的證據</td>
+</tr>
+<tr>
+<td>6MWD（36 個月）</td>
+<td>＋88.3 m</td>
+<td>＋100.9 m</td>
+<td>MD −12.6 m</td>
+<td>−30.95 to 5.74</td>
+<td>—</td>
+<td>±30 m [推算]</td>
+<td>NEGATIVE（排除 LBBP 有意義獲益）</td>
+<td>功能沒有改善</td>
+</tr>
+<tr>
+<td>MLHFQ（36 個月）</td>
+<td>＋0.63</td>
+<td>＋0.78</td>
+<td>MD −0.15</td>
+<td>−1.24 to 0.94</td>
+<td>—</td>
+<td>5 分 [推算]</td>
+<td>NEUTRAL（地板效應）</td>
+<td>生活品質沒有差異</td>
+</tr>
+<tr>
+<td>LVEF（36 個月）</td>
+<td>＋0.43%</td>
+<td>−0.99%</td>
+<td>MD 1.41%</td>
+<td>0.40–2.43</td>
+<td>—</td>
+<td>5% [推算]</td>
+<td>統計上非零，但 CI 完全在臨床可忽略範圍</td>
+<td>平均差異沒有臨床意義</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+<p><strong>Sources:</strong></p>
+<ul>
+<li><a href="https://www.acc.org/latest-in-cardiology/articles/2026/11/06/14/37/sun-430pm-optimpacing-aha-2026">ACC.org — OptimPacing: LBBP vs. RVP for Atrioventricular Block (AHA 2026)</a></li>
+<li><a href="https://www.tctmd.com/news/better-outcomes-lbb-vs-rv-pacing-atrioventricular-block">TCTMD — Better Outcomes With LBB vs RV Pacing for Atrioventricular Block</a></li>
+<li><a href="https://www.healio.com/news/cardiology/20261108/left-bundle-branch-pacing-superior-to-right-ventricular-pacing-for-atrioventricular-block">Healio — Left bundle branch pacing superior to right ventricular pacing for atrioventricular block</a></li>
+<li><a href="https://www.medscape.com/p04/nov-13-2026-this-week-cardiology-podcast-2026a10018ep">Medscape — Nov 13, 2026 This Week in Cardiology Podcast（付費牆，未取得全文）</a></li>
+<li><a href="https://clinicaltrials.gov/study/NCT04624763">ClinicalTrials.gov — NCT04624763</a></li>
+<li><a href="https://www.wolterskluwer.com/en/solutions/Ovid/new-england-journal-of-medicine-624">Ovid／Wolters Kluwer — NEJM 期刊資訊（IF 來源）</a></li>
+<li><a href="https://manusights.com/blog/nejm-impact-factor">Manusights — NEJM impact factor</a></li>
+</ul>
+
+<footer class="appraisal-meta">評讀資訊：模型：claude-opus-5-5 (claude)  ·  route：rct  ·  產出時間：2026-11-15 04:12 CST</footer>
+</main>
+</body>
+</html>
