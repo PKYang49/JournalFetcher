@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Acute aortic syndrome rule-out criteria: development and external validation.</title>
+<style>
+  :root {
+    --bg: #fafafa;
+    --card: #ffffff;
+    --text: #1a1a1a;
+    --muted: #6b6b6b;
+    --border: #e5e5e5;
+    --accent: #0b5fff;
+  }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang TC",
+      "Microsoft JhengHei", sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    margin: 0;
+    padding: 24px 16px 64px;
+    line-height: 1.72;
+  }
+  main {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    margin: 0 auto;
+    max-width: 840px;
+    padding: 22px 26px;
+  }
+  nav {
+    margin: 0 auto 14px;
+    max-width: 840px;
+    color: var(--muted);
+    font-size: 14px;
+  }
+  a { color: var(--accent); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  h1, h2, h3, h4 { line-height: 1.35; }
+  h1 { font-size: 26px; margin-top: 0; }
+  h2 { border-top: 1px solid var(--border); padding-top: 18px; }
+  code {
+    background: rgba(127, 127, 127, 0.12);
+    border-radius: 4px;
+    padding: 1px 4px;
+  }
+  .table-wrap {
+    margin: 1em 0;
+    overflow-x: auto;
+  }
+  .table-wrap.wide {
+    /* Break out of the 840px prose column, centred on the viewport. */
+    width: min(1040px, calc(100vw - 32px));
+    margin-left: calc(50% - min(520px, 50vw - 16px));
+  }
+  table {
+    border-collapse: collapse;
+    table-layout: auto;
+    width: 100%;
+  }
+  .table-wrap.wide {
+    /* Opaque so the <main> card border does not show through the table. */
+    background: var(--card);
+  }
+  /* Width hints go on <th> as percentages: Chrome's auto table layout
+     mis-sizes columns (and overflows) when cells carry min-width. */
+  .table-wrap.wide th:first-child {
+    /* Variable + plain-language definition, e.g. "NCPV (noncalcified ...)". */
+    width: 26%;
+  }
+  .table-wrap.wide th:last-child {
+    /* Last column is usually a one-line interpretation. */
+    width: 20%;
+  }
+  th, td {
+    border: 1px solid var(--border);
+    /* Wrap only at spaces: never split an English word mid-letter. */
+    overflow-wrap: normal;
+    word-break: normal;
+    hyphens: manual;
+    padding: 6px 8px;
+    text-align: left;
+    vertical-align: top;
+  }
+  blockquote {
+    border-left: 3px solid var(--accent);
+    color: var(--muted);
+    margin-left: 0;
+    padding-left: 14px;
+  }
+  .appraisal-meta {
+    border-top: 1px solid var(--border);
+    margin-top: 28px;
+    padding-top: 14px;
+    color: var(--muted);
+    font-size: 13px;
+  }
+  @media (max-width: 600px) {
+    body {
+      padding: 12px 8px 40px;
+    }
+    main {
+      padding: 16px 12px;
+    }
+    h1 {
+      font-size: 22px;
+    }
+    table {
+      font-size: 12px;
+    }
+    .table-wrap.wide {
+      width: calc(100vw - 16px);
+      margin-left: calc(50% - 50vw + 8px);
+    }
+    th, td {
+      padding: 4px 5px;
+    }
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #1a1a1a;
+      --card: #242424;
+      --text: #e8e8e8;
+      --muted: #999;
+      --border: #333;
+      --accent: #6ea8ff;
+    }
+  }
+</style>
+</head>
+<body>
+<nav><a href="../../2026-W47.html">← 回到 2026-W47 週報</a></nav>
+<main>
+<h1>Acute aortic syndrome rule-out criteria: development and external validation.</h1>
+<h1>評讀：Acute aortic syndrome rule-out criteria（ARC）——一個急性主動脈症候群排除規則的建立與外部驗證</h1>
+<hr />
+<h2>SECTION-0：文章全面描述</h2>
+<h3>0. 文章基本資料</h3>
+<ul>
+<li><strong>標題</strong>：Acute aortic syndrome rule-out criteria: development and external validation</li>
+<li><strong>期刊／年份</strong>：<em>European Heart Journal</em> 2026（Clinical Research – Acute Cardiovascular Care）</li>
+<li><strong>DOI</strong>：10.1093/eurheartj/ehag875；PMID 43006790</li>
+<li><strong>文章類型（路由）</strong>：臨床決策規則（clinical decision rule）的建立與外部驗證，屬於診斷研究，走 SKILL-C。</li>
+<li><strong>設計的特殊之處</strong>：derivation cohort（IRAD）<strong>只收已確診的 AAS 病人</strong>（case-only），所以建立階段只能估 sensitivity、無法估 specificity。refinement 改用<strong>已發表文獻中非 AAS 族群的盛行率</strong>來代替 specificity 的考量。作者自己也說這是「sensitivity-prioritized rule derivation」，不是傳統的預測模型 [文內 Methods]。這不是混血文章，但嚴格說來，它不是一般意義上 derivation 與 validation 都在同一個母群做的 CDR 研究。</li>
+</ul>
+<h3>1. 作者團隊</h3>
+<ul>
+<li><strong>通訊作者</strong>：Robert Ohle，NOSM University／Health Sciences North Research Institute（Sudbury, Canada）[文內]。他是加拿大 ED 急性主動脈症候群診斷臨床指引的第一作者，2023 年發表過 RIPP score（與 ADD-RS、AORTAs 比較），也參與 DAShED cohort。他 2017 年的碩士論文主題是「AAS 是否需要 clinical decision rule」[外部: PMC7828987；Emerg Med Int 2023；SGEM #430；uOttawa thesis]。</li>
+<li><strong>團隊組成</strong>：基本上是 AAS 診斷領域的幾個核心團隊聯手：
+<ul>
+<li>義大利 Turin／Florence 組（Morello、Nazerian、Bima）：ADvISED、PROFUNDUS 以及 AORTAs score 的原作者群 [外部: PubMed 38871565；文內 ref 8, 10, 13]。</li>
+<li>英國組（Reed、Goodacre、Wilson）：DAShED [文內 ref 14]；Goodacre 也主持 Sheffield 的 ASES evidence synthesis [外部: shef.ac.uk ASES]。</li>
+<li>Michigan 組（Eagle、Hofmann Bowman、Pai）：IRAD 資料來源 [文內]。</li>
+</ul>
+</li>
+<li><strong>立場史與確認偏差的風險</strong>：從 derivation 資料（IRAD）、refinement 的參考文獻（Table A-4 的 ref 2–4、7 都是 Turin／Florence／Ohle 自己的研究），到兩個 validation cohort，<strong>全部來自開發者自己的團隊</strong>，沒有任何獨立團隊參與驗證。Ohle 長期主張「AAS 需要更好的 decision rule」，AORTAs 的原作者則參與「改良 AORTAs」，兩者都可能有方向性偏好 [推論]。</li>
+<li><strong>利益衝突與經費</strong>：文內聲明「Nothing to declare」，經費來自 John Ritter Foundation [文內]。商業 COI 風險低；主要的偏差來源是<strong>智識上的承諾</strong>（自己工具的延伸），不是商業利益。</li>
+</ul>
+<h3>2. 發表資訊</h3>
+<ul>
+<li><strong>Received 2025/12/16；revised 2026/5/6；accepted 2026/10/13</strong>：投稿到接受約 <strong>301 天</strong> [文內，自行計算]。</li>
+<li><strong>期刊審查天數</strong>：EHJ 沒有公開官方的平均審查時間 [無法取得]。第三方估計心臟科期刊投稿到接受的中位數約 96 天 [外部: journalmetrics.org]。本篇明顯偏慢，很可能經過多輪大幅修改。正文有多處像是回應審稿意見的痕跡，例如反覆強調「DAShED 不提供 definitive safety estimate」，以及補上 Table A-6 到 A-11 [推論]。</li>
+<li><strong>期刊指標</strong>：EHJ 2025 JIF 45.3，Cardiac &amp; Cardiovascular Systems 類 2/237，屬 Q1 [外部: Wolters Kluwer/OUP 頁面、journalmetrics]。本文為 Open Access（CC BY-NC）[文內]。</li>
+<li><strong>邀稿或投稿</strong>：屬一般投稿的 Clinical Research，沒有邀稿跡象 [文內]。</li>
+</ul>
+<h3>3. 研究背景</h3>
+<ul>
+<li><strong>作者引用的既有證據</strong>：ADD-RS 在 IRAD 的 sensitivity 約 95%。ADD-RS 加 D-dimer 可達約 99%，simplified AORTA score 加 age-adjusted D-dimer 達 99.1%。但這兩套工具都得靠 D-dimer 或 CTA 才能排除 [文內 Intro]。</li>
+<li><strong>知識缺口</strong>：目前沒有一個「單靠床邊臨床評估就能排除 AAS、連 D-dimer 都不用抽」的低風險族群定義。</li>
+<li><strong>研究問題</strong>：能否建立並外部驗證一個床邊規則，找出 AAS 風險低到可以省略 routine D-dimer 的病人，並評估把它嵌入現有診斷路徑後對檢查量的影響 [文內 Intro 末段]。</li>
+</ul>
+<h3>4. 研究設計與方法</h3>
+<p><strong>PICO</strong></p>
+<ul>
+<li><strong>P</strong>：建立階段是 IRAD 的 15,196 名確診 AAS 病人（1996–2024 年，70 家學術／三級醫院，16 國）。驗證階段是 ED 疑似 AAS 的病人：ADvISED／PROFUNDUS 合併 4,598 人，DAShED 5,346 人。</li>
+<li><strong>I（index test）</strong>：ARC，共 7 個二元變項，任何一項陽性即為 ARC+：age &gt;60 歲、abrupt onset pain、severe pain、hypotension／shock、neurological deficit、pulse deficit、known aortic disease。</li>
+<li><strong>C（reference standard）</strong>：影像（CTA／TEE／MRA）、手術／解剖，或 14–30 天追蹤的病歷審查 [Supplement Table A-5]。</li>
+<li><strong>O</strong>：sensitivity、specificity、NPV、PPV，以及 ARC 嵌入 ADD-RS/DD500 或 AORTAs/DDage-adj 路徑後，D-dimer 與 CTA 的使用量變化。</li>
+</ul>
+<p><strong>關鍵方法細節</strong></p>
+<ol>
+<li><strong>Derivation</strong>：從 AORTAs &gt;0 出發（IRAD sensitivity 97.6%）。44 個候選變項排除 23 個（需檢查、已在既有工具內、或盛行率 &lt;5%），再依文獻與可行性排除 13 個，最後剩 age、radiating pain、SBP &gt;150、DBP &gt;100 四個。四者依 IRAD 盛行率依序加入，留下能提高 sensitivity 的，得到 9 變項規則（sensitivity 99.6%）[Supplement S1, Table A-3]。</li>
+<li><strong>Refinement</strong>：依各變項在<strong>已發表文獻非 AAS 族群的加權盛行率</strong>由高到低逐一試刪；刪除後 sensitivity 仍 ≥99% 就刪 [Table A-4, A-6]。</li>
+<li><strong>缺漏值處理</strong>：IRAD 以 FCS 做 100 次 multiple imputation，以 Rubin's rules 合併。validation 用 complete-case；DAShED 中缺漏的症狀變項<strong>一律視為 absent</strong> [文內 Statistical analysis]。</li>
+<li><strong>Validation</strong>：ADvISED（2014–2016）與 PROFUNDUS（2018–2021）合併。兩者都要求「臨床上已把 AAS 列入鑑別診斷」。DAShED（2022 年 9–11 月，英國 27 家 ED）則是依症狀收案，不要求臨床懷疑 [Table A-5]。</li>
+</ol>
+<p><strong>主要變項定義</strong>：文內沒有給「severe pain」「abrupt onset」的操作型定義，也沒有評估評分者間信度 [文內未報告]。</p>
+<h3>5. 研究結果重點</h3>
+<p><strong>主要結果表</strong>（組別換成三個 cohort；三者族群不同，彼此之間沒有可比的「組間差」）</p>
+<div class="table-wrap wide"><table>
+<thead>
+<tr>
+<th>變項（代表什麼）</th>
+<th style="text-align:right">IRAD（derivation，n=15,196）</th>
+<th style="text-align:right">ADvISED/PROFUNDUS（n=4,598）</th>
+<th style="text-align:right">DAShED（n=5,346）</th>
+<th style="text-align:right">組間差（95% CI）</th>
+<th style="text-align:right">p 值</th>
+<th>如何解讀</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>AAS 盛行率</td>
+<td style="text-align:right"><strong>100%</strong>（只收確診病例）</td>
+<td style="text-align:right"><strong>10.2%</strong>（470/4,598）</td>
+<td style="text-align:right"><strong>0.3%</strong>（14/5,346）</td>
+<td style="text-align:right">未比較</td>
+<td style="text-align:right">未報告</td>
+<td>兩個驗證族群是高風險轉診與一般 ED，差異很大</td>
+</tr>
+<tr>
+<td><strong>Sensitivity</strong>：AAS 病人中 ARC 陽性的比例</td>
+<td style="text-align:right"><strong>99.2%</strong>（99.1–99.3）imputed；complete-case <strong>98.9%</strong>（98.6–99.2）</td>
+<td style="text-align:right"><strong>100%</strong>（99.2–100）</td>
+<td style="text-align:right"><strong>100%</strong>（76.8–100）</td>
+<td style="text-align:right">未比較</td>
+<td style="text-align:right">未報告</td>
+<td>complete-case 已低於作者自訂的 99% 門檻；DAShED 的 CI 很寬</td>
+</tr>
+<tr>
+<td><strong>Specificity</strong>：非 AAS 病人中 ARC 陰性的比例</td>
+<td style="text-align:right">無法估計</td>
+<td style="text-align:right"><strong>23.7%</strong>（22.4–25.0）</td>
+<td style="text-align:right"><strong>36.4%</strong>（35.1–37.7）</td>
+<td style="text-align:right">未比較</td>
+<td style="text-align:right">未報告</td>
+<td>約四分之三的非 AAS 病人仍為 ARC+</td>
+</tr>
+<tr>
+<td><strong>ARC 陰性比例</strong>：可被排除的病人占全體比例</td>
+<td style="text-align:right">—</td>
+<td style="text-align:right"><strong>21.2%</strong>（977/4,598）</td>
+<td style="text-align:right"><strong>36.3%</strong>（1,939/5,346）</td>
+<td style="text-align:right">未比較</td>
+<td style="text-align:right">未報告</td>
+<td>圖文摘要寫「21–35%」，與正文 36.3% 不一致</td>
+</tr>
+<tr>
+<td><strong>NPV</strong></td>
+<td style="text-align:right">—</td>
+<td style="text-align:right"><strong>100%</strong>（99.7–100）</td>
+<td style="text-align:right"><strong>100%</strong>（99.8–100）</td>
+<td style="text-align:right">未比較</td>
+<td style="text-align:right">未報告</td>
+<td>兩個 cohort 的 ARC 陰性病人都是 0 例 AAS</td>
+</tr>
+<tr>
+<td><strong>PPV</strong></td>
+<td style="text-align:right">—</td>
+<td style="text-align:right"><strong>13.0%</strong>（11.9–14.1）</td>
+<td style="text-align:right"><strong>0.4%</strong>（0.2–0.7）</td>
+<td style="text-align:right">未比較</td>
+<td style="text-align:right">未報告</td>
+<td>ARC 陽性本身幾乎沒有 rule-in 價值</td>
+</tr>
+<tr>
+<td><strong>LR+</strong></td>
+<td style="text-align:right">—</td>
+<td style="text-align:right"><strong>1.31</strong></td>
+<td style="text-align:right"><strong>1.57</strong></td>
+<td style="text-align:right">—</td>
+<td style="text-align:right">—</td>
+<td>[自行計算] 陽性結果對機率幾乎沒有影響</td>
+</tr>
+<tr>
+<td><strong>LR−</strong></td>
+<td style="text-align:right">—</td>
+<td style="text-align:right"><strong>0</strong>（以 sensitivity CI 下限推算上限約 <strong>0.034</strong>）</td>
+<td style="text-align:right"><strong>0</strong>（上限約 <strong>0.64</strong>）</td>
+<td style="text-align:right">—</td>
+<td style="text-align:right">—</td>
+<td>[自行計算，近似] 只有 ADvISED 的數據能支撐強 rule-out</td>
+</tr>
+<tr>
+<td><strong>D-dimer 檢查量</strong>（ARC + ADD-RS/DD500 對比 ADD-RS/DD500）</td>
+<td style="text-align:right">—</td>
+<td style="text-align:right">3,821 → <strong>2,858</strong></td>
+<td style="text-align:right">582 → <strong>366</strong>（只限 745 人子集）</td>
+<td style="text-align:right"><strong>−963（−25.2%，−26.6 to −23.8）</strong>／<strong>−216（−37.1%）</strong></td>
+<td style="text-align:right">未報告</td>
+<td>少做的 D-dimer 檢查量確實不小</td>
+</tr>
+<tr>
+<td><strong>CTA 檢查量</strong>（同上比較）</td>
+<td style="text-align:right">—</td>
+<td style="text-align:right">2,282 → <strong>2,052</strong></td>
+<td style="text-align:right">390 → <strong>331</strong></td>
+<td style="text-align:right"><strong>−230（−10.1%）</strong>／<strong>−59（−15.1%）</strong></td>
+<td style="text-align:right">未報告</td>
+<td>減少幅度溫和</td>
+</tr>
+<tr>
+<td><strong>路徑漏診數（FN）</strong>（ADD-RS/DD500 → 加上 ARC）</td>
+<td style="text-align:right">—</td>
+<td style="text-align:right"><strong>5 → 5</strong></td>
+<td style="text-align:right"><strong>1 → 1</strong></td>
+<td style="text-align:right">0</td>
+<td style="text-align:right">未報告</td>
+<td>加上 ARC 沒有增加漏診，但原路徑本來就漏了 5 例</td>
+</tr>
+</tbody>
+</table></div>
+<p>補充說明：</p>
+<ul>
+<li><strong>ARC 的實質內容</strong>：ARC 就是「AORTAs 的 6 個特徵（把 thoracic aneurysm 擴大為 known aortic disease）」再加上「age &gt;60」。換句話說，<strong>ARC 陰性 = 年齡 ≤60 歲 + AORTAs = 0 + 無已知主動脈疾病</strong>。在 ADvISED/PROFUNDUS，AORTAs &gt;0 只抓到 446/470（94.9%）[Supplement Table A-8]，剩下 24 例主要是靠 age &gt;60 救回來。真正撐住安全性的是年齡。</li>
+<li><strong>DAShED 的路徑分析只用了 745 人</strong>（Table 4 腳註：4,803 人因沒有 D-dimer 被排除，分母是 5,548 而不是 5,346）。這 745 人裡只有 8 例 AAS，另外 6 例 AAS 沒有 D-dimer 數據，不在路徑分析裡。</li>
+<li><strong>Refinement 規則執行前後不一致</strong>：Table A-6 中刪除 age &gt;60 後 sensitivity 為 <strong>99.0%</strong>，依作者的規則（「≥99% 就刪」）應該刪除，實際卻被「保留」[Supplement Table A-6 對照 Methods]。若照規則刪掉 age，ARC 就會大致退回 AORTAs，整篇文章的核心新變項正好卡在這個邊界判斷上。</li>
+<li><strong>缺漏值可能讓 DAShED 的 specificity 偏高</strong>：DAShED 的 pulse deficit 缺漏 <strong>38.7%</strong>，abrupt onset 12.0%，severe pain 12.3%，一律視為 absent [Supplement Table A-11]。這會高估 ARC 陰性比例與 specificity；sensitivity 不受影響，因為 14 例 AAS 全部 ARC+。ADvISED/PROFUNDUS 的 ARC 變項缺漏全為 0，資料可能已經過整理，但文內沒有說明。</li>
+</ul>
+<h3>6. 作者的討論重點</h3>
+<ul>
+<li><strong>主要訊息</strong>：ARC 在兩個外部 cohort 都維持 100% sensitivity，嵌入現有路徑可減少 25–41% 的 D-dimer 與約 9–15% 的 CTA。</li>
+<li><strong>與既有文獻比較</strong>：作者引用 Ren et al. 的 meta-analysis，ADD-RS &gt;0 或 D-dimer &gt;500 的 sensitivity 99.8%、specificity 21.8%，用來說明 sensitivity 與 specificity 的取捨。</li>
+<li><strong>作者自承的限制</strong>：IRAD 的 spectrum bias；IRAD 跨 28 年，診斷方式改變；DAShED 病例數少；外部盛行率資料異質；缺漏值處理；症狀在確診者身上記錄較完整可能造成差異性錯誤分類；仍需前瞻性驗證。</li>
+<li><strong>評估</strong>：限制寫得相當完整，但有三處避重就輕：
+<ol>
+<li>沒提到 complete-case derivation sensitivity 98.9% 已低於自訂門檻；</li>
+<li>沒提到 age 的去留與自訂規則矛盾；</li>
+<li>沒指出驗證全由開發團隊執行。</li>
+</ol>
+</li>
+<li><strong>結論超出數據的地方</strong>：Conclusion 寫 ARC「identifies patients at very low risk of AAS <strong>without the need for D-dimer or imaging</strong>」，Abstract 寫「safely exclude AAS…without additional testing」。但實際驗證到的是：(a) ARC 單獨使用時，安全性只有 ADvISED/PROFUNDUS 的 977 名陰性病人支撐，sensitivity CI 下限 99.2%；(b) Figure 1 的路徑把 ARC 放在 ADD-RS/AORTAs 低／中風險之後。「單獨使用 ARC」和「嵌入路徑使用」是兩種不同主張，文章在兩者之間來回切換。</li>
+</ul>
+<h3>7. 外部專業意見</h3>
+<ul>
+<li>搜尋 EHJ 同期 editorial、commentary 與網路專業評論，<strong>沒有找到針對本文的同期 editorial 或 comment</strong> [無法取得]。因為沒有任何 DOI，無法執行全文擷取。</li>
+<li>背景文獻（不是針對本文的評論）：PROFUNDUS 2024 顯示 941 名符合 rule-out 條件的病人 30 天 AAS 發生率為 0% [外部: PubMed 38871565]。2024 年的 D-dimer meta-analysis 結論是 D-dimer 單獨不能用來排除 AAS [外部: Springer s43678-024-00836-8]。</li>
+</ul>
+<h3>8. 臨床建議</h3>
+<ul>
+<li><strong>可以參考 ARC 的情境</strong>：血行動力學穩定、醫師已把 AAS 列入鑑別、ADD-RS／AORTAs 屬低風險的 ED 病人。若年齡 ≤60、沒有任何 AORTAs 特徵、也沒有已知主動脈疾病，可以合理不為「排除 AAS」而抽 D-dimer。</li>
+<li><strong>不建議直接套用的情境</strong>：
+<ul>
+<li>ARC 不含 Marfan／結締組織疾病、主動脈疾病家族史、近期主動脈手術或導管操作、主動脈瓣疾病、懷孕或產後。年輕的高風險體質病人可能 ARC 陰性，這些都屬於 ADD-RS 的高風險條件，<strong>應優先套用 ADD-RS，不要用 ARC 覆蓋</strong>。</li>
+<li>沒有能力可靠評估 pulse deficit 或 neurological deficit 的情境。</li>
+<li>台灣或亞洲族群：驗證 cohort 以歐洲為主，只有少數巴西、馬來西亞中心。</li>
+</ul>
+</li>
+<li><strong>實務建議</strong>：
+<ol>
+<li>把 ARC 理解成「≤60 歲且 AORTAs = 0」的一個保守捷徑，<strong>不要當成獨立於 ADD-RS 的 rule-out 工具</strong>；有 ADD-RS 高風險病史者一律不適用。</li>
+<li>ARC 陰性只排除「為 AAS 而做的檢查」，若仍懷疑 PE 或 ACS，照原本流程走。</li>
+<li>等前瞻性實施研究（需有獨立團隊、明確的漏診率與 CTA 使用量）出來前，不建議寫進科內 standing protocol 取代 D-dimer。</li>
+</ol>
+</li>
+<li><strong>證據強度</strong>：<strong>中</strong>。外部驗證樣本大、ADvISED 的 NPV 精確，這是優點；但 derivation 是 case-only、refinement 依賴異質的文獻盛行率、自訂規則執行不一致、驗證全由開發團隊執行、沒有前瞻性實施數據，以及低盛行率 cohort 只有 14 例 AAS。</li>
+</ul>
+<hr />
+<h2>SKILL-C：診斷研究與臨床預測模型評讀</h2>
+<h3>A. 補充技術細節</h3>
+<ul>
+<li><strong>Reference standard</strong>：不是所有病人都做了影像。ADvISED/PROFUNDUS 只有 <strong>50.2%</strong> 在 ED 做了進階主動脈影像（非 AAS 組 44.5%，AAS 組 99.6%）[Supplement Table A-8]；DAShED 的 CTA 由醫師自行決定。沒做影像的人靠 14 天（ADvISED）或 30 天（PROFUNDUS、DAShED）的追蹤判定。這是 <strong>differential verification</strong>：ARC 陰性的人大多屬低風險，較少做影像，若追蹤漏掉輕微的 IMH 或 PAU，就會高估 NPV 與 sensitivity [推論]。ADvISED 只追 14 天也偏短。</li>
+<li><strong>Index test 與 reference standard 是否盲化</strong>：ARC 是回溯套用在前瞻收集的變項上，變項在確診前就已記錄，所以 incorporation bias 有限。但 IRAD 是在確診後填寫 CRF，症狀描述可能受診斷影響而回憶得更完整；作者在 Limitations 也承認可能有差異性錯誤分類 [文內]。</li>
+<li><strong>Spectrum</strong>：IRAD 以 Type A 為主（66–72%），且來自三級轉診中心 [Supplement Table A-7]。ADvISED/PROFUNDUS 要求臨床已懷疑 AAS，盛行率 10%，屬富集族群。DAShED 是全體 ED 病人，但 AAS 只有 14 例（5 Type A、3 Type B、6 IMH/PAU）。</li>
+<li><strong>Cut-off 的設定</strong>：年齡、SBP、DBP 的門檻是事前依臨床標準訂定 [Supplement S2, Table A-2]。但 refinement 的「≥99%」門檻在 age 這一步沒有被一致執行（見第 5 節）。另外，整個選擇過程都在 IRAD 上反覆試算，99.2% 這個 derivation sensitivity 帶有 <strong>optimism bias</strong>，本來就不該當作效能估計；作者也承認 derivation 不提供主要估計。</li>
+<li><strong>可重複性</strong>：「severe pain」「abrupt onset」很主觀，「pulse deficit」需要四肢脈搏檢查，<strong>三者都沒有 inter-rater reliability（κ）數據</strong>。這對一個只要一項陽性就改變處置的 CDR 是重大缺口 [參考: jml90008.md]。</li>
+</ul>
+<h3>B. 診斷準確度核心評估</h3>
+<div class="table-wrap wide"><table>
+<thead>
+<tr>
+<th>指標</th>
+<th>ADvISED/PROFUNDUS</th>
+<th>95% CI</th>
+<th>DAShED</th>
+<th>95% CI</th>
+<th>臨床解讀</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Sensitivity</td>
+<td>100%（470/470）</td>
+<td>99.2–100</td>
+<td>100%（14/14）</td>
+<td>76.8–100</td>
+<td>ADvISED 的估計精確；DAShED 下限 76.8%，無法提供安全性資訊</td>
+</tr>
+<tr>
+<td>Specificity</td>
+<td>23.7%</td>
+<td>22.4–25.0</td>
+<td>36.4%</td>
+<td>35.1–37.7</td>
+<td>低；DAShED 可能因缺漏值視為 absent 而偏高</td>
+</tr>
+<tr>
+<td>LR+</td>
+<td>1.31</td>
+<td>—</td>
+<td>1.57</td>
+<td>—</td>
+<td>[自行計算：1/(1−spec)] 幾乎沒有 rule-in 價值，這本來就不是設計目的</td>
+</tr>
+<tr>
+<td>LR−</td>
+<td>0（上限約 0.034）</td>
+<td>—</td>
+<td>0（上限約 0.64）</td>
+<td>—</td>
+<td>[自行計算：(1−sens 下限)/spec] 以 ADvISED 推估是強的 rule-out</td>
+</tr>
+<tr>
+<td>AUC</td>
+<td>不適用</td>
+<td>—</td>
+<td>—</td>
+<td>—</td>
+<td>二元規則，沒有 AUC 或 calibration；這符合 rule-out 規則的性質，不算缺陷 [參考: jama_alba_2017_ug_170001.md Box]</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>以 Fagan 概念推估 pre-test 到 post-test 機率</strong>（取 LR− 上限 0.034，偏保守）：</p>
+<ul>
+<li><strong>Pre-test 約 10%</strong>（ADvISED 這類已懷疑 AAS 的族群）：ARC 陰性後的機率 ≤ 約 <strong>0.38%</strong> [自行計算]。</li>
+<li><strong>Pre-test 約 1%</strong>：ARC 陰性後 ≤ 約 0.03%。</li>
+<li><strong>Pre-test 約 0.1–0.3%</strong>（DAShED 或一般 ED 胸痛）：本來就已經很低，ARC 陰性帶來的<strong>絕對</strong>風險下降可以忽略。在這種族群，ARC 的價值不在安全性，而在於「為不做 D-dimer 提供說法」。不過作者也承認，在 DAShED 全體套用 Figure 1 的路徑反而會<strong>增加</strong>整體檢查量。</li>
+</ul>
+<p><strong>與決策門檻比較</strong>：作者引用的可接受漏診率包括 1%（醫師問卷）、0.5%（決策分析）和約 0.6%（成本效益分析）。ADvISED 的 sensitivity CI 下限是 99.2%，代表<strong>真實漏診率上限約 0.8%</strong>：可以滿足 1% 門檻，<strong>但不足以排除超過 0.5–0.6%</strong>。作者選 1% 作為預設門檻，正好是三者中最寬鬆的一個，這點應該明說。</p>
+<p><strong>Clinical manifestations 子模組</strong>：</p>
+<ul>
+<li>IRAD 的疾病確認（影像、手術、解剖）和臨床表現是獨立判定的。</li>
+<li>IRAD 部分變項缺漏非常多：pulse deficit 缺 50.6%，severe pain 缺 26.1%，ripping pain 缺 49.5% [Supplement Table A-10]。multiple imputation 假設資料是 MAR，但臨床上「沒記錄」往往代表「沒有」或「沒檢查」，屬 MNAR。實際上，multiple imputation 讓 severe pain 的盛行率從 84.8% 升到 86.1% [Supplement Table A-1a]，<strong>這會讓 imputed sensitivity 偏高</strong>。complete-case 98.9% 很可能比 imputed 99.2% 更接近事實。</li>
+</ul>
+<h3>C. AI / ML 模型評估</h3>
+<p>不適用（非 ML 模型）。若照 derivation → validation → clinical effectiveness 三階段的邏輯檢視：</p>
+<ol>
+<li><strong>Derivation</strong>：有，但是 case-only 加上外部文獻盛行率，屬非標準方法。</li>
+<li><strong>Validation</strong>：有兩個外部 cohort，但都由開發團隊執行。</li>
+<li><strong>Clinical effectiveness</strong>：<strong>沒有</strong>。Table 4 的「clinical impact」只是在既有資料上模擬「如果照路徑走會做多少檢查」，不是 impact study；臨床醫師實際是否遵從、漏診是否增加，都沒有數據。</li>
+</ol>
+<h3>D. 預測模型評估</h3>
+<ul>
+<li><strong>Discrimination 與 calibration</strong>：二元 rule-out 規則以 sensitivity、NPV 為主，不適合用 AUC 或 calibration plot 評估。</li>
+<li><strong>外部驗證的性質</strong>：
+<ul>
+<li><strong>地理驗證</strong>：有（歐洲多國、巴西、馬來西亞、英國）。</li>
+<li><strong>時間驗證</strong>：有，DAShED 是 2022 年的資料。</li>
+<li><strong>獨立研究者驗證</strong>：沒有。</li>
+<li><strong>refinement 是否真的與 validation 獨立</strong>：作者強調 refinement 的盛行率完全來自外部文獻，以確保「strict independence」。但 Table A-4 引用的 Giachino 2013、Nazerian 2014（兩篇）來自 Turin／Florence，也就是後來 ADvISED/PROFUNDUS 的主要中心。雖然收案時間大致不重疊，<strong>族群、臨床記錄習慣與研究團隊是相同的</strong>，「完全獨立」的說法需要打折 [推論]。</li>
+</ul>
+</li>
+<li><strong>Refinement 方法本身</strong>：用「非 AAS 族群盛行率」排序是合理的近似，但這些文獻橫跨 <strong>1963–2018 年</strong>，AAS 盛行率 3.2–76%，部分變項只有 2–3 篇研究、總樣本 297–466 人。例如 pulse deficit 只有 3 篇、297 人；abrupt onset 的 CI「27–54」相對點估計 33 明顯不對稱，計算方法令人存疑。排序只決定試刪順序，但在這種逐步刪除的流程裡，<strong>順序本身就會影響最後保留哪些變項</strong>（path dependence）。作者沒有做任何敏感度分析，例如換一個排序是否仍得到相同規則。</li>
+<li><strong>試刪順序與 Table A-4 排名不一致</strong>：Table A-6 先試刪 neurological deficit（step 6），才試刪 known aortic disease（step 7）；但依 Table A-4，known aortic disease（15%）應排在 neurological deficit（7%）之前。這次不影響結果，因為兩者都保留，但顯示流程記錄不夠嚴謹。</li>
+</ul>
+<h3>E. 紅旗清單</h3>
+<p><strong>設計</strong></p>
+<ul>
+<li>Derivation 是 case-only，sensitivity 在 IRAD 自身上反覆最佳化，optimism 無法量化。</li>
+<li>驗證 cohort 全由開發團隊提供，<strong>缺乏獨立 replication</strong>。</li>
+<li>Differential verification：約半數非 AAS 病人沒有影像，靠 14–30 天追蹤判定。</li>
+<li>沒有任何變項的 inter-rater reliability 數據。</li>
+</ul>
+<p><strong>統計與流程</strong></p>
+<ul>
+<li>Complete-case derivation sensitivity 98.9%（98.6–99.2）<strong>低於作者 a priori 的 99% 門檻</strong>，只在 MI 後才達標，而 MI 在 MNAR 下可能高估 [Table 2 腳註、Table A-1a]。</li>
+<li>刪除 age &gt;60 後 sensitivity 為 99.0%，<strong>依自訂規則應刪除卻保留</strong>，而 age 恰好是 ARC 相對於 AORTAs 唯一的新變項。</li>
+<li>DAShED 的缺漏值一律視為 absent（pulse deficit 缺 38.7%），會高估 specificity 與 ARC 陰性比例。</li>
+<li>DAShED 的路徑分析只用 14% 的病人（745/5,548），14 例 AAS 中 6 例不在分析內；分母使用 5,548 與 5,346 不一致。</li>
+</ul>
+<p><strong>敘事</strong></p>
+<ul>
+<li>Abstract 與 Conclusion 宣稱「without additional testing / without the need for D-dimer or imaging」，但主要的 impact 數據來自「嵌入既有路徑」的模擬。</li>
+<li>圖文摘要多處與正文不一致：
+<ul>
+<li>ARC 陰性比例寫「21–35%」，正文為 21.2% 與 36.3%；</li>
+<li>DAShED 樣本寫 n = 5,548，正文分析 5,346；</li>
+<li>cohort 名稱誤植為「DASnED」；</li>
+<li>Sensitivity「99–100%」把 derivation 的數字混進外部驗證結果；</li>
+<li>NPV「100%」，但 Table 4 的路徑 NPV 為 99.8–99.9%。
+[page_002.png 圖文摘要對照正文]</li>
+</ul>
+</li>
+<li>Figure 1 的流程圖本身邏輯清楚（ARC 放在 ADD-RS≤1／AORTAs≤1 之後，ARC 陰性直接 rule out）[page_008.png]，但圖說最後一句「reducing unnecessary imaging」在 DAShED 全族群並不成立（作者在 Discussion 自己承認）。</li>
+</ul>
+<p><strong>外推</strong></p>
+<ul>
+<li>ARC 缺少 Marfan、家族史、近期主動脈操作、主動脈瓣疾病、懷孕等 ADD-RS 高風險條件。驗證 cohort 中這些族群的病例很少（例如 collagenopathy 的 AAS 只有 4 例），無法評估 ARC 在這些病人身上的安全性。</li>
+<li>在「≤60 歲、無典型表現」的族群中，AAS 本來就極少（主要是 IMH/PAU 或結締組織疾病），ARC 的安全性正好最難被驗證。</li>
+<li>研究幾乎沒有亞洲 ED 族群的資料；亞洲的 IMH 比例較高 [推論]。</li>
+</ul>
+<h3>F. 最終裁決</h3>
+<ul>
+<li><strong>診斷測試可信度</strong>：<strong>中</strong>。ADvISED/PROFUNDUS 的 470 例 AAS 全部 ARC+、977 名 ARC 陰性病人沒有任何 AAS，這個數據有說服力。但規則的建立過程有方法學瑕疵，且沒有獨立驗證。</li>
+<li><strong>在哪些情境下有用</strong>：pre-test probability 約 1–10% 的「臨床已懷疑 AAS、血行動力學穩定、ADD-RS 低風險」族群。在這個範圍，ARC 陰性可把 AAS 機率壓到 &lt;0.4%，可以省略 D-dimer。</li>
+<li><strong>不建議使用的情境</strong>：
+<ul>
+<li>有 Marfan／結締組織疾病、家族史、近期主動脈操作、主動脈瓣疾病或懷孕的病人；</li>
+<li>血行動力學不穩定的病人；</li>
+<li>一般 ED 胸痛族群在臨床尚未懷疑 AAS 時，用 ARC 作為篩檢工具（這反而會增加檢查量）；</li>
+<li>理學檢查無法可靠評估的情境。</li>
+</ul>
+</li>
+<li><strong>要改變看法，最需要的三項改進</strong>：
+<ol>
+<li>由<strong>非開發團隊</strong>做前瞻性驗證，最好是實施研究，報告 ARC 陰性的 30 天漏診率（希望 CI 上限 &lt;0.5%）與實際 D-dimer、CTA 使用量；</li>
+<li>補上 severe pain、abrupt onset、pulse deficit 的 inter-rater reliability（κ）；</li>
+<li>敏感度分析：以 complete-case 資料、照規則刪除 age、換不同的試刪排序，各自重跑 derivation，並報告 ≤60 歲 ARC 陰性族群中各 ADD-RS 高風險病史亞群的病例數與結果。</li>
+</ol>
+</li>
+<li><strong>一句話結論</strong>：ARC 本質上是「60 歲以下且沒有任何 AORTAs 特徵」，在高風險轉診族群中可安全省略 D-dimer，但還需要獨立的前瞻性驗證。</li>
+</ul>
+<hr />
+<p><strong>外部來源</strong></p>
+<ul>
+<li><a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC7828987/">Canadian clinical practice guideline for the diagnosis of AAS in the ED（Ohle 等）</a></li>
+<li><a href="https://scu-vufind-test.folio-dev.indexdata.com/EdsRecord/edb,163948618">RIPP score 與 ADD-RS／AORTAs 的比較（2023）</a></li>
+<li><a href="https://thesgem.com/2024/02/sgem430-de-do-do-do-de-dash-dash-dashed-diagnosing-acute-aortic-syndrome-in-the-ed/">SGEM #430：DAShED</a></li>
+<li><a href="https://ruor.uottawa.ca/bitstreams/c0361376-60df-4613-88e7-41811a6cbefc/download">Ohle 2017 uOttawa thesis</a></li>
+<li><a href="https://shef.ac.uk/cure/completed-trials/aortic-syndrome-evidence-synthesis-ases-study">Sheffield ASES study</a></li>
+<li><a href="https://pubmed.ncbi.nlm.nih.gov/38871565/">PROFUNDUS（PubMed 38871565）</a></li>
+<li><a href="https://link.springer.com/article/10.1007/s43678-024-00836-8">D-dimer diagnostic accuracy for AAS meta-analysis</a></li>
+<li><a href="https://www.wolterskluwer.com/solutions/ovid/european-heart-journal-2148">EHJ JIF（Wolters Kluwer）</a></li>
+<li><a href="https://academic.oup.com/EURHEARTJ/pages/About">EHJ About（OUP）</a></li>
+<li><a href="https://www.journalmetrics.org/journal/european-heart-journal">Journal Metrics：EHJ</a></li>
+<li><a href="https://www.journalmetrics.org/fastest-journals/cardiology">Journal Metrics：心臟科期刊審查速度</a></li>
+<li><a href="https://doi.org/10.1093/eurheartj/ehag875">本文 DOI</a></li>
+</ul>
+
+<footer class="appraisal-meta">評讀資訊：模型：claude-opus-5-5 (claude)  ·  route：diagnostic  ·  產出時間：2026-11-15 13:54 CST</footer>
+</main>
+</body>
+</html>
