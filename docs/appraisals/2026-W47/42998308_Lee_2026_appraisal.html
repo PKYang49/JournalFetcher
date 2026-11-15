@@ -1,0 +1,831 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Statin-Ezetimibe Combination Therapy versus Statin Monotherapy in Atherosclerotic Cardiovascular Disease: A Prespecified Secondary Analysis of the Randomized Ez-PAVE Trial.</title>
+<style>
+  :root {
+    --bg: #fafafa;
+    --card: #ffffff;
+    --text: #1a1a1a;
+    --muted: #6b6b6b;
+    --border: #e5e5e5;
+    --accent: #0b5fff;
+  }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang TC",
+      "Microsoft JhengHei", sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    margin: 0;
+    padding: 24px 16px 64px;
+    line-height: 1.72;
+  }
+  main {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    margin: 0 auto;
+    max-width: 840px;
+    padding: 22px 26px;
+  }
+  nav {
+    margin: 0 auto 14px;
+    max-width: 840px;
+    color: var(--muted);
+    font-size: 14px;
+  }
+  a { color: var(--accent); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  h1, h2, h3, h4 { line-height: 1.35; }
+  h1 { font-size: 26px; margin-top: 0; }
+  h2 { border-top: 1px solid var(--border); padding-top: 18px; }
+  code {
+    background: rgba(127, 127, 127, 0.12);
+    border-radius: 4px;
+    padding: 1px 4px;
+  }
+  .table-wrap {
+    margin: 1em 0;
+    overflow-x: auto;
+  }
+  .table-wrap.wide {
+    /* Break out of the 840px prose column, centred on the viewport. */
+    width: min(1040px, calc(100vw - 32px));
+    margin-left: calc(50% - min(520px, 50vw - 16px));
+  }
+  table {
+    border-collapse: collapse;
+    table-layout: auto;
+    width: 100%;
+  }
+  .table-wrap.wide {
+    /* Opaque so the <main> card border does not show through the table. */
+    background: var(--card);
+  }
+  /* Width hints go on <th> as percentages: Chrome's auto table layout
+     mis-sizes columns (and overflows) when cells carry min-width. */
+  .table-wrap.wide th:first-child {
+    /* Variable + plain-language definition, e.g. "NCPV (noncalcified ...)". */
+    width: 26%;
+  }
+  .table-wrap.wide th:last-child {
+    /* Last column is usually a one-line interpretation. */
+    width: 20%;
+  }
+  th, td {
+    border: 1px solid var(--border);
+    /* Wrap only at spaces: never split an English word mid-letter. */
+    overflow-wrap: normal;
+    word-break: normal;
+    hyphens: manual;
+    padding: 6px 8px;
+    text-align: left;
+    vertical-align: top;
+  }
+  blockquote {
+    border-left: 3px solid var(--accent);
+    color: var(--muted);
+    margin-left: 0;
+    padding-left: 14px;
+  }
+  .appraisal-meta {
+    border-top: 1px solid var(--border);
+    margin-top: 28px;
+    padding-top: 14px;
+    color: var(--muted);
+    font-size: 13px;
+  }
+  @media (max-width: 600px) {
+    body {
+      padding: 12px 8px 40px;
+    }
+    main {
+      padding: 16px 12px;
+    }
+    h1 {
+      font-size: 22px;
+    }
+    table {
+      font-size: 12px;
+    }
+    .table-wrap.wide {
+      width: calc(100vw - 16px);
+      margin-left: calc(50% - 50vw + 8px);
+    }
+    th, td {
+      padding: 4px 5px;
+    }
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #1a1a1a;
+      --card: #242424;
+      --text: #e8e8e8;
+      --muted: #999;
+      --border: #333;
+      --accent: #6ea8ff;
+    }
+  }
+</style>
+</head>
+<body>
+<nav><a href="../../2026-W47.html">← 回到 2026-W47 週報</a></nav>
+<main>
+<h1>Statin-Ezetimibe Combination Therapy versus Statin Monotherapy in Atherosclerotic Cardiovascular Disease: A Prespecified Secondary Analysis of the Randomized Ez-PAVE Trial.</h1>
+<h1>Ez-PAVE 第二隨機化：初始 statin–ezetimibe 合併治療 vs statin 單藥（Circulation 2026）批判性評讀</h1>
+<h2>SECTION-0：文章全面描述</h2>
+<h3>0. 文章身份證</h3>
+<ul>
+<li><strong>標題</strong>：Statin–Ezetimibe Combination Therapy versus Statin Monotherapy in Atherosclerotic Cardiovascular Disease: A Prespecified Secondary Analysis of the Randomized Ez-PAVE Trial</li>
+<li><strong>期刊／年份</strong>：<em>Circulation</em>，2026（本次評讀版本為 First Proof，卷頁尚未定）</li>
+<li><strong>DOI</strong>：10.1161/CIRCULATIONAHA.126.083811；PMID 42998308</li>
+<li><strong>文章類型</strong>：RCT。正確的說法是 2×2 factorial 開放標籤試驗中，第二個隨機化因子（初始用藥組合）的事前指定分析。</li>
+<li><strong>路由</strong>：SKILL-A 主流程，加上 A1 中 factorial／treat-to-target 設計相關的評估。</li>
+<li><strong>設計定位提醒</strong>：本文標題寫「secondary analysis」，但第二隨機化在收案時就與第一隨機化同時完成（Methods：「All randomizations were performed at enrollment」）。因此比較本身仍受隨機化保護，不是事後的觀察性次分析。真正的問題在於<strong>樣本數只為第一因子設計</strong>（Statistical Analysis 段明言「not powered」）。</li>
+</ul>
+<h3>1. 作者團隊評論</h3>
+<ul>
+<li><strong>通訊作者</strong>：Byeong-Keuk Kim（延世大學 Severance Hospital 心臟內科）與 Gwang-Sil Kim（仁濟大學上溪白病院）[文內]。</li>
+<li><strong>團隊構成</strong>：韓國 17 家中心的介入心臟科團隊。概念設計為 S.-H. Lee、Y.S. Byun、G.-S. Kim、B.-K. Kim；統計分析由兩位共同第一作者執行 [文內 Author Contributions]。文內<strong>沒有提到獨立統計師</strong>。</li>
+<li><strong>團隊過往研究</strong>：
+<ul>
+<li>B.-K. Kim 是 RACING 試驗的主導者 [外部: Daum/BioSpace 新聞]。RACING 比較 moderate-intensity rosuvastatin 10 mg + ezetimibe 與 high-intensity rosuvastatin 20 mg 單藥，3,780 名 ASCVD 病人，結論為非劣性，發表於 Lancet 2022，<strong>由 Hanmi Pharmaceutical 資助</strong>；該公司銷售 rosuvastatin/ezetimibe 複方 Rosuzet [外部: BioSpace]。</li>
+<li>同團隊在 2026 年發表 Ez-PAVE 主要結果（NEJM 2026;394:1365–1375）[文內 ref 5；外部: ACC.org]。</li>
+<li>這是長期主攻「降脂策略 × ezetimibe 合併治療」的核心團隊，不是跨領域首次切入。</li>
+</ul>
+</li>
+<li><strong>作者立場史</strong>：團隊在 RACING 已公開主張「中強度 statin + ezetimibe 可取代高強度 statin」。本篇討論段的結論（&quot;may support the early ezetimibe combination strategy&quot;）與既有立場高度一致。結果是中性的，作者卻把結論導向「合併治療較可靠達標」，<strong>有確認偏差的風險</strong>（見 E 節）。</li>
+<li><strong>利益揭露</strong> [文內]：
+<ul>
+<li>經費來自 Cardiovascular Research Center 與 <strong>Yuhan</strong>（韓國藥廠）。文內宣稱資助者不參與設計、分析與撰寫。</li>
+<li>B.-K. Kim 接受 Yuhan、Hanmi、Daewoong、ChongKunDang、Samjin 等多家藥廠研究經費，以及 Amgen 顧問費。J.-S. Kim 與 Y.-J. Lee 也有多家藥廠關係。</li>
+<li><strong>評估</strong>：文內沒有揭露研究藥物（rosuvastatin–ezetimibe）是否由 Yuhan 提供、是否為特定市售複方。資助者與多位作者都和「statin–ezetimibe 複方」市場有利害關係。結果中性時，這類關係較可能影響<strong>敘事框架</strong>（強調達標率），而不是數據本身。</li>
+</ul>
+</li>
+</ul>
+<h3>2. 文獻 Metadata 整理</h3>
+<ul>
+<li><strong>Received／Accepted</strong>：2026-10-02／2026-10-22 [文內]，<strong>審查僅 20 天</strong>（自行計算）。</li>
+<li><strong>期刊參考值</strong>：Circulation 原著從投稿到第一次決定的中位數約 17 天 [外部: manusights 轉述 AHA 資料，非官方一手來源]。本篇是「投稿到接受」20 天，明顯快於一般含修稿的流程。</li>
+<li><strong>可能解讀</strong>：本文與 AHA Scientific Sessions 2026 Late-Breaking 同步發表（11 月 7 日）[外部: HCPLive、AHA newsroom]，屬於配合大會的 fast-track。審查時間壓縮，supplement 細節（PH 檢定結果、protocol／SAP 原文）較可能未被充分要求。</li>
+<li><strong>期刊屬性</strong>：2025 JIF 約 41.3、Cardiac &amp; Cardiovascular Systems 類 Q1 [外部: manusights，非 Clarivate 一手]。Open Access 狀態：[無法取得]。</li>
+<li><strong>邀稿或投稿</strong>：原著，非邀稿 [文內]。</li>
+</ul>
+<h3>3. 研究背景（文內）</h3>
+<ul>
+<li><strong>既有證據</strong>：
+<ul>
+<li>指引逐步下修 LDL-C 目標，未達標時建議強化治療（ref 1–4）。</li>
+<li>Ez-PAVE 主試驗已證明 &lt;55 mg/dL 目標優於 &lt;70 mg/dL。</li>
+<li>IMPROVE-IT 證實在 statin 上加 ezetimibe 可改善預後；RACING 顯示中強度 statin + ezetimibe 非劣於高強度 statin。</li>
+</ul>
+</li>
+<li><strong>知識缺口</strong>：既有 ezetimibe 試驗都是固定劑量、沒有 treat-to-target protocol，而且都在 &lt;55 mg/dL 目標推出前。尚不清楚在 treat-to-target 架構下，「初始就合併」或「先單藥再逐步加藥」是否影響預後，也不清楚初始方案會不會修飾低目標的效益。</li>
+<li><strong>Research question</strong>：在 ASCVD 病人、protocol 引導的 LDL-C 目標導向策略下，初始 statin–ezetimibe 合併治療相較於初始 statin 單藥，3 年心血管結果與安全性是否不同；初始方案是否修飾 intensive vs conventional 目標的效益。</li>
+</ul>
+<h3>4. 研究設計與方法</h3>
+<ul>
+<li><strong>PICO</strong>：
+<ul>
+<li><strong>P</strong>：韓國 17 中心、19–80 歲有記錄的 ASCVD 病人（ACS、有影像或功能證據的穩定型心絞痛、血管再通、中風/TIA、PAD），共 3,048 人。排除未用 statin 時 LDL-C &lt;70 mg/dL 者 [Supplement Methods]。</li>
+<li><strong>I</strong>：初始 rosuvastatin + ezetimibe 10 mg（n=1,525）。</li>
+<li><strong>C</strong>：初始 statin 單藥（n=1,523）。此組再以 1:1 隨機分配 rosuvastatin 或 atorvastatin。未達標時先上調 statin，最大劑量仍不足才加 ezetimibe [Supplement protocol 表]。</li>
+<li><strong>O</strong>：主要終點為 3 年心血管死亡、非致死性 MI、非致死性中風、任何血管再通、不穩定型心絞痛住院的複合終點。次要終點為各組成與多種複合終點。安全終點包括新發糖尿病、血糖控制惡化、SAMS、癌症、白內障手術與實驗室異常。</li>
+</ul>
+</li>
+<li><strong>設計細節</strong>：
+<ul>
+<li>2×2 factorial；開放標籤；以網路系統做 permuted block（4 或 6）隨機化，由外部程式設計者產生序列。</li>
+<li>第一因子以 ACS、糖尿病、基線 LDL-C（&lt;100 vs ≥100 mg/dL）分層。<strong>第二因子是否分層，文內未說明。</strong></li>
+<li>追蹤 3 年（1 個月、1、2、3 年）。事件由盲於分組的獨立委員會判定。</li>
+</ul>
+</li>
+<li><strong>統計</strong>：
+<ul>
+<li>主分析為 ITT，使用未調整的 Cox 模型與 log-rank 檢定；以 Schoenfeld residuals 檢查 PH，但<strong>結果未報告</strong>。</li>
+<li>敏感度分析：Fine-Gray competing risk 與 per-protocol 分析。</li>
+<li>次族群分析含交互作用項。</li>
+<li>沒有多重比較校正，缺失值不填補。</li>
+</ul>
+</li>
+<li><strong>樣本數</strong>：依第一因子（目標策略）計算；本比較「未設計檢定力」[文內 Statistical Analysis]。</li>
+<li><strong>Registry 查核</strong> [外部: ClinicalTrials.gov NCT04626973]：
+<ul>
+<li>登錄的 primary outcome 名稱為「Clinical outcomes by different lipid-lowering therapy」，複合組成與本文一致，<strong>沒有 outcome switching</strong>。</li>
+<li>登錄的次要終點包含 HOMA index、蛋白尿變化，以及依性別、BMI 比較主要終點。本文<strong>沒有報告 HOMA 與蛋白尿</strong>（可能另文發表，但屬選擇性報告疑慮）。</li>
+<li>本次無法取得 protocol／SAP 原文；本文 Methods 引述已發表的設計論文，但 supplement 中未附 protocol/SAP 全文 [限制]。</li>
+</ul>
+</li>
+</ul>
+<h3>5. 研究結果重點整理</h3>
+<div class="table-wrap wide"><table>
+<thead>
+<tr>
+<th>變項（代表什麼）</th>
+<th style="text-align:right">合併治療（n=1525）</th>
+<th style="text-align:right">Statin 單藥（n=1523）</th>
+<th style="text-align:right">組間差（95% CI）</th>
+<th style="text-align:right">p 值</th>
+<th>如何解讀</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>追蹤期 LDL-C</strong>：每人時間加權平均值的中位數</td>
+<td style="text-align:right"><strong>58 mg/dL</strong>（49–68）</td>
+<td style="text-align:right"><strong>66 mg/dL</strong>（58–77）</td>
+<td style="text-align:right">−8 mg/dL [自行計算]</td>
+<td style="text-align:right">&lt;0.001</td>
+<td>合併組全程低約 8 mg/dL（≈0.21 mmol/L）</td>
+</tr>
+<tr>
+<td><strong>3 年 LDL-C（intensive 目標臂）</strong></td>
+<td style="text-align:right">78 → <strong>48 mg/dL</strong></td>
+<td style="text-align:right">76 → <strong>54 mg/dL</strong></td>
+<td style="text-align:right">−6 mg/dL [自行計算]</td>
+<td style="text-align:right">&lt;0.001</td>
+<td>差距隨單藥組加藥而縮小</td>
+</tr>
+<tr>
+<td><strong>3 年 LDL-C &lt;55 達成率（intensive 臂）</strong></td>
+<td style="text-align:right"><strong>69.4%</strong></td>
+<td style="text-align:right"><strong>52.2%</strong></td>
+<td style="text-align:right">＋17.2 個百分點 [自行計算]</td>
+<td style="text-align:right">&lt;0.001</td>
+<td>是「該時點有測 LDL 者」的比例，有缺測</td>
+</tr>
+<tr>
+<td><strong>3 年 ezetimibe 使用率</strong></td>
+<td style="text-align:right"><strong>93.8%</strong></td>
+<td style="text-align:right"><strong>29.6%</strong></td>
+<td style="text-align:right">未報告</td>
+<td style="text-align:right">未報告</td>
+<td>單藥組近 3 成交叉加藥，稀釋組間對比</td>
+</tr>
+<tr>
+<td><strong>3 年高強度 statin 使用率</strong></td>
+<td style="text-align:right"><strong>26.6%</strong></td>
+<td style="text-align:right"><strong>54.0%</strong></td>
+<td style="text-align:right">未報告</td>
+<td style="text-align:right">未報告</td>
+<td>兩組不只差 ezetimibe，statin 強度也差一倍</td>
+</tr>
+<tr>
+<td><strong>主要複合終點</strong>（CV 死亡/MI/中風/再通/UA 住院）</td>
+<td style="text-align:right"><strong>128（8.5%）</strong></td>
+<td style="text-align:right"><strong>119（7.9%）</strong></td>
+<td style="text-align:right">ARD 0.6%（−1.4 to 2.5）；<strong>HR 1.07（0.83–1.37）</strong></td>
+<td style="text-align:right">0.596</td>
+<td>CI 同時含 17% 利益與 37% 傷害，無法下結論</td>
+</tr>
+<tr>
+<td>Intensive 目標臂</td>
+<td style="text-align:right">54/763（7.1%）</td>
+<td style="text-align:right">46/763（6.1%）</td>
+<td style="text-align:right">HR 1.17（0.79–1.73）</td>
+<td style="text-align:right">0.446</td>
+<td>LDL 最低的一格事件反而較多，提示隨機變異</td>
+</tr>
+<tr>
+<td>Conventional 目標臂</td>
+<td style="text-align:right">74/762（9.8%）</td>
+<td style="text-align:right">73/760（9.7%）</td>
+<td style="text-align:right">HR 1.01（0.73–1.40）</td>
+<td style="text-align:right">0.951</td>
+<td>幾乎重疊</td>
+</tr>
+<tr>
+<td><strong>硬終點</strong>（CV 死亡/非致死 MI/非致死中風）</td>
+<td style="text-align:right">47（3.1%）</td>
+<td style="text-align:right">41（2.7%）</td>
+<td style="text-align:right">0.4%（−0.8 to 1.6）；HR 1.14（0.75–1.74）</td>
+<td style="text-align:right">0.532</td>
+<td>事件僅 88 件，資訊量很低</td>
+</tr>
+<tr>
+<td><strong>任何血管再通</strong></td>
+<td style="text-align:right">100（6.6%）</td>
+<td style="text-align:right">85（5.7%）</td>
+<td style="text-align:right">1.0%（−0.7 to 2.7）；HR 1.17（0.88–1.57）</td>
+<td style="text-align:right">0.277</td>
+<td>主要終點最大組成，屬開放標籤易受影響的軟終點</td>
+</tr>
+<tr>
+<td>中風/TIA 病史次族群</td>
+<td style="text-align:right">13/65（20.0%）</td>
+<td style="text-align:right">2/52（3.8%）</td>
+<td style="text-align:right">HR 5.37（1.21–23.79）</td>
+<td style="text-align:right">P_int 0.029</td>
+<td>共 15 件事件，最可能是多重比較下的偶然</td>
+</tr>
+<tr>
+<td><strong>Per-protocol 主要終點</strong></td>
+<td style="text-align:right">126/1487（8.5%）</td>
+<td style="text-align:right">110/1445（7.7%）</td>
+<td style="text-align:right">0.8%（−1.1 to 2.8）；HR 1.11（0.86–1.43）</td>
+<td style="text-align:right">0.424</td>
+<td>與 ITT 一致，但 PP 定義無法排除合規交叉</td>
+</tr>
+<tr>
+<td>新發糖尿病（基線無糖尿病者）</td>
+<td style="text-align:right">154/901（17.1%）</td>
+<td style="text-align:right">147/940（15.6%）</td>
+<td style="text-align:right">1.5%（−1.9 to 4.8）；OR 1.11（0.87–1.42）</td>
+<td style="text-align:right">0.399</td>
+<td>statin 劑量較低的合併組沒有較少糖尿病</td>
+</tr>
+<tr>
+<td><strong>SAMS</strong>（statin 相關肌肉症狀）</td>
+<td style="text-align:right">10（0.7%）</td>
+<td style="text-align:right">14（0.9%）</td>
+<td style="text-align:right">−0.3%（−0.9 to 0.4）；OR 0.71（0.31–1.60）</td>
+<td style="text-align:right">0.413</td>
+<td>事件太少，無法證明合併治療較耐受</td>
+</tr>
+</tbody>
+</table></div>
+<p>資料出處：Table 2、Table 3、Figure 2、Figure S5、Tables S2、S7、S11。</p>
+<p>表格之外的重點：</p>
+<ul>
+<li><strong>2×2 交互作用</strong>（Figure 3）：intensive vs conventional 目標的 HR 在合併組為 0.72（0.50–1.02，P=0.060），在單藥組為 0.62（0.43–0.90，P=0.011），P_int 0.583。
+<ul>
+<li>單看硬終點複合時，合併組 HR 0.88（0.49–1.56），單藥組 HR 0.41（0.21–0.80），P_int 0.090。</li>
+<li>非致死 MI：單藥組 3/763 vs 14/760（HR 0.21），合併組 9/763 vs 12/762（HR 0.75），P_int 0.103。</li>
+<li>兩組 intensive 與 conventional 之間的 LDL 落差同樣約 14 mg/dL（S7：48 vs 62；54 vs 68），硬終點效益卻不同。這是<strong>小事件數下的不穩定估計</strong>，不支持「目標比方案重要」的強結論，也不支持相反結論。</li>
+</ul>
+</li>
+<li><strong>交叉治療</strong>：單藥組有 257/763（33.7%，intensive 臂）與 191/760（25.1%，conventional 臂）曾使用 ezetimibe。其中 227 與 143 人是「為了達標」，屬 protocol 允許 [Table S4]。</li>
+<li><strong>追蹤完整性</strong>：未完成 3 年追蹤者四格分別為 5、4、5、5 人，共 19 人（0.6%）[Figure 1]，失訪極少。</li>
+<li><strong>LDL 缺測</strong>：1 個月只有 1,091/1,525（71.5%）合併組有 LDL 值，3 年為 1,243（81.5%）[Table S6]。達標率以有測者為分母，未填補 [自行計算]。</li>
+</ul>
+<h3>6. 作者討論與評論重點</h3>
+<ul>
+<li><strong>主要訊息</strong>：在 treat-to-target 架構下，初始方案不影響預後；合併治療較能可靠地達到 &lt;55 mg/dL；目標本身可能比初始方案重要。</li>
+<li><strong>與既有文獻比較</strong>：
+<ul>
+<li>作者以「IMPROVE-IT 為固定劑量、無法調整」解釋本文為何沒有重現 IMPROVE-IT 的效益。</li>
+<li>作者以「單藥組高強度 statin 使用率高，pleiotropic effect 抵銷 LDL 差距」解釋中性結果，並引 RACING 類比。</li>
+</ul>
+</li>
+<li><strong>作者自承限制</strong>：檢定力不足、開放標籤、族群全為東亞人且以男性為主、沒有成本效益分析。</li>
+<li><strong>評估</strong>：
+<ul>
+<li>限制列舉不完整，漏掉以下幾點：
+<ul>
+<li>兩組 statin 種類與強度不同（合併組全為 rosuvastatin，單藥組半數 atorvastatin），構成共介入差異；</li>
+<li>主要終點由軟性的血管再通主導；</li>
+<li>次族群分析沒有多重比較校正；</li>
+<li>LDL 缺測且未填補。</li>
+</ul>
+</li>
+<li>「pleiotropic effect 抵銷」純屬推測，文內沒有任何資料支持，例如 hs-CRP。</li>
+<li>「合併治療達標較可靠，<strong>may support the early ezetimibe combination strategy</strong>」是以替代指標（LDL 達標率）推出臨床策略建議，<strong>超出本文臨床終點所能支持的範圍</strong>。</li>
+<li>「目標比方案重要」建立在交互作用檢定之上，而 factorial 試驗對交互作用的檢定力更低。P_int=0.583 是「看不出差異」，不是「證明一致」。</li>
+</ul>
+</li>
+</ul>
+<h3>7. 外部專業意見</h3>
+<ul>
+<li><strong>針對本篇（第二隨機化）的同期 editorial／comment</strong>：[無法取得]。AHA newsroom 與 HCPLive 報導都只引述作者 B.-K. Kim，沒有獨立專家評論，也沒有提到同期 editorial [外部: AHA newsroom、HCPLive]。因此沒有可下載全文的 editorial DOI。</li>
+<li><strong>母試驗（Ez-PAVE 主結果）的相關評論</strong>，供脈絡參考，<strong>不是針對本篇</strong>：
+<ul>
+<li>NEJM 同期 editorial 作者為 Jeffrey L. Probstfield 與 Kelley R.H. Branch（University of Washington）。依 TCTMD 轉述，他們認為效益機轉「not entirely clear」、外推到非東亞族群需要更多研究，並推測高依從性與合併治療可能有貢獻 [外部: TCTMD 報導轉述，未取得 editorial 全文]。</li>
+<li>Christie Ballantyne 質疑 LDL 差距不大、效果卻偏大，懷疑頻繁抽血、生活型態、血壓控制等共介入有貢獻 [外部: TCTMD]。這個疑問同樣適用於本篇的開放標籤 treat-to-target 架構。</li>
+<li>報導指出主試驗中沒有任何外部專家特別評論第二隨機化 [外部: TCTMD]。</li>
+</ul>
+</li>
+</ul>
+<h3>8. 臨床建議</h3>
+<ul>
+<li><strong>可採用的情境</strong>：
+<ul>
+<li>韓國／東亞、以男性為主、多數已在用 statin、基線 LDL 約 76 mg/dL 的 ASCVD 病人，且有能力定期抽血、按 protocol 加藥。</li>
+<li>在這種情境下，「先 statin 單藥、未達標再加 ezetimibe」與「一開始就合併」的 3 年事件率<strong>沒有可偵測的差別</strong>。兩者都是合理選項。</li>
+</ul>
+</li>
+<li><strong>不建議直接套用的情境</strong>：
+<ul>
+<li>基線 LDL 遠高於目標、不太可能靠 statin 單藥達標的病人，例如家族性高膽固醇血症；本試驗基線 LDL 中位數僅 76 mg/dL。</li>
+<li>無法密切追蹤的真實世界門診：本文的「等效」建立在 protocol 驅動的及時加藥上，真實世界的治療慣性會讓單藥組更難達標。</li>
+<li>中風/TIA 族群：<strong>不應</strong>依次族群 HR 5.37 而避免 ezetimibe。</li>
+</ul>
+</li>
+<li><strong>實務建議</strong>：
+<ol>
+<li>管理重點放在「是否達標」與「未達標時的及時加藥」，不必糾結初始方案。若預期單用 statin 達不到 &lt;55 mg/dL（基線 LDL 與目標差距超過約 50%，[推論]，依一般 statin 降幅估計），直接起始合併治療可較早達標。</li>
+<li>不要以本文推論「中強度 statin + ezetimibe 優於高強度 statin」，也不要推論相反。本文的硬終點資料兩個方向都無法排除。</li>
+<li>若病人對高劑量 statin 耐受不佳，以合併治療降低 statin 劑量仍是合理選擇。依據主要來自 RACING 與 LDL 達標率，本文的安全性資料檢定力不足。</li>
+</ol>
+</li>
+<li><strong>證據強度</strong>：
+<ul>
+<li>「合併治療降 LDL、提高達標率」：<strong>強</strong>。隨機化、樣本大、效果一致。</li>
+<li>「兩種初始方案臨床結果相當」：<strong>弱</strong>。檢定力不足，CI 寬，結果屬 inconclusive。</li>
+</ul>
+</li>
+</ul>
+<hr />
+<h2>SKILL-A：批判性評讀</h2>
+<h3>A. 補充技術細節</h3>
+<ul>
+<li><strong>樣本數</strong>：只為第一因子計算。本比較是<strong>結構性檢定力不足</strong>：
+<ul>
+<li>時間加權 LDL 差約 8 mg/dL（0.21 mmol/L）。依 CTT 每降 1 mmol/L 約減少 20–22% 事件的經驗值推算，預期 HR 約 0.95 [推論，自行計算]。</li>
+<li>要以 80% 檢定力偵測 HR 0.95，約需 4×(1.96+0.84)²/(ln 0.95)² ≈ <strong>11,900 件事件</strong> [自行計算]；本研究只有 247 件。</li>
+<li>換言之，<strong>這個比較在設計上就幾乎不可能看到 LDL 差距帶來的臨床效益</strong>。中性結果是可預期的，不是新發現。</li>
+</ul>
+</li>
+<li><strong>隨機化</strong>：外部產生、網路分派，allocation concealment 充分。第二因子是否分層，文內未說明。</li>
+<li><strong>致盲</strong>：受試者與醫師都沒有致盲，只有事件判定委員會盲於分組。</li>
+<li><strong>ITT 與 PP</strong>：主分析為 ITT。PP 只排除「非 protocol 原因」的交叉：合併組 38 人、單藥組 78 人。<strong>單藥組 370 名依 protocol 加了 ezetimibe 的病人仍留在 PP 中</strong>（227+143，Table S4 vs Figure 1）。所以 PP 並沒有估計「純 statin 單藥」的效果。作者稱 PP「supporting the robustness」是誤導性用法。</li>
+<li><strong>多重比較</strong>：主要終點只有一個，但次要終點 9 個、次族群 11 個、factorial 交互作用多項，全部沒有校正。</li>
+<li><strong>PH 假設</strong>：Methods 說有檢查，結果未報告。Figure 2A 與 2B 中，單藥組曲線在前約 18–24 個月高於合併組，之後交叉，到 36 個月時合併組較高。<strong>曲線交叉是 PH 可能不成立的警訊</strong>，單一 HR 可能掩蓋時間變化的效應。</li>
+<li><strong>缺失資料</strong>：臨床事件幾乎沒有缺失（0.6%）。LDL 測值有 18–28% 缺測，未填補，達標率可能有偏差。</li>
+</ul>
+<h4>A1. 特殊設計：Factorial 與 treat-to-target</h4>
+<ul>
+<li><strong>Factorial 的基本假設是兩因子無交互作用</strong>。檢定交互作用的檢定力遠低於主效應；P_int=0.583 與 0.090（硬終點）都不能被解讀為「一致」。</li>
+<li><strong>Treat-to-target 設計本質上在「稀釋」第二因子</strong>：protocol 強制單藥組未達標時加藥。ITT 比較的是「初始合併」vs「逐步加藥策略」，不是「有 ezetimibe vs 沒有 ezetimibe」。因此本文<strong>不能回答 ezetimibe 本身是否改善預後</strong>。這不是缺點，而是研究問題的本質，但作者的臨床觀點段落有時混用這兩種問題。</li>
+<li><strong>共介入不對等</strong>：
+<ul>
+<li>合併組 100% rosuvastatin，且起始劑量較低（intensive 臂 rosuva 10–20 mg + eze）。</li>
+<li>單藥組 rosuva 20 mg 或 atorva 40/80 mg，並再隨機分 rosuvastatin／atorvastatin。</li>
+<li>結果是兩組 statin 種類與強度同時不同（3 年高強度 26.6% vs 54.0%）。本比較其實是「<strong>較低強度 rosuvastatin + ezetimibe</strong>」vs「<strong>較高強度 statin ± 後加 ezetimibe</strong>」，與 RACING 問題高度重疊。</li>
+</ul>
+</li>
+</ul>
+<h3>B. 批判性評估</h3>
+<h4>B1. 假說與理論邏輯</h4>
+<ul>
+<li><strong>問題</strong>：假說是「初始方案是否影響結果」，卻沒有預先說明方向，也沒有非劣性或等效邊界。
+<ul>
+<li><strong>文內證據</strong>：Statistical Analysis 段只寫「not powered」；Table 2 的 P 值為優越性檢定。</li>
+<li><strong>風險方向</strong>：中性結果容易被解讀成「相當」。</li>
+<li><strong>需要什麼才放心</strong>：預先指定的等效或非劣性邊界與相應檢定力。</li>
+</ul>
+</li>
+<li><strong>合理機轉</strong>：
+<ol>
+<li>較低 LDL 帶來的效益要較長時間才累積，3 年內 8 mg/dL 的差距預期效果極小。</li>
+<li>單藥組逐步加入 ezetimibe，讓組間 LDL 差距隨時間縮小（Figure S2：從 10 縮到 9 mg/dL；intensive 臂從 10 縮到 6 mg/dL）。</li>
+</ol>
+</li>
+<li><strong>可疑的敘事跳躍</strong>：
+<ol>
+<li>「高強度 statin 的 pleiotropic effect 抵銷 LDL 差距」（Discussion p.9–10）：沒有發炎指標或任何資料支持，而且大型 statin 試驗中，以 LDL 降幅可解釋的效益已大致涵蓋觀察到的效果 [推論]。</li>
+<li>「目標比初始方案更重要」（Conclusion）：這是兩個不同比較的效果量並列。主效應 A（目標）顯著、主效應 B（方案）不顯著，不代表 A 比 B「重要」。B 是因為檢定力不足才不顯著。</li>
+<li>「中風族群強化 statin 可能優於加非 statin 藥物，因 neuroprotective effect」：以 15 件事件的次族群推論機轉，屬過度敘事。</li>
+</ol>
+</li>
+</ul>
+<h4>B2. 受試者與外推性</h4>
+<ul>
+<li><strong>問題</strong>：族群為韓國人、79% 男性、基線 LDL 中位數 76 mg/dL、91% 已在用 statin、67% 曾接受血管再通 [Table 1]。</li>
+<li><strong>外推性分級</strong>：
+<ol>
+<li><strong>一般健康族群（初級預防）</strong>：不可外推，研究對象全為 ASCVD。</li>
+<li><strong>西方 ASCVD 病人</strong>：中度外推。東亞人對 statin 的 LDL 反應較強（registry 簡介亦提及），同劑量 statin 在西方族群的達標率可能更低，合併治療「達標優勢」可能更大。但臨床終點結論沒有證據可直接移植。</li>
+<li><strong>特殊族群</strong>：80 歲以上排除；女性僅 315 vs 323 人，事件 18 vs 22（Figure S5），無法判斷；高 LDL 基線者（≥100 mg/dL）只有 672 人，其 HR 1.05（0.63–1.72）也無資訊量。</li>
+</ol>
+</li>
+<li><strong>研究環境</strong>：protocol 監測頻繁（1 個月、1、2、3 年抽血並主動加藥），真實世界的治療慣性會放大「初始方案」的差異。所以本文的「方案不重要」<strong>在真實世界可能不成立</strong>。</li>
+</ul>
+<h4>B3. 研究設計與偏差</h4>
+<ul>
+<li><strong>對照組適當性</strong>：
+<ul>
+<li>「先 statin、未達標再加 ezetimibe」是多數指引與臨床的標準作法，對照組合理。</li>
+<li>但對照組 statin 種類與強度和介入組不同，屬於「共介入差異」，而不是乾淨的單一因子比較（見 A1）。</li>
+</ul>
+</li>
+<li><strong>開放標籤 × 軟終點</strong>：
+<ul>
+<li>「任何血管再通」是主要終點最大的組成（100+85 件，相對於主要終點共 247 件；不同組成可能重疊）。</li>
+<li>再通的決策受醫師認知影響。判定委員會盲於分組，但「是否送導管」的決策沒有盲。</li>
+<li>偏差方向不確定。若醫師認為合併組 LDL 已達標而較放心，可能較少再通，偏向合併組有利；反之亦然。</li>
+</ul>
+</li>
+<li><strong>交叉稀釋（最主要偏差）</strong>：
+<ul>
+<li>單藥組 3 年 ezetimibe 使用率 29.6%；合併組 conventional 臂有 13.0% 未用或停用 ezetimibe，其中 77 人是為了「符合目標範圍」而減藥 [Table S4]。</li>
+<li>雙向交叉使 ITT 效果<strong>朝虛無方向偏移</strong>。</li>
+</ul>
+</li>
+<li><strong>基線不平衡</strong>：整體大致平衡。但 conventional 臂中，中風/TIA 在合併組 38（5.0%）vs 單藥組 22（2.9%），P=0.049 [Table S1]；intensive 臂 CKD 4.7% vs 7.2%，P=0.052。這對次族群結果的解讀有影響。</li>
+<li><strong>最可能造成偏差的設計點</strong>：
+<ol>
+<li>Protocol 強制交叉：效果偏小（朝虛無）。</li>
+<li>Statin 種類與強度不對等：方向不確定，兩組差異不只來自 ezetimibe。</li>
+<li>開放標籤加軟終點：方向不確定。</li>
+</ol>
+</li>
+</ul>
+<h4>B4. 測量工具與實務意義</h4>
+<ul>
+<li><strong>LDL-C</strong>：測量方法（Friedewald、Martin-Hopkins 或直接測定）文內未說明。LDL &lt;55 mg/dL 時 Friedewald 會低估，達標率的精確度可能受影響 [推論]。</li>
+<li><strong>終點</strong>：
+<ul>
+<li>主要終點組成重要性不等：CV 死亡 33 件、MI 38 件、中風 18 件，遠少於再通 185 件。</li>
+<li>「不穩定型心絞痛住院」定義嚴謹（需 ECG、壓力測試或血管攝影證據，Supplement 定義表），這是優點。</li>
+</ul>
+</li>
+<li><strong>實務意義</strong>：即使真實效果存在，依 LDL 差距推估的 HR 約 0.95；以 3 年 8% 事件率計算，NNT 約 250 [自行計算，推論性]。真實世界效益主要不在硬終點，而在「較少人卡在未達標、較少回診調藥」等流程面。本文<strong>沒有測量</strong>這些流程指標，例如回診次數、達標所需時間的中位數。</li>
+</ul>
+<h3>C. 統計與資料完整性</h3>
+<h4>C1. 結果分類（CI + MCID）</h4>
+<ul>
+<li><strong>Step 1 MCID</strong>：文內沒有預先指定。本評讀暫定臨床有意義差異為 <strong>HR ≤0.85（利益）／≥1.15（傷害）</strong> [推算]，約相當於 3 年絕對差 ±1.2 個百分點，大致等於一般降脂試驗主要 MACE 的典型效應量。</li>
+<li><strong>Step 2 CI 位置</strong>：HR 1.07（0.83–1.37）同時跨越虛無值 1.0、利益門檻 0.85 與傷害門檻 1.15；ARD 0.6%（−1.4 到 +2.5）。</li>
+<li><strong>分類：INCONCLUSIVE ❓</strong>。不是 Neutral，也不是 Negative。
+<ul>
+<li>兩組實質等效的說法，需要 CI 落在 0.85–1.15 之內才成立，本文沒有。</li>
+<li>「合併治療無有意義利益」勉強接近，因為下限 0.83 僅略低於 0.85，但也沒有正式排除。</li>
+</ul>
+</li>
+<li><strong>作者措辭評估</strong>：
+<ul>
+<li>摘要用「did not differ significantly」，措辭本身沒有錯。</li>
+<li>正文與 Clinical Perspectives 使用「<strong>comparable</strong> cardiovascular outcomes」「<strong>comparable</strong> clinical outcomes」，<strong>隱含等效</strong>，屬於 p&gt;0.05 = no difference 的變形謬誤。</li>
+<li>作者在討論段補了「hypothesis-generating」，但結論段又回到「comparable」。</li>
+</ul>
+</li>
+<li><strong>Step 3</strong>：文內沒有使用 post-hoc power（正確）。</li>
+</ul>
+<h4>C2. Underpowered 與 Winner's Curse</h4>
+<ul>
+<li>主要結果是 underpowered negative，Winner's Curse 不適用於主效應。</li>
+<li><strong>但 Winner's Curse 適用於中風/TIA 次族群</strong>：HR 5.37 來自 13 vs 2 件事件。在約 11 個次族群的搜尋中達到 P=0.013，這類「顯著」估計的效果量被系統性誇大（Type M error）的可能性極高。若真有效應，實際大小可能遠小於此。</li>
+<li>同理適用於 Figure 3 中單藥組非致死 MI 的 HR 0.21（3 vs 14 件）。</li>
+</ul>
+<h4>C3. Bayesian 補充分析（近似）</h4>
+<p>以 HR 對數常態近似、flat prior 估算 [自行計算；log HR=0.068，SE≈0.128]：</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>指標</th>
+<th style="text-align:right">估計機率</th>
+<th>意義</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Pr(HR &lt;1，合併組有任何利益)</td>
+<td style="text-align:right">約 30%</td>
+<td>資料略偏向合併組沒有更好</td>
+</tr>
+<tr>
+<td>Pr(HR &lt;0.85，有臨床意義的利益)</td>
+<td style="text-align:right"><strong>約 4%</strong></td>
+<td>中等以上利益不太可能</td>
+</tr>
+<tr>
+<td>Pr(0.90 ≤ HR ≤ 1.10，實質等效 ROPE)</td>
+<td style="text-align:right"><strong>約 50%</strong></td>
+<td>一半機率實質等效，證據不足以宣稱相當</td>
+</tr>
+<tr>
+<td>Pr(HR &gt;1.15，有意義的傷害)</td>
+<td style="text-align:right">約 29%</td>
+<td>無法排除合併組較差</td>
+</tr>
+</tbody>
+</table></div>
+<ul>
+<li><strong>解讀</strong>：資料幾乎排除了「初始合併治療有大幅臨床利益」，但無法區分「實質等效」與「輕度不利」。</li>
+<li>若改用依 IMPROVE-IT／CTT 建立、偏向小幅利益的 informative prior，後驗分布會被拉向 HR 約 0.95–1.0。本研究資料的資訊量（247 件事件）不足以撼動外部先驗 [推論]。</li>
+</ul>
+<h4>C4. 報告完整性與其他問題</h4>
+<ul>
+<li><strong>Kaplan-Meier 判讀</strong>（Figure 2，圖中可見）：
+<ul>
+<li>y 軸 0–15%，從 0 起始，沒有誇大。</li>
+<li>Number at risk 從 1,525/1,523 降到 1,381/1,379，降幅約 9%，兩組相當，看不出 informative censoring 跡象。</li>
+<li>曲線前段單藥組在上，約 20 個月交叉後合併組在上；intensive 臂交叉約在 22–24 個月。</li>
+<li>這種「早期合併組較好、後期反轉」的型態與 LDL 差距持續存在（Figure S2）不吻合，最可能是隨機波動。PH 檢定結果應公開。</li>
+<li>Per-protocol 曲線（Figure S4）型態相同。</li>
+</ul>
+</li>
+<li><strong>CONSORT 一致性</strong>：各組人數加總一致（747+740=1,487；733+712=1,445），與 Table S10 相符。</li>
+<li><strong>Figure 1 與 Table S4 的標示差異</strong>：Figure 1 單藥組「used non-assigned therapy」僅列 30 與 48 人，但 Table S4 中單藥組實際使用 ezetimibe 為 257 與 191 人。Figure 1 只列出被 PP 排除的非 protocol 交叉，讀者容易誤以為交叉率很低。這是<strong>呈現上的誤導風險</strong>。</li>
+<li><strong>摘要措辭不精確</strong>：摘要稱 ezetimibe「was added to 241 patients (34.3%) and 177 (24.8%)」，但這是 2–3 年區間的時點盛行率，分母為 702/711。累計使用為 257（33.7%）／191（25.1%）[Table S4]。數字相近，但定義不同。</li>
+<li><strong>Competing risk 分析</strong>：結果一致（SHR 1.07，0.84–1.38）[Table S9]。CV death 事件很少，競爭風險對結論影響本來就小。</li>
+<li><strong>選擇性報告</strong>：registry 列出的 HOMA index、蛋白尿變化，本文沒有報告。</li>
+<li><strong>統計紅旗</strong>：
+<ol>
+<li>沒有等效或非劣性邊界，卻以「comparable」下結論。</li>
+<li>PH 檢定結果未報告，KM 曲線交叉。</li>
+<li>次族群與次要終點沒有多重比較校正，唯一「顯著」的交互作用被寫進討論與結論。</li>
+<li>PP 定義保留合規交叉者，不能作為「穩健性」證據。</li>
+<li>LDL 缺測 18–28% 未填補，達標率可能偏高或偏低，但兩組缺測比例相近。</li>
+<li>交互作用檢定力不足，卻被用來支持「效益與方案無關」。</li>
+</ol>
+</li>
+</ul>
+<h3>D. 次族群分析評估</h3>
+<p><strong>中風/TIA 病史</strong>（HR 5.37，1.21–23.79；P_int 0.029）：</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>標準</th>
+<th>評估</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1. 有交互作用 P 值？</td>
+<td>有，P_int 0.029，但在約 11 個次族群中，未校正下預期約有 0.5 個偽陽性</td>
+</tr>
+<tr>
+<td>2. 與其他研究方向一致？</td>
+<td>沒有直接證據。作者自承中風族群缺乏 ezetimibe vs statin 單藥的隨機證據；IMPROVE-IT 的中風次分析文內未引用</td>
+</tr>
+<tr>
+<td>3. 事前假說且有預期方向？</td>
+<td>次族群是事前指定，但<strong>沒有預先指定方向</strong>，作者在事後提出 neuroprotective 解釋</td>
+</tr>
+<tr>
+<td>4. 合理生物機轉？</td>
+<td>弱。單藥組 2/52（3.8%）低於整體單藥組事件率 7.9%，比較像「單藥組恰好特別少」，而不是「合併組特別多」</td>
+</tr>
+<tr>
+<td>5. Within-study 比較？</td>
+<td>是 within-study，但 conventional 臂中風/TIA 基線不平衡（38 vs 22，P=0.049）</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>可信度：低（推測性）</strong>。總事件 15 件，CI 跨越 1.2 到 24。</p>
+<p><strong>其他接近顯著的次族群</strong>（Figure S5）：</p>
+<ul>
+<li>年齡 ≥65 歲：HR 1.33（0.95–1.87），P_int 0.064。</li>
+<li>曾血管再通：HR 1.24（0.92–1.68），P_int 0.069。</li>
+<li>可信度均低；方向一致偏向單藥組，但都在多重比較的雜訊範圍內。</li>
+</ul>
+<p><strong>目標策略 × 方案交互作用</strong>（Figure 3）：硬終點 P_int 0.090、非致死 MI P_int 0.103。<strong>可信度低</strong>。作者選擇強調「一致」（P_int 0.583），而沒有討論硬終點上的分歧，屬於選擇性詮釋。</p>
+<h3>E. 紅旗清單</h3>
+<ul>
+<li><strong>設計</strong>：比較的是 ezetimibe 加 statin 種類加 statin 強度的混合差異（rosuvastatin only vs rosuva/atorva；高強度 26.6% vs 54.0%）。</li>
+<li><strong>設計</strong>：protocol 強制交叉，使 ITT 對比結構性稀釋。</li>
+<li><strong>統計</strong>：只為第一因子計算樣本數；本比較約需 1.2 萬件事件才能偵測 LDL 推估的效應，實際只有 247 件。</li>
+<li><strong>統計</strong>：用「comparable」描述 inconclusive 結果。</li>
+<li><strong>統計</strong>：PH 未報告，KM 曲線交叉。</li>
+<li><strong>敘事</strong>：以 LDL 達標率（替代指標）推出「支持早期合併治療」的臨床建議，而臨床終點上沒有支持。</li>
+<li><strong>敘事</strong>：「目標比方案重要」把不同檢定力的兩個主效應拿來比較重要性。</li>
+<li><strong>敘事</strong>：中風次族群加上 neuroprotective 機轉，屬事後過度詮釋。</li>
+<li><strong>呈現</strong>：Figure 1 的交叉人數與 Table S4 落差很大，容易低估稀釋程度。</li>
+<li><strong>COI</strong>：資助者 Yuhan 與作者群有多家「statin–ezetimibe 複方」相關藥廠關係；文內沒有揭露研究藥物來源。</li>
+<li><strong>外推</strong>：東亞、以男性為主、基線 LDL 低、protocol 化密集追蹤的設定。</li>
+<li><strong>審查</strong>：投稿到接受 20 天，配合大會同步發表。</li>
+</ul>
+<h3>F. 反向解釋</h3>
+<ol>
+<li><strong>真實效應極小，被檢定力淹沒</strong>。
+<ul>
+<li>支持：LDL 差約 8 mg/dL，依 CTT 推估 HR 約 0.95；CI 寬。</li>
+<li>反對：沒有。這是最簡約的解釋。</li>
+</ul>
+</li>
+<li><strong>合併組 statin 強度較低，抵銷了較低 LDL 的效益</strong>（作者的 pleiotropy 假說）。
+<ul>
+<li>支持：高強度 statin 使用率差一倍；中風族群方向一致。</li>
+<li>反對：沒有發炎指標資料；新發糖尿病與 SAMS 也沒有因 statin 劑量較低而減少，代表劑量差異的生物效應不明顯。</li>
+</ul>
+</li>
+<li><strong>治療策略與事件偵測差異（開放標籤）</strong>。
+<ul>
+<li>支持：再通是主要驅動成分，再通的決策不盲。</li>
+<li>反對：再通 HR 1.17 與硬終點 HR 1.14 方向相近，看不出明顯的軟終點偏差型態。</li>
+</ul>
+</li>
+<li><strong>隨機波動</strong>，含 KM 交叉與 intensive 臂中「LDL 最低的組合事件最多」。
+<ul>
+<li>支持：intensive 合併組 3 年 LDL 48 mg/dL、事件率 7.1%；intensive 單藥組 LDL 54 mg/dL、事件率 6.1%。這與 LDL 劑量反應方向相反，最可能是雜訊。</li>
+<li>反對：沒有。</li>
+</ul>
+</li>
+</ol>
+<h3>G. 最終裁決</h3>
+<ul>
+<li><strong>整體可信度</strong>：
+<ul>
+<li>LDL 與達標率的結果：<strong>高</strong>。</li>
+<li>臨床終點「兩方案相當」的結論：<strong>低</strong>。研究設計使臨床終點比較本質上無法給出確定答案。</li>
+</ul>
+</li>
+<li><strong>可採用的條件</strong>：
+<ul>
+<li>有密集監測、能及時依 protocol 加藥的情境下，以初始方案為「LDL 達標速度與便利性」的選擇。</li>
+<li>支持「初始合併可較快、較高比例達到 &lt;55 mg/dL」。</li>
+</ul>
+</li>
+<li><strong>不建議採用的情境</strong>：
+<ul>
+<li>據此宣稱 ezetimibe 對預後沒有幫助。</li>
+<li>據此宣稱初始合併治療臨床上等效或非劣於單藥。</li>
+<li>據中風次族群避免 ezetimibe。</li>
+<li>直接外推到治療慣性高的真實世界或非東亞族群。</li>
+</ul>
+</li>
+<li><strong>最需要的 3 個關鍵改進</strong>：
+<ol>
+<li>預先指定等效或非劣性邊界，並設計相應檢定力（或改用 Bayesian 等效機率報告）。</li>
+<li>讓兩組 statin 種類一致，報告每位病人的 statin 劑量暴露與時間加權 LDL 對事件的分析；公開 PH 檢定與 landmark 分析。</li>
+<li>報告流程與真實世界相關指標，例如達標所需時間、調藥次數、回診負擔、治療中斷；並以多重比較校正後的方式呈現次族群。</li>
+</ol>
+</li>
+<li><strong>一句話結論</strong>：一開始就合併 ezetimibe 能較快把 LDL 降到目標，但這個試驗太小，看不出它能否讓心血管事件更少或更多。</li>
+</ul>
+<hr />
+<h3>效果量摘要（臨床研究必須輸出）</h3>
+<div class="table-wrap wide"><table>
+<thead>
+<tr>
+<th>指標</th>
+<th style="text-align:right">介入組</th>
+<th style="text-align:right">對照組</th>
+<th style="text-align:right">效果量</th>
+<th style="text-align:right">95% CI</th>
+<th style="text-align:right">ARD</th>
+<th style="text-align:right">MCID</th>
+<th>結果分類</th>
+<th>實務意義</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>主要複合終點</td>
+<td style="text-align:right">8.5%</td>
+<td style="text-align:right">7.9%</td>
+<td style="text-align:right">HR 1.07</td>
+<td style="text-align:right">0.83–1.37</td>
+<td style="text-align:right">＋0.6%（−1.4 to 2.5）</td>
+<td style="text-align:right">HR 0.85／1.15 [推算]</td>
+<td><strong>INCONCLUSIVE</strong></td>
+<td>不能說相當，也不能說較差</td>
+</tr>
+<tr>
+<td>CV 死亡/MI/中風</td>
+<td style="text-align:right">3.1%</td>
+<td style="text-align:right">2.7%</td>
+<td style="text-align:right">HR 1.14</td>
+<td style="text-align:right">0.75–1.74</td>
+<td style="text-align:right">＋0.4%（−0.8 to 1.6）</td>
+<td style="text-align:right">同上</td>
+<td>INCONCLUSIVE</td>
+<td>88 件事件，無資訊量</td>
+</tr>
+<tr>
+<td>任何血管再通</td>
+<td style="text-align:right">6.6%</td>
+<td style="text-align:right">5.7%</td>
+<td style="text-align:right">HR 1.17</td>
+<td style="text-align:right">0.88–1.57</td>
+<td style="text-align:right">＋1.0%（−0.7 to 2.7）</td>
+<td style="text-align:right">同上</td>
+<td>INCONCLUSIVE</td>
+<td>軟終點，開放標籤</td>
+</tr>
+<tr>
+<td>3 年 LDL &lt;55 達成（intensive）</td>
+<td style="text-align:right">69.4%</td>
+<td style="text-align:right">52.2%</td>
+<td style="text-align:right">差 17.2 個百分點 [自行計算]</td>
+<td style="text-align:right">未報告</td>
+<td style="text-align:right">—</td>
+<td style="text-align:right">—</td>
+<td>正向（替代指標）</td>
+<td>達標較快、較穩</td>
+</tr>
+<tr>
+<td>新發糖尿病</td>
+<td style="text-align:right">17.1%</td>
+<td style="text-align:right">15.6%</td>
+<td style="text-align:right">OR 1.11</td>
+<td style="text-align:right">0.87–1.42</td>
+<td style="text-align:right">＋1.5%（−1.9 to 4.8）</td>
+<td style="text-align:right">—</td>
+<td>INCONCLUSIVE</td>
+<td>降低 statin 劑量沒有換來較少糖尿病</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>非顯著結果的定性說明</strong>：所有臨床終點的 CI 都同時跨越虛無值與暫定的臨床意義門檻，屬於 <strong>Inconclusive</strong>，不是 Neutral（等效）或 Negative（排除利益）。</p>
+<hr />
+<p><strong>Sources:</strong></p>
+<ul>
+<li><a href="https://www.hcplive.com/view/ez-pave-initial-statin-ezetimibe-combination-no-better-than-statins-alone">HCPLive: Ez-PAVE: Initial Statin-Ezetimibe Combination No Better than Statins Alone</a></li>
+<li><a href="https://newsroom.heart.org/news/starting-with-a-statin-or-statin-plus-ezetimibe-to-lower-ldl-led-to-similar-heart-outcomes">AHA Newsroom: Starting with a statin or statin plus ezetimibe to lower LDL led to similar heart outcomes</a></li>
+<li><a href="https://www.tctmd.com/news/very-low-ldl-levels-best-secondary-prevention-ez-pave">TCTMD: Very Low LDL Levels Best in Secondary Prevention: Ez-PAVE</a></li>
+<li><a href="https://www.acc.org/latest-in-cardiology/articles/2026/03/25/21/27/sat-345pm-ezpave-acc-2026">ACC.org: Ez-PAVE: Hitting Lower LDL-C Target Reduces Major CV Events</a></li>
+<li><a href="https://www.biospace.com/hanmi-pharmaceutical-s-combination-drug-for-dyslipidemia-treatment-rosuzet-confirmed-non-inferiority-efficacy-and-safety-compared-to-monotherapy-in-the-lancet-and-amp-european-heart-journal">BioSpace: Hanmi Rosuzet non-inferiority (RACING) in The Lancet &amp; EHJ</a></li>
+<li><a href="https://v.daum.net/v/20220810134800788">Daum News: Hanmi Rosuzet / RACING led by Prof. Kim Byeong-Keuk</a></li>
+<li><a href="https://manusights.com/blog/circulation-impact-factor">Manusights: Circulation impact factor</a></li>
+<li><a href="https://manusights.com/blog/circulation-submission-guide">Manusights: Circulation submission guide</a></li>
+<li><a href="https://clinicaltrials.gov/study/NCT04626973">ClinicalTrials.gov NCT04626973</a></li>
+</ul>
+
+<footer class="appraisal-meta">評讀資訊：模型：claude-opus-5-5 (claude)  ·  route：rct  ·  產出時間：2026-11-15 18:58 CST</footer>
+</main>
+</body>
+</html>
