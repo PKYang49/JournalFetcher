@@ -1,0 +1,775 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Outcomes in the BETAMI-DANBLOCK trial compared with a Norwegian nationwide myocardial infarction population.</title>
+<style>
+  :root {
+    --bg: #fafafa;
+    --card: #ffffff;
+    --text: #1a1a1a;
+    --muted: #6b6b6b;
+    --border: #e5e5e5;
+    --accent: #0b5fff;
+  }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang TC",
+      "Microsoft JhengHei", sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    margin: 0;
+    padding: 24px 16px 64px;
+    line-height: 1.72;
+  }
+  main {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    margin: 0 auto;
+    max-width: 840px;
+    padding: 22px 26px;
+  }
+  nav {
+    margin: 0 auto 14px;
+    max-width: 840px;
+    color: var(--muted);
+    font-size: 14px;
+  }
+  a { color: var(--accent); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  h1, h2, h3, h4 { line-height: 1.35; }
+  h1 { font-size: 26px; margin-top: 0; }
+  h2 { border-top: 1px solid var(--border); padding-top: 18px; }
+  code {
+    background: rgba(127, 127, 127, 0.12);
+    border-radius: 4px;
+    padding: 1px 4px;
+  }
+  .table-wrap {
+    margin: 1em 0;
+    overflow-x: auto;
+  }
+  .table-wrap.wide {
+    /* Break out of the 840px prose column, centred on the viewport. */
+    width: min(1040px, calc(100vw - 32px));
+    margin-left: calc(50% - min(520px, 50vw - 16px));
+  }
+  table {
+    border-collapse: collapse;
+    table-layout: auto;
+    width: 100%;
+  }
+  .table-wrap.wide {
+    /* Opaque so the <main> card border does not show through the table. */
+    background: var(--card);
+  }
+  /* Width hints go on <th> as percentages: Chrome's auto table layout
+     mis-sizes columns (and overflows) when cells carry min-width. */
+  .table-wrap.wide th:first-child {
+    /* Variable + plain-language definition, e.g. "NCPV (noncalcified ...)". */
+    width: 26%;
+  }
+  .table-wrap.wide th:last-child {
+    /* Last column is usually a one-line interpretation. */
+    width: 20%;
+  }
+  th, td {
+    border: 1px solid var(--border);
+    /* Wrap only at spaces: never split an English word mid-letter. */
+    overflow-wrap: normal;
+    word-break: normal;
+    hyphens: manual;
+    padding: 6px 8px;
+    text-align: left;
+    vertical-align: top;
+  }
+  blockquote {
+    border-left: 3px solid var(--accent);
+    color: var(--muted);
+    margin-left: 0;
+    padding-left: 14px;
+  }
+  .appraisal-meta {
+    border-top: 1px solid var(--border);
+    margin-top: 28px;
+    padding-top: 14px;
+    color: var(--muted);
+    font-size: 13px;
+  }
+  @media (max-width: 600px) {
+    body {
+      padding: 12px 8px 40px;
+    }
+    main {
+      padding: 16px 12px;
+    }
+    h1 {
+      font-size: 22px;
+    }
+    table {
+      font-size: 12px;
+    }
+    .table-wrap.wide {
+      width: calc(100vw - 16px);
+      margin-left: calc(50% - 50vw + 8px);
+    }
+    th, td {
+      padding: 4px 5px;
+    }
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #1a1a1a;
+      --card: #242424;
+      --text: #e8e8e8;
+      --muted: #999;
+      --border: #333;
+      --accent: #6ea8ff;
+    }
+  }
+</style>
+</head>
+<body>
+<nav><a href="../../2026-W47.html">← 回到 2026-W47 週報</a></nav>
+<main>
+<h1>Outcomes in the BETAMI-DANBLOCK trial compared with a Norwegian nationwide myocardial infarction population.</h1>
+<h1>批判性評讀：BETAMI-DANBLOCK 試驗族群與挪威全國心肌梗塞登錄族群的比較（Kristensen AMD, Jortveit J, et al. Eur Heart J 2026）</h1>
+<hr />
+<h2>SECTION-0：文章全面描述</h2>
+<h3>0. 文章身份證</h3>
+<ul>
+<li><strong>標題</strong>：Outcomes in the BETAMI-DANBLOCK trial compared with a Norwegian nationwide myocardial infarction population</li>
+<li><strong>期刊 / 年份</strong>：European Heart Journal 2026;47:6300–6310</li>
+<li><strong>DOI</strong>：10.1093/eurheartj/ehag348；PMID 42183826</li>
+<li><strong>文章類型（路由判斷）</strong>：RCT 的<strong>事前指定次研究（pre-specified substudy）</strong>。內容包括試驗族群與全國登錄族群的描述性比較、兩者之間的觀察性風險比較，以及一項 transportability analysis（inverse odds of sampling weights）。本文不是新的隨機比較，因此套用 SKILL-A 主流程，加上觀察性與因果推論（transportability）的評估框架。</li>
+<li><strong>證據定位</strong>：本文回答的是<strong>外部效度</strong>問題，也就是 RCT 的相對效果能否移植到真實世界族群。它不重新檢驗 β-blocker 是否有效。</li>
+</ul>
+<h3>1. 作者團隊評論</h3>
+<ul>
+<li><strong>通訊作者</strong>：Anna Meta Dyrvig Kristensen（Copenhagen University Hospital–Bispebjerg and Frederiksberg）[文內]。她是 DANBLOCK 試驗計畫書（Trials 2020）的第一作者，也是 LVEF ≥50% 族群 β-blocker 個別病人資料（IPD）統合分析的第一作者 [外部: research.regionh.dk / Trials 2020]。</li>
+<li><strong>團隊構成</strong>：Munkhaugen、Halvorsen、Atar、Prescott、Olsen 等人都是 BETAMI 與 DANBLOCK 的主持人或指導委員會成員 [文內][外部]。換句話說，這是<strong>原試驗團隊評估自己試驗的外部效度</strong>。</li>
+<li><strong>作者立場史</strong>：主要結果已在 2025 年 ESC Hot Line 發表並刊於 NEJM，結論為 β-blocker 有益 [外部: ESC press release]。本文 Discussion 用相當篇幅解釋為何 REBOOT 與 REDUCE-AMI 得到中性結果，例如推測「西班牙與義大利醫師可能較傾向開 β-blocker」。這種寫法有明顯的「為自家結果辯護」色彩，存在確認偏差的風險。</li>
+<li><strong>利益揭露</strong>：多位作者有一般性的藥廠演講費，例如 AstraZeneca、Pfizer、Novo Nordisk 等。β-blocker 是學名藥，產業利益直接介入的可能性低 [文內]。</li>
+<li><strong>經費</strong>：Danish Heart Foundation、Novo Nordisk Foundation、Health South-East、Research Council of Norway，均為非營利性質 [文內]。</li>
+<li><strong>評估</strong>：金錢利益衝突低，<strong>學術立場的利益衝突中至高</strong>。由試驗團隊自評代表性，而且分析設計由他們自己選擇（例如加權只用 4 個變項），需要獨立團隊複製。</li>
+</ul>
+<h3>2. 文獻 Metadata 整理</h3>
+<ul>
+<li><strong>Received</strong> 2025-11-14；<strong>Accepted</strong> 2026-04-19；線上發表 2026-05-25 [文內]。審查天數約 <strong>156 天</strong> [自行計算]。</li>
+<li><strong>EHJ 平均審查天數</strong>：[無法取得]，因此無法比較快慢。</li>
+<li><strong>期刊屬性</strong>：European Heart Journal（ESC 旗艦期刊），2025 JIF 約 45.3（各來源在 43.5–45.3 之間），Q1 [外部: Wolters Kluwer / journalmetrics]。非 Open Access（© OUP, All rights reserved）[文內]。</li>
+<li><strong>邀稿 vs 投稿</strong>：屬一般 Clinical Research 投稿，並附同期 editorial [文內]。</li>
+</ul>
+<h3>3. 研究背景 [文內]</h3>
+<ul>
+<li><strong>既有事實</strong>：β-blocker 用於 MI 後的證據主要來自再灌流治療普及以前的年代，以及 HFrEF 族群。在 PCI、強效 DAPT 與高強度 statin 普及的年代，對 LVEF ≥40% 病人的價值受到質疑。</li>
+<li><strong>知識缺口</strong>：近期 RCT 結果不一致。REBOOT 與 REDUCE-AMI 為中性結果；BETAMI-DANBLOCK 則顯示對 death + MACE 有益。另外，RCT 族群可能不代表真實世界。</li>
+<li><strong>Research question</strong>：BETAMI 與 DANBLOCK 的受試者，在基線特徵與預後上和挪威全國同期「接受血管再通、LVEF ≥40%、無心衰竭」的 type 1 MI 病人有何差異？試驗的 β-blocker 相對效果，經加權成登錄族群的特徵分布後是否仍然成立？</li>
+</ul>
+<h3>4. 研究設計與方法</h3>
+<ul>
+<li><strong>PICO</strong>
+<ul>
+<li><strong>P</strong>：(a) BETAMI（n=2867，挪威 19 中心）與 DANBLOCK（n=2707，丹麥 25 中心）的受試者；(b) NORMI cohort，即 2018/10/1–2024/1/31 挪威所有 type 1 MI、無心衰竭、LVEF ≥40%、接受血管再通的病人（n=20,804）。</li>
+<li><strong>I / C</strong>：描述性比較為「試驗受試者 vs 登錄病人」；transportability analysis 則是試驗內的 β-blocker vs 無 β-blocker，以 NORMI 的特徵加權。</li>
+<li><strong>O</strong>：基線特徵；30 天、1 年、3 年的 all-cause death 或新 MI，以及兩者分別計算；試驗 vs NORMI 的 HR；加權後的 β-blocker HR（death/MI composite 及原試驗主要 composite）。</li>
+</ul>
+</li>
+<li><strong>關鍵設計細節</strong>
+<ul>
+<li>NORMI 為強制通報的全國登錄，不需病人同意；死亡資料與人口登記連結 [文內]。</li>
+<li>只能取得<strong>去識別化的彙總資料</strong>，因此 <strong>BETAMI 受試者同時也在 NORMI cohort 內</strong>，無法剔除 [文內]。</li>
+<li>追蹤至 NORMI 2024/12/31、試驗 2025/4/1；Cox 比較時兩者統一截至 2024/12/31 [文內]。</li>
+<li>3 年絕對風險以 Kaplan-Meier 估計；新 MI 以 Aalen-Johansen 估計（考慮死亡的競爭風險）[文內]。</li>
+<li>試驗 vs NORMI 的 Cox 模型依序做未調整、校正年齡、校正年齡、性別、LVEF 與 MI 類型 [文內]。</li>
+<li><strong>Transportability</strong>：以 inverse odds of sampling weights 加權，<strong>只用 age、sex、MI 類型、LVEF 四個變項</strong> [文內 Methods; Table 4 footnote]。</li>
+</ul>
+</li>
+<li><strong>主要變項定義</strong>
+<ul>
+<li>NORMI 的新 MI：登錄中再次因 MI 住院（所有 MI 類型），由護理師或主治醫師「驗證」，<strong>未經獨立事件審查委員會判定</strong>。試驗的事件則經 CEC 判定 [文內]。</li>
+<li>試驗主要 composite 的其他成分（非計畫血管再通、缺血性中風、心衰竭、惡性心律不整）在 NORMI 中沒有資料 [文內]。</li>
+</ul>
+</li>
+</ul>
+<h3>5. 研究結果重點整理</h3>
+<p><strong>主要結果表</strong>（NORMI cohort vs BETAMI-DANBLOCK 合併）</p>
+<div class="table-wrap wide"><table>
+<thead>
+<tr>
+<th>變項（代表什麼）</th>
+<th style="text-align:right">NORMI cohort (n=20,804)</th>
+<th style="text-align:right">BETAMI-DANBLOCK (n=5,574)</th>
+<th style="text-align:right">組間差（95% CI）</th>
+<th style="text-align:right">p 值</th>
+<th>如何解讀</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>年齡（median）</td>
+<td style="text-align:right"><strong>66 歲</strong>（57–74）</td>
+<td style="text-align:right"><strong>63 歲</strong>（55–71）</td>
+<td style="text-align:right">未報告</td>
+<td style="text-align:right">&lt;0.001</td>
+<td>試驗受試者年輕約 3 歲</td>
+</tr>
+<tr>
+<td>糖尿病</td>
+<td style="text-align:right"><strong>17.4%</strong></td>
+<td style="text-align:right"><strong>12.5%</strong></td>
+<td style="text-align:right">4.9%［自行計算］</td>
+<td style="text-align:right">&lt;0.001</td>
+<td>登錄族群代謝風險較高</td>
+</tr>
+<tr>
+<td><strong>Previous CAD</strong>：既往冠心病</td>
+<td style="text-align:right"><strong>19.8%</strong></td>
+<td style="text-align:right"><strong>10.6%</strong></td>
+<td style="text-align:right">9.2%［自行計算］</td>
+<td style="text-align:right">&lt;0.001</td>
+<td>差距接近兩倍，是最大的族群差異之一</td>
+</tr>
+<tr>
+<td>心房顫動</td>
+<td style="text-align:right"><strong>4.0%</strong></td>
+<td style="text-align:right"><strong>2.0%</strong></td>
+<td style="text-align:right">2.0%［自行計算］</td>
+<td style="text-align:right">&lt;0.001</td>
+<td>AF 本身常是 β-blocker 的適應症，因而被試驗排除</td>
+</tr>
+<tr>
+<td><strong>LVEF 40–49%</strong>：輕度降低 EF</td>
+<td style="text-align:right"><strong>19.7%</strong></td>
+<td style="text-align:right"><strong>15.3%</strong></td>
+<td style="text-align:right">4.4%［自行計算］</td>
+<td style="text-align:right">&lt;0.001</td>
+<td>高風險、可能獲益較大的亞群在試驗中較少</td>
+</tr>
+<tr>
+<td>事件前已使用 β-blocker</td>
+<td style="text-align:right"><strong>19.6%</strong></td>
+<td style="text-align:right"><strong>8.5%</strong></td>
+<td style="text-align:right">11.1%［自行計算］</td>
+<td style="text-align:right">&lt;0.001</td>
+<td>反映既有適應症，可能導致不符收案</td>
+</tr>
+<tr>
+<td>出院時使用 β-blocker</td>
+<td style="text-align:right"><strong>56.6%</strong></td>
+<td style="text-align:right"><strong>50.0%</strong>（隨機分派）</td>
+<td style="text-align:right">—</td>
+<td style="text-align:right">&lt;0.001</td>
+<td>真實世界有過半已在用藥</td>
+</tr>
+<tr>
+<td><strong>30 天 death/MI</strong></td>
+<td style="text-align:right"><strong>1.2%</strong></td>
+<td style="text-align:right"><strong>0.6%</strong></td>
+<td style="text-align:right">0.7%（0.4–0.9）</td>
+<td style="text-align:right">未報告</td>
+<td>早期差距來自試驗排除不穩定或早期死亡者</td>
+</tr>
+<tr>
+<td><strong>3 年 death/MI</strong>（KM）</td>
+<td style="text-align:right"><strong>12.0%</strong></td>
+<td style="text-align:right"><strong>7.7%</strong></td>
+<td style="text-align:right"><strong>4.3%（3.4–5.1）</strong></td>
+<td style="text-align:right">未報告</td>
+<td>登錄族群的絕對風險高約 1.6 倍</td>
+</tr>
+<tr>
+<td>3 年全死因死亡</td>
+<td style="text-align:right"><strong>6.5%</strong></td>
+<td style="text-align:right"><strong>3.1%</strong></td>
+<td style="text-align:right">3.4%（2.8–3.9）</td>
+<td style="text-align:right">未報告</td>
+<td>死亡差距大，是絕對風險差異的主要來源</td>
+</tr>
+<tr>
+<td>3 年新 MI（AJ）</td>
+<td style="text-align:right"><strong>6.3%</strong></td>
+<td style="text-align:right"><strong>5.0%</strong></td>
+<td style="text-align:right">1.3%（0.7–2.0）</td>
+<td style="text-align:right">未報告</td>
+<td>再梗塞差距相對小</td>
+</tr>
+<tr>
+<td>校正後 HR：death/MI（試驗 vs NORMI）</td>
+<td style="text-align:right">1（參考）</td>
+<td style="text-align:right">—</td>
+<td style="text-align:right"><strong>HR 0.77（0.70–0.84）</strong></td>
+<td style="text-align:right">未報告</td>
+<td>校正 4 個變項後，試驗族群風險仍低約 23%</td>
+</tr>
+<tr>
+<td>校正後 HR：死亡</td>
+<td style="text-align:right">1（參考）</td>
+<td style="text-align:right">—</td>
+<td style="text-align:right">HR 0.66（0.58–0.76）</td>
+<td style="text-align:right">未報告</td>
+<td>「健康志願者效應」主要表現在死亡</td>
+</tr>
+<tr>
+<td>校正後 HR：新 MI</td>
+<td style="text-align:right">1（參考）</td>
+<td style="text-align:right">—</td>
+<td style="text-align:right">HR 0.86（0.76–0.97）</td>
+<td style="text-align:right">未報告</td>
+<td>再梗塞的差距較小</td>
+</tr>
+<tr>
+<td>β-blocker 效果：death/MI，未加權</td>
+<td style="text-align:right">（試驗內 BB vs 無 BB）</td>
+<td style="text-align:right"></td>
+<td style="text-align:right"><strong>HR 0.82（0.69–0.98）</strong></td>
+<td style="text-align:right">0.03</td>
+<td>CI 上限接近 1</td>
+</tr>
+<tr>
+<td>β-blocker 效果：death/MI，加權成 NORMI 特徵</td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"><strong>HR 0.82（0.69–0.98）</strong></td>
+<td style="text-align:right">0.03</td>
+<td>與未加權完全相同</td>
+</tr>
+<tr>
+<td>試驗主要 composite，未加權</td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right">HR 0.85（0.75–0.98）</td>
+<td style="text-align:right">0.03</td>
+<td>原 NEJM 主要結果</td>
+</tr>
+<tr>
+<td>試驗主要 composite，加權</td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right">HR 0.86（0.75–0.99）</td>
+<td style="text-align:right">0.04</td>
+<td>幾乎沒有改變</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>表格補充</strong></p>
+<ul>
+<li><strong>兩試驗之間的差異</strong>：DANBLOCK 吸菸比例較高（32.7% vs 20.6%），STEMI 較多（53.8% vs 41.5%），10.9% 未接受血管再通。BETAMI 單獨與 NORMI 相比，校正後死亡 HR 為 <strong>0.54（0.44–0.66）</strong>；DANBLOCK 為 0.82（0.68–0.99）。BETAMI 是挪威內部的比較，健康志願者效應最明顯，而且 BETAMI 病人本身就包含在 NORMI 中，真實差距只會更大 [Table 3]。</li>
+<li><strong>LVEF 分層</strong> [Supplement eTable 4–5]：在 NORMI 中，LVEF 40–49% 者 3 年 death/MI 為 14.8%，≥50% 者為 11.3%；差異主要來自死亡（9.6% vs 5.8%），MI 相近（6.3% vs 6.2%）。</li>
+<li><strong>跨表數字不一致</strong>：見 C4 節紅旗。</li>
+</ul>
+<h3>6. 作者討論與評論重點</h3>
+<ul>
+<li><strong>主要訊息</strong>：試驗受試者較年輕、共病較少、風險較低，但 β-blocker 的相對效果在加權後一致，「支持試驗結果適用於符合收案條件的真實世界 MI 病人」[文內 Conclusion]。</li>
+<li><strong>與現有文獻的異同</strong>：作者把 REBOOT 與 REDUCE-AMI 的中性結果歸因於三點：族群中 LVEF 40–49% 的比例較低、ACEi/ARB 使用率差異、地區用藥習慣差異。另引兩篇 IPD 統合分析指出沒有試驗間異質性 [文內]。</li>
+<li><strong>作者自述的限制</strong>：①丹麥沒有 LVEF 登錄資料，只能和挪威比較；②去識別化資料，BETAMI 病人與 NORMI 重疊；③NORMI 變項不完整，缺社經地位與種族；④NORMI 的 MI 未經獨立判定。</li>
+<li><strong>[評估]</strong>
+<ul>
+<li><strong>避重就輕之處</strong>：①加權只用 4 個變項，卻宣稱「可推論至 NORMI cohort」；②NORMI cohort 包含大量<strong>不符合試驗收案條件</strong>的病人（已有 β-blocker 適應症或禁忌症），transportability 的目標族群界定與結論措辭（「meeting eligibility criteria」）不一致；③時間零點不同（MI 當下 vs 隨機分派時）；④death/MI composite 並非試驗事先指定的主要終點，而在原試驗中死亡本身 HR 0.94（0.73–1.21）[外部: ESC Hot Line]。這些都沒有討論。</li>
+<li><strong>跨試驗解釋屬推測</strong>：用「西班牙與義大利醫師較傾向給藥，因此 REBOOT 收入較健康病人」來解釋，沒有直接證據，屬於事後敘事。</li>
+</ul>
+</li>
+</ul>
+<h3>7. 外部專業意見</h3>
+<p><strong>Raveendra K, Gale CP. &quot;Translating evidence of beta-blocker effectiveness following myocardial infarction.&quot; Eur Heart J 2026;47:6311–6313. doi:10.1093/eurheartj/ehag506</strong> [外部: 期刊 editorial 全文]</p>
+<ul>
+<li><strong>肯定</strong>
+<ul>
+<li>認為本研究超越描述性比較，以 inverse odds of sampling weights 正式檢驗外部效度。</li>
+<li>加權後效果「essentially unchanged」，因此「相對效益可能穩健，可能適用於符合試驗收案條件的日常臨床病人」。</li>
+<li>認為作者對限制的陳述透明，並稱這些限制「是登錄型推論研究的固有限制，而非方法學缺陷」。</li>
+</ul>
+</li>
+<li><strong>質疑與提醒</strong>
+<ul>
+<li>原 BETAMI-DANBLOCK 的效益<strong>主要來自新 MI 減少，全死因死亡無顯著差異，也未報告心血管死亡</strong>。</li>
+<li>只有少數登錄病人符合收案條件，因為多數已有 β-blocker 適應症或禁忌症。</li>
+<li>部分 composite 成分在登錄中沒有資料；無法做病人層級連結；登錄的 MI 未經判定。</li>
+<li>Graphical abstract 結論：「Interpret registry-based findings with caution because analyses could not control for all potential biases」。</li>
+</ul>
+</li>
+<li><strong>臨床建議</strong>：LVEF ≥40% 病人是否長期使用 β-blocker，應考量整體心血管風險、共病負擔與競爭適應症。</li>
+<li><strong>評論者對本文的評估</strong>：editorial 整體偏正面，<strong>沒有</strong>指出加權只用 4 個變項、時間零點不一致、族群重疊會讓比較偏向無差異，以及加權後 HR 完全不變其實代表檢定敏感度低（見 B3、F 節）。另外，editorial 稱排除病人中「24.5% insufficient information」，即缺漏資料比例不低，這一點值得注意。</li>
+</ul>
+<h3>8. 臨床建議</h3>
+<ul>
+<li><strong>可採用的情境</strong>：type 1 MI、已接受 PCI 或血栓溶解、LVEF ≥40%、無臨床心衰竭，且<strong>沒有其他 β-blocker 適應症或禁忌症</strong>的病人，與試驗收案條件相符。本文支持「這類病人中，試驗觀察到的相對效益不太可能只是受試者篩選造成的假象」。</li>
+<li><strong>不建議直接套用的情境</strong>
+<ul>
+<li>年長、虛弱、共病多的病人。試驗受試者年輕，而加權沒有涵蓋共病。</li>
+<li>已因 AF 或高血壓使用 β-blocker 的病人。這類病人根本不是試驗回答的問題。</li>
+<li>未接受血管再通者（BETAMI 未收這類病人，DANBLOCK 僅 10.9%）。</li>
+<li>出院超過 14 天才考慮開始用藥者。</li>
+</ul>
+</li>
+<li><strong>實務建議</strong>
+<ol>
+<li>符合收案條件的 LVEF 40–49% 病人，可以較有信心給予 β-blocker：這一群絕對風險較高，IPD 統合分析也提示獲益較大。</li>
+<li>LVEF ≥50% 的低風險病人，絕對效益小（主要是減少再梗塞）、死亡獲益未證實，可與病人共同決策。本文不改變這個判斷。</li>
+<li>不要把本文解讀為「β-blocker 對所有真實世界 MI 病人都有效」。它只觸及 4 個變項的分布差異。</li>
+</ol>
+</li>
+<li><strong>證據強度</strong>：<strong>中偏弱</strong>。本文是外部效度的補充證據；加權變項有限、族群有重疊、目標族群界定含糊，無法提供強證據。</li>
+</ul>
+<hr />
+<h2>SKILL-A：批判性評讀</h2>
+<h3>A. 補充技術細節</h3>
+<ul>
+<li><strong>Power / 樣本數</strong>：本次研究沒有獨立的樣本數計算；試驗端沿用原 RCT 樣本。transportability 的估計精確度由試驗樣本決定，和 NORMI 的大小無關。</li>
+<li><strong>隨機化</strong>：β-blocker 效果估計保有原 RCT 的隨機化。但「試驗 vs NORMI」的比較（Table 2、3）<strong>完全是觀察性比較</strong>，只能描述，不能做因果解讀。</li>
+<li><strong>致盲</strong>：原試驗為 PROBE 設計（open-label、終點盲判）。病人與醫師知道分組，可能影響 MI 的就醫與診斷行為，而本文的 composite 中 MI 占主要分量。</li>
+<li><strong>ITT</strong>：本文沒有說明 transportability 用的是 ITT 還是其他分析族群 [無法判定]。</li>
+<li><strong>加權方法的細節缺漏</strong>
+<ul>
+<li>沒有報告 sampling model 的形式。</li>
+<li>沒有報告權重分布（最大值、有效樣本數 ESS）。</li>
+<li>沒有報告加權後共變項的平衡（standardized mean difference）。</li>
+<li>沒有報告加權模型的 robust/bootstrap variance。</li>
+<li>由於 BETAMI 病人包含在 NORMI 中，無法建立正確的「試驗 vs 非試驗」sampling model。這是方法學上的本質問題。</li>
+</ul>
+</li>
+<li><strong>比例風險假設</strong>：Table 3 與 Table 4 都使用 Cox 模型，但沒有報告 PH 檢定 [無法判定]。Figure 2B 顯示 DANBLOCK 與 NORMI 的死亡曲線在約 5 年時交會，PH 假設不一定成立。</li>
+<li><strong>缺失資料</strong>：NORMI 流程中因缺 MI 類型（623）、缺心衰竭資訊（386）、缺 LVEF（<strong>5,251</strong>）、缺血管再通資訊（71）而被排除。共 6,331 人以完整資料分析排除，佔 type 1 MI 的 14%。缺 LVEF 者很可能包括早期死亡或沒做超音波的病人，不是隨機缺漏 [Figure 1]。</li>
+<li><strong>時間零點</strong>：NORMI 從 MI 住院開始計；試驗從納入/隨機分派開始計，可能已在 MI 後 7–14 天。NORMI 有 93 人死於住院期間（中位 4 天）。這造成<strong>不一致的時間零點（類似 immortal time 的存活者偏差）</strong>，偏向讓試驗族群看起來較健康。</li>
+</ul>
+<p><strong>觀察性比較（Table 3）的混淆控制</strong></p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>方法</th>
+<th>本文作法</th>
+<th>評估</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>多變量迴歸</td>
+<td>Cox 模型，只校正年齡、性別、LVEF、MI 類型</td>
+<td>沒有校正糖尿病、既往 CAD、AF、腎功能、事件前 β-blocker 等，殘餘混淆大</td>
+</tr>
+<tr>
+<td>加權（IOSW）</td>
+<td>同上 4 個變項</td>
+<td>可能的效果修飾因子大多沒有納入</td>
+</tr>
+</tbody>
+</table></div>
+<h3>B. 批判性評估</h3>
+<h4>B1. 假說與理論邏輯</h4>
+<ul>
+<li><strong>問題</strong>：transportability 的有效性取決於「所有效果修飾因子都已納入加權」（conditional exchangeability for transportability）。本文只用 age、sex、MI 類型、LVEF。
+<ul>
+<li><strong>文內證據</strong>：Table 4 footnote。</li>
+<li><strong>風險方向</strong>：若糖尿病、既往 CAD、腎功能、心率或血壓、出院時 ACEi/ARB 使用等因子會修飾 β-blocker 效果，加權後 HR 可能偏向任一方向。目前的「一致」無法排除這種情況。</li>
+<li><strong>需要什麼才放心</strong>：納入完整共變項的加權，並做敏感度分析（例如 E-value-type 的 transportability bias analysis）。</li>
+</ul>
+</li>
+<li><strong>合理機轉</strong>
+<ol>
+<li>β-blocker 降低再梗塞的效應可能透過降低心肌耗氧與減少心室速律不整而來。原試驗中新 MI HR 0.73 [外部]，與此一致。</li>
+<li>LVEF 40–49% 族群殘存交感活性較高，可能獲益較大。這與 IPD 統合分析一致 [文內 ref 24, 25]。</li>
+</ol>
+</li>
+<li><strong>可疑的敘事跳躍</strong>
+<ol>
+<li>由「4 個變項加權後 HR 不變」推論到「支持試驗結果適用於日常臨床」[Discussion]。</li>
+<li>由「REBOOT 族群 LVEF 40–49% 比例較低、ACEi/ARB 使用率較高」推論試驗間差異是族群造成而非機率造成。這沒有正式檢定；作者自己引用的 IPD 統合分析也說沒有試驗間異質性，兩者論述略有矛盾。</li>
+<li>「Spanish/Italian physicians tend to treat more」屬於推測。</li>
+</ol>
+</li>
+</ul>
+<h4>B2. 受試者與外推性</h4>
+<ul>
+<li><strong>問題 1：目標族群界定錯配</strong>。NORMI cohort 是「revascularized、LVEF ≥40%、無 HF 的 type 1 MI」，<strong>沒有</strong>排除已有 β-blocker 適應症（AF、高血壓、心絞痛）或禁忌症（嚴重心搏過緩、AV block、氣喘）的病人。事件前已用 β-blocker 者佔 19.6% [Table 1]。
+<ul>
+<li><strong>風險方向</strong>：加權只對齊 4 個變項，無法讓試驗族群代表這些不符收案條件的病人。結論措辭「for MI patients meeting eligibility criteria」比 Key Question 的「generalizable to a real-world population」保守得多。摘要、Key Question 與 Conclusion 之間存在<strong>宣稱範圍的漂移</strong>。</li>
+</ul>
+</li>
+<li><strong>問題 2：「14% 被納入」的分母不對</strong>。BETAMI 只在 19 家醫院收案，NORMI 涵蓋全挪威所有醫院，兩者的收案期間也未必完全對齊。因此 13.8%（2867/20,804）不是「合格者的收案率」，無法推論多少病人因不符收案條件而被排除 [推論]。</li>
+<li><strong>問題 3：跨國比較</strong>。DANBLOCK（丹麥）和挪威登錄比較，作者只以「預期相似」帶過，沒有提供資料支持 [文內 Limitations]。</li>
+<li><strong>外推性分級</strong>
+<ol>
+<li><strong>一般 MI 族群</strong>：不應外推。登錄族群中 HFrEF 或 LVEF 缺漏者、未接受血管再通者、type 2 MI 都不在範圍內；全 NORMI 族群 3 年 death/MI 高達 30.3%，與試驗相差甚遠。</li>
+<li><strong>符合收案條件、無其他 β-blocker 適應症的 revascularized MI</strong>：可外推，本文提供有限的支持。</li>
+<li><strong>老年或虛弱病人</strong>：加權沒有納入虛弱度與共病，女性中位年齡在 NORMI 為 71 歲、在試驗約 65–66 歲 [Supplement eTable 2]。效果是否相同仍未知，不建議直接外推。</li>
+</ol>
+</li>
+</ul>
+<h4>B3. 研究設計與偏差（最可能造成偏差的三點）</h4>
+<ol>
+<li><strong>BETAMI 與 NORMI 重疊</strong>（約 2,867/20,804 = 13.8%）。
+<ul>
+<li>在 Table 3 的比較中，同一批病人同時出現在兩組，<strong>使試驗 vs NORMI 的差異被低估</strong>（偏向 HR=1）。因此試驗族群的真實「健康志願者效應」比報告的更大。</li>
+<li>在 transportability 中，sampling model 的「非試驗族群」被試驗病人污染，權重會趨近均一，讓加權結果<strong>機械性地接近未加權結果</strong>。這可能是加權後 HR 完全不變（0.82→0.82）的部分原因 [推論]。</li>
+</ul>
+</li>
+<li><strong>時間零點不一致</strong>：NORMI 從 MI 當下開始計，試驗從隨機分派開始計。早期死亡只出現在 NORMI，會<strong>誇大</strong>兩族群的絕對風險差異，特別是 30 天與 1 年的數字。</li>
+<li><strong>終點判定不對稱</strong>：試驗的 MI 經 CEC 判定，NORMI 的 MI 為登錄再住院資料（包含所有 MI 類型，包括 type 2）。方向不定：登錄可能多算 type 2 MI，也可能漏記外院事件。這會影響 MI 差距（HR 0.86）的解讀。</li>
+</ol>
+<p><strong>對照組適當性（Gyawali 框架）</strong></p>
+<ul>
+<li>本文的「對照」是登錄族群，作用是描述性參考，不是治療對照。</li>
+<li>原試驗的對照為「不使用 β-blocker」。在 LVEF ≥40% 族群中，這屬於合理的臨床平衡（equipoise）選擇。</li>
+<li>原試驗為 open-label 而無安慰劑；在以 MI 為主的軟性 composite 下，就醫與診斷偏誤的可能性需要記住 [推論]。</li>
+</ul>
+<h4>B4. 測量工具與實務意義</h4>
+<ul>
+<li><strong>終點</strong>：本文主推的「all-cause death or MI」<strong>不是</strong>原試驗的主要終點，是本次研究新定義的終點。原試驗中死亡 HR 0.94（0.73–1.21）、MI HR 0.73（0.59–0.92）[外部: ESC Hot Line]，所以這個 composite 的效果主要來自 MI。</li>
+<li><strong>絕對效益</strong>：以 NORMI 3 年 death/MI 12.0% 為基線、套用 HR 0.82，約為 ARR ≈ 2.2%、NNT ≈ 46（3 年）[自行計算，粗估；NORMI 基線混有 56.6% 已用 β-blocker 者，真實未治療基線應更高]。以試驗族群 7.7% 計，ARR 約 1.4%、NNT 約 71 [自行計算]。</li>
+<li><strong>就算結果為真</strong>：本文<strong>沒有</strong>回答真實世界中最關鍵的兩個問題：死亡是否下降，以及長期 β-blocker 的耐受性與停藥率。真實世界的實際效益可能低於試驗。</li>
+</ul>
+<h3>C. 統計與資料完整性</h3>
+<h4>C1. 結果分類（CI + MCID）</h4>
+<ul>
+<li><strong>MCID</strong>：文內沒有指定。對 MI 後次級預防的 composite 而言，常見的臨床重要門檻約為 HR 0.85，或 3 年 ARR 約 1.5–2% [推算，依同類 CV outcome trial 慣例]。</li>
+<li><strong>加權後 death/MI HR 0.82（0.69–0.98）</strong>：p&lt;0.05，但 CI 上限 0.98 跨越 MCID（0.85），屬 <strong>IMPRECISE (+)</strong>。效果方向有利，但大小不確定，可能只有約 2% 的微小相對效益。</li>
+<li><strong>加權後主要 composite HR 0.86（0.75–0.99）</strong>：同樣屬 <strong>IMPRECISE (+)</strong>，而且 CI 上限更接近 1。</li>
+<li><strong>全死因死亡</strong>（原試驗 HR 0.94，0.73–1.21）[外部]：CI 同時涵蓋 1 與 MCID，屬 <strong>INCONCLUSIVE</strong>。不能說「β-blocker 對死亡沒有效果」，只能說樣本不足以判定。</li>
+<li><strong>試驗 vs NORMI 的 HR（Table 3）</strong>：屬觀察性比較，不適用 MCID 分類，只做描述。</li>
+</ul>
+<h4>C2. Underpowered 與 Winner's Curse</h4>
+<ul>
+<li>原試驗 p=0.03，效果 CI 上限貼近 1，屬勉強達顯著的結果。在 REBOOT、REDUCE-AMI 均為中性的背景下，HR 0.85 有被高估的可能（Type M error）。</li>
+<li>本文的加權分析沒有增加資訊量，只是重新加權同一批事件，<strong>不能視為獨立複製</strong>。</li>
+</ul>
+<h4>C3. Bayesian 補充分析［自行計算，常態近似］</h4>
+<p>針對 death/MI 加權 HR 0.82（0.69–0.98）：log HR −0.198，SE ≈ 0.090。</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Prior</th>
+<th style="text-align:right">Pr(HR&lt;1)</th>
+<th style="text-align:right">Pr(HR&lt;0.9)</th>
+<th style="text-align:right">Pr(HR&lt;0.8)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Non-informative</td>
+<td style="text-align:right">約 0.99</td>
+<td style="text-align:right">約 0.85</td>
+<td style="text-align:right">約 0.39</td>
+</tr>
+<tr>
+<td>Skeptical（中心 HR 1，Pr(HR&lt;0.85)=5%）</td>
+<td style="text-align:right">約 0.95</td>
+<td style="text-align:right">約 0.52</td>
+<td style="text-align:right">&lt;0.10</td>
+</tr>
+</tbody>
+</table></div>
+<ul>
+<li><strong>解讀</strong>：「有某種程度效益」的機率高；「效益達臨床重要程度（HR&lt;0.9）」的機率在懷疑型 prior 下只有約一半。結論對 prior 敏感，需要 IPD 統合分析與更多試驗來確認。</li>
+<li>沒有 Pr(harm) 的疑慮：Pr(HR&gt;1.1) 很低。</li>
+</ul>
+<h4>C4. 報告完整性與其他統計問題（統計紅旗）</h4>
+<ol>
+<li><strong>Figure 1 流程圖算術錯誤</strong>：44,078 − 2,524 − 6,032 − 386 = <strong>35,136</strong>，圖中卻寫 <strong>33,136</strong>。後續的 35,136 − 2,168 − 5,251 = 27,717 與圖中相符，所以「33,136」是錯字，沒有經過核對 [自行計算；page 4 圖檔]。</li>
+<li><strong>Table 1 百分比與分子分母不符</strong>
+<ul>
+<li>DANBLOCK 出院 β-blocker：1352/2707 = <strong>49.9%</strong>，表中寫 48.6%。</li>
+<li>BETAMI：1431/2867 = <strong>49.9%</strong>，表中寫 51.4%。</li>
+<li>DANBLOCK P2Y12：2574/2707 = <strong>95.1%</strong>，表中寫 95.9%。</li>
+<li>隨機分派 1:1 時，正確數字本來就應接近 50%，表中百分比是錯的 [自行計算]。</li>
+</ul>
+</li>
+<li><strong>跨表 n 不一致</strong>
+<ul>
+<li>BETAMI 在 Table 2 為 N=2868，其他各處為 2867。</li>
+<li>DANBLOCK 的 LVEF 40–49% 在 Table 1 為 427/2705，在 Supplement eTable 3–4 為 <strong>430</strong>。</li>
+<li>BETAMI-DANBLOCK 的 LVEF 40–49% 在 Table 1 為 852，但 427+422=849。</li>
+<li>女性合計 1162，但 567+594=1161。</li>
+</ul>
+</li>
+<li><strong>Supplement eTable 3 內部錯誤</strong>：DANBLOCK LVEF ≥50% 的 reperfusion 1910/2268（84.2%）加上「no reperfusion」268/2278，分母不一致。eTable 3 中「NORMI ≥50% current smoker 5149/16,239」換算為 31.7%，表中卻寫 38.1%。</li>
+<li><strong>加權方法報告缺漏</strong>：沒有權重分布、ESS、加權後平衡、variance estimator，無法判斷加權是否實際造成改變。</li>
+<li><strong>沒有報告「加權 vs 未加權」差異的 CI</strong>：「一致」只是兩個點估計的目視比較，沒有正式的等效檢定。</li>
+<li><strong>加權 HR 與未加權 HR 一字不差</strong>（0.82，0.69–0.98，p=0.03）。在 NORMI 的 LVEF 40–49% 比例較高（19.7% vs 15.3%）、IPD 又提示該亞群效益較大的情況下，加權後 HR 完全沒有變動，顯示權重接近均一。這比較像<strong>分析的敏感度不足</strong>，而不是效果穩健的證據 [推論]。</li>
+<li><strong>Death/MI composite 是否在 SAP 中事前指定</strong>：文內只說本研究是「pre-specified substudy」，沒有引用分析計畫 [無法判定]。</li>
+<li><strong>多重比較</strong>：Table 2、3 有大量時間點與終點比較，沒有校正；但這些屬描述性比較，影響不大。</li>
+</ol>
+<p><strong>Kaplan-Meier / 累積發生率圖判讀</strong> [page 7 Figure 2；Supplement Figure 1–3 圖檔]</p>
+<ul>
+<li><strong>Figure 2 版式</strong>：外圖 Y 軸為 0–100%，內嵌放大圖的 Y 軸為 0–30%（A）、0–20%（B）、0–15%（C）。內嵌圖會放大視覺差距；以 0–100% 看，三條曲線差距其實很小。</li>
+<li><strong>曲線分離時點</strong>：death/MI 與死亡曲線在<strong>第一個月內</strong>就開始分離（NORMI 起點即較高），與時間零點不一致的偏差一致。MI 曲線（C）在約 2 年前三組幾乎重疊，之後 DANBLOCK 曲線較低並在約 5 年後趨平。</li>
+<li><strong>曲線尾端</strong>：圖中<strong>沒有 number at risk</strong>。試驗曲線在 4–6 年呈大階梯跳動，例如 Figure 2C 中 BETAMI 的 MI 在約 5.8 年由約 9% 跳到約 10.5%，Supplement Figure 1 的 BETAMI 死亡在約 5.8 年出現跳躍。這代表尾端病人數很少，4 年以後的曲線不可靠。</li>
+<li><strong>Supplement Figure 2（LVEF 40–49%）</strong>：BETAMI death/MI 在約 5.9 年由約 18% 跳到約 25%；NORMI 死亡曲線在約 5 年與 DANBLOCK 交會。小樣本亞群的尾端估計極不穩定。</li>
+<li><strong>Supplement Figure 1（Aalen-Johansen）</strong>：NORMI 的死亡累積發生率在約 3.7 年<strong>超過</strong> MI；兩試驗（尤其 BETAMI）則全程以 MI 為主，死亡遠低。這直觀說明：<strong>試驗族群的事件以 MI 為主，真實世界以死亡為主</strong>。β-blocker 主要作用在 MI，因此真實世界的 composite 效益可能被死亡這個競爭事件稀釋 [推論]。這一點在正文中沒有討論。</li>
+</ul>
+<h3>D. 次組分析評估</h3>
+<p>本文沒有報告 β-blocker 治療效果的次組分析；LVEF 分層 [Supplement eTable 4–5] 只呈現<strong>預後</strong>，不是治療效果的修飾。</p>
+<ul>
+<li><strong>作者在 Discussion 引用的「LVEF 40–49% 獲益較大」（來自 IPD 統合分析）</strong>
+<ul>
+<li>interaction p 值：本文沒有提供。</li>
+<li>方向一致性：與部分統合分析一致。</li>
+<li>事前假說：有生物學預期。</li>
+<li>機轉：合理。</li>
+<li>證據來源：外部 IPD，屬 within-trial 比較。</li>
+<li><strong>本文內的可信度：推測性</strong>（沒有本文資料支持）。</li>
+</ul>
+</li>
+</ul>
+<h3>E. 紅旗清單</h3>
+<ul>
+<li><strong>設計</strong>：BETAMI 與 NORMI 族群重疊，無法剔除；時間零點不一致；目標族群包含不符收案條件者。</li>
+<li><strong>統計</strong>：加權只用 4 個變項；沒有報告權重診斷；加權 HR 與未加權完全相同，敏感度存疑；「一致」沒有正式等效檢定。</li>
+<li><strong>報告品質</strong>：Figure 1 算術錯誤（33,136 應為 35,136）；Table 1 出院 β-blocker 與 P2Y12 百分比錯誤；跨表 n 不一致（2867/2868、427/430、852/849）；Supplement eTable 3 吸菸率錯誤。</li>
+<li><strong>終點</strong>：主推的 death/MI composite 並非原試驗主要終點；死亡本身 INCONCLUSIVE；NORMI 的 MI 未經判定。</li>
+<li><strong>敘事</strong>：Key Question 宣稱「generalizable to a real-world population」，結論退縮為「meeting eligibility criteria」；以地區醫師習慣推測解釋 REBOOT 結果。</li>
+<li><strong>COI</strong>：由原試驗團隊自評自家試驗的外部效度。</li>
+<li><strong>外推</strong>：跨國比較（丹麥 vs 挪威登錄）；年長、虛弱及有競爭適應症的族群沒有資料。</li>
+</ul>
+<h3>F. 反向解釋</h3>
+<ol>
+<li><strong>「效果一致」只是因為加權沒有改變什麼</strong>
+<ul>
+<li>支持：4 個變項的分布差距都不大（年齡相差 3 歲、LVEF 40–49% 相差 4.4 個百分點）；BETAMI 病人包含在 NORMI 中，權重趨近 1；加權 HR 與未加權完全相同。</li>
+<li>反對：沒有。作者沒有提供權重分布，無法反駁。</li>
+</ul>
+</li>
+<li><strong>真正的效果修飾因子沒有被加權，真實世界效果可能較小</strong>
+<ul>
+<li>支持：Supplement Figure 1 顯示真實世界以死亡事件為主，而 β-blocker 對死亡無確定效果；NORMI 共病較多。</li>
+<li>反對：IPD 統合分析指出沒有試驗間異質性，高風險亞群（LVEF 40–49%）可能獲益更多。</li>
+</ul>
+</li>
+<li><strong>試驗 vs NORMI 的風險差異部分是方法學造成的，不是族群真實差異</strong>
+<ul>
+<li>支持：時間零點不一致；NORMI 有 93 例住院死亡；30 天差距（0.7%）集中在早期。</li>
+<li>反對：校正年齡後，3 年死亡差距仍然存在（HR 0.66），健康志願者效應確實存在。</li>
+</ul>
+</li>
+<li><strong>原試驗的正向結果本身是機率波動或 open-label 偏誤（Winner's Curse）</strong>
+<ul>
+<li>支持：p=0.03、CI 上限貼近 1、主要由 MI 驅動、PROBE 設計、同期 REBOOT 與 REDUCE-AMI 為中性。</li>
+<li>反對：IPD 統合分析中 LVEF 40–49% 有一致獲益訊號。</li>
+</ul>
+</li>
+</ol>
+<h3>G. 最終裁決</h3>
+<ul>
+<li><strong>整體可信度：中（描述性比較部分）／低至中（transportability 結論部分）</strong>。</li>
+<li><strong>可採用的條件</strong>
+<ul>
+<li>作為「BETAMI-DANBLOCK 受試者明顯比真實世界健康」的證據，可信度高。</li>
+<li>作為「對符合收案條件的病人，試驗相對效果大致可移植」的弱支持證據，可以採用。</li>
+</ul>
+</li>
+<li><strong>不建議採用的情境</strong>
+<ul>
+<li>推論到年長、虛弱、多共病或有其他 β-blocker 適應症或禁忌症的病人。</li>
+<li>用來宣稱 β-blocker 能降低真實世界死亡率。</li>
+</ul>
+</li>
+<li><strong>若要改觀，最需要的三項改進</strong>
+<ol>
+<li>以病人層級連結資料剔除 BETAMI 重疊者，並統一時間零點（例如登錄端以存活到第 7 或 14 天為起點的 landmark 分析）。</li>
+<li>加權納入糖尿病、既往 CAD、AF、腎功能、ACEi/ARB 等可能的效果修飾因子，並報告權重診斷與敏感度分析。</li>
+<li>把目標族群限定為「登錄中符合試驗收案條件者」（emulated eligibility），並以等效邊界正式檢驗加權前後的差異。</li>
+</ol>
+</li>
+<li><strong>一句話結論</strong>：試驗受試者比真實病人健康，只用 4 個變項加權後效果「不變」，只能有限地支持試驗結果適用於符合收案條件的病人。</li>
+</ul>
+<hr />
+<h2>效果量表（CI + MCID）</h2>
+<div class="table-wrap wide"><table>
+<thead>
+<tr>
+<th>指標</th>
+<th style="text-align:right">介入組（BB）</th>
+<th style="text-align:right">對照組（無 BB）</th>
+<th style="text-align:right">效果量</th>
+<th style="text-align:right">95% CI</th>
+<th style="text-align:right">ARD</th>
+<th style="text-align:right">MCID（推算）</th>
+<th>結果分類</th>
+<th>實務意義</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>原試驗主要 composite [外部]</td>
+<td style="text-align:right">14.2%</td>
+<td style="text-align:right">16.3%</td>
+<td style="text-align:right">HR 0.85</td>
+<td style="text-align:right">0.75–0.98</td>
+<td style="text-align:right">約 2.1%（中位 3.5 年）</td>
+<td style="text-align:right">HR 0.85 / ARR 1.5–2%</td>
+<td>IMPRECISE (+)</td>
+<td>有利，但幅度不確定</td>
+</tr>
+<tr>
+<td>主要 composite，NORMI 加權</td>
+<td style="text-align:right">未報告</td>
+<td style="text-align:right">未報告</td>
+<td style="text-align:right">HR 0.86</td>
+<td style="text-align:right">0.75–0.99</td>
+<td style="text-align:right">未報告</td>
+<td style="text-align:right">同上</td>
+<td>IMPRECISE (+)</td>
+<td>與未加權一致，CI 更貼近 1</td>
+</tr>
+<tr>
+<td>Death/MI，未加權</td>
+<td style="text-align:right">未報告</td>
+<td style="text-align:right">未報告</td>
+<td style="text-align:right">HR 0.82</td>
+<td style="text-align:right">0.69–0.98</td>
+<td style="text-align:right">未報告</td>
+<td style="text-align:right">同上</td>
+<td>IMPRECISE (+)</td>
+<td>主要由 MI 驅動</td>
+</tr>
+<tr>
+<td>Death/MI，NORMI 加權</td>
+<td style="text-align:right">未報告</td>
+<td style="text-align:right">未報告</td>
+<td style="text-align:right">HR 0.82</td>
+<td style="text-align:right">0.69–0.98</td>
+<td style="text-align:right">約 2.2%／3 年［以 NORMI 基線 12% 自行計算］</td>
+<td style="text-align:right">同上</td>
+<td>IMPRECISE (+)</td>
+<td>NNT 約 46（粗估）</td>
+</tr>
+<tr>
+<td>全死因死亡 [外部]</td>
+<td style="text-align:right">4.2%</td>
+<td style="text-align:right">4.4%</td>
+<td style="text-align:right">HR 0.94</td>
+<td style="text-align:right">0.73–1.21</td>
+<td style="text-align:right">約 0.2%</td>
+<td style="text-align:right">HR 0.85</td>
+<td><strong>INCONCLUSIVE</strong></td>
+<td>不能說「沒效果」，也不能說「有效果」</td>
+</tr>
+<tr>
+<td>新 MI [外部]</td>
+<td style="text-align:right">5.0%</td>
+<td style="text-align:right">6.7%</td>
+<td style="text-align:right">HR 0.73</td>
+<td style="text-align:right">0.59–0.92</td>
+<td style="text-align:right">約 1.7%</td>
+<td style="text-align:right">HR 0.85</td>
+<td>IMPRECISE (+)，偏 POSITIVE</td>
+<td>效益的主要來源</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+<p><strong>外部來源</strong></p>
+<ul>
+<li><a href="https://doi.org/10.1093/eurheartj/ehag506">Raveendra K, Gale CP. Eur Heart J 2026 editorial（doi:10.1093/eurheartj/ehag506）</a></li>
+<li><a href="https://www.escardio.org/Congresses-Events/ESC-Congress/Congress-news/Hot-Line-3-BETAMI-DANBLOCK">ESC Hot Line 3: BETAMI-DANBLOCK</a></li>
+<li><a href="https://www.escardio.org/The-ESC/Press-Office/Press-releases/Beta-blockers-reduced-cardiovascular-events-in-selected-heart-attack-patients-without-heart-failure-in-the-BETAMI-DANBLOCK-trials">ESC press release: Beta-blockers reduced cardiovascular events… BETAMI-DANBLOCK</a></li>
+<li><a href="https://research.regionh.dk/da/publications/design-and-rationale-of-the-danish-trial-of-beta-blocker-treatmen/">DANBLOCK design and rationale（research.regionh.dk）</a></li>
+<li><a href="https://research.regionh.dk/da/publications/the-danish-norwegian-randomized-trial-on-beta-blocker-therapy-aft/">Danish-Norwegian randomized trial on beta-blocker therapy（research.regionh.dk）</a></li>
+<li><a href="https://www.wolterskluwer.com/solutions/ovid/european-heart-journal-2148">European Heart Journal – Wolters Kluwer（JIF）</a></li>
+<li><a href="https://www.journalmetrics.org/journal/european-heart-journal">European Heart Journal – journalmetrics.org</a></li>
+</ul>
+
+<footer class="appraisal-meta">評讀資訊：模型：claude-opus-5-5 (claude)  ·  route：rct  ·  產出時間：2026-11-15 18:31 CST</footer>
+</main>
+</body>
+</html>
