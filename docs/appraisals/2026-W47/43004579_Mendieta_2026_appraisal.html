@@ -1,0 +1,736 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Inflammation and early atherosclerosis beyond traditional risk factors: an imaging study.</title>
+<style>
+  :root {
+    --bg: #fafafa;
+    --card: #ffffff;
+    --text: #1a1a1a;
+    --muted: #6b6b6b;
+    --border: #e5e5e5;
+    --accent: #0b5fff;
+  }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang TC",
+      "Microsoft JhengHei", sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    margin: 0;
+    padding: 24px 16px 64px;
+    line-height: 1.72;
+  }
+  main {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    margin: 0 auto;
+    max-width: 840px;
+    padding: 22px 26px;
+  }
+  nav {
+    margin: 0 auto 14px;
+    max-width: 840px;
+    color: var(--muted);
+    font-size: 14px;
+  }
+  a { color: var(--accent); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  h1, h2, h3, h4 { line-height: 1.35; }
+  h1 { font-size: 26px; margin-top: 0; }
+  h2 { border-top: 1px solid var(--border); padding-top: 18px; }
+  code {
+    background: rgba(127, 127, 127, 0.12);
+    border-radius: 4px;
+    padding: 1px 4px;
+  }
+  .table-wrap {
+    margin: 1em 0;
+    overflow-x: auto;
+  }
+  .table-wrap.wide {
+    /* Break out of the 840px prose column, centred on the viewport. */
+    width: min(1040px, calc(100vw - 32px));
+    margin-left: calc(50% - min(520px, 50vw - 16px));
+  }
+  table {
+    border-collapse: collapse;
+    table-layout: auto;
+    width: 100%;
+  }
+  .table-wrap.wide {
+    /* Opaque so the <main> card border does not show through the table. */
+    background: var(--card);
+  }
+  /* Width hints go on <th> as percentages: Chrome's auto table layout
+     mis-sizes columns (and overflows) when cells carry min-width. */
+  .table-wrap.wide th:first-child {
+    /* Variable + plain-language definition, e.g. "NCPV (noncalcified ...)". */
+    width: 26%;
+  }
+  .table-wrap.wide th:last-child {
+    /* Last column is usually a one-line interpretation. */
+    width: 20%;
+  }
+  th, td {
+    border: 1px solid var(--border);
+    /* Wrap only at spaces: never split an English word mid-letter. */
+    overflow-wrap: normal;
+    word-break: normal;
+    hyphens: manual;
+    padding: 6px 8px;
+    text-align: left;
+    vertical-align: top;
+  }
+  blockquote {
+    border-left: 3px solid var(--accent);
+    color: var(--muted);
+    margin-left: 0;
+    padding-left: 14px;
+  }
+  .appraisal-meta {
+    border-top: 1px solid var(--border);
+    margin-top: 28px;
+    padding-top: 14px;
+    color: var(--muted);
+    font-size: 13px;
+  }
+  @media (max-width: 600px) {
+    body {
+      padding: 12px 8px 40px;
+    }
+    main {
+      padding: 16px 12px;
+    }
+    h1 {
+      font-size: 22px;
+    }
+    table {
+      font-size: 12px;
+    }
+    .table-wrap.wide {
+      width: calc(100vw - 16px);
+      margin-left: calc(50% - 50vw + 8px);
+    }
+    th, td {
+      padding: 4px 5px;
+    }
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #1a1a1a;
+      --card: #242424;
+      --text: #e8e8e8;
+      --muted: #999;
+      --border: #333;
+      --accent: #6ea8ff;
+    }
+  }
+</style>
+</head>
+<body>
+<nav><a href="../../2026-W47.html">← 回到 2026-W47 週報</a></nav>
+<main>
+<h1>Inflammation and early atherosclerosis beyond traditional risk factors: an imaging study.</h1>
+<h1>評讀報告：Inflammation and early atherosclerosis beyond traditional risk factors: an imaging study</h1>
+<h2>SECTION-0：文章全面描述</h2>
+<h3>0. 文章身份證</h3>
+<ul>
+<li><strong>標題</strong>：Inflammation and early atherosclerosis beyond traditional risk factors: an imaging study</li>
+<li><strong>期刊／年份</strong>：European Heart Journal, 2026（advance article，期刊頁面列的線上日期為 2026-11-10）[外部: OUP advance articles]</li>
+<li><strong>DOI</strong>：10.1093/eurheartj/ehag846；PMID 43004579</li>
+<li><strong>文章類型（路由）</strong>：<strong>前瞻性世代研究的次級分析</strong>，屬觀察性研究。走 SKILL-A，並套用觀察性子模組與因果推論 Appendix。</li>
+<li><strong>設計本質</strong>：雖然稱為「longitudinal」，但主要終點是 <strong>6 年時單一時點的斑塊量</strong>，模型<strong>沒有校正基線斑塊量</strong>。分析結構比較接近「6 年累積暴露 vs 6 年時的盛行負擔」，不是斑塊進展研究（見 B3）。</li>
+</ul>
+<h3>1. 作者團隊評論</h3>
+<ul>
+<li><strong>通訊作者</strong>：Valentín Fuster（CNIC／Mount Sinai）與 Borja Ibáñez（CNIC／Fundación Jiménez Díaz）[文內]，兩人是 PESA 世代的主持團隊。PESA 的設計與成果曾以 JACC Focus Seminar 系列整理發表 [外部: JACC 2021 Focus Seminar 7/8]。</li>
+<li><strong>第一作者</strong>：Guiomar Mendieta（Sant Pau／CNIC），2020 年 CardioJoven fellowship 得主 [文內]。她是同一世代、同一 3DVUS 終點 6 年進展／消退分析的第一作者（Mendieta, Pocock, et al. JACC 2023;82:2069）[外部: PubMed 37993199]。本文的 5 個「核心危險因子」就直接沿用那篇的變項選擇（文內 ref 12）。</li>
+<li><strong>統計</strong>：Stuart Pocock 與 Dylan Taylor（LSHTM）[文內]。這解釋了本文為什麼以 Z 值作為「證據強度」的主要表達方式。</li>
+<li><strong>團隊相關前作</strong> [外部]：
+<ul>
+<li>Devesa et al., EHJ 2022：PESA 子世代的骨髓 ¹⁸F-FDG 活化研究</li>
+<li>Sánchez-Cabo et al., EHJ 2023：PESA 的 multi-omics／表觀遺傳年齡研究，發現 WBC、NLR、CRP 與表觀遺傳年齡加速相關</li>
+<li>López-Melgar et al.：PESA 的 3DVUS 斑塊負擔方法學論文</li>
+<li>REACT（NEJM 2026，ESC 2026 發表）：與 PESA 相關的後續研究</li>
+<li>整體而言，這是 PESA 資料庫的核心團隊，不是跨領域首次切入。</li>
+</ul>
+</li>
+<li><strong>作者立場史</strong>：團隊長期主張「早期影像偵測＋早期介入」，也主張發炎是 3DVUS 可量化的風險。本文結論與既往立場高度一致；新聞稿更延伸為「WBC 最能反映早期動脈硬化的存在與<strong>進展</strong>」[外部: CNIC 新聞稿]，但本文並未分析進展。這種敘事延伸有確認偏差的風險。</li>
+<li><strong>同組前期摘要</strong> [外部: ESC Congress 2025 摘要 ehaf784.3615，依搜尋摘要轉述，全文 PDF 未成功開啟]：摘要標題為「Inflammation and LDL cholesterol contribute independently…」，且有報告 Lp(a) 無相關。正式論文沒有 Lp(a) 的分析結果（只在 Table 1 出現，P=.377）。</li>
+<li><strong>利益揭露</strong> [文內]：
+<ul>
+<li>J. Sánchez-González 是 <strong>Philips</strong> 員工；3DVUS 平台與 Philips 相關 [推論]。</li>
+<li>C. Pérez-Herreras 隸屬 <strong>Banco Santander</strong>，PESA 由 CNIC 與 Santander 共同出資，受試者是 Santander 員工。</li>
+<li>第一作者有 Amarin、Amgen、AstraZeneca、Novo Nordisk 等講者費。</li>
+<li><strong>評估</strong>：上述利益不直接涉及本文的生物標記結論，但 Philips 員工參與，與「推廣 3DVUS 作為縱貫監測工具」的結語方向一致，屬中度敘事利益。</li>
+</ul>
+</li>
+</ul>
+<h3>2. 文獻 Metadata 整理</h3>
+<ul>
+<li><strong>投稿至接受</strong>：Received 2025-10-21，revised 2026-04-05，accepted 2026-10-05 [文內]，約 <strong>349 天</strong>（自行計算）。修稿後又過了 6 個月才接受，推論經歷多輪審查 [推論]。</li>
+<li><strong>期刊審查時間</strong>：EHJ 沒有公開穩定的接受時程統計。第三方估計首次決定約 20 天至 4.7 週，約 70% 稿件被 desk reject [外部: Manusights，非官方]；跨心臟科期刊投稿到接受的中位數約 96 天 [外部: Journalmetrics]。相比之下本篇明顯偏慢，代表審查有實質往返，不是快速通道。</li>
+<li><strong>期刊屬性</strong>：2025 JIF 約 45.3（另有來源寫 43.5），Cardiac &amp; Cardiovascular Systems 類第 2 名，Q1 [外部: Wolters Kluwer／Journal Metrics／OUP About]。本文為 Open Access（CC BY-NC）[文內]。</li>
+<li><strong>邀稿 vs 投稿</strong>：Clinical Research 原著投稿，非邀稿 [文內]。</li>
+</ul>
+<h3>3. 研究背景 [文內]</h3>
+<ul>
+<li><strong>既有證據</strong>：
+<ul>
+<li>LDLc 是動脈硬化的因果因子，SBP 是全球 CVD 族群可歸因比例最大的因子。</li>
+<li>傳統危險因子只解釋約一半的 CVD 負擔。</li>
+<li>「殘餘發炎風險」概念主要建立在次級預防族群；部分學會已把 fibrinogen 與 hs-CRP 列為風險修飾因子。</li>
+</ul>
+</li>
+<li><strong>知識缺口</strong>：系統性發炎標記能否反映<strong>早期</strong>斑塊生長期的局部動脈壁發炎，目前不清楚；早期斑塊生長與斑塊不穩定的發炎路徑可能不同。</li>
+<li><strong>研究問題</strong>：在中年無症狀族群中，WBC、fibrinogen、oxLDL、hs-CRP 對 6 年斑塊負擔的貢獻，是否獨立於 LDLc 與 SBP，相對大小又如何。</li>
+</ul>
+<h3>4. 研究設計與方法</h3>
+<p><strong>PICO</strong></p>
+<ul>
+<li><strong>P</strong>：PESA-CNIC-Santander 世代，Madrid Santander 銀行員工，入組時 40–55 歲，無 CVD。2010–2014 年收案 4184 人，分析 3471 人（83%），中位年齡 45 歲，36% 女性。</li>
+<li><strong>I（暴露）</strong>：WBC、fibrinogen、oxLDL（Mercodia 4E6 ELISA）、hs-CRP。每位受試者取 0、3、6 年三次測值的<strong>平均</strong>。</li>
+<li><strong>C</strong>：同一模型中的 LDLc（<strong>基線單次</strong>值）、SBP（<strong>三次平均</strong>）、年齡、性別、曾經吸菸。</li>
+<li><strong>O（主要）</strong>：6 年時 3DVUS 的 <strong>GPV</strong>（雙側頸動脈＋股動脈斑塊體積總和，mm³）。</li>
+<li><strong>O（次要）</strong>：頸動脈 PV、股動脈 PV、CAC（Agatston）、受累血管床數（0–3）。</li>
+</ul>
+<p><strong>統計方法</strong></p>
+<ul>
+<li><strong>主模型</strong>：log(GPV) 線性迴歸，GPV=0 以 0.5 mm³ 代入。係數取 exp 後換算為「每 1 SD GPV 增加百分比」（幾何平均意義）。</li>
+<li><strong>輔助模型</strong>：
+<ul>
+<li>GPV 分 5 個有序類別（0 mm³ 約 42%，其餘四類各約 560 人）的 proportional odds 模型</li>
+<li>Restricted cubic spline</li>
+<li>生物標記與 LDLc／SBP 的三分位交互作用（likelihood ratio test）</li>
+</ul>
+</li>
+<li><strong>共變項</strong>：沿用前作 [ref 12] 經變項篩選得到的 5 個「進展決定因子」（年齡、性別、吸菸、SBP、LDLc）。</li>
+<li><strong>暴露時間窗的選擇</strong>：每個連續變項用「基線值」還是「三次平均」，<strong>依單變項模型哪一個較能預測 log(GPV) 而定</strong>（Statistical methods）。這是資料驅動的選擇。</li>
+<li><strong>其他</strong>：
+<ul>
+<li>沒有事前樣本數計算，觀察性次級分析可以接受。</li>
+<li>沒有多重比較校正。</li>
+<li>沒有說明 CAC 零值（71.4%）如何處理。</li>
+<li>沒有報告 proportional odds 假設的檢定。</li>
+</ul>
+</li>
+</ul>
+<h3>5. 研究結果重點整理</h3>
+<p><strong>主要結果表</strong>（單一世代，效果量為校正後估計）</p>
+<div class="table-wrap wide"><table>
+<thead>
+<tr>
+<th>變項（代表什麼）</th>
+<th style="text-align:right">全體（N=3471）</th>
+<th style="text-align:right">效果量（95% CI）</th>
+<th style="text-align:right">p 值</th>
+<th>如何解讀</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>GPV&gt;0</strong>：頸＋股動脈任一處有斑塊</td>
+<td style="text-align:right">基線 <strong>44%</strong> → 6 年 <strong>58%</strong>（2013 人）</td>
+<td style="text-align:right">—</td>
+<td style="text-align:right">—</td>
+<td>中年族群近六成已有斑塊，是盛行負擔，不是發生率</td>
+</tr>
+<tr>
+<td><strong>GPV 中位數</strong>（6 年）</td>
+<td style="text-align:right"><strong>12.1 mm³</strong></td>
+<td style="text-align:right">—</td>
+<td style="text-align:right">—</td>
+<td>斑塊量很小；「%增加」對應的絕對值只有數 mm³</td>
+</tr>
+<tr>
+<td><strong>WBC</strong>（三次平均；1 SD = 1.37×10³/μL）</td>
+<td style="text-align:right"><strong>+32.6%</strong> GPV／SD</td>
+<td style="text-align:right">未報告數值（Fig 1B 誤差棒約 23–43%）</td>
+<td style="text-align:right">Z=7.33，&lt;0.001</td>
+<td>證據強；但已用了三次平均，效果量難以直接與單次 LDL 比較</td>
+</tr>
+<tr>
+<td><strong>Fibrinogen</strong>（1 SD = 39.7 mg/dL）</td>
+<td style="text-align:right"><strong>+16.8%</strong>／SD</td>
+<td style="text-align:right">未報告（圖示約 8–26%）</td>
+<td style="text-align:right">Z=3.91，&lt;0.001</td>
+<td>再加入 WBC 後 Z 掉到 1.99，獨立性很弱</td>
+</tr>
+<tr>
+<td><strong>oxLDL</strong>（1 SD = 16.4 mg/dL）</td>
+<td style="text-align:right"><strong>+13.4%</strong>／SD</td>
+<td style="text-align:right">未報告（圖示約 4–24%）</td>
+<td style="text-align:right">Z=2.80，0.005</td>
+<td>與 LDLc 相關 ρ=0.59，難以視為發炎標記</td>
+</tr>
+<tr>
+<td><strong>hs-CRP</strong>（log；圖上 SD 標示 9.13 mg/L）</td>
+<td style="text-align:right"><strong>+5.39%</strong>／SD</td>
+<td style="text-align:right">未報告（圖示約 −2–13%）</td>
+<td style="text-align:right">Z=1.36，0.174</td>
+<td>CI 跨 0 且上限仍到約 13%，屬無法定論，不是「無關」</td>
+</tr>
+<tr>
+<td><strong>Mean SBP</strong>（1 SD = 11.5 mmHg）</td>
+<td style="text-align:right"><strong>+42.7%</strong>／SD（Fig 1A 標 42.6%）</td>
+<td style="text-align:right">未報告（圖示約 31–55%）</td>
+<td style="text-align:right">Z=7.97，&lt;0.001</td>
+<td>換算每 10 mmHg 為 +36.3%</td>
+</tr>
+<tr>
+<td><strong>Baseline LDLc</strong>（1 SD = 29.4 mg/dL）</td>
+<td style="text-align:right"><strong>+40.9%</strong>／SD</td>
+<td style="text-align:right">未報告（圖示約 31–51%）</td>
+<td style="text-align:right">Z=8.80，&lt;0.001</td>
+<td>換算每 10 mg/dL 為 +12.4%；單次測值，可能被稀釋</td>
+</tr>
+<tr>
+<td><strong>WBC 五分位 OR</strong>（Q2–Q5 vs Q1）</td>
+<td style="text-align:right"><strong>0.83／1.07／1.12／1.60</strong></td>
+<td style="text-align:right">未報告</td>
+<td style="text-align:right">未報告</td>
+<td>只有最高五分位（&gt;6.83）明顯升高；「閾值在中位數」說法偏強</td>
+</tr>
+<tr>
+<td><strong>受累血管床數</strong>：每 1 SD WBC 的 common OR</td>
+<td style="text-align:right"><strong>1.24</strong></td>
+<td style="text-align:right"><strong>1.16–1.32</strong></td>
+<td style="text-align:right">未報告</td>
+<td>同模型 LDLc 為 1.38（1.29–1.47），SBP 1.31（1.21–1.41）</td>
+</tr>
+<tr>
+<td><strong>受累血管床數</strong>：每 1 SD fibrinogen</td>
+<td style="text-align:right"><strong>1.11</strong></td>
+<td style="text-align:right"><strong>1.04–1.19</strong></td>
+<td style="text-align:right">未報告</td>
+<td>效果最小，CI 下限接近 1</td>
+</tr>
+<tr>
+<td><strong>CAC</strong>：每 1 SD WBC</td>
+<td style="text-align:right"><strong>+12.1%</strong> Agatston</td>
+<td style="text-align:right">未報告</td>
+<td style="text-align:right">Z=3.44，0.001</td>
+<td>與 LDLc（+15.4%）、SBP（+16.2%）同量級</td>
+</tr>
+<tr>
+<td><strong>CAC</strong>：每 1 SD fibrinogen</td>
+<td style="text-align:right"><strong>+6.61%</strong></td>
+<td style="text-align:right">未報告</td>
+<td style="text-align:right">Z=1.87，0.062</td>
+<td>在冠狀動脈未達顯著</td>
+</tr>
+</tbody>
+</table></div>
+<p>表格補充說明：</p>
+<ul>
+<li><strong>股動脈 vs 頸動脈</strong>：WBC 在股動脈（+40.2%，Z=8.81）比頸動脈（+17.5%，Z=4.88）強。股動脈也是吸菸效果最大的血管床（+155%，Z=11.85）（Fig 6）。這個共同分布本身就是殘餘吸菸混淆的線索（見 F）。</li>
+<li><strong>WBC 與 fibrinogen 同模型</strong>（Supp Table S7）：WBC Z=6.51，fibrinogen Z=<strong>1.99</strong>（每 SD 約 +8.5% [自行計算]）。三個標記同時放入（S9）時，fibrinogen Z=1.91、oxLDL Z=2.06。</li>
+<li><strong>交互作用</strong>（Supp S3–S6）：LRT P 介於 0.250–0.642。最高 SBP × 最高 WBC 組的 GPV 增加 <strong>+281.9%</strong>（相對低×低組）；Fig 4／5 只用 3D 長條圖呈現，<strong>沒有 CI</strong>。</li>
+<li><strong>納入與排除者比較</strong>（Supp S10）：未納入的 713 人基線 WBC 較高（6.17 vs 5.83，P&lt;0.001），吸菸、糖尿病、高血壓比例也較高。</li>
+<li><strong>流失原因</strong>（Supp Fig S1）：最大宗是<strong>漏做 3DVUS 的 490 人</strong>，退出 203 人，死亡 20 人。正文寫「203 (5.3%)」，但 203/4184 = 4.85%，數字不一致。</li>
+</ul>
+<h3>6. 作者討論與評論重點</h3>
+<ul>
+<li><strong>主要訊息</strong>：在傳統危險因子之外，發炎（尤其 WBC）對早期斑塊負擔的貢獻「與 LDLc、SBP 相當」；發炎風險「貫穿動脈硬化全程」，不應只被看作次級預防的殘餘風險。</li>
+<li><strong>與文獻的關係</strong>：
+<ul>
+<li>與 Friedman 1974、Ortega 等 WBC 文獻方向一致。</li>
+<li>hs-CRP 不顯著的解釋：本族群 hs-CRP 偏低（中位 1.0 mg/L）；CRP 較反映斑塊破裂與血栓，不反映斑塊量（Dallas Heart Study）。</li>
+</ul>
+</li>
+<li><strong>作者自承的限制</strong> [文內]：
+<ol>
+<li>歐洲白人、銀行員工，外推性有限。</li>
+<li>標記特異性不足。</li>
+<li>17% 未納入，可能有選擇偏差；作者主張偏差應朝向虛無，「反而支持穩健性」。</li>
+</ol>
+</li>
+<li><strong>[評估]</strong>：
+<ul>
+<li>作者<strong>沒有提及</strong>以下限制：殘餘混淆（吸菸劑量、BMI、胰島素阻抗）、暴露與結果同時測量（6 年 WBC 值與 6 年斑塊同一次訪視）、沒有校正基線斑塊、暴露時間窗由資料驅動選擇、0.5 mm³ 代入值的敏感度。</li>
+<li>「偏差朝向虛無所以更穩健」的推理不成立：排除與暴露（WBC）和結果都相關時，選擇偏差的方向無法預先判定。</li>
+<li>討論中「The vascular damage caused by inflammation is of similar magnitude to that of LDLc and SBP」是<strong>因果語言</strong>，超出觀察性關聯數據所能支持的範圍。</li>
+</ul>
+</li>
+</ul>
+<h3>7. 外部專業意見</h3>
+<ul>
+<li><strong>[無法取得]</strong>：搜尋未找到針對本文的同期 editorial 或 commentary；CNIC 新聞稿也未提到隨刊評論 [外部: CNIC 新聞稿、EurekAlert、MedicalXpress]。因此沒有可下載的 DOI，未執行全文擷取。</li>
+<li>目前可見的外部聲音只有機構新聞稿（不屬專業意見）。新聞稿把結論延伸為 WBC 反映「進展」與「發炎驅動早期疾病」，<strong>比論文本身更強</strong>。</li>
+</ul>
+<h3>8. 臨床建議</h3>
+<ul>
+<li><strong>可參考的情境</strong>：40–55 歲、無症狀、低 hs-CRP 的歐洲族群。若常規 CBC 中 WBC 持續偏高（約 &gt;7×10³/μL，屬最高五分位），且無急性感染，可作為「動脈硬化負擔可能較高」的<strong>非特異性提示</strong>。這類病人可考慮提高影像篩檢（頸／股動脈超音波或 CAC）的意願。</li>
+<li><strong>不建議直接套用的情境</strong>：
+<ul>
+<li>用 WBC 取代或等同 LDLc、SBP 作為治療目標</li>
+<li>據此在初級預防使用抗發炎藥（colchicine 等）</li>
+<li>推廣到亞洲族群、女性為主族群、高齡或已有 ASCVD 者</li>
+</ul>
+</li>
+<li><strong>給臨床醫師的實務建議</strong>：
+<ol>
+<li>WBC 偏高時，先想到吸菸量、肥胖與胰島素阻抗，再想「發炎」；這些都是可介入、且本文沒有完整校正的因子。</li>
+<li>LDLc 與 SBP 仍是唯一有因果與介入證據的主軸；本文不改變降脂與降壓目標。</li>
+<li>hs-CRP 在本研究不顯著，不代表在較高齡或較高 CRP 族群無用；不要據此停用 hs-CRP 作為風險修飾因子。</li>
+</ol>
+</li>
+<li><strong>證據強度</strong>：<strong>弱至中</strong>。關聯的統計證據強（Z&gt;7），但因果推論與臨床可操作性弱。理由：單一職業世代、殘餘混淆、暴露與結果時序重疊、終點為替代指標且沒有 MCID。</li>
+</ul>
+<hr />
+<h2>SKILL-A：批判性評讀（觀察性研究）</h2>
+<h3>A. 補充技術細節</h3>
+<ul>
+<li><strong>樣本數</strong>：沒有 power calculation。觀察性次級分析可以接受；N=3471 對主效應足夠，但對三分位×三分位交互作用（每格約 385 人）的檢定力有限。</li>
+<li><strong>暴露定義的不對稱</strong>：WBC、fibrinogen、oxLDL、hs-CRP、SBP 用三次平均，LDLc 用基線單次。作者說明是依單變項預測力挑選（Methods）。後果有兩個：
+<ul>
+<li>平均值降低個體內變異造成的 regression dilution，有利於發炎標記與 SBP 的效果量。</li>
+<li>基線 LDLc 會受到追蹤期間開始服用 statin 的影響。</li>
+<li>因此「WBC 與 LDLc 每 SD 效果相當」的比較本身就<strong>不在同一基準</strong>。</li>
+</ul>
+</li>
+<li><strong>時序問題</strong>：6 年的 WBC、fibrinogen 測值與 6 年的 GPV 在<strong>同一次訪視</strong>取得，因此平均暴露的一部分與結果同時發生。正文和 supplement 都<strong>沒有報告只用基線 WBC 的主模型結果</strong>，只有基線相關矩陣（Supp S2）。</li>
+<li><strong>結果變項的轉換</strong>：
+<ul>
+<li>GPV=0 代 0.5 mm³ 後取 log。約 42% 為零值，係數因此混合了「有無斑塊」與「斑塊量」兩種訊號；0.5 這個值沒有做敏感度分析。</li>
+<li>Proportional odds 模型有部分補足這點，但沒有報告比例勝算假設檢定。</li>
+</ul>
+</li>
+<li><strong>CAC</strong>：71% 為零，正文沒有說明轉換方式。</li>
+<li><strong>缺失資料</strong>：
+<ul>
+<li>Table 1 註記「active pharmacologic treatment 缺失 918（26.4%）」，但 Supp S10 寫同一變項只缺失 1 人。<strong>正文與 supplement 不一致</strong>。</li>
+<li>Table 2–4 註記「再校正曾用降脂／降壓藥結果相似」，但沒有提供數字。</li>
+</ul>
+</li>
+<li><strong>Supplement 標示錯誤</strong>：Supp S9 的變項標為「Mean LDLc」「Baseline WBC」，與其他模型（基線 LDLc、平均 WBC）相反。係數 0.185 與平均 WBC 模型接近，推論為標示錯誤 [推論]。</li>
+<li><strong>其他細節錯誤</strong>：Fig 2 圖說寫「each mean… expressed per one SD increase」，但圖實際是五分位，還有「common OTs」筆誤；Fig 4／5 的 WBC 單位寫成「cells/mL」。</li>
+</ul>
+<p><strong>混淆控制方法</strong>：多變量迴歸（強度：中）。關鍵問題在於共變項來自前作「預測斑塊進展」的變項篩選，<strong>不是</strong>針對「WBC → 斑塊」這個因果問題建立的混淆集合（沒有 DAG）。明顯缺少的混淆因子：</p>
+<ul>
+<li>吸菸劑量與現在吸菸（模型只有二元的「曾經吸菸」）</li>
+<li>BMI／腹部肥胖</li>
+<li>HOMA-IR、HbA1c</li>
+<li>三酸甘油酯、HDL</li>
+<li>身體活動、社經地位</li>
+</ul>
+<p>Table 1 中這些變項在 GPV&gt;0 組都顯著較差（P&lt;.001）。</p>
+<h3>B. 批判性評估</h3>
+<h4>B1. 假說與理論邏輯</h4>
+<ul>
+<li><strong>問題：「系統性 WBC = 動脈壁發炎」的等號沒有被驗證</strong>
+<ul>
+<li>證據：作者在 Introduction 自己承認「unclear whether local inflammatory processes… can be adequately captured by systemic biomarkers」。但結論直接寫「inflammation… is a risk factor」。</li>
+<li>NLR 在有無斑塊兩組沒有差異（2.00 vs 2.01，P=.411，Table 1）；作者沒有分析 WBC 分類（嗜中性球、淋巴球、單核球）。</li>
+<li>風險方向：高估「發炎」的角色。</li>
+<li>需要什麼才放心：分類計數分析、局部影像發炎指標（如 PET），或 WBC／IL-6 路徑的遺傳工具變數分析。</li>
+</ul>
+</li>
+<li><strong>合理機轉</strong>（1–3 點）：
+<ol>
+<li>骨髓造血活化 → 單核球增加 → 斑塊浸潤。同團隊 PET-MRI 前作支持這個方向，但前作是在晚期斑塊子世代。</li>
+<li>吸菸與內臟脂肪同時推高 WBC 並促進斑塊，屬共同原因。</li>
+<li>CHIP（clonal hematopoiesis）。作者群中 J.J. Fuster 是 CHIP 研究者 [推論]，但本文沒有分析。</li>
+</ol>
+</li>
+<li><strong>最可疑的敘事跳躍</strong>：
+<ol>
+<li>由「Z 值相近」跳到「vascular damage 同等量級」：Z 是證據強度，不是效果大小（Discussion 末段）。</li>
+<li>由「沒有統計交互作用」跳到「各自經不同路徑獨立作用」（Discussion）。</li>
+<li>由 oxLDL 與其他發炎標記相關性低，推論「發炎經多條路徑、需個人化管理」。但 oxLDL（4E6 assay）與 LDLc 的相關 ρ=0.59，它更像 LDL 顆粒量的標記。</li>
+</ol>
+</li>
+</ul>
+<h4>B2. 受試者與外推性</h4>
+<ul>
+<li><strong>銀行員工世代</strong>：健康工作者效應，社經同質，64% 男性，白人為主，hs-CRP 偏低（中位 1.0 mg/L）。</li>
+<li><strong>外推性分級</strong>：
+<ol>
+<li><strong>一般健康族群</strong>：中年歐洲受雇者可部分外推。不適用於低社經、高 CRP、肥胖盛行率高的族群，因為 WBC 與混淆因子的結構可能不同。</li>
+<li><strong>特定病患族群（已有 ASCVD、糖尿病）</strong>：不該外推。本研究排除 CVD，糖尿病只有 1.6%。</li>
+<li><strong>特殊族群（女性、亞洲人、&lt;40 或 &gt;55 歲）</strong>：不該外推。女性僅 36%，作者自己也承認無法對性別下結論。</li>
+</ol>
+</li>
+</ul>
+<h4>B3. 研究設計與偏差（最可能造成偏差的三點）</h4>
+<ol>
+<li><strong>殘餘混淆（吸菸劑量、代謝因子）→ 效果偏大</strong>
+<ul>
+<li>證據：模型只有二元「曾經吸菸」；WBC 效果最強的股動脈正好是吸菸效果最強的血管床（Fig 6B）；BMI、HOMA-IR、TG 都未校正（Table 1、Table 2）。</li>
+<li>需要：加入 pack-years 與現在吸菸、BMI、HOMA-IR 的敏感度分析，或限縮到從未吸菸者的分析。</li>
+</ul>
+</li>
+<li><strong>時序與暴露窗由資料驅動選擇 → 效果偏大，且可能有反向因果</strong>
+<ul>
+<li>證據：用三次平均（含 6 年值），且依預測力挑選暴露窗（Methods）。</li>
+<li>需要：只用基線 WBC 預測 6 年 GPV、並校正基線 GPV 的模型。</li>
+</ul>
+</li>
+<li><strong>沒有校正基線斑塊，「縱貫」名不副實 → 方向不定</strong>
+<ul>
+<li>證據：基線 44% 已有斑塊；前作（ref 12）在分析進展時有校正基線斑塊，本文沒有。</li>
+<li>結果反映的是終生累積負擔，與「早期斑塊生長」的命題不完全對應。</li>
+<li>需要：以斑塊變化量（ΔGPV）或「基線無斑塊者發生斑塊」作為結果。</li>
+</ul>
+</li>
+</ol>
+<ul>
+<li><strong>選擇偏差</strong>：17% 未納入，以漏做 3DVUS 為主，且未納入者 WBC 較高、危險因子較差（Supp S10）。偏差方向無法確定，作者「朝向虛無」的主張沒有依據。</li>
+<li><strong>比較基準</strong>：沒有 target trial 對應。「降低 WBC」不是明確可介入的處置，違反 consistency 條件（見 Appendix）。</li>
+</ul>
+<h4>B4. 測量工具與實務意義</h4>
+<ul>
+<li><strong>3DVUS GPV</strong>：同團隊先前報告具可重複性 [外部: López-Melgar／AuntMinnie]。本文沒有報告觀察者間 CV。在中位數 12.1 mm³ 的小斑塊範圍，測量誤差相對較大。</li>
+<li><strong>替代終點</strong>：GPV 是斑塊負擔的替代指標，PESA 尚未在本文中連結到臨床事件，也沒有 MCID。</li>
+<li><strong>就算結果是真的，真實世界的用處有多大？</strong>
+<ul>
+<li>每 1 SD WBC（1.37×10³/μL）對應幾何平均 GPV 增加 32.6%。以中位 12 mm³ 計，絕對差只有數 mm³ [推論]。</li>
+<li>受累血管床數的 OR 為 1.24（1.16–1.32），低於 LDLc 的 1.38、SBP 的 1.31。</li>
+<li>WBC 不是可直接治療的目標，臨床價值頂多是風險提示。</li>
+</ul>
+</li>
+</ul>
+<h3>C. 統計與資料完整性</h3>
+<h4>C1. 結果分類（以 CI 判讀；GPV 沒有 MCID）</h4>
+<ul>
+<li><strong>MCID</strong>：文內沒有定義，GPV 領域也沒有公認的臨床最小重要差異。標記為「[推算] 不可得」，因此無法完成完整的 CI＋MCID 分類。</li>
+<li><strong>各標記分類</strong>：
+<ul>
+<li><strong>WBC</strong>：統計上明確正相關（圖示 CI 約 23–43%，遠離 0）。臨床重要性無法以 MCID 判定，歸類為「統計明確／臨床意義未定」。</li>
+<li><strong>Fibrinogen</strong>：單獨模型為正向。與 WBC 同模型時 Z=1.99（Supp S7），CI 下限貼近 0，屬 <strong>IMPRECISE (+)</strong>，獨立貢獻不確定。</li>
+<li><strong>oxLDL</strong>：正向，但與 LDLc 共線性高（ρ=0.59）。同模型時 LDLc 係數由 0.0117 降到 0.00962（Table 4），兩者訊號互相分攤。</li>
+<li><strong>hs-CRP</strong>：點估計 +5.4%，CI 約 −2 到 +13%（依圖判讀），<strong>INCONCLUSIVE</strong>。不能寫成「not predictive」。</li>
+<li><strong>hs-CRP 的 SD 標示問題</strong>：模型使用 log 轉換，但圖上 SD 寫 9.13 mg/L（原始尺度），而中位數 1.0 [0.5–1.9]。推論資料中有 &gt;10 mg/L 的極端值（急性感染）且未排除 [推論]，「每 SD」的單位因此不清楚。</li>
+</ul>
+</li>
+<li><strong>禁止的謬誤</strong>：作者在 Abstract 寫 hs-CRP「was not predictive」。這是把 p&gt;0.05 當成無效，屬典型誤用。</li>
+</ul>
+<h4>C2. Underpowered 與 Winner's Curse</h4>
+<p>主效應的 Z 值都 &gt;7，不屬低檢定力研究，Winner's Curse 風險低。但以下次要主張的檢定力有限，不應過度解讀：</p>
+<ul>
+<li>交互作用「不存在」：tertile×tertile，每格約 385 人，各格 SE 約 0.16（Supp S3–S6）。</li>
+<li>WBC 「閾值效應」：spline 上 WBC &gt;8.5 的區段，依 SD 推算約在 +2 SD 以上，僅約 2–3% 受試者 [推論]；Fig 3A 該段 CI 上限達約 4.7。</li>
+</ul>
+<h4>C3. Bayesian 補充</h4>
+<p>主要結果的 p 值遠小於 0.05，C3 不適用。</p>
+<h4>C4. 報告完整性與其他問題（統計面紅旗）</h4>
+<ol>
+<li><strong>主要效果量沒有數值 CI</strong>：只報 Z 與 P，CI 僅以圖示誤差棒呈現（Fig 1）。</li>
+<li><strong>用 Z 值比較變項間的「強度」</strong>：Z 取決於該變項在樣本中的變異與測量精度，不代表生物學重要性。用它支撐「與 LDLc 相當」的說法是錯置。</li>
+<li><strong>暴露時間窗資料驅動</strong>：依單變項預測力挑選基線或平均值（Methods），沒有預先指定，等於隱性多重比較。</li>
+<li><strong>沒有多重比較校正</strong>：4 個標記 × 5 種結果 × 多種模型。</li>
+<li><strong>五分位 OR 沒有 CI</strong>（Fig 2）；spline 的節點數與位置沒有報告（Fig 3）。</li>
+<li><strong>3D 長條圖（Fig 4／5）沒有 CI</strong>，且透視角度放大了高低差的視覺印象。例如 High WBC × Low LDLc 係數 0.642、SE 0.163，對應約 +38% 到 +162% [自行計算]，不確定性很大。</li>
+<li><strong>正文與 supplement 數字不一致</strong>：
+<ul>
+<li>退出比例 5.3% vs 4.85%</li>
+<li>治療變項缺失 918 vs 1</li>
+<li>Supp S9 變項標示顛倒</li>
+<li>Supp S10 未納入者男性 413 (60.5%)，但 413/713 = 57.9%，分母不明</li>
+<li>Fig 1A 的 SBP 為 42.6%，正文為 42.7%</li>
+</ul>
+</li>
+<li><strong>選擇性報告疑慮</strong>：前期摘要有報告 Lp(a)，正式論文沒有分析 [外部]；WBC 分類計數沒有分析。</li>
+<li><strong>Proportional odds 假設沒有檢定</strong>；CAC 零值處理沒有說明。</li>
+<li><strong>Fibrinogen 的強調與數據不符</strong>：摘要強調其 16.8% 效果，但沒有交代加入 WBC 後降為 Z=1.99（Supp S7）。</li>
+</ol>
+<h3>D. 次組分析評估</h3>
+<p><strong>血管床分層（Fig 6）</strong></p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>標準</th>
+<th>評估</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>交互作用檢定</td>
+<td>沒有：不同血管床是分開跑的模型，沒有正式比較係數差異</td>
+</tr>
+<tr>
+<td>與其他研究一致</td>
+<td>部分一致：股動脈與吸菸、代謝因子關聯較強的模式已知</td>
+</tr>
+<tr>
+<td>事前假說與方向</td>
+<td>沒有預先指定方向</td>
+</tr>
+<tr>
+<td>生物機轉</td>
+<td>部分合理</td>
+</tr>
+<tr>
+<td>研究內比較</td>
+<td>是（within-cohort）</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>可信度：低至中。</strong>「WBC 對 CAC 貢獻較低」的說法其實不成立：WBC 對 CAC 為 +12.1%，與 LDLc 的 +15.4% 相近。</p>
+<p><strong>生物標記 × LDLc／SBP 交互作用（Supp S3–S6）</strong></p>
+<ul>
+<li>有 LRT 檢定（P 0.25–0.64），但三分位類別化造成資訊流失、檢定力低。</li>
+<li>在 log 尺度上「沒有交互作用」代表<strong>乘法可加</strong>，換到絕對尺度其實是超可加。作者把它解讀為「各自獨立運作、互不相關」，屬過度延伸。</li>
+<li><strong>可信度：推測性。</strong></li>
+</ul>
+<h3>E. 紅旗清單</h3>
+<ul>
+<li><strong>設計</strong>：結果與 6 年暴露測值同時取得；沒有校正基線斑塊卻自稱縱貫；暴露時間窗依資料挑選。</li>
+<li><strong>混淆</strong>：吸菸只以「曾經吸菸」二元變項表示；未校正 BMI、胰島素阻抗、三酸甘油酯；共變項集合為預測目的所選，不是因果目的。</li>
+<li><strong>統計</strong>：主效應沒有數值 CI；以 Z 值比較「強度」；五分位與 3D 圖沒有 CI；hs-CRP 被誤寫為「not predictive」。</li>
+<li><strong>敘事</strong>：「vascular damage of similar magnitude」屬因果語言；「threshold above median」實際只由最高五分位驅動；新聞稿把結論延伸到「進展」。</li>
+<li><strong>資料一致性</strong>：退出比例、治療變項缺失數、Supp S9 標示，正文與 supplement 不一致。</li>
+<li><strong>COI</strong>：Philips 員工參與並推廣 3DVUS 監測；Santander 同時是出資方與受試者的雇主。</li>
+<li><strong>外推</strong>：單一國家、單一職業、白人為主、64% 男性。</li>
+</ul>
+<h3>F. 反向解釋</h3>
+<ol>
+<li><strong>吸菸劑量與代謝狀態的殘餘混淆</strong>
+<ul>
+<li>支持線索：WBC 效果在股動脈最強，股動脈也是吸菸效果最強處（Fig 6B）；GPV&gt;0 組 BMI、HOMA-IR、TG 都較高（Table 1）。</li>
+<li>反對線索：校正「曾經吸菸」後 WBC 仍有 Z=7.33；WBC 與 SBP、LDLc 相關都很低（Table 5）。</li>
+</ul>
+</li>
+<li><strong>反向因果或同時發生的共同改變</strong>：例如 6 年間體重增加、持續吸菸，同時推高 WBC 與斑塊。
+<ul>
+<li>支持線索：暴露平均包含 6 年值，且沒有報告只用基線 WBC 的分析。</li>
+<li>反對線索：早期小斑塊直接造成系統性 WBC 上升的生物學可能性低。</li>
+</ul>
+</li>
+<li><strong>測量精度差異造成的假性「相當」</strong>：WBC 用三次平均（稀釋較少），LDLc 用單次基線值且可能受 statin 影響（稀釋較多），使兩者每 SD 效果看似接近。
+<ul>
+<li>支持線索：Methods 依預測力選擇時間窗。</li>
+<li>反對線索：受累血管床數的 OR 仍顯示 LDLc（1.38）大於 WBC（1.24）。</li>
+</ul>
+</li>
+<li><strong>WBC 只是整體健康與生活型態的綜合標記</strong>（非特異性），不是「發炎」本身。
+<ul>
+<li>支持線索：NLR 無差異；hs-CRP 不顯著；fibrinogen 在加入 WBC 後幾乎失去獨立性。</li>
+</ul>
+</li>
+</ol>
+<h3>G. 最終裁決</h3>
+<ul>
+<li><strong>整體可信度</strong>：<strong>中</strong>（關聯本身）／<strong>低</strong>（因果與「與 LDLc、SBP 相當」的主張）。</li>
+<li><strong>可採用的條件</strong>：作為假說生成；在中年歐洲初級預防族群中，WBC 持續偏高可作為非特異性風險提示，用來決定是否進一步做斑塊影像。</li>
+<li><strong>不建議採用的情境</strong>：
+<ul>
+<li>以 WBC 作為治療目標</li>
+<li>據此在初級預防使用抗發炎藥</li>
+<li>據此貶低 LDLc 或 SBP 控制的優先性</li>
+<li>據此否定 hs-CRP 的臨床角色</li>
+</ul>
+</li>
+<li><strong>改觀所需的 3 個關鍵改進</strong>：
+<ol>
+<li>只用基線 WBC（及 WBC 分類）預測斑塊<strong>變化量</strong>，並校正基線 GPV。</li>
+<li>校正吸菸劑量、BMI、HOMA-IR，並做從未吸菸者的敏感度分析。</li>
+<li>在其他族群外部驗證，並連結到臨床事件，或以遺傳工具變數提供因果支持。</li>
+</ol>
+</li>
+<li><strong>一句話結論</strong>：白血球偏高的中年人斑塊較多，但這較可能反映吸菸、肥胖等共同原因，還不能說發炎和膽固醇、血壓一樣傷血管。</li>
+</ul>
+<h3>效果量總表（觀察性改編版）</h3>
+<div class="table-wrap wide"><table>
+<thead>
+<tr>
+<th>指標</th>
+<th>暴露對比</th>
+<th>效果量</th>
+<th>95% CI</th>
+<th>ARD</th>
+<th>MCID</th>
+<th>結果分類</th>
+<th>實務意義</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>GPV（log）</td>
+<td>WBC 每 +1 SD</td>
+<td>+32.6%</td>
+<td>未報告數值（圖示約 23–43%）</td>
+<td>不適用</td>
+<td>無</td>
+<td>統計明確／臨床意義未定</td>
+<td>風險提示，非治療目標</td>
+</tr>
+<tr>
+<td>GPV</td>
+<td>Fibrinogen 每 +1 SD</td>
+<td>+16.8%（加入 WBC 後約 +8.5%）</td>
+<td>未報告（加入 WBC 後 Z=1.99）</td>
+<td>不適用</td>
+<td>無</td>
+<td>IMPRECISE (+)</td>
+<td>獨立價值存疑</td>
+</tr>
+<tr>
+<td>GPV</td>
+<td>oxLDL 每 +1 SD</td>
+<td>+13.4%</td>
+<td>未報告</td>
+<td>不適用</td>
+<td>無</td>
+<td>與 LDLc 共線</td>
+<td>不宜視為發炎標記</td>
+</tr>
+<tr>
+<td>GPV</td>
+<td>hs-CRP 每 +1 SD</td>
+<td>+5.4%</td>
+<td>圖示約 −2 到 +13%</td>
+<td>不適用</td>
+<td>無</td>
+<td>INCONCLUSIVE</td>
+<td>本族群 CRP 偏低，不能據此否定 hs-CRP</td>
+</tr>
+<tr>
+<td>受累血管床數</td>
+<td>WBC 每 +1 SD</td>
+<td>OR 1.24</td>
+<td>1.16–1.32</td>
+<td>不適用</td>
+<td>無</td>
+<td>統計明確</td>
+<td>小於 LDLc 的 1.38</td>
+</tr>
+<tr>
+<td>受累血管床數</td>
+<td>Fibrinogen 每 +1 SD</td>
+<td>OR 1.11</td>
+<td>1.04–1.19</td>
+<td>不適用</td>
+<td>無</td>
+<td>效果小</td>
+<td>臨床意義有限</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+<p><strong>外部資料來源</strong></p>
+<ul>
+<li><a href="https://doi.org/10.1093/eurheartj/ehag846">Inflammation and early atherosclerosis beyond traditional risk factors (DOI)</a></li>
+<li><a href="https://www.cnic.es/en/noticias/european-heart-journal-inflammation-involved-earliest-stages-atherosclerosis">CNIC 新聞稿</a></li>
+<li><a href="https://www.eurekalert.org/news-releases/1151647">EurekAlert 新聞稿</a></li>
+<li><a href="https://medicalxpress.com/news/2026-11-inflammation-involved-earliest-stages-atherosclerosis.html">MedicalXpress</a></li>
+<li><a href="https://academic.oup.com/eurheartj/article-pdf/doi/10.1093/eurheartj/ehaf784.3615/65211192/ehaf784.3615.pdf">ESC 2025 會議摘要 ehaf784.3615</a></li>
+<li><a href="https://pubmed.ncbi.nlm.nih.gov/37993199/">Mendieta et al. JACC 2023（PubMed 37993199）</a></li>
+<li><a href="https://www.jacc.org/doi/10.1016/j.jacc.2021.05.011">PESA JACC Focus Seminar 2021</a></li>
+<li><a href="https://academic.oup.com/eurheartj/article/44/29/2698/7203968">Sánchez-Cabo et al. EHJ 2023</a></li>
+<li><a href="https://www.auntminnieeurope.com/clinical-news/article/15651173/3d-ultrasound-quantifies-subclinical-atherosclerosis">3DVUS 方法學報導（AuntMinnie Europe）</a></li>
+<li><a href="https://academic.oup.com/eurheartj/advance-articles">EHJ Advance articles</a></li>
+<li><a href="https://academic.oup.com/EURHEARTJ/pages/About">EHJ About the Journal（OUP）</a></li>
+<li><a href="https://www.wolterskluwer.com/solutions/ovid/european-heart-journal-2148">EHJ 期刊指標（Wolters Kluwer）</a></li>
+<li><a href="https://www.journalmetrics.org/journal/european-heart-journal">EHJ 期刊指標（Journal Metrics）</a></li>
+<li><a href="https://manusights.com/blog/european-heart-journal-review-time">EHJ 審查時間（Manusights，非官方）</a></li>
+<li><a href="https://www.journalmetrics.org/fastest-journals/cardiology">心臟科期刊接受時程（Journalmetrics）</a></li>
+</ul>
+
+<footer class="appraisal-meta">評讀資訊：模型：claude-opus-5-5 (claude)  ·  route：observational  ·  產出時間：2026-11-15 18:19 CST</footer>
+</main>
+</body>
+</html>
