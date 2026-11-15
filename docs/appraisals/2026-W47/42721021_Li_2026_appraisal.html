@@ -1,0 +1,852 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Loberamisal for Acute Ischemic Stroke: The LAIS Randomized Clinical Trial.</title>
+<style>
+  :root {
+    --bg: #fafafa;
+    --card: #ffffff;
+    --text: #1a1a1a;
+    --muted: #6b6b6b;
+    --border: #e5e5e5;
+    --accent: #0b5fff;
+  }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang TC",
+      "Microsoft JhengHei", sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    margin: 0;
+    padding: 24px 16px 64px;
+    line-height: 1.72;
+  }
+  main {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    margin: 0 auto;
+    max-width: 840px;
+    padding: 22px 26px;
+  }
+  nav {
+    margin: 0 auto 14px;
+    max-width: 840px;
+    color: var(--muted);
+    font-size: 14px;
+  }
+  a { color: var(--accent); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  h1, h2, h3, h4 { line-height: 1.35; }
+  h1 { font-size: 26px; margin-top: 0; }
+  h2 { border-top: 1px solid var(--border); padding-top: 18px; }
+  code {
+    background: rgba(127, 127, 127, 0.12);
+    border-radius: 4px;
+    padding: 1px 4px;
+  }
+  .table-wrap {
+    margin: 1em 0;
+    overflow-x: auto;
+  }
+  .table-wrap.wide {
+    /* Break out of the 840px prose column, centred on the viewport. */
+    width: min(1040px, calc(100vw - 32px));
+    margin-left: calc(50% - min(520px, 50vw - 16px));
+  }
+  table {
+    border-collapse: collapse;
+    table-layout: auto;
+    width: 100%;
+  }
+  .table-wrap.wide {
+    /* Opaque so the <main> card border does not show through the table. */
+    background: var(--card);
+  }
+  /* Width hints go on <th> as percentages: Chrome's auto table layout
+     mis-sizes columns (and overflows) when cells carry min-width. */
+  .table-wrap.wide th:first-child {
+    /* Variable + plain-language definition, e.g. "NCPV (noncalcified ...)". */
+    width: 26%;
+  }
+  .table-wrap.wide th:last-child {
+    /* Last column is usually a one-line interpretation. */
+    width: 20%;
+  }
+  th, td {
+    border: 1px solid var(--border);
+    /* Wrap only at spaces: never split an English word mid-letter. */
+    overflow-wrap: normal;
+    word-break: normal;
+    hyphens: manual;
+    padding: 6px 8px;
+    text-align: left;
+    vertical-align: top;
+  }
+  blockquote {
+    border-left: 3px solid var(--accent);
+    color: var(--muted);
+    margin-left: 0;
+    padding-left: 14px;
+  }
+  .appraisal-meta {
+    border-top: 1px solid var(--border);
+    margin-top: 28px;
+    padding-top: 14px;
+    color: var(--muted);
+    font-size: 13px;
+  }
+  @media (max-width: 600px) {
+    body {
+      padding: 12px 8px 40px;
+    }
+    main {
+      padding: 16px 12px;
+    }
+    h1 {
+      font-size: 22px;
+    }
+    table {
+      font-size: 12px;
+    }
+    .table-wrap.wide {
+      width: calc(100vw - 16px);
+      margin-left: calc(50% - 50vw + 8px);
+    }
+    th, td {
+      padding: 4px 5px;
+    }
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #1a1a1a;
+      --card: #242424;
+      --text: #e8e8e8;
+      --muted: #999;
+      --border: #333;
+      --accent: #6ea8ff;
+    }
+  }
+</style>
+</head>
+<body>
+<nav><a href="../../2026-W47.html">← 回到 2026-W47 週報</a></nav>
+<main>
+<h1>Loberamisal for Acute Ischemic Stroke: The LAIS Randomized Clinical Trial.</h1>
+<h1>LAIS 試驗評讀：Loberamisal 用於急性缺血性中風（JAMA 2026）</h1>
+<h2>SECTION-0：文章全面描述</h2>
+<h3>0. 文章身份證</h3>
+<ul>
+<li><strong>標題</strong>：Loberamisal for Acute Ischemic Stroke: The LAIS Randomized Clinical Trial</li>
+<li><strong>期刊／年份</strong>：JAMA 2026;336(18):1612–1620。2026-09-10 線上發表。</li>
+<li><strong>DOI</strong>：10.1001/jama.2026.16557；PMID 42721021；NCT06517173</li>
+<li><strong>文章類型</strong>：多中心、雙盲、安慰劑對照的第三期 RCT（SKILL-A 主流程）</li>
+<li><strong>混血文章警示</strong>：不適用</li>
+</ul>
+<h3>1. 作者團隊評論</h3>
+<ul>
+<li><strong>通訊作者</strong>：Yongjun Wang（王擁軍）與 Shuya Li，北京天壇醫院神經內科。王擁軍同時隸屬國家神經系統疾病臨床醫學研究中心 [文內]。</li>
+<li><strong>團隊構成</strong> [文內]：
+<ul>
+<li>天壇醫院臨床試驗中心與國家中心的統計團隊：Hao Li、Hong-Qiu Gu、Baoyu Feng。</li>
+<li>幾家主要收案醫院的 PI。</li>
+<li>作者分工表顯示，王擁軍與 S. Li 同時參與設計、資料詮釋、撰稿與取得經費。</li>
+</ul>
+</li>
+<li><strong>機構地位與過往研究</strong> [外部: PubMed / Simcere 新聞稿 / Stroke Research in China 2025]：此團隊是中國急性中風大型 RCT 的核心網絡。
+<ul>
+<li>主導或參與 INSPIRES（他汀，222 中心）。</li>
+<li>TASTE-SL（舌下 edaravone dexborneol，JAMA Neurol 2024）：mRS 0–1 為 64.4% vs 54.7%。</li>
+<li>TASTE-2（BMJ 2026，取栓前給 edaravone dexborneol）。</li>
+<li>CHANCE 系列抗血小板試驗。</li>
+</ul>
+</li>
+<li><strong>作者立場史</strong> [推論]：同一團隊近年連續發表多個「中國製神經保護劑 + mRS 0–1 主要終點 + 陽性」的試驗；TASTE-SL 的效果量與本篇幾乎同級。這種「同一網絡、同一終點、反覆陽性」的模式，是編輯評論特別點名的現象（見第 7 節）。</li>
+<li><strong>利益揭露</strong>：
+<ul>
+<li>文內寫「Conflict of Interest Disclosures: None reported」。</li>
+<li>但經費包含藥廠 NeuroDawn Pharmaceutical [文內]。</li>
+<li>Supplement eMethods 2 明寫「LAIS trial is an industry sponsored clinical trial」。</li>
+<li>Protocol 由 NeuroDawn 擁有並簽署，指定的統計單位是藥廠出資的南京一科 PowerData [Protocol p.3、p.7]。</li>
+<li>這與正文「Funders had no role in the design and conduct of the study…」<strong>直接矛盾</strong>。評估：藥廠至少主導了 protocol 與官方送審分析，「無 COI」的申報不完整。</li>
+</ul>
+</li>
+</ul>
+<h3>2. 文獻 Metadata 整理</h3>
+<ul>
+<li><strong>Received date</strong>：markdown 未提供 → 無法計算審查天數。</li>
+<li><strong>Accepted</strong> 2026-07-31；<strong>線上發表</strong> 2026-09-10 [文內]。</li>
+<li><strong>時間軸</strong>：資料庫鎖定與解盲在 2025-04-18 [Supplement eMethods 2]，距接受約 15 個月。</li>
+<li><strong>期刊審查週期</strong>：[無法取得]。搜尋只得到 JAMA 研究論文接受率約 4%、初篩中位 2 天 [外部: Manusights]，可信度一般。</li>
+<li><strong>期刊屬性</strong>：JAMA，2025 JIF 約 65.4，Q1 [外部: 影響因子聚合網站，未經 Clarivate 原始資料驗證]。</li>
+<li><strong>邀稿 vs 投稿</strong>：原始研究投稿；同期配有 editorial。</li>
+<li><strong>學會發表</strong>：文內寫在中華醫學會第 29 次全國神經病學學術會議（2026-09-11）同步發表。</li>
+</ul>
+<h3>3. 研究背景（文內）</h3>
+<ul>
+<li><strong>既有證據</strong>：靜脈血栓溶解與取栓（再灌流治療）有效，但許多病人不符資格或仍殘障。過去單一路徑的神經保護劑幾乎全部失敗。</li>
+<li><strong>近期線索</strong>：PSD-95 抑制劑 nerinetide 有部分訊號（ESCAPE-NA1、FRONTIER、IPD meta-analysis），但 ESCAPE-NEXT 為陰性。</li>
+<li><strong>藥物機轉宣稱</strong>：loberamisal 同時具備三種作用：
+<ul>
+<li>阻斷 PSD-95–nNOS 交互作用；</li>
+<li>作為 α2-GABA_A 受體的正向異位調節劑；</li>
+<li>抑制 myeloperoxidase。</li>
+</ul>
+</li>
+<li><strong>第二期試驗</strong>：40 mg 組功能結果改善最大（ref 24）。</li>
+<li><strong>知識缺口與研究問題</strong>：發病 48 小時內給予 10 天靜脈 loberamisal，能否提高 90 天 mRS 0–1 比例，且安全性可接受？</li>
+</ul>
+<h3>4. 研究設計與方法</h3>
+<p><strong>PICO</strong></p>
+<ul>
+<li><strong>P</strong>：18–80 歲急性缺血性中風；NIHSS 7–20 且上下肢運動項合計 ≥2；病前 mRS ≤1；發病 ≤48 小時。
+<ul>
+<li>排除：已取栓或計畫取栓、憂鬱／焦慮病史、正在使用抗憂鬱／抗焦慮藥。</li>
+<li>排除：已使用其他具神經保護說明的藥（edaravone、edaravone-dexborneol、丁苯酞、citicoline 等）[Supplement eMethods 1]。</li>
+</ul>
+</li>
+<li><strong>I</strong>：loberamisal 40 mg 靜脈輸注 60±10 分鐘，每日一次，連續 10 天，加上標準治療。</li>
+<li><strong>C</strong>：外觀相同的安慰劑加上標準治療。</li>
+<li><strong>O</strong>：
+<ul>
+<li>主要終點：90 天 mRS 0–1。</li>
+<li>次要終點：sliding dichotomy mRS、mRS 序位分布 shift、第 10／30 天 NIHSS 改善 ≥4 分、90 天 Barthel Index ≥95。</li>
+<li>探索性終點：MADRS、HAMA。</li>
+<li>安全終點：不良事件（AE）、嚴重不良事件（SAE）、死亡。</li>
+</ul>
+</li>
+</ul>
+<p><strong>設計細節</strong></p>
+<ul>
+<li><strong>時程與規模</strong>：32 家中國醫院；2024-07-24 至 2024-12-07 收案（約 4.5 個月收 998 人）；最後追蹤 2025-04-08。</li>
+<li><strong>隨機化</strong>：中央網路系統（Clinflash IRT），依中心與發病到隨機分派時間（≤12 小時 vs &gt;12 小時）分層，1:1。</li>
+<li><strong>盲法</strong>：病人、研究者、照護者、結果評估者、統計人員皆盲。</li>
+<li><strong>結果評估方式</strong>：90 天 mRS 由各中心受訓盲評者以簡化問卷評定，面訪或電話皆可。<strong>非中央判定</strong>。</li>
+<li><strong>主要分析族群</strong>：至少接受一劑者（modified ITT，997 人）。
+<ul>
+<li>迴歸模型：binomial GLM，log link 求 RR、identity link 求 RD，校正分層因子。</li>
+<li>缺失資料：多重插補（MI，100 組）。</li>
+<li>Intercurrent events 依 ICH-E9(R1) 處理。</li>
+</ul>
+</li>
+<li><strong>雙重統計</strong>：學術團隊（國家中心）分析為主；藥廠出資的外部公司分析作為敏感度分析與送審用。</li>
+<li><strong>多重比較</strong>：只有一個主要 estimand；次要終點未校正，作者自承為探索性。</li>
+<li><strong>主要變項定義</strong>：mRS 0–1 = 無症狀或有症狀但無明顯殘障、能完成所有原有活動。</li>
+</ul>
+<p><strong>Protocol 核對</strong> [Protocol p.12–18]：</p>
+<ul>
+<li>主要終點（90 天 mRS 0–1）與正文一致，<strong>無 outcome switching</strong>。</li>
+<li>樣本數假設與正文一致：71.5% vs 60.7%，power 90%，每組 399 人，預估脫落 20%，共 998 人。</li>
+<li>分層因子一致。</li>
+<li>Protocol 的探索性終點只列 MADRS &gt;12、HAMA &gt;14；正文稱「prespecified」的 MADRS ≥22、HAMA ≥21 閾值不在 protocol synopsis 中。[限制：未逐頁查核 SAP，無法確認是否於 SAP 補列]</li>
+<li>Protocol 封面英文寫「Phase II」，synopsis 寫「Phase III」，推測為翻譯／排版錯誤。</li>
+</ul>
+<h3>5. 研究結果重點整理</h3>
+<p>主要分析族群：loberamisal 502 人 vs 安慰劑 495 人。</p>
+<div class="table-wrap wide"><table>
+<thead>
+<tr>
+<th>變項（代表什麼）</th>
+<th style="text-align:right">Loberamisal</th>
+<th style="text-align:right">安慰劑</th>
+<th style="text-align:right">組間差（95% CI）</th>
+<th style="text-align:right">p 值</th>
+<th>如何解讀</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>mRS 0–1（90 天）</strong>：無殘障，能做所有原有活動</td>
+<td style="text-align:right"><strong>350（69.7%）</strong></td>
+<td style="text-align:right"><strong>279（56.3%）</strong></td>
+<td style="text-align:right">RD <strong>13.28%（7.24 to 19.32）</strong>；RR 1.24（1.12–1.36）</td>
+<td style="text-align:right">未報告</td>
+<td>主要終點陽性，NNT 約 8 [自行計算]</td>
+</tr>
+<tr>
+<td>mRS 0</td>
+<td style="text-align:right">24.5%</td>
+<td style="text-align:right">22.7%</td>
+<td style="text-align:right">＋1.8% [自行計算]</td>
+<td style="text-align:right">未報告</td>
+<td>「完全無症狀」幾乎沒差</td>
+</tr>
+<tr>
+<td>mRS 1</td>
+<td style="text-align:right"><strong>46.1%</strong></td>
+<td style="text-align:right"><strong>35.1%</strong></td>
+<td style="text-align:right">＋11.0% [自行計算]</td>
+<td style="text-align:right">未報告</td>
+<td>效果集中在這一格</td>
+</tr>
+<tr>
+<td>mRS 2</td>
+<td style="text-align:right"><strong>7.8%</strong></td>
+<td style="text-align:right"><strong>21.1%</strong></td>
+<td style="text-align:right">−13.3% [自行計算]</td>
+<td style="text-align:right">未報告</td>
+<td>安慰劑 mRS 2 異常偏多，差異幾乎全來自 1↔2 交界</td>
+</tr>
+<tr>
+<td>mRS 3–6 合計</td>
+<td style="text-align:right">21.5%</td>
+<td style="text-align:right">21.2%</td>
+<td style="text-align:right">＋0.3% [自行計算]</td>
+<td style="text-align:right">未報告</td>
+<td>中重度殘障與死亡完全沒差</td>
+</tr>
+<tr>
+<td><strong>mRS 0–2</strong>：功能獨立</td>
+<td style="text-align:right">77.1%</td>
+<td style="text-align:right">77.3%</td>
+<td style="text-align:right">RD <strong>−0.21%（−5.54 to 5.12）</strong></td>
+<td style="text-align:right">未報告</td>
+<td>獨立比例無差異 [Supplement eTable 7]</td>
+</tr>
+<tr>
+<td><strong>序位 mRS shift</strong></td>
+<td style="text-align:right">—</td>
+<td style="text-align:right">—</td>
+<td style="text-align:right">未估計</td>
+<td style="text-align:right">比例勝算假設檢定 P&lt;.001</td>
+<td>效果不是整體分布平移</td>
+</tr>
+<tr>
+<td><strong>Sliding dichotomy mRS</strong>：依基線嚴重度調整「好結果」門檻</td>
+<td style="text-align:right">49.0%</td>
+<td style="text-align:right">39.8%</td>
+<td style="text-align:right">RD 9.30%（3.08 to 15.52）；RR 1.23</td>
+<td style="text-align:right">未報告</td>
+<td>與主要終點高度重疊，非獨立證據</td>
+</tr>
+<tr>
+<td><strong>NIHSS 改善 ≥4 分（第 10 天）</strong>：早期神經學進步</td>
+<td style="text-align:right">44.7%</td>
+<td style="text-align:right">49.0%</td>
+<td style="text-align:right">RD −4.36%（−10.62 to 1.90）</td>
+<td style="text-align:right">未報告</td>
+<td>數值上反而偏向安慰劑；CI 含 0</td>
+</tr>
+<tr>
+<td>NIHSS 改善 ≥4 分（第 30 天）</td>
+<td style="text-align:right">73.5%</td>
+<td style="text-align:right">72.7%</td>
+<td style="text-align:right">RD 0.86%（−4.76 to 6.48）</td>
+<td style="text-align:right">未報告</td>
+<td>無差異</td>
+</tr>
+<tr>
+<td>NIHSS 平均變化（第 30 天）</td>
+<td style="text-align:right">−4.49</td>
+<td style="text-align:right">−4.16</td>
+<td style="text-align:right">−0.33（−1.02 to 0.35）</td>
+<td style="text-align:right">未報告</td>
+<td>無差異 [Supplement eTable 7]</td>
+</tr>
+<tr>
+<td><strong>Barthel Index ≥95</strong>：日常生活幾乎完全自理</td>
+<td style="text-align:right">70.7%</td>
+<td style="text-align:right">70.4%</td>
+<td style="text-align:right">RD 0.31%（−5.50 to 6.12）</td>
+<td style="text-align:right">未報告</td>
+<td>無差異</td>
+</tr>
+<tr>
+<td>MADRS ≥22（中重度憂鬱）</td>
+<td style="text-align:right">4.9%</td>
+<td style="text-align:right">7.8%</td>
+<td style="text-align:right">RD −3.05%；RR 0.63（0.38–1.04）</td>
+<td style="text-align:right">未報告</td>
+<td>探索性；CI 跨 1</td>
+</tr>
+<tr>
+<td>HAMA ≥21（中重度焦慮）</td>
+<td style="text-align:right">4.7%</td>
+<td style="text-align:right">7.2%</td>
+<td style="text-align:right">RR 0.66（0.39–1.11）</td>
+<td style="text-align:right">未報告</td>
+<td>探索性；CI 跨 1</td>
+</tr>
+<tr>
+<td>mRS 0–1（per-protocol，475 vs 461）</td>
+<td style="text-align:right">71.6%</td>
+<td style="text-align:right">58.6%</td>
+<td style="text-align:right">RD 12.89%（6.84 to 18.95）</td>
+<td style="text-align:right">未報告</td>
+<td>與主要分析一致 [Supplement eTable 4]</td>
+</tr>
+<tr>
+<td>SAE</td>
+<td style="text-align:right">8.6%</td>
+<td style="text-align:right">10.7%</td>
+<td style="text-align:right">−2.1% [自行計算]</td>
+<td style="text-align:right">未報告</td>
+<td>未見傷害訊號</td>
+</tr>
+<tr>
+<td>全死因死亡</td>
+<td style="text-align:right">1.2%（6）</td>
+<td style="text-align:right">2.0%（10）</td>
+<td style="text-align:right">−0.8% [自行計算]</td>
+<td style="text-align:right">未報告</td>
+<td>事件少，無法下結論</td>
+</tr>
+<tr>
+<td><strong>心臟 SAE</strong></td>
+<td style="text-align:right"><strong>1.6%（8）</strong></td>
+<td style="text-align:right"><strong>0.2%（1）</strong></td>
+<td style="text-align:right">＋1.4% [自行計算]</td>
+<td style="text-align:right">未報告</td>
+<td>小數字但不平衡，需追蹤 [Supplement eTable 14]</td>
+</tr>
+</tbody>
+</table></div>
+<p>補充：</p>
+<ul>
+<li><strong>主要結果「全靠 mRS 1 vs 2 交界」</strong>。這是本篇最關鍵的數據特徵：
+<ul>
+<li>mRS 0、mRS 0–2、mRS 3–6、Barthel、NIHSS 全部沒有差異；</li>
+<li>唯一的大幅差異是「安慰劑組 mRS 2 = 21.1% vs 藥物組 7.8%」。</li>
+<li>Figure 2 堆疊長條圖的連接線清楚顯示這個「凹陷」。觀察資料（eFigure 1：7.8 vs 21.1）與 PP 族群（eFigure 2：7.6 vs 21.7）型態相同，不是插補造成的。</li>
+</ul>
+</li>
+<li><strong>追蹤與缺失</strong>：缺失 14（2.8%）vs 20（4.0%）。Tipping-point 圖（eFigure 3）中，loberamisal 0–14 人 × 安慰劑 0–20 人的所有組合皆為藍點（RR 下界 &gt;1），對缺失資料穩健。</li>
+<li><strong>數字無法互相對上</strong>（下面計數皆為自行計算）：
+<ul>
+<li>Table 2 的 mRS 分布加總（123+232 = 355；112+174 = 286）≠ 主要結果的 350 與 279。</li>
+<li>Table 2 推出的 mRS 0–2（394、390）≠ eTable 7（387、383）。</li>
+<li>eFigure 1 觀察資料的 mRS 0–1（約 70.9% × 488 ≈ 346；58.5% × 475 ≈ 278）≠ eTable 5 敏感度分析 4（缺失算失敗）的 341、271。</li>
+<li>推測主要分析對 intercurrent events（如使用禁用藥物）採不同策略 [推論]，但正文與 markdown 保留的 supplement 皆未說明。每組差 5–7 人、兩組方向一致，不改變結論，屬透明度問題。</li>
+</ul>
+</li>
+<li><strong>死亡數不一致</strong>：Table 2 插補後 mRS 6 為 6 vs <strong>12</strong>，但 Table 3 實際死亡為 6 vs 10。生命狀態通常可查證，卻被插補出額外死亡，處理方式不恰當，但影響甚小。</li>
+</ul>
+<h3>6. 作者討論與評論重點</h3>
+<ul>
+<li><strong>作者主要訊息</strong>：雙機轉神經保護／修復劑，48 小時窗內使用可提高 90 天 mRS 0–1，安全性與安慰劑相當。</li>
+<li><strong>與文獻的關係</strong>：作者以 nerinetide 試驗支持「PSD-95 是有希望的標靶」；以 S44819（α5-GABA_A 拮抗劑）的失敗對比本藥是 α2 正向調節劑。</li>
+<li><strong>作者自承限制</strong>：僅中國族群；輕症與重症代表性不足、排除取栓；多個次要終點無差異「削弱主要結果」；缺乏影像與生物標記。</li>
+<li><strong>評估</strong>：
+<ul>
+<li><strong>最大缺漏</strong>：沒有討論「效果全集中在 mRS 1↔2 交界、mRS 0–2 完全無差異」這個核心異常。</li>
+<li>把 &gt;24 小時給藥仍有效歸因於抗發炎與修復機轉，但無任何機轉資料支持。</li>
+<li>「血栓溶解者未增加出血轉化」的宣稱沒有呈現對應次族群數據；全體 AE 中，顱內出血（3 vs 0）、出血性轉化（2 vs 0）、硬膜下血腫（2 vs 0）數值上偏向藥物組 [Supplement eTable 13]。</li>
+<li>「Full functional outcome」一詞誇大了 mRS 0–1：mRS 1 仍有症狀。</li>
+<li>「Neuroreparative therapy」超出資料：沒有任何修復性證據。</li>
+</ul>
+</li>
+</ul>
+<h3>7. 外部專業意見</h3>
+<p><strong>同期 editorial</strong>：Saver JL. <em>Neuroprotective Therapy for Acute Ischemic Stroke: A Tantalizing Prospect.</em> JAMA 2026;336(18):1608–1609. doi:10.1001/jama.2026.17400 [外部: JAMA editorial 全文]</p>
+<ul>
+<li><strong>肯定的部分</strong>：
+<ul>
+<li>樣本大、基線嚴重度同質、安慰劑對照、失訪 &lt;4%、多重插補合理、試驗網絡經驗豐富。</li>
+<li>10 天療程讓藥物有機會在三個時期發揮作用（橋接保護、再灌流保護、修復）。</li>
+<li>48 小時窗口實務上可涵蓋大部分病人。</li>
+</ul>
+</li>
+<li><strong>方法學質疑</strong>：
+<ul>
+<li>排除取栓，可能使效果較易偵測，也無法回答與取栓併用的效果。</li>
+<li>10 天住院靜脈療程在多數國家難以執行。</li>
+<li>療程太長，無法分辨效益來自哪一個機轉時期。</li>
+<li>結果由各中心評估、非中央判定，無法完全排除破盲造成的評估偏差。</li>
+<li>全為亞洲族群，顱內動脈粥狀硬化比例高。</li>
+</ul>
+</li>
+<li><strong>「違反既有認知」的四點警訊</strong>：
+<ol>
+<li>前臨床開發未經 STAIR 建議的嚴格轉譯評估，文獻上只有單一實驗室、單一物種的研究。</li>
+<li>一般認為神經保護在暫時性缺血（有再灌流）時最有效，但本試驗族群以永久性缺血為主。</li>
+<li>效果量與早期 IV 血栓溶解相當，遠超過對神經保護劑的預期。</li>
+<li>設計與過去許多失敗試驗無本質差異。</li>
+</ol>
+</li>
+<li><strong>結論</strong>：近期「單一陽性試驗」接連出現（TASTE-SL、EMPHASIS、TISS），「非凡宣稱需要非凡證據」。Saver 建議公開個別病人資料供獨立分析，並以多國獨立試驗複製。</li>
+</ul>
+<p><strong>其他外部意見</strong>：搜尋結果中有二手來源轉述 UpToDate 評論，指出多項其他神經學結果無益、可推廣性有限、效果量異常大 [外部: 搜尋摘要，未取得原文，僅供參考]。</p>
+<h3>8. 臨床建議</h3>
+<ul>
+<li><strong>可考慮適用的情境</strong>：目前沒有（藥物未在台灣上市）。若未來可取得，與試驗族群最接近的是：
+<ul>
+<li>80 歲以下、病前 mRS ≤1、NIHSS 7–9 左右的中度中風；</li>
+<li>未接受取栓、發病 48 小時內、可住院 10 天接受每日靜脈輸注。</li>
+</ul>
+</li>
+<li><strong>不建議直接套用</strong>：
+<ul>
+<li>取栓病人；NIHSS ≥15 的重症（全試驗僅 10 人）；&gt;80 歲；</li>
+<li>有憂鬱／焦慮病史或正在使用相關藥物者；</li>
+<li>住院天數短、無法完成 10 天療程的體系；非亞洲族群。</li>
+</ul>
+</li>
+<li><strong>給臨床醫師的實務建議</strong>：
+<ol>
+<li>把本篇視為「待複製的單一陽性試驗」，不應因此改變現行再灌流優先的流程。</li>
+<li>向病人或家屬解釋時要說清楚：觀察到的好處主要是「從輕微殘障（mRS 2）變成無明顯殘障（mRS 1）」，<strong>獨立生活比例（mRS 0–2）並沒有改變</strong>。</li>
+<li>等待國際多中心、中央盲評的確認試驗。</li>
+</ol>
+</li>
+<li><strong>證據強度</strong>：<strong>中偏弱</strong>。設計嚴謹、統計穩健；但屬單一國家單一網絡的單一試驗，效果集中於最不可靠的 mRS 交界、次要終點全數無效、藥廠角色揭露矛盾。</li>
+</ul>
+<hr />
+<h2>SKILL-A：批判性評讀</h2>
+<h3>A. 補充技術細節</h3>
+<ul>
+<li><strong>樣本數</strong>：事前估算每組 399 人（power 90%）。預估脫落 20%，實際僅約 3.4%，有效樣本遠超需求。效果量與第二期試驗假設（RD 10.8%）接近，<strong>不屬於 underpowered positive</strong>。</li>
+<li><strong>分派隱藏</strong>：中央網路系統，屬充分隱藏。分層錯誤 2 vs 2 例 [Supplement eTable 2]。</li>
+<li><strong>盲法</strong>：
+<ul>
+<li>正文寫「Loberamisal was formulated as a lyophilized powder with a corresponding solvent, whereas the placebo consisted of lyophilized powder only」，字面上兩組配製不同。但 protocol 載明兩組都用同一種含丙二醇的專用溶劑 [Protocol p.15]，正文描述可能不精確。</li>
+<li>主動藥賦形劑含 PEG-15-hydroxystearate（Solutol），可能引起輸注反應。安慰劑凍晶粉成分未明。</li>
+<li>未做盲法成功度檢查。</li>
+</ul>
+</li>
+<li><strong>ITT vs PP</strong>：主要分析為 modified ITT（≥1 劑），只排除 1 例未給藥；PP 結果一致。PP 族群定義為「90 天 mRS 完整」，本質上接近 complete-case。</li>
+<li><strong>缺失資料</strong>：MI（MAR 假設）。另做最差情境、LOCF、不插補與 tipping-point 分析，均一致 [Supplement eTable 5、eFigure 3]。</li>
+<li><strong>序位分析</strong>：比例勝算假設不成立（P&lt;.001），預先指定的 common OR 無法估計。這本身就是重要訊息：效果不是整條分布的平移。</li>
+</ul>
+<h3>B. 批判性評估</h3>
+<h4>B1. 假說與理論邏輯</h4>
+<ul>
+<li><strong>問題</strong>：機轉敘事（多重路徑）與觀察到的時間模式不吻合。
+<ul>
+<li><strong>文內證據</strong>：eFigure 4 依時間分層的 RR：≤12 小時 1.16（0.94–1.43）、12–24 小時 1.22、&gt;24 小時 1.25；交互作用 P=0.80。超過一半病人在發病 &gt;24 小時才給藥（median 25 小時）。</li>
+<li><strong>風險方向</strong>：經典興奮性毒性（PSD-95–nNOS）應在超早期最有效。&gt;24 小時效果不減，若為真，只能靠「修復／抗發炎」機轉解釋，但文中沒有任何修復性生物標記或影像。</li>
+</ul>
+</li>
+<li><strong>最可能的合理機轉</strong>：
+<ol>
+<li>亞急性抗發炎或促可塑性作用；</li>
+<li>α2-GABA_A 的抗焦慮作用，可能改善「主觀上能否恢復所有原有活動」（這正是 mRS 1 vs 2 的判準），而非真正減少神經損傷。</li>
+</ol>
+</li>
+<li><strong>最可疑的敘事跳躍</strong>：
+<ol>
+<li>把前臨床「神經新生、突觸生成」直接套到人體結果（Discussion 第 3 段）；</li>
+<li>「neuroreparative」一詞進入結論，卻沒有任何修復證據；</li>
+<li>宣稱血栓溶解者無出血增加，但未呈現該次族群資料。</li>
+</ol>
+</li>
+<li><strong>需要什麼才放心</strong>：梗塞體積、NIHSS 軌跡、生物標記等機轉資料，以及能在超早期病人顯示更大效果的時間梯度。</li>
+</ul>
+<h4>B2. 受試者與外推性</h4>
+<p><strong>收案與篩選的異常</strong></p>
+<ul>
+<li><strong>篩選轉換率極高</strong>：篩選 1,057 人、隨機 998 人（94%）。中風試驗通常 &lt;30%，代表篩選記錄只登錄了已預篩的病人，真實可納入比例未知。</li>
+<li><strong>收案速度極快</strong>：4.5 個月收 998 人，約每月 220 人。收案集中於少數醫院：
+<ul>
+<li>大慶油田總醫院 90、衡水人民醫院 90、南陽南石醫院 87、延安大學咸陽醫院（第十七病區）80；</li>
+<li>同院另一病區 47，同院合計 127；</li>
+<li>前四家合計 347 人（35%）。</li>
+<li>主導單位天壇醫院僅收 7 人 [Supplement eMethods 3]。</li>
+<li>未報告依中心的效果異質性。</li>
+</ul>
+</li>
+<li><strong>NIHSS 堆積在門檻</strong>：入選標準 NIHSS ≥7，但次族群「≤7」有 405 人（40.6%）[Supplement eTable 6]，代表四成病人剛好在門檻值。median 8（IQR 7–8/7–9）。這是門檻附近評分堆積的典型樣態，族群實際上偏輕至中度。</li>
+</ul>
+<p><strong>外推性分級</strong></p>
+<ol>
+<li><strong>一般健康族群</strong>：不適用。</li>
+<li><strong>特定病患族群</strong>：
+<ul>
+<li>中國、中度、非取栓、48 小時內、可住院 10 天者：<strong>近</strong>（但需複製）。</li>
+<li>西方族群、取栓病人、重症：<strong>遠</strong>。</li>
+</ul>
+</li>
+<li><strong>特殊族群</strong>：
+<ul>
+<li>
+<blockquote>
+<p>80 歲：被排除。</p>
+</blockquote>
+</li>
+<li>有精神病史者：被排除。這對一個作用於 GABA_A 的藥物格外重要，因為最可能受藥物精神作用影響的族群被系統性排除，同時也無法評估藥物在這些人的安全性。</li>
+</ul>
+</li>
+</ol>
+<h4>B3. 研究設計與偏差</h4>
+<p><strong>1. 結果評估偏差：mRS 1 vs 2 交界的脆弱性（最重要）</strong></p>
+<ul>
+<li><strong>問題</strong>：效果幾乎全在 mRS 1↔2 交界，而這正是 mRS 評分者間一致性最差的交界。</li>
+<li><strong>文內證據</strong>：
+<ul>
+<li>評估方式為各中心評估、簡化問卷、可電話評估（Methods「Outcomes」）。</li>
+<li>mRS 2 為 7.8% vs 21.1%（Table 2、Figure 2），mRS 0–2 為 77.1% vs 77.3%（eTable 7）。</li>
+<li>Barthel ≥95 沒有差異（70.7% vs 70.4%）。</li>
+</ul>
+</li>
+<li><strong>風險方向</strong>：若有局部破盲，或評分者對「能否完成所有原有活動」的判定有系統性傾向，就可能在不改變真實殘障的情況下製造出 13% 的差異。偏差方向為<strong>放大效果</strong>。</li>
+<li><strong>需要什麼才放心</strong>：中央盲評（錄影或錄音判定）、結構化 mRS 問卷、評分者間一致性資料，以及依中心分層的效果。</li>
+</ul>
+<p><strong>2. 對照組適當性（Gyawali 框架）</strong></p>
+<ul>
+<li>安慰劑加標準治療，但<strong>禁用 edaravone／edaravone-dexborneol、丁苯酞、citicoline 等中國常規「腦保護」藥</strong>。</li>
+<li>在中國臨床脈絡中，這些藥多為常規使用，因此對照組可能比「真實世界常規照護」更少輔助治療。對超越安慰劑的檢定沒有偏差，但無法回答「與現行中國常用神經保護劑相比如何」。</li>
+<li>禁用藥的 intercurrent event 為 12 vs 13 例，兩組平衡 [Supplement eTable 1]。</li>
+</ul>
+<p><strong>3. 前期證據</strong></p>
+<ul>
+<li>第二期試驗為陽性（40 mg 組最佳），但正文未提供該試驗的樣本數與 CI。第二期試驗的效果量本身可能被高估（winner's curse），而第三期試驗的效果卻幾乎完全重現第二期的假設值（69.7% vs 56.3%，對照假設 71.5% vs 60.7%）。這在神經保護領域極為罕見，正是編輯評論所說的「違反既有認知」。</li>
+</ul>
+<p><strong>4. 設計上可能放大效果的點（最多三點）</strong></p>
+<ol>
+<li><strong>非中央評估的 mRS 1/2 判定</strong>：放大效果。</li>
+<li><strong>療程 10 天的潛在破盲</strong>：Solutol 賦形劑、失眠（7.8% vs 5.1%）與睡眠障礙（3.6% vs 2.4%）等可察覺效應 [Supplement eTable 11]，可能部分破盲，偏向放大效果。</li>
+<li><strong>高度集中的少數收案中心與極快的收案速度</strong>：若特定中心評估標準不同，可能放大，也可能稀釋效果，方向無法判定。</li>
+</ol>
+<h4>B4. 測量工具與實務意義</h4>
+<ul>
+<li><strong>終點的臨床意義</strong>：mRS 0–1 是病人重視的結果。但 1 與 2 的差別是「能否完成所有原有活動」，屬殘障程度的細微差別。</li>
+<li><strong>效用加權 mRS</strong>：以 Chaisinanunkul 權重估算，兩組約 0.834 vs 0.808，差約 0.027 [自行計算]。量級小於 RD 13% 給人的印象。</li>
+<li><strong>NNT 約 8 的含義</strong>：每治療 8 人，多 1 人從 mRS 2 變成 mRS 1；但沒有人因此從依賴變成獨立，也沒有人免於死亡。</li>
+<li><strong>真實世界效用</strong>：就算結果為真，好處限於中度中風、非取栓族群的「殘障程度微調」，且需付出 10 天住院靜脈療程的成本。在住院天數短的醫療體系，可行性有限。</li>
+</ul>
+<h3>C. 統計與資料完整性</h3>
+<h4>C1. 結果分類（CI + MCID）</h4>
+<ul>
+<li><strong>MCID</strong>：文內未預先指定。[推算] 以急性中風 mRS 二分終點常用的最小臨床重要絕對差約 5%（NNT 20）作為 δ。</li>
+<li><strong>主要終點</strong>：RD 13.28%（7.24–19.32），CI 下界 &gt;5% → <strong>POSITIVE ✅</strong>（統計與預設 MCID 皆達標）。
+<ul>
+<li>但必須加註：效果集中在 mRS 1↔2 交界，用 mRS 0–2 或效用加權看時，臨床量級明顯縮小。</li>
+</ul>
+</li>
+<li><strong>mRS 0–2</strong>：RD −0.21%（−5.54 to 5.12），CI 窄且幾乎落在 ±5% 內 → <strong>NEUTRAL ⚖️（接近實質等效）</strong>。這是重要的反證：藥物沒有讓更多人恢復獨立。</li>
+<li><strong>Barthel ≥95</strong>：RD 0.31%（−5.50 to 6.12）→ NEUTRAL / INCONCLUSIVE 邊緣（CI 略超 ±5%）。</li>
+<li><strong>NIHSS 第 10 天改善</strong>：RD −4.36%（−10.62 to 1.90）→ <strong>INCONCLUSIVE ❓</strong>，且點估計偏向安慰劑。</li>
+<li><strong>NIHSS 第 30 天改善</strong>：RD 0.86%（−4.76 to 6.48）→ NEUTRAL / INCONCLUSIVE 邊緣。</li>
+<li><strong>心理量表（探索性）</strong>：CI 跨過 1 → INCONCLUSIVE。</li>
+</ul>
+<h4>C2. Underpowered 與 Winner's Curse</h4>
+<p>主要終點 CI 窄、事件數充足，不屬於 underpowered positive。但需留意兩點：</p>
+<ul>
+<li>第二期試驗的效果量用於樣本數估算，而第三期幾乎完全重現該值。</li>
+<li>結果應視為「可能有的真實效果 + 系統性評估偏差」的合成，而非抽樣誤差問題。</li>
+</ul>
+<h4>C3. Bayesian 補充分析</h4>
+<p>主要終點 CI 遠離無效值，頻率學派分類明確，不需 Bayesian 補充來判定效益方向。真正的不確定性來自偏差（評估、破盲），而非隨機誤差，Bayesian prior 無法處理這一點。</p>
+<h4>C4. 報告完整性與其他問題</h4>
+<p><strong>統計面紅旗</strong></p>
+<ol>
+<li><strong>全文沒有任何 p 值</strong>，只報 CI（JAMA 風格，可接受），但次要終點宣稱「無顯著差異」時也沒有交代多重比較策略。</li>
+<li><strong>序位 shift 因比例勝算假設不成立而「不估計」</strong>：這是預先指定的次要終點，應改用 win ratio、Wilcoxon 或 generalized OR 等不依賴比例勝算的方法，而不是直接放棄。放棄估計等於隱藏了「效果非單調」的訊息。</li>
+<li><strong>Table 2 分布、主要結果、eTable 5、eTable 7、eFigure 1 之間的人數彼此不一致</strong>（每組差 5–7 人），intercurrent-event 策略未在正文說明。</li>
+<li><strong>插補出超過實際死亡數的 mRS 6</strong>（安慰劑 12 vs 實際 10）。</li>
+<li><strong>eTable 9 的註腳自相矛盾</strong>：寫「缺失視為未達閾值」，但事件數反而比 MI 版本更多（例如 MADRS ≥12：69 vs 51），推測實際是「缺失視為達閾值」或註腳寫錯。這一版本中 MADRS ≥22 與 HAMA 各閾值「顯著」，正文並未引用，作者未藉此誇大，但報告品質不佳。</li>
+<li><strong>MADRS ≥22、HAMA ≥21 閾值未見於 protocol synopsis</strong>，卻被稱為 prespecified。</li>
+<li><strong>雙統計團隊</strong>：藥廠出資的團隊負責送審分析，學術團隊的 SAP 定稿日期未揭露；資料庫鎖定與解盲同日。</li>
+<li><strong>eFigure 4 的病前 mRS 分層標為「No / Yes」</strong>，應為 0 / 1，屬圖表標示錯誤。</li>
+</ol>
+<h3>D. 次組分析評估</h3>
+<p>預先指定 7 個次族群（eFigure 4），所有交互作用 P 值皆 &gt;0.3，森林圖點估計皆落在 1.16–1.54 之間。主要觀察：</p>
+<ul>
+<li>≤12 小時：RR 1.16（0.94–1.43），n=139。</li>
+<li>接受血栓溶解：RR 1.26（0.97–1.64），n=171。</li>
+<li>病前 mRS 1：RR 1.54（0.92–2.58），n=84。</li>
+<li>NIHSS ≥15：0/5 vs 0/5，無法估計。</li>
+</ul>
+<div class="table-wrap wide"><table>
+<thead>
+<tr>
+<th>次組</th>
+<th>交互作用檢定</th>
+<th>方向一致</th>
+<th>預先指定</th>
+<th>機轉合理</th>
+<th>可信度</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>時間窗（≤12 / 12–24 / &gt;24 小時）</td>
+<td>P=0.80</td>
+<td>無外部比較</td>
+<td>是</td>
+<td>「晚期效果不減」與神經保護機轉相悖</td>
+<td>低：只能說「無證據顯示異質」</td>
+</tr>
+<tr>
+<td>血栓溶解 有／無</td>
+<td>P=0.81</td>
+<td>—</td>
+<td>是</td>
+<td>中性</td>
+<td>低：n=171，CI 跨 1</td>
+</tr>
+<tr>
+<td>年齡、性別、中風史</td>
+<td>0.42–0.79</td>
+<td>—</td>
+<td>是</td>
+<td>中性</td>
+<td>中（一致性尚可）</td>
+</tr>
+<tr>
+<td>基線 NIHSS</td>
+<td>P=0.31</td>
+<td>—</td>
+<td>是</td>
+<td>≥15 只有 10 人</td>
+<td>推測性（重症無資料）</td>
+</tr>
+</tbody>
+</table></div>
+<p>結論：次族群一致性支持「效果不集中在特定族群」，但同時也代表沒有任何生物學梯度可以佐證機轉。作者說「血栓溶解者也可能受益」屬過度推論。</p>
+<h3>E. 紅旗清單</h3>
+<ul>
+<li><strong>效果僅在 mRS 1↔2 交界</strong>：mRS 0、mRS 0–2、mRS 3–6、Barthel、NIHSS 全部沒有差異；序位 shift 因比例勝算假設不成立而未估計。</li>
+<li><strong>局部、簡化、可電話的 mRS 評估</strong>：無中央判定。</li>
+<li><strong>效果量與 IV 血栓溶解相當</strong>：對於以永久性缺血為主、&gt;50% 在 24 小時後給藥的族群而言，生物學上難以置信（Saver editorial）。</li>
+<li><strong>前臨床證據只有單一實驗室、單一物種。</strong></li>
+<li><strong>COI 揭露矛盾</strong>：「None reported」與「funder 無角色」的聲明，對照產業贊助的 protocol 與藥廠出資的送審統計。</li>
+<li><strong>異常的收案動態</strong>：篩選轉換率 94%、4.5 個月收 998 人、35% 來自四家醫院、40% 的 NIHSS 堆積在門檻值。</li>
+<li><strong>補充資料數字多處無法互相對上。</strong></li>
+<li><strong>心臟 SAE 不平衡</strong>：8 vs 1，包含急性心肌梗塞、心因性休克、心跳呼吸停止、冠狀動脈硬化 3 例。數量小，但不應被「整體 SAE 較少」掩蓋。</li>
+<li><strong>同一團隊同一終點的連續陽性試驗</strong>：與 TASTE-SL 模式相同，缺乏獨立複製。</li>
+</ul>
+<h3>F. 反向解釋</h3>
+<ol>
+<li><strong>評估或破盲偏差製造了 mRS 1/2 的重新分類</strong>
+<ul>
+<li>支持：效果只在最主觀的交界、各中心評估、可察覺的 AE 差異（失眠、睡眠障礙）、其他客觀量表全部無效。</li>
+<li>反對：觀察資料與 PP 族群型態一致；tipping-point 分析穩健；但這些都無法排除系統性評估偏差。</li>
+</ul>
+</li>
+<li><strong>藥物的抗焦慮／情緒作用影響「主觀上能否恢復原有活動」，而非減少腦損傷</strong>
+<ul>
+<li>支持：作用於 α2-GABA_A；前臨床有抗憂鬱／抗焦慮效果；MADRS ≥22（4.9% vs 7.8%）與 HAMA 的點估計偏向藥物組。</li>
+<li>反對：心理量表差異未達統計意義；且排除了憂鬱／焦慮病史者。</li>
+</ul>
+</li>
+<li><strong>真實的亞急性修復效果，剛好只在輕度殘障這一段可被偵測</strong>
+<ul>
+<li>支持：族群偏輕（NIHSS 7–9），天花板效應下，只剩 1↔2 交界有改善空間；&gt;24 小時效果不減與修復機轉相符。</li>
+<li>反對：Barthel ≥95 與 NIHSS 第 30 天完全沒差異；文中沒有任何機轉資料。</li>
+</ul>
+</li>
+<li><strong>中心層級異質性（少數高收案中心驅動結果）</strong>
+<ul>
+<li>支持：收案集中、速度極快。</li>
+<li>反對：依中心分層隨機；但未報告中心層級分析，無法判定。</li>
+</ul>
+</li>
+</ol>
+<h3>G. 最終裁決</h3>
+<ul>
+<li><strong>整體可信度</strong>：<strong>中偏低</strong>。內部設計（隨機化、分派隱藏、追蹤、缺失資料處理）達高水準，但結果的「形狀」（只有 mRS 1↔2 改變）、生物學合理性與評估方式，使真實效果量高度可疑。</li>
+<li><strong>可採用的條件</strong>：只能作為「值得複製的假說性陽性訊號」，以及作為設計確認試驗的依據。</li>
+<li><strong>不建議採用的情境</strong>：改變臨床常規、替代或延後再灌流治療、用於取栓病人、重症、非亞洲族群，或以「能讓病人恢復獨立」為理由向病人解說。</li>
+<li><strong>最需要的三個改進</strong>：
+<ol>
+<li>多國、獨立贊助、<strong>中央盲評</strong>（錄影判定）的確認試驗，並預先指定不依賴比例勝算的序位分析（如 utility-weighted mRS 或 win ratio）。</li>
+<li>公開個別病人資料，提供中心層級效果、mRS 評估方式（電話 vs 面訪）分層與盲法檢查。</li>
+<li>機轉佐證：梗塞體積或 MRI 演變、生物標記，以及超早期（&lt;6 小時）族群的劑量時間反應。</li>
+</ol>
+</li>
+<li><strong>一句話結論</strong>：這款中國新藥在單一大型試驗中讓較多中風病人恢復到「無明顯殘障」，但好處只集中在輕微殘障的分界上，需獨立試驗確認。</li>
+</ul>
+<hr />
+<h3>主要結果效果量表（臨床研究必要輸出）</h3>
+<div class="table-wrap wide"><table>
+<thead>
+<tr>
+<th>指標</th>
+<th>介入組</th>
+<th>對照組</th>
+<th>效果量</th>
+<th>95% CI</th>
+<th>ARD</th>
+<th>MCID</th>
+<th>結果分類</th>
+<th>實務意義</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>mRS 0–1（90 天）</td>
+<td>69.7%</td>
+<td>56.3%</td>
+<td>RR 1.24</td>
+<td>1.12–1.36</td>
+<td>＋13.3%</td>
+<td>5% [推算]</td>
+<td>POSITIVE（需附註：效果集中於 1↔2 交界）</td>
+<td>NNT 約 8，增益是「輕微殘障 → 無明顯殘障」</td>
+</tr>
+<tr>
+<td>mRS 0–2</td>
+<td>77.1%</td>
+<td>77.3%</td>
+<td>RR 1.00</td>
+<td>0.93–1.07</td>
+<td>−0.2%</td>
+<td>5% [推算]</td>
+<td>NEUTRAL</td>
+<td>獨立生活比例無改變</td>
+</tr>
+<tr>
+<td>Sliding dichotomy</td>
+<td>49.0%</td>
+<td>39.8%</td>
+<td>RR 1.23</td>
+<td>1.07–1.42</td>
+<td>＋9.3%</td>
+<td>5% [推算]</td>
+<td>IMPRECISE (+)</td>
+<td>與主要終點重疊，非獨立證據</td>
+</tr>
+<tr>
+<td>NIHSS 改善 ≥4（第 10 天）</td>
+<td>44.7%</td>
+<td>49.0%</td>
+<td>RR 0.91</td>
+<td>0.80–1.04</td>
+<td>−4.4%</td>
+<td>5% [推算]</td>
+<td>INCONCLUSIVE</td>
+<td>早期神經學無改善訊號</td>
+</tr>
+<tr>
+<td>Barthel ≥95</td>
+<td>70.7%</td>
+<td>70.4%</td>
+<td>RR 1.00</td>
+<td>0.92–1.09</td>
+<td>＋0.3%</td>
+<td>5% [推算]</td>
+<td>NEUTRAL / INCONCLUSIVE 邊緣</td>
+<td>日常生活自理無差異</td>
+</tr>
+<tr>
+<td>SAE</td>
+<td>8.6%</td>
+<td>10.7%</td>
+<td>—</td>
+<td>未報告</td>
+<td>−2.1%</td>
+<td>—</td>
+<td>無傷害訊號</td>
+<td>但心臟 SAE 8 vs 1 需監測</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+<p><strong>外部來源</strong></p>
+<ul>
+<li><a href="https://jamanetwork.com/journals/jama/issue">Saver JL. Neuroprotective Therapy for Acute Ischemic Stroke: A Tantalizing Prospect. JAMA 2026（doi:10.1001/jama.2026.17400），以本機擷取之全文為據</a></li>
+<li><a href="https://media.jamanetwork.com/media-releases/10.1001/jama.2026.16557">JAMA media release – LAIS</a></li>
+<li><a href="https://pubmed.ncbi.nlm.nih.gov/42721021/">PubMed 42721021</a></li>
+<li><a href="https://pubmed.ncbi.nlm.nih.gov/38372981/">TASTE-SL（PubMed 38372981）</a></li>
+<li><a href="https://en.simcere.com/news/detail.aspx?mtt=1569">Simcere – TASTE-2 新聞稿</a></li>
+<li><a href="https://hosted.bmj.com/stroke-research-in-china/assets/pdf/Stroke%20Research%20in%20China%202025.pdf">Stroke Research in China 2025（BMJ）</a></li>
+<li><a href="https://impactfactorforjournal.com/jama-impact-factor/">JAMA Impact Factor（聚合網站）</a></li>
+<li><a href="https://manusights.com/blog/jama-impact-factor">Manusights – JAMA 接受率</a></li>
+<li><a href="https://medicaldialogues.in/neurology-neurosurgery/news/loberamisal-improves-functional-recovery-after-acute-ischemic-stroke-jama-179284">Medical Dialogues 報導</a></li>
+</ul>
+
+<footer class="appraisal-meta">評讀資訊：模型：claude-opus-5-5 (claude)  ·  route：rct  ·  產出時間：2026-11-15 13:50 CST</footer>
+</main>
+</body>
+</html>
