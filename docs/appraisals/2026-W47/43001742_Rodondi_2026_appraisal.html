@@ -1,0 +1,863 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Discontinuing Statins in Older Adults without Cardiovascular Disease.</title>
+<style>
+  :root {
+    --bg: #fafafa;
+    --card: #ffffff;
+    --text: #1a1a1a;
+    --muted: #6b6b6b;
+    --border: #e5e5e5;
+    --accent: #0b5fff;
+  }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang TC",
+      "Microsoft JhengHei", sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    margin: 0;
+    padding: 24px 16px 64px;
+    line-height: 1.72;
+  }
+  main {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    margin: 0 auto;
+    max-width: 840px;
+    padding: 22px 26px;
+  }
+  nav {
+    margin: 0 auto 14px;
+    max-width: 840px;
+    color: var(--muted);
+    font-size: 14px;
+  }
+  a { color: var(--accent); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  h1, h2, h3, h4 { line-height: 1.35; }
+  h1 { font-size: 26px; margin-top: 0; }
+  h2 { border-top: 1px solid var(--border); padding-top: 18px; }
+  code {
+    background: rgba(127, 127, 127, 0.12);
+    border-radius: 4px;
+    padding: 1px 4px;
+  }
+  .table-wrap {
+    margin: 1em 0;
+    overflow-x: auto;
+  }
+  .table-wrap.wide {
+    /* Break out of the 840px prose column, centred on the viewport. */
+    width: min(1040px, calc(100vw - 32px));
+    margin-left: calc(50% - min(520px, 50vw - 16px));
+  }
+  table {
+    border-collapse: collapse;
+    table-layout: auto;
+    width: 100%;
+  }
+  .table-wrap.wide {
+    /* Opaque so the <main> card border does not show through the table. */
+    background: var(--card);
+  }
+  /* Width hints go on <th> as percentages: Chrome's auto table layout
+     mis-sizes columns (and overflows) when cells carry min-width. */
+  .table-wrap.wide th:first-child {
+    /* Variable + plain-language definition, e.g. "NCPV (noncalcified ...)". */
+    width: 26%;
+  }
+  .table-wrap.wide th:last-child {
+    /* Last column is usually a one-line interpretation. */
+    width: 20%;
+  }
+  th, td {
+    border: 1px solid var(--border);
+    /* Wrap only at spaces: never split an English word mid-letter. */
+    overflow-wrap: normal;
+    word-break: normal;
+    hyphens: manual;
+    padding: 6px 8px;
+    text-align: left;
+    vertical-align: top;
+  }
+  blockquote {
+    border-left: 3px solid var(--accent);
+    color: var(--muted);
+    margin-left: 0;
+    padding-left: 14px;
+  }
+  .appraisal-meta {
+    border-top: 1px solid var(--border);
+    margin-top: 28px;
+    padding-top: 14px;
+    color: var(--muted);
+    font-size: 13px;
+  }
+  @media (max-width: 600px) {
+    body {
+      padding: 12px 8px 40px;
+    }
+    main {
+      padding: 16px 12px;
+    }
+    h1 {
+      font-size: 22px;
+    }
+    table {
+      font-size: 12px;
+    }
+    .table-wrap.wide {
+      width: calc(100vw - 16px);
+      margin-left: calc(50% - 50vw + 8px);
+    }
+    th, td {
+      padding: 4px 5px;
+    }
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #1a1a1a;
+      --card: #242424;
+      --text: #e8e8e8;
+      --muted: #999;
+      --border: #333;
+      --accent: #6ea8ff;
+    }
+  }
+</style>
+</head>
+<body>
+<nav><a href="../../2026-W47.html">← 回到 2026-W47 週報</a></nav>
+<main>
+<h1>Discontinuing Statins in Older Adults without Cardiovascular Disease.</h1>
+<h1>STREAM 試驗批判性評讀：70 歲以上、多重慢性病、無心血管疾病長者停用 statin</h1>
+<hr />
+<h2>SECTION-0：文章全面描述</h2>
+<h3>0. 文章身份證</h3>
+<ul>
+<li><strong>標題</strong>：Discontinuing Statins in Older Adults without Cardiovascular Disease（STREAM）</li>
+<li><strong>期刊／年份</strong>：<em>N Engl J Med</em> 2026；2026 年 11 月 7 日線上刊出 [文內]</li>
+<li><strong>DOI</strong>：10.1056/NEJMoa2606634；ClinicalTrials.gov NCT05178420 [文內]</li>
+<li><strong>文章類型</strong>：多國、多中心、開放標籤、結果評估者盲化（PROBE 型）、隨機分派<strong>非劣性</strong>試驗 → SKILL-A（RCT + A1 非劣性子模組）</li>
+<li><strong>重要提醒</strong>：本試驗的「新處置」是<strong>停藥</strong>，「標準處置」是<strong>繼續用藥</strong>。非劣性的意思是：停藥造成的事件增加，沒有超過作者事先設定可以容忍的上限。</li>
+</ul>
+<h3>1. 作者團隊評論</h3>
+<ul>
+<li><strong>通訊作者</strong>：Nicolas Rodondi。任職於伯恩大學基層醫療研究所（BIHAM）及伯恩大學醫院一般內科 [文內]。</li>
+<li><strong>團隊組成</strong>：以瑞士伯恩的一般內科／基層醫療研究團隊為主，加上荷蘭 Leiden、法國 Bordeaux。統計由伯恩大學臨床研究部（DCR）的 Haynes、Trelle 負責；tipping-point 分析由 Baggio 執行。共同設計者包括美國的 Bauer、Redberg、Greenland [Supplement p.10]。</li>
+<li><strong>團隊過往研究</strong> [外部: PubMed/PMC 搜尋]：
+<ul>
+<li>OPERAM cluster RCT（Blum et al., <em>BMJ</em> 2021）：多重用藥長者的藥物優化介入，降低了不適當處方，但沒有減少藥物相關住院。</li>
+<li>Swiss OPERAM 子分析（Adam et al., <em>Front Cardiovasc Med</em> 2023）：statin 處方不足與過度處方。</li>
+<li><strong>Target trial emulation（Aponte Ribero, …, Rodondi, <em>Eur J Clin Invest</em> 2025）</strong>：同一族群中，停用 statin 與主要複合結果風險上升有關（27% vs 18%；HR 1.53〔1.14–2.06〕）。</li>
+<li>STREAM 設計論文（<em>BMJ Open</em> 2025）。</li>
+</ul>
+</li>
+<li><strong>作者立場史</strong>：團隊長期研究「多重用藥長者的處方優化／減藥」，研究方向與「支持減藥」的敘事相近，有確認偏差的可能。不過他們自己 2025 年的觀察性資料已經顯示停藥有害，而本試驗的方向與該資料一致。結論寫成「noninferior」，與團隊減藥研究方向的連續性值得注意 [推論]。</li>
+<li><strong>利益揭露與資助</strong>：瑞士國家科學基金會（SNSF）IICT 研究者發起試驗補助，沒有藥廠參與 [文內]。Supplement 列出一位作者持有與研究無關的 X 光公司股份，另有作者與 ViiV、MSD、Bioversys 的關係（與本研究無關）[Supplement p.11]。<strong>資助偏差風險低</strong>；學術立場偏差見上。</li>
+</ul>
+<h3>2. 文獻 Metadata 整理</h3>
+<ul>
+<li><strong>Received／Accepted date</strong>：[markdown 未提供]。審查天數無法計算。</li>
+<li><strong>時間軸</strong> [文內]：
+<ul>
+<li>追蹤於 2026 年 4 月結束。</li>
+<li>DSMB 於 2026 年 6 月（資料庫鎖定後）建議停藥組與醫師討論重新用藥。</li>
+<li>2026 年 11 月 7 日與 AHA 年會同步刊出。</li>
+<li>從資料鎖定到刊出約 6–7 個月，屬於典型的「大會同步發表」速審路徑 [推論]。</li>
+</ul>
+</li>
+<li><strong>期刊平均審查天數</strong>：[無法取得]</li>
+<li><strong>期刊屬性</strong>：<em>NEJM</em>，2025 年 JIF 84.5（2026 年 6 月 JCR）[外部: Wolters Kluwer Ovid / Manusights，二手來源，未經 Clarivate 原始核對]；Q1；研究論文非 OA。</li>
+<li><strong>邀稿或投稿</strong>：原始研究，不適用。</li>
+</ul>
+<h3>3. 研究背景（文內）</h3>
+<ul>
+<li><strong>既有證據</strong>：
+<ul>
+<li>70 歲以上長者使用 statin 做初級預防的效益不確定，多重慢性病者尤其如此。</li>
+<li>已有兩項停藥 RCT：
+<ul>
+<li>安寧情境停藥試驗（n=381）：存活與心血管事件無差異，生活品質略好。</li>
+<li>法國 ≥75 歲初級預防試驗（SAGA/SITE，n=1160）：3 年全死因非劣，但未達原定樣本數。</li>
+</ul>
+</li>
+<li>80% 的家庭醫師會建議 ≥80 歲且有副作用或衰弱的人停用 statin。</li>
+</ul>
+</li>
+<li><strong>知識缺口</strong>：缺乏「多重慢性病、仍可能活數年」族群停藥的 RCT 證據。</li>
+<li><strong>研究問題</strong>：在 ≥70 歲、至少兩種慢性病、無已知動脈粥狀硬化心血管疾病（ASCVD）的 statin 使用者中，停藥在 2 年內的心血管事件或死亡是否不劣於繼續用藥。</li>
+</ul>
+<h3>4. 研究設計與方法</h3>
+<ul>
+<li><strong>PICO</strong>：
+<ul>
+<li><strong>P</strong>：≥70 歲、使用 statin 做初級預防 ≥1 年（過去一年服藥 ≥80% 的時間）、≥2 種慢性病。排除 ASCVD、家族性高膽固醇血症、需修補的主動脈疾病、3 個月內死亡風險高者 [文內；Supplement p.12]。</li>
+<li><strong>I</strong>：隨機分派後下一劑起停用 statin 與所有非 statin 降脂藥（ezetimibe、PCSK9i）。</li>
+<li><strong>C</strong>：繼續原 statin 與降脂藥。</li>
+<li><strong>O（主要）</strong>：非致死性心肌梗塞（MI）、非致死性缺血性中風或全死因死亡的複合，取首次發生；效果量為 <strong>2 年限制平均無事件存活時間（RMST）差</strong>。非劣性界限 <strong>−5.2 週</strong>（2 年內 RMST 損失 5%）。</li>
+<li><strong>O（次要）</strong>：各組成項目、主要／全部心血管事件、EQ-5D、疼痛 VNPRS、跌倒、SARC-F、Girerd 服藥順從度。</li>
+</ul>
+</li>
+<li><strong>關鍵設計細節</strong>：
+<ul>
+<li>24 個中心，收案期間 2021/11–2025/4，最短追蹤 12 個月，中位追蹤 103 週。</li>
+<li>網頁系統隨機分派，區塊大小不固定；依年齡、statin 強度、用藥年數分層。</li>
+<li>電話追蹤的人員在詢問結果時不知分組，<strong>但通話結束時會揭盲以評估服藥順從度</strong>。事件由盲化委員會判定。</li>
+<li>主要分析使用 flexible parametric survival model 並以分層因子校正。</li>
+<li>非劣性須 <strong>ITT 與 reweighted per-protocol（IPCW）兩者都通過</strong>才成立。</li>
+<li>次要的病人導向終點以 Benjamini–Hochberg 校正；其餘次要終點未校正多重比較。</li>
+</ul>
+</li>
+</ul>
+<h3>5. 研究結果重點整理</h3>
+<p><strong>主要結果表</strong></p>
+<div class="table-wrap wide"><table>
+<thead>
+<tr>
+<th>變項（代表什麼）</th>
+<th style="text-align:right">停藥組（N=938）</th>
+<th style="text-align:right">續用組（N=942）</th>
+<th style="text-align:right">組間差（95% CI）</th>
+<th style="text-align:right">p 值</th>
+<th>如何解讀</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>LDL-C</strong>（12 個月）：僅 Bern 中心、未換組且無事件的子樣本（114／121 人）</td>
+<td style="text-align:right"><strong>176.0 mg/dL</strong></td>
+<td style="text-align:right"><strong>99.4 mg/dL</strong></td>
+<td style="text-align:right">＋76.6（68.5 to 85.1）</td>
+<td style="text-align:right">未報告</td>
+<td>停藥確實讓 LDL 回升約 2 mmol/L，暴露差異成立</td>
+</tr>
+<tr>
+<td><strong>RMST</strong>（restricted mean survival time）：2 年內平均「沒發生事件」的週數，ITT</td>
+<td style="text-align:right"><strong>96.5 週</strong></td>
+<td style="text-align:right"><strong>98.5 週</strong></td>
+<td style="text-align:right"><strong>−2.0 週（−3.7 to −0.3）</strong></td>
+<td style="text-align:right">非劣性 &lt;0.001</td>
+<td>在 −5.2 週界限內，但 CI 不含 0，<strong>統計上停藥較差</strong></td>
+</tr>
+<tr>
+<td><strong>RMST</strong>，reweighted per-protocol</td>
+<td style="text-align:right">96.4 週</td>
+<td style="text-align:right">98.8 週</td>
+<td style="text-align:right">−2.4 週（−4.2 to −0.5）</td>
+<td style="text-align:right">未報告</td>
+<td>依計畫執行者差距更大，方向一致</td>
+</tr>
+<tr>
+<td>主要複合事件（2 年內）</td>
+<td style="text-align:right">100（10.7%）</td>
+<td style="text-align:right">77（8.2%）</td>
+<td style="text-align:right">ARD ＋2.5 個百分點 [自行計算]</td>
+<td style="text-align:right">未報告</td>
+<td>每約 40 人停藥，2 年多 1 件 MI／中風／死亡</td>
+</tr>
+<tr>
+<td>主要複合事件（全追蹤期，HR）</td>
+<td style="text-align:right">119（12.7%）</td>
+<td style="text-align:right">87（9.2%）</td>
+<td style="text-align:right"><strong>HR 1.38（1.05–1.81）</strong></td>
+<td style="text-align:right">未報告</td>
+<td>停藥組風險高 38%，CI 不含 1</td>
+</tr>
+<tr>
+<td>非致死性 MI</td>
+<td style="text-align:right">15（1.6%）</td>
+<td style="text-align:right">6（0.6%）</td>
+<td style="text-align:right">HR 2.55（0.99–6.56）</td>
+<td style="text-align:right">未報告</td>
+<td>方向一致，CI 下緣剛好碰到 1</td>
+</tr>
+<tr>
+<td>非致死性缺血性中風</td>
+<td style="text-align:right">21（2.2%）</td>
+<td style="text-align:right">8（0.8%）</td>
+<td style="text-align:right">HR 2.60（1.15–5.87）</td>
+<td style="text-align:right">未報告</td>
+<td>中風增加最明顯（未校正多重比較）</td>
+</tr>
+<tr>
+<td>全死因死亡</td>
+<td style="text-align:right">92（9.8%）</td>
+<td style="text-align:right">75（8.0%）</td>
+<td style="text-align:right">HR 1.24（0.92–1.67）</td>
+<td style="text-align:right">未報告</td>
+<td>方向不利，CI 跨 1</td>
+</tr>
+<tr>
+<td><strong>主要心血管事件</strong>：非致死 MI、非致死缺血性中風、心血管死亡</td>
+<td style="text-align:right">50（5.3%）</td>
+<td style="text-align:right">27（2.9%）</td>
+<td style="text-align:right">HR 1.86（1.17–2.96）</td>
+<td style="text-align:right">未報告</td>
+<td>排除非心血管死亡的稀釋後，心血管訊號更強</td>
+</tr>
+<tr>
+<td>≥1 次嚴重不良事件</td>
+<td style="text-align:right">403（43.0%）</td>
+<td style="text-align:right">375（39.8%）</td>
+<td style="text-align:right">＋3.2 個百分點 [自行計算]</td>
+<td style="text-align:right">未報告</td>
+<td>停藥組沒有更安全</td>
+</tr>
+<tr>
+<td><strong>EQ-5D VAS</strong>（0–100）：自評健康，24 個月</td>
+<td style="text-align:right">88.75</td>
+<td style="text-align:right">88.76</td>
+<td style="text-align:right">0.00（−1.63 to 1.63）</td>
+<td style="text-align:right">BH 校正後不顯著</td>
+<td>CI 遠在 MCID 8 分內，<strong>實質等同</strong></td>
+</tr>
+<tr>
+<td><strong>疼痛 VNPRS</strong>（0–100）：statin 相關肌肉症狀，3 個月</td>
+<td style="text-align:right">3.71</td>
+<td style="text-align:right">5.27</td>
+<td style="text-align:right">−1.56（−3.55 to 0.42）</td>
+<td style="text-align:right">BH 校正後不顯著</td>
+<td>MCID 13 分；基線疼痛就很低（約 8 分）</td>
+</tr>
+<tr>
+<td>≥1 次跌倒（12 個月）</td>
+<td style="text-align:right">24.7%</td>
+<td style="text-align:right">29.0%</td>
+<td style="text-align:right">RR 0.85（0.72–0.99）</td>
+<td style="text-align:right">0.045（BH 門檻 0.008）</td>
+<td>名目上顯著，校正後不顯著，只能視為探索性</td>
+</tr>
+<tr>
+<td>亞組：家醫科收案</td>
+<td style="text-align:right">39（7.6%）</td>
+<td style="text-align:right">13（2.6%）</td>
+<td style="text-align:right">HR 2.95（1.58–5.51）；RMST −3.4（−5.2 to −1.5）</td>
+<td style="text-align:right">P_int 未報告</td>
+<td>RMST 的 CI 下緣剛好觸及非劣性界限</td>
+</tr>
+<tr>
+<td>亞組：住院中收案</td>
+<td style="text-align:right">80（18.8%）</td>
+<td style="text-align:right">74（16.4%）</td>
+<td style="text-align:right">HR 1.13（0.83–1.54）；RMST −1.1（−3.9 to 1.7）</td>
+<td style="text-align:right">P_int 未報告</td>
+<td>高競爭死亡稀釋了心血管訊號</td>
+</tr>
+<tr>
+<td>亞組：糖尿病</td>
+<td style="text-align:right">54（17.2%）</td>
+<td style="text-align:right">28（9.7%）</td>
+<td style="text-align:right">HR 1.70（1.09–2.66）；RMST −4.2（−7.6 to −0.8）</td>
+<td style="text-align:right">P_int 未報告</td>
+<td><strong>CI 跨越 −5.2，此亞組未證明非劣性</strong></td>
+</tr>
+</tbody>
+</table></div>
+<p>（出處：正文 Results、Fig. 2、Table 2；Supplement Fig. S2–S4、Table S5、S9、S10、S12）</p>
+<p><strong>補充重點</strong>：</p>
+<ul>
+<li><strong>組間差距隨時間擴大</strong>：Fig. 3A 的放大子圖顯示，兩條累積發生率曲線在約第 52–60 週以前幾乎重疊，之後逐漸分開，到 156 週約 22% vs 15% [圖判讀，概估]。Fig. S5C 中時間變動 HR 從起點約 0.85 上升到第 100 週約 1.6，下方信賴帶約在第 25 週後高於 1 [圖判讀]。Schoenfeld 整體檢定 p=0.073。</li>
+<li><strong>退出與換組</strong>：
+<ul>
+<li>撤回同意 56 人 vs 40 人；換組 131 人（14.0%）vs 112 人（11.9%）。</li>
+<li>停藥組換組原因含「血脂升高」44 人、「新診斷 ASCVD」4 人 [Fig. 1]。</li>
+<li>停藥組撤回同意中，有 20 人（35.7%）是本人、家醫或心臟科醫師希望繼續用藥 [Table S14]。</li>
+</ul>
+</li>
+<li><strong>DSMB 建議</strong>：DSMB 看過最後一次期中分析後，建議停藥組病人與醫師討論重新使用 statin [文內 Safety]。</li>
+</ul>
+<h3>6. 作者討論與評論重點</h3>
+<ul>
+<li><strong>作者主要訊息</strong>：停藥在 2 年內不劣於續用；平均早 2 週發生事件，每 40 人多 1 件事件；生活品質、疼痛、跌倒、肌少症沒有差異；可作為共享決策中「謹慎停藥」的依據。</li>
+<li><strong>與既有文獻比較</strong>：作者以「本族群病況較重、死亡率較高（3 年 15.1% vs 法國試驗 7.5%）」解釋為何事件差異比 SAGA/SITE 明顯。作者也承認家醫科收案者停藥後風險較高（RMST −3.4 vs −1.1 週）。</li>
+<li><strong>作者列出的限制</strong>：無法完全盲化／未使用安慰劑、無法避免換組、無法排除停藥者對其他心血管藥物或生活型態的順從度也下降、肌肉痛而一心想停藥者可能未被納入。</li>
+<li><strong>[評估]</strong>：
+<ul>
+<li><strong>避重就輕之處</strong>：
+<ul>
+<li>未討論非劣性界限在實際事件率下等於多大的絕對風險（見 B3、C1）。</li>
+<li>未討論 DSMB 建議的意涵。</li>
+<li>未討論「沒有任何病人導向效益」對非劣性設計前提的衝擊。</li>
+<li>未討論撤回同意具資訊性、且集中在停藥組。</li>
+</ul>
+</li>
+<li><strong>結論字句超出數據支持</strong>：摘要與結論只寫「noninferior」，沒有並列「統計上顯著較差」（RMST CI 不含 0、HR 1.38）。讀者容易把它讀成「停藥安全」。</li>
+</ul>
+</li>
+</ul>
+<h3>7. 外部專業意見</h3>
+<ul>
+<li><strong>同期 NEJM editorial</strong>：[無法取得]。以英文標題、試驗名稱及「NEJMe」等關鍵字搜尋，都沒有找到針對本文的 NEJM editorial 或 comment，因此無 DOI 可供全文擷取。</li>
+<li>搜到的 <em>Lancet Healthy Longevity</em> comment（Nezhad, Rastgou, Nanna, 2026；DOI 10.1016/j.lanhl.2026.100888）是針對 <strong>SAGA/SITE</strong> 的評論，不是針對本文，所以沒有擷取其全文作為本文的外部意見。</li>
+<li>AHA 指定討論者 Karen Alexander（Duke）、主持人 Amit Khera、<em>JACC: Advances</em> 總編 Dinesh Kalra 的意見，只有新聞媒體轉述可以取得 [外部: Healio、TCTMD 新聞轉述，非正式學術評論]，可信度有限。轉述重點：
+<ul>
+<li>「safe」應改稱「acceptable risk」。</li>
+<li>參與者沒有特定停藥理由，不代表真實停藥情境。</li>
+<li>停藥者並沒有覺得比較好。</li>
+<li>不應因此貿然停用病人可耐受的 statin。</li>
+</ul>
+</li>
+</ul>
+<h3>8. 臨床建議</h3>
+<ul>
+<li><strong>可以考慮停藥的情境</strong>：
+<ul>
+<li>預期餘命有限（例如 1–2 年內死亡風險高）。</li>
+<li>衰弱或住院中的多重慢性病長者，競爭死亡風險高，心血管效益來不及顯現。</li>
+<li>病人明確重視減少藥物負擔，並在知情下接受每 40 人 2 年多 1 件 MI、中風或死亡。</li>
+</ul>
+</li>
+<li><strong>不建議套用的情境</strong>：
+<ul>
+<li>由家醫科門診追蹤、相對健康、預期餘命數年的長者。</li>
+<li>糖尿病患者（亞組未證明非劣性）。</li>
+<li>SCORE2-OP 高風險者。</li>
+<li>為了改善肌肉痛或生活品質而停藥的期待：本試驗沒有證據支持。</li>
+</ul>
+</li>
+<li><strong>實務建議</strong>：
+<ol>
+<li>和病人說明時用絕對數字：「2 年內每 40 人停藥，多 1 人發生心肌梗塞、中風或死亡；平均生活品質與疼痛沒有改善。」</li>
+<li>預期存活 ≥2–3 年、可耐受 statin 的人，預設繼續用藥。停藥應保留給有明確理由者，例如餘命短、副作用、吞藥負擔或病人價值觀。</li>
+<li>若停藥，事件差距在第 1 年後才逐漸浮現。應安排追蹤並重新評估；臨床事件或風險改變時重新用藥的門檻要低。</li>
+</ol>
+</li>
+<li><strong>證據強度</strong>：<strong>中</strong>。RCT、事件經盲化判定、樣本足夠，但為開放標籤，換組約 13%，撤回同意不均衡且具資訊性，非劣性界限的臨床合理性有疑問。</li>
+</ul>
+<hr />
+<h2>SKILL-A：批判性評讀</h2>
+<h3>A. 補充技術細節</h3>
+<ul>
+<li><strong>樣本數估算</strong> [Protocol p.18（PDF p.21）]：
+<ul>
+<li>以 OPERAM 資料推估，<strong>續用組 2 年主要事件機率 34%</strong>（12 個月 22%，36 個月 43%），年脫落率 2%。</li>
+<li>以 Weibull 模擬 10,000 次，1800 人時 ITT 檢定力 89%、PP 83%。</li>
+<li><strong>實際續用組 2 年事件率 8.2%</strong>，只有假設值的四分之一左右。這是本試驗最根本的設計偏差（見 C1）。</li>
+</ul>
+</li>
+<li><strong>非劣性界限的定義</strong> [Protocol p.18]：定在 integrated risk difference 的絕對尺度（2 年內 5%），由 Steering Committee 判定「臨床上不重要」。protocol 自己承認界限「to some extent subjective」，並承諾「will also present results for various margins」[Protocol p.19]，<strong>正文未見此呈現</strong>。</li>
+<li><strong>主要終點一致性</strong>：protocol 的主要終點（非致死 MI＋非致死缺血性中風＋全死因、2 年、RMST 差）與正文一致 [Protocol p.13、p.19]，<strong>沒有 outcome switching</strong>。</li>
+<li><strong>Allocation concealment</strong>：隨機表由獨立統計師產生，只有系統管理員可存取 [Protocol p.18]。屬適當。</li>
+<li><strong>盲化</strong>：病人與醫師未盲。電話評估者在詢問結果時未知分組，但通話結束時揭盲。事件判定委員會盲化。主要終點組成皆為「硬」終點，但「是否就醫並被診斷為 MI」仍可能受病人知道自己停藥的影響（偵測偏差方向不確定）。</li>
+<li><strong>ITT vs PP</strong>：兩者都要通過才宣稱非劣性，符合非劣性試驗的規範。
+<ul>
+<li>PP 使用 IPCW，權重<strong>只依基線變項</strong>估計 [Fig. 2 圖說；Table S13]。</li>
+<li>protocol 原本承諾 PP 會考慮「post-randomization factors」並使用 g-methods [Protocol p.19]。實際只用基線變項，可能偏離 protocol（SAP 未逐頁核對，標為「可能偏離」）。</li>
+<li>換組多由隨時間變化的因素觸發（家醫量到血脂升高、新診斷 ASCVD），僅以基線變項加權無法處理這類資訊性設限。</li>
+</ul>
+</li>
+<li><strong>多重比較</strong>：主要終點單一；病人導向次要終點以 BH 校正；其他心血管次要終點未校正，作者已聲明 CI 不應用於推論。</li>
+<li><strong>比例風險假設</strong>：Schoenfeld p=0.073；log-log 曲線在晚期分開（Fig. S5A），時間變動 HR 上升（Fig. S5C）。主要指標選用 RMST 不依賴 PH 假設是合理的，但同時意味 <strong>2 年截點會低估持續擴大的傷害</strong>。</li>
+<li><strong>缺失資料</strong>：
+<ul>
+<li>撤回同意者在撤回時設限。撤回者較老、85% 是住院中收案、FRAIL ≥3 比例 39% vs 19%、SCORE2-OP 高風險 59% vs 45% [Table S4]。</li>
+<li>事後校正版本 RMST 為 −1.6（−3.1 to −0.0）[Table S11]。</li>
+</ul>
+</li>
+</ul>
+<h4>A1. 非劣性設計子模組</h4>
+<ul>
+<li><strong>界限 Δ 的臨床依據</strong>：只有 Steering Committee 的判斷，沒有病人偏好研究或歷史效果保存（preserve-effect）推導。
+<ul>
+<li>依 JAMA Users' Guide，非劣性門檻是研究者的判斷，臨床醫師應以自己與病人的標準檢視，而不是直接接受 [參考: jug120004_2605_2611.md，Introduction 與 Figure 1]。</li>
+<li>換算成事件機率：若停藥造成的風險差隨時間線性擴大，<strong>5.2 週的 RMST 損失約等於 2 年時絕對風險差約 10 個百分點</strong>（5.2 = D × 104 ÷ 2，得 D ≈ 10%）[自行計算，假設線性擴大]。</li>
+<li>在續用組 2 年事件率 8.2% 的情況下，等於<strong>容許停藥組事件率倍增以上（約 18%）仍算「非劣」</strong>。protocol 原本假設事件率 34%，在那個背景下 10 個百分點是相對 29% 的增加；套到實際 8% 的族群，同一個絕對界限就變得非常寬鬆。</li>
+</ul>
+</li>
+<li><strong>對照組品質</strong>：續用組為各病人原本的 statin 劑量（72.9% 中等強度），符合「實務中會給的治療」。</li>
+<li><strong>ITT 在非劣性試驗中不一定保守</strong>：雙向換組會讓兩組更相似，使 ITT 偏向非劣。PP 差距（−2.4）比 ITT（−2.0）大，方向符合這個預期。</li>
+<li><strong>非劣性設計的前提是新處置帶來其他好處</strong>（減少負擔或傷害）。本試驗的病人導向終點全部未改善（見 C1），停藥換取的只是「少吃一顆藥」與可能的成本節省；後者未分析。</li>
+</ul>
+<h3>B. 批判性評估</h3>
+<h4>B1. 假說與理論邏輯</h4>
+<ul>
+<li><strong>問題</strong>：假說預先指定、終點預先登錄，沒有撒網式找顯著的跡象。</li>
+<li><strong>合理機轉</strong>：
+<ol>
+<li>停藥後 LDL 回升約 77 mg/dL [Table S5]，數月至數年後動脈粥狀硬化事件增加。時間曲線在 1 年後才分開 [Fig. 3A；Fig. S5C]，符合這種延遲效應。</li>
+<li>中風訊號（HR 2.60）比 MI 明顯，與長者族群中風事件比例較高一致 [推論]。</li>
+<li>作者提出的「停藥反彈」（內皮功能、發炎、血栓）在本試驗中<strong>不被支持</strong>：早期 HR 未上升（Fig. S5C 起點約 0.85）。</li>
+</ol>
+</li>
+<li><strong>可疑的敘事跳躍</strong>：
+<ol>
+<li>Discussion 從「CI 下界未越過 −5.2 週」直接跳到「supports shared decision making about cautious statin discontinuation」。沒有說明為何 HR 1.38 的傷害可以被接受（Discussion 第 4 段）。</li>
+<li>作者把與 SAGA/SITE 的差異歸因於「本族群較病、較高死亡率」，但本試驗中<strong>風險差最大的正是較健康的家醫科收案者</strong>。這個解釋反而讓本試驗在健康長者上的外推更不利。</li>
+<li>作者把「沒有生活品質差異」列為次要發現，卻沒有指出這等於<strong>非劣性設計所需要的「交換利益」不存在</strong>。</li>
+</ol>
+</li>
+</ul>
+<h4>B2. 受試者與外推性</h4>
+<ul>
+<li>收案族群：53.5% 由家醫收案；中位 4–5 種共病；FRAIL ≥3 約 20%；SCORE2-OP 高風險約 45%（在服藥中估算，會低估）[Table 1、S3]。</li>
+<li>收案極度集中：伯恩一家中心收 827 人（44%）[Supplement p.7]。</li>
+<li>基線疼痛 VNPRS 只有約 8／100 [Table S8]，代表沒有肌肉症狀者占大宗；想停藥的有症狀者可能沒有進入試驗（作者也承認）。</li>
+</ul>
+<p><strong>外推性分級</strong>：</p>
+<ol>
+<li><strong>一般健康長者</strong>（≥70 歲、少共病）：<strong>不應外推為「可以停」</strong>。最接近這類族群的家醫科亞組中，HR 2.95，且非劣性的 CI 剛好觸及界限。</li>
+<li><strong>多重慢性病、高競爭死亡的住院長者</strong>：<strong>可以有條件外推</strong>。住院收案亞組 HR 1.13（0.83–1.54），死亡多為非心血管原因，停藥的邊際傷害相對較小，但 CI 仍可容納明顯傷害。</li>
+<li><strong>特殊族群</strong>：
+<ul>
+<li>糖尿病：不應外推（RMST −4.2，CI −7.6 to −0.8，跨越界限）。</li>
+<li>≥80 歲、有肌肉症狀或衰弱者：衰弱亞組雖在 protocol 與 Methods 中列為預先指定，<strong>Fig. S3／S4 卻沒有呈現</strong>；有症狀者幾乎沒有納入。無法判定。</li>
+<li>亞洲族群：沒有資料，且種族未記錄 [Table S2]。</li>
+</ul>
+</li>
+</ol>
+<h4>B3. 研究設計與偏差</h4>
+<p><strong>對照組適當性</strong>：續用原有 statin 即為標準治療，適當。</p>
+<p><strong>最可能造成偏差的三個設計點</strong>：</p>
+<ol>
+<li>
+<p><strong>非劣性界限按 34% 事件率設計，在 8% 事件率下過寬</strong></p>
+<ul>
+<li>證據：Protocol p.18；正文 Results 2 年事件率 8.2%。</li>
+<li>方向：讓「非劣」較容易成立。低事件率時 RMST 的絕對變異小，CI 窄，絕對尺度的界限相對就更寬。</li>
+<li>需要什麼才放心：以相對尺度（例如 HR 上限 1.3）或以實際事件率重新推導的界限做敏感度分析；protocol 承諾的「various margins」呈現。</li>
+</ul>
+</li>
+<li>
+<p><strong>撤回同意不均衡且具資訊性</strong></p>
+<ul>
+<li>證據：56 vs 40 人；停藥組撤回者中 20 人因自己或醫師想繼續用藥 [Table S14]；撤回者較老、較衰弱、多為住院收案、心血管風險較高 [Table S4]。</li>
+<li>方向：停藥組較高風險者在撤回時被設限，可能<strong>低估停藥的傷害</strong>。</li>
+<li>需要什麼才放心：撤回者的生命狀態追蹤（例如登記資料連結）。事後校正分析只校正了基線變項。</li>
+</ul>
+</li>
+<li>
+<p><strong>換組與 PP 加權只用基線變項</strong></p>
+<ul>
+<li>證據：停藥組換組 131 人，其中 44 人因血脂升高、4 人因新 ASCVD [Fig. 1]；IPCW 只用基線變項 [Fig. 2 圖說]。</li>
+<li>方向：停藥組中「變得較高風險而重新用藥」的人被設限，PP 可能低估傷害；ITT 則因雙向換組而偏向非劣。</li>
+<li>需要什麼才放心：以 time-varying IPCW 或 g-formula 處理換組，並對照 protocol 原本承諾的方法。</li>
+</ul>
+</li>
+</ol>
+<p><strong>其他</strong>：</p>
+<ul>
+<li>試驗沒有提早停止。DSMB 在資料鎖定後才建議停藥組考慮重新用藥，<strong>這本身就是 DSMB 對傷害訊號的實質判斷</strong>，正文只用一句話帶過。</li>
+<li>共同介入（其他心血管藥物）兩組相當，標準化差異都在 10% 以內 [Table S6]；停藥組開始使用抗高血壓藥稍多（9.0% vs 6.7%）。</li>
+</ul>
+<h4>B4. 測量工具與實務意義</h4>
+<ul>
+<li><strong>RMST 差的直覺意義</strong>：「平均早 2 週發生事件」聽起來很小，但這是把整個族群（多數人沒有事件）的時間平均掉的結果。對病人更有意義的說法是：<strong>每 40 人停藥 2 年多 1 件 MI、中風或死亡</strong>，而且差距在第 2 年後仍持續擴大（Fig. 3A：約 22% vs 15%，156 週時仍有 139／148 人在風險中，曲線尾端可信度尚可）[圖判讀]。</li>
+<li><strong>圖表呈現</strong>：
+<ul>
+<li>Fig. 3 主圖 y 軸 0–100%，視覺上會壓縮差距；放大子圖 0–30% 較能看出分開。兩者都有呈現，沒有誇大效果。</li>
+<li>Fig. 2 森林圖中，ITT 與 PP 的 CI 都位於 −5.2 虛線右側且完全落在 0 的左側 [圖判讀]，直接呈現「非劣但較差」。</li>
+</ul>
+</li>
+<li><strong>真實世界效用</strong>：就算結果完全正確，停藥換到的是較少的藥物負擔，以及<strong>沒有可量測的症狀或生活品質改善</strong>；代價是約 2.5 個百分點的硬事件增加。對大多數仍可能活數年的長者，這筆交換不划算。</li>
+</ul>
+<h3>C. 統計與資料完整性</h3>
+<h4>C1. 結果分類（CI + MCID 框架）</h4>
+<p><strong>Step 1：MCID 界定</strong></p>
+<ul>
+<li>傷害端：作者以 −5.2 週作為 MCID-harm（非劣性界限）[文內 Methods]。依 A1 的換算，這個門檻在本族群實質容許事件率倍增，<strong>臨床上偏寬</strong>。</li>
+<li>對照用的較嚴格門檻：RMST 約 −1 週，約等於 2 年 ARD 2 個百分點 [推算，臨床判斷]。</li>
+<li>病人導向終點：EQ-5D 為 8 分、疼痛為 13 分 [Table 2 註]。</li>
+</ul>
+<p><strong>Step 2：CI 位置判讀</strong></p>
+<ul>
+<li><strong>主要終點</strong>：RMST −2.0（−3.7 to −0.3）。CI 完全落在 0 與 −5.2 之間。
+<ul>
+<li>依作者門檻：非劣性成立；同時 CI 不含 0，<strong>屬於「非劣但統計上較差」</strong>，對應 JAMA Users' Guide Figure 1 中「CI 位於 0 與 Δ 之間、且排除 0」的情形 [參考: jug120004_2605_2611.md Figure 1]。</li>
+<li>依較嚴格的約 1 週門檻：CI 跨越 MCID，屬 <strong>IMPRECISE（傷害方向）</strong>，不能排除臨床上重要的傷害。</li>
+<li>全追蹤期 HR 1.38（1.05–1.81）：統計上顯著有害。</li>
+</ul>
+</li>
+<li><strong>EQ-5D</strong>：0.00（−1.63 to 1.63），CI 完全在 ±8 內 → <strong>NEUTRAL</strong>（實質等同）。</li>
+<li><strong>疼痛</strong>：−1.56（−3.55 to 0.42），CI 完全在 ±13 內 → <strong>NEUTRAL</strong>。</li>
+<li><strong>跌倒 ≥1 次</strong>：RR 0.85（0.72–0.99），BH 校正後不顯著 → 探索性，不能作為停藥的效益依據。</li>
+<li><strong>小結</strong>：停藥在<strong>硬終點上確定較差</strong>，在<strong>病人導向終點上確定沒有效益</strong>。非劣性設計的利弊交換前提不成立。</li>
+</ul>
+<p><strong>Step 3：統計謬誤檢查</strong></p>
+<ul>
+<li>作者沒有使用 post-hoc power。</li>
+<li>病人導向終點寫成「did not appear to differ substantially」。在這裡 CI 夠窄、確實落在 MCID 內，是可以接受的說法。</li>
+<li>主要問題反向：作者以 <strong>p&lt;0.001 for noninferiority</strong> 為主訊息，卻沒有在摘要中報告 CI 排除 0 的意義。</li>
+</ul>
+<h4>C2. Underpowered 與 Winner's Curse</h4>
+<ul>
+<li>主要終點不是「低檢定力下的陽性」。</li>
+<li>設計假設的事件率（34%）高估了約 4 倍，實際事件數遠少於規劃。對絕對尺度的 RMST 非劣性而言，低事件率反而讓 CI 更窄、更容易宣稱非劣，<strong>檢定力問題被界限設定掩蓋</strong>。</li>
+<li>次要終點事件數少（MI 15 vs 6），HR 估計（2.55、2.60）很不精確。個別點估計可能被誇大，但方向一致。</li>
+</ul>
+<h4>C3. Bayesian 補充分析</h4>
+<p>主要結果不在 p≈0.05 的邊界，也沒有 Neutral／Negative 的爭議，因此<strong>不執行</strong>。文內沒有提供 Bayesian 分析。</p>
+<h4>C4. 報告完整性與其他統計問題</h4>
+<p><strong>Tipping-point 分析</strong>：</p>
+<ul>
+<li><strong>Fig. S6</strong>（以 HR 上 95% 信賴限為色階）：
+<ul>
+<li>在停藥組換組者補入「最差事件時間」、續用組補入「最佳事件時間」後，HR 上限只會變大。</li>
+<li>圖中色階 2.0–3.2 全落在有害方向，「未偵測到 tipping point」對<strong>非劣性結論</strong>沒有意義。</li>
+<li>此分析的基準 HR 1.36（0.99–1.87）與主分析 HR 1.38（1.05–1.81）不同（未校正 Cox、2 年截斷）[Supplement p.30]。<strong>概念與主要估計量不對應</strong>。</li>
+</ul>
+</li>
+<li><strong>Fig. S7</strong>（RMST 差下界）：
+<ul>
+<li>虛線標示換組者中實際觀察到的事件數，約為停藥組 16 件、續用組 17 件 [圖判讀，概估]。</li>
+<li>白色交界（約 −5 週）在續用組維持實際值時，大約在停藥組 20–25 件處 [圖判讀]。</li>
+<li>也就是說，<strong>只要停藥組 131 名換組者多出約 5–10 件事件，非劣性就會翻轉</strong>。</li>
+<li>作者以「整體事件率 11%」判定 15–20% 不合理。但換組者中有人是因血脂升高或新 ASCVD 才重新用藥，風險本來就高於平均，<strong>這個判斷未必成立</strong>。結論對換組者結局的脆弱度明顯大於作者的描述。</li>
+</ul>
+</li>
+</ul>
+<p><strong>亞組與 protocol 的對照</strong>：</p>
+<ul>
+<li>protocol 承諾亞組分析「accompanied by appropriate tests for interaction」[Protocol p.19]，<strong>Fig. S3／S4 未報告任何 interaction p 值</strong>。</li>
+<li>預先指定的<strong>衰弱亞組沒有呈現</strong>；BMJ Open 設計論文列出的吸菸、共病程度、高血壓亞組也沒有呈現 [外部: BMJ Open 2025 protocol]。有選擇性報告的可能。</li>
+<li>Table S9、S10（糖尿病、收案來源的事件數）明確標為事後分析。</li>
+</ul>
+<p><strong>其他一致性檢查</strong>：</p>
+<ul>
+<li><strong>CONSORT 數字一致</strong>：
+<ul>
+<li>938−7=931、942−10=932 [Fig. 1]。</li>
+<li>Fig. S1 各期撤回加總：56（6+36+9+4+1）、40（4+28+6+1+1）；死亡加總：92、75，皆與正文一致。</li>
+</ul>
+</li>
+<li><strong>小幅不一致</strong>：Fig. S8 的 PP 起始 at risk 標為 936／936，與 PP 族群 931／932 不符。可能是加權後四捨五入（圖說有提），但未明確說明。</li>
+<li><strong>Kaplan-Meier 判讀</strong>：
+<ul>
+<li>number at risk 在 104 週約 428–470、156 週約 139–152，圖說也說明不足 10 人後才截斷，曲線尾端可信度尚可。</li>
+<li>換組設限與撤回設限都可能具資訊性（見 B3）。</li>
+</ul>
+</li>
+<li><strong>統計面紅旗</strong>：
+<ol>
+<li>非劣性界限以高估 4 倍的事件率推導，又以絕對尺度固定。</li>
+<li>摘要沒有呈現「CI 排除 0」的意義。</li>
+<li>撤回同意具資訊性且不均衡。</li>
+<li>PP 加權只用基線變項，與 protocol 承諾不符。</li>
+<li>Tipping-point 分析（S6）與主要估計量不對應；S7 顯示結論脆弱。</li>
+<li>未報告 interaction 檢定，衰弱亞組缺漏。</li>
+<li>未依 protocol 呈現多個界限下的結果。</li>
+</ol>
+</li>
+</ul>
+<h3>D. 次組分析評估</h3>
+<div class="table-wrap wide"><table>
+<thead>
+<tr>
+<th>亞組</th>
+<th>interaction p 值</th>
+<th>與其他研究方向一致</th>
+<th>預先指定且有方向</th>
+<th>生物學合理性</th>
+<th>within-study</th>
+<th>可信度</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>家醫科 vs 住院收案（HR 2.95 vs 1.13；RMST −3.4 vs −1.1）</td>
+<td>未報告</td>
+<td>不一致（SAGA/SITE 也是家醫收案，卻未見傷害）</td>
+<td>預先指定；方向未事先陳述</td>
+<td>合理：競爭死亡稀釋、心血管風險占比不同</td>
+<td>是</td>
+<td><strong>中</strong>（作為假說；不足以支持「住院長者可以安全停藥」）</td>
+</tr>
+<tr>
+<td>糖尿病（HR 1.70 vs 1.18；RMST −4.2 vs −0.9）</td>
+<td>未報告</td>
+<td>與糖尿病心血管風險較高一致</td>
+<td>預先指定</td>
+<td>合理</td>
+<td>是</td>
+<td><strong>中低</strong></td>
+</tr>
+<tr>
+<td>年齡 &lt;75 vs ≥75（HR 1.69 vs 1.29）</td>
+<td>未報告</td>
+<td>—</td>
+<td>預先指定；protocol 對 &lt;75 歲另設較嚴格的期中停止界線</td>
+<td>合理（餘命較長）</td>
+<td>是</td>
+<td>低</td>
+</tr>
+<tr>
+<td>statin 強度（高強度 −0.4，CI −4.2 to 3.4）</td>
+<td>未報告</td>
+<td>—</td>
+<td>預先指定</td>
+<td>不明</td>
+<td>是</td>
+<td><strong>推測性</strong>（樣本小、CI 寬）</td>
+</tr>
+</tbody>
+</table></div>
+<h3>E. 紅旗清單</h3>
+<ul>
+<li><strong>設計</strong>：非劣性界限依 34% 事件率推導，實際只有 8%，等於容許事件率倍增以上。</li>
+<li><strong>統計</strong>：RMST CI 排除 0、HR 1.38（1.05–1.81）。結論只寫「noninferior」。</li>
+<li><strong>統計</strong>：tipping-point 顯示換組者中只要多約 5–10 件事件，非劣性就會翻轉。</li>
+<li><strong>資料</strong>：撤回同意 56 vs 40，停藥組撤回者有三分之一是因為想繼續用藥，具資訊性。</li>
+<li><strong>報告</strong>：未報告 interaction p 值；預先指定的衰弱亞組缺漏；未呈現多個界限下的結果。</li>
+<li><strong>敘事</strong>：DSMB 建議停藥者考慮重新用藥，正文只用一句話帶過。</li>
+<li><strong>效益</strong>：生活品質與疼痛的 CI 落在 MCID 內，停藥的交換利益不存在。</li>
+<li><strong>外推</strong>：家醫科收案的較健康長者 HR 2.95，非劣性的 CI 觸及界限。</li>
+<li><strong>COI</strong>：無藥廠資助；學術立場與減藥研究方向一致（低至中）。</li>
+</ul>
+<h3>F. 反向解釋</h3>
+<ol>
+<li><strong>「真的非劣，只是事件隨機偏高」</strong>
+<ul>
+<li>支持：主要 CI 在界限內；PP 方向一致。</li>
+<li>反對：CI 排除 0；多個次要心血管終點同向且部分顯著；時間變動 HR 持續上升；DSMB 的判斷。→ <strong>不太可能</strong>。</li>
+</ul>
+</li>
+<li><strong>「傷害被低估」</strong>
+<ul>
+<li>支持：資訊性撤回集中在停藥組；換組設限只用基線加權；2 年 RMST 截斷了持續擴大的差距；ITT 有雙向稀釋。</li>
+<li>反對：事後校正撤回的分析為 −1.6，差距略縮小。→ <strong>相當可能</strong>。</li>
+</ul>
+</li>
+<li><strong>「開放標籤造成偵測偏差」</strong>
+<ul>
+<li>支持：停藥者或醫師可能更警覺而更常就醫診斷 MI 或中風。</li>
+<li>反對：全死因死亡方向一致（HR 1.24），且不受偵測影響；事件經盲化判定。→ 可能小幅貢獻，無法解釋全部。</li>
+</ul>
+</li>
+<li><strong>「家醫科亞組的差異只是機率」</strong>
+<ul>
+<li>支持：未報告 interaction 檢定；與 SAGA/SITE 不一致。</li>
+<li>反對：競爭死亡稀釋的機轉合理，且住院收案組的死亡多為非心血管原因。→ 不能排除。</li>
+</ul>
+</li>
+</ol>
+<h3>G. 最終裁決</h3>
+<ul>
+<li><strong>整體可信度：中</strong>。內部效度大致良好（隨機分派、盲化判定、硬終點、ITT 與 PP 一致）。但「非劣」這個結論的臨床意義高度依賴一個過寬的界限，且多個偏差方向都可能低估傷害。</li>
+<li><strong>可以採用的條件</strong>：預期餘命短、高競爭死亡、衰弱或住院中的多重慢性病長者；病人在知道絕對風險增加後，仍以減少藥物負擔為優先。</li>
+<li><strong>不建議採用的情境</strong>：相對健康、以門診追蹤、預期餘命 ≥2–3 年的長者；糖尿病；SCORE2-OP 高風險；期待停藥能改善肌肉痛或生活品質者。</li>
+<li><strong>若要改觀，最需要的三項改進</strong>：
+<ol>
+<li>以實際事件率或相對尺度（HR 界限）重新評估非劣性，並依 protocol 承諾呈現多個界限下的結果。</li>
+<li>追蹤撤回者與換組者的生命狀態與事件（例如登記資料連結），並以 time-varying 方法處理換組。</li>
+<li>報告 interaction 檢定、衰弱亞組，以及更長期（3–4 年）的 RMST 或 HR。</li>
+</ol>
+</li>
+<li><strong>一句話結論</strong>：長者停用 statin 在統計上「不劣」只是因為容忍界限寬；實際上每 40 人停藥 2 年多 1 件心臟病、中風或死亡，而且停藥者沒有因此覺得比較好。</li>
+</ul>
+<hr />
+<h3>效果量總表（CONDITIONAL OUTPUT）</h3>
+<div class="table-wrap wide"><table>
+<thead>
+<tr>
+<th>指標</th>
+<th style="text-align:right">停藥組</th>
+<th style="text-align:right">續用組</th>
+<th style="text-align:right">效果量</th>
+<th style="text-align:right">95% CI</th>
+<th style="text-align:right">ARD</th>
+<th style="text-align:right">MCID</th>
+<th>結果分類</th>
+<th>實務意義</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>主要終點 RMST（2 年，ITT）</td>
+<td style="text-align:right">96.5 週</td>
+<td style="text-align:right">98.5 週</td>
+<td style="text-align:right">−2.0 週</td>
+<td style="text-align:right">−3.7 to −0.3</td>
+<td style="text-align:right">2 年 ＋2.5 個百分點 [自行計算]</td>
+<td style="text-align:right">−5.2 週（作者）；約 −1 週（較嚴格）[推算]</td>
+<td>非劣但統計上較差；依較嚴格門檻為 IMPRECISE（傷害方向）</td>
+<td>每 40 人多 1 件事件</td>
+</tr>
+<tr>
+<td>主要終點 HR（全追蹤期）</td>
+<td style="text-align:right">12.7%</td>
+<td style="text-align:right">9.2%</td>
+<td style="text-align:right">HR 1.38</td>
+<td style="text-align:right">1.05–1.81</td>
+<td style="text-align:right">＋3.5 個百分點（粗略，追蹤期不等）</td>
+<td style="text-align:right">—</td>
+<td>統計上顯著有害</td>
+<td>傷害隨時間擴大</td>
+</tr>
+<tr>
+<td>主要心血管事件</td>
+<td style="text-align:right">5.3%</td>
+<td style="text-align:right">2.9%</td>
+<td style="text-align:right">HR 1.86</td>
+<td style="text-align:right">1.17–2.96</td>
+<td style="text-align:right">＋2.4 個百分點</td>
+<td style="text-align:right">—</td>
+<td>有害（未校正多重比較）</td>
+<td>中風占多數</td>
+</tr>
+<tr>
+<td>全死因死亡</td>
+<td style="text-align:right">9.8%</td>
+<td style="text-align:right">8.0%</td>
+<td style="text-align:right">HR 1.24</td>
+<td style="text-align:right">0.92–1.67</td>
+<td style="text-align:right">＋1.8 個百分點</td>
+<td style="text-align:right">—</td>
+<td>INCONCLUSIVE（傷害方向）</td>
+<td>不能排除死亡增加</td>
+</tr>
+<tr>
+<td>EQ-5D（24 個月）</td>
+<td style="text-align:right">88.75</td>
+<td style="text-align:right">88.76</td>
+<td style="text-align:right">0.00</td>
+<td style="text-align:right">−1.63 to 1.63</td>
+<td style="text-align:right">—</td>
+<td style="text-align:right">8</td>
+<td><strong>NEUTRAL</strong></td>
+<td>停藥沒有讓人覺得更好</td>
+</tr>
+<tr>
+<td>疼痛（3 個月）</td>
+<td style="text-align:right">3.71</td>
+<td style="text-align:right">5.27</td>
+<td style="text-align:right">−1.56</td>
+<td style="text-align:right">−3.55 to 0.42</td>
+<td style="text-align:right">—</td>
+<td style="text-align:right">13</td>
+<td><strong>NEUTRAL</strong></td>
+<td>對肌肉症狀沒有臨床效益</td>
+</tr>
+<tr>
+<td>≥1 次跌倒（12 個月）</td>
+<td style="text-align:right">24.7%</td>
+<td style="text-align:right">29.0%</td>
+<td style="text-align:right">RR 0.85</td>
+<td style="text-align:right">0.72–0.99</td>
+<td style="text-align:right">−4.3 個百分點</td>
+<td style="text-align:right">—</td>
+<td>探索性（BH 校正後不顯著）</td>
+<td>不足以作為停藥理由</td>
+</tr>
+</tbody>
+</table></div>
+<p>Sources:</p>
+<ul>
+<li><a href="https://www.healio.com/news/cardiology/20261108/new-study-informs-statin-discontinuation-in-older-adults-without-cvd">Healio — New study informs statin discontinuation in older adults without CVD</a></li>
+<li><a href="https://www.tctmd.com/news/elderly-patients-statins-primary-prevention-can-stop-its-not-risk-free-stream">TCTMD — Elderly Patients on Statins for Primary Prevention Can Stop, but It's Not Risk Free: STREAM</a></li>
+<li><a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC12104904/">STREAM protocol, BMJ Open 2025 (PMC12104904)</a></li>
+<li><a href="https://clinicaltrials.gov/study/NCT05178420">ClinicalTrials.gov NCT05178420</a></li>
+<li><a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC12817241/">Target trial emulation of statin discontinuation in multimorbid older adults (PMC12817241)</a></li>
+<li><a href="https://pubmed.ncbi.nlm.nih.gov/42580355/">Lancet Healthy Longevity comment on SAGA/SITE (PubMed 42580355)</a></li>
+<li><a href="https://www.wolterskluwer.com/en/solutions/Ovid/new-england-journal-of-medicine-624">Wolters Kluwer Ovid — NEJM journal information</a></li>
+<li><a href="https://manusights.com/blog/nejm-impact-factor">Manusights — NEJM impact factor</a></li>
+<li><a href="https://www.acc.org/Latest-in-Cardiology/Articles/2026/11/06/14/37/sat-445pm-statins-aha-2026">ACC — STREAM, eZ-PAVE at AHA 2026</a></li>
+</ul>
+
+<footer class="appraisal-meta">評讀資訊：模型：claude-opus-5-5 (claude)  ·  route：rct  ·  產出時間：2026-11-15 13:18 CST</footer>
+</main>
+</body>
+</html>
