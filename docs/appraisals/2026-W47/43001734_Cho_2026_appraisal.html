@@ -1,0 +1,915 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pelacarsen and Cardiovascular Outcomes in Patients with High Lipoprotein(a).</title>
+<style>
+  :root {
+    --bg: #fafafa;
+    --card: #ffffff;
+    --text: #1a1a1a;
+    --muted: #6b6b6b;
+    --border: #e5e5e5;
+    --accent: #0b5fff;
+  }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang TC",
+      "Microsoft JhengHei", sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    margin: 0;
+    padding: 24px 16px 64px;
+    line-height: 1.72;
+  }
+  main {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    margin: 0 auto;
+    max-width: 840px;
+    padding: 22px 26px;
+  }
+  nav {
+    margin: 0 auto 14px;
+    max-width: 840px;
+    color: var(--muted);
+    font-size: 14px;
+  }
+  a { color: var(--accent); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  h1, h2, h3, h4 { line-height: 1.35; }
+  h1 { font-size: 26px; margin-top: 0; }
+  h2 { border-top: 1px solid var(--border); padding-top: 18px; }
+  code {
+    background: rgba(127, 127, 127, 0.12);
+    border-radius: 4px;
+    padding: 1px 4px;
+  }
+  .table-wrap {
+    margin: 1em 0;
+    overflow-x: auto;
+  }
+  .table-wrap.wide {
+    /* Break out of the 840px prose column, centred on the viewport. */
+    width: min(1040px, calc(100vw - 32px));
+    margin-left: calc(50% - min(520px, 50vw - 16px));
+  }
+  table {
+    border-collapse: collapse;
+    table-layout: auto;
+    width: 100%;
+  }
+  .table-wrap.wide {
+    /* Opaque so the <main> card border does not show through the table. */
+    background: var(--card);
+  }
+  /* Width hints go on <th> as percentages: Chrome's auto table layout
+     mis-sizes columns (and overflows) when cells carry min-width. */
+  .table-wrap.wide th:first-child {
+    /* Variable + plain-language definition, e.g. "NCPV (noncalcified ...)". */
+    width: 26%;
+  }
+  .table-wrap.wide th:last-child {
+    /* Last column is usually a one-line interpretation. */
+    width: 20%;
+  }
+  th, td {
+    border: 1px solid var(--border);
+    /* Wrap only at spaces: never split an English word mid-letter. */
+    overflow-wrap: normal;
+    word-break: normal;
+    hyphens: manual;
+    padding: 6px 8px;
+    text-align: left;
+    vertical-align: top;
+  }
+  blockquote {
+    border-left: 3px solid var(--accent);
+    color: var(--muted);
+    margin-left: 0;
+    padding-left: 14px;
+  }
+  .appraisal-meta {
+    border-top: 1px solid var(--border);
+    margin-top: 28px;
+    padding-top: 14px;
+    color: var(--muted);
+    font-size: 13px;
+  }
+  @media (max-width: 600px) {
+    body {
+      padding: 12px 8px 40px;
+    }
+    main {
+      padding: 16px 12px;
+    }
+    h1 {
+      font-size: 22px;
+    }
+    table {
+      font-size: 12px;
+    }
+    .table-wrap.wide {
+      width: calc(100vw - 16px);
+      margin-left: calc(50% - 50vw + 8px);
+    }
+    th, td {
+      padding: 4px 5px;
+    }
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #1a1a1a;
+      --card: #242424;
+      --text: #e8e8e8;
+      --muted: #999;
+      --border: #333;
+      --accent: #6ea8ff;
+    }
+  }
+</style>
+</head>
+<body>
+<nav><a href="../../2026-W47.html">← 回到 2026-W47 週報</a></nav>
+<main>
+<h1>Pelacarsen and Cardiovascular Outcomes in Patients with High Lipoprotein(a).</h1>
+<h1>Pelacarsen 與高 Lp(a) 病人心血管結局（Lp(a)HORIZON）批判性評讀</h1>
+<hr />
+<h2>SECTION-0：文章全面描述</h2>
+<h3>0. 文章身份證</h3>
+<ul>
+<li><strong>標題</strong>：Pelacarsen and Cardiovascular Outcomes in Patients with High Lipoprotein(a)</li>
+<li><strong>期刊／年份</strong>：N Engl J Med 2026（2026-11-07 線上發表）[文內]</li>
+<li><strong>DOI</strong>：10.1056/NEJMoa2610159；PMID 43001734；試驗登錄 NCT04023552</li>
+<li><strong>文章類型</strong>：第 3 期、國際多中心、雙盲、安慰劑對照、事件驅動的心血管結局 RCT（cardiovascular outcomes trial, CVOT）</li>
+<li><strong>評讀路由</strong>：SKILL-A 主流程。這是單一雙臂優越性試驗，不需要套用 A1 的特殊設計子模組（非劣性、手術、平台試驗）。</li>
+<li><strong>使用資料</strong>：正文 markdown；正文頁圖 p.5、p.6、p.7、p.8、p.10；Supplementary Appendix 文字與圖頁（Figure S1、S2A、S3A、Table S7）；Protocol 摘要頁（original protocol v00，2019-05-07）。</li>
+<li><strong>資料限制</strong>：Figure S2B–D 與 S3B–F 只拿到 markdown 的「picture omitted」佔位，沒有圖檔可判讀。正文中凡標註「[限制：未見原圖]」者即屬此類。</li>
+</ul>
+<h3>1. 作者團隊評論</h3>
+<ul>
+<li><strong>通訊作者</strong>：Steven E. Nissen，Cleveland Clinic C5Research，擔任 Executive Committee 主席 [文內]。Nissen 長期主持大型 CVOT，研究背景是降脂藥與心血管影像。這屬於一般性背景描述；代表作的完整清單本次沒有另行查證，標為 [無法取得]。</li>
+<li><strong>共同主導者</strong>：Leslie Cho 與 A. Michael Lincoff（Cleveland Clinic），擔任 co-PI [Supplement p.25]。</li>
+<li><strong>贊助者參與程度</strong>：作者群中有 4 位 Novartis 員工（Manning、Zhao、Wang、Lesogor/Cao），其中 Lesogor 與 Cao 也是 Executive Committee 成員 [Supplement p.25]。</li>
+<li><strong>Tsimikas 的角色</strong>：Sotirios Tsimikas 掛名作者，在 Executive Committee 中是「non-voting member」[Supplement p.25]。他與 pelacarsen 原研公司 Ionis 之間的關係，本次搜尋沒有找到可佐證的公開資訊，標為 [無法取得]。之所以特別列為 non-voting，推測與利益衝突有關 [推論]。</li>
+<li><strong>原研來源</strong>：pelacarsen 由 Ionis 發現並完成早期開發，Novartis 於 2019 年 2 月行使授權選擇權 [外部：Ionis IR]。</li>
+<li><strong>作者立場</strong>：Nissen 在新聞稿中稱結果「令人失望且意外」，同時表示單一陰性試驗不代表降低 Lp(a) 沒有價值 [外部：TCTMD]。本文 Discussion 也保留了「其他藥物可能不同」的空間，與這個立場一致。</li>
+<li><strong>利益揭露</strong>：試驗由 Novartis 出資，試驗設計由 Novartis 與 C5Research 共同完成。資料由 sponsor 收集，結束後整個資料庫移交 C5Research 獨立分析，雙方統計人員的結果一致 [Supplement p.47]。個別作者的 disclosure form 在本次輸入中已被排除，標為 [無法取得]。</li>
+<li><strong>評估</strong>：本文是陰性結果，看不到 sponsor 美化結論的跡象。但 Discussion 對失敗原因的推測（後述 B1）傾向保留整個 Lp(a) 藥物類別的前景，這點與產業利益方向一致，需要留意。</li>
+</ul>
+<h3>2. 文獻 Metadata 整理</h3>
+<ul>
+<li><strong>Received／Accepted date</strong>：markdown 未提供，審查天數無法計算 [無法取得]。</li>
+<li><strong>發表時程</strong>：結果在 2026-09-04 以新聞稿公布未達主要終點 [外部：Ionis IR]，11 月在 AHA 2026 發表並同步刊出 NEJM 全文 [外部：ACC、Healio]。這是典型的「學會發表＋同步刊登」模式，審查週期通常被壓縮 [推論]。</li>
+<li><strong>期刊屬性</strong>：NEJM 的 2025 JIF 約 84.5（Q1）。這個數字來自二手來源，原始 Clarivate 頁面未直接查證 [外部：Wolters Kluwer／manusights]。</li>
+<li><strong>Open Access 狀態</strong>：[無法取得]。</li>
+<li><strong>稿件性質</strong>：原創研究投稿，不是邀稿。同期另有 NEJM Evidence 的延伸分析 [外部：Healio]。</li>
+</ul>
+<h3>3. 研究背景</h3>
+<ul>
+<li><strong>既有證據</strong>：孟德爾隨機化（Mendelian randomization, MR）與流行病學研究顯示，Lp(a) 很可能是 ASCVD 與鈣化性主動脈瓣狹窄的致病因子。全球約 20% 人口 Lp(a) &gt; 50 mg/dL。statin、飲食、生活型態幾乎不影響 Lp(a)；PCSK9 抑制劑只降約 17% [文內 Introduction]。</li>
+<li><strong>知識缺口</strong>：反義寡核苷酸（ASO）與 siRNA 都能大幅降低 Lp(a)，但「降 Lp(a) 能否減少心血管事件」一直沒有結局試驗回答。</li>
+<li><strong>研究問題</strong>：對已有 ASCVD、Lp(a) ≥ 70 mg/dL、且接受標準次級預防的病人，每月皮下注射 pelacarsen 80 mg 能否降低 4 項 MACE？[文內]</li>
+</ul>
+<h3>4. 研究設計與方法</h3>
+<p><strong>PICO</strong></p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>項目</th>
+<th>內容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>P（族群）</td>
+<td>18–80 歲；3 個月至 10 年前發生過 MI、缺血性中風或有症狀的 PAD；中央實驗室 Lp(a) ≥ 70 mg/dL（約 148 nmol/L）。共 797 個中心、42 國。</td>
+</tr>
+<tr>
+<td>I（介入）</td>
+<td>pelacarsen 80 mg，每月皮下注射一次</td>
+</tr>
+<tr>
+<td>C（對照）</td>
+<td>外觀相同的安慰劑。背景治療為依當地指引的最大耐受降脂治療與其他次級預防。</td>
+</tr>
+<tr>
+<td>O（終點）</td>
+<td><strong>主要終點</strong>：4 項 MACE（心血管死亡、非致死性 MI、非致死性中風、需住院的緊急冠狀動脈再灌流），以首次事件時間分析。在全族群（≥ 70 mg/dL）與次族群（≥ 90 mg/dL）<strong>雙主要假說</strong>同時檢定。&lt;br&gt;<strong>Key secondary</strong>（納入多重檢定控制）：3 項 MACE；CHD 版 3 項 MACE；1 年 Lp(a) 變化。&lt;br&gt;<strong>次要終點</strong>：全死因死亡（不在多重檢定圖內）。</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>關鍵設計細節</strong></p>
+<ul>
+<li>隨機分配前有 30–90 天的危險因子調整期。</li>
+<li>1:1 隨機分配，依篩檢 Lp(a) ≥ 90 或 &lt; 90 mg/dL 分層。</li>
+<li>隨機分配後血脂數值對醫師盲化，只在 LDL-C 超過預設門檻時由中央實驗室發出警示 [Supplement Lipid Alert，限制：圖未轉出]。</li>
+<li>停藥者仍持續追蹤，採 treatment-policy estimand。</li>
+<li>收案期間 2019-12 至 2022-07；中位追蹤 4.7 年。</li>
+</ul>
+<p><strong>統計方法</strong></p>
+<ul>
+<li>主要分析為分層 Cox 模型：固定效應為組別與地區，以次族群指標作為分層因子。</li>
+<li>兩個主要假說以加權 Dunnett 檢定加圖形化 alpha 傳遞控制多重性。</li>
+<li>單側 α 0.025，扣除 2 次期中分析後，最終分析 α 為 0.0245。</li>
+</ul>
+<p><strong>樣本數假設</strong></p>
+<ul>
+<li>假設第 1 年 HR 0.90，之後 HR 0.764，全程等效 HR 0.805。</li>
+<li>需要 993 個事件，達 88% 檢定力。</li>
+<li>原本預計 7,680 人；因事件率偏低擴增至 8,280 人。</li>
+</ul>
+<h3>5. 研究結果重點整理</h3>
+<div class="table-wrap wide"><table>
+<thead>
+<tr>
+<th>變項（代表什麼）</th>
+<th style="text-align:right">Pelacarsen（n=4157）</th>
+<th style="text-align:right">安慰劑（n=4165）</th>
+<th style="text-align:right">組間差（95% CI）</th>
+<th style="text-align:right">p 值</th>
+<th>如何解讀</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Lp(a) 1 年變化％</strong>（LSM 估計）</td>
+<td style="text-align:right"><strong>−78.4%</strong></td>
+<td style="text-align:right"><strong>−3.2%</strong></td>
+<td style="text-align:right">−77.7 個百分點（−78.4 to −77.0）</td>
+<td style="text-align:right">未報告</td>
+<td>藥理學上幾乎完全達到預期的降幅</td>
+</tr>
+<tr>
+<td><strong>Lp(a) 1 年中位數</strong></td>
+<td style="text-align:right">基線 235.6 → <strong>64.4 nmol/L</strong></td>
+<td style="text-align:right">236.2 → <strong>233.4 nmol/L</strong></td>
+<td style="text-align:right">未報告</td>
+<td style="text-align:right">未報告</td>
+<td>降到約 64 nmol/L，但多數人仍高於 50 nmol/L</td>
+</tr>
+<tr>
+<td><strong>Lp(a) 全程時間平均絕對變化</strong></td>
+<td style="text-align:right"><strong>−161.2 nmol/L</strong></td>
+<td style="text-align:right"><strong>−17.1 nmol/L</strong></td>
+<td style="text-align:right">−144.1 nmol/L（−146.9 to −141.3）</td>
+<td style="text-align:right">未報告</td>
+<td>ITT 下全程實際暴露的差距約 144 nmol/L</td>
+</tr>
+<tr>
+<td><strong>LDL-C 全程時間平均變化</strong></td>
+<td style="text-align:right"><strong>−3.8 mg/dL，−8.8%</strong></td>
+<td style="text-align:right"><strong>＋3.3 mg/dL，＋2.4%</strong></td>
+<td style="text-align:right">−7.1 mg/dL（−8.2 to −5.9）</td>
+<td style="text-align:right">未報告</td>
+<td>約差 0.18 mmol/L，單靠這點預期效益很小</td>
+</tr>
+<tr>
+<td><strong>4 項 MACE</strong>（主要終點，全族群）</td>
+<td style="text-align:right"><strong>511（12.3%）</strong></td>
+<td style="text-align:right"><strong>503（12.1%）</strong></td>
+<td style="text-align:right">HR 1.02（0.90–1.15）</td>
+<td style="text-align:right">0.76</td>
+<td>曲線完全重疊；排除了設計假設的 HR 0.805</td>
+</tr>
+<tr>
+<td>次族群 Lp(a) ≥ 90 mg/dL</td>
+<td style="text-align:right">402/3266（12.3%）</td>
+<td style="text-align:right">403/3274（12.3%）</td>
+<td style="text-align:right">HR 1.00（0.87–1.15）</td>
+<td style="text-align:right">0.99</td>
+<td>Lp(a) 較高者同樣沒有效益</td>
+</tr>
+<tr>
+<td><strong>3 項 MACE</strong>（不含緊急再灌流）</td>
+<td style="text-align:right">424（10.2%）</td>
+<td style="text-align:right">420（10.1%）</td>
+<td style="text-align:right">HR 1.01（0.88–1.16）</td>
+<td style="text-align:right">未報告</td>
+<td>硬終點同樣中性</td>
+</tr>
+<tr>
+<td><strong>CHD 版 3 項 MACE</strong>（CHD 死亡＋MI＋緊急再灌流）</td>
+<td style="text-align:right">391（9.4%）</td>
+<td style="text-align:right">402（9.7%）</td>
+<td style="text-align:right">HR 0.97（0.85–1.12）</td>
+<td style="text-align:right">未報告</td>
+<td>點估計略低於 1，但 CI 寬且跨 1</td>
+</tr>
+<tr>
+<td>心血管死亡</td>
+<td style="text-align:right">124（3.0%）</td>
+<td style="text-align:right">134（3.2%）</td>
+<td style="text-align:right">HR 0.93（0.73–1.19）</td>
+<td style="text-align:right">未報告</td>
+<td>CI 寬，無法判定</td>
+</tr>
+<tr>
+<td>非致死性 MI</td>
+<td style="text-align:right">227（5.5%）</td>
+<td style="text-align:right">230（5.5%）</td>
+<td style="text-align:right">HR 0.99（0.82–1.18）</td>
+<td style="text-align:right">未報告</td>
+<td>沒有明確組間差異</td>
+</tr>
+<tr>
+<td>非致死性中風</td>
+<td style="text-align:right">119（2.9%）</td>
+<td style="text-align:right">113（2.7%）</td>
+<td style="text-align:right">HR 1.06（0.82–1.37）</td>
+<td style="text-align:right">未報告</td>
+<td>沒有明確組間差異</td>
+</tr>
+<tr>
+<td>緊急冠狀動脈再灌流</td>
+<td style="text-align:right">108（2.6%）</td>
+<td style="text-align:right">104（2.5%）</td>
+<td style="text-align:right">HR 1.04（0.80–1.36）</td>
+<td style="text-align:right">未報告</td>
+<td>沒有明確組間差異</td>
+</tr>
+<tr>
+<td><strong>全死因死亡</strong></td>
+<td style="text-align:right">239（5.7%）</td>
+<td style="text-align:right">246（5.9%）</td>
+<td style="text-align:right">HR 0.98（0.82–1.17）</td>
+<td style="text-align:right">未報告</td>
+<td>不在多重檢定內；中性</td>
+</tr>
+<tr>
+<td><strong>永久停藥比例</strong></td>
+<td style="text-align:right"><strong>35.1%</strong></td>
+<td style="text-align:right"><strong>18.3%</strong></td>
+<td style="text-align:right">＋16.8 pp [自行計算]</td>
+<td style="text-align:right">未報告</td>
+<td>主動組停藥率約為對照組 2 倍，ITT 效果被稀釋</td>
+</tr>
+<tr>
+<td><strong>因 AE 停藥</strong>（安全族群）</td>
+<td style="text-align:right">857/4166（20.6%）</td>
+<td style="text-align:right">310/4154（7.5%）</td>
+<td style="text-align:right">＋13.1 pp [自行計算]</td>
+<td style="text-align:right">未報告</td>
+<td>耐受性是主要問題</td>
+</tr>
+<tr>
+<td><strong>類流感／全身症狀</strong></td>
+<td style="text-align:right">31.9%</td>
+<td style="text-align:right">5.8%</td>
+<td style="text-align:right">＋26.1 pp [自行計算]</td>
+<td style="text-align:right">未報告</td>
+<td>ASO 典型副作用，頻率高</td>
+</tr>
+<tr>
+<td><strong>注射部位反應</strong></td>
+<td style="text-align:right">25.6%</td>
+<td style="text-align:right">2.9%</td>
+<td style="text-align:right">＋22.7 pp [自行計算]</td>
+<td style="text-align:right">未報告</td>
+<td>也可能影響盲性</td>
+</tr>
+<tr>
+<td><strong>判定為「是／可能」的 anaphylaxis</strong></td>
+<td style="text-align:right">19（0.5%）</td>
+<td style="text-align:right">0</td>
+<td style="text-align:right">未報告</td>
+<td style="text-align:right">未報告</td>
+<td>少見但為新的訊號；其中 8 例住院、無死亡</td>
+</tr>
+<tr>
+<td><strong>任何 SAE</strong></td>
+<td style="text-align:right">1553（37.3%）</td>
+<td style="text-align:right">1709（41.1%）</td>
+<td style="text-align:right">−3.8 pp [自行計算]</td>
+<td style="text-align:right">未報告</td>
+<td>主動組反而較低，原因不明（見 C4）</td>
+</tr>
+</tbody>
+</table></div>
+<p>表後補充：</p>
+<ul>
+<li><strong>CONSORT 人數核對</strong>：篩檢 14,244 − 隨機分配 8,350 = 5,894，與 Figure S1 的排除人數（528＋19＋5317＋30）完全吻合。隨機分配 8,350 − 從未用藥 27 − GCP 違規 1 = FAS 8,322。兩組「完成＋未完成」分別為 4,035＋122 = 4,157 與 4,056＋109 = 4,165，與 FAS 一致 [Supplement Figure S1 圖]。</li>
+<li><strong>流失極少</strong>：非行政性設限 2.9% 對 2.6% [Table S5]；生命狀態取得率 99.3%。</li>
+<li><strong>事件數與期中分析</strong>：總主要事件 1,014 件，超過計畫的 993 件。第 2 次期中分析的非約束性 futility 界線是全族群 HR 0.94，DSMB 仍建議繼續 [Supplement p.52]。正文沒有揭露期中分析時的點估計。</li>
+<li><strong>Figure 1A 的時間趨勢</strong>：pelacarsen 組 Lp(a) 的幾何 LSM 從 12 個月約 56–60 nmol/L 緩升到 48 個月約 78 nmol/L（依圖目測），符合停藥累積的效果。</li>
+</ul>
+<h3>6. 作者討論與評論重點</h3>
+<p><strong>作者主訊息</strong>：Lp(a) 降低 78%，但 MACE 沒有改善；這個結論在全族群、次族群、所有次要終點與次組都一致。</p>
+<p><strong>作者提出的解釋</strong></p>
+<ol>
+<li>COVID-19「不太可能」解釋陰性結果。</li>
+<li>短期降 Lp(a) 不等於 MR 所反映的終身低暴露。</li>
+<li>背景危險因子控制很嚴格（LDL-C 64.6 mg/dL、SBP 125 mmHg），可能壓低了可額外獲得的效益。</li>
+<li>siRNA 能降 &gt; 90%，族群與設計也不同，結果可能不同。</li>
+<li>一級預防族群可能效果較大。</li>
+</ol>
+<p><strong>作者列出的限制</strong>：族群以男性與白人為主；COVID 干擾無法排除；兩組停藥率不同可能造成 informative censoring；MMRM 沒有處理死亡造成的設限；只納入次級預防族群。</p>
+<p><strong>[評估]</strong></p>
+<ul>
+<li><strong>第 3 點與文內數據矛盾</strong>：74.6% 的病人「不需要」事前危險因子調整 [文內 Results]，所以基線的良好控制大多不是調整期造成的，「嚴格調控壓低效益」這個說法證據薄弱。</li>
+<li><strong>第 2 點沒有量化</strong>：作者沒有依 MR 的 log-linear 關係（例如 Burgess 2018）算出本試驗的 Lp(a) 降幅「預期」能帶來多少相對風險下降，再與觀察到的 CI 對照，因此「劑量不足」與「Lp(a) 假說不成立」兩種解釋無法區分（見 B1）。</li>
+<li><strong>限制的寫法有誤導空間</strong>：作者說停藥差異「可能造成 informative censoring」，但主要分析採 treatment-policy，停藥者仍持續追蹤，停藥本身並不造成設限。真正的問題是 <strong>ITT 效果被稀釋</strong>，作者沒有直接說明這一點。</li>
+<li><strong>整體判斷</strong>：臨床結論「pelacarsen 不降低 MACE」沒有超出數據範圍。但 Discussion 對其他 Lp(a) 藥物的樂觀推論屬於推測，數據並不支持。</li>
+</ul>
+<h3>7. 外部專業意見</h3>
+<ul>
+<li>本次搜尋<strong>沒有找到</strong> NEJM 針對本文的同期 editorial 或 correspondence，也沒有取得任何 DOI，因此無法呼叫全文擷取 [無法取得]。</li>
+<li>可取得的是學會報導中的討論者意見 [外部：TCTMD 新聞報導，非 editorial 全文]：
+<ul>
+<li><strong>Karol Watson（UCLA，AHA 指定討論者）</strong>：「生物學、遺傳學都很有說服力，一切都做對了，事件卻沒有改變」；她主張繼續做 Lp(a) 研究。</li>
+<li><strong>Donald Lloyd-Jones</strong>：提出幾種可能解釋，包括族群動脈硬化過於晚期、Lp(a) 升高幅度只是中度、Lp(a) 降幅不完全、藥物耐受性或毒性、追蹤時間不足；他認為 Lp(a) 仍應視為致病因子，篩檢建議維持不變。</li>
+</ul>
+</li>
+<li><strong>其他報導</strong>：產業分析指出 pelacarsen 的高停藥率可能影響結果，Novartis 已終止 pelacarsen 的 ASCVD 開發計畫 [外部：BioSpace、TCTMD]。產業新聞不列為專業意見，只作背景參考。</li>
+</ul>
+<h3>8. 臨床建議</h3>
+<p><strong>可採用本文結論的情境</strong>：已有 ASCVD、Lp(a) ≥ 70 mg/dL、LDL-C 已控制良好的次級預防病人。這類病人<strong>不應</strong>為了降低心血管事件而使用 pelacarsen。</p>
+<p><strong>不建議直接外推的情境</strong>：</p>
+<ul>
+<li>一級預防族群</li>
+<li>剛發生 ACS（3 個月內）的病人</li>
+<li>Lp(a) 極高者（例如 &gt; 400 nmol/L；本文 IQR 上限約 308 nmol/L）</li>
+<li>黑人族群（僅 3.6%）</li>
+<li>鈣化性主動脈瓣狹窄</li>
+<li>作用機轉不同、降幅更深的 siRNA（olpasiran、lepodisiran）或口服 muvalaplin</li>
+</ul>
+<p><strong>實務建議</strong></p>
+<ol>
+<li>Lp(a) 檢測的用途仍是風險分層：Lp(a) 高的病人，應更積極把 LDL-C、血壓等「已證實可改變」的危險因子控制到位。</li>
+<li>不要把 Lp(a) 下降當作替代終點，用來向病人說明預後會因此改善；本文證明兩者可以完全脫鉤。</li>
+<li>病人若詢問 siRNA 試驗，應說明目前沒有任何 Lp(a) 降低藥物證實有臨床效益，等待 OCEAN(a)-Outcomes 與 ACCLAIM-Lp(a) 的結果。</li>
+</ol>
+<p><strong>證據強度：強</strong>（針對「pelacarsen 80 mg 每月注射對次級預防無效」這個結論）。理由是大型雙盲 RCT、1,014 個事件、CI 窄、流失極少，所有次要終點與敏感度分析都一致。但若要推論「降低 Lp(a) 整體無效」，證據強度<strong>只有中到弱</strong>（理由見 B1、F）。</p>
+<hr />
+<h2>SKILL-A：批判性評讀</h2>
+<h3>A. 補充技術細節</h3>
+<ul>
+<li><strong>樣本數估算</strong>：事前有 power calculation，見 Section 4。需要 993 事件，實際有 1,014 件，已達標。
+<ul>
+<li>原假設年事件率 4.6%；實際約 12.2%/4.7 年 ≈ 2.6–2.7%/年 [自行計算]，遠低於假設，所以靠擴增人數與延長追蹤補足事件數。</li>
+<li>擴增的理由在文內有說明，屬於盲性下的合理調整。</li>
+</ul>
+</li>
+<li><strong>終點是否被更換</strong>：Protocol 原版（v00, 2019-05）的主要目標就是 4 項 expanded MACE，在全族群與次族群各自檢定；key secondary 為 3 項 MACE 與 CHD 版本 [Protocol p.11]。與正文一致，<strong>沒有 outcome switching</strong>。</li>
+<li><strong>分析模型變更</strong>：Protocol 原版是 Cox 模型，含「treatment × 次族群」交互作用項 [Protocol p.12]。最終 SAP 改為「以次族群為分層因子的 stratified Cox」[Supplement p.48]。這屬於技術性修正，對中性結果的解讀沒有實質影響。</li>
+<li><strong>隨機分配與盲法</strong>：使用 IRT 分配，依 Lp(a) 分層。正文沒有描述 allocation concealment 的細節，但 IRT 系統屬於標準做法。致盲層級包括受試者、醫師與 CEC。沒有做盲法成功度檢查（見 B3）。</li>
+<li><strong>分析族群</strong>：主要分析採 FAS（treatment-policy），剔除 27 名從未用藥者與 1 名 GCP 違規者，嚴格來說是「modified ITT」。28 人只占 0.3%，影響可忽略。正文沒有提供 per-protocol 或 on-treatment 分析，supplement 的文字也沒有看到。</li>
+<li><strong>比例風險假設</strong>：主要與次要終點的 PH 檢定 p 值介於 0.14–0.84 [Table S6]。分段 Cox 模型顯示：全族群 &lt; 1 年 HR 1.00（0.79–1.28）、≥ 1 年 HR 1.02（0.89–1.18）；次族群 &lt; 1 年 0.92（0.70–1.21）、≥ 1 年 1.03（0.88–1.21）[Table S3A/B]。<strong>沒有「延遲出現效益」的證據</strong>，這點直接回應了樣本數設計中「第 1 年之後效果較強」的假設。</li>
+<li><strong>缺失資料</strong>：主要終點以 reference-based multiple imputation 做敏感度分析，HR 仍是 1.02 [Table S3A]。Lp(a) 與 LDL 採 MMRM（MAR 假設），沒有處理死亡造成的截尾（作者已自承）。</li>
+<li><strong>競爭風險</strong>：以 Fine-Gray 模型、將非心血管死亡視為競爭事件，sHR 同為 1.02（0.90–1.15）[Table S3A]。</li>
+</ul>
+<h3>B. 批判性評估</h3>
+<h4>B1. 假說與理論邏輯</h4>
+<p><strong>問題 1：降幅換算成「預期效益」後，本試驗能否排除 MR 所預測的效果？</strong></p>
+<ul>
+<li><strong>文內證據</strong>：時間平均 Lp(a) 絕對差為 −144.1 nmol/L，約 −65 至 −70 mg/dL；依約 2.1–2.4 nmol/L 對 1 mg/dL 粗略換算 [推論]。</li>
+<li><strong>外推計算</strong>：依 MR 的 log-linear 估算，約 100 mg/dL 的 Lp(a) 降低才等同 LDL-C 降 1 mmol/L 的效益（約 22% RRR）。這一點文內沒有引用，是 [推論，依 Burgess 2018 MR 框架]。以此換算，65–70 mg/dL 的降幅約對應 13–15% RRR，也就是 HR 0.85–0.87。再加上 LDL-C −0.18 mmol/L 約 4% 的效益，ITT 下「預期」HR 大約在 0.82–0.88 [推論]。</li>
+<li><strong>觀察值</strong>：HR 1.02（0.90–1.15），CI 下限 0.90 已排除這個預期範圍。</li>
+<li><strong>風險方向</strong>：如果 MR 的劑量反應關係可以直接搬到短期藥物介入，這個結果就是一個<strong>真正的負面訊號</strong>，不只是檢定力不足。</li>
+<li><strong>需要什麼才放心</strong>：作者應正式報告「依 MR 預期的 HR」，並和觀察到的 CI 比較。正文沒有做這項分析，只說「short-term reductions may not confer benefits」。</li>
+</ul>
+<p><strong>問題 2：Lp(a) 的作用機轉與「時間」</strong></p>
+<ul>
+<li>MR 反映的是終身暴露；試驗只介入約 3.5 年（主動組平均暴露時間），而且對象是動脈硬化已經形成的病人。</li>
+<li>作者的解釋（短期降低不等於終身低暴露）在生物學上說得通，但這是<strong>事後解釋</strong>，不是試驗前的預設假說。</li>
+<li>更直接的反證：樣本數設計本身就假設 1 年後 HR 0.764，代表設計者事前相信 1 年後會出現效益。分段 HR ≥ 1 年為 1.02，<strong>直接否定了設計者自己的機轉假說</strong>。</li>
+</ul>
+<p><strong>最可能的合理機轉（1–3 點）</strong></p>
+<ol>
+<li>在 LDL-C 約 65 mg/dL、已完整接受次級預防的背景下，Lp(a) 對<strong>殘餘風險</strong>的邊際貢獻比 MR 推估的小。MR 研究的族群並沒有這麼低的 LDL-C。這是作者提出的觀點，文內沒有提供數據支持。</li>
+<li>Lp(a) 的致病性可能主要在動脈硬化的形成期，晚期斑塊對 Lp(a) 降低反應有限。</li>
+<li>pelacarsen 降低的是 apo(a) 的生成，但對 Lp(a) 相關的氧化磷脂（OxPL）或發炎訊號的影響，文內沒有報告，所以無法判斷。Protocol 的 phase 2 背景說明 OxPL-apo(a) 可降 62% [Protocol p.13]，但本文完全沒有報告 OxPL 數據，這是一個缺漏。</li>
+</ol>
+<p><strong>可疑的敘事跳躍</strong></p>
+<ol>
+<li>Discussion 用「嚴格背景控制」解釋陰性結果，但 74.6% 病人本來就不需要調整，因果方向站不住。</li>
+<li>用「siRNA 降幅 &gt; 90%」暗示其他藥物可能成功，但降幅從 78% 增加到 90%，在絕對值上差距只有約 30 nmol/L [推論]，依 MR 換算的增益很有限。</li>
+<li>「COVID-19 不太可能解釋」只引用了 Lp(a) 降幅，沒有提供 COVID 期間事件率、停藥率等數據佐證。</li>
+</ol>
+<h4>B2. 受試者與外推性</h4>
+<p><strong>基線平衡</strong>：兩組非常平衡 [Table 1 圖]。年齡 59.7 歲，女性 27%，LDL-C 中位數約 65 mg/dL，高強度 statin 約 77.6%，ezetimibe 56.8%，PCSK9i 11.1%，hs-CRP 中位數 0.8 mg/L。</p>
+<p><strong>族群特徵</strong></p>
+<ul>
+<li>Lp(a) 中位數約 236 nmol/L，IQR 204–308，屬於「中到高」範圍。Lp(a) 極高者（&gt; 400 nmol/L）只占少數，無法單獨評估。</li>
+<li>MI 為主（76.6%），中風 7%，PAD 10%。另有 28 人（0.3%）在 Table S1 被記為「No event」，即沒有合格事件，屬於收案違規 [Table S1]。</li>
+<li>有 50.3% 病人有早發性事件病史。</li>
+</ul>
+<p><strong>外推性分級</strong></p>
+<ol>
+<li><strong>一般健康族群（一級預防）</strong>：不可外推。本文沒有納入，作者也明確承認。</li>
+<li><strong>特定病患族群（穩定次級預防、LDL-C 控制良好、Lp(a) 150–400 nmol/L）</strong>：<strong>可外推</strong>，而且外推性良好。全球 42 國，地區分布合理 [Supplement 地區表]。</li>
+<li><strong>特殊族群</strong>
+<ul>
+<li><strong>≥ 75 歲（n=518）</strong>：見 D 節，有疑似傷害訊號，不宜外推「中性」結論。</li>
+<li><strong>黑人</strong>：僅 3.6%；北美次群中占 16.9% [Table S4]，但整體人數太少。</li>
+<li><strong>剛發生 ACS 者</strong>：被排除（3 個月內有事件者不收）。</li>
+</ul>
+</li>
+</ol>
+<h4>B3. 研究設計與偏差</h4>
+<ul>
+<li><strong>隨機化與分派隱藏</strong>：IRT 分配加 Lp(a) 分層，基線平衡極佳，低風險。</li>
+<li><strong>致盲</strong>：
+<ul>
+<li>類流感症狀（31.9% 對 5.8%）與注射部位反應（25.6% 對 2.9%）的差異極大，<strong>受試者與醫師在實務上很可能猜得到分組</strong>。</li>
+<li>不過，終點由盲化的 CEC 判定，而且主要終點以硬終點為主（緊急再灌流需符合 Hicks 定義、須住院 [Supplement p.43]），解盲偏差對 MACE 的影響應該很小。</li>
+<li>理論上較容易受影響的是「緊急再灌流」，但它的 HR 1.04 與其他組成一致。</li>
+<li>沒有盲法成功度檢查。</li>
+</ul>
+</li>
+<li><strong>提早停止</strong>：沒有提早停止，兩次期中分析都建議繼續。</li>
+<li><strong>對照組適當性（Gyawali 框架）</strong>：在 SoC 之上加安慰劑是合理設計，因為 Lp(a) 沒有已核准的治療。對照組就是「臨床日常會給的治療」，沒有問題。</li>
+<li><strong>前期證據</strong>：Phase 2 只證明能降 Lp(a)，沒有任何臨床事件數據。Phase 3 的檢定基礎完全建立在 MR 推論上，這是所有替代指標驅動計畫的共同弱點。</li>
+<li><strong>依從性與共介入</strong>：
+<ul>
+<li>主動組停藥率 35.1%，對照組 18.3%，差距大。</li>
+<li>LDL-C 在主動組反而降了 7 mg/dL（pelacarsen 會連帶降低 apoB），偏差方向對 pelacarsen 有利，但仍然沒有效益。</li>
+<li>中央實驗室的「LDL alert」機制，兩組有可能觸發頻率不同：placebo 組 LDL 較高，可能被警示而加強治療。這一點文內沒有報告觸發次數 [限制]。</li>
+</ul>
+</li>
+<li><strong>2023 年 anaphylaxis 安全措施</strong>：曾要求主動組在醫療監督下注射，持續 6 個月 [文內]。這可能進一步拉高停藥率與流失，但正文沒有報告這段期間的停藥數據。</li>
+</ul>
+<p><strong>最可能造成偏差的設計點</strong></p>
+<ol>
+<li><strong>差異性停藥導致 ITT 稀釋</strong>：效果偏向無效（HR 往 1 移動）。不過依停藥比例粗估，即使真實的在藥效果是 HR 0.85，在約 70% 的時間處於「有效暴露」的情況下，ITT 的 HR 也應該在 0.89–0.90 附近 [推論]。觀察到的點估計 1.02 很難只靠稀釋來解釋。</li>
+<li><strong>安全措施干擾與 COVID 干擾</strong>：方向不確定，主要影響依從性。</li>
+<li><strong>背景治療「天花板」</strong>：選擇低殘餘風險的族群，會讓絕對效益與相對效益都偏小。</li>
+</ol>
+<h4>B4. 測量工具與實務意義</h4>
+<ul>
+<li><strong>Lp(a) 測量</strong>：使用中央實驗室，以 mg/dL 篩選、nmol/L 報告，兩者之間沒有固定換算關係（取決於 apo(a) isoform 大小）。正文沒有說明使用哪一種 assay（是否 isoform-insensitive）[限制]。</li>
+<li><strong>終點</strong>：4 項 MACE 都是臨床相關終點，且經 CEC 判定。「緊急再灌流」相對較軟，但結果與其他組成一致。</li>
+<li><strong>統計顯著與臨床重要</strong>：本文在 Lp(a) 這個替代指標上達到極大的統計與數值差異，在臨床終點上則完全沒有差異。這是<strong>替代終點失效</strong>的教科書級案例。</li>
+<li><strong>就算結果是真的，真實世界的用處有多大？</strong>
+<ul>
+<li>4 項 MACE 的絕對風險差為 +0.2 個百分點 [自行計算：12.29% − 12.08%]，約每 1,000 人多 2 件事件，CI 含益也含害。</li>
+<li>每 1,000 人中約有 131 人會因 AE 停藥，約 5 人發生判定為「是／可能」的 anaphylaxis。</li>
+<li>淨效益為負。</li>
+</ul>
+</li>
+</ul>
+<h3>C. 統計與資料完整性</h3>
+<h4>C1. 結果分類（CI ＋ MCID）</h4>
+<p><strong>Step 1：MCID</strong></p>
+<ul>
+<li>文內沒有明確寫出 MCID。依試驗自己的設計假設，以全程 HR 0.805 作為 δ-benefit [推論：以 power calculation 的假設效果作為臨床有意義的效益門檻]。</li>
+<li>傷害端沒有預設門檻，參照心血管安全試驗的慣例，以 HR 1.3 作為 δ-harm [推算]。</li>
+</ul>
+<p><strong>Step 2：CI 位置</strong></p>
+<ul>
+<li><strong>主要終點，全族群</strong>：HR 1.02（0.90–1.15）。CI 完全在 0.805 之上，<strong>已排除設計所假設的效益</strong>；CI 也在 1.3 之下，<strong>已排除嚴重傷害</strong>。但上限 1.15 代表 15% 的風險增加尚未被排除。
+<ul>
+<li><strong>結果分類：NEGATIVE ❌</strong>。有意義的效益被排除；CI 雖然不寬，但沒有窄到可以宣稱「等效」，所以不歸為 NEUTRAL。</li>
+<li>Supplement Table S3A 的 Interpretation 欄寫成「Neutral」，這個用詞稍嫌寬鬆。</li>
+</ul>
+</li>
+<li><strong>次族群（≥ 90 mg/dL）</strong>：HR 1.00（0.87–1.15）。分類同樣是 <strong>NEGATIVE ❌</strong>。CI 下限 0.87 也已排除 0.805。</li>
+<li><strong>3 項 MACE、CHD 版 MACE</strong>：HR 1.01（0.88–1.16）與 0.97（0.85–1.12），都排除了 0.805，屬於 <strong>NEGATIVE</strong>。</li>
+<li><strong>個別組成（CV 死亡 0.73–1.19、中風 0.82–1.37、緊急再灌流 0.80–1.36）</strong>：CI 同時涵蓋 0.805 與 1.0，屬於 <strong>INCONCLUSIVE ❓</strong>。個別組成本來就沒有足夠事件數，不應單獨解讀。</li>
+</ul>
+<p><strong>Step 3：統計謬誤檢查</strong></p>
+<ul>
+<li>正文結論寫的是「did not result in a lower risk」，沒有犯「p &gt; 0.05 = no difference」的錯誤，<strong>合格</strong>。</li>
+<li>沒有使用 post-hoc power，<strong>合格</strong>。</li>
+<li>有一處用語瑕疵：Discussion 說「no between-group differences were apparent in any prespecified subgroup」，但 ≥ 75 歲次組的 CI（1.01–2.22）並沒有跨越 1，這句話與 Figure S3A <strong>不一致</strong>（見 D 節）。</li>
+</ul>
+<h4>C2. Underpowered 判斷與 Winner's Curse</h4>
+<ul>
+<li>本文不是 underpowered：事件數達標，主要終點 CI 也已排除 MCID。</li>
+<li>這是陰性結果，不存在 Winner's Curse 的問題。</li>
+<li>但值得反思的是：設計假設的 HR 0.805 本身，可能就是由 MR 與觀察性研究推估出來、被「詛咒」過的效果量。</li>
+</ul>
+<h4>C3. Bayesian 補充（近似計算）</h4>
+<p>採 flat prior 與 log-HR 常態近似：log HR = 0.0198，SE = 0.0625 [自行計算，由 95% CI 反推]。</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>指標</th>
+<th style="text-align:right">估計值</th>
+<th>解讀</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Pr(HR &lt; 0.805，達設計效益)</td>
+<td style="text-align:right"><strong>&lt; 0.01%</strong></td>
+<td>幾乎排除</td>
+</tr>
+<tr>
+<td>Pr(HR &lt; 0.90，任何中度效益)</td>
+<td style="text-align:right"><strong>約 2.3%</strong></td>
+<td>極不可能</td>
+</tr>
+<tr>
+<td>Pr(0.90 ≤ HR ≤ 1.10，實質等效 ROPE)</td>
+<td style="text-align:right"><strong>約 87%</strong></td>
+<td>高度可能沒有實質差異</td>
+</tr>
+<tr>
+<td>Pr(HR &gt; 1.10，輕度傷害)</td>
+<td style="text-align:right"><strong>約 11%</strong></td>
+<td>無法完全排除</td>
+</tr>
+</tbody>
+</table></div>
+<ul>
+<li>以 skeptical prior（中心在 HR 1.0）計算，結論只會更偏向無效；optimistic prior（中心在 0.805）在 1,014 個事件的資料下也會被大幅拉回。三種 prior 的方向一致 [推論，未正式計算 I²]。</li>
+<li>p 值並不接近 0.05，所以這個 Bayesian 分析只作為補充，不改變結論。</li>
+</ul>
+<h4>C4. 報告完整性與其他統計問題</h4>
+<p><strong>KM 圖判讀</strong> [Figure 2 圖、Figure S2A 圖]</p>
+<ul>
+<li>6 個 panel 的兩組曲線從頭到尾幾乎重疊，<strong>沒有任何時間點出現持續分離</strong>。</li>
+<li>Panel E、F（CHD 版 MACE）在 18–36 個月時，placebo 曲線略高於 pelacarsen，42 個月後重新交會。這屬於隨機波動範圍，不應解讀為「早期效益後消失」。</li>
+<li>Figure S2A（MI）的 HR 0.99（0.82–1.18），在 18–30 個月時 placebo 曲線也略高，之後重合。</li>
+<li>主圖 y 軸從 0 到 100%，內插圖放大到 0–20%；兩者都從 0 開始，<strong>沒有誇大效果</strong>。</li>
+<li><strong>Number at risk</strong>：48 個月約 3,550，54 個月約 2,550，60 個月約 1,330。
+<ul>
+<li>54–60 個月的急降，來自收案期 2019-12 至 2022-07 的行政性設限（後收案者追蹤較短），兩組同步下降，<strong>不是 informative censoring</strong>。</li>
+<li>60 個月時每組仍約 1,300 人，曲線尾端仍有一定可靠度。</li>
+</ul>
+</li>
+</ul>
+<p><strong>多重比較</strong></p>
+<ul>
+<li>主要與 key secondary 終點已用圖形化程序控制。</li>
+<li>次組分析多達 6 個 panel、約 30 個以上的切分，沒有校正（作者已註明）。</li>
+</ul>
+<p><strong>SAE 主動組較低的異常</strong>（37.3% 對 41.1%）</p>
+<ul>
+<li>可能原因包括：主動組因停藥較多而<strong>暴露時間較短</strong>（3.5 年對 4.0 年）、AE 判讀時的盲性受到干擾，或是 SAE 中包含部分心血管事件。</li>
+<li>文內沒有用暴露時間校正事件率（例如每 100 人年），也沒有解釋這個差異 [限制]。</li>
+<li>因此不可以把這個差異解讀為「pelacarsen 較安全」。</li>
+</ul>
+<p><strong>安全族群人數 4166 多於 FAS 的 4157</strong>：可能是交叉用藥或分類方式造成，正文沒有說明。</p>
+<p><strong>正文與 supplement 的不一致</strong></p>
+<ol>
+<li>Methods 寫「nonfatal ischemic stroke」，但 Table 2 註腳與 Supplement 都寫「nonfatal stroke」，終點定義用語前後不一致。</li>
+<li>正文說支持性分析見「Tables S5, S6, and S7」，但實際上支持性分析在 <strong>Table S3A/B</strong>；S5 是缺失資料表。這是引用錯誤。</li>
+<li>摘要寫基線 Lp(a) 中位數 236 nmol/L，Table 1 為 235.6／236.2，兩者一致。Figure 1A 的基線點約 250 nmol/L，那是 MMRM 的幾何 LSM，不是中位數，屬於合理差異。</li>
+</ol>
+<p><strong>統計面紅旗清單</strong></p>
+<ol>
+<li>沒有報告期中分析時的 HR，無法評估 futility 界線（第 2 次期中 HR 0.94）實際上離觸發多近。</li>
+<li>沒有 per-protocol 或 on-treatment 敏感度分析，無法回應「稀釋效果」的質疑。</li>
+<li>SAE 沒有做暴露時間校正。</li>
+<li>次組分析沒有報告 interaction p 值，只有各次組的 HR（見 D 節）。</li>
+<li>沒有報告 OxPL、apoB 變化，以及 Lp(a) 降幅與事件之間的 on-treatment 劑量反應分析（例如依達到的 Lp(a) 四分位分層）。</li>
+<li>LDL alert 觸發次數與兩組背景治療的變化沒有報告。</li>
+</ol>
+<h3>D. 次組分析評估</h3>
+<p>以 Figure S3A 圖逐列核對；S3B–F 只有文字說明，「無組間差異」[限制：未見原圖]。</p>
+<div class="table-wrap wide"><table>
+<thead>
+<tr>
+<th>次組</th>
+<th>HR（95% CI）</th>
+<th>是否有 interaction p</th>
+<th>方向一致</th>
+<th>事先指定</th>
+<th>生物機轉</th>
+<th>可信度</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>≥ 75 歲</strong>（n=518）</td>
+<td><strong>1.50（1.01–2.22）</strong>；23.1% 對 16.4%</td>
+<td>✗ 未報告</td>
+<td>✗ 其他年齡切點（≥ 65：1.06；≥ 60：1.07）訊號弱</td>
+<td>是（有預設）</td>
+<td>弱（高齡者對 ASO 耐受性較差、停藥更多？[推論]）</td>
+<td><strong>低到中</strong>：屬於多次檢定下的可能偶然，但作為安全訊號值得追蹤</td>
+</tr>
+<tr>
+<td>Eastern Europe</td>
+<td>1.28（0.97–1.68）</td>
+<td>✗</td>
+<td>✗</td>
+<td>是（地區）</td>
+<td>無合理機轉</td>
+<td>低</td>
+</tr>
+<tr>
+<td>Asian</td>
+<td>0.81（0.60–1.10）</td>
+<td>✗</td>
+<td>✗（East Asia 0.89）</td>
+<td>是</td>
+<td>弱</td>
+<td>推測性</td>
+</tr>
+<tr>
+<td>Lp(a) ≥ 90 對 &lt; 90</td>
+<td>1.00 對（推算）約 1.08</td>
+<td>未報告</td>
+<td>—</td>
+<td>是（共同主要）</td>
+<td>有（劑量反應）</td>
+<td>次族群也無效，<strong>反向否定劑量反應</strong>，可信度高</td>
+</tr>
+</tbody>
+</table></div>
+<ul>
+<li><strong>Discussion 的「no between-group differences were apparent in any subgroup」與 ≥ 75 歲次組的 CI 不一致</strong>，屬於敘事上的瑕疵。≥ 75 歲次組只有 102 件事件；在約 30 個次組中，出現 1 個 CI 不跨 1 的結果，與純偶然的預期相符（α=0.05 時期望約 1.5 個）。</li>
+<li><strong>PH 診斷</strong>：BMI ≥ 30 次組 p=0.016、「近 1 年內 MI 或缺血性中風」次組 p=0.014，在約 50 個檢定中出現 2 個 &lt; 0.05，符合偶然預期 [Table S7 圖]。不過，「近期事件」次組的 HR 隨時間變化，若有臨床意義（例如近期事件者早期獲益），值得在個別病人資料中追蹤。正文沒有呈現這個次組的 HR [限制]。</li>
+</ul>
+<h3>E. 紅旗清單</h3>
+<ul>
+<li><strong>設計</strong>：設計時假設 1 年後 HR 0.764，完全依賴 MR 推估，沒有任何中間臨床證據。分段 HR ≥ 1 年為 1.02，否定了這個假設。</li>
+<li><strong>依從性</strong>：主動組停藥 35.1%（對照組 18.3%），因 AE 停藥 20.6%。藥物本身的耐受性問題會限制任何真實世界的效益。</li>
+<li><strong>盲性</strong>：類流感症狀與注射部位反應的差距約 22–26 個百分點，盲性實質上可能已被打破。硬終點加上盲化 CEC 可以緩解，但無法完全排除影響。</li>
+<li><strong>安全</strong>：判定為「是／可能」的 anaphylaxis 19 例（0.5%）對 0 例，其中 8 例住院；試驗中途因此啟動 urgent safety measure。</li>
+<li><strong>敘事</strong>：
+<ul>
+<li>Discussion 以「嚴格背景控制」解釋陰性結果，但 74.6% 病人本來就不需要調整。</li>
+<li>Discussion 稱「所有次組無差異」，但 ≥ 75 歲次組的 CI 不跨 1。</li>
+<li>限制段把停藥寫成「informative censoring」，混淆了稀釋效應與設限偏差。</li>
+</ul>
+</li>
+<li><strong>報告</strong>：
+<ul>
+<li>支持性分析的表號引用錯誤（應為 S3，誤寫為 S5–S7）。</li>
+<li>Methods 中 stroke 的定義用語前後不一致。</li>
+<li>SAE 沒有做暴露時間校正。</li>
+<li>OxPL 與 on-treatment 分析缺漏。</li>
+</ul>
+</li>
+<li><strong>COI</strong>：Sponsor 員工參與 Executive Committee 並列名作者。但資料有交由 C5Research 獨立重新分析，對陰性結果的可信度影響很小。</li>
+<li><strong>外推</strong>：只有次級預防、黑人 3.6%、女性 27%；Lp(a) 極高者人數不足。</li>
+</ul>
+<h3>F. 反向解釋</h3>
+<ol>
+<li><strong>「劑量／降幅不足」解釋</strong>：78% 的降幅仍留下約 64 nmol/L。
+<ul>
+<li><strong>支持</strong>：MR 推估效益與絕對降幅成正比，而且 siRNA 的降幅更深。</li>
+<li><strong>反對</strong>：依 MR 換算的預期 HR 約 0.82–0.88 [推論]，已被 CI 下限 0.90 排除；Lp(a) ≥ 90 mg/dL 次族群（絕對降幅更大）的 HR 也是 1.00，沒有看到劑量反應。</li>
+</ul>
+</li>
+<li><strong>「ITT 稀釋」解釋</strong>：35% 停藥，主動組平均暴露 3.5 年。
+<ul>
+<li><strong>支持</strong>：Figure 1A 中 Lp(a) 在 48 個月時回升到約 78 nmol/L。</li>
+<li><strong>反對</strong>：點估計 1.02 而不是 0.9x；如果真實效果是中度效益，稀釋後也應該在 0.90 附近。目前也沒有 on-treatment 分析可以佐證稀釋的說法。</li>
+</ul>
+</li>
+<li><strong>「時間不足」解釋</strong>：MR 反映的是終身暴露。
+<ul>
+<li><strong>支持</strong>：這在生物學上說得通；而且 IMPROVE-IT 等降脂試驗的效益通常在 1–2 年後才顯現 [推論]。</li>
+<li><strong>反對</strong>：追蹤長達 4.7 年，分段 HR 在 ≥ 1 年後仍然是 1.02，KM 曲線在晚期也沒有分離的趨勢。</li>
+</ul>
+</li>
+<li><strong>「Lp(a) 是風險標記而非可介入的因子」／「pelacarsen 有抵銷性的脫靶作用」解釋</strong>：
+<ul>
+<li><strong>支持</strong>：替代終點與臨床終點完全脫鉤；主動組 SAE 數字與 AE 型態不同（例如發炎性的類流感症狀），可能有尚未辨識的抵銷作用 [推論]。</li>
+<li><strong>反對</strong>：MR 證據的一致性很高；目前也沒有任何證據顯示 pelacarsen 有心血管毒性（MI、中風的 HR 都接近 1）。</li>
+</ul>
+</li>
+</ol>
+<h3>G. 最終裁決</h3>
+<ul>
+<li><strong>整體可信度</strong>：<strong>高</strong>。針對「pelacarsen 80 mg 每月注射在次級預防中無效」這個結論。</li>
+<li><strong>可採用的條件</strong>：已有 ASCVD、Lp(a) 約 150–400 nmol/L、LDL-C 已良好控制的病人。在這個族群中，pelacarsen 不提供 MACE 效益，而且有明確的耐受性與過敏代價。</li>
+<li><strong>不建議採用（外推）的情境</strong>：
+<ul>
+<li>推論「所有 Lp(a) 降低藥物都無效」</li>
+<li>一級預防族群</li>
+<li>Lp(a) 極高者</li>
+<li>主動脈瓣狹窄</li>
+<li>剛發生 ACS 的病人</li>
+</ul>
+</li>
+<li><strong>要改變結論，最需要的 3 項改進</strong>：
+<ol>
+<li>報告 on-treatment 分析，以及依「達到的 Lp(a) 水準」分層的事件率，以確認是否存在劑量反應。</li>
+<li>正式比較「依 MR 預期的 HR」與觀察到的 CI，區分「降幅不足」與「假說錯誤」兩種解釋。</li>
+<li>獨立驗證：siRNA 結局試驗（OCEAN(a)、ACCLAIM-Lp(a)）與一級預防試驗的結果。</li>
+</ol>
+</li>
+<li><strong>一句話結論</strong>：pelacarsen 把 Lp(a) 降了近八成，心血管事件卻一件也沒少，反而更多人因副作用停藥。</li>
+</ul>
+<hr />
+<h3>CONDITIONAL OUTPUT：效果量總表</h3>
+<div class="table-wrap wide"><table>
+<thead>
+<tr>
+<th>指標</th>
+<th>介入組</th>
+<th>對照組</th>
+<th>效果量</th>
+<th>95% CI</th>
+<th>ARD</th>
+<th>MCID</th>
+<th>結果分類</th>
+<th>實務意義</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>4 項 MACE（全族群）</td>
+<td>12.3%</td>
+<td>12.1%</td>
+<td>HR 1.02</td>
+<td>0.90–1.15</td>
+<td>+0.2 pp</td>
+<td>HR 0.805（設計假設）</td>
+<td><strong>NEGATIVE</strong></td>
+<td>沒有效益；輕度傷害未完全排除</td>
+</tr>
+<tr>
+<td>4 項 MACE（≥ 90 mg/dL）</td>
+<td>12.3%</td>
+<td>12.3%</td>
+<td>HR 1.00</td>
+<td>0.87–1.15</td>
+<td>0.0 pp</td>
+<td>0.805</td>
+<td><strong>NEGATIVE</strong></td>
+<td>Lp(a) 較高者也無效</td>
+</tr>
+<tr>
+<td>3 項 MACE</td>
+<td>10.2%</td>
+<td>10.1%</td>
+<td>HR 1.01</td>
+<td>0.88–1.16</td>
+<td>+0.1 pp</td>
+<td>0.805</td>
+<td><strong>NEGATIVE</strong></td>
+<td>硬終點中性</td>
+</tr>
+<tr>
+<td>CHD 版 3 項 MACE</td>
+<td>9.4%</td>
+<td>9.7%</td>
+<td>HR 0.97</td>
+<td>0.85–1.12</td>
+<td>−0.3 pp</td>
+<td>0.805</td>
+<td><strong>NEGATIVE</strong></td>
+<td>點估計略低於 1，但無意義</td>
+</tr>
+<tr>
+<td>全死因死亡</td>
+<td>5.7%</td>
+<td>5.9%</td>
+<td>HR 0.98</td>
+<td>0.82–1.17</td>
+<td>−0.2 pp</td>
+<td>未定義</td>
+<td>INCONCLUSIVE／中性</td>
+<td>沒有存活效益</td>
+</tr>
+<tr>
+<td>CV 死亡</td>
+<td>3.0%</td>
+<td>3.2%</td>
+<td>HR 0.93</td>
+<td>0.73–1.19</td>
+<td>−0.2 pp</td>
+<td>未定義</td>
+<td>INCONCLUSIVE</td>
+<td>事件數不足</td>
+</tr>
+<tr>
+<td>因 AE 停藥</td>
+<td>20.6%</td>
+<td>7.5%</td>
+<td>—</td>
+<td>未報告</td>
+<td>+13.1 pp</td>
+<td>—</td>
+<td>傷害（描述性）</td>
+<td>NNH 約 8 [自行計算]</td>
+</tr>
+<tr>
+<td>判定為 anaphylaxis（是／可能）</td>
+<td>0.5%</td>
+<td>0</td>
+<td>—</td>
+<td>未報告</td>
+<td>+0.5 pp</td>
+<td>—</td>
+<td>傷害（描述性）</td>
+<td>NNH 約 220 [自行計算]</td>
+</tr>
+</tbody>
+</table></div>
+<p>Sources:</p>
+<ul>
+<li><a href="https://www.healio.com/news/cardiology/20261107/pelacarsen-no-better-than-placebo-in-patients-with-high-lipoproteina-heart-disease">Healio – pelacarsen no better than placebo</a></li>
+<li><a href="https://www.tctmd.com/news/full-lpahorizon-results-affirm-lack-pelacarsen-benefit-secondary-prevention">TCTMD – Full Lp(a)HORIZON Results Affirm Lack of Pelacarsen Benefit</a></li>
+<li><a href="https://www.acc.org/Latest-in-Cardiology/Articles/2026/11/06/14/37/sat-10am-lpa-aha-2026">ACC – Lp(a) AHA 2026</a></li>
+<li><a href="https://consultqd.clevelandclinic.org/lipoproteina-reduction-with-pelacarsen-has-no-impact-on-cardiac-events">Cleveland Clinic ConsultQD</a></li>
+<li><a href="https://www.biospace.com/drug-development/details-from-novartis-failed-cardiovascular-trial-offer-little-silver-lining-for-rivals">BioSpace</a></li>
+<li><a href="https://familyheart.org/lpahorizon-results">Family Heart Foundation</a></li>
+<li><a href="https://ir.ionis.com/node/30031">Ionis IR release</a></li>
+<li><a href="https://www.wolterskluwer.com/en/solutions/Ovid/new-england-journal-of-medicine-624">Wolters Kluwer – NEJM journal metrics</a></li>
+<li><a href="https://manusights.com/blog/nejm-impact-factor">manusights – NEJM impact factor</a></li>
+<li><a href="https://clinicaltrials.gov/study/NCT04023552">ClinicalTrials.gov NCT04023552</a></li>
+</ul>
+
+<footer class="appraisal-meta">評讀資訊：模型：claude-opus-5-5 (claude)  ·  route：rct  ·  產出時間：2026-11-15 13:29 CST</footer>
+</main>
+</body>
+</html>
