@@ -1,0 +1,685 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fluid restriction in patients with heart failure: a systematic review.</title>
+<style>
+  :root {
+    --bg: #fafafa;
+    --card: #ffffff;
+    --text: #1a1a1a;
+    --muted: #6b6b6b;
+    --border: #e5e5e5;
+    --accent: #0b5fff;
+  }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang TC",
+      "Microsoft JhengHei", sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    margin: 0;
+    padding: 24px 16px 64px;
+    line-height: 1.72;
+  }
+  main {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    margin: 0 auto;
+    max-width: 840px;
+    padding: 22px 26px;
+  }
+  nav {
+    margin: 0 auto 14px;
+    max-width: 840px;
+    color: var(--muted);
+    font-size: 14px;
+  }
+  a { color: var(--accent); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  h1, h2, h3, h4 { line-height: 1.35; }
+  h1 { font-size: 26px; margin-top: 0; }
+  h2 { border-top: 1px solid var(--border); padding-top: 18px; }
+  code {
+    background: rgba(127, 127, 127, 0.12);
+    border-radius: 4px;
+    padding: 1px 4px;
+  }
+  .table-wrap {
+    margin: 1em 0;
+    overflow-x: auto;
+  }
+  .table-wrap.wide {
+    /* Break out of the 840px prose column, centred on the viewport. */
+    width: min(1040px, calc(100vw - 32px));
+    margin-left: calc(50% - min(520px, 50vw - 16px));
+  }
+  table {
+    border-collapse: collapse;
+    table-layout: auto;
+    width: 100%;
+  }
+  .table-wrap.wide {
+    /* Opaque so the <main> card border does not show through the table. */
+    background: var(--card);
+  }
+  /* Width hints go on <th> as percentages: Chrome's auto table layout
+     mis-sizes columns (and overflows) when cells carry min-width. */
+  .table-wrap.wide th:first-child {
+    /* Variable + plain-language definition, e.g. "NCPV (noncalcified ...)". */
+    width: 26%;
+  }
+  .table-wrap.wide th:last-child {
+    /* Last column is usually a one-line interpretation. */
+    width: 20%;
+  }
+  th, td {
+    border: 1px solid var(--border);
+    /* Wrap only at spaces: never split an English word mid-letter. */
+    overflow-wrap: normal;
+    word-break: normal;
+    hyphens: manual;
+    padding: 6px 8px;
+    text-align: left;
+    vertical-align: top;
+  }
+  blockquote {
+    border-left: 3px solid var(--accent);
+    color: var(--muted);
+    margin-left: 0;
+    padding-left: 14px;
+  }
+  .appraisal-meta {
+    border-top: 1px solid var(--border);
+    margin-top: 28px;
+    padding-top: 14px;
+    color: var(--muted);
+    font-size: 13px;
+  }
+  @media (max-width: 600px) {
+    body {
+      padding: 12px 8px 40px;
+    }
+    main {
+      padding: 16px 12px;
+    }
+    h1 {
+      font-size: 22px;
+    }
+    table {
+      font-size: 12px;
+    }
+    .table-wrap.wide {
+      width: calc(100vw - 16px);
+      margin-left: calc(50% - 50vw + 8px);
+    }
+    th, td {
+      padding: 4px 5px;
+    }
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #1a1a1a;
+      --card: #242424;
+      --text: #e8e8e8;
+      --muted: #999;
+      --border: #333;
+      --accent: #6ea8ff;
+    }
+  }
+</style>
+</head>
+<body>
+<nav><a href="../../2026-W47.html">← 回到 2026-W47 週報</a></nav>
+<main>
+<h1>Fluid restriction in patients with heart failure: a systematic review.</h1>
+<h1>批判性評讀：Fluid restriction in patients with heart failure: a systematic review（Heart 2026）</h1>
+<h2>SECTION-0：文章全面描述</h2>
+<h3>0. 文章身份證</h3>
+<ul>
+<li><strong>標題</strong>：Fluid restriction in patients with heart failure: a systematic review</li>
+<li><strong>期刊／年份</strong>：Heart (British Cardiac Society)，2026；112:939–945</li>
+<li><strong>DOI</strong>：10.1136/heartjnl-2025-326784；PMID 41529956</li>
+<li><strong>文章類型（路由結果）</strong>：SKILL-B／A1，量化合成型 systematic review。本文<strong>刻意不做 meta-analysis</strong>，改用敘述性合成。</li>
+<li><strong>Review 子型</strong>：systematic review。具備 PROSPERO 註冊（CRD42022292319）、四個資料庫的搜尋策略（Supplement Table S1–S4）、PRISMA flow（Figure 1）、雙人獨立篩選與萃取，並以 RoB 2 評估偏差風險。</li>
+<li><strong>混血文章警示</strong>：本文<strong>自稱依循 Cochrane Handbook，但有兩處實際做法與 Cochrane 不一致</strong>。
+<ul>
+<li>以「可能未經 peer review」為由，排除一篇符合納入條件的 RCT 會議摘要（Reilly 2017）。Cochrane 一般建議納入灰色文獻，以降低發表偏差。</li>
+<li>沒有搜尋試驗登錄平台（ClinicalTrials.gov、WHO ICTRP）。</li>
+<li>這兩點不使本文降級成 narrative review，但「依循 Cochrane」這個自我宣稱只算部分成立。</li>
+</ul>
+</li>
+</ul>
+<h3>1. 作者團隊評論</h3>
+<ul>
+<li><strong>通訊作者</strong>：Job J Herrmann，荷蘭 Radboud University Medical Center 心臟科，兼屬 Netherlands Heart Institute [文內]。</li>
+<li><strong>團隊構成</strong>：
+<ul>
+<li>6 位作者全部來自荷蘭心臟科或內科機構 [文內]。</li>
+<li>末兩位共同資深作者 D H Frank Gommans 與 Roland R J van Kimmenade 為 equal contribution [文內]。</li>
+<li>Hans-Peter Brunner-La Rocca（Maastricht）是長期從事心衰竭臨床試驗的研究者 [推論：依其機構與文內 COI 列出的多項產業研究合作]。</li>
+</ul>
+</li>
+<li><strong>團隊過往研究</strong>（依 PubMed 檢索 [外部: PubMed]）：
+<ul>
+<li>Herrmann JJ et al. FRESH-UP 試驗設計論文。<em>J Card Fail</em> 2022;28:1522–30。<a href="https://doi.org/10.1016/j.cardfail.2022.05.015">DOI</a></li>
+<li>Herrmann JJ et al. FRESH-UP 主結果。<em>Nat Med</em> 2025;31:2062–8。<a href="https://doi.org/10.1038/s41591-025-03628-4">DOI</a></li>
+<li>Herrmann JJ et al. FRESH-UP 預設次分析（依試驗前的液體管理分層）。<em>ESC Heart Fail</em> 2026。<a href="https://doi.org/10.1093/eschf/xvag197">DOI</a></li>
+<li>這個團隊是「心衰竭限水」議題的核心研究群，<strong>也正是被納入的 4 篇 RCT 中最大、權重最重那一篇（FRESH-UP，n=504，佔全部病人 74%）的作者群</strong>。本文 6 位作者中有 5 位（JJH、H-PB-LR、SS-vW、DHFG、RRJvK）同時是 FRESH-UP 作者 [外部: PubMed 作者清單比對]。</li>
+</ul>
+</li>
+<li><strong>作者立場史（關鍵）</strong>：
+<ul>
+<li>FRESH-UP 的結論是「這些發現質疑限水的效益」；2026 次分析進一步主張「不需要例行開始或繼續限水」[外部: PubMed 摘要]。</li>
+<li>本 SR 的結論「不支持例行限水」與團隊既有立場完全一致，<strong>存在確認偏差（confirmation bias）與自我評估偏差的結構性風險</strong>。</li>
+</ul>
+</li>
+<li><strong>利益揭露</strong> [文內]：
+<ul>
+<li>本研究無特定經費。</li>
+<li>H-PB-LR、SS-vW、DHFG、RRJvK 有藥廠與 Roche Diagnostics 的顧問費、講者費或研究經費，但這些與「限水」議題無直接商業關聯。</li>
+<li>[評估] 財務 COI 對結論影響低；<strong>真正的利益衝突是「學術／智識 COI」</strong>：作者評估自己試驗的偏差風險，而且自己的試驗主導整體結論。文中只在 limitation 提到「兩位篩選者之一未參與 FRESH-UP」，沒有把這點列為正式 COI。</li>
+</ul>
+</li>
+</ul>
+<h3>2. 文獻 Metadata 整理</h3>
+<ul>
+<li><strong>審查時程</strong>：Received 2025-07-10，Accepted 2025-12-09，<strong>審查期間約 152 天</strong>；Published Online First 2026-01-13 [文內]。</li>
+<li><strong>期刊平均審查時程</strong>：各來源數字不一。BMJ 不同頁面報告「送審後中位首次決定時間」為 27 或 38 天；接受總時程沒有可靠的公開數據 [外部: heart.bmj.com about 頁面（部分為 staging／mirror 頁面，未經驗證）]。
+<ul>
+<li>[推論] 152 天屬於一般或略長的範圍，可能經過一輪以上修稿。這段時間也正好跨過同主題 Frontiers 2025 meta-analysis 的出版日（2025-10-31），但本文沒有引用它（見 C、D 節）。</li>
+</ul>
+</li>
+<li><strong>Impact Factor</strong>：約 4.4（2025 JCR，Journal Metrics 資料；BMJ 自家頁面另列 5.1）[外部: journalmetrics.org、heart.bmj.com，未經 Clarivate 原始資料驗證]。期刊屬心血管領域 Q1–Q2 [推論]。</li>
+<li><strong>出版型態</strong>：Open Access 狀態 [無法取得]。版權頁註明 &quot;No commercial re-use&quot;。</li>
+<li><strong>邀稿或投稿</strong>：投稿，&quot;Not commissioned; externally peer-reviewed&quot; [文內]。同期配有<strong>邀稿</strong> editorial（Sato, Schmidt, von Haehling，&quot;Commissioned; internally peer reviewed&quot;）。</li>
+</ul>
+<h3>3. 研究背景（僅依文內資料）</h3>
+<ul>
+<li><strong>既有事實</strong>：
+<ul>
+<li>限水是常見的非藥物處置，假設能減少鬱血與住院。</li>
+<li>但已有資料顯示限水可能增加口渴、降低熱量攝取與生活品質（ref 10、11）。</li>
+</ul>
+</li>
+<li><strong>知識缺口</strong>：
+<ul>
+<li>2021 ESC 與 2022 AHA/ACC/HFSA 指引都明言證據不足，只建議「避免大量飲水」，並在嚴重 HF 或低血鈉時考慮限水。</li>
+<li>2024 ESC HFA consensus 則建議每日 1500–2500 mL，不主張限水。</li>
+<li>作者認為文件之間的落差反映證據稀少。</li>
+<li>先前的 SR 混入了同時介入鈉攝取或利尿劑的試驗，而且都沒有收錄 FRESH-UP。</li>
+</ul>
+</li>
+<li><strong>研究問題</strong>：在成人 HF 病人中，「單純限水」（不合併其他介入）相較於寬鬆攝水、較不嚴格的限水或常規照護，對死亡、HF 住院、QoL、口渴、NYHA 與 NT-proBNP 的效果為何？[推論：整理自 Introduction 末段與 Methods]</li>
+</ul>
+<h3>4. 研究設計與方法</h3>
+<p><strong>PICO</strong></p>
+<ul>
+<li><strong>P</strong>：成人 HF，住院或門診皆可，不限病因、LVEF 或 NYHA 分級。</li>
+<li><strong>I</strong>：限水，上限 1000 或 1500 mL/day。</li>
+<li><strong>C</strong>：寬鬆／不限水、較不嚴格的限水（30–35 mL/kg/day），或常規照護。</li>
+<li><strong>O</strong>：
+<ul>
+<li>主要：死亡、HF 住院。</li>
+<li>次要：QoL、口渴、NYHA、NT-proBNP、腎功能。</li>
+</ul>
+</li>
+</ul>
+<p><strong>關鍵設計細節</strong></p>
+<ul>
+<li><strong>研究設計納入條件</strong>：RCT，含平行與 crossover 設計，不限語言。</li>
+<li><strong>排除條件</strong>：
+<ul>
+<li>合併其他同時介入（鈉限制、利尿劑調整）的試驗。</li>
+<li>行為或衛教型試驗。</li>
+</ul>
+</li>
+<li><strong>搜尋</strong>：CINAHL、EMBASE、PubMed、Cochrane Library，不限起始日，搜尋至 2025-05-01；另做引文追蹤。
+<ul>
+<li><strong>沒有搜尋 ClinicalTrials.gov／ICTRP</strong>。</li>
+</ul>
+</li>
+<li><strong>篩選、萃取與 RoB</strong>：JJH 與 RvB 兩人獨立進行，意見不一致時由第三人 FG（Gommans）裁決。</li>
+<li><strong>RoB 工具</strong>：RoB 2，crossover 試驗加上 period／carry-over 領域。</li>
+<li><strong>合成方式</strong>：預定的 meta-analysis 因「高異質性」放棄，改為敘述性合成。
+<ul>
+<li>沒有使用 SWiM（Synthesis Without Meta-analysis）等結構化的非量化合成方法。</li>
+<li>沒有做 GRADE certainty 評等。</li>
+</ul>
+</li>
+</ul>
+<p><strong>Supplement 搜尋策略查核</strong> [Supplement Table S1–S4]</p>
+<ul>
+<li><strong>PubMed</strong>：同時列出 #5（RCT filter）與 #7（較寬的 clinical trial filter），但沒說明最終採用哪一組。</li>
+<li><strong>EMBASE</strong>：
+<ul>
+<li>用 <code>exp *heart failure/</code>、<code>exp *fluid therapy/</code> 的星號（只納入 major focus 的索引詞）。</li>
+<li>自由詞只搜 <code>.ti,kf.</code>（標題與 keyword），不含摘要。</li>
+<li>這兩個做法都明顯限縮了敏感度。</li>
+</ul>
+</li>
+<li><strong>CINAHL</strong>：S2 的自由詞 <code>(water OR fluid) AND (restrict* OR limit*)</code> 沒有限定欄位，是全欄位 AND，反而過寬。</li>
+<li>整體而言，搜尋設計對 EMBASE 偏嚴格；由於 Figure 1 只納入 4 篇，搜尋敏感度不足的風險不能排除。</li>
+</ul>
+<h3>5. 研究結果重點整理</h3>
+<p>本文未做 pooled 合併，下表依各試驗原始報告值整理，並標出研究數與人數。</p>
+<div class="table-wrap wide"><table>
+<thead>
+<tr>
+<th>變項（代表什麼）</th>
+<th style="text-align:right">研究數／人數</th>
+<th style="text-align:right">I²</th>
+<th style="text-align:right">效果量（95% CI）</th>
+<th style="text-align:right">p 值</th>
+<th>如何解讀</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>全死因死亡</td>
+<td style="text-align:right">3 篇／615 人（Travers 未報告）</td>
+<td style="text-align:right">未計算</td>
+<td style="text-align:right">限水 vs 對照：<strong>7 vs 7 例</strong>（Albert 1 vs 4、FRESH-UP 2 vs 1、Holst 4 vs 2）[自行計算]</td>
+<td style="text-align:right">各試驗皆不顯著</td>
+<td>事件數極少，<strong>完全無法排除有意義的利或害</strong></td>
+</tr>
+<tr>
+<td>HF 住院</td>
+<td style="text-align:right">3 篇／615 人</td>
+<td style="text-align:right">未計算</td>
+<td style="text-align:right">Albert：相對發生率 <strong>0.84（0.34–1.93）</strong>；FRESH-UP：<strong>4 vs 4</strong>；Holst：<strong>6 vs 6</strong> 次再住院（其中 1/3 來自同一位病人）</td>
+<td style="text-align:right">Albert p=0.68；其他未報告</td>
+<td>CI 跨越 1 且很寬，屬於不確定，不是「無差異」</td>
+</tr>
+<tr>
+<td>全因住院</td>
+<td style="text-align:right">1 篇／504 人</td>
+<td style="text-align:right">—</td>
+<td style="text-align:right">FRESH-UP：<strong>15 vs 20</strong></td>
+<td style="text-align:right">未報告</td>
+<td>數字略偏向限水，但只有單一試驗</td>
+</tr>
+<tr>
+<td><strong>KCCQ-OSS</strong>（KCCQ 總分，0–100，越高越好）</td>
+<td style="text-align:right">2 篇／550 人</td>
+<td style="text-align:right">未計算</td>
+<td style="text-align:right">Albert：<strong>72.6 vs 51.0</strong>（中位數，未校正基線）；FRESH-UP：<strong>72.2 vs 74.0</strong>，校正後差 **2.17（−0.06 to 4.39）**偏向寬鬆攝水 [外部: Nat Med 原文]</td>
+<td style="text-align:right">0.038；0.06</td>
+<td>兩篇方向<strong>相反</strong>；FRESH-UP 的 CI 上限 4.4 分，未達常用的 5 分 MCID</td>
+</tr>
+<tr>
+<td>MLWHFQ／EQ-5D-5L</td>
+<td style="text-align:right">2 篇／569 人</td>
+<td style="text-align:right">—</td>
+<td style="text-align:right">Holst：20 vs 17（p=0.95）；EQ-5D 兩篇皆約 0.80–0.83</td>
+<td style="text-align:right">不顯著</td>
+<td>沒有明確組間差異</td>
+</tr>
+<tr>
+<td><strong>口渴困擾</strong>（TDS-HF 8–40 或 VAS 0–100，越高越渴）</td>
+<td style="text-align:right">3 篇／615 人</td>
+<td style="text-align:right">—</td>
+<td style="text-align:right">FRESH-UP TDS-HF：<strong>18.6 vs 16.9</strong>；Holst VAS：<strong>51 vs 23</strong>；Albert VAS：40 vs 50</td>
+<td style="text-align:right">&lt;0.001；&lt;0.001；0.60</td>
+<td>2/3 篇限水明顯較渴；Holst 有 carry-over 效應</td>
+</tr>
+<tr>
+<td>(NT-pro)BNP</td>
+<td style="text-align:right">2 篇／571 人</td>
+<td style="text-align:right">—</td>
+<td style="text-align:right">FRESH-UP 6 個月：553.8 vs 530.5 ng/L；Travers BNP：602 vs 561</td>
+<td style="text-align:right">0.65；0.94</td>
+<td>沒有明確差異</td>
+</tr>
+<tr>
+<td>肌酸酐</td>
+<td style="text-align:right">2 篇／132 人</td>
+<td style="text-align:right">—</td>
+<td style="text-align:right">Holst 127 vs 130；Travers <strong>128.2 vs 111.7 µmol/L</strong></td>
+<td style="text-align:right">0.30；0.06</td>
+<td>Travers 限水組數值偏高（p=0.06），樣本極小</td>
+</tr>
+</tbody>
+</table></div>
+<ul>
+<li><strong>人數不一致</strong>：
+<ul>
+<li>Table 1 列 Albert 的樣本為 46 人（20 vs 26）。但 Discussion 寫「18 (75%) 與 23 (82%) 完成 QoL 問卷」，反推分母為 24 與 28，也就是 52 人。46 可能是分析人數，不是隨機分派人數，因此<strong>摘要的「682 randomised」可能低估</strong>。</li>
+<li>同期 editorial 寫「5 篇 RCT、769 人」，與正文的 4 篇、682 人不符（見第 7 節）。</li>
+</ul>
+</li>
+<li><strong>Table 3 抄錄錯誤</strong>：FRESH-UP 的 KCCQ-TSS 寫成「78.5 (73.4–78.4)」，點估計落在 CI 之外，CI 應是誤植自 CSS 欄 [文內 Table 3，圖頁 5 可見]。</li>
+<li><strong>摘要過度概括</strong>：摘要說「四篇試驗都沒有發現死亡或 HF 住院的顯著差異」，但 Travers 根本沒有報告這兩個終點（Table 3 標 NR）。</li>
+<li><strong>流程圖數字</strong>：Figure 1 [圖頁 2] 為 1906 筆，去重後 1549 筆篩選，+4 筆引文追蹤，排除 1549 筆，納入 4 筆，加總一致。
+<ul>
+<li>但只有「1 Conference abstract」一項排除理由，Reilly 被排除的原因沒有在 flow 中區分為「符合 PICO 但因出版型態排除」。</li>
+<li>也<strong>沒有區分 title/abstract 與全文篩選兩個階段</strong>，不符合 PRISMA 2020 格式。</li>
+</ul>
+</li>
+</ul>
+<h3>6. 作者討論與評論重點</h3>
+<ul>
+<li><strong>主要訊息</strong>：沒有證據顯示限水能降低死亡或 HF 住院；限水增加口渴，可能降低 QoL；不支持例行限水。</li>
+<li><strong>與現有文獻的比較</strong>：
+<ul>
+<li>先前 SR 混入了合併其他介入的試驗；唯一結論偏向「限水有益」的 Stein 2022 主要建立在多重介入試驗上。</li>
+<li>作者稱 FRESH-UP「未被先前 review 收錄」。</li>
+</ul>
+</li>
+<li><strong>作者自承的限制</strong> [文內]：
+<ol>
+<li>可能漏掉相關試驗。</li>
+<li>異質性高，無法做 meta-analysis。</li>
+<li>無法完全排除同時期鈉限制的影響。</li>
+<li>試驗樣本小，多數為門診，失訪或不遵從者被排除且沒有處理缺失資料。</li>
+</ol>
+</li>
+<li><strong>[評估] 作者避而不談的部分</strong>：
+<ul>
+<li>沒有討論<strong>作者評自己試驗 RoB 的利益衝突</strong>。</li>
+<li>沒有討論 RoB 2 對開放標籤、病人自評結果（PRO）的處理。</li>
+<li>沒有說明放棄 meta-analysis 是否偏離 PROSPERO 原計畫。</li>
+<li>沒有評論 Frontiers 2025 meta-analysis（已收錄 FRESH-UP）。</li>
+<li>「signal of harm in… potentially also QoL」主要倚賴 FRESH-UP 的<strong>次要</strong> KCCQ 子分數（CSS、TSS、SFS），而主要終點 KCCQ-OSS 本身沒有達到顯著。</li>
+</ul>
+</li>
+</ul>
+<h3>7. 外部專業意見</h3>
+<p><strong>同期 editorial</strong>：Sato R, Schmidt C, von Haehling S. &quot;Heart failure and fluid restriction: time to let go?&quot; <em>Heart</em> 2026. doi:10.1136/heartjnl-2025-327288 [外部: Heart editorial 全文]</p>
+<ul>
+<li><strong>核心論點</strong>：
+<ul>
+<li>限水與限鈉延續了從 Hippocrates 以來的「排水」傳統，但缺乏證據支持。</li>
+<li>遵從度普遍不佳，各指引已逐步下修相關建議。</li>
+</ul>
+</li>
+<li><strong>對本文的肯定</strong>：納入目前最大的 FRESH-UP；聚焦單純限水，排除限鈉與利尿劑等共同介入。</li>
+<li><strong>質疑與方法學批評</strong>：
+<ul>
+<li>總樣本有限，約三分之二來自單一試驗。</li>
+<li>族群（急性 vs 慢性）、設計、限水程度、追蹤時間與量表的異質性大。</li>
+<li>多數試驗為中或高 RoB，限制了結論的外推性。</li>
+</ul>
+</li>
+<li><strong>機轉觀點</strong>：
+<ul>
+<li>在接受 ACEi 加 β-blocker 的穩定 HF 病人中，腎臟與神經荷爾蒙對鈉負荷的反應接近健康人。</li>
+<li>嚴格限水限鈉反而可能活化 RAAS／SNS。</li>
+<li>主張未來試驗應依表型、血行動力學、低血鈉、腎功能分層，並探索以尿鈉等生物標記導引的個人化策略。</li>
+</ul>
+</li>
+<li><strong>重要的不一致</strong>：editorial 描述本文納入「<strong>5 篇 RCT、769 人</strong>」，並提到 QoL 量表包含「Heart Failure Symptom Survey」；正式出版的正文則是 4 篇、682 人，也沒有該量表。
+<ul>
+<li>769 − 682 = 87，恰好等於 Reilly 2017 摘要的樣本數 [外部: DCRI grand rounds 投影片列出 Reilly 2017, n=87]。</li>
+<li>[推論] editorial 依據的是<strong>收錄 Reilly 試驗的較早稿件版本</strong>。若屬實，代表 Reilly 是在修稿過程中被移除的，這個納入標準的變動沒有在文中交代。</li>
+</ul>
+</li>
+</ul>
+<p><strong>其他外部相關證據</strong></p>
+<ul>
+<li>Adamu UG et al. <em>Front Cardiovasc Med</em> 2025-10-31（PROSPERO CRD420251048914）[外部: Frontiers 全文]
+<ul>
+<li>收錄同樣 4 篇 RCT（含 FRESH-UP），並做了 meta-analysis。</li>
+<li>死亡 RR 1.71（0.37–3.72）；HF 再住院 RR 0.71（0.46–1.10）；KCCQ-OSS WMD 6.17（−12.54 to 24.87，I² 75%）。</li>
+<li>總人數 747，推測把 Holst crossover 的 65 人重複計算 [推論]。</li>
+<li>這篇早於本文接受日，<strong>直接推翻本文「先前 review 都未收錄 FRESH-UP」的說法</strong>，但本文沒有引用。</li>
+</ul>
+</li>
+</ul>
+<h3>8. 臨床建議</h3>
+<ul>
+<li><strong>可採用本文結論的情境</strong>：NYHA II–III、近 3 個月沒有 HF 住院、GDMT 穩定的門診慢性 HF 病人（也就是 FRESH-UP 族群）。可以不再例行要求 ≤1.5 L/day 的限水；對已在限水中、口渴困擾明顯的病人，放寬限水是合理選項。</li>
+<li><strong>不建議直接套用的情境</strong>：
+<ul>
+<li>急性失代償住院中的病人（只有 Travers 一篇 n=67，終點僅為臨床穩定時間）。</li>
+<li>中重度低血鈉（Albert 只收 ≤137 mmol/L 的輕度低血鈉；原表把單位誤植為 mg/dL）。</li>
+<li>NYHA IV、晚期 HF、利尿劑抗性或嚴重腎功能不全。</li>
+<li>透析或 cardiorenal 病人。</li>
+<li>對這些族群，本文基本上<strong>沒有證據</strong>，不能解讀為「可以放心不限水」。</li>
+</ul>
+</li>
+<li><strong>給臨床醫師的實務建議</strong>：
+<ol>
+<li>穩定門診 HF 病人，以「避免過量（例如 &gt;2.5 L/day）」取代固定上限限水，並把口渴困擾納入追蹤。</li>
+<li>低血鈉、晚期或剛出院的病人，仍依個別容積狀態決定，不要套用本文結論。</li>
+<li>不要把「沒有顯著差異」解讀為「限水對硬終點確定無影響」：全部試驗的死亡加 HF 住院事件只有數十例。</li>
+</ol>
+</li>
+<li><strong>證據強度</strong>：
+<ul>
+<li>硬終點（死亡、住院）：<strong>弱</strong>。</li>
+<li>病人自評結果（口渴、QoL）：<strong>中</strong>，幾乎完全依賴單一開放標籤試驗。</li>
+</ul>
+</li>
+</ul>
+<hr />
+<h2>SKILL-B：批判性評讀</h2>
+<h3>A. 補充技術細節</h3>
+<ul>
+<li><strong>宣稱的適用範疇</strong>：結論寫的是「patients with HF」，沒有限定族群；但 74% 證據來自穩定門診病人，族群宣稱明顯大於證據範圍。</li>
+<li><strong>引用文獻時間範圍</strong>：納入試驗為 2007–2025。先前 SR 引用到 Hsu 2025（ref 25），<strong>漏引 Frontiers 2025（Adamu）</strong>。</li>
+</ul>
+<h4>A1. Systematic Review 子模組</h4>
+<p><strong>搜尋策略與選擇流程</strong></p>
+<ul>
+<li>四個資料庫，有完整搜尋式（Supplement S1–S4），但 EMBASE 限縮在 major focus 與標題／keyword（見第 4 節）。</li>
+<li>沒有搜尋試驗登錄平台；會議摘要被排除。</li>
+<li>納排標準有預先指定（PROSPERO 2022 年註冊，早於 FRESH-UP 結果發表）。PROSPERO 原計畫內容 [無法取得]：線上紀錄抓取失敗，無法查核是否原計畫做 meta-analysis，也無法確認 outcome 是否變更。</li>
+<li>雙人獨立篩選，以討論加第三人裁決，<strong>沒有報告 κ 值</strong>；裁決者 FG 是 FRESH-UP 的共同資深作者。</li>
+<li>PRISMA flow 沒有區分篩選階段，也沒有列出全文評估數。</li>
+</ul>
+<p><strong>GRADE 五大降級因素</strong>（本文沒有做 GRADE，以下為評讀者評估）</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>因素</th>
+<th>評估</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>偏差風險</td>
+<td>4 篇中 1 篇高 RoB（Holst）、2 篇有疑慮。唯一「低」的 FRESH-UP 由自家作者評定，而且它是<strong>開放標籤、主要終點為 PRO（KCCQ、TDS-HF）</strong>。依 RoB 2 原則，病人知道分組且結果為自評時，「結果測量」領域通常至少評為 some concerns。本文給五個領域全部低風險，<strong>疑似偏寬</strong> [推論：依 RoB 2 原則]。此外 RoB 2 應<strong>逐一結果評估</strong>，本文只給每篇研究一個總評（Table 2）</td>
+</tr>
+<tr>
+<td>不一致性</td>
+<td>KCCQ 兩篇方向相反（Albert 偏向限水，FRESH-UP 偏向寬鬆）；口渴 2/3 篇一致；硬終點因事件少，無法評估一致性</td>
+</tr>
+<tr>
+<td>間接性</td>
+<td>族群（急性住院、出院後低血鈉、穩定門診）、限水強度（1.0 vs 1.5 L）、對照（常規照護、寬鬆攝水、30–35 mL/kg）都不同。FRESH-UP 的「限水」是<strong>口頭建議</strong>，實際攝水只差約 300 mL/day（1486–1771 mL）[外部: ESC HF 2026 次分析]，比較的是「1.5 L 建議 vs 約 1.8 L 實際」，不是「嚴格限水 vs 自由飲水」</td>
+</tr>
+<tr>
+<td>不精確性</td>
+<td><strong>嚴重</strong>。死亡合計 14 例、HF 住院合計約 20 例（可計算部分），CI 寬到可以同時容納臨床上重要的利與害</td>
+</tr>
+<tr>
+<td>發表偏差</td>
+<td>沒有搜尋登錄平台、排除會議摘要、只有 4 篇，無法做漏斗圖。Reilly 2017（n=87）結果未知，對結論的影響無法評估</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>放棄 meta-analysis 的合理性</strong></p>
+<ul>
+<li>族群與介入確實異質，但對<strong>死亡與 HF 住院</strong>這類二元終點，3 篇合計 7 vs 7 事件，做一個 random-effects 合併（附上很寬的 CI）比只說「各篇不顯著」更有資訊量。</li>
+<li>不做合併、也不做 GRADE，讀者就拿不到「證據確定性很低」的正式陳述，反而容易把「沒有證據顯示有益」讀成「證據顯示無益」。</li>
+<li>以 Cochrane Handbook 標準，沒有使用 SWiM、也沒有效果方向圖（vote counting by direction）等結構化非量化合成，屬於報告不足。</li>
+</ul>
+<hr />
+<h3>B. 論證架構重建（第一階段：純描述）</h3>
+<p><strong>主論點</strong>：目前證據不支持在 HF 病人中例行限水。</p>
+<pre><code>1. 前提 A：限水是常見做法，但指引承認證據不足；指引與 consensus 之間有分歧
+   └─ 支撐：2021 ESC、2022 AHA/ACC/HFSA、2024 ESC HFA consensus（ref 3, 12, 13）
+   └─ 推論：分歧代表證據稀少，需要重新評估
+
+2. 前提 B：只看「單純限水」的 RCT，能更準確地評估限水本身的效果
+   └─ 支撐：先前 SR 混入限鈉與利尿劑試驗（ref 11, 22–26）
+   └─ 推論：排除共同介入 → 減少干擾 → 估計更純
+
+3. 前提 C：3 篇 RCT 的死亡與 HF 住院都沒有顯著差異，合計事件數兩組相同
+   └─ 支撐：Albert、FRESH-UP、Holst（ref 17–19）
+   └─ 推論：沒有證據顯示限水能改善硬終點
+
+4. 前提 D：限水增加口渴（2/3 篇），QoL 結果矛盾，但較大的兩篇（569 人）顯示無效或偏向寬鬆攝水
+   └─ 支撐：FRESH-UP、Holst；Albert 有 RoB 疑慮（完成率 75–82%、未校正基線）
+   └─ 推論：限水有傷害訊號
+
+5. 中間結論：沒有效益證據 + 有傷害訊號
+6. 最終結論：不支持例行限水；未來研究應聚焦急性、晚期與腎功能受限的 HF
+</code></pre>
+<p><strong>敘事策略</strong>：從指引分歧出發，接著說明篩選的「純淨性」，再逐一呈現各終點，最後提出效益／傷害的權衡。</p>
+<p><strong>作者承認的限制</strong>（Discussion 末段、第四段）：可能漏掉試驗；異質性高無法合併；無法排除共同限鈉的影響；樣本小、缺失資料未處理；多數在門診進行。</p>
+<hr />
+<h3>C. 引用品質評估（第二階段：開始批判）</h3>
+<div class="table-wrap wide"><table>
+<thead>
+<tr>
+<th>論點</th>
+<th>引用文獻類型</th>
+<th>證據層級</th>
+<th>與論點關聯性</th>
+<th>問題</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>指引與 consensus</td>
+<td>中</td>
+<td>直接</td>
+<td>引用正確；但 2023 ESC focused update 是否修改相關建議，文中沒有交代 [推論]</td>
+</tr>
+<tr>
+<td>2</td>
+<td>先前 SR</td>
+<td>中</td>
+<td>直接</td>
+<td><strong>漏引 Adamu 2025（Frontiers）</strong>；「先前 review 都未收錄 FRESH-UP」的說法不成立</td>
+</tr>
+<tr>
+<td>3</td>
+<td>3 篇 RCT</td>
+<td>低（不精確性嚴重）</td>
+<td>直接</td>
+<td>拿「各篇不顯著」當作「沒有影響」的證據，屬於 absence of evidence ≠ evidence of absence；摘要把 Travers 也算進「沒有差異」</td>
+</tr>
+<tr>
+<td>4</td>
+<td>3 篇 RCT（以自家 FRESH-UP 為主）</td>
+<td>低到中</td>
+<td>直接</td>
+<td>QoL 傷害訊號建立在 FRESH-UP 次要子分數；主要終點 KCCQ-OSS p=0.06；開放標籤 PRO 有期待偏差</td>
+</tr>
+<tr>
+<td>6</td>
+<td>無</td>
+<td>—</td>
+<td>—</td>
+<td>「應聚焦急性、晚期 HF」的建議合理，但結論沒有對應地限縮適用族群</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>引用品質紅旗</strong></p>
+<ul>
+<li><strong>自我引用與自我評估</strong>：關鍵證據（FRESH-UP）是作者自己的試驗，RoB 也由自己評定，而且評為全部低風險。</li>
+<li><strong>忽略重要的同期文獻</strong>：Frontiers 2025 meta-analysis。</li>
+<li><strong>納入標準的變動</strong>：Reilly 2017 RCT 被以「可能未經 peer review」為由排除，但 editorial 顯示早期稿件可能有納入，修改過程沒有交代。</li>
+<li><strong>族群不一致</strong>：結論對象是「HF 病人」，證據對象主要是「穩定門診 HF」。</li>
+</ul>
+<hr />
+<h3>D. 過度推論分析</h3>
+<p><strong>推論 1（對應論點 3）</strong></p>
+<ul>
+<li><strong>原始引用實際說了什麼</strong>：各試驗都承認檢定力不足；死亡合計 7 vs 7 例；Albert 的 HF 住院相對發生率 0.84（0.34–1.93）（Results、Table 3）。</li>
+<li><strong>作者結論說了什麼</strong>：摘要寫 &quot;there is no evidence indicating that fluid restriction affects mortality or HF hospitalisations&quot;；Discussion 寫 &quot;results were quite consistent&quot;。</li>
+<li><strong>跳躍在哪裡</strong>：極少事件下的「一致不顯著」，被包裝成「一致性」的證據。Albert 的 CI 上限 1.93 代表 HF 住院增加近一倍的可能也沒有被排除，反之亦然。</li>
+<li><strong>嚴重程度</strong>：<strong>中度</strong>。作者有附上 &quot;power is lacking&quot; 的但書，但 &quot;consistent&quot; 一詞與結論的語氣仍超出數據支持。</li>
+</ul>
+<p><strong>推論 2（對應論點 4）</strong></p>
+<ul>
+<li><strong>原始引用實際說了什麼</strong>：FRESH-UP 主要終點 KCCQ-OSS 校正後差 2.17（−0.06 to 4.39），p=0.06，「主要終點未達成」[外部: Nat Med 摘要]；CSS、TSS、SFS 為次要終點，沒有多重比較校正。</li>
+<li><strong>作者結論說了什麼</strong>：&quot;signal of harm… potentially also QoL&quot;，以及 &quot;in all but one study, fluid restriction did not improve QoL&quot;。</li>
+<li><strong>跳躍在哪裡</strong>：
+<ul>
+<li>用沒有校正多重比較的次要子分數支撐「QoL 傷害訊號」。</li>
+<li>主要終點 CI 上限 4.4 分，低於 KCCQ 常用的 5 分 MCID。也就是說，即使取最樂觀的估計，差異的臨床意義仍不確定。</li>
+</ul>
+</li>
+<li><strong>嚴重程度</strong>：<strong>輕微到中度</strong>。作者用了 &quot;potentially&quot;，但摘要沒有交代主要終點未達成。</li>
+</ul>
+<p><strong>推論 3（對應最終結論）</strong></p>
+<ul>
+<li><strong>原始引用實際說了什麼</strong>：住院族群只有 Travers 一篇（n=67，終點為臨床穩定時間，沒有報告硬終點）；晚期、低血鈉族群幾乎沒有證據。</li>
+<li><strong>作者結論說了什麼</strong>：&quot;the current evidence does not support the routine use of fluid restriction in patients with HF&quot;，沒有限定族群。</li>
+<li><strong>跳躍在哪裡</strong>：從「穩定門診中無效益」外推到「全體 HF」。作者自己在 Discussion 也指出未來研究應聚焦急性與晚期 HF，等於承認這些族群的答案未知。</li>
+<li><strong>嚴重程度</strong>：<strong>中度</strong>。「例行（routine）」一詞部分緩和了問題，但臨床讀者容易把結論套用到住院或低血鈉病人。</li>
+</ul>
+<p><strong>推論 4（RoB 判定）</strong></p>
+<ul>
+<li><strong>原始引用實際說了什麼</strong>：FRESH-UP 是開放標籤、PRO 主要終點，病人知道自己被分到限水或寬鬆攝水。</li>
+<li><strong>作者結論說了什麼</strong>：FRESH-UP 在 &quot;each domain&quot; 都是低風險（Table 2，圖頁 4 可見 6 個領域全為綠色＋）。</li>
+<li><strong>跳躍在哪裡</strong>：RoB 2 的「結果測量」領域對「知道分組的病人自評結果」通常判為 some concerns 以上，尤其當病人可能對「寬鬆攝水」抱有正面期待時。</li>
+<li><strong>嚴重程度</strong>：<strong>中度</strong>。這直接撐起「只有一篇低 RoB」這個核心敘述，而且評估者就是該試驗的作者。</li>
+</ul>
+<hr />
+<h3>E. 論證結構完整性評估</h3>
+<ul>
+<li><strong>未被支撐的前提</strong>：
+<ul>
+<li>「排除共同介入就能得到更純的估計」：沒有考慮到在實際門診中，限水建議幾乎總是和限鈉衛教一起出現，純限水試驗本身的外部效度有限。</li>
+<li>「1.5 L 建議組與寬鬆組的實際攝水有足夠差距」：FRESH-UP 次分析顯示實際差距只有約 300 mL/day，作者沒有討論劑量是否足以檢驗假說。</li>
+</ul>
+</li>
+<li><strong>邏輯斷層</strong>：從「無法合併」直接跳到結論的效益／傷害權衡，中間沒有任何證據確定性評等（GRADE）。</li>
+<li><strong>替代解釋</strong>：
+<ol>
+<li><strong>期待偏差</strong>：在開放標籤設計下，被分到「寬鬆攝水」的病人可能預期自己會感覺比較好，使 KCCQ 和口渴分數偏向寬鬆組；口渴量表本身也特別容易受分組認知影響。</li>
+<li><strong>劑量不足／不遵從稀釋效果</strong>：限水組實際攝水只少約 300 mL/day，對穩定且已接受 GDMT 與利尿劑的病人，這樣的差距可能本來就不足以影響鬱血。結果「無差異」可能是<strong>介入強度不足</strong>，不是「限水無效」。</li>
+<li><strong>族群選擇</strong>：FRESH-UP 排除 3 個月內住院與 14 天內調整藥物的病人，鬱血風險低。在低風險族群裡測不到硬終點差異，並不能推論到高風險、有低血鈉或剛出院的病人。</li>
+</ol>
+</li>
+</ul>
+<hr />
+<h3>F. 最終裁決</h3>
+<ul>
+<li><strong>論證結構完整性</strong>：中</li>
+<li><strong>引用品質</strong>：部分適當（漏引同期 meta-analysis；自家試驗的 RoB 評估有疑慮）</li>
+<li><strong>過度推論嚴重程度</strong>：中度</li>
+<li><strong>可採用的情境</strong>：
+<ul>
+<li>作為「穩定門診慢性 HF 不需例行限水」的佐證摘要。</li>
+<li>支持對口渴困擾明顯的病人放寬限水。</li>
+</ul>
+</li>
+<li><strong>不建議直接引用的情境</strong>：
+<ul>
+<li>作為「限水不影響死亡或住院」的證據。</li>
+<li>用於急性失代償、低血鈉、晚期 HF 或腎功能不全病人的決策。</li>
+<li>引用 Table 3 的 FRESH-UP TSS 數值（有抄錄錯誤）。</li>
+</ul>
+</li>
+<li><strong>若要改觀，最需要</strong>：
+<ol>
+<li>由與 FRESH-UP 無關的獨立評估者重做 RoB 2，逐一結果評估，並加上 GRADE certainty。</li>
+<li>納入 Reilly 2017 與登錄平台搜尋，對硬終點做附 CI 的合併分析或敏感度分析，並交代與 PROSPERO 原計畫的差異。</li>
+<li>在住院、低血鈉、晚期 HF 族群中進行有足夠檢定力、以硬終點為主、盡量讓結果評估者不知分組的 RCT。</li>
+</ol>
+</li>
+<li><strong>一句話結論</strong>：穩定門診心衰竭病人不必例行限水，但限水對死亡與住院的影響仍然未知，重症族群也缺乏證據。</li>
+</ul>
+<hr />
+<p><strong>外部資料來源</strong></p>
+<ul>
+<li>PubMed：本文 <a href="https://pubmed.ncbi.nlm.nih.gov/41529956/">41529956</a>；FRESH-UP 主結果 <a href="https://doi.org/10.1038/s41591-025-03628-4">DOI</a>；FRESH-UP 設計 <a href="https://doi.org/10.1016/j.cardfail.2022.05.015">DOI</a>；FRESH-UP 次分析 <a href="https://doi.org/10.1093/eschf/xvag197">DOI</a></li>
+<li>同期 editorial：Sato R, et al. Heart 2026. doi:10.1136/heartjnl-2025-327288（全文經 dlbydoi 取得）</li>
+<li><a href="https://www.frontiersin.org/journals/cardiovascular-medicine/articles/10.3389/fcvm.2025.1636862/full">Adamu et al. Frontiers in Cardiovascular Medicine 2025</a></li>
+<li><a href="https://www.acc.org/Latest-in-Cardiology/Clinical-Trials/2025/03/27/17/26/fresh-up">ACC.org FRESH-UP trial summary</a></li>
+<li><a href="https://dcricollab.dcri.duke.edu/sites/NIHKR/KR/GR-Slides-05-02-25.pdf">DCRI Grand Rounds slides（Reilly 2017, n=87）</a></li>
+<li><a href="https://heart-frontend.bmj.com/pages/about">Heart journal about page</a>；<a href="https://www.journalmetrics.org/journal/heart">Journal Metrics – Heart</a></li>
+</ul>
+
+<footer class="appraisal-meta">評讀資訊：模型：claude-opus-5-5 (claude)  ·  route：sr  ·  產出時間：2026-11-15 23:48 CST</footer>
+</main>
+</body>
+</html>
