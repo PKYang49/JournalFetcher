@@ -1,0 +1,686 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Influence of Protein on Beverage Hydration Efficacy: A Systematic Review and Meta-analysis.</title>
+<style>
+  :root {
+    --bg: #fafafa;
+    --card: #ffffff;
+    --text: #1a1a1a;
+    --muted: #6b6b6b;
+    --border: #e5e5e5;
+    --accent: #0b5fff;
+  }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang TC",
+      "Microsoft JhengHei", sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    margin: 0;
+    padding: 24px 16px 64px;
+    line-height: 1.72;
+  }
+  main {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    margin: 0 auto;
+    max-width: 840px;
+    padding: 22px 26px;
+  }
+  nav {
+    margin: 0 auto 14px;
+    max-width: 840px;
+    color: var(--muted);
+    font-size: 14px;
+  }
+  a { color: var(--accent); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  h1, h2, h3, h4 { line-height: 1.35; }
+  h1 { font-size: 26px; margin-top: 0; }
+  h2 { border-top: 1px solid var(--border); padding-top: 18px; }
+  code {
+    background: rgba(127, 127, 127, 0.12);
+    border-radius: 4px;
+    padding: 1px 4px;
+  }
+  .table-wrap {
+    margin: 1em 0;
+    overflow-x: auto;
+  }
+  .table-wrap.wide {
+    /* Break out of the 840px prose column, centred on the viewport. */
+    width: min(1040px, calc(100vw - 32px));
+    margin-left: calc(50% - min(520px, 50vw - 16px));
+  }
+  table {
+    border-collapse: collapse;
+    table-layout: auto;
+    width: 100%;
+  }
+  .table-wrap.wide {
+    /* Opaque so the <main> card border does not show through the table. */
+    background: var(--card);
+  }
+  /* Width hints go on <th> as percentages: Chrome's auto table layout
+     mis-sizes columns (and overflows) when cells carry min-width. */
+  .table-wrap.wide th:first-child {
+    /* Variable + plain-language definition, e.g. "NCPV (noncalcified ...)". */
+    width: 26%;
+  }
+  .table-wrap.wide th:last-child {
+    /* Last column is usually a one-line interpretation. */
+    width: 20%;
+  }
+  th, td {
+    border: 1px solid var(--border);
+    /* Wrap only at spaces: never split an English word mid-letter. */
+    overflow-wrap: normal;
+    word-break: normal;
+    hyphens: manual;
+    padding: 6px 8px;
+    text-align: left;
+    vertical-align: top;
+  }
+  blockquote {
+    border-left: 3px solid var(--accent);
+    color: var(--muted);
+    margin-left: 0;
+    padding-left: 14px;
+  }
+  .appraisal-meta {
+    border-top: 1px solid var(--border);
+    margin-top: 28px;
+    padding-top: 14px;
+    color: var(--muted);
+    font-size: 13px;
+  }
+  @media (max-width: 600px) {
+    body {
+      padding: 12px 8px 40px;
+    }
+    main {
+      padding: 16px 12px;
+    }
+    h1 {
+      font-size: 22px;
+    }
+    table {
+      font-size: 12px;
+    }
+    .table-wrap.wide {
+      width: calc(100vw - 16px);
+      margin-left: calc(50% - 50vw + 8px);
+    }
+    th, td {
+      padding: 4px 5px;
+    }
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #1a1a1a;
+      --card: #242424;
+      --text: #e8e8e8;
+      --muted: #999;
+      --border: #333;
+      --accent: #6ea8ff;
+    }
+  }
+</style>
+</head>
+<body>
+<nav><a href="../../2026-W47.html">← 回到 2026-W47 週報</a></nav>
+<main>
+<h1>The Influence of Protein on Beverage Hydration Efficacy: A Systematic Review and Meta-analysis.</h1>
+<h1>批判性評讀：The Influence of Protein on Beverage Hydration Efficacy — A Systematic Review and Meta-analysis</h1>
+<h2>SECTION-0：文章全面描述</h2>
+<h3>0. 文章身份證</h3>
+<ul>
+<li><strong>標題</strong>：The Influence of Protein on Beverage Hydration Efficacy: A Systematic Review and Meta-analysis</li>
+<li><strong>期刊／年份</strong>：<em>Sports Medicine</em>，2026；DOI 10.1007/s40279-026-02577-3；PMID 43007647</li>
+<li><strong>文章類型</strong>：SKILL-B → A1，屬量化合成型的 systematic review + meta-analysis。</li>
+<li><strong>子型判斷</strong>：自稱 systematic review / meta-analysis，方法學大致相符：有 OSF 預先註冊、PRISMA flow、雙人篩選、RoB 2 評估、forest plot 與 I²。</li>
+<li><strong>自稱與實際執行的落差（輕度）</strong>：
+<ul>
+<li>摘要寫搜尋到「2026 年 2 月」，Methods 2.1 寫「到 2026 年 9 月」；OSF 註冊時間也標「2026 年 2 月」[文內]。</li>
+<li>宣稱 GRADE 全部「high」，但沒有任何 GRADE evidence profile 表。</li>
+<li>RoB 2 混用了不屬於 RoB 2 的「&gt; 60% 分數 = 方法學品質優良」評分法（Section 2.3）。</li>
+</ul>
+</li>
+</ul>
+<h3>1. 作者團隊評論</h3>
+<ul>
+<li><strong>通訊作者</strong>：Stephen A. Mears，Loughborough University School of Sport, Exercise and Health Sciences。博士論文（2012，Loughborough）研究職場飲水行為與高強度運動後的水分攝取；主要研究方向是水合／腎功能，以及碳水代謝與脫水對運動表現的影響 [外部: Loughborough 官網個人頁]。</li>
+<li><strong>團隊構成</strong>：8 位作者全部來自 Loughborough。依 Authors' Contributions，F.R.G. 撰寫初稿；F.R.G.、L.J.J.、S.A.M. 負責最終內容 [文內]。</li>
+<li><strong>機構地位</strong>：Loughborough 是國際運動營養與水合研究的重鎮，也參與過 Beverage Hydration Index 的多中心研究 [外部: Loughborough 新聞稿、Maughan et al. AJCN 手稿]。</li>
+<li><strong>團隊過往研究</strong>：Lewis J. James 是「乳蛋白／乳清蛋白與運動後補水」這個題目的核心研究者 [外部: Cambridge Core、DCNI 簡報]，代表作包括：
+<ul>
+<li>James, Clayton &amp; Evans（<em>Br J Nutr</em>, 2010/2011）：以 25 g/L 乳蛋白取代部分碳水，液體保留較佳。</li>
+<li>James, Gingell &amp; Evans（2012）：熱量相同時，15 g/L whey 與純碳水的保留沒有差異。</li>
+<li>James et al.（<em>Br J Nutr</em>, 2013）：0、20、40 g/L 乳蛋白的劑量比較，高濃度並沒有更好。</li>
+<li>James et al.（<em>Amino Acids</em>, 2014）：20 g/L whey isolate 對補水「既不增強也不抑制」。</li>
+<li>Peden, ... Mears（<em>Eur J Appl Physiol</em>, 2024）：休息狀態下脫脂牛奶 vs 豆漿，總尿量相近 [外部: PMC11467101]。</li>
+</ul>
+</li>
+<li><strong>作者立場史（關鍵）</strong>：L.J. James 至少是 5 篇納入研究（refs 13、14、15、17、28；Table 2 的 James 2011/2012/2013/2014、Hobson 2015）的作者，約佔 17 個 FR 比較中的 5 個。
+<ul>
+<li>等於作者在評讀、萃取並合併自己的原始研究，卻沒有說明這些研究是否由非原作者獨立評估。</li>
+<li>James 2015 年在 Dairy Council 的簡報已主張「乳蛋白可增強運動後補水」[外部: DCNI 簡報]，本篇結論與這個立場高度一致，有確認偏差的風險。</li>
+</ul>
+</li>
+<li><strong>利益揭露</strong> [文內]：
+<ul>
+<li><strong>Funding</strong>：Herbalife Europe Ltd.（販售蛋白飲品）。</li>
+<li><strong>COI</strong>：H.Z.M. 是 Gatorade Sports Science Institute（PepsiCo）員工。L.J.J. 與 PepsiCo、Lucozade Ribena Suntory、Volac（乳清蛋白供應商）、Danone Nutricia 等有研究經費、顧問或演講費關係。S.A.M. 與 S.J.B. 有 Herbalife 經費。</li>
+<li><strong>評估</strong>：資助者的商業利益與 4.3 Practical Implications 的結論方向一致（「可透過市售含蛋白飲品輕鬆達成」），屬於中高程度的商業敘事風險。</li>
+</ul>
+</li>
+</ul>
+<h3>2. 文獻 Metadata 整理</h3>
+<ul>
+<li><strong>Received date</strong>：[markdown 未保留]。Accepted：2026-10-21 [文內]。</li>
+<li><strong>審查天數</strong>：無法計算。不過依 Methods 寫的搜尋截止（2026 年 9 月）推算，從完成搜尋到接受不到 2 個月。這不太合理，較可能是日期筆誤，或搜尋在投稿後更新 [推論]。</li>
+<li><strong>期刊指標</strong>：2025 IF 9.4，5-year IF 12.0，JCR Q1 [外部: journalmetrics.org，第三方彙整，非 Clarivate 原始資料]。</li>
+<li><strong>期刊平均審查天數</strong>：[無法取得]。</li>
+<li><strong>Open Access</strong>：是（CC BY 4.0）[文內]。</li>
+<li><strong>邀稿 vs 投稿</strong>：[文內未揭露]。</li>
+</ul>
+<h3>3. 研究背景</h3>
+<ul>
+<li><strong>既有事實</strong>：
+<ul>
+<li>鈉與碳水可透過 SGLT 協同轉運、滲透梯度與延緩胃排空，提升液體保留。</li>
+<li>純水會讓血漿滲透壓下降、利尿增加 [文內 refs 2–9]。</li>
+</ul>
+</li>
+<li><strong>知識缺口</strong>：個別研究認為蛋白質可能透過三條途徑改善水合：延緩胃排空、胺基酸與鈉共同轉運、提升白蛋白合成與膠體滲透壓。但目前沒有統合分析。</li>
+<li><strong>Research question</strong>：在脫水或正常水合狀態下，含蛋白飲品（≥ 2 g/L）相較於不含蛋白的對照飲品，能否改善液體保留、累積尿量、淨液體平衡與血漿容積？</li>
+</ul>
+<h3>4. 研究設計與方法</h3>
+<ul>
+<li><strong>PICO</strong>：
+<ul>
+<li><strong>P</strong>：≥ 18 歲健康成人，運動／熱／限水造成脫水（14 篇），或處於正常水合（2 篇）。</li>
+<li><strong>I</strong>：含 ≥ 2 g/L 蛋白的飲品（牛奶、乳蛋白、whey、casein、豆漿、胺基酸混合物）。</li>
+<li><strong>C</strong>：不含蛋白的飲品，包括水、碳水飲料、碳水電解質飲料。限制兩組的鈉差 &lt; 10 mmol/L、碳水差 &lt; 40 g/L，且飲用體積相同。</li>
+<li><strong>O</strong>：fluid retention（FR）、cumulative urine output、net fluid balance（NFB）、plasma volume（PV）變化；BHI 為次要指標。</li>
+</ul>
+</li>
+<li><strong>設計細節</strong>：
+<ul>
+<li>搜尋 PubMed、Embase、Cochrane、Web of Science，加上引用追蹤；限英文。</li>
+<li>用 Covidence 雙人篩選，雙人萃取。</li>
+<li>用 RevMan 7.2 做 random-effects 模型（REML tau²、Wald-type CI），效果量為 SMD。</li>
+<li>異質性：χ² P &lt; 0.10 視為有意義。</li>
+<li>敏感度分析：排除多臂研究。</li>
+<li>用 GRADE 評估證據確定性。</li>
+</ul>
+</li>
+<li><strong>未說明</strong>：
+<ul>
+<li>交叉設計的 SMD 怎麼算（是否當成平行組處理、是否考慮組內相關）。</li>
+<li>是否使用 Hedges' g 的小樣本校正。</li>
+<li>是否事先指定次群組分析（protein format）。</li>
+</ul>
+</li>
+</ul>
+<h3>5. 研究結果重點整理</h3>
+<p>搜尋流程：2703 筆紀錄 → 移除重複 761 筆 → 篩選 1942 筆 → 全文評估 30 篇 → 納入 16 篇（205 人，17.1% 女性）。Meta-analysis 只用 14 篇補水研究 [Fig. 1]。</p>
+<div class="table-wrap wide"><table>
+<thead>
+<tr>
+<th>變項（代表什麼）</th>
+<th style="text-align:right">研究數 / 比較數</th>
+<th style="text-align:right">I²</th>
+<th style="text-align:right">組間差：SMD（95% CI）</th>
+<th style="text-align:right">p 值</th>
+<th>如何解讀</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>FR</strong>（fluid retention）：飲入液體在監測期末仍留在體內的比例</td>
+<td style="text-align:right">13 / 17</td>
+<td style="text-align:right">35%（χ² P = 0.08）</td>
+<td style="text-align:right"><strong>0.66（0.39 to 0.93）</strong></td>
+<td style="text-align:right">&lt;0.00001</td>
+<td>方向一致偏好蛋白；粗估約多保留 <strong>10 個百分點</strong> [自行計算，以 SD≈15% 回推]</td>
+</tr>
+<tr>
+<td><strong>累積尿量</strong>：監測期（約 3–4 h）總排尿量</td>
+<td style="text-align:right">13 / 17</td>
+<td style="text-align:right">40%（χ² P = 0.03）</td>
+<td style="text-align:right"><strong>−0.71（−0.99 to −0.43）</strong></td>
+<td style="text-align:right">&lt;0.00001</td>
+<td>粗估少排尿約 <strong>230 mL</strong> [自行計算，以 SD≈330 mL 回推]</td>
+</tr>
+<tr>
+<td><strong>NFB</strong>（net fluid balance）：攝入 − 汗損 − 尿量後的累積水平衡</td>
+<td style="text-align:right">10 / 11</td>
+<td style="text-align:right">11%</td>
+<td style="text-align:right"><strong>0.58（0.30 to 0.85）</strong></td>
+<td style="text-align:right">&lt;0.0001</td>
+<td>與 FR、尿量在數學上高度連動，不是獨立證據</td>
+</tr>
+<tr>
+<td><strong>PV 變化</strong>（plasma volume）：以 Hb/Hct 推估的血漿容積變化</td>
+<td style="text-align:right">6 / 10</td>
+<td style="text-align:right">0%</td>
+<td style="text-align:right"><strong>0.29（0.03 to 0.55）</strong></td>
+<td style="text-align:right">0.03</td>
+<td>效果小，CI 下界接近 0</td>
+</tr>
+<tr>
+<td>FR — whey 次群組</td>
+<td style="text-align:right">5 / 7</td>
+<td style="text-align:right">0%</td>
+<td style="text-align:right">0.35（0.03 to 0.67）</td>
+<td style="text-align:right">0.03</td>
+<td>效果小；7 個比較有 3 個來自 Li 2018 同一組對照</td>
+</tr>
+<tr>
+<td>FR — 牛奶次群組</td>
+<td style="text-align:right">4 / 4</td>
+<td style="text-align:right">0%</td>
+<td style="text-align:right">0.98（0.53 to 1.42）</td>
+<td style="text-align:right">&lt;0.0001</td>
+<td>效果最大，但同時混入熱量與電解質差異</td>
+</tr>
+<tr>
+<td>尿量 — whey 次群組</td>
+<td style="text-align:right">5 / 7</td>
+<td style="text-align:right">5%</td>
+<td style="text-align:right">−0.41（−0.74 to −0.08）</td>
+<td style="text-align:right">0.01</td>
+<td>效果小</td>
+</tr>
+<tr>
+<td>尿量 — 牛奶次群組</td>
+<td style="text-align:right">4 / 4</td>
+<td style="text-align:right">0%</td>
+<td style="text-align:right">−1.18（−1.65 to −0.72）</td>
+<td style="text-align:right">&lt;0.00001</td>
+<td>未做 whey vs milk 的交互作用檢定</td>
+</tr>
+<tr>
+<td>敏感度分析（排除多臂研究）：FR / 尿量 / NFB / PV</td>
+<td style="text-align:right">未報告</td>
+<td style="text-align:right">未報告</td>
+<td style="text-align:right">0.62 / −0.65 / 0.52 / 0.45</td>
+<td style="text-align:right">未報告</td>
+<td>點估計穩定，但沒有報告 CI</td>
+</tr>
+</tbody>
+</table></div>
+<p>補充重點：</p>
+<ul>
+<li><strong>唯一的水對照研究結果是中性的</strong>：James 2014 是 whey 20 g/L 對水，FR SMD −0.21（−1.08 to 0.67），尿量 SMD ＋0.22，只有 PV 改善（＋1.08）[Fig. 2、4、7]。這是最乾淨的「蛋白質單獨效果」測試，結果卻是中性。</li>
+<li><strong>正常水合研究</strong>：2 篇（Millard-Stafford 2021、Rodriguez-Sanchez 2023）沒有合併分析，NFB 皆無差異 [Table 3]。
+<ul>
+<li>Table 3 把 Millard-Stafford 的尿量標為「↓」，但數值是 1178 vs 1182 mL。這個箭頭只反映 180–240 min 時間點的交互作用，不是總量差異。</li>
+</ul>
+</li>
+<li><strong>個別研究層級</strong>：17 個 FR 比較中，有 10 個顯示顯著增加 [文內 3.5]。但 forest plot 上有 8 個比較的 CI 跨越 0 [Fig. 2]。</li>
+</ul>
+<h3>6. 作者討論與評論重點</h3>
+<ul>
+<li><strong>主要訊息</strong>：含蛋白飲品在 FR、尿量、NFB、PV 上都優於對照；牛奶效果最大、whey 較小；運動後同時補水與促進肌肉合成具實用價值。</li>
+<li><strong>與既有文獻</strong>：作者提出三種機轉（胃排空、胺基酸–鈉共轉運、白蛋白／膠體滲透壓），但承認都沒有在納入研究中直接測量。</li>
+<li><strong>作者承認的限制</strong> [文內 4.4]：
+<ul>
+<li>女性只佔 17.1%。</li>
+<li>植物蛋白只有 1 個比較（豆漿）。</li>
+<li>乳糖不耐受族群的適用性。</li>
+<li>體重測量精度在研究間不一致。</li>
+<li>15/16 篇以碳水飲料為對照。</li>
+<li>Rodriguez-Sanchez 納入了較年長的受試者。</li>
+</ul>
+</li>
+<li><strong>評估</strong>：作者避重就輕的部分：
+<ul>
+<li>熱量密度混淆只在 4.1 討論，沒有放進限制段，也沒有做次群組分析或 meta-regression。</li>
+<li>自己團隊的研究佔比高，沒有討論。</li>
+<li>漏斗圖不對稱，沒有討論。</li>
+<li>GRADE 給「high」的理由沒有說明。</li>
+</ul>
+</li>
+</ul>
+<h3>7. 外部專業意見</h3>
+<p>[無法取得]：PubMed 與網路搜尋都沒有找到針對本文的同期 editorial 或 commentary。PubMed 以 2026 年後的關鍵字搜尋，只回傳本文本身（PMID 43007647）。</p>
+<p>相關背景（非針對本文）：</p>
+<ul>
+<li>2023 年 <em>Frontiers in Sports and Active Living</em> 的回顧指出，約 2% 蛋白在部分研究中能改善補水，但不是全部；差異可能來自蛋白來源或胺基酸組成 [外部: Frontiers 2023]。</li>
+<li>一篇 2018 年 <em>Sports Medicine</em> 統合分析（McCartney, Desbrow, Irwin）認為，碳水＋蛋白對後續運動表現的好處，可能主要來自額外熱量，而非蛋白本身 [外部: Sports Medicine 2018]。這與本文的核心混淆議題同一方向。</li>
+</ul>
+<h3>8. 臨床建議</h3>
+<ul>
+<li><strong>可採用的情境</strong>：健康年輕男性運動員，在運動後 2–4 小時內有限的恢復窗、需要大量補液（約流失量的 150%）時，用脫脂牛奶或乳蛋白飲品取代碳水電解質飲料，可合理預期少排尿約 200 mL 等級 [推論]。</li>
+<li><strong>不建議直接套用的情境</strong>：
+<ul>
+<li>在白開水裡加 whey 期待補水效果（唯一的水對照研究結果中性）。</li>
+<li>女性、年長者、自由飲水情境。</li>
+<li>心衰竭、慢性腎病等需限制液體、蛋白或鉀攝取的患者（所有納入研究都排除共病者）。</li>
+<li>以臨床疾病為目標的補液。</li>
+</ul>
+</li>
+<li><strong>實務建議</strong>：
+<ol>
+<li>運動後補水首重「足量＋含鈉」。若運動員本來就要喝蛋白飲品，選牛奶或乳蛋白類有加分作用，但不必為了補水刻意加蛋白。</li>
+<li>若要比較市售產品，應比較熱量、鈉、鉀含量，不要只看「含蛋白」標示。</li>
+<li>這些結果都是 3–5 小時內的生理替代指標，沒有運動表現或健康結局的證據。</li>
+</ol>
+</li>
+<li><strong>證據強度</strong>：<strong>弱至中</strong>。理由：
+<ul>
+<li>樣本小（每篇 7–20 人，合計 163 人進入補水分析）。</li>
+<li>替代指標。</li>
+<li>熱量與電解質混淆。</li>
+<li>高比例作者自身研究。</li>
+<li>漏斗圖可疑不對稱。</li>
+</ul>
+</li>
+</ul>
+<hr />
+<h2>SKILL-B：批判性評讀</h2>
+<h3>A. 補充技術細節</h3>
+<ul>
+<li><strong>宣稱的適用範疇</strong>：結論寫「protein-containing beverages confer an advantage over a control beverage (i.e., water and carbohydrate-based beverages)」。但研究族群 83% 是年輕男性，都在實驗室內、飲用量是預先指定的；適用範圍沒有在結論句中限定。</li>
+<li><strong>引用文獻時間範圍</strong>：2006–2024，涵蓋該領域主要研究。英文限制可能漏掉非英文研究，但影響應該有限 [推論]。</li>
+<li><strong>引用錯誤</strong>：
+<ul>
+<li>女性受試者引用了 ref [5]，NFB 引用了 ref [9]，但兩者都不在 Table 2/3 的納入研究中。</li>
+<li>Discussion 寫「whole milk」，但納入的牛奶都是脫脂或低脂。</li>
+</ul>
+</li>
+</ul>
+<h4>A1. Systematic Review / Meta-analysis 子模組</h4>
+<p><strong>搜尋策略與選擇流程</strong></p>
+<ul>
+<li><strong>搜尋式</strong>：完整列在 Supplementary Fig. 1–2。概念涵蓋廣（包括 HMB、taurine、collagen、citrulline）[Supplement Fig. 1、2]。
+<ul>
+<li>MeSH 搜尋式的括號沒有閉合，Boolean 結構有誤（例：<code>... Milk[MeSH Terms] AND (Exercise[MeSH Terms] OR Dehydration ...</code>），實際執行邏輯無法確認。</li>
+<li>Web of Science 的搜尋式沒有附上。</li>
+</ul>
+</li>
+<li><strong>納排標準</strong>：預先指定，Table 1 共 13 條納入標準。
+<ul>
+<li>鈉差 &lt; 10 mmol/L、碳水差 &lt; 40 g/L 是試圖分離蛋白效果的關鍵設計。</li>
+<li>但<strong>沒有限制熱量差與鉀差</strong>。牛奶的鉀含量遠高於運動飲料 [推論：一般乳品組成]，而鉀是細胞內液保留的重要因子。</li>
+<li><strong>推論</strong>：James 2013 的劑量研究有 0、20、40 g/L 乳蛋白三組 [外部]，但只納入 20 g/L 組。40 g/L 組的碳水差可能剛好 ≥ 40 g/L 而被排除；文內沒有說明 [推論]。</li>
+</ul>
+</li>
+<li><strong>篩選</strong>：雙人篩選，第三人仲裁；沒有報告 κ 值。</li>
+<li><strong>全文排除理由</strong>：14 篇全文被排除，分別是 comparator 錯誤 4、介入資訊不足 3、設計錯誤 5、未發表 2 [Fig. 1]。沒有列出被排除研究的清單。</li>
+<li><strong>PRISMA 數字</strong>：Fig. 1 的移除數是 759（Covidence）＋2（手動）= 761，與正文一致。</li>
+<li><strong>預先註冊</strong>：OSF（kd5m2），沒有用 PROSPERO。
+<ul>
+<li>註冊時間（2026 年 2 月）與搜尋起訖的關係不明，無法判斷註冊是否早於資料萃取。</li>
+<li>次群組分析（protein format）與敏感度分析是否預先指定，文內沒有交代。</li>
+</ul>
+</li>
+</ul>
+<p><strong>文獻可信度（GRADE 五大降級因素）</strong></p>
+<p>作者宣稱四個結局全部「high」。以下逐項重評：</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>因素</th>
+<th>評估</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>偏差風險</td>
+<td>RoB 2 表（Table 4）除了 Hobson 2015 的隨機化為「?」，其餘 15 篇全部 6 個 domain 都是低風險。但正文 3.3 自承「4 篇未隨機化或未說明」，<strong>與 Table 4 矛盾</strong>。牛奶 vs 碳水電解質飲料幾乎無法盲化；尿量雖是客觀指標，但飲用速度、可口度、腸胃不適可能影響。另有約 5 篇由作者群自己的研究評自己。<strong>應至少降一級</strong>。</td>
+</tr>
+<tr>
+<td>不一致性</td>
+<td>FR 的 I² 35%、χ² P = 0.08；尿量 I² 40%、P = 0.03。依作者自訂的 P &lt; 0.10 標準都屬「顯著異質性」，但結果段沒有討論。各比較的 SMD 從 −0.21 到 1.61 都有。可視為輕度，可降可不降。</td>
+</tr>
+<tr>
+<td>間接性</td>
+<td>健康年輕男性、實驗室情境、預先指定且較大的飲用量；結局是 3–5 小時的生理替代指標。更重要的是，「蛋白」與「熱量、乳糖、鉀、飲料黏稠度」綁在一起，無法分離。對「蛋白本身」這個問題而言，<strong>間接性嚴重</strong>。</td>
+</tr>
+<tr>
+<td>不精確性</td>
+<td>補水分析總人數約 163 人，單篇 7–20 人。合併 CI 雖然不跨 0，但 PV 的 CI 下界只有 0.03。依 GRADE 的 optimal information size 概念，連續變項通常要約 400 人，<strong>應降一級</strong>。</td>
+</tr>
+<tr>
+<td>發表偏差</td>
+<td>作者說「目視無明顯偏差」。但 Supplementary Fig. 3 實際可見 <strong>A（FR）與 C（NFB）的高 SE 研究都落在右側（偏好蛋白）、低 SE 研究偏左</strong>。B（尿量）也有一個極端點（Seery，SE 約 0.75，SMD −2.33）在左下。所有研究的 SE 只分布在 0.35–0.75，範圍很窄，視覺判讀能力本來就有限，也沒有做 Egger test。<strong>應判定為可疑，不是「無偏差」</strong>。</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>綜合判斷</strong>：較合理的 GRADE 等級是 <strong>low（FR、尿量、NFB）至 very low（PV）</strong>，不是 high。</p>
+<p><strong>統計方法議題</strong>：</p>
+<ul>
+<li><strong>單位錯誤（unit-of-analysis error）</strong>：Desbrow（2 臂）、Li 2015（2 臂）、Li 2018（3 臂）的對照組被重複計算。作者用敏感度分析處理，但沒有報告 CI，也沒有採用拆分對照組樣本數的標準做法（Cochrane Handbook 建議）。</li>
+<li><strong>交叉設計</strong>：所有研究都是受試者內設計，但 forest plot 的 CI 看起來像平行組計算（例：n = 8 的 James 2011，CI 寬度約 2）。這樣處理偏保守，但 SMD 用的是受試者間 SD 標準化，跨研究的意義在於「多少個人間標準差」，並不直接等於生理效果。</li>
+<li><strong>三個主結局不獨立</strong>：飲用體積固定時，FR = 1 − 尿量／攝入量；NFB = 攝入 − 汗損 − 尿量。三者在數學上高度共線。把它們當成三個「medium effect」互相佐證，會誇大證據的一致性。</li>
+<li><strong>疑似 SD/SE 混淆</strong>：
+<ul>
+<li>Seery 2016 蛋白組 NFB 121 ± 16 g、FR 71 ± 4%、尿量 659 ± 71 mL，SD 遠小於同類研究（通常是 250–400 mL）。可能是 SE 被當成 SD [推論]。如果是這樣，Seery 在尿量的 SMD −2.33 被高估了，而它正是漏斗圖上的極端點。</li>
+<li>Mallari 2019 對照組 NFB 240 ± 1190 g，SD 異常大 [Table 2]。</li>
+</ul>
+</li>
+</ul>
+<hr />
+<h3>B. 論證架構重建（第一階段：純描述）</h3>
+<p><strong>主論點</strong>：在水合／補水飲品中加入蛋白質，相較於不含蛋白的對照，可改善水合指標，因此蛋白質是補水策略中有潛力的添加物。</p>
+<pre><code>1. 前提 A：飲品組成（鈉、碳水）透過胃排空、腸道吸收與滲透／膠體滲透壓影響補水
+   └─ 支撐依據：refs 2–9（既有補水生理研究）
+   └─ 推論步驟：既然溶質會影響補水，蛋白質作為溶質也可能有影響
+
+2. 前提 B：蛋白質可能有三種機轉（延緩胃排空、胺基酸–鈉共轉運、白蛋白合成→膠體滲透壓）
+   └─ 支撐依據：refs 15, 18–20, 33–36
+   └─ 推論步驟：B → 含蛋白飲品應減少尿量、增加保留
+
+3. 中間結論：13 篇補水研究的合併分析顯示 FR、尿量、NFB 中等效果，PV 小效果
+   └─ 支撐依據：Fig. 2, 4, 6, 7；敏感度分析穩定
+   └─ GRADE「high」、漏斗圖「無明顯偏差」
+
+4. 次結論：熱量相同的 5 篇中有 4 篇仍見改善 → 效果不只來自熱量密度（4.1）
+5. 次結論：牛奶效果大於 whey → 蛋白來源可能有差異（4.2）
+
+6. 最終結論：含蛋白飲品優於對照（包括水與碳水飲品）；實務上可結合補水與肌肉蛋白合成（4.3）
+</code></pre>
+<p><strong>敘事策略</strong>：從機轉到應用：先講生理機轉，再呈現合併數據，接著處理熱量混淆，最後給實務建議。</p>
+<p><strong>作者承認的限制</strong>：見 SECTION-0 第 6 節（4.4）。</p>
+<hr />
+<h3>C. 引用品質評估</h3>
+<div class="table-wrap wide"><table>
+<thead>
+<tr>
+<th>論點</th>
+<th>引用文獻類型</th>
+<th>證據層級</th>
+<th>與論點關聯性</th>
+<th>問題</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1（溶質影響補水）</td>
+<td>人體交叉試驗、回顧</td>
+<td>中</td>
+<td>直接</td>
+<td>基本無爭議</td>
+</tr>
+<tr>
+<td>2（三種機轉）</td>
+<td>少數人體研究、生理推論</td>
+<td>低</td>
+<td>類推</td>
+<td>納入研究<strong>沒有一篇</strong>直接測量胃排空、白蛋白合成或腸道吸收。白蛋白合成的論據來自其他情境（ref 34）</td>
+</tr>
+<tr>
+<td>3（合併效果）</td>
+<td>13 篇小型交叉試驗</td>
+<td>低～中</td>
+<td>直接（替代指標）</td>
+<td>約 1/3 來自作者群自己；疑似有 SD/SE 錯誤；漏斗圖不對稱</td>
+</tr>
+<tr>
+<td>4（熱量相同仍有效）</td>
+<td>5 篇熱量相同的研究</td>
+<td>低</td>
+<td>直接</td>
+<td>只做「計數」（4/5 篇有改善），沒有合併。James 2012 熱量相同但結果為零</td>
+</tr>
+<tr>
+<td>5（牛奶 &gt; whey）</td>
+<td>4 vs 5 篇的次群組分析</td>
+<td>低</td>
+<td>間接</td>
+<td>沒有交互作用檢定；牛奶組同時有熱量、乳糖、鉀的差異</td>
+</tr>
+<tr>
+<td>6（優於水）</td>
+<td><strong>只有 1 篇</strong>（James 2014）</td>
+<td>很低</td>
+<td>直接</td>
+<td>該研究 FR 與尿量都是<strong>中性</strong></td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>引用品質紅旗</strong>：</p>
+<ul>
+<li><strong>自我引用比例高</strong>：Lewis James 參與的研究約佔 17 個 FR 比較中的 5 個。</li>
+<li><strong>忽略反面文獻</strong>：James 2012（熱量相同，whey 無效）與 James 2014（whey 對水無效）都已納入，卻沒有在結論中被當成反證討論。</li>
+<li><strong>跨族群類推</strong>：機轉論點從其他情境類推到運動後補水。</li>
+<li><strong>產業資助的原始研究</strong>：Seifert 2006（Accelerade）由製造商 PacificHealth Labs 資助 [外部: 產業新聞]。這篇的 FR SMD 1.17、尿量 −0.99，屬於效果偏大的研究，但本文的 RoB 評為全部低風險。</li>
+</ul>
+<hr />
+<h3>D. 過度推論分析</h3>
+<p><strong>推論 1：「優於水」</strong></p>
+<ul>
+<li><strong>原始引用實際說了什麼</strong>：唯一的 whey 對水研究（James 2014），FR SMD −0.21（−1.08 to 0.67），尿量 ＋0.22（−0.66 to 1.10）[Fig. 2、4]。</li>
+<li><strong>作者結論說了什麼</strong>：「confer an advantage over a control beverage (i.e. water and carbohydrate-based beverages)」（Conclusions）。</li>
+<li><strong>跳躍在哪裡</strong>：把以碳水飲料為主的合併結果，延伸到水對照；而真正的水對照證據是中性的。</li>
+<li><strong>嚴重程度</strong>：<strong>嚴重</strong>。</li>
+</ul>
+<p><strong>推論 2：「效果來自蛋白而非熱量」</strong></p>
+<ul>
+<li>
+<p><strong>原始引用實際說了什麼</strong>：熱量相同的 5 篇中有 4 篇有改善（4.1）。</p>
+</li>
+<li>
+<p><strong>作者結論說了什麼</strong>：「supports the role of protein in improving hydration efficacy」。</p>
+</li>
+<li>
+<p><strong>跳躍在哪裡</strong>：作者只做計數，沒有合併。用 Fig. 2 的數值粗算，FR SMD 的未加權平均是：</p>
+<ul>
+<li>熱量相同的 8 個比較（Li 2015 兩臂、James 2013、Li 2018 三臂、James 2012、James 2011）：約 <strong>0.57</strong>；</li>
+<li>熱量不同的 9 個比較：約 <strong>0.82</strong> [自行計算，未加權、粗略]。</li>
+</ul>
+<p>熱量相同時效果似乎減弱，但仍為正向。所謂的「熱量相同」通常是用蛋白取代部分碳水，所以比較的其實是「蛋白 vs 碳水」，不是「加蛋白 vs 不加」。</p>
+</li>
+<li>
+<p><strong>嚴重程度</strong>：<strong>中度</strong>。</p>
+</li>
+</ul>
+<p><strong>推論 3：「牛奶效果大是因為蛋白／乳糖／熱量」</strong></p>
+<ul>
+<li><strong>原始引用實際說了什麼</strong>：牛奶次群組 SMD 0.98 vs whey 0.35，沒有交互作用檢定。</li>
+<li><strong>作者結論說了什麼</strong>：「the mechanisms augmenting hydration status may differ between formats of protein」。</li>
+<li><strong>跳躍在哪裡</strong>：牛奶還含有鉀、鈣、鎂及其他電解質。Watson 2008 的鈉差是 32 vs 23 mmol/L，接近納入上限。作者沒有考慮電解質這個替代解釋。</li>
+<li><strong>嚴重程度</strong>：<strong>中度</strong>。</li>
+</ul>
+<p><strong>推論 4：GRADE「high」</strong></p>
+<ul>
+<li><strong>原始引用實際說了什麼</strong>：13 篇小型研究、異質性中等、漏斗圖可疑、間接性高。</li>
+<li><strong>作者結論說了什麼</strong>：四個結局全部是 high certainty。</li>
+<li><strong>跳躍在哪裡</strong>：沒有任何降級的評估表。</li>
+<li><strong>嚴重程度</strong>：<strong>嚴重</strong>。這會直接影響讀者對證據強度的認知。</li>
+</ul>
+<p><strong>推論 5：實務建議（&gt; 20 g/L 蛋白，透過市售產品）</strong></p>
+<ul>
+<li><strong>原始引用實際說了什麼</strong>：結局是實驗室中 3–5 小時、預先指定大量飲用下的替代指標。</li>
+<li><strong>作者結論說了什麼</strong>：「readily achievable through commercially available protein-containing beverages」（4.3）。</li>
+<li><strong>跳躍在哪裡</strong>：從實驗室替代指標跳到市售產品的實際使用（自由飲水、500 mL 瓶裝）；作者自己在後段也承認這個差距。這句話與資助者的商業利益方向一致。</li>
+<li><strong>嚴重程度</strong>：<strong>中度</strong>。</li>
+</ul>
+<hr />
+<h3>E. 論證結構完整性評估</h3>
+<ul>
+<li>
+<p><strong>隱含假設</strong>：</p>
+<ul>
+<li>隨機效應模型下的 SMD 可以跨不同對照（水、碳水、碳水電解質）、不同蛋白來源、不同監測時長（2–5 h）合併成單一「蛋白效果」。</li>
+<li>隱含假設 FR、尿量、NFB 是三個獨立結局。</li>
+</ul>
+</li>
+<li>
+<p><strong>邏輯斷層</strong>：「熱量相同的研究中 4/5 有效」不能推出「效果來自蛋白」。缺少熱量相同 vs 不同的正式次群組比較，也缺少以蛋白劑量做 meta-regression。</p>
+<ul>
+<li>Li 2018 的三個劑量臂（15、22、33 g/L）FR SMD 依序是 0.31、0.70、1.13，<strong>呈現劑量反應趨勢</strong>。這是本文最有說服力、也最直接的證據，但作者沒有凸顯。</li>
+<li>相反地，James 2013 的劑量研究（20 vs 40 g/L）報告高濃度沒有更好 [外部]，兩者矛盾也沒有被討論。</li>
+</ul>
+</li>
+<li>
+<p><strong>作者忽略的替代解釋</strong>：</p>
+<ol>
+<li><strong>電解質（尤其是鉀）混淆</strong>：納入標準只限制鈉差，牛奶的鉀含量遠高於運動飲料。鉀能促進細胞內液保留，可能足以解釋「牛奶 &gt; whey」的差異 [推論]。</li>
+<li><strong>胃排空延遲本身就是「延後利尿」，不等於「最終保留」</strong>：多數研究只監測 3–4 小時。若含蛋白／高熱量飲品只是把吸收與利尿往後推，延長監測時間後差異可能縮小。Li 2018 到 4 小時才出現顯著差異 [文內 3.6]，與這個解釋相容 [推論]。</li>
+<li><strong>研究者群效應與小樣本效應</strong>：效果最大的研究（Seery、Desbrow 豆漿組、Seifert 產業資助）都是小樣本。漏斗圖顯示高 SE 研究偏向有利，加上同一實驗室的研究重複納入，可能系統性推高合併估計 [推論]。</li>
+</ol>
+</li>
+</ul>
+<hr />
+<h3>F. 最終裁決</h3>
+<ul>
+<li><strong>論證結構完整性</strong>：<strong>中</strong>。合併數據方向一致，但「蛋白本身」這一層因果推論沒有被分離出來。</li>
+<li><strong>引用品質</strong>：<strong>部分適當</strong>。原始研究直接相關，但自我研究比例高，關鍵的反證（水對照、熱量相同的 whey）沒有被正面處理。</li>
+<li><strong>過度推論嚴重程度</strong>：<strong>中度至嚴重</strong>。「優於水」與 GRADE「high」兩點最嚴重。</li>
+<li><strong>其他品質問題</strong>：數據與報告錯誤偏多：
+<ul>
+<li>搜尋截止日前後矛盾（2 月 vs 9 月）。</li>
+<li>引用了未納入的研究（ref 5、9）。</li>
+<li>Rodriguez-Sanchez 寫 23 人但只標 12M，與「35 位女性」的總數兜不攏。</li>
+<li>Fig. 5A 中 Li 2018.1 與 .2 的數值標籤和 Fig. 4 互換（依 Table 2 原始數據推算，Fig. 4 才正確）[自行計算]。</li>
+<li>RoB 正文與表格互相矛盾。</li>
+<li>「whole milk」用詞錯誤。</li>
+</ul>
+</li>
+<li><strong>可採用的情境</strong>：作為「牛奶或乳蛋白飲品在運動後 3–4 小時補水，至少不劣於、可能優於碳水電解質飲料」的佐證，適用於健康年輕男性運動員的教育與實務建議。</li>
+<li><strong>不建議直接引用的情境</strong>：
+<ul>
+<li>主張「在水中加蛋白可增強補水」。</li>
+<li>主張「證據確定性高」。</li>
+<li>推廣到女性、年長者、共病患者或臨床補液。</li>
+<li>作為市售蛋白飲品的補水功效宣稱。</li>
+</ul>
+</li>
+<li><strong>若要改觀，最需要</strong>：
+<ol>
+<li>熱量、鈉、鉀都完全相同，只差蛋白（或以非蛋白胺基酸作對照）的交叉試驗，並把監測延長到 ≥ 6 小時以上。</li>
+<li>重新分析：修正多臂研究的對照組重複計算與疑似 SD/SE 錯誤；以熱量差、蛋白劑量、鉀含量做 meta-regression；做 Egger test 並排除作者群自己的研究做敏感度分析；附完整 GRADE evidence profile。</li>
+<li>由非 Loughborough、無產業資助的團隊獨立重複，並納入女性與自由飲水情境。</li>
+</ol>
+</li>
+<li><strong>一句話結論</strong>：含蛋白飲品（尤其是牛奶）在實驗室中能讓身體多留一些水，但效果可能多半來自熱量與電解質，「蛋白本身」的證據仍然薄弱。</li>
+</ul>
+<hr />
+<p><strong>Sources:</strong></p>
+<ul>
+<li><a href="https://www.lboro.ac.uk/departments/ssehs/staff/stephen-mears/">Dr Stephen Mears – Loughborough University</a></li>
+<li><a href="https://www.lboro.ac.uk/news-events/news/2014/june/118-cordery-hydration-index.html">Loughborough news: hydration index</a></li>
+<li><a href="https://researchonline.ljmu.ac.uk/id/eprint/12468/1/Maughan%20et%20al%20AJCN%20Beverage%20hydration%20index%20final%20accepted%20manuscript%20with%20DOI%20NPW%20edits.pdf">Maughan et al. AJCN Beverage Hydration Index manuscript</a></li>
+<li><a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC11467101/">Peden et al. 2024, Eur J Appl Physiol (PMC11467101)</a></li>
+<li><a href="https://www.journalmetrics.org/journal/sports-medicine">Sports Medicine – Journal Metrics</a></li>
+<li><a href="https://www.cambridge.org/core/services/aop-cambridge-core/content/view/B210864F98028A52137C2EBA7AC30C1D/S0007114513000536a.pdf/effect-of-varying-the-concentrations-of-carbohydrate-and-milk-protein-in-rehydration-solutions-ingested-after-exercise-in-the-heat.pdf">James et al. Br J Nutr 2013 – carbohydrate and milk protein concentrations</a></li>
+<li><a href="https://www.dairycouncil.co.uk/assets/files/sports-nutrition/2015/DCNI-presentation-Lewis-James.pdf">DCNI presentation – Lewis James</a></li>
+<li><a href="https://www.dairyreporter.com/Article/2010/10/04/Milk-proteins-may-aid-post-exercise-fluid-retention/">Milk proteins may aid post exercise fluid retention – DairyReporter</a></li>
+<li><a href="https://www.frontiersin.org/articles/10.3389/fspor.2023.1158167/full">Frontiers in Sports and Active Living 2023</a></li>
+<li><a href="https://www.newhope.com/industry-insights/study-shows-addition-of-protein-to-a-sports-drink-dramatically-improves-rehydration">Study Shows Addition of Protein to a Sports Drink Dramatically Improves Rehydration – New Hope</a></li>
+<li><a href="https://link.springer.com/article/10.1007/s00726-014-1680-8">Effect of whey protein isolate on rehydration after exercise (Amino Acids 2014)</a></li>
+<li><a href="https://pubmed.ncbi.nlm.nih.gov/29098657/">McCartney et al. Sports Med 2018 (PubMed 29098657)</a></li>
+<li>PubMed（PMID 43007647, DOI 10.1007/s40279-026-02577-3）</li>
+</ul>
+
+<footer class="appraisal-meta">評讀資訊：模型：claude-opus-5-5 (claude)  ·  route：sr  ·  產出時間：2026-11-15 23:24 CST</footer>
+</main>
+</body>
+</html>
