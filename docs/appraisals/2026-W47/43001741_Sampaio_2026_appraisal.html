@@ -1,0 +1,924 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Intensive Blood-Pressure Control in Patients with Previous Ischemic Stroke.</title>
+<style>
+  :root {
+    --bg: #fafafa;
+    --card: #ffffff;
+    --text: #1a1a1a;
+    --muted: #6b6b6b;
+    --border: #e5e5e5;
+    --accent: #0b5fff;
+  }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang TC",
+      "Microsoft JhengHei", sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    margin: 0;
+    padding: 24px 16px 64px;
+    line-height: 1.72;
+  }
+  main {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    margin: 0 auto;
+    max-width: 840px;
+    padding: 22px 26px;
+  }
+  nav {
+    margin: 0 auto 14px;
+    max-width: 840px;
+    color: var(--muted);
+    font-size: 14px;
+  }
+  a { color: var(--accent); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  h1, h2, h3, h4 { line-height: 1.35; }
+  h1 { font-size: 26px; margin-top: 0; }
+  h2 { border-top: 1px solid var(--border); padding-top: 18px; }
+  code {
+    background: rgba(127, 127, 127, 0.12);
+    border-radius: 4px;
+    padding: 1px 4px;
+  }
+  .table-wrap {
+    margin: 1em 0;
+    overflow-x: auto;
+  }
+  .table-wrap.wide {
+    /* Break out of the 840px prose column, centred on the viewport. */
+    width: min(1040px, calc(100vw - 32px));
+    margin-left: calc(50% - min(520px, 50vw - 16px));
+  }
+  table {
+    border-collapse: collapse;
+    table-layout: auto;
+    width: 100%;
+  }
+  .table-wrap.wide {
+    /* Opaque so the <main> card border does not show through the table. */
+    background: var(--card);
+  }
+  /* Width hints go on <th> as percentages: Chrome's auto table layout
+     mis-sizes columns (and overflows) when cells carry min-width. */
+  .table-wrap.wide th:first-child {
+    /* Variable + plain-language definition, e.g. "NCPV (noncalcified ...)". */
+    width: 26%;
+  }
+  .table-wrap.wide th:last-child {
+    /* Last column is usually a one-line interpretation. */
+    width: 20%;
+  }
+  th, td {
+    border: 1px solid var(--border);
+    /* Wrap only at spaces: never split an English word mid-letter. */
+    overflow-wrap: normal;
+    word-break: normal;
+    hyphens: manual;
+    padding: 6px 8px;
+    text-align: left;
+    vertical-align: top;
+  }
+  blockquote {
+    border-left: 3px solid var(--accent);
+    color: var(--muted);
+    margin-left: 0;
+    padding-left: 14px;
+  }
+  .appraisal-meta {
+    border-top: 1px solid var(--border);
+    margin-top: 28px;
+    padding-top: 14px;
+    color: var(--muted);
+    font-size: 13px;
+  }
+  @media (max-width: 600px) {
+    body {
+      padding: 12px 8px 40px;
+    }
+    main {
+      padding: 16px 12px;
+    }
+    h1 {
+      font-size: 22px;
+    }
+    table {
+      font-size: 12px;
+    }
+    .table-wrap.wide {
+      width: calc(100vw - 16px);
+      margin-left: calc(50% - 50vw + 8px);
+    }
+    th, td {
+      padding: 4px 5px;
+    }
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #1a1a1a;
+      --card: #242424;
+      --text: #e8e8e8;
+      --muted: #999;
+      --border: #333;
+      --accent: #6ea8ff;
+    }
+  }
+</style>
+</head>
+<body>
+<nav><a href="../../2026-W47.html">← 回到 2026-W47 週報</a></nav>
+<main>
+<h1>Intensive Blood-Pressure Control in Patients with Previous Ischemic Stroke.</h1>
+<h1>OPTIMAL-STROKE 評讀：曾發生缺血性中風或 TIA 者，收縮壓目標 &lt;120 vs &lt;140 mmHg（NEJM 2026）</h1>
+<h2>SECTION-0：文章全面描述</h2>
+<h3>0. 文章身份證</h3>
+<ul>
+<li><strong>標題</strong>：Intensive Blood-Pressure Control in Patients with Previous Ischemic Stroke（OPTIMAL-STROKE）</li>
+<li><strong>期刊／年份</strong>：N Engl J Med，2026；2026/11/7 線上刊出，與 AHA 2026 發表同步 [文內]</li>
+<li><strong>DOI</strong>：10.1056/NEJMoa2612924；PMID 43001741；NCT04036409</li>
+<li><strong>文章類型</strong>：多中心、open-label、受試者層級隨機分派、結果評估盲化（PROBE 型）、事件驅動的優效性 RCT</li>
+<li><strong>路由</strong>：SKILL-A（RCT 主流程）</li>
+<li><strong>輸入限制</strong>：正文為 PDF 轉出的 markdown。另外實際讀取了正文第 5、6、7、10 頁圖頁（Table 1、Figure 1、Table 2、Figure 3），以及 supplement 第 17–24 頁（Figure S1–S8）。<strong>沒有提供 Figure 2（Kaplan-Meier 圖）的圖頁</strong>，只有 markdown 轉出的 number at risk 文字；Figure S9（腎臟結果）也沒有圖頁。這兩張圖的曲線形狀都無法視覺判讀。Protocol 全文（213 頁）因工具限制未逐段查核，protocol 修訂內容主要依據 Supplement Table S1。</li>
+</ul>
+<h3>1. 作者團隊評論</h3>
+<ul>
+<li><strong>通訊作者</strong>：
+<ul>
+<li>Gisele Sampaio Silva：Hospital Israelita Albert Einstein／Universidade Federal de São Paulo，中風神經科 [文內]。</li>
+<li>Otavio Berwanger：George Institute for Global Health U.K.／Imperial College London，OPTIMAL 計畫 steering committee 主席 [文內；外部: HCPLive、TCTMD]。</li>
+</ul>
+</li>
+<li><strong>團隊構成</strong>：神經科（中風）與心臟科、高血壓專家混合，主要來自巴西學術醫院。國際合作者包括 A. Rodgers（George Institute）與 P.K. Whelton（Tulane）[文內]。
+<ul>
+<li>研究構想：Berwanger、Sampaio Silva、Machline-Carrion、Santo。</li>
+<li>統計分析：Einstein ARO 的統計師。</li>
+<li>初稿撰寫：Sampaio Silva、Machline-Carrion、Berwanger [Supplement Section S1]。</li>
+</ul>
+</li>
+<li><strong>機構與平行試驗</strong>：試驗由 Einstein 學術研究組織（ARO）執行，經費來自巴西衛生部 PROADI-SUS。同一基礎架構平行執行了 OPTIMAL-DIABETES，該試驗結果為中性 [外部: World Stroke Academy；STAT／Medscape 標題，全文因付費牆無法取得]。</li>
+<li><strong>團隊過往代表著作</strong>：[無法取得]。外部搜尋未能取得可驗證的發表清單，不以記憶補寫。</li>
+<li><strong>作者立場史</strong>：同一團隊同時發表結論相反的 OPTIMAL-DIABETES，降低了「只發表有利結果」的疑慮。兩試驗共用 pooled analysis 計畫 [Supplement Table S1，Protocol v8.0]。</li>
+<li><strong>利益揭露與資金</strong>：
+<ul>
+<li>經費來自 Hospital Israelita Albert Einstein 與巴西衛生部 [文內]。</li>
+<li>Servier 捐贈 perindopril／indapamide／amlodipine 固定劑量複方，宣稱不參與其他環節、無法接觸資料 [文內；Supplement S1、S3]。</li>
+<li>TCTMD 報導 Sampaio Silva 與 Berwanger 揭露與多家藥廠有補助或顧問關係 [外部: TCTMD]。個別揭露表未含在 markdown 內 [無法取得]。</li>
+<li><strong>評估</strong>：主要是學術與公部門經費。藥廠贈藥兩組都能使用；強化組用藥量較多，但這不改變「目標血壓」這個比較本身。資金影響結論呈現的風險為低到中等。</li>
+</ul>
+</li>
+</ul>
+<h3>2. 文獻 Metadata 整理</h3>
+<ul>
+<li><strong>Received／Accepted date</strong>：markdown 未提供 [無法取得]，無法計算審查天數；NEJM 平均審查天數也 [無法取得]。與大會同步刊出，屬 NEJM 對重大試驗的慣例快速通道 [推論]。</li>
+<li><strong>期刊指標</strong>：NEJM 2025 JIF 84.5（JCR 2026 版），Q1 [外部: Wolters Kluwer Ovid 列表，引用 JCR；非 Clarivate 原站]。</li>
+<li><strong>投稿性質</strong>：原著投稿，非邀稿 [推論]。</li>
+</ul>
+<h3>3. 研究背景（文內）</h3>
+<ul>
+<li><strong>已知證據</strong>：
+<ul>
+<li>高血壓是中風最重要的可改變風險因子；積極降壓在高風險族群可降低心血管事件。</li>
+<li>SPRINT 排除中風病人；BPROAD 中風病人只佔少數；ESPRIT 約有 3000 名中風史病人。</li>
+<li>過去的中風次級預防試驗，在藥物策略、血壓目標與組間血壓差上差異很大。</li>
+</ul>
+</li>
+<li><strong>知識缺口</strong>：中風或 TIA 後最佳收縮壓目標仍不明確。</li>
+<li><strong>研究問題</strong>：對臨床穩定、有缺血性中風或 TIA 病史、收縮壓升高的病人，以 &lt;120 mmHg 為目標是否比 &lt;140 mmHg 更能減少主要心血管事件。</li>
+</ul>
+<h3>4. 研究設計與方法（PICO）</h3>
+<ul>
+<li><strong>P（族群）</strong>：
+<ul>
+<li>年齡 ≥18 歲，有缺血性中風或 TIA 病史，入組前臨床穩定 ≥48 小時。</li>
+<li>收縮壓 130–180 mmHg；上限依用藥數分層。</li>
+<li>排除 mRS ≥4、eGFR &lt;20、BMI &gt;45、NYHA IV 或 EF &lt;35%、6 個月內 ACS 等 [Supplement S2]。</li>
+<li>巴西 30 個中心收案，期間 2019/8–2022/8。</li>
+</ul>
+</li>
+<li><strong>I（強化組）</strong>：收縮壓目標 &lt;120 mmHg。
+<ul>
+<li>隨機分派當次即啟動或調整為 2–3 種藥物；之後每次回診只要 ≥120 就「必須」加藥。</li>
+<li>3 個月後若 ≥140，或連續兩次 ≥120，追加 1 個月內回診 [Figure S1]。</li>
+</ul>
+</li>
+<li><strong>C（標準組）</strong>：收縮壓目標 &lt;140 mmHg，實際瞄準 135–139。
+<ul>
+<li>隨機分派當次只有 ≥160 才加藥。</li>
+<li><strong>單次 &lt;130 或連續兩次 &lt;135 時需「減藥」</strong>；居家量測門檻再低 5 mmHg [Figure S2；Supplement S3]。</li>
+</ul>
+</li>
+<li><strong>O（結果）</strong>：
+<ul>
+<li><strong>主要終點</strong>：心血管死亡、非致死性 MI、非致死性中風、不穩定型心絞痛住院、心衰竭住院的首次發生。</li>
+<li><strong>關鍵次要終點</strong>：心血管死亡、MI、中風。之後依階層順序檢定共 14 項，遇第一個不顯著即停止。</li>
+</ul>
+</li>
+<li><strong>統計設計重點</strong>：
+<ul>
+<li>Cox 模型，治療組為固定效應、中心為隨機效應，ITT 分析。</li>
+<li>終止條件為事件數達 495 件，全體共同結束日 2025/10/10。</li>
+<li>期中分析兩次加一次 DSMB 臨時分析，採 Haybittle–Peto 界線（P&lt;0.001）。</li>
+</ul>
+</li>
+<li><strong>血壓量測</strong>：Omron HBP-1100，三次量測取後兩次平均。疫情期間允許居家量測與電話訪視，佔遠端訪視約 17% [文內；Table S3]。</li>
+</ul>
+<h3>5. 研究結果重點整理</h3>
+<div class="table-wrap wide"><table>
+<thead>
+<tr>
+<th>變項（代表什麼）</th>
+<th style="text-align:right">強化組（n=2172）</th>
+<th style="text-align:right">標準組（n=2196）</th>
+<th style="text-align:right">組間差（95% CI）</th>
+<th style="text-align:right">p 值</th>
+<th>如何解讀</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>追蹤期 SBP</strong>：排除前 3 個月的平均收縮壓（含居家量測）</td>
+<td style="text-align:right">146.6 → <strong>122.0 mmHg</strong></td>
+<td style="text-align:right">146.8 → <strong>135.2 mmHg</strong></td>
+<td style="text-align:right">−13.1 mmHg（−13.8 to −12.5）</td>
+<td style="text-align:right">未報告</td>
+<td>血壓確實拉開；但強化組平均未達 &lt;120</td>
+</tr>
+<tr>
+<td><strong>SBP &lt;120 達標比例</strong>：強化組量得 &lt;120 的比例</td>
+<td style="text-align:right">55.0%（12 個月）→ <strong>68.9%（36 個月）</strong></td>
+<td style="text-align:right">—</td>
+<td style="text-align:right">—</td>
+<td style="text-align:right">—</td>
+<td>約三成到四成始終未達標</td>
+</tr>
+<tr>
+<td>降壓藥數（平均）</td>
+<td style="text-align:right"><strong>3.0±1.1</strong></td>
+<td style="text-align:right"><strong>2.2±1.1</strong></td>
+<td style="text-align:right">約 +0.8 種〔自行計算〕</td>
+<td style="text-align:right">未報告</td>
+<td>強化組平均多用不到一種藥</td>
+</tr>
+<tr>
+<td><strong>主要複合終點</strong>：CV 死亡、MI、中風、UA 住院、HF 住院</td>
+<td style="text-align:right"><strong>236（10.9%）</strong>；3.25/100 人年</td>
+<td style="text-align:right"><strong>297（13.5%）</strong>；4.11/100 人年</td>
+<td style="text-align:right">HR 0.79（0.67–0.94）</td>
+<td style="text-align:right">0.007</td>
+<td>絕對差約 2.6%，NNT ≈ 38（3.9 年）〔自行計算〕</td>
+</tr>
+<tr>
+<td><strong>關鍵次要終點</strong>：CV 死亡、MI、中風</td>
+<td style="text-align:right">212（9.8%）</td>
+<td style="text-align:right">260（11.8%）</td>
+<td style="text-align:right">HR 0.81（0.68–0.98）</td>
+<td style="text-align:right">0.03</td>
+<td>原本的主要終點也顯著，結論不依賴改版</td>
+</tr>
+<tr>
+<td>主要終點改以全死因取代 CV 死亡</td>
+<td style="text-align:right">377（17.4%）</td>
+<td style="text-align:right">444（20.2%）</td>
+<td style="text-align:right">HR 0.84（0.74–0.97）</td>
+<td style="text-align:right">0.02</td>
+<td>階層第 2 項，方向一致</td>
+</tr>
+<tr>
+<td>CV 死亡</td>
+<td style="text-align:right">99（4.6%）</td>
+<td style="text-align:right">104（4.7%）</td>
+<td style="text-align:right">HR 0.96（0.73–1.26）</td>
+<td style="text-align:right">階層在此停止</td>
+<td>無法判定死亡效益</td>
+</tr>
+<tr>
+<td>全死因死亡</td>
+<td style="text-align:right">255（11.7%）</td>
+<td style="text-align:right">273（12.4%）</td>
+<td style="text-align:right">HR 0.94（0.79–1.12）</td>
+<td style="text-align:right">未正式檢定</td>
+<td>不確定，CI 寬</td>
+</tr>
+<tr>
+<td>中風（全部）</td>
+<td style="text-align:right"><strong>102（4.7%）</strong></td>
+<td style="text-align:right"><strong>140（6.4%）</strong></td>
+<td style="text-align:right">HR 0.73（0.56–0.94）</td>
+<td style="text-align:right">未正式檢定</td>
+<td>主要差異來源，但僅屬支持性證據</td>
+</tr>
+<tr>
+<td>缺血性中風</td>
+<td style="text-align:right">89（4.1%）</td>
+<td style="text-align:right">129（5.9%）</td>
+<td style="text-align:right">HR 0.69（0.53–0.90）</td>
+<td style="text-align:right">未正式檢定</td>
+<td>中風差異主要來自缺血型</td>
+</tr>
+<tr>
+<td>出血性中風</td>
+<td style="text-align:right">5（0.2%）</td>
+<td style="text-align:right">3（0.1%）</td>
+<td style="text-align:right">HR 1.70（0.41–7.10）</td>
+<td style="text-align:right">未正式檢定</td>
+<td>僅 8 件，無資訊量</td>
+</tr>
+<tr>
+<td>MI</td>
+<td style="text-align:right">25（1.2%）</td>
+<td style="text-align:right">39（1.8%）</td>
+<td style="text-align:right">HR 0.65（0.39–1.07）</td>
+<td style="text-align:right">未正式檢定</td>
+<td>方向有利但不精確</td>
+</tr>
+<tr>
+<td>心衰竭住院</td>
+<td style="text-align:right">30（1.4%）</td>
+<td style="text-align:right">41（1.9%）</td>
+<td style="text-align:right">HR 0.74（0.46–1.18）</td>
+<td style="text-align:right">未正式檢定</td>
+<td>事件少，不確定</td>
+</tr>
+<tr>
+<td><strong>複合腎臟終點</strong>：eGFR 持續下降 ≥50% 或進展至末期腎病</td>
+<td style="text-align:right"><strong>84（3.9%）</strong></td>
+<td style="text-align:right"><strong>49（2.2%）</strong></td>
+<td style="text-align:right">HR 1.76（1.24–2.50）</td>
+<td style="text-align:right">未正式檢定</td>
+<td>絕對增加約 1.6%，NNH ≈ 60〔自行計算〕</td>
+</tr>
+<tr>
+<td>長期透析</td>
+<td style="text-align:right">6（0.3%）</td>
+<td style="text-align:right">3（0.1%）</td>
+<td style="text-align:right">HR 2.02（0.50–8.06）</td>
+<td style="text-align:right">未報告</td>
+<td>極少，以實驗室定義的事件為主</td>
+</tr>
+<tr>
+<td>嚴重不良事件（任一）</td>
+<td style="text-align:right">328（15.1%）</td>
+<td style="text-align:right">336（15.3%）</td>
+<td style="text-align:right">HR 0.99（0.85–1.15）</td>
+<td style="text-align:right">0.87（名目）</td>
+<td>整體 SAE 無明顯差異</td>
+</tr>
+<tr>
+<td>傷害性跌倒</td>
+<td style="text-align:right">21（1.0%）</td>
+<td style="text-align:right">37（1.7%）</td>
+<td style="text-align:right">HR 0.57（0.33–0.98）</td>
+<td style="text-align:right">0.04（名目）</td>
+<td>強化組反而較少，屬探索性</td>
+</tr>
+<tr>
+<td><strong>血鈉 &lt;130 mmol/L</strong>：追蹤期任一次低血鈉</td>
+<td style="text-align:right">72（3.3%）</td>
+<td style="text-align:right">48（2.2%）</td>
+<td style="text-align:right">HR 1.53（1.07–2.21）</td>
+<td style="text-align:right">0.02（名目）</td>
+<td>與 thiazide 使用較多一致</td>
+</tr>
+<tr>
+<td>無症狀姿勢性低血壓</td>
+<td style="text-align:right">425（19.6%）</td>
+<td style="text-align:right">510（23.2%）</td>
+<td style="text-align:right">HR 0.82（0.72–0.94）</td>
+<td style="text-align:right">&lt;0.01（名目）</td>
+<td>強化組未增加</td>
+</tr>
+</tbody>
+</table></div>
+<ul>
+<li><strong>主要終點的組成</strong>：組間差約 61 件，其中中風約佔 38 件（102 vs 140），CV 死亡幾乎無差（99 vs 104）。也就是說，<strong>好處主要來自減少非致死性缺血性中風</strong> [Table 2]。</li>
+<li><strong>失訪與敏感度分析</strong>：失訪 157 人（3.6%），撤回同意 19 人（0.4%）。多重插補與 control-based pattern-mixture 分析的 HR 分別為 0.79（0.67–0.94）與 0.80（0.67–0.95）[Table S12]；Fine–Gray 競爭風險分析結果相同 [Table S11]。</li>
+<li><strong>非心血管死亡比 CV 死亡多</strong>：非 CV 死亡 288 件、CV 死亡 203 件，其中敗血症 139 件 [Table S10]。競爭風險明顯，也反映巴西醫療情境。</li>
+<li><strong>腎功能長期差距</strong>：48 個月時 eGFR 為 68.4 vs 71.0；eGFR &lt;60 的比例為 38.2% vs 31.2% [Table S9]。</li>
+<li><strong>與正文說法不一致處</strong>：Table S8 顯示最後一次訪視時，<strong>強化組也有 18.6% 沒用任何降壓藥</strong>（81.4%）。這與同期平均 3.5 類藥物 [Figure 1] 很難並存，可能是 last-visit 定義（含早期退出者）造成，文內沒有解釋。</li>
+</ul>
+<h3>6. 作者討論與評論重點</h3>
+<ul>
+<li><strong>主要訊息</strong>：中風或 TIA 後以 &lt;120 為目標，可減少 MACE，代價是更多腎臟事件，需監測腎功能與電解質。</li>
+<li><strong>與文獻的比較</strong>：
+<ul>
+<li>作者引用 ESPRIT 與 IPD meta-analysis，認為方向一致。</li>
+<li>本試驗標準組事件率約為 BPROAD 的兩倍（4.11 vs 2.09/100 人年），作者以此說明絕對效益與基線風險相關。</li>
+<li>出血性中風未減少，作者歸因於事件太少。</li>
+</ul>
+</li>
+<li><strong>作者自承的限制</strong>：
+<ul>
+<li>open-label 設計。</li>
+<li>只在巴西收案。</li>
+<li>疫情期間的遠端訪視。</li>
+<li>樣本數縮減後，對較小效果的檢定力不足。</li>
+</ul>
+</li>
+<li><strong>[評估]</strong>：
+<ul>
+<li>作者有清楚寫出「中風是支持性而非確認性證據」「腎臟事件的長期意義未明」，算是誠實。</li>
+<li><strong>避重就輕之處</strong>：
+<ul>
+<li>未在限制中討論<strong>標準組的主動減藥設計</strong>：標準組有降壓藥者由 93.9% 降到 76.6%。</li>
+<li>未討論<strong>強化組平均只到 122 mmHg</strong>。</li>
+<li>未討論<strong>次組分析沒有報告交互作用 p 值</strong>。</li>
+<li>未討論<strong>主要終點在收案 19 個月後改版</strong>。</li>
+</ul>
+</li>
+<li>結論寫「targeting &lt;120」在統計上正確，但臨床上實際比較的是「平均 122 vs 135」的策略。</li>
+</ul>
+</li>
+</ul>
+<h3>7. 外部專業意見</h3>
+<ul>
+<li><strong>同期 NEJM editorial</strong>：PubMed 與網路搜尋都沒有找到 [無法取得]。因為沒有可擷取的 editorial／comment DOI，所以沒有執行全文下載指令。</li>
+<li><strong>World Stroke Academy「Paper of the Month」</strong>（O.M. Pontes-Neto）[外部: World Stroke Academy 網頁全文]：
+<ul>
+<li>肯定這是中等收入國家完成的實務改變型試驗。</li>
+<li>強調中風結果僅屬支持性；不支持急性期，尤其取栓後積極降壓；也反對「無差別地降壓」。</li>
+<li><strong>利益衝突</strong>：Pontes-Neto 本身就是本文共同作者（作者列第 11 位），該評論未在正文揭露，不應視為獨立意見。</li>
+</ul>
+</li>
+<li><strong>TCTMD 會議報導中的專家意見</strong> [外部: TCTMD]：
+<ul>
+<li><strong>D. Shimbo（Columbia，大會 discussant）</strong>：主要 MACE 的 NNT 38 對上腎臟複合終點 NNH 59，臨床是否接受這個取捨有疑問；且 &lt;120 在真實世界「真的很難」達成。</li>
+<li><strong>C. Kramer（UVA）</strong>：強化組平均 122，&lt;120 未必必要，「&lt;130、可能 &lt;125」就足夠；建議每年至少監測腎功能一到兩次。</li>
+<li><strong>C. Bushnell（Wake Forest）</strong>：結果可減輕神經科醫師對腦灌流不足的顧慮。</li>
+</ul>
+</li>
+</ul>
+<h3>8. 臨床建議</h3>
+<ul>
+<li><strong>可採用的情境</strong>：
+<ul>
+<li>中風或 TIA 後已臨床穩定（多數入組於事件後 ≥120 天）。</li>
+<li>mRS ≤3、eGFR ≥20、能定期回診抽血的門診病人。</li>
+<li>診間收縮壓仍 ≥130 時，可將目標下修到 120 出頭。</li>
+</ul>
+</li>
+<li><strong>不建議直接套用的情境</strong>：
+<ul>
+<li>急性期（尤其取栓後 72 小時內）。</li>
+<li>出血性中風。</li>
+<li>mRS ≥4、晚期 CKD、反覆低血鈉、嚴重姿勢性低血壓或跌倒高風險且無法密切追蹤者。</li>
+<li>TIA 單獨族群：次組 HR 1.34（0.68–2.64），證據不足。</li>
+</ul>
+</li>
+<li><strong>實務建議</strong>：
+<ol>
+<li>目標可設在 &lt;120–125。實際達成 120 出頭就已經是本試驗的「強化組」，不必為了硬壓到 &lt;120 犧牲耐受性。</li>
+<li>加強 thiazide 類藥物時，前 3 個月內與之後每年至少一次檢查 creatinine 與 Na/K。eGFR 下降 ≥30% 或 Na &lt;130 時重新評估。</li>
+<li>與病人溝通時：約 38 人治療 4 年可少 1 件 MACE（主要是非致死性中風），約 60 人中會多 1 人出現 eGFR 腰斬（多數未進展到透析）。</li>
+</ol>
+</li>
+<li><strong>證據強度</strong>：中到強。
+<ul>
+<li>加分：隨機、大樣本、盲化判定、失訪少、多項敏感度分析一致。</li>
+<li>扣分：open-label、單一國家、終點改版、對照組強度低於現行指引、CI 上緣接近臨床最小有意義差。</li>
+</ul>
+</li>
+</ul>
+<hr />
+<h2>SKILL-A：批判性評讀</h2>
+<h3>A. 補充技術細節</h3>
+<ul>
+<li><strong>樣本數估算的演變</strong>（四次修改）[Supplement S5、Table S1]：
+<ol>
+<li>原設計 7022 人、756 件事件：用二元比例算法，作者自承與 time-to-event 分析不一致。</li>
+<li>v4.0：7104 人、702 件。</li>
+<li>v7.0（2022）：依盲化合併事件率 5.5%/年，改為 4060 人、689 件。</li>
+<li>v8.0（2025/6）：因事件累積比預期慢，終止門檻降為約 495 件，檢定力由 85% 降為 80%。</li>
+</ol>
+<ul>
+<li><strong>最後的效果假設是 21% 相對降幅，與觀察到的 HR 0.79 恰好相同</strong>。作者聲明這個假設只來自外部證據（BPROAD、RESPECT），所有重估都在盲化下進行。</li>
+<li>最終有 533 件事件，多於 495，原因是終止日當時還有待判定的事件。</li>
+</ul>
+</li>
+<li><strong>隨機化</strong>：中央網路系統、1:1、依中心分層、可變區塊大小。分派隱藏方式可接受。</li>
+<li><strong>盲法</strong>：病人與醫師都不盲（本質上無法盲）；CEC 盲化判定事件。但事件的「通報」由未盲的研究者負責 [Supplement S4]。安全性事件與腎臟終點沒有經過中央判定。</li>
+<li><strong>ITT</strong>：全體 4368 人都納入分析。per-protocol 與 modified ITT 在 v8.0 被刪除 [Table S1]。這在優效性試驗中可以接受，但也少了一個檢視遵從度與效果劑量關係的角度。</li>
+<li><strong>多重比較</strong>：次要終點採固定順序階層檢定，在第 3 項 CV 死亡停止；腎臟終點排在第 9 項，未正式檢定。次組分析與安全性指標均未校正。</li>
+<li><strong>比例風險假設</strong>：主要終點 Schoenfeld p=0.795。Figure S4 中平滑的 β(t) 在 0–4 年間幾乎是水平線、略低於 0，第 4 年信賴帶變寬，<strong>看不出效果隨時間衰減或延遲</strong> [Figure S4 圖頁實際判讀]。MI 與 SAE 的 PH 檢定 p&lt;0.05，已另做 RMST 分析，差異不顯著 [Table S4]。</li>
+<li><strong>缺失資料</strong>：
+<ul>
+<li>失訪定義為「未完成 36 個月最短追蹤」。</li>
+<li>缺失的事件日期以區間中點插補 [Supplement S5]。</li>
+<li>主要分析在最後確認事件的日期設限（censor）。</li>
+<li>前面提到的 MI 與 pattern-mixture 分析結果一致。</li>
+</ul>
+</li>
+<li><strong>血壓量測的異質性</strong>：追蹤期平均血壓混合了診間與居家量測。標準組的居家門檻下修 5 mmHg，強化組則不調整 [Figure S2]。只用診間量測的 Figure S7 趨勢幾乎相同，所以這點影響有限。</li>
+</ul>
+<h3>A1. 特殊設計：PROBE（open-label、盲化終點）設計的考量</h3>
+<ul>
+<li>強化組依 protocol 有額外的每月回診（只用於調藥，不做其他程序 [Supplement S3]）。接觸頻率不對等，理論上會讓強化組被「發現」的軟性事件（UA 或 HF 住院）較多，<strong>這個偏差方向對強化組不利</strong>，反而讓結果偏保守。</li>
+<li>腎臟終點靠排定時點的 creatinine，兩組抽血時點相同，偵測偏差有限。</li>
+<li>主要差異來自中風。中風屬於相對硬的終點，經影像佐證且有盲化判定，open-label 造成的偏差風險較低。</li>
+</ul>
+<h3>B. 批判性評估</h3>
+<h4>B1. 假說與理論邏輯</h4>
+<ul>
+<li><strong>合理機轉</strong>：
+<ol>
+<li>降壓減少動脈硬化進展與小血管病變，使缺血性中風減少。缺血性中風 HR 0.69，與這個機轉一致 [Table 2]。</li>
+<li>降低後負荷，可能減少 HF 住院與 MI（方向有利但不精確）。</li>
+<li>腎絲球內壓下降造成功能性 eGFR 下降，可解釋腎臟複合終點增加而 AKI 沒有增加（1 vs 3）。</li>
+</ol>
+</li>
+<li><strong>可疑的敘事跳躍</strong>：
+<ol>
+<li><strong>「目標 &lt;120」→「達到 &lt;120 才有效」</strong>：強化組平均 122.0（中位數 119.6），約三成始終未達標 [Table S7]。試驗驗證的是「以 120 為目標的加藥策略」，不是 120 這個閾值。</li>
+<li><strong>作者說「好處不限於出血性事件」</strong>：本試驗出血性中風只有 8 件，根本無法和出血性中風比較。這句話的實質內容只是「缺血性中風減少」，並沒有支持「與出血性中風機轉不同」的證據。</li>
+<li><strong>作者稱腎臟事件「可能部分反映腎絲球血行動力學變化」</strong>：文內沒有停藥後 eGFR 恢復的資料，屬於推測。eGFR &lt;60 的比例在 48 個月仍擴大到 38.2% vs 31.2% [Table S9]，並不支持「只是一次性下降」。</li>
+</ol>
+</li>
+</ul>
+<h4>B2. 受試者與外推性</h4>
+<ul>
+<li><strong>族群特徵</strong>：平均 64 歲、47.9% 女性、41.9% 黑人或混血、40% 糖尿病。整體比典型中風族群年輕 [Table S6]。</li>
+<li><strong>TOAST 病因分類</strong>：「不明」加「未確定」高達 59–61%；大動脈粥狀硬化只佔 14%，且沒有區分顱內與顱外 [Table 1 註]。這讓「重度顱內狹窄病人是否適用」完全無法判斷。</li>
+<li><strong>入組時間</strong>：中位數為事件後 1.1 年；120 天內入組 29%；≤7 天 147 人 [Table S5]。</li>
+<li><strong>外推性分級</strong>：
+<ol>
+<li><strong>一般高血壓族群</strong>：不適用。本試驗只收中風或 TIA 病人；一般族群的證據來自 SPRINT 等試驗。</li>
+<li><strong>慢性期、穩定的缺血性中風病人（mRS 0–3）</strong>：外推性中到高。限制在於巴西醫療體系（基層免費供藥、試驗贈藥加上密集回診）與年齡偏輕。</li>
+<li><strong>特殊族群</strong>：
+<ul>
+<li><strong>≥75 歲</strong>：731 人，HR 0.83（0.58–1.20），post hoc，資料不足。</li>
+<li><strong>CKD（eGFR &lt;60）</strong>：HR 0.97（0.72–1.30），且腎臟風險較高，屬於最需謹慎的族群。</li>
+<li><strong>TIA</strong>：357 人，HR 1.34，證據不足。</li>
+<li><strong>出血性中風、急性期</strong>：不適用。</li>
+</ul>
+</li>
+</ol>
+</li>
+</ul>
+<h4>B3. 研究設計與偏差</h4>
+<ul>
+<li><strong>對照組適當性（Gyawali 框架）——最關鍵的設計點</strong>：
+<ul>
+<li>標準組被設計成「瞄準 135–139，低於 130 就減藥」。隨分派時只有 ≥160 才加藥 [Figure S2]。</li>
+<li>結果是標準組有降壓藥者由 93.9% 降到 76.6% [Table S8]。</li>
+<li>現行 AHA/ASA 2021 中風次級預防建議 &lt;130/80，作者在 Discussion 也引用「&lt;130」為現行指引 [文內]。</li>
+<li>因此<strong>標準組實際上低於現行指引的照護</strong>。本試驗證明的是「&lt;120 優於約 135」，<strong>不是「&lt;120 優於 &lt;130」</strong>；對已經照 &lt;130 治療的醫師，增量效益可能比 HR 0.79 小。</li>
+<li>同時，標準組的主動減藥也可能讓部分病人血壓回升而增加事件，等於在效果中混入了「去強化的傷害」（見 F）。</li>
+</ul>
+</li>
+<li><strong>主要終點改版</strong>：v6.0（2021/3，收案約 19 個月後）把 UA 住院與 HF 住院加入主要終點，同時移除額外風險因子的收案條件 [Table S1]。
+<ul>
+<li>決策標註為未接觸分組資料；ClinicalTrials.gov 目前登錄的主要終點與正文一致。</li>
+<li>舊主要終點即現在的關鍵次要終點，HR 0.81（0.68–0.98）仍然顯著，所以<strong>改版沒有實質改變結論</strong>，但應在正文限制中揭露。</li>
+</ul>
+</li>
+<li><strong>事件門檻下修與 DSMB 臨時分析</strong>：
+<ul>
+<li>2024/10 DSMB 臨時分析（DSMB 可看到未盲資料）→ 2025/6 v8.0 把門檻由 689 降到 495，並取消 75% 期中分析。</li>
+<li>文件聲明 steering committee 在盲化下決策，且與 DSMB 建議無關 [Table S1 註]。程序上可接受，但時間上的接近值得記錄。</li>
+<li>Haybittle–Peto 界線對 alpha 的消耗可忽略；試驗沒有提早停止，所以「提早停止誇大效果」的疑慮不適用。</li>
+</ul>
+</li>
+<li><strong>腎臟終點定義在試驗末期放寬</strong>：v8.0（2025/6）移除「最終 eGFR &lt;60」的條件 [Table S1]，同時「持續下降」可以只用「最後一次追蹤值」判定 [Supplement S4]。
+<ul>
+<li>這使腎臟終點更敏感，且未必是真正持續性的下降。</li>
+<li>偏差方向是<strong>誇大強化組的腎臟傷害</strong>，對作者的主結論反而不利，不屬於美化結果的操作。</li>
+</ul>
+</li>
+<li><strong>基線平衡</strong>：大致平衡。SBP 分層略有不平衡：&lt;139 mmHg 為 33.2% vs 30.8%；≥150 為 35.6% vs 37.5% [Table S5]。中學教育程度 29.3% vs 32.5%。影響應該不大。</li>
+<li><strong>最可能造成偏差的三個設計點</strong>：
+<ol>
+<li><strong>標準組主動減藥／對照偏弱</strong>：讓效果相對於「現行指引照護」<strong>變大</strong>。</li>
+<li><strong>open-label 加上研究者自行通報事件</strong>：方向不確定。強化組多次回診可能多抓到軟性事件，讓效果<strong>變小</strong>；但研究者期待也可能影響住院決策。</li>
+<li><strong>強化組約三成未達標</strong>：讓「真正達到 &lt;120」的效果被稀釋，<strong>變小</strong>。</li>
+</ol>
+</li>
+</ul>
+<h4>B4. 測量工具與實務意義</h4>
+<ul>
+<li><strong>血壓量測</strong>：使用標準化自動血壓計並取後兩次平均，品質良好。居家與診間量測混合的影響已用 Figure S7 排除大部分疑慮。</li>
+<li><strong>主要終點</strong>：多為硬終點（中風、MI、CV 死亡），加上 UA 與 HF 住院。UA 住院只有 26 件，貢獻小。</li>
+<li><strong>腎臟終點</strong>：以實驗室數值定義，未經中央判定，屬替代指標性質；真正的硬終點（透析）是 6 vs 3。</li>
+<li><strong>「就算結果是真的」的實務效益</strong>：
+<ul>
+<li>每 100 人年少 0.86 件 MACE；4 年 NNT ≈ 38，主要是非致死性缺血性中風。</li>
+<li>平均需多吃 0.8 種藥、增加回診與抽血。</li>
+<li>多 1.6% 出現 eGFR 腰斬、多 1.1% 出現低血鈉。</li>
+<li>真實世界達成率很可能更低（discussant Shimbo 的意見）。若僅降到 125–128，效益應介於兩組之間 [推論]。</li>
+</ul>
+</li>
+</ul>
+<h3>C. 統計與資料完整性</h3>
+<h4>C1. 結果分類（CI 加 MCID 框架）</h4>
+<ul>
+<li><strong>MCID 設定 [推算]</strong>：文內未預先指定。sample size 假設為 20–21% 相對降幅；參考 BP 試驗慣例，取 <strong>HR 0.85（相對降幅 15%）為有意義效益</strong>、<strong>HR 1.10 為有意義傷害</strong>。</li>
+</ul>
+<div class="table-wrap wide"><table>
+<thead>
+<tr>
+<th>指標</th>
+<th>強化組</th>
+<th>標準組</th>
+<th>效果量</th>
+<th>95% CI</th>
+<th>ARD〔自行計算，粗率〕</th>
+<th>MCID</th>
+<th>結果分類</th>
+<th>實務意義</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>主要 MACE</td>
+<td>10.9%</td>
+<td>13.5%</td>
+<td>HR 0.79</td>
+<td>0.67–0.94</td>
+<td>−2.6%（NNT ≈ 38）</td>
+<td>0.85</td>
+<td><strong>IMPRECISE (+)</strong></td>
+<td>確定有益，但上緣 0.94 仍可能只是小效益</td>
+</tr>
+<tr>
+<td>關鍵次要（CV 死亡、MI、中風）</td>
+<td>9.8%</td>
+<td>11.8%</td>
+<td>HR 0.81</td>
+<td>0.68–0.98</td>
+<td>−2.1%</td>
+<td>0.85</td>
+<td>IMPRECISE (+)</td>
+<td>與主要終點一致</td>
+</tr>
+<tr>
+<td>中風</td>
+<td>4.7%</td>
+<td>6.4%</td>
+<td>HR 0.73</td>
+<td>0.56–0.94</td>
+<td>−1.7%</td>
+<td>0.85</td>
+<td>IMPRECISE (+)（名目、未檢定）</td>
+<td>支持性證據</td>
+</tr>
+<tr>
+<td>CV 死亡</td>
+<td>4.6%</td>
+<td>4.7%</td>
+<td>HR 0.96</td>
+<td>0.73–1.26</td>
+<td>−0.2%</td>
+<td>0.85／1.10</td>
+<td><strong>INCONCLUSIVE</strong></td>
+<td>同時跨越 null 與兩端 MCID</td>
+</tr>
+<tr>
+<td>全死因死亡</td>
+<td>11.7%</td>
+<td>12.4%</td>
+<td>HR 0.94</td>
+<td>0.79–1.12</td>
+<td>−0.7%</td>
+<td>0.85／1.10</td>
+<td><strong>INCONCLUSIVE</strong></td>
+<td>不能說「死亡無差異」</td>
+</tr>
+<tr>
+<td>複合腎臟</td>
+<td>3.9%</td>
+<td>2.2%</td>
+<td>HR 1.76</td>
+<td>1.24–2.50</td>
+<td>+1.6%（NNH ≈ 60）</td>
+<td>1.10</td>
+<td><strong>HARMFUL</strong>（名目、未檢定；終點以實驗室定義）</td>
+<td>需要監測；臨床硬終點意義未明</td>
+</tr>
+</tbody>
+</table></div>
+<ul>
+<li><strong>CV 死亡不可解讀為「沒有差異」</strong>：HR 0.96（0.73–1.26）屬於 INCONCLUSIVE，本試驗的事件數不足以回答死亡問題。</li>
+</ul>
+<h4>C2. Underpowered 與 Winner's Curse</h4>
+<ul>
+<li>主要終點 CI 沒有涵蓋 null，不屬於 underpowered positive。533 件事件、80% 檢定力的設計下，觀察到的 HR 0.79 剛好等於規劃假設，Type M 誇大的風險中等偏低。</li>
+<li><strong>需要注意的情況</strong>：只用 495 件事件、HR 0.79 的條件下，若真實效果是 HR 0.85–0.88（例如對照組改為 &lt;130），本試驗的檢定力就不足。</li>
+<li>後續若要設計「&lt;120 vs &lt;130」的試驗，不宜直接拿 0.79 計算樣本數。</li>
+</ul>
+<h4>C3. Bayesian 補充分析（近似）</h4>
+<ul>
+<li>方法：以平坦 prior、log HR 常態近似（SE ≈ 0.086）推算〔自行計算〕。</li>
+<li><strong>主要終點</strong>：
+<ul>
+<li>Pr(HR &lt;1) ≈ 99.7%</li>
+<li>Pr(HR &lt;0.90) ≈ 94%</li>
+<li>Pr(HR &lt;0.85，達到 MCID) ≈ 80%</li>
+</ul>
+</li>
+<li><strong>解讀</strong>：「有好處」幾乎確定；「效益達到臨床有意義的幅度」約八成把握。</li>
+</ul>
+<h4>C4. 報告完整性與其他統計問題</h4>
+<ul>
+<li><strong>Overpowered 評估</strong>：設計可偵測的最小效果約 HR 0.79，與 MCID 相當，沒有為偵測微小差異而刻意加大樣本的問題。</li>
+<li><strong>Kaplan-Meier／累積風險圖</strong>：
+<ul>
+<li>[限制：未提供 Figure 2 圖頁，無法判讀曲線分離時點與尾端形狀]。</li>
+<li>依 markdown 的 number at risk：第 3 年 1736/1777，<strong>第 4 年驟降到 279/262</strong>。原因是行政設限：收案期 3 年，加上共同結束日。</li>
+<li><strong>3.5 年後的曲線尾端不可靠</strong>，所謂「4 年累積風險」主要由前 3 年資訊支撐。</li>
+<li>Schoenfeld 檢定與 Figure S4 支持 HR 在整段追蹤期間大致恆定。</li>
+</ul>
+</li>
+<li><strong>informative censoring</strong>：失訪者的基線特徵與完整追蹤者相近 [Table S12A]，且兩種插補敏感度分析結果一致，風險低。</li>
+<li><strong>CONSORT 流程</strong>：5237 人篩選 − 869 人（230 + 527 + 90 + 6 + 16）= 4368，與分組人數 2172 + 2196 一致。失訪加撤回同意為 85 vs 91，與 Table S12 相符 [Figure S5 圖頁實際判讀]。</li>
+<li><strong>Figure 1 判讀</strong>：y 軸由 110 起算，目的是呈現血壓差，沒有誇大事件效果的問題。
+<ul>
+<li>強化組在 3 個月降到約 125，之後緩慢下降，到第 32 個月左右才跨過 120 的虛線。</li>
+<li>標準組穩定在 134–136。</li>
+<li>第 48 個月兩組的平均藥物類數突然下降（強化組 3.5 → 2.7、標準組 2.3 → 1.9）。這可能是結束訪視資料不完整或定義不同，文內沒有說明 [Figure 1 圖頁實際判讀]。</li>
+</ul>
+</li>
+<li><strong>舒張壓</strong>：強化組約 68 mmHg，標準組約 75 mmHg [Figure S6、S7]。沒有出現舒張壓 J 曲線的訊號，但本試驗也沒有針對此點設計分析。</li>
+<li><strong>統計面紅旗</strong>：
+<ol>
+<li>次組分析<strong>沒有報告任何交互作用 p 值</strong>。Methods 說有用交互作用項，Figure 3 與 S8 卻只列各組的 HR。</li>
+<li><strong>正文 Figure 3 與 Supplement Figure S8 不一致</strong>：
+<ul>
+<li>「過去心血管疾病」在 Figure 3 分成兩類（有：0.91；無：0.74）。</li>
+<li>在 Figure S8 分成三類（既有 CVD：0.90；<strong>亞臨床 CVD：21/107 vs 13/102，HR 1.61（0.80–3.22）</strong>；兩者皆無：0.68）。</li>
+<li>同一個次組，點估計 0.91 與 0.90 也不一致，而亞臨床 CVD 的結果在正文沒有出現。</li>
+</ul>
+</li>
+<li>主要終點在試驗中途改版（見 B3）。</li>
+<li>事件門檻兩度大幅下修，最後的效果假設恰好等於觀察值。</li>
+<li>腎臟終點定義在終止前 4 個月放寬，且允許只用單一最後數值判定「持續下降」。</li>
+<li>Table S8「最後訪視仍用降壓藥」的比例與 Figure 1 平均藥物數互相矛盾，未解釋。</li>
+</ol>
+</li>
+</ul>
+<h3>D. 次組分析評估（JAMA 5 標準）</h3>
+<div class="table-wrap wide"><table>
+<thead>
+<tr>
+<th>次組</th>
+<th>① 交互作用 p 值</th>
+<th>② 與外部一致</th>
+<th>③ 預先指定且有方向</th>
+<th>④ 生物合理性</th>
+<th>⑤ 試驗內比較</th>
+<th>可信度</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>基線 SBP 三分位</strong>：&lt;139 為 0.54（0.39–0.74）；139–150 為 0.91；≥150 為 0.95</td>
+<td>未報告</td>
+<td>外部 IPD 未見明顯修飾 [推論；未取得原文]</td>
+<td>預先指定，但無方向假設</td>
+<td>作者解釋為最低三分位的「治療強度對比較大」；但標準組在此三分位事件率反而最高（14.9% vs 13.3%、12.5%），也可能反映標準組減藥造成的傷害</td>
+<td>是</td>
+<td><strong>低</strong></td>
+</tr>
+<tr>
+<td><strong>TIA vs 缺血性中風</strong>：1.34 vs 0.76</td>
+<td>未報告</td>
+<td>無資料</td>
+<td>預先指定，無方向</td>
+<td>TIA 族群風險較低，機轉上沒有理由出現相反效果</td>
+<td>是</td>
+<td><strong>推測性</strong>（僅 34 件事件）</td>
+</tr>
+<tr>
+<td><strong>CKD</strong>：0.97 vs 0.74</td>
+<td>未報告</td>
+<td>SPRINT CKD 次組方向類似 [推論]</td>
+<td>預先指定</td>
+<td>腎功能差者降壓空間較窄，屬合理</td>
+<td>是</td>
+<td>低到中</td>
+</tr>
+<tr>
+<td><strong>事件後 &lt;1 年 vs ≥1 年</strong>：0.72 vs 0.87；&lt;120 天 vs ≥120 天：0.73 vs 0.82</td>
+<td>未報告</td>
+<td>無資料</td>
+<td>≥1 年為預先指定；120 天為 SAP v2.0 才加入的探索性分析</td>
+<td>早期復發風險高，絕對效益較大，屬合理</td>
+<td>是</td>
+<td>低</td>
+</tr>
+<tr>
+<td><strong>年齡 65／75 歲切點</strong></td>
+<td>未報告</td>
+<td>與 SPRINT 老年分析方向一致</td>
+<td><strong>post hoc，應審稿人要求</strong></td>
+<td>—</td>
+<td>是</td>
+<td>推測性</td>
+</tr>
+<tr>
+<td><strong>亞臨床 CVD</strong>（僅見於 Figure S8）：1.61（0.80–3.22）</td>
+<td>未報告</td>
+<td>無資料</td>
+<td>分類方式與正文不同</td>
+<td>不明</td>
+<td>是</td>
+<td>推測性；正文未揭露</td>
+</tr>
+</tbody>
+</table></div>
+<h3>E. 紅旗清單</h3>
+<ul>
+<li><strong>設計</strong>：
+<ul>
+<li>標準組會主動減藥，對照強度低於現行 &lt;130 的指引。</li>
+<li>open-label，事件由未盲的研究者通報。</li>
+<li>主要終點在收案 19 個月後改版。</li>
+</ul>
+</li>
+<li><strong>統計</strong>：
+<ul>
+<li>事件門檻兩度下修，最後假設恰等於觀察效果。</li>
+<li>次組分析沒有交互作用 p 值。</li>
+<li>Figure 3 與 Figure S8 的次組分類與數值不一致。</li>
+<li>第 4 年 number at risk 只剩約 12%。</li>
+</ul>
+</li>
+<li><strong>腎臟</strong>：終點定義在試驗末期放寬，未經中央判定。eGFR 腰斬 NNH ≈ 60，對上 MACE NNT ≈ 38，取捨並不懸殊。</li>
+<li><strong>敘事</strong>：
+<ul>
+<li>標題與結論強調「&lt;120」，實際平均是 122。</li>
+<li>「好處不限於出血性事件」這句話缺乏可比較的資料。</li>
+<li>外界首篇「評論」由共同作者撰寫，未揭露其作者身分。</li>
+</ul>
+</li>
+<li><strong>COI</strong>：Servier 贈藥（兩組都可用）；主要作者揭露與多家藥廠有關係，影響應有限。</li>
+<li><strong>外推</strong>：單一國家、年齡偏輕、TOAST 病因六成不明；TIA、≥75 歲、CKD 族群證據都不足。</li>
+</ul>
+<h3>F. 反向解釋</h3>
+<ol>
+<li><strong>效果部分來自「標準組去強化」而非「強化組加強」</strong>：
+<ul>
+<li><strong>支持</strong>：標準組有降壓藥者由 93.9% 降到 76.6%；最低 SBP 三分位標準組事件率最高、效果最大（HR 0.54）。</li>
+<li><strong>反對</strong>：標準組平均血壓穩定在約 135，沒有失控；整體效果方向與 ESPRIT、BPROAD 一致。</li>
+</ul>
+</li>
+<li><strong>強化組回診與接觸較多，帶來附帶照護（共同介入偏差）</strong>：
+<ul>
+<li><strong>支持</strong>：強化組有額外每月回診；試驗為 open-label。</li>
+<li><strong>反對</strong>：最後訪視時 statin、抗血小板、抗凝血劑使用與血脂數值兩組相近 [Table S8、S9]。</li>
+</ul>
+</li>
+<li><strong>open-label 造成事件判定或住院決策的差異</strong>：
+<ul>
+<li><strong>支持</strong>：研究者負責通報事件；UA 與 HF 住院屬軟性終點。</li>
+<li><strong>反對</strong>：主要差異來自影像確認、盲化判定的缺血性中風；關鍵次要終點結果一致。</li>
+</ul>
+</li>
+<li><strong>隨機誤差或效果被高估</strong>：
+<ul>
+<li><strong>支持</strong>：事件門檻下修後檢定力只有 80%；平行的 OPTIMAL-DIABETES 結果中性。</li>
+<li><strong>反對</strong>：p=0.007；多項敏感度分析一致；Bayesian 估計 Pr(HR&lt;1) ≈ 99.7%。</li>
+</ul>
+</li>
+</ol>
+<h3>G. 最終裁決</h3>
+<ul>
+<li><strong>整體可信度：中到高</strong>。內部效度良好：隨機、盲化判定、失訪少、ITT 分析，且多個終點與敏感度分析方向一致。主要扣分來自對照組設計、終點改版與單一國家的外推限制。</li>
+<li><strong>可採用的條件</strong>：慢性期、臨床穩定、mRS ≤3、eGFR 尚可的缺血性中風病人，能接受 3 種左右的藥物並定期監測腎功能與電解質時，可把收縮壓目標由 &lt;130 進一步下修到 120 出頭。</li>
+<li><strong>不建議採用的情境</strong>：
+<ul>
+<li>急性期或取栓後。</li>
+<li>出血性中風。</li>
+<li>單純 TIA。</li>
+<li>晚期 CKD，或反覆低血鈉、跌倒且無法追蹤者。</li>
+<li>平均餘命有限或藥物負擔已過重者。</li>
+</ul>
+</li>
+<li><strong>要改觀所需的三個改進</strong>：
+<ol>
+<li>以 &lt;130 為對照的試驗，或與 ESPRIT、BPROAD 中風次組的 IPD 整合，確認相對於現行指引的增量效益。</li>
+<li>公布所有次組的交互作用 p 值，並說明 Figure 3 與 Figure S8 的差異，以及 Table S8 與 Figure 1 的矛盾。</li>
+<li>停藥後 eGFR 恢復的資料，以及腎臟長期追蹤到 eGFR 斜率與透析等硬終點。</li>
+</ol>
+</li>
+<li><strong>一句話結論</strong>：中風後把收縮壓壓到 120 出頭，比維持在 135 左右少約四分之一中風與心血管事件，但腎功能下降較常見，需定期抽血監測。</li>
+</ul>
+<hr />
+<p>Sources:</p>
+<ul>
+<li><a href="https://www.tctmd.com/news/optimal-stroke-tight-bp-control-pays-dividends-after-ischemic-stroke-or-tia">TCTMD: OPTIMAL-STROKE: Tight BP Control Pays Dividends After Ischemic Stroke or TIA</a></li>
+<li><a href="https://www.world-stroke-academy.org/news/the-paper-of-the-month-november-6/">World Stroke Academy: The Paper of The Month – November</a></li>
+<li><a href="https://www.hcplive.com/view/aha-2026-intensive-blood-pressure-control-reduces-events-after-ischemic-stroke">HCPLive: AHA 2026: Intensive Blood Pressure Control Reduces Events After Ischemic Stroke</a></li>
+<li><a href="https://www.healio.com/news/cardiology/20261107/lower-blood-pressure-target-after-stroke-reduces-risk-for-major-cardiovascular-events">Healio: Lower blood pressure target after stroke reduces risk for major cardiovascular events</a></li>
+<li><a href="https://www.medscape.com/viewarticle/two-trials-intensive-bp-lowering-find-different-outcomes-2026a10017gr">Medscape: Two Trials of Intensive BP Lowering Find Different Outcomes (paywalled; title only)</a></li>
+<li><a href="https://www.wolterskluwer.com/en/solutions/Ovid/new-england-journal-of-medicine-624">Wolters Kluwer Ovid: New England Journal of Medicine (JIF listing)</a></li>
+<li><a href="https://clinicaltrials.gov/study/NCT04036409">ClinicalTrials.gov NCT04036409</a></li>
+<li><a href="https://clinicaltrials.gov/study/NCT04040634">ClinicalTrials.gov NCT04040634 (OPTIMAL-DIABETES)</a></li>
+</ul>
+
+<footer class="appraisal-meta">評讀資訊：模型：claude-opus-5-5 (claude)  ·  route：rct  ·  產出時間：2026-11-15 13:24 CST</footer>
+</main>
+</body>
+</html>
