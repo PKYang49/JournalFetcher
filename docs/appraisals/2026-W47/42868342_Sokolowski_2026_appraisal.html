@@ -1,0 +1,810 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Beyond the Hangover: Associations Between Binge Drinking, Health, and Performance in Young Adult Resistance-Trained Females.</title>
+<style>
+  :root {
+    --bg: #fafafa;
+    --card: #ffffff;
+    --text: #1a1a1a;
+    --muted: #6b6b6b;
+    --border: #e5e5e5;
+    --accent: #0b5fff;
+  }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang TC",
+      "Microsoft JhengHei", sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    margin: 0;
+    padding: 24px 16px 64px;
+    line-height: 1.72;
+  }
+  main {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    margin: 0 auto;
+    max-width: 840px;
+    padding: 22px 26px;
+  }
+  nav {
+    margin: 0 auto 14px;
+    max-width: 840px;
+    color: var(--muted);
+    font-size: 14px;
+  }
+  a { color: var(--accent); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  h1, h2, h3, h4 { line-height: 1.35; }
+  h1 { font-size: 26px; margin-top: 0; }
+  h2 { border-top: 1px solid var(--border); padding-top: 18px; }
+  code {
+    background: rgba(127, 127, 127, 0.12);
+    border-radius: 4px;
+    padding: 1px 4px;
+  }
+  .table-wrap {
+    margin: 1em 0;
+    overflow-x: auto;
+  }
+  .table-wrap.wide {
+    /* Break out of the 840px prose column, centred on the viewport. */
+    width: min(1040px, calc(100vw - 32px));
+    margin-left: calc(50% - min(520px, 50vw - 16px));
+  }
+  table {
+    border-collapse: collapse;
+    table-layout: auto;
+    width: 100%;
+  }
+  .table-wrap.wide {
+    /* Opaque so the <main> card border does not show through the table. */
+    background: var(--card);
+  }
+  /* Width hints go on <th> as percentages: Chrome's auto table layout
+     mis-sizes columns (and overflows) when cells carry min-width. */
+  .table-wrap.wide th:first-child {
+    /* Variable + plain-language definition, e.g. "NCPV (noncalcified ...)". */
+    width: 26%;
+  }
+  .table-wrap.wide th:last-child {
+    /* Last column is usually a one-line interpretation. */
+    width: 20%;
+  }
+  th, td {
+    border: 1px solid var(--border);
+    /* Wrap only at spaces: never split an English word mid-letter. */
+    overflow-wrap: normal;
+    word-break: normal;
+    hyphens: manual;
+    padding: 6px 8px;
+    text-align: left;
+    vertical-align: top;
+  }
+  blockquote {
+    border-left: 3px solid var(--accent);
+    color: var(--muted);
+    margin-left: 0;
+    padding-left: 14px;
+  }
+  .appraisal-meta {
+    border-top: 1px solid var(--border);
+    margin-top: 28px;
+    padding-top: 14px;
+    color: var(--muted);
+    font-size: 13px;
+  }
+  @media (max-width: 600px) {
+    body {
+      padding: 12px 8px 40px;
+    }
+    main {
+      padding: 16px 12px;
+    }
+    h1 {
+      font-size: 22px;
+    }
+    table {
+      font-size: 12px;
+    }
+    .table-wrap.wide {
+      width: calc(100vw - 16px);
+      margin-left: calc(50% - 50vw + 8px);
+    }
+    th, td {
+      padding: 4px 5px;
+    }
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #1a1a1a;
+      --card: #242424;
+      --text: #e8e8e8;
+      --muted: #999;
+      --border: #333;
+      --accent: #6ea8ff;
+    }
+  }
+</style>
+</head>
+<body>
+<nav><a href="../../2026-W47.html">← 回到 2026-W47 週報</a></nav>
+<main>
+<h1>Beyond the Hangover: Associations Between Binge Drinking, Health, and Performance in Young Adult Resistance-Trained Females.</h1>
+<h1>批判性評讀：〈Beyond the Hangover〉——阻力訓練年輕女性的狂飲、健康與表現</h1>
+<hr />
+<h2>SECTION-0：文章全面描述</h2>
+<h3>0. 文章身份證</h3>
+<ul>
+<li><strong>標題</strong>：Beyond the Hangover: Associations Between Binge Drinking, Health, and Performance in Young Adult Resistance-Trained Females</li>
+<li><strong>期刊／年份</strong>：<em>Medicine &amp; Science in Sports &amp; Exercise</em>（MSSE），2026，Publish Ahead of Print</li>
+<li><strong>DOI</strong>：10.1249/MSS.0000000000004185；PMID 42868342</li>
+<li><strong>文章類型</strong>：原始研究，屬於<strong>橫斷面觀察性研究</strong>。設計上是 2×2 配額招募：阻力訓練（RT）與否 × 狂飲與否，分成 4 組，每組 n=12。</li>
+<li><strong>路由</strong>：SKILL-A 主流程，加上觀察性子模組與因果推論 Appendix。</li>
+<li><strong>設計與分析的落差</strong>：分組本質上是 2×2 析因結構，但主要分析用的是<strong>單因子四組 ANOVA</strong>（Statistical Analysis）。作者也沒有檢驗「RT × 飲酒」交互作用，摘要卻寫出「RT 可能減輕狂飲效應」這種屬於交互作用的結論。這是全文最核心的方法學問題，詳見 B3／C4。</li>
+</ul>
+<h3>1. 作者團隊評論</h3>
+<ul>
+<li><strong>通訊作者</strong>：Michael J. Ormsbee，Florida State University（FSU）Institute of Sports Sciences and Medicine。專長是運動訓練、營養與補充品對代謝、身體組成與表現的交互作用，重點是睡前進食；他是 FACSM、FISSN，2020 年獲 NSCA William J. Kraemer Outstanding Sport Scientist Award [外部: FSU 教師頁、NSCA]。</li>
+<li><strong>Jennifer L. Steiner</strong>（FSU）：主軸是酒精對骨骼肌的影響（合併癌症惡病質、老化），手上有 NIH R03〈Impact of Alcohol on Aging Skeletal Muscle〉與 R21〈Alcohol and the skeletal muscle clock〉；博士後在 Penn State 研究酒精等萎縮狀態下的肌肉蛋白平衡。她的研究以<strong>小鼠模型</strong>為主 [外部: FSU CV、NIH grant 紀錄]。</li>
+<li><strong>Walter R. Boot</strong>（FSU 心理系）：負責認知測驗部分 [推論：依所屬系所]。</li>
+<li><strong>Jeong-Su Kim</strong>：致謝中提及已過世 [文內]。</li>
+<li><strong>團隊構成評估</strong>：組合是運動營養、酒精肌肉生物學與認知心理學，學科搭配合理。不過酒精流行病學與統計方法學背景在作者名單中看不出來。<strong>文內沒有 Author Contributions</strong> [markdown 未保留]。</li>
+<li><strong>團隊過往研究</strong>：搜尋結果無法確認 Ormsbee 團隊之前在人體研究過「慢性狂飲 × RT」；Steiner 的酒精－肌肉研究多為動物實驗 [外部]。因此這篇看起來是團隊<strong>首次把動物層級的酒精肌病議題帶到人體橫斷面樣本</strong> [推論]。</li>
+<li><strong>作者立場史</strong>：檢索沒有發現作者過去對此議題公開表態 [無法取得]。</li>
+<li><strong>利益揭露</strong>：經費來自 FSU College of Education, Health, and Human Sciences；作者聲明無利益衝突 [文內]。研究使用的 Muscle Milk 蛋白飲沒有標明是否為廠商提供。整體而言 funding 對結論方向的影響應屬有限。</li>
+</ul>
+<h3>2. 文獻 Metadata 整理</h3>
+<ul>
+<li><strong>Received／Accepted date</strong>：markdown 未提供 [markdown 未保留]，因此無法計算審查天數。</li>
+<li><strong>MSSE 平均審查天數</strong>：[無法取得]。搜尋只找到 BJSM 等其他期刊的數據，不可類比。</li>
+<li><strong>期刊屬性</strong>：ACSM 官方期刊。2024 JIF 約 4.0（Wolters Kluwer Ovid 頁面；另一頁列 3.9）。ACSM 頁面列 4.1，Sports Sciences 類 11/127，屬 Q1 [外部: Wolters Kluwer、ACSM]。本文為 Open Access，授權 CC BY-NC-ND 4.0 [文內]。</li>
+<li><strong>邀稿或投稿</strong>：沒有邀稿跡象，應為一般投稿 [推論]。</li>
+</ul>
+<h3>3. 研究背景（僅依文內）</h3>
+<ul>
+<li><strong>既有證據</strong>：狂飲在 18–34 歲最常見；18–24 歲過去一個月狂飲的比例為 49.7%。有阻力訓練或劇烈運動習慣的大學生反而更常大量飲酒。RT 對身體組成、胰島素敏感度與情緒的益處已有共識。女性因體型較小、較容易發生酒精性肌病、肌肉骨骼疾病與焦慮憂鬱較常見，被視為較脆弱的族群。</li>
+<li><strong>知識缺口</strong>：習慣性狂飲對<strong>有規律阻力訓練的年輕女性</strong>的肌肉、代謝與認知影響，以及 RT 能否「緩衝」這些影響，目前沒有研究。</li>
+<li><strong>Research question</strong>：比較 RT 與狂飲的四種組合在肌肉骨骼組成、體能、認知與心理健康上的差異。Introduction 隱含「RT 可能減輕狂飲傷害」的假說 [推論]。</li>
+</ul>
+<h3>4. 研究設計與方法</h3>
+<p><strong>PICO</strong></p>
+<ul>
+<li><strong>P</strong>：18–30 歲女性，n=48，配額招募 4 組，每組 12 人。</li>
+<li><strong>I／Exposure</strong>（2 個暴露）：
+<ul>
+<li><strong>RT</strong>：過去 2 年平均每週訓練 ≥4 次。</li>
+<li><strong>狂飲</strong>：每週至少 1 次「約 2 小時內 ≥4 杯」，持續 ≥1 年。</li>
+</ul>
+</li>
+<li><strong>C</strong>：
+<ul>
+<li>久坐：過去 2 年平均每週運動 ≤2 天。</li>
+<li>低飲酒：平均每週 ≤1 杯，持續 ≥1 年。</li>
+</ul>
+</li>
+<li><strong>O</strong>：沒有預先指定主要終點。測量項目有：
+<ul>
+<li>身體組成：DEXA 測身體組成與骨密度、超音波測股直肌厚度與估算肌內脂肪。</li>
+<li>代謝：用指尖微血管血做 75 g OGTT，另測 IGF-1／IGFBP-3。</li>
+<li>體能：坐站爆發力、垂直跳、蹲跳、立定跳遠、膝伸扭力、握力、伏地挺身。</li>
+<li>其他：睡眠手錶、3 天飲食紀錄。</li>
+<li>認知：DSST、Digit Span、30 秒計數。</li>
+<li>心理：CES-D、POMS、SF-36、Friendship Scale。</li>
+</ul>
+</li>
+</ul>
+<p><strong>設計細節</strong></p>
+<ul>
+<li>共 2 次到院。第 1 次排在月經濾泡期第 1–5 天；第 2 次在 7 天後，相當於週期第 8–12 天。</li>
+<li>兩次都要求禁食 8 小時、24 小時不運動。<strong>沒有規定到院前多久不得飲酒</strong> [文內未提及]。</li>
+<li>招募方式是在「挑選過的在地場所」張貼傳單，各組額滿即停止。</li>
+<li>統計：
+<ul>
+<li>用 SPSS 27 做單因子 ANOVA，不符常態或變異同質時改用無母數方法。</li>
+<li>事後檢定方法沒有說明。</li>
+<li>沒有事前 power calculation。</li>
+<li>沒有多重比較校正。</li>
+<li>效果量以 η² 報告，但正文幾乎沒有列出數值。</li>
+<li>年齡以「multivariate／univariate ANOVA 加 Age × Drinking Category 交互作用」評估。</li>
+</ul>
+</li>
+</ul>
+<p><strong>主要變項定義</strong></p>
+<ul>
+<li>「Alcohol Use Disorder Score」沒有指明是哪份量表。Methods 只提到 CAGE（0–4 分），推測就是 CAGE [推論]。</li>
+<li>空腹與 OGTT 血糖用 OneTouch Ultra-II <strong>手持血糖機</strong>量指尖血，<strong>不是靜脈血漿</strong>。</li>
+<li>肌內脂肪是<strong>用回歸公式估算</strong>，不是直接測量。</li>
+</ul>
+<h3>5. 研究結果重點整理</h3>
+<div class="table-wrap wide"><table>
+<thead>
+<tr>
+<th>變項（代表什麼）</th>
+<th style="text-align:right">RTL</th>
+<th style="text-align:right">RTB</th>
+<th style="text-align:right">SL</th>
+<th style="text-align:right">SB</th>
+<th style="text-align:right">組間差（95% CI）</th>
+<th style="text-align:right">p 值</th>
+<th>如何解讀</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>每週飲酒量</td>
+<td style="text-align:right"><strong>0.08 ± 0.29 杯</strong></td>
+<td style="text-align:right"><strong>13.33 ± 6.26 杯</strong></td>
+<td style="text-align:right"><strong>0.13 ± 0.31 杯</strong></td>
+<td style="text-align:right"><strong>9.75 ± 4.45 杯</strong></td>
+<td style="text-align:right">未報告</td>
+<td style="text-align:right">&lt;0.05（RTB、SB 各 vs RTL、SL）</td>
+<td>暴露對比明確；RTB 比 SB 多喝約 3.6 杯，兩組不平衡</td>
+</tr>
+<tr>
+<td>每週狂飲 ≥1 次的年資</td>
+<td style="text-align:right"><strong>1.04 ± 1.42 年</strong></td>
+<td style="text-align:right"><strong>2.92 ± 0.87 年</strong></td>
+<td style="text-align:right">0.25 ± 0.87 年</td>
+<td style="text-align:right">2.25 ± 0.87 年</td>
+<td style="text-align:right">未報告</td>
+<td style="text-align:right">RTB vs RTL、SL &lt;0.05</td>
+<td><strong>RTL 平均有 1 年狂飲史</strong>，「低飲酒組」混了戒酒的前狂飲者</td>
+</tr>
+<tr>
+<td>年齡</td>
+<td style="text-align:right"><strong>25.08 ± 2.54 歲</strong></td>
+<td style="text-align:right">20.75 ± 1.76 歲</td>
+<td style="text-align:right">22.33 ± 1.78 歲</td>
+<td style="text-align:right">20.58 ± 0.79 歲</td>
+<td style="text-align:right">RTL−RTB <strong>＋4.3 歲</strong> [自行計算]</td>
+<td style="text-align:right">&lt;0.05（RTL vs 其他三組）</td>
+<td>RTL 比其他組大 3–4.5 歲，是主要混淆</td>
+</tr>
+<tr>
+<td>體脂率（DEXA）</td>
+<td style="text-align:right"><strong>29.28 ± 4.27%</strong></td>
+<td style="text-align:right"><strong>29.03 ± 3.67%</strong></td>
+<td style="text-align:right">37.18 ± 5.32%</td>
+<td style="text-align:right">34.83 ± 3.54%</td>
+<td style="text-align:right">RTL−SL <strong>−7.9%（約 −12.0 至 −3.8）</strong> [自行計算]</td>
+<td style="text-align:right">&lt;0.05</td>
+<td>RT 兩組體脂較低，與是否狂飲無關</td>
+</tr>
+<tr>
+<td>FFM（fat-free mass）：去脂體重</td>
+<td style="text-align:right"><strong>48.31 ± 5.81 kg</strong></td>
+<td style="text-align:right">43.52 ± 10.85 kg</td>
+<td style="text-align:right">38.08 ± 6.59 kg</td>
+<td style="text-align:right">40.37 ± 6.05 kg</td>
+<td style="text-align:right">RTL−SL <strong>＋10.2 kg（約 5.0 至 15.5）</strong> [自行計算]</td>
+<td style="text-align:right">&lt;0.05（RTL vs SL、SB）；RTL vs RTB 未達顯著</td>
+<td>只有 RTL 顯著較高；RTB 的 SD 很大，不能解讀成「RTB 沒有效果」</td>
+</tr>
+<tr>
+<td>髖部 BMC：髖部骨礦物含量</td>
+<td style="text-align:right">32.39 ± 5.07 g</td>
+<td style="text-align:right"><strong>33.79 ± 7.89 g</strong></td>
+<td style="text-align:right">26.38 ± 5.70 g</td>
+<td style="text-align:right">26.68 ± 5.10 g</td>
+<td style="text-align:right">未報告</td>
+<td style="text-align:right">RTB vs SL、SB &lt;0.05</td>
+<td>只有 RTB 達顯著，RTL 方向相同</td>
+</tr>
+<tr>
+<td>肌內脂肪：由超音波回音強度與皮下脂肪厚度<strong>估算</strong>，不是直接測量</td>
+<td style="text-align:right"><strong>12.68 ± 0.87%</strong></td>
+<td style="text-align:right"><strong>12.72 ± 0.92%</strong></td>
+<td style="text-align:right">13.67 ± 0.74%*</td>
+<td style="text-align:right">—</td>
+<td style="text-align:right">RTL−SL 約 <strong>−1.0 個百分點</strong> [自行計算]</td>
+<td style="text-align:right">0.034／0.039</td>
+<td>差距約 1 個百分點，很可能落在公式本身的誤差內</td>
+</tr>
+<tr>
+<td>空腹血糖（指尖血、血糖機）</td>
+<td style="text-align:right"><strong>88.9 ± 12.1 mg/dL</strong></td>
+<td style="text-align:right"><strong>103.2 ± 10.2 mg/dL</strong></td>
+<td style="text-align:right">圖約 90–95</td>
+<td style="text-align:right">圖約 90–95</td>
+<td style="text-align:right">RTL−RTB <strong>−14.3（約 −23.7 至 −4.8）</strong> [自行計算]</td>
+<td style="text-align:right">0.008</td>
+<td>只在 RT 組內出現差異；SB 與 SL 之間沒有</td>
+</tr>
+<tr>
+<td>120 分鐘血糖（OGTT）</td>
+<td style="text-align:right"><strong>103.8 ± 19.8</strong></td>
+<td style="text-align:right">137.6 ± 21.5</td>
+<td style="text-align:right"><strong>148.5 ± 44.6</strong></td>
+<td style="text-align:right">139.3 ± 14.5</td>
+<td style="text-align:right">RTL−RTB <strong>−33.8（約 −51.3 至 −16.2）</strong> [自行計算]</td>
+<td style="text-align:right">0.027（RTL vs RTB）；0.002（vs SL）；0.018（vs SB）</td>
+<td><strong>最高的是 SL（不喝酒的久坐組）</strong>，與「狂飲傷代謝」的說法相衝突</td>
+</tr>
+<tr>
+<td>OGTT AUC（曲線下面積）</td>
+<td style="text-align:right">123</td>
+<td style="text-align:right">143</td>
+<td style="text-align:right">143</td>
+<td style="text-align:right">136</td>
+<td style="text-align:right">未報告</td>
+<td style="text-align:right">未報告（文稱無差異）</td>
+<td>整體血糖負荷沒有組間差異</td>
+</tr>
+<tr>
+<td>坐站爆發力</td>
+<td style="text-align:right"><strong>771.9 ± 231.3 W</strong></td>
+<td style="text-align:right">638.5 ± 90.2 W</td>
+<td style="text-align:right">564.7 ± 81.6 W</td>
+<td style="text-align:right">581.5 ± 100.9 W</td>
+<td style="text-align:right">RTL−RTB <strong>＋133 W（約 −20 至 287）</strong> [自行計算]</td>
+<td style="text-align:right">RTL−RTB 未達顯著</td>
+<td>CI 很寬，屬於<strong>無法下結論</strong>，不是「沒有差異」</td>
+</tr>
+<tr>
+<td>伏地挺身</td>
+<td style="text-align:right"><strong>22.75 ± 9.21 下</strong></td>
+<td style="text-align:right"><strong>23.50 ± 10.61 下</strong></td>
+<td style="text-align:right">6.67 ± 8.07 下</td>
+<td style="text-align:right">7.08 ± 6.68 下</td>
+<td style="text-align:right">RTL−SL <strong>＋16 下</strong> [自行計算]</td>
+<td style="text-align:right">&lt;0.05</td>
+<td>反映訓練狀態，屬於預期中的結果</td>
+</tr>
+<tr>
+<td>蛋白質攝取（每公斤體重）</td>
+<td style="text-align:right"><strong>2.08 ± 0.59 g/kg</strong></td>
+<td style="text-align:right">1.44 ± 0.49 g/kg</td>
+<td style="text-align:right">1.12 ± 0.50 g/kg</td>
+<td style="text-align:right">0.92 ± 0.43 g/kg</td>
+<td style="text-align:right">RTL−RTB <strong>＋0.64 g/kg</strong> [自行計算]</td>
+<td style="text-align:right">&lt;0.05（RTL vs 其他三組）</td>
+<td>RTL 與 RTB 的飲食差異大，是另一個混淆</td>
+</tr>
+<tr>
+<td>認知與心理量表（DSST、Digit Span、CES-D、POMS、SF-36、Friendship Scale）</td>
+<td style="text-align:right">—</td>
+<td style="text-align:right">—</td>
+<td style="text-align:right">—</td>
+<td style="text-align:right">—</td>
+<td style="text-align:right">未報告</td>
+<td style="text-align:right">文稱皆無差異</td>
+<td>補充資料未提供，無法判斷 CI；n=12 時屬<strong>無法下結論</strong></td>
+</tr>
+</tbody>
+</table></div>
+<p>*文內寫成「13.67 ± 0.74 cm」，單位應為 %，屬於誤植。</p>
+<p>[自行計算] 的 CI 是用兩組平均數與 SD、採 Welch t 近似估算，<strong>沒有校正多重比較</strong>，只用來呈現不確定性的大小，不代表作者原本的分析。</p>
+<p><strong>表後補充</strong></p>
+<ul>
+<li><strong>SL 組的數據內部不一致</strong> [自行計算]：
+<ul>
+<li>脂肪 23.26 kg 加 FFM 38.08 kg 等於 61.3 kg，但體重寫 67.79 kg，相差 6.5 kg。其他三組的差距都在 1.1 kg 以內。</li>
+<li>依平均身高與體重回推，BMI 約 25.8，表列卻是 23.55。</li>
+<li>SL 體重的 SD 高達 19.74 kg，可能有極端值或資料錯誤。</li>
+</ul>
+</li>
+<li><strong>Figure 1 判讀</strong>（已讀圖檔 page_036）：
+<ul>
+<li><strong>A 圖</strong>：只畫出平均值，看不到 SD 誤差棒，雖然圖說寫的是 mean ± SD。RTB 在 30 分鐘的峰值最高，約 175。RTL 從 60 分鐘起明顯下降，120 分鐘約 104。SL 在 90 與 120 分鐘維持最高，約 150。y 軸從 50 開始，對血糖曲線來說還算合理。</li>
+<li><strong>B 圖</strong>：長條圖的 <strong>y 軸從 50 開始</strong>，讓 123 與 143 的差距看起來被放大了。標示單位是「mmol × min/L」，但數值 123–143 不可能是 120 分鐘 OGTT 的 AUC：以 mg/dL·min 計約上萬，以 mmol·min/L 計約 900。比較像是時間平均血糖（mg/dL），<strong>單位疑似標錯</strong>。</li>
+<li>圖說標題寫「Glucose Area Under the Curve」，但 A 圖其實是血糖時間曲線。</li>
+</ul>
+</li>
+<li><strong>睡眠</strong>：SL 臥床時間比 SB 多（533.5 vs 452.3 分鐘，p=0.022）；「sleep duration」那一項文內只給了 p=0.019，<strong>數值缺漏</strong>。</li>
+<li><strong>只在文字中出現、沒有數據的結果</strong>：內臟脂肪、有氧運動頻率、RT 頻率都只有敘述，<strong>沒有表格數據</strong>。</li>
+</ul>
+<h3>6. 作者討論與評論重點</h3>
+<ul>
+<li><strong>主要訊息</strong>：
+<ul>
+<li>狂飲 ≥1 年與較差的代謝指標相關，但與體能、認知、心理無關。</li>
+<li>RT 與較佳的身體組成相關。</li>
+<li>RTL 的 FFM 優勢可能來自較高的蛋白質攝取。</li>
+</ul>
+</li>
+<li><strong>與文獻的比較</strong>：引用研究指出狂飲會升高女性空腹血糖、損害胰島素作用；中度、非狂飲式飲酒則可能改善血糖。作者把 RTL 與 RTB 的差異歸因於酒精。</li>
+<li><strong>作者列出的限制</strong>：
+<ul>
+<li>飲酒與飲食都是自評。</li>
+<li>飲食紀錄排除了酒精。</li>
+<li>RT 內容沒有標準化，訓練量也沒有評估。</li>
+<li>配額招募可能造成選擇偏差。</li>
+<li>樣本小、比較次數多。</li>
+<li>橫斷面設計不能推論因果。</li>
+</ul>
+</li>
+<li><strong>作者沒有提到的重大問題</strong>：
+<ol>
+<li>RTL 比其他組大 4 歲以上，且 RTL 與 RTB 蛋白質攝取不同，構成系統性混淆。</li>
+<li>沒有做 2×2 交互作用檢定。</li>
+<li>用血糖機量測卻寫成「pre-diabetic range」。</li>
+<li>低飲酒組混入戒酒的前狂飲者。</li>
+<li>沒有規範到院前的飲酒禁制期。</li>
+<li>SL 組數據內部不一致。</li>
+<li>超音波參數有誤（見 B4）。</li>
+</ol>
+</li>
+<li><strong>[評估]</strong>：結論寫「binge drinking is associated with poorer metabolic health」，但這只在 RT 組內成立；在久坐組，狂飲者的 120 分鐘血糖反而比不喝酒者低。摘要的「RT may mitigate the effects of binge drinking on body composition」更站不住腳：久坐組根本沒有觀察到狂飲對身體組成的效應，自然談不上「減輕」。<strong>結論明顯超出數據支持的範圍。</strong></li>
+</ul>
+<h3>7. 外部專業意見</h3>
+<p>[無法取得]：檢索 PubMed／網路後，沒有找到針對本文的同期 editorial 或 commentary，所以沒有可以下載全文的 DOI。</p>
+<p>可作為背景的相關研究 [外部]：</p>
+<ul>
+<li>Duplanty 等 2017（<em>Eur J Appl Physiol</em>）：阻力訓練女性在肌肉損傷運動後飲酒，並未影響發炎反應與表現恢復；作者提示酒精對運動恢復的影響可能有性別差異。</li>
+<li>同團隊另一研究：酒精似乎只在男性鈍化 mTORC1 訊號。</li>
+<li>Wilson 等 2024：大學生每多 1 天肌力訓練，狂飲的可能性增加約 20.9%。這支持本文「RT 族群常合併狂飲」的背景，但與本文結論本身無關。</li>
+</ul>
+<h3>8. 臨床建議</h3>
+<ul>
+<li><strong>可採用的情境</strong>：作為「年輕女性狂飲者中，有規律 RT 者的體能與身體組成和不喝酒的 RT 者相近」的<strong>假說生成</strong>資料，可以用來規劃前瞻性研究。</li>
+<li><strong>不建議直接套用的情境</strong>：
+<ul>
+<li>不可據此告訴年輕女性「狂飲不影響表現或認知」。n=12 的無顯著結果屬於無法下結論。</li>
+<li>不可據此主張「RT 能抵銷狂飲的代謝傷害」。</li>
+<li>不可把 RTB 的指尖血糖 103 mg/dL 當成「前糖尿病」的證據。</li>
+</ul>
+</li>
+<li><strong>實務建議</strong>：
+<ol>
+<li>臨床上評估年輕狂飲者的代謝風險時，仍應依 ADA 標準，以靜脈空腹血漿血糖、HbA1c 或標準 OGTT 為準，不要引用本研究作為篩檢依據。</li>
+<li>對同時有 RT 與狂飲習慣的年輕女性，衛教重點放在減少狂飲本身，以及蛋白質攝取是否達到 1.6–2.2 g/kg/日。不要因為「體能沒有受影響」就降低對飲酒的警覺。</li>
+<li>解讀這類運動科學的小樣本橫斷面研究時，先確認各組年齡與飲食是否平衡。</li>
+</ol>
+</li>
+<li><strong>證據強度</strong>：<strong>弱</strong>。理由是橫斷面設計、每組只有 12 人、主要組間年齡與飲食明顯不平衡、沒有交互作用檢定、多重比較沒有校正、血糖量測方法不合臨床標準。</li>
+</ul>
+<hr />
+<h2>SKILL-A：批判性評讀</h2>
+<h3>A. 補充技術細節</h3>
+<ul>
+<li><strong>樣本數估算</strong>：沒有事前 power calculation [文內未提供]。n=12／組可能是方便樣本或依過去研究設定 [推論]。</li>
+<li><strong>統計方法</strong>：
+<ul>
+<li>單因子 ANOVA 加上未說明的事後檢定。在 4 組、約 60 個以上變項的情況下，每個變項有 6 組兩兩比較，總比較次數可能超過 300 次 [推論]。</li>
+<li>沒有任何多重比較校正。</li>
+</ul>
+</li>
+<li><strong>年齡調整</strong>：只說「findings remained unchanged」，沒有提供調整後的估計值或 CI。所描述的「Age × Drinking Category interaction」模型在方法學上也不清楚：既然年齡是混淆因子，應該直接放進 ANCOVA 作為共變量。</li>
+<li><strong>缺失資料</strong>：文內寫 48 人「完成研究」，但沒有說明篩檢人數、排除人數，也沒有說明睡眠手錶與飲食紀錄是否完整 [文內未提供]。</li>
+<li><strong>月經週期控制</strong>：有排在濾泡早期，但第 2 次到院（OGTT、認知測驗）已經是第 8–12 天，接近濾泡晚期或排卵期。<strong>口服避孕藥使用情形完全沒有報告</strong>，而這會影響胰島素敏感度與 IGF-1 [推論]。</li>
+<li><strong>飲酒禁制期</strong>：沒有規定到院前多久不可飲酒。如果狂飲者在測量前 24–48 小時內飲酒，急性或宿醉期的血糖調節改變會混入「慢性效應」，方向無法判定。</li>
+</ul>
+<h4>觀察性研究的混淆控制</h4>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>方法</th>
+<th>本文是否使用</th>
+<th>評估</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>多變量迴歸／ANCOVA</td>
+<td>只對年齡做，且沒有報告估計值</td>
+<td>不足</td>
+</tr>
+<tr>
+<td>Propensity score</td>
+<td>未使用</td>
+<td>樣本太小，也不可行</td>
+</tr>
+<tr>
+<td>匹配設計</td>
+<td>沒有依年齡或 BMI 匹配</td>
+<td>配額招募只控制了組別人數</td>
+</tr>
+</tbody>
+</table></div>
+<ul>
+<li><strong>殘餘混淆</strong>：年齡、蛋白質攝取、教育或社經狀態、口服避孕藥、有氧運動量、BMI，以及吸菸以外的其他物質使用，都可能影響結果。</li>
+<li><strong>時序性</strong>：暴露是回溯自評的長期行為，結果是單一時間點的測量。橫斷面設計無法排除反向因果，例如代謝較好的人本來就比較會選擇不喝酒。</li>
+</ul>
+<h3>B. 批判性評估</h3>
+<h4>B1. 假說與理論邏輯</h4>
+<ul>
+<li><strong>假說沒有預先指定</strong>。
+<ul>
+<li>文內證據：Introduction 只寫「evaluate associations」，沒有主要終點，也沒有方向性假說。</li>
+<li>風險方向：撒網式測量 13 大類、約 60 項指標，再挑出顯著結果寫進摘要，容易產生偽陽性。</li>
+<li>要放心需要：預先註冊的主要終點。</li>
+</ul>
+</li>
+<li><strong>合理機轉</strong>：
+<ol>
+<li>大量酒精損害胰臟 β 細胞功能與肝臟糖質新生的調節（Discussion 引用 44）。</li>
+<li>RT 增加肌肉量與 GLUT4，改善餐後血糖處理。</li>
+<li>高蛋白攝取支持 FFM 增加。</li>
+</ol>
+</li>
+<li><strong>最可疑的敘事跳躍</strong>：
+<ol>
+<li>由「只有 RT 組內出現空腹血糖差異」跳到「狂飲與較差代謝健康相關」。依據是 Results 的 Glucose Tolerance 段與 Figure 1：SB 與 SL 之間沒有差異。</li>
+<li>由「狂飲組與低飲酒組體能相近」跳到「RT 可以減輕狂飲效應」。依據是 Abstract 的 Conclusions；但文中沒有任何數據顯示狂飲本身有可被減輕的效應。</li>
+<li>由指尖血糖 103 mg/dL 推論「pre-diabetic range」（Discussion 第 2 段）。</li>
+</ol>
+</li>
+</ul>
+<h4>B2. 受試者與外推性</h4>
+<ul>
+<li><strong>招募方式</strong>：在「挑選過的場所」張貼傳單、配額招募。這是作者在 Discussion 中承認的選擇偏差。受試者很可能是大學城的志願者，自我選擇效應強。</li>
+<li><strong>低飲酒組的組成問題</strong>：RTL 每週狂飲 ≥1 次的年資平均 1.04 ± 1.42 年；每週 ≥15 杯的年資也有 0.79 ± 1.44 年（Table 3）。也就是說，<strong>「低飲酒」只代表近 1 年不喝，其中混了曾經大量飲酒、後來戒掉的人</strong>。這可能稀釋組間差異，也可能讓「健康轉變者」聚集在 RTL 組。</li>
+<li><strong>外推性分級</strong>：
+<ol>
+<li><strong>一般年輕女性</strong>：外推性<strong>低</strong>。小樣本、志願者，且狂飲定義只需每週 1 次。</li>
+<li><strong>有 RT 習慣的年輕女性</strong>：外推性<strong>中低</strong>。RT 的強度、內容與年資都沒有量化。</li>
+<li><strong>競技女性運動員、男性、中老年</strong>：<strong>不可外推</strong>。</li>
+</ol>
+</li>
+</ul>
+<h4>B3. 研究設計與偏差</h4>
+<p><strong>最可能造成偏差的 3 個設計點：</strong></p>
+<ol>
+<li>
+<p><strong>沒有用 2×2 析因分析，也沒有交互作用檢定</strong>。</p>
+<ul>
+<li>文內證據：Statistical Analysis 寫明使用 one-way ANOVA。</li>
+<li>影響：「RT 減輕狂飲效應」是一個交互作用宣稱，必須用 RT × Alcohol 的 interaction term 檢驗。從 120 分鐘血糖的平均值看 [自行計算]：
+<ul>
+<li>RT 層內：狂飲 − 不喝 = +33.8 mg/dL。</li>
+<li>久坐層內：狂飲 − 不喝 = −9.3 mg/dL。</li>
+<li>方向相反，<strong>真正的訊號可能只是「RTL 這一組特別好」</strong>，而不是酒精效應。</li>
+</ul>
+</li>
+<li>偏差方向：讓「酒精效應」<strong>看起來比實際更大且更一致</strong>。</li>
+</ul>
+</li>
+<li>
+<p><strong>RTL 與其他組在多個變項上系統性不平衡</strong>。</p>
+<ul>
+<li>年齡大 4.3 歲（Table 1，p&lt;0.05）。</li>
+<li>BMI 較高（24.92 vs 21.78）。</li>
+<li>蛋白質攝取高 0.64 g/kg（Table 4）。</li>
+<li>也可能有前狂飲者聚集。</li>
+<li>影響：RTL 的優勢，例如 FFM 與 120 分鐘血糖，可能來自更長的訓練年資、更成熟的身體組成或飲食，而不是不喝酒。作者用年齡做調整，但沒有給出估計值，蛋白質攝取則完全沒有調整。</li>
+<li>偏差方向：<strong>高估「不狂飲」的益處</strong>。</li>
+</ul>
+</li>
+<li>
+<p><strong>測量時點沒有排除急性飲酒，也沒有月經或荷爾蒙控制</strong>。</p>
+<ul>
+<li>狂飲者可能在週末飲酒後到院；OGTT 落在週期第 8–12 天；口服避孕藥使用沒有報告。</li>
+<li>偏差方向無法判定，但會增加組間變異與系統誤差。</li>
+</ul>
+</li>
+</ol>
+<p><strong>對照組的適當性</strong>：用 SL 作為「雙重未暴露」的參考組在設計上合理。但 SL 本身數據內部不一致（體重與 DEXA 組成相差 6.5 kg、BMI 回推不符），且 120 分鐘血糖的 SD 達 44.6、為各組最大。參考組的可靠性受到質疑。</p>
+<h4>B4. 測量工具與實務意義</h4>
+<ul>
+<li><strong>血糖量測</strong>：用 OneTouch Ultra-II 量指尖微血管血。這類血糖機的準確度允許約 ±15% 的誤差（[推論：依一般 ISO 15197 規範]），不能用來診斷 IFG 或 IGT。作者把 RTB 平均 103 mg/dL 稱為「pre-diabetic range」，<strong>屬於測量工具誤用</strong>。</li>
+<li><strong>超音波參數錯誤</strong>：文內寫 L12-3 探頭設定 <strong>24 MHz</strong>（Muscle Quality 段），但這支探頭的頻寬名稱就是 3–12 MHz，24 MHz 在技術上不可能 [推論：依探頭型號命名]。</li>
+<li><strong>再現性數據可疑</strong>：肌厚 CV 0.03%、皮下脂肪 CV 0.01%，對手動超音波測量來說好到不合理。可能是計算錯誤，或用的是單位不同的指標。</li>
+<li><strong>肌內脂肪</strong>：是用外部回歸公式估算，原始驗證族群沒有說明。RTL 與 SL 只差約 1 個百分點，很可能在公式誤差範圍內。文內 SL 的單位也誤植為 cm。</li>
+<li><strong>Figure 1B 的 AUC</strong>：單位與數量級不符（見第 5 節），而且 y 軸截斷，視覺上放大了差異。</li>
+<li><strong>自評飲酒量</strong>：作者以「年齡限制」為由，飲食紀錄排除酒精。但 RTB 每週約 13 杯，粗估約 180 g 乙醇、約 1,270 kcal [自行計算，以每杯 14 g 計]。排除酒精會造成<strong>狂飲組總熱量被系統性低估</strong>，影響所有能量平衡的比較。</li>
+<li><strong>飲酒問題量表</strong>：「Alcohol Use Disorder Score」沒有說明是哪份量表，CAGE 是 0–4 分的篩檢工具，而不是 AUD 的嚴重度量表。</li>
+<li><strong>實務意義</strong>：即使結果是真的，RTL 與 RTB 的空腹血糖差約 14 mg/dL、120 分鐘差約 34 mg/dL。在 20 歲出頭、AUC 沒有差異的族群中，對未來糖尿病風險的預測價值不明。這些是<strong>代理指標，不是臨床結果</strong>。</li>
+</ul>
+<h3>C. 統計與資料完整性</h3>
+<h4>C1. 結果分類（CI 加臨床意義門檻）</h4>
+<p>本研究沒有預先指定 MCID。以下依常見臨床或運動科學門檻設定 [推算]：</p>
+<ul>
+<li><strong>空腹血糖</strong>：以 10 mg/dL 作為有意義差異 [推算]。RTL − RTB = −14.3（約 −23.7 至 −4.8）[自行計算]，CI 跨越 10 → <strong>IMPRECISE(+)</strong>。加上量測工具的限制，也有偽陽性的可能。</li>
+<li><strong>120 分鐘血糖</strong>：以 20 mg/dL 為門檻 [推算]。RTL − RTB = −33.8（約 −51.3 至 −16.2），CI 跨越 20 → <strong>IMPRECISE(+)</strong>。久坐層內方向相反。</li>
+<li><strong>FFM</strong>：以 2 kg 為門檻 [推算]。RTL − SL = +10.2 kg（約 5.0 至 15.5），CI 完全超過門檻 → <strong>POSITIVE</strong>。但這是 RT 與不訓練的比較，反映的是訓練狀態，與飲酒無關。</li>
+<li><strong>體能（RTL vs RTB）</strong>：例如坐站爆發力 +133 W（約 −20 至 287）[自行計算]，CI 同時包含 0 與有意義的差異 → <strong>INCONCLUSIVE</strong>。作者寫「no differences」屬於 <strong>p &gt; 0.05 = no difference 的謬誤</strong>。</li>
+<li><strong>認知與心理</strong>：沒有效果量也沒有 CI（補充資料未提供），<strong>無法分類</strong>，只能視為 INCONCLUSIVE。摘要與 Conclusions 卻宣稱狂飲「not being associated with … cognitive health」。</li>
+</ul>
+<h4>C2. 檢定力不足與 Winner's Curse</h4>
+<ul>
+<li>每組 n=12，沒有 power calculation。少數達到顯著的發現，特別是 RTL vs RTB 的血糖，<strong>很可能高估了真實效果量</strong>（Type M error）。</li>
+<li>久坐層出現相反方向，提示可能有 Type S error（方向錯誤）的風險。</li>
+<li>若後續研究直接拿本文的效果量做樣本數估算，所需樣本會被嚴重低估。</li>
+</ul>
+<h4>C3. Bayesian 補充</h4>
+<p>原文只有摘要統計量，沒有原始資料，不適合用 prior 情境做定量的 Bayesian 重分析；在此省略，並說明原因。</p>
+<h4>C4. 報告完整性與統計紅旗</h4>
+<ol>
+<li><strong>沒有 2×2 交互作用檢定</strong>，卻宣稱「mitigate」。</li>
+<li><strong>約 60 項以上指標 × 6 組兩兩比較，沒有任何校正</strong>，事後檢定方法也沒有說明。</li>
+<li><strong>效果量（η²）在方法中說會報告，正文卻幾乎沒有</strong>；所有比較都沒有 CI。</li>
+<li><strong>SL 組數據內部不一致</strong>：體重與 DEXA 組成相差 6.5 kg、BMI 回推不符 [自行計算]。</li>
+<li><strong>年齡調整只寫「unchanged」</strong>，沒有提供調整後的數值。</li>
+<li><strong>只有文字敘述、沒有數據</strong>：內臟脂肪、有氧運動頻率、RT 頻率、sleep duration 都沒有數值。</li>
+<li><strong>單位與數量級錯誤</strong>：Figure 1B 的 AUC 單位、肌內脂肪寫成 cm、超音波 24 MHz、CV 0.01–0.03%。</li>
+<li><strong>沒有說明使用無母數檢定的是哪些變項</strong>，例如 RTL、SL 的飲酒量 SD 接近 0，明顯不符常態。</li>
+<li><strong>選擇性呈現</strong>：摘要強調 RTL vs RTB 的血糖差異，卻沒有提到 SB vs SL 沒有差異、且方向相反。</li>
+</ol>
+<h3>D. 次組分析評估</h3>
+<p>本研究沒有正式的次組分析。但「RT 層內比較 RTB vs RTL」實質上就是次組比較。依 5 項標準評估：</p>
+<ol>
+<li>沒有交互作用檢定。✗</li>
+<li>與其他研究方向部分一致（狂飲損害血糖），但與本文久坐層的結果不一致。△</li>
+<li>沒有預先指定。✗</li>
+<li>有生物學機轉。✓</li>
+<li>不適用。</li>
+</ol>
+<p><strong>可信度：低</strong>。</p>
+<h3>E. 紅旗清單</h3>
+<ul>
+<li>🚩 <strong>設計</strong>：橫斷面配額招募，RTL 年齡大 4.3 歲、蛋白質攝取多 0.64 g/kg，構成系統性混淆。</li>
+<li>🚩 <strong>設計</strong>：「低飲酒組」混入狂飲年資平均約 1 年的戒酒者。</li>
+<li>🚩 <strong>設計</strong>：到院前沒有飲酒禁制期；口服避孕藥使用沒有報告。</li>
+<li>🚩 <strong>統計</strong>：2×2 設計卻用單因子 ANOVA，沒有交互作用檢定。</li>
+<li>🚩 <strong>統計</strong>：大量比較沒有校正，沒有 CI，η² 沒有報告。</li>
+<li>🚩 <strong>測量</strong>：用血糖機量測卻宣稱「前糖尿病範圍」。</li>
+<li>🚩 <strong>測量</strong>：超音波頻率不可能、CV 異常低、Figure 1B 單位錯誤且 y 軸截斷。</li>
+<li>🚩 <strong>資料</strong>：SL 組體重與身體組成、BMI 不一致。</li>
+<li>🚩 <strong>敘事</strong>：「no differences」被當成「沒有關聯」；「mitigate」沒有數據支持。</li>
+<li>🚩 <strong>敘事</strong>：Conclusions 寫「Habitual RT was associated with lower SCF and visceral fat」，但只有 RTB 達顯著，RTL 沒有，屬於過度概括。</li>
+<li>🚩 <strong>COI</strong>：利益衝突低，沒有明顯產業利益。</li>
+</ul>
+<h3>F. 反向解釋</h3>
+<ol>
+<li><strong>「RTL 是特殊組」的解釋</strong>：RTL 較年長、訓練年資可能較長、蛋白質攝取高、BMI 較高（肌肉較多）。這些足以解釋較低的血糖與較高的 FFM，酒精不需要扮演任何角色。
+<ul>
+<li>支持：久坐層中，狂飲與不喝酒的人血糖相近，SB 的 120 分鐘血糖甚至較低；Table 1 與 Table 4 的不平衡。</li>
+<li>反對：RTB 也有 RT，但 FFM 沒有顯著較低。</li>
+</ul>
+</li>
+<li><strong>急性或近期飲酒效應</strong>：RTB 的空腹血糖偏高，可能反映測量前幾天才飲酒、或睡眠被打亂，而不是慢性代謝損害。
+<ul>
+<li>支持：文中沒有禁制期規定；SB 的臥床時間也較短。</li>
+<li>反對：睡眠效率各組相近。</li>
+</ul>
+</li>
+<li><strong>偽陽性</strong>：在上百次比較中，出現少數 p 值約 0.01–0.03 的結果，本來就是預期中會發生的。
+<ul>
+<li>支持：沒有校正；AUC 沒有差異；30、60、90 分鐘的血糖也沒有差異。</li>
+</ul>
+</li>
+<li><strong>量測誤差</strong>：血糖機的 ±15% 誤差加上指尖採血技巧，每組只有 12 人時，少數極端值就可能決定組間差異。
+<ul>
+<li>支持：SL 的 SD 達 44.6。</li>
+</ul>
+</li>
+</ol>
+<h3>G. 最終裁決</h3>
+<ul>
+<li><strong>整體可信度</strong>：<strong>低</strong></li>
+<li><strong>可採用的條件</strong>：作為形成假說的探索性資料，用來設計更嚴謹的研究。</li>
+<li><strong>不建議採用的情境</strong>：任何臨床建議，包括「狂飲不影響體能或認知」「RT 可抵銷狂飲」「年輕女性狂飲者需篩檢前糖尿病」都不應以本文為依據。</li>
+<li><strong>若要改變評價，最需要的 3 項改進</strong>：
+<ol>
+<li>用 2×2 析因 ANCOVA 調整年齡、蛋白質攝取與口服避孕藥，並報告交互作用項、效果量與 95% CI。</li>
+<li>改用靜脈空腹血漿血糖與標準 OGTT，加上胰島素以計算 HOMA-IR 或 Matsuda index，並規定 ≥72 小時的飲酒禁制期。</li>
+<li>依預先註冊的主要終點與 power calculation 擴大樣本，並把前狂飲者排除或另外分組。</li>
+</ol>
+</li>
+<li><strong>一句話結論</strong>：這是個小型橫斷面研究，各組條件不平衡，看不出狂飲傷代謝、也看不出 RT 能抵銷傷害，只能當作提出假說的線索。</li>
+</ul>
+<hr />
+<h3>CONDITIONAL OUTPUT：效果量與結果分類表</h3>
+<div class="table-wrap wide"><table>
+<thead>
+<tr>
+<th>指標</th>
+<th>比較</th>
+<th style="text-align:right">介入組</th>
+<th style="text-align:right">對照組</th>
+<th style="text-align:right">差值 [自行計算]</th>
+<th style="text-align:right">95% CI（Welch 近似，未校正）</th>
+<th style="text-align:right">臨床意義門檻 [推算]</th>
+<th>結果分類</th>
+<th>實務意義</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>空腹血糖</td>
+<td>RTB vs RTL</td>
+<td style="text-align:right">103.2</td>
+<td style="text-align:right">88.9</td>
+<td style="text-align:right">+14.3 mg/dL</td>
+<td style="text-align:right">約 4.8 至 23.7</td>
+<td style="text-align:right">10 mg/dL</td>
+<td>IMPRECISE(+)</td>
+<td>用血糖機量測，不能用來診斷</td>
+</tr>
+<tr>
+<td>120 分鐘血糖</td>
+<td>RTB vs RTL</td>
+<td style="text-align:right">137.6</td>
+<td style="text-align:right">103.8</td>
+<td style="text-align:right">+33.8 mg/dL</td>
+<td style="text-align:right">約 16.2 至 51.3</td>
+<td style="text-align:right">20 mg/dL</td>
+<td>IMPRECISE(+)</td>
+<td>久坐層方向相反，不支持酒精效應</td>
+</tr>
+<tr>
+<td>120 分鐘血糖</td>
+<td>SB vs SL</td>
+<td style="text-align:right">139.3</td>
+<td style="text-align:right">148.5</td>
+<td style="text-align:right">−9.3 mg/dL</td>
+<td style="text-align:right">約 −38 至 19</td>
+<td style="text-align:right">20 mg/dL</td>
+<td>INCONCLUSIVE</td>
+<td>與作者的結論矛盾</td>
+</tr>
+<tr>
+<td>FFM</td>
+<td>RTL vs SL</td>
+<td style="text-align:right">48.31</td>
+<td style="text-align:right">38.08</td>
+<td style="text-align:right">+10.2 kg</td>
+<td style="text-align:right">約 5.0 至 15.5</td>
+<td style="text-align:right">2 kg</td>
+<td>POSITIVE</td>
+<td>反映訓練狀態，與飲酒無關</td>
+</tr>
+<tr>
+<td>坐站爆發力</td>
+<td>RTL vs RTB</td>
+<td style="text-align:right">771.9</td>
+<td style="text-align:right">638.5</td>
+<td style="text-align:right">+133 W</td>
+<td style="text-align:right">約 −20 至 287</td>
+<td style="text-align:right">未定</td>
+<td>INCONCLUSIVE</td>
+<td>不能寫成「沒有差異」</td>
+</tr>
+<tr>
+<td>立定跳遠</td>
+<td>RTB vs RTL</td>
+<td style="text-align:right">181.4</td>
+<td style="text-align:right">168.5</td>
+<td style="text-align:right">+12.9 cm</td>
+<td style="text-align:right">約 −7 至 33</td>
+<td style="text-align:right">未定</td>
+<td>INCONCLUSIVE</td>
+<td>同上</td>
+</tr>
+<tr>
+<td>認知與心理</td>
+<td>各組</td>
+<td style="text-align:right">—</td>
+<td style="text-align:right">—</td>
+<td style="text-align:right">未報告</td>
+<td style="text-align:right">未報告</td>
+<td style="text-align:right">—</td>
+<td>無法分類</td>
+<td>補充資料不可得</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+<h3>APPENDIX：因果推論框架（target trial 思考）</h3>
+<ul>
+<li><strong>理想的 target trial</strong>：把年輕女性 RT 習慣者隨機分派到「維持狂飲」與「戒酒」，追蹤 1–2 年代謝與肌肉指標。這在倫理上不可行，因此觀察性設計應盡量模擬：以新進入狂飲行為者對照持續不喝者，從某個時間點開始前瞻追蹤。</li>
+<li><strong>Exchangeability</strong>：嚴重違反。年齡、蛋白質攝取、前狂飲史、口服避孕藥與社經因素都沒有被調整或平衡。</li>
+<li><strong>Positivity</strong>：配額招募確保每個格子都有人，但 n=12 時，在共變量各層中（例如 RTL 的年齡範圍與其他組幾乎不重疊：25.1 ± 2.5 vs 20.6 ± 0.8）可能出現<strong>實質的 positivity 違反</strong>，年齡調整只能靠模型外推。</li>
+<li><strong>Consistency</strong>：「RT」與「狂飲」的定義很寬。RT 沒有量化強度與量；狂飲從每週 1 次到每週 3 次都算，每次杯數的 SD 約 2 杯。暴露的不同版本可能有不同效應，所以「狂飲效應」這個概念本身並不明確。</li>
+<li><strong>時間性</strong>：橫斷面設計無法排除「代謝較好的人選擇不喝酒」或「戒酒者正處於恢復期」這類反向因果。</li>
+</ul>
+<hr />
+<p>Sources:</p>
+<ul>
+<li><a href="https://annescollege.fsu.edu/faculty-staff/dr-michael-ormsbee">Dr. Michael Ormsbee — FSU Anne's College</a></li>
+<li><a href="https://healthandhumansciences.fsu.edu/?p=14314">Michael Ormsbee — FSU Health and Human Sciences</a></li>
+<li><a href="https://www.nsca.com/contentassets/cc349278d827497dab4d92ac7c66db98/ormsbee_wjk_2020-pr.pdf">NSCA Kraemer Award 2020 (Ormsbee)</a></li>
+<li><a href="https://cehhs.fsu.edu/sites/g/files/upcbnu4516/files/PDF%20files/Steiner_General_Vita_2024-01-18%20(1).pdf">Steiner General Vita (FSU)</a></li>
+<li><a href="https://api.ai-analytics.org/grant/nih/10703451">NIH grant: Impact of Alcohol on Aging Skeletal Muscle</a></li>
+<li><a href="https://api.ai-analytics.org/grant/nih/11058231">NIH grant: Alcohol and the skeletal muscle clock</a></li>
+<li><a href="https://healthandhumansciences.fsu.edu/?p=9932">FSU news on Steiner alcohol-cachexia grant</a></li>
+<li><a href="https://www.wolterskluwer.com/en/solutions/ovid/medicine---science-in-sports---exercise-586">Wolters Kluwer — MSSE journal info (JIF)</a></li>
+<li><a href="https://chapters.acsm.org/education-resources/journals/medicine-science-in-sports-exercise">ACSM — MSSE journal page</a></li>
+<li><a href="https://link.springer.com/article/10.1007/s00421-017-3606-0">Duplanty et al. 2017, Eur J Appl Physiol</a></li>
+<li><a href="https://twu-ir.tdl.org/items/30e3c787-00b5-4a5f-b981-a4afdb5cd73f/full">Alcohol and mTORC1 signaling in men and women (TWU repository)</a></li>
+<li><a href="https://hecaod.osu.edu/muscle-strengthening-activity-is-associated-with-total-alcohol-consumption-and-binge-drinking-among-u-s-college-students/">Muscle-strengthening activity and binge drinking among U.S. college students (HECAOD)</a></li>
+</ul>
+
+<footer class="appraisal-meta">評讀資訊：模型：claude-opus-5-5 (claude)  ·  route：observational  ·  產出時間：2026-11-15 23:19 CST</footer>
+</main>
+</body>
+</html>
