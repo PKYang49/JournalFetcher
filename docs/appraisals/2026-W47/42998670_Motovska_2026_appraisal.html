@@ -1,0 +1,781 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cangrelor versus crushed ticagrelor in acute myocardial infarction complicated by cardiogenic shock (DAPT-SHOCK-AMI): a randomised, double-blind trial.</title>
+<style>
+  :root {
+    --bg: #fafafa;
+    --card: #ffffff;
+    --text: #1a1a1a;
+    --muted: #6b6b6b;
+    --border: #e5e5e5;
+    --accent: #0b5fff;
+  }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang TC",
+      "Microsoft JhengHei", sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    margin: 0;
+    padding: 24px 16px 64px;
+    line-height: 1.72;
+  }
+  main {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    margin: 0 auto;
+    max-width: 840px;
+    padding: 22px 26px;
+  }
+  nav {
+    margin: 0 auto 14px;
+    max-width: 840px;
+    color: var(--muted);
+    font-size: 14px;
+  }
+  a { color: var(--accent); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  h1, h2, h3, h4 { line-height: 1.35; }
+  h1 { font-size: 26px; margin-top: 0; }
+  h2 { border-top: 1px solid var(--border); padding-top: 18px; }
+  code {
+    background: rgba(127, 127, 127, 0.12);
+    border-radius: 4px;
+    padding: 1px 4px;
+  }
+  .table-wrap {
+    margin: 1em 0;
+    overflow-x: auto;
+  }
+  .table-wrap.wide {
+    /* Break out of the 840px prose column, centred on the viewport. */
+    width: min(1040px, calc(100vw - 32px));
+    margin-left: calc(50% - min(520px, 50vw - 16px));
+  }
+  table {
+    border-collapse: collapse;
+    table-layout: auto;
+    width: 100%;
+  }
+  .table-wrap.wide {
+    /* Opaque so the <main> card border does not show through the table. */
+    background: var(--card);
+  }
+  /* Width hints go on <th> as percentages: Chrome's auto table layout
+     mis-sizes columns (and overflows) when cells carry min-width. */
+  .table-wrap.wide th:first-child {
+    /* Variable + plain-language definition, e.g. "NCPV (noncalcified ...)". */
+    width: 26%;
+  }
+  .table-wrap.wide th:last-child {
+    /* Last column is usually a one-line interpretation. */
+    width: 20%;
+  }
+  th, td {
+    border: 1px solid var(--border);
+    /* Wrap only at spaces: never split an English word mid-letter. */
+    overflow-wrap: normal;
+    word-break: normal;
+    hyphens: manual;
+    padding: 6px 8px;
+    text-align: left;
+    vertical-align: top;
+  }
+  blockquote {
+    border-left: 3px solid var(--accent);
+    color: var(--muted);
+    margin-left: 0;
+    padding-left: 14px;
+  }
+  .appraisal-meta {
+    border-top: 1px solid var(--border);
+    margin-top: 28px;
+    padding-top: 14px;
+    color: var(--muted);
+    font-size: 13px;
+  }
+  @media (max-width: 600px) {
+    body {
+      padding: 12px 8px 40px;
+    }
+    main {
+      padding: 16px 12px;
+    }
+    h1 {
+      font-size: 22px;
+    }
+    table {
+      font-size: 12px;
+    }
+    .table-wrap.wide {
+      width: calc(100vw - 16px);
+      margin-left: calc(50% - 50vw + 8px);
+    }
+    th, td {
+      padding: 4px 5px;
+    }
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #1a1a1a;
+      --card: #242424;
+      --text: #e8e8e8;
+      --muted: #999;
+      --border: #333;
+      --accent: #6ea8ff;
+    }
+  }
+</style>
+</head>
+<body>
+<nav><a href="../../2026-W47.html">← 回到 2026-W47 週報</a></nav>
+<main>
+<h1>Cangrelor versus crushed ticagrelor in acute myocardial infarction complicated by cardiogenic shock (DAPT-SHOCK-AMI): a randomised, double-blind trial.</h1>
+<h1>DAPT-SHOCK-AMI 批判性評讀</h1>
+<h2>SECTION-0：文章全面描述</h2>
+<h3>0. 文章身份證</h3>
+<ul>
+<li><strong>標題</strong>：Cangrelor versus crushed ticagrelor in acute myocardial infarction complicated by cardiogenic shock (DAPT-SHOCK-AMI): a randomised, double-blind trial</li>
+<li><strong>期刊／年份</strong>：The Lancet，2026（2026 年 11 月 7 日線上刊出）</li>
+<li><strong>DOI</strong>：10.1016/S0140-6736(26)00976-1；PMID 42998670</li>
+<li><strong>文章類型（路由）</strong>：原始研究，屬多中心、雙盲、雙模擬（double-dummy）RCT → SKILL-A 主流程，加 A1 Non-inferiority trial 子模組</li>
+<li><strong>設計重點</strong>：有兩個「主要終點」並列，一個是藥效學（PD）終點，以優越性檢定；另一個是臨床終點，以非劣性檢定，margin 為 1 個百分點</li>
+<li><strong>輸入限制</strong>：本次輸入是 PDF 轉出的 markdown，加上 7 張 PDF 頁面圖（p2、3、6、7、8、9、10），全部已逐張閱讀。Appendix 1、2 未提供，包括亞群分析、per-protocol 數值、PD 時間序列與 SAP 全文。[限制：未取得 appendix]</li>
+</ul>
+<h3>1. 作者團隊評論</h3>
+<ul>
+<li><strong>通訊作者</strong>：Deepak L Bhatt（Mount Sinai Fuster Heart Hospital, New York）與第一作者 Zuzana Motovska（Charles University 第三醫學院，Prague）為共同主持人（<em>contributed equally</em>）[文內]</li>
+<li><strong>團隊構成</strong>：以捷克 PCI 網絡為主（Widimsky、Hlinomaz、Kala、Ostadal 等），另有 ACTION Study Group（Montalescot）、FACT（Ducrocq）、德國 Tübingen／Freiburg（Geisler、Olivier）。統計由 Masaryk University 的 Katina、Jarkovsky 獨立執行 [文內 Contributors]</li>
+<li><strong>團隊過往研究</strong>：
+<ul>
+<li>Motovska 是 PRAGUE-18 的 PI。該試驗在 primary PCI 比較 prasugrel 與 ticagrelor，n=1230，因 futility 提前終止，發表於 Circulation 2016；1 年追蹤發表於 JACC 2018 [外部: TCTMD；Masaryk Univ. 出版紀錄]</li>
+<li>Bhatt 是 CHAMPION PLATFORM（NEJM 2009）與 CHAMPION PHOENIX（NEJM 2013）的主要作者，pooled analysis 發表於 Lancet 2013。這兩個試驗正是 cangrelor 獲准上市的關鍵試驗 [文內 ref 8, 10, 11]</li>
+<li>Motovska 與 Bhatt 在 2026 年合寫 JACC Cardiovasc Interv editorial〈Parenteral antiplatelets: game changers for prognosis in cardiogenic shock?〉[文內 ref 7]</li>
+<li>同團隊同期在 Circulation 發表影像子研究（MVO、LVEF）[外部: PubMed, DOI 10.1161/CIRCULATIONAHA.126.083929]</li>
+</ul>
+</li>
+<li><strong>作者立場史</strong>：Bhatt 是 cangrelor 臨床開發的核心人物；Motovska 與 Bhatt 在本文刊出前已公開以「game changer」框架討論靜脈抗血小板藥。這構成明顯的 <strong>prior commitment</strong>。本文正文措辭相對克制（反覆寫 &quot;non-inferiority was not demonstrated&quot;），但「Research in context」與 Discussion 仍大量引用探索性利益訊號。[推論]</li>
+<li><strong>利益揭露</strong>：
+<ul>
+<li>資金全部來自公部門與學術單位：捷克衛生部、Charles University、NextGenerationEU；文內聲明 funder 不參與設計與分析 [文內]</li>
+<li>Bhatt 申報多家藥廠研究經費，<strong>包括 Chiesi（cangrelor 的行銷商）與 AstraZeneca（ticagrelor）</strong>；Motovska 申報 AstraZeneca、Sanofi 等 [文內 Declaration]</li>
+<li><strong>文內未說明 cangrelor 與安慰劑的藥品來源</strong>（是否由廠商 in-kind 提供）[markdown 未保留；可能在 appendix]</li>
+<li>評估：沒有直接的廠商贊助，但主持人的學術聲譽與 cangrelor 綁在一起，敘事偏向的風險在「詮釋層」而非「數據層」</li>
+</ul>
+</li>
+</ul>
+<h3>2. 文獻 Metadata 整理</h3>
+<ul>
+<li><strong>Received／Accepted</strong>：[markdown 未保留]。外部可確認：試驗於 ESC Congress 2025（2025 年 8 月底）首次發表，Lancet 線上刊出為 2026 年 11 月 7 日，相隔約 14 個月 [外部: ESC press release；ACC.org]</li>
+<li><strong>期刊平均審查天數</strong>：第三方彙整，以 PubMed received→accepted 計，中位數約 41 天 [外部: journalmetrics.org，非官方數據]</li>
+<li><strong>比較</strong>：本篇從會議發表到刊出約 14 個月，遠長於期刊中位數。致謝寫明 Eric Vicaut 與 Moreno Ursino 在「review process」期間提供統計諮詢 [文內 Acknowledgments]，顯示審稿階段有實質統計修訂。[推論] 正文措辭明顯保守（如所有次要 p 值都標 exploratory），很可能與此有關</li>
+<li><strong>期刊屬性</strong>：The Lancet，Q1（Medicine, General &amp; Internal）。JCR 2024 IF 約 88.5，第三方網站報 2025 年約 109 [外部: 第三方指標網站，未經 Clarivate 原始資料核實]。非 OA（© Elsevier）</li>
+<li><strong>邀稿或投稿</strong>：原始研究投稿，非邀稿</li>
+</ul>
+<h3>3. 研究背景（文內）</h3>
+<ul>
+<li><strong>既有證據</strong>：
+<ul>
+<li>AMI-CS 的院內死亡率長期超過 50%</li>
+<li>休克、機械通氣、意識障礙、內臟低灌流會延遲口服 P2Y12 抑制劑的吸收（ref 5, 6）</li>
+<li>主要 P2Y12 試驗大多排除休克病人</li>
+<li>唯一針對 AMI-CS 的抗血小板 RCT 是 PRAGUE-7（abciximab，n=80）</li>
+</ul>
+</li>
+<li><strong>知識缺口</strong>：沒有任何 RCT 在 AMI-CS 比較 P2Y12 抑制策略</li>
+<li><strong>Research question</strong>：在接受 primary PCI 的 AMI-CS 病人中，靜脈 cangrelor（之後轉換成 ticagrelor）相較於磨碎口服 ticagrelor，是否有：
+<ol>
+<li>更快、更一致的血小板抑制（優越性）</li>
+<li>不劣的 30 天臨床結果（非劣性）</li>
+</ol>
+</li>
+</ul>
+<h3>4. 研究設計與方法</h3>
+<p><strong>PICO</strong></p>
+<ul>
+<li><strong>P</strong>：年齡 &gt;18 歲、預定接受 primary PCI 的 AMI-CS。休克定義為下列三項至少符合兩項：SBP &lt;90 mmHg、需要升壓／強心劑、器官低灌流徵象。排除入院前已給 P2Y12 loading dose 者</li>
+<li><strong>I</strong>：cangrelor 30 μg/kg bolus，接著 4 μg/kg/min 至少 2 小時；輸注結束前 30 分鐘給 crushed ticagrelor 180 mg，之後 90 mg bid</li>
+<li><strong>C</strong>：crushed ticagrelor 180 mg（口服或鼻胃管），之後 90 mg bid</li>
+<li><strong>O</strong>：
+<ul>
+<li>主要 PD 終點：PCI 結束時 VASP-PRI &lt;50%</li>
+<li>主要臨床終點：30 天全死因死亡、MI、缺血性中風（composite）</li>
+<li>關鍵次要療效終點：上述組成加上緊急再血管化、definite stent thrombosis</li>
+<li>關鍵安全終點：BARC ≥3b 出血</li>
+</ul>
+</li>
+</ul>
+<p><strong>設計細節</strong></p>
+<ul>
+<li>29 家醫院、5 國；收案期間 2018-08 至 2024-01</li>
+<li>中央網路隨機，permuted block 固定為 4，按中心、年齡、性別、STE、機械通氣分層</li>
+<li>病人、醫師、介入醫師、終點判定者、core lab 全部盲化</li>
+<li>主要分析族群為 mITT（所有接受任何研究藥物者；實際上 605/605 全部納入）；per-protocol 為敏感度分析</li>
+<li>非劣性以 arcsine 轉換後的單尾 Wald 檢定，報告雙尾 90% CI</li>
+<li>沒有多重比較校正；沒有共變量校正</li>
+</ul>
+<p><strong>主要變項定義</strong></p>
+<ul>
+<li>PRI 採 VASP 流式細胞儀，在中央實驗室檢測</li>
+<li>只有能每日運送檢體的中心參加，最後只有 124 人有 PD 終點數據</li>
+</ul>
+<h3>5. 研究結果重點整理</h3>
+<p><strong>主要結果表（mITT；組間差取文內 90% CI，除非另標）</strong></p>
+<div class="table-wrap wide"><table>
+<thead>
+<tr>
+<th>變項（代表什麼）</th>
+<th style="text-align:right">靜脈 cangrelor（n=298）</th>
+<th style="text-align:right">磨碎 ticagrelor（n=307）</th>
+<th style="text-align:right">組間差（文內 90% CI）</th>
+<th style="text-align:right">p 值</th>
+<th>如何解讀</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>PRI</strong>（VASP platelet reactivity index）&lt;50%，PCI 結束時：P2Y12 有效抑制比例</td>
+<td style="text-align:right"><strong>56/56（100%）</strong></td>
+<td style="text-align:right"><strong>15/68（22%）</strong></td>
+<td style="text-align:right">78（76 to 78）</td>
+<td style="text-align:right">&lt;0.0001（單尾優越性）</td>
+<td>藥效學差異極大；但只有約 20% 受試者有檢測</td>
+</tr>
+<tr>
+<td>PRI &lt;50%，PCI 結束後 1 小時</td>
+<td style="text-align:right"><strong>56/56（100%）</strong></td>
+<td style="text-align:right"><strong>29/68（42%）</strong></td>
+<td style="text-align:right">58 [自行計算，取自 Fig 2A]</td>
+<td style="text-align:right">未報告</td>
+<td>ticagrelor 組到這時仍只有 4 成達標</td>
+</tr>
+<tr>
+<td><strong>主要臨床終點</strong>：30 天死亡、MI、缺血性中風</td>
+<td style="text-align:right"><strong>112（38%）</strong></td>
+<td style="text-align:right"><strong>126（41%）</strong></td>
+<td style="text-align:right"><strong>−4（−10 to 3）</strong></td>
+<td style="text-align:right">p_NI 0.13</td>
+<td>上界 3.1 pp 超過 margin 1 pp → 未證明非劣性</td>
+</tr>
+<tr>
+<td>30 天全死因死亡</td>
+<td style="text-align:right">110（37%）</td>
+<td style="text-align:right">122（40%）</td>
+<td style="text-align:right">−3（−9 to 4）</td>
+<td style="text-align:right">0.16</td>
+<td>composite 幾乎完全由死亡驅動（112 件中 110 件）</td>
+</tr>
+<tr>
+<td>30 天再梗塞</td>
+<td style="text-align:right"><strong>0</strong></td>
+<td style="text-align:right"><strong>5（2%）</strong></td>
+<td style="text-align:right">−2（−2 to −1）</td>
+<td style="text-align:right">&lt;0.0001</td>
+<td>零事件使 Wald CI 失真；Fisher 雙尾約 0.06 [自行計算]</td>
+</tr>
+<tr>
+<td>30 天缺血性中風</td>
+<td style="text-align:right">4（1%）</td>
+<td style="text-align:right">1（&lt;1%）</td>
+<td style="text-align:right">1（0 to 3）</td>
+<td style="text-align:right">0.50</td>
+<td>方向不利 cangrelor，事件太少無法判讀</td>
+</tr>
+<tr>
+<td><strong>Definite stent thrombosis</strong>，30 天</td>
+<td style="text-align:right"><strong>0</strong></td>
+<td style="text-align:right"><strong>9（3%）</strong></td>
+<td style="text-align:right">−3（−3 to −3）</td>
+<td style="text-align:right">&lt;0.0001</td>
+<td>方向一致；Fisher 雙尾約 0.004 [自行計算]，但屬探索性</td>
+</tr>
+<tr>
+<td>30 天心血管死亡</td>
+<td style="text-align:right">76（26%）</td>
+<td style="text-align:right">95（31%）</td>
+<td style="text-align:right">−5（−11 to 1）</td>
+<td style="text-align:right">0.039*</td>
+<td>90% CI 跨 0，<strong>不是</strong>優越性證據</td>
+</tr>
+<tr>
+<td>Composite 2（CV 死亡、MI、緊急再血管化、心衰竭），30 天</td>
+<td style="text-align:right">92（31%）</td>
+<td style="text-align:right">116（38%）</td>
+<td style="text-align:right">−7（−13 to −1）</td>
+<td style="text-align:right">0.020*</td>
+<td>探索性，未做多重校正</td>
+</tr>
+<tr>
+<td><strong>重大出血</strong>（BARC ≥3b），30 天</td>
+<td style="text-align:right">19（6%）</td>
+<td style="text-align:right">16（5%）</td>
+<td style="text-align:right">1（−2 to 5）</td>
+<td style="text-align:right">0.53</td>
+<td>點估計略多；上界 5 pp 無法排除有意義的出血增加</td>
+</tr>
+<tr>
+<td>1 年全死因死亡</td>
+<td style="text-align:right">130（44%）</td>
+<td style="text-align:right">151（49%）</td>
+<td style="text-align:right">−6（−12 to 1）</td>
+<td style="text-align:right">0.044*</td>
+<td>90% CI 跨 0，p 值不代表死亡率下降</td>
+</tr>
+<tr>
+<td>1 年心血管死亡</td>
+<td style="text-align:right">80（27%）</td>
+<td style="text-align:right">102（33%）</td>
+<td style="text-align:right">−6（−12 to 0）</td>
+<td style="text-align:right">0.024*</td>
+<td>HR 0.79（95% CI 0.59–1.05）跨 1</td>
+</tr>
+<tr>
+<td>術後 <strong>TIMI 3</strong> 血流</td>
+<td style="text-align:right">239（83%）</td>
+<td style="text-align:right">218（74%）</td>
+<td style="text-align:right">9（3 to 14）</td>
+<td style="text-align:right">未報告</td>
+<td>介入結果較佳；探索性</td>
+</tr>
+<tr>
+<td>PCI 任何併發症</td>
+<td style="text-align:right">22（7%）</td>
+<td style="text-align:right">43（14%）</td>
+<td style="text-align:right">−7（−10 to −3）</td>
+<td style="text-align:right">未報告</td>
+<td>主要差在 slow/no-reflow：1 vs 11</td>
+</tr>
+</tbody>
+</table></div>
+<p>* Table 2 的次要終點 p 值與 90% CI 方向互相矛盾：CI 跨 0，p 卻 &lt;0.05。依我的重算，這些 p 值是<strong>以 +1 pp margin 為基準的單尾非劣性 p 值</strong>，不是「cangrelor 較佳」的優越性 p 值。詳見 C4。[推論＋自行計算]</p>
+<p><strong>表格未涵蓋的重點</strong>：</p>
+<ul>
+<li><strong>Per-protocol 結果</strong>：HR 0.79（95% CI 0.62–1.00）[Fig 2D 圖說]。Fig 2D 的 number-at-risk 顯示 cangrelor 組從 287 人開始，第 30 天剩 187 人，與 mITT 從 298 人開始、第 30 天也剩 187 人完全相同。也就是說，<strong>被排除的 11 人全部在 30 天內發生主要終點事件</strong>；per-protocol 等於只從 cangrelor 組移除了 11 件事件 [圖 p8 Fig 2B／2D 對照，推論]</li>
+<li>1 年 composite HR 0.86（0.68–1.08）[Fig 2B 圖說]</li>
+<li>安全性：沒有回報與輸注相關的反應。但<strong>不良事件沒有系統性收集</strong>，只依法規通報的疑似不良反應 [文內 Results]</li>
+<li>存活病人在 1 年追蹤無失訪 [文內]</li>
+</ul>
+<h3>6. 作者討論與評論重點</h3>
+<ul>
+<li><strong>作者的主要訊息</strong>：
+<ul>
+<li>這是第一個 AMI-CS 的 P2Y12 策略 RCT</li>
+<li>cangrelor 帶來快速、一致的血小板抑制</li>
+<li>臨床非劣性未證明</li>
+<li>數據可供未來試驗設計參考</li>
+</ul>
+</li>
+<li><strong>與既有文獻比較</strong>：
+<ul>
+<li>再梗塞與支架血栓率遠低於設計時參考的登錄資料（9–12%），作者認為這限制了可達到的絕對差異</li>
+<li>1 pp margin 遠低於冠脈支架非劣性試驗的 3.6% 中位數</li>
+</ul>
+</li>
+<li><strong>作者自述限制</strong>：
+<ul>
+<li>PD 只有 124 人</li>
+<li>次要終點未校正多重性</li>
+<li>樣本數假設來自觀察性資料</li>
+<li>實際事件率低於假設</li>
+<li>per-protocol 可能有選擇偏差</li>
+<li>女性只佔 23%</li>
+<li>成本效益只用捷克資料</li>
+</ul>
+</li>
+<li><strong>[評估] 作者遺漏或輕描淡寫之處</strong>：
+<ol>
+<li>沒有說明 Table 2 的次要 p 值是非劣性 p 值，導致外界（如 ACC 摘要）解讀為「死亡率較低」</li>
+<li>沒有討論「預期 10 pp 優越卻選擇 1 pp 非劣性」這個設計邏輯本身的矛盾</li>
+<li>沒有指出 per-protocol 排除的 11 人全部是事件病人</li>
+<li>不良事件未系統收集，卻寫出「no treatment-related infusion reactions」</li>
+<li>沒有處理 competing risk（Fig 3 把死亡當 censoring）</li>
+<li>351 名篩選排除者原因未記錄</li>
+</ol>
+</li>
+</ul>
+<h3>7. 外部專業意見</h3>
+<p><strong>Lancet Comment：Baldetti L, Scandroglio AM. &quot;Cangrelor for myocardial infarction-related cardiogenic shock.&quot; Lancet 2026（11 月 13 日線上）。DOI 10.1016/S0140-6736(26)01152-9</strong> [外部: Lancet comment 全文]</p>
+<ul>
+<li><strong>核心論點</strong>：AMI-CS 同時有高血栓與高出血風險。cangrelor 不受腸道吸收與器官功能影響、起效與退效都快，理論上適合這類病人</li>
+<li><strong>肯定</strong>：
+<ul>
+<li>第一個大型 RCT</li>
+<li>PD 優越性明確</li>
+<li>雖然股動脈途徑佔 52%，仍沒有看到出血過量</li>
+</ul>
+</li>
+<li><strong>對非劣性失敗的解釋</strong>：「非常保守的 margin」，加上「觀察事件率低於假設」</li>
+<li><strong>探索性訊號</strong>：作者強調 CV 死亡、支架血栓、再梗塞、緊急再血管化較少、PCI 成功率較高、1 年重塑較佳，並提出一個「推測性」的機轉框架</li>
+<li><strong>延伸討論</strong>：
+<ul>
+<li>機械循環支持（MCS）族群可依血小板功能檢測滴定低劑量 cangrelor，劑量 0.125–0.75 μg/kg/min</li>
+<li>提到他們自己進行中的 SURVIVE 單臂試驗（NCT06792643）</li>
+</ul>
+</li>
+<li><strong>我的評估</strong>：這篇 Comment 幾乎沒有方法學批評，整體偏向支持。作者本身研究 cangrelor 合併 bivalirudin 用於 VA-ECMO，並主持 SURVIVE 試驗，AMS 也申報 Chiesi 研究經費，<strong>不是中立評論者</strong></li>
+</ul>
+<p><strong>Circulation Editorial（針對同期影像子研究）：Raman B, Bohula EA. &quot;Can Intravenous Cangrelor Protect the Myocardium in Infarction-related Cardiogenic Shock?&quot; DOI 10.1161/CIRCULATIONAHA.126.084421</strong> [外部: Circulation editorial 全文]</p>
+<ul>
+<li>影像子研究報告 cangrelor 組 MVO 較少，aOR 0.27（95% CI 0.08–0.98），1 年 LVEF 改善較多</li>
+<li>但梗塞面積沒有差異，MVO 與功能恢復之間的因果關係尚未建立</li>
+<li>Remote native T1 不具特異性，且沒有 ECV 數據</li>
+<li><strong>限制</strong>：CMR 世代很小，MVO 只有 60 人可評估，有選擇偏差與倖存者偏差；單尾檢定沒有明確預先指定；多重比較未校正</li>
+<li>先前非休克 STEMI 的 RCT（如 PITRI）顯示 cangrelor 沒有減少 MVO 或梗塞面積</li>
+<li>結論：須以足夠檢定力的研究確認</li>
+</ul>
+<p><strong>其他</strong>：PCRonline 的 ESC 會議評論（Mahadevan、Choudry）認為 1% margin 過於保守，並稱「2% margin 就會成立」。這與本文 Fig 2C 不符：單尾 95% CI 上界是 3.1 pp，所以 2% margin 同樣不會成立。該評論的數字不可靠 [外部: PCRonline，會議報導性質]。</p>
+<h3>8. 臨床建議</h3>
+<ul>
+<li><strong>可採用的情境</strong>：
+<ul>
+<li>AMI-CS 病人已插管、意識不清、預期吞服或腸道吸收不可靠，且出血風險可接受時，可以把 cangrelor 當作「確保 PCI 期間 P2Y12 抑制」的<strong>藥效學合理選項</strong></li>
+<li>PD 證據（100% vs 22%）可靠，但只適用於有檢測的那 124 人</li>
+</ul>
+</li>
+<li><strong>不建議直接套用的情境</strong>：
+<ul>
+<li>不應以本試驗宣稱 cangrelor 降低死亡或 MACE</li>
+<li>不應把 Table 2 的 p&lt;0.05 次要終點當作療效證據</li>
+<li>不適用於入院前已給 P2Y12 loading 者、高出血風險排除者、非歐洲族群，女性代表性也不足</li>
+</ul>
+</li>
+<li><strong>實務建議</strong>：
+<ol>
+<li>已插管或休克的 primary PCI，若無禁忌，可考慮 cangrelor bolus＋輸注，並<strong>依標準在輸注結束前銜接 ticagrelor</strong>，避免抑制空窗</li>
+<li>與病人家屬或團隊溝通時，說法是「確定能更快達到血小板抑制，但是否改善存活<strong>仍未知</strong>」</li>
+<li>大口徑股動脈或 MCS 病人的出血數據有限（重大出血 95% CI 上界約 +5 pp），應同時落實出血預防措施</li>
+</ol>
+</li>
+<li><strong>證據強度</strong>：PD 終點為<strong>中</strong>（雙盲 RCT，但只有 20% 的子樣本，且以中心參與與否決定誰被檢測）；臨床結果為<strong>弱</strong>（主要終點不確定，次要終點全屬探索性）</li>
+</ul>
+<hr />
+<h2>SKILL-A：批判性評讀</h2>
+<h3>A. 補充技術細節</h3>
+<ul>
+<li><strong>樣本數估算</strong>：
+<ul>
+<li>PD 終點假設 70% vs 90%，需 124 人，80% power；實際觀察到的對照組只有 22%，遠低於假設</li>
+<li>臨床終點假設對照組 50%、cangrelor 組 40%（<strong>預期 10 pp 的絕對利益</strong>），margin 1 pp，需 506 人；計畫收 550 人，允許增加到 605 人</li>
+<li>實際觀察 41.0% vs 37.6%，差異只有 3.5 pp，約為假設的三分之一 → <strong>嚴重 underpowered</strong></li>
+</ul>
+</li>
+<li><strong>隨機化與分派隱藏</strong>：中央網路系統，block 固定為 4。在雙盲下，固定 block 被猜中的風險低。分派隱藏充分</li>
+<li><strong>盲法</strong>：雙模擬，藥盒外觀相同，判定者與 core lab 都盲化。文內沒有盲法成功度檢查。cangrelor 起效快，可能讓介入醫師從術中血栓負荷間接察覺分組 [推論]，影響方向無法判定</li>
+<li><strong>ITT vs per-protocol</strong>：mITT 等同完整 ITT（605/605）。Per-protocol 只排除 cangrelor 組 11 人，對照組沒有任何排除</li>
+<li><strong>多重比較</strong>：兩個主要終點各自檢定，沒有 alpha 分配說明；所有次要終點都未校正</li>
+<li><strong>比例風險</strong>：只以 log–cumulative hazard 圖目視檢查 [文內]</li>
+<li><strong>競爭風險</strong>：Fig 3 的支架血栓、再梗塞、CV 死亡曲線都把死亡當 censoring。Fig 3B 第 30 天 cangrelor 組 censored 110 人，與 30 天死亡 110 人一致 [圖 p9，推論]。沒有使用 Fine-Gray 或 Aalen-Johansen，在死亡率約 40% 的族群中，1−KM 會高估非致死事件的累積發生率</li>
+<li><strong>缺失資料</strong>：臨床終點沒有缺失；PD、生活品質、影像都只做 available-case 分析</li>
+<li><strong>篩選流程</strong>：1221 人篩選，616 人排除，其中 <strong>351 人「原因未記錄」</strong>[Fig 1，p3 圖確認]，代表性無法評估</li>
+</ul>
+<h4>A1. Non-inferiority Trial 子模組</h4>
+<ul>
+<li><strong>Margin 的合理性</strong>：1 pp 絕對 margin，相對於 41% 基線只有約 2.4% 的相對差。文內<strong>沒有提供 margin 的臨床或統計依據</strong>，只說「prespecified」。這不像真正的非劣性設計，而是在**「預期有 10 pp 利益」的假設下，用接近 0 的 margin 做非劣性檢定**；實質上接近單尾 α=0.05 的「不比對照差」檢定，卻沒有優越性的檢定力。邏輯上，一個預期更好的治療應該直接做優越性設計 [參考: jug120004_2605_2611.md Figure 1：CI 跨過 threshold 為 scenario C「indeterminate」]</li>
+<li><strong>對照組是否給到最佳</strong>：crushed ticagrelor 180 mg 是休克中合理的現行做法，對照組適當</li>
+<li><strong>ITT 在非劣性設計中的保守性</strong>：mITT 與 per-protocol 都有報告；但 per-protocol 是單側排除，不是傳統意義上的保守補充分析（見 B3）</li>
+<li><strong>結果相對 margin 的位置</strong>：90% CI −10 to +3，上界 3.1 pp 超過 margin → scenario C，<strong>結果不確定（indeterminate）</strong>；既不是非劣，也不是劣</li>
+</ul>
+<h3>B. 批判性評估</h3>
+<h4>B1. 假說與理論邏輯</h4>
+<ul>
+<li><strong>假說預先指定</strong>：有，且已註冊（NCT03551964），設計論文發表於 EuroIntervention 2024 [文內 ref 13]</li>
+<li><strong>機轉合理性</strong>：休克減少口服吸收，cangrelor 繞過腸道，可快速抑制血小板。PD 數據直接支持：ticagrelor 組 PCI 結束時只有 22% 達標，1 小時後也只有 42% [Fig 2A，圖 p8]</li>
+<li><strong>最可疑的敘事跳躍</strong>：
+<ol>
+<li><strong>從「PD 優越」跳到「臨床利益」</strong>：PRI 差異約 78 pp，30 天死亡差異只有約 3 pp，且 CI 跨 0。死亡佔 composite 的 98%，而 AMI-CS 的死亡主要由泵衰竭、缺氧腦損傷決定（58% 為 OHCA），P2Y12 抑制能影響的範圍本來就有限 [文內 Table 1；推論]</li>
+<li><strong>以影像子研究的 MVO／LVEF 支持機轉</strong>：梗塞面積沒有差異，Circulation 社論也指出因果未建立 [外部]</li>
+<li><strong>Research in context 提到「新的大型登錄資料」</strong>（ref 23，Elhadad 2026）作為脈絡：這是觀察性資料，不應與 RCT 結論混用</li>
+</ol>
+</li>
+</ul>
+<h4>B2. 受試者與外推性</h4>
+<ul>
+<li>族群高風險：61% 在隨機時已插管、55% 為 OHCA、68% 多支血管病變、17–22% 使用 MCS [Table 1]</li>
+<li>只收歐洲病人，沒有收集種族資料，女性 23%</li>
+<li>排除入院前已給 P2Y12 loading 者（152 人）。在許多院前即給 ticagrelor 的系統中，這類病人佔不小比例</li>
+<li><strong>外推性分級</strong>：
+<ol>
+<li><strong>一般 STEMI（無休克）</strong>：不適用；CHAMPION 系列與 PITRI 才是相關證據</li>
+<li><strong>AMI-CS、歐洲 PCI 中心、未預先給 P2Y12</strong>：PD 結論可外推；臨床結論無法外推（本身不確定）</li>
+<li><strong>特殊族群</strong>（MCS／ECMO、女性、高齡、亞洲族群）：MCS 只有約 120 人、女性 137 人，沒有足夠數據；亞洲族群的出血與血栓特性不同，<strong>不建議外推</strong></li>
+</ol>
+</li>
+</ul>
+<h4>B3. 研究設計與偏差</h4>
+<p><strong>對照組適當性（Gyawali 框架）</strong>：crushed ticagrelor 是目前休克病人的常見做法，符合「我日常會給的治療」。對照合理。</p>
+<p><strong>最可能造成偏差的設計點</strong>：</p>
+<ol>
+<li><strong>Per-protocol 單側排除（偏向使 cangrelor 效果變大）</strong>：
+<ul>
+<li>11 位「沒有接受完整劑量」的 cangrelor 病人全部在 30 天內發生事件（Fig 2B 與 2D 的 number-at-risk 在第 30 天同為 187）</li>
+<li>這些人很可能是早期死亡或因病情惡化中止輸注，屬於與預後相關的 <strong>informative exclusion</strong></li>
+<li>對照組沒有對應排除，因為口服單次給藥一定「完整」</li>
+<li>結果 per-protocol HR 從 0.86 降到 0.79。<strong>per-protocol 結果不能拿來支持 cangrelor</strong> [參考: jug120004_2605_2611.md 關於 NI 試驗 per-protocol 的討論；Hernán &amp; Robins 2017，文內 ref 31]</li>
+</ul>
+</li>
+<li><strong>PD 子樣本以中心可行性選取</strong>：只有約 20% 受試者被檢測，56 vs 68 人不平衡，沒有說明是否所有參與中心的病人都納入。這會影響 PD 結果的外推，不太會改變效果方向，因為兩組差異過大</li>
+<li><strong>隨機後共介入的不平衡</strong>：
+<ul>
+<li>GP IIb/IIIa 抑制劑：15% vs 19%</li>
+<li>MCS：17% vs 22%</li>
+<li>TIMI 0（PCI 前，但研究藥物已開始）：52% vs 60%</li>
+<li>這些可能是<strong>治療後果</strong>（例如 ticagrelor 組 no-reflow 較多，因此較多 bailout GPI），不應當作基線混淆來校正；但會稀釋或扭曲單純的藥物效果比較</li>
+</ul>
+</li>
+</ol>
+<p><strong>基線差異（方向混雜）</strong>：</p>
+<ul>
+<li>OHCA 58% vs 52%，對 cangrelor 組不利</li>
+<li>SCAI C 63% vs 70%、單支血管病變 37% vs 28%、三支血管病變 35% vs 40%、LVEF 35% vs 30%，對 cangrelor 組有利</li>
+<li>LVEF 是在入院時或第一天測量，可能已受治療影響，不能當作純基線</li>
+</ul>
+<p><strong>銜接策略</strong>：cangrelor 組在輸注結束前 30 分鐘給 crushed ticagrelor。比較的是「cangrelor 橋接策略」與「單用口服策略」，不是兩種藥物本身。輸注結束後若 ticagrelor 尚未吸收，可能出現抑制空窗；本文 PD 只測到輸注後 2 小時，<strong>無法評估空窗</strong> [推論]。</p>
+<p><strong>提前終止</strong>：無。</p>
+<h4>B4. 測量工具與實務意義</h4>
+<ul>
+<li>VASP-PRI 是已驗證的 P2Y12 專一性檢測，在中央實驗室進行、分析者盲化，信度高</li>
+<li>PRI &lt;50% 是替代指標（surrogate），與休克死亡率之間沒有已驗證的關聯</li>
+<li>主要臨床終點的 98% 是全死因死亡，屬於硬終點，但 P2Y12 抑制對它的可修飾程度有限</li>
+<li><strong>真實世界效益估計</strong>：就算假設點估計（−3.5 pp）為真，NNT 約 29；但 95% CI −11.2 到 +4.3 pp [自行計算] 同時包含「NNT 約 9 的大利益」與「NNH 約 23 的傷害」。目前<strong>無法判定實際淨效益</strong></li>
+</ul>
+<h3>C. 統計與資料完整性</h3>
+<h4>C1. 結果分類（CI + MCID 框架）</h4>
+<ul>
+<li><strong>MCID</strong>：文內沒有指定臨床 MCID。設計假設的 10 pp 是「期望效果」，不是 MCID。[推算] AMI-CS 的 30 天死亡／MI／中風，以絕對差 3 pp 作為最小臨床重要利益；傷害門檻沿用作者的 1 pp margin</li>
+<li><strong>CI 位置（主要終點，95% CI −11.2 到 +4.3 pp）</strong>[自行計算：SE 約 3.97 pp]：同時跨越 −3（利益 MCID）、0（null）與 +1（傷害門檻）</li>
+</ul>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>結果</th>
+<th>分類</th>
+<th>理由</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>主要臨床終點 30 天</td>
+<td><strong>INCONCLUSIVE ❓</strong></td>
+<td>CI 同時含 null、有意義的利益與作者定義的傷害</td>
+</tr>
+<tr>
+<td>PD 終點（PRI &lt;50%）</td>
+<td><strong>POSITIVE ✅</strong>（只限藥效學）</td>
+<td>差異約 78 pp，遠超任何合理門檻</td>
+</tr>
+<tr>
+<td>重大出血</td>
+<td><strong>INCONCLUSIVE ❓</strong></td>
+<td>95% CI −2.5 到 +4.9 pp [自行計算]，無法排除有意義的出血增加</td>
+</tr>
+<tr>
+<td>1 年全死因死亡</td>
+<td><strong>INCONCLUSIVE ❓</strong>（偏向利益方向）</td>
+<td>95% CI −13.5 到 +2.4 pp [自行計算]，跨 0</td>
+</tr>
+</tbody>
+</table></div>
+<p>不能說「cangrelor 不如 ticagrelor」，也不能說「兩者相當」，更不能說「cangrelor 降低死亡」。</p>
+<h4>C2. Underpowered 判斷與 Winner's Curse</h4>
+<ul>
+<li>主要終點的 CI 同時包含 null 與 MCID → <strong>underpowered</strong>。根本原因是假設的 10 pp 效果來自觀察性登錄資料，被高估約 3 倍</li>
+<li>次要終點中「看起來顯著」的結果，例如支架血栓 0 vs 9、再梗塞 0 vs 5，事件數極少，未經多重校正，屬於典型的 <strong>Type M 風險</strong>區：真實效果很可能小於觀察值</li>
+<li><strong>警告</strong>：未來試驗若以 1 年 CV 死亡 −6 pp 或 composite 2 −9 pp 作為 power calculation 的效果假設，會重蹈本試驗的覆轍</li>
+</ul>
+<h4>C3. Bayesian 補充分析（近似；我自行計算，非文內報告）</h4>
+<p>以常態近似，採 non-informative prior，風險差單位為 pp。</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>終點</th>
+<th style="text-align:right">Pr(任何利益，RD&lt;0)</th>
+<th style="text-align:right">Pr(利益 &gt;3 pp)</th>
+<th style="text-align:right">Pr(傷害 &gt;1 pp)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>30 天主要終點</td>
+<td style="text-align:right">約 0.81</td>
+<td style="text-align:right">約 0.55</td>
+<td style="text-align:right">約 0.13</td>
+</tr>
+<tr>
+<td>1 年全死因死亡</td>
+<td style="text-align:right">約 0.92</td>
+<td style="text-align:right">約 0.74</td>
+<td style="text-align:right">約 0.05</td>
+</tr>
+</tbody>
+</table></div>
+<ul>
+<li>解讀：資料「傾向」cangrelor，但最低要求的 3 pp 臨床利益機率只約五到七成</li>
+<li>若採懷疑性 prior（例如以 CHAMPION 系列中 cangrelor 對死亡無影響為中心），機率會進一步向 0.5 收縮</li>
+<li>這屬於典型的「ANDROMEDA-SHOCK 型」情境：頻率學派稱為 negative 並不恰當，但也不足以支持臨床採用</li>
+<li>文內沒有 Bayesian 分析；建議作者在 5 年追蹤報告中補上，並預先指定 prior</li>
+</ul>
+<h4>C4. 報告完整性與其他統計問題（統計紅旗）</h4>
+<ol>
+<li><strong>Table 2 的 p 值性質不明（嚴重）</strong>：
+<ul>
+<li>次要終點 p 值與 90% CI 相互矛盾。例如 1 年全死因死亡，90% CI −12 to 1 跨 0，p 卻是 0.044</li>
+<li>我以 Wald 法重算：CV 死亡 30 天 (−5.4−1)/3.65 → z≈−1.75，單尾 p≈0.040（文內 0.039）；composite 2 30 天 (−6.9−1)/3.85 → p≈0.020（文內 0.020）；心衰竭 30 天 → p≈0.25（文內 0.26）</li>
+<li>吻合度顯示這些都是<strong>對 +1 pp margin 的單尾非劣性 p 值</strong>，不是優越性檢定 [推論＋自行計算]</li>
+<li>文內 Table 2 只在註腳 † 寫「Clinical endpoints are assessed for non-inferiority」，沒有明說。ACC 摘要與新聞因此報導「lower mortality」，屬於<strong>誤讀</strong></li>
+</ul>
+</li>
+<li><strong>零事件的 Wald CI 失真</strong>：再梗塞（0 vs 5）CI「−2 to −1」、支架血栓（0 vs 9）CI「−3 to −3」都是退化區間。應改用 Newcombe／exact 方法。再梗塞的 Fisher 雙尾 p 約 0.06 [自行計算]，並非 &lt;0.0001</li>
+<li><strong>PD 終點的 CI「76 to 78」</strong>：點估計 78，上界也是 78，是 100% 邊界造成的 Wald 退化，同樣應改用 exact CI</li>
+<li><strong>兩個主要終點沒有說明 family-wise α 控制</strong></li>
+<li><strong>時間不一致</strong>：主要終點以 30 天 RD 檢定，Fig 2B 卻呈現 1 年 HR 0.86；兩者常被混用</li>
+<li><strong>PH 假設只以目視檢查</strong>；Fig 2B 前 7–10 天兩條曲線幾乎重疊，之後才分開 [圖 p8]，HR 是否隨時間變化未檢驗</li>
+<li><strong>競爭風險未處理</strong>（見 A）</li>
+<li><strong>不良事件未系統收集</strong>：安全性結論只依 BARC ≥3b 與法規通報</li>
+<li><strong>生活品質沒有基線值</strong>，又只分析倖存者，有倖存者偏差 [文內]</li>
+</ol>
+<p><strong>Kaplan-Meier 圖判讀</strong> [圖 p8, p9]：</p>
+<ul>
+<li>Fig 2B：事件高度集中在前 30 天（number-at-risk 298→187、307→181），之後曲線平坦，第 360 天 165 vs 153。末段樣本量充足，尾端可信</li>
+<li>前約 7 天兩組幾乎重疊，分離出現在第 1–4 週；這與「PCI 期間血小板抑制」應在早期顯效的機轉預期不完全吻合 [推論]</li>
+<li>Fig 3B／3C 的 y 軸上限只到 0.05，會在視覺上放大 0–3% 的差異；censoring 數量大（多為死亡）</li>
+</ul>
+<h3>D. 亞群分析</h3>
+<p>文內只說明依性別、機械通氣與其他分層因子做探索性亞群分析，並以 Wald interaction 檢定。<strong>結果全部在 appendix，markdown 未保留，無法評估</strong>。</p>
+<ul>
+<li>唯一可說的是：女性只有 137 人，任何性別交互作用都缺乏檢定力</li>
+<li>SCAI 分期、OHCA 與否、MCS 與否等臨床上最關鍵的分層，從 markdown 看不出是否有預先指定（PCRonline 報導稱 shock stage 並非預先指定 [外部]）</li>
+<li>可信度：<strong>無法判定</strong>（推測性）</li>
+</ul>
+<h3>E. 紅旗清單</h3>
+<ul>
+<li><strong>設計</strong>：預期 10 pp 優越，卻用 1 pp 非劣性 margin，沒有提供 margin 的依據；效果假設高估約 3 倍</li>
+<li><strong>設計</strong>：351/616 篩選排除「原因未記錄」</li>
+<li><strong>統計</strong>：Table 2 的次要 p 值是非劣性 p 值，未明示，已被外界誤讀為死亡率下降</li>
+<li><strong>統計</strong>：零事件終點使用 Wald CI 與 p&lt;0.0001，數值失真</li>
+<li><strong>統計</strong>：per-protocol 單側排除 11 名全為事件的病人，人為放大利益</li>
+<li><strong>統計</strong>：競爭風險未處理；沒有多重比較校正</li>
+<li><strong>敘事</strong>：Research in context 與 Discussion 大量列出探索性利益（支架血栓、再梗塞、併發症），主要結論卻是「未證明非劣」；新聞稿以影像子研究「改善心功能」為標題</li>
+<li><strong>COI</strong>：主持人之一是 cangrelor 樞紐試驗的 PI，並收受 Chiesi 研究經費；同期 Lancet Comment 作者也有 cangrelor 研究與 Chiesi 關係；藥品來源未揭露</li>
+<li><strong>外推</strong>：只收歐洲病人，沒有種族資料，女性 23%，排除院前已給 P2Y12 者</li>
+</ul>
+<h3>F. 反向解釋</h3>
+<ol>
+<li><strong>單純機率</strong>（CI 涵蓋 null）：30 天差 3.5 pp 完全可由隨機誤差產生。支持：p_NI 0.13，CI 跨 0。反對：多項次要終點方向一致，都偏向 cangrelor</li>
+<li><strong>共介入差異，而非藥物本身</strong>：ticagrelor 組 GPI（19% vs 15%）與 MCS（22% vs 17%）使用較多，可能反映病情或術中狀況。但這兩者理論上應對 ticagrelor 組有利或與病情嚴重相關，方向難以判定</li>
+<li><strong>基線病變負荷差異</strong>：ticagrelor 組三支血管病變較多（40% vs 35%）、LVEF 較低（30% vs 35%）。支持：可解釋部分 CV 死亡差異。反對：cangrelor 組 OHCA 較多（58% vs 52%），兩邊互相抵消</li>
+<li><strong>只有時機效果，沒有持續作用</strong>：cangrelor 只在 PCI 期間 2 小時帶來優勢，之後兩組都用 ticagrelor。早期 no-reflow 減少（1 vs 11）可能真實存在，但對以泵衰竭為主的死亡影響有限。這與「PD 差異大、臨床差異小」的結果一致</li>
+</ol>
+<h3>G. 最終裁決</h3>
+<ul>
+<li><strong>整體可信度</strong>：<strong>中</strong>。內部效度良好（雙盲、雙模擬、追蹤完整、獨立判定），PD 結論可信；<strong>臨床結論為低</strong>（不確定、underpowered、次要結果被過度詮釋）</li>
+<li><strong>可採用的條件</strong>：已插管、意識不清或休克嚴重而無法可靠口服的 AMI-CS primary PCI，想要「確保術中 P2Y12 抑制」時，可考慮 cangrelor，並正確銜接口服 P2Y12</li>
+<li><strong>不建議的情境</strong>：作為改善存活的療法推廣；寫入「降低死亡」的指引建議；在 MCS／大口徑股動脈族群中預設安全</li>
+<li><strong>最需要的 3 個改進</strong>：
+<ol>
+<li>以優越性設計、實際事件率（約 40%）與合理效果（約 4–5 pp）重新做大樣本試驗（估計需 2000 人以上）[推論]</li>
+<li>澄清 Table 2 的 p 值性質，對零事件終點改用 exact 方法，並以競爭風險模型重新分析</li>
+<li>揭露藥品來源，公開 per-protocol 排除病人的逐例資料與完整亞群（SCAI、OHCA、MCS）結果</li>
+</ol>
+</li>
+<li><strong>一句話結論</strong>：cangrelor 在心因性休克中確實能更快抑制血小板，但能否救命仍未證實，目前不應當作降低死亡的療法。</li>
+</ul>
+<h3>效果量總表（CONDITIONAL OUTPUT）</h3>
+<div class="table-wrap wide"><table>
+<thead>
+<tr>
+<th>指標</th>
+<th>cangrelor</th>
+<th>ticagrelor</th>
+<th>效果量</th>
+<th>95% CI</th>
+<th>ARD</th>
+<th>MCID</th>
+<th>結果分類</th>
+<th>實務意義</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>PRI &lt;50%（PCI 結束時）</td>
+<td>100%</td>
+<td>22%</td>
+<td>RD +78 pp</td>
+<td>無可靠 Wald 區間（邊界退化）</td>
+<td>+78 pp</td>
+<td>—</td>
+<td>POSITIVE（PD）</td>
+<td>術中抑制確實較快</td>
+</tr>
+<tr>
+<td>30 天死亡／MI／中風</td>
+<td>37.6%</td>
+<td>41.0%</td>
+<td>RR 0.92</td>
+<td>0.75–1.12 [自行計算]</td>
+<td>−3.5 pp（−11.2 to +4.3）</td>
+<td>−3 pp [推算]</td>
+<td>INCONCLUSIVE</td>
+<td>無法下臨床結論</td>
+</tr>
+<tr>
+<td>1 年全死因死亡</td>
+<td>43.6%</td>
+<td>49.2%</td>
+<td>RD −5.6 pp</td>
+<td>−13.5 to +2.4 [自行計算]</td>
+<td>−5.6 pp</td>
+<td>−3 pp [推算]</td>
+<td>INCONCLUSIVE（偏利益）</td>
+<td>假說生成</td>
+</tr>
+<tr>
+<td>1 年 CV 死亡</td>
+<td>26.8%</td>
+<td>33.2%</td>
+<td>HR 0.79</td>
+<td>0.59–1.05</td>
+<td>−6.4 pp</td>
+<td>−3 pp [推算]</td>
+<td>INCONCLUSIVE</td>
+<td>假說生成</td>
+</tr>
+<tr>
+<td>BARC ≥3b 出血（30 天）</td>
+<td>6.4%</td>
+<td>5.2%</td>
+<td>RD +1.2 pp</td>
+<td>−2.5 to +4.9 [自行計算]</td>
+<td>+1.2 pp</td>
+<td>+1 pp（作者 margin）</td>
+<td>INCONCLUSIVE</td>
+<td>不能宣稱出血安全</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+<h3>資料來源</h3>
+<ul>
+<li>本文：Motovska Z, et al. Lancet 2026. <a href="https://doi.org/10.1016/S0140-6736(26)00976-1">DOI</a>（PubMed PMID 42998670）</li>
+<li>Baldetti L, Scandroglio AM. Cangrelor for myocardial infarction-related cardiogenic shock. Lancet 2026（Comment；依 PubMed 書目，全文經本機擷取）<a href="https://doi.org/10.1016/S0140-6736(26)01152-9">DOI</a></li>
+<li>Raman B, Bohula EA. Can intravenous cangrelor protect the myocardium in infarction-related cardiogenic shock? Circulation 2026（依 PubMed 書目，全文經本機擷取）<a href="https://doi.org/10.1161/CIRCULATIONAHA.126.084421">DOI</a></li>
+<li>Motovska Z, et al. DAPT-SHOCK-AMI 多模態影像子研究. Circulation 2026（依 PubMed）<a href="https://doi.org/10.1161/CIRCULATIONAHA.126.083929">DOI</a></li>
+<li><a href="https://www.acc.org/latest-in-cardiology/articles/2025/08/26/11/47/sun-11am-dapt-shock-esc-2025">ACC.org — DAPT-SHOCK-AMI, ESC 2025</a></li>
+<li><a href="https://www.escardio.org/news/press/press-releases/Intravenous-blood-thinner-investigated-in-cardiogenic-shock-caused-by-acute-myocardial-infarction/">ESC press release</a></li>
+<li><a href="https://www.pcronline.com/News/Congress-coverages/ESC/2025/DAPT-SHOCK-AMI-trial-Cangrelor-in-cardiogenic-shock">PCRonline critical review (ESC 2025)</a></li>
+<li><a href="https://www.mountsinai.org/about/newsroom/2026/intravenous-antiplatelet-therapy-may-improve-heart-function-in-cardiogenic-shock-patients-compared-to-oral-medication">Mount Sinai newsroom</a></li>
+<li><a href="https://www.news-medical.net/news/20261109/Intravenous-blood-thinner-improves-heart-recovery-after-cardiogenic-shock.aspx">News-Medical</a></li>
+<li><a href="https://www.tctmd.com/news/prasugrel-ticagrelor-give-similar-short-term-outcomes-after-primary-pci-prague-18">TCTMD — PRAGUE-18</a></li>
+<li><a href="https://muni.cz/en/research/publications/1369489">Masaryk University publication record</a></li>
+<li><a href="https://impactfactorforjournal.com/lancet-impact-factor">Lancet impact factor（第三方）</a></li>
+<li><a href="https://manusights.com/blog/lancet-impact-factor">Manusights — Lancet impact factor</a></li>
+<li><a href="https://www.journalmetrics.org/compare/nature-medicine-vs-lancet">Journalmetrics — Lancet review time（第三方）</a></li>
+<li>方法學參考：Mulla SM, et al. How to use a noninferiority trial. JAMA 2012;308:2605–11 [參考: jug120004_2605_2611.md Figure 1]</li>
+</ul>
+
+<footer class="appraisal-meta">評讀資訊：模型：claude-opus-5-5 (claude)  ·  route：rct  ·  產出時間：2026-11-16 08:20 CST</footer>
+</main>
+</body>
+</html>
