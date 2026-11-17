@@ -29,10 +29,15 @@ DEFAULT_ZOOM = 2.5
 # Caption-based fallback for vector-drawn figures (e.g. Lancet KM curves,
 # CONSORT diagrams): a whole step-curve is a single path, so the drawing-object
 # count stays below DEFAULT_MIN_DRAWINGS even though the page is clearly a
-# figure. We then require a figure caption plus a block of vector drawing
-# covering most of the page.
+# figure. We then require a figure caption plus a block of vector drawing.
+# Coverage was 0.6 (tuned on full-page Lancet figures), but NEJM/JAMA/JACC
+# figures occupy a half-column to half-page and land at 0.15-0.59; a 2026-11
+# regression over 302 PDFs found ~45 real figure pages dropped (KM curves,
+# CONSORT, ROC, a JACC Central Illustration; e.g. NEJM OPTIMAL-DIABETES Fig. 2
+# at 39 drawings / 0.55). A false positive costs one extra page image; a miss
+# costs the model the KM curve, so the bar is set low.
 DEFAULT_MIN_CAPTION_DRAWINGS = 8
-DEFAULT_MIN_CAPTION_COVERAGE = 0.6
+DEFAULT_MIN_CAPTION_COVERAGE = 0.1
 
 _FIGURE_CAPTION_RE = re.compile(r"^\s*(?:Figure|Fig\.?)\s*\d+\b", re.IGNORECASE | re.MULTILINE)
 
