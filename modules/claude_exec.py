@@ -288,9 +288,10 @@ def run_claude_prompt(
     editorial/commentary) instead of hallucinating from memory.
 
     `read_dirs`: when provided, each directory is passed via --add-dir and
-    the Read tool is added to the allowed set so the model can lazily pull
-    on-disk references (e.g. JAMA Users' Guides) only when relevant. Cwd is
-    still a tmpdir, so Read is constrained to these explicit dirs.
+    the Read and Grep tools are added to the allowed set so the model can
+    locate and lazily pull on-disk files (JAMA Users' Guides, supplement
+    protocols) only when relevant. Cwd is still a tmpdir, so both are
+    constrained to these explicit dirs.
 
     `bash_commands`: when provided, the Bash tool is exposed but gated by a
     PreToolUse hook (registered via a temp --settings file) that allows only
@@ -354,8 +355,13 @@ def run_claude_prompt(
     if read_dirs:
         for d in read_dirs:
             cmd.extend(["--add-dir", str(d)])
-        tool_names.append("Read")
-        allowed.append("Read")
+        # Grep alongside Read: on-demand files (200+ page protocols, ~400k
+        # chars) are unusable without a way to locate sections; Read alone
+        # forces paging through 2000-line chunks and the model gives up.
+        # Both are read-only; cwd is a tmpdir and only --add-dir dirs are
+        # reachable.
+        tool_names.extend(["Read", "Grep"])
+        allowed.extend(["Read", "Grep"])
         if read_log is not None:
             audit_cmd = " ".join(
                 shlex.quote(part)

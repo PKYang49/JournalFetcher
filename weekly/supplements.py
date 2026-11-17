@@ -67,8 +67,11 @@ SUPPLEMENT_INLINE_CHAR_CAP = int(
 )
 # Image budget for supplement pages, separate from the article's own figure
 # budget so a figure-heavy appendix cannot crowd out the main figures.
+# Raised 8 -> 12 (2026-11): pages are taken in document order, so low-value
+# early panels (treatment algorithms, visit counts) used the whole budget and
+# dropped NEJM OPTIMAL-STROKE Figure S9 (renal outcomes).
 SUPPLEMENT_MAX_IMAGE_PAGES = int(
-    os.getenv("JOURNAL_FETCHER_SUPPLEMENT_MAX_IMAGES", "8")
+    os.getenv("JOURNAL_FETCHER_SUPPLEMENT_MAX_IMAGES", "12")
 )
 _DROPPED_KINDS = frozenset({"disclosure", "data_sharing", "collaborators", "checklist"})
 _USABLE_FORMATS = frozenset({"pdf", "docx", "xlsx"})
@@ -96,8 +99,10 @@ SUPPLEMENT_CONTEXT = """\
   per-protocol / as-treated、missing data 處理、eTable 的 baseline 與次要結果，
   與正文結論相關時要納入，並標注出處（例如 [Supplement eTable 3]）。
 - 正文與 supplement 數字不一致時要明說。
-- 標為「按需讀取」的檔案不在 prompt 內，請用 Read 工具（或 shell 的 rg / sed）
-  讀取相關段落，不要逐頁讀完。檔內以「=== page N ===」標頁碼；
+- 標為「按需讀取」的檔案不在 prompt 內，請先用 Grep 工具（或 shell 的 rg）
+  以關鍵字定位段落（例如 sample size、primary outcome、amendment、
+  per-protocol），再用 Read 帶 offset / limit 讀取該段（或 shell 的 sed -n），
+  不要逐頁讀完。檔內以「=== page N ===」標頁碼；
   試算表以「=== sheet 名稱 ===」分隔工作表，欄位以 tab 分隔。
 - 有 Protocol / SAP 時，至少查核：事前登錄的 primary outcome 與正文是否一致
   （outcome switching）、樣本數計算假設、事前指定的分析族群與 subgroup，

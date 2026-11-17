@@ -186,10 +186,10 @@ appraisal.md → render.publish_appraisals → docs/<pmid>.html → git push →
   - 抓取：`ego_browser.fetch_supplements_via_ego` 開一次文章頁、收集 supplement 連結、頁內逐檔 fetch；遇 Cloudflare challenge（NEJM `suppl_file`）改導覽到檔案再抓，CDN 擋 CORS 的改從 Python 抓。存到 `output/supplements/<pmid>/`，全部檔案都抓到才寫 `manifest.json` 快取；每篇一行記到 `output/logs/supplements.jsonl`。
   - 分類（`downloader.classify_supplement`，PDF 看首頁、docx 看正文開頭，封面優先、URL 次之）→ 處理方式：
     - `appendix`（PDF 或 docx）→ PDF 用 pymupdf4llm、docx 用 mammoth + markdownify 轉 markdown，**直接放進 user prompt**，上限 `JOURNAL_FETCHER_SUPPLEMENT_INLINE_CHARS`（預設 400k），且正文 + appendix 不超過 backstop；超過就改按需讀取，不截斷。cpg / consensus 的 appendix 一律按需讀取（多是幾百頁 evidence table）。
-    - `protocol`（含 SAP）/ `unknown` → 寫成帶 `=== page N ===` 標記的 `.txt`，**按需讀取**（claude `--add-dir` + Read；codex 用 rg / sed），prompt 要求查核 outcome switching、樣本數假設、事前指定分析。
+    - `protocol`（含 SAP）/ `unknown` → 寫成帶 `=== page N ===` 標記的 `.txt`，**按需讀取**（claude `--add-dir` + Grep 定位 + Read；codex 用 rg / sed），prompt 要求查核 outcome switching、樣本數假設、事前指定分析。
     - `xlsx`（不論分類）→ openpyxl 轉成 tab 分隔、帶 `=== sheet 名稱 ===` 標記的 `.txt`，按需讀取（多是逐變異 / 逐病人大表）。
     - `disclosure` / `data_sharing` / `collaborators` / `checklist`（STROBE、CONSORT 等 reporting checklist）→ 丟棄。
-  - 圖頁：`figure_extract.extract_supplement_pages`，**獨立額度** `JOURNAL_FETCHER_SUPPLEMENT_MAX_IMAGES`（預設 8），只取有 `eFigure` / `Figure S` caption 的圖頁，再補沒轉成 markdown 表格的 `eTable` 頁；同頁超過 3 個 label 視為目錄頁跳過。正文的圖頁規則不適用（supplement 表格格線會被誤判成圖）。docx appendix 則依文件順序取內嵌的 PNG / JPEG（同一額度），markdown 內以檔名標出位置，超額的標「未附」。
+  - 圖頁：`figure_extract.extract_supplement_pages`，**獨立額度** `JOURNAL_FETCHER_SUPPLEMENT_MAX_IMAGES`（預設 12），只取有 `eFigure` / `Figure S` caption 的圖頁，再補沒轉成 markdown 表格的 `eTable` 頁；同頁超過 3 個 label 視為目錄頁跳過。正文的圖頁規則不適用（supplement 表格格線會被誤判成圖）。docx appendix 則依文件順序取內嵌的 PNG / JPEG（同一額度），markdown 內以檔名標出位置，超額的標「未附」。
   - **文字層壞掉的 PDF 走 OCR**（`modules/pdf_text.py`，2026-11-03）：subset 字型缺 ToUnicode 時 fitz 抽出的是字形編號亂碼（2026-W45 LEAP-Block 的 protocol / SAP，310k 字元亂碼被當 appendix 塞進 prompt）。以英文虛詞比例 < 2%（或掃描檔每頁 < 50 字元）判定，改用 tesseract（`brew install tesseract`）OCR，分類與 prompt 文字都用 OCR 結果，快取為 `<檔名>.ocr.json`；prompt 標「OCR 轉檔」。tesseract 不在時不送內容、標「無法讀取」。正文 `pymupdf4llm` 明確設 `use_ocr=False`，維持原行為。
   - 開關：`JOURNAL_FETCHER_APPRAISAL_SUPPLEMENT=0` 不送模型；`JOURNAL_FETCHER_SUPPLEMENT_LOG=0` 且前者也關才完全不抓。單獨測試：`python3 -m weekly.supplements --doi <DOI> [--pdf 正文.pdf] [--force]`。
   - 已實測：NEJM（Atypon）、JAMA（Silverchair）、Circulation（AHA，封面「Supplemental Appendix」、docx / xlsx、STROBE checklist）。Elsevier 撞 Turnstile 時記成 `no_links`（2026-W44 JACC 實際如此）。
