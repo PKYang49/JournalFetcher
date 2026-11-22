@@ -1,0 +1,858 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Intracoronary Imaging-Guided Percutaneous Coronary Intervention: An Updated Meta-Analysis of Randomized Trials.</title>
+<style>
+  :root {
+    --bg: #fafafa;
+    --card: #ffffff;
+    --text: #1a1a1a;
+    --muted: #6b6b6b;
+    --border: #e5e5e5;
+    --accent: #0b5fff;
+  }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang TC",
+      "Microsoft JhengHei", sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    margin: 0;
+    padding: 24px 16px 64px;
+    line-height: 1.72;
+  }
+  main {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    margin: 0 auto;
+    max-width: 840px;
+    padding: 22px 26px;
+  }
+  nav {
+    margin: 0 auto 14px;
+    max-width: 840px;
+    color: var(--muted);
+    font-size: 14px;
+  }
+  a { color: var(--accent); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  h1, h2, h3, h4 { line-height: 1.35; }
+  h1 { font-size: 26px; margin-top: 0; }
+  h2 { border-top: 1px solid var(--border); padding-top: 18px; }
+  code {
+    background: rgba(127, 127, 127, 0.12);
+    border-radius: 4px;
+    padding: 1px 4px;
+  }
+  .table-wrap {
+    margin: 1em 0;
+    overflow-x: auto;
+  }
+  .table-wrap.wide {
+    /* Break out of the 840px prose column, centred on the viewport. */
+    width: min(1040px, calc(100vw - 32px));
+    margin-left: calc(50% - min(520px, 50vw - 16px));
+  }
+  table {
+    border-collapse: collapse;
+    table-layout: auto;
+    width: 100%;
+  }
+  .table-wrap.wide {
+    /* Opaque so the <main> card border does not show through the table. */
+    background: var(--card);
+  }
+  /* Width hints go on <th> as percentages: Chrome's auto table layout
+     mis-sizes columns (and overflows) when cells carry min-width. */
+  .table-wrap.wide th:first-child {
+    /* Variable + plain-language definition, e.g. "NCPV (noncalcified ...)". */
+    width: 26%;
+  }
+  .table-wrap.wide th:last-child {
+    /* Last column is usually a one-line interpretation. */
+    width: 20%;
+  }
+  th, td {
+    border: 1px solid var(--border);
+    /* Wrap only at spaces: never split an English word mid-letter. */
+    overflow-wrap: normal;
+    word-break: normal;
+    hyphens: manual;
+    padding: 6px 8px;
+    text-align: left;
+    vertical-align: top;
+  }
+  blockquote {
+    border-left: 3px solid var(--accent);
+    color: var(--muted);
+    margin-left: 0;
+    padding-left: 14px;
+  }
+  .appraisal-meta {
+    border-top: 1px solid var(--border);
+    margin-top: 28px;
+    padding-top: 14px;
+    color: var(--muted);
+    font-size: 13px;
+  }
+  @media (max-width: 600px) {
+    body {
+      padding: 12px 8px 40px;
+    }
+    main {
+      padding: 16px 12px;
+    }
+    h1 {
+      font-size: 22px;
+    }
+    table {
+      font-size: 12px;
+    }
+    .table-wrap.wide {
+      width: calc(100vw - 16px);
+      margin-left: calc(50% - 50vw + 8px);
+    }
+    th, td {
+      padding: 4px 5px;
+    }
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #1a1a1a;
+      --card: #242424;
+      --text: #e8e8e8;
+      --muted: #999;
+      --border: #333;
+      --accent: #6ea8ff;
+    }
+  }
+</style>
+</head>
+<body>
+<nav><a href="../../2026-W48.html">← 回到 2026-W48 週報</a></nav>
+<main>
+<h1>Intracoronary Imaging-Guided Percutaneous Coronary Intervention: An Updated Meta-Analysis of Randomized Trials.</h1>
+<h1>批判性評讀：Intracoronary Imaging-Guided PCI——An Updated Meta-Analysis of Randomized Trials（JACC 2026）</h1>
+<hr />
+<h2>SECTION-0：文章全面描述</h2>
+<h3>0. 文章身份證</h3>
+<ul>
+<li><strong>標題</strong>：Intracoronary Imaging-Guided Percutaneous Coronary Intervention: An Updated Meta-Analysis of Randomized Trials</li>
+<li><strong>期刊／卷期</strong>：<em>J Am Coll Cardiol</em>. 2026;88(20):2282–2299（2026-11-17 出刊）[文內]</li>
+<li><strong>DOI</strong>：10.1016/j.jacc.2026.08.008；PMID 42747372</li>
+<li><strong>文章類型</strong>：Systematic review + 直接比較 meta-analysis；另附 mixed treatment（network）meta-analysis、trial sequential analysis（TSA）、fragility index、Bayesian meta-analysis 與 meta-regression。</li>
+<li><strong>Review 子型</strong>：Systematic review / meta-analysis（A1），附帶 NMA 成分（A1-NMA 段）。</li>
+<li><strong>混血文章警示</strong>：不適用。文章具備搜尋策略、雙人篩選、RoB 評估與量化合成，屬正規的量化合成型 SR/MA。不過它的<strong>分析目的</strong>並非單純合成：作者在前言就說明，這篇是為了「解釋 IVUS-CHIP 與 OPTIMAL 這兩個中性試驗」而做的更新分析（Discussion 第 2 段）。也就是說，分析是在已知結果不一致之後才設計的，這點會影響 meta-regression 的解讀（見 D 段）。</li>
+</ul>
+<h3>1. 作者團隊評論</h3>
+<ul>
+<li><strong>通訊作者</strong>：Sripal Bangalore, MD, MHA，NYU Grossman School of Medicine 介入心臟科 [文內]。他長期主導或參與穩定型缺血性心臟病血流重建的 meta-analysis 與 ISCHEMIA 相關分析，例如 2020 年 14 個試驗的 meta-analysis 顯示血流重建未降低死亡率 [外部: Healio 2020]。</li>
+<li><strong>團隊構成與分工</strong>：共同第一作者 Bangalore 與 Maqsood（Brown）。文獻篩選與資料擷取由 M.H.M. 與 R.S.Z. 兩人獨立完成，意見不一致時由 S.B. 仲裁 [文內]。文內沒有完整的 Author Contributions 段 [markdown 未保留]。</li>
+<li><strong>與被納入試驗的重疊</strong>：從本文參考文獻可見，多位共同作者本身就是被納入試驗或前一版 meta-analysis 的作者 [文內 reference list]：
+<ul>
+<li>Ali、Landmesser、Maehara：ILUMIEN IV（ref 33）、ILUMIEN III（ref 47）。</li>
+<li>Andreasen：OCTOBER（ref 32）。</li>
+<li>Stone、Christiansen、Ali：2024 年 <em>Lancet</em> 的前一版 NMA（ref 4）。</li>
+<li>Rao：2025 ACC/AHA ACS 指引第一作者（ref 1），該指引給了 ICI Class I 建議。</li>
+</ul>
+</li>
+<li><strong>作者立場史（關鍵）</strong>：作者群中有正向試驗的 PI、前一版正向 meta-analysis 的作者，以及給出 Class I 的指引主筆。本文結論與這些既有立場高度一致，有**確認偏差（prior commitment bias）**的結構性風險。這不代表結論錯誤，但對「解釋不一致結果」的論述應以更高標準檢視。</li>
+<li><strong>利益揭露</strong> [文內]：
+<ul>
+<li>Bangalore：Abbott Vascular、Boston Scientific、Shockwave 等顧問。</li>
+<li>Stone：大量顧問關係，持有 SpectraWave 等公司股權/選擇權，任職機構接受 Abbott、Philips、Shockwave 研究經費。</li>
+<li>Christiansen：Abbott、Philips 機構研究經費與 Abbott 講課費。</li>
+<li>Andreasen：Abbott 機構經費。</li>
+<li>Ahmad：Abbott Vascular、Boston Scientific、Shockwave 顧問。</li>
+<li><strong>文內未載明本研究資金來源。</strong></li>
+</ul>
+</li>
+<li><strong>評估</strong>：[推論] Abbott（OCT）與 Boston Scientific／Philips（IVUS）是血管內影像系統的主要廠商，多位作者與這些廠商有財務關係。加上前述的學術立場承諾，本文的敘事框架（「支持指引、推廣常規使用」）與產業利益方向一致。數據本身是公開試驗的結果，但<strong>選擇如何解讀異質性</strong>這一步，最容易受上述利益影響。</li>
+</ul>
+<h3>2. 文獻 Metadata 整理</h3>
+<ul>
+<li><strong>投稿與接受</strong>：Received 2026-04-20；Revised 2026-07-27；Accepted 2026-08-05 [文內]。審查約 <strong>107 天</strong> [自行計算]。</li>
+<li><strong>線上發表</strong>：2026-09-16 [外部: 網頁搜尋結果]；印刷版 2026-11-17 [文內]。</li>
+<li><strong>期刊平均審查天數</strong>：[無法取得]，因此無法判斷本篇審查速度相對平均是快或慢。</li>
+<li><strong>期刊指標</strong>：JACC 2025 Journal Impact Factor 22.3 [外部: ACC 2026/06 公告]。分區 Q1 [推論：依 IF 與領域排名]。Open Access 狀態 [無法取得]。</li>
+<li><strong>時間線疑點</strong>：文獻搜尋截至 2026-06-03，但稿件 4 月 20 日就已投出。[推論] 修稿期間更新了搜尋，以納入 2026 年才發表的 IVUS-CHIP、OPTIMAL、DKCRUSH VIII。這本身合理，但代表初稿與修訂稿的納入集合不同，而文中沒有預註冊 protocol 可供比對。</li>
+<li><strong>邀稿 vs 投稿</strong>：文內未揭露是否為邀稿 [文內未揭露]。同期刊出 Tanboga &amp; Kaul 的 editorial（p.2300）。</li>
+</ul>
+<h3>3. 研究背景 [文內]</h3>
+<ul>
+<li>
+<p><strong>既有證據</strong>：美歐指引對複雜病灶／left main PCI 給予 ICI-guided PCI Class I 建議（ref 1, 2）。前一版 meta-analysis（22 個試驗，至 2023 年 8 月）顯示 ICI 使 TLF 降低 29%，主要來自 cardiac death、target-vessel MI 與 TLR 的下降（ref 4）。</p>
+</li>
+<li>
+<p><strong>知識缺口</strong>：2026 年兩個歐洲試驗結果中性：</p>
+<ul>
+<li>IVUS-CHIP：複雜高風險 PCI。</li>
+<li>OPTIMAL：unprotected left main。</li>
+</ul>
+<p>同年亞洲的 DKCRUSH VIII 則為正向。作者認為這「重新點燃爭議」。</p>
+</li>
+<li>
+<p><strong>研究問題</strong>：重新評估 ICI-guided PCI 相對 angiography-guided PCI 的效益，並探討各試驗間異質性的來源。</p>
+</li>
+</ul>
+<h3>4. 研究設計與方法</h3>
+<p><strong>PICO</strong></p>
+<ul>
+<li><strong>P</strong>：接受 PCI 的病人（DES 時代）。</li>
+<li><strong>I</strong>：ICI-guided PCI（IVUS 或 OCT）。</li>
+<li><strong>C</strong>：angiography-guided PCI。</li>
+<li><strong>O</strong>：
+<ul>
+<li>主要：TLF（各試驗定義不一，Supplemental Table 2）。</li>
+<li>其他：cardiac mortality、MI、TVR、definite/probable stent thrombosis、all-cause mortality。</li>
+</ul>
+</li>
+</ul>
+<p><strong>設計細節</strong></p>
+<ul>
+<li><strong>資料庫與納排</strong>：PubMed、Embase、Cochrane Central、ClinicalTrials.gov，搜尋至 2026-06-03，無語言限制。納入 DES 時代 RCT，排除 BMS 試驗。</li>
+<li><strong>合成方法</strong>：DerSimonian–Laird random-effects，效果量為 RR。零事件格加 0.5 continuity correction。</li>
+<li><strong>異質性與發表偏差</strong>：I² 評估異質性；funnel plot 與 Egger test 評估發表偏差。</li>
+<li><strong>穩健度分析</strong>：
+<ul>
+<li>Fragility index（metafrag）。</li>
+<li>TSA：假設 RRR 20%，α=5%，power=80%。</li>
+<li>Bayesian random-effects（bayesmeta），報告 P(RR&lt;1) 與 P(RR&lt;0.9)。</li>
+</ul>
+</li>
+<li><strong>異質性探索</strong>：
+<ul>
+<li>亞群：試驗年代（≤2020 vs 之後）、地理（以亞洲為主 vs 非亞洲）。</li>
+<li>Meta-regression 共變項：stent 長度、對照組 stent 直徑、後擴張比例差、發表年份、地理。</li>
+</ul>
+</li>
+<li><strong>NMA</strong>：IVUS vs OCT vs angiography，以 angiography 為參考組。</li>
+<li><strong>其他</strong>：ITT 分析；Stata 19.5。</li>
+<li><strong>未見</strong>：PROSPERO 或其他預註冊 [文內未提及]；prediction interval [文內未報告]。</li>
+</ul>
+<p><strong>主要變項定義</strong>：TLF 定義各試驗不同。各終點採用哪個追蹤時間點（例如 IVUS-XPL 5 年、ULTIMATE 3 年），文內沒有明確規則 [文內未說明]。</p>
+<h3>5. 研究結果重點整理</h3>
+<p>納入 28 個 RCT，共 24,634 人，平均年齡 64.8 歲，男性 75.9%，平均追蹤 21.6±12.4 個月 [文內]。</p>
+<ul>
+<li>17 個試驗為 IVUS vs angiography。</li>
+<li>7 個為 OCT vs angiography。</li>
+<li>3 個為 OCT vs IVUS（只進 NMA）。</li>
+<li>1 個為 IVUS/OCT vs angiography。</li>
+</ul>
+<p><strong>主要結果表</strong>（組別欄依 SR 格式改為研究數/人數與 I²；事件率取自文內 crude 數據；ARD/NNT 為以 pooled RR 套用對照組 crude 事件率的估算）</p>
+<div class="table-wrap wide"><table>
+<thead>
+<tr>
+<th>變項（代表什麼）</th>
+<th style="text-align:right">研究數 / 人數（ICI vs 血管攝影）</th>
+<th style="text-align:right">I²</th>
+<th style="text-align:right">Pooled RR（95% CI）</th>
+<th style="text-align:right">p 值</th>
+<th>如何解讀</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>TLF</strong>（target lesion failure）：病灶相關心因死亡、target-vessel MI、TLR 組合；各試驗定義不同</td>
+<td style="text-align:right">25；<strong>7.2%</strong> vs <strong>9.7%</strong>（806/11,193 vs 1,012/10,488）</td>
+<td style="text-align:right"><strong>61%</strong></td>
+<td style="text-align:right"><strong>0.72（0.61–0.85）</strong></td>
+<td style="text-align:right">&lt;0.001（z=−3.92）</td>
+<td>ARD 約 <strong>2.7%</strong>、NNT ≈37 [自行計算]；異質性高，prediction interval 約 0.39–1.33 [自行計算]</td>
+</tr>
+<tr>
+<td><strong>Cardiac mortality</strong></td>
+<td style="text-align:right">24；<strong>1.4%</strong> vs <strong>1.9%</strong></td>
+<td style="text-align:right">5%</td>
+<td style="text-align:right"><strong>0.73（0.58–0.91）</strong></td>
+<td style="text-align:right">0.01（z=−2.73）</td>
+<td>ARD 約 <strong>0.5%</strong>、NNT ≈197 [自行計算]；IVUS-CHIP、OPTIMAL 兩者 RR &gt;1 且合佔約 36% 權重</td>
+</tr>
+<tr>
+<td>亞洲試驗</td>
+<td style="text-align:right">—</td>
+<td style="text-align:right">0%</td>
+<td style="text-align:right">0.50（0.36–0.69）</td>
+<td style="text-align:right">P_int &lt;0.001</td>
+<td>死亡效益幾乎全部來自亞洲試驗</td>
+</tr>
+<tr>
+<td>非亞洲試驗</td>
+<td style="text-align:right">—</td>
+<td style="text-align:right">0%</td>
+<td style="text-align:right">1.02（0.77–1.35）</td>
+<td style="text-align:right">同上</td>
+<td>非亞洲試驗沒有心因死亡效益的證據</td>
+</tr>
+<tr>
+<td><strong>MI</strong></td>
+<td style="text-align:right">23；<strong>4.39%</strong> vs <strong>5.24%</strong></td>
+<td style="text-align:right">0%</td>
+<td style="text-align:right"><strong>0.86（0.75–0.97）</strong></td>
+<td style="text-align:right">0.02（z=−2.36）</td>
+<td>點估計只降 14%，CI 上界 0.97；IVUS-ACS 未列入本終點 [圖 3A]</td>
+</tr>
+<tr>
+<td><strong>TVR</strong>（target vessel revascularization）：目標血管再次血流重建</td>
+<td style="text-align:right">24；<strong>3.89%</strong> vs <strong>5.43%</strong></td>
+<td style="text-align:right">41%</td>
+<td style="text-align:right"><strong>0.69（0.57–0.83）</strong></td>
+<td style="text-align:right">&lt;0.001（z=−3.97）</td>
+<td>ARD 約 <strong>1.7%</strong>、NNT ≈59 [自行計算]</td>
+</tr>
+<tr>
+<td>亞洲試驗</td>
+<td style="text-align:right">—</td>
+<td style="text-align:right">0%</td>
+<td style="text-align:right">0.55（0.46–0.66）</td>
+<td style="text-align:right">P_int &lt;0.001</td>
+<td>亞洲效果明確</td>
+</tr>
+<tr>
+<td>非亞洲試驗</td>
+<td style="text-align:right">—</td>
+<td style="text-align:right">0%</td>
+<td style="text-align:right">0.97（0.82–1.15）</td>
+<td style="text-align:right">同上</td>
+<td>非亞洲試驗沒有明確組間差異</td>
+</tr>
+<tr>
+<td><strong>Stent thrombosis</strong>：definite/probable</td>
+<td style="text-align:right">25；<strong>0.54%</strong> vs <strong>1.10%</strong></td>
+<td style="text-align:right">0%</td>
+<td style="text-align:right"><strong>0.55（0.40–0.76）</strong></td>
+<td style="text-align:right">&lt;0.001（z=−3.62）</td>
+<td>ARD 約 <strong>0.5%</strong>、NNT ≈203 [自行計算]；各地區方向一致（P_int 0.42）</td>
+</tr>
+<tr>
+<td><strong>All-cause mortality</strong></td>
+<td style="text-align:right">23；<strong>2.61%</strong> vs <strong>3.21%</strong></td>
+<td style="text-align:right">0%</td>
+<td style="text-align:right"><strong>0.82（0.70–0.96）</strong></td>
+<td style="text-align:right">0.01（z=−2.53）</td>
+<td>ARD 約 <strong>0.6%</strong>、NNT ≈173 [自行計算]；fragility index 只有 11</td>
+</tr>
+<tr>
+<td>TLF，亞洲試驗</td>
+<td style="text-align:right">13 個試驗</td>
+<td style="text-align:right">0%</td>
+<td style="text-align:right">0.60（0.53–0.68）</td>
+<td style="text-align:right">P_int &lt;0.001</td>
+<td>—</td>
+</tr>
+<tr>
+<td>TLF，非亞洲試驗</td>
+<td style="text-align:right">12 個試驗</td>
+<td style="text-align:right">46%</td>
+<td style="text-align:right">0.95（0.76–1.18）</td>
+<td style="text-align:right">同上</td>
+<td>Bayesian P(benefit) 僅約 70%</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>表後補充</strong></p>
+<ul>
+<li>
+<p><strong>圖中可見但文字沒講清楚的訊號</strong>：</p>
+<ul>
+<li>在 <strong>stent thrombosis</strong>（圖 5A），OPTIMAL 是 <strong>8 vs 3（RR 2.69，0.72–10.08）</strong>，方向不利 ICI。IVUS-CHIP 則是 5 vs 15（RR 0.33）。作者只引用 IVUS-CHIP 的 stent thrombosis 改善，沒有提 OPTIMAL 的反向數據。</li>
+<li>在 <strong>cardiac mortality</strong>（圖 2A），IVUS-CHIP（34 vs 27）與 OPTIMAL（38 vs 29）都偏向 ICI 較差。兩者是權重最大的兩個試驗（16.9% 與 19.0%）。</li>
+</ul>
+</li>
+<li>
+<p><strong>TSA 圖目測</strong>（圖 1B–6B）：每個終點的 Z-curve 在最後加入 2026 年歐洲試驗後都明顯下滑：</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>終點</th>
+<th>Z-curve 高點 → 最終值</th>
+<th>最終值與監測界限的距離</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>TLF</td>
+<td>約 6.0 → 約 3.9</td>
+<td>—</td>
+</tr>
+<tr>
+<td>Cardiac death</td>
+<td>約 4.8 → 約 3.0</td>
+<td>—</td>
+</tr>
+<tr>
+<td>All-cause death</td>
+<td>約 3.1 → 約 2.6</td>
+<td>監測界限約 2.3，差距不大</td>
+</tr>
+<tr>
+<td>MI</td>
+<td>約 3.0 → 約 2.36</td>
+<td>監測界限約 2.2，差距很小</td>
+</tr>
+</tbody>
+</table></div>
+<p>All-cause death 的累積人數 21,402，<strong>尚未達到 RIS 24,640</strong>；MI 的 18,078 也<strong>未達 RIS 19,916</strong>。</p>
+</li>
+<li>
+<p><strong>疑似資料擷取問題</strong>：比對圖 2A 與圖 6A，有 9 個試驗的 cardiac death 與 all-cause death 計數完全相同，包括：</p>
+<ul>
+<li>IVUS-XPL 6 vs 14（5 年追蹤）</li>
+<li>Liu 3 vs 10</li>
+<li>HOME DES 3 vs 2</li>
+<li>AVIO 0 vs 2</li>
+<li>Tan 2 vs 3</li>
+<li>DOCTORS、ROBUST、OCTACS、ILUMIEN III</li>
+</ul>
+<p>[推論] 5 年追蹤中全死因死亡完全等於心因死亡並不常見，可能是以心因死亡代替全死因，需要回查原始試驗。另外 Bendary 出現在 cardiac death，卻不在 all-cause death；IVUS-ACS（3,505 人）不在 MI 分析內。兩者文內都沒有說明。</p>
+</li>
+<li>
+<p><strong>NMA</strong>：作者稱 IVUS 與 OCT 效果相似，但數據全部在 Supplemental [markdown 未保留]，無法驗證。</p>
+</li>
+</ul>
+<h3>6. 作者討論與評論重點</h3>
+<p><strong>作者主要訊息</strong>：即使納入兩個中性的歐洲試驗，ICI 仍「一致且具臨床意義地」降低所有終點。作者並主張：</p>
+<ul>
+<li>TSA 證明各終點都至少降低 20%。</li>
+<li>Fragility index 9–50 顯示結果穩健。</li>
+<li>Bayesian 後驗機率 &gt;99%。</li>
+<li>地理異質性主要可由病灶與技術差異解釋。</li>
+</ul>
+<p><strong>與現有文獻的異同</strong>：TLF 點估計與 2024 <em>Lancet</em> NMA 幾乎相同（RR 0.72 vs 0.71）。但異質性從 I² 2% 升到 61%（editorial 指出）。</p>
+<p><strong>作者對歐洲中性結果提出四個解釋</strong>：</p>
+<ol>
+<li>對照組操作者把影像經驗帶進 angiography 組。作者自己認為這個解釋違反直覺，也被亞洲 stent 長度的數據反駁。</li>
+<li>影像組 stent optimization 執行不足：IVUS-CHIP 只有 48% 達到全部最佳化標準；OPTIMAL 的 MSA 目標用亞洲標準 8.0 mm²。</li>
+<li>缺乏系統性 pre-PCI imaging。</li>
+<li>亞洲病人血管較細（對照組 stent 直徑 3.05 vs 3.26 mm）。</li>
+</ol>
+<p><strong>作者自述限制</strong> [文內]：</p>
+<ul>
+<li>沒有 IPD。</li>
+<li>未報告操作者經驗。</li>
+<li>各試驗的最佳化標準不一致。</li>
+<li>無法區分 pre-PCI 與 post-PCI imaging 的效果。</li>
+<li>Meta-regression 有共線性且檢定力不足。</li>
+<li>臨床異質性。</li>
+<li>死亡率結果相對脆弱。</li>
+<li>地理分組過於簡化。</li>
+</ul>
+<p><strong>[評估]</strong></p>
+<ul>
+<li>限制列得相當完整，但<strong>結論段與 Perspectives 沒有依這些限制下修</strong>。Abstract 仍寫「TSA confirmed evidence for at least a 20% reduction in all outcomes」與「heterogeneity explained in large part by lesion characteristics and procedural technique」，等於在正文承認 exploratory，在結論卻當成確定的解釋。</li>
+<li>「歐洲試驗是執行不佳」的論述屬於 post hoc 解釋。它把不利數據歸因於執行品質，卻沒有對正向亞洲試驗做同等嚴格的檢視，例如亞洲對照組是否表現較差、小型單中心試驗的品質。</li>
+</ul>
+<h3>7. 外部專業意見</h3>
+<p><strong>Tanboga IH, Kaul S. &quot;Evaluating Intracoronary Imaging-Guided PCI: Balancing Evidence Synthesis and Exploration of Heterogeneity.&quot; <em>JACC</em>. 2026;88(20):2300–2302. DOI 10.1016/j.jacc.2026.08.040</strong> [外部: 期刊 editorial 全文]</p>
+<ul>
+<li><strong>肯定之處</strong>：
+<ul>
+<li>量化合成「方法學上穩健」。</li>
+<li>TLF 估計與 <em>Lancet</em> 版一致。</li>
+<li>最可信的效益是病灶相關事件，特別是 stent thrombosis 與再次血流重建。</li>
+</ul>
+</li>
+<li><strong>對 meta-regression 的質疑</strong>：
+<ul>
+<li>地理「是線索，不是機轉」。</li>
+<li>以試驗為分析單位，有 ecological fallacy 風險。</li>
+<li>最多 25 個試驗、5 個共變項，每個共變項約只有 5 個試驗，同時有 Type II 與 Type I error 風險。</li>
+<li>地區、病灶複雜度、操作者經驗與對照組表現彼此高度共線，無法分離各自的貢獻。</li>
+<li>這些分析是在已知結果不一致之後才做的，只能產生假說。</li>
+</ul>
+</li>
+<li><strong>對死亡率的質疑</strong>：
+<ul>
+<li>絕對差異 &lt;0.5%，fragility index 只有 10–11，效益主要來自亞洲試驗。</li>
+<li>缺乏一致的生物學路徑：IVUS-CHIP 的 stent thrombosis RR 0.33，cardiac death 卻是 RR 1.26。</li>
+<li>PCI 本身在穩定型冠心病都未一致證明降低死亡，把死亡效益歸因於「輔助最佳化工具」很難成立。</li>
+<li>結論：應視為產生假說，而非改變實務的證據。</li>
+</ul>
+</li>
+<li><strong>對中性試驗的解讀</strong>：
+<ul>
+<li>不應把 IVUS-CHIP、OPTIMAL 當離群值忽略。</li>
+<li>開放標示的程序性試驗必然有 performance bias。</li>
+<li>極複雜解剖可能存在影像效益的生物學天花板。</li>
+</ul>
+</li>
+<li><strong>對指引與臨床的建議</strong>：
+<ul>
+<li>不足以調降指引，但指引應承認地理分歧。</li>
+<li>試驗「足以估計平均策略效果，但不足以假設一個普遍可移轉的共同效果」。</li>
+<li>ICI 應保留給「能據以做出可執行修正」的複雜 PCI。</li>
+<li>不應因此放棄 ICI，也不應把它變成一體適用的強制規定。</li>
+</ul>
+</li>
+</ul>
+<h3>8. 臨床建議</h3>
+<p><strong>可採用的情境</strong></p>
+<ul>
+<li>複雜病灶 PCI（長病灶、bifurcation、CTO、left main），且術者能依影像實際做出修正：充分 lesion preparation、依 EEL 選擇 stent 尺寸、處理 edge dissection 與 malapposition、達到 MSA 目標。</li>
+<li>這類情境下，預期降低 stent thrombosis 與 TVR 的證據最一致（ST 各地區 P_int 0.42，I² 0%）。</li>
+</ul>
+<p><strong>不建議直接套用的情境</strong></p>
+<ul>
+<li>以本文的「降低全死因死亡 18%」作為說服病人或醫院採購的主要論據：證據脆弱，且非亞洲試驗沒有死亡效益（RR 1.02）。</li>
+<li>把亞洲試驗的 TLF/TVR 效果量（RR 0.55–0.60）直接外推到西方高 ICI 經驗中心的複雜／left main 族群：非亞洲 TLF RR 0.95，TVR RR 0.97。</li>
+<li>把影像當成「有做就好」的勾選項目：IVUS-CHIP 只有 48% 達到最佳化標準，卻無臨床效益。</li>
+</ul>
+<p><strong>實務建議（台灣情境）</strong></p>
+<ol>
+<li>複雜 PCI 持續常規使用 ICI，但把重點放在「影像結果有沒有轉成具體操作」：建議做 pre-PCI 影像，並設定 MSA、edge、expansion 的明確目標。</li>
+<li>對病人說明時，以「降低支架血栓與再次介入」為主要效益，不宜宣稱可降低死亡。</li>
+<li>[推論] 台灣病人的血管尺寸與 ICI 使用文化較接近亞洲試驗，外推亞洲數據的合理性高於歐美族群，但仍屬試驗層級推論。</li>
+</ol>
+<p><strong>證據強度分級</strong></p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>範圍</th>
+<th>分級</th>
+<th>理由</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Stent thrombosis、TVR</td>
+<td>中</td>
+<td>RCT 合成；ST 一致性好；TVR 有地理異質性；開放標示</td>
+</tr>
+<tr>
+<td>TLF</td>
+<td>中</td>
+<td>合成效果明確，但 I² 61%、prediction interval 跨 1</td>
+</tr>
+<tr>
+<td>MI</td>
+<td>低</td>
+<td>點估計只降 14%，CI 上界 0.97，TSA 勉強越界</td>
+</tr>
+<tr>
+<td>Mortality</td>
+<td>低</td>
+<td>只有亞洲試驗有效益，fragility index 10–11，機轉不一致，疑似資料擷取問題</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+<h2>SKILL-B：批判性評讀</h2>
+<h3>A. 補充技術細節</h3>
+<ul>
+<li><strong>宣稱範疇</strong>：Perspectives 把結論寫成「ICI 應成為複雜冠心病 PCI 的常規標準」。但納入試驗涵蓋 all-comers（例如 HOME DES、GUIDE DES）到極複雜病灶，族群異質性大，「適用於哪些病人」並沒有一致定義。</li>
+<li><strong>文獻時間範圍</strong>：2010–2026 年，涵蓋完整。但早期試驗多為小型單中心研究（Liu、Tan、Bendary、Kim 等），其中幾個效果量特別大，例如 Bendary 的 TLF RR 0.18。</li>
+</ul>
+<h4>A1. Systematic Review / Meta-analysis 子模組</h4>
+<p><strong>搜尋策略與選擇流程</strong></p>
+<ul>
+<li>4 個資料庫，關鍵字見 Supplemental Table 1，無語言限制 [文內]。</li>
+<li>由 650 篇篩選出 28 個 RCT。PRISMA flow 在 Supplemental Figure 1 [markdown 未保留]。</li>
+<li>雙人獨立篩選與擷取，由第一作者仲裁 [文內]；<strong>未報告 κ 值</strong>。</li>
+<li><strong>未提及 PROSPERO 預註冊</strong> [文內未提及]。這點很關鍵：作者稱 meta-regression 共變項為「prespecified」，但沒有公開 protocol 可以驗證。而且分析動機明說是解釋已知的不一致結果。</li>
+</ul>
+<p><strong>GRADE 五大降級因素</strong></p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>因素</th>
+<th>評估</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>偏差風險</td>
+<td>作者判定「<strong>所有試驗皆為低風險</strong>」，可信度存疑。全部是開放標示的程序性試驗；TVR/TLR 屬操作者決策影響的終點，有 performance 與 detection bias 風險（editorial 亦指出）。多個小型單中心試驗（Liu 2019 <em>Anatol J Cardiol</em>、Tan 2015 <em>Saudi Med J</em>、Bendary 2024）的 allocation concealment 與 outcome adjudication 品質應有疑問。RoB 細節在 Supplemental Table 3 [markdown 未保留]。<strong>建議至少降 1 級（TVR/TLF）</strong>；硬終點（死亡）受影響較小。</td>
+</tr>
+<tr>
+<td>不一致性</td>
+<td>TLF I² 61%、TVR 41%；地理亞群 P_int &lt;0.001（TLF、TVR、cardiac death）。Cardiac death 整體 I² 只有 5%，但亞洲與非亞洲效果方向不同（0.50 vs 1.02），說明 <strong>I² 低估了臨床上重要的不一致</strong>。TLF 的 prediction interval 約 0.39–1.33、cardiac death 約 0.50–1.07 [自行計算，以文內 τ² 與 CI 推算]，代表下一個新試驗可能看不到效益。<strong>TLF、TVR、死亡率皆應降 1 級。</strong></td>
+</tr>
+<tr>
+<td>間接性</td>
+<td>ICI 與對照組的操作品質在不同年代與地區差異大。例如作者計算的亞洲試驗中，ICI 組 stent 反而比對照組短（39.9 vs 43.5 mm）。IVUS 與 OCT 被視為同一種介入。DES 世代跨 2010–2026。對台灣讀者而言，亞洲數據的間接性反而較低 [推論]。</td>
+</tr>
+<tr>
+<td>不精確性</td>
+<td>TLF、TVR、ST 的 CI 不寬。MI（CI 上界 0.97）與 all-cause death（上界 0.96）接近無效值；all-cause death 與 MI 的累積人數都未達 TSA 的 RIS。<strong>MI 與死亡率降 1 級。</strong></td>
+</tr>
+<tr>
+<td>發表偏差</td>
+<td>作者稱 funnel plot 與 Egger test 都未見偏差 [文內；圖在 Supplemental，markdown 未保留]。但 25 個試驗加上高異質性，Egger 的檢定力有限。小型亞洲單中心試驗系統性地出現大效果（Bendary 0.18、Liu 0.60、Tan 0.50、CTO-IVUS 0.36），符合 small-study effect 的型態 [推論，依圖 1A 目測]。<strong>不能排除。</strong></td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>依結局的 GRADE 判讀（評讀者判定）</strong></p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>結局</th>
+<th>確定性</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Stent thrombosis</td>
+<td>中</td>
+</tr>
+<tr>
+<td>TVR、TLF</td>
+<td>中至低</td>
+</tr>
+<tr>
+<td>MI</td>
+<td>低</td>
+</tr>
+<tr>
+<td>Cardiac death、all-cause death</td>
+<td>低</td>
+</tr>
+</tbody>
+</table></div>
+<p>[參考: jug140001.md，關於系統性回顧可信度與異質性/亞群效應的判讀段落]</p>
+<p><strong>Network Meta-analysis</strong></p>
+<ul>
+<li>Network 只有 3 個節點（angiography、IVUS、OCT）。IVUS vs OCT 的直接比較只來自 3 個 OCT vs IVUS 試驗，加上 ILUMIEN III 與 iSIGHT 的三臂資料。</li>
+<li>Transitivity 疑慮：OCT 試驗偏向西方與 ACS 族群（ILUMIEN IV、OCTOBER、DOCTORS），IVUS 試驗則以亞洲為主。由於「地理」本身就是效應修飾因子，<strong>IVUS 與 OCT 的間接比較被地區混淆</strong>。</li>
+<li>Node-splitting／inconsistency 檢定與排名結果都在 Supplemental [markdown 未保留]，無法評估。「IVUS 與 OCT 相似」只能視為<strong>未經本評讀驗證的陳述</strong>。</li>
+</ul>
+<hr />
+<h3>B. 論證架構重建（第一階段——純描述）</h3>
+<p><strong>主論點</strong>：即使加入兩個中性的歐洲試驗，ICI-guided PCI 仍顯著且具臨床意義地降低所有心血管事件（包括死亡）；試驗間差異主要可由病灶與技術解釋。因此支持現行 Class I 指引，並應推廣常規使用。</p>
+<pre><code>1. 前提 A：IVUS-CHIP 與 OPTIMAL 中性，重新引發 ICI 是否有效的不確定性
+   └─ 支撐依據：ref 5, 6（NEJM 2026）；DKCRUSH VIII 正向（ref 7）
+   └─ 推論步驟：需要重新合成全部證據
+
+2. 前提 B：合併 28 個 RCT 後，6 個終點全部顯著下降
+   └─ 支撐依據：圖 1A–6A、Table 1
+   └─ 推論步驟：效益「一致」
+
+3. 前提 C：TSA 越過監測界限 → 「至少降低 20% 的確定證據」；
+          fragility index 9–50 → 「不脆弱」；Bayesian P(benefit)&gt;99% → 「確認」
+   └─ 支撐依據：圖 1B–6B、Supplemental Table 6
+   └─ 推論步驟：結果穩健，不太可能因新試驗翻轉
+
+4. 前提 D：地理異質性在多變項 meta-regression 中消失（residual tau=0）
+   └─ 支撐依據：Supplemental Table 4
+   └─ 推論步驟：異質性來自病灶與技術差異，而不是 ICI 在西方無效
+
+5. 前提 E：歐洲試驗中性是因為執行不佳（最佳化率低、MSA 目標偏低、
+          pre-PCI imaging 不足、血管較大）
+   └─ 支撐依據：IVUS-CHIP 與 OPTIMAL 原始論文的程序數據
+   └─ 推論步驟：正確執行 ICI 就會有效益
+
+6. 最終結論：支持指引；應推動訓練與標準化，讓 ICI 成為複雜 PCI 的常規
+</code></pre>
+<p><strong>敘事策略</strong>：「爭議 → 整合證據仍正向 → 多重穩健性分析加強 → 異質性已被解釋 → 歐洲中性結果是執行問題 → 擁護指引」。屬於「問題到解方」的結構，並以多種統計工具層層加強確定感。</p>
+<p><strong>作者承認的限制</strong>：見 Study Limitations 段（第 6 節已列）。作者在 Results/Discussion 多處自稱 subgroup 與 meta-regression「exploratory」、「hypothesis generating」。</p>
+<hr />
+<h3>C. 引用品質評估（第二階段——批判）</h3>
+<div class="table-wrap wide"><table>
+<thead>
+<tr>
+<th>論點</th>
+<th>引用文獻類型</th>
+<th>證據層級</th>
+<th>與論點關聯性</th>
+<th>問題</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1（爭議背景）</td>
+<td>RCT（NEJM、JACC）</td>
+<td>高</td>
+<td>直接</td>
+<td>適當。</td>
+</tr>
+<tr>
+<td>2（全部終點下降）</td>
+<td>本文 MA</td>
+<td>中</td>
+<td>直接</td>
+<td>RoB 判定過寬；疑似 cardiac/all-cause 計數重複；IVUS-ACS 未進 MI 分析。</td>
+</tr>
+<tr>
+<td>3（TSA／FI／Bayes）</td>
+<td>方法學文獻（ref 16–19, 24）</td>
+<td>方法學</td>
+<td><strong>解讀錯誤</strong></td>
+<td>TSA 越界 ≠ 效果 ≥20%（詳見 D 段推論 1）。Bayesian 的先驗分布在正文未說明；若用弱資訊先驗，結果只是重述頻率學派的 p 值，<strong>不構成獨立確認</strong>。</td>
+</tr>
+<tr>
+<td>4（異質性被解釋）</td>
+<td>本文 meta-regression</td>
+<td>低（試驗層級、探索性）</td>
+<td>間接</td>
+<td>Ecological fallacy、過度配適、共線性（作者與 editorial 皆承認）。</td>
+</tr>
+<tr>
+<td>5a（MSA 8.0 mm² 為亞洲標準）</td>
+<td>ref 50（Kang 2011，韓國 LM IVUS 觀察性研究）</td>
+<td>低至中</td>
+<td>間接</td>
+<td>用觀察性的閾值研究推論 OPTIMAL 的負向結果，屬事後推論。</td>
+</tr>
+<tr>
+<td>5b（西方人血管較大）</td>
+<td>ref 51, 52（IVUS／解剖比較研究）</td>
+<td>中</td>
+<td>間接（類推）</td>
+<td>解剖差異成立，但「因此 OPTIMAL 最佳化不足 → 導致中性」是未經驗證的因果鏈。</td>
+</tr>
+<tr>
+<td>5c（pre-PCI imaging 重要）</td>
+<td>ref 53（專家綜述）、ref 54（IPD MA）</td>
+<td>專家意見／中</td>
+<td>間接</td>
+<td>作者自己承認 ref 54 不支持 pre-PCI IVUS 的效益，論點自我抵銷。</td>
+</tr>
+<tr>
+<td>5d（小血管預後差）</td>
+<td>ref 55（1999 年 BMS 時代）</td>
+<td>低（年代久遠）</td>
+<td>類推</td>
+<td>用 BMS 時代數據推論 DES 時代的影像效益差異。</td>
+</tr>
+<tr>
+<td>背景：ICI 使用率 35%（2023）</td>
+<td>ref 43</td>
+<td>—</td>
+<td><strong>引用錯誤</strong></td>
+<td>ref 43 是 AIR-CTO 試驗（2015），不是使用率資料；應為 ref 48（Medina 2026）。</td>
+</tr>
+<tr>
+<td>背景：RCT 數據「推升」使用率</td>
+<td>ref 2, 3</td>
+<td>—</td>
+<td>不符</td>
+<td>ref 2 是 ESC 指引，不是 RCT 證據。</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>引用品質紅旗</strong></p>
+<ul>
+<li><strong>大量引用作者群自己的研究</strong>：ILUMIEN III/IV、OCTOBER、2024 <em>Lancet</em> NMA、ref 53 的作者都在本文作者群內。前一版 NMA（ref 4）由 Stone 等主筆，本文等於同一群人更新自己的結論。</li>
+<li><strong>忽略反面數據</strong>：
+<ul>
+<li>引用 IVUS-CHIP 的 stent thrombosis 改善，卻沒提 OPTIMAL 的 stent thrombosis 反向（8 vs 3）。</li>
+<li>沒討論 IVUS-CHIP 與 OPTIMAL 的 cardiac death 都偏向 ICI 較差。</li>
+</ul>
+</li>
+<li><strong>以觀察性研究或年代久遠的數據推論試驗中性的原因</strong>（ref 50, 55）。</li>
+</ul>
+<hr />
+<h3>D. 過度推論分析</h3>
+<p><strong>推論 1：「TSA confirmed evidence for at least a 20% reduction in all outcomes」（Abstract、Conclusions）——嚴重</strong></p>
+<ul>
+<li><strong>原始方法實際代表什麼</strong>：TSA 假設 RRR 20% 來計算 RIS 與 α-spending 的監測界限。Z-curve 越過監測界限，表示<strong>在控制重複檢定後可以拒絕虛無假設（RR=1）</strong>。它並不檢定「RR ≤0.80」。</li>
+<li><strong>作者結論</strong>：所有終點都有「至少 20% 降低」的確定證據。</li>
+<li><strong>跳躍點</strong>：把「拒絕無效果」誤讀成「確認效果 ≥ 假設值」。本文數據直接反駁了這個說法：
+<ul>
+<li>MI 的 RR 0.86（0.75–0.97），點估計只降 14%，CI 上界 0.97。</li>
+<li>All-cause death 的 RR 0.82（0.70–0.96），CI 上界 0.96。</li>
+<li>依圖 6B 與 3B，這兩個終點的累積人數都<strong>未達 RIS</strong>，Z-curve 只是勉強越過監測界限，而且最近的試驗加入後呈下降趨勢。</li>
+</ul>
+</li>
+<li><strong>嚴重度</strong>：嚴重。引用內容不支持該結論，且這句寫在 Abstract，最容易被讀者與指引引用。</li>
+</ul>
+<p><strong>推論 2：「Trial differences in geography and lesion characteristics explained most of the between-trial variance（residual tau=0）」——中度至嚴重</strong></p>
+<ul>
+<li><strong>原始分析說了什麼</strong>：約 25 個試驗、5 個共變項的多變項 meta-regression（model P=0.041）。加入其他共變項後，地理的 P 值變得不顯著（TLF P=0.19、TVR P=0.15、cardiac death P=0.93）。</li>
+<li><strong>作者結論</strong>：異質性「in large part」由病灶特徵與技術差異解釋。</li>
+<li><strong>跳躍點</strong>：
+<ul>
+<li>共變項與地理高度共線時，加入它們使地理的 P 值變大，是<strong>檢定力下降與共線性的預期結果</strong>，不代表「已解釋」。</li>
+<li>在 DL 估計、k≈25 的情況下，residual τ²=0 很容易出現，並不等於異質性真的不存在。</li>
+<li>試驗層級的平均 stent 長度與直徑，不能推論到病人層級的效應修飾（ecological fallacy）。</li>
+<li>Cardiac death 的多變項模型中「沒有任何共變項」顯著，卻在 Abstract 一併宣稱「explained」。</li>
+</ul>
+</li>
+<li><strong>嚴重度</strong>：中度至嚴重。作者在正文與限制段承認是 exploratory，但 Abstract 與結論仍寫成解釋性結論。</li>
+</ul>
+<p><strong>推論 3：「positive effects on these outcomes … extends to trials performed in Europe」（Discussion）——嚴重</strong></p>
+<ul>
+<li><strong>原始數據</strong>：非亞洲試驗的 cardiac death RR 1.02（0.77–1.35），P_int &lt;0.001；TLF 0.95；TVR 0.97；Bayesian P(benefit) 在 TLF 只有約 70%。</li>
+<li><strong>作者結論</strong>：因為 MI、ST、死亡的「整體」I² 很低，所以效益可延伸到歐洲。</li>
+<li><strong>跳躍點</strong>：用整體 I² 很低來否定作者自己做的亞群分析，而亞群分析明確顯示非亞洲試驗的 cardiac death 沒有效益。I² 低只代表 Q 統計量不顯著，不能證明各地區效果一致。這裡同時犯了兩個錯：把「沒有偵測到異質性」當成「同質」，以及<strong>選擇性採用支持性的指標</strong>。</li>
+<li><strong>嚴重度</strong>：嚴重。這是文內數據直接相互矛盾的情況。</li>
+</ul>
+<p><strong>推論 4：「fragility index 9–50 indicating robustness」——輕微至中度</strong></p>
+<ul>
+<li><strong>原始方法</strong>：以 FI &lt;5 為「脆弱」的閾值，這個閾值是作者自訂的。</li>
+<li><strong>跳躍點</strong>：MI 的 FI=9 與 cardiac death 的 FI=10，分母約 18,000–21,000 人。只要改變不到 0.05% 病人的結局，顯著性就會消失。這在大型合成中其實偏脆弱（editorial 同樣指出）。</li>
+<li><strong>嚴重度</strong>：輕微至中度。</li>
+</ul>
+<p><strong>推論 5：「plausible that reductions in ST, MI and restenosis may improve survival」（Limitations）——中度</strong></p>
+<ul>
+<li><strong>原始數據</strong>：Cardiac death 的 ARD 約 0.5%，與 stent thrombosis 的 ARD 約 0.5% 幾乎相等 [自行計算]。若死亡效益要完全由預防 stent thrombosis 解釋，需要幾乎每一例 stent thrombosis 都致命，生物學上不合理 [推論]。</li>
+<li><strong>另一個不一致</strong>：IVUS-CHIP 的 stent thrombosis 下降，死亡卻沒有下降；OPTIMAL 的 stent thrombosis 與死亡都偏向 ICI 較差。</li>
+<li><strong>嚴重度</strong>：中度。</li>
+</ul>
+<p><strong>推論 6：「ICI 應成為複雜 CAD 的常規標準」（Perspectives）——中度</strong></p>
+<ul>
+<li><strong>跳躍點</strong>：本文唯二專門收錄西方複雜病灶族群的大型試驗（IVUS-CHIP、OPTIMAL）都是中性。用「以亞洲為主的平均效果」支持「西方複雜病灶的常規使用」，屬於外推。Editorial 也明確反對把結果轉成一體適用的強制規定。</li>
+</ul>
+<hr />
+<h3>E. 論證結構完整性評估</h3>
+<p><strong>隱含假設（hidden assumptions）</strong></p>
+<ol>
+<li>各試驗的對照組代表同一種「angiography-guided PCI」，但實際上隨年代與地區差異很大。</li>
+<li>正向亞洲試驗的品質與西方大型 NEJM 試驗相當（RoB 全部判為低風險）。</li>
+<li>IVUS 與 OCT 可以視為同一種介入。</li>
+<li>「執行不佳」只發生在中性試驗。正向試驗的對照組是否表現特別差，作者沒有檢視。作者自己提出「亞洲 angiography-only 熟練度下降」的假說後，就用 stent 長度一筆數據否定了它，沒有進一步分析對照組的事件率。</li>
+</ol>
+<p><strong>邏輯斷層</strong></p>
+<ul>
+<li>作者在多處自稱「exploratory」，Abstract 與 Conclusions 卻使用「explained in large part」、「firm evidence」等確定性語言。</li>
+<li>文內也沒有說明追蹤時間點如何選擇：同一試驗用最長追蹤（IVUS-XPL 5 年）與用 1 年，RR 可能不同；混合 1–5 年追蹤並以 RR 合併，也未處理時間依賴的效果。</li>
+</ul>
+<p><strong>替代解釋</strong>（作者未充分討論、但文內線索支持）</p>
+<ol>
+<li><strong>對照組表現差異（control-arm performance）</strong>：亞洲試驗的效益可能部分來自 angiography-only 組表現較差，而不是影像組特別好。[推論] 在 ICI 使用率很高的地區，對照組的操作熟練度、判讀習慣與選擇 stent 尺寸的經驗可能較少。對照組 stent 較長（43.5 vs 39.9 mm）可能代表的是對照組「覆蓋過度或判斷不準」。這需要比較各地區對照組的 crude 事件率，但作者沒有提供。</li>
+<li><strong>小型試驗效應／試驗品質差異</strong>：圖 1A 與圖 4A 中，TLF 與 TVR 的大效果集中在小型單中心亞洲試驗（Bendary、Liu、Tan、CTO-IVUS），而大型多中心試驗的效果較溫和或中性（ILUMIEN IV 0.90、GUIDE DES 1.00、IVUS-CHIP 1.22、OPTIMAL 1.13）。[推論] 試驗規模、品質與「地理」高度共線；所謂的地理效應，可能部分是<strong>試驗品質效應</strong>，也可能有 small-study bias。依試驗規模或 RoB 分層的敏感度分析沒有在正文報告。</li>
+<li><strong>時間趨勢與開放標示偏差的交互作用</strong>：TSA 圖顯示每個終點的累積 Z 值在最新的大型、方法嚴謹試驗加入後都下降。[推論] 這符合「早期與小型試驗高估效果，較晚的大型試驗回歸較小真實效果」的累積統合分析常見型態。以 2020 年為切點的「年代亞群」（P_int 0.43）切點太早，沒有涵蓋 2024–2026 的變化，不足以排除這個趨勢。</li>
+</ol>
+<hr />
+<h3>F. 最終裁決</h3>
+<ul>
+<li><strong>論證結構完整性</strong>：<strong>中</strong>。數據合成本身紮實；但結論層的論證（TSA 誤讀、「異質性已解釋」、「效益延伸至歐洲」）與文內數據不一致。</li>
+<li><strong>引用品質</strong>：<strong>部分適當</strong>。主要試驗引用正確，但有自我引用集中、選擇性引用反面數據（OPTIMAL 的 stent thrombosis）、引用錯誤（ref 43），以及用觀察性或舊資料支持因果解釋。</li>
+<li><strong>過度推論嚴重程度</strong>：<strong>中度至嚴重</strong>。Abstract 層級的 TSA 宣稱，以及「效益延伸至歐洲」的說法，屬於嚴重過度推論。</li>
+<li><strong>可採用的情境</strong>：
+<ul>
+<li>作為「ICI 降低 stent thrombosis 與再次血流重建」的整合證據，特別是複雜病灶與亞洲族群（含台灣）。</li>
+<li>作為支持現行指引「複雜 PCI 優先使用 ICI」方向的佐證。</li>
+</ul>
+</li>
+<li><strong>不建議直接引用的情境</strong>：
+<ul>
+<li>引用「ICI 降低全死因死亡 18%」或「所有終點至少降低 20%」。</li>
+<li>用本文主張 ICI 在西方 left main 或極複雜病灶族群「已證實有效」。</li>
+<li>用本文證明 IVUS 與 OCT 等效。</li>
+</ul>
+</li>
+<li><strong>若要改觀，最需要</strong>：
+<ol>
+<li><strong>IPD meta-analysis</strong>：以病人層級的病灶特徵、影像最佳化達成率與對照組程序細節，檢驗真正的效應修飾因子與中介路徑。</li>
+<li><strong>預註冊（PROSPERO）的分析計畫</strong>：加上 Hartung-Knapp 或 REML 等穩健異質性方法、報告 prediction interval，並依試驗規模與 RoB 分層做敏感度分析；同時回查並修正 cardiac/all-cause death 計數與 IVUS-ACS 的 MI 數據。</li>
+<li><strong>西方族群的新一代 RCT</strong>：以「影像引導並強制達到最佳化標準」（pre-PCI imaging、MSA 與 edge 目標）對照 angiography，直接檢驗作者「是執行問題」的假說。</li>
+</ol>
+</li>
+<li><strong>一句話結論</strong>：影像導引 PCI 能減少支架血栓與再次介入，但「降低死亡」與「各地都有效」的說法，證據還不夠扎實。</li>
+</ul>
+<hr />
+<p><strong>參考來源</strong></p>
+<ul>
+<li><a href="https://doi.org/10.1016/j.jacc.2026.08.040">Tanboga IH, Kaul S. Evaluating Intracoronary Imaging-Guided PCI（JACC editorial, DOI 10.1016/j.jacc.2026.08.040）</a></li>
+<li><a href="https://www.sciencedirect.com/science/article/abs/pii/S0735109726073778">ScienceDirect：本文書目頁</a></li>
+<li><a href="https://www.acc.org/latest-in-cardiology/articles/2026/06/17/17/26/just-announced">ACC：2025 Journal Impact Factor Scores Announced</a></li>
+<li><a href="https://www.healio.com/news/cardiology/20200707/revascularization-fails-to-improve-survival-in-stable-ischemic-heart-disease">Healio：Revascularization fails to improve survival in stable ischemic heart disease（Bangalore 2020 meta-analysis 報導）</a></li>
+<li><a href="https://cardiovascularbusiness.com/topics/clinical/interventional-cardiology/intravascular-imaging-consistently-improves-pci-outcomes-new-meta-analysis-confirms">Cardiovascular Business：本文新聞報導</a></li>
+</ul>
+
+<footer class="appraisal-meta">評讀資訊：模型：claude-opus-5-5 (claude)  ·  route：sr  ·  產出時間：2026-11-22 08:56 CST</footer>
+</main>
+</body>
+</html>
