@@ -1,0 +1,905 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Aspirin Omission at the Time of Primary Percutaneous Coronary Intervention in STEMI.</title>
+<style>
+  :root {
+    --bg: #fafafa;
+    --card: #ffffff;
+    --text: #1a1a1a;
+    --muted: #6b6b6b;
+    --border: #e5e5e5;
+    --accent: #0b5fff;
+  }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang TC",
+      "Microsoft JhengHei", sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    margin: 0;
+    padding: 24px 16px 64px;
+    line-height: 1.72;
+  }
+  main {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    margin: 0 auto;
+    max-width: 840px;
+    padding: 22px 26px;
+  }
+  nav {
+    margin: 0 auto 14px;
+    max-width: 840px;
+    color: var(--muted);
+    font-size: 14px;
+  }
+  a { color: var(--accent); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  h1, h2, h3, h4 { line-height: 1.35; }
+  h1 { font-size: 26px; margin-top: 0; }
+  h2 { border-top: 1px solid var(--border); padding-top: 18px; }
+  code {
+    background: rgba(127, 127, 127, 0.12);
+    border-radius: 4px;
+    padding: 1px 4px;
+  }
+  .table-wrap {
+    margin: 1em 0;
+    overflow-x: auto;
+  }
+  .table-wrap.wide {
+    /* Break out of the 840px prose column, centred on the viewport. */
+    width: min(1040px, calc(100vw - 32px));
+    margin-left: calc(50% - min(520px, 50vw - 16px));
+  }
+  table {
+    border-collapse: collapse;
+    table-layout: auto;
+    width: 100%;
+  }
+  .table-wrap.wide {
+    /* Opaque so the <main> card border does not show through the table. */
+    background: var(--card);
+  }
+  /* Width hints go on <th> as percentages: Chrome's auto table layout
+     mis-sizes columns (and overflows) when cells carry min-width. */
+  .table-wrap.wide th:first-child {
+    /* Variable + plain-language definition, e.g. "NCPV (noncalcified ...)". */
+    width: 26%;
+  }
+  .table-wrap.wide th:last-child {
+    /* Last column is usually a one-line interpretation. */
+    width: 20%;
+  }
+  th, td {
+    border: 1px solid var(--border);
+    /* Wrap only at spaces: never split an English word mid-letter. */
+    overflow-wrap: normal;
+    word-break: normal;
+    hyphens: manual;
+    padding: 6px 8px;
+    text-align: left;
+    vertical-align: top;
+  }
+  blockquote {
+    border-left: 3px solid var(--accent);
+    color: var(--muted);
+    margin-left: 0;
+    padding-left: 14px;
+  }
+  .appraisal-meta {
+    border-top: 1px solid var(--border);
+    margin-top: 28px;
+    padding-top: 14px;
+    color: var(--muted);
+    font-size: 13px;
+  }
+  @media (max-width: 600px) {
+    body {
+      padding: 12px 8px 40px;
+    }
+    main {
+      padding: 16px 12px;
+    }
+    h1 {
+      font-size: 22px;
+    }
+    table {
+      font-size: 12px;
+    }
+    .table-wrap.wide {
+      width: calc(100vw - 16px);
+      margin-left: calc(50% - 50vw + 8px);
+    }
+    th, td {
+      padding: 4px 5px;
+    }
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #1a1a1a;
+      --card: #242424;
+      --text: #e8e8e8;
+      --muted: #999;
+      --border: #333;
+      --accent: #6ea8ff;
+    }
+  }
+</style>
+</head>
+<body>
+<nav><a href="../../2026-W48.html">← 回到 2026-W48 週報</a></nav>
+<main>
+<h1>Aspirin Omission at the Time of Primary Percutaneous Coronary Intervention in STEMI.</h1>
+<h1>PREMIUM 試驗批判性評讀：STEMI 在 primary PCI 時就省略 aspirin、只給低劑量 prasugrel 單一抗血小板治療</h1>
+<hr />
+<h2>SECTION-0：文章全面描述</h2>
+<h3>0. 文章基本資料</h3>
+<ul>
+<li><strong>標題</strong>：Aspirin Omission at the Time of Primary Percutaneous Coronary Intervention in STEMI（PREMIUM trial）</li>
+<li><strong>期刊／年份</strong>：N Engl J Med 2026;395:1993–2003（2026/8/29 線上發表，2026/11/19 刊出更新版）[文內 p.1993]</li>
+<li><strong>DOI</strong>：10.1056/NEJMoa2606997；PMID 42670955；NCT05709626、jRCTs052220145</li>
+<li><strong>文章類型</strong>：多中心、開放標籤（open-label）、隨機分派的<strong>非劣性試驗</strong>（noninferiority RCT），走 SKILL-A 主流程，加上 A1 的非劣性子模組。</li>
+<li><strong>實際判讀材料</strong>：PDF 轉出的 markdown、7 張正文頁面 PNG、Supplementary Appendix 文字與 7 張圖頁、Protocol／SAP 文字檔（v1 與 v10 已按關鍵字查核）。</li>
+</ul>
+<h3>1. 作者團隊</h3>
+<ul>
+<li><strong>通訊作者</strong>：Gaku Nakazawa，近畿大學醫學部循環器內科 [文內]。依 PubMed，他早年在 CVPath Institute 和 Renu Virmani 一起做 DES 血管病理與支架血栓機轉研究，例如 Herz 2007（<a href="https://doi.org/10.1007/s00059-007-2997-9">DOI</a>）、Circulation 2007（<a href="https://doi.org/10.1161/CIRCULATIONAHA.106.675934">DOI</a>）、J Cardiol 2011（<a href="https://doi.org/10.1016/j.jjcc.2011.07.004">DOI</a>）[外部: PubMed]。</li>
+<li><strong>團隊與既往研究</strong>：Nakazawa、Suwa、Wakabayashi、Onishi、Kusuyama 都是 <strong>STOPDAPT-3</strong> 的共同作者。STOPDAPT-3 是日本 aspirin-free 策略的主要前導試驗，結果顯示省略 aspirin 時亞急性支架血栓與非計畫血管再通訊號增加（Circulation 2024，<a href="https://doi.org/10.1161/CIRCULATIONAHA.123.066720">DOI</a>；EHJ 2024 1 年追蹤，<a href="https://doi.org/10.1093/eurheartj/ehae617">DOI</a>）[外部: PubMed]。本試驗的 Supervisor 之一是 STOPDAPT 系列的核心人物 Takeshi Kimura [Supplement p.4]。
+<ul>
+<li>這個團隊是日本「縮短或省略 DAPT」研究網絡的核心成員，不是外行人首次跨入此領域。</li>
+</ul>
+</li>
+<li><strong>分工</strong> [Supplement p.4]：
+<ul>
+<li>統計：Kosuke Kashiwabara（東大醫院 Data Science Office）</li>
+<li>血管攝影 core lab：Hiromasa Otake（神戶大學）</li>
+<li>DSMB 3 人、CEC 3 人，均為日本學者</li>
+</ul>
+</li>
+<li><strong>作者立場</strong>：團隊在 STOPDAPT-3 已看到支架血栓訊號，仍設計 PREMIUM 繼續驗證「從頭不給 aspirin」[推論]。本試驗結果是陰性，不太會有「為了支持既有立場而美化結果」的問題；反而是作者在討論段大量用機轉解釋 MI 增加，可能帶有病理學背景的詮釋偏好 [推論]。</li>
+<li><strong>資金與利益揭露</strong>：
+<ul>
+<li>Boston Scientific Japan 提供 unrestricted research grant，文內聲明廠商不參與設計、資料、分析與撰稿 [文內 p.1994、Supplement p.5]。</li>
+<li>Protocol 限定只能使用 Synergy 支架，也就是贊助商自家產品 [文內 p.1995]。</li>
+<li>[評估] 抗血小板策略試驗由支架廠商出資、又綁定自家支架，商業動機可能是「證明自家支架搭配簡化抗血小板治療也安全」。不過本試驗是陰性結果，這層利益衝突對結論方向的影響有限。</li>
+<li>個別作者的 disclosure form 不在 markdown 內 [無法取得]。</li>
+</ul>
+</li>
+</ul>
+<h3>2. 文獻 metadata</h3>
+<ul>
+<li><strong>Received／Accepted date</strong>：文內未提供（NEJM 正文通常不印）[無法取得]。</li>
+<li><strong>時間線</strong>：Registry 記載 primary completion 為 2026-02-12、study completion 為 2026-04-27 [外部: ClinicalTrials.gov]；線上發表在 2026-08-29，與 ESC Congress 2026 同步 [外部: ESC/ACC 新聞]。從資料完成到出版約 4–6 個月，屬於 ESC Hot Line 常見的快速審查路徑 [推論]。</li>
+<li><strong>期刊指標</strong>：多個二手來源列出 NEJM 2025 JIF 為 84.5，但數字不一致，需以 Clarivate JCR 為準 [外部: Ovid／Manusights 列表]；屬於 Q1 綜合醫學期刊；NEJM 平均審查天數 [無法取得]。</li>
+<li><strong>投稿類型</strong>：一般原著投稿，非邀稿。</li>
+<li><strong>設計論文的時間點</strong>：設計論文在 2025/12 才線上發表，當時收案已經結束（Cardiovasc Revasc Med，<a href="https://doi.org/10.1016/j.carrev.2025.12.007">DOI</a>）[外部: PubMed]。正文引用它（ref 14）作為「先前已發表的設計」，事實上它不是收案前公開的設計文件。</li>
+</ul>
+<h3>3. 研究背景（僅根據文內）</h3>
+<ul>
+<li><strong>已知證據</strong>：
+<ul>
+<li>先給 1–3 個月 DAPT、再轉 P2Y12 inhibitor 單一治療，可以減少出血，而缺血事件沒有明顯增加（ref 7–11）。</li>
+<li>STEMI 的缺血與出血事件都集中在 PCI 後早期。</li>
+<li>STOPDAPT-3 雖然從 PCI 前就省略 aspirin，但對照組在 1 個月後改為 aspirin 單用，不是標準的 12 個月 DAPT [文內 p.1994]。</li>
+</ul>
+</li>
+<li><strong>知識缺口</strong>：目前沒有隨機試驗把「從一開始就不給 aspirin」直接拿來和標準 12 個月 DAPT 比較，尤其在 STEMI 族群。</li>
+<li><strong>研究問題</strong>：STEMI 病人在 primary PCI 前隨機分派，只給低劑量 prasugrel 單一治療，相較於 12 個月 DAPT，12 個月的死亡／中風／MI 是否不劣於 DAPT，同時能否減少 BARC 3/5 出血。</li>
+</ul>
+<h3>4. 研究設計與方法</h3>
+<ul>
+<li><strong>PICO</strong>：
+<ul>
+<li><strong>P</strong>：症狀 12 小時內就醫、預計接受 primary PCI 並放置 Synergy 支架、可接受 12 個月 DAPT 的 STEMI 成人。排除：使用口服抗凝血劑、餘命 &lt;1 年、正參與其他介入性試驗 [Supplement Table S1]。</li>
+<li><strong>I</strong>：PCI 前給 prasugrel 20 mg loading dose，之後 3.75 mg/天，持續 12 個月，不給 aspirin。</li>
+<li><strong>C</strong>：aspirin loading dose 162–200 mg 加 prasugrel 20 mg，之後 aspirin 81–100 mg 加 prasugrel 3.75 mg，持續 12 個月。<strong>ARC-HBR 病人依 protocol 在 3 個月停用 aspirin</strong> [文內 p.1995]。</li>
+<li><strong>O</strong>：
+<ul>
+<li>主要終點：12 個月全死因死亡、中風或 MI 的複合終點，以非劣性檢定（HR 上限 1.50）。</li>
+<li>主要次要終點：BARC 3/5 出血，採階層式檢定（hierarchical testing），只有主要終點達成非劣性才正式檢定優效性。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><strong>設計細節</strong>：
+<ul>
+<li>69 家日本醫院，收案期間 2023/4–2024/12。</li>
+<li>隨機化在 PCI 前完成，從到院至隨機化中位數 43.3 分鐘；使用中央網路隨機最小化法（minimization），<strong>只以醫院作為平衡因子</strong>；開放標籤。</li>
+<li>事件由盲性 CEC 判定。</li>
+<li>多支血管疾病允許在 90 天內做 staged PCI，期間維持原分派方案。</li>
+</ul>
+</li>
+<li><strong>統計方法</strong>：
+<ul>
+<li>主要分析族群為 FAS（隨機化後至少服用一劑試驗藥物），以 Cox 模型分析，無多重比較校正，缺失值不補值。</li>
+<li>原本的 α 為單尾 0.05；<strong>資料庫鎖定前改為單尾 0.025</strong>（等同雙尾 95% CI）[文內 p.1996]。</li>
+</ul>
+</li>
+<li><strong>樣本數</strong>：假設兩組事件率都是 7%、HR 上限 1.5（protocol 換算為絕對差 3.5%），每組 1,075 人可達 80% power，再加 5% 流失，總數 2,258 人 [Protocol v1 p.19–20]。</li>
+<li><strong>主要變項定義</strong> [Supplement Table S2]：
+<ul>
+<li>MI 依 ARC-2 分為 periprocedural 與 spontaneous。index PCI 不計算 periprocedural MI。</li>
+<li>Periprocedural MI 有兩種成立方式：troponin ≥35×URL 加上缺血證據；<strong>或者 troponin ≥70×URL，不需要任何附帶條件</strong>。Supplement 自己也承認，後者在 ARC-2 中屬於「significant myocardial injury」，不是 MI。</li>
+<li>Clinically driven revascularization 的定義包含「只要在院方判讀狹窄 ≥70%，即使沒有任何缺血證據」也算。</li>
+</ul>
+</li>
+</ul>
+<h3>5. 研究結果重點整理</h3>
+<div class="table-wrap wide"><table>
+<thead>
+<tr>
+<th>變項（代表什麼）</th>
+<th style="text-align:right">單一治療組（n=1109）</th>
+<th style="text-align:right">DAPT 組（n=1107）</th>
+<th style="text-align:right">組間差（95% CI）</th>
+<th style="text-align:right">p 值</th>
+<th>如何解讀</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Aspirin loading 執行率</strong></td>
+<td style="text-align:right"><strong>2.1%</strong></td>
+<td style="text-align:right"><strong>95.7%</strong></td>
+<td style="text-align:right">—</td>
+<td style="text-align:right">未報告</td>
+<td>組間對比有確實建立；單一治療組有 23 人被誤給 aspirin</td>
+</tr>
+<tr>
+<td><strong>12 個月 aspirin 使用率</strong></td>
+<td style="text-align:right"><strong>7.7%</strong></td>
+<td style="text-align:right"><strong>56.5%</strong></td>
+<td style="text-align:right">—</td>
+<td style="text-align:right">未報告</td>
+<td>對照組到了後期已接近「混合策略」，不是純粹的 12 個月 DAPT [Supp Table S6]</td>
+</tr>
+<tr>
+<td><strong>主要終點</strong>：死亡、中風或 MI 的複合終點</td>
+<td style="text-align:right">124 例（<strong>11.0%</strong>）</td>
+<td style="text-align:right">94 例（<strong>8.5%</strong>）</td>
+<td style="text-align:right">HR <strong>1.34（1.02–1.75）</strong></td>
+<td style="text-align:right">非劣性 P=0.40</td>
+<td>CI 上限超過 1.50，非劣性不成立；CI 整段 &gt;1，方向是有害</td>
+</tr>
+<tr>
+<td>全死因死亡</td>
+<td style="text-align:right">6.6%</td>
+<td style="text-align:right">6.3%</td>
+<td style="text-align:right">HR 1.08（0.78–1.49）</td>
+<td style="text-align:right">未報告</td>
+<td>沒有明確組間差異，CI 很寬</td>
+</tr>
+<tr>
+<td>中風</td>
+<td style="text-align:right">2.5%</td>
+<td style="text-align:right">1.9%</td>
+<td style="text-align:right">HR 1.34（0.76–2.36）</td>
+<td style="text-align:right">未報告</td>
+<td>事件數少，無法判斷</td>
+</tr>
+<tr>
+<td><strong>MI</strong>（心肌梗塞，含 periprocedural 與 spontaneous）</td>
+<td style="text-align:right"><strong>2.9%</strong></td>
+<td style="text-align:right"><strong>1.3%</strong></td>
+<td style="text-align:right">HR <strong>2.24（1.19–4.21）</strong></td>
+<td style="text-align:right">未報告</td>
+<td>主要終點的超額事件大多來自 MI，絕對差 +1.6% [自行計算]</td>
+</tr>
+<tr>
+<td><strong>Periprocedural MI</strong>：主要發生在 staged PCI 時，含 troponin ≥70×URL 的單純心肌損傷</td>
+<td style="text-align:right">9 例（0.8%）</td>
+<td style="text-align:right">2 例（0.2%）</td>
+<td style="text-align:right">HR 4.52（0.98–20.91）</td>
+<td style="text-align:right">未報告</td>
+<td>事件數極少，定義偏寬</td>
+</tr>
+<tr>
+<td>Spontaneous MI</td>
+<td style="text-align:right">2.1%</td>
+<td style="text-align:right">1.2%</td>
+<td style="text-align:right">HR 1.71（0.86–3.39）</td>
+<td style="text-align:right">未報告</td>
+<td>方向一致，但不精確</td>
+</tr>
+<tr>
+<td><strong>ST</strong>（支架血栓，definite 或 probable）</td>
+<td style="text-align:right">1.4%</td>
+<td style="text-align:right">1.5%</td>
+<td style="text-align:right">HR 0.94（0.46–1.89）</td>
+<td style="text-align:right">未報告</td>
+<td>沒有明確差異，和 STOPDAPT-3 的訊號不同</td>
+</tr>
+<tr>
+<td><strong>BARC 3/5 出血</strong>（主要次要終點）</td>
+<td style="text-align:right">61 例（<strong>5.6%</strong>）</td>
+<td style="text-align:right">92 例（<strong>8.4%</strong>）</td>
+<td style="text-align:right">HR <strong>0.66（0.47–0.91）</strong></td>
+<td style="text-align:right">依階層設計未正式檢定</td>
+<td>絕對差 −2.8% [自行計算]，只能視為探索性結果</td>
+</tr>
+<tr>
+<td>BARC 2/3/5 出血</td>
+<td style="text-align:right">6.8%</td>
+<td style="text-align:right">9.8%</td>
+<td style="text-align:right">HR 0.68（0.51–0.92）</td>
+<td style="text-align:right">未報告</td>
+<td>方向一致</td>
+</tr>
+<tr>
+<td>腸胃道出血（BARC 3/5）</td>
+<td style="text-align:right">0.9%</td>
+<td style="text-align:right">2.0%</td>
+<td style="text-align:right">HR 0.48（0.22–1.01）</td>
+<td style="text-align:right">未報告</td>
+<td>出血差異的主要來源之一 [Supp Table S7]</td>
+</tr>
+<tr>
+<td>「其他」出血：外傷、肌肉內、來源不明</td>
+<td style="text-align:right">2 例</td>
+<td style="text-align:right">15 例</td>
+<td style="text-align:right">HR 0.13（0.03–0.58）</td>
+<td style="text-align:right">未報告</td>
+<td>31 例出血差距中約有 13 例來自這個雜項類別 [自行計算]</td>
+</tr>
+<tr>
+<td>任何冠狀動脈再通術</td>
+<td style="text-align:right">6.8%</td>
+<td style="text-align:right">4.6%</td>
+<td style="text-align:right">HR 1.46（1.02–2.09）</td>
+<td style="text-align:right">未報告</td>
+<td>單一治療組較多</td>
+</tr>
+<tr>
+<td><strong>Non-TLR</strong>：非目標病灶再通術</td>
+<td style="text-align:right">4.9%</td>
+<td style="text-align:right">2.9%</td>
+<td style="text-align:right">HR 1.62（1.04–2.52）</td>
+<td style="text-align:right">未報告</td>
+<td>TLR 兩組相同（2.1% vs 2.1%），差異只在非目標病灶</td>
+</tr>
+<tr>
+<td>主要終點 0–30 天（landmark）</td>
+<td style="text-align:right"><strong>5.9%</strong></td>
+<td style="text-align:right"><strong>4.3%</strong></td>
+<td style="text-align:right">未報告</td>
+<td style="text-align:right">未報告</td>
+<td>早期差距 1.6% [Supp Fig S2A]</td>
+</tr>
+<tr>
+<td>主要終點 30–360 天（landmark）</td>
+<td style="text-align:right"><strong>5.5%</strong></td>
+<td style="text-align:right"><strong>4.5%</strong></td>
+<td style="text-align:right">未報告</td>
+<td style="text-align:right">未報告</td>
+<td>30 天後仍持續拉開約 1.0%</td>
+</tr>
+<tr>
+<td>主要終點（per-protocol 族群，952 vs 812 人）</td>
+<td style="text-align:right">8.7%</td>
+<td style="text-align:right">6.2%</td>
+<td style="text-align:right">HR 1.45（1.02–2.06）</td>
+<td style="text-align:right">未報告</td>
+<td>和 ITT 方向一致 [Supp Table S8]</td>
+</tr>
+</tbody>
+</table></div>
+<ul>
+<li><strong>FAS 不是完整 ITT</strong>：實際隨機化 2,268 人，有 44 人撤回同意並要求刪除資料、8 人未服藥，因此 FAS 只有 2,216 人（2.3% 未納入分析）[Fig 1]。</li>
+<li><strong>安全性</strong>：SAE 為 17.2% vs 16.5%。但 Table S10 註明 <strong>SAE 並非前瞻性收集</strong>，是事後從已判定的臨床終點中挑出來的。摘要說「SAE 看起來相近」，證據力很弱。</li>
+<li><strong>Per-protocol 與 safety set 有明顯矛盾</strong>：
+<ul>
+<li>ST 在 FAS 是 15 vs 16，在 safety set 卻是 9 vs 19、PP 是 3 vs 12（HR 0.21）。</li>
+<li>TLR 在 PP 是 0.8% vs 2.2%（HR 0.35）。</li>
+<li>作者說兩種敏感度分析「generally consistent」，但這些數字和 FAS 方向相反（詳見 C4）。</li>
+</ul>
+</li>
+<li><strong>追蹤完整度</strong>：失聯 48 人（2.2%），12 個月追蹤率 97.8%。</li>
+</ul>
+<h3>6. 作者的討論</h3>
+<ul>
+<li><strong>作者主要訊息</strong>：
+<ul>
+<li>從頭省略 aspirin 不能達成非劣性。</li>
+<li>STEMI 早期仍需要 aspirin 加 P2Y12 inhibitor 的雙重保護。</li>
+<li>出血減少「看起來」存在。</li>
+</ul>
+</li>
+<li><strong>與既有文獻的比較</strong>：
+<ul>
+<li>和 NEO-MINDSET 一致：兩個試驗都看到 MI 增加。</li>
+<li>和 STOPDAPT-3 不同：本試驗沒有支架血栓訊號，作者歸因於 IVUS 普及（98.6%）與新世代 DES。</li>
+</ul>
+</li>
+<li><strong>作者自述的限制</strong> [文內 p.2002]：開放標籤、日本族群與低劑量 prasugrel、BARC 2 可能低估、各別終點的 power 不足。</li>
+<li><strong>[評估] 作者沒有討論的限制</strong>：
+<ol>
+<li>對照組有 27.6% 在 3 個月停用 aspirin，12 個月時只剩 56.5% 還在服 aspirin，比較對象已經不是純粹的「12 個月 DAPT」。</li>
+<li>Periprocedural MI 的定義包含單純心肌損傷。</li>
+<li>Non-TLR 是開放標籤下、由醫院自行判斷的軟性終點。</li>
+<li>SAE 是事後整理出來的。</li>
+<li>PP／safety set 中 ST 與 TLR 的方向逆轉。</li>
+<li>Subgroup 是在收案結束後才加入 protocol。</li>
+</ol>
+</li>
+<li><strong>[評估] 機轉解釋超出資料能支持的範圍</strong>：討論段對 MI 增加提出的機轉（staged PCI 時血小板活化、非罪犯病灶斑塊破裂、與 non-TLR 一致）都是事後推論，論文本身沒有資料可以區分這些機轉。另外，「出血減少 clinically apparent」這種說法，和階層檢定規則（主要終點失敗後次要終點不得正式檢定）有些衝突。整體而言，作者的主要結論（not noninferior）措辭保守、正確。</li>
+</ul>
+<h3>7. 外部專業意見</h3>
+<ul>
+<li><strong>針對本文的同期 editorial</strong>：[無法取得] 搜尋 NEJM 同期 editorial 與 PubMed comment 都沒有找到。同期 NEJM 的 Robert Byrne editorial 是寫 SWITCH-SWEDEHEART，不是本文 [外部: ACC.org／搜尋結果]。因此沒有可用 <code>fetch_editorial.py</code> 擷取的對應 DOI。</li>
+<li><strong>專業學會摘要</strong>：ACC.org 的 ESC 2026 試驗摘要 [外部: ACC.org]：
+<ul>
+<li>PREMIUM 挑戰的是「PCI 當下就省略 aspirin」，並沒有推翻「先 DAPT 一段時間後再停 aspirin」的既有證據。</li>
+<li>結論不支持常規從頭省略 aspirin；啟示是「降低出血不應以犧牲早期缺血保護為代價」。</li>
+<li>外推限制：日本族群、低劑量 prasugrel、高度依賴血管內影像，對西方 STEMI 族群的適用性不確定。</li>
+</ul>
+</li>
+<li><strong>同團隊後續 post hoc 分析</strong>（JACC 2026，<a href="https://doi.org/10.1016/j.jacc.2026.10.058">DOI</a>）[外部: PubMed]：
+<ul>
+<li>HBR 病人：主要終點 HR 1.29（0.91–1.82）；非 HBR 病人：HR 1.55（1.01–2.37）；P_int=0.51。</li>
+<li>BARC 3/5 出血：HBR 為 HR 0.71（0.46–1.11），非 HBR 為 0.62（0.38–1.00）。</li>
+<li>換句話說，ARC-HBR 也找不到一群「從頭省略 aspirin 會比較划算」的病人。</li>
+</ul>
+</li>
+</ul>
+<h3>8. 臨床建議</h3>
+<ul>
+<li><strong>可以採用本結論的情境</strong>：STEMI 病人做 primary PCI 時，不應在 PCI 當下省略 aspirin（至少在低劑量 prasugrel 的條件下有直接證據）。這個結論方向和指引一致，也和 NEO-MINDSET 互相印證。</li>
+<li><strong>不能直接套用的情境</strong>：
+<ol>
+<li>「先給 1–3 個月 DAPT、再停 aspirin」的策略：本試驗沒有測試，不能用來否定 TWILIGHT／STOPDAPT-2 類型的做法。</li>
+<li>標準劑量 prasugrel 10 mg 或 ticagrelor 單一治療：本試驗用的是日本核准的 3.75 mg。</li>
+<li>合併口服抗凝血劑的病人：已被排除。</li>
+</ol>
+</li>
+<li><strong>實務建議</strong>：
+<ol>
+<li>STEMI primary PCI 的病人照常給 aspirin loading 加強效 P2Y12 inhibitor。</li>
+<li>多支血管疾病、預計 staged PCI 的病人，在 staged PCI 完成前不要停 aspirin。這只是 subgroup 訊號（詳見 D 節），但風險方向一致，屬於低成本的保守做法。</li>
+<li>擔心出血時，可考慮 1 個月後再降階，而不是從頭省略 aspirin；同時注意 PPI 並不能完全消除 aspirin 相關的腸胃道出血。</li>
+</ol>
+</li>
+<li><strong>證據強度</strong>：中等。理由：
+<ul>
+<li>加分：大型 RCT、事件由盲性 CEC 判定、結果方向和 NEO-MINDSET 一致。</li>
+<li>扣分：開放標籤、單一國家且使用低劑量 prasugrel、對照組有一部分是 3 個月 DAPT、MI 超額的主要成分定義偏寬。</li>
+</ul>
+</li>
+</ul>
+<hr />
+<h2>SKILL-A：原始研究批判性評讀</h2>
+<h3>A. 補充技術細節</h3>
+<ul>
+<li><strong>樣本數</strong>：
+<ul>
+<li>假設的對照組事件率 7%，實際觀察到 8.5%，power 足夠。</li>
+<li>2025/10 的 protocol v10 根據盲性 80% 樣本重估，並以 9% 事件率試算後決定把 α 改為單尾 0.025 [Protocol v10 p.21]。</li>
+<li>這項修改讓檢定<strong>更嚴格</strong>，對結果沒有實質影響：即使用原本的單尾 0.05（90% CI），HR 上限約 1.68，仍然大於 1.5 [自行計算]。</li>
+</ul>
+</li>
+<li><strong>Protocol 文件本身的疑點</strong>：標為「Version 1, November 19, 2022」的 protocol 中，已經出現「In the original Statistical Analysis Plan…」和「Original one-sided alpha」等回溯性用語 [Protocol v1 p.18–19]。但原始 SAP 的日期是 2023/11/20，晚於 protocol v1。因此附件中的 v1 很可能是事後重新整理或補註過的版本，而不是 2022 年的原件 [推論]。這不影響結果的效度，但削弱了用 v1 來查核 outcome switching 的可信度。</li>
+<li><strong>隨機化</strong>：
+<ul>
+<li>用 minimization 而且只平衡醫院，主要預後因子沒有分層。</li>
+<li>基線有幾項小幅不平衡：糖尿病 40.4% vs 36.7%（單一治療組較多）、CKD 43.3% vs 46.9%、HBR 34.2% vs 37.6%（DAPT 組較多）[Table 1]。</li>
+<li>方向上，糖尿病較多不利於單一治療組的缺血結果；HBR／CKD 較多不利於 DAPT 組的出血結果。這兩個方向都會讓「單一治療缺血較差、出血較少」的差距略微放大，但幅度小。</li>
+</ul>
+</li>
+<li><strong>Allocation concealment</strong>：中央網路系統，隨機化後立即揭露分組 [文內 p.1995]。</li>
+<li><strong>致盲</strong>：病人與醫師都知道分組；只有 CEC 與 core lab 盲性。</li>
+<li><strong>ITT vs PP</strong>：
+<ul>
+<li>主要分析使用 FAS（近似 mITT）。</li>
+<li>PP 的兩組人數很不對稱（952 vs 812），DAPT 組因遵從度 &lt;80% 被排除的人遠多於單一治療組，而且「aspirin 依 protocol 在 3 個月停用」如何計算遵從度沒有交代。</li>
+</ul>
+</li>
+<li><strong>治療污染（crossover）</strong>：
+<ul>
+<li>單一治療組有 35 人轉成其他治療，DAPT 組 7 人 [Fig 1]。</li>
+<li>單一治療組出院時 aspirin 使用率 6.2%，12 個月時升到 7.7% [Supp Table S6]。</li>
+<li>非劣性試驗中，crossover 往往會讓 ITT 結果偏向「無差異」，也就是偏向容易宣稱非劣性。本試驗在這種偏差下仍然失敗，代表<strong>真正的「純 aspirin-free」傷害可能比 HR 1.34 更大</strong> [推論；參考: jug120004_2605_2611.md 摘要段]。</li>
+</ul>
+</li>
+<li><strong>比例風險假設</strong>：作者以 Schoenfeld residuals 檢定，報告未違反 [文內 p.1996]。但 landmark 曲線顯示前 30 天斜率差異最大，單一 HR 只是一個平均值。</li>
+<li><strong>缺失資料</strong>：不補值；完整 12 個月追蹤率 97.8%，影響小。</li>
+</ul>
+<h4>A1. 非劣性試驗子模組</h4>
+<ul>
+<li><strong>非劣性 margin（HR 1.5）的合理性</strong>：
+<ul>
+<li>Protocol 換算為絕對差 3.5%（以 7% 事件率計）。以實際對照組 8.5% 計算，相當於<strong>容許約 4.3% 的死亡／中風／MI 絕對增加</strong> [自行計算]。</li>
+<li>預期換來的好處只有 BARC 3/5 出血減少約 3%，這個交換比率在臨床上很難接受。Margin 沒有引用安慰劑對照證據來推導（例如 aspirin 加入 P2Y12 inhibitor 的增量效益），只說「參考 J-PCI registry 與保守事件率」[Protocol v1 p.19]。</li>
+<li>JAMA Users' Guide 提醒，非劣性門檻由作者自行設定，可能不符合病人與臨床醫師的價值判斷 [參考: jug120004_2605_2611.md 摘要段]。本試驗即使通過了 1.5 的門檻，臨床意義也有爭議；實際上連這個寬鬆門檻都沒有通過。</li>
+</ul>
+</li>
+<li><strong>Active comparator 是否以最佳方式給予</strong>：
+<ul>
+<li>DAPT 組的 HBR 病人 3 個月就停 aspirin（27.6%）。</li>
+<li>12 個月時 DAPT 組 prasugrel 使用率只有 78.7%，aspirin 56.5%。</li>
+<li>對照組其實是「12 個月 DAPT，HBR 縮短為 3 個月」的混合策略。這讓對照組的抗缺血效果被削弱，反而<strong>對單一治療組有利</strong>，但單一治療組仍輸。</li>
+</ul>
+</li>
+<li><strong>PP 結果</strong>：HR 1.45（1.02–2.06），和 ITT 方向一致。</li>
+</ul>
+<h3>B. 批判性評估</h3>
+<h4>B1. 假說與理論邏輯</h4>
+<ul>
+<li><strong>假說預先指定</strong>：主要終點與 registry、protocol v1 一致，沒有 outcome switching [外部: ClinicalTrials.gov；Protocol v1 p.17]。</li>
+<li><strong>機轉合理性</strong>：
+<ul>
+<li>aspirin 抑制 TXA2 的路徑，在 STEMI 急性期、PCI 造成斑塊破裂時，與 P2Y12 抑制有互補作用，這是合理的生物學基礎。</li>
+<li>低劑量 prasugrel（3.75 mg）的血小板抑制在 PCI 後最初數小時可能不如標準劑量，日本 PD 研究是穩定期的資料 [推論]。</li>
+</ul>
+</li>
+<li><strong>最可疑的敘事跳躍</strong>：
+<ol>
+<li>用病理文獻（ref 22、23）解釋「非罪犯斑塊反覆破裂導致 spontaneous MI 與 non-TLR 增加」[p.2001]。Spontaneous MI 的 HR 1.71 本身就沒有顯著（0.86–3.39），以此建構機轉屬於過度詮釋。</li>
+<li>把沒有支架血栓差異歸因於 IVUS 與新一代 DES，但本試驗兩組都用 IVUS、都放 Synergy，這個解釋無法驗證。</li>
+<li>說出血減少「clinically apparent」，但依階層規則這個結果不得正式推論。</li>
+</ol>
+</li>
+</ul>
+<h4>B2. 受試者與外推性</h4>
+<ul>
+<li><strong>族群特徵</strong>：日本 STEMI 病人，平均 69.4 歲，女性 23.4%，HBR 35.9%，CKD 45%，Killip III/IV 約 8%，MCS 14%；radial access 92.3%，IVUS／OCT 98.6%。</li>
+<li><strong>外推分級</strong>：
+<ol>
+<li>一般 STEMI 族群（歐美）：<strong>中—遠</strong>。prasugrel 劑量不同（10 mg vs 3.75 mg）、ticagrelor 較常用、IVUS 使用率差很多。不過 NEO-MINDSET 用的是標準劑量強效 P2Y12 inhibitor，也得到 MI 增加，提高了結論方向的外推性 [文內 p.2002]。</li>
+<li>東亞 STEMI 族群：<strong>近</strong>。可以直接參考。</li>
+<li>高齡、高出血風險病人：<strong>中</strong>。HBR subgroup 沒有顯示較好的淨效益（JACC post hoc）。</li>
+</ol>
+</li>
+</ul>
+<h4>B3. 研究設計與偏差</h4>
+<ul>
+<li><strong>對照組是否為標準治療</strong>：12 個月 DAPT 是指引的標準治療，對照組合理，但有前述 HBR 3 個月停 aspirin 的稀釋問題。</li>
+<li><strong>前期證據</strong>：STOPDAPT-3 的 1 個月結果已經出現支架血栓訊號。PREMIUM 因此修改 protocol，加入 900 人與 1,500 人的安全性期中檢視 [文內 p.1994]，這種處理是負責任的。</li>
+<li><strong>最可能造成偏差的設計點</strong>（附方向）：
+<ol>
+<li><strong>開放標籤加上醫院自行判斷的再通術終點</strong>：再通術定義中的「≥70% 狹窄即可」由各院判讀 [Table S2]。醫師知道病人沒吃 aspirin 時，可能較傾向處理非罪犯病灶。這會<strong>放大</strong>單一治療組的 non-TLR、任何再通術與 POCE；對主要終點的影響小，因為主要終點不含再通術。</li>
+<li><strong>Periprocedural MI 定義偏寬</strong>：troponin ≥70×URL 不需附帶條件就算 MI，加上 staged PCI 後會依 protocol 抽 troponin peak。若 aspirin 省略確實增加 staged PCI 時的心肌損傷，這個定義會把「生物標記事件」計入硬終點，<strong>放大</strong>主要終點差距：9 vs 2 例，占超額 30 例中的 7 例 [自行計算]。去掉 periprocedural MI 後，主要終點超額仍有約 23 例，結論方向不變 [推論]。</li>
+<li><strong>PP／safety set 依服藥狀態定義</strong>：如果病人在事件發生<strong>後</strong>才改服 DAPT（例如發生 ST 後加上 aspirin），as-treated 分析會把事件歸到 DAPT 組。這可以解釋 ST 在 FAS 是 15 vs 16，但在 safety set 變成 9 vs 19、PP 變成 3 vs 12 [推論]。這兩種敏感度分析因此不能用來佐證 ITT。</li>
+</ol>
+</li>
+<li><strong>提前停止</strong>：沒有提前停止；期中分析只看安全性，並由 DSMB 執行。</li>
+</ul>
+<h4>B4. 測量工具與實務意義</h4>
+<ul>
+<li><strong>主要終點組成</strong>：死亡、中風、MI 都是硬終點，但 MI 包含 periprocedural myocardial injury（見上）。</li>
+<li><strong>出血終點</strong>：BARC 3 包含血紅素下降 ≥3 g/dL。開放標籤下，抽血頻率可能因分組而不同 [推論]。「其他」類出血差距 2 vs 15 例，而且類別界定模糊，這部分差距的可信度較低。</li>
+<li><strong>實務意義</strong>：每治療 1,000 人，單一治療約<strong>多 25 例</strong>死亡／中風／MI（其中 MI 約 16 例），<strong>少 28 例</strong> BARC 3/5 出血；全死因死亡差 +3/1000，沒有差別 [自行計算]。
+<ul>
+<li>兩邊數字接近，但價值不對等：MI 會造成永久心肌損失；BARC 3 出血中有相當比例是可處理的出血。</li>
+<li>文中沒有報告預先指定的 net adverse clinical event（NACE）分析，讀者無法得到正式的淨效益估計。這是重要缺漏。</li>
+</ul>
+</li>
+</ul>
+<h3>C. 統計與資料完整性</h3>
+<h4>C1. 結果分類（CI 加 MCID 框架）</h4>
+<ul>
+<li><strong>主要終點</strong>：
+<ul>
+<li>以 HR 1.50 作為臨床有害門檻（MCID-harm，採作者預設的 margin）。</li>
+<li>HR 1.34（1.02–1.75）：CI 下限 &gt;1，<strong>統計上已經排除「無差異」</strong>（雙尾 p≈0.03 [自行計算]）；CI 同時跨越 1.50。</li>
+<li>分類為 <strong>IMPRECISE（有害方向）</strong>：統計上偏向有害，但傷害幅度是否超過 margin 不確定。不能只說「not noninferior」，正確說法是「點估計與 CI 都指向單一治療較差」。</li>
+<li>作者報告的「P=0.40 for noninferiority」，依 HR 與 CI 回推，單尾非劣性 p 約 0.21，0.40 比較像雙尾數值 [自行計算]。這屬於小型報告不一致。</li>
+</ul>
+</li>
+<li><strong>主要次要終點 BARC 3/5</strong>：
+<ul>
+<li>HR 0.66（0.47–0.91）；文內沒有出血 MCID [推算: 以 HR 0.75 或絕對差 1% 作為臨床有意義門檻]。</li>
+<li>CI 跨越 0.75，分類為 <strong>IMPRECISE（+）</strong>。依階層設計只能算假說生成，不得作為確認性結論。</li>
+</ul>
+</li>
+<li><strong>全死因死亡</strong>：HR 1.08（0.78–1.49），CI 同時包含 1 與 ±25% 的臨床門檻，分類為 <strong>INCONCLUSIVE</strong>，不能說「死亡沒有差別」。</li>
+<li><strong>ST</strong>：HR 0.94（0.46–1.89），<strong>INCONCLUSIVE</strong>。這不代表 aspirin-free 對支架血栓是安全的，只代表 31 個事件不足以下結論。</li>
+</ul>
+<h4>C2. Underpowered 判斷與 Winner's Curse</h4>
+<ul>
+<li><strong>主要終點</strong>：事件數 218，超出原本以 7% 事件率假設的數量，power 足夠，不屬於 underpowered positive。</li>
+<li><strong>MI 的 HR 2.24</strong>（45 個事件）可能有 Winner's Curse 的放大效應，不應直接用來估計下一個試驗的效果量。NEO-MINDSET 的 STEMI 世代也有類似方向，部分緩解這個疑慮。</li>
+<li><strong>多支血管疾病 subgroup 的 HR 1.74</strong> 屬於典型的 Type M 風險（效果量被誇大）。</li>
+</ul>
+<h4>C3. Bayesian 補充分析</h4>
+<p>近似常態 likelihood（lnHR 0.293，SE 0.138）[自行計算]：</p>
+<div class="table-wrap wide"><table>
+<thead>
+<tr>
+<th>Prior</th>
+<th style="text-align:right">後驗 HR 中位數</th>
+<th style="text-align:right">Pr(HR&gt;1，有害)</th>
+<th style="text-align:right">Pr(HR&gt;1.5，超過 margin)</th>
+<th style="text-align:right">Pr(HR&lt;1.1，近似等效)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Non-informative</td>
+<td style="text-align:right">1.34</td>
+<td style="text-align:right"><strong>≈98%</strong></td>
+<td style="text-align:right">≈21%</td>
+<td style="text-align:right">≈8%</td>
+</tr>
+<tr>
+<td>Skeptical（中心 HR 1.0，95% 介於 0.67–1.5）</td>
+<td style="text-align:right">1.22</td>
+<td style="text-align:right">≈96%</td>
+<td style="text-align:right">≈4%</td>
+<td style="text-align:right">≈18%</td>
+</tr>
+<tr>
+<td>Optimistic for 單一治療（中心 HR 0.9，SD 同上）</td>
+<td style="text-align:right">1.19</td>
+<td style="text-align:right">≈93%</td>
+<td style="text-align:right">≈3%</td>
+<td style="text-align:right">≈24%</td>
+</tr>
+</tbody>
+</table></div>
+<ul>
+<li>三種 prior 下 Pr(有害) 都 &gt;90%，結論不受 prior 選擇影響。「超過 1.5 margin」的機率則高度依賴 prior。</li>
+<li>臨床解讀：<strong>省略 aspirin 幾乎確定比較差，只是差多少不確定</strong>。</li>
+<li>BARC 3/5 出血在 flat prior 下，Pr(HR&lt;1) ≈99% [自行計算]。</li>
+</ul>
+<h4>C4. 報告完整性與其他統計問題</h4>
+<ul>
+<li><strong>KM 圖判讀</strong>（Fig 2、S2、S3、S4A、S5A）：
+<ul>
+<li>主要終點在前幾天就分開，前 30 天斜率差最大；30–90 天兩條曲線在 landmark 圖上幾乎重疊，<strong>約第 100 天後再度分開</strong>並持續到 360 天 [Supp Fig S2A]。</li>
+<li>第二次分開的時間點，正好在 DAPT 組 HBR 病人停 aspirin（3 個月）之後，但單一治療組仍持續較差。這個時間關係不支持「只有前 30 天需要 aspirin」，也不支持作者說的「most of the excess within 30 days」可以簡化為只要早期 DAPT [推論]。</li>
+<li>Number at risk 在 360 天仍有 960／990 人（約 87–89%），尾端沒有驟降。</li>
+<li>主圖 y 軸從 0–100、inset 為 0–25，沒有用非零起點誇大差異。</li>
+<li>死亡曲線（Fig S3）全程幾乎重疊。</li>
+<li>MI 曲線（Fig S4A）約在第 2 週內拉開，之後大致平行並略微擴大。</li>
+<li>Periprocedural／spontaneous MI 分圖（Fig S4B/C）、non-TLR 分圖（Fig S5B/C）、出血 landmark 圖（Fig S2B）沒有提供 PNG，無法進行視覺判讀 [限制]。</li>
+</ul>
+</li>
+<li><strong>Censoring</strong>：MI 曲線的 censored 數在 360 天達 101 vs 91，大多來自死亡與失聯。作者另做了出血的 competing-risk 分析（HR 0.66，0.47–0.90）[Supp Fig S1]，但沒有對 MI 做 competing-risk 分析。</li>
+<li><strong>選擇性報告</strong>：Registry 列了 TIMI／GUSTO 出血、BARC 4、腸胃道症狀、TVF 等次要終點，正文與 supplement 都沒有報告 [外部: ClinicalTrials.gov]。</li>
+<li><strong>SAE 不是前瞻性收集</strong>，摘要中的安全性陳述因此證據力不足。</li>
+<li><strong>統計紅旗</strong>：
+<ol>
+<li>非劣性 margin 寬鬆（約 4.3% 絕對差），而且沒有安慰劑對照證據推導。</li>
+<li>「P=0.40 for noninferiority」與 HR、CI 回推結果不一致。</li>
+<li>PP 與 safety set 中 ST、TLR 的方向逆轉，暗示事件後才改變治療，敏感度分析失效。</li>
+<li>正文完全沒有 subgroup 的交互作用 p 值。</li>
+<li>沒有報告 NACE 淨效益。</li>
+<li>再通術與 BARC 3「其他」類出血等軟性成分，在開放標籤下容易受影響。</li>
+<li>SAE 是事後整理的。</li>
+<li>FAS 排除了 44 位要求刪除資料的病人，不是完整 ITT。</li>
+</ol>
+</li>
+</ul>
+<h3>D. 次組分析評估</h3>
+<p>依 JAMA 的 subgroup 可信度 5 項標準評估。</p>
+<div class="table-wrap wide"><table>
+<thead>
+<tr>
+<th>Subgroup</th>
+<th>結果</th>
+<th>交互作用 p</th>
+<th>方向與其他研究一致？</th>
+<th>預先指定？</th>
+<th>生物學機轉</th>
+<th>可信度</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>多支血管疾病</strong> 是 vs 否</td>
+<td>1.74（1.20–2.54） vs 0.98（0.66–1.46）</td>
+<td>未報告；約 0.04 [自行計算]</td>
+<td>無直接比較</td>
+<td><strong>否</strong>：v10（2025/10，收案結束後）才加入</td>
+<td>合理：staged PCI 時沒有 aspirin 保護</td>
+<td><strong>低—中</strong></td>
+</tr>
+<tr>
+<td><strong>Complex PCI</strong> 是 vs 否</td>
+<td>1.97（1.12–3.48） vs 1.18（0.87–1.61）</td>
+<td>未報告；約 0.12 [自行計算]</td>
+<td>—</td>
+<td><strong>不在 v10 清單中</strong>（v10 列的是 multivessel PCI），名稱不一致</td>
+<td>合理</td>
+<td><strong>低</strong></td>
+</tr>
+<tr>
+<td>年齡 &lt;75 vs ≥75</td>
+<td>1.62 vs 1.25</td>
+<td>未報告；CI 高度重疊</td>
+<td>—</td>
+<td>是</td>
+<td>弱</td>
+<td>推測性</td>
+</tr>
+<tr>
+<td>男性 vs 女性</td>
+<td>1.53 vs 1.05</td>
+<td>未報告</td>
+<td>—</td>
+<td>是</td>
+<td>無</td>
+<td>推測性</td>
+</tr>
+<tr>
+<td>HBR vs 非 HBR（JACC post hoc）</td>
+<td>1.29 vs 1.55</td>
+<td>0.51</td>
+<td>—</td>
+<td>不在 Fig 3 中</td>
+<td>—</td>
+<td>沒有效應修飾</td>
+</tr>
+<tr>
+<td>出血：糖尿病 是 vs 否</td>
+<td>0.46 vs 0.79</td>
+<td>未報告</td>
+<td>—</td>
+<td>是</td>
+<td>弱</td>
+<td>推測性</td>
+</tr>
+</tbody>
+</table></div>
+<p>多支血管疾病的訊號在機轉上和 periprocedural MI 增加一致，臨床上值得作為保守處置的參考。但這個 subgroup 是在收案結束、追蹤尚未完成時才加入「預先指定」清單（即使作者聲稱當時仍盲性），而且正文沒有提供交互作用檢定，不能據此推論「單支血管病人可以安全省略 aspirin」。</p>
+<h3>E. 紅旗清單</h3>
+<ul>
+<li><strong>設計</strong>：開放標籤；再通術由醫院自行判讀；periprocedural MI 包含單純心肌損傷；對照組有 27.6% 在 3 個月停 aspirin。</li>
+<li><strong>統計</strong>：非劣性 margin 約 4.3% 絕對差，過寬；非劣性 p 值不一致；PP／safety set 方向逆轉；沒有交互作用 p 值；沒有 NACE。</li>
+<li><strong>報告</strong>：SAE 事後整理；registry 中多項出血終點未報告；FAS 排除刪除資料者。</li>
+<li><strong>Protocol</strong>：subgroup 在收案後才擴增；標為 v1 的 protocol 含有回溯性用語；設計論文在收案結束後才發表。</li>
+<li><strong>COI</strong>：支架廠商出資，且限定使用自家支架。</li>
+<li><strong>外推</strong>：只在日本進行、prasugrel 3.75 mg、IVUS 98.6%。</li>
+</ul>
+<h3>F. 反向解釋</h3>
+<ol>
+<li><strong>「差異來自 prasugrel 劑量太低，不是因為沒有 aspirin」</strong>
+<ul>
+<li>支持：3.75 mg 在 STEMI 急性期的抑制強度未經驗證。</li>
+<li>反對：NEO-MINDSET 用標準劑量強效 P2Y12 inhibitor，同樣看到 MI 增加 [文內 p.2002]；而且兩組都用 3.75 mg，差別只在 aspirin。</li>
+</ul>
+</li>
+<li><strong>「MI 超額大多是開放標籤下的測量偏差」</strong>
+<ul>
+<li>支持：periprocedural MI 包含 troponin ≥70×URL 的單純心肌損傷。</li>
+<li>反對：protocol 規定 staged PCI 後要測 troponin peak，抽血屬於系統性，不太依分組而不同；spontaneous MI 方向一致；CEC 為盲性判定。</li>
+</ul>
+</li>
+<li><strong>「出血減少是被雜項類別撐起來的」</strong>
+<ul>
+<li>支持：「其他」出血 2 vs 15 例。</li>
+<li>反對：腸胃道出血（10 vs 21）與 access site 出血（16 vs 23）方向一致；competing-risk 分析結果一致。</li>
+</ul>
+</li>
+<li><strong>「基線不平衡造成缺血差異」</strong>
+<ul>
+<li>支持：單一治療組糖尿病多 3.7%。</li>
+<li>反對：糖尿病 subgroup 中 HR 一致（1.31 vs 1.34），而且幅度太小，無法解釋 HR 1.34。</li>
+</ul>
+</li>
+</ol>
+<h3>G. 最終裁決</h3>
+<ul>
+<li><strong>整體可信度</strong>：<strong>中—高</strong>（針對「從頭省略 aspirin 會增加缺血事件」這個核心結論）。出血效益與各 subgroup 的可信度為<strong>低—中</strong>。</li>
+<li><strong>可以採用的條件</strong>：作為「STEMI primary PCI 時不應省略 aspirin」的直接 RCT 證據，與 NEO-MINDSET 互相印證。</li>
+<li><strong>不建議採用的情境</strong>：
+<ul>
+<li>推論到「1 個月後再降階」的策略。</li>
+<li>推論到標準劑量 prasugrel 或 ticagrelor 單一治療。</li>
+<li>用多支血管 subgroup 篩選出「可以安全省略 aspirin」的病人。</li>
+</ul>
+</li>
+<li><strong>若要改變判斷，最需要的 3 項改進</strong>：
+<ol>
+<li>報告預先指定的 NACE，以及按事件嚴重度加權的淨效益分析。</li>
+<li>用嚴格 ARC-2 定義（排除單純心肌損傷）重新分析 MI，並排除依院方判讀的「≥70% 無缺血」再通術。</li>
+<li>說明 PP／safety set 中 crossover 的時間點（事件前或事件後），並補上所有 subgroup 的交互作用 p 值。</li>
+</ol>
+</li>
+<li><strong>一句話結論</strong>：STEMI 病人做 PCI 時就停掉 aspirin 雖然出血較少，但心肌梗塞明顯增加，不值得。</li>
+</ul>
+<hr />
+<h3>效果量總表</h3>
+<div class="table-wrap wide"><table>
+<thead>
+<tr>
+<th>指標</th>
+<th style="text-align:right">單一治療組</th>
+<th style="text-align:right">DAPT 組</th>
+<th style="text-align:right">效果量</th>
+<th style="text-align:right">95% CI</th>
+<th style="text-align:right">ARD [自行計算]</th>
+<th style="text-align:right">MCID</th>
+<th>結果分類</th>
+<th>實務意義</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>死亡、中風或 MI</td>
+<td style="text-align:right">11.0%</td>
+<td style="text-align:right">8.5%</td>
+<td style="text-align:right">HR 1.34</td>
+<td style="text-align:right">1.02–1.75</td>
+<td style="text-align:right"><strong>+2.5%</strong>（NNH≈40）</td>
+<td style="text-align:right">HR 1.50（作者 margin）</td>
+<td>IMPRECISE（有害方向）；非劣性不成立</td>
+<td>每 40 人多 1 例重大缺血事件</td>
+</tr>
+<tr>
+<td>MI</td>
+<td style="text-align:right">2.9%</td>
+<td style="text-align:right">1.3%</td>
+<td style="text-align:right">HR 2.24</td>
+<td style="text-align:right">1.19–4.21</td>
+<td style="text-align:right">+1.6%（NNH≈63）</td>
+<td style="text-align:right">未指定</td>
+<td>有害方向（次要終點，未校正）</td>
+<td>超額事件的主體</td>
+</tr>
+<tr>
+<td>全死因死亡</td>
+<td style="text-align:right">6.6%</td>
+<td style="text-align:right">6.3%</td>
+<td style="text-align:right">HR 1.08</td>
+<td style="text-align:right">0.78–1.49</td>
+<td style="text-align:right">+0.3%</td>
+<td style="text-align:right">推算 HR ±0.25</td>
+<td>INCONCLUSIVE</td>
+<td>不能說死亡相同</td>
+</tr>
+<tr>
+<td>支架血栓</td>
+<td style="text-align:right">1.4%</td>
+<td style="text-align:right">1.5%</td>
+<td style="text-align:right">HR 0.94</td>
+<td style="text-align:right">0.46–1.89</td>
+<td style="text-align:right">−0.1%</td>
+<td style="text-align:right">未指定</td>
+<td>INCONCLUSIVE</td>
+<td>不能說支架血栓上安全</td>
+</tr>
+<tr>
+<td>BARC 3/5 出血</td>
+<td style="text-align:right">5.6%</td>
+<td style="text-align:right">8.4%</td>
+<td style="text-align:right">HR 0.66</td>
+<td style="text-align:right">0.47–0.91</td>
+<td style="text-align:right"><strong>−2.8%</strong>（NNT≈36）</td>
+<td style="text-align:right">推算 HR 0.75</td>
+<td>IMPRECISE（+），未正式檢定</td>
+<td>出血減少屬探索性結果</td>
+</tr>
+<tr>
+<td>任何再通術</td>
+<td style="text-align:right">6.8%</td>
+<td style="text-align:right">4.6%</td>
+<td style="text-align:right">HR 1.46</td>
+<td style="text-align:right">1.02–2.09</td>
+<td style="text-align:right">+2.2%</td>
+<td style="text-align:right">未指定</td>
+<td>有害方向（軟性終點，開放標籤）</td>
+<td>可能受偏差放大</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+<p><strong>來源</strong></p>
+<ul>
+<li><a href="https://www.acc.org/Latest-in-Cardiology/Articles/2026/10/16/17/49/Trials-at-ESC">ACC.org – Interventional Post-ACS Antithrombotic Trials at ESC Congress 2026</a></li>
+<li><a href="https://www.acc.org/Latest-in-Cardiology/Articles/2026/08/24/12/30/sat-6am-combo-interventional-esc-2026">ACC.org – Interventional Highlights From LIBREXIA ACS, PREMIUM, SWITCH SWEDEHEART…</a></li>
+<li><a href="https://www.escardio.org/news/press/press-releases/is-aspirin-needed-after-a-stemi-heart-attack/">ESC press release – Is aspirin needed after a STEMI heart attack?</a></li>
+<li><a href="https://hcplive.com/view/premium-trial-prasugrel-monotherapy-fails-noninferiority-to-dapt-in-stemi">HCPLive – PREMIUM trial</a></li>
+<li><a href="https://www.materprivate.ie/news-events/news/article/2026/09/10/irish-cardiologist-highlights-implementation-gap-between-clinical-trials-and-routine-care-in-nejm-editorial">Mater Private – Byrne NEJM editorial（SWITCH SWEDEHEART）</a></li>
+<li><a href="https://www.wolterskluwer.com/en/solutions/Ovid/new-england-journal-of-medicine-624">Wolters Kluwer Ovid – NEJM listing</a>；<a href="https://manusights.com/blog/nejm-impact-factor">Manusights – NEJM impact factor</a></li>
+<li><a href="https://clinicaltrials.gov/study/NCT05709626">ClinicalTrials.gov NCT05709626</a></li>
+<li>以下依 PubMed 資料：本文 <a href="https://doi.org/10.1056/NEJMoa2606997">DOI</a>；設計論文 <a href="https://doi.org/10.1016/j.carrev.2025.12.007">DOI</a>；JACC HBR post hoc <a href="https://doi.org/10.1016/j.jacc.2026.10.058">DOI</a>；STOPDAPT-3 <a href="https://doi.org/10.1161/CIRCULATIONAHA.123.066720">DOI</a>、<a href="https://doi.org/10.1093/eurheartj/ehae617">DOI</a>；Nakazawa 病理研究 <a href="https://doi.org/10.1007/s00059-007-2997-9">DOI</a>、<a href="https://doi.org/10.1161/CIRCULATIONAHA.106.675934">DOI</a>、<a href="https://doi.org/10.1016/j.jjcc.2011.07.004">DOI</a></li>
+</ul>
+
+<footer class="appraisal-meta">評讀資訊：模型：claude-opus-5-5 (claude)  ·  route：rct  ·  產出時間：2026-11-22 09:12 CST</footer>
+</main>
+</body>
+</html>
