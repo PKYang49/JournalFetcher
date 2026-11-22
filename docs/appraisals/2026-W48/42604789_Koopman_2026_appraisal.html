@@ -1,0 +1,847 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Coronary calcium scoring in the evaluation of stable chest pain in general practice: a cluster-randomised trial.</title>
+<style>
+  :root {
+    --bg: #fafafa;
+    --card: #ffffff;
+    --text: #1a1a1a;
+    --muted: #6b6b6b;
+    --border: #e5e5e5;
+    --accent: #0b5fff;
+  }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang TC",
+      "Microsoft JhengHei", sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    margin: 0;
+    padding: 24px 16px 64px;
+    line-height: 1.72;
+  }
+  main {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    margin: 0 auto;
+    max-width: 840px;
+    padding: 22px 26px;
+  }
+  nav {
+    margin: 0 auto 14px;
+    max-width: 840px;
+    color: var(--muted);
+    font-size: 14px;
+  }
+  a { color: var(--accent); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  h1, h2, h3, h4 { line-height: 1.35; }
+  h1 { font-size: 26px; margin-top: 0; }
+  h2 { border-top: 1px solid var(--border); padding-top: 18px; }
+  code {
+    background: rgba(127, 127, 127, 0.12);
+    border-radius: 4px;
+    padding: 1px 4px;
+  }
+  .table-wrap {
+    margin: 1em 0;
+    overflow-x: auto;
+  }
+  .table-wrap.wide {
+    /* Break out of the 840px prose column, centred on the viewport. */
+    width: min(1040px, calc(100vw - 32px));
+    margin-left: calc(50% - min(520px, 50vw - 16px));
+  }
+  table {
+    border-collapse: collapse;
+    table-layout: auto;
+    width: 100%;
+  }
+  .table-wrap.wide {
+    /* Opaque so the <main> card border does not show through the table. */
+    background: var(--card);
+  }
+  /* Width hints go on <th> as percentages: Chrome's auto table layout
+     mis-sizes columns (and overflows) when cells carry min-width. */
+  .table-wrap.wide th:first-child {
+    /* Variable + plain-language definition, e.g. "NCPV (noncalcified ...)". */
+    width: 26%;
+  }
+  .table-wrap.wide th:last-child {
+    /* Last column is usually a one-line interpretation. */
+    width: 20%;
+  }
+  th, td {
+    border: 1px solid var(--border);
+    /* Wrap only at spaces: never split an English word mid-letter. */
+    overflow-wrap: normal;
+    word-break: normal;
+    hyphens: manual;
+    padding: 6px 8px;
+    text-align: left;
+    vertical-align: top;
+  }
+  blockquote {
+    border-left: 3px solid var(--accent);
+    color: var(--muted);
+    margin-left: 0;
+    padding-left: 14px;
+  }
+  .appraisal-meta {
+    border-top: 1px solid var(--border);
+    margin-top: 28px;
+    padding-top: 14px;
+    color: var(--muted);
+    font-size: 13px;
+  }
+  @media (max-width: 600px) {
+    body {
+      padding: 12px 8px 40px;
+    }
+    main {
+      padding: 16px 12px;
+    }
+    h1 {
+      font-size: 22px;
+    }
+    table {
+      font-size: 12px;
+    }
+    .table-wrap.wide {
+      width: calc(100vw - 16px);
+      margin-left: calc(50% - 50vw + 8px);
+    }
+    th, td {
+      padding: 4px 5px;
+    }
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #1a1a1a;
+      --card: #242424;
+      --text: #e8e8e8;
+      --muted: #999;
+      --border: #333;
+      --accent: #6ea8ff;
+    }
+  }
+</style>
+</head>
+<body>
+<nav><a href="../../2026-W48.html">← 回到 2026-W48 週報</a></nav>
+<main>
+<h1>Coronary calcium scoring in the evaluation of stable chest pain in general practice: a cluster-randomised trial.</h1>
+<h1>CONCRETE 試驗批判性評讀：基層醫療以冠狀動脈鈣化分數評估穩定型胸痛（cluster-randomised trial）</h1>
+<hr />
+<h2>SECTION-0：文章全面描述</h2>
+<h3>0. 文章基本資料</h3>
+<ul>
+<li><strong>標題</strong>：Coronary calcium scoring in the evaluation of stable chest pain in general practice: a cluster-randomised trial（CONCRETE）</li>
+<li><strong>期刊／年份</strong>：<em>Heart</em>（BMJ Group／British Cardiovascular Society），2026；網路首刊 2026-08-17 [文內頁眉]</li>
+<li><strong>DOI</strong>：10.1136/heartjnl-2025-327687；PMID 42604789</li>
+<li><strong>文章類型</strong>：原始研究，屬於務實型、不設盲的 cluster-randomised implementation trial → SKILL-A 主流程，加上 A1 的 cluster／pragmatic 設計子模組</li>
+<li><strong>研究登錄</strong>：摘要寫 CCMO NL66821.042.18，致謝寫 NL-OMON55495（2018-11-12 登錄）[文內]；protocol 論文另列 NTR 7475 [外部: DOAJ／BMJ Open protocol 書目]。同一試驗出現三個登錄編號，各自對應不同登錄系統，但正文沒有交代三者的關係。</li>
+</ul>
+<h3>1. 作者團隊</h3>
+<ul>
+<li><strong>通訊作者</strong>：Rozemarijn Vliegenthart，UMCG（Groningen）放射科教授，專長心胸影像與 CAC [文內]。她長期主持或參與以 CAC 為核心的大型研究，包括 ROBINSCA（以 CAC 篩檢高風險族群的隨機試驗）、ImaLife（Lifelines 族群 CT 影像世代），以及 AI 鈣化定量（Agatston-2.0）等 [外部: RUG 個人頁、MUSC profiles]。</li>
+<li><strong>團隊構成</strong>：放射科（UMCG、Gelre）、心臟科（UMC Utrecht、Zuyderland、Gelre、Mayo）、家醫科（Maastricht、HOOG）、HTA（Twente）[文內 affiliations]。分析由 TEJS 與 GS 負責 [文內 Contributors]。</li>
+<li><strong>代表性相關發表</strong> [外部]：
+<ul>
+<li>CONCRETE protocol，<em>BMJ Open</em> 2022;12:e055123</li>
+<li>ROBINSCA CAC 篩檢，<em>Eur J Prev Cardiol</em> 2021</li>
+<li>ROBINSCA 風險評估比較，<em>EHJ-CVI</em> 2020</li>
+<li>ImaLife 設計論文，<em>Eur J Epidemiol</em> 2020</li>
+<li>CAC 與認知功能，<em>JAHA</em> 2021</li>
+</ul>
+</li>
+<li><strong>立場史</strong>：團隊是 CAC 領域的核心推動者，protocol 階段就預期 CACS 是「cost-effective implementation」[Protocol p.15]。本篇結論與團隊既有立場高度一致，有確認偏差的風險。</li>
+<li><strong>利益揭露</strong> [文內]：
+<ul>
+<li>經費來自荷蘭心臟基金會（CVON2017-14），<strong>Amgen 共同出資</strong>，另有 Zuyderland 院內基金。</li>
+<li>RV 接受 <strong>Siemens Healthineers</strong>（CT 廠商；protocol 列舉的掃描機就是 Siemens Somatom [Protocol p.29]）的機構研究經費與演講費，也接受 Bayer 的演講費。</li>
+<li><strong>評估</strong>：論文聲明 funder 不參與分析。但 Amgen（降血脂藥廠）與「擴大 CVRM 納入」這個次要結論方向一致，Siemens 與「CT 下放基層」方向一致。兩者都是敘事層面的利益對齊，不構成造假證據，但讀者應注意結論語氣。</li>
+</ul>
+</li>
+</ul>
+<h3>2. 出版資訊</h3>
+<ul>
+<li><strong>Received 2025-12-11 → Accepted 2026-07-05</strong>：審查 <strong>206 天</strong> [文內；自行計算]。</li>
+<li><strong>該刊平均審查天數</strong>：[無法取得]，無法比較快慢。約 7 個月在臨床期刊屬偏長，推測經過多輪修改 [推論]。</li>
+<li><strong>Impact Factor</strong>：2025 JCR 約 4.4（第三方彙整，BMJ 官網仍標 5.1，可能是舊值）[外部: Wikipedia／bioxbio]。屬 Cardiac &amp; Cardiovascular Systems 類別，大致 Q1–Q2 [推論]。</li>
+<li><strong>出版形式</strong>：Open Access（CC BY-NC），非邀稿（&quot;Not commissioned&quot;）；同期刊出<strong>受邀 editorial</strong>（Vrints &amp; Winther）。</li>
+</ul>
+<h3>3. 研究背景（文內）</h3>
+<ul>
+<li><strong>已知事實</strong>：
+<ul>
+<li>荷蘭非急性胸痛患者先看 GP。</li>
+<li>2019 年後 NHG 指引移除 GP 端的 X-ECG，改為 typical／atypical 胸痛直接轉心臟科。</li>
+<li>全國每年約 105,000 件轉診中，只有約 6% 最終需要侵入性治療 [文內 Introduction]。</li>
+<li>CACS 對 CAD 敏感度 &gt;95%，CACS 0 的 NPV 很高。</li>
+</ul>
+</li>
+<li><strong>知識缺口</strong>：CACS 從未在基層當作第一線檢查做過隨機評估。</li>
+<li><strong>研究問題</strong>：讓 GP 直接開 CACS，相較於 SOC，能否在診所層級增加 CAD 偵測與治療（以 CVRM 登錄為代理指標），並改善轉診效率？</li>
+</ul>
+<h3>4. 研究設計與方法</h3>
+<ul>
+<li><strong>PICO</strong>：
+<ul>
+<li><strong>P</strong>：荷蘭 4 省 101 家 GP 診所；個案為男 ≥40 歲、女 ≥45 歲、無已知 CAD、possible cardiac 或 non-cardiac 胸痛、且 GP 認為需要進一步評估者。</li>
+<li><strong>I</strong>：GP 可直接開 CACS。放射報告附 Agatston 分數、MESA 百分位，以及依分級給的處置建議（0–10 → 停 AP 藥、找其他原因；11–100 → 考慮 CVRM；&gt;100 → 轉心臟科並納入 CVRM；MESA ≥P75 → 上調一級）[Supplement Table 1]。</li>
+<li><strong>C</strong>：SOC。2020 年前先做 X-ECG，2020 年後直接轉心臟科。</li>
+<li><strong>O</strong>：
+<ul>
+<li>主要終點：<strong>診所層級</strong> CVRM 登錄比例在 2 年間的淨變化。</li>
+<li>次要終點（個案層級）：轉診率、OCAD 診斷率、後續檢查數、CVRM 新納入、MACE。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><strong>隨機化</strong>：以診所為單位，1:1、permuted block（區組大小 8），由研究者 MYK 與 JJWR 執行；<strong>無分層</strong> [Supplement Text 1]。Protocol 原本寫「每區各半」[Protocol p.17]，兩者不一致。</li>
+<li><strong>致盲</strong>：無（GP、病人、結局判定者都知道分組）。OCAD 與 MACE 由單一影像心臟科醫師（BK）判定，有疑義時再找第二位 [Supplement Text 1]。</li>
+<li><strong>收案</strong>：2019-01 至 2023-10。追蹤 MACE 至 2025-02-03（中位 19.5 個月）。</li>
+<li><strong>統計</strong>：
+<ul>
+<li>診所層級用 independent t-test。</li>
+<li>個案層級用 GEE（exchangeable、robust SE）；遇到 complete separation 改用 GLMM。</li>
+<li><strong>CACS 組採 per-protocol</strong>（只納入有 CACS 結果者）。</li>
+<li>共列出 74 個模型 [Supplement Table 3]，沒有多重比較校正。</li>
+</ul>
+</li>
+<li><strong>主要變項定義</strong>：
+<ul>
+<li>OCAD：狹窄 ≥50% 和／或有缺血證據。</li>
+<li>CVRM 登錄：取自 GP 電子系統的管理名冊。</li>
+</ul>
+</li>
+</ul>
+<h3>5. 主要結果</h3>
+<div class="table-wrap wide"><table>
+<thead>
+<tr>
+<th>變項（代表什麼）</th>
+<th style="text-align:right">CACS 組</th>
+<th style="text-align:right">SOC 組</th>
+<th style="text-align:right">組間差（95% CI）</th>
+<th style="text-align:right">p 值</th>
+<th>如何解讀</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>RF-CL</strong>（risk factor-weighted clinical likelihood）：ESC 2024 前測 OCAD 機率模型分數</td>
+<td style="text-align:right"><strong>7.0±6.1</strong></td>
+<td style="text-align:right"><strong>9.8±8.8</strong></td>
+<td style="text-align:right">−2.8 [自行計算]；CI 未報告</td>
+<td style="text-align:right">&lt;0.01</td>
+<td>CACS 組前測風險明顯較低，兩組個案不可比</td>
+</tr>
+<tr>
+<td><strong>診所 CVRM 登錄比例 2 年變化</strong>（主要終點，佔全診所病人 %）</td>
+<td style="text-align:right"><strong>＋0.3±2.0 pp</strong>（46 家）</td>
+<td style="text-align:right"><strong>＋0.2±1.6 pp</strong>（45 家）</td>
+<td style="text-align:right">＋0.1 pp [自行計算]；CI 未報告</td>
+<td style="text-align:right">0.77</td>
+<td>沒有明確組間差異；此終點的敏感度本身就有問題（見 C1）</td>
+</tr>
+<tr>
+<td>轉診心臟科</td>
+<td style="text-align:right">198/466，<strong>42.5%</strong></td>
+<td style="text-align:right">94/117，<strong>80.3%</strong></td>
+<td style="text-align:right">模型 RD <strong>31.3%（14.8 to 47.8）</strong>；粗差 37.8 pp [自行計算]</td>
+<td style="text-align:right">未報告</td>
+<td>轉診比例大幅下降，但分母族群不同（見 B3）</td>
+</tr>
+<tr>
+<td><strong>OCAD</strong>（obstructive CAD）：狹窄 ≥50% 或缺血，佔全部收案者</td>
+<td style="text-align:right">23/466，<strong>4.9%</strong></td>
+<td style="text-align:right">9/117，<strong>7.7%</strong></td>
+<td style="text-align:right"><strong>−2.8%（−6.7 to 1.1）</strong>；調整 RF-CL 後 OR 1.18（0.52–2.68）</td>
+<td style="text-align:right">0.14</td>
+<td>CI 包含減少 6.7 pp，無法宣稱「維持偵測率」</td>
+</tr>
+<tr>
+<td>OCAD（只算被轉診者）</td>
+<td style="text-align:right">23/198，文內寫 <strong>12.0%</strong>（實算 11.6%）</td>
+<td style="text-align:right">9/94，<strong>9.6%</strong></td>
+<td style="text-align:right">＋2.3%（−3.6 to 8.3）</td>
+<td style="text-align:right">未報告</td>
+<td>轉診者的陽性率略高，但 CI 跨 0</td>
+</tr>
+<tr>
+<td>心臟科後續檢查數／每位收案者</td>
+<td style="text-align:right"><strong>0.48</strong></td>
+<td style="text-align:right"><strong>0.89</strong></td>
+<td style="text-align:right">相對減少 <strong>42.4%（19.8 to 58.7）</strong></td>
+<td style="text-align:right">未報告</td>
+<td>未計入 CACS 本身；計入後 CACS 組總檢查數反而較多（見 B4）</td>
+</tr>
+<tr>
+<td>收案時已在 CVRM</td>
+<td style="text-align:right">112/402，<strong>27.9%</strong></td>
+<td style="text-align:right">41/112，<strong>36.6%</strong></td>
+<td style="text-align:right">−9.1%（−19.7 to 1.5）</td>
+<td style="text-align:right">0.09</td>
+<td>SOC 組基線較多已在 CVRM</td>
+</tr>
+<tr>
+<td><strong>新納入 CVRM</strong>（GP 或心臟科評估後）</td>
+<td style="text-align:right">146/402，<strong>36.3%</strong></td>
+<td style="text-align:right">19/112，<strong>17.0%</strong></td>
+<td style="text-align:right"><strong>19.6%（10.5 to 28.7）</strong></td>
+<td style="text-align:right">&lt;0.01</td>
+<td>是流程指標，且研究的處置建議本身就要求納入</td>
+</tr>
+<tr>
+<td><strong>MACE</strong>（major adverse cardiac events）：含 ACS、中風、心因死亡與全死因</td>
+<td style="text-align:right">2/420（有追蹤者）</td>
+<td style="text-align:right">1/109</td>
+<td style="text-align:right">未報告</td>
+<td style="text-align:right">未報告</td>
+<td>事件數極少，無法比較安全性</td>
+</tr>
+<tr>
+<td>CACS 組內轉診：CACS ≥400 vs CACS 0</td>
+<td style="text-align:right"><strong>94.2% vs 8.4%</strong></td>
+<td style="text-align:right">—</td>
+<td style="text-align:right">＋85.7%（79.4 to 91.9）</td>
+<td style="text-align:right">未報告</td>
+<td>GP 大致遵循報告建議（組內關聯，不是隨機比較）</td>
+</tr>
+<tr>
+<td>CACS 組內 OCAD：CACS ≥400 vs CACS 0</td>
+<td style="text-align:right"><strong>21.2% vs 0%</strong></td>
+<td style="text-align:right">—</td>
+<td style="text-align:right">OR 9.08（4.20 to 19.67）</td>
+<td style="text-align:right">未報告</td>
+<td>參考組 0 事件卻得到有限的 OR，統計上可疑（見 C4）</td>
+</tr>
+</tbody>
+</table></div>
+<p>補充：</p>
+<ul>
+<li><strong>分類標籤混用</strong>：正文 Figure 2 與敘述用 Agatston 絕對分級；Figure 3、Supplement Table 6/7/8 實際上用的是 <strong>MESA 上調後</strong>的分級，卻仍標為「CACS 11–100／101–399」。例如女性 101–399 在 Figure 2 是 14.3%，在 Supplement Table 6 是 29.0%。正文與表格的分級數字因此對不上（14.1% vs 54/466=11.6%；「13/67」「48/103」vs Supplement 的 54、68）[Figure 2 vs Supplement Table 6]。</li>
+<li><strong>安全性</strong>：3 件 MACE 都發生在已轉診者 [Supplement Table 8]。
+<ul>
+<li>1 件 NSTE-ACS：先前 SPECT 陰性，5 個月後 ICA 發現三條血管病變，接受 CABG。</li>
+<li>1 件 STE-ACS：CACS ≥400，發生在<strong>等候 work-up 期間</strong>。</li>
+</ul>
+</li>
+<li><strong>非心因性胸痛女性</strong>：無論 CACS 多少，OCAD 都是 0（含 CACS &gt;100 被轉診的 43 人）[Supplement Figure 3]。</li>
+<li><strong>追蹤時間</strong>：正文寫 mean 19.5 個月，Supplement 寫 median 19.5 個月，前後不一致。</li>
+</ul>
+<h3>6. 作者主張與自述限制</h3>
+<ul>
+<li><strong>主要訊息</strong>：CACS 在 very low／low 可能性的胸痛患者是「safe and effective」的 rule-out 與分流工具，轉診減少近一半、OCAD 偵測率維持、個人 CVRM 納入增加；在診所層級沒有可證明的效果。</li>
+<li><strong>與文獻的關係</strong>：作者以 ESC 2024 CCS 指引（CACS 作為 RF-CL 修正因子）支持結論，並與 NICE CG95（不支持 CACS 單獨分流）對照。</li>
+<li><strong>作者自述限制</strong> [文內]：
+<ul>
+<li>兩組樣本不平衡（SOC GP 忘記邀請、參與意願低）</li>
+<li>收案總數低於預期</li>
+<li>指引改版導致 SOC 異質</li>
+<li>CACS 看不到非鈣化斑塊</li>
+<li>低 CACS 被轉診者多數沒有做參考標準檢查</li>
+</ul>
+</li>
+<li><strong>[評估]</strong>：限制列得算坦白，但<strong>把選樣偏差輕描淡寫成「group size imbalance」</strong>，並宣稱「儘管有此選樣偏差，CACS 組仍顯著減少轉診」。這是倒果為因：轉診比例下降本身很可能就是選樣偏差的產物。所謂「safe」，依據只是 3 件 MACE 與部分驗證，結論強度超出數據能支持的範圍。</li>
+</ul>
+<h3>7. 外部專業意見</h3>
+<p><strong>Vrints C, Winther S. &quot;General practitioners referring for coronary calcium scoring for suspected angina: any CONCRETE evidence?&quot; <em>Heart</em> 2026; doi:10.1136/heartjnl-2026-328613（commissioned editorial）[外部: 期刊 editorial 全文]</strong></p>
+<ul>
+<li><strong>肯定</strong>：在基層執行多中心務實實施試驗的難度與投入值得肯定；轉診減少近半，CVRM 納入增加。</li>
+<li><strong>主要質疑</strong>：
+<ol>
+<li><strong>兩組 n=495 vs 117 的嚴重不平衡</strong>是主要限制，限制了結論強度。</li>
+<li>RF-CL 很可能是<strong>事後回溯套用</strong>，而不是前瞻性地用來引導是否檢查。</li>
+<li>約 90% 病人屬 very low 或 low RF-CL，顯示 GP 可能已非正式排除高風險者；ESC 2024 建議 RF-CL ≤5% 者應暫緩檢查。作者沒有做事後分析，評估「先用 RF-CL 篩選再做 CACS」能省下多少不必要的影像檢查。</li>
+<li>CACS 對 very low RF-CL 的價值很低，因為很少改變處置。ESC 2024 對 low–moderate RF-CL 建議 <strong>CCTA（class I, LOE A）</strong>，CACS 只在 low RF-CL（5–15%）列為 class IIa, LOE B。</li>
+</ol>
+</li>
+<li><strong>建議定位</strong>：CACS 可考慮用在基層 low RF-CL（5–15%）患者，尤其是 CCTA 有禁忌（顯影劑過敏、CKD、AF）或無法及時取得時；但這個策略<strong>本身未在基層被檢驗過</strong>。</li>
+<li><strong>本評讀補充</strong>：editorial 沒有點出主要終點設計上的不敏感、處置建議與 CVRM 結局的循環性，以及 OR 統計問題（見下文）。</li>
+</ul>
+<h3>8. 臨床建議</h3>
+<ul>
+<li><strong>可參考的情境</strong>：GP 端的 low RF-CL（約 5–15%）胸痛患者、CCTA 取得困難時。CACS 0 或極低分且臨床不像心因性者，暫不轉診是合理選項，但要清楚告知病人：CACS 看不到非鈣化斑塊與非動脈粥樣硬化原因。</li>
+<li><strong>不建議直接套用</strong>：
+<ul>
+<li>very low RF-CL（≤5%）者：依 ESC 2024 原則上不需檢查，本試驗約一半 CACS 病人屬此類。</li>
+<li>typical angina 或高前測機率者：本試驗幾乎沒有收這類病人。</li>
+<li>年輕族群（&lt;40/45 歲）與非荷蘭醫療體系。</li>
+<li>沒有 GP 守門制度、CCTA 可近性高的環境（包括台灣）。</li>
+</ul>
+</li>
+<li><strong>實務建議</strong>：
+<ol>
+<li>先算 RF-CL 再決定要不要做任何檢查，不要因為「有便宜的 CT」就降低檢查門檻。</li>
+<li>CACS 1–100 不必反射式納入「疾病管理」。依整體風險（如 SCORE2 加 CAC 修正）決定 statin，避免過度標籤化。</li>
+<li>CACS ≥400 應積極安排後續評估，本試驗 1 件 STEMI 就發生在等候 work-up 期間。</li>
+</ol>
+</li>
+<li><strong>證據強度</strong>：<strong>弱</strong>。主要終點無法提供資訊；個案層級比較建立在 post-randomisation 選樣、組間不可比的族群上；安全性依賴部分驗證與極少事件。</li>
+</ul>
+<hr />
+<h2>SKILL-A：批判性評讀</h2>
+<h3>A. 補充技術細節</h3>
+<ul>
+<li><strong>樣本數估算</strong> [Protocol p.21]：
+<ul>
+<li>假設每診所 2 年約 20 人接受進一步檢查，CVRM 納入率 SOC 27.5% vs CACS 35%（差 7.5%），ICC 0.01，power 80%，需每組 36 家，計畫每組 40 家、共約 1,600 人。</li>
+<li>因 COVID 擴增到 101 家，但總人數仍以 1,600 為目標。</li>
+<li><strong>實際收 612 人（38%）</strong>，SOC 平均每家只有 117/50 = <strong>2.3 人</strong>。</li>
+<li><strong>關鍵錯配</strong>：power 是用「受檢病人的 CVRM 納入差」算的，主要終點卻是「<strong>全診所約 3,400 名登錄病人</strong>中 CVRM 的比例」（詳見 C1）。</li>
+</ul>
+</li>
+<li><strong>隨機化與分派隱藏</strong>：由兩位研究者以 permuted block 分派，沒有描述 allocation concealment；以診所為單位，所以 concealment 影響較小。真正的問題在於<strong>個案收案發生在分派之後，而且由知道分組的 GP 決定</strong>，這是典型的 identification／recruitment bias。</li>
+<li><strong>ITT vs per-protocol</strong>：Protocol 明訂診所層級與個案層級分析都採 <strong>intention to treat</strong> [Protocol p.38–39]，正文改為 CACS 組 per-protocol（排除 29 位沒有 CACS 者，5.9%）。偏離 SAP，且沒有說明理由，也沒有 ITT 敏感度分析。</li>
+<li><strong>多重比較</strong>：Supplement Table 3 列出 74 個檢定，沒有校正，也沒有指定次要終點的層級順序。</li>
+<li><strong>缺失資料</strong>：
+<ul>
+<li>Protocol 計畫用 multiple imputation [Protocol p.38]。</li>
+<li>正文把類別變項的缺失直接當作「沒有該危險因子」[Table 2 註]。</li>
+<li>缺失比例<strong>在兩組間差很多</strong>：BMI 缺失 CACS 32.0% vs SOC 1.7%；RF-CL 缺失 30.3% vs 9.4%；高血壓病史缺失 2.1% vs 20.0% [Supplement Table 5]。</li>
+<li>CVRM 狀態缺失 64/466（13.7%）vs 5/117（4.3%）[Table 3 註]。</li>
+</ul>
+</li>
+<li><strong>偏離 protocol 的分析</strong>：Protocol 計畫在診所層級用多層次回歸，調整診所大小與男女比 [Protocol p.38]；正文只做未調整的 t-test。</li>
+<li><strong>未報告的事前次要終點</strong>：QoL（EQ-5D-5L、HeartQoL）、2 年 MACE 減少、成本效益、CACS cut-off 的 ROC 最佳化 [Protocol p.26]。正文說「另文發表」的只有成本效益與 ML，QoL 完全沒有交代。</li>
+</ul>
+<h4>A1. 特殊設計子模組：Cluster-randomised pragmatic／implementation trial</h4>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>檢查點</th>
+<th>本試驗</th>
+<th>評估</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>個案是否在分派前確認？</td>
+<td>否，GP 知道分組後才決定邀請誰</td>
+<td><strong>高風險</strong>：recruitment bias</td>
+</tr>
+<tr>
+<td>個案層級是否所有符合條件者都納入？</td>
+<td>否，SOC 有 24/50 家收 0 人，CACS 只有 7/51 家 [Figure 1]</td>
+<td>有收案的診所本身就不可比</td>
+</tr>
+<tr>
+<td>組間基線是否可比？</td>
+<td>RF-CL、症狀類型、BMI、性別都有差</td>
+<td>個案層級等同非隨機比較</td>
+</tr>
+<tr>
+<td>Cluster 數與 GEE 小樣本校正</td>
+<td>有收案的 cluster 約 70 家，大小差異極大；未提小樣本 SE 校正</td>
+<td>robust SE 可能偏窄</td>
+</tr>
+<tr>
+<td>污染（contamination）</td>
+<td>未描述；同一區域 GP 共用醫院，CACS 理念可能外溢</td>
+<td>會使主要終點偏向 null</td>
+</tr>
+<tr>
+<td>SOC 隨時間變動</td>
+<td>2020 年 NHG 改版，26 人用舊路徑（X-ECG）</td>
+<td>對照組異質</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Flow 一致性</strong>（依圖判讀 Figure 1）：</p>
+<ul>
+<li>圖中 CACS 組排除「3 merged + 2 withdrew」、SOC 組排除「5 withdrew」，合計 10 家，與 101 − 91 = 10 吻合。</li>
+<li>正文卻寫「six merged … seven withdrew」，合計 13 家，<strong>與圖不符</strong>。</li>
+<li>圖示有收案的診所 44 + 26 = 70 家，正文寫「72 GP offices」，<strong>不一致</strong>。</li>
+</ul>
+<h3>B. 批判性評估</h3>
+<h4>B1. 假說與理論邏輯</h4>
+<ul>
+<li><strong>問題：主要假說的因果鏈太長。</strong>
+<ul>
+<li>文內證據：作者把「CVRM 登錄」當成「CAD 偵測與治療率」的代理指標 [Methods p.2]。</li>
+<li>風險方向：CVRM 名冊受糖尿病、高血壓、CKD 等各種病人影響，這次介入只碰到每家診所極少數病人。訊號被大量稀釋，結果偏向 null。</li>
+<li>需要什麼才放心：主要終點應在<strong>受檢病人層級</strong>，或改用 statin 處方、LDL 達標等更貼近介入的指標。</li>
+</ul>
+</li>
+<li><strong>合理機轉</strong>：
+<ol>
+<li>CACS 0 的陰性預測值高，可安全地減少低風險者轉診（外部文獻支持）。</li>
+<li>看到鈣化可能提高醫病雙方對預防治療的意願。</li>
+</ol>
+</li>
+<li><strong>可疑的敘事跳躍</strong>：
+<ol>
+<li>從「CVRM 納入增加」跳到「enhanced individual preventive care」。CVRM 納入不等於風險因子改善，也不等於事件減少（沒有 LDL、statin 使用率、血壓資料）。</li>
+<li>從「低 CACS 被轉診者沒有 OCAD，且沒有 MACE」跳到「safe rule-out」。被轉診的 CACS 0 只有 14 人，而且多數只做 X-ECG [Supplement Table 7]。</li>
+<li>從「女性經 MESA 上調後發現 2 例 OCAD」推論「只看絕對 CACS 可能漏診」[Discussion]。n=2，屬事後觀察。</li>
+</ol>
+</li>
+</ul>
+<h4>B2. 受試者與外推性</h4>
+<ul>
+<li>實際收進的族群偏低風險：CACS 組 RF-CL very low 48.3%、low 41.2%、moderate 只有 10.5% [Supplement Table 4]。</li>
+<li>背景是荷蘭 GP 守門制度、CT 可近性中等、2020 年後 SOC 為直接轉診。</li>
+</ul>
+<p>外推性分級：</p>
+<ol>
+<li><strong>一般健康族群</strong>：不適用。本研究是有症狀者；無症狀 CAC 篩檢是另一個問題。</li>
+<li><strong>特定病患族群（基層非急性胸痛）</strong>：
+<ul>
+<li>可外推條件：GP 守門制度、low RF-CL、有標準化 CACS 報告與處置建議。</li>
+<li>不該外推原因：CCTA 可近性高、直接看心臟科的體系（如台灣）中，比較對象應是 CCTA 而不是「直接轉診」。</li>
+</ul>
+</li>
+<li><strong>特殊族群</strong>：
+<ul>
+<li>typical angina 與高前測機率者幾乎沒有收（cardiac chest pain 僅 19 人），不能外推。</li>
+<li>女性非心因性胸痛者 OCAD 為 0，提示這群人連 CACS 都可能不需要。</li>
+</ul>
+</li>
+</ol>
+<h4>B3. 研究設計與偏差</h4>
+<p><strong>最可能造成偏差的三個設計點</strong>：</p>
+<ol>
+<li>
+<p><strong>分派後由知情 GP 收案（selection／identification bias）</strong></p>
+<ul>
+<li>文內證據：
+<ul>
+<li>SOC 24/50 家收 0 人。</li>
+<li>作者自承 CACS 組 GP「lowered the threshold to request CACS in some very low-RF-CL patients」，SOC 的 GP「forgot to invite patients」[Discussion p.7]。</li>
+<li>RF-CL 7.0 vs 9.8（p&lt;0.01）。</li>
+</ul>
+</li>
+<li>方向：<strong>誇大</strong>轉診減少的幅度，也讓 OCAD 比率在 CACS 組看起來「可接受地低」。CACS 組多出來的是「本來就不會被轉診」的極低風險者，把轉診率的分母撐大。</li>
+<li>佐證［自行計算］：以隨機化的診所數為分母，<strong>CACS 組每家診所平均轉診 198/51 ≈ 3.9 人，SOC 組 94/50 ≈ 1.9 人</strong>。在同樣受限的收案資料下，CACS 診所的絕對轉診人數並不少。這不能直接解讀為 CACS 增加轉診，因為 SOC 收案不完整；但足以說明「47% 相對減少」是比例的產物，不是絕對工作量下降的證據。</li>
+</ul>
+</li>
+<li>
+<p><strong>SOC 組的轉診率在定義上就接近必然</strong></p>
+<ul>
+<li>文內證據：SOC 2020 年後「direct referral」路徑 91/91 = <strong>100%</strong> 轉診 [Figure 3]。收案點本身就是「決定轉診」的那一刻。</li>
+<li>方向：誇大組間差。比較的其實是「需要檢查者 vs 被轉診者」，而不是同一個族群在兩種策略下的轉診率。</li>
+<li>需要什麼才放心：以診所在相同期間的<strong>所有胸痛就診</strong>（EHR 抽取）為分母，比較轉診率。</li>
+</ul>
+</li>
+<li>
+<p><strong>處置建議與次要結局重疊（co-intervention／循環論證）</strong></p>
+<ul>
+<li>文內證據：CACS 報告明文建議 11–100 者「consider adding to CVRM」、&gt;100 者「include in CVRM」[Supplement Table 1]。SOC 組沒有對應的建議。</li>
+<li>方向：CVRM 新納入 36.3% vs 17.0% 有相當部分是<strong>研究流程本身</strong>造成的，不是 CACS 帶來的臨床價值。</li>
+</ul>
+</li>
+</ol>
+<p><strong>對照組適當性（Gyawali 框架）</strong>：</p>
+<ul>
+<li>SOC 符合當時荷蘭 GP 指引，作為「實施研究」的比較基準是合理的。</li>
+<li>但以 2024 年的標準來看，臨床上真正的競爭策略是「<strong>RF-CL 篩選 + CCTA</strong>」。本試驗沒有回答 CACS 與 CCTA 的比較。</li>
+<li>對照組本身也會變動（2019–2020 年從 X-ECG 改為直接轉診）。作者稱改版後 86% 在心臟科仍先做 X-ECG，影響有限；但這個數字在正文表格中找不到出處。</li>
+</ul>
+<p><strong>其他</strong>：</p>
+<ul>
+<li><strong>結局判定未設盲</strong>：OCAD 與 MACE 由一位知道分組的研究者心臟科醫師判定。</li>
+<li><strong>部分驗證（verification bias）</strong>：CACS 0–10 只有 23/221 被轉診；CACS 0 的 14 名被轉診者中，12 人做 X-ECG、1 人做 CTCA [Supplement Table 7]。沒被轉診者的 OCAD 狀態完全未知，所以「0% OCAD」是<strong>偵測到的比例，不是盛行率</strong>。</li>
+<li><strong>Crossover／後續治療</strong>：不適用（診斷策略試驗）。</li>
+</ul>
+<h4>B4. 測量工具與實務意義</h4>
+<ul>
+<li><strong>終點層級</strong>：OCAD 判定依賴 X-ECG（佔 CACS 組下游檢查的 123/222），X-ECG 本身準確度不足，作者在 Introduction 也承認這點。用 X-ECG 判定陽性或陰性，參考標準本身就不可靠。</li>
+<li><strong>CVRM 是行政登錄</strong>，不是硬終點，也不是風險因子控制指標。</li>
+<li><strong>把 CACS 本身算進檢查數</strong> [自行計算]：
+<ul>
+<li>CACS 組：(466 次 CACS + 222 項下游檢查) / 466 ≈ <strong>1.48 項檢查／人</strong>。</li>
+<li>SOC 組：(26 次第一線 X-ECG + 105 項下游檢查) / 117 ≈ <strong>1.12 項檢查／人</strong>。</li>
+<li>正文「下游檢查減少 42%」不等於整體檢查負擔減少；輻射劑量低（0.5–1 mSv）並不能抵消後續連鎖檢查（cascade）的風險。</li>
+</ul>
+</li>
+<li><strong>就算結果是真的，實務上有多大用處？</strong> 若只套用在 low RF-CL 者，每做約 2.6 次 CACS 可少 1 次轉診（1/0.378，以粗差計 [自行計算]）。但這個 NNT 建立在不可比的分母上，真實效益很可能較小；成本效益分析尚未發表。</li>
+</ul>
+<h3>C. 統計與資料完整性</h3>
+<h4>C1. 結果分類（CI + MCID）</h4>
+<p><strong>主要終點（診所 CVRM 比例變化）</strong></p>
+<ul>
+<li>MCID：文內沒有預先指定。Protocol 假設的效果換算到診所層級約只有 <strong>0.04 pp</strong> [推算]：每家 20 名受檢者 × 7.5% = 1.5 人；1.5 / 3,400 ≈ 0.044 pp。即使採用實際觀察到的個案層級差（19.6 pp × 每家約 10 人），也只有約 0.06 pp。</li>
+<li>CI：文內未報告。依 Table 1 的 SD 與診所數粗估差值的 95% CI 約 <strong>−0.65 至 ＋0.85 pp</strong> [自行計算，未考慮其他變異來源]，比預期效果寬約 15–20 倍。</li>
+<li><strong>分類：INCONCLUSIVE ❓</strong>。更精確地說，這個終點在設計上<strong>沒有能力回答問題</strong>（訊雜比極低）。不能解讀為「CACS 對診所層級沒有影響」，也不能用來支持「個人層級有效、群體層級沒效」這種解讀。</li>
+</ul>
+<p><strong>次要終點：轉診</strong></p>
+<ul>
+<li>MCID [推算]：絕對減少 10 pp。</li>
+<li>RD 31.3%（14.8–47.8），CI 完全高於 10 pp。</li>
+<li>分類：形式上是 <strong>POSITIVE</strong>，但<strong>偏差風險極高</strong>（非隨機可比的分母）。在統計精確度之外，因果效度很弱。</li>
+</ul>
+<p><strong>次要終點：OCAD 偵測（作者宣稱「維持」）</strong></p>
+<ul>
+<li>這是隱含的非劣性宣稱，卻沒有預設 margin。</li>
+<li>若以「漏掉 SOC 偵測量的 1/4」，即 −2 pp 作為 margin [推算]：RD −2.8%（−6.7 to 1.1），點估計就已越過 margin，CI 下限達 −6.7 pp。</li>
+<li><strong>分類：INCONCLUSIVE ❓</strong>。不能宣稱「維持 OCAD 偵測率」。</li>
+</ul>
+<p><strong>次要終點：CVRM 新納入</strong></p>
+<ul>
+<li>RD 19.6%（10.5–28.7）。</li>
+<li>分類：統計上 POSITIVE，但屬流程指標，而且是處置建議本身的直接產物（見 B3-3），臨床意義有限。</li>
+</ul>
+<p><strong>禁止謬誤檢查</strong>：</p>
+<ul>
+<li>作者寫「OCAD detection rates were not significantly different」，又把它解讀成「maintaining accurate OCAD detection」[Discussion p.7]。這正是 <strong>p &gt; 0.05 = 等效</strong>的謬誤。</li>
+<li>主要終點也被寫成「no difference」。</li>
+</ul>
+<h4>C2. Underpowered 與 Winner's Curse</h4>
+<ul>
+<li><strong>主要終點</strong>：嚴重 underpowered。CI 同時包含 0 與任何合理的效果，屬典型的不可回答。</li>
+<li><strong>個案層級</strong>：收案只達原計畫 1,600 人的 38%，SOC 只有 117 人、9 例 OCAD。轉診差異的點估計相對穩定，但 <strong>OCAD 與 MACE 完全不足以評估安全性</strong>。</li>
+<li><strong>Winner's Curse</strong>：轉診效果量大，主要來自選樣而非抽樣誤差；若拿這個效果量去規劃後續確認試驗，將嚴重高估效果、低估所需樣本數。</li>
+</ul>
+<h4>C3. Bayesian 補充</h4>
+<p>主要終點的 p 值不接近 0.05，而 OCAD 的問題出在偏差，不是精確度。正式的 Bayesian 重分析無法修正選樣偏差，因此不執行。</p>
+<h4>C4. 報告完整性與其他統計問題</h4>
+<p><strong>統計面紅旗</strong>：</p>
+<ol>
+<li><strong>參考組 0 事件卻報告有限 OR</strong>：
+<ul>
+<li>CACS 0（以及 1–10）的 OCAD 事件數為 0。正文仍報告 CACS 101–399 的 OR 2.84（1.52–5.29）、≥400 的 OR 9.08（4.20–19.67），參考組都是 CACS 0 [Results p.4；Supplement Figure 1]。</li>
+<li>參考組零事件時，標準 logistic 的 OR 會趨向無限大。作者以 GLMM「處理 complete separation」，但沒有說明是否用了 penalization 或合併類別。數值可信度存疑。</li>
+<li>Supplement Figure 1 把無法估計的 CACS 1–10 畫成「OR = 1」，視覺上會被誤讀為「與參考組相同」。從圖上看，「All patients」的 CACS 11–100 CI 下限接近或低於 1，「Referred patients」的 CI 下限在 1 以上；兩者都很寬，最寬的是 ≥400 referred（約 4 至 22）。</li>
+</ul>
+</li>
+<li><strong>模型估計與粗估差異未解釋</strong>：轉診 RD 模型 31.3% vs 粗差 37.8%。</li>
+<li><strong>百分比錯誤</strong>：
+<ul>
+<li>Table 2 胸痛類型：11 (3.3%) 與 77 (23.4%) 的分母不是 466（11/466 = 2.4%、77/466 = 16.5%），224 (48.1%) 卻是用 466 算的。同一欄混用兩種分母。</li>
+<li>被轉診者 OCAD「23/198 = 12.0%」，實算 11.6%。</li>
+<li>Discussion 寫 CACS 101–399 OCAD 11.5%，Results 寫 7.2%（9/125），Supplement Table 7 寫「9 (11.5)」。</li>
+</ul>
+</li>
+<li><strong>SAP 偏離</strong>：ITT 改為 per-protocol、multiple imputation 改為「缺失當作沒有」、多層次調整改為 t-test。三項都沒有說明理由。</li>
+<li><strong>組間缺失資料不平衡</strong>：BMI ≥25 的比例 48.9% vs 71.9%，幾乎可以完全由 CACS 組 32% 缺失被當作「非過重」來解釋 [Supplement Table 5]。Table 2 的基線比較因此不可信。</li>
+<li><strong>多重比較</strong>：74 個檢定沒有校正，次要結局沒有層級順序。</li>
+<li><strong>小 cluster 數</strong>：GEE 的 robust SE 在約 70 個、大小極不均的 cluster 下可能低估變異，沒有提到小樣本校正（如 Mancl–DeRouen）。</li>
+<li><strong>時間描述混用</strong>：mean 與 median follow-up 混用；正文寫「minimal loss to follow-up」，實際追蹤缺失 9.3%，CACS 組 CVRM 資料缺失 13.7%。</li>
+</ol>
+<p><strong>Kaplan-Meier</strong>：本文沒有 KM 曲線，MACE 只有事件計數。</p>
+<h3>D. 次組分析評估</h3>
+<div class="table-wrap wide"><table>
+<thead>
+<tr>
+<th>次組</th>
+<th>Interaction 檢定</th>
+<th>與其他研究一致</th>
+<th>事前指定</th>
+<th>機轉合理</th>
+<th>Within-study</th>
+<th>可信度</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>性別 × OCAD（男 9.3% vs 女 2.7%；調整 CACS 後 OR 1.97，0.90–4.28）</td>
+<td>沒有正式 interaction；只做共變量調整</td>
+<td>是（女性 CAC 較低）</td>
+<td>Protocol 寫「所有分析依性別」，屬事前，但無方向假說</td>
+<td>是</td>
+<td>是</td>
+<td><strong>中</strong>：作者寫「失去顯著性」，等同把 p&gt;0.05 當作「性別無獨立效果」，CI 仍容許約 4 倍</td>
+</tr>
+<tr>
+<td>MESA ≥P75 上調（86.9% 發生在女性；上調後發現 2 例 OCAD）</td>
+<td>無</td>
+<td>部分</td>
+<td>上調規則是事前定的；「上調能救回漏診」是事後觀察</td>
+<td>尚可</td>
+<td>是</td>
+<td><strong>推測性</strong>（n=2）</td>
+</tr>
+<tr>
+<td>非心因性胸痛女性 OCAD 為 0</td>
+<td>無</td>
+<td>合理</td>
+<td>否</td>
+<td>合理</td>
+<td>是</td>
+<td><strong>低到中</strong>：分母 139，0 事件，95% 上限約 2.2% [自行計算，rule of three]</td>
+</tr>
+<tr>
+<td>胸痛類型分層（Supplement Figure 2/3）</td>
+<td>無</td>
+<td>—</td>
+<td>否</td>
+<td>—</td>
+<td>是</td>
+<td><strong>低</strong>（各格 n 個位數；圖中有「84.·%」、PCI 方框誤標為 CABG 等製圖錯誤）</td>
+</tr>
+</tbody>
+</table></div>
+<h3>E. 紅旗清單</h3>
+<ul>
+<li><strong>設計</strong>：分派後由知情 GP 收案；SOC 24/50 家收 0 人。個案層級比較實質上是<strong>非隨機觀察性比較</strong>。</li>
+<li><strong>設計</strong>：主要終點被稀釋到全診所名冊，設計上不可能偵測到效果；power 計算與終點的分析單位錯配。</li>
+<li><strong>設計</strong>：處置建議直接指示納入 CVRM，造成次要結局的循環性。</li>
+<li><strong>設計</strong>：參考標準不完整，大多以 X-ECG 判定；非轉診者沒有驗證。「0% OCAD」不等於 NPV 100%。</li>
+<li><strong>統計</strong>：參考組 0 事件卻報告有限 OR；SAP 偏離（ITT→PP、MI→缺失當作沒有）；74 個檢定未校正。</li>
+<li><strong>報告</strong>：flowchart 與正文對不上（10 vs 13 家退出、70 vs 72 家收案）；絕對分級與 MESA 上調分級混用卻沒有標示；多處百分比錯誤；QoL 等事前次要終點沒有報告。</li>
+<li><strong>敘事</strong>：以「not significantly different」宣稱「maintaining accurate OCAD detection」；以 3 件 MACE 宣稱「safe」；Abstract 的「Conclusions」比 Discussion 的限制段強勢許多。</li>
+<li><strong>COI</strong>：Amgen 共同出資（降血脂藥廠，與 CVRM 擴張方向一致）；通訊作者接受 CT 廠商 Siemens 的經費；團隊長期推動 CAC。</li>
+<li><strong>外推</strong>：約一半 CACS 病人屬 ESC 定義「不需檢查」的 very low RF-CL；沒有與 CCTA 比較。</li>
+</ul>
+<h3>F. 反向解釋</h3>
+<ol>
+<li><strong>轉診減少是「分母膨脹」，不是 CACS 的效果</strong>
+<ul>
+<li>支持：作者自承 CACS 組納入更多極低風險者；RF-CL 較低；non-cardiac 胸痛者 CACS 組 224 人，SOC 只有 76 人。</li>
+<li>反對：組內轉診強烈依 CACS 分級而變（8.4% → 94.2%），顯示 GP 確實依結果改變行為。</li>
+</ul>
+</li>
+<li><strong>CVRM 新納入增加是研究建議造成的流程效應</strong>
+<ul>
+<li>支持：Supplement Table 1 明確指示納入；GP 直接納入的比例 25.6% vs 7.1%，心臟科納入的比例相近（10.7% vs 9.8%，p=0.50）。差異集中在受建議影響的 GP 端。</li>
+<li>反對：看到鈣化本身也可能提高醫病雙方的動機（外部文獻），但本試驗無法區分兩者。</li>
+</ul>
+</li>
+<li><strong>CACS 組 OCAD 較低，反映的是族群風險較低或漏診，而不是策略相當</strong>
+<ul>
+<li>支持：RF-CL 較低、非轉診者沒有驗證、CI 下限 −6.7 pp。</li>
+<li>反對：被轉診者的陽性率 CACS 組略高（11.6% vs 9.6%），符合 CACS 有分流能力。</li>
+</ul>
+</li>
+<li><strong>「低 CACS 無 MACE」反映的是低事件率與短追蹤，不是 CACS 的保護</strong>
+<ul>
+<li>支持：CACS 0–10 有追蹤者約 198 人，0 事件的 95% 上限約 1.5% [自行計算，rule of three]，在低風險族群中本來就預期很少事件。</li>
+<li>反對：外部大型世代資料一致顯示 CACS 0 的預後良好，方向上可信。</li>
+</ul>
+</li>
+</ol>
+<h3>G. 最終結論</h3>
+<ul>
+<li><strong>整體可信度</strong>：<strong>低</strong>（針對「CACS 策略優於 SOC」的因果宣稱）。對「CACS 組內分級與轉診、OCAD 的梯度關聯」，可信度為<strong>中</strong>。</li>
+<li><strong>可採用的條件</strong>：
+<ul>
+<li>作為<strong>描述性實施經驗</strong>：基層 GP 能依 CACS 報告分流，而且高分級者的 OCAD 盛行率確實較高。</li>
+<li>用在 ESC 2024 low RF-CL（5–15%）、CCTA 取得受限的情境。</li>
+</ul>
+</li>
+<li><strong>不建議採用的情境</strong>：
+<ul>
+<li>作為「CACS 可安全減少一半轉診、且不漏 OCAD」的定量依據。</li>
+<li>用於 very low RF-CL 者。</li>
+<li>用來取代 CCTA 路徑。</li>
+<li>用於 CCTA 可近性高的醫療體系。</li>
+</ul>
+</li>
+<li><strong>要改觀，最需要的三個改進</strong>：
+<ol>
+<li><strong>分派前確認個案</strong>：以 EHR 自動抓取所有胸痛就診者作為分母，或改為個案層級隨機化。</li>
+<li><strong>完整的參考標準與長期追蹤</strong>：至少 3–5 年 MACE，非轉診者也要有系統性結局確認，並預設非劣性 margin。</li>
+<li><strong>主要終點與分析單位一致</strong>：例如受檢者的 statin 使用率或 LDL 達標率，並與「RF-CL + CCTA」策略做比較。</li>
+</ol>
+</li>
+<li><strong>一句話結論</strong>：基層讓 GP 直接開鈣化分數，看起來能少轉一半病人，但比較的兩群病人本來就不一樣，安全性也還沒有被證明。</li>
+</ul>
+<hr />
+<h3>CONDITIONAL OUTPUT：效果量與結果分類</h3>
+<div class="table-wrap wide"><table>
+<thead>
+<tr>
+<th>指標</th>
+<th>介入組</th>
+<th>對照組</th>
+<th>效果量</th>
+<th>95% CI</th>
+<th>ARD</th>
+<th>MCID</th>
+<th>結果分類</th>
+<th>實務意義</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>診所 CVRM 比例 2 年變化（主要）</td>
+<td>＋0.3 pp</td>
+<td>＋0.2 pp</td>
+<td>差 ＋0.1 pp</td>
+<td>未報告；粗估 −0.65 至 ＋0.85 [自行計算]</td>
+<td>＋0.1 pp</td>
+<td>未指定；設計假設約 0.04 pp [推算]</td>
+<td><strong>INCONCLUSIVE</strong></td>
+<td>終點設計上不敏感，無法下結論</td>
+</tr>
+<tr>
+<td>轉診心臟科</td>
+<td>42.5%</td>
+<td>80.3%</td>
+<td>模型 RD 31.3%</td>
+<td>14.8–47.8</td>
+<td>−37.8 pp（粗）</td>
+<td>10 pp [推算]</td>
+<td>形式上 <strong>POSITIVE</strong>，偏差風險極高</td>
+<td>分母不同，效果大小不可信</td>
+</tr>
+<tr>
+<td>OCAD 偵測（全部收案）</td>
+<td>4.9%</td>
+<td>7.7%</td>
+<td>RD −2.8%</td>
+<td>−6.7 to 1.1</td>
+<td>−2.8 pp</td>
+<td>非劣 margin −2 pp [推算]</td>
+<td><strong>INCONCLUSIVE</strong></td>
+<td>不能宣稱「維持偵測率」</td>
+</tr>
+<tr>
+<td>CVRM 新納入</td>
+<td>36.3%</td>
+<td>17.0%</td>
+<td>RD 19.6%</td>
+<td>10.5–28.7</td>
+<td>＋19.3 pp</td>
+<td>未定義</td>
+<td><strong>POSITIVE</strong>（流程指標）</td>
+<td>很大一部分是處置建議直接造成</td>
+</tr>
+<tr>
+<td>心臟科下游檢查</td>
+<td>0.48／人</td>
+<td>0.89／人</td>
+<td>相對減少 42.4%</td>
+<td>19.8–58.7</td>
+<td>−0.41／人</td>
+<td>未定義</td>
+<td><strong>POSITIVE</strong>（未計入 CACS）</td>
+<td>計入 CACS 後總檢查數 1.48 vs 1.12 [自行計算]</td>
+</tr>
+<tr>
+<td>MACE</td>
+<td>2/420</td>
+<td>1/109</td>
+<td>未報告</td>
+<td>未報告</td>
+<td>—</td>
+<td>—</td>
+<td><strong>INCONCLUSIVE</strong></td>
+<td>事件太少，無法評估安全性</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+<p><strong>Sources:</strong></p>
+<ul>
+<li><a href="https://en.wikipedia.org/wiki/Heart_(journal)">Heart (journal) – Wikipedia</a></li>
+<li><a href="https://www.bioxbio.com/journal/HEART">Heart – bioxbio</a></li>
+<li><a href="https://heart-frontend.bmj.com/pages/about">Heart – BMJ about page</a></li>
+<li><a href="https://doaj.org/article/53582ba2ebd54cb586e4531b09c73802">CONCRETE protocol – BMJ Open (DOAJ)</a></li>
+<li><a href="https://www.pubmed.gov/35440450/">CONCRETE protocol – PubMed 35440450</a></li>
+<li><a href="https://www.rug.nl/staff/r.vliegenthart/research">R. Vliegenthart research – University of Groningen</a></li>
+<li><a href="https://www.rug.nl/cmb/publishing/oa-publication-week/week-13-coronary-artery-calcium-and-cognitive-function-in-dutch-adults-cross-sectional-results">ImaLife CAC and cognitive function – RUG</a></li>
+<li><a href="https://profiles.musc.edu/profile/6390214/198/89229">Vliegenthart publications – MUSC profiles</a></li>
+<li>Vrints C, Winther S. Editorial, <em>Heart</em> 2026; doi:10.1136/heartjnl-2026-328613（全文經本機 dlbydoi 擷取）</li>
+</ul>
+
+<footer class="appraisal-meta">評讀資訊：模型：claude-opus-5-5 (claude)  ·  route：rct  ·  產出時間：2026-11-22 04:01 CST</footer>
+</main>
+</body>
+</html>

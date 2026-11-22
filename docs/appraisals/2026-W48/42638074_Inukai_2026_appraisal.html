@@ -1,0 +1,901 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Prognostic and exploratory neurohormonal correlates of hypochloraemia in heart failure: a multicentre cohort study.</title>
+<style>
+  :root {
+    --bg: #fafafa;
+    --card: #ffffff;
+    --text: #1a1a1a;
+    --muted: #6b6b6b;
+    --border: #e5e5e5;
+    --accent: #0b5fff;
+  }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang TC",
+      "Microsoft JhengHei", sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    margin: 0;
+    padding: 24px 16px 64px;
+    line-height: 1.72;
+  }
+  main {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    margin: 0 auto;
+    max-width: 840px;
+    padding: 22px 26px;
+  }
+  nav {
+    margin: 0 auto 14px;
+    max-width: 840px;
+    color: var(--muted);
+    font-size: 14px;
+  }
+  a { color: var(--accent); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  h1, h2, h3, h4 { line-height: 1.35; }
+  h1 { font-size: 26px; margin-top: 0; }
+  h2 { border-top: 1px solid var(--border); padding-top: 18px; }
+  code {
+    background: rgba(127, 127, 127, 0.12);
+    border-radius: 4px;
+    padding: 1px 4px;
+  }
+  .table-wrap {
+    margin: 1em 0;
+    overflow-x: auto;
+  }
+  .table-wrap.wide {
+    /* Break out of the 840px prose column, centred on the viewport. */
+    width: min(1040px, calc(100vw - 32px));
+    margin-left: calc(50% - min(520px, 50vw - 16px));
+  }
+  table {
+    border-collapse: collapse;
+    table-layout: auto;
+    width: 100%;
+  }
+  .table-wrap.wide {
+    /* Opaque so the <main> card border does not show through the table. */
+    background: var(--card);
+  }
+  /* Width hints go on <th> as percentages: Chrome's auto table layout
+     mis-sizes columns (and overflows) when cells carry min-width. */
+  .table-wrap.wide th:first-child {
+    /* Variable + plain-language definition, e.g. "NCPV (noncalcified ...)". */
+    width: 26%;
+  }
+  .table-wrap.wide th:last-child {
+    /* Last column is usually a one-line interpretation. */
+    width: 20%;
+  }
+  th, td {
+    border: 1px solid var(--border);
+    /* Wrap only at spaces: never split an English word mid-letter. */
+    overflow-wrap: normal;
+    word-break: normal;
+    hyphens: manual;
+    padding: 6px 8px;
+    text-align: left;
+    vertical-align: top;
+  }
+  blockquote {
+    border-left: 3px solid var(--accent);
+    color: var(--muted);
+    margin-left: 0;
+    padding-left: 14px;
+  }
+  .appraisal-meta {
+    border-top: 1px solid var(--border);
+    margin-top: 28px;
+    padding-top: 14px;
+    color: var(--muted);
+    font-size: 13px;
+  }
+  @media (max-width: 600px) {
+    body {
+      padding: 12px 8px 40px;
+    }
+    main {
+      padding: 16px 12px;
+    }
+    h1 {
+      font-size: 22px;
+    }
+    table {
+      font-size: 12px;
+    }
+    .table-wrap.wide {
+      width: calc(100vw - 16px);
+      margin-left: calc(50% - 50vw + 8px);
+    }
+    th, td {
+      padding: 4px 5px;
+    }
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #1a1a1a;
+      --card: #242424;
+      --text: #e8e8e8;
+      --muted: #999;
+      --border: #333;
+      --accent: #6ea8ff;
+    }
+  }
+</style>
+</head>
+<body>
+<nav><a href="../../2026-W48.html">← 回到 2026-W48 週報</a></nav>
+<main>
+<h1>Prognostic and exploratory neurohormonal correlates of hypochloraemia in heart failure: a multicentre cohort study.</h1>
+<h1>批判性評讀：Prognostic and exploratory neurohormonal correlates of hypochloraemia in heart failure: a multicentre cohort study</h1>
+<hr />
+<h2>SECTION-0：文章全面描述</h2>
+<h3>0. 文章身份證</h3>
+<ul>
+<li><strong>標題</strong>：Prognostic and exploratory neurohormonal correlates of hypochloraemia in heart failure: a multicentre cohort study</li>
+<li><strong>期刊 / 年份</strong>：<em>Heart</em>（BMJ Group / British Cardiovascular Society），2026（Epub，2026-08-20 first published）[文內：page 1 浮水印]</li>
+<li><strong>DOI</strong>：10.1136/heartjnl-2026-328053；PMID 42638074</li>
+<li><strong>文章類型（路由）</strong>：觀察性研究，屬於前瞻性多中心登錄研究 JROADHF-NEXT 的 <strong>post hoc 次分析</strong>，用 SKILL-A 主流程、觀察性子模組與因果推論附錄評讀。</li>
+<li>本文其實是兩個研究合在一起：
+<ol>
+<li><strong>預後研究</strong>（n=3941）：出院血氯分組與 2 年預後的關係。</li>
+<li><strong>探索性生物標記研究</strong>（n=499）：血中 UCN2 與血氯的橫斷面相關。</li>
+</ol>
+</li>
+<li>兩部分的證據層級差很多，下面分開評。</li>
+</ul>
+<h3>1. 作者團隊評論</h3>
+<ul>
+<li><strong>通訊作者</strong>：Mikito Takefuji，名古屋大學循環器內科 [文內]。長期研究 CRHR2 / UCN2 軸在心衰竭中的致病角色：
+<ul>
+<li>2017 年 <em>J Exp Med</em> 指出 CRHR2 會加重慢性心臟功能不全，且心衰病人血中 Ucn2 比健康人高 7.5 倍 [外部: PubMed, <a href="https://doi.org/10.1084/jem.20161924">DOI</a>]。</li>
+<li>2019 年在 <em>Circ J</em> 發表 CRH 家族綜論 [外部: PubMed, <a href="https://doi.org/10.1253/circj.CJ-18-0428">DOI</a>]。</li>
+<li>2025 年 <em>Sci Rep</em> 發表 UCN2 ELISA 的開發。這篇的第一作者正是本文第一作者 Inukai，共同作者包括 Immuno-Biological Laboratories 公司研究員 [外部: PubMed, <a href="https://doi.org/10.1038/s41598-025-99509-4">DOI</a>]。本文所說的「proprietary ELISA」（ref 17）就是這套自家 assay。</li>
+<li>美國專利 US11135270 列 Takefuji 為發明人，內容是以 CRHR2 antagonist 治療心衰竭 [外部: Google Patents，經搜尋結果摘要]。</li>
+</ul>
+</li>
+<li><strong>團隊構成</strong>：
+<ul>
+<li>名古屋大學團隊（Okumura、Murohara、Morimoto、Kondo）負責概念與統計 [文內: Contributors]。</li>
+<li>JROADHF-NEXT 核心成員（Tsutsui、Matsushima、Tohyama、Enzan，九州大學系統）提供登錄資料。</li>
+<li>Matsue（順天堂）、Kitai（NCVC）是日本心衰流行病學的活躍研究者。</li>
+<li>整體來說，是心衰竭登錄研究的核心團隊，加上 UCN2 基礎研究團隊。</li>
+</ul>
+</li>
+<li><strong>作者立場史</strong>：Takefuji 團隊近十年一貫主張「UCN2/CRHR2 過度活化會傷害心臟」，並持有相關治療專利。本文的 UCN2 分析正好替這個主張找到人體數據的「新連結」，有確認偏差（confirmation bias）的風險 [推論]。</li>
+<li><strong>利益揭露</strong>：
+<ul>
+<li>文內 COI 只列各作者與藥廠的酬勞和研究經費，並寫「與本文內容無直接相關的利益衝突」[文內]。</li>
+<li>但文內<strong>沒有揭露</strong>兩件事：Takefuji 的 CRHR2 專利 [外部]，以及 UCN2 assay 與 IBL 的共同開發關係 [外部: PubMed]。</li>
+<li>UCN2 的「新角色」若成立，對這條專利 / 診斷路線有利。這屬於應揭露而未揭露的非財務或潛在財務利益 [推論]。</li>
+<li>經費來自 AMED、厚生勞動省、JSPS，資助者不參與研究 [文內]。</li>
+</ul>
+</li>
+</ul>
+<h3>2. 文獻 Metadata 整理</h3>
+<ul>
+<li><strong>投稿與接受</strong>：Received 2026-02-18 / Accepted 2026-07-28 [文內]，<strong>審查約 160 天</strong> [自行計算]。</li>
+<li><strong>期刊平均審查天數</strong>：[無法取得]，因此無法比較快慢。</li>
+<li><strong>期刊指標</strong>：
+<ul>
+<li>Impact Factor 4.4（2025 JCR）[外部: Wikipedia / 期刊指標彙整網站；非 Clarivate 原始頁面，未驗證]。</li>
+<li>心血管領域約 Q1–Q2 [推論]。</li>
+<li>Open Access，CC BY 4.0 [文內]。</li>
+</ul>
+</li>
+<li><strong>稿件性質</strong>：「Not commissioned; externally peer reviewed」[文內]，屬於一般投稿。</li>
+</ul>
+<h3>3. 研究背景 [文內]</h3>
+<ul>
+<li><strong>既有證據</strong>：
+<ul>
+<li>低鈉血症是心衰嚴重度與利尿劑阻抗的標記。</li>
+<li>近年研究顯示低氯血症獨立預測不良預後與利尿反應不佳（ref 8–10, 19, 20），包括 ADVOR 次分析。</li>
+</ul>
+</li>
+<li><strong>知識缺口</strong>：
+<ul>
+<li>低氯的病生理機轉不明。</li>
+<li>UCN2 在動物實驗中與特定組織的氯離子調控有關，但從未在人體心衰中評估。</li>
+</ul>
+</li>
+<li><strong>Research question</strong>：
+<ol>
+<li>出院血氯能否在 BNP 與 MAGGIC 變項之外提供預後資訊？</li>
+<li>低氯的臨床和生化相關因子為何，特別是 UCN2？</li>
+</ol>
+</li>
+</ul>
+<h3>4. 研究設計與方法</h3>
+<ul>
+<li><strong>P</strong>：
+<ul>
+<li>JROADHF-NEXT，日本 87 家中心，2019/4–2021/4 因急性失代償心衰住院的病人。</li>
+<li>收案條件：≥20 歲、符合 Framingham 標準、BNP ≥100 pg/mL 或 NT-proBNP ≥300。</li>
+<li>排除出院血氯缺值（n=30）與長期透析（n=45）後，n=3941。</li>
+</ul>
+</li>
+<li><strong>I / Exposure</strong>：出院時血氯。分組為低氯 ≤95、正常 96–105、高氯 ≥106 mEq/L。</li>
+<li><strong>C</strong>：
+<ul>
+<li>Table 2 以正常氯組為參照。</li>
+<li>Table 3 以「非低氯」（正常加高氯）為參照。</li>
+</ul>
+</li>
+<li><strong>O</strong>：
+<ul>
+<li>2 年全死因死亡、心血管死亡、心衰再住院，以及「全死因死亡或心衰再住院」複合終點。</li>
+<li>次要：非心血管死亡。</li>
+<li>探索性：UCN2 與血氯的相關。</li>
+</ul>
+</li>
+<li><strong>統計方法</strong>：
+<ul>
+<li>KM 曲線加 log-rank。</li>
+<li>Cox 模型依序調整三個模型：Model 1 = BNP；Model 2 = 再加 MAGGIC 組成項目（不含加總分數）；Model 3 = 再加心跳、albumin、MRA。</li>
+<li>Fine-Gray 競爭風險分析。</li>
+<li>血氯與血鈉同時放入的連續模型，並以 likelihood ratio test 比較 [Supplement Table 3]。</li>
+<li>共變項選擇：單變項 p&lt;0.10 加上臨床判斷。</li>
+</ul>
+</li>
+<li><strong>UCN2 子分析</strong>：
+<ul>
+<li>504 人有 UCN2 測值，排除透析 5 人後 n=499。</li>
+<li>9 人低於定量下限，以 0.6 pg/mL 填補。</li>
+<li>線性迴歸的應變數是血氯；logistic 迴歸的應變數是低氯。</li>
+<li>LVEF 缺值 33 人，用 MICE 補值 20 組 [Supplement Methods]。</li>
+</ul>
+</li>
+<li><strong>主要變項定義</strong>：血氯為出院單次測值；用哪一次、何時抽血沒有交代。死因如何判定與裁定沒有描述。</li>
+</ul>
+<h3>5. 研究結果重點整理</h3>
+<div class="table-wrap wide"><table>
+<thead>
+<tr>
+<th>變項（代表什麼）</th>
+<th style="text-align:right">低氯（n=261）</th>
+<th style="text-align:right">正常氯（n=2782）</th>
+<th style="text-align:right">高氯（n=898）</th>
+<th style="text-align:right">組間差（95% CI）</th>
+<th style="text-align:right">p 值</th>
+<th>如何解讀</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>出院血氯</td>
+<td style="text-align:right"><strong>93 mEq/L</strong></td>
+<td style="text-align:right"><strong>102 mEq/L</strong></td>
+<td style="text-align:right"><strong>107 mEq/L</strong></td>
+<td style="text-align:right">—</td>
+<td style="text-align:right">&lt;0.001</td>
+<td>分組定義本身；低氯盛行率僅 <strong>6.6%</strong></td>
+</tr>
+<tr>
+<td>出院血鈉</td>
+<td style="text-align:right"><strong>133</strong></td>
+<td style="text-align:right"><strong>139</strong></td>
+<td style="text-align:right"><strong>141</strong></td>
+<td style="text-align:right">—</td>
+<td style="text-align:right">&lt;0.001</td>
+<td>低氯組多同時低鈉，兩者高度共線（ρ=0.63）</td>
+</tr>
+<tr>
+<td>全死因死亡（2 年 KM）</td>
+<td style="text-align:right"><strong>40.2%</strong></td>
+<td style="text-align:right"><strong>16.5%</strong></td>
+<td style="text-align:right"><strong>13.9%</strong></td>
+<td style="text-align:right">未調整 HR 3.01（2.43–3.72）；Model 3 HR <strong>2.09（1.64–2.67）</strong>（對非低氯）</td>
+<td style="text-align:right">&lt;0.001</td>
+<td>絕對差約 <strong>23.7 個百分點</strong> [自行計算]，訊號強</td>
+</tr>
+<tr>
+<td>心血管死亡</td>
+<td style="text-align:right"><strong>25.5%</strong></td>
+<td style="text-align:right"><strong>7.7%</strong></td>
+<td style="text-align:right"><strong>6.8%</strong></td>
+<td style="text-align:right">Model 3 HR <strong>2.29（1.64–3.20）</strong>；Fine-Gray sHR 2.23（1.55–3.20）</td>
+<td style="text-align:right">&lt;0.001</td>
+<td>約多 <strong>17.8 個百分點</strong> [自行計算]；分母已扣除死因不明者（見 B3）</td>
+</tr>
+<tr>
+<td>非心血管死亡</td>
+<td style="text-align:right">未報告比例</td>
+<td style="text-align:right">未報告比例</td>
+<td style="text-align:right">未報告比例</td>
+<td style="text-align:right">未調整 HR 1.80（1.16–2.79）；Model 3 HR <strong>1.43（0.86–2.37）</strong>；sHR 1.23（0.73–2.08）</td>
+<td style="text-align:right">0.16 / 0.44</td>
+<td>CI 寬且跨過 1，屬<strong>無法下結論</strong>，不是「沒有關聯」</td>
+</tr>
+<tr>
+<td>心衰再住院</td>
+<td style="text-align:right"><strong>33.7%</strong></td>
+<td style="text-align:right"><strong>23.2%</strong></td>
+<td style="text-align:right"><strong>25.6%</strong></td>
+<td style="text-align:right">Model 2 HR 1.27（0.99–1.63）；Model 3 HR <strong>1.30（1.02–1.67）</strong></td>
+<td style="text-align:right">0.06 / 0.04</td>
+<td>結果脆弱，CI 下限貼近 1</td>
+</tr>
+<tr>
+<td>複合終點（死亡或心衰再住院）</td>
+<td style="text-align:right"><strong>54.8%</strong></td>
+<td style="text-align:right"><strong>33.4%</strong></td>
+<td style="text-align:right"><strong>34.5%</strong></td>
+<td style="text-align:right">Model 3 HR <strong>1.46（1.20–1.78）</strong></td>
+<td style="text-align:right">&lt;0.001</td>
+<td>主要由死亡驅動</td>
+</tr>
+<tr>
+<td>高氯 vs 正常氯（全死因）</td>
+<td style="text-align:right">—</td>
+<td style="text-align:right">參照</td>
+<td style="text-align:right">—</td>
+<td style="text-align:right">HR 0.83（0.68–1.01）</td>
+<td style="text-align:right">0.06</td>
+<td>高氯沒有明確風險</td>
+</tr>
+<tr>
+<td><strong>連續血氯</strong>（每 1 mEq/L，與血鈉同模型）</td>
+<td style="text-align:right">—</td>
+<td style="text-align:right">—</td>
+<td style="text-align:right">—</td>
+<td style="text-align:right">HR <strong>0.95（0.93–0.97）</strong>；血鈉 HR 0.99（0.96–1.01）</td>
+<td style="text-align:right">&lt;0.001 / 0.28</td>
+<td>兩者共線，「鈉不重要」的結論脆弱</td>
+</tr>
+<tr>
+<td><strong>LR χ²</strong>：在基礎模型上各自加入鈉或氯後模型適配度的改善</td>
+<td style="text-align:right">—</td>
+<td style="text-align:right">—</td>
+<td style="text-align:right">—</td>
+<td style="text-align:right">加鈉 <strong>22.8</strong>；加氯 <strong>42.8</strong></td>
+<td style="text-align:right">皆 &lt;0.001</td>
+<td>單獨加入時鈉<strong>也有</strong>顯著增益</td>
+</tr>
+<tr>
+<td><strong>log₁₀UCN2</strong>（UCN2 子群，n=37/360/102）</td>
+<td style="text-align:right"><strong>2.62</strong></td>
+<td style="text-align:right"><strong>2.25</strong></td>
+<td style="text-align:right"><strong>2.23</strong></td>
+<td style="text-align:right">—</td>
+<td style="text-align:right">0.02</td>
+<td>低氯組 UCN2 偏高，但分布高度重疊</td>
+</tr>
+<tr>
+<td>UCN2 與血氯的 Spearman ρ</td>
+<td style="text-align:right">—</td>
+<td style="text-align:right">—</td>
+<td style="text-align:right">—</td>
+<td style="text-align:right">ρ = <strong>−0.14</strong></td>
+<td style="text-align:right">0.002</td>
+<td>只能解釋約 2% 的變異 [自行計算 ρ²]</td>
+</tr>
+<tr>
+<td>UCN2 的多變項線性迴歸係數 B</td>
+<td style="text-align:right">—</td>
+<td style="text-align:right">—</td>
+<td style="text-align:right">—</td>
+<td style="text-align:right"><strong>−0.37（−0.72 to −0.02）</strong> mEq/L / 每 log₁₀ 單位</td>
+<td style="text-align:right">0.04</td>
+<td>UCN2 高 10 倍，血氯只低 0.37 mEq/L，<strong>臨床意義微小</strong></td>
+</tr>
+</tbody>
+</table></div>
+<ul>
+<li><strong>重要的基線差異 [Table 1]</strong>：低氯組年紀較大（76 vs 72 歲），也較瘦（BMI 19.4）。心衰病程 ≥18 個月的比例為 51%，NYHA III–IV 為 21%。loop 利尿劑使用 91%，tolvaptan 使用 47%。甲狀腺疾病 17%。LVEF 反而較高（45%）。整體輪廓是「慢性、惡病質、大量利尿」的進展期表型。</li>
+<li><strong>KM 圖判讀 [Figure 1，page_005 圖頁]</strong>：
+<ul>
+<li>全死因與複合終點：低氯曲線在出院後第 1–2 個月就分開，之後持續擴大，沒有晚期交叉。</li>
+<li>低氯組 24 個月時 number at risk 仍有 156（全死因）與 118（複合），曲線尾端可信。</li>
+<li>KM 圖讀出的 24 個月存活約 0.56（全死因），相當於約 44% 死亡，比文中寫的 40.2% 高。文中數字可能是粗比例而非 KM 估計 [推論；圖讀值為目測]。</li>
+</ul>
+</li>
+<li><strong>數字不一致</strong>：
+<ul>
+<li>Figure 1B（心血管死亡）的起始 at-risk 是 239/2713/878，不是 261/2782/898。差額 22+69+20 = <strong>111</strong>，正好等於死因不明的死亡數。也就是說，死因不明者被<strong>整個移出</strong>心血管死亡分析，文中沒有交代 [圖頁 page_005；自行計算]。</li>
+<li>Supplement Figure 1A 高氯組 at-risk 在 18 個月是 847、24 個月變成 883，<strong>人數不可能增加</strong>，是資料錯誤 [supp_01_appendix_page_004]。</li>
+<li>正文說非心血管死亡未調整 HR 1.80（1.16–2.79）並引用「online supplemental figure 1B」。但 Supp Figure 1B 實際顯示的是 HR <strong>1.70（1.09–2.64），p=0.02</strong>（對正常氯）。1.80 這個數字出自 Supp Table 1（對非低氯）。正文引用來源錯誤。</li>
+</ul>
+</li>
+</ul>
+<h3>6. 作者討論與評論重點</h3>
+<ul>
+<li><strong>主要訊息</strong>：血氯是「被低估的預後標記」，在 BNP、MAGGIC 變項以及血鈉之外仍有獨立預後價值；UCN2 是可能的神經荷爾蒙相關因子。</li>
+<li><strong>與文獻的關係</strong>：與 BEST 世代（Grodin 2016）及 ADVOR 次分析一致 [文內]。</li>
+<li><strong>作者列出的限制 [文內]</strong>：觀察性設計、殘餘混淆可能很大、只納入住院病人、沒有組織層級的機轉證據、UCN2 分析小且屬探索性。</li>
+<li><strong>[評估]</strong>：限制段寫得算誠實，坦承低氯可能只是嚴重度與利尿強度的標記。但正文和摘要仍有幾處超出數據：
+<ul>
+<li>「支持其對心血管病生理的相對特異性」：根據只是非心血管 HR 的 p 值不顯著。</li>
+<li>「納入常規評估可辨識殘餘風險」：沒有提供任何 discrimination 或 reclassification 指標。</li>
+<li>「Key messages」寫「identifying a potential neurohormonal correlate」，語氣比內文的 hypothesis-generating 更強。</li>
+</ul>
+</li>
+</ul>
+<h3>7. 外部專業意見</h3>
+<ul>
+<li>[無法取得]：以 PubMed 與網路搜尋（標題、作者、主題關鍵字）都沒有找到針對本文的同期 editorial 或 commentary。因為沒有 DOI，沒有執行全文擷取。</li>
+<li>相關背景文獻（非針對本文）：
+<ul>
+<li>2026 年 CLOROTIC 次分析顯示，無論基線血氯高低，加 hydrochlorothiazide 都能增強去充血。這間接說明「血氯不一定改變治療決策」[外部: PubMed, <a href="https://doi.org/10.1016/j.rec.2026.04.006">DOI</a>]。</li>
+</ul>
+</li>
+</ul>
+<h3>8. 臨床建議</h3>
+<ul>
+<li><strong>可採用的情境</strong>：日本或東亞因急性心衰住院、出院時血氯 ≤95 mEq/L 的病人，可視為<strong>高風險標記</strong>，用於加強出院後追蹤、早期回診，以及重新檢視利尿劑與 tolvaptan 策略。</li>
+<li><strong>不建議直接套用的情境</strong>：
+<ul>
+<li>門診穩定慢性心衰、透析病人。</li>
+<li>把「矯正血氯」當治療目標：沒有任何證據顯示補氯能改善預後。</li>
+<li>用 UCN2 做任何臨床判斷。</li>
+</ul>
+</li>
+<li><strong>實務建議</strong>：
+<ol>
+<li>出院生化報告中已經有血氯，看到 ≤95 mEq/L 時，把它和低鈉、BUN 上升、低 BMI 一起視為「進展期或利尿劑依賴」的警訊，並安排 1–2 週內回診。</li>
+<li>低氯本身應促使重新評估利尿劑方案：loop 利尿劑劑量、是否合併 thiazide 或 acetazolamide、tolvaptan 是否造成「鈉正常但氯低」。這仍是基於病生理的推論。</li>
+<li>不要把本研究當作需要測 UCN2 或補充氯的依據。</li>
+</ol>
+</li>
+<li><strong>證據強度</strong>：
+<ul>
+<li>預後關聯：<strong>中</strong>。樣本大、前瞻登錄，效果量大且一致；但殘餘混淆明顯、沒有外部驗證。</li>
+<li>UCN2 關聯：<strong>弱</strong>。單一中心 assay、小樣本、效果微小、p=0.04 處於邊緣。</li>
+</ul>
+</li>
+</ul>
+<hr />
+<h2>SKILL-A：原始研究批判性評讀</h2>
+<h3>A. 補充技術細節</h3>
+<ul>
+<li><strong>樣本數估算</strong>：沒有事前檢定力計算，屬 post hoc 次分析 [文內]。低氯組全死因死亡約 105 件 [自行計算 40.2%×261]，Cox 模型每個共變項的事件數大致足夠。</li>
+<li><strong>UCN2 logistic 模型</strong>：低氯只有 37 人、放 5 個變項，EPV 約 7.4，低於常見門檻 10。作者自己也承認「事件少所以只放 5 個變項」[文內]。</li>
+<li><strong>UCN2 子群如何選出</strong>：摘要寫「predefined subset」，方法卻只寫「504 人有可測 UCN2」。哪些中心、哪些病人被抽血、為何只有 504 人，都沒有說明。
+<ul>
+<li>子群與主世代有差異：NYHA III–IV 17.2% vs 11.1%，ACEi 49.9% vs 42.1%，平均年齡 70.2 vs 72.8 歲 [Supplement Table 4 vs Table 1]。</li>
+<li>子群可能不具代表性 [推論]。</li>
+</ul>
+</li>
+<li><strong>缺失資料</strong>：
+<ul>
+<li>主世代的缺值處理完全沒有描述。Table 1 分母可見 smoking、NYHA、AF 有缺值，ARNi 只有 2555 人有資料，推測為 complete-case。</li>
+<li>MICE 只用在 UCN2 子群的 LVEF [Supplement Methods]。</li>
+</ul>
+</li>
+<li><strong>比例風險假設</strong>：沒有報告檢驗結果 [文內未提供]。</li>
+<li><strong>連續血氯的函數形式</strong>：直接以線性 HR 0.95 呈現，沒有用 spline 檢查非線性。高氯 HR 0.83 的趨勢暗示可能是單調關係，但無從驗證。</li>
+<li><strong>共變項選擇</strong>：單變項 p&lt;0.10 加上臨床判斷，屬 data-driven 選擇，模型可能過度擬合 [文內]。</li>
+<li><strong>死因判定</strong>：沒有描述裁定流程。死因不明的死亡有 111 件，佔全部 688 件死亡的 16% [文內]。</li>
+</ul>
+<h4>觀察性研究的混淆控制方法</h4>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>方法</th>
+<th>本文使用</th>
+<th>評估</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>多變量迴歸</td>
+<td>是，逐步加入的三層 Cox 模型</td>
+<td>關鍵混淆因子<strong>沒有納入</strong>（見 B3）</td>
+</tr>
+<tr>
+<td>Propensity score</td>
+<td>否</td>
+<td>—</td>
+</tr>
+<tr>
+<td>Instrumental variable</td>
+<td>否</td>
+<td>—</td>
+</tr>
+</tbody>
+</table></div>
+<ul>
+<li>沒有殘餘混淆的敏感度分析，例如 E-value 或 negative control outcome。</li>
+<li><strong>時間序列</strong>：暴露（出院血氯）先於結局，時間順序成立。但血氯只測一次，無法區分慢性低氯和住院中利尿造成的短暫低氯。入院血氯與住院中的變化都沒有利用。</li>
+</ul>
+<h3>B. 批判性評估</h3>
+<h4>B1. 假說與理論邏輯</h4>
+<ol>
+<li><strong>預後假說是事前預期的方向，但不是事前登錄的</strong>。這是 post hoc 次分析，沒有 SAP 或登錄資訊（文內與 supplement 都沒有 protocol）。低氯對應較差預後的方向與既有文獻一致，降低了假陽性的疑慮。</li>
+<li><strong>UCN2 假說是典型的「先有分子，再找連結」</strong>。依據是動物或魚類腸道的氯分泌實驗（ref 13 是大西洋鮭魚，ref 14 是腸道壓力胜肽），推到人體全身血氯調控，<strong>機轉跳躍很大</strong>。
+<ul>
+<li>文中挑選共變項時，先參考「三組比較」和「單變項分析」再決定模型 [文內: Results p.4–5]。這是看過資料後才建模，提高了 p=0.04 是偶然的可能。</li>
+</ul>
+</li>
+<li><strong>合理的機轉（1–3 點）</strong>：
+<ul>
+<li>loop 利尿劑造成腎臟排氯（NKCC2 阻斷）。</li>
+<li>神經荷爾蒙活化加上低鈉時的稀釋效應。</li>
+<li>長期大量利尿合併惡病質，反映進展期心衰。這三點作者都有提到。</li>
+</ul>
+</li>
+<li><strong>最可疑的敘事跳躍</strong>：
+<ul>
+<li>「血氯不只是被動的陰離子」：本文的數據完全無法區分「標記」與「致病因子」。</li>
+<li>「低氯對心血管病生理具相對特異性」：只靠非心血管 HR p=0.16 推論，屬於 absence of evidence。</li>
+<li>「UCN2 是氯離子失調的神經荷爾蒙相關因子」：ρ=−0.14，而且是單一 assay。</li>
+</ul>
+</li>
+</ol>
+<h4>B2. 受試者與外推性</h4>
+<ul>
+<li>族群是日本急性心衰住院病人：中位 BMI 21.5，HFrEF 與 HFpEF 混合（LVEF 中位 39%），tolvaptan 使用率 33%。tolvaptan 是日本特有的高使用率，會讓鈉與氯「脫鉤」[推論]。出院時 SGLT2i 使用率只有 19%，是 2019–2021 年 GDMT 早期的狀況。</li>
+<li><strong>外推性分級</strong>：
+<ol>
+<li><strong>一般健康族群</strong>：不適用，本研究沒有涵蓋。</li>
+<li><strong>因心衰住院的病人</strong>：
+<ul>
+<li>可外推條件：亞洲、出院時已接受 loop 利尿劑。</li>
+<li>不宜直接外推的原因：西方族群 BMI 較高、tolvaptan 使用少；現今 SGLT2i 與 ARNi 普及後，低氯盛行率與預後可能改變。</li>
+</ul>
+</li>
+<li><strong>特殊族群</strong>：
+<ul>
+<li>透析病人已被排除，不適用。</li>
+<li>高齡或惡病質病人：低氯組本身就是這個族群，這時血氯的增益可能只是重複反映營養狀態。</li>
+</ul>
+</li>
+</ol>
+</li>
+</ul>
+<h4>B3. 研究設計與偏差（最可能造成偏差的三個設計點）</h4>
+<ol>
+<li><strong>關鍵混淆因子沒有進入預後模型（偏差方向：高估低氯 HR）</strong>
+<ul>
+<li>Model 3 沒有調整以下變項 [文內: Table 3 註腳]：loop 利尿劑使用與劑量、tolvaptan、BUN 或 eGFR（只有肌酸酐）、血鈉、血紅素、AF。</li>
+<li>這些變項在低氯組都明顯不同：loop 91% vs 85%，tolvaptan 47% vs 32%，BUN 32 vs 24 [Table 1]。</li>
+<li>作者自己在 UCN2 子群的線性迴歸中顯示，loop 利尿劑對血氯的 B = <strong>−1.53</strong>（p&lt;0.001）[Figure 2B]，是比 UCN2 強四倍的決定因子。卻沒有把它放進預後模型。</li>
+<li>利尿劑劑量（furosemide equivalent）完全沒有記錄。</li>
+<li>結果：調整後 HR 2.09 很可能仍混有「利尿劑阻抗、病程進展」的效應。</li>
+</ul>
+</li>
+<li><strong>死因不明者被移出心血管死亡分析（偏差方向不確定，可能低估或扭曲）</strong>
+<ul>
+<li>Figure 1B 的起始人數 239/2713/878，顯示 111 位死因不明者被整個排除 [自行計算]。</li>
+<li>這等於依據「未來結局」來排除病人，違反分析時間零點的原則。</li>
+<li>而且排除比例在各組不同：低氯 22/261 = <strong>8.4%</strong>，正常氯 2.5%，高氯 2.2% [自行計算]。</li>
+<li>如果這些不明死亡多數其實是心血管死亡，低氯的心血管 HR 會被<strong>低估</strong>；反之則會影響「非心血管」的結論。</li>
+<li>作者以 Fine-Gray 宣稱「主要是心血管死亡」的結論，因此建立在處理不透明的分母上。</li>
+</ul>
+</li>
+<li><strong>單次出院血氯，加上兩種不同的參照組設定</strong>
+<ul>
+<li>Table 2 以正常氯為參照，Table 3 合併高氯當參照。高氯有偏低風險的趨勢（HR 0.83），合併後參照組風險略降，HR 會略為膨脹，影響小。</li>
+<li>單次測值無法反映利尿後的暫時性變化，可能造成暴露誤分類（偏向 null），也可能捕捉到「出院前仍在強力利尿」這個嚴重度訊號（偏離 null）。</li>
+</ul>
+</li>
+</ol>
+<ul>
+<li><strong>因果推論附錄（target trial 思維）</strong>：
+<ul>
+<li>若要回答「矯正低氯能否改善預後」，理想試驗應該隨機分派低氯病人接受補氯或 acetazolamide 策略，對照常規照護。</li>
+<li>本研究的 <strong>exchangeability</strong> 明顯不成立：利尿劑強度與病程是未調整的共同原因。</li>
+<li><strong>Consistency</strong> 也不成立：低氯的「來源」不同（稀釋性、利尿性、胃腸流失），代表不同版本的暴露。</li>
+<li>因此本文<strong>只能支持預後標記的用途，不能支持任何因果或治療推論</strong>；作者大致也承認這一點。</li>
+</ul>
+</li>
+</ul>
+<h4>B4. 測量工具與實務意義</h4>
+<ul>
+<li>血氯是常規檢驗，便宜、標準化。這是本文的實務優勢。</li>
+<li><strong>UCN2 assay 的問題</strong>：
+<ul>
+<li>是團隊自行與 IBL 開發的 ELISA，原始驗證只有 52 位病人 [外部: PubMed, <a href="https://doi.org/10.1038/s41598-025-99509-4">DOI</a>]。</li>
+<li>沒有外部實驗室複製，也沒有報告 CV 或 test-retest 資料。</li>
+<li>Figure 2A 底部可見約 9 點聚在 log₁₀ 約 −0.2，就是以 0.6 pg/mL 填補的低於定量下限值 [圖頁 page_006]。</li>
+<li>log₁₀UCN2 範圍跨越約 5 個 log（從約 −0.2 到 4.5），代表 UCN2 濃度相差數萬倍。這個生物學範圍是否合理、是否有 assay 干擾，都需要獨立驗證 [推論]。</li>
+</ul>
+</li>
+<li><strong>就算結果是真的，實務上有多大用處？</strong>
+<ul>
+<li>低氯病人 2 年全死因死亡約 4 成，比正常氯組高約 24 個百分點。這對病人分流是有意義的資訊。</li>
+<li>但它能否在 BNP 加上完整 MAGGIC 分數加上血鈉之外<strong>改變決策</strong>，沒有 C-statistic、NRI 或 calibration 可以判斷。</li>
+<li>UCN2 每高 10 倍，血氯只差 0.37 mEq/L，沒有實務意義。</li>
+</ul>
+</li>
+</ul>
+<h3>C. 統計與資料完整性</h3>
+<h4>C1. 結果分類（CI + 臨床意義閾值框架）</h4>
+<p>本文的暴露是預後標記，不是治療，所以沒有傳統 MCID。以下改用「HR ≥1.5 視為有臨床意義的風險差異」作為<strong>推算閾值</strong>[推算：依心衰預後模型常見的臨床意義門檻；非文內預設]。</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>終點（Model 3）</th>
+<th>HR（95% CI）</th>
+<th>CI 相對 null 與 1.5 的位置</th>
+<th>分類</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>全死因死亡</td>
+<td>2.09（1.64–2.67）</td>
+<td>整段高於 1.5</td>
+<td><strong>POSITIVE（強關聯）</strong></td>
+</tr>
+<tr>
+<td>心血管死亡</td>
+<td>2.29（1.64–3.20）</td>
+<td>整段高於 1.5</td>
+<td><strong>POSITIVE</strong>（但分母有問題，見 B3）</td>
+</tr>
+<tr>
+<td>複合終點</td>
+<td>1.46（1.20–1.78）</td>
+<td>跨越 1.5</td>
+<td><strong>IMPRECISE (+)</strong></td>
+</tr>
+<tr>
+<td>心衰再住院</td>
+<td>1.30（1.02–1.67）</td>
+<td>下限貼近 1，跨越 1.5</td>
+<td><strong>IMPRECISE (+)</strong>，且 Model 2 時 p=0.06</td>
+</tr>
+<tr>
+<td>非心血管死亡</td>
+<td>1.43（0.86–2.37）</td>
+<td>同時包含 1 與 1.5</td>
+<td><strong>INCONCLUSIVE</strong>；作者寫成「沒有獨立預測力、支持心血管特異性」，<strong>屬 p&gt;0.05 = no effect 的謬誤</strong></td>
+</tr>
+<tr>
+<td>高氯 vs 正常氯（全死因，未調整）</td>
+<td>0.83（0.68–1.01）</td>
+<td>包含 1</td>
+<td>INCONCLUSIVE</td>
+</tr>
+<tr>
+<td>血鈉（與血氯同模型）</td>
+<td>0.99（0.96–1.01）/ 每 mEq/L</td>
+<td>包含 1</td>
+<td>INCONCLUSIVE；作者寫「sodium did not」，同樣屬於過度解讀</td>
+</tr>
+</tbody>
+</table></div>
+<ul>
+<li>「心血管 vs 非心血管有差異」需要正式的異質性檢定。兩者的 CI（1.64–3.20 與 0.86–2.37）大幅重疊，文中沒有做這個比較。</li>
+</ul>
+<h4>C2. Underpowered 與 Winner's Curse</h4>
+<ul>
+<li>預後部分事件數充足，Winner's Curse 風險低。</li>
+<li><strong>UCN2 部分風險高</strong>：
+<ul>
+<li>n=499，低氯只有 37 人；B 的 CI 上限 −0.02 貼近 0，p=0.04。</li>
+<li>加上共變項是看過資料後才選定，這種「剛好過門檻」的結果在 Gelman &amp; Carlin 框架下，效果量很可能被高估。真實效果可能更小，甚至方向不穩（Type M 與 Type S error）。</li>
+<li>不應以 B=−0.37 作為後續研究的樣本數估算依據。</li>
+</ul>
+</li>
+</ul>
+<h4>C3. Bayesian 補充</h4>
+<ul>
+<li>文內沒有提供足夠資料（例如 UCN2 迴歸的完整 SE 結構），不執行數值計算。</li>
+<li>定性而言：對 B=−0.37 這種邊緣結果，只要用一個 skeptical prior（例如以 0 為中心、SD 0.2 mEq/L），後驗機率很可能就不足以支持「有意義的負相關」[推論]。</li>
+</ul>
+<h4>C4. 報告完整性與其他統計問題（統計紅旗）</h4>
+<ol>
+<li><strong>Supplement Table 6 的 OR 方向與正文矛盾</strong>：
+<ul>
+<li>若應變數是「低氯」，血鈉 OR 1.65 表示血鈉越高越容易低氯，生理上不合理。</li>
+<li>logUCN2 OR 0.58 表示 UCN2 越高越<strong>不</strong>容易低氯，與正文「higher logUCN2 associated with hypochloraemia」相反。</li>
+<li>推測應變數其實是「非低氯」，或標示錯誤；無論哪一種都是報告錯誤 [supp_01_appendix_page_016；推論]。</li>
+</ul>
+</li>
+<li><strong>加入血鈉的 LR χ² 為 22.8（p&lt;0.001）[Supplement Table 3B]</strong>：單獨加入時鈉同樣有顯著預後增益。「chloride provided prognostic information beyond sodium」只在兩者同時放入的共線模型中成立。缺少「已有鈉，再加氯」的巢狀 LR 檢定，以及 C-index 的改變量。</li>
+<li><strong>預後增益只用 LR χ² 衡量</strong>，沒有 Harrell's C、NRI、IDI 或 calibration，無法支持「納入常規評估」的實務主張。</li>
+<li><strong>死因不明者在心血管死亡分析中的處理沒有交代</strong>（at-risk 239 vs 261），見 B3。</li>
+<li><strong>資料錯誤</strong>：
+<ul>
+<li>Supplement Figure 1A 的 at-risk 人數增加（847→883）。</li>
+<li>Supplement Table 4 SGLT2i 正常氯組寫 113/360（31.4%），與 tolvaptan 列完全相同，加總 9+113+19=141，不等於表中總數 97。屬複製貼上錯誤 [supp_01_appendix_page_011]。</li>
+<li>Table 1 的 Total protein 單位寫成「mg/dL」，Figure 2B 的 albumin 單位也寫「mg/dL」，應為 g/dL。CCR 列沒有 p 值。</li>
+<li>非心血管死亡 HR 的引用來源錯誤（1.80 vs 1.70）。</li>
+</ul>
+</li>
+<li><strong>比例風險假設與連續血氯的線性假設都沒有檢驗</strong>。</li>
+<li><strong>UCN2 子群 MAGGIC 分數的組間 p=0.82 [Supplement Table 4]</strong>，但多變項模型中 MAGGIC 的 p=0.02–0.04。加上低氯組 IQR「27（22.5 to 27）」這種上限等於中位數的不尋常報告，數據可信度存疑。</li>
+<li><strong>Supplement Table 5B 統計方法標示不合理</strong>：類別變項用 Mann-Whitney U 檢定，表頭又寫「r」卻用 Spearman ρ。</li>
+<li><strong>病人參與聲明前後矛盾</strong>：Methods 寫「not involved」，文末卻寫「were involved」。</li>
+</ol>
+<ul>
+<li><strong>KM 圖細節</strong>：
+<ul>
+<li>主要曲線沒有交叉，24 個月時 at-risk 人數足夠。</li>
+<li>時間點選擇是預先固定的 2 年，沒有任意挑選時間點的問題。</li>
+<li>censoring 原因沒有報告。</li>
+</ul>
+</li>
+</ul>
+<h3>D. 次組分析評估</h3>
+<ul>
+<li>文內沒有傳統意義的次組分析，例如依 HFrEF/HFpEF、利尿劑劑量、有無 tolvaptan 分層。</li>
+<li>這本身是缺陷：最直接檢驗「低氯是否只是利尿強度標記」的方法，就是在「有 vs 無 loop 利尿劑」或「有 vs 無 tolvaptan」的分層中看 HR 是否一致，並報告交互作用 p 值。這部分沒有做。</li>
+<li>「心血管 vs 非心血管死亡」的比較實質上被當作次組結論使用。用 JAMA 五項標準檢視：
+<ol>
+<li>沒有交互作用或異質性檢定。</li>
+<li>方向與過去文獻一致性不明。</li>
+<li>不是事前假說。</li>
+<li>生物機轉合理性中等。</li>
+<li>不適用。</li>
+</ol>
+<ul>
+<li><strong>可信度：低</strong>。</li>
+</ul>
+</li>
+</ul>
+<h3>E. 紅旗清單</h3>
+<ul>
+<li>🚩 <strong>設計</strong>：預後模型沒有調整利尿劑劑量與使用、tolvaptan、BUN/eGFR、血鈉；低氯幾乎可以確定混入了「利尿劑依賴、進展期心衰」的訊號。</li>
+<li>🚩 <strong>設計</strong>：111 位死因不明者被移出心血管死亡分析，且在低氯組比例最高（8.4%），文中沒有交代。</li>
+<li>🚩 <strong>統計</strong>：非心血管死亡 HR 1.43（0.86–2.37）被解讀為「沒有關聯、具心血管特異性」。</li>
+<li>🚩 <strong>統計</strong>：「鈉不重要」的結論建立在共線模型上；單獨加入鈉時 LR χ² 為 22.8，p&lt;0.001。</li>
+<li>🚩 <strong>統計</strong>：Supplement Table 6 的 OR 方向與正文敘述矛盾；Supplement Figure 1A 人數增加；Supplement Table 4 有複製錯誤。</li>
+<li>🚩 <strong>統計</strong>：UCN2 的 p=0.04、CI 上限 −0.02、模型是看過資料後才選定、EPV 約 7。</li>
+<li>🚩 <strong>敘事</strong>：Key messages 把 ρ=−0.14 的相關描述成「identifying a neurohormonal correlate」。</li>
+<li>🚩 <strong>COI</strong>：通訊作者持有 CRHR2 antagonist 專利，UCN2 assay 與 IBL 共同開發，兩者都沒有揭露。</li>
+<li>🚩 <strong>外推</strong>：只有日本族群、tolvaptan 使用率高、SGLT2i 使用前的年代；沒有外部驗證；沒有 C-statistic。</li>
+</ul>
+<h3>F. 反向解釋</h3>
+<ol>
+<li><strong>低氯只是「利尿劑強度或阻抗」的代理指標</strong>。
+<ul>
+<li>支持：低氯組 loop 利尿劑 91%、tolvaptan 47%；在 UCN2 子群中 loop 利尿劑對血氯的 B = −1.53，是最強的決定因子；預後模型沒有調整利尿劑。</li>
+<li>反對：BNP 調整後 HR 幾乎沒變（3.15→3.05），代表與充血程度部分獨立。</li>
+</ul>
+</li>
+<li><strong>低氯反映惡病質或營養不良</strong>（「心臟惡病質」表型）。
+<ul>
+<li>支持：BMI 19.4、三酸甘油酯偏低、總蛋白反而偏高（可能是濃縮）。</li>
+<li>反對：Model 3 加入 albumin 後 HR 從 2.08 變成 2.09，幾乎沒有改變。但 albumin 本身是粗糙的營養指標。</li>
+</ul>
+</li>
+<li><strong>UCN2 與血氯的相關是混淆或 assay 假象</strong>。
+<ul>
+<li>支持：UCN2 濃度跨越約 5 個 log、有 LLOQ 填補值、assay 只在單一團隊使用、ρ 很小。UCN2 可能只是整體壓力或疾病嚴重度標記，與年齡、腎功能共同變動，並非調控血氯。</li>
+<li>反對：已調整血鈉、BUN 與 MAGGIC。但調整不完全，殘餘混淆很容易就能產生 B=−0.37。</li>
+</ul>
+</li>
+<li><strong>出院前強力利尿造成的暫時性低氯</strong>，代表「出院時仍未完全去充血」。
+<ul>
+<li>支持：只有單次出院測值，低氯組 TRPG 偏高（29 vs 26 mmHg）。</li>
+<li>反對：沒有入院血氯可以比較，無法判斷。</li>
+</ul>
+</li>
+</ol>
+<h3>G. 最終裁決</h3>
+<ul>
+<li><strong>整體可信度</strong>：
+<ul>
+<li>預後關聯：<strong>中</strong>。</li>
+<li>UCN2 關聯：<strong>低</strong>。</li>
+</ul>
+</li>
+<li><strong>可採用的條件</strong>：作為因心衰住院、出院時的風險標記。在亞洲、使用 loop 利尿劑的族群中，用來提高追蹤強度。</li>
+<li><strong>不建議採用的情境</strong>：
+<ul>
+<li>把矯正血氯當作治療目標。</li>
+<li>以血氯取代 BNP 或 MAGGIC。</li>
+<li>任何 UCN2 的臨床應用或 CRHR2 治療推論。</li>
+<li>非住院或透析族群。</li>
+</ul>
+</li>
+<li><strong>若要改觀，最需要的三個改進</strong>：
+<ol>
+<li>預後模型加入利尿劑劑量（furosemide equivalent）、tolvaptan、eGFR 與血鈉，並以有無 loop 或 tolvaptan 做分層與交互作用檢定，同時報告 E-value。</li>
+<li>交代並重新分析死因不明者（視為 censor 或敏感度分析），並以 C-index、NRI、calibration 量化血氯在 MAGGIC 加 BNP 加鈉之外的增益，最好在獨立世代做外部驗證。</li>
+<li>UCN2 分析需以事前登錄的模型、在獨立實驗室或商業 assay 重現，並修正 Supplement Table 6 的編碼與各項資料錯誤，同時完整揭露專利與 assay 開發關係。</li>
+</ol>
+</li>
+<li><strong>一句話結論</strong>：出院低氯確實標示出 2 年死亡風險倍增的高危心衰病人，但較可能是「重病與重利尿」的標記；UCN2 的關聯目前證據太薄。</li>
+</ul>
+<hr />
+<h3>效果量總表（臨床條件輸出）</h3>
+<div class="table-wrap wide"><table>
+<thead>
+<tr>
+<th>指標</th>
+<th>低氯組</th>
+<th>對照組</th>
+<th>效果量（Model 3）</th>
+<th>95% CI</th>
+<th>ARD（粗）</th>
+<th>臨床意義閾值</th>
+<th>結果分類</th>
+<th>實務意義</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2 年全死因死亡</td>
+<td>40.2%</td>
+<td>16.5%（正常氯）</td>
+<td>HR 2.09</td>
+<td>1.64–2.67</td>
+<td>+23.7 個百分點 [自行計算]</td>
+<td>HR 1.5 [推算]</td>
+<td>POSITIVE</td>
+<td>每 4 位低氯病人約多 1 位死亡（粗估，未調整）</td>
+</tr>
+<tr>
+<td>心血管死亡</td>
+<td>25.5%</td>
+<td>7.7%</td>
+<td>HR 2.29</td>
+<td>1.64–3.20</td>
+<td>+17.8 個百分點</td>
+<td>HR 1.5 [推算]</td>
+<td>POSITIVE（分母存疑）</td>
+<td>主要的超額死亡來源</td>
+</tr>
+<tr>
+<td>心衰再住院</td>
+<td>33.7%</td>
+<td>23.2%</td>
+<td>HR 1.30</td>
+<td>1.02–1.67</td>
+<td>+10.5 個百分點</td>
+<td>HR 1.5 [推算]</td>
+<td>IMPRECISE (+)</td>
+<td>調整後關聯脆弱</td>
+</tr>
+<tr>
+<td>複合終點</td>
+<td>54.8%</td>
+<td>33.4%</td>
+<td>HR 1.46</td>
+<td>1.20–1.78</td>
+<td>+21.4 個百分點</td>
+<td>HR 1.5 [推算]</td>
+<td>IMPRECISE (+)</td>
+<td>由死亡驅動</td>
+</tr>
+<tr>
+<td>非心血管死亡</td>
+<td>未報告</td>
+<td>未報告</td>
+<td>HR 1.43</td>
+<td>0.86–2.37</td>
+<td>—</td>
+<td>HR 1.5 [推算]</td>
+<td>INCONCLUSIVE</td>
+<td>不能說「無關」</td>
+</tr>
+<tr>
+<td>UCN2 → 血氯</td>
+<td>—</td>
+<td>—</td>
+<td>B −0.37 mEq/L / log₁₀</td>
+<td>−0.72 to −0.02</td>
+<td>—</td>
+<td>血氯差 ≥2–3 mEq/L [推算]</td>
+<td>統計邊緣、臨床微小</td>
+<td>無實務用途</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+<p>Sources:</p>
+<ul>
+<li><a href="https://en.wikipedia.org/wiki/Heart_(journal)">Wikipedia – Heart (journal)</a></li>
+<li><a href="https://journalsearches.com/journal.php?title=heart">journalsearches.com – Heart impact factor</a></li>
+<li><a href="https://en.nagoya-u.ac.jp/news/articles/research_news_059/">Nagoya University research news (UCN2/CRHR2)</a></li>
+<li><a href="https://patents.google.com/patent/US11135270">Google Patents US11135270</a></li>
+<li><a href="https://pubmed.ncbi.nlm.nih.gov/34857174/">Chloride in Heart Failure: The Neglected Electrolyte (PubMed)</a></li>
+<li><a href="https://esc365.escardio.org/presentation/322224">ESC Heart Failure 2026 presentation (QHEART)</a></li>
+<li>PubMed：Inukai K, et al. Sci Rep 2025 — <a href="https://doi.org/10.1038/s41598-025-99509-4">DOI</a>；Tsuda T, et al. J Exp Med 2017 — <a href="https://doi.org/10.1084/jem.20161924">DOI</a>；Takefuji M, Murohara T. Circ J 2019 — <a href="https://doi.org/10.1253/circj.CJ-18-0428">DOI</a>；García-Escrivá D, et al. Rev Esp Cardiol 2026 — <a href="https://doi.org/10.1016/j.rec.2026.04.006">DOI</a></li>
+</ul>
+
+<footer class="appraisal-meta">評讀資訊：模型：claude-opus-5-5 (claude)  ·  route：observational  ·  產出時間：2026-11-22 08:06 CST</footer>
+</main>
+</body>
+</html>
